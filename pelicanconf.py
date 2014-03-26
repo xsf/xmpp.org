@@ -36,7 +36,13 @@ DIRECT_TEMPLATES = ['index']
 THEME = 'xmpp.org-theme'
 STATIC_PATHS = [ 'img', 'CNAME' ]
 CUSTOM_CSS = 'static/custom.css'
-BOOTSTRAP_THEME = 'readable'
+BOOTSTRAP_THEME = 'darkly'
 
+# Tell Pelican to add 'extra/custom.css' to the output dir
+STATIC_PATHS = ['images', 'extra/custom.css']
 
+# Tell Pelican to change the path to 'static/custom.css' in the output dir
+EXTRA_PATH_METADATA = {
+    'extra/custom.css': {'path': 'static/custom.css'}
+}
 
