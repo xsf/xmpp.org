@@ -1,5 +1,6 @@
 xmpp.org
 ========
+[![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
 
 This repo generates the xmpp.org site (temproarily visible on new.xmpp.org until the grand-switch-over).
 
@@ -25,19 +26,7 @@ Communication forum
 Please use [members@muc.xmpp.org](xmpp:members@muc.xmpp.org?join) for discussions about the site, content, generation etc.
 
 
-Gentle introduction to Pelican
-==============================
-
-## buddycloud website
-[![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
-
-### Requirements
-
-* Pelican 3.3
-* ghp-import
-* Markdown 2.3.1
-
-### Introduction to Pelican
+## Gentle introduction to Pelican
 
 Pelican's [GETTING STARTED](http://docs.getpelican.com/en/latest/getting_started.html/) page is a good place to learn about the basics of Pelican (installation, project skeleton, development cycle, etc.).
 
@@ -47,6 +36,11 @@ git clone ssh://git@github.com/xsf/xmpp.org.git
 # install Pelican and dependencies
 cd xmpp.org
 ```
+### Requirements
+
+* Pelican 3.3
+* ghp-import
+* Markdown 2.3.1
 
 ### Runing the server in development mode
 
