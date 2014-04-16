@@ -2,6 +2,8 @@ language: python
 branches:
   only:
   - master
+notifications:
+  email: false
 install:
 - pip install pelican ghp-import markdown
 script:
