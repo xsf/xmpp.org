@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% set ACTIVE_PAGE = page.slug %}
+
 {% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 
 {% block breadcrumbs %}

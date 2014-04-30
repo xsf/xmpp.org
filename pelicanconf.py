@@ -45,4 +45,3 @@ STATIC_PATHS = ['images', 'extra/custom.css', 'CNAME' ]
 EXTRA_PATH_METADATA = {
     'extra/custom.css': {'path': 'static/custom.css'}
 }
-

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+{% set ACTIVE_PAGE = "HOME" %}
+
 {% block content %}
-    {% if articles %}
+<!--    {% if articles %}
         {% for article in (articles_page.object_list if articles_page else articles) %}
             <article>
                 <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
@@ -18,5 +20,12 @@
         {% endfor %}
     {% endif %}
 
-    {% include 'includes/pagination.html' %}
+    {% include 'includes/pagination.html' %}-->
+
+    <div class="jumbotron">
+        <h1>Landing page</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+    </div>
+
 {% endblock content %}

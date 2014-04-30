@@ -127,6 +127,7 @@
 
 <div class="container">
     <div class="row">
+        {% set HIDE_SIDEBAR = True if ACTIVE_PAGE == "HOME" else HIDE_SIDEBAR %}
         {% if not HIDE_SIDEBAR or SHOW_ABOUTME %}
         <div class="col-sm-9">
         {% else %}
