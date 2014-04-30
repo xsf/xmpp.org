@@ -35,8 +35,8 @@ GOOGLE_ANALYTICS = "UA-1075750-10"
 DIRECT_TEMPLATES = ['index']
 THEME = 'xmpp.org-theme'
 STATIC_PATHS = [ 'img', 'CNAME' ]
-CUSTOM_CSS = 'static/custom.css'
-BOOTSTRAP_THEME = 'darkly'
+CUSTOM_CSS = 'theme/css/style.css'
+BOOTSTRAP_THEME = 'journal'
 
 # Tell Pelican to add 'extra/custom.css' to the output dir
 STATIC_PATHS = ['images', 'extra/custom.css']
