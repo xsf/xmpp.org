@@ -39,7 +39,7 @@ CUSTOM_CSS = 'theme/css/style.css'
 BOOTSTRAP_THEME = 'journal'
 
 # Tell Pelican to add 'extra/custom.css' to the output dir
-STATIC_PATHS = ['images', 'extra/custom.css']
+STATIC_PATHS = ['images', 'extra/custom.css', 'CNAME' ]
 
 # Tell Pelican to change the path to 'static/custom.css' in the output dir
 EXTRA_PATH_METADATA = {
