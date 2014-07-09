@@ -4,13 +4,24 @@ xmpp.org
 
 This repo generates the xmpp.org site (temproarily visible on new.xmpp.org until the grand-switch-over).
 
+The [xmpp.org website plan](https://trello.com/b/ml9e82sE/xmpp-org-website) describes the site direction and structure.
+
+Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
+
+Any editorial questions: [Laura Gill](laura.gill@surevine.com) or [Simon Tennant](simon@buddycloud.com) can help
+
 Contributing new content and updates
 ------------------------------------
+ 
+* [fork](https://github.com/xsf/xmpp.org/fork)
+* edit in your own repository
+* When you are happy with your updates, submit a pull request describing the changes.
+* The updates will be reviewed and [usually] merged in
 
-* Site tasks are visibile on [Trello](https://trello.com/b/ml9e82sE/xmpp-org-website)
-* To update, please [fork](https://github.com/xsf/xmpp.org/fork) and submit a pull request
-* Editorial questions: [Laura Gill](laura.gill@surevine.com) or [Simon Tennant](simon@buddycloud.com) can help
+Communication forum
+-------------------
 
+Please use [members@muc.xmpp.org](xmpp:members@muc.xmpp.org?join) for discussions about the site, content, generation etc.
 
 Site generation
 ---------------
@@ -19,11 +30,6 @@ Site generation
 * Builds are visible on https://travis-ci.org/xsf/xmpp.org
 * New content is deployed to [gh-pages branch](https://github.com/xsf/xmpp.org/tree/gh-pages)
 * and visible on new.xmpp.org
-
-Communication forum
--------------------
-
-Please use [members@muc.xmpp.org](xmpp:members@muc.xmpp.org?join) for discussions about the site, content, generation etc.
 
 
 ## Gentle introduction to Pelican
