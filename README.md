@@ -13,10 +13,10 @@ Any editorial questions: [Laura Gill](laura.gill@surevine.com) or [Simon Tennant
 Contributing new content and updates
 ------------------------------------
  
-* [fork](https://github.com/xsf/xmpp.org/fork)
-* edit in your own repository
+* Fork the [code](https://github.com/xsf/xmpp.org/fork) to your own git repository.
+* Make your changes.
 * When you are happy with your updates, submit a pull request describing the changes.
-* The updates will be reviewed and [usually] merged in
+* The updates will be reviewed and [usually] merged in.
 
 Communication forum
 -------------------
@@ -30,7 +30,6 @@ Site generation
 * Builds are visible on https://travis-ci.org/xsf/xmpp.org
 * New content is deployed to [gh-pages branch](https://github.com/xsf/xmpp.org/tree/gh-pages)
 * and visible on new.xmpp.org
-
 
 ## Gentle introduction to Pelican
 
