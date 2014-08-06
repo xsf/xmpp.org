@@ -1,5 +1,5 @@
-Title: From then until now
-Slug: from-then-until-now
+Title: Working Groups
+Slug: working-groups
 
 ##Responsibilities of Members
 Because the XSF is a membership organisation, our members provide the legal basis for our activities. In particular, the members of the XSF annually elect the XMPP Council and the XSF Board of Directors. 
