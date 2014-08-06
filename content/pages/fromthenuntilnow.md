@@ -1,8 +1,5 @@
 Title: From then until now
-url: from-then-until-now
-save_as: fromthenuntilnow.html
-show_in_top_menu: true
-table_of_contents: true
+Slug: from-then-until-now
 
 ####1999
 *January*: Jeremie Miller announces the existence of Jabber; an open technology for instant messaging and presence. Throughout the year development moves quickly on an open source server (jabberd), several open-source clients and code libraries, and open wire protocols for real-time XML streaming; as well as basic instant messaging and presence extensions. These same base protocols (with various improvements and extensions) are still in use today.
