@@ -1,3 +1,12 @@
+Title: Tell me More
+url: tell-me-more
+save_as: tellmemore.html
+order: 1
+show_in_top_menu: true
+table_of_contents: true
+
+
+
 XMPP is a set of open technologies for instant messaging, presence, multi-party chat, voice and video calls and collaboration/.
 
 More technically, XMPP is also for lightweight middleware, content syndication and generalised routing of XML data.
