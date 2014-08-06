@@ -22,15 +22,15 @@ LINKS =  (('Pelican', 'http://getpelican.com/'),
           ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('XMPP Questions', 'http://stackoverflow.com/questions/tagged/xmpp'),
+          ('@xmpp', 'https://twitter.com/xmpp'),)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-GOOGLE_ANALYTICS = "UA-1075750-10"
+GOOGLE_ANALYTICS = "UA-48883675-1"
 
 DIRECT_TEMPLATES = ['index']
 THEME = 'xmpp.org-theme'
