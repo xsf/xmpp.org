@@ -25,7 +25,7 @@ Laura Gill
 * XMPP: laura.gill@surevine.com
 
 Dave Cridland
-* Dave is just some guy who turned up one day, and nobody knows quite how to get rid of him. He's served on Council and chaired the Board, written policy and protocol XEPs, and the odd RFC. He's currently employed by Surevine as a Software Engineer, and is Project Lead for Openfire, despite not actually knowing Java.
+* Dave has served on Council and chaired the Board, written policy and protocol XEPs, and the odd RFC. He's currently employed by Surevine as a Software Engineer, and is Project Lead for Openfire (despite not actually knowing Java).
 * [Twitter](https://twitter.com/dwddave)
 * XMPP: dwd@dave.cridland.net
 
