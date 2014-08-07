@@ -19,6 +19,12 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 * [Twitter](http://twitter.com/ralphm)
 * XMPP: xxx
 
+Laura Gill
+* Laura is one of the organisers of the XMPP-UK meetup group, and the Communications & Engagement Lead at Surevine. She has been a Board member of the XSF since 2013, with a focus on marketing and communications.
+* [Twitter](http://twitter.com/lauraanngill)
+* XMPP: laura.gill@surevine.com
+
+
 ##The Council
 
 The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures. The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post).
