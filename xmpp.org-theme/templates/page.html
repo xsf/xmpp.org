@@ -1,29 +1,28 @@
 {% extends "base.html" %}
-{% set ACTIVE_PAGE = page.slug %}
-
-{% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
-
-{% block breadcrumbs %}
-    {% if DISPLAY_BREADCRUMBS %}
-    <ol class="breadcrumb">
-        <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-        <li class="active">{{ page.title }}</li>
-    </ol>
-    {% endif %}
-{% endblock %}
+{% set active_page_url = page.url|replace(" ", "") %}
+{% set active_page = page.parent_id|default(active_page_url) %}
+{% set active_page_title = page.title %}
+{% set active_page_is_blog = page.is_blog %}
+{% set content_layout = page.content_layout|default("single-column") %}
 
 {% block content %}
-    <section id="content" class="body">
-        <h1 class="entry-title">{{ page.title }}</h1>
-        {% import 'includes/translations.html' as translations with context %}
-        {{ translations.translations_for(page) }}
-        {% if PDF_PROCESSOR %}
-            <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
-                get the pdf
-            </a>
-        {% endif %}
-        <div class="entry-content">
-            {{ page.content }}
-        </div>
-    </section>
+  {{ page.content }}
+{% endblock %}
+
+{% block related_content %}
+  {% if page.sidebar_menu_show|default("false") == "true" %}
+  <h4>{{ page.sidebar_menu_title }}</h4>
+  <ul>
+    {% set size = page.sidebar_menu_size|int %}
+    {% for i in range(1, size + 1) %}
+    <li>
+      {% set E_URL = page|attr('sidebar_menu_elem_url_'~(i|string)) %}
+      {% set E_NAME = page|attr('sidebar_menu_elem_name_'~(i|string)) %}
+      <a href="{{ SITE_URL }}/{{ E_URL }}">
+        {{ E_NAME }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 {% endblock %}

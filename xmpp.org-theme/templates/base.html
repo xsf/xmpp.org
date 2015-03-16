@@ -1,169 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="https://www.facebook.com/2008/fbml">
+<html class="no-js" lang="en">
 <head>
-    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    {% if FAVICON %}
-    <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon">
-    {% endif %}
-
-    {# Open Graph tags #}
-    {% if USE_OPEN_GRAPH is not defined %}
-        {% set USE_OPEN_GRAPH = True %}
-    {% endif %}
-    {% if USE_OPEN_GRAPH %}
-    <!-- Open Graph tags -->
-        {% if OPEN_GRAPH_FB_APP_ID %}
-            <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
-        {% endif %}
-        <meta property="og:site_name" content="{{ SITENAME }}" />
-        {% if article %}
-            <meta property="og:type" content="article"/>
-            <meta property="og:title" content="{{ article.title|striptags }}"/>
-            <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
-            <meta property="og:description" content="{{ article.summary|striptags|escape }}"/>
-            <meta property="article:published_time" content="{{ article.date.strftime("%Y-%m-%d") }}" />
-            {% if article.category %}
-            <meta property="article:section" content="{{ article.category }}" />
-            {% endif %}
-            {% for tag in article.tags %}
-            <meta property="article:tag" content="{{ tag }}" />
-            {% endfor %}
-        {% elif page %}
-            <meta property="og:type" content="article"/>
-            <meta property="og:title" content="{{ page.title }}"/>
-            <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}"/>
-        {% else %}
-            <meta property="og:type" content="website"/>
-            <meta property="og:title" content="{{ SITENAME }}"/>
-            <meta property="og:url" content="{{ SITEURL }}"/>
-            <meta property="og:description" content="{{ SITENAME }}"/>
-            {% if OPEN_GRAPH_IMAGE %}
-            <meta property="og:image"
-                  content="{{ SITEURL }}/static/{{ OPEN_GRAPH_IMAGE }}"/>
-            {% endif %}
-        {% endif %}
-    {% endif %}
-
-    <!-- Bootstrap -->
-    {% if BOOTSTRAP_THEME %}
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
-    {% else %}
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css" type="text/css"/>
-    {% endif %}
-    <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
-    {% if DOCUTIL_CSS %}
-        <link href="{{ SITEURL }}/theme/css/html4css1.css" rel="stylesheet">
-    {% endif %}
-    {% if TYPOGRIFY %}
-        <link href="{{ SITEURL }}/theme/css/typogrify.css" rel="stylesheet">
-    {% endif %}
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css"/>
-    {% if CUSTOM_CSS %}
-        <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
-    {% endif %}
-
-    {% if FEED_ALL_ATOM %}
-        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
-              title="{{ SITENAME }} ATOM Feed"/>
-    {% endif %}
-    {% if FEED_ALL_RSS %}
-        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/atom+xml" rel="alternate"
-              title="{{ SITENAME }} RSS Feed"/>
-    {% endif %}
-
+  <meta charset="utf-8">
+  <title>XMPP | {{ active_page_title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{ SITE_URL }}/theme/static/img/favicon.ico" />
+  <link rel="stylesheet" href="{{ SITE_URL }}/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+  <script src="{{ SITE_URL }}/theme/vendor/modernizr/modernizr.js"></script>
 </head>
-<body>
+<body class="{{ active_page }}" style="overflow-y: scroll;">
+  {% include 'top_menu.html' %}
 
-<div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="{{ SITEURL }}/" class="navbar-brand">
-                {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
-                {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
-            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    {% for p in PAGES %}
-                         <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">
-                             {{ p.title }}
-                          </a></li>
-                      {% endfor %}
-                {% endif %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                    {% for cat, null in categories %}
-                        <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</div> <!-- /.navbar -->
-
-<div class="container">
-    <div class="row">
-        {% set HIDE_SIDEBAR = True if ACTIVE_PAGE == "HOME" else HIDE_SIDEBAR %}
-        {% if not HIDE_SIDEBAR or SHOW_ABOUTME %}
-        <div class="col-sm-9">
-        {% else %}
-        <div class="col-lg-12">
-        {% endif %}
-        {% block breadcrumbs %}
+  {% if content_layout != "wide" %}
+  <header class="header-internal">
+    <h1>
+      <a href="{{ SITE_URL}}/{{ active_page_url }}">
+        {{ active_page_title }}
+      </a>
+    </h1>
+  </header>
+  {% endif %}
+  {% if active_page_is_blog|default("false") == "true" %}
+    <div class="page-content row">
+      <div class="large-8 columns">
+        {% block blog_entries %}
         {% endblock %}
-
-        {% block content %}
+      </div>
+      <div class="large-1 columns">
+      </div>
+      <div class="sidebar large-3 columns">
+        {% block blog_categories %}
         {% endblock %}
-        </div>
-	{% if ABOUT_ME %}
-        <div class="col-sm-3" id="aboutme">
-            {% include 'includes/aboutme.html' %}
-        </div>
-	{% endif %}
-	{% if not HIDE_SIDEBAR %}
-        <div class="col-sm-3 well well-sm" id="sidebar">
-            {% include 'includes/sidebar.html' %}
-        </div>
-	{% endif %}
+        {% block blog_archives %}
+        {% endblock %}
+      </div>
     </div>
-</div>
-{% include 'includes/footer.html' %}
+  {% else %}
+    {% if content_layout != "wide" %}
+    <div class="page-content row">
+    {% endif %}
+    {% if content_layout == "multiple-columns" %}
+      <div class="sidebar large-3 columns">
+        {% block related_content %}
+        {% endblock %}
+      </div>
+      <div class="large-8 columns">
+        <article>
+    {% endif %}
+    {% if content_layout == "single-column" %}
+      <div class="large-8 large-centered columns">
+        <article>
+    {% endif %}
+      {% block content %}
+      {% endblock %}
+    {% if content_layout != "wide" %}
+        </article>
+      </div>
+      {% if content_layout == "multiple-columns" %}
+      <div class="large-1 columns">
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  {% endif %}
 
-<script src="http://code.jquery.com/jquery.js"></script>
+  {% include 'footer.html' %}
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
-
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="{{ SITEURL }}/theme/js/respond.min.js"></script>
-
-{% include 'includes/github-js.html' %}
-{% include 'includes/disqus_script.html' %}
-{% include 'includes/ga.html' %}
-{% include 'includes/piwik.html' %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="{{ SITE_URL }}/theme/js/foundation.min.js"></script>
+  <script src="{{ SITE_URL }}/theme/js/foundation.topbar.js"></script>
+  <script src="{{ SITE_URL }}/theme/js/app.js"></script>
 </body>
 </html>

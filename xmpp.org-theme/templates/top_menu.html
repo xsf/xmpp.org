@@ -1,0 +1,58 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="{{ SITE_URL }}/">{{ SITENAME }}</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      {% for page in PAGES|sort(attribute='top_menu_order') if page.top_menu_show|default("false") == "true" %}
+      <li
+        {% if active_page == page.url|replace(" ", "") and page.dropdown_menu_show|default("false") == "true" %}
+        class="active has-dropdown"
+        {% elif active_page == page.url|replace(" ", "") %}
+        class="active"
+        {% elif page.dropdown_menu_show|default("false") == "true" %}
+        class="has-dropdown"
+        {% endif %}
+       >
+        <a href="{{ SITE_URL }}/{{ page.url }}">
+          {{ page.menu_name|default(page.title) }}
+        </a>
+
+        {% if page.dropdown_menu_show|default("false") == "true" %}
+        <ul class="dropdown">
+          {% set size = page.dropdown_menu_size|int %}
+          {% for i in range(1, size + 1) %}
+          <li>
+            {% set E_URL = page|attr('dropdown_menu_elem_url_'~(i|string)) %}
+            {% set E_NAME = page|attr('dropdown_menu_elem_name_'~(i|string)) %}
+            <a href="{{ SITE_URL }}/{{ page.url }}/{{ E_URL }}">
+              {{ E_NAME }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      <li class="divider"></li>
+      {% endfor %}
+      <li
+        {% if active_page == "blog" %}
+        class="active"
+        {% endif %}
+       >
+        <a href="{{ SITE_URL }}/posts/blog/index.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>

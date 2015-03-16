@@ -1,64 +1,42 @@
 {% extends "base.html" %}
-{% set ACTIVE_PAGE = "HOME" %}
+{% set active_page = "blog" %}
+{% set active_page_url = "posts/blog/index.html" %}
+{% set active_page_title = "The XMPP Blog" %}
+{% set active_page_is_blog = "true" %}
 
-{% block content %}
-<!--    {% if articles %}
-        {% for article in (articles_page.object_list if articles_page else articles) %}
-            <article>
-                <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-                {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
-                    <div class="well well-sm">
-                        {% include "includes/article_info.html" %}
-                    </div>
-                {% endif %}
-                <div class="summary">{{ article.summary }}
-                    {% include 'includes/comment_count.html' %}
-                    <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">more ...</a>
-                </div>
-            </article>
-            <hr/>
-        {% endfor %}
-    {% endif %}
+{% block blog_entries %}
+{% block content_title %}
+{% endblock %}
+{% for article in articles_page.object_list %}
+  <article>
+    <h1>{{ article.title }}</h1>
+    {{ article.summary }}
+    <p>
+      <a href="{{ SITE_URL }}/{{ article.url }}">Continue reading &raquo;</a>
+    </p>
+    <h6>
+      Posted by
+      {% if article.authors %}
+      {% for author in article.authors %}
+      <a href="{{ SITE_URL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %},{% endif %}
+      {% endfor %}
+      {% else %}
+      <a href="{{ SITE_URL }}/{{ article.author.url }}">{{ article.author }}</a>
+      {% endif %}
+      on
+      <a href="#">{{ article.date|strftime('%B, %d, %Y') }}</a>
+      - filed under
+      <a href="{{ SITE_URL }}/{{ article.category.url }}">{{ article.category }}</a>
+    </h6>
+  </article>
+{% endfor %}
+{% include 'pagination.html' %}
+{% endblock %}
 
-    {% include 'includes/pagination.html' %}-->
+{% block blog_categories %}
+  {% include "categories.html" %}
+{% endblock %}
 
-    <div class="jumbotron">
-        <h1>Landing page</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
-        <p> Extensible Messaging and Presence Protocol (XMPP) is an open XML technology for real-time communication, which powers a wide range of applications including instant messaging, presence and collaboration.
-
-To understand what this really means, let’s go on a journey from P back to X…
-
-‘P’
-
-Protocol
-
-XMPP is a protocol; a set of standards that allows systems to talk to each other. XMPP is used widely across the web, but is often unadvertised. The protocol (or standards) are looked after by the XSF (link).
-
-‘P’ (again)
-
-Presence
-
-The presence indicator tells the servers that you are online / offline / busy. In technical terms, presence determines the state of an XMPP entity; in layman terms, whether you are there are ready to receive messages or not.
-
-‘M’
-
-Messaging
-
-The ‘messaging’ part of XMPP is the ‘piece’ you see; the Instant Message (IM) sent between clients. XMPP has been designed to send all messages in real-time using a very efficient push mechanism; whereas existing web based mechanisms often make many unnecessary requests introducing network load, and are consequently not real-time
-
-‘X’
-
-eXtensibility
-
-Defined in an open standard and using an open systems approach of development and application, XMPP is designed to be extensible. In other words, it has been designed to grow and accommodate changes.
-
-##IDEA: Slider bar like buddycloud homepage format
-
-People already using XMPP:
-
-Logo images for: (add logo for all users) </p>
-    </div>
-
-{% endblock content %}
+{% block blog_archives %}
+  {% include "period_archives.html" %}
+{% endblock %}

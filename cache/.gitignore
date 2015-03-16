@@ -1,0 +1,6 @@
+# A hack to force git to version control this empty directory (the execution_context)
+
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore

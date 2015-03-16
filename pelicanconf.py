@@ -2,46 +2,35 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'members@xmpp.org'
-SITENAME = u'XMPP Standards Foundation'
-SITEURL = ''
+SITENAME = "XMPP"
+SITE_URL = ""
+TIMEZONE = "Europe/Paris"  #Unused (Pelican complains if you don't provide it)
+DEFAULT_LANG = "en"
 
-TIMEZONE = 'Europe/Paris'
+DEFAULT_METADATA = [
+  ('top_menu_show', 'false'),
+  ('top_menu_order', '-1'),
+  ('dropdown_menu_show', 'false'),
+  ('dropdown_menu_size', '0'),
+  ('footer_show', 'false'),
+  ('footer_order', '-1'),
+  ('content_layout', 'single-column'),
+  ('is_blog', 'false')
+]
 
-DEFAULT_LANG = u'en'
+STATIC_PATHS = [ 'CNAME' ]
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
+ARTICLE_PATHS = [ 'posts/blog', 'posts/learn' ]
+ARTICLE_URL = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}'
+ARTICLE_SAVE_AS = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 
-# Blogroll
-LINKS =  (('Pelican', 'http://getpelican.com/'),
-          ('Python.org', 'http://python.org/'),
-          ('Jinja2', 'http://jinja.pocoo.org/'),
-          ('You can modify those links in your config file', '#'),)
+INDEX_SAVE_AS = 'posts/blog/index.html'
 
-# Social widget
-SOCIAL = (('XMPP Questions', 'http://stackoverflow.com/questions/tagged/xmpp'),
-          ('@xmpp', 'https://twitter.com/xmpp'),)
+USE_FOLDER_AS_CATEGORY = False
+DEFAULT_PAGINATION = 2
 
-DEFAULT_PAGINATION = 10
+YEAR_ARCHIVE_SAVE_AS = 'posts/blog/{date:%Y}/index.html'
 
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+THEME = "xmpp.org-theme"
 
-GOOGLE_ANALYTICS = "UA-48883675-1"
-
-DIRECT_TEMPLATES = ['index']
-THEME = 'xmpp.org-theme'
-STATIC_PATHS = [ 'img', 'CNAME' ]
-CUSTOM_CSS = 'theme/css/style.css'
-BOOTSTRAP_THEME = 'journal'
-
-# Tell Pelican to add 'extra/custom.css' to the output dir
-STATIC_PATHS = ['images', 'extra/custom.css', 'CNAME' ]
-
-# Tell Pelican to change the path to 'static/custom.css' in the output dir
-EXTRA_PATH_METADATA = {
-    'extra/custom.css': {'path': 'static/custom.css'}
-}
+MD_EXTENSIONS = [ 'codehilite(css_class=highlight)', 'extra' ]
