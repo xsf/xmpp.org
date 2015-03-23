@@ -14,9 +14,9 @@ Contributing new content and updates
 ------------------------------------
  
 * Fork the [code](https://github.com/xsf/xmpp.org/fork) to your own git repository.
-* Make your changes.
-* When you are happy with your updates, submit a pull request describing the changes.
-* The updates will be reviewed and [usually] merged in.
+* Make your changes in `/content/pages` or [directly](https://github.com/xsf/xmpp.org/tree/master/content/pages) in GitHub. 
+* When you are happy with your updates, submit a [pull request](https://github.com/xsf/xmpp.org/pulls) describing the changes.
+* The updates will be reviewed and merged in.
 
 Communication forum
 -------------------
