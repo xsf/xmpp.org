@@ -1,7 +1,7 @@
 ---
-Title: Chat / chat logs
-Url: community/chat
-Save_as: community/chat.html
+Title: XSF Membership
+Url: community/membership
+Save_as: community/membership.html
 Parent_id: community
 Top_menu_show: false
 Top_Menu_order: -1
@@ -23,4 +23,4 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-This page is about chat and chat logs.
+This page is about membership.
