@@ -38,6 +38,7 @@ If you have an interest in XMPP standards, it is straightforward to [become a Me
 The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2014-2015 consists of the following individuals:
 
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council since 2004 and is a software developer for Rackspace. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP]()
+- __Adam Brault__ is the founder of [&yet](http://andyet.com), a consultancy focused on realtime communication (XMPP, WebRTC) and security. You can find Adam on [Twitter](http://twitter.com/adambrault) and chat with him on [XMPP](xmpp:adam@brault.io). (Sometimes.)
 
 ## The Council:
 
