@@ -23,4 +23,17 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-This page is about chat and chat logs.
+# XMPP Chat Rooms
+
+The XSF hosts a variety of chat rooms and all historical archives are available online.
+
+### Jabber support chatroom
+Chat about using Jabber/XMPP technologies ([webchat](http://speeqe.com/room/jabber@conference.jabber.org/) | [join](xmpp:jabber@conference.jabber.org?join) | [logs](http://logs.jabber.org/jabber@conference.jabber.org/))
+
+### Operators chatroom
+Chat about the Jabber/XMPP network ([webchat](http://speeqe.com/room/operators@conference.jabber.org/) | [join](xmpp:operators@conference.jabber.org?join) | [logs](http://logs.jabber.org/operators@conference.jabber.org/))
+
+### Developer chatroom
+Chat about software and protocols ([webchat](http://speeqe.com/room/jdev@conference.jabber.org/) | [join](xmpp:jdev@conference.jabber.org?join) | [logs](http://logs.jabber.org/jdev@conference.jabber.org/))
+
+All of these venues are completely free and open to any interested individual.
