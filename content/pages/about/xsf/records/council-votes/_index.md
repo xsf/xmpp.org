@@ -1,7 +1,7 @@
 ---
-Title: XSF Records
-Url: about/xsf/records
-Save_as: about/xsf/records/index.html
+Title: XSF Council Voting History
+Url: about/xsf/records/council-votes
+Save_as: about/xsf/records/council-votes/index.html
 Parent_id: about
 Top_menu_show: false
 Top_Menu_order: -1
@@ -25,9 +25,4 @@ Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
 ---
 
-An index of records
-
-- [XSF Council voting history](/about/xsf/records/council-votes)
-- [XSF Proposals](/about/xsf/records/proposals)
-- [Meeting minutes](/about/xsf/records/meeting-minutes)
-- [Financial summary](/about/xsf/records/financial-summary) (outdated)
+An index of XSF Council votes
