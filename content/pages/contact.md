@@ -28,4 +28,4 @@ Parker, CO 80134 USA
 
 Licensing
 
-If you have any questions about the [Jabber Trademark Licensing Program](http://xmpp.org/about-xmpp/xsf/jabber-trademark/), please contact trademark (at) jabber (dot) org or [Peter Saint-Andre](/about/xsf/people), the XSF’s Executive Director.
+If you have any questions about the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark), please contact trademark (at) jabber (dot) org or [Peter Saint-Andre](/about/xsf/people), the XSF’s Executive Director.
