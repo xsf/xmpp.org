@@ -23,4 +23,36 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-This page is about XSF mailing lists.
+# Mailing lists
+
+There are many active discussion venues for Jabber/XMPP developers, system administrators, and end users. These lists are all easily searchable at [jabber.markmail.org](http://jabber.markmail.org/).
+
+### For End Users
+
+__JUser@jabber.org email list__ — for discussion about use of IM clients ([subscribe](http://mail.jabber.org/mailman/listinfo/juser) | [archives](http://mail.jabber.org/pipermail/juser/))
+
+### For System Admins
+
+__JAdmin@jabber.org email list__ — for discussion about installing and configuring Jabber/XMPP server software ([subscribe](http://mail.jabber.org/mailman/listinfo/jadmin) | [archives](http://mail.jabber.org/pipermail/jadmin/))
+
+__Operators@xmpp.org email list__ — for discussion about day-to-day operation of the Jabber/XMPP communications network ([subscribe](http://mail.jabber.org/mailman/listinfo/operators) | [archives](http://mail.jabber.org/pipermail/operators/))
+
+### For Developers
+
+__JDev@jabber.org email list__ — for discussion about software development using Jabber/XMPP technologies ([subscribe](http://mail.jabber.org/mailman/listinfo/jdev) | [archives](http://mail.jabber.org/pipermail/jdev/http://mail.jabber.org/mailman/listinfo/standards))
+
+__Standards@xmpp.org email list__ — for general discussion about XMPP protocols ([subscribe]() | [archives](http://mail.jabber.org/pipermail/standards/))
+
+__xmpp@ietf.org email list__ — official list for [XMPP Working Group](http://tools.ietf.org/wg/xmpp/) discussions at the [IETF](http://www.ietf.org/) ([subscribe](https://www.ietf.org/mailman/listinfo/xmpp) | [archives](http://www.ietf.org/mail-archive/web/xmpp/current/maillist.html))
+
+### Special-Purpose Venues
+
+The following special-purpose mailing lists provide low-volume, high-quality discussion among developers interested in specific aspects of XMPP technologies.
+
+__IOT@xmpp.org email list__ — for discussion about the use of XMPP in the Internet of Things ([subscribe](http://mail.jabber.org/mailman/listinfo/iot) | [archives](http://mail.jabber.org/pipermail/iot/))
+
+__Jingle@xmpp.org email list__ — for discussion about the use of XMPP as a signalling channel for multimedia session negotiation (voice, video, file sharing, etc.) as defined in [XEP-0166](http://xmpp.org/extensions/xep-0166.html) and related extensions ([subscribe](http://mail.jabber.org/mailman/listinfo/jingle) | [archives](http://mail.jabber.org/pipermail/jingle/))
+
+__Security@xmpp.org email list__ — for discussion about security issues related to XMPP, including encryption, authentication, and spam ([subscribe](http://mail.jabber.org/mailman/listinfo/security) | [archives](http://mail.jabber.org/pipermail/security/))
+
+All of these venues are completely free and open to any interested individual.
