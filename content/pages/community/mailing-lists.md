@@ -23,8 +23,6 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-# Mailing lists
-
 There are many active discussion venues for Jabber/XMPP developers, system administrators, and end users. These lists are all easily searchable at [jabber.markmail.org](http://jabber.markmail.org/).
 
 ### For End Users

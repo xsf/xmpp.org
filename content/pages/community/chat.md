@@ -23,8 +23,6 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-# XMPP Chat Rooms
-
 The XSF hosts a variety of chat rooms and all historical archives are available online.
 
 ### Jabber support chatroom
