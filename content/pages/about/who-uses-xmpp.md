@@ -25,4 +25,6 @@ Sidebar_menu_elem_url_6: about/faq
 Content_layout: multiple-columns
 ---
 
-This page is about who uses XMPP.
+Does your company use XMPP? Please [submit a pull request](https://github.com/xsf/xmpp.org) and add your info to this page.
+
+And don't forget to also submit a pull request to add your [project](/software/projects), too.
