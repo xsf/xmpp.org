@@ -31,4 +31,13 @@ Sidebar_menu_elem_url_4: software/projects
 Content_layout: multiple-columns
 ---
 
-This is the index page for the XMPP Software section.
+In this section you’ll find information about XMPP Server, Clients and Libraries.
+
+Please note that the software we list on these pages was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
+
+- [XMPP Servers](/software/xmpp-servers)
+- [XMPP Clients](/software/xmpp-clients)
+- [XMPP Libraries](/software/xmpp-libraries)
+- [XMPP Projects](/software/xmpp-projects)
+
+We are keen to keep these pages up to date so, if you know of something we’ve missed, then please [submit a pull request](https://github.com/xsf/xmpp.org).
