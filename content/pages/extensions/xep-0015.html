@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0015: Account Transfer</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Account Transfer" /><meta name="DC.Creator" content="Casey Crabb" /><meta name="DC.Description" content="A proposal for enabling the ability to transfer an account from one Jabber server to another." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-04-18" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0015" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0015: Account Transfer</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A proposal for enabling the ability to transfer an account from one Jabber server to another.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Casey Crabb</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Rejected</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-04-18</td></tr></table><hr /><p style="color:red">WARNING: This document has been Rejected by the XMPP Council. Implementation of the protocol described herein is not recommended under any circumstances.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp625376">Introduction</a><br />2.  <a href="#sect-idp627552">Main Body</a><br />   
+      2.1.  <a href="#sect-idp628320">Preconditions</a><br />   
+      2.2.  <a href="#sect-idp631072">Order of events</a><br />   
+      2.3.  <a href="#sect-idp636736">Protocol Example</a><br />3.  <a href="#sect-idp647040">Open Issues, Concerns and Scoping</a><br />   
+      3.1.  <a href="#sect-idp647472">How do we handle transferring transport stuff?</a><br />   
+      3.2.  <a href="#sect-idp1548032">Empty Pointer Accounts</a><br />   
+      3.3.  <a href="#sect-idp1549088">vCards and private storage data</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp625376" id="sect-idp625376">Introduction</a></h2>
+
+    <p>I have found the need in the past to migrate an account from
+    one server to another for various reasons. Many of the people who
+    ask me about Jabber ask if there is a way to migrate their account
+    from one server to another if the need arises. There is no reason
+    Jabber can not handle this internally and update all the
+    JID-references appropriately.</p>
+
+    <p>Jabber servers come and go, especially ones run by people who
+    are just playing with the technology. Computers also die and
+    funding runs out. It can be hard on users to have to re-create
+    their rosters every time they have to change to a different
+    server. Administrators also want to provide an 'out' for their
+    users, so that they feel more secure in the time spent setting up
+    rosters. For these reasons there should be a way to migrate an
+    account from one server to another. </p>
+
+  <h2>2.
+       <a name="sect-idp627552" id="sect-idp627552">Main Body</a></h2>
+
+    <p>A basic overview of the behavior would be as follows.</p>
+    <div class="indent"><h3>2.1 <a name="sect-idp628320" id="sect-idp628320">Preconditions</a></h3>
+      <ul>
+        <li>Bob has a jabber account on a server, floobin.cx
+          specifically: olduser@floobin.cx.</li>
+
+        <li>Bob knows that the floobin.cx server is going to go down soon
+          and therefore needs to find a new jabber server.</li>
+
+        <li>He realizes that jabber.org offers accounts to anyone, so he
+          sets out to migrate his account to jabber.org.</li>
+
+        <li>Bob does not yet have an account on jabber.org.</li>
+      </ul>
+    </div>
+    <div class="indent"><h3>2.2 <a name="sect-idp631072" id="sect-idp631072">Order of events</a></h3>
+      <p>Throughout most of the account transfer the server hosting
+        the old account will be acting for the user. The end client
+        should have very little to do with the actual transfer.</p>
+
+      <ol>
+        <li>Bob creates an account on Jabber.org:
+          bobsnewaccount@jabber.org.</li>
+
+        <li>Bob logs into both bobsnewaccount@jabber.org and
+          olduser@floobin.cx.</li>
+
+        <li>From olduser@floobin.cx he sends the 'I want to migrate my
+          account' packet to Floobin.cx. This packet includes the JID
+          to migrate to.</li>
+
+        <li>Floobin.cx sends the 'user wants to migrate account to
+          you' packet to bobsnewaccount@jabber.org. This packet contains
+          the JID of the old account.</li>
+
+        <li>bobsnewsaccount@jabber.org receives the 'user wants to
+          migrate account to you' packet and authorizes the
+          transfer.</li>
+
+        <li>Once the migration is authorized the floobin.cx server
+          will start the migration process. The first part is to
+          notify each person subscribed to olduser@floobin.cx's
+          presence that the account has moved to
+          bobsnewaccount@jabber.org.</li>
+
+        <li>Once that is complete the roster itself
+          must be added into bobsnewaccount@jabber.cx's roster. There are
+          many issues with that remain and should be dealt with in the
+          future. See the section on scope for more information.</li>
+
+        <li>finally floobin.cx informs olduser@floobin.cx that the
+          transfer was completed.</li>
+      </ol>
+    </div>
+
+    <div class="indent"><h3>2.3 <a name="sect-idp636736" id="sect-idp636736">Protocol Example</a></h3>
+
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User initiates process</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='initacctxfer' to='floobin.cx' from='airog@floobin.cx' type='ask'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;oldaccount&gt;airog@jabber.org&lt;/oldaccount&gt;
+            &lt;newaccount&gt;newaccount@jabber.org&lt;/newaccount&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server asks for permission from newaccount@jabber.org</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='acctxfer1' type='ask' from='floobin.cx' to='newaccount@jabber.org'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;oldaccount&gt;airog@jabber.org&lt;/oldaccount&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. XML received at user's new account</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='acctxfer1' type='ask' from='floobin.cx' to='newaccount@jabber.org'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;oldaccount&gt;airog@jabber.org&lt;/oldaccount&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. newaccount@jabber.org accepts the migration</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='acctxfer1' type='result' to='floobin.cx' from='newaccount@jabber.org'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;allowed/&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p>On acceptance the server on which the old account resides
+        starts the migration process by sending this to each person
+        subscribed to the user's presence.</p>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. XML sent to each JID subscribed to airog@floobin.cx's presence</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='acctxferss1' type='set' from='floobin.cx' to='jabber.org'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;oldaccount&gt;airog@jabber.org&lt;/oldaccount&gt;
+            &lt;newaccount&gt;newaccount@jabber.org&lt;/newaccount&gt;
+            &lt;rosteritem jid='frienduser@jabber.org'/&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. The server hosting the account of the roster item responds</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='acctxferss1' type='result' to='floobin.cx' from='jabber.org'/&gt;
+      </pre></div>
+
+      <p>Once that update has been sent to all the contacts on the
+        roster the floobin.cx server sends to the jabber.org server airog@floobin.cx's roster as follows:</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. airog@floobin.cx's roster is transferred into newuser@jabber.org's roster</p><div class="indent"><pre class="prettyprint">
+        &lt;iq type='set' id='acctxferss2' from='floobin.cx' to='jabber.org'&gt;
+          &lt;query xmlns='jabber:iq:accountxfer'&gt;
+            &lt;oldaccount&gt;airog@jabber.org&lt;/oldaccount&gt;
+            &lt;newaccount&gt;newaccount@jabber.org&lt;/newaccount&gt;
+            &lt;item jid='frienduser@jabber.org' name='friend1' subscription='both'/&gt;
+            &lt;item jid='annoyuser@jabber.org' ask='subscribe'/&gt;
+            &lt;item jid='someone@jabber.org' subscription='from'/&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. floobin.cx responds saying the roster transfer was successful</p><div class="indent"><pre class="prettyprint">
+        &lt;iq type='result' id='acctxferss2' to='floobin.cx' from='jabber.org'/&gt;
+      </pre></div>
+
+      <p>Once the migration finishes a notification is sent to the user:</p>
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Process completed</p><div class="indent"><pre class="prettyprint">
+        &lt;iq id='initacctxfer' from='floobin.cx' to='airog@floobin.cx' type='result'/&gt;
+      </pre></div>
+    </div>
+  <h2>3.
+       <a name="sect-idp647040" id="sect-idp647040">Open Issues, Concerns and Scoping</a></h2>
+    <div class="indent"><h3>3.1 <a name="sect-idp647472" id="sect-idp647472">How do we handle transferring transport stuff?</a></h3>
+      <p>Because we cannot determine easily if the new server will
+        support the same transports as the old server we cannot
+        easily transfer entities that pass through the
+        transport. Therefore, until jabber:iq:browse matures, or
+        some other solution for determining if two transports
+        support the same functionality we should not attempt to
+        migrate transport information.</p>
+
+      <p>I propose the following algorithm for determining if a
+        particular roster item is a sub-item of a transport. There are
+        jabber roster items for each of the transports themselves,
+        something to the effect of icq.jabber.org or
+        aim.jabber.org. They contain no user portion of the jid. We
+        record all of these in a list that we will call the
+        'transport-list'. Then for each roster item we want to migrate
+        we compare its 'host' part of the jid to all items in the
+        'transport-list'. If the roster item matches, then the roster
+        item is a hosted through the transport and shouldn't be
+        migrated.</p>
+    </div>
+
+    <div class="indent"><h3>3.2 <a name="sect-idp1548032" id="sect-idp1548032">Empty Pointer Accounts</a></h3>
+      <p>Does the server keep an empty account that redirects requests
+        to the new account?  I've been hearing mass rumblings of 'NO'
+        here.</p>
+    </div>
+
+    <div class="indent"><h3>3.3 <a name="sect-idp1549088" id="sect-idp1549088">vCards and private storage data</a></h3>
+      <p>How do we handle vCard information or server side stored
+        preferences? Since the account we're migrating to can be any
+        account some of that information might already be there, how do
+        we resolve conflicts?</p>
+
+      <p>Also, we cannot be sure that the new server supports
+        storage of private data. This again needs some sort of
+        features negotiation, discovery which could be provided by
+        jabber:iq:browse.</p>
+
+      <p> Until jabber:iq:browse is in the 'standards' stage, I
+        recommend we only transfer regular jabber users, and not
+        transfer anything but the roster. All the client software will
+        have to set their preferences for themselves on the new
+        server.</p>
+    </div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0015<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Rejected">Rejected</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.4<br />
+            Last Updated: 2002-04-18<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0015.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0015.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0015.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Casey Crabb</h3><p class="indent">
+        Email:
+        <a href="mailto:crabbkw@nafai.dyndns.org">crabbkw@nafai.dyndns.org</a><br />
+        JabberID: 
+        <a href="xmpp:airog@floobin.cx">airog@floobin.cx</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.4 (2002-04-18)</h4><div class="indent">Cleaned up the open issues and concerns section. (cwc)
+    </div><h4>Version 0.3 (2002-04-16)</h4><div class="indent">Added more specific details to the protocol. Added more examples. Tried to make the whole document more readable. (cwc)
+    </div><h4>Version 0.2 (2002-02-26)</h4><div class="indent">Setting scope, adding discussion about using jabber:iq:browse in the future for transports (cwc)
+    </div><h4>Version 0.1 (2002-01-24)</h4><div class="indent">Added more pseudo-protocol information. Added a known issues section. (cwc)
+    </div><h4>Version 1.0 (2002-01-16)</h4><div class="indent">First release to CVS, including editorial changes and assignment of number. (psa)
+    </div><h4>Version 0.9 (2001-12-04)</h4><div class="indent">Initial version. (cwc)
+    </div></div><hr /><p>END</p></body></html>

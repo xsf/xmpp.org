@@ -1,0 +1,1744 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0167: Jingle RTP Sessions</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jingle RTP Sessions" /><meta name="DC.Creator" content="Scott Ludwig" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Sean Egan" /><meta name="DC.Creator" content="Robert McQueen" /><meta name="DC.Creator" content="Diana Cionoiu" /><meta name="DC.Description" content="This specification defines a Jingle application type for negotiating one or more sessions that use the Real-time Transport Protocol (RTP) to exchange media such as voice or video. The application type includes a straightforward mapping to Session Description Protocol (SDP) for interworking with SIP media endpoints." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-12-23" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0167" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0167: Jingle RTP Sessions</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a Jingle application type for negotiating one or more sessions that use the Real-time Transport Protocol (RTP) to exchange media such as voice or video. The application type includes a straightforward mapping to Session Description Protocol (SDP) for interworking with SIP media endpoints.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Scott Ludwig, Peter Saint-Andre, Sean Egan, Robert McQueen, Diana Cionoiu</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-12-23</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#conformance">Jingle Conformance</a><br />4.  <a href="#format">Application Format</a><br />5.  <a href="#negotiation">Negotiating a Jingle RTP Session</a><br />6.  <a href="#sdp">Mapping to Session Description Protocol</a><br />7.  <a href="#srtp">Negotiation of SRTP</a><br />8.  <a href="#info">Informational Messages</a><br />   
+      8.1.  <a href="#info-active">Active</a><br />   
+      8.2.  <a href="#info-hold">Hold</a><br />   
+      8.3.  <a href="#info-mute">Mute</a><br />   
+      8.4.  <a href="#info-ringing">Ringing</a><br />9.  <a href="#parameters">Exchanging Application Parameters</a><br />10.  <a href="#support">Determining Support</a><br />11.  <a href="#scenarios">Scenarios</a><br />   
+      11.1.  <a href="#scenarios-busy">Responder is Busy</a><br />   
+      11.2.  <a href="#scenarios-voicechat">Jingle Audio via RTP, Negotiated with ICE-UDP</a><br />   
+      11.3.  <a href="#scenarios-srtp">Jingle Audio via SRTP, Negotiated with ICE-UDP</a><br />   
+      11.4.  <a href="#scenarios-audiovideo">Jingle Audio and Video via RTP, Negotiated with ICE-UDP</a><br />12.  <a href="#impl">Implementation Notes</a><br />   
+      12.1.  <a href="#impl-dtmf">DTMF</a><br />   
+      12.2.  <a href="#impl-listen">When to Listen for Audio</a><br />13.  <a href="#security">Security Considerations</a><br />14.  <a href="#iana">IANA Considerations</a><br />15.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      15.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      15.2.  <a href="#registrar-versioning">Namespace Versioning</a><br />   
+      15.3.  <a href="#registrar-features">Service Discovery Features</a><br />   
+      15.4.  <a href="#registrar-content">Jingle Application Formats</a><br />16.  <a href="#schema">XML Schemas</a><br />   
+      16.1.  <a href="#schema-content">Application Format</a><br />   
+      16.2.  <a href="#schema-errors">Errors</a><br />   
+      16.3.  <a href="#schema-info">Informational Messages</a><br />17.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp1632240">1</a>] can be used to initiate and negotiate a wide range of peer-to-peer sessions. One session type of interest is media such as voice or video. This document specifies an application format for negotiating Jingle media sessions, where the media is exchanged over the Realtime Transport Protocol (RTP; see <span class="ref"><a href="http://tools.ietf.org/html/rfc3550">RFC 3550</a></span>  [<a href="#nt-idp1634816">2</a>]).</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The Jingle application format defined herein is designed to meet the following requirements:</p>
+  <ol>
+    <li>Enable negotiation of parameters necessary for media sessions using the Realtime Transport Protocol (RTP).</li>
+    <li>Map these parameters to Session Description Protocol (SDP; see <span class="ref"><a href="http://tools.ietf.org/html/rfc4566">RFC 4566</a></span>  [<a href="#nt-idp1640144">3</a>]) to enable interoperability.</li>
+    <li>Define informational messages related to typical RTP uses such as audio chat and video chat (e.g., ringing, on hold, on mute).</li>
+  </ol>
+<h2>3.
+       <a name="conformance" id="conformance">Jingle Conformance</a></h2>
+   <p>In accordance with Section 10 of <span class="ref">XEP-0166</span>, this document specifies the following information related to the Jingle RTP application type:</p>
+   <ol>
+     <li><p>The application format negotiation process is defined in the <a href="#negotiation">Negotiating a Jingle RTP Session</a> section of this document.</p></li>
+     <li><p>The semantics of the &lt;description/&gt; element are defined in the <a href="#format">Application Format</a> section of this document.</p></li>
+     <li><p>A mapping of Jingle semantics to the Session Description Protocol is provided in the <a href="#sdp">Mapping to Session Description Protocol</a> section of this document.</p></li>
+     <li><p>A Jingle RTP session SHOULD use a datagram transport method (e.g. <span class="ref"><a href="http://xmpp.org/extensions/xep-0177.html">Jingle Raw UDP Transport Method  (XEP-0177)</a></span>  [<a href="#nt-idp1649040">4</a>] or the "ice-udp" method specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0176.html">Jingle ICE-UDP Transport Method (XEP-0176)</a></span>  [<a href="#nt-idp1651840">5</a>]), but MAY use a streaming transport if the end-to-end link has minimal latency and the media negotiated is not unduly heavy (e.g., it might be possible to use a streaming transport for audio, but not for video).</p></li>
+     <li><p>Jingle RTP supports two components: one for RTP itself and one for the Real Time Control Protocol (RTCP). The component numbered "1" MUST be associated with RTP and the component numbered "2" MUST be associated with RTCP. Even if an implementation does not support RTCP, it MUST accept Jingle content types that include component "2" by mirroring the second component in its replies (however, it would simply ignore the RTCP-related data during the RTP session).</p></li>
+     <li>
+       <p>Content is to be sent and received as follows:</p>
+       <ul>
+         <li><p>For datagram transports, outbound content shall be encoded into RTP packets and each packet shall be sent individually over the transport. Each inbound packet received over the transport is an RTP packet.</p></li>
+         <li><p>For streaming transports, outbound content shall be encoded into RTP packets, framed in accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc4571">RFC 4571</a></span>  [<a href="#nt-idp1657424">6</a>], and sent in succession over the transport. Incoming data received over the transport shall be processed as a stream of RTP packets, where each RTP packet boundary marks the location of the next packet.</p></li>
+       </ul>
+     </li>
+   </ol>
+<h2>4.
+       <a name="format" id="format">Application Format</a></h2>
+  <p>A Jingle RTP session is described by a content type that contains one application format and one transport method. Each &lt;content/&gt; element defines a single RTP session. A Jingle negotiation MAY result in the establishment of multiple RTP sessions (e.g., one for audio and one for video). An application SHOULD consider all of the RTP sessions that are established via the same Jingle negotiation to be synchronized for purposes of streaming, playback, recording, etc.</p>
+  <p>RTP as defined in <span class="ref">RFC 3550</span> is used in the context of various "profiles" that are defined by other specifications. Jingle RTP treats RTP profiles as follows:</p>
+  <ol>
+    <li>By default the RTP profile in Jingle RTP MUST be considered "RTP/AVP" as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3551">RFC 3551</a></span>  [<a href="#nt-idp1664272">7</a>].</li>
+    <li>If the session initiation request contains an &lt;encryption/&gt; element to specify use of SRTP as described under <a href="#srtp">Negotiation of SRTP</a>, then the RTP profile MUST instead be considered "RTP/SAVP" as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3711">RFC 3711</a></span>  [<a href="#nt-idp1667664">8</a>].</li>
+    <li>Future versions of this specification might define how to use other RTP profiles, such as "RTP/AVPF" and "RTP/SAVPF" as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc4585">RFC 4585</a></span>  [<a href="#nt-idp1670880">9</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc5124">RFC 5124</a></span>  [<a href="#nt-idp1673296">10</a>] respectively.</li>
+  </ol>
+  <p>The application format consists of one or more encodings contained within a wrapper &lt;description/&gt; element qualified by the 'urn:xmpp:jingle:apps:rtp:1' namespace (see <a href="#registrar-versioning">Namespace Versioning</a> regarding the possibility of incrementing the version number). In the language of <span class="ref">RFC 4566</span> each encoding is a payload-type; therefore, each &lt;payload-type/&gt; element specifies an encoding that can be used for the RTP stream, as illustrated in the following example.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+    &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+      &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+      &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+      &lt;payload-type id='18' name='G729'/&gt;
+      &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+      &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+      &lt;payload-type id='102' name='iLBC'/&gt;
+      &lt;payload-type id='4' name='G723'/&gt;
+      &lt;payload-type id='0' name='PCMU' clockrate='16000'/&gt;
+      &lt;payload-type id='8' name='PCMA'/&gt;
+      &lt;payload-type id='13' name='CN'/&gt;
+    &lt;/description&gt;
+  </pre></div>
+  <p>The &lt;description/&gt; element is intended to be a child of a Jingle &lt;content/&gt; element as specified in <span class="ref">XEP-0166</span>.</p>
+  <p>The &lt;description/&gt; element MUST possess a 'media' attribute that specifies the media type, such as "audio" or "video", where the media type SHOULD be as registered at <span class="ref"><a href="http://www.iana.org/assignments/media-types">IANA MIME Media Types Registry</a></span>  [<a href="#nt-idp1680560">11</a>].</p>
+  <p>The &lt;description/&gt; element MAY possess a 'ssrc' attribute that specifies the 32-bit synchronization source for this media stream, as defined in <span class="ref">RFC 3550</span>.</p>
+  <p>After inclusion of one or more &lt;payload-type/&gt; child elements, the &lt;description/&gt; element MAY also contain a &lt;bandwidth/&gt; element that specifies the allowable or preferred bandwidth for use by this application type. The 'type' attribute of the &lt;bandwidth/&gt; element SHOULD be a value for the SDP "bwtype" parameter as listed in the <span class="ref"><a href="http://www.iana.org/assignments/sdp-parameters">IANA Session Description Protocol Parameters Registry</a></span>  [<a href="#nt-idp1684880">12</a>]. For RTP sessions, often the &lt;bandwidth/&gt; element will specify the "session bandwidth" as described in Section 6.2 of <span class="ref">RFC 3550</span>, measured in kilobits per second as described in Section 5.2 of <span class="ref">RFC 4566</span>.</p>
+  <p>The encodings SHOULD be provided in order of preference by placing the most-preferred payload type as the first &lt;payload-type/&gt; child of the &lt;description/&gt; element and the least-preferred payload type as the last child.</p>
+  <p>The attributes of the &lt;payload-type/&gt; element are as follows:</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Payload-Type Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Datatype</th>
+      <th>Inclusion</th>
+    </tr>
+    <tr class="body">
+      <td>channels</td>
+      <td>The number of channels; if omitted, it MUST be assumed to contain one channel</td>
+      <td>unsignedByte (defaults to 1)</td>
+      <td>RECOMMENDED</td>
+    </tr>
+    <tr class="body">
+      <td>clockrate</td>
+      <td>The sampling frequency in Hertz</td>
+      <td>unsignedInt</td>
+      <td>RECOMMENDED</td>
+    </tr>
+    <tr class="body">
+      <td>id</td>
+      <td>The payload identifier</td>
+      <td>unsignedByte</td>
+      <td>REQUIRED</td>
+    </tr>
+    <tr class="body">
+      <td>maxptime</td>
+      <td>Maximum packet time as specified in RFC 4566</td>
+      <td>unsignedInt</td>
+      <td>OPTIONAL</td>
+    </tr>
+    <tr class="body">
+      <td>name</td>
+      <td>The appropriate subtype of the MIME type</td>
+      <td>string</td>
+      <td>RECOMMENDED for static payload types, REQUIRED for dynamic payload types</td>
+    </tr>
+    <tr class="body">
+      <td>ptime</td>
+      <td>Packet time as specified in RFC 4566</td>
+      <td>unsignedInt</td>
+      <td>OPTIONAL</td>
+    </tr>
+  </table></div>
+  <p>In Jingle RTP, the encodings are used in the context of RTP. The most common encodings for the Audio/Video Profile (AVP) of RTP are listed in <span class="ref">RFC 3551</span> (these "static" types are reserved from payload ID 0 through payload ID 95), although other encodings are allowed (these "dynamic" types use payload IDs 96 to 127) in accordance with the dynamic assignment rules described in Section 3 of <span class="ref">RFC 3551</span>. The payload IDs are represented in the 'id' attribute.</p>
+  <p>Each &lt;payload-type/&gt; element MAY contain one or more child elements that specify particular parameters related to the payload. For example, as described in <span class="ref"><a href="http://tools.ietf.org/html/rfc5574">RFC 5574</a></span>  [<a href="#nt-idp1705792">13</a>], the "cng", "mode", and "vbr" parameters can be specified in relation to usage of the Speex  [<a href="#nt-idp1704352">14</a>] codec. Where such parameters are encoded via the "fmtp" SDP attribute, they shall be represented in Jingle via the following format:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;parameter name='foo' value='bar'/&gt;
+  </pre></div>
+  <p>The order of parameter elements MUST be ignored.</p>
+  <p>Parameter names MUST be treated as case-sensitive.</p>
+  <p>Note: Parameter names are effectively guaranteed to be unique, since the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1715776">15</a>] maintains a registry of SDP parameters (see &lt;<a href="http://www.iana.org/assignments/sdp-parameters">http://www.iana.org/assignments/sdp-parameters</a>&gt;).</p>
+<h2>5.
+       <a name="negotiation" id="negotiation">Negotiating a Jingle RTP Session</a></h2>
+  <p>In general, the process for negotiating a Jingle RTP session is as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Initiator                    Responder
+  |                             |
+  |   session-initiate          |
+  |----------------------------&gt;|
+  |   ack                       |
+  |&lt;----------------------------|
+  |   session-accept            |
+  |&lt;----------------------------|
+  |   ack                       |
+  |----------------------------&gt;|
+  |   [optional further         |
+  |    negotiation]             |
+  |&lt;---------------------------&gt;|
+  |   AUDIO (RTP)               |
+  |&lt;===========================&gt;|
+  |                             |
+  </pre></div>
+  <p>When the initiator sends a session-initiate message to the responder, the &lt;description/&gt; element includes all of the payload types that the initiator can send and/or receive for Jingle RTP, each one encapsulated in a separate &lt;payload-type/&gt; element (the rules specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3264">RFC 3264</a></span>  [<a href="#nt-idp1718192">16</a>] SHOULD be followed regarding inclusion of payload types).</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ih28sx61'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='0' name='PCMU'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Upon receiving the session-initiate stanza, the responder determines whether it can proceed with the negotiation. The general Jingle error cases are specified in <span class="ref">XEP-0166</span> and illustrated in the <a href="#scenarios">Scenarios</a> section of this document.</p>
+  <p>If there is no immediate error, the responder acknowledges the session initiation request.</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Responder acknowledges session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ih28sx61'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+  </pre></div>
+  <p>Depending on user preferences or client configuration, a user agent controlled by a human user might need to wait for the user to affirm a desire to proceed with the session before continuing. When the user agent has received such affirmation (or if the user agent can automatically proceed for any reason, e.g. because no human intervention is expected or because a human user has configured the user agent to automatically accept sessions with a given entity), it returns a Jingle session-accept message. The session-accept message SHOULD include a subset of the payload types sent by the initiator, i.e., a list of the offered payload types that the responder can send and/or receive. The list that the responder sends SHOULD retain the ID numbers specified by the initiator. The order of the &lt;payload-type/&gt; elements indicates the responder's preferences, with the most-preferred type first.</p>
+  <p>In the following example, we imagine that the responder supports Speex at a clockrate of 8000 but not 16000, G729, and PCMA but not PMCU. Therefore the responder returns only two payload types (since PMCA was not offered).</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Responder definitively accepts the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='i91fs6d5'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          initiator='romeo@montague.lit/orchard'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='YH75Fviy6338Vbrhrlp8Yh'
+                 ufrag='9uB6'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='or2ii2syr1'
+                   ip='192.0.2.1'
+                   network='0'
+                   port='3478'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the responder supports none of the payload-types offered by the initiator, the responder SHOULD terminate the session and include a Jingle reason of &lt;failed-application/&gt;.</p>
+  <p>If the responder accepts the session, the initiator acknowledges the session-accept message:</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Initiator acknowledges session acceptance</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='i91fs6d5'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+  </pre></div>
+  <p>The initiator and responder would then attempt to establish connectivity for the data channel, Once they do, they would exchange media using any of the codecs that meet the following criteria:</p>
+  <ul>
+    <li>If the value of the 'senders' attribute is "initiator" then the initiator MAY use any codec that it can send and the responder can receive.</li>
+    <li>If the value of the 'senders' attribute is "responder" then the responder MAY use any codec that it can send and the initiator can receive.</li>
+    <li>If the value of the 'senders' attribute is "both" then the parties MAY use any codec that both parties can send and receive.</li>
+  </ul>
+<h2>6.
+       <a name="sdp" id="sdp">Mapping to Session Description Protocol</a></h2>
+  <p>The SDP media type for Jingle RTP is "audio" (see Section 8.2.1 of <span class="ref">RFC 4566</span>) for audio media, "video" (see Section 8.2.1 of <span class="ref">RFC 4566</span>) for video media, etc. The media type is reflected in the Jingle 'media' attribute.</p>
+  <p>The Jingle &lt;bandwidth/&gt; element SHALL be mapped to an SDP b= line; in particular, the value of the 'type' attribute SHALL be mapped to the SDP &lt;bwtype&gt; parameter and the XML character data of the Jingle &lt;bandwidth/&gt; element SHALL be mapped to the SDP &lt;bandwidth&gt; parameter.</p>
+  <p>If the payload type is static (payload-type IDs 0 through 95 inclusive), it MUST be mapped to an m= line as defined in <span class="ref">RFC 4566</span>. The generic format for this line is as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+m=&lt;media&gt; &lt;port&gt; &lt;transport&gt; &lt;fmt list&gt;
+  </pre></div>
+  <p>The SDP &lt;media&gt; parameter is "audio" or "video" or some other media type as specified by the Jingle 'media' attribute, the &lt;port&gt; parameter is the preferred port for such communications (which might be determined dynamically), the &lt;transport&gt; parameter corresponds to the RTP profile as described under <a href="#format">Application Format</a>, and the &lt;fmt list&gt; parameter is the payload-type ID.</p>
+  <p>For example, consider the following static payload-type:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+  &lt;payload-type id="13" name="CN"/&gt;
+&lt;/description&gt;
+  </pre></div>
+  <p>That Jingle-formatted information would be mapped to SDP as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+m=audio 9999 RTP/AVP 13
+  </pre></div>
+  <p>If the payload type is dynamic (payload-type IDs 96 through 127 inclusive), it SHOULD be mapped to an SDP media field plus an SDP attribute field named "rtpmap".</p>
+  <p>For example, consider a payload of 16-bit linear-encoded stereo audio sampled at 16KHz associated with dynamic payload-type 96:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+  &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+&lt;/description&gt;
+  </pre></div>
+  <p>That Jingle-formatted information would be mapped to SDP as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+m=audio 9999 RTP/AVP 96
+a=rtpmap:96 speex/16000
+  </pre></div>
+  <p>As noted, if additional parameters are to be specified, they shall be represented as attributes of the &lt;parameter/&gt; child of the &lt;payload-type/&gt; element, as in the following example.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+  &lt;payload-type id='96' name='speex' clockrate='16000' ptime='40'&gt;
+    &lt;parameter name='vbr' value='on'/&gt;
+    &lt;parameter name='cng' value='on'/&gt;
+  &lt;/payload-type&gt;
+&lt;/description&gt;
+  </pre></div>
+  <p>That Jingle-formatted information would be mapped to SDP as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+m=audio 9999 RTP/AVP 96
+a=rtpmap:96 speex/16000
+a=ptime:40
+a=fmtp:96 vbr=on;cng=on
+  </pre></div>
+  <p>The formatting is similar for video parameters, as shown in the following example.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+  &lt;payload-type id='98' name='theora' clockrate='90000'&gt;
+    &lt;parameter name='height' value='600'/&gt;
+    &lt;parameter name='width' value='800'/&gt;
+    &lt;parameter name='delivery-method' value='inline'/&gt;
+    &lt;parameter name='configuration' value='somebase16string'/&gt;
+    &lt;parameter name='sampling' value='YCbCr-4:2:2'/&gt;
+  &lt;/payload-type&gt;
+&lt;/description&gt;
+  </pre></div>
+  <p>That Jingle-formatted information would be mapped to SDP as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+m=video 49170 RTP/AVP 98
+a=rtpmap:98 theora/90000
+a=fmtp:98 sampling=YCbCr-4:2:2; width=800; height=600;
+delivery-method=inline; configuration=somebase16string;
+  </pre></div>
+<h2>7.
+       <a name="srtp" id="srtp">Negotiation of SRTP</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc3711">RFC 3711</a></span>  [<a href="#nt-idp1756432">17</a>] defines the Secure Real-time Transport Protocol, and <span class="ref"><a href="http://tools.ietf.org/html/rfc4568">RFC 4568</a></span>  [<a href="#nt-idp1759776">18</a>] defines the SDP "crypto" attribute for signalling and negotiating the use of SRTP in the context of offer-answer protocols such as SIP. To enable the use of SRTP and gatewaying to non-XMPP technologies that make use of the "crypto" SDP attribute, we define a corresponding &lt;crypto/&gt; element qualified by the 'urn:xmpp:jingle:apps:rtp:1' namespace.</p>
+  <p>If the initiator wishes to use SRTP, the session-initiate stanza shall include an &lt;encryption/&gt; element, which MUST contain at least one &lt;crypto/&gt; element and MAY include multiple instances of the &lt;crypto/&gt; element. The &lt;encryption/&gt; element MUST be a child of the &lt;description/&gt; element. If the initiator requires the session to be encrypted, the &lt;encryption/&gt; element MUST include a 'required' attribute whose logical value is TRUE and whose lexical value is "true" or "1"  [<a href="#nt-idp1762560">19</a>], where this attribute defaults to a logical value of FALSE (i.e., a lexical value of "false" or "0").</p>
+  <p>The &lt;crypto/&gt; element is defined as empty (i.e., not containing any child elements); the XML attributes of the &lt;crypto/&gt; element are as follows:</p>
+  <ul>
+    <li>crypto-suite -- this maps to the SDP "crypto-suite" parameter and has the same semantics (i.e., it is an identifier that describes the encryption and authentication algorithms).</li>
+    <li>key-params -- this maps to the SDP "key-params" parameter and has the same semantics (i.e., it provides one or more sets of keying material for the crypto-suite in question).</li>
+    <li>session-params -- this maps to the SDP "session-params" parameter and has the same semantics (i.e., it provides transport-specific parameters for SRTP negotiation).</li>
+    <li>tag -- this maps to the SDP "tag" parameter and has the same semantics (i.e., it is a decimal number used as an identifier for a particular crypto element).</li>
+  </ul>
+  <p>An example follows.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;encryption required='1'&gt;
+  &lt;crypto 
+      crypto-suite='AES_CM_128_HMAC_SHA1_80' 
+      key-params='inline:WVNfX19zZW1jdGwgKCkgewkyMjA7fQp9CnVubGVz|2^20|1:32' 
+      session-params='KDR=1 UNENCRYPTED_SRTCP'
+      tag='1'/&gt;
+&lt;/encryption&gt;
+  </pre></div>
+  <p>The mapping of that data to SDP is as follows.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+    a=crypto:1 AES_CM_128_HMAC_SHA1_80
+    inline:WVNfX19zZW1jdGwgKCkgewkyMjA7fQp9CnVubGVz|2^20|1:32
+    KDR=1 UNENCRYPTED_SRTCP
+  </pre></div>
+  <p>When the responder receives a session-initiate message containing an &lt;encryption/&gt; element, the responder MUST do one of the following:</p>
+  <ol>
+    <li>Attempt to proceed with an encrypted session by including the acceptable credentials (i.e., the relevant &lt;crypto/&gt; element) in its session-accept message.</li>
+    <li>Attempt to proceed with an unencrypted session by not including any &lt;crypto/&gt; element in its session-accept message (it is up to the initiator to reject this attempt if desired).</li>
+    <li>Reject the initiator's offer by sending a session-terminate message with a Jingle reason of &lt;security-error/&gt; (typically with an RTP-specific condition of &lt;invalid-crypto/&gt;).</li>
+  </ol>
+  <p>Which of these the responder does is a matter of personal security policies or client configuration.</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Responder terminates session because of invalid crypto</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='nv71c396'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;security-error/&gt;
+      &lt;invalid-crypto xmlns='urn:xmpp:jingle:apps:rtp:errors:1'/&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the responder requires encryption but the initiator did not include an &lt;encryption/&gt; element in its offer, the responder MUST reject the offer by sending a session-terminate message with a Jingle reason of &lt;security-error/&gt; and an RTP-specific condition of &lt;crypto-required/&gt;.</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Responder terminates session because crypto is required</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='nv71c396'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;security-error/&gt;
+      &lt;crypto-required xmlns='urn:xmpp:jingle:apps:rtp:errors:1'/&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the initiator requires encryption but the responder does not include an &lt;encryption/&gt; element in its session acceptance, the initiator MUST terminate the session with a Jingle reason of &lt;security-error/&gt; and an RTP-specific condition of &lt;crypto-required/&gt;.</p>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Initiator terminates session because crypto is required</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ik3hs615'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;security-error/&gt;
+      &lt;crypto-required xmlns='urn:xmpp:jingle:apps:rtp:errors:1'/&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>8.
+       <a name="info" id="info">Informational Messages</a></h2>
+  <p>Informational messages can be sent by either party within the context of Jingle to communicate the status of a Jingle RTP session, device, or principal. The informational message MUST be an IQ-set containing a &lt;jingle/&gt; element of type "session-info", where the informational message is a payload  element qualified by the 'urn:xmpp:jingle:apps:rtp:info:1' namespace. The following payload elements are defined.  [<a href="#nt-idp1779936">20</a>]</p>
+  <p>Note: Because an informational message is sent in an IQ-set, the receiving party MUST return either an IQ-result or an IQ-error (normally an IQ-result simply to acknowledge receipt).</p>
+  <div class="indent"><h3>8.1 <a name="info-active" id="info-active">Active</a></h3>
+    <p>The &lt;active/&gt; payload indicates that the principal or device is again actively participating in the session after having been on mute or having put the other party on hold. The &lt;active/&gt; element applies to all aspects of the session, and thus does not possess a 'name' attribute.</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Responder sends active message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='yh3gr714'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;active xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.2 <a name="info-hold" id="info-hold">Hold</a></h3>
+    <p>The &lt;hold/&gt; payload indicates that the principal is temporarily not listening for media from the other party. It is RECOMMENDED for the parties to handle informational &lt;hold/&gt; messages as follows (where the holdee is the party that receives the hold message and the holder is the party that sends the hold message):</p>
+    <ul>
+      <li>The holdee SHOULD stop sending media.</li>
+      <li>The holdee MUST keep accepting media (this ensures that the holder can immediately start sending media again when switching back from hold to active, or can send hold music or other media).</li>
+      <li>The holder MAY continue to send media (e.g. hold music).</li>
+      <li>The holder MAY silently drop all media that it receives from the holdee.</li>
+    </ul>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Responder sends hold message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='xv39z423'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;hold xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>When the holder wishes to end the hold state, it sends an informational payload of &lt;unhold/&gt; or &lt;active/&gt;.</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Responder ends the hold state</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='br81gd63'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;unhold xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.3 <a name="info-mute" id="info-mute">Mute</a></h3>
+    <p>The &lt;mute/&gt; payload indicates that the principal is temporarily not sending media to the other party but continuing to accept media from the other party. The &lt;mute/&gt; element MAY possess a 'name' attribute whose value specifies a particular session to be muted (e.g., muting the audio aspect but not the video aspect of a voice+video chat). If no 'name' attribute is included, the recipient MUST assume that all sessions are to be muted.</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Responder sends mute message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='hg4891f5'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;mute xmlns='urn:xmpp:jingle:apps:rtp:info:1'
+          creator='responder'
+          name='voice'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>To end the mute state, the party sends an informational payload of &lt;unmute/&gt; or &lt;active/&gt;.</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Responder ends the mute state</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ms91g47c'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;unmute xmlns='urn:xmpp:jingle:apps:rtp:info:1'
+            creator='responder'
+            name='voice'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.4 <a name="info-ringing" id="info-ringing">Ringing</a></h3>
+    <p>The &lt;ringing/&gt; payload indicates that the device is ringing but the principal has not yet interacted with it to answer (this maps to the SIP 180 response code).</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Responder sends ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='tgr515bt'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;ringing xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>9.
+       <a name="parameters" id="parameters">Exchanging Application Parameters</a></h2>
+  <p>Before or during an RTP session, either party can share suggested application parameters with the other party by sending a Jingle stanza with an action of "description-info". The stanza shall contain only a &lt;description/&gt; element, which specifies suggested parameters for a given application type (e.g., a change to the height and width for display of a video stream). An example follows.</p>
+  <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Entity sends application parameters</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='pq6x5v37'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='description-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+        &lt;payload-type id='98' name='theora' clockrate='90000'&gt;
+          &lt;parameter name='height' value='768'/&gt;
+          &lt;parameter name='width' value='1024'/&gt;
+        &lt;/payload-type&gt;
+      &lt;/description&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The description-info message SHOULD include only the modified codecs, not the complete set of codecs (if those codecs have not changed). Their order is NOT meaningful. Furthermore, the data provided is purely advisory; the session SHOULD NOT fail if the receiving party cannot adjust its parameters accordingly.</p>
+<h2>10.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>To advertise its support for Jingle RTP Sessions and specific media types for RTP, when replying to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1804864">21</a>] information requests an entity MUST return the following features:</p>
+  <ul>
+    <li>URNs for any version of this protocol that the entity supports -- e.g., "urn:xmpp:jingle:apps:rtp:1" for this version and "urn:xmpp:jingle:apps:rtp:0" for the previous version (see <a href="#registrar-versioning">Namespace Versioning</a> regarding the possibility of incrementing the version number)</li>
+    <li>URNs for all of the media types that the entity supports -- e.g., "urn:xmpp:jingle:apps:rtp:audio" for RTP audio and "urn:xmpp:jingle:apps:rtp:video" for RTP video  [<a href="#nt-idp1806896">22</a>]</li>
+  </ul>
+  <p>An example follows.</p>
+  <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Service discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='bh3vd715'
+    to='juliet@capulet.lit/balcony'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Service discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='bh3vd715'
+    to='romeo@montague.lit/orchard'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='urn:xmpp:jingle:1'/&gt;
+    &lt;feature var='urn:xmpp:jingle:apps:rtp:0'/&gt;
+    &lt;feature var='urn:xmpp:jingle:apps:rtp:1'/&gt;
+    &lt;feature var='urn:xmpp:jingle:apps:rtp:audio'/&gt;
+    &lt;feature var='urn:xmpp:jingle:apps:rtp:video'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1812704">23</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>11.
+       <a name="scenarios" id="scenarios">Scenarios</a></h2>
+
+  <p>The following sections show a number of Jingle RTP scenarios, roughly in order of increasing complexity.</p>
+
+  <div class="indent"><h3>11.1 <a name="scenarios-busy" id="scenarios-busy">Responder is Busy</a></h3>
+    <p>In this scenario, Romeo initiates a voice chat with Juliet but she is otherwise engaged.</p>
+    <p>The session flow is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Romeo                         Juliet
+  |                             |
+  |  session-initiate           |
+  |----------------------------&gt;|
+  |  ack                        |
+  |&lt;----------------------------|
+  |  terminate                  |
+  |  (reason = busy)            |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |                             |
+    </pre></div>
+    <p>The protocol flow is as follows.</p>
+    <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Initiator sends session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='rg6s5134'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Responder acknowledges session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='rg6s5134'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>However, the responder immediately terminates the session.</p>
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Responder terminates the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ch3vs61d'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;busy/&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: It might be wondered why the responder does not accept the session and then terminate. That order would be acceptable, too, but here we assume that the responder's client has immediate information about the responder's free/busy status (e.g., because the responder is on the phone) and therefore returns an automated busy signal without requiring user interaction.</p>
+    <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Initiator acknowledges termination</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ch3vs61d'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>11.2 <a name="scenarios-voicechat" id="scenarios-voicechat">Jingle Audio via RTP, Negotiated with ICE-UDP</a></h3>
+    <p>In this scenario, Romeo initiates a voice chat with Juliet using a transport method of ICE-UDP. The parties also exchange informational messages.</p>
+    <p>The session flow is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Romeo                         Juliet
+  |                             |
+  |  session-initiate           |
+  |----------------------------&gt;|
+  |  ack                        |
+  |&lt;----------------------------|
+  |  session-info (ringing)     |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  session-accept             |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  [optional transport and    |
+  |   application negotiation]  |
+  |&lt;---------------------------&gt;|
+  |  STUN connectivity checks   |
+  |&lt;===========================&gt;|
+  |  AUDIO (RTP)                |
+  |&lt;===========================&gt;|
+  |  session-terminate          |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |                             |
+    </pre></div>
+    <p>The protocol flow is as follows.</p>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Initiator sends session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ds9864v6'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Responder acknowledges session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ds9864v6'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Responder sends ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ed81vd64'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;ringing xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Initiator acknowledges ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ed81vd64'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>As soon as possible, the responder's client sends a session-accept message to the initiator.</p>
+    <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Responder sends session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='lj3bf87g'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          initiator='romeo@montague.lit/orchard'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='YH75Fviy6338Vbrhrlp8Yh'
+                 ufrag='9uB6'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='or2ii2syr1'
+                   ip='192.0.2.1'
+                   network='0'
+                   port='3478'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The initiator acknowledges the session-accept message.</p>
+    <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Initiator acknowledges session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='lj3bf87g'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>Once connectivity is established (which might necessitate the exchange of additional candidates via transport-info messages), the parties begin to exchange media. In this case they would use RTP to exchange audio using the Speex codec at a clockrate of 8000 since that is the highest-priority codec for the responder (as determined by the XML order of the &lt;payload-type/&gt; children).</p>
+    <p>The parties can continue the session as long as desired.</p>
+    <p>Eventually, one of the parties terminates the session.</p>
+    <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Responder terminates the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='wps8b597'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;success/&gt;
+      &lt;text&gt;Sorry, gotta go!&lt;/text&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other party then acknowledges termination of the session:</p>
+    <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Initiator acknowledges termination</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='wps8b597'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>11.3 <a name="scenarios-srtp" id="scenarios-srtp">Jingle Audio via SRTP, Negotiated with ICE-UDP</a></h3>
+    <p>In this scenario, Romeo initiates a secure voice chat with Juliet using a transport method of ICE-UDP. The parties also exchange informational messages.</p>
+    <p>The session flow is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Romeo                         Juliet
+  |                             |
+  |  session-initiate           |
+  |  (with keying material)     |
+  |----------------------------&gt;|
+  |  ack                        |
+  |&lt;----------------------------|
+  |  session-info (ringing)     |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  session-accept             |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  [optional transport and    |
+  |   application negotiation]  |
+  |&lt;---------------------------&gt;|
+  |  STUN connectivity checks   |
+  |&lt;===========================&gt;|
+  |  AUDIO (RTP)                |
+  |&lt;===========================&gt;|
+  |  session-terminate          |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |                             |
+    </pre></div>
+    <p>The protocol flow is as follows.</p>
+    <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Initiator sends session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='vy3g641x'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+        &lt;encryption required='1'&gt;
+          &lt;crypto 
+              crypto-suite='AES_CM_128_HMAC_SHA1_80' 
+              key-params='inline:WVNfX19zZW1jdGwgKCkgewkyMjA7fQp9CnVubGVz|2^20|1:32' 
+              session-params='KDR=1 UNENCRYPTED_SRTCP'
+              tag='1'/&gt;
+        &lt;/encryption&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>To signal that the initiator wishes to use SRTP, the initiator's client includes keying material via the &lt;encryption/&gt; element (with one set of keying material per &lt;crypto/&gt; element). Here the initiator also signals that encryption is mandatory via the 'required' attribute.</p>
+    <p>The responder immediately acknowledges the session initiation request.</p>
+    <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Responder acknowledges session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='vy3g641x'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>If the keying material is acceptable, the responder's continues with the negotiation. If the keying material is not acceptable, the responder's client terminates the session as described under <a href="#srtp">Negotiation of SRTP</a>.</p>
+    <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Responder sends ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='z2d85b6l'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;ringing xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-32" id="example-32"></a>Example 32. Initiator acknowledges ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='z2d85b6l'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>As soon as possible, the responder's client sends a session-accept message to the initiator. In this case, the session-accept message includes a &lt;crypto/&gt; element to indicate that the responder finds the offered keying material acceptable.</p>
+    <p class="caption"><a name="example-33" id="example-33"></a>Example 33. Responder sends session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ywf364b1'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          initiator='romeo@montague.lit/orchard'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;encryption&gt;
+          &lt;crypto 
+              crypto-suite='AES_CM_128_HMAC_SHA1_80' 
+              key-params='inline:PS1uQCVeeCFCanVmcjkpPywjNWhcYD0mXXtxaVBR|2^20|1:32' 
+              session-params='KDR=1;UNENCRYPTED_SRTCP'
+              tag='1'/&gt;
+        &lt;/encryption&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='YH75Fviy6338Vbrhrlp8Yh'
+                 ufrag='9uB6'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='or2ii2syr1'
+                   ip='192.0.2.1'
+                   network='0'
+                   port='3478'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The initiator acknowledges the session-accept action.</p>
+    <p class="caption"><a name="example-34" id="example-34"></a>Example 34. Initiator acknowledges session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ywf364b1'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>Once connectivity is established (which might necessitate the exchange of additional candidates via transport-info messages), the parties begin to exchange media. In this case they would use RTP to exchange audio using the Speex codec at a clockrate of 8000 since that is the highest-priority codec for the responder (as determined by the XML order of the &lt;payload-type/&gt; children).</p>
+    <p>The parties can continue the session as long as desired.</p>
+    <p>Eventually, one of the parties terminates the session.</p>
+    <p class="caption"><a name="example-35" id="example-35"></a>Example 35. Responder terminates the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ws71bf94'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;success/&gt;
+      &lt;text&gt;Sorry, gotta go!&lt;/text&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other party then acknowledges termination of the session:</p>
+    <p class="caption"><a name="example-36" id="example-36"></a>Example 36. Initiator acknowledges termination</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ws71bf94'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>11.4 <a name="scenarios-audiovideo" id="scenarios-audiovideo">Jingle Audio and Video via RTP, Negotiated with ICE-UDP</a></h3>
+    <p>In this scenario, Romeo initiates an audio chat with Juliet using a transport method of ICE-UDP. After the chat is active, Romeo adds video. The parties also exchange various informational messages</p>
+    <p>The session flow is as follows (some of these messages are sent in parallel):</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Romeo                         Juliet
+  |                             |
+  |  session-initiate           |
+  |----------------------------&gt;|
+  |  ack                        |
+  |&lt;----------------------------|
+  |  session-info (ringing)     |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  session-accept             |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  [optional transport and    |
+  |   application negotiation]  |
+  |&lt;---------------------------&gt;|
+  |  STUN connectivity checks   |
+  |&lt;===========================&gt;|
+  |  AUDIO (RTP)                |
+  |&lt;===========================&gt;|
+  |  content-add for video      |
+  |----------------------------&gt;|
+  |  ack                        |
+  |&lt;----------------------------|
+  |  content-modify for video   |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  content-accept for video   |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  [optional transport and    |
+  |   application negotiation]  |
+  |&lt;---------------------------&gt;|
+  |  STUN connectivity checks   |
+  |&lt;===========================&gt;|
+  |  AUDIO + VIDEO (RTP)        |
+  |&lt;===========================&gt;|
+  |  content-modify for video   |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |  session-terminate          |
+  |&lt;----------------------------|
+  |  ack                        |
+  |----------------------------&gt;|
+  |                             |
+    </pre></div>
+    <p>The protocol flow is as follows.</p>
+    <p class="caption"><a name="example-37" id="example-37"></a>Example 37. Initiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='sf93gv76'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-38" id="example-38"></a>Example 38. Responder acknowledges session-initiate request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='sf93gv76'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p class="caption"><a name="example-39" id="example-39"></a>Example 39. Responder sends ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='nf91g647'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;ringing xmlns='urn:xmpp:jingle:apps:rtp:info:1'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-40" id="example-40"></a>Example 40. Initiator acknowledges ringing message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='nf91g647'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>The responder sends a session-accept message to the initiator.</p>
+    <p class="caption"><a name="example-41" id="example-41"></a>Example 41. Responder sends session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='pr93b5ga'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          initiator='romeo@montague.lit/orchard'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='or2ii2syr1'
+                   ip='192.0.2.1'
+                   network='0'
+                   port='3478'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The initiator acknowledges the session-accept action.</p>
+    <p class="caption"><a name="example-42" id="example-42"></a>Example 42. Initiator acknowledges session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='pr93b5ga'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>Once end-to-end connectivity is established (which might necessitate the exchange of additional candidates via transport-info messages), the parties begin to exchange media. In this case they would use RTP to exchange audio using the Speex codec at a clockrate of 8000 since that is the highest-priority codec for the responder (as determined by the XML order of the &lt;payload-type/&gt; children).</p>
+    <p>Romeo, being an amorous young man, requests to add video to the audio chat.</p>
+    <p class="caption"><a name="example-43" id="example-43"></a>Example 43. Adding video</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ij6s4198'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='content-add'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+        &lt;payload-type id='98' name='theora' clockrate='90000'&gt;
+          &lt;parameter name='height' value='600'/&gt;
+          &lt;parameter name='width' value='800'/&gt;
+          &lt;parameter name='delivery-method' value='inline'/&gt;
+          &lt;parameter name='configuration' value='somebase16string'/&gt;
+          &lt;parameter name='sampling' value='YCbCr-4:2:2'/&gt;
+        &lt;/payload-type&gt;
+        &lt;payload-type id='28' name='nv' clockrate='90000'/&gt;
+        &lt;payload-type id='25' name='CelB' clockrate='90000'/&gt;
+        &lt;payload-type id='32' name='MPV' clockrate='90000'/&gt;
+        &lt;bandwidth type='AS'&gt;128&lt;/bandwidth&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:0'/&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Juliet's client automatically acknowledges receipt and then asks her if she wants to add video.</p>
+    <p class="caption"><a name="example-44" id="example-44"></a>Example 44. Acknowledging request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ij6s4198'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>However, Juliet is having a bad hair day, so she sends a content-modify message to Romeo that sets the senders to "initiator" (she doesn't mind receiving video but she doesn't want to send video).</p>
+    <p class="caption"><a name="example-45" id="example-45"></a>Example 45. Responder sends content-modify</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='rh49l1k4'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='content-modify'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam' senders='initiator'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-46" id="example-46"></a>Example 46. Initiator acknowledges content-modify</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='rh49l1k4'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>Note: If the responder supports none of the payload-types offered by the initiator, the responder MUST reply to the content-add request with a content-reject; this message SHOULD include a Jingle reason of &lt;failed-application/&gt; and a list of the payload-types that the responder supports (along with an empty element for the same transport offered by the initiatior), as shown in the following example.</p>
+    <p class="caption"><a name="example-47" id="example-47"></a>Example 47. Alternate flow: responder sends content-reject</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@montague.lit/balcony'
+    id='vx2s91a6'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='content-reject'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+        &lt;payload-type id='101' name='H263-1998' clockrate='90000'/&gt;
+        &lt;payload-type id='102' name='H263-2000' clockrate='90000'/&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:0'/&gt;
+    &lt;/content&gt;
+    &lt;reason&gt;
+      &lt;failed-application/&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>However, here we assume that Juliet's client supports at least one of the payload-types offered by Romeo's client, and that she Juliet accepts the offer of adding video to the session.</p>
+    <p class="caption"><a name="example-48" id="example-48"></a>Example 48. Responder accepts additional content-type</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='ih481v7s'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='content-accept'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+        &lt;payload-type id='98' name='theora' clockrate='90000'&gt;
+          &lt;parameter name='height' value='600'/&gt;
+          &lt;parameter name='width' value='800'/&gt;
+          &lt;parameter name='delivery-method' value='inline'/&gt;
+          &lt;parameter name='configuration' value='somebase16string'/&gt;
+          &lt;parameter name='sampling' value='YCbCr-4:2:2'/&gt;
+        &lt;/payload-type&gt;
+        &lt;bandwidth type='AS'&gt;128&lt;/bandwidth&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:0'/&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Romeo then acknowledges the content-accept.</p>
+    <p class="caption"><a name="example-49" id="example-49"></a>Example 49. Initiator acknowledges content-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='ih481v7s'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>If necessary, the parties then negotiate transport methods and codec parameters for video, and Romeo starts to send video to Juliet, where the video is exchanged using the Theora codec with a height of 600 pixels, a width of 800 pixels, a bandwidth limit of 128,000 kilobits per second, etc.</p>
+    <p>After some number of minutes, Juliet returns and agrees to start sending video, too.</p>
+    <p class="caption"><a name="example-50" id="example-50"></a>Example 50. Responder sends content-modify message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='di492bf8'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam' senders='both'/&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-51" id="example-51"></a>Example 51. Initiator acknowledges content-modify message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='di492bf8'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>Now the two parties would exchange audio and video in both directions.</p>
+    <p>The parties can continue the session as long as desired.</p>
+    <p>Other events might occur throughout the life of the session. For example, one of the parties might want to tweak the video parameters using a description-info action.</p>
+    <p class="caption"><a name="example-52" id="example-52"></a>Example 52. Initiator sends changes to application parameters</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='xu3bg810'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='description-info'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='webcam'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='video'&gt;
+        &lt;payload-type id='98' name='theora' clockrate='90000'&gt;
+          &lt;parameter name='height' value='768'/&gt;
+          &lt;parameter name='width' value='1024'/&gt;
+          &lt;parameter name='delivery-method' value='inline'/&gt;
+          &lt;parameter name='configuration' value='somebase16string'/&gt;
+          &lt;parameter name='sampling' value='YCbCr-4:2:2'/&gt;
+        &lt;/payload-type&gt;
+        &lt;bandwidth type='AS'&gt;128&lt;/bandwidth&gt;
+      &lt;/description&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-53" id="example-53"></a>Example 53. Responder acknowledges description-info</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='xu3bg810'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>Eventually, one of the parties terminates the session.</p>
+    <p class="caption"><a name="example-54" id="example-54"></a>Example 54. Initiator sends session-terminate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='fl2v387j'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;
+      &lt;success/&gt;
+      &lt;text&gt;I&amp;apos;m outta here!&lt;/text&gt;
+    &lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-55" id="example-55"></a>Example 55. Responder acknowledges session-terminate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='fl2v387j'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+  </div>
+<h2>12.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>12.1 <a name="impl-dtmf" id="impl-dtmf">DTMF</a></h3>
+    <p>XMPP applications that use Jingle RTP sessions for voice chat MUST support and prefer native RTP methods of communicating DTMF information, in particular the "audio/telephone-event" and "audio/tone" media types. It is NOT RECOMMENDED to use the protocol described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0181.html">Jingle DTMF  (XEP-0181)</a></span>  [<a href="#nt-idp1897616">24</a>] for communicating DTMF information with RTP-aware endpoints.</p>
+  </div>
+  <div class="indent"><h3>12.2 <a name="impl-listen" id="impl-listen">When to Listen for Audio</a></h3>
+    <p>When the Jingle RTP content type is accepted via a session-accept action, both initiator and responder SHOULD start listening for audio as defined by the negotiated transport method and audio application format. For interoperability with telephony systems, after the responder acknowledges the session initiation request, the responder SHOULD send a "ringing" message and both parties SHOULD play any audio received. For more detailed suggestions in the context of early media, see <span class="ref"><a href="http://xmpp.org/extensions/xep-0269.html">Jingle Early Media (XEP-0269)</a></span>  [<a href="#nt-idp1906016">25</a>].</p>
+  </div>
+<h2>13.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>In order to secure the data stream, implementations SHOULD use encryption methods appropriate to the RTP data transport. It is RECOMMENDED to use SRTP as defined in the <a href="#srtp">Negotiation of SRTP</a> section of this document. The SRTP keying material SHOULD (1) be tied to a separate, secure connection such as provided by DTLS (<span class="ref"><a href="http://tools.ietf.org/html/rfc4347">RFC 4347</a></span>  [<a href="#nt-idp1902304">26</a>]) where the keys are established as described in <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-avt-dtls-srtp">DTLS-SRTP</a></span>  [<a href="#nt-idp1908880">27</a>] and/or (2) protected by sending the Jingle signalling over a secure channel that protects the confidentiality and integrity of the SRTP-related signalling data.</p>
+  <p>While it is also possible to use native RTP methods, such as <span class="ref"><a href="http://tools.ietf.org/html/rfc6189">RFC 6189</a></span>  [<a href="#nt-idp1911648">28</a>] as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0262.html">Use of ZRTP in Jingle RTP Sessions (XEP-0262)</a></span>  [<a href="#nt-idp1914240">29</a>], this specification does not actively encourage or discourage the use of such methods.</p>
+<h2>14.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1916224">30</a>].</p>
+<h2>15.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>15.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>This specification defines the following XML namespaces:</p>
+    <ul>
+      <li>urn:xmpp:jingle:apps:rtp:1</li>
+      <li>urn:xmpp:jingle:apps:rtp:errors:1</li>
+      <li>urn:xmpp:jingle:apps:rtp:info:1</li>
+    </ul>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1923760">31</a>] includes the foregoing namespaces in its registry at &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;, as governed by <span class="ref"><a href="http://xmpp.org/extensions/xep-0053.html">XMPP Registrar Function (XEP-0053)</a></span>  [<a href="#nt-idp1928064">32</a>].</p>
+  </div>
+  <div class="indent"><h3>15.2 <a name="registrar-versioning" id="registrar-versioning">Namespace Versioning</a></h3>
+    <p>If the protocol defined in this specification undergoes a revision that is not fully backwards-compatible with an older version, the XMPP Registrar shall increment the protocol version number found at the end of the XML namespaces defined herein, as described in Section 4 of <span class="ref">XEP-0053</span>.</p>
+  </div>
+  <div class="indent"><h3>15.3 <a name="registrar-features" id="registrar-features">Service Discovery Features</a></h3>
+    <p>For each RTP media type that an entity supports, it MUST advertise support for the "urn:xmpp:jingle:apps:rtp:[media]" feature, where the string "[media]" is replaced by the appropriate media type such as "audio" or "video".</p>
+    <p>The initial registry submission is as follows.</p>
+    <p class="caption">Registry Submission</p><div class="indent"><pre class="prettyprint">
+&lt;var&gt;
+  &lt;name&gt;urn:xmpp:jingle:apps:rtp:audio&lt;/name&gt;
+  &lt;desc&gt;Signals support for audio sessions via RTP&lt;/desc&gt;
+  &lt;doc&gt;XEP-0167&lt;/doc&gt;
+&lt;/var&gt;
+&lt;var&gt;
+  &lt;name&gt;urn:xmpp:jingle:apps:rtp:video&lt;/name&gt;
+  &lt;desc&gt;Signals support for video sessions via RTP&lt;/desc&gt;
+  &lt;doc&gt;XEP-0167&lt;/doc&gt;
+&lt;/var&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>15.4 <a name="registrar-content" id="registrar-content">Jingle Application Formats</a></h3>
+    <p>The XMPP Registrar includes "rtp" in its registry of Jingle application formats at &lt;<a href="http://xmpp.org/registrar/jingle-apps.html">http://xmpp.org/registrar/jingle-apps.html</a>&gt;. The registry submission is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;application&gt;
+  &lt;name&gt;rtp&lt;/name&gt;
+  &lt;desc&gt;
+    Jingle sessions that support media exchange 
+    via the Real-time Transport Protocol.
+  &lt;/desc&gt;
+  &lt;transport&gt;datagram&lt;/transport&gt;
+  &lt;doc&gt;XEP-0167&lt;/doc&gt;
+&lt;/application&gt;
+    </pre></div>
+  </div>
+<h2>16.
+       <a name="schema" id="schema">XML Schemas</a></h2>
+  <div class="indent"><h3>16.1 <a name="schema-content" id="schema-content">Application Format</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:jingle:apps:rtp:1'
+    xmlns='urn:xmpp:jingle:apps:rtp:1'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0167: http://www.xmpp.org/extensions/xep-0167.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='description'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='payload-type' 
+                    type='payloadElementType'
+                    minOccurs='0' 
+                    maxOccurs='unbounded'/&gt;
+        &lt;xs:element name='encryption' 
+                    type='encryptionElementType'
+                    minOccurs='0' 
+                    maxOccurs='1'/&gt;
+        &lt;xs:element name='bandwidth' 
+                    type='bandwidthElementType'
+                    minOccurs='0' 
+                    maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='media'
+                    type='xs:NCName'
+                    use='required'/&gt;
+      &lt;xs:attribute name='ssrc'
+                    type='xs:string'
+                    use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name='bandwidthElementType'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='xs:string'&gt;
+        &lt;xs:attribute name='type' 
+                      type='xs:string' 
+                      use='required'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='cryptoElementType'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='empty'&gt;
+        &lt;xs:attribute name='crypto-suite' type='xs:NCName' use='required'/&gt;
+        &lt;xs:attribute name='key-params' type='xs:string' use='required'/&gt;
+        &lt;xs:attribute name='session-params' type='xs:string' use='optional'/&gt;
+        &lt;xs:attribute name='tag' type='xs:string' use='required'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='encryptionElementType'&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name='crypto' 
+                  type='cryptoElementType'
+                  minOccurs='0' 
+                  maxOccurs='unbounded'/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='payloadElementType'&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name='parameter'
+                  type='parameterElementType'
+                  minOccurs='0' 
+                  maxOccurs='unbounded'/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name='channels'
+                  type='xs:unsignedByte'
+                  use='optional'
+                  default='1'/&gt;
+    &lt;xs:attribute name='clockrate' type='xs:unsignedInt' use='optional'/&gt;
+    &lt;xs:attribute name='id' type='xs:unsignedByte' use='required'/&gt;
+    &lt;xs:attribute name='maxptime' type='xs:unsignedInt' use='optional'/&gt;
+    &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+    &lt;xs:attribute name='ptime' type='xs:unsignedInt' use='optional'/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='parameterElementType'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='empty'&gt;
+        &lt;xs:attribute name='name' type='xs:string' use='required'/&gt;
+        &lt;xs:attribute name='value' type='xs:string' use='required'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>16.2 <a name="schema-errors" id="schema-errors">Errors</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:jingle:apps:rtp:errors:1'
+    xmlns='urn:xmpp:jingle:apps:rtp:errors:1'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0167: http://www.xmpp.org/extensions/xep-0167.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='crypto-required' type='empty'/&gt;
+
+  &lt;xs:element name='invalid-crypto' type='empty'/&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>16.3 <a name="schema-info" id="schema-info">Informational Messages</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:jingle:apps:rtp:info:1'
+    xmlns='urn:xmpp:jingle:apps:rtp:info:1'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0167: http://www.xmpp.org/extensions/xep-0167.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='active' type='empty'/&gt;
+
+  &lt;xs:element name='hold' type='empty'/&gt;
+
+  &lt;xs:element name='mute' type='mutingElementType'/&gt;
+
+  &lt;xs:element name='ringing' type='empty'/&gt;
+
+  &lt;xs:element name='unhold' type='empty'/&gt;
+
+  &lt;xs:element name='unmute' type='mutingElementType'/&gt;
+
+  &lt;xs:complexType name='mutingElementType'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='empty'&gt;
+        &lt;xs:attribute name='creator' use='required'&gt;
+          &lt;xs:simpleType&gt;
+            &lt;xs:restriction base='xs:NCName'&gt;
+              &lt;xs:enumeration value='initiator'/&gt;
+              &lt;xs:enumeration value='responder'/&gt;
+            &lt;/xs:restriction&gt;
+          &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name='name'
+                      type='xs:string'
+                      use='required'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<h2>17.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Thanks to Milton Chen, Paul Chitescu, Olivier Crête, Tim Julien, Steffen Larsen, Jeff Muller, Mike Ruprecht, Sjoerd Simons, Will Thompson, Justin Uberti, Unnikrishnan Vikrama Panicker, and Paul Witty for their feedback.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0167<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2009-12-23<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0166, RFC 3550, RFC 3551, RFC 3711<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: jingle-rtp<br />
+        XML Schema for jingle:apps:rtp namespace: &lt;<a href="http://xmpp.org/schemas/jingle-apps-rtp.xsd">http://xmpp.org/schemas/jingle-apps-rtp.xsd</a>&gt;<br />
+        XML Schema for jingle:apps:rtp:errors namespace: &lt;<a href="http://xmpp.org/schemas/jingle-apps-rtp-errors.xsd">http://xmpp.org/schemas/jingle-apps-rtp-errors.xsd</a>&gt;<br />
+        XML Schema for jingle:apps:rtp:info namespace: &lt;<a href="http://xmpp.org/schemas/jingle-apps-rtp-info.xsd">http://xmpp.org/schemas/jingle-apps-rtp-info.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0167.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0167.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0167.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Scott Ludwig</h3><p class="indent">
+        Email:
+        <a href="mailto:scottlu@google.com">scottlu@google.com</a><br />
+        JabberID: 
+        <a href="xmpp:scottlu@google.com">scottlu@google.com</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Sean Egan</h3><p class="indent">
+        Email:
+        <a href="mailto:seanegan@google.com">seanegan@google.com</a><br />
+        JabberID: 
+        <a href="xmpp:seanegan@google.com">seanegan@google.com</a><br /></p><h3>Robert McQueen</h3><p class="indent">
+        Email:
+        <a href="mailto:robert.mcqueen@collabora.co.uk">robert.mcqueen@collabora.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:robert.mcqueen@collabora.co.uk">robert.mcqueen@collabora.co.uk</a><br /></p><h3>Diana Cionoiu</h3><p class="indent">
+        Email:
+        <a href="mailto:diana@null.ro">diana@null.ro</a><br />
+        JabberID: 
+        <a href="xmpp:l-fy@jabber.null.ro">l-fy@jabber.null.ro</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">There exists a special venue for discussion related to the technology described in this document: the &lt;<a href="http://mail.jabber.org/mailman/listinfo/jingle">jingle@xmpp.org</a>&gt; mailing list.</p><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1632240" id="nt-idp1632240">1</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp1634816" id="nt-idp1634816">2</a>. RFC 3550: RTP: A Transport Protocol for Real-Time Applications &lt;<a href="http://tools.ietf.org/html/rfc3550">http://tools.ietf.org/html/rfc3550</a>&gt;.</p><p><a name="nt-idp1640144" id="nt-idp1640144">3</a>. RFC 4566: SDP: Session Description Protocol &lt;<a href="http://tools.ietf.org/html/rfc4566">http://tools.ietf.org/html/rfc4566</a>&gt;.</p><p><a name="nt-idp1649040" id="nt-idp1649040">4</a>. XEP-0177: Jingle Raw UDP Transport Method &lt;<a href="http://xmpp.org/extensions/xep-0177.html">http://xmpp.org/extensions/xep-0177.html</a>&gt;.</p><p><a name="nt-idp1651840" id="nt-idp1651840">5</a>. XEP-0176: Jingle ICE-UDP Transport Method &lt;<a href="http://xmpp.org/extensions/xep-0176.html">http://xmpp.org/extensions/xep-0176.html</a>&gt;.</p><p><a name="nt-idp1657424" id="nt-idp1657424">6</a>. RFC 4571: Framing Real-time Transport Protocol (RTP) and RTP Control Protocol (RTCP) Packets over Connection-Oriented Transport &lt;<a href="http://tools.ietf.org/html/rfc4571">http://tools.ietf.org/html/rfc4571</a>&gt;.</p><p><a name="nt-idp1664272" id="nt-idp1664272">7</a>. RFC 3551: RTP Profile for Audio and Video Conferences with Minimal Control &lt;<a href="http://tools.ietf.org/html/rfc3551">http://tools.ietf.org/html/rfc3551</a>&gt;.</p><p><a name="nt-idp1667664" id="nt-idp1667664">8</a>. RFC 3711: The Secure Real-time Transport Protocol (SRTP) &lt;<a href="http://tools.ietf.org/html/rfc3711">http://tools.ietf.org/html/rfc3711</a>&gt;.</p><p><a name="nt-idp1670880" id="nt-idp1670880">9</a>. RFC 4585: Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF) &lt;<a href="http://tools.ietf.org/html/rfc4585">http://tools.ietf.org/html/rfc4585</a>&gt;.</p><p><a name="nt-idp1673296" id="nt-idp1673296">10</a>. RFC 5124: Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF) &lt;<a href="http://tools.ietf.org/html/rfc5124">http://tools.ietf.org/html/rfc5124</a>&gt;.</p><p><a name="nt-idp1680560" id="nt-idp1680560">11</a>. IANA registry of MIME media types &lt;<a href="http://www.iana.org/assignments/media-types">http://www.iana.org/assignments/media-types</a>&gt;.</p><p><a name="nt-idp1684880" id="nt-idp1684880">12</a>. IANA registry of parameters related to the Session Description Protocol &lt;<a href="http://www.iana.org/assignments/sdp-parameters">http://www.iana.org/assignments/sdp-parameters</a>&gt;.</p><p><a name="nt-idp1705792" id="nt-idp1705792">13</a>. RFC 5574: RTP Payload Format for the Speex Codec &lt;<a href="http://tools.ietf.org/html/rfc5574">http://tools.ietf.org/html/rfc5574</a>&gt;.</p><p><a name="nt-idp1704352" id="nt-idp1704352">14</a>. See &lt;<a href="http://www.speex.org/">http://www.speex.org/</a>&gt;.</p><p><a name="nt-idp1715776" id="nt-idp1715776">15</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1718192" id="nt-idp1718192">16</a>. RFC 3264: An Offer/Answer Model with the Session Description Protocol (SDP) &lt;<a href="http://tools.ietf.org/html/rfc3264">http://tools.ietf.org/html/rfc3264</a>&gt;.</p><p><a name="nt-idp1756432" id="nt-idp1756432">17</a>. RFC 3711: The Secure Real-time Transport Protocol (SRTP) &lt;<a href="http://tools.ietf.org/html/rfc3711">http://tools.ietf.org/html/rfc3711</a>&gt;.</p><p><a name="nt-idp1759776" id="nt-idp1759776">18</a>. RFC 4568: Session Description Protocol (SDP) Security Descriptions for Media Streams &lt;<a href="http://tools.ietf.org/html/rfc4568">http://tools.ietf.org/html/rfc4568</a>&gt;.</p><p><a name="nt-idp1762560" id="nt-idp1762560">19</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp1779936" id="nt-idp1779936">20</a>. A &lt;trying/&gt; element (equivalent to the SIP 100 Trying response code) is not necessary, since each session-level message is acknowledged via XMPP IQ semantics.</p><p><a name="nt-idp1804864" id="nt-idp1804864">21</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1806896" id="nt-idp1806896">22</a>. Support for the "audio" or "video" media type does not necessarily mean that the application supports all sub-types associated with those media types.</p><p><a name="nt-idp1812704" id="nt-idp1812704">23</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1897616" id="nt-idp1897616">24</a>. XEP-0181: Jingle DTMF &lt;<a href="http://xmpp.org/extensions/xep-0181.html">http://xmpp.org/extensions/xep-0181.html</a>&gt;.</p><p><a name="nt-idp1906016" id="nt-idp1906016">25</a>. XEP-0269: Jingle Early Media &lt;<a href="http://xmpp.org/extensions/xep-0269.html">http://xmpp.org/extensions/xep-0269.html</a>&gt;.</p><p><a name="nt-idp1902304" id="nt-idp1902304">26</a>. RFC 4347: Datagram Transport Layer Security &lt;<a href="http://tools.ietf.org/html/rfc4347">http://tools.ietf.org/html/rfc4347</a>&gt;.</p><p><a name="nt-idp1908880" id="nt-idp1908880">27</a>. Datagram Transport Layer Security (DTLS) Extension to Establish Keys for Secure Real-time Transport Protocol (SRTP) &lt;<a href="http://tools.ietf.org/html/draft-ietf-avt-dtls-srtp">http://tools.ietf.org/html/draft-ietf-avt-dtls-srtp</a>&gt;. Work in progress.</p><p><a name="nt-idp1911648" id="nt-idp1911648">28</a>. RFC 6189: ZRTP: Media Path Key Agreement for Unicast Secure RTP &lt;<a href="http://tools.ietf.org/html/rfc6189">http://tools.ietf.org/html/rfc6189</a>&gt;.</p><p><a name="nt-idp1914240" id="nt-idp1914240">29</a>. XEP-0262: Use of ZRTP in Jingle RTP Sessions &lt;<a href="http://xmpp.org/extensions/xep-0262.html">http://xmpp.org/extensions/xep-0262.html</a>&gt;.</p><p><a name="nt-idp1916224" id="nt-idp1916224">30</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1923760" id="nt-idp1923760">31</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1928064" id="nt-idp1928064">32</a>. XEP-0053: XMPP Registrar Function &lt;<a href="http://xmpp.org/extensions/xep-0053.html">http://xmpp.org/extensions/xep-0053.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2009-12-23)</h4><div class="indent"><p>Added creator attribute to mute and unmute elements so that these events can be correlated with a particular content type; clarified use of the reason element in cases other than termination; defined handling of content-add when none of the offered payload-types are supported, where the signalling uses a content-reject message with a Jingle reason of &lt;failed-application/&gt; and a list of the supported codecs; clarified that the RTP profile is RTP/AVP by default, that the profile is RTP/SAVP if security preconditions are present, and that additional profiles such as RTP/AVPF and RTP/SAVPF might be supported in a future version of this specification.</p> (psa)
+    </div><h4>Version 1.0 (2009-06-10)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification from Experimental to Draft.</p> (psa)
+    </div><h4>Version 0.31 (2009-05-19)</h4><div class="indent"><p>Moved early media scenario to separate specification; clarified text regarding multiple components and handling of encryption element; corrected syntax and handling of active element.</p> (psa)
+    </div><h4>Version 0.30 (2009-04-08)</h4><div class="indent"><p>Further adjusted session flows for two scenarios scenario; added unhold and unmute messages.</p> (psa)
+    </div><h4>Version 0.29 (2009-03-20)</h4><div class="indent"><p>Simplified session flow for audio/video scenario; clarified handling of hold messages.</p> (psa)
+    </div><h4>Version 0.28 (2009-03-11)</h4><div class="indent"><p>Moved codec recommendations to a separate specification; harmonized session flows with XEP-0166; modified flow for combined audio/video scenario to use content-modify with senders attribute set to none for media pause and set to both for media resumption; clarified handling of description-info message.</p> (psa)
+    </div><h4>Version 0.27 (2009-02-17)</h4><div class="indent"><p>Added ssrc attribute to description element; clarified handling with streaming transports; in accordance with list consensus, moved zrtp-hash to a separate specification; updated examples to reflect changes to XEP-0176.</p> (psa)
+    </div><h4>Version 0.26 (2009-02-16)</h4><div class="indent"><p>Clarified service discovery features; added support for zrtp-hash in the signalling channel.</p> (psa)
+    </div><h4>Version 0.25 (2008-12-19)</h4><div class="indent">
+      <ul>
+        <li>Refactored encryption syntax.</li>
+        <li>Because the modified encryption syntax is not backwards-compatible, incremented protocol version from 0 to 1 and changed namespace from urn:xmpp:jingle:apps:rtp:zero to urn:xmpp:jingle:apps:rtp:1.</li>
+        <li>Added optional bandwidth element.</li>
+        <li>Added example of description-info action for modifying application parameters.</li>
+        <li>Corrected the schemas.</li>
+      </ul>
+     (psa)
+    </div><h4>Version 0.24 (2008-09-25)</h4><div class="indent">
+      <ul>
+        <li>Defined handling of early media, including mappings to RFC 3959 and RFC 3960 using the newly-defined 'disposition' attribute for the &lt;content/&gt; element in XEP-0166.</li>
+        <li>Clarified handling of SRTP negotiation.</li>
+        <li>More fully specified invalid-crypto error condition.</li>
+        <li>Changed DTMF text to prefer native RTP methods and not recommend sending of DTMF in the XMPP signalling channel, per XEP-0181.</li>
+        <li>Modified namespaces to incorporate namespace versioning.</li>
+        <li>Cleaned up XML schemas.</li>
+      </ul>
+     (psa/dc)
+    </div><h4>Version 0.23 (2008-07-31)</h4><div class="indent"><p>Removed profile attribute; modified secure session establishment to align with SRTP usage.</p> (ram/psa)
+    </div><h4>Version 0.22 (2008-06-09)</h4><div class="indent"><p>Added name attribute to active element to mirror usage for mute element; clarified meaning of session in the context of this specification; recommended that all sessions established via the same Jingle negotiation should be treated as synchronized.</p> (psa)
+    </div><h4>Version 0.21 (2008-06-09)</h4><div class="indent"><p>Added name attribute to mute element for more precise handling of informational messages.</p> (psa)
+    </div><h4>Version 0.20 (2008-06-04)</h4><div class="indent"><p>In accordance with list consensus, generalized to cover all RTP media, not just audio; corrected text regarding payload types sent by responder in order to match SDP approach.</p> (psa)
+    </div><h4>Version 0.19 (2008-05-28)</h4><div class="indent"><p>Specified default value for profile attribute; clarified relationship to SDP offer-answer model.</p> (psa)
+    </div><h4>Version 0.18 (2008-05-28)</h4><div class="indent"><p>Removed content-replace from ICE-UDP examples per XEP-0176.</p> (psa)
+    </div><h4>Version 0.17 (2008-02-29)</h4><div class="indent"><p>Corrected use of content-replace action per XEP-0166.</p> (psa)
+    </div><h4>Version 0.16 (2008-02-28)</h4><div class="indent"><p>Moved profile attribute from XEP-0166 to this specification.</p> (psa)
+    </div><h4>Version 0.15 (2008-01-11)</h4><div class="indent"><p>Removed content-accept after content-remove per XEP-0166.</p> (psa)
+    </div><h4>Version 0.14 (2008-01-03)</h4><div class="indent"><p>Modified examples to track changes to XEP-0176.</p> (psa)
+    </div><h4>Version 0.13 (2007-12-06)</h4><div class="indent"><p>To track changes to XEP-0166, modified busy scenario and removed unsupported-codecs error.</p> (psa)
+    </div><h4>Version 0.12 (2007-11-27)</h4><div class="indent"><p>Further editorial review.</p> (psa)
+    </div><h4>Version 0.11 (2007-11-15)</h4><div class="indent"><p>Editorial review and consistency check; moved voice chat scenarios from XEP-0166 to this specification.</p> (psa)
+    </div><h4>Version 0.10 (2007-11-13)</h4><div class="indent"><p>Removed info message for busy since it is now a Jingle-specific error condition defined in XEP-0166; defined info message for active.</p> (psa)
+    </div><h4>Version 0.9 (2007-04-17)</h4><div class="indent"><p>Specified Jingle conformance, including the preference for datagram transports over streaming transports and the process of sending and receiving audio content over each transport type.</p> (psa)
+    </div><h4>Version 0.8 (2007-03-23)</h4><div class="indent"><p>Renamed to mention RTP as the associated transport; corrected negotiation flow to be consistent with SIP/SDP (each party specifies a list of the payload types it can receive); added profile attribute to content element in order to specify RTP profile in use.</p> (psa/ram)
+    </div><h4>Version 0.7 (2006-12-21)</h4><div class="indent"><p>Modified spec to use provisional namespace before advancement to Draft (per XEP-0053).</p> (psa)
+    </div><h4>Version 0.6 (2006-10-31)</h4><div class="indent"><p>Specified how to include SDP parameters and codec-specific parameters; clarified negotiation process; added Speex examples; removed queued info message.</p> (psa/se)
+    </div><h4>Version 0.5 (2006-08-23)</h4><div class="indent"><p>Modified namespace to track XEP-0166.</p> (psa)
+    </div><h4>Version 0.4 (2006-07-12)</h4><div class="indent"><p>Specified when to play received audio (early media); specified that DTMF must use in-band signalling (XEP-0181).</p> (se/psa)
+    </div><h4>Version 0.3 (2006-03-20)</h4><div class="indent"><p>Defined info messages for hold and mute.</p> (psa)
+    </div><h4>Version 0.2 (2006-02-13)</h4><div class="indent"><p>Defined info message for busy; added info message examples; recommended use of Speex; updated schema and XMPP Registrar considerations.</p> (psa)
+    </div><h4>Version 0.1 (2005-12-15)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div><h4>Version 0.0.3 (2005-12-05)</h4><div class="indent"><p>Described service discovery usage; defined initial informational messages.</p> (psa)
+    </div><h4>Version 0.0.2 (2005-10-27)</h4><div class="indent"><p>Added SDP mapping, security considerations, IANA considerations, XMPP Registrar considerations, and XML schema.</p> (psa)
+    </div><h4>Version 0.0.1 (2005-10-21)</h4><div class="indent"><p>First draft.</p> (psa/sl)
+    </div></div><hr /><p>END</p></body></html>

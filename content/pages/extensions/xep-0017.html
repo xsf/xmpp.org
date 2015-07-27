@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0017: Naive Packet Framing Protocol</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Naive Packet Framing Protocol" /><meta name="DC.Creator" content="Mike Lin" /><meta name="DC.Creator" content="Julian Missig" /><meta name="DC.Description" content="An intermediate method for more efficient framing of the Jabber XML Stream." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-02-19" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0017" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-0017: Naive Packet Framing Protocol</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>An intermediate method for more efficient framing of the Jabber XML Stream.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Mike Lin, Julian Missig</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Rejected</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-02-19</td></tr></table><hr /><p style="color:red">WARNING: This document has been Rejected by the XMPP Council. Implementation of the protocol described herein is not recommended under any circumstances.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp588400">Introduction</a><br />2.  <a href="#sect-idp591232">Framing in Jabber</a><br />3.  <a href="#sect-idp495280">Byte Length Framing</a><br />4.  <a href="#sect-idp502016">Implementation Notes</a><br />5.  <a href="#sect-idp505056">Example</a><br />6.  <a href="#sect-idp506288">Philosophical Notes and Conclusion</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp588400" id="sect-idp588400">Introduction</a></h2>
+<p>Framing is the mechanism by which a listener is able to separate a stream of information into discrete semantic units. In Jabber, each of these semantic units is a fragment of a &lt;stream:stream&gt; document consisting of a direct (depth=1) child element of the &lt;stream:stream&gt; document element, and all its attributes and child nodes. These semantic units are hereafter called packets. A Jabber session document, excluding the document element start tag and end tag which are handled as special cases, is implicitly encoded into these packets and transmitted across the network.</p>
+<p>This document describes a framing method that may provide performance and code simplicity advantages over the framing method currently used.</p>
+<h2>2.
+       <a name="sect-idp591232" id="sect-idp591232">Framing in Jabber</a></h2> <p>The current scheme for framing in Jabber relies on the inherent structure of XML to determine packet boundaries. Since each packet is a well-formed XML fragment, the start of the packet is unambiguously denoted by the element start tag at depth=1, and the end of the packet is unambiguously denoted by the corresponding close tag at depth=1.</p>
+<p>This method of framing is elegant because all the necessary framing information is inherent in the XML; it makes framing independent of the underlying transport layer so long as that transport layer guarantees per-session FIFO delivery. However, it has significant performance and implementation disadvantages, as it requires any Jabber node (endpoint or router) to XML-parse the packet as it is still being received in order to determine the packet boundary. Many XML parsing suites are not designed to be used in this manner, and various hacks and workarounds have emerged in current Jabber software in order to adapt them for this purpose.</p>
+<h2>3.
+       <a name="sect-idp495280" id="sect-idp495280">Byte Length Framing</a></h2>
+<p>Consider a simple method that prefixes the byte length of each packet as an XML text node at depth=1. Put more simply, the transmitting agent calculates the byte length of the element it wishes to transmit. It then transmits this integer length encoded as text, immediately followed by the element.</p>
+<p>This technique has the following advantages:</p>
+<ul>
+<li>The receiving agent is able to anticipate the size of the incoming packet. It can then buffer the element without having to parse it while it is only partially received, which is significantly more straightforward and more efficient to implement given the design of most current XML parsing suites. For large packets, this also allows the receiving agent to reduce potentially expensive memory realocation and copying.</li>
+<li>A router needs not load the entire packet payload into a DOM; it has the option of parsing only the element start tag and retransmitting the rest of the packet verbatim after checking for well-formedness.</li>
+<li>Since the framing data are just XML text nodes, their addition should be largely backwards compatible with current Jabber software, which should be made to ignore the extraneous depth=1 text with few, or possibly no, modifications.</li>
+<li>Implementation of the protocol takes very little effort. Transmitting agents generally should know the size of the packets they are about to transmit. In comparison to the work they must currently do, receiving agents are only helped by the addition of framing data; in any case, interpretation of the framing data is optional.</li>
+</ul>
+<p>This technique has the following disadvantages:</p>
+<ul>
+<li>The simple insertion of framing data into the streaming XML document does not pay attention to the logical distinction between the XML document and the framing transport over which it is being transmitted.</li>
+<li>Error-handling semantics must be arbitrarily defined in the event that a transmitting agent misframes a packet (that is, sends the incorrect packet size).</li>
+</ul>
+<h2>4.
+       <a name="sect-idp502016" id="sect-idp502016">Implementation Notes</a></h2>
+<p>Framing data is included for the &lt;stream:stream&gt; and &lt;/stream:stream&gt; tags as if they were their own packets, although they are not independently well-formed XML. These should be handled as special cases in a Jabber XML streams implementation.</p>
+<p>The connecting agent (client) implicitly requests that the receiving agent (server) use XEP-0017 framing by transmitting XEP-0017 framing data in its own outgoing stream (the connecting agent always "goes first"). Servers should detect the presence of framing data in the client's stream (by testing whether the first character received is a digit or a &lt;) and, if it is detected, activate outgoing framing for that session.</p>
+<p>Regardless of the use of framing data, all nodes must verify the well-formedness of XML payloads in order to avoid propagating misframes.</p>
+<h2>5.
+       <a name="sect-idp505056" id="sect-idp505056">Example</a></h2>
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. A Trivial And Nearly Meaningless Example</p><div class="indent"><pre class="prettyprint">
+94&lt;message to="whomever@mlin.mit.edu" from="mlin@mlin.mit.edu"&gt;some opaque information&lt;/message&gt;
+  </pre></div>
+<h2>6.
+       <a name="sect-idp506288" id="sect-idp506288">Philosophical Notes and Conclusion</a></h2>
+<p>This framing method is not intended as a fully satisfactory or permanent solution to XML stream framing. In the "distant" (longer than one year) time span, it may be desirable to consider more thorough systems such as BEEP. The intent of this document is to establish an intermediate solution that will provide code simplicity advantages to new implementations in the near term without requiring fundamental changes to the Jabber transport or protocol (as adopting BEEP would almost certainly require).</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0017<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Rejected">Rejected</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 0.3<br />
+            Last Updated: 2002-02-19<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0017.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0017.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0017.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Mike Lin</h3><p class="indent">
+        Email:
+        <a href="mailto:mikelin@mit.edu">mikelin@mit.edu</a><br />
+        JabberID: 
+        <a href="xmpp:mlin@mlin.mit.edu">mlin@mlin.mit.edu</a><br /></p><h3>Julian Missig</h3><p class="indent">
+        Email:
+        <a href="mailto:julian@jabber.org">julian@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:julian@jabber.org">julian@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4><h4>Permissions</h4><h4>Disclaimer of Warranty</h4><span style="font-weight: bold"></span><h4>Limitation of Liability</h4><h4>IPR Conformance</h4></div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2002-02-19)</h4><div class="indent">Continued improvement and specification. (mfl)
+    </div><h4>Version 0.2 (2002-01-31)</h4><div class="indent">Added various clarifications and implementation notes. (mfl)
+    </div><h4>Version 0.1 (2002-01-23)</h4><div class="indent">Initial revision. (mfl)
+    </div></div><hr /><p>END</p></body></html>

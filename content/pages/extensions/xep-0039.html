@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0039: Statistics Gathering</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Statistics Gathering" /><meta name="DC.Creator" content="Paul Curtis" /><meta name="DC.Creator" content="Russell Davis" /><meta name="DC.Creator" content="Ryan Eatmon" /><meta name="DC.Creator" content="David Sutton" /><meta name="DC.Description" content="A protocol to enable gathering statistics from Jabber servers and components." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-11-05" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0039" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0039: Statistics Gathering</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A protocol to enable gathering statistics from Jabber servers and components.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Paul Curtis, Russell Davis, Ryan Eatmon, David Sutton</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.6.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-11-05</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp1536496">Introduction</a><br />2.  <a href="#sect-idp1538768">Description</a><br />   
+      2.1.  <a href="#sect-idp1539264">Namespace</a><br />   
+      2.2.  <a href="#sect-idp1542368">Name Attribute</a><br />   
+      2.3.  <a href="#sect-idp1544096">Units Attribute</a><br />   
+      2.4.  <a href="#sect-idp1545808">Value Attribute</a><br />   
+      2.5.  <a href="#sect-idp1546976">Query</a><br />   
+      2.6.  <a href="#sect-idp1552064">Errors</a><br />3.  <a href="#sect-idp1562400">Implementation</a><br />   
+      3.1.  <a href="#sect-idp1562896">Name Registration</a><br />   
+      3.2.  <a href="#sect-idp1568320">Core Statistics</a><br />   
+      3.3.  <a href="#sect-idp1577184">Human readable labels</a><br />   
+      3.4.  <a href="#sect-idp595824">Namespace query authorization</a><br />   
+      3.5.  <a href="#sect-idp598160">SNMP</a><br />4.  <a href="#sect-idp603488">Realworld Examples</a><br />5.  <a href="#sect-idp1595664">DTD</a><br />   
+      5.1.  <a href="#sect-idp1596160">DTD in English</a><br />   
+      5.2.  <a href="#sect-idp1596784">DTD</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp1536496" id="sect-idp1536496">Introduction</a></h2>
+    <p>As things currently stand it is not possible to obtain statistics
+    from a jabber component or server without resorting to parsing the 
+    various log files. This makes it extremely difficult to obtain statistics 
+    that are of any use in real world situations. This document attempts to 
+    rectify this situation by defining a new namespace that would be used 
+    to obtain statistics from a component or server so that they may be 
+    manipulated and used in a useful manner. For the purposes of this namespace
+    a statistic is anything that maybe expressed in a numeric form, such as the
+    uptime of a server, the <span class="strong">number</span> of registered users and the
+    number of packets sent. Things such as a list of currently online users or
+    a list of registered users are beyond the scope of this namespace and
+    properly belong within browse or disco.</p>
+  <h2>2.
+       <a name="sect-idp1538768" id="sect-idp1538768">Description</a></h2>
+    <div class="indent"><h3>2.1 <a name="sect-idp1539264" id="sect-idp1539264">Namespace</a></h3>
+      <p>This is a pretty simple namespace. It consists of a &lt;stat/&gt; tag with
+	three attributes. name, units and value.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+      &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+        &lt;stat name='' units='' value=''/&gt;
+      &lt;/query&gt;
+      </pre></div>
+      <p> There is one variation in the	case of an error invalidating one or 
+	more errors in a single returned query that does not actually
+	invalidate the whole query.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+      &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+        &lt;stat name=''&gt;&lt;error code=''&gt;...&lt;/error&gt;&lt;/stat&gt;
+      &lt;/query&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>2.2 <a name="sect-idp1542368" id="sect-idp1542368">Name Attribute</a></h3>
+      <p>The name of the statistic. The format for this attribute is the
+	generic statistic type such as bandwidth, users, time etc. followed by
+	a '/' character and then then the name of the actual statistic. For 
+	example bandwidth/packets-in, time/uptime and users/online. This will 
+	be assigned and administered by JANA [<a href="#nt-idp1543456">1</a>].</p>
+    </div>
+    <div class="indent"><h3>2.3 <a name="sect-idp1544096" id="sect-idp1544096">Units Attribute</a></h3>
+      <p>This is the units type of the statistic. As with the name attribute it
+        will be assigned and administered by JANA [<a href="#nt-idp1544992">2</a>]It is suggested that JANA use where appropriate
+        commonly accepted international standards when assigning unit types
+	i.e. seconds, grams, meters, bytes etc.</p>
+    </div>
+    <div class="indent"><h3>2.4 <a name="sect-idp1545808" id="sect-idp1545808">Value Attribute</a></h3>
+      <p>This is the actual returned value of the queried statistic. The value returned is in
+	multiples of the unit described by the units attribute.</p>
+    </div>
+    <div class="indent"><h3>2.5 <a name="sect-idp1546976" id="sect-idp1546976">Query</a></h3>
+      <p>To query a component or server a client sends an iq packet of
+      the type 'get' to the component or server. The component or
+      server responds with the <span class="em">list</span> of statistics that it supports.</p>
+
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">
+      send:     &lt;iq type='get' to='component'&gt;
+	          &lt;query xmlns='http://jabber.org/protocol/stats'/&gt;
+                &lt;/iq&gt;
+      
+
+      recv:     &lt;iq type='result' from='component'&gt;
+                  &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+	            &lt;stat name='time/uptime'/&gt;
+	            &lt;stat name='users/online'/&gt;
+	                  .
+	                  .
+	                  .
+	            &lt;stat name='bandwidth/packets-in'/&gt;
+	            &lt;stat name='bandwidth/packets-out'/&gt;
+	          &lt;/query&gt;
+                &lt;/iq&gt;
+      </pre></div>
+      <p>Once a client knows which statistics a component or server
+      supports it may now request the actual statistics by sending an iq
+      packet of the type 'get' containing a request for the specific
+      statistics and sending that to the component or server.</p>
+
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">
+      send:     &lt;iq type='get' to='component'&gt;
+                  &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+	            &lt;stat name='time/uptime'/&gt;
+	            &lt;stat name='users/online'/&gt;
+	            &lt;stat name='bandwidth/packets-in'/&gt;
+	            &lt;stat name='bandwidth/packets-out'/&gt;
+	          &lt;/query&gt;
+                &lt;/iq&gt;
+
+
+      recv:     &lt;iq type='result' from='component'&gt;
+                  &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+                    &lt;stat name='time/uptime' units='seconds'	value='3054635'/&gt;
+	            &lt;stat name='users/online' units='users' value='365'/&gt;
+	            &lt;stat name='bandwidth/packets-in' units='packets' value='23434'/&gt; 
+	            &lt;stat name='bandwidth/packets-out' units='packets' value='23422'/&gt;      
+                  &lt;/query&gt;
+                &lt;/iq&gt;
+      </pre></div>
+
+    </div>
+    <div class="indent"><h3>2.6 <a name="sect-idp1552064" id="sect-idp1552064">Errors</a></h3>
+      <p>If an error occurs with one or more of the requests for
+      statistics the component or server should return one of the 
+      following error codes.</p>
+      <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error Codes</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Code</th><th>String</th><th>Reason</th></tr>
+        <tr class="body"><td>401</td><td>Unauthorized</td><td>Querying JID is not
+        authorized to perform that query</td></tr>
+	<tr class="body"><td>404</td><td>Not Found</td><td>The statistic was not
+	found for some reason</td></tr>
+        <tr class="body"><td>501</td><td>Not Implemented</td><td>Although statistic
+        is advertised as available it has not been implemented</td></tr>
+        <tr class="body"><td>503</td><td>Service Unavailable</td><td>Statistic is
+        temporarily unavailable</td></tr>
+      </table></div>
+
+   
+      <p>Because we wish to be able to collect groups of statistics
+      within a single returned packet errors must be handled in a two
+      tier way with authorization and core errors that would render 
+      <span class="strong">all</span> the statistics meaningless being indicated 
+      with a type='error' in the returned packet.</p>
+
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">
+        &lt;iq type='error' from='component'&gt; 
+          &lt;query xmlns='http://jabber.org/protocol/stats'&gt;  
+            &lt;error code='401'&gt;Not Authorized&lt;/error&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+
+      <p>Errors in a query that only invalidate one or more of the
+      requested statistics are indicated with an &lt;/error&gt; tag
+      embedded inside the &lt;/stat&gt; tag.
+      </p>
+
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+        &lt;iq type='result' from='component'&gt;
+          &lt;query xmlns='http://jabber.org/protocol/stats'&gt;
+            &lt;stat name='time/uptime units='seconds' value='4534'/&gt;
+	    &lt;stat name='bandwidth/packets-in'&gt;&lt;error code='503'&gt;Service Unavailable&lt;/error&gt;&lt;/stat&gt;
+            &lt;stat name='bandwidth/packets-out'&gt;&lt;error code='503'&gt;Service Unavailable&lt;/error&gt;&lt;/stat&gt;
+          &lt;/query&gt;
+        &lt;/iq&gt;
+      </pre></div>
+    </div>
+  <h2>3.
+       <a name="sect-idp1562400" id="sect-idp1562400">Implementation</a></h2>
+    <div class="indent"><h3>3.1 <a name="sect-idp1562896" id="sect-idp1562896">Name Registration</a></h3>
+      <p>All statistic names, returned data units types and other
+	pertinent statistic information will be assigned and registered with
+	the Jabber Naming Authority in the category <span class="em"><span class="strong">stat</span></span>. 
+	Unfortunately at this time such a body does not exist so we will 
+	have to rely on component and server authors diligently
+	researching to ensure that their desired name is not already 
+	in use and that they adequately document the returned units
+	type and anything else that would normally be registered. 
+	Hopefully by the time this document is formally adopted
+	a central naming authority for the Jabber protocol will be in
+	place and functional and authors will be then able to register
+	their names.
+      </p>
+      <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: how to document your statistic</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+	  <th>Stat</th><th>Description</th><th>Returned Units</th>
+	</tr>
+	<tr class="body">
+	  <td>registered name</td><td>description of
+	  statistic/reason</td><td>unit type returned by
+	  query</td>
+	</tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.2 <a name="sect-idp1568320" id="sect-idp1568320">Core Statistics</a></h3>
+      <p>
+        Although components and servers are free to support whichever statistics they
+        feel are justified for their particular component or server it is
+	suggested that the following set of three core statistics are
+	implemented by all components and servers.</p>
+
+      <ul>
+	<li>&lt;stat name='time/uptime'/&gt;</li>
+	<li>&lt;stat name='bandwidth/packets-in'/&gt;</li>
+	<li>&lt;stat name='bandwidth/packets-out'/&gt;</li>
+      </ul>
+      <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: core statistic registration information</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+	  <th>Stat</th><th>Description</th><th>Returned Units</th>
+	</tr>
+	<tr class="body">
+	  <td>time/uptime</td><td>uptime of component or
+	  server</td><td>Seconds</td>
+	</tr>
+	<tr class="body">
+	  <td>bandwidth/packets-in</td><td>packets received by component or server</td><td>packets</td>
+	</tr>
+	<tr class="body">
+	  <td>bandwidth/packets-out</td><td>packets transmitted by component or server</td><td>packets</td>
+	</tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.3 <a name="sect-idp1577184" id="sect-idp1577184">Human readable labels</a></h3>
+      <p>For several reasons the
+	<span class="strong">http://jabber.org/protocol/stats</span> namespace does not
+	support human readable labels for the returned values. Generally the
+	application querying the statistic should already know what the
+	statistic is and in what units the value is returned. However if the
+	application really wants some form of human readable label for the
+	returned value although not an optimal solution or even recommended by
+	the authors of this document it should be safe for
+	it to convert the value of the units attribute into a string and use
+	that as a label for the returned statistic value.</p>
+    </div>
+    <div class="indent"><h3>3.4 <a name="sect-idp595824" id="sect-idp595824">Namespace query authorization</a></h3>
+      <p>In most cases the <span class="strong">http://jabber.org/protocol/stats</span> would be tied to the component or
+      servers admin JID so that only that JID may query the statistics
+      however there are advantages to having a three tier system where
+      some statistics are available to all JIDs, some to an arbitrary
+      JID listed in the configuration file and all available to the
+      listed admin JID. As the first case can be emulated by the
+      second I propose that when implemented the <span class="strong">http://jabber.org/protocol/stats</span>
+      namespace is configured to use the three tier method of
+      authorizing queries.</p>
+    </div>
+    <div class="indent"><h3>3.5 <a name="sect-idp598160" id="sect-idp598160">SNMP</a></h3>
+      <p>Supporting industry accepted standards and procedures
+       [<a href="#nt-idp598992">3</a>] within 
+      the Jabber protocol is highly desirable as long as it does not 
+      restrict the flexibility or functionality of Jabber. So while 
+      the <span class="strong">http://jabber.org/protocol/stats</span> namespace seems to fall within the domain of 
+      the SNMP and CIM standards amongst others and large jabber 
+      installations would find direct support an appealing prospect 
+      when tying jabber into their existing network information and 
+      management systems the jabber:iq:namespace will not do this. 
+      Because Jabber is an XML based protocol, conversion of 
+      the returned data to other formats including those required 
+      for SNMP, CIM etc. should be relatively simple. Not supporting
+      industry standards is not without advantages. By leaving the
+      <span class="strong">http://jabber.org/protocol/stats</span> as a <span class="em">pure</span> jabber namespace we allow
+      ourselves to obtain not only commonly used statistics but also
+      some unusual ones as well. For example imagine a jabber enabled
+      vending machine, by remaining free of the encumberence and
+      limitations of SNMP etc. we can directly (if allowed by the
+      controlling component) query the fluid ounces dispensed, most
+      popular beverage and the amount of money that has been collected.
+      Finally although it is unlikely to occur by staying true to our
+      roots and avoiding direct SNMP support we avoid any possibility
+      of conflict with other network management agents such as net(ucd)-snmp.
+      </p>
+    </div>
+  <h2>4.
+       <a name="sect-idp603488" id="sect-idp603488">Realworld Examples</a></h2>
+      TBD
+  <h2>5.
+       <a name="sect-idp1595664" id="sect-idp1595664">DTD</a></h2>
+    <div class="indent"><h3>5.1 <a name="sect-idp1596160" id="sect-idp1596160">DTD in English</a></h3>
+      TBD
+    </div>    
+    <div class="indent"><h3>5.2 <a name="sect-idp1596784" id="sect-idp1596784">DTD</a></h3>
+      TBD
+    </div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0039<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.6.0<br />
+            Last Updated: 2002-11-05<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0039.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0039.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0039.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Paul Curtis</h3><p class="indent">
+        Email:
+        <a href="mailto:pcurtis@terrapin.com">pcurtis@terrapin.com</a><br />
+        JabberID: 
+        <a href="xmpp:pcurtis@www.terrapin.com">pcurtis@www.terrapin.com</a><br /></p><h3>Russell Davis</h3><p class="indent">
+        Email:
+        <a href="mailto:ukscone@burninghorse.com">ukscone@burninghorse.com</a><br />
+        JabberID: 
+        <a href="xmpp:ukscone@burninghorse.com">ukscone@burninghorse.com</a><br /></p><h3>Ryan Eatmon</h3><p class="indent">
+        Email:
+        <a href="mailto:reatmon@jabber.org">reatmon@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:reatmon@jabber.org">reatmon@jabber.org</a><br /></p><h3>David Sutton</h3><p class="indent">
+        Email:
+        <a href="mailto:dsutton@legend.co.uk">dsutton@legend.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:peregrine@legend.net.uk">peregrine@legend.net.uk</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1543456" id="nt-idp1543456">1</a>. See Name Registration</p><p><a name="nt-idp1544992" id="nt-idp1544992">2</a>. See Name
+        Registration</p><p><a name="nt-idp598992" id="nt-idp598992">3</a>. For more details on <a href="http://www.snmplink.org">SNMP</a>
+      and <a href="http://www.dmtf.org">CIM</a></p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.6.0 (2002-11-05)</h4><div class="indent">Corrected David Sutton's JID and email. It has been pointed out
+	to me by amoungst others Rob Norris that things such as lists of JIDs 
+	and lists in general are really the province of disco and browse and 
+	that at least one of the suggested 'core' statistics doesn't 
+	make sense for all components so removed these from the document. This namespace
+	was starting to become a generic data gathering namespace and we already 
+	have one of those, so i've reworked yet again hopefully for the 
+	final time it should now be simpler to implement and more consistent in
+	all cases. (rkd)
+    </div><h4>Version 0.5.0 (2002-11-03)</h4><div class="indent">Heavily modified document according to suggestions from Matt Miller (linuxwolf). rkd had some additional thoughts on the name attribute, this version reflects those. Reorganized the description section. (rkd)
+    </div><h4>Version 0.4.2 (2002-10-25)</h4><div class="indent">Changed rkd's email address and jid. Modified namespace to use http uri. (rkd)
+    </div><h4>Version 0.4.1 (2002-08-20)</h4><div class="indent">Corrected error codes (rkd)
+    </div><h4>Version 0.4 (2002-08-18)</h4><div class="indent">Fixed two silly typos that crept back in. Rewrote SNMP
+      to read better. Added the DTD (rkd)
+    </div><h4>Version 0.3 (2002-08-16)</h4><div class="indent">Added &lt;display/&gt; so a server or component may
+      optionally return data in a human readable format. It is nothing
+      more than a bit of visual fluff but it has potential to be quite
+      useful. Renumbered the revisions to allow room for stpeter's new 
+      document numbering scheme, sorry if it is now confusing but I hadn't 
+      left much room to grow with the previous revision numbering. A 
+      little more prettying and judicious use of punctuation has occurred. (rkd)
+    </div><h4>Version 0.2.2 (2002-08-15)</h4><div class="indent">Fixed some typos and generally prettied up (rkd)
+    </div><h4>Version 0.2.1 (2002-08-14)</h4><div class="indent">I seem to have misunderstood one of Ryan Eatmon's
+      suggestions and didn't make this generic enough. I have  
+      fixed that now. Clarified error codes and reworked how errors
+      are indicated to work with the new generic
+      namespace. Rearranged the order of the sections a bit make this
+      document a more linear read. (rkd)
+    </div><h4>Version 0.2 (2002-08-13)</h4><div class="indent">Complete reworking to take into account suggestions made
+      by Ryan Eatmon and others. Ryan Eatmon added to list of authors to
+      reflect his significant contribution to the current form of this
+      document. I have also received a few comments that this document
+      previously read like an IETF document. Whether that was a good or
+      bad thing I was unable to ascertain but I've tried to lighten the
+      tone a little. (rkd)
+    </div><h4>Version 0.1.5 (2002-07-23)</h4><div class="indent">Changed data returned by &lt;who/&gt; as per comments by
+      psa (rkd)
+    </div><h4>Version 0.1.4 (2002-07-23)</h4><div class="indent">Converted to XML format. (rkd)
+    </div><h4>Version 0.1.3 (2002-07-23)</h4><div class="indent">A numeric values unit type is now returned using an attribute
+      "units" rather than specifying that it be returned in the smallest
+      sensible unit type to produce an unsigned integer. (rkd)
+    </div><h4>Version 0.1.2 (2002-07-23)</h4><div class="indent">Justify inclusion of the 501 (Not Implemented) error code
+      as per comments by Zion (rkd)
+    </div><h4>Version 0.1.1 (2002-07-22)</h4><div class="indent">Fixed some typos (rkd)
+    </div><h4>Version 0.1 (2002-07-21)</h4><div class="indent">Initial version. (rkd)
+    </div></div><hr /><p>END</p></body></html>

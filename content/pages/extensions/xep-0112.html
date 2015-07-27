@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0112: User Physical Location</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="User Physical Location" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document defines a protocol for communicating information about the current physical location of a Jabber entity. NOTE WELL: The protocol defined herein has been folded into XEP-0080." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-10-12" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0112" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0112: User Physical Location</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a protocol for communicating information about the current physical location of a Jabber entity. NOTE WELL: The protocol defined herein has been folded into XEP-0080.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-10-12</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#protocol">Protocol</a><br />3.  <a href="#usage">Usage</a><br />4.  <a href="#mapping">Mapping to Other Formats</a><br />5.  <a href="#i18n">Internationalization Considerations</a><br />6.  <a href="#security">Security Considerations</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      8.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />9.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="em">NOTE WELL: The protocol defined herein has been folded into <span class="ref"><a href="http://xmpp.org/extensions/xep-0080.html">User Geolocation (XEP-0080)</a></span>  [<a href="#nt-idp707712">1</a>].</span></p>
+  <p>This document defines an extension mechanism for capturing "extended presence" information about a user's current physical location. The information structures defined herein are intended to provide a format for describing a location or address that may change fairly frequently (e.g., one's location on a campus or in a large building) in situations where the user or application does not possess, or does not wish to communicate, detailed latitude/longitude data of the type defined in <span class="ref">XEP-0080</span>.</p> 
+<h2>2.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>Information about the user's location is provided by the user and propagated on the network by the user's client. The information is structured by means of an &lt;physloc/&gt; element that is qualified by the 'http://jabber.org/protocol/physloc' namespace. The location information itself is provided as the XML character data of the following children of the &lt;physloc/&gt; element:</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Child Elements</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body"><th>Element</th><th>Description</th><th>Example</th></tr>
+    <tr class="body"><td>&lt;country/&gt;</td><td>The nation where the user is located</td><td>USA</td></tr>
+    <tr class="body"><td>&lt;region/&gt;</td><td>An administrative region of the nation, such as a state or province</td><td>New York</td></tr>
+    <tr class="body"><td>&lt;locality/&gt;</td><td>A locality within the administrative region, such as a town or city</td><td>New York City</td></tr>
+    <tr class="body"><td>&lt;area/&gt;</td><td>A named area such as a campus or neighborhood</td><td>Central Park</td></tr>
+    <tr class="body"><td>&lt;street/&gt;</td><td>A thoroughfare within the locality, or a crossing of two thoroughfares</td><td>34th and Broadway</td></tr>
+    <tr class="body"><td>&lt;building/&gt;</td><td>A specific building on a street or in an area</td><td>The Empire State Building</td></tr>
+    <tr class="body"><td>&lt;floor/&gt;</td><td>A particular floor in a building</td><td>102</td></tr>
+    <tr class="body"><td>&lt;room/&gt;</td><td>A particular room in a building</td><td>Observatory</td></tr>
+    <tr class="body"><td>&lt;postalcode/&gt;</td><td>A code used for postal delivery</td><td>10027</td></tr>
+    <tr class="body"><td>&lt;text/&gt;</td><td>A catch-all element that captures any other information about the user's location</td><td>Northwest corner of the lobby</td></tr>
+  </table></div>
+<h2>3.
+       <a name="usage" id="usage">Usage</a></h2>
+  <p>The &lt;physloc/&gt; information SHOULD be communicated by means of <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1572320">2</a>]. Because physical location information is not pure presence information and can change independently of the user's availability, it SHOULD NOT be provided as an extension to &lt;presence/&gt;.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Publishes Address</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='stpeter@jabber.org/laptop'
+    to='pubsub.jabber.org'
+    id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='generic/stpeter-loc'&gt;
+      &lt;item id='current'&gt;
+        &lt;physloc xmlns='http://jabber.org/protocol/physloc'
+                 xml:lang='en'&gt;
+          &lt;country&gt;Austria&lt;/country&gt;
+          &lt;locality&gt;Vienna&lt;/locality&gt;
+          &lt;building&gt;Vienna International Centre&lt;/building&gt;
+          &lt;text&gt;At IETF 57&lt;/text&gt;
+        &lt;/physloc&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The location information is then delivered to all subscribers:</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Address is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='pubsub.jabber.org'
+    to='jer@jabber.org/silver'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='generic/stpeter-physloc'&gt;
+      &lt;item id='current'&gt;
+        &lt;physloc xmlns='http://jabber.org/protocol/physloc'
+                 xml:lang='en'&gt;
+          &lt;country&gt;Austria&lt;/country&gt;
+          &lt;locality&gt;Vienna&lt;/locality&gt;
+          &lt;building&gt;Vienna International Centre&lt;/building&gt;
+          &lt;text&gt;At IETF 57&lt;/text&gt;
+        &lt;/physloc&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+.
+.
+.
+  </pre></div>
+  <p>As mentioned in XEP-0060, the stanza containing the event notification or payload MAY also include 'replyto' data (as specified by the <span class="ref"><a href="http://xmpp.org/extensions/xep-0033.html">Extended Stanza Addressing (XEP-0033)</a></span>  [<a href="#nt-idp1578864">3</a>] protocol) to provide an explicit association between the published data and the user:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Event notification with extended stanza addressing</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='pubsub.jabber.org'
+    to='jer@jabber.org/silver'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='generic/stpeter-physloc'&gt;
+      &lt;item id='current'&gt;
+        &lt;physloc xmlns='http://jabber.org/protocol/physloc'
+                 xml:lang='en'&gt;
+          &lt;country&gt;Austria&lt;/country&gt;
+          &lt;locality&gt;Vienna&lt;/locality&gt;
+          &lt;building&gt;Vienna International Centre&lt;/building&gt;
+          &lt;text&gt;At IETF 57&lt;/text&gt;
+        &lt;/physloc&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='replyto' jid='stpeter@jabber.org'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+  </pre></div>
+<h2>4.
+       <a name="mapping" id="mapping">Mapping to Other Formats</a></h2>
+  <p>There are many XML data formats for physical location or address information. It is beyond the scope of this document to provide a mapping from the extension defined herein to every such format. However, it would be valuable to provide a mapping from the Jabber/XMPP format to the formats used in other presence or extended presence protocols. The two main protocols of interest are:</p>
+  <ol>
+    <li><p>The Wireless Village (now "IMPS") specifications for mobile instant messaging; these specifications define a presence attribute for address information as encapsulated in the IMPS "Address" element  [<a href="#nt-idp1582400">4</a>].</p></li>
+    <li><p>The SIP-based SIMPLE specifications; in particular, the IETF's GEOPRIV Working Group has defined an extension to the IETF's <span class="ref"><a href="http://tools.ietf.org/html/rfc3863">Presence Information Data Format (PIDF) </a></span>  [<a href="#nt-idp1586752">5</a>] for location information, as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc4119">RFC 4119</a></span>  [<a href="#nt-idp1589312">6</a>] (also known as "PIDF-LO").</p></li>
+  </ol>
+  <p>The following table also maps the format defined herein to the vCard XML format specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0054.html">vcard-temp (XEP-0054)</a></span>  [<a href="#nt-idp1591760">7</a>].</p>
+  <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Mapping Jabber Physical Location to IMPS, PIDF-LO, and vCard</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Jabber/XMPP</th>
+      <th>Wireless Village / IMPS</th>
+      <th>SIMPLE (PIDF-LO)</th>
+      <th>vCard XML</th>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;country/&gt;</td>
+      <td align="center">&lt;Country/&gt;</td>
+      <td align="center">&lt;country/&gt;</td>
+      <td align="center">&lt;CTRY/&gt;
+         [<a href="#nt-idp1596912">8</a>]
+      </td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;region/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;A1/&gt; and/or &lt;A2/&gt;</td>
+      <td align="center">&lt;REGION/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;locality/&gt;</td>
+      <td align="center">&lt;City/&gt;</td>
+      <td align="center">&lt;A3/&gt;</td>
+      <td align="center">&lt;LOCALITY/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;area/&gt;</td>
+      <td align="center">&lt;NamedArea/&gt;</td>
+      <td align="center">&lt;A4/&gt; and/or &lt;A5/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;street/&gt;</td>
+      <td align="center">&lt;Street/&gt;
+         [<a href="#nt-idp1607936">9</a>]
+      </td>
+      <td align="center">&lt;A6/&gt; 
+         [<a href="#nt-idp1609712">10</a>] 
+      </td>
+      <td align="center">&lt;STREET/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;building/&gt;</td>
+      <td align="center">&lt;Building/&gt;</td>
+      <td align="center">&lt;LMK/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;floor/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;FLR/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;room/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;postalcode/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;PC/&gt;</td>
+      <td align="center">&lt;PCODE/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;text/&gt;</td>
+      <td align="center">&lt;FreeTextLocation/&gt;</td>
+      <td align="center">&lt;LOC/&gt;</td>
+      <td align="center">&lt;EXTADR/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">--</td>
+      <td align="center">&lt;Accuracy/&gt;
+         [<a href="#nt-idp1628080">11</a>]
+      </td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">--</td>
+      <td align="center">--</td>
+      <td align="center">&lt;NAM/&gt;
+         [<a href="#nt-idp1632176">12</a>]
+      </td>
+      <td align="center">--</td>
+    </tr>
+  </table></div>
+<h2>5.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>Because the character data contained in most &lt;physloc/&gt; child elements is intended to be readable by humans, the &lt;physloc/&gt; element SHOULD possess an 'xml:lang' attribute specifying the natural language of such character data.</p>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>It is imperative to control access to location information, at least by default. Imagine that a stalker got unauthorized access to this information, with enough accuracy and timeliness to be able to find the target person. This scenario could lead to loss of life, so please take access control checks seriously. A user SHOULD take care in approving subscribers and in characterizing his or her current physical location.</p>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1640864">13</a>].</p>
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>8.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1645776">14</a>] includes 'http://jabber.org/protocol/physloc' in its registry of protocol namespaces, but the namespace is deprecated.</p>
+  </div>
+<h2>9.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/physloc'
+    xmlns='http://jabber.org/protocol/physloc'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='physloc'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='country' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='region' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='locality' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='area' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='street' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='building' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='floor' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='room' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='postalcode' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='text' minOccurs='0' type='xs:string'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0112<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-10-12<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0060<br />
+                Supersedes: None<br />Superseded By: XEP-0080<br />
+            Short Name: physloc<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0112.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0112.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0112.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp707712" id="nt-idp707712">1</a>. XEP-0080: User Geolocation &lt;<a href="http://xmpp.org/extensions/xep-0080.html">http://xmpp.org/extensions/xep-0080.html</a>&gt;.</p><p><a name="nt-idp1572320" id="nt-idp1572320">2</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1578864" id="nt-idp1578864">3</a>. XEP-0033: Extended Stanza Addressing &lt;<a href="http://xmpp.org/extensions/xep-0033.html">http://xmpp.org/extensions/xep-0033.html</a>&gt;.</p><p><a name="nt-idp1582400" id="nt-idp1582400">4</a>. The Wireless Village Initiative: Presence Attributes v1.1 (WV-029); for further information, visit &lt;<a href="http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html">http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html</a>&gt;.</p><p><a name="nt-idp1586752" id="nt-idp1586752">5</a>. RFC 3863: Presence Information Data Format (PIDF) &lt;<a href="http://tools.ietf.org/html/rfc3863">http://tools.ietf.org/html/rfc3863</a>&gt;.</p><p><a name="nt-idp1589312" id="nt-idp1589312">6</a>. RFC 4119: A Presence-based GEOPRIV Location Object Format &lt;<a href="http://tools.ietf.org/html/rfc4119">http://tools.ietf.org/html/rfc4119</a>&gt;.</p><p><a name="nt-idp1591760" id="nt-idp1591760">7</a>. XEP-0054: vcard-temp &lt;<a href="http://xmpp.org/extensions/xep-0054.html">http://xmpp.org/extensions/xep-0054.html</a>&gt;.</p><p><a name="nt-idp1596912" id="nt-idp1596912">8</a>. As noted in XEP-0054, the XML vCard format defined in draft-dawson-vcard-xml-dtd-01 specified a &lt;COUNTRY/&gt; element rather than a &lt;CTRY/&gt; element; refer to XEP-0054 for details.</p><p><a name="nt-idp1607936" id="nt-idp1607936">9</a>. The IMPS specification also enables one to define an intersection (e.g., "Broadway and 34th Street") as the combination of a &lt;Crossing1/&gt; element (e.g., "Broadway") and a &lt;Crossing2/&gt; element (e.g., "34th Street"). To map from IMPS to Jabber, an application SHOULD map such a combination to one Jabber/XMPP &lt;street/&gt; element.</p><p><a name="nt-idp1609712" id="nt-idp1609712">10</a>. The PIDF-LO format provides information elements for much more granular control over a traditional street address; in PIDF-LO the &lt;A6/&gt; element is the street name only, and further information is provided in distinct elements for a leading street direction (e.g., "N"), trailing street suffix (e.g., "SW"), street suffix (e.g., "Avenue"), house number (e.g., "909"), and house number suffix (e.g., "1/2"). To map from PIDF-LO to Jabber, an application SHOULD construct the complete street address from the PIDF-LO elements (&lt;A6/&gt;, &lt;PRD/&gt;, &lt;POD/&gt;, &lt;STS/&gt;, &lt;HNO/&gt;, and &lt;HNS/&gt;) and map the result to one Jabber/XMPP &lt;street/&gt; element.</p><p><a name="nt-idp1628080" id="nt-idp1628080">11</a>. This element provides accuracy in meters. The geolocation protocol defined in XEP-0080 specifies such an element for Jabber/XMPP, which SHOULD be used when mapping from IMPS to Jabber.</p><p><a name="nt-idp1632176" id="nt-idp1632176">12</a>. This element provides a name for the location, e.g., a certain store in a building. This SHOULD be mapped to the Jabber/XMPP &lt;text/&gt; element.</p><p><a name="nt-idp1640864" id="nt-idp1640864">13</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1645776" id="nt-idp1645776">14</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-10-12)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Draft. (psa)
+    </div><h4>Version 0.8 (2004-10-12)</h4><div class="indent">Added internationalization considerations. (psa)
+    </div><h4>Version 0.7 (2004-10-10)</h4><div class="indent">Added &lt;postalcode/&gt; element; removed &lt;url/&gt; element (unnecessary given the existence of jabber:x:oob); defined mapping to vCard. (psa)
+    </div><h4>Version 0.6 (2004-10-05)</h4><div class="indent">Defined mappings to Wireless Village and SIMPLE. (psa)
+    </div><h4>Version 0.5 (2004-05-11)</h4><div class="indent">Changed root element, namespace, and shortname to physloc to prevent conflict with XEP-0033. (psa)
+    </div><h4>Version 0.4 (2004-04-25)</h4><div class="indent">Corrected several errors; added reference to XEP-0033. (psa)
+    </div><h4>Version 0.3 (2004-02-19)</h4><div class="indent">Revived document upon modifications to XEP-0080; changed root element, namespace, and shortname to 'address'. (psa)
+    </div><h4>Version 0.2 (2003-08-21)</h4><div class="indent">Removed 'current' from title; changed shortname to 'location'; changed 'freetext' to 'text'; made several other small fixes. (psa)
+    </div><h4>Version 0.1 (2003-08-20)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,899 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0065: SOCKS5 Bytestreams</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="SOCKS5 Bytestreams" /><meta name="DC.Creator" content="Dave Smith" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Justin Karneges" /><meta name="DC.Description" content="This document defines an XMPP protocol extension for establishing an out-of-band bytestream between any two XMPP users, mainly for the purpose of file transfer. The bytestream can be either direct (peer-to-peer) or mediated (though a special-purpose proxy server). The typical transport protocol used is TCP, although UDP can optionally be supported as well." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2011-04-20" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0065" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0065: SOCKS5 Bytestreams</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension for establishing an out-of-band bytestream between any two XMPP users, mainly for the purpose of file transfer. The bytestream can be either direct (peer-to-peer) or mediated (though a special-purpose proxy server). The typical transport protocol used is TCP, although UDP can optionally be supported as well.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Dave Smith, Matthew Miller, Peter Saint-Andre, Justin Karneges</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2011-04-20</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#terms">Terminology</a><br />3.  <a href="#support">Determining Support</a><br />4.  <a href="#disco">Discovering Proxies</a><br />5.  <a href="#direct">Direct Connection</a><br />   
+      5.1.  <a href="#direct-process">Process</a><br />   
+      5.2.  <a href="#direct-flow">Flow</a><br />   
+      5.3.  <a href="#direct-proto">Protocol</a><br />      
+      5.3.1.  <a href="#direct-proto-initiate">Requester Initiates S5B Negotiation</a><br />      
+      5.3.2.  <a href="#direct-proto-establish">Target Establishes SOCKS5 Connection with StreamHost/Requester</a><br />      
+      5.3.3.  <a href="#direct-proto-ack">Target Acknowledges Bytestream</a><br />6.  <a href="#mediated">Mediated Connection</a><br />   
+      6.1.  <a href="#mediated-process">Process</a><br />   
+      6.2.  <a href="#mediated-flow">Flow</a><br />   
+      6.3.  <a href="#mediated-proto">Protocol</a><br />      
+      6.3.1.  <a href="#mediated-proto-initiate">Requester Initiates S5B Negotiation</a><br />      
+      6.3.2.  <a href="#mediated-proto-establish">Target Establishes SOCKS5 Connection with Proxy</a><br />      
+      6.3.3.  <a href="#mediated-proto-ack">Target Acknowledges Bytestream</a><br />      
+      6.3.4.  <a href="#mediated-proto-initiator">Requester Establishes SOCKS5 Connection with StreamHost</a><br />      
+      6.3.5.  <a href="#mediated-proto-activation">Activation of Bytestream</a><br />7.  <a href="#muc">Use with Multi-User Chat</a><br />8.  <a href="#udp">Optional UDP Support</a><br />   
+      8.1.  <a href="#udp-disco">Discovering UDP Support</a><br />   
+      8.2.  <a href="#udp-request">Requesting UDP Mode</a><br />   
+      8.3.  <a href="#udp-process">UDP Process</a><br />      
+      8.3.1.  <a href="#udp-process-assoc">Establishing the UDP Association</a><br />      
+      8.3.2.  <a href="#udp-process-init">Initializing the UDP Channel</a><br />   
+      8.4.  <a href="#udp-ports">Exchanging UDP Packets</a><br />9.  <a href="#desc">Formal Description</a><br />   
+      9.1.  <a href="#desc-query">&lt;query/&gt; Element</a><br />   
+      9.2.  <a href="#desc-streamhost">&lt;streamhost/&gt; Element</a><br />   
+      9.3.  <a href="#desc-streamhost-used">&lt;streamhost-used/&gt; Element</a><br />   
+      9.4.  <a href="#desc-activate">&lt;activate/&gt; Element</a><br />   
+      9.5.  <a href="#desc-udpsuccess">&lt;udpsuccess/&gt; Element</a><br />10.  <a href="#impl">Implementation Notes</a><br />   
+      10.1.  <a href="#impl-streamhost">StreamHost Requirements</a><br />   
+      10.2.  <a href="#impl-socks5">SOCKS5 Parameter Mapping</a><br />11.  <a href="#security">Security Considerations</a><br />   
+      11.1.  <a href="#security-enc">Confidentiality and Integrity</a><br />   
+      11.2.  <a href="#security-hijack">Session Hijacking</a><br />   
+      11.3.  <a href="#security-dos">Denial of Service</a><br />   
+      11.4.  <a href="#security-sha1">Use of SHA-1</a><br />12.  <a href="#iana">IANA Considerations</a><br />13.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      13.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      13.2.  <a href="#registrar-discovar">Service Discovery Features</a><br />   
+      13.3.  <a href="#registrar-discoid">Service Discovery Category/Type</a><br />14.  <a href="#schema">Schema</a><br />15.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>XMPP is designed for sending relatively small chunks of XML between network entities and is not designed for sending binary data. However, sometimes it is desirable to send binary data to another entity that one has discovered on the XMPP network (e.g., to send a file). Therefore it is valuable to have a generic protocol for streaming binary data between any two entities on an XMPP network. The main application for such a bytestreaming technology is file transfer as specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp1528320">1</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0234.html">Jingle File Transfer (XEP-0234)</a></span>  [<a href="#nt-idp1531040">2</a>]. However, other applications are possible, which is why it is important to develop a generic protocol rather than one that is specialized for a particular application such as file transfer.</p>
+  <p>This document defines a protocol that meets the following conditions:</p>
+  <ul>
+    <li>Bytestreams are established over standard TCP connections (<span class="ref"><a href="http://tools.ietf.org/html/rfc0793">RFC 793</a></span>  [<a href="#nt-idp1534464">3</a>]) or UDP associations (<span class="ref"><a href="http://tools.ietf.org/html/rfc0768">RFC 768</a></span>  [<a href="#nt-idp1537008">4</a>]), where TCP support is REQUIRED and UDP support is OPTIONAL</li>
+    <li>Sockets can be direct (peer-to-peer) or mediated (established through a relay)</li>
+    <li>Where possible, standard wire protocols are used</li>
+  </ul>
+  <p>Specifically, this protocol makes use of the SOCKS 5 protocol, which is an IETF-approved, IPv6-ready technology for bytestreams defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc1928">RFC 1928</a></span>  [<a href="#nt-idp1540464">5</a>]. However, because this protocol uses a subset of the SOCKS5 protocol that is specially adapted for bytestreaming over XMPP, existing SOCKS5 proxies cannot be used to implement this protocol without modifications.</p>
+  <p>There are two scenarios addressed by this protocol:</p>
+  <ol>
+    <li>A direct connection in which the StreamHost is the Requester, as described under <a href="#direct">Direct Connection</a></li>
+    <li>A mediated connection in which the StreamHost is a Proxy, as described under <a href="#mediated">Mediated Connection</a></li>
+  </ol>
+  <p>Early versions of this specification documented only the use of TCP connections. In version 1.6 (approved in November 2004), optional UDP associations were added, as described in the <a href="#udp">Optional UDP Support</a> section of this document. However, the main body of this document describes the use of TCP, which is the primary method of SOCKS5 Bytestreams ("S5B").</p>
+<h2>2.
+       <a name="terms" id="terms">Terminology</a></h2>
+  <p>The following terms are used throughout this document.</p>
+  <div class="indent"><dl>
+    <di>
+      <dt><strong>Requester</strong></dt>
+      <dd>The entity that starts a bytestream negotiation with a Target.  [<a href="#nt-idp1546848">6</a>]</dd>
+    </di>
+    <di>
+      <dt><strong>Target</strong></dt>
+      <dd>The entity with which the Requester is attempting to establish a bytestream.</dd>
+    </di>
+    <di>
+      <dt><strong>Proxy</strong></dt>
+      <dd>An entity that is willing to be a middleman for the bytestream between the Requester and the Target.</dd>
+    </di>
+    <di>
+      <dt><strong>StreamHost</strong></dt>
+      <dd>The system that the Target connects to and that is "hosting" the bytestream; the Streamhost can be either the Requester or a Proxy.</dd>
+    </di>
+    <di>
+      <dt><strong>StreamID</strong></dt>
+      <dd>A relatively unique Stream ID for this connection; this is generated by the Requester for tracking purposes.</dd>
+    </di>
+  </dl></div>
+  <p>Note: Because either party can attempt to establish a bytestream (this is formalized in <span class="ref"><a href="http://xmpp.org/extensions/xep-0260.html">Jingle SOCKS5 Bytestreams Transport Method (XEP-0260)</a></span>  [<a href="#nt-idp1555584">7</a>]), the Requester and the Target roles apply to a particular S5B negotiation, and do not map to the Initiator and Responder roles from <span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp1558352">8</a>] in a fixed way. For example, during a Jingle negotiation the Jingle Initiator might first take on the role of an S5B Requester (with the Jingle Responder being the S5B Target) but if that first bytestreams negotiation fails (the so-called "fallback scenario") then the Jingle Responder might take on the role of an S5B Requester (with the Jingle Initiator being the S5B Target).</p>
+  <p>In the protocol flow diagrams, the line types have the following meaning:</p>
+  <ul>
+    <li>"----" ... communications over XMPP</li>
+    <li>"____" ... communications over TCP</li>
+    <li>"\\\\" and "////" ... communications over SOCKS5</li>
+    <li>"====" ... communications over the bytestream itself</li>
+  </ul>
+  <p>In the examples, "streamer.example.com" is a Proxy that services bytestreams on port 7625.</p>
+<h2>3.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>If an entity supports this protocol, it MUST advertise that fact in its responses to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1563808">9</a>] information ("disco#info") requests by returning a feature of "http://jabber.org/protocol/bytestreams".</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requester Sends Service Discovery Request to Target</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='gr91cs53'
+    to='target@example.org/bar'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Target Replies to Service Discovery Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='gr91cs53'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='client' type='pc'/&gt;
+    &lt;feature var='http://jabber.org/protocol/bytestreams'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>4.
+       <a name="disco" id="disco">Discovering Proxies</a></h2>
+  <p>Before attempting to initiate a bytestream, the Requester might need to find a proxy (e.g., if it has not been configured to know about a proxy). It can do so using Service Discovery by communicating with its server.</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Requester Sends Service Discovery Request to Server</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='pi2b15fv'
+    to='example.com'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The server will return all of the items it knows about.</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server Replies to Service Discovery Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='example.com'
+    id='pi2b15fv'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item jid='chatrooms.example.com' name='Chatroom Service'/&gt;
+    &lt;item jid='news.example.com' name='News Feeds'/&gt;
+    &lt;item jid='streamer.example.com' name='File Transfer Relay'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In this case, the "streamer.example.com" is a bytestreams proxy.</p>
+  <p>For each item in the disco#items result, the Requester needs to query to determine if it is a bytestreams proxy.</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Requester Sends Service Discovery Request to Proxy</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='yx92b153'
+    to='streamer.example.com'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The proxy returns its information and the Requester inspects it to determine if it contains an identity of category "proxy" and type "bytestreams".</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server Replies to Service Discovery Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='streamer.example.com'
+    id='yx92b153'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='proxy'
+              type='bytestreams'
+              name='File Transfer Relay'/&gt;
+    &lt;feature var='http://jabber.org/protocol/bytestreams'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Next the Requester needs to request the full network address to be used for bytestreaming through the Proxy. This is done by sending an IQ-get to the proxy containing a &lt;query/&gt; element qualified by the bytestreams namespace (not the service discovery namespace).  [<a href="#nt-idp1576016">10</a>]</p>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Requester Requests Network Address from Proxy</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='uj2c15z9'
+    to='streamer.example.com'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The Proxy replies by returning an IQ-result that contains its network address, structured using the &lt;streamhost/&gt; child of the &lt;query/&gt; element; the &lt;streamhost/&gt; element MUST possess the following attributes:</p>
+  <ul>
+    <li><span class="ref">host</span> = the IP address or DNS domain name of the StreamHost for SOCKS5 communication over TCP (if the value is an IPv6 address, it MUST be formatted according to <span class="ref"><a href="http://tools.ietf.org/html/rfc5952">RFC 5952</a></span>  [<a href="#nt-idp1581152">11</a>], as is done in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1583744">12</a>])</li>
+    <li><span class="ref">jid</span> = the JabberID of the StreamHost for communication over XMPP</li>
+    <li><span class="ref">port</span> = the port on which to connect for SOCKS5 communication over TCP</li>
+  </ul>
+  <p>Note: If the value of the 'host' attribute is a DNS domain name, it MUST be resolvable to the IP address on which the Proxy (or an instance thereof) is hosted using an A or AAAA lookup.</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Proxy Informs Requester of Network Address</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='streamer.example.com'
+    id='uj2c15z9'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'&gt;
+    &lt;streamhost
+        host='24.24.24.1'
+        jid='streamer.example.com'
+        port='7625'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the Requester does not have permissions to initiate bytestreams on the Proxy for whatever reason (e.g., a proxy implementation might enable administrators to ban JIDs or domains from using the Proxy), the Proxy MUST return a &lt;forbidden/&gt; error to the Requester.</p>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Requester is Forbidden to use Proxy</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='streamer.example.com'
+    id='uj2c15z9'
+    to='requester@example.com/foo'
+    type='error'&gt;
+  &lt;error type='auth'&gt;
+    &lt;forbidden 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the Proxy is unable to act as a StreamHost, the Proxy MUST return an error to the Requester, which SHOULD be &lt;not-allowed/&gt;.</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Proxy is Unable to Act as a StreamHost</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='streamer.example.com'
+    id='uj2c15z9'
+    to='requester@example.com/foo'
+    type='error'&gt;
+  &lt;error type='auth'&gt;
+    &lt;forbidden 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the Proxy is unable to act as a StreamHost, the Proxy MUST return an error to the Requester, which SHOULD be &lt;not-allowed/&gt;.</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Proxy is Unable to Act as a StreamHost</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='uj2c15z9'
+    to='streamer.example.com'
+    type='error'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-allowed 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="direct" id="direct">Direct Connection</a></h2>
+  <p>In this situation, the StreamHost is the Requester, which means that the Requester knows the network address of the StreamHost and knows when to activate the bytestream.</p>
+  <div class="indent"><h3>5.1 <a name="direct-process" id="direct-process">Process</a></h3>
+    <p>For direct connections, the process for establishing a bytestream is as follows:</p>
+    <ol>
+      <li><p>Requester initiates S5B negotiation with Target by sending an IQ-set that includes the full JID &lt;localpart@domain.tld/resource&gt; and network address of StreamHost/Requester as well as the StreamID (SID) of the proposed bytestream (and, optionally, the calculated DST.ADDR value; see under <a href="#muc">Use with Multi-User Chat</a>).</p></li>
+      <li><p>Target opens a TCP socket to the specified network address at the StreamHost/Requester.</p></li>
+      <li><p>Target requests SOCKS5 connection at StreamHost/Requester.</p></li>
+      <li><p>StreamHost/Requester sends acknowledgement of successful connection to Target via SOCKS5.</p></li>
+      <li><p>Target accepts the S5B stream by returning an IQ-result to the Requester, preserving the 'id' of the initial IQ-set.</p></li>
+      <li><p>Requester and Target exchange data over the bytestream.</p></li>
+    </ol>
+  </div>
+  <div class="indent"><h3>5.2 <a name="direct-flow" id="direct-flow">Flow</a></h3>
+    <p>The data flow is shown in the following diagram.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Requester                         Target
+   |                                |
+   | Send S5B initiation request    |
+   | -----------------------------&gt; |
+   |                                |
+   | Open TCP socket                |
+   | &lt;_____________________________ |
+   |                                |
+   | Request SOCKS5 connection      |
+   | &lt;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ |
+   |                                |
+   | Acknowledge SOCKS5 connection  |
+   | /////////////////////////////&gt; |
+   |                                |
+   | Send S5B acceptance            |
+   | &lt;----------------------------- |
+   |                                |
+   | Exchange data over S5B         |
+   | &lt;============================&gt; |
+   |                                |
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.3 <a name="direct-proto" id="direct-proto">Protocol</a></h3>
+    <div class="indent"><h3>5.3.1 <a name="direct-proto-initiate" id="direct-proto-initiate">Requester Initiates S5B Negotiation</a></h3>
+      <p>To initiate an S5B negotiation with the Target, the Requester sends network address information about one or more StreamHosts to the Target. In the case of a direct connection, the Requester might include information only about itself (as shown in the following example) or about itself and a Proxy.</p>
+      <p>The &lt;query/&gt; element MUST contain one or more &lt;streamhost/&gt; elements, each of which MUST possess the 'host', 'jid', and 'port' attributes. The &lt;query/&gt; element MUST possess a 'sid' attribute that specifies the Stream ID for this bytestream. The &lt;query/&gt; element MAY possess a 'mode' attribute whose value is "tcp" (the default) or "udp" (for which see <a href="#udp">Optional UDP Support</a>). The &lt;query/&gt; element MAY possess a 'dstaddr' attribute whose value is the Requester's calculated hash value for the SOCKS5 DST.ADDR field (see <a href="#muc">Use with Multi-User Chat</a>).</p>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Requester Initiates Negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='hu3vax16'
+    to='target@example.org/bar'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         sid='vxf9n471bn46'&gt;
+    &lt;streamhost
+        jid='requester@example.com/foo'
+        host='192.168.4.1'
+        port='5086'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If the request is malformed (e.g., the &lt;query/&gt; element does not include the 'sid' attribute), the Target MUST return an error of &lt;bad-request/&gt;.</p>
+      <p>Else if the Target is unwilling to accept the bytestream, it MUST return an error of &lt;not-acceptable/&gt; to the Requester.</p>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Target Refuses Bytestream</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='hu3vax16'
+    to='requester@example.com/foo'
+    type='error'&gt;
+  &lt;error type='modify'&gt;
+    &lt;not-acceptable 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If the Target is willing to negotiate a bytestream, it proceeds as shown in the following sections.</p>
+    </div>
+    <div class="indent"><h3>5.3.2 <a name="direct-proto-establish" id="direct-proto-establish">Target Establishes SOCKS5 Connection with StreamHost/Requester</a></h3>
+      <p>Next the Target attempts to open a standard TCP socket on the network address of the StreamHost/Requester (for information about UDP usage, see the <a href="#udp">Optional UDP Support</a> section of this document).</p>
+      <p>Note: If the Requester provides more than one StreamHost, the Target SHOULD try to connect to them in the order of the &lt;streamhost/&gt; children within the &lt;query/&gt; element. <span class="ref"><a href="http://xmpp.org/extensions/xep-0260.html">Jingle SOCKS5 Bytestreams Transport Method (XEP-0260)</a></span>  [<a href="#nt-idp1613280">13</a>] modifies this rule by providing explicit priorities for each streamhost candidate.</p>
+      <p>If the Target is able to open a TCP socket on a StreamHost/Requester, it MUST use the SOCKS5 protocol to establish a SOCKS5 connection. In accordance with <span class="ref">RFC 1928</span>, the Target might need to authenticate in order to use the proxy. However, any authentication required is beyond the scope of this document.</p>
+      <p>Once the Target has successfully authenticated with the StreamHost/Requester, it sends a CONNECT request (CMD = X'01') in order to continue the negotiation. The following rules apply:</p>
+      <ol>
+        <li>The hostname MUST be SHA1(SID + Requester JID + Target JID) where the definition of the SHA1 hashing algorithm is as specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc3174">RFC 3174</a></span>  [<a href="#nt-idp1619216">14</a>] and the output is hexadecimal-encoded (not binary); as noted above and under <a href="#muc">Use with Multi-User Chat</a>, the DST.ADDR value might have been provided directly from the Requester to the Target).</li>
+        <li>The port MUST be 0 (zero).</li>
+        <li>The JIDs used as input to the hash function MUST be the actual JIDs used for the IQ exchange between the Requester and the Target (these might be full JIDs (&lt;localpart@domain.tld/resource&gt; or &lt;domain.tld/resource&gt;) or bare JIDs (&lt;localpart@domain.tld&gt; or &lt;domain.tld&gt;) depending on the addresses of the entities involved in the negotiation).</li>
+        <li>The appropriate stringprep profiles (as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc6122">RFC 6122</a></span>  [<a href="#nt-idp1628608">15</a>]) MUST be applied to the JIDs before application of the SHA1 hashing algorithm.</li>
+      </ol>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Target Establishes SOCKS5 Connection with StreamHost</p><div class="indent"><pre class="prettyprint">
+CMD = X'01'
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 0
+      </pre></div>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. StreamHost Acknowledges Connection</p><div class="indent"><pre class="prettyprint">
+STATUS = X'00'
+      </pre></div>
+      <p>When replying to the Target in accordance with Section 6 of <span class="ref">RFC 1928</span>, the StreamHost MUST set the BND.ADDR and BND.PORT to the DST.ADDR and DST.PORT values provided by the client in the connection request.</p>
+      <p>If the Target tries but is unable to connect to any of the StreamHosts and it does not wish to attempt a connection from its side, it MUST return an &lt;item-not-found/&gt; error to the Requester.</p>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Target Is Unable to Connect to Any StreamHost and Wishes to End Negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='hu3vax16'
+    to='requester@example.com/foo'
+    type='error'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;item-not-found 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>5.3.3 <a name="direct-proto-ack" id="direct-proto-ack">Target Acknowledges Bytestream</a></h3>
+      <p>After the Target has authenticated with the StreamHost/Requester, it replies to the initiate request with an IQ-result whose &lt;query/&gt; element contains a &lt;streamhost-used/&gt; child that specifies which StreamHost was used (in this case, the StreamHost/Requester).</p>
+      <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Target Notifies Requester of Bytestream</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='hu3vax16'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         sid='vxf9n471bn46'&gt;
+    &lt;streamhost-used jid='requester@example.com/foo'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>At this point, the Requester knows which StreamHost was used by the Target and the parties are able to use the StreamHost/Requester to exchange data over the bytestream.</p>
+    </div>
+  </div>
+<h2>6.
+       <a name="mediated" id="mediated">Mediated Connection</a></h2>
+  <p>In this situation, the StreamHost is not the Requester but a Proxy, which means that the Requester needs to discover the network address of the StreamHost before sending the initiation request to the Target, needs to negotiate a connection with the StreamHost in the same way that the Target does, and needs to ask the StreamHost to activate the bytestream before it can be used.</p>
+  <div class="indent"><h3>6.1 <a name="mediated-process" id="mediated-process">Process</a></h3>
+    <p>For mediated connections, the process for establishing a bytestream is as follows:</p>
+    <ol>
+      <li><p>As a precondition, the Requester optionally discovers the network address of StreamHost over XMPP as discussed in the <a href="#disco">Service Discovery</a> section of this document.</p></li>
+      <li><p>Requester initiates S5B negotation with Target by sending IQ-set that includes the JabberID and network address of StreamHost as well as the StreamID (SID) of the proposed bytestream (and, optionally, the calculated DST.ADDR value; see under <a href="#muc">Use with Multi-User Chat</a>).</p></li>
+      <li><p>Target opens a TCP socket to the selected StreamHost.</p></li>
+      <li><p>Target requests SOCKS5 connection at StreamHost/Proxy.</p></li>
+      <li><p>StreamHost sends acknowledgement of successful connection to Target via SOCKS5.</p></li>
+      <li><p>Target sends IQ-result to Requester, preserving the 'id' of the initial IQ-set.</p></li>
+      <li><p>Requester opens a TCP socket at the StreamHost.</p></li>
+      <li><p>Requester establishes connection via SOCKS5, with the DST.ADDR and DST.PORT parameters set to the values defined below.</p></li>
+      <li><p>StreamHost sends acknowledgement of successful connection to Requester via SOCKS5.</p></li>
+      <li><p>Requester sends IQ-set to StreamHost requesting that StreamHost activate the bytestream associated with the StreamID.</p></li>
+      <li><p>StreamHost activates the bytestream. (Data is now relayed between the two SOCKS5 connections by the proxy.)</p></li>
+      <li><p>StreamHost sends IQ-result to Requester acknowledging that the bytestream has been activated (or specifying an error).</p></li>
+      <li><p>Requester and Target can begin using the bytestream.</p></li>
+    </ol>
+  </div>
+  <div class="indent"><h3>6.2 <a name="mediated-flow" id="mediated-flow">Flow</a></h3>
+    <p>The data flow is shown in the following diagram.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Requester                         Proxy                            Target
+   |                                |                                |
+   | Send S5B initiation request                                     |
+   | --------------------------------------------------------------&gt; |
+   |                                |                                |
+   |                                | Open TCP socket                |
+   |                                | &lt;_____________________________ |
+   |                                |                                |
+   |                                | Request SOCKS 5 connection     |
+   |                                | &lt;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ |
+   |                                |                                |
+   |                                | Acknowledge SOCKS 5 connection |
+   |                                | /////////////////////////////&gt; |
+   |                                |                                |
+   | Send S5B acceptance                                             |
+   | &lt;-------------------------------------------------------------- |
+   |                                |                                |
+   | Open TCP socket                |                                |
+   | _____________________________&gt; |                                |
+   |                                |                                |
+   | Request SOCKS 5 connection     |                                |
+   | /////////////////////////////&gt; |                                |
+   |                                |                                |
+   | Acknowledge SOCKS 5 connection |                                |
+   | &lt;\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ |                                |
+   |                                |                                |
+   | Request activation             |                                |
+   | -----------------------------&gt; |                                |
+   |                                |                                |
+   | Acknowledge activation         |                                |
+   | &lt;----------------------------- |                                |
+   |                                |                                |
+   | Exchange data over S5B                                          |
+   | &lt;=============================================================&gt; |
+   |                                |                                |
+    </pre></div>
+  </div>
+  <div class="indent"><h3>6.3 <a name="mediated-proto" id="mediated-proto">Protocol</a></h3>
+    <div class="indent"><h3>6.3.1 <a name="mediated-proto-initiate" id="mediated-proto-initiate">Requester Initiates S5B Negotiation</a></h3>
+      <p>To initiate an S5B negotiation with the Target, the Requester sends network address information about one or more StreamHosts to the Target. In the case of a mediated connection, the Requester might include information only about the Proxy (as shown in the following example) or about the Proxy and itself.</p>
+      <p>The &lt;query/&gt; element MUST contain one or more &lt;streamhost/&gt; elements, each of which MUST possess the 'host', 'jid', and 'port' attributes. The &lt;query/&gt; element MUST possess a 'sid' attribute that specifies the Stream ID for this bytestream. The &lt;query/&gt; element MAY possess a 'mode' attribute whose value is "tcp" (the default) or "udp" (for which see <a href="#udp">Optional UDP Support</a>). The &lt;query/&gt; element MAY possess a 'dstaddr' attribute whose value is the Requester's calculated hash value for the SOCKS5 DST.ADDR field (see <a href="#muc">Use with Multi-User Chat</a>).</p>
+      <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Requester Initiates Negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='npq71g53'
+    to='target@example.org/bar'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         sid='vxf9n471bn46'&gt;
+    &lt;streamhost
+        host='24.24.24.1'
+        jid='streamer.example.com'
+        port='7625'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If the Target is willing to negotiate a bytestream, it proceeds as shown in the following sections.</p>
+    </div>
+    <div class="indent"><h3>6.3.2 <a name="mediated-proto-establish" id="mediated-proto-establish">Target Establishes SOCKS5 Connection with Proxy</a></h3>
+      <p>Next the Target attempts to open a standard TCP socket on the network address of the Proxy.</p>
+      <p>If the Target is able to open a TCP socket on the Proxy, it uses the SOCKS5 protocol to establish a SOCKS5 connection. In accordance with <span class="ref">RFC 1928</span>, the Target might need to authenticate in order to use the proxy. However, any authentication required is beyond the scope of this document.</p>
+      <p>Once the Target has successfully authenticated with the Proxy, it sends a CONNECT request (CMD = X'01') in order to continue the negotiation. The following rules apply:</p>
+      <ol>
+        <li>The hostname MUST be SHA1(SID + Requester JID + Target JID) where the definition of the SHA1 hashing algorithm is as specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc3174">RFC 3174</a></span>  [<a href="#nt-idp1659152">16</a>] and the output is hexadecimal-encoded (not binary); as noted above and under <a href="#muc">Use with Multi-User Chat</a>, the DST.ADDR value might have been provided directly from the Requester to the Target).</li>
+        <li>The port MUST be 0 (zero).</li>
+        <li>The JIDs provided MUST be the JIDs used for the IQ exchange between the Requester and the Target, which MAY be full JIDs (&lt;localpart@domain.tld/resource&gt; or &lt;domain.tld/resource&gt;) or bare JIDs (&lt;localpart@domain.tld&gt; or &lt;domain.tld&gt;).</li>
+        <li>The appropriate stringprep profiles (as specified in <span class="ref">RFC 6122</span>) MUST be applied to the JIDs before application of the SHA1 hashing algorithm.</li>
+      </ol>
+      <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Target Establishes SOCKS5 Connection with StreamHost</p><div class="indent"><pre class="prettyprint">
+CMD = X'01'
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 0
+      </pre></div>
+      <p class="caption"><a name="example-20" id="example-20"></a>Example 20. StreamHost Acknowledges Connection</p><div class="indent"><pre class="prettyprint">
+STATUS = X'00'
+      </pre></div>
+      <p>When replying to the Target in accordance with Section 6 of <span class="ref">RFC 1928</span>, the Proxy MUST set the BND.ADDR and BND.PORT to the DST.ADDR and DST.PORT values provided by the client in the connection request.</p>
+    </div>
+    <div class="indent"><h3>6.3.3 <a name="mediated-proto-ack" id="mediated-proto-ack">Target Acknowledges Bytestream</a></h3>
+      <p>After the Target has established a SOCKS5 connection with the Proxy, it replies to the initiate request with an IQ-result whose &lt;query/&gt; element contains a &lt;streamhost-used/&gt; child that specifies which StreamHost was used (in this case, the Proxy).</p>
+      <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Target Notifies Requester of Bytestream</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='npq71g53'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         sid='vxf9n471bn46'&gt;
+    &lt;streamhost-used jid='streamer.example.com'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>At this point, the Requester knows which StreamHost was used by the Target.</p>
+    </div>
+    <div class="indent"><h3>6.3.4 <a name="mediated-proto-initiator" id="mediated-proto-initiator">Requester Establishes SOCKS5 Connection with StreamHost</a></h3>
+      <p>Here, unlike the direct connection case described above, the Requester also needs to establish a SOCKS5 connection to the Proxy before the parties are able to use the Proxy to exchange data over the bytestream. Therefore the Requester will establish a connection to the SOCKS5 proxy in the same way the Target did (passing the same value for the CONNECT request), as shown in the following examples.</p>
+      <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Requester Connects to StreamHost</p><div class="indent"><pre class="prettyprint">
+CMD = X'01'
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 0
+      </pre></div>
+      <p class="caption"><a name="example-23" id="example-23"></a>Example 23. StreamHost Acknowledges Connection to Requester</p><div class="indent"><pre class="prettyprint">
+STATUS = X'00'
+      </pre></div>
+    </div>
+    <div class="indent"><h3>6.3.5 <a name="mediated-proto-activation" id="mediated-proto-activation">Activation of Bytestream</a></h3>
+      <p>Next the Requester needs to activate the bytestream with the Proxy. This is done by sending an IQ-set to the Proxy, including an &lt;activate/&gt; element whose XML character data specifies the full or bare JID of the Target.</p>
+      <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Requester Requests Activation of Bytestream</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='oqx6t1c9'
+    to='streamer.example.com'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         sid='vxf9n471bn46'&gt;
+    &lt;activate&gt;target@example.org/bar&lt;/activate&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>Using this information, with the SID and from address on the packet, the Proxy is able to activate the stream by hashing the SID + Requester JID + Target JID and comparing the result against the DST.ADDR it has received from the Target and Receiver. Although this provides a reasonable level of trust that the activation request came from the Requester, it does not guard against active or even passive attacks against the bytestreams negotiation (see the <a href="#security">Security Considerations</a> for information about potential hijacking of the negotiation).</p>
+      <p>If the Proxy can fulfill the request, it MUST respond to the Requester with an IQ-result.</p>
+      <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Proxy Informs Requester of Activation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='streamer.example.com'
+    id='oqx6t1c9'
+    to='requester@example.com/foo'
+    type='result'/&gt;
+      </pre></div>
+      <p>At this point the parties can begin exchanging data over the bytestream.</p>
+      <p>If the Proxy cannot fulfill the request, it MUST return an IQ-error to the Requester; the following conditions are defined:</p>
+      <ul>
+        <li>&lt;item-not-found/&gt; if the 'from' address does not match that of the Requester's full JID</li>
+        <li>&lt;not-allowed/&gt; if only one party (either Requester or Recipient, but not both) is connected to the Proxy</li>
+        <li>&lt;not-authorized/&gt; if the hashes do not match</li>
+        <li>&lt;internal-server-error/&gt; if the proxy cannot activate the bytestream because of some internal malfunction</li>
+      </ul>
+    </div>
+  </div>
+<h2>7.
+       <a name="muc" id="muc">Use with Multi-User Chat</a></h2>
+  <p>When one occupant of a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1685216">17</a>] conference sends an S5B invitation to another occupant, often the MUC room obscures the real JID of the Target from the Requester and the real JID of the Requester from the Target. This means that the two parties might not have the same view of the information needed to calculate the DST.ADDR. To overcome this problem, the Requester SHOULD calculate the DST.ADDR based on the SID, its real JID, and the room JID (room@host/nick) of the Target, then include the calculated hash as the value of a 'dstaddr' attribute on the &lt;query/&gt; element. The Requester then sends the IQ-set to the Target's room JID because it does not know the Target's real JID.</p>
+  <p>An example follows.</p>
+   <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Requester Initiates Negotiation Through MUC Room</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='npq71g53'
+    to='room@conference.example.net/Tget'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         dstaddr='416781edf1ae50bad01cb8509ba35b43952bc345'
+         sid='yia72g3v49j7'&gt;
+    &lt;streamhost
+        host='24.24.24.1'
+        jid='streamer.example.com'
+        port='7625'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The MUC room will then forward the IQ-set to the Target's real JID with a 'from' address of the Requester's room JID.</p>
+   <p class="caption"><a name="example-27" id="example-27"></a>Example 27. MUC Room Forwards Initiation Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='room@conference.example.net/Rter'
+    id='npq71g53'
+    to='target@example.org/bar'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+         dstaddr='416781edf1ae50bad01cb8509ba35b43952bc345'
+         sid='yia72g3v49j7'&gt;
+    &lt;streamhost
+        host='24.24.24.1'
+        jid='streamer.example.com'
+        port='7625'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Now the parties can proceed as defined for the direct or mediated connection. See the <a href="#security">Security Considerations</a> for information about potential hijacking of the negotiation.</p>
+<h2>8.
+       <a name="udp" id="udp">Optional UDP Support</a></h2>
+  <p>Support for UDP associations is strictly OPTIONAL. However, implementations that support UDP associations MUST adhere to the profile described in this section.</p>
+  <div class="indent"><h3>8.1 <a name="udp-disco" id="udp-disco">Discovering UDP Support</a></h3>
+    <p>If an implementation supports UDP associations, it MUST advertise that separately by returning a feature of 'http://jabber.org/protocol/bytestreams#udp' in response to <span class="ref">Service Discovery</span> information requests.</p>
+    <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Requester Sends Service Discovery Request to Target</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='pys51v35'
+    to='target@example.org/bar'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the Target supports UDP associations, it MUST include a feature of 'http://jabber.org/protocol/bytestreams#udp' in the service discovery result.</p>
+    <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Target Replies to Service Discovery Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='target@example.org/bar'
+    id='pys51v35'
+    to='requester@example.com/foo'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity
+        category='proxy'
+        type='bytestreams'
+        name='File Transfer Relay'/&gt;
+    &lt;feature var='http://jabber.org/protocol/bytestreams'/&gt;
+    &lt;feature var='http://jabber.org/protocol/bytestreams#udp'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.2 <a name="udp-request" id="udp-request">Requesting UDP Mode</a></h3>
+    <p>UDP associations are requested by setting the 'mode' attribute to a value of "udp" rather than "tcp".</p>
+    <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Initiation of Interaction (UDP)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='requester@example.com/foo'
+    id='xi2d1973'
+    to='target@example.org/bar'
+    type='set'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/bytestreams'
+	 mode='udp'
+         sid='mySID'&gt;
+    &lt;streamhost
+        host='192.168.4.1'
+        jid='requester@example.com/foo'
+        port='5086'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.3 <a name="udp-process" id="udp-process">UDP Process</a></h3>
+    <p>There is one main difference between UDP mode and TCP mode: rather than simply establishing a TCP connection, the Target and/or Requester MUST (1) establish a UDP association and then (2) initialize the UDP channel. In particular:</p>
+    <ul>
+      <li>If direct connection is followed, Target MUST complete UDP association and initialization of the UDP channel before informing Requester of success via the &lt;streamhost-used/&gt; element.</li>
+      <li>If mediated connection is followed, (1) Target MUST complete UDP association and initialization of the UDP channel before informing Requester of success via the &lt;streamhost-used/&gt; element, and (2) Requester MUST complete UDP association and initialization of the UDP channel before asking StreamHost to activate the bytestream.</li>
+    </ul>
+    <p>The processes for establishing the UDP association and for initializing the UDP channel are described below.</p>
+    <div class="indent"><h3>8.3.1 <a name="udp-process-assoc" id="udp-process-assoc">Establishing the UDP Association</a></h3>
+      <p>Once the Target has successfully authenticated with the Proxy over TCP (as described under <a href="#proto-establish">Target Establishes SOCKS5 Connection with StreamHost</a>), it MUST send a UDP ASSOCIATE request (CMD = X'03') to the host identified by the algorithm defined above.</p>
+      <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Target Requests UDP Association with StreamHost</p><div class="indent"><pre class="prettyprint">
+CMD = X'03'
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 0
+      </pre></div>
+      <p>The StreamHost then acknowledges this request:</p>
+      <p class="caption"><a name="example-32" id="example-32"></a>Example 32. StreamHost Acknowledges Request</p><div class="indent"><pre class="prettyprint">
+STATUS = X'00'
+      </pre></div>
+    </div>
+    <div class="indent"><h3>8.3.2 <a name="udp-process-init" id="udp-process-init">Initializing the UDP Channel</a></h3>
+      <p>After connecting to the StreamHost, the Target (direct connection) or both Target and Requester (mediated connection) MUST initialize the UDP channel. In order to do so, each sending entity MUST send a SOCKS5 UDP packet to the StreamHost on the same port used for the initial TCP connection (in the foregeoing example, a host of 192.168.4.1 and port of 5086), with DST.PORT set to '1' and DATA containing the sending entity's JID (i.e, the JID of either the Target or Requester).</p>
+      <p class="caption"><a name="example-33" id="example-33"></a>Example 33. Target or Requester Sends UDP Initialization Packet to StreamHost</p><div class="indent"><pre class="prettyprint">
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 1
+DATA = Target or Requester JID
+      </pre></div>
+      <p>Upon successful receipt by the StreamHost, the StreamHost MUST reply with a message notification indicating success:</p>
+      <p class="caption"><a name="example-34" id="example-34"></a>Example 34. StreamHost Notifies Target or Requester of UDP Success</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='streamer.example.com'
+    to='target@example.org/bar'
+    id='zy3v29h6'&gt;
+  &lt;udpsuccess xmlns='http://jabber.org/protocol/bytestreams' 
+              dstaddr='Value of Hash'/&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>The &lt;udpsuccess/&gt; element indicates that the StreamHost has received a UDP initialization packet. This element has a single attribute containing the DST.ADDR that was used in the UDP packet.</p>
+      <p>If Target is unable to initialize the UDP channel, it MUST return a &lt;remote-server-not-found/&gt; error to RequesteRequester.</p>
+      <p>Note: Since UDP is not reliable, the Target SHOULD resend the UDP packet if the reply notification is not received within a short time (a 5-second retry is RECOMMENDED). The StreamHost SHOULD ignore duplicate UDP initialization packets once it has replied with a notification.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>8.4 <a name="udp-ports" id="udp-ports">Exchanging UDP Packets</a></h3>
+    <p>Once the UDP association is established, UDP packets can be exchanged with the StreamHost. When a UDP packet is sent by either party, it MUST contain a 4-byte header (in addition to other possible headers, such as that of SOCKS5), which consists of the source virtual port and then the destination virtual port of the packet, both 16-bit values in network byte order. This allows the peers to multiplex many packets for different purposes over one session. The actual application data shall follow this header, and thus the payload size will always be "Application Data Size + 4".</p>
+    <p>For all packets sent to the StreamHost, DST.PORT is set to 0, and DATA contains the payload.</p>
+    <p class="caption"><a name="example-35" id="example-35"></a>Example 35. Sending UDP to StreamHost</p><div class="indent"><pre class="prettyprint">
+ATYP = X'03'
+DST.ADDR = SHA1 Hash of: (SID + Requester JID + Target JID)
+DST.PORT = 0
+DATA = (payload)
+    </pre></div>
+    <p>UDP packets sent from the StreamHost do not have any SOCKS5 headers, and so the payload shall be delivered as-is.</p>
+    <p>The programming interface for a SOCKS5 Bytestreams-aware UDP MUST report an available buffer space for UDP datagrams that is smaller than the actual space provided by the operating system and SOCKS5 layer if applicable. In other words, 4 more octets smaller.</p>
+  </div>
+<h2>9.
+       <a name="desc" id="desc">Formal Description</a></h2>
+  <div class="indent"><h3>9.1 <a name="desc-query" id="desc-query">&lt;query/&gt; Element</a></h3>
+    <p>The &lt;query/&gt; element is the container for all in-band communications. This element MUST be qualified by the "http://jabber.org/protocol/bytestreams" namespace. Depending on the use case, this element contains multiple &lt;streamhost/&gt; elements, a single &lt;streamhost-used/&gt; element, or a single &lt;activate/&gt; element.</p>
+    <p>The 'sid' attribute specifies the bytestream session identifier. The value of this attribute is any character data. This attribute is REQUIRED.</p>
+    <p>The 'mode' attribute specifies the mode to use, either "tcp" or "udp". If this attribute is not included, the default value of "tcp" MUST be assumed. This attribute is OPTIONAL.</p>
+    <p>The 'dstaddr' attribute specifies the Requester's calculated value for the DST.ADDR field and is communicated from Requester to Target in certain situations (see <a href="#muc">Use with Multi-User Chat</a>). This attribute is OPTIONAL.</p>
+    <p>The &lt;streamhost/&gt; element conveys the network connection information. At least one instance MUST be present in the initial IQ-set from the Requester to the Target. If multiple instances of this element are present, each one MUST be a separate host/port combination.</p>
+    <p>The &lt;streamhost-used/&gt; element informs the Requester about the StreamHost to which the Target has connected. It MUST be present in the IQ-set from the Target to the Requester, and there MUST be only one instance.</p>
+    <p>The &lt;activate/&gt; element is used to request activation of a unidirectional or bidirectional bytestream. It MUST be present in the IQ-set sent from the Requester to the Proxy after the Requester receives an IQ-result from the Target, and there MUST be only one instance.</p>
+  </div>
+  <div class="indent"><h3>9.2 <a name="desc-streamhost" id="desc-streamhost">&lt;streamhost/&gt; Element</a></h3>
+    <p>The &lt;streamhost/&gt; element contains the bytestream connection information. This element has attributes for the StreamHost's JID, network host/address, and network port. This element MUST NOT contain any XML character data or child elements.</p>
+    <p>The "jid" attribute specifies the StreamHost's JID. This attribute MUST be present, and MUST be a valid JID for communication over XMPP.</p>
+    <p>The "host" attribute specifies the host to connect to. This attribute MUST be present. The value MUST be either an IPv4 or IPv6 address, or a resolvable DNS domain name.</p>
+    <p>The "port" attribute specifies the port to connect to. This attribute MAY be present. The value MUST be a valid port number in decimal form. If not specified, the port value is "1080" (in accordance with <span class="ref">RFC 1928</span>).</p>
+    <p>When communicating the available hosts, the Requester MUST include the host and port.</p>
+  </div>
+  <div class="indent"><h3>9.3 <a name="desc-streamhost-used" id="desc-streamhost-used">&lt;streamhost-used/&gt; Element</a></h3>
+    <p>The &lt;streamhost-used/&gt; element informs the Requester about the StreamHost to which the Target has connected. This element has a single attribute for the JID of the StreamHost to which the Target connected. This element MUST NOT contain any XML character data or child elements.</p>
+    <p>The "jid" attribute specifies the JID of the StreamHost. This attribute MUST be present, and MUST be a valid JID for communication over XMPP.</p>
+  </div>
+  <div class="indent"><h3>9.4 <a name="desc-activate" id="desc-activate">&lt;activate/&gt; Element</a></h3>
+    <p>The &lt;activate/&gt; element is sent from the Requester to the Proxy in order to formally start the bytestream. This element is always empty and has no defined attributes.</p>
+  </div>
+  <div class="indent"><h3>9.5 <a name="desc-udpsuccess" id="desc-udpsuccess">&lt;udpsuccess/&gt; Element</a></h3>
+    <p>The &lt;udpsuccess/&gt; element is sent from the StreamHost to the Target or Requester to indicate that the StreamHost has received a UDP initialization packet.</p>
+    <p>This element is always empty and has one defined attribute, "dstaddr", which specifies the DST.ADDR that was used in the UDP datagram that the StreamHost received.</p>
+  </div>
+<h2>10.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>10.1 <a name="impl-streamhost" id="impl-streamhost">StreamHost Requirements</a></h3>
+    <p>A StreamHost MUST support TCP connections.</p>
+    <p>A StreamHost SHOULD:</p>
+    <ol>
+      <li>Allow bi-directional bytestreaming between the Requester and Target.</li>
+      <li>In the absence of explicit negotiation of multicasting with the Requester (methods for which are out of scope in this document), allow only one Target to connect to a bytestream.</li>
+      <li>Track sessions based on a combination of the StreamID and the Requester's full or bare JID, thus allowing a Requester to create more than one simultaneous session.</li>
+      <li>Ignore any bytes sent before the bytestream is activated.</li>
+    </ol>
+    <p>A StreamHost MAY:</p>
+    <ol>
+      <li>Support UDP associations in addition TCP connections.</li>
+      <li>Ignore the DST.ADDR and DST.PORT parameters if desired.</li>
+    </ol>
+  </div>
+  <div class="indent"><h3>10.2 <a name="impl-socks5" id="impl-socks5">SOCKS5 Parameter Mapping</a></h3>
+    <p>To facilitate the usage of SOCKS5, command parameters MUST be mapped to the appropriate values. Parameters not specified in the table below SHOULD be used as defined in RFC 1928.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Request/Parameter Mapping for CONNECT</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Parameter</th><th>Value</th></tr>
+      <tr class="body"><td>CMD</td><td>1 (CONNECT)</td></tr>
+      <tr class="body"><td>ATYP</td><td>Hardcoded to 3 (DOMAINNAME) in this usage</td></tr>
+      <tr class="body"><td>DST.ADDR</td><td>SHA1 Hash of: (SID + Requester JID + Target JID)</td></tr>
+      <tr class="body"><td>DST.PORT</td><td>0</td></tr>
+    </table></div>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Request/Parameter Mapping for UDP ASSOCIATE</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Parameter</th><th>Value</th></tr>
+      <tr class="body"><td>CMD</td><td>3 (UDP ASSOCIATE)</td></tr>
+      <tr class="body"><td>ATYP</td><td>Hardcoded to 3 (DOMAINNAME) in this usage</td></tr>
+      <tr class="body"><td>DST.ADDR</td><td>SHA1 Hash of: (SID + Requester JID + Target JID)</td></tr>
+      <tr class="body"><td>DST.PORT</td><td>0</td></tr>
+    </table></div>
+    <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Request/Parameter Mapping for UDP Packets</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Parameter</th><th>Value</th></tr>
+      <tr class="body"><td>ATYP</td><td>Hardcoded to 3 (DOMAINNAME) in this usage</td></tr>
+      <tr class="body"><td>DST.ADDR</td><td>SHA1 Hash of: (SID + Requester JID + Target JID)</td></tr>
+      <tr class="body"><td>DST.PORT</td><td>0 or 1, for payload or initialization packets, respectively.</td></tr>
+    </table></div>
+  </div>
+<h2>11.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <div class="indent"><h3>11.1 <a name="security-enc" id="security-enc">Confidentiality and Integrity</a></h3>
+    <p>This protocol does not include a method for securing or encrypting the data sent over a SOCKS5 bytetream. If such security is desired, it MUST be negotiated over the bytestream (once established) using standard protocols such as SSL or TLS. Negotiation of such security methods is outside the scope of this document.</p>
+  </div>
+  <div class="indent"><h3>11.2 <a name="security-hijack" id="security-hijack">Session Hijacking</a></h3>
+    <p>In the absence of end-to-end encryption of the negotiation stanzas between the Requester and the Target, a passive attacker (eavesdropper) could authenticate to the bytestream before the Target, thus preventing the Target from connecting and also hijacking the data sent from the Requester.</p>
+  </div>
+  <div class="indent"><h3>11.3 <a name="security-dos" id="security-dos">Denial of Service</a></h3>
+    <p>A SOCKS5 Bytestreams Proxy can be subject to denial of service attacks (e.g., generating a large number of session requests that are never activated). Proxy deployments are advised to monitor usage from particular entities and blacklist them if their usage is excessive.</p>
+  </div>
+  <div class="indent"><h3>11.4 <a name="security-sha1" id="security-sha1">Use of SHA-1</a></h3>
+    <p>The use of the SHA-1 algorithm to hash the SID, Requester's JID, and Target's JID is not security-critical. Therefore, the known weaknesses of SHA-1 are not of significant concern in this protocol.</p>
+  </div>
+<h2>12.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1768592">18</a>].</p>
+  <p>However, it is possible that a future version of this document will request assignment of a TCP/UDP port for SOCKS5 Bytestreams.</p>
+<h2>13.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>13.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1778512">19</a>] includes 'http://jabber.org/protocol/bytestreams' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>13.2 <a name="registrar-discovar" id="registrar-discovar">Service Discovery Features</a></h3>
+    <p>The XMPP Registrar includes 'http://jabber.org/protocol/bytestreams#udp' in its registry of service discovery features.</p>
+  </div>
+  <div class="indent"><h3>13.3 <a name="registrar-discoid" id="registrar-discoid">Service Discovery Category/Type</a></h3>
+    <p>The XMPP Registrar includes the "proxy" category and associated "bytestreams" type in the Service Discovery registry. The registry submission is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+  &lt;category&gt;
+    &lt;name&gt;proxy&lt;/name&gt;
+    &lt;desc&gt;Proxy servers or services&lt;/desc&gt;
+    &lt;type&gt;
+      &lt;name&gt;bytestreams&lt;/name&gt;
+      &lt;desc&gt;A proxy for SOCKS5 bytestreams&lt;/desc&gt;
+      &lt;doc&gt;XEP-0065&lt;/doc&gt;
+    &lt;/type&gt;
+  &lt;/category&gt;
+    </pre></div>
+  </div>
+<h2>14.
+       <a name="schema" id="schema">Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/bytestreams'
+    xmlns='http://jabber.org/protocol/bytestreams'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0065: http://www.xmpp.org/extensions/xep-0065.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element ref='streamhost' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='streamhost-used' minOccurs='0'/&gt;
+        &lt;xs:element name='activate' type='xs:string' minOccurs='0'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='dstaddr' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='mode' use='optional' default='tcp'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='tcp'/&gt;
+            &lt;xs:enumeration value='udp'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute name='sid' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='streamhost'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='host' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='port' type='xs:string' use='optional' default='1080'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='streamhost-used'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='udpsuccess'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='dstaddr' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>15.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Thanks to Marcus Lundblad, Henning Staib, and Matthew Wild for their feedback.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0065<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.8<br />
+            Last Updated: 2011-04-20<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, RFC 1928, RFC 3174, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: bytestreams<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/bytestreams.xsd">http://www.xmpp.org/schemas/bytestreams.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0065.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0065.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0065.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Dave Smith</h3><p class="indent">
+        Email:
+        <a href="mailto:dizzyd@jabber.org">dizzyd@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:dizzyd@jabber.org">dizzyd@jabber.org</a><br /></p><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Justin Karneges</h3><p class="indent">
+        Email:
+        <a href="mailto:justin@affinix.com">justin@affinix.com</a><br />
+        JabberID: 
+        <a href="xmpp:justin@andbit.net">justin@andbit.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1528320" id="nt-idp1528320">1</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp1531040" id="nt-idp1531040">2</a>. XEP-0234: Jingle File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0234.html">http://xmpp.org/extensions/xep-0234.html</a>&gt;.</p><p><a name="nt-idp1534464" id="nt-idp1534464">3</a>. RFC 793: Transmission Control Protocol &lt;<a href="http://tools.ietf.org/html/rfc0793">http://tools.ietf.org/html/rfc0793</a>&gt;.</p><p><a name="nt-idp1537008" id="nt-idp1537008">4</a>. RFC 768: User Datagram Protocol &lt;<a href="http://tools.ietf.org/html/rfc0768">http://tools.ietf.org/html/rfc0768</a>&gt;.</p><p><a name="nt-idp1540464" id="nt-idp1540464">5</a>. RFC 1928: SOCKS Protocol Version 5 &lt;<a href="http://tools.ietf.org/html/rfc1928">http://tools.ietf.org/html/rfc1928</a>&gt;.</p><p><a name="nt-idp1546848" id="nt-idp1546848">6</a>. Before version 1.8 of this document a Requester was known as an Initiator.</p><p><a name="nt-idp1555584" id="nt-idp1555584">7</a>. XEP-0260: Jingle SOCKS5 Bytestreams Transport Method &lt;<a href="http://xmpp.org/extensions/xep-0260.html">http://xmpp.org/extensions/xep-0260.html</a>&gt;.</p><p><a name="nt-idp1558352" id="nt-idp1558352">8</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp1563808" id="nt-idp1563808">9</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1576016" id="nt-idp1576016">10</a>. Before version 1.8 of this specification, the &lt;query/&gt; element in this use case possessed a 'sid' attribute; however, it is unnecessary for the Requester to specify the StreamID here and it would be harmful for the Proxy to reserve the StreamID at this point because the StreamID might never be used (thus forcing the Proxy to establish and maintain state about the bytestream) and because the Requester might use the Proxy's services for multiple different streams.</p><p><a name="nt-idp1581152" id="nt-idp1581152">11</a>. RFC 5952: A Recommendation for IPv6 Address Text Representation &lt;<a href="http://tools.ietf.org/html/rfc5952">http://tools.ietf.org/html/rfc5952</a>&gt;.</p><p><a name="nt-idp1583744" id="nt-idp1583744">12</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1613280" id="nt-idp1613280">13</a>. XEP-0260: Jingle SOCKS5 Bytestreams Transport Method &lt;<a href="http://xmpp.org/extensions/xep-0260.html">http://xmpp.org/extensions/xep-0260.html</a>&gt;.</p><p><a name="nt-idp1619216" id="nt-idp1619216">14</a>. RFC 3174: US Secure Hash Algorithm 1 (SHA1) &lt;<a href="http://tools.ietf.org/html/rfc3174">http://tools.ietf.org/html/rfc3174</a>&gt;.</p><p><a name="nt-idp1628608" id="nt-idp1628608">15</a>. RFC 6122: Extensible Messaging and Presence Protocol (XMPP): Address Format &lt;<a href="http://tools.ietf.org/html/rfc6122">http://tools.ietf.org/html/rfc6122</a>&gt;.</p><p><a name="nt-idp1659152" id="nt-idp1659152">16</a>. RFC 3174: US Secure Hash Algorithm 1 (SHA1) &lt;<a href="http://tools.ietf.org/html/rfc3174">http://tools.ietf.org/html/rfc3174</a>&gt;.</p><p><a name="nt-idp1685216" id="nt-idp1685216">17</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1768592" id="nt-idp1768592">18</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1778512" id="nt-idp1778512">19</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.8 (2011-04-20)</h4><div class="indent">
+      <ul>
+        <li>Removed zeroconf attribute.</li>
+        <li>Removed 'sid' attribute from address query examples because it is unnecessary in that use case.</li>
+        <li>Added text about use in Multi-User Chat, including new 'dstaddr' attribute.</li>
+        <li>Removed requirement that the StreamHost should not drop any bytes sent before the bytestream is activated, since that behavior introduced the possibility of a denial of service attack.</li>
+        <li>Removed length limit on 'sid' attribute.</li>
+        <li>Defined the security considerations in a more thorough manner.</li>
+        <li>Removed the anomalous Formal Use Case text for consistency with all other XEPs.</li>
+        <li>Refactored the text in various ways to make it more readable.</li>
+        <li>Changed Initiator to Requester to remove ambiguity in Jingle use cases.</li>
+        <li>Clarified a number of small technical points in the text and examples.</li>
+      </ul>
+     (psa)
+    </div><h4>Version 1.7 (2007-05-21)</h4><div class="indent"><p>Incorporated errata: specified format for SHA1 output; specified BND.ADDR and BND.PORT for SOCKS5 reply; removed extraneous SOCKS5 acknowledgement example from Section 4.9; clarified rules for creation of SOCKS5 connection request in Section 4.6; added examples to Section 4.8; specified that ATYP value is hardcoded to 3 in this usage.</p> (psa)
+    </div><h4>Version 1.6 (2004-11-12)</h4><div class="indent"><p>Added UDP support (OPTIONAL).</p> (ds/psa)
+    </div><h4>Version 1.5 (2004-06-29)</h4><div class="indent"><p>Added requirement to apply stringprep profiles before SHA1 hashing; added reference to RFC 3174.</p> (psa)
+    </div><h4>Version 1.4 (2004-06-28)</h4><div class="indent"><p>Cleaned up narratives to reflect current practices and removed unnecessary authentication references; fixed mismatch SOCKS5 parameter table values.</p> (ds)
+    </div><h4>Version 1.3 (2003-09-24)</h4><div class="indent"><p>Added disco#info &lt;identity/&gt; and corresponding XMPP Registrar submission; added XMPP error handling.</p> (psa)
+    </div><h4>Version 1.2 (2003-07-15)</h4><div class="indent"><p>Removed SIDs from the result queries, key off the IQ 'id' attribute instead. Added the disco exchange for finding available proxies.</p> (rwe)
+    </div><h4>Version 1.1 (2003-07-09)</h4><div class="indent"><p>Changed srvid to zeroconf; cleaned up use cases; updated the schema.</p> (ds)
+    </div><h4>Version 1.0 (2003-04-21)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.7 (2003-03-04)</h4><div class="indent"><p>Clarified that this proposal uses an adaptation of the SOCKS5 protocol, not the full protocol; replaced DTD with schema; added security considerations.</p> (psa)
+    </div><h4>Version 0.6 (2003-01-27)</h4><div class="indent"><p>Added service discovery example; added 'srvid' attribute to streamhost element and required inclusion of either 'srvid' or 'port' attribute; improved the algorithms for generating SOCKS5 UNAME and PASSWD parameters; specified that the DST.ADDR and DST.PORT parameters can be ignored; removed references to connected/disconnected notification, bidirectional bytestreams, and multiple targets; updated implementation notes.</p> (psa/ds)
+    </div><h4>Version 0.5 (2002-12-20)</h4><div class="indent"><p>Specified option of "reversing the connection" (Target becomes Initiator); added more error cases; resurrected and cleaned up formal use case.</p> (psa)
+    </div><h4>Version 0.4 (2002-12-19)</h4><div class="indent"><p>Added section on connected/disconnected notifications sent from Proxy to Initiator; cleaned up several examples; specified more error conditions; clarified the formal descriptions; added implementation notes and future considerations.</p> (psa, mm)
+    </div><h4>Version 0.3 (2002-12-17)</h4><div class="indent"><p>Added lots of detail to the narrative and protocol.</p> (psa)
+    </div><h4>Version 0.2 (2002-12-16)</h4><div class="indent"><p>Added SOCKS info.</p> (ds)
+    </div><h4>Version 0.1 (2002-12-13)</h4><div class="indent"><p>Initial version.</p> (ds)
+    </div></div><hr /><p>END</p></body></html>

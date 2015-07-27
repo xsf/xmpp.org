@@ -1,0 +1,833 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0037: DSPS - Data Stream Proxy Service</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="DSPS - Data Stream Proxy Service" /><meta name="DC.Creator" content="David Sutton" /><meta name="DC.Creator" content="&quot;Bac9&quot; " /><meta name="DC.Description" content="A proposal for proxy support in Jabber." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-09-18" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0037" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-0037: DSPS - Data Stream Proxy Service</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A proposal for proxy support in Jabber.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>David Sutton, "Bac9" </td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Rejected</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>Version 0.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-09-18</td></tr></table><hr /><p style="color:red">WARNING: This document has been Rejected by the XMPP Council. Implementation of the protocol described herein is not recommended under any circumstances.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp604464">Introduction</a><br />2.  <a href="#sect-idp605536">Startup</a><br />3.  <a href="#sect-idp606672">General Operation</a><br />   
+      3.1.  <a href="#sect-idp607056">Stream Creation/Relay {optional}</a><br />   
+      3.2.  <a href="#sect-idp621664">Connection waiting</a><br />   
+      3.3.  <a href="#sect-idp1482992">Establishing prepared connection</a><br />      
+      3.3.1.  <a href="#sect-idp1484528">DSPS relay setup {optional}</a><br />      
+      3.3.2.  <a href="#sect-idp1491552">Connecting to DSPS via HTTP method {optional}</a><br />      
+      3.3.3.  <a href="#sect-idp1498304">Connecting to DSPS via SSL method {optional}</a><br />      
+      3.3.4.  <a href="#sect-idp1503792">Connecting to DSPS via default method</a><br />   
+      3.4.  <a href="#sect-idp1526848">Stream administration</a><br />      
+      3.4.1.  <a href="#sect-idp1546928">Invitation to stream {optional}</a><br />      
+      3.4.2.  <a href="#sect-idp1554080">Dropping from stream</a><br />   
+      3.5.  <a href="#sect-idp1564736">Invitation reply</a><br />      
+      3.5.1.  <a href="#sect-idp1565712">Accepting an invite</a><br />      
+      3.5.2.  <a href="#sect-idp1571552">Rejecting an invite</a><br />   
+      3.6.  <a href="#sect-idp1577360">Disconnection handling</a><br />   
+      3.7.  <a href="#sect-idp1584944">Ending a connection</a><br />   
+      3.8.  <a href="#sect-idp1586416">Stream use</a><br />   
+      3.9.  <a href="#sect-idp1594320">Stream information</a><br />      
+      3.9.1.  <a href="#sect-idp1595360">Stream peer listing</a><br />      
+      3.9.2.  <a href="#sect-idp1607568">Stream status listing</a><br />   
+      3.10.  <a href="#sect-idp1628800">Stream shutdown</a><br />   
+      3.11.  <a href="#sect-idp1631168">Error message format</a><br />4.  <a href="#sect-idp1634704">Possible applications</a><br />   
+      4.1.  <a href="#sect-idp1635200">File transfer</a><br />   
+      4.2.  <a href="#sect-idp1637504">VoIP</a><br />   
+      4.3.  <a href="#sect-idp1638736">Multicast</a><br />   
+      4.4.  <a href="#sect-idp1640576">File Storage</a><br />5.  <a href="#sect-idp1642224">Why DSPS instead of PASS</a><br />   
+      5.1.  <a href="#sect-idp1643296">Ports</a><br />   
+      5.2.  <a href="#sect-idp1645568">Knowledge of IP</a><br />   
+      5.3.  <a href="#sect-idp1647504">IP Addresses</a><br />   
+      5.4.  <a href="#sect-idp1649248">Intuitiveness</a><br />   
+      5.5.  <a href="#sect-idp1651360">Scalability</a><br />6.  <a href="#sect-idp1653392">DSPS with P2P</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp604464" id="sect-idp604464">Introduction</a></h2>
+
+  <p>Data Stream Proxy Service (DSPS) is designed to be a common stream protocol for multicast (unicast as special case) over P2S2P (P2P as special case) connections.</p>
+
+<h2>2.
+       <a name="sect-idp605536" id="sect-idp605536">Startup</a></h2>
+
+  <p>This document follows DSPS protocol version 0.5. Any XML data not explicitly defined or mentioned will be ignored without error. On startup, full fledged DSPS starts listening on port 5290 (and 80 if HTTP handshake implemented).</p>
+
+<h2>3.
+       <a name="sect-idp606672" id="sect-idp606672">General Operation</a></h2>
+
+  <div class="indent"><h3>3.1 <a name="sect-idp607056" id="sect-idp607056">Stream Creation/Relay {optional}</a></h3>
+
+    <p><span class="em">(optional)</span> Creating or modifying stream is done like so:</p>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1'
+  type='get'
+  from='rob@nauseum.org/dspsclient' 
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a44'&gt;
+  &lt;query type='create' 
+    xmlns='jabber:iq:dsps'
+    minthroughput='1.5KB'
+    maxpublic='20'&gt;
+    &lt;peer port='5290'&gt;
+      dsps.myjabber.net/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33
+    &lt;/peer&gt;
+    &lt;comment&gt;public comment&lt;/comment&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">"to"</span> with resource implies reconnection to previous relay stream with previously supplied credentials and authentication as per section "DSPS relay setup", otherwise implies creation of new stream where creator is granted "master" rights.</li>
+      <li><span class="strong">"minthroughput"</span> <span class="em">(optional)</span> is minimum 16 second average throughput below which peers will be disconnected (but not dropped). Checked after every unit of outgoing transfer against the fourth value returned by "who" query for each peer. Legal only upon initial creation of stream. If omitted or negative, 0 is assumed.</li>
+      <li><span class="strong">"maxpublic"</span> <span class="em">(optional)</span> is maximum number of peers that can join without invitation. If omitted or negative, 0 is assumed. If positive, DSPS generates globally unique id for public peers to acknowledge, reported within "stats" message. Said id remains constant for life of stream.</li>
+      <li><span class="strong">&lt;peer/&gt;</span> <span class="em">(optional)</span> full JID of stream on another DSPS. Relay stream will be treated using "slave" rights. Legal only upon initial creation of stream. Multiple such blocks tried in series until successful connection. First successful (last if all failed) remembered by DSPS, all successive &lt;peer/&gt; ignored.. On connection, DSPS initiates handshake using peer's full JID and contents of block for destination's full JID to the relay destination as per section "Connecting to DSPS via default method". Authentication is done as per section "DSPS relay setup". Upon successful handshake, DSPS sends presence notification to peer as per section "Acknowledge of DSPS connection".</li>
+      <li><span class="strong">"port"</span> <span class="em">(optional)</span> for connecting to destination DSPS. If omitted, default is assumed.</li>
+      <li><span class="strong">&lt;comment/&gt;</span> <span class="em">(optional)</span> all such blocks reported in "stats" message. Multiple such blocks allowed. Block may contain a full XML stack of elements. No order implied for "stats" message.</li>
+    </ul>
+
+    <p>Possible failure messages:</p>
+
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: </p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Code</th><th>Message</th><th>Description</th></tr>
+      <tr class="body"><td>405</td><td>Method Not Allowed</td><td>Attempt at reconnect to relay without existing credentials, relay still connected, &lt;peer/&gt; block present in reconnect request, or feature not supported</td></tr>
+      <tr class="body"><td>504</td><td>Gateway Timeout</td><td>All destination DSPS are unreachable.</td></tr>
+    </table></div>
+
+  </div>
+
+  <div class="indent"><h3>3.2 <a name="sect-idp621664" id="sect-idp621664">Connection waiting</a></h3>
+
+    <p>DSPS creates "id" (empty string is legal), used in "who" replies and notifies client of waiting connection like so:</p>
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1' 
+  type='result'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' 
+  to='rob@nauseum.org/dspsclient'&gt;
+  &lt;query type='create' xmlns='jabber:iq:dsps'
+    wait='10'
+    host='dsps.jabber.org'
+    port='5290'
+    minthroughput='1.5KB'
+    protocol='0.5'&gt;
+    &lt;feature type='http' version='1.1'/&gt;
+    &lt;feature type='ssl' version='3.0'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">"from"</span> full JID of DSPS, internally globally unique. Used in handshake and every subsequent communication with stream. May differ with the one specified in "invite" message.</li>
+      <li><span class="strong">"wait"</span> amount of time in <span class="strong">milliseconds</span> that DSPS will wait for client to initiate handshake. If timeout occurs, DSPS will totally forget prepared connection and act accordingly.</li>
+      <li><span class="strong">"host"</span> <span class="em">(optional)</span> for handshake and data stream. If omitted default from the "from" is assumed. Intended for P2P connections to be able to report alternate hostname or IP for connection.</li>
+      <li><span class="strong">"port"</span> <span class="em">(optional)</span> for handshake and data stream. If omitted default is assumed.</li>
+      <li><span class="strong">"minthroughput"</span> value from "create".</li>
+      <li><span class="strong">"protocol"</span> version this DSPS supports.</li>
+      <li><span class="strong">&lt;feature/&gt;</span> <span class="em">(optional)</span> supported by this DSPS. Type and version are properties and additional data stored in body. HTTP stream will not follow HTTP protocol. SSL handshake performed encrypted. Both HTTP and SSL connections are only between client and DSPS.</li>
+    </ul>
+
+  </div>
+
+  <div class="indent"><h3>3.3 <a name="sect-idp1482992" id="sect-idp1482992">Establishing prepared connection</a></h3>
+
+    <p>Upon receipt of message as per section "Connection waiting", client can either ignore it and connection will timeout, or connect to the DSPS directly via any supported connection method or via relay. There may be a maximum of 1 (one) established connection to DSPS from any Client_full_JID + DSPS_full_JID pair, deviations are handles as per section "Connecting to DSPS via default method". DSPS will not discriminate method via which direct connection is made, even if prior to "disconnect" a different method was used. Any packet from an unauthorized connection is ignored without reporting an error.</p>
+
+    <div class="indent"><h3>3.3.1 <a name="sect-idp1484528" id="sect-idp1484528">DSPS relay setup {optional}</a></h3>
+
+      <p>Client may request another DSPS to relay this connection as per section "Stream Creation/Relay", utilizing the "create" body. There is no limit on length of relay chain. Upon initiation of handshake with destination, DSPS reports key like so (message sequence unrelated to current DSPS handshake):</p>
+
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1'
+  type='get'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='rob@nauseum.org/dspsclient'&gt;
+  &lt;query type='create' xmlns='jabber:iq:dsps'&gt;acDgH63I27Gb1&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"get"</span> denotes request for auth key.</li>
+        <li><span class="strong">"create"</span> body contains key returned by destination.</li>
+      </ul>
+
+      <p>Client must send said key to destination as per section "Connecting to DSPS via default method" and send response to DSPS (which will be transmitted to destination) like so:</p>
+
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1'
+  type='result'
+  from='rob@nauseum.org/dspsclient'
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  &lt;query type='create' xmlns='jabber:iq:dsps'&gt;acDgH63I27Gb1&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"result"</span> denotes reply with auth key.</li>
+        <li><span class="strong">"create"</span> body contains key returned by destination.</li>
+      </ul>
+
+    </div>
+
+    <div class="indent"><h3>3.3.2 <a name="sect-idp1491552" id="sect-idp1491552">Connecting to DSPS via HTTP method {optional}</a></h3>
+
+      <p>Client must connect to DSPS on port 80 and initiate handshake. This may be attempted after "create" result received or "disconnect" occurred, and prior to "wait" timeout expiring, then send HTTP request like so:</p>
+
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+GET /DSPS/STREAM/ HTTP/1.0&lt;CR&gt;
+Host: dsps.server&lt;CR&gt;
+&lt;CR&gt;
+</pre></div>
+
+      <p>And will receive reply from DSPS before the start of data stream, like so:</p>
+
+<p class="caption"><a name="example-6" id="example-6"></a>Example 6. </p><div class="indent"><pre class="prettyprint">
+HTTP/1.0 200 OK&lt;CR&gt;
+Content-Type: application/octet-stream&lt;CR&gt;
+&lt;CR&gt;
+</pre></div>
+
+      <p>Upon completion, Client must resume DSPS handshake as per either section "Connecting to DSPS via default method" or section "Connecting to DSPS via SSL method" (if applicable). Subsequent data will not follow HTTP protocol. On error connection closed immediately with optional error messages.</p>
+
+      <p>Possible failure messages:</p>
+
+      <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: </p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Code</th><th>Message</th><th>Description</th></tr>
+        <tr class="body"><td>401</td><td>Unauthorized</td><td><span class="em">(optional)</span> Returned if any error in HTTP handshake.</td></tr>
+      </table></div>
+
+    </div>
+
+    <div class="indent"><h3>3.3.3 <a name="sect-idp1498304" id="sect-idp1498304">Connecting to DSPS via SSL method {optional}</a></h3>
+
+      <p>Client must connect to DSPS on specified port and initiate handshake. This may be attempted after "create" result received or "disconnect" occurred, and prior to "wait" timeout expiring, then send following on stream:</p>
+      
+<p class="caption"><a name="example-7" id="example-7"></a>Example 7. </p><div class="indent"><pre class="prettyprint">starttls&lt;CR&gt;</pre></div>
+
+      <p>Next, regular TLS handshake is initiated. Upon completion, Client must resume DSPS handshake as per section "Connecting to DSPS via default method". On error connection closed immediately with optional error messages.</p>
+
+      <p>Possible failure messages:</p>
+
+      <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: </p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Code</th><th>Message</th><th>Description</th></tr>
+        <tr class="body"><td>401</td><td>Unauthorized</td><td><span class="em">(optional)</span> Returned if any error in SSL handshake.</td></tr>
+      </table></div>
+
+    </div>
+
+    <div class="indent"><h3>3.3.4 <a name="sect-idp1503792" id="sect-idp1503792">Connecting to DSPS via default method</a></h3>
+
+      <p>Client must connect to DSPS on specified port and initiate handshake. May be attempted after "create" result received or "disconnect" occurred, and prior to "wait" timeout expiring. Standard and SSL handshakes are identical in decrypted state and take the form of:</p>
+
+<p class="caption"><a name="example-8" id="example-8"></a>Example 8. </p><div class="indent"><pre class="prettyprint">Client_full_JID DSPS_full_JID&lt;CR&gt;</pre></div>
+
+      <ul>
+        <li><span class="strong">"Client_full_JID"</span> client full JID as supplied in either the "create" or "acknowledge" message.</li>
+        <li><span class="strong">"DSPS_full_JID"</span> DSPS full JID as supplied in "from" field of "create" result message from section "Connection waiting"</li>
+        <li><span class="strong">&lt;CR&gt;</span> regular carriage return, commonly referred to as the newline character.</li>
+      </ul>
+
+      <p>For example, the appropriate string for the above request would be:</p>
+
+<p class="caption"><a name="example-9" id="example-9"></a>Example 9. </p><div class="indent"><pre class="prettyprint">rob@nauseum.org/dspsclient dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33</pre></div>
+
+      <p>If Client_full_JID and DSPS_full_JID do not have an associated stream, are no longer valid, (e.g. timeout reached or client removed from stream), or connection from said Client_full_JID + DSPS_full_JID pair is in use (i.e. client is still connected to it), connection is closed immediately with possible optional error messages reported. Otherwise DSPS returns uniquely generated key followed by a &lt;CR&gt; like so:</p>
+
+<p class="caption"><a name="example-10" id="example-10"></a>Example 10. </p><div class="indent"><pre class="prettyprint">uGhhb74d21</pre></div>
+
+      <p>Client must now send key to DSPS via XML stream like so:</p>
+
+<p class="caption"><a name="example-11" id="example-11"></a>Example 11. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1'
+  type='get'
+  from='rob@nauseum.org/dspsclient'
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'&gt;
+  &lt;query type='auth' xmlns='jabber:iq:dsps'&gt;uGhhb74d21&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"get"</span> denotes request for next auth key.</li>
+        <li><span class="strong">"auth"</span> body contains key returned by DSPS.</li>
+      </ul>
+
+      <p>DSPS will now check key, if not valid, close connection, report possible optional error message and resume waiting on original key. If valid, generate new key and send to client like so:</p>
+
+<p class="caption"><a name="example-12" id="example-12"></a>Example 12. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps1'
+  type='result'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='rob@nauseum.org/dspsclient'
+  &lt;query type='auth' xmlns='jabber:iq:dsps'&gt;qgqB42Ij784&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"result"</span> denotes return of next auth key.</li>
+        <li><span class="strong">"auth"</span> body contains key returned by DSPS.</li>
+      </ul>
+
+      <p>Client must now send received key to DSPS via the stream followed by a &lt;CR&gt;. Once received, DSPS checks key, on mismatch connection is closed immediately with possible optional error messages reported, waiting on key is resumed. Upon successful handshake a message is sent to members of the stream in accordance with the following rules; If the client had type "master" connection, all members of the stream get notified. If the client had type "slave" connection, only other type "master" members get notified. The message takes the form of:</p>
+
+<p class="caption"><a name="example-13" id="example-13"></a>Example 13. </p><div class="indent"><pre class="prettyprint">
+  &lt;iq
+  id='dsps2'
+  type='set'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='foo@bar.com/resource'&gt;
+  &lt;query type='presence' xmlns='jabber:iq:dsps'&gt;
+  &lt;peer status='connect'&gt;JID&lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"presence"</span> denotes presence change. Body may contain multiple &lt;peer/&gt; blocks where same JID peers must be placed in chronological order relative to each other from start to end of message.</li>
+        <li><span class="strong">&lt;peer/&gt;</span> body is full JID of the joined peer unless peer of type "relay", in which case the resource is not reported.</li>
+        <li><span class="strong">"status"</span> is new status of peer.</li>
+      </ul>
+                                                    
+      <p>Possible failure messages:</p>
+
+
+      <div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: </p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Code</th><th>Message</th><th>Description</th></tr>
+        <tr class="body"><td>401</td><td>Unauthorized</td><td><span class="em">(optional)</span> Returned if the DSPS is not aware of said Client_full_JID + DSPS_full_JID pair. Where "from" contains DSPS_full_JID that was used in the handshake and "to" contains Client_full_JID that was used in the handshake.</td></tr>
+        <tr class="body"><td>409</td><td>Conflict</td><td><span class="em">(optional)</span> Returned if connection from said full client JID and full DSPS JID is in use (i.e. client is still connected to it). Where "from" contains DSPS_full_JID that was used in the handshake and "to" contains Client_full_JID that was used in the handshake.</td></tr>
+      </table></div>
+
+    </div>
+    
+  </div>
+
+  <div class="indent"><h3>3.4 <a name="sect-idp1526848" id="sect-idp1526848">Stream administration</a></h3>
+
+    <p>DSPS protocol allows multiple peers to use the same stream. Manipulation of the authorized peer list is done through admin functionality described in next several subsections. DSPS protocol allows for three types of peer connections: "master", "slave", and "relay". "master" peers get full control of the stream, "slave" peers get limited control of the stream, and "relay" are treated similar to "slave" except in reporting of JIDs where the resource must be omitted.</p>
+
+    <p>"master" peers are allowed to invite any other user to the stream and drop any peer registered with the stream, including themselves. "slave" peers are only allowed to drop themselves from the stream. Any administrative changes coming from a "slave" peer that are not for the peer's own connection are ignored. Dropping one's own connection is the preferred way of permanently disconnecting from the stream.</p>
+
+    <p>Any data received from a "master" gets copied to every other peer on the stream. Any data received from a "slave" peer gets copied to all "master" peers on the stream only.</p>
+
+    <p>Stream administration request looks like so:</p>
+
+<p class="caption"><a name="example-14" id="example-14"></a>Example 14. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps3' 
+  type='set'
+  from='rob@nauseum.org/dspsclient' 
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'&gt;
+  &lt;query type='admin' xmlns='jabber:iq:dsps' expire='20' wait='10'&gt;
+    &lt;comment&gt;welcome to the stream&lt;/comment&gt;
+    &lt;peer type='master'&gt;someone@somewhere.net&lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">"admin"</span> denotes administrative functions are to follow. Any properties within this block apply to this block alone. Multiple such blocks are allowed.</li>
+      <li><span class="strong">"expire"</span> time DSPS should wait for the "acknowledge" message from any invited peer within block. An "expire" of 0 denotes no time limit. Actual value sent to peer as "expire" is <span class="em">minimum</span> of this value and default value preset for DSPS. If value unparseable or not present, default is used.</li>
+      <li><span class="strong">"wait"</span> time DSPS should wait for invited peer to connect to DSPS after "acknowledge" is received and message from section "Connection waiting". is sent. A "wait" of 0 denotes no time limit. Actual value sent to peer as "wait" is <span class="em">minimum</span> of this value and default value preset for DSPS. If the value unparseable or not present, default is used.</li>
+      <li><span class="strong">&lt;comment/&gt;</span> <span class="em">(optional)</span> block sent to each of the peers. Multiple such blocks are allowed. Block may contain a full XML stack of elements. All such blocks are sent to each of the invited peers as is. No guarantee is made on their order in the &lt;invite/&gt; message.</li>
+      <li><span class="strong">&lt;peer/&gt;</span> JID to execute action upon. If invitation then body will not necessarily be same full JID as one that would respond. Multiple such blocks allowed.</li>
+      <li><span class="strong">"type"</span> type of action to do. "master" denotes invitation, granting master rights. "slave" denotes invitation, granting slave rights. "drop" denotes request to drop peer from stream. "relay" peers may not be invited but may be dropped using this method.</li>
+    </ul>
+
+    <p>Possible optional errors include the following:</p>
+
+<p class="caption"><a name="example-15" id="example-15"></a>Example 15. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps3'
+  type='result'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='user@server.org/resource'&gt;
+  &lt;query type='admin' xmlns='jabber:iq:dsps'&gt;
+    &lt;peer acknowledge='expire'&gt;abc@company.com/net&lt;/peer&gt;
+    &lt;peer acknowledge='reject'&gt;friend@someplace.com/home&lt;/peer&gt;
+    &lt;peer acknowledge='timeout'&gt;abd@company.com/net&lt;/peer&gt;
+    &lt;peer acknowledge='missing'&gt;who@knows.org/winjab&lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">"admin"</span> denotes admin response, sent to sender of "admin" request for every peer in block. Peers may be combined from multiple "admin" requests or peers from single "admin" request may be split over multiple "admin" replies.</li>
+      <li><span class="strong">&lt;peer/&gt;</span> peer in question. For "expire" JID is one from invite request. For "reject" JID is one from which reject received. For "timeout" JID is one from invite request. For "missing" is one from drop request. After this DSPS will totally forget about this peer.</li>
+      <li><span class="strong">"acknowledge"</span> reason for failure. "expire" denotes "expire" timeout sent, has ended. "reject" denotes peer rejected invite. "timeout" denotes "wait" timeout sent, has ended. "missing" denotes peer marked for drop not found registered on tis stream.</li>
+    </ul>
+
+    <p>Possible failure messages:</p>
+
+    <div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: </p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Code</th><th>Message</th><th>Description</th></tr>
+      <tr class="body"><td>403</td><td>Forbidden</td><td><span class="em">(optional)</span> Returned if peer with "slave" rights attempts to use "master" admin privileges.</td></tr>
+    </table></div>
+                                
+    <div class="indent"><h3>3.4.1 <a name="sect-idp1546928" id="sect-idp1546928">Invitation to stream {optional}</a></h3>
+
+      <p>Upon invite DSPS will attempt to invite each of the peers like so:</p>
+
+<p class="caption"><a name="example-16" id="example-16"></a>Example 16. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps4' 
+  type='get'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' 
+  to='foo@bar.com/resource'&gt;
+  &lt;query type='acknowledge' 
+    xmlns='jabber:iq:dsps'
+    status='master'
+    expire='20'&gt;
+    &lt;peer&gt;rob@nauseum.org/dspsclient&lt;/peer&gt;
+    &lt;comment&gt;some long comment block or structure&lt;/comment&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> is unique JID/resource pair generated for this JID, not necessarily same as JID/resource pair specified in section "Connection waiting". It is used for identification of the "acknowledge" message.</li>
+        <li><span class="strong">"acknowledge"</span> denotes request for invitation acknowledge.</li>
+        <li><span class="strong">"status"</span> type of connection the client is granted. Same type as tag in invitation request.</li>
+        <li><span class="strong">"expire"</span> time DSPS will wait for the "acknowledge" message.</li>
+        <li><span class="strong">&lt;peer/&gt;</span> peer who initiated this invite. Multiple such blocks may exist if multiple distinct peers sent invitation that have not yet been received by the invitee.</li>
+        <li><span class="strong">&lt;comment/&gt;</span> is &lt;comment/&gt; structure(s) sent in admin request, present if admin request contained it.</li>
+      </ul>
+
+    </div>
+
+    <div class="indent"><h3>3.4.2 <a name="sect-idp1554080" id="sect-idp1554080">Dropping from stream</a></h3>
+
+      <p>Upon drop DSPS will immediately closes the connection to the dropped peer. It then will totally forget this peer right after sending it a notification message like so:</p>
+
+<p class="caption"><a name="example-17" id="example-17"></a>Example 17. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+  id='dsps5'
+  type='set' 
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='foo@bar.com/resource'&gt;
+  &lt;query type='acknowledge' xmlns='jabber:iq:dsps' status='drop'&gt;
+    &lt;comment&gt;some long comment block or structure&lt;/comment&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> is the DSPS JID/resource pair which DSPS has associated with this connection.</li>
+        <li><span class="strong">"acknowledge"</span> denotes drop notification. Despite the block name, this message does not require a reply.</li>
+        <li><span class="strong">"status"</span> drop denotes a connection drop.</li>
+        <li><span class="strong">&lt;comment/&gt;</span> is &lt;comment/&gt; structure(s) sent in admin request, preset if admin request contained it.</li>
+      </ul>
+
+      <p>For every successfully dropped peer a message is sent to all other stream members, following the rules stated for the "presence" message, and takes the form of:</p>
+
+<p class="caption"><a name="example-18" id="example-18"></a>Example 18. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps6' 
+  type='set'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' 
+  to='foo@bar.com/resource'&gt;
+  &lt;query type='presence' xmlns='jabber:iq:dsps'&gt;
+    &lt;peer status='drop'&gt;JID&lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> is the DSPS JID/resource pair which DSPS has associated with the connection of the recipient of the message.</li>
+        <li><span class="strong">"presence"</span> denotes presence change. Body may contain multiple &lt;peer/&gt; blocks where same JID peers must be placed in chronological order relative to each other from start to end of message.</li>
+        <li><span class="strong">&lt;peer/&gt;</span> body is full JID of the dropped peer registered on the stream, unless peer is of type "relay", in which case the resource is not reported.</li>
+        <li><span class="strong">"status"</span> is new status of peer.</li>
+      </ul>
+
+    </div>
+    
+  </div>
+
+  <div class="indent"><h3>3.5 <a name="sect-idp1564736" id="sect-idp1564736">Invitation reply</a></h3>
+
+    <p>An invited peer has the option to accept or reject an invitation to a stream.</p>
+    
+    <div class="indent"><h3>3.5.1 <a name="sect-idp1565712" id="sect-idp1565712">Accepting an invite</a></h3>
+
+      <p>To accept an invitation to a stream, the peer must reply like so:</p>
+
+<p class="caption"><a name="example-19" id="example-19"></a>Example 19. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps4' 
+  type='result'
+  from='foo@bar.com/moredsps' 
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33&gt;
+  &lt;query type='acknowledge' xmlns='jabber:iq:dsps' status='connect'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> is the JID/resource pair which will be associated with this connection, only it will be allowed to connect to this stream as this user. A peer may be registered to multiple streams from the same full JID, hence all DSPS full JIDs linked to a given peer must be unique.</li>
+        <li><span class="strong">"to"</span> contains the DSPS JID/resource pair which was the source in the original "acknowledge" message.</li>
+        <li><span class="strong">"acknowledge"</span> denotes acknowledgment to invitation.</li>
+        <li><span class="strong">"status"</span> connect denotes an acceptance of invitation.</li>
+      </ul>
+
+      <p>Upon receipt of this reply the DSPS creates a unique resource for this client JID/resource pair. It then prepares the "create" message as described in section "Connection waiting".</p>
+
+    </div>
+    
+    <div class="indent"><h3>3.5.2 <a name="sect-idp1571552" id="sect-idp1571552">Rejecting an invite</a></h3>
+
+     <p>Rejecting an invitation can be done in two ways. A peer can forget about the invitation and let the invitation "expire", or preferably a message can be sent like so:</p>
+
+<p class="caption"><a name="example-20" id="example-20"></a>Example 20. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps4' 
+  type='result'
+  from='foo@bar.com/moredsps' 
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33&gt;
+  &lt;query type='acknowledge' xmlns='jabber:iq:dsps' status='drop'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"to"</span> contains the DSPS JID/resource pair which was the source in the original "acknowledge" message.</li>
+        <li><span class="strong">"acknowledge"</span> denotes acknowledgment to invitation.</li>
+        <li><span class="strong">"status"</span> drop denotes an rejection of invitation.</li>
+      </ul>
+
+      <p>Regardless of the way a rejection was achieved a notification message is sent to the inviting peer, as was described in section "Stream administration". If unknown "type" is sent, it will be interpreted as a reject. A maximum of one "acknowledge" is allowed during the lifetime of an invitation. If multiple such tags are sent, the first tag takes precedence. Any rejection of a public connection will be ignored.</p> 
+
+    </div>
+    
+  </div>
+
+  <div class="indent"><h3>3.6 <a name="sect-idp1577360" id="sect-idp1577360">Disconnection handling</a></h3>
+
+    <p>If a peer ever disconnects without first dropping themselves, the following policy applies:</p>
+
+    <p>The peer may reconnect within the "wait" timeout provided in the "create" reply in section "Connection waiting". The peer may choose any supported mode of reconnection supplied in "create" reply, regardless of mode previously used. The "wait" timeout is not cumulative over multiple disconnects. After reconnect, peer will not receive any data that exists on the stream while it was disconnected.</p>
+
+    <p>Upon such disconnection DSPS notifies all other members of the stream, following the rules stated for the "presence" message, and takes the form of:</p>
+
+<p class="caption"><a name="example-21" id="example-21"></a>Example 21. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+  id='dsps7'
+  type='set' 
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='foo@bar.com/resource'&gt;
+  &lt;query type='presence' xmlns='jabber:iq:dsps'&gt;
+    &lt;peer status='waiting'&gt;JID&lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">"from"</span> is the DSPS JID/resource pair which DSPS has associated with the connection of the recipient of the message.</li>
+      <li><span class="strong">"presence"</span> denotes presence change. Body may contain multiple &lt;peer/&gt; blocks where same JID peers must be placed in chronological order relative to each other from start to end of message.</li>
+      <li><span class="strong">&lt;peer/&gt;</span> body is full JID of the disconnected peer registered on the stream, unless peer is of type "relay", in which case the resource is not reported.</li>
+      <li><span class="strong">"status"</span> is new status of peer.</li>
+    </ul>
+
+    <p>Upon reaching "wait" timeout the procedure is the same if the peer dropped its own connection.</p>
+
+  </div>
+
+  <div class="indent"><h3>3.7 <a name="sect-idp1584944" id="sect-idp1584944">Ending a connection</a></h3>
+
+    <p>Permanent termination of connection can be done in two ways: peer may disconnect from the stream and let the "wait" timeout expire, or more preferably the peer will drop itself from the stream via an "admin" message. The "admin" is still allowed to contain multiple "peer" blocks.</p>
+
+  </div>
+
+  <div class="indent"><h3>3.8 <a name="sect-idp1586416" id="sect-idp1586416">Stream use</a></h3>
+
+    <p>The use policy for the stream follows the standard rules described in this document. Type and structure of the data must be negotiated by the peers separately (presumably via the normal XML message stream or within &lt;comment/&gt; blocks). The DSPS stream operates at the speed of the slowest connection (or slower if it is so configured in its internal configuration).</p>
+
+    <p>Data read from peer in a unit of transfer (decided by DSPS) is sent to other peers in a format like so:</p>
+
+<p class="caption"><a name="example-22" id="example-22"></a>Example 22. </p><div class="indent"><pre class="prettyprint">0&lt;size&gt;&lt;CR&gt;&lt;id&gt;&lt;CR&gt;&lt;data&gt;</pre></div>
+
+    <ul>
+      <li><span class="strong">"0"</span> at beginning for checking start of block.</li>
+      <li><span class="strong">&lt;size&gt;</span> length in bytes including id and its trailing CR in form of [1-9][0-9]*[0-9A-Z], where last character is base 36 numerical equivalent power of 1024.</li>
+      <li><span class="strong">&lt;id&gt;</span> id of the sender as per "who" query.</li>
+      <li><span class="strong">&lt;data&gt;</span> data sent.</li>
+      <li><span class="strong">&lt;CR&gt;</span> regular carriage return, commonly referred to as the newline character.</li>
+    </ul>
+
+    <p>For example, the appropriate string for the above block would be:</p>
+
+<p class="caption"><a name="example-23" id="example-23"></a>Example 23. </p><div class="indent"><pre class="prettyprint">
+0340&lt;CR&gt;
+010&lt;CR&gt;
+this is the data in ASCII form
+</pre></div>
+
+    <p>First block received after connection will always be full block. If discrepancy occurs, receiving peer should disconnect and reconnect back to stream.</p>
+
+  </div>
+
+  <div class="indent"><h3>3.9 <a name="sect-idp1594320" id="sect-idp1594320">Stream information</a></h3>
+
+    <p>Two mechanisms exists to gain information about the stream configuration and its members. They are described within next few subsections.</p>
+
+    <div class="indent"><h3>3.9.1 <a name="sect-idp1595360" id="sect-idp1595360">Stream peer listing</a></h3>
+
+      <p>To retrieve listing of all registered peers of this stream and their respective connection status any registered peer sends a message like so:</p>
+
+<p class="caption"><a name="example-24" id="example-24"></a>Example 24. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps8' 
+  type='get'
+  from='rob@nauseum.org/dspsclient' 
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'&gt;
+  &lt;query type='who' xmlns='jabber:iq:dsps'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"to"</span> has the usual meaning for this client when referring to this DSPS stream.</li>
+        <li><span class="strong">"who"</span> denotes that this is a listing request. It may not contain a body or attributes, otherwise it will be ignored without error.</li>
+      </ul>
+
+      <p>The query follows the standard rules: query originating from a "master" peer will return listing of all registered peers and their associated statuses, query originating from a "slave" peer will only return listing of all registered "master" peers and their associated statuses. Returned results do not have any strict order. If multiple "who" queries were requested by a peer that have not yet received a reply, only one reply need be sent.</p>
+
+      <p>The query reply is formatted like so:</p>
+
+<p class="caption"><a name="example-25" id="example-25"></a>Example 25. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+  id='dsps8'
+  type='result' 
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='rob@nauseum.org/dspsclient'&gt;
+  &lt;query type='who' xmlns='jabber:iq:dsps'&gt;
+    &lt;peer 
+      type='master'
+      id='0'
+      status='connect'
+      throughput='1KB////4.8KB//3KB'&gt;
+      rob@nauseum.org/dspsclient
+    &lt;/peer&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> is unique DSPS JID/resource pair for the peer receiving the result.</li>
+        <li><span class="strong">&lt;peer/&gt;</span> body is full JID of registered peer, unless peer is of type "relay", in which case the resource is not reported. A separate block exists for every viewable peer.</li>
+        <li><span class="strong">"type"</span> the type of connection peer has. May contain value of "master", "slave", or "relay".</li>
+        <li><span class="strong">"id"</span> id prepended to data coming from this peer.</li>
+        <li><span class="strong">"status"</span> current status of peer. "connect" denotes peer able to receive data. "wait" denotes peer registered but not connected. "expire" denotes peer was invited but no reply was received yet.</li>
+        <li><span class="strong">"throughput"</span> shows the average throughput to that peer per second in the units specified after the number (e.g. B, KB, MB, GB, TB, EB) in capital letters. Time is measured only during data transfer. Value contains multiple fields delimited by slash (/). Each field represents time span of power of two (2), relative to its position from start of the string. Each filled-in field contains the average throughput over that timespan. e.g. (1B per sec in last sec)/(1.1B per sec in last 2 sec)/(0.9B per sec in last 4 sec). Only fields representing power of zero (2^0 sec) and power of four (2^4 sec) are required. Last field must be filled-in.</li>
+      </ul>
+
+    </div>
+
+    <div class="indent"><h3>3.9.2 <a name="sect-idp1607568" id="sect-idp1607568">Stream status listing</a></h3>
+
+      <p>To retrieve listing of all stream configuration/statistics values or public streams, any registered peer sends a message like so:</p>
+
+<p class="caption"><a name="example-26" id="example-26"></a>Example 26. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+  id='dsps9'
+  type='get' 
+  from='rob@nauseum.org/dspsclient'
+  to='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'&gt;
+  &lt;query type='stats' xmlns='jabber:iq:dsps'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"to"</span> if contains a resource, will return statistics for specified stream. Otherwise will return listing of public streams, i.e. any stream with "maxpublic" greater then 0.</li>
+        <li><span class="strong">"stats"</span> denotes that this is a configuration/statistics request. It may not contain a body or attributes, otherwise it will be ignored without error.</li>
+      </ul>
+
+      <p>The query reply is formatted like so:</p>
+
+<p class="caption"><a name="example-27" id="example-27"></a>Example 27. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps9' 
+  type='result'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33' 
+  to='rob@nauseum.org/dspsclient'&gt;
+  &lt;query type='stats' xmlns='jabber:iq:dsps'
+    init='00000000000000'
+    protocol='0.5'
+    port='5290'
+    minthroughput='1.5KB'
+    expiredefault='150'
+    waitdefault='100'
+    wait='10'
+    public='5'
+    maxpublic='25'
+    mastercount='20'
+    slavecount='40'
+    relaycount='0'&gt;
+    &lt;feature type='http' version='1.1'/&gt;
+    &lt;feature type='ssl' version='3.0'/&gt;
+    &lt;peer&gt;mydsps@jabber.org/8xd67f56df4f546fdgsfdg65f6g58f&lt;/peer&gt;
+    &lt;comment&gt;some server comment&lt;/comment&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+      <ul>
+        <li><span class="strong">"from"</span> the DSPS JID/resource pair for the peer receiving the result.</li>
+        <li><span class="strong">"init"</span> UNIX timestamp of the date this stream was initiated.</li>
+        <li><span class="strong">"protocol"</span> protocol version this DSPS supports.</li>
+        <li><span class="strong">"port"</span> default port this DSPS listens for connections on.</li>
+        <li><span class="strong">"minthroughput"</span> as defined in "create".</li>
+        <li><span class="strong">"expiredefault"</span> default time this DSPS will wait for an "acknowledge" response.</li>
+        <li><span class="strong">"waitdefault"</span> default time this DSPS will wait for a connection to its default port after an invitation is accepted.</li>
+        <li><span class="strong">"wait"</span> time this DSPS will wait for this particular client to reconnect if it ever gets disconnected. This is the same value as one sent in the "create" response.</li>
+        <li><span class="strong">"public"</span> number of "slave" peers registered with stream without invitation.</li>
+        <li><span class="strong">"maxpublic"</span> maximum number of "slave"peers allowed without invitation.</li>
+        <li><span class="strong">"mastercount"</span> number of peers with a "master" connection registered on this stream.</li>
+        <li><span class="strong">"slavecount"</span> number of peers with a "slave" connection registered on this stream.</li>
+        <li><span class="strong">"relaycount"</span> number of peers with a "relay" connection registered on this stream.</li>
+        <li><span class="strong">&lt;feature/&gt;</span> <span class="em">(optional)</span> denotes a supported feature. All supported features must be listed.</li>
+        <li><span class="strong">&lt;peer/&gt;</span> <span class="em">(optional)</span> list of public stream connections where all reported statistics match. Present only if "to" in original request contained no resource. Multiple allowed where statistics match for all.</li>
+        <li><span class="strong">&lt;comment/&gt;</span> <span class="em">(optional)</span> parameter(s) with a comments from "create". This block may contain full XML stack of elements. Multiple such blocks are allowed.</li>
+      </ul>
+
+      <p>All "status" attributes are required. Any other undefined blocks with any multiplicity, are legal in this block as long as their tags are not identical to any tag within the protocol. Results returned do not have any strict order. If "to" in original request contained no resource, multiple "stats" blocks are allowed, where each contains at least one &lt;peer/&gt; block which has "maxpublic" greater than 0. To join a public stream a client must send message as per section "Accepting an invite".</p>
+
+    </div>
+    
+  </div>
+
+  <div class="indent"><h3>3.10 <a name="sect-idp1628800" id="sect-idp1628800">Stream shutdown</a></h3>
+
+    <p>Stream exists from its "create"ion time to the time when there are no more "master" peers registered with the stream.</p> 
+
+    <p>When last "master" peer is dropped from the stream, DSPS will make sure that all the data sent by all the "master" peers was actually copied to all the "slave" peers still present. For every remaining "slave" peer DSPS will initiate a drop event. Once stream is void of any peers it will be totally forgotten by the DSPS and all associated data is released.</p>
+
+  </div>
+
+  <div class="indent"><h3>3.11 <a name="sect-idp1631168" id="sect-idp1631168">Error message format</a></h3>
+
+    <p>Error messages look like so:</p>  
+
+<p class="caption"><a name="example-28" id="example-28"></a>Example 28. </p><div class="indent"><pre class="prettyprint">
+&lt;iq
+  id='dsps9'
+  type='error'
+  from='dsps.jabber.org/0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'
+  to='rob@nauseum.org/dspsclient'&gt;
+  &lt;error code='405'&gt;Method Not Allowed&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <ul>
+      <li><span class="strong">&lt;error/&gt;</span> denotes error block where body is text description.</li>
+      <li><span class="strong">"code"</span> denotes error code.</li>
+    </ul>
+
+  </div>
+
+<h2>4.
+       <a name="sect-idp1634704" id="sect-idp1634704">Possible applications</a></h2>
+
+  <div class="indent"><h3>4.1 <a name="sect-idp1635200" id="sect-idp1635200">File transfer</a></h3>
+
+    <p>File transfer can be easily accomplished over DSPS. Where one user invites another user to a DSPS stream. File details can be transfered in the invitation comment as such: &lt;meta type='file' name='myfile.txt' size='500K' crc32='12345' sha1='23451' mime='application/octet-stream' timestamp='12345' date='20020412T00:00:00'/&gt;. Where the "size" would be in bytes. All properties should reflect their appropriate values for this instance. Once the second peer has accepted, it can simply put a CR on the stream stating that transfer can begin. then the first party simply dumps the contents of file on the stream, closes the stream and "drop"s itself from the stream. DSPS will make sure the second party gets everything that the first party sent before closing the connection. If multiple recipients of the file are required, the sending client can save a lot of bandwidth and transmit only one copy if the file to the DSPS which in term will transmit the data over to all the other connected clients.</p>
+
+  </div>
+
+  <div class="indent"><h3>4.2 <a name="sect-idp1637504" id="sect-idp1637504">VoIP</a></h3>
+
+    <p>Same idea as the file transfer. However if more then two parties are involved, every party must have a "master" connection.</p>
+
+  </div>
+
+  <div class="indent"><h3>4.3 <a name="sect-idp1638736" id="sect-idp1638736">Multicast</a></h3>
+
+    <p>A server has a JID which it registers with a stream. Any client wishing to join the multicast sends an XML message to the server, which then invites the client with a "slave" connection. Thus everything the server sends is received by every client on the stream. If there are multiple back-up servers, they can be invited with a "master" connection, thus if one of them goes down, the others can take over.</p>
+
+  </div>
+
+  <div class="indent"><h3>4.4 <a name="sect-idp1640576" id="sect-idp1640576">File Storage</a></h3>
+
+    <p>It has long been discussed in many Jabber places that a file storage facility is desired. The communication with such a facility can be easily accommodated with DSPS, as such a facility would merely appear as a user to DSPS which can either be "invite"ed or "invite" other users onto personal streams to transfer files as described in 6.1.</p>
+
+  </div>
+
+<h2>5.
+       <a name="sect-idp1642224" id="sect-idp1642224">Why DSPS instead of PASS</a></h2>
+
+  <p>PASS has the following design flaws that make it unsuitable for its stated purpose of providing raw data-streams to all classes of users, including those behind firewalls or NAT.</p>
+
+  <div class="indent"><h3>5.1 <a name="sect-idp1643296" id="sect-idp1643296">Ports</a></h3>
+
+    <p>PASS requires the use of a large number of individual ports, which on a heavily loaded server can lead to the number of spare ports dropping to zero, causing connections to be refused.</p>
+
+    <p>This is also problematic if PASS is situated behind a firewall. Firewall administrators are typically loathe to allow incoming connections to a large range of ports.</p>
+
+    <p>DSPS only uses one port, and so resolves the first problem, while making the second almost a non-issue.</p>
+
+  </div>
+
+  <div class="indent"><h3>5.2 <a name="sect-idp1645568" id="sect-idp1645568">Knowledge of IP</a></h3>
+
+    <p>PASS requires the client to have some knowledge of IP, which immediately forces the assumption that the XML stream's underlying protocol is in fact, IP. While at the time of writing this is always the case, it may not always be this way.</p>
+
+    <p>DSPS uses the Jabber ID to do its routing, and so avoids these problems. And while DSPS does use the concept of a TCP connection and an IP port, this information is never actually used anywhere on the XML stream, making the actual connection to the DSPS implementation-defined.</p>
+
+  </div>
+
+  <div class="indent"><h3>5.3 <a name="sect-idp1647504" id="sect-idp1647504">IP Addresses</a></h3>
+
+    <p>PASS makes the IP address of the remote client available to the local client.  While it is rare that this is an actual problem, many users and administrators prefer that IP address information is never actually revealed.</p>
+
+    <p>DSPS never transmits IP address information across the XML stream, and so does not have this problem.</p>
+
+  </div>
+
+  <div class="indent"><h3>5.4 <a name="sect-idp1649248" id="sect-idp1649248">Intuitiveness</a></h3>
+
+    <p>PASS requires a client to initiate a connection by opening a (proxied) listening socket, and then soliciting connections. However, TCP works by having the client connect to a remote resource directly. This difference can make the operation of PASS difficult to understand. Also, it is left to the client to distribute the information about this listening socket, which places an additional burden on the client.</p>
+
+    <p>DSPS, while it uses listening sockets to do its work, does all the work of setting up the connection after a client initiates it. All the initiating client has to do is request a connection, connect to the DSPS, and wait - everything else is handled automatically.</p>
+
+  </div>
+
+  <div class="indent"><h3>5.5 <a name="sect-idp1651360" id="sect-idp1651360">Scalability</a></h3>
+
+    <p>Due to the master/slave design, DSPS is already able to handle multicasts of streams or such, whilst PASS was only designed for simple p2p stream connections. This will becoming increasingly more important as more emphasis is made on streaming capabilities, for technologies such as audio and video conferencing.</p>
+
+    <p>Due to DSPS generality, the protocol can be easily used for either P2P or P2S2P needs. This eliminates the need for a separate protocol for each of the tasks.</p>
+
+  </div>
+
+<h2>6.
+       <a name="sect-idp1653392" id="sect-idp1653392">DSPS with P2P</a></h2>
+
+    <p>It is not mandated for DSPS to reside beside a Jabber server. It is entirely possible for any client to implement a stripped down version of such a server. In such a case the only sections that are required are any error reporting, invitation acknowledgment and statistical responses. Any other area of the protocol becomes optional since the recipient peer will not have the ability to use it anyway.</p>
+
+    <p>Any client may, but is not required to utilize the striped down functionality. When utilizing such functionality the serving client sends an invitation to the recipient client to join the serving client's DSPS stream. Thus the "create" message would list the serving client as the DSPS and would utilize the "host" attribute to tell the recipient client where to connect to the DSPS.</p>
+
+    <p>This ability is advantageous since the recipient client only needs to know one protocol for data transmission over P2P or P2S2P connections, and would not see a difference between the two. The proposed method is for one side to fist try serving a connection to the other. If that fails the other side may attempt to serve the connection. If the second attempt fails the clients may utilize an external DSPS server. The negotiation of who will serve is done outside DSPS protocol. DSPS has no functionality to decide when a P2P connection is possible or desirable, nor does it have enough information to do so reliably.</p>
+
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0037<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Rejected">Rejected</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: Version 0.8<br />
+            Last Updated: 2002-09-18<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0037.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0037.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0037.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>David Sutton</h3><p class="indent">
+        Email:
+        <a href="mailto:"></a><br />
+        JabberID: 
+        <a href="xmpp:"></a><br /></p><h3>"Bac9" </h3><p class="indent">
+        Email:
+        <a href="mailto:bac9@bac9.yi.org">bac9@bac9.yi.org</a><br />
+        JabberID: 
+        <a href="xmpp:bac9@jabber.org">bac9@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4><h4>Permissions</h4><h4>Disclaimer of Warranty</h4><span style="font-weight: bold"></span><h4>Limitation of Liability</h4><h4>IPR Conformance</h4></div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version Version 0.8 (2002-09-18)</h4><div class="indent">Streamlined and enhanced handshake procedure, and cleaned up document. (Bac9)
+    </div><h4>Version Version 0.7 (2002-08-20)</h4><div class="indent">Added public connections and reduced number of tags. (Bac9)
+    </div><h4>Version Version 0.6 (2002-08-11)</h4><div class="indent">Added data tracking, inviting peer, auto-disconnect for slow peers, elaboration on protocol and suggested example of file transfer. (Bac9)
+    </div><h4>Version Version 0.5 (2002-07-29)</h4><div class="indent">Elaborated on some functionality and cleaned up XML protocol. (Bac9)
+    </div><h4>Version Version 0.4 (2002-07-11)</h4><div class="indent">Converted to XML format. (lw)
+    </div><h4>Version Version 0.3 (2002-06-25)</h4><div class="indent">Added support for HTTP, SSL and throughput logging. Changed relay behaviour. (Bac9)
+    </div><h4>Version Version 0.2 (2002-06-21)</h4><div class="indent">Revised, standardized and extended XML protocol structure. (Bac9)
+    </div><h4>Version Version 0.1 ()</h4><div class="indent">Initial version. (rn)
+    </div></div><hr /><p>END</p></body></html>

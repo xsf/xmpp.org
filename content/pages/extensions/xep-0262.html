@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0262: Use of ZRTP in Jingle RTP Sessions</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Use of ZRTP in Jingle RTP Sessions" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines how to use ZRTP (RFC 6189) in the Jingle application type for the Real-time Transport Protocol (RTP) as a way to negotiate media path key agreement for secure RTP in one-to-one media sessions." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2011-06-15" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0262" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0262: Use of ZRTP in Jingle RTP Sessions</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines how to use ZRTP (RFC 6189) in the Jingle application type for the Real-time Transport Protocol (RTP) as a way to negotiate media path key agreement for secure RTP in one-to-one media sessions.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2011-06-15</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#protocol">Protocol</a><br />2.  <a href="#disco">Determining Support</a><br />3.  <a href="#security">Security Considerations</a><br />4.  <a href="#iana">IANA Considerations</a><br />5.  <a href="#acks">Acknowledgements</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      6.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      6.2.  <a href="#registrar-versioning">Protocol Versioning</a><br />7.  <a href="#schema">XML Schemas</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0167.html">Jingle RTP Sessions (XEP-0167)</a></span>  [<a href="#nt-idp696320">1</a>] recommends the use of the Secure Real-time Transport Protocol (SRTP) for end-to-end encryption of RTP sessions negotiated using <span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp681456">2</a>]. An alternative approach to end-to-end encryption of RTP traffic is provided by <span class="ref"><a href="http://tools.ietf.org/html/rfc6189">RFC 6189</a></span>  [<a href="#nt-idp683904">3</a>], developed by Phil Zimmermann, the inventor of "Pretty Good Privacy" (PGP). Although negotiation of ZRTP mainly occurs in the media channel rather than the signalling channel, the ZRTP specification defines one SDP attribute called "zrtp-hash" (this communicates the ZRTP version supported as well as a hash of the Hello message). Inclusion of this information is OPTIONAL in both SIP/SDP and Jingle.</p>
+  <p>The SDP format is shown below.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+a=zrtp-hash:zrtp-version zrtp-hash-value
+  </pre></div>
+  <p>An example follows.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+a=zrtp-hash:1.10 fe30efd02423cb054e50efd0248742ac7a52c8f91bc2df881ae642c371ba46df
+  </pre></div>
+  <p>This SDP attribute can be translated into Jingle as a &lt;zrtp-hash/&gt; element qualified by the 'urn:xmpp:jingle:apps:rtp:zrtp:1' namespace, as shown below.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;zrtp-hash version='zrtp-version' xmlns='urn:xmpp:jingle:apps:rtp:zrtp:1'&gt;zrtp-hash-value&lt;/zrtp-hash&gt;
+  </pre></div>
+  <p>An example follows.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;zrtp-hash version='1.10' xmlns='urn:xmpp:jingle:apps:rtp:zrtp:1'&gt;
+  fe30efd02423cb054e50efd0248742ac7a52c8f91bc2df881ae642c371ba46df
+&lt;/zrtp-hash&gt;
+  </pre></div>
+  <p>The &lt;zrtp-hash/&gt; element is sent as a child of the &lt;encryption/&gt; element defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0167.html">Jingle RTP Sessions (XEP-0167)</a></span>  [<a href="#nt-idp689216">4</a>].</p>
+  <p>If the Jingle initiator wishes to use ZRTP, it includes the &lt;zrtp-hash/&gt; element in its session invitation (where it hashes over its own Hello message as described in the ZRTP specification).</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initiator sends session invitation with zrtp-hash</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='uz61v4m4'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='96' name='speex' clockrate='16000'/&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;payload-type id='103' name='L16' clockrate='16000' channels='2'/&gt;
+        &lt;payload-type id='98' name='x-ISAC' clockrate='8000'/&gt;
+        &lt;encryption required='true'&gt;
+          &lt;zrtp-hash xmlns='urn:xmpp:jingle:apps:rtp:zrtp:1' version='1.10'&gt;
+            fe30efd02423cb054e50efd0248742ac7a52c8f91bc2df881ae642c371ba46df
+          &lt;/zrtp-hash&gt;
+        &lt;/encryption&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='asd88fgpdd777uzjYhagZg'
+                 ufrag='8hhy'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='el0747fg11'
+                   ip='10.0.1.1'
+                   network='1'
+                   port='8998'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+        &lt;candidate component='1'
+                   foundation='2'
+                   generation='0'
+                   id='y3s2b30v3r'
+                   ip='192.0.2.3'
+                   network='1'
+                   port='45664'
+                   priority='1694498815'
+                   protocol='udp'
+                   rel-addr='10.0.1.1'
+                   rel-port='8998'
+                   type='srflx'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the receiving party wishes to proceed with ZRTP negotiation, it also includes the &lt;zrtp-hash/&gt; element in its session-accept message (where it hashes over its own Hello message as described in the ZRTP specification).</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Responder sends session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='pn2va48j'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          initiator='romeo@montague.lit/orchard'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='voice'&gt;
+      &lt;description xmlns='urn:xmpp:jingle:apps:rtp:1' media='audio'&gt;
+        &lt;payload-type id='97' name='speex' clockrate='8000'/&gt;
+        &lt;payload-type id='18' name='G729'/&gt;
+        &lt;encryption&gt;
+          &lt;zrtp-hash xmlns='urn:xmpp:jingle:apps:rtp:zrtp:1' version='1.10'&gt;
+            badfbe66ff87fe135750377509b09b0babd1c3ec25fa4314565e2bf7ccc30299
+          &lt;/zrtp-hash&gt;
+        &lt;/encryption&gt;
+      &lt;/description&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ice-udp:1'
+                 pwd='YH75Fviy6338Vbrhrlp8Yh'
+                 ufrag='9uB6'&gt;
+        &lt;candidate component='1'
+                   foundation='1'
+                   generation='0'
+                   id='or2ii2syr1'
+                   ip='192.0.2.1'
+                   network='0'
+                   port='3478'
+                   priority='2130706431'
+                   protocol='udp'
+                   type='host'/&gt;
+      &lt;/transport&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+  <p>Note that a unique zrtp-hash is needed for each media stream, since the hash for each stream is computed from a different ZRTP Hello message (e.g., if a session includes both audio and video then the value of the &lt;zrtp-hash/&gt; element included in the &lt;description/&gt; element for the audio stream will be different from the value for the video stream).</p>
+<h2>2.
+       <a name="disco" id="disco">Determining Support</a></h2>
+  <p>If an entity supports the use of ZRTP in Jingle as described in this document, it MUST advertise that fact in its responses to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp612080">5</a>] information ("disco#info") requests by returning a feature of "urn:xmpp:jingle:apps:rtp:zrtp:1":</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. A disco#info query</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' 
+    from='calvin@usrobots.lit/lab'
+    to='herbie@usrobots.lit/home'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. A disco#info response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='herbie@usrobots.lit/home'
+    to='calvin@usrobots.lit/lab'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='urn:xmpp:jingle:1'/&gt;
+    &lt;feature var='urn:xmpp:jingle:apps:rtp:zrtp:1'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1567312">6</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>3.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Security considerations for ZRTP itself are provided in <span class="ref">RFC 6189</span>.</p>
+  <p>XMPP stanzas such as Jingle invite messages and service discovery exchanges are not encrypted or signed. As a result, it is possible for an attacker to intercept these stanzas and modify them, thus convincing one party that the other party does not support ZRTP and therefore denying the parties an opportunity to use ZRTP. However, because the zrtp-hash is mostly advisory, the parties could still use ZRTP even if the signalling channel is compromised.</p>
+<h2>4.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1573200">7</a>].</p>
+<h2>5.
+       <a name="acks" id="acks">Acknowledgements</a></h2>
+  <p>Thanks to Werner Dittmann and Emil Ivov for their implementation feedback.</p>
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>6.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>This specification defines the following XML namespace:</p>
+    <ul>
+      <li>urn:xmpp:jingle:apps:rtp:zrtp:1</li>
+    </ul>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1579056">8</a>] includes the foregoing namespace to the registry located at &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;, as described in Section 4 of <span class="ref"><a href="http://xmpp.org/extensions/xep-0053.html">XMPP Registrar Function (XEP-0053)</a></span>  [<a href="#nt-idp1584336">9</a>].</p>
+  </div>
+  <div class="indent"><h3>6.2 <a name="registrar-versioning" id="registrar-versioning">Protocol Versioning</a></h3>
+    <p>If the protocol defined in this specification undergoes a revision that is not fully backwards-compatible with an older version, the XMPP Registrar shall increment the protocol version number found at the end of the XML namespaces defined herein, as described in Section 4 of <span class="ref">XEP-0053</span>.</p>
+  </div>
+<h2>7.
+       <a name="schema" id="schema">XML Schemas</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:jingle:apps:rtp:zrtp:1'
+    xmlns='urn:xmpp:jingle:apps:rtp:zrtp:1'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0262: http://www.xmpp.org/extensions/xep-0262.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='zrtp-hash'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='version' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0262<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2011-06-15<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0166, XEP-0167, RFC 6189<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: jingle-zrtp<br />
+        Schema: &lt;<a href="http://xmpp.org/schemas/jingle-apps-rtp-zrtp.xsd">http://xmpp.org/schemas/jingle-apps-rtp-zrtp.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0262.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0262.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0262.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">There exists a special venue for discussion related to the technology described in this document: the &lt;<a href="http://mail.jabber.org/mailman/listinfo/jingle">jingle@xmpp.org</a>&gt; mailing list.</p><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp696320" id="nt-idp696320">1</a>. XEP-0167: Jingle RTP Sessions &lt;<a href="http://xmpp.org/extensions/xep-0167.html">http://xmpp.org/extensions/xep-0167.html</a>&gt;.</p><p><a name="nt-idp681456" id="nt-idp681456">2</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp683904" id="nt-idp683904">3</a>. RFC 6189: ZRTP: Media Path Key Agreement for Unicast Secure RTP &lt;<a href="http://tools.ietf.org/html/rfc6189">http://tools.ietf.org/html/rfc6189</a>&gt;.</p><p><a name="nt-idp689216" id="nt-idp689216">4</a>. XEP-0167: Jingle RTP Sessions &lt;<a href="http://xmpp.org/extensions/xep-0167.html">http://xmpp.org/extensions/xep-0167.html</a>&gt;.</p><p><a name="nt-idp612080" id="nt-idp612080">5</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1567312" id="nt-idp1567312">6</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1573200" id="nt-idp1573200">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1579056" id="nt-idp1579056">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1584336" id="nt-idp1584336">9</a>. XEP-0053: XMPP Registrar Function &lt;<a href="http://xmpp.org/extensions/xep-0053.html">http://xmpp.org/extensions/xep-0053.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2011-06-15)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification to Draft.</p> (psa)
+    </div><h4>Version 0.3 (2011-04-12)</h4><div class="indent"><p>Updated reference to reflect publication of RFC 6189; clarified that inclusion of the hash is optional.</p> (psa)
+    </div><h4>Version 0.2 (2010-08-09)</h4><div class="indent"><p>In harmony with the ZRTP spec, moved communication of &lt;zrtp-hash/&gt; element from Jingle session-info message to jingle-invite, specifically as a child of the &lt;encryption/&gt; element from XEP-0167; increased protocol version from zero to one.</p> (psa)
+    </div><h4>Version 0.1 (2009-02-25)</h4><div class="indent"><p>Initial published version.</p> (psa)
+    </div><h4>Version 0.0.2 (2009-02-24)</h4><div class="indent"><p>Defined dedicated namespace for the zrtp-hash element to improve service discovery and handling of session-info message; clarified protocol flow and security considerations.</p> (psa)
+    </div><h4>Version 0.0.1 (2009-02-17)</h4><div class="indent"><p>First draft, copied from XEP-0167.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

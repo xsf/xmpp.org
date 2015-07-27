@@ -1,0 +1,791 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0258: Security Labels in XMPP</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Security Labels in XMPP" /><meta name="DC.Creator" content="Kurt Zeilenga" /><meta name="DC.Description" content="This document describes the use of security labels in XMPP. The document specifies&#10;            how security label meta-data is carried in XMPP, when this meta-data should or should&#10;            not be provided, and how the meta-data is to be processed." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2013-04-08" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0258" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0258: Security Labels in XMPP</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document describes the use of security labels in XMPP. The document specifies
+            how security label meta-data is carried in XMPP, when this meta-data should or should
+            not be provided, and how the meta-data is to be processed.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Kurt Zeilenga</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2013-04-08</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#disco">Discovering Feature Support</a><br />3.  <a href="#protocol">Protocol</a><br />4.  <a href="#label-catalog">Label Catalog Discovery</a><br />5.  <a href="#xmpp-use">Use in XMPP</a><br />   
+      5.1.  <a href="#im-use">Use in Instant Messaging</a><br />   
+      5.2.  <a href="#muc-use">Use in Group Chat and Multi-User Chat</a><br />      
+      5.2.1.  <a href="#muc-disco">Discovery</a><br />      
+      5.2.2.  <a href="#muc-send">Sending Messages</a><br />      
+      5.2.3.  <a href="#muc-history">Room History</a><br />      
+      5.2.4.  <a href="#muc-private">Private Messages</a><br />      
+      5.2.5.  <a href="#muc-invite">Invitations</a><br />      
+      5.2.6.  <a href="#muc-subject">Room Subject</a><br />      
+      5.2.7.  <a href="#muc-config">Room Configuration</a><br />   
+      5.3.  <a href="#presence-use">Use in Presence</a><br />6.  <a href="#exts">Extension Considerations</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      9.2.  <a href="#registrar-versioning">Protocol Versioning</a><br />10.  <a href="#schema">XML Schemas</a><br />   
+      10.1.  <a href="#schema-sl">Extension Schema</a><br />   
+      10.2.  <a href="#schema-catalog">&lt;catalog/&gt; schema</a><br />   
+      10.3.  <a href="#schema-ess">&lt;esssecuritylabel/&gt; schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+        <p>A security label, sometimes referred to as a confidentiality label, is a structured
+            representation of the sensitivity of a piece of information. A security label is used in
+            conjunction with a clearance, a structured representation of what information
+            sensitivities a person (or other entity) is authorized to access, and a security policy
+            to control access to each piece of information. For instance, a message could be labeled
+            as "SECRET", and hence requiring the sender and the receiver to each have a clearance
+            granting access to "SECRET" information. <span class="ref"><a href="http://www.itu.int/rec/T-REC-X.841-200010-I/en">X.841</a></span>  [<a href="#nt-idp1524240">1</a>] provides a discussion of security
+            labels, clearances, and security policy.</p>
+        <p>Sensitivity-based authorization is used in networks which operate under a set of
+            information classification rules, such as in government agency networks. The
+            standardized formats for security labels, clearances, and security policy are
+            generalized and do have application in non-government networks.</p>
+        <p>This document describes the use of security labels in <span class="ref"><a href="http://xmpp.org/">XMPP</a></span>  [<a href="#nt-idp1527760">2</a>]. The document specifies how
+            security label meta-data is carried in XMPP. It standardizes a mechanism for carrying
+            ESS Security Labels in XMPP, as well as provides for use of other label formats. ESS
+            Security Labels are specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2634">RFC 2634</a></span>  [<a href="#nt-idp1530320">3</a>]. ESS Security Labels are commonly used in
+            conjunction with <span class="ref"><a href="http://www.itu.int/rec/T-REC-X.500-200102-I/en">X.500</a></span>  [<a href="#nt-idp1532880">4</a>] clearances and either X.841 or <span class="ref">SDN.801c</span>  [<a href="#nt-idp1534992">5</a>] security
+            policies.</p>
+        <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Message with ESS Security Label</p><div class="indent"><pre class="prettyprint">
+&lt;message to='romeo@example.net' from='juliet@example.com/balcony'&gt;
+    &lt;body&gt;This content is classified.&lt;/body&gt;
+    &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+        &lt;displaymarking fgcolor='black' bgcolor='red'&gt;SECRET&lt;/displaymarking&gt;
+        &lt;label&gt;&lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'&gt;
+            MQYCAQQGASk=
+        &lt;/esssecuritylabel&gt;&lt;/label&gt;
+    &lt;/securitylabel&gt;
+&lt;/message&gt;
+  </pre></div>
+        <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Message with IC-ISM Label</p><div class="indent"><pre class="prettyprint">
+&lt;message to='romeo@example.net' from='juliet@example.com/balcony'&gt;
+    &lt;body&gt;This content is classified.&lt;/body&gt;
+    &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+        &lt;displaymarking fgcolor='black' bgcolor='red'&gt;SECRET&lt;/displaymarking&gt;
+        &lt;label&gt;&lt;icismlabel xmlns='http://example.gov/IC-ISM/0' classification='S'
+            ownerProducer='USA'/&gt;&lt;/label&gt;
+    &lt;/securitylabel&gt;
+&lt;/message&gt;
+  </pre></div>
+        <p>Note: The <span class="ref">IC-ISM</span>  [<a href="#nt-idp1538688">6</a>] label example is for <span class="em">illustrative purposes only</span>.</p>
+
+        <p>The document details when security label meta-data should or should not be provided, and
+            how this meta-data is to be processed.</p>
+
+        <p>This document does not provide: <ul>
+                <li>any mechanism for a client to discover the security policy in force at its home
+                    server, or any other server;</li>
+                <li>any mechanism for a client to discover the user's clearance, or the clearance of
+                    associated with any resource; nor</li>
+                <li>any administrative mechanism for a client to configure configure policy,
+                    clearance, and labels of any resource.</li>
+            </ul> Such mechanisms may be introduced in subsequent documents.</p>
+
+        <p>This document does not discuss how one might securely bind a security label to a stanza.
+            It is expected a subsequent document will tackle this topic.</p>
+    <h2>2.
+       <a name="disco" id="disco">Discovering Feature Support</a></h2>
+        <p>An entity (client or server) which supports the XMPP Security Label protocol MUST report
+            that fact by including a service discovery feature of "<tt>urn:xmpp:sec-label:0</tt>" in
+            response to a <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1544512">7</a>] information request.</p>
+        <p>Clients wishing to include a XMPP Security Label element in any stanza they generate
+            SHOULD determine if their server supports the XMPP Security Label protocol. If their
+            server does not support XMPP Security Label, the client SHOULD NOT generate XMPP
+            Security Labels as the server not supporting this protocol will generally ignore XMPP
+            Security Labels as they would any other unrecognized element.</p>
+        <p>As each service domain may have different support for security labels, servers should
+            advertise and clients should perform appropriate discovery lookups on a per service
+            basis.</p>
+        <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Service Discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='user@example.com/Work'
+    to='example.com'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+        <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Service Discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='example.com'
+    to='user@example.com/Work'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='urn:xmpp:sec-label:0'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+    <h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+        <p>An element, <tt>&lt;securitylabel/&gt;</tt>, is defined to carry security label meta-data. This meta-data
+            includes a security label, zero or more equivalent security labels, and optionally
+            display marking data.</p>
+        <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Labeled Message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='romeo@example.net' from='juliet@example.com/balcony'&gt;
+    &lt;body&gt;This content is classified.&lt;/body&gt;
+    &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+        &lt;displaymarking fgcolor='black' bgcolor='red'&gt;SECRET&lt;/displaymarking&gt;
+        &lt;label&gt;
+            &lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'
+                &gt;MQYCAQIGASk=&lt;/esssecuritylabel&gt;
+        &lt;/label&gt;
+        &lt;equivalentlabel&gt;
+            &lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'
+                &gt;MRUCAgD9DA9BcXVhIChvYnNvbGV0ZSk=&lt;/esssecuritylabel&gt;
+        &lt;/equivalentlabel&gt;
+    &lt;/securitylabel&gt;
+&lt;/message&gt;
+  </pre></div>
+        <p>The security label meta-data is carried in an <tt>&lt;securitylabel/&gt;</tt> element. The
+            <tt>&lt;securitylabel/&gt;</tt> element which contains one and only one <tt>&lt;label/&gt;</tt> element, zero or more
+            <tt>&lt;equivalentlabel/&gt;</tt> elements, and an optional <tt>&lt;displaymarking/&gt;</tt> element.</p>
+        <p>The <tt>&lt;label/&gt;</tt> provides the primary security label. It is commonly issued by the sender
+            under the security policy of that they and their home server operating under. The
+            <tt>&lt;label/&gt;</tt> contains either a single element representing the primary security label or is
+            empty to indicate use of a default.</p>
+        <p>Each <tt>&lt;equivalentlabel/&gt;</tt> represents an equivalent security label under other policies. Each
+            <tt>&lt;equivalentlabel/&gt;</tt> contains a single element representing the equivalent label. This
+            element might be used when a recipient is known to hold a clearance under a different
+            policy than the sender.</p>
+        <p>The <tt>&lt;displaymarking/&gt;</tt> element contains a display string for use by implementations which
+            are unable to utilize the applicable security policy to generate display markings. The
+            element may optionally contain two attributes, <tt>fgcolor=</tt> and <tt>bgcolor=</tt>,
+            whose values are HTML color strings (e.g., '<tt>red</tt>' or '<tt>#ff0000</tt>'), for
+            use in colorizing the display marking. The <tt>fgcolor=</tt> default is <tt>black</tt>.
+            The <tt>bgcolor=</tt> default is <tt>white</tt>. </p>
+    <h2>4.
+       <a name="label-catalog" id="label-catalog">Label Catalog Discovery</a></h2>
+        <p>A client can request a catalog for a particular JID by sending a catalog discovery
+            request to the client's server. Where the JID is hosted by some other server, the
+            client's server is expected to produce a suitable catalog (or fail the request). The
+            client's server may, as needed, query catalogs from other servers in order to fulfill
+            the client's request.</p>
+        <p>While this specification does not preclude a client from directing a catalog request
+            elsewhere, it is noted that catalog returned by a party other than its server may not be
+            directly usable by the client. For instance, the client's server might require a
+            particular only-locally-known label be used in messages to a particular remote JID.</p>
+        <p>It is RECOMMENDED the server publish catalogs of security label for use by clients.</p>
+        <p>Two identical catalog requests may return different results, even for the same
+	    requester, as the results may depend on numerous factors.  It is suggested that clients
+	    request a catalog for use in a short-lived context, such as short-lived 1-to-1 chat
+	    session, for all use in stanzas of that session.  For use in long-lived context, such
+	    as a long-lived Multi-User Chat session, it is suggested the client request the
+	    current catalog when the user becomes present after a period of extended absence.
+	    Alternatively, a client could simply cache catalog results for a configurable amount of
+	    time.  With either approach, it is also suggested clients provide a means for the user
+	    to request an immediate refresh of all catalogs in all contexts.  This is useful where
+	    the user made changes to a personal label catalog which the XMPP server uses as input
+	    in processing catalog requests.  Note: there is no requirement that XMPP servers
+	    support 'personal label catalogs' (such details are beyond the scope of this document).</p>
+        <p>If catalog is restrictive, as indicated by the <tt>restrict=</tt> attribute with value of
+            true, the client SHOULD restrict the user to choosing one of the items from the catalog
+            and use the label of that item (or no label if the selected item is empty).</p>
+        <p>One and only one of the items may have a <tt>default=</tt> attribute with value of true.
+            The client should default the label selection to this item in cases where the user has
+            not selected an item.</p>
+        <p>An item may have no security label. Such an item explicitly offers a choice of sending a
+            stanza without a label. A non-restrictive catalog implicitly offers this choice when it
+            does not contain an empty item.</p>
+        <p>Each catalog provided should only contain labels for which the client is allowed to use
+            (based upon the user's authorization) in a particular context (such as in chat room). A
+            catalog may not include the complete set of labels available for the use by the client
+            in the context.</p>
+        <blockquote>Note: the single catalog per context approach used here is likely inadequate in
+            environments where there are a large number of labels in use. It is expected that a more
+            sophisticated approach will be introduced in a subsequent revision of this
+            specification.</blockquote>
+        <p>As each service domain may have different support for security labels, servers should
+            advertise and clients should perform appropriate discovery lookups on a per service
+            basis.</p>
+        <p>To indicate the support for label catalog discovery, a server advertises the
+                <tt>urn:xmpp:sec-label:catalog:2</tt> feature. The following pair of examples
+            illustrates this feature discovery.</p>
+        <p>Items in the catalog may contain a <tt>selector=</tt> attribute. The value of this
+            attribute represents the item's placement in a hierarchical organization of the items.
+            If one item has a <tt>selector=</tt> attribute, all items should have a
+                <tt>selector=</tt> attribute. The value of the <tt>selector=</tt> attribute conforms
+            to the <tt>selector-value</tt> ABNF production: <blockquote><tt>
+                
+selector-value = (&lt;item&gt;"|")*&lt;item&gt;
+
+            </tt></blockquote>
+        </p>
+        <p>where <tt>&lt;item/&gt;</tt> is a sequence of characters not including "|".</p>
+        <p>A value of "X|Y|Z" indicates that this item is "Z" in the the "Y" subset of the "X"
+            subset of items. This information may be used, for instance, in generating label
+            selection menus in graphical user interfaces.</p>
+        <blockquote>Note: use of unnecessarily deep hierarchies should be avoided.</blockquote>
+        <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Label Catalog Feature Discovery request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    to='example.com'
+    from='user@example.com/Work'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+        <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Label Information Feature Discovery response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='example.com'
+    to='user@example.com/Work'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='urn:xmpp:sec-label:catalog:2'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+
+
+        <p>The following example pair illustrates catalog discovery. The client directs the <tt>&lt;iq/&gt;</tt> to
+            its server regardless of which catalog it requests via the <tt>to=</tt> attribute of in
+            <tt>&lt;catalog/&gt;</tt> element. The client SHOULD NOT provide a <tt>from=</tt> attribute in the
+            <tt>&lt;catalog/&gt;</tt> element.</p>
+
+        <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Label Catalog request</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='example.com' type='get' id='cat1'&gt;
+  &lt;catalog xmlns='urn:xmpp:sec-label:catalog:2' to='example.com'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+
+        <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Label Catalog Get response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='user@example.com/Work' id='cat1'&gt;
+  &lt;catalog xmlns='urn:xmpp:sec-label:catalog:2'
+      to='example.com' name='Default'
+      desc='an example set of labels'
+	  restrict='false'&gt;
+	&lt;item selector="Classified|SECRET"&gt;
+            &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+                &lt;displaymarking fgcolor='black' bgcolor='red'&gt;SECRET&lt;/displaymarking&gt;
+                &lt;label&gt;
+                    &lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'
+                        &gt;MQYCAQQGASk=&lt;/esssecuritylabel&gt;
+                &lt;/label&gt;
+            &lt;/securitylabel&gt;
+	&lt;/item&gt;
+	&lt;item selector="Classified|CONFIDENTIAL"&gt;
+            &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+                &lt;displaymarking fgcolor='black' bgcolor='navy'&gt;CONFIDENTIAL&lt;/displaymarking&gt;
+                &lt;label&gt;
+                    &lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'
+                        &gt;MQYCAQMGASk&lt;/esssecuritylabel&gt;
+                &lt;/label&gt;
+            &lt;/securitylabel&gt;
+	&lt;/item&gt;
+	&lt;item selector="Classified|RESTRICTED"&gt;
+            &lt;securitylabel xmlns='urn:xmpp:sec-label:0'&gt;
+                &lt;displaymarking fgcolor='black' bgcolor='aqua'&gt;RESTRICTED&lt;/displaymarking&gt;
+                &lt;label&gt;
+                    &lt;esssecuritylabel xmlns='urn:xmpp:sec-label:ess:0'
+                        &gt;MQYCAQIGASk=&lt;/esssecuritylabel&gt;
+                &lt;/label&gt;
+            &lt;/securitylabel&gt;
+	&lt;/item&gt;
+	&lt;item selector="UNCLASSIFIED" default="true"/&gt;
+  &lt;/catalog&gt;
+&lt;/iq&gt;
+  </pre></div>
+
+        <p> Where the server needs to obtain a catalog from another server in order to respond to
+            its client, it can send an &lt;iq/&gt; to that server requesting that catalog. The requesting
+            server provides the bare JID of the requesting user in the <tt>from=</tt> attribute in
+            the <tt>&lt;catalog/&gt;</tt> element when it desires a catalog to be prepared specifically for the
+            user. Otherwise the <tt>from=</tt> attribute in the <tt>&lt;catalog/&gt;</tt> element is absent. </p>
+
+    <h2>5.
+       <a name="xmpp-use" id="xmpp-use">Use in XMPP</a></h2>
+        <p>The sensitivity-based access control decisions discussed herein are to be made
+            independently of other access control decisions or other facilities. That is, the
+            sensitivity-based access control decisions are not conditional on other factors.</p>
+        <p>It is intended that <tt>&lt;securitylabel/&gt;</tt> elements are only used as prescribed by this
+            document, documents extending this document, or other formal specifications. Any other
+            use of <tt>&lt;securitylabel/&gt;</tt> SHOULD be viewed as a protocol violation. The stanza SHOULD be
+            discarded with, if appropriate, an error response. Such error responses SHOULD NOT
+            include content from the violating stanza, excepting that necessary to well-formed error
+            responses. Error responses MUST NOT contain a <tt>&lt;securitylabel/&gt;</tt> element. Any such error
+            response violates this protocol and MUST be discarded by servers implementing this
+            specification. Error responses MUST NOT be subjected to security label authorization
+            checks. However, this prohibition does not preclude a server from taking appropriate
+            action to prevent the disclosure of sensitive information, such as closing the
+            stream.</p>
+        <p>When use of a <tt>&lt;securitylabel/&gt;</tt> element is prescribed, that use is RECOMMENDED. Absence of
+            a <tt>&lt;securitylabel/&gt;</tt> element implies the stanza has the default label as specified in the
+            governing security policy. Given that the governing policy may not specify a default
+            label, hence denying access to the stanza, supporting clients SHOULD provide a
+            <tt>&lt;securitylabel/&gt;</tt> element where prescribed.</p>
+        <p>Typically, a client would allow the user to choose populate the <tt>&lt;securitylabel/&gt;</tt> from one
+            of from a small set of security labels selections known to it (through configuration
+            and/or discovery and/or other means), such as from a pull-down menu. That selection
+            would include appropriate values for the <tt>&lt;label/&gt;</tt>, <tt>&lt;displaymarking/&gt;</tt>, and
+            <tt>&lt;equivalentlabel/&gt;</tt> elements.</p>
+        <p>A policy-aware client may provide the user with an interface allowing the user to produce
+            custom labeling data for inclusion in this set. A policy-aware client SHOULD preclude
+            the user from producing <tt>&lt;label/&gt;</tt> values which the user's own clearance does not grant
+            access to, and SHOULD preclude sending any label which the user's own clearance does not
+            grant access to. Each <tt>&lt;equivalentlabel/&gt;</tt> value, if any, MUST be equivalent under an
+            equivalent policy to the <tt>&lt;label/&gt;</tt>. The <tt>&lt;displaymarking/&gt;</tt> element SHOULD be set the display
+            marking prescribed for the <tt>&lt;label/&gt;</tt> under the governing policy, or, if the governing
+            policy prescribes no display marking for the <tt>&lt;label/&gt;</tt>, absent.</p>
+        <p>A client which receives a stanza with <tt>&lt;securitylabel/&gt;</tt> element is to prominently display
+            the <tt>&lt;displaymarking/&gt;</tt> value. A policy-aware client may alternatively prominently display
+            the marking for the <tt>&lt;label/&gt;</tt> prescribed by the governing policy.</p>
+        <p>Each server is expected to make a number of sensitivity-based authorization decisions.
+            Each decision is made by evaluating an Access Control Decision Function (ACDF) with a
+            governing policy, a clearance, and a security label. The ACDF yields either
+                <span class="em">Grant</span> or <span class="em">Deny</span>.</p>
+        <p>If the user holds a valid clearance (known to the server) under the governing policy, the
+            clearance input is the user's clearance. Otherwise, if the governing policy provides a
+            default clearance, the clearance input is the default clearance. Otherwise, the
+            clearance input is the nil clearance. The nil clearance is a clearance for which the
+            ACDF always returns Deny when given as the clearance input.</p>
+        <p>If the stanza contains a <tt>&lt;securitylabel/&gt;</tt> element and the either the <tt>&lt;label/&gt;</tt> element or
+            one of the <tt>&lt;equivalentlabel/&gt;</tt> elements contain an appropriate label, that label input is
+            that label. Otherwise, the label input is the default label provided the governing
+            policy or, if no default label is provided, the nil label. The nil label is a label for
+            which the ACDF always returns Deny when given as the label input.</p>
+        <p>The term "effective clearance" and "effective label" refer, respectively, to the
+            clearance and label provided as input to the ACDF.</p>
+        <p>Not all sensitivity-based authorization decisions an XMPP server might make involve a
+            user clearance and/or stanza label. A server may only provide service to users which
+            hold an appropriate clearance as determined by calling the ACDF with the user's
+            clearance and a label associated with the service. A clearance might also be associated
+            with the service to restrict the set of labels may be used in labeling stanzas. Labels
+            and clearances can also be associated with network interfaces, remote servers, and chat
+            rooms.</p>
+        <div class="indent"><h3>5.1 <a name="im-use" id="im-use">Use in Instant Messaging</a></h3>
+            <p>A client may provide a <tt>&lt;securitylabel/&gt;</tt> element in any <tt>&lt;message/&gt;</tt> it sends.</p>
+            
+        </div>
+        <div class="indent"><h3>5.2 <a name="muc-use" id="muc-use">Use in Group Chat and Multi-User Chat</a></h3>
+            <p>A client may provide a <tt>&lt;securitylabel/&gt;</tt> element in <tt>&lt;message/&gt;</tt> stanzas.</p>
+
+            <div class="indent"><h3>5.2.1 <a name="muc-disco" id="muc-disco">Discovery</a></h3>
+                <p>A server SHOULD provide a label feature and information discovery for the
+                    room.</p>
+                <p>Clients SHOULD discover label feature and information on a per room basis.</p>
+            </div>
+
+            <div class="indent"><h3>5.2.2 <a name="muc-send" id="muc-send">Sending Messages</a></h3>
+                <p>Sending groupchat messages is similar to sending normal messages, however their
+                    are a few differences.</p>
+                <p>Groupchat messages are addressed to the room. The room clearance must be suitable
+                    for the message label, else it should be rejected.</p>
+                <p>The room's clearance may allow a variety of labels to be used. Not all
+                    participants may be cleared for all labels allowed in the room. The server MUST
+                    only deliver messages to participants for which they are cleared to receive.</p>
+            </div>
+            <div class="indent"><h3>5.2.3 <a name="muc-history" id="muc-history">Room History</a></h3>
+                <p>The server MUST only deliver messages to participants for which they are cleared
+                    to receive.</p>
+            </div>
+            <div class="indent"><h3>5.2.4 <a name="muc-private" id="muc-private">Private Messages</a></h3>
+                <p>Private messages SHOULD be handled much like groupchat messages, including
+                    rejection of messages for a label not suitable for the room. The server MUST NOT
+                    deliver messages to participants for which they are cleared to receive.</p>
+            </div>
+            <div class="indent"><h3>5.2.5 <a name="muc-invite" id="muc-invite">Invitations</a></h3>
+                <p>Invitations may be labeled.</p>
+            </div>
+            <div class="indent"><h3>5.2.6 <a name="muc-subject" id="muc-subject">Room Subject</a></h3>
+                <p>A stanza intended to change the room subject SHOULD not carry a security label
+                    and SHOULD NOT be subject to security-label authorization checks. Such a stanza
+                    does not have any impact on the security-label parameters associated with the
+                    room.</p>
+            </div>
+            <div class="indent"><h3>5.2.7 <a name="muc-config" id="muc-config">Room Configuration</a></h3>
+                <p>The server may allow for configuration of security label parameters via room
+                    configuration mechanisms. The approach is intended to be ad-hoc. Hence this
+                    section is intended to be illustrative of one possible approach. Implementations
+                    are free to utilize other approaches.</p>
+                <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Room Configuration Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='room@muc.example.com'
+    id='create1'
+    to='user@example.com/Work'
+    type='result'&gt;
+&lt;query xmlns='http://jabber.org/protocol/muc#owner'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+       &lt;title&gt;"darkcave" room configuration&lt;/title&gt;
+       ...
+       &lt;field label='Room Label' type='list-single' var='sec-label#label'&gt;
+       &lt;value&gt;Catalog:UNCLASSIFIED&lt;/value&gt;
+       &lt;option label='SECRET'&gt;&lt;value&gt;Catalog:SECRET&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='CONFIDENTIAL'&gt;&lt;value&gt;Catalog:CONFIDENTIAL&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='UNCLASSIFED'&gt;&lt;value&gt;Catalog:UNCLASSIFIED&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='Custom'&gt;&lt;value&gt;Custom&lt;/value&gt;&lt;/option&gt;
+       &lt;/field&gt;
+       &lt;field label='Custom Room Label' type='text-single'
+            var='sec-label#custom-label'/&gt;
+
+       &lt;field label='Room Allowed Markings' type='list-multi' var='sec-label#clearance'&gt;
+       &lt;value&gt;Catalog:UNCLASSIFIED&lt;/value&gt;
+       &lt;option label='SECRET'&gt;&lt;value&gt;Catalog:SECRET&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='CONFIDENTIAL'&gt;&lt;value&gt;Catalog:CONFIDENTIAL&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='UNCLASSIFED'&gt;&lt;value&gt;Catalog:UNCLASSIFIED&lt;/value&gt;&lt;/option&gt;
+       &lt;option label='Custom'&gt;&lt;value&gt;Custom&lt;/value&gt;&lt;/option&gt;
+       &lt;/field&gt;
+       &lt;field label='Custom Room Clearance' type='text-single'
+            var='sec-label#custom-clearance'/&gt;
+    &lt;/x&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+                <p>In the above example, the server allows the room label to be set to one of to a
+                    subset of labels from the label catalog (see below), using the display name for
+                    selection, as well as custom label support. For custom label choice support, the
+                    server offers an single text box for entry of an appropriate text string
+                    indicating the label to use. Likewise for the room clearance and default room
+                    clearance.</p>
+                <p>Though offering choices from the label catalog is often desirable, a server could
+                    only offer custom label and/or clearance support.</p>
+                <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Room Configuration Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='room@muc.example.com'
+    id='create1'
+    to='user@example.com/Work'
+    type='result'&gt;
+&lt;query xmlns='http://jabber.org/protocol/muc#owner'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+       &lt;title&gt;"darkcave" room configuration&lt;/title&gt;
+       ...
+       &lt;field label='Room Label' type='text-single'
+            var='sec-label#custom-label'/&gt;
+       &lt;field label='Room Clearance' type='text-single'
+            var='sec-label#custom-clearance'/&gt;
+    &lt;/x&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+            </div>
+        </div>
+        <div class="indent"><h3>5.3 <a name="presence-use" id="presence-use">Use in Presence</a></h3>
+            <p><tt>&lt;securitylabel/&gt;</tt> elements are not to appear in <tt>&lt;presence/&gt;</tt> stanzas. Server SHALL treat
+                any <tt>&lt;presence/&gt;</tt> stanza that contains a <tt>&lt;securitylabel/&gt;</tt> as a protocol violation.</p>
+            <p>Presence information is subject to sensitivity-base authorization decisions, however
+                these decisions are made are made using a label associated with the presence
+                resource, such as a chat room's label.</p>
+        </div>
+    <h2>6.
+       <a name="exts" id="exts">Extension Considerations</a></h2>
+        <p> This extension is itself extensible. In particular, the <tt>&lt;label/&gt;</tt> and <tt>&lt;equivalentlabel/&gt;</tt>
+            elements are designed to hold a range of security labels formats. XML name spaces SHOULD
+            be used to avoid name clashes. </p>
+        <p> Future documents may specify how security-labels are used in other areas of XMPP, such
+            as PubSub.</p>
+    <h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+        <p>This document is all about authorization, a key aspect of security. Hence, security
+            considerations are discussed through this document.</p>
+	<p>Nothing in this document ensures appropriate labeling the sensitivity of a piece of
+	    information.  Addressing inappropriate labeling of information is beyond the scope of
+	    this document.</p>
+        <p>Certain XMPP stanzas, such as <tt>&lt;presence/&gt;</tt> stanzas, are not themselves subject to any
+            sensitivity-based authorization decisions, and may be forwarded throughout the XMPP
+            network. The content of these stanzas should not contain information requiring
+            sensitivity-based dissemination controls.</p>
+        <p>It is desirable to securely bind the security label to the object it labels. This may be
+            accomplished through use of digital signatures. Specification of such is left to a
+            future document. </p>
+    <h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+        <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1649344">8</a>].</p>
+    <h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+        <div class="indent"><h3>9.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+            <p>This specification defines the following XML namespaces:</p>
+            <ul>
+                <li>urn:xmpp:sec-label:0</li>
+                <li>urn:xmpp:sec-label:catalog:2</li>
+                <li>urn:xmpp:sec-label:ess:0</li>
+            </ul>
+            <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1655568">9</a>] includes the foregoing namespaces in the registry located at &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;, as described in Section 4 of <span class="ref"><a href="http://xmpp.org/extensions/xep-0053.html">XMPP Registrar Function (XEP-0053)</a></span>  [<a href="#nt-idp1659872">10</a>].</p>
+        </div>
+        <div class="indent"><h3>9.2 <a name="registrar-versioning" id="registrar-versioning">Protocol Versioning</a></h3>
+          <p>If the protocol defined in this specification undergoes a revision that is not fully backwards-compatible with an older version, the XMPP Registrar shall increment the protocol version number found at the end of the XML namespaces defined herein, as described in Section 4 of <span class="ref">XEP-0053</span>.</p>
+        </div>
+    <h2>10.
+       <a name="schema" id="schema">XML Schemas</a></h2>
+        <div class="indent"><h3>10.1 <a name="schema-sl" id="schema-sl">Extension Schema</a></h3>
+            <p>
+                <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:xmpp:sec-label:0"
+    xmlns="urn:xmpp:sec-label:0" elementFormDefault="qualified"&gt;
+
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;
+        The protocol documented by this schema is defined in
+        XEP-0258: http://xmpp.org/extensions/xep-0258.html
+      &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+
+    &lt;xs:simpleType name="colorCSS"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;CSS colors (W3C colors + "orange")&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:restriction base="xs:string"&gt;
+            &lt;xs:enumeration value="aqua"/&gt;
+            &lt;xs:enumeration value="black"/&gt;
+            &lt;xs:enumeration value="blue"/&gt;
+            &lt;xs:enumeration value="fuschia"/&gt;
+            &lt;xs:enumeration value="gray"/&gt;
+            &lt;xs:enumeration value="green"/&gt;
+            &lt;xs:enumeration value="lime"/&gt;
+            &lt;xs:enumeration value="maroon"/&gt;
+            &lt;xs:enumeration value="navy"/&gt;
+            &lt;xs:enumeration value="olive"/&gt;
+            &lt;xs:enumeration value="purple"/&gt;
+            &lt;xs:enumeration value="red"/&gt;
+            &lt;xs:enumeration value="silver"/&gt;
+            &lt;xs:enumeration value="teal"/&gt;
+            &lt;xs:enumeration value="white"/&gt;
+            &lt;xs:enumeration value="yellow"/&gt;
+            &lt;xs:enumeration value="orange"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+
+    &lt;xs:simpleType name="colorRGB"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Hex encoded RGB&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:restriction base="xs:string"&gt;
+            &lt;xs:pattern value="#[0-9A-Fa-f]{6}"/&gt;
+        &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+
+    &lt;xs:simpleType name="color"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Color&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:union memberTypes="colorCSS colorRGB"/&gt;
+    &lt;/xs:simpleType&gt;
+
+    &lt;xs:complexType name="displaymarking"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Display Marking&lt;/xs:documentation&gt;
+            &lt;xs:documentation&gt;String to be prominently displayed along with labeled
+                object.&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:simpleContent&gt;
+            &lt;xs:extension base="xs:string"&gt;
+                &lt;xs:attribute name="bgcolor" type="color" use="optional" default="white"/&gt;
+                &lt;xs:attribute name="fgcolor" type="color" use="optional" default="black"/&gt;
+            &lt;/xs:extension&gt;
+        &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+
+    &lt;xs:complexType name="label"&gt;
+        &lt;xs:choice minOccurs="0"&gt;
+            &lt;xs:any namespace="##other" processContents="lax"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+
+    &lt;xs:element name="securitylabel"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;A Security Label&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+                &lt;xs:element name="displaymarking" type="displaymarking"&gt;
+                    &lt;xs:annotation&gt;
+                        &lt;xs:documentation&gt;A Display Marking&lt;/xs:documentation&gt;
+                        &lt;xs:documentation&gt;To be prominently displayed&lt;/xs:documentation&gt;
+                    &lt;/xs:annotation&gt;
+                &lt;/xs:element&gt;
+                &lt;xs:element name="label" type="label"&gt;
+                    &lt;xs:annotation&gt;
+                        &lt;xs:documentation&gt;The Primary Label&lt;/xs:documentation&gt;
+                    &lt;/xs:annotation&gt;
+                &lt;/xs:element&gt;
+                &lt;xs:element name="equivalentlabel" type="label" minOccurs="0" maxOccurs="unbounded"&gt;
+                    &lt;xs:annotation&gt;
+                        &lt;xs:documentation&gt;An Equivalent Label&lt;/xs:documentation&gt;
+                    &lt;/xs:annotation&gt;
+                &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
+        &lt;/xs:complexType&gt;
+    &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+    </pre></div> A copy of this schema is available at <a href="http://xmpp.org/schemas/sec-label.xsd">
+                    http://xmpp.org/schemas/sec-label.xsd</a>. </p>
+        </div>
+        <div class="indent"><h3>10.2 <a name="schema-catalog" id="schema-catalog">&lt;catalog/&gt; schema</a></h3>
+            <p>
+                <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sl="urn:xmpp:sec-label:0"
+    xmlns="urn:xmpp:sec-label:catalog:2" targetNamespace="urn:xmpp:sec-label:catalog:2"
+    elementFormDefault="qualified"&gt;
+
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;
+        The protocol documented by this schema is defined in
+        XEP-0258: http://xmpp.org/extensions/xep-0258.html
+      &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+
+    &lt;xs:import schemaLocation="sec-label.xsd" namespace="urn:xmpp:sec-label:0"/&gt;
+
+    &lt;xs:attribute name="to" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Target JabberId&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="from" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Target JabberId&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="name" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Name&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="desc" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Description&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="id" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Identifer for current revision, commonly a hash&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="size" type="xs:integer"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Number of items&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="restrict" type="xs:boolean"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Restrictive&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="selector" type="xs:string"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;User input selector&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:attribute name="default" type="xs:boolean"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;default selection&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+
+    &lt;xs:element name="catalog"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;A Catalog of Labels&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+
+        &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+                &lt;xs:element name="item" minOccurs="0" maxOccurs="unbounded"&gt;
+                    &lt;xs:complexType&gt;
+                        &lt;xs:sequence minOccurs="0"&gt;
+                            &lt;xs:element ref="sl:securitylabel"/&gt;
+                        &lt;/xs:sequence&gt;
+                        &lt;xs:attribute ref="selector" use="optional"/&gt;
+                        &lt;xs:attribute ref="default" use="optional"/&gt;
+                    &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
+            &lt;xs:attribute ref="to" use="optional"/&gt;
+            &lt;xs:attribute ref="from" use="optional"/&gt;
+            &lt;xs:attribute ref="name" use="optional"/&gt;
+            &lt;xs:attribute ref="desc" use="optional"/&gt;
+            &lt;xs:attribute ref="id" use="optional"/&gt;
+            &lt;xs:attribute ref="size" use="optional"/&gt;
+            &lt;xs:attribute ref="restrict" use="optional"/&gt;
+        &lt;/xs:complexType&gt;
+    &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+    </pre></div> A copy of this schema is available at <a href="http://xmpp.org/schemas/sec-label-catalog.xsd">
+                    http://xmpp.org/schemas/sec-label-catalog.xsd</a>. </p>
+        </div>
+        <div class="indent"><h3>10.3 <a name="schema-ess" id="schema-ess">&lt;esssecuritylabel/&gt; schema</a></h3>
+            <p>
+                <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:xmpp:sec-label:ess:0"
+    xmlns="urn:xmpp:sec-label:ess:0" elementFormDefault="qualified"&gt;
+
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;
+        The protocol documented by this schema is defined in
+        XEP-0258: http://xmpp.org/extensions/xep-0258.html
+      &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+
+    &lt;xs:element name="esssecuritylabel" type="xs:base64Binary"&gt;
+        &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;An S/MIME ESS SecurityLabel [RFC2634]&lt;/xs:documentation&gt;
+            &lt;xs:documentation&gt;Value is the base64 encoding of the BER/DER encoding of an ASN.1
+                ESSSecurityLabel type as defined in RFC 2634. &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+    &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+    </pre></div> A copy of this schema is available at <a href="http://xmpp.org/schemas/sec-label-ess.xsd">
+                    http://xmpp.org/schemas/sec-label-ess.xsd</a>. </p>
+        </div>
+    <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0258<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2013-04-08<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0001<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: sec-label<br />
+        XML Schema for extension namespace: &lt;<a href="http://xmpp.org/schemas/sec-label.xsd">http://xmpp.org/schemas/sec-label.xsd</a>&gt;<br />
+        XML Schema for catalog namespace: &lt;<a href="http://xmpp.org/schemas/sec-label-catalog.xsd">http://xmpp.org/schemas/sec-label-catalog.xsd</a>&gt;<br />
+        XML Schema for esssecuritylabel namespace: &lt;<a href="http://xmpp.org/schemas/sec-label-ess.xsd">http://xmpp.org/schemas/sec-label-ess.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0258.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0258.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0258.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Kurt Zeilenga</h3><p class="indent">
+        Email:
+        <a href="mailto:Kurt.Zeilenga@Isode.COM">Kurt.Zeilenga@Isode.COM</a><br />
+        JabberID: 
+        <a href="xmpp:Kurt.Zeilenga@Isode.COM">Kurt.Zeilenga@Isode.COM</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1524240" id="nt-idp1524240">1</a>. X.841: Security techniques - Security information objects for access control &lt;<a href="http://www.itu.int/rec/T-REC-X.841-200010-I/en">http://www.itu.int/rec/T-REC-X.841-200010-I/en</a>&gt;.</p><p><a name="nt-idp1527760" id="nt-idp1527760">2</a>. Extensible Messaging and Presence Protocol (XMPP) &lt;<a href="http://xmpp.org/">http://xmpp.org/</a>&gt;.</p><p><a name="nt-idp1530320" id="nt-idp1530320">3</a>. RFC 2634: Enhanced Security Services for S/MIME &lt;<a href="http://tools.ietf.org/html/rfc2634">http://tools.ietf.org/html/rfc2634</a>&gt;.</p><p><a name="nt-idp1532880" id="nt-idp1532880">4</a>. X.500: The Directory: Overview of concepts, models and service &lt;<a href="http://www.itu.int/rec/T-REC-X.500-200102-I/en">http://www.itu.int/rec/T-REC-X.500-200102-I/en</a>&gt;.</p><p><a name="nt-idp1534992" id="nt-idp1534992">5</a>. SDN.801c: Access Control Concept and Mechanism, US National Security Agency, Revision C, 12 May 1999.</p><p><a name="nt-idp1538688" id="nt-idp1538688">6</a>. Common Information Sharing Standard for Information Security Marking: XML Implementation, Office of the Director of National Intelligence, Release 2.0.3, 15 February 2006.</p><p><a name="nt-idp1544512" id="nt-idp1544512">7</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1649344" id="nt-idp1649344">8</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1655568" id="nt-idp1655568">9</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1659872" id="nt-idp1659872">10</a>. XEP-0053: XMPP Registrar Function &lt;<a href="http://xmpp.org/extensions/xep-0053.html">http://xmpp.org/extensions/xep-0053.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2013-04-08)</h4><div class="indent"><p>Clarify catalogs are temporal objects.  Offer client handling suggestions.</p> (kdz)
+    </div><h4>Version 1.0 (2011-11-10)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification to Draft; corrected version of catalog namespace in schema.</p> (psa)
+    </div><h4>Version 0.10 (2011-11-03)</h4><div class="indent">
+                <p>Address last call comments.</p>
+             (kdz)
+    </div><h4>Version 0.9 (2011-09-21)</h4><div class="indent">
+                <p>Add optional <tt>from=</tt> attribute to catalog element for S2S requests. Make
+                    editorial changes.</p>
+             (kdz)
+    </div><h4>Version 0.8 (2011-08-11)</h4><div class="indent">
+                <p>Correct catalog schema.</p>
+             (kdz)
+    </div><h4>Version 0.7 (2011-03-08)</h4><div class="indent">
+                <p>Illustrate XEP Multi-User Chat room security label configuration. Make
+                    clarifications and minor editorial changes.</p>
+             (kdz)
+    </div><h4>Version 0.6 (2010-07-30)</h4><div class="indent">
+                <p>Extend catalog handling. Minor editorial changes.</p>
+             (kdz)
+    </div><h4>Version 0.5 (2009-07-27)</h4><div class="indent">
+                <p>Remove <tt>&lt;label/&gt;</tt>/<tt>&lt;equivalentlabel/&gt;</tt> <tt>type=</tt> attribute. Clarify label catalog
+                    discovery. Clarify syntax of <tt>selector=</tt> attribute.</p>
+             (kdz)
+    </div><h4>Version 0.4 (2009-07-23)</h4><div class="indent">
+                <p>Update label catalogs to include user input selector.</p>
+             (kdz)
+    </div><h4>Version 0.3 (2009-03-20)</h4><div class="indent">
+                <p>Add text regarding default bg/fg colors. Correct examples.</p>
+             (kdz)
+    </div><h4>Version 0.2 (2009-03-10)</h4><div class="indent">
+                <p>Reworked discovery and various updates.</p>
+             (kdz)
+    </div><h4>Version 0.1 (2009-01-05)</h4><div class="indent">
+                <p>Initial published version.</p>
+             (psa)
+    </div><h4>Version 0.0.081203 (2008-12-03)</h4><div class="indent">
+                <p>Initial draft.</p>
+             (kdz)
+    </div></div><hr /><p>END</p></body></html>

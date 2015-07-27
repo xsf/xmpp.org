@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0055: Jabber Search</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Search" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification provides canonical documentation of the jabber:iq:search namespace currently in use within the Jabber community." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-09-15" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0055" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0055: Jabber Search</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification provides canonical documentation of the jabber:iq:search namespace currently in use within the Jabber community.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-09-15</td></tr></table><hr /><p style="color:green">NOTICE: This Historical specification provides canonical documentation of a protocol that is in use within the Jabber/XMPP community. This document is not a standards-track specification within the XMPP Standards Foundation's standards process; however, it might be converted to standards-track in the future or might be obsoleted by a more modern protocol.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#usecases">Use Cases</a><br />   
+      2.1.  <a href="#usecases-search">Searching</a><br />3.  <a href="#extensibility">Extensibility</a><br />4.  <a href="#i18n">Internationalization Considerations</a><br />5.  <a href="#security">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-namespaces">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-formtypes">Field Standardization</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This specification documents a protocol currently used to search information repositories on the Jabber network. To date, the jabber:iq:search protocol has been used mainly to search for people who have registered with user directories (e.g., the "Jabber User Directory" hosted at users.jabber.org). However, the jabber:iq:search protocol is not limited to user directories, and could be used to search other Jabber information repositories (such as chatroom directories) or even to provide a Jabber interface to conventional search engines.</p>
+  <p>The basic functionality is to query an information repository regarding the possible search fields, to send a search query, and to receive search results. Note well that there is currently no mechanism for paging through results or limiting the number of "hits", and that the allowable search fields are limited to those defined in the XML schema; however, extensibility MAY be provided via the <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp807696">1</a>] protocol, as described below.</p>
+<h2>2.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <div class="indent"><h3>2.1 <a name="usecases-search" id="usecases-search">Searching</a></h3>
+    <p>In order to search an information respository, a user first needs to discover what search fields are supported by the service:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requesting Search Fields</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/home'
+    to='characters.shakespeare.lit'
+    id='search1'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The service MUST then return the possible search fields to the user, and MAY include instructions:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Receiving Search Fields</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='characters.shakespeare.lit'
+    to='romeo@montague.net/home'
+    id='search1'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;instructions&gt;
+      Fill in one or more fields to search
+      for any matching Jabber users.
+    &lt;/instructions&gt;
+    &lt;first/&gt;
+    &lt;last/&gt;
+    &lt;nick/&gt;
+    &lt;email/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The user MAY then submit a search request, specifying values for any desired fields:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Submitting a Search Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.net/home'
+    to='characters.shakespeare.lit'
+    id='search2'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;last&gt;Capulet&lt;/last&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The service SHOULD then return a list of search results that match the values provided:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Receiving Search Results</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='characters.shakespeare.lit'
+    to='romeo@montague.net/home'
+    id='search2'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;item jid='juliet@capulet.com'&gt;
+      &lt;first&gt;Juliet&lt;/first&gt;
+      &lt;last&gt;Capulet&lt;/last&gt;
+      &lt;nick&gt;JuliC&lt;/nick&gt;
+      &lt;email&gt;juliet@shakespeare.lit&lt;/email&gt;
+    &lt;/item&gt;
+    &lt;item jid='tybalt@shakespeare.lit'&gt;
+      &lt;first&gt;Tybalt&lt;/first&gt;
+      &lt;last&gt;Capulet&lt;/last&gt;
+      &lt;nick&gt;ty&lt;/nick&gt;
+      &lt;email&gt;tybalt@shakespeare.lit&lt;/email&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If there are no matching directory entries, the service MUST return an empty &lt;query/&gt; element:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Service Informs User that No Records Match</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='characters.shakespeare.lit'
+    to='romeo@montague.net/home'
+    id='search2'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>3.
+       <a name="extensibility" id="extensibility">Extensibility</a></h2>
+  <p>The fields defined in the 'jabber:iq:search' namespace are strictly limited to those specified in the schema. If a host needs to gather additional information, <span class="strong">Data Forms</span> SHOULD be used; a host MUST NOT add new fields to the 'jabber:iq:search' namespace. Support for extensibility via <span class="strong">Data Forms</span> is RECOMMENDED, but is not required for compliance with this document.</p>
+  <p>The extensibility mechanism for searching makes use of a hidden FORM_TYPE field for the purpose of standardizing field names within the form, as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp689888">2</a>]. Implementations supporting this extensibility mechanism SHOULD support field standardization as well.</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Entity Requests Search Fields from Service</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='characters.shakespeare.lit'
+    id='search3'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Host Returns Search Form to Entity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='characters.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='search3'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;instructions&gt;
+      Use the enclosed form to search. If your Jabber client does not
+      support Data Forms, visit http://shakespeare.lit/
+    &lt;/instructions&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;User Directory Search&lt;/title&gt;
+      &lt;instructions&gt;
+        Please provide the following information
+        to search for Shakespearean characters.
+      &lt;/instructions&gt;
+      &lt;field type='hidden'
+             var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single'
+             label='Given Name'
+             var='first'/&gt;
+      &lt;field type='text-single'
+             label='Family Name'
+             var='last'/&gt;
+      &lt;field type='list-single'
+             label='Gender'
+             var='x-gender'&gt;
+        &lt;option label='Male'&gt;&lt;value&gt;male&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Female'&gt;&lt;value&gt;female&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Entity Submits Search Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='juliet@capulet.com/balcony'
+    to='characters.shakespeare.lit'
+    id='search4'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='x-gender'&gt;
+        &lt;value&gt;male&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Service Returns Search Results</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='characters.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='search4'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;reported&gt;
+        &lt;field var='first' label='Given Name' type='text-single'/&gt;
+        &lt;field var='last' label='Family Name' type='text-single'/&gt;
+        &lt;field var='jid' label='Jabber ID' type='jid-single'/&gt;
+        &lt;field var='x-gender' label='Gender' type='list-single'/&gt;
+      &lt;/reported&gt;
+      &lt;item&gt;
+        &lt;field var='first'&gt;&lt;value&gt;Benvolio&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='last'&gt;&lt;value&gt;Montague&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='jid'&gt;&lt;value&gt;benvolio@montague.net&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='x-gender'&gt;&lt;value&gt;male&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='first'&gt;&lt;value&gt;Romeo&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='last'&gt;&lt;value&gt;Montague&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='jid'&gt;&lt;value&gt;romeo@montague.net&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='x-gender'&gt;&lt;value&gt;male&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>4.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>The intent of the &lt;first/&gt; and &lt;last/&gt; elements (and associated data form fields) is that they map to given name and family name, respectively. Therefore, cultures that place the family name first and the given name second (e.g., as is done in China) would use &lt;first/&gt; for the given name and &lt;last/&gt; for the family name, NOT the other way around.</p>
+  <p>For example, the name of the Chinese philosopher Confucius would be rendered as shown below because his given name was Qui and his family name was Kong.</p>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Internationalization of names</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='submit'
+    from='confucius@scholars.lit/home'
+    to='registrar.scholars.lit'
+    id='kj3b157n'
+    xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;confucius&lt;/username&gt;
+    &lt;first&gt;Qui&lt;/first&gt;
+    &lt;last&gt;Kong&lt;/last&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp702416">3</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp706080">4</a>] shall include the following information in its registries.</p>
+  <div class="indent"><h3>7.1 <a name="registrar-namespaces" id="registrar-namespaces">Protocol Namespaces</a></h3>
+    <p>The XMPP Registrar includes the 'jabber:iq:search' namespace in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-formtypes" id="registrar-formtypes">Field Standardization</a></h3>
+    <p>The following fields are reserved for use within jabber:x:data forms scoped by a FORM_TYPE of 'jabber:iq:search'; additional fields MAY be added via the XMPP Registrar's normal registration process but are outside the scope of this document.</p>
+    <p class="caption">Registry Submission</p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;jabber:iq:search&lt;/name&gt;
+  &lt;doc&gt;XEP-0055&lt;/doc&gt;
+  &lt;desc&gt;Forms enabling directory searches.&lt;/desc&gt;
+  &lt;field
+      var='first'
+      type='text-single'
+      label='Given Name'/&gt;
+  &lt;field
+      var='last'
+      type='text-single'
+      label='Family Name'/&gt;
+  &lt;field
+      var='nick'
+      type='text-single'
+      label='Nickname'/&gt;
+  &lt;field
+      var='email'
+      type='text-single'
+      label='Email Address'/&gt;
+&lt;/form_type&gt;
+    </pre></div>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:search'
+    xmlns='jabber:iq:search'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import namespace='jabber:x:data'
+             schemaLocation='http://www.xmpp.org/schemas/x-data.xsd'/&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0055: http://www.xmpp.org/extensions/xep-0055.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:all xmlns:xdata='jabber:x:data'&gt;
+          &lt;xs:element name='instructions' type='xs:string'/&gt;
+          &lt;xs:element name='first' type='xs:string'/&gt;
+          &lt;xs:element name='last' type='xs:string'/&gt;
+          &lt;xs:element name='nick' type='xs:string'/&gt;
+          &lt;xs:element name='email' type='xs:string'/&gt;
+          &lt;xs:element ref='xdata:x' minOccurs='0'/&gt;
+        &lt;/xs:all&gt;
+        &lt;xs:element ref='item' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:all&gt;
+        &lt;xs:element name='first' type='xs:string'/&gt;
+        &lt;xs:element name='last' type='xs:string'/&gt;
+        &lt;xs:element name='nick' type='xs:string'/&gt;
+        &lt;xs:element name='email' type='xs:string'/&gt;
+      &lt;/xs:all&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0055<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.3<br />
+            Last Updated: 2009-09-15<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0004<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: iq-search<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/iq-search.xsd">http://www.xmpp.org/schemas/iq-search.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0055.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0055.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0055.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp807696" id="nt-idp807696">1</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp689888" id="nt-idp689888">2</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p><p><a name="nt-idp702416" id="nt-idp702416">3</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp706080" id="nt-idp706080">4</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.3 (2009-09-15)</h4><div class="indent"><p>Clarified that &lt;first/&gt; and &lt;last/&gt; elements in fact always represent given name and family name, respectively.</p> (psa)
+    </div><h4>Version 1.2 (2004-03-22)</h4><div class="indent"><p>Clarified scope (searching of any information repository, not just user directories); added search and result examples to the extensibility section.</p> (psa)
+    </div><h4>Version 1.1 (2004-01-06)</h4><div class="indent"><p>Added XML schema; added text regarding extensibility via Data Forms; added FORM_TYPE submission.</p> (psa)
+    </div><h4>Version 1.0 (2003-01-09)</h4><div class="indent"><p>Updated status to Active per vote of the Jabber Council.</p> (psa)
+    </div><h4>Version 0.1 (2002-11-01)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

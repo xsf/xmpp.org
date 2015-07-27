@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0094: Agent Information</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Agent Information" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification provides canonical documentation of the obsolete Agent Information namespace. Note: This document has been superseded by XEP-0030: Service Discovery." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-10-08" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0094" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0094: Agent Information</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification provides canonical documentation of the obsolete Agent Information namespace. Note: This document has been superseded by XEP-0030: Service Discovery.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-10-08</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp632160">Introduction</a><br />2.  <a href="#sect-idp633552">Definition</a><br />3.  <a href="#sect-idp644720">Examples</a><br />4.  <a href="#sect-idp646576">Security Considerations</a><br />5.  <a href="#sect-idp648256">IANA Considerations</a><br />6.  <a href="#sect-idp650352">XMPP Registrar Considerations</a><br />7.  <a href="#sect-idp653184">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp632160" id="sect-idp632160">Introduction</a></h2>
+  <p>Over the years there have been three different protocols used in the Jabber community to discover information about other entities on the network. The most recent protocol, and the only one that is standards-track, is <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp635376">1</a>]. The protocol prior to Service Discovery was <span class="ref"><a href="http://xmpp.org/extensions/xep-0011.html">Jabber Browsing (XEP-0011)</a></span>  [<a href="#nt-idp637968">2</a>]. Before Jabber Browsing, there was the 'jabber:iq:agents' namespace. This specification provides historical documentation for the Agent Information protocol.</p>
+  <p>Note well that the Agent Information protocol is deprecated; applications desiring such functionality SHOULD implement Service Discovery. This specification is provided only in order to ensure complete documentation of earlier protocols.</p>
+<h2>2.
+       <a name="sect-idp633552" id="sect-idp633552">Definition</a></h2>
+  <p>The 'jabber:iq:agents' namespace was used to obtain a list of entities associated with another Jabber Entity; most commonly, the list of trusted services associated with a specific host.</p>
+  <p>When 'jabber:iq:agents' is used, information about available agents properties is contained within a &lt;query/&gt; element that is scoped by the 'jabber:iq:agents' namespace. The reply to a request of type "get" in the 'jabber:iq:agents' namespace contains zero or more &lt;agent/&gt; elements. The &lt;agent/&gt; element has a required 'jid' attribute that contains the Jabber Identifier of each agent. The &lt;agent/&gt; element in turn may contain the following children:</p>
+  <ul>
+    <li>name - a natural-language name for the service</li>
+    <li>description - a short phrase describing the service</li>
+    <li>transport - inclusion of this empty element signals that the service is a gateway to a non-Jabber instant messaging system</li>
+    <li>groupchat - inclusion of this empty element signals that the service is multi-user chat service</li>
+    <li>service - the CDATA of this element specifies the type of gateway (aim, icq, irc, msn, yahoo), the type of conferencing service (public or private), or user directory (jud); these values were never standardized and are not registered with the XMPP Registrar</li>
+    <li>register - inclusion of this empty element signals that the service supports registration</li>
+    <li>search - inclusion of this empty element signals that the service supports searching</li>
+  </ul>
+<h2>3.
+       <a name="sect-idp644720" id="sect-idp644720">Examples</a></h2>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Request for Agents List</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='agents1' type='get' to='shakespeare.lit'&gt;
+  &lt;query xmlns='jabber:iq:agents'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Reply Containing Agents List</p><div class="indent"><pre class="prettyprint">
+&lt;iq
+    to='juliet@capulet.com/balcony'
+    from='shakespeare.lit'
+    type='result'
+    id='agents1'&gt;
+  &lt;query xmlns='jabber:iq:agents'&gt;
+    &lt;agent jid='users.shakespeare.lit'&gt;
+      &lt;name&gt;Jabber User Directory&lt;/name&gt;
+      &lt;service&gt;jud&lt;/service&gt;
+      &lt;search/&gt;
+      &lt;register/&gt;
+    &lt;/agent&gt;
+    &lt;agent jid='chat.shakespeare.lit'&gt;
+      &lt;name&gt;Conferencing Service&lt;/name&gt;
+      &lt;service&gt;public&lt;/service&gt;
+      &lt;groupchat/&gt;
+    &lt;/agent&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>4.
+       <a name="sect-idp646576" id="sect-idp646576">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>5.
+       <a name="sect-idp648256" id="sect-idp648256">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp651600">3</a>].</p>
+<h2>6.
+       <a name="sect-idp650352" id="sect-idp650352">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp655280">4</a>] is necessary as a result of this document, since 'jabber:iq:agents' is already a registered namespace.</p>
+<h2>7.
+       <a name="sect-idp653184" id="sect-idp653184">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:agents'
+    xmlns='jabber:iq:agents'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence minOccurs='0'&gt;
+        &lt;xs:element ref='agent' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='agent'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='name' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='description' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='transport' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='groupchat' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='service' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='register' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='search' minOccurs='0' maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='name' type='xs:string'/&gt;
+  &lt;xs:element name='description' type='xs:string'/&gt;
+  &lt;xs:element name='transport'/&gt;
+  &lt;xs:element name='groupchat'/&gt;
+  &lt;xs:element name='service' type='xs:string'/&gt;
+  &lt;xs:element name='register'/&gt;
+  &lt;xs:element name='search'/&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0094<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 0.3<br />
+            Last Updated: 2003-10-08<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />Superseded By: XEP-0030<br />
+            Short Name: iq-agents<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0094.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0094.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0094.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp635376" id="nt-idp635376">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp637968" id="nt-idp637968">2</a>. XEP-0011: Jabber Browsing &lt;<a href="http://xmpp.org/extensions/xep-0011.html">http://xmpp.org/extensions/xep-0011.html</a>&gt;.</p><p><a name="nt-idp651600" id="nt-idp651600">3</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp655280" id="nt-idp655280">4</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2003-10-08)</h4><div class="indent">Per a vote of the Jabber Council, changed status to Obsolete. The protocol described herein is accurately defined but actively deprecated in favor of Service Discovery (XEP-0030). (psa)
+    </div><h4>Version 0.2 (2003-09-24)</h4><div class="indent">Added 'irc' to the values for the &lt;service/&gt; element; made several small textual changes. (psa)
+    </div><h4>Version 0.1 (2003-05-23)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

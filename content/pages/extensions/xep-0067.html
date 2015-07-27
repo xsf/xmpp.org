@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0067: Stock Data Transmission</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Stock Data Transmission" /><meta name="DC.Creator" content="Ulrich Staudinger" /><meta name="DC.Description" content="This document specifies a data format for stock data distribution in the Jabber community." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-07-19" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0067" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0067: Stock Data Transmission</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies a data format for stock data distribution in the Jabber community.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Ulrich Staudinger</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-07-19</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp626288">Introduction</a><br />2.  <a href="#sect-idp629120">Realtime data distribution</a><br />3.  <a href="#sect-idp634096">Distribution of  barchart, time framed stock value data </a><br />4.  <a href="#sect-idp639152">Distribution of share/stock specific news</a><br />5.  <a href="#sect-idp642240">Known implementations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp626288" id="sect-idp626288">Introduction</a></h2>
+<p>
+Usage of jabber/xmpp for stock data transmission would be a nice-to-have. This xep defines transmission of  stock ticker values via XMPP based on publish/subscribe. A component, client or alike may publish stock data in this specified way, after creating a node. However, first of all a node on the pub/sub server must be created, this xep recommends creation of the node in the domain 'stocks/', with specific stock value published in the ticker name domain space, i.e. 'stocks/CATG.DE' or 'stocks/602345'. This xep uses the domain 'stocks/' for example data. 
+</p>
+<p>
+So, what this document comes down to: it defines the data architecture for stock data and it specifies, that a 'stocks/' node is recommended to exist, which again holds all symbols as subnodes, which again hold either '/realtime', '/bar' or '/news' as subnodes. The 'bar' subnode contains a 'time descriptor' subnode. The sort of the symbols is defined through the service provider, who can i.e. support Y!ahoo finance symbols, (german) WKNs or official stock symbols.
+</p>
+<p>In a non pubsub environment stock data SHALL be transmitted in the x-chunk, identified with the namespace 'http://www.jabber.org/jeps/jep-0067.html', embedded into a message chunk.
+</p><h2>2.
+       <a name="sect-idp629120" id="sect-idp629120">Realtime data distribution</a></h2>
+<p>
+Realtime (or close-to-realtime) full stock value data is distributed to a ticker symbol pub/sub location, in the stocks domain. The share data SHALL contain name, time of last trade, most recent stock value, last trade volume, bid, ask, bid size, ask size of the share. If a value is not available, the value MUST be set to '-1'. Each of the values is transmitted in a corresponding xml element, as seen below. The data is published to a pub/sub position. Realtime share value SHALL be published to a position 'realtime' in the ticker symbol domain.   
+</p>
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. Component distributes realtime share value ticker data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stockgate@way.com' to='publish@gate.way' type='set' id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='stocks/WEB2T.DE/realtime'&gt;
+      &lt;item id='some'&gt;
+        &lt;realtime&gt;
+	 &lt;symbol&gt;web2t.de&lt;/symbol&gt;
+         &lt;name&gt;Web.de Xetra&lt;/name&gt;
+         &lt;time&gt;04-06-2002T12:12:12&lt;/time&gt;
+	 &lt;value&gt;0.57&lt;/value&gt;
+	 &lt;volume&gt;10000&lt;/volume&gt;
+	 &lt;bid&gt;0.56&lt;/bid&gt;
+	 &lt;ask&gt;0.60&lt;/ask&gt;
+	 &lt;bidsize&gt;-1&lt;/bidsize&gt;
+	 &lt;asksize&gt;-1&lt;/asksize&gt;
+	&lt;/realtime&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+</pre></div>
+
+
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. A client recieves realtime stock value data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stockgate@way.com' to='publish@gate.way' type='set' id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='stocks/WEB2T.DE/realtime'&gt;
+      &lt;item id='some'&gt;
+        &lt;realtime&gt;
+	 &lt;symbol&gt;web2t.de&lt;/symbol&gt;
+         &lt;name&gt;Web.de Xetra&lt;/name&gt;
+         &lt;time&gt;04-06-2002T19:12:12&lt;/time&gt;
+	 &lt;value&gt;0.57&lt;/value&gt;
+	 &lt;volume&gt;10000&lt;/volume&gt;
+	 &lt;bid&gt;0.56&lt;/bid&gt;
+	 &lt;ask&gt;0.60&lt;/ask&gt;
+	 &lt;bidsize&gt;1000&lt;/bidsize&gt;
+	 &lt;asksize&gt;2000&lt;/asksize&gt;
+	&lt;/realtime&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+</pre></div>
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. A client recieves data in a message chunk</p><div class="indent"><pre class="prettyprint">
+
+&lt;message from='cerberus@jabber.org'&gt;
+   &lt;x xmlns='http://www.jabber.org/jeps/jep-0067.html'&gt;
+      &lt;realtime&gt;
+        &lt;symbol&gt;^GDAXI&lt;/symbol&gt;
+	&lt;name&gt;DAX&lt;/name&gt;
+	&lt;time&gt;07-07-2003T12:00:00&lt;/time&gt;
+	&lt;value&gt;3200&lt;/value&gt;
+	&lt;bid&gt;-1&lt;/bid&gt;
+	&lt;ask&gt;-1&lt;/bid&gt;
+	&lt;bidsize&gt;-1&lt;/bidsize&gt;
+	&lt;asksize&gt;-1&lt;/asksize&gt;
+      &lt;/realtime&gt;
+   &lt;/x&gt;
+&lt;/message&gt;
+
+
+</pre></div>
+<h2>3.
+       <a name="sect-idp634096" id="sect-idp634096">Distribution of  barchart, time framed stock value data </a></h2>
+<p>Time framed, suitable for barcharts/candle sticks/line diagram, stock value data is distributed to a pub/sub location, the ticker symbol domain in the stocks domain. The share data SHALL contain name, validity time of this data set, open, hi, low, close for this time frame, traded volume in this time span of a share. </p>
+<p>If a value is not available, the value MUST be set to '-1'. </p>
+<p>Each of the values is transmitted in a corresponding xml element, as seen below. The data is published to a pub/sub position. Time framed, barcharted share data SHALL be published to a position 'bar' in the ticker symbol domain, the subdomain of this position SHALL be the time span information, time span as stated below. It is up to a component, how to to react on subscriptions in various time spans. Implementations are advised to generate data as according to subscribers demands (subscriptions). Values lower than 0:0:0:0:5:0 are not suitable for most implementations.     
+</p>
+<p>
+The time span SHALL be represented as a string, composed of the amount of years, months, days, hours, minutes, seconds covered by this barchart data set. Time span values SHALL be separated from each other through ':'. A leading zero MAY be attached to digits lower than ten. 
+</p>
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. Component distributes realtime barcharted share value ticker data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stockgate@way.com' to='publish@gate.way' type='set' id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='stocks/WEB2T.DE/bar/0:0:0:0:15:0'&gt;
+      &lt;item id='some'&gt;
+        &lt;bar&gt;
+	 &lt;symbol&gt;web2t.de&lt;/symbol&gt;
+         &lt;name&gt;Web.de Xetra&lt;/name&gt;
+         &lt;time&gt;04-06-2002T19:01:00&lt;/time&gt;
+	 &lt;timespan&gt;0:0:0:0:15:0&lt;/timespan&gt;
+	 &lt;open&gt;0.52&lt;/open&gt;
+	 &lt;hi&gt;0.8&lt;/hi&gt;
+	 &lt;low&gt;0.2&lt;/low&gt;
+	 &lt;close&gt;0.51&lt;/close&gt;
+	 &lt;volume&gt;10000&lt;/volume&gt;
+	&lt;/bar&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+</pre></div>
+<p>
+Similar to section 2, timeframed data MAY be transmitted in a message element.
+</p>
+<h2>4.
+       <a name="sect-idp639152" id="sect-idp639152">Distribution of share/stock specific news</a></h2>
+<p>
+Another important part in a stock system is distribution of stock/share specific news.
+</p>
+<p>
+Stock news are distributed to the pub/sub gateway, to the 'news' location in the ticker symbol subdomain. The stock news are packed in a 'stocknews' chunk. The stocknews chunk contains time, subject, body and source of these news.  
+</p>
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. Component publishes share/stock specific news</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stockgate@way.com' to='publish@gate.way' type='rset' id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='stocks/WEB2T.DE/news'&gt;
+      &lt;item id='some'&gt;
+        &lt;stocknews&gt;
+	 &lt;symbol&gt;web2t.de&lt;/symbol&gt;
+	 &lt;time&gt;04-06-2002T21:10:00&lt;/time&gt;
+         &lt;subject&gt;Web.de looses employees&lt;/subject&gt;
+         &lt;body&gt;Web.de looses 99% of all employees! Employees went on strike and did a collective quit.&lt;/body&gt;
+	 &lt;source&gt;Web.de PR&lt;/source&gt;
+	&lt;/stocknews&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+</pre></div>
+<h2>5.
+       <a name="sect-idp642240" id="sect-idp642240">Known implementations</a></h2>
+<p>
+Greenthumb (http://greenthumb.jabberstudio.org) supports reception of stock ticker data.
+</p>
+<p>
+The 'StockComponent' (http://www.die-horde.de) is a partial component implementation.
+</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0067<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.3<br />
+            Last Updated: 2003-07-19<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0067.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0067.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0067.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ulrich Staudinger</h3><p class="indent">
+        Email:
+        <a href="mailto:chicago5@gmx.de">chicago5@gmx.de</a><br />
+        JabberID: 
+        <a href="xmpp:uls@jabber.org">uls@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2003-07-19)</h4><div class="indent">Added transmission in messages (uls)
+    </div><h4>Version 0.2 (2003-01-26)</h4><div class="indent">Added ISO-8601 time scheme, added symbols, fixed typos. (uls)
+    </div><h4>Version 0.1 (2003-01-12)</h4><div class="indent">Initial Release (uls)
+    </div></div><hr /><p>END</p></body></html>

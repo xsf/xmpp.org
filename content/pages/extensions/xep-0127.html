@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0127: Common Alerting Protocol (CAP) Over XMPP</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Common Alerting Protocol (CAP) Over XMPP" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Boyd Fletcher" /><meta name="DC.Description" content="This document specifies a method for sending Common Alerting Protocol (CAP) data over XMPP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-12-09" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0127" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0127: Common Alerting Protocol (CAP) Over XMPP</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies a method for sending Common Alerting Protocol (CAP) data over XMPP.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Boyd Fletcher</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-12-09</td></tr></table><hr /><p style="color:green">NOTICE: This Informational specification defines a best practice or protocol profile that has been approved by the XMPP Council and/or the XSF Board of Directors. Implementations are encouraged and the best practice or protocol profile is appropriate for deployment in production systems.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp715168">Introduction</a><br />2.  <a href="#sect-idp717856">Terminology</a><br />3.  <a href="#sect-idp725680">Protocol</a><br />   
+      3.1.  <a href="#sect-idp721120">Direct Messages</a><br />   
+      3.2.  <a href="#sect-idp605264">PubSub</a><br />4.  <a href="#sect-idp612704">Security Considerations</a><br />5.  <a href="#sect-idp618544">IANA Considerations</a><br />6.  <a href="#sect-idp622128">XMPP Registrar Considerations</a><br />7.  <a href="#sect-idp630192">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp715168" id="sect-idp715168">Introduction</a></h2>
+  <p>The <span class="ref"><a href="http://www.oasis-open.org/committees/documents.php?wg_abbrev=emergency">Common Alerting Protocol</a></span>  [<a href="#nt-idp730688">1</a>] (CAP) is an open format for alerts and notifications, defined by <span class="ref"><a href="http://www.oasis-open.org/">OASIS</a></span>  [<a href="#nt-idp729088">2</a>]. CAP was developed to address the call, published in a (U.S.) National Science and Technology Council report, for "a standard method ... to collect and relay instantaneously and automatically all types of hazard warnings and reports". Given that the Extensible Messaging and Presence Protocol (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp719040">3</a>]) provides a near-real-time transport mechanism for structured information, and that CAP is defined as an XML data format, it makes sense to define a way to transport CAP information over XMPP. Such a method is defined herein.</p>
+<h2>2.
+       <a name="sect-idp717856" id="sect-idp717856">Terminology</a></h2>
+  <p>The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <span class="ref"><a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a></span>  [<a href="#nt-idp726864">4</a>].</p>
+<h2>3.
+       <a name="sect-idp725680" id="sect-idp725680">Protocol</a></h2>
+  <p>Because the alerts and notifications structured via CAP require a "push" medium, they SHOULD be sent via the XML &lt;message/&gt; stanza defined in <span class="ref">XMPP Core</span>. The message could be sent using either of the following methods:</p>
+  <ol>
+    <li>Directly from the sender to a single recipient, a list of recipients (using <span class="ref"><a href="http://xmpp.org/extensions/xep-0033.html">Extended Stanza Addressing (XEP-0033)</a></span>  [<a href="#nt-idp723680">5</a>]), or a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp599568">6</a>] room</li>
+    <li>Published to a list of subscribers via <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp602208">7</a>]</li>
+  </ol>
+  <p>Both methods are described below.</p>
+  <div class="indent"><h3>3.1 <a name="sect-idp721120" id="sect-idp721120">Direct Messages</a></h3>
+    <p>In the case of direct messages, the message stanza SHOULD have no 'type' attribute, but MAY have any defined type that is appropriate to the communications context (e.g., "groupchat" in a text conference). The &lt;alert/&gt; element SHOULD be the only child element of the message stanza, but other elements MAY be included as necessary (e.g., a &lt;body/&gt; child in the 'jabber:client' namespace providing a natural-language description of the alert). The 'id' attribute of the &lt;message/&gt; stanza MAY be set to the value of the CAP &lt;identifier/&gt; element.</p>
+    <p>The following example shows Example A.2 from the CAP specification sent as a direct message.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. An Alert Sent as a Message</p><div class="indent"><pre class="prettyprint">
+&lt;message from='KSTO@NWS.NOAA.GOV' 
+         to='weatherbot@jabber.org'
+         id='KSTO1055887203'&gt;
+  &lt;alert xmlns='http://www.incident.com/cap/1.0'&gt;
+    &lt;identifier&gt;KSTO1055887203&lt;/identifier&gt;
+    &lt;sender&gt;KSTO@NWS.NOAA.GOV&lt;/sender&gt;
+    &lt;sent&gt;2003-06-17T14:57:00-07:00&lt;/sent&gt;
+    &lt;status&gt;Actual&lt;/status&gt;
+    &lt;msgType&gt;Alert&lt;/msgType&gt;
+    &lt;scope&gt;Public&lt;/scope&gt;
+    &lt;info&gt;
+      &lt;category&gt;Met&lt;/category&gt;
+      &lt;event&gt;SEVERE THUNDERSTORM&lt;/event&gt;
+      &lt;urgency&gt;Severe&lt;/urgency&gt;
+      &lt;certainty&gt;Likely&lt;/certainty&gt;
+      &lt;eventCode&gt;same=SVR&lt;/eventCode&gt;
+      &lt;senderName&gt;NATIONAL WEATHER SERVICE SACRAMENTO&lt;/senderName&gt;
+      &lt;headline&gt;SEVERE THUNDERSTORM WARNING&lt;/headline&gt;
+      &lt;description&gt;
+        AT 254 PM PDT... NATIONAL WEATHER SERVICE DOPPLER RADAR 
+        INDICATED A SEVERE THUNDERSTORM OVER SOUTH CENTRAL ALPINE 
+        COUNTY... OR ABOUT 18 MILES SOUTHEAST OF KIRKWOOD... 
+        MOVING SOUTHWEST AT 5 MPH. HAIL... INTENSE RAIN AND STRONG 
+        DAMAGING WINDS ARE LIKELY WITH THIS STORM
+      &lt;/description&gt;
+      &lt;instruction&gt;
+        TAKE COVER IN A SUBSTANTIAL SHELTER UNTIL THE STORM PASSES
+      &lt;/instruction&gt;
+      &lt;contact&gt;BARUFFALDI/JUSKIE&lt;/contact&gt;
+      &lt;area&gt;
+        &lt;areaDesc&gt;
+          EXTREME NORTH CENTRAL TUOLUMNE COUNTY IN CALIFORNIA, 
+          EXTREME NORTHEASTERN CALAVERAS COUNTY IN CALIFORNIA,
+          SOUTHWESTERN ALPINE COUNTY IN CALIFORNIA
+        &lt;/areaDesc&gt;
+        &lt;polygon&gt;
+          38.47,-120.14 38.34,-119.95 38.52,-119.74 
+          38.62,-119.89 38.47,-120.14
+        &lt;/polygon&gt;
+        &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+        &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+        &lt;geocode&gt;fips6=006103&lt;/geocode&gt;
+      &lt;/area&gt;
+    &lt;/info&gt;
+  &lt;/alert&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp605264" id="sect-idp605264">PubSub</a></h3>
+    <p>The publish-subscribe protocol defined in XEP-0060 provides a way to send information to a number of subscribers, and to control the list of subscribers.</p>
+    <p>The following example shows Example A.2 from the CAP specification published to a pubsub node.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. An Alert Published to a PubSub Node</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='KSTO@NWS.NOAA.GOV'
+    to='pubsub.jabber.org'
+    id='someID'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='NOAA-ALERTS'&gt;
+      &lt;item id='KSTO1055887203'&gt;
+        &lt;alert xmlns='http://www.incident.com/cap/1.0'&gt;
+          &lt;identifier&gt;KSTO1055887203&lt;/identifier&gt;
+          &lt;sender&gt;KSTO@NWS.NOAA.GOV&lt;/sender&gt;
+          &lt;sent&gt;2003-06-17T14:57:00-07:00&lt;/sent&gt;
+          &lt;status&gt;Actual&lt;/status&gt;
+          &lt;msgType&gt;Alert&lt;/msgType&gt;
+          &lt;scope&gt;Public&lt;/scope&gt;
+          &lt;info&gt;
+            &lt;category&gt;Met&lt;/category&gt;
+            &lt;event&gt;SEVERE THUNDERSTORM&lt;/event&gt;
+            &lt;urgency&gt;Severe&lt;/urgency&gt;
+            &lt;certainty&gt;Likely&lt;/certainty&gt;
+            &lt;eventCode&gt;same=SVR&lt;/eventCode&gt;
+            &lt;senderName&gt;NATIONAL WEATHER SERVICE SACRAMENTO&lt;/senderName&gt;
+            &lt;headline&gt;SEVERE THUNDERSTORM WARNING&lt;/headline&gt;
+            &lt;description&gt;
+              AT 254 PM PDT... NATIONAL WEATHER SERVICE DOPPLER RADAR 
+              INDICATED A SEVERE THUNDERSTORM OVER SOUTH CENTRAL ALPINE 
+              COUNTY... OR ABOUT 18 MILES SOUTHEAST OF KIRKWOOD... 
+              MOVING SOUTHWEST AT 5 MPH. HAIL... INTENSE RAIN AND STRONG 
+              DAMAGING WINDS ARE LIKELY WITH THIS STORM
+            &lt;/description&gt;
+            &lt;instruction&gt;
+              TAKE COVER IN A SUBSTANTIAL SHELTER UNTIL THE STORM PASSES
+            &lt;/instruction&gt;
+            &lt;contact&gt;BARUFFALDI/JUSKIE&lt;/contact&gt;
+            &lt;area&gt;
+              &lt;areaDesc&gt;
+                EXTREME NORTH CENTRAL TUOLUMNE COUNTY IN CALIFORNIA, 
+                EXTREME NORTHEASTERN CALAVERAS COUNTY IN CALIFORNIA,
+                SOUTHWESTERN ALPINE COUNTY IN CALIFORNIA
+              &lt;/areaDesc&gt;
+              &lt;polygon&gt;
+                38.47,-120.14 38.34,-119.95 38.52,-119.74 
+                38.62,-119.89 38.47,-120.14
+              &lt;/polygon&gt;
+              &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+              &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+              &lt;geocode&gt;fips6=006103&lt;/geocode&gt;
+            &lt;/area&gt;
+          &lt;/info&gt;
+        &lt;/alert&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the pubsub node is configured to deliver payloads, the information is then sent to all subscribers.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. An Alert Sent as a PubSub Payload</p><div class="indent"><pre class="prettyprint">
+&lt;message from='pubsub.jabber.org'
+         to='weatherbot@jabber.org'&gt;
+  &lt;event xmlns="http://jabber.org/protocol/pubsub#event"&gt;
+    &lt;items node="NOAA-ALERTS"&gt;
+      &lt;alert xmlns='http://www.incident.com/cap/1.0'&gt;
+        &lt;identifier&gt;KSTO1055887203&lt;/identifier&gt;
+        &lt;sender&gt;KSTO@NWS.NOAA.GOV&lt;/sender&gt;
+        &lt;sent&gt;2003-06-17T14:57:00-07:00&lt;/sent&gt;
+        &lt;status&gt;Actual&lt;/status&gt;
+        &lt;msgType&gt;Alert&lt;/msgType&gt;
+        &lt;scope&gt;Public&lt;/scope&gt;
+        &lt;info&gt;
+          &lt;category&gt;Met&lt;/category&gt;
+          &lt;event&gt;SEVERE THUNDERSTORM&lt;/event&gt;
+          &lt;urgency&gt;Severe&lt;/urgency&gt;
+          &lt;certainty&gt;Likely&lt;/certainty&gt;
+          &lt;eventCode&gt;same=SVR&lt;/eventCode&gt;
+          &lt;senderName&gt;NATIONAL WEATHER SERVICE SACRAMENTO&lt;/senderName&gt;
+          &lt;headline&gt;SEVERE THUNDERSTORM WARNING&lt;/headline&gt;
+          &lt;description&gt;
+            AT 254 PM PDT... NATIONAL WEATHER SERVICE DOPPLER RADAR 
+            INDICATED A SEVERE THUNDERSTORM OVER SOUTH CENTRAL ALPINE 
+            COUNTY... OR ABOUT 18 MILES SOUTHEAST OF KIRKWOOD... 
+            MOVING SOUTHWEST AT 5 MPH. HAIL... INTENSE RAIN AND STRONG 
+            DAMAGING WINDS ARE LIKELY WITH THIS STORM
+          &lt;/description&gt;
+          &lt;instruction&gt;
+            TAKE COVER IN A SUBSTANTIAL SHELTER UNTIL THE STORM PASSES
+          &lt;/instruction&gt;
+          &lt;contact&gt;BARUFFALDI/JUSKIE&lt;/contact&gt;
+          &lt;area&gt;
+            &lt;areaDesc&gt;
+              EXTREME NORTH CENTRAL TUOLUMNE COUNTY IN CALIFORNIA, 
+              EXTREME NORTHEASTERN CALAVERAS COUNTY IN CALIFORNIA,
+              SOUTHWESTERN ALPINE COUNTY IN CALIFORNIA
+            &lt;/areaDesc&gt;
+            &lt;polygon&gt;
+              38.47,-120.14 38.34,-119.95 38.52,-119.74 
+              38.62,-119.89 38.47,-120.14
+            &lt;/polygon&gt;
+            &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+            &lt;geocode&gt;fips6=006109&lt;/geocode&gt;
+            &lt;geocode&gt;fips6=006103&lt;/geocode&gt;
+          &lt;/area&gt;
+        &lt;/info&gt;
+      &lt;/alert&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+.
+.
+.
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="sect-idp612704" id="sect-idp612704">Security Considerations</a></h2>
+  <p>Security considerations for CAP are defined in <span class="strong">Common Alerting Protocol, v. 1.0</span>; security considerations for XMPP are defined in <span class="strong">RFC 3920: XMPP Core</span>; security considerations for the XMPP publish-subscribe extension are defined in <span class="ref">XEP-0060: Publish Subscribe</span>.</p>
+  <p>Furthermore, it may be appropriate to include the "Classification", "Distribute", and/or "Store" headers specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0131.html">Stanza Headers and Internet Metadata (XEP-0131)</a></span>  [<a href="#nt-idp619856">8</a>] in order to safeguard CAP data.</p>
+<h2>5.
+       <a name="sect-idp618544" id="sect-idp618544">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp623376">9</a>].</p>
+<h2>6.
+       <a name="sect-idp622128" id="sect-idp622128">XMPP Registrar Considerations</a></h2>
+  <p>No namespaces or parameters need to be registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp626096">10</a>] as a result of this document.</p>
+<h2>7.
+       <a name="sect-idp630192" id="sect-idp630192">XML Schema</a></h2>
+  <p>The CAP information format is defined by an XML schema. The reader is referred to the CAP specification for the relevant schema definition.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0127<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-12-09<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, Common Alerting Protocol<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0127.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0127.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0127.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Boyd Fletcher</h3><p class="indent">
+        Email:
+        <a href="mailto:Boyd.Fletcher@je.jfcom.mil">Boyd.Fletcher@je.jfcom.mil</a><br />
+        JabberID: 
+        <a href="xmpp:bfletcher@jabber.com">bfletcher@jabber.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp730688" id="nt-idp730688">1</a>. Common Alerting Protocol, v. 1.0 &lt;<a href="http://www.oasis-open.org/committees/documents.php?wg_abbrev=emergency">http://www.oasis-open.org/committees/documents.php?wg_abbrev=emergency</a>&gt;.</p><p><a name="nt-idp729088" id="nt-idp729088">2</a>. OASIS is a not-for-profit, international consortium that drives the development, convergence and adoption of e-business standards. For further information, see &lt;<a href="http://www.oasis-open.org/">http://www.oasis-open.org/</a>&gt;.</p><p><a name="nt-idp719040" id="nt-idp719040">3</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp726864" id="nt-idp726864">4</a>. RFC 2119: Key words for use in RFCs to Indicate Requirement Levels &lt;<a href="http://tools.ietf.org/html/rfc2119">http://tools.ietf.org/html/rfc2119</a>&gt;.</p><p><a name="nt-idp723680" id="nt-idp723680">5</a>. XEP-0033: Extended Stanza Addressing &lt;<a href="http://xmpp.org/extensions/xep-0033.html">http://xmpp.org/extensions/xep-0033.html</a>&gt;.</p><p><a name="nt-idp599568" id="nt-idp599568">6</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp602208" id="nt-idp602208">7</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp619856" id="nt-idp619856">8</a>. XEP-0131: Stanza Headers and Internet Metadata &lt;<a href="http://xmpp.org/extensions/xep-0131.html">http://xmpp.org/extensions/xep-0131.html</a>&gt;.</p><p><a name="nt-idp623376" id="nt-idp623376">9</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp626096" id="nt-idp626096">10</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-12-09)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Active. (psa)
+    </div><h4>Version 0.2 (2004-11-09)</h4><div class="indent">Added references to XEP-0033 and XEP-0131. (psa)
+    </div><h4>Version 0.1 (2004-02-23)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,1112 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0024: Publish/Subscribe</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Publish/Subscribe" /><meta name="DC.Creator" content="DJ Adams" /><meta name="DC.Creator" content="Piers Harding" /><meta name="DC.Description" content="A publish-subscribe protocol for Jabber." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-04-22" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0024" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-0024: Publish/Subscribe</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A publish-subscribe protocol for Jabber.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>DJ Adams, Piers Harding</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-04-22</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp697024">Abstract</a><br />2.  <a href="#sect-idp599632">Introduction</a><br />3.  <a href="#sect-idp608160">The Specification</a><br />   
+      3.1.  <a href="#sect-idp612240">Subscribe/Unsubscribe Context</a><br />      
+      3.1.1.  <a href="#sect-idp615296"></a><br />      
+      3.1.2.  <a href="#sect-idp625120"></a><br />      
+      3.1.3.  <a href="#sect-idp1483152"></a><br />   
+      3.2.  <a href="#sect-idp1493168">Publish Context</a><br />   
+      3.3.  <a href="#sect-idp1501520">Distributing Published Information</a><br />   
+      3.4.  <a href="#sect-idp1506896">Delivery Sensitivity</a><br />   
+      3.5.  <a href="#sect-idp1512112">Use of Resources</a><br />4.  <a href="#sect-idp1518224">Implementation Notes</a><br />   
+      4.1.  <a href="#sect-idp1519824">Publisher Discovery</a><br />   
+      4.2.  <a href="#sect-idp1522928">Cross-Server Relationships</a><br />      
+      4.2.1.  <a href="#sect-idp1526160">Proxy Subscriptions</a><br />      
+      4.2.2.  <a href="#sect-idp1543296">Willingness to Serve</a><br />   
+      4.3.  <a href="#sect-idp1550144">Subscriber Anonymity and Acceptance?</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp697024" id="sect-idp697024">Abstract</a></h2>
+<p>
+Pubsub ("publish/subscribe") is a technique for coordinating the efficient
+delivery of information from publisher to consumer. This specification
+describes the use of pubsub within a Jabber context and is a result of
+two separate but related goals:
+</p>
+
+<ul>
+<li>to be able to exchange information _within_ a Jabber environment
+(for example continuously changing personal information between users)</li>
+<li>to be able to exchange information _using_ Jabber as a mechanism for
+<ul>
+<li>organising that exchange</li>
+<li>providing transport for the information</li>
+</ul>
+</li>
+</ul>
+
+<p>
+The specification details the use of the Jabber protocol elements and
+introduces a new namespace, jabber:iq:pubsub. 
+It also includes notes on actual implementation of such a
+mechanism in Jabber.
+</p>
+
+<h2>2.
+       <a name="sect-idp599632" id="sect-idp599632">Introduction</a></h2>
+<p>
+It's clear that as Jabber is deployed over a wider spectrum of platforms
+and circumstances, more and more information will be exchanged. Whether
+that information is specific to Jabber (JSM) users, or components, we need
+an mechanism to be able to manage the exchange of this information in an
+efficient way. 
+</p>
+
+<p>
+For example, it is currently the trend to embed information about a
+particular client's circumstance inside presence packets, either in the
+&lt;status/&gt; tag or in an &lt;x/&gt; extension. One example that comes
+to mind is "song currently playing on my MP3 player" (to which I have to
+admit some responsibility for the meme in the first place). While embedding
+information inside presence packets and having that information diffused to
+the users who are subscribed to that user's presence has the desired effect,
+it has a couple of non-trivial drawbacks:
+</p>
+
+<ul>
+<li>the diffusion is inefficient, sending potentially huge amounts of data
+to recipients who aren't interested</li>
+<li>the distribution is tied to closely to presence subscription; any entity
+that wants to receive information must be subscribed to the source's presence,
+and there is no mechanism for specifying _what_ information they wish to
+receive. It is also arguably too closely tied to the JSM to be useful for
+_component_-based information exchange.</li>
+</ul>
+
+<p>
+This is above and beyond the simple fact that this overloading of presence
+packets and the presence subscription and diffusion mechanism can only end
+in tears.
+</p>
+
+<p>
+It would be far better to have a separate (sub-)protocol that enabled
+entities to take part in publish/subscribe relationships, and have a service
+that facilitated the efficient exchange of information. Not only would it
+relax the undue pressure on the presence mechanism, but it would also allow
+people to use Jabber, which is, after all, about exchanging structured content
+between endpoints, as a publish/subscribe _mechanism_ in its own right.
+</p>
+
+<p>
+This specification describes a publish/subscribe protocol in terms
+of IQ packets with payload data in a new namespace, jabber:iq:pubsub. The
+choice for this namespace is slightly arbitrary - it was the same namespace
+used in temas's original document, seems to fit well, and we need a namespace
+to focus on. [<a href="#nt-idp606384">1</a>]
+</p>
+
+<p>
+The aim of the specification is to provide for a facility where Jabber
+entities can subscribe to (consume) and publish (emit) information in an
+efficient and organised way. These entities could be JSM users or components.
+</p>
+
+<p>
+Push technology is back with a vengeance. Jabber can play a fundamental
+part.
+</p>
+
+<h2>3.
+       <a name="sect-idp608160" id="sect-idp608160">The Specification</a></h2>
+
+<p>
+The pubsub services will be typically provided by a component. In what
+follows, there are generally three parties involved:
+</p>
+
+<ul>
+<li>the subscriber</li>
+<li>the pubsub service</li>
+<li>the publisher</li>
+</ul>
+
+<p>
+Bear in mind that it is perfectly possible for a subscriber to be a
+publisher, and a publisher to be a subscriber, too.
+</p>
+
+<p>
+The pubsub traffic will be carried in info/query (IQ) packets. All of the
+data in these packets will be qualified by the jabber:iq:pubsub namespace.
+</p>
+
+<p>
+Pubsub scenarios can be seen in a subscribe (or unsubscribe) context or a
+publish context. In light of this, we will examine the IQ packets
+used in these contexts.
+</p>
+
+<div class="indent"><h3>3.1 <a name="sect-idp612240" id="sect-idp612240">Subscribe/Unsubscribe Context</a></h3>
+
+<p>
+A potential consumer, or recipient, of published information, needs to
+request that he be sent that published information. Requesting to receive,
+or be pushed, information is known as subscribing.
+</p>
+
+<p>
+A subscription request generally takes this form:
+</p>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. General form of a subscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' from='subscriber' to='pubsub' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+             &lt;ns&gt;namespace:2&lt;/ns&gt;
+             ...
+             &lt;ns&gt;namespace:N&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' to='subscriber' from='pubsub' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+             &lt;ns&gt;namespace:2&lt;/ns&gt;
+             ...
+             &lt;ns&gt;namespace:N&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<div class="indent"><h3>3.1.1 <a name="sect-idp615296" id="sect-idp615296"></a></h3>
+
+<p>
+Subscriptions can be specific to a publisher, in which case a to attribute
+is specified in the &lt;subscribe/&gt; tag:
+</p>
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. Publisher-specific subscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+In this case, the namespaces specified will be added to any existing list
+of namespaces already recorded for that subscriber:publisher relationship.
+In other words, it's a relative, not an absolute, subscription request.
+</p>
+
+<p>
+It is also possible in a publisher-specific subscription to omit specific
+namespaces, if you want to be sent everything that particular publisher
+might publish:
+</p>
+
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. Publisher-specific subscription without namespace specification</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+This type of subscription should have the effect of absolutely replacing any
+previous namespace-specific subscription to the publisher specified.
+</p>
+
+<p>
+If a subscriber wishes to cancel a subscription from a particular publisher,
+he can send an unsubscribe like this:
+</p>
+
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. Publisher-specific unsubscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+This should have the effect of removing the subscription from that publisher
+for the namespaces specified.
+</p>
+
+<p>
+You can also send an unsubscribe without specifying any namespaces:
+</p>
+
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. Publisher-specific general unsubscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost' 
+             from='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe to='publisher'/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe to='publisher'/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+This should have the effect of removing any subscription relationship with
+the publisher specified. Note, however, that this won't stop the subscriber
+being pushed information from that publisher if he's specified a
+"publisher-generic" subscription (see next section).
+</p>
+
+</div>
+
+<div class="indent"><h3>3.1.2 <a name="sect-idp625120" id="sect-idp625120"></a></h3>
+
+<p>
+As well as being able to subscribe to specific publishers, it is also
+possible to subscribe to receive data, according to namespace, regardless
+of publisher:
+</p>
+
+<p class="caption"><a name="example-6" id="example-6"></a>Example 6. General namespace specific subscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+This means that the subscriber wishes to be pushed information in the
+namespaces specified, regardless of who publishes it. Like the
+publisher-specific subscribe that specifies namespaces, this request is
+relative, in the namespaces are added to any existing namespaces already
+recorded for this generic subscription.
+</p>
+
+<p>
+Subscribing to everything from everyone is probably not a good idea and
+we should not allow this. (The format of the request is actually used in
+an IQ-get context - see later).
+</p>
+
+<p class="caption"><a name="example-7" id="example-7"></a>Example 7. This is not allowed</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='error' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe/&gt;
+        &lt;/query&gt;
+        &lt;error code='405'&gt;Not Allowed&lt;/error&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+
+<p>
+Likewise, you can unsubscribe from certain namespaces in this non-publisher-specific context like this:
+</p>
+
+<p class="caption"><a name="example-8" id="example-8"></a>Example 8. General unsubscription to specific namespaces</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost' 
+             from='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost' 
+             to='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+If there are any subscriptions to specific publishers for the namespaces
+specified here, they should be removed (for those namespaces) in addition
+to the removal from the 'all publishers' list.
+</p>
+
+<p>
+Finally, a subscriber can wipe the slate clean like this:
+</p>
+
+<p class="caption"><a name="example-9" id="example-9"></a>Example 9. Wiping the slate</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost' 
+             from='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost' 
+             to='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;unsubscribe/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+which should have the effect of removing all namespace subscriptions
+from everywhere.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.1.3 <a name="sect-idp1483152" id="sect-idp1483152"></a></h3>
+
+<p>
+All the examples so far have shown actions on the subscriber's part, and
+have consisted of IQ-sets. In an IQ-set, within the jabber:iq:pubsub
+namespace, multiple children can exist in the query payload, but those
+children must be of the same type. In other words, you can send multiple
+&lt;subscribe/&gt;s, or multiple &lt;unsubscribe/&gt;s, but not a combination
+of the two.
+</p>
+
+<p>
+This is allowed:
+</p>
+
+<p class="caption"><a name="example-10" id="example-10"></a>Example 10. Subscribing to more than one publisher at once</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisherA'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;subscribe to='publisherB'&gt;
+            &lt;ns&gt;namespace:3&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisherA'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;subscribe to='publisherB'&gt;
+            &lt;ns&gt;namespace:3&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+But this is not allowed:
+</p>
+
+<p class="caption"><a name="example-11" id="example-11"></a>Example 11. Subscribes and unsubscribes in same IQ-set is not allowed</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisherA'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;unsubscribe to='publisherB'&gt;
+            &lt;ns&gt;namespace:3&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisherA'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;unsubscribe to='publisherB'&gt;
+            &lt;ns&gt;namespace:3&lt;/ns&gt;
+          &lt;/unsubscribe&gt;
+        &lt;/query&gt;
+        &lt;error code='400'&gt;
+          Bad Request: only subscribes or unsubscribes
+        &lt;/error&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+In the case where multiple &lt;subscribe/&gt;s or &lt;unsubscribe/&gt;s
+appear in an action, each element will be processed in turn, as they appear
+in the payload.
+</p>
+
+<p>
+As well as actions, the subscriber can query his subscription using an
+IQ-get in the jabber:iq:pubsub namespace. This should return a list of
+the subscribers current subscriptions, like this:
+</p>
+
+<p class="caption"><a name="example-12" id="example-12"></a>Example 12. Querying current subscription</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='get' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe/&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;subscribe to='publisherA'&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+            &lt;ns&gt;namespace:4&lt;/ns&gt;
+          &lt;/subscribe&gt;
+          &lt;subscribe to='publisherB'&gt;
+            &lt;ns&gt;namespace:5&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+Note the two references to namespace:2 - one inside the non-publisher-specific
+subscription list and one inside the subscription list specific to publisherA.
+This example implies that the non-publisher-specific and publisher-specific
+subscription information should be kept separately. This is designed to make
+it easier on the subscriber to manage his specific subscriptions over time.
+</p>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>3.2 <a name="sect-idp1493168" id="sect-idp1493168">Publish Context</a></h3>
+
+<p>
+In contrast to the subscribe and unsubscribe context, the publishing
+context is a lot simpler to explain.
+</p>
+
+<p>
+A publisher can publish information within a certain namespace, like this:
+</p>
+
+<p class="caption"><a name="example-13" id="example-13"></a>Example 13. Publishing information</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='publisher@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='foo'&gt;
+            &lt;foo xmlns='foo'&gt;bar&lt;/foo&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='publisher@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='foo'&gt;
+            &lt;foo xmlns='foo'&gt;bar&lt;/foo&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+It's also possible for a publisher to publish more than one item at once,
+like this:
+</p>
+
+<p class="caption"><a name="example-14" id="example-14"></a>Example 14. Publishing information in different namespaces</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.localhost'
+             from='publisher.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='foo'&gt;
+            &lt;foo xmlns='foo'&gt;bar&lt;/foo&gt;
+          &lt;/publish&gt;
+          &lt;publish ns='jabber:x:oob'&gt;
+            &lt;x xmlns='jabber:x:oob'&gt;
+              &lt;url&gt;http://www.pipetree.com/jabber/&lt;/url&gt;
+              &lt;desc&gt;Some stuff about Jabber&lt;/desc&gt;
+            &lt;/x&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+
+RECV: &lt;iq type='result' from='pubsub.localhost'
+             to='publisher.localhost' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='foo'&gt;
+            &lt;foo xmlns='foo'&gt;bar&lt;/foo&gt;
+          &lt;/publish&gt;
+          &lt;publish ns='jabber:x:oob'&gt;
+            &lt;x xmlns='jabber:x:oob'&gt;
+              &lt;url&gt;http://www.pipetree.com/jabber/&lt;/url&gt;
+              &lt;desc&gt;Some stuff about Jabber&lt;/desc&gt;
+            &lt;/x&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+
+
+<p>
+Each published item is wrapped in a &lt;publish/&gt; tag. This tag
+must contain the namespace of the item being publishes, in an ns 
+attribute, as shown. This is distinct from the xmlns attribute of
+the fragment of XML actually being published. It is theoretically
+none of the pubsub component's business to go poking around in the
+real published data, nor should it have to. It needs to know what
+namespace is qualifying the published information that has been 
+received, so that the list of appropriate recipients can be 
+determined.
+</p>
+
+</div>
+
+
+<div class="indent"><h3>3.3 <a name="sect-idp1501520" id="sect-idp1501520">Distributing Published Information</a></h3>
+<p>
+While it's the responsibility of the publishing entities to publish
+information, it's the responsibility of the pubsub
+component to push out that published data to the subscribers. The 
+list of recipient subscribers must be determined by the information
+stored by the pubsub component as a result of receiving subscription
+requests (which are described earlier).
+</p>
+<p>
+On receipt of an IQ-set containing published information, the pubsub
+entity must determine the list of subscribers to which that information
+should be pushed. If the IQ-set contains multiple &lt;publish/&gt;
+fragments, this process must be carried out for each one in turn.
+ [<a href="#nt-idp1503440">2</a>]
+</p>
+<p>
+Taking the earlier example of the publishing of data in the 'foo'
+namespace, the following example shows what the pubsub component
+must send to push this foo data out to a subscriber. 
+</p>
+<p class="caption"><a name="example-15" id="example-15"></a>Example 15. Pushing out published information to a subscriber</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='subscriber@localhost/foosink'
+             from='pubsub.localhost' id='push1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='foo' from='publisher@localhost'&gt;
+            &lt;foo xmlns='foo'&gt;bar&lt;/foo&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+<p>
+The recipient is _not_ required to send an 'acknowledgement' in the 
+form of an IQ-result; the idea that this _push_ of information is
+akin to how information is pushed in a live browsing context (see
+jabber:iq:browse documentation for more details).
+</p>
+
+</div>
+
+<div class="indent"><h3>3.4 <a name="sect-idp1506896" id="sect-idp1506896">Delivery Sensitivity</a></h3>
+
+<p>
+When a pubsub service receives a publish packet like the ones above, it
+needs to deliver (push) the information out according to the subscriptions
+that have been made. 
+</p>
+
+<p>
+However, we can introduce a modicum of sensitivity by using a presence
+subscription between the pubsub service and the subscriber(s). If the
+subscriber wishes only to receive information when he's online (this is
+a JSM-specific issue), then he needs to set up a presence subscription
+relationship with the pubsub service. The pubsub service should respond
+to presence subscriptions and unsubscriptions by 
+</p>
+
+<ul>
+<li>accepting the (un)subscription request</li>
+<li>reciprocating the (un)subscription request</li>
+</ul>
+
+<p>
+If the pubsub service deems that a published piece of information should
+be pushed to a subscriber, and there is a presence subscription relationship
+with that subscriber, the service should only push that information to the 
+subscriber if he is available. If he is not available, the information is not
+to be sent. 
+</p>
+
+<p>
+Thus the subscriber can control the sensitivity by initiating (or not) a
+presence relationship with the service. If the subscriber wishes to receive
+information regardless of availability, he should not initiate a (or cancel
+any previous) presence relationship with the service. 
+</p>
+
+<p>
+This loose coupling of presence relationships for sensitivity allows this
+specification to be used in the wider context of component-to-component
+publish/subscribe where presence is not a given.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5 <a name="sect-idp1512112" id="sect-idp1512112">Use of Resources</a></h3>
+<p>
+When in receipt of a pubsub subscription request from an entity 
+where a resource is specified in the JID, the pubsub component must
+honour the resource specified in the from attribute of the request.
+For example, here's a typical subscription request from a JSM user:
+</p>
+<p class="caption"><a name="example-16" id="example-16"></a>Example 16. Incoming subscription request from a JSM user</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;iq type='set' to='pubsub.localhost'
+             from='subscriber@localhost/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+            &lt;ns&gt;namespace:2&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+<p>
+When storing the subscriber/publisher/namespace relationship matrix for
+eventual querying when a publisher publishes some information, the 
+pubsub component must use the full JID, not just the username@host part.
+</p>
+<p>
+Similarly, in this example:
+</p>
+<p class="caption"><a name="example-17" id="example-17"></a>Example 17. Incoming subscription request from a component</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;iq type='set' to='pubsub.localhost'
+             from='news.server/politics-listener' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher'&gt;
+            &lt;ns&gt;news:politics:home&lt;/ns&gt;
+            &lt;ns&gt;news:politics:foreign:usa&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+<p>
+the full JID of the component subscriber - news.server/politics-listener,
+should be used to qualify the matrix.
+</p>
+<p>
+This is because it allows the subscribing entities to arrange the 
+receipt of pushed items by resource. In the case of a JSM user, it
+allows him to organise his clients, which may have different capabilities
+(some being able to handle the jabber:iq:pubsub data, others not) to
+receive the 'right' data. In the case of a component, it allows the
+component to associate component-specific data with incoming published
+namespace-qualified information.
+</p>
+
+</div>
+
+<h2>4.
+       <a name="sect-idp1518224" id="sect-idp1518224">Implementation Notes</a></h2>
+
+<p>
+While the specification describes the fundamental building blocks of the
+pubsub protocol, there are ideas that are not discussed above but nonetheless
+may be incorporated into an implementation. There are other considerations
+that have to be made in the wider context of publish and subscribe. Some of
+the main ones are discussed briefly here too.
+</p>
+
+<div class="indent"><h3>4.1 <a name="sect-idp1519824" id="sect-idp1519824">Publisher Discovery</a></h3>
+<p>
+There is no part of this pubsub specification that determines how a 
+potential subscriber might discover publishers. After all, there are
+no rules governing which pubsub component a publisher could or should
+publish to. And since pubsub subscriptions are specific to a pubsub
+component, there is an information gap - "how do I find out what 
+publishers there are, and through which pubsub components they're publishing
+information?"
+</p>
+<p>
+This problem domain should be solved using other methods, not with the
+actual jabber:iq:pubsub specific namespace. A combination of jabber:iq:browse
+usage (the magic ointment that heals all things) and perhaps a DNS style
+(or at least root-node-based) knowledge hierarchy might be the right
+direction.
+</p>
+<p>
+In the case where a server administrator wishes to facilitate pubsub
+flow between JSM users on a server, a pubsub component can be plugged
+into the jabberd backbone, and there is potentially no real issue with
+knowing which pubsub component to use, and where it is.
+But what about if the JSM users on one server wish to build pubsub
+relationships with JSM users on another server? (Note that this general
+question is not specific to JSM users, although that example will be used
+here). The next two sections look at how these things might pan out.
+</p>
+</div>
+
+<div class="indent"><h3>4.2 <a name="sect-idp1522928" id="sect-idp1522928">Cross-Server Relationships</a></h3>
+<p>
+When JSM users on server1 wish to subscribe to information published 
+by JSM users on server2 (let's say it's the mp3 player info, or avatars)
+then there are some issues that come immediately to mind:
+</p>
+<ul>
+<li>Does a JSM user on server1 (userA@server1) send his IQ-set subscription
+to the pubsub component on server2 (pubsub.server2), or server1
+(pubsub.server1)?</li>
+<li>If he sends it to pubsub.server2, can we expect 
+pubsub.server2 to always accept that subscription request, i.e. to 
+be willing to serve userA@server1 (if pubsub.server2 knows that 
+pubsub.server1 exists)?</li>
+<li>Will there be performance (or at least server-to-server traffic)
+implications if many subscription relationships exist between subscribers on
+server1 and publishers on server2?</li>
+</ul>
+
+<div class="indent"><h3>4.2.1 <a name="sect-idp1526160" id="sect-idp1526160">Proxy Subscriptions</a></h3>
+<p>
+To reduce the amount of server-to-server traffic, we can employ the 
+concept of "proxy subscriptions". This is simply getting a pubsub component
+to act on behalf of a (server-local) subscriber. Benefit comes when a pubsub
+component acts on behalf of multiple (server-local) subscribers.
+</p>
+<p>
+Here's how such proxy subscriptions can work, to reduce the amount of
+server-to-server traffic:
+</p>
+<p>
+Step 1: Subscriber sends original subscription
+</p>
+<p>
+JSM users on server1 wish to subscribe to information published by an 
+entity on server2. Each of them sends a subscription request to the
+_local_ pubsub component:
+</p>
+<p class="caption"><a name="example-18" id="example-18"></a>Example 18. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.server1'
+             from='subscriber@server1/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+Step2: Pubsub component subscribes on subscriber's behalf
+</p>
+<p>
+The pubsub component knows about the publisher, and where (to which
+pubsub component) that publisher publishes information. It formulates
+a subscription request and sends it to the remote pubsub component:
+</p>
+<p class="caption"><a name="example-19" id="example-19"></a>Example 19. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' to='pubsub.server2'
+             from='pubsub.server1' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+The remote pubsub component receives and acknowledges the subscription
+request, and the local pubsub component relays the response back to 
+the original requester:
+</p>
+<p class="caption"><a name="example-20" id="example-20"></a>Example 20. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='result' from='pubsub.server1'
+             to='subscriber@server1/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+If the remote pubsub server was unable or unwilling to accept the 
+subscription request, this should be reflected in the response:
+</p>
+<p class="caption"><a name="example-21" id="example-21"></a>Example 21. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='error' from='pubsub.server1'
+             to='subscriber@server1/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+        &lt;error code='406'&gt;Not Acceptable&lt;/error&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+Step3: Publisher publishes information
+</p>
+<p>
+The publisher, publisher.server2, publishes information in the 
+namespace:1 namespace, to the remote pubsub component pubsub.server2:
+</p>
+<p class="caption"><a name="example-22" id="example-22"></a>Example 22. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' from='publisher.server2'
+             to='pubsub.server2' id='p1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='namespace;1'&gt;
+            &lt;stuff xmlns='namespace:1'&gt;nonsense&lt;/stuff&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+
+<p>
+Step4: Pubsub component receives published information
+</p>
+<p>
+The pubsub component pushes the published information to pubsub.server1,
+who has been determined to be a valid recipient:
+</p>
+<p class="caption"><a name="example-23" id="example-23"></a>Example 23. </p><div class="indent"><pre class="prettyprint">
+RECV: &lt;iq type='set' from='pubsub.server2'
+             to='pubsub.server1' id='p1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='namespace;1' from='publisher.server2'&gt;
+            &lt;stuff xmlns='namespace:1'&gt;nonsense&lt;/stuff&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+Step5: Pubsub component forwards published information to original subscriber
+</p>
+<p>
+The local pubsub component then diffuses the information received to the
+original subscriber:
+</p>
+<p class="caption"><a name="example-24" id="example-24"></a>Example 24. </p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='set' from='pubsub.server1'
+             to='subscriber@server1/resource' id='p1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;publish ns='namespace;1' from='publisher.server2'&gt;
+            &lt;stuff xmlns='namespace:1'&gt;nonsense&lt;/stuff&gt;
+          &lt;/publish&gt;
+        &lt;/query&gt;
+      &lt;/iq&gt;
+</pre></div>
+
+<p>
+This way, only a single published element must travel between servers
+to satisfy a multiplex of subscribed entities at the delivery end.
+</p>
+
+<p>
+Of course, this mechanism will rely upon knowledge about pubsub components
+and where they're available; furthermore, it will require knowledge about
+where publisher entities publish their information.
+This knowledge, and the mechanisms to discover this sort of information,
+is not to be covered in this spec, which purely deals with the subscription
+and publishing of information. As SOAP is to UDDI (to use a slightly
+controversial pair of technologies), so is jabber:iq:pubsub to this 
+discovery mechanism as yet undefined. To include the definition of such
+a discovery mechanism in this specification is wrong on two counts:
+</p>
+<ul>
+<li>Discovery mechanisms by nature should not be tied to specific areas</li>
+<li>Trying to load too much onto jabber:iq:pubsub will only produce a 
+complex and hard-to-implement specification</li>
+</ul>
+<p>
+After all, the jabber:iq:pubsub spec as defined here is usable out of the
+box for the simple scenarios, and scenarios where discovery is not 
+necessary or the information can be exchanged in other ways.
+</p>
+
+</div>
+
+<div class="indent"><h3>4.2.2 <a name="sect-idp1543296" id="sect-idp1543296">Willingness to Serve</a></h3>
+<p>
+There are some situations where it might be appropriate for a pubsub
+component to refuse particular subscription requests. Here are two 
+examples:
+</p>
+<ul>
+<li>Where a pubsub component that's been designed, implemented, or
+configured to handle local-only pubsub traffic, and a subscription request
+is received, specifying a publisher that the local pubsub component knows
+to be one that publishes to a remote pubsub component  [<a href="#nt-idp1545136">3</a>]. In this case, the local pubsub component would be
+unwilling to provoke a server-to-server connection and therefore unwilling to 
+honour the request.</li>
+<li>Where a pubsub component receives a subscription request from a 
+remote subscriber, and that pubsub component knows that there's a 
+pubsub component local to the subscriber. In this case, the (administrator 
+of the) remote pubsub component might want to encourage proxy subscriptions.
+</li>
+</ul>
+<p>
+A refusal could take one of a number of guises:
+</p>
+<p class="caption"><a name="example-25" id="example-25"></a>Example 25. A flat refusal</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='error' from='pubsub.server2'
+             to='subscriber@server1/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+        &lt;error code='406'&gt;Local pubsub only&lt;/error&gt;
+      &lt;/iq&gt;
+</pre></div>
+<p class="caption"><a name="example-26" id="example-26"></a>Example 26. A refusal with redirection</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;iq type='error' from='pubsub.server2'
+             to='subscriber@server1/resource' id='s1'&gt;
+        &lt;query xmlns='jabber:iq:pubsub'&gt;
+          &lt;subscribe to='publisher.server2'&gt;
+            &lt;ns&gt;namespace:1&lt;/ns&gt;
+          &lt;/subscribe&gt;
+        &lt;/query&gt;
+        &lt;error code='302' jid='pubsub.server1'/&gt;
+      &lt;/iq&gt;
+</pre></div>
+ [<a href="#nt-idp1549376">4</a>]
+</div>
+
+</div>
+
+
+<div class="indent"><h3>4.3 <a name="sect-idp1550144" id="sect-idp1550144">Subscriber Anonymity and Acceptance?</a></h3>
+<p>
+The jabber:iq:pubsub specification makes no provision for 
+publishers to query a pubsub component to ask for a list of those entities
+that are subscribed to (namespaces) it (publishes). This is deliberate. 
+Do we wish to add to the specification to allow the publisher to discover
+this information? If so, it must be as an optional 'opt-in' (or 'opt-out')
+tag for the subscriber, to determine whether his JID will show up on the
+list. 
+ [<a href="#nt-idp1551344">5</a>]
+</p>
+<p>
+Associated with this is the semi-reciprocal issue of acceptance? The 
+specification deliberately makes no provision for a subscription acceptance
+mechanism (where the publisher must first accept a subscriber's request,
+via the pubsub component). If we're to prevent the publishers knowing
+who is subscribing, ought we to give them the power of veto, to 'balance
+things out'?
+</p>
+<p>
+Note that if we do, the acceptance issue is not necessarily one for the
+pubsub specification to resolve; there are other ways of introducing 
+access control, at least in a component environment; use of a mechanism
+that the Jabber::Component::Proxy Perl module represents is one example:
+wedge a proxy component in front of a real (pubsub) component and have
+the ability to use ACLs (access control lists) to control who gets to 
+connect to the real component.
+</p>
+
+</div>
+
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0024<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-04-22<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0024.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0024.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0024.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>DJ Adams</h3><p class="indent">
+        Email:
+        <a href="mailto:dj.adams@pobox.com">dj.adams@pobox.com</a><br />
+        JabberID: 
+        <a href="xmpp:dj@gnu.mine.nu">dj@gnu.mine.nu</a><br /></p><h3>Piers Harding</h3><p class="indent">
+        Email:
+        <a href="mailto:piers@ompa.net">piers@ompa.net</a><br />
+        JabberID: 
+        <a href="xmpp:piers@gnu.mine.nu">piers@gnu.mine.nu</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4><h4>Permissions</h4><h4>Disclaimer of Warranty</h4><span style="font-weight: bold"></span><h4>Limitation of Liability</h4><h4>IPR Conformance</h4></div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp606384" id="nt-idp606384">1</a>. It may well be that we will move to a URI-based namespace
+in the form of a URL pointing to this specification.</p><p><a name="nt-idp1503440" id="nt-idp1503440">2</a>. Whether a pubsub component implementation should be allowed to
+batch up individual published information fragments for one recipient
+as a result of a large, multi-part incoming publishing IQ-set, is not
+specified here, the choice is down to the implementer. Receiving entities
+should be able to cope with being pushed an IQ-set with multiple
+fragments of published data.</p><p><a name="nt-idp1545136" id="nt-idp1545136">3</a>. under other
+circumstances, this would trigger a 'Proxy Subscription', as described earlier, if supported</p><p><a name="nt-idp1549376" id="nt-idp1549376">4</a>. This 302 redirect is not covered in the general protocol specification,
+but it's an interesting concept :-)</p><p><a name="nt-idp1551344" id="nt-idp1551344">5</a>. Even if there is no provision for querying the subscribers, perhaps
+we should make a provision for the publisher to ask the pubsub component
+for a list of namespaces that have been subscribed to (for that publisher).
+</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-04-22)</h4><div class="indent">At the request of the authors, the status of this document has been changed to Retracted since it has been superseded by XEP-0060. (psa)
+    </div><h4>Version 0.1 (2002-03-05)</h4><div class="indent">Initial draft. (dja)
+    </div></div><hr /><p>END</p></body></html>

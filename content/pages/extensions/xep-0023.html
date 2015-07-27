@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0023: Message Expiration</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Message Expiration" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="DJ Adams" /><meta name="DC.Creator" content="Harold Gottschalk" /><meta name="DC.Description" content="This specification documents an historical protocol that was used to specify expiration dates for messages; this protocol has been deprecated in favor of XEP-0079: Advanced Message Processing." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-06-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0023" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0023: Message Expiration</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification documents an historical protocol that was used to specify expiration dates for messages; this protocol has been deprecated in favor of XEP-0079: Advanced Message Processing.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Jeremie Miller, DJ Adams, Harold Gottschalk</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-06-03</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp82112">Introduction</a><br />2.  <a href="#sect-idp88464">Specifying a TTL</a><br />3.  <a href="#sect-idp91216">Handling XML Stanzas with a TTL</a><br />   
+      3.1.  <a href="#sect-idp943712">Usage in client space</a><br />4.  <a href="#sect-idp945312">Security Considerations</a><br />5.  <a href="#sect-idp946400">IANA Considerations</a><br />6.  <a href="#sect-idp948560">XMPP Registrar Considerations</a><br />7.  <a href="#sect-idp951392">XML Schema</a><br />8.  <a href="#sect-idp954688">Open Issues</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp82112" id="sect-idp82112">Introduction</a></h2>
+  <p><span class="em">Note Well: The protocol described herein has been deprecated by the <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp98160">1</a>]. The recommended protocol for implementing message expiration functionality is now <span class="ref"><a href="http://xmpp.org/extensions/xep-0079.html">Advanced Message Processing (XEP-0079)</a></span>  [<a href="#nt-idp86192">2</a>].</span></p>
+  <p>It is sometimes helpful to indicate that a piece of information has a finite useful life or time-to-live (TTL). In the context of instant messaging, the main use of a TTL is to indicate that a message must or should be used by or read by a certain time, usually because the message has meaning or purpose only within a finite amount of time. In normal usage, such a message should be discarded after the specified time has passed if it has not been used or read by that time.</p>
+  <p>In Jabber, TTL functionality has been implemented informally using the jabber:x:expire namespace. Support for this namespace was added to the <span class="ref"><a href="http://jabberd.org/">jabberd</a></span>  [<a href="#nt-idp94208">3</a>] server as well as some clients and components in early 2001. Specifically, that support has involved the following two areas of responsibility:</p>
+  <ul>
+    <li>The sender of the message is responsible for attaching a jabber:x:expire extension to the XML stanza (usually a message).</li>
+    <li>Mechanisms involved in the store-and-forward of such a stanza
+ [<a href="#nt-idp95584">4</a>]
+en route to its intended recipient are responsible for checking the remaining time to live and expiring (discarding) the XML stanza if necessary.</li>
+  </ul>
+<h2>2.
+       <a name="sect-idp88464" id="sect-idp88464">Specifying a TTL</a></h2>
+  <p>An Endpoint can specify a TTL for an XML stanza that it wishes to send by attaching an &lt;x/&gt; extension qualified by the jabber:x:expire namespace. The extension contains no children, only a 'seconds' attribute that contains a value representing the stanza's TTL, in seconds.</p>
+
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Specifying a 30-minute TTL for a message</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;message to='sabine@gnu.mine.nu' id='msg811'&gt;
+        &lt;subject&gt;Eccles cakes!&lt;/subject&gt;
+        &lt;body&gt;
+          I've got some freshly made Eccles cakes here, come
+          round for one before they all disappear!
+        &lt;/body&gt;
+        &lt;x xmlns='jabber:x:expire' seconds='1800'/&gt;
+      &lt;/message&gt;
+  </pre></div>
+<h2>3.
+       <a name="sect-idp91216" id="sect-idp91216">Handling XML Stanzas with a TTL</a></h2>
+  <p>Any mechanism that is involved in the storage, forwarding, and general handling of XML stanzas must check for the presence of such an extension and act accordingly, expiring (discarding) any stanzas that have exceeded their TTL lifetime.  The jabber:x:expire namespace allows for a further attribute inside the &lt;x/&gt; extension: 'stored'. Here, the mechanism can record a value representing when the stanza was committed to storage, so that when the stanza is eventually retrieved for forwarding to the intended recipient, the elapsed time of storage can be calculated. This is to prevent the stanza from being held in 'suspended animation'.</p>
+  <p>Here we see what the original message looks like after the stanza has been committed to storage and the time of storage recorded:</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Recording a storage-time in the extension</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;message to='sabine@gnu.mine.nu' id='msg811'&gt;
+        &lt;subject&gt;Eccles cakes!&lt;/subject&gt;
+        &lt;body&gt;
+          I've got some freshly made Eccles cakes here, come
+          round for one before they all disappear!
+        &lt;/body&gt;
+        &lt;x xmlns='jabber:x:expire'
+           seconds='1800'
+           stored='912830221'/&gt;
+      &lt;/message&gt;
+  </pre></div>
+  <p>When Sabine attempts to retrieve her offline messages, the store-and-forward mechanism (e.g., mod_offline) compares the current time against the stored attribute. If the 1800 seconds have passed, the mechanism should simply drop the message, without notifying either the sender or the intended recipient. No Eccles cakes for Sabine!</p>
+<div class="indent"><h3>3.1 <a name="sect-idp943712" id="sect-idp943712">Usage in client space</a></h3>
+  <p>Although current usage of jabber:x:expire is most commonly seen in server implementations to address any TTL requirements of stored messages, Jabber clients can also be seen as handlers of messages that may contain expiration extension information. If a message is received by a Jabber client, and not immediately displayed to the user, the client must check for TTL information and expire the message (rather than display it to the user) if appropriate.</p>
+</div>
+<h2>4.
+       <a name="sect-idp945312" id="sect-idp945312">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>5.
+       <a name="sect-idp946400" id="sect-idp946400">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp949808">5</a>].</p>
+<h2>6.
+       <a name="sect-idp948560" id="sect-idp948560">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp953216">6</a>] is necessary as a result of this document, since 'jabber:x:expire' is already a registered protocol namespace.</p>
+<h2>7.
+       <a name="sect-idp951392" id="sect-idp951392">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:x:expire'
+    xmlns='jabber:x:expire'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0023: http://www.xmpp.org/extensions/xep-0023.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='seconds' type='xs:unsignedLong' use='required'/&gt;
+          &lt;xs:attribute name='stored' type='xs:unsignedLong' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+<h2>8.
+       <a name="sect-idp954688" id="sect-idp954688">Open Issues</a></h2>
+  <ol>
+    <li>The jabber:x:expire namespace is processed only for delayed messages and only by servers and subsystems which support this informational draft. Therefore it is possible or even likely that a TTL will not be properly handled from the user perspective.</li>
+    <li>A physical, time-based TTL is not implemented by this document, and would not be possible across systems without synchronized time.</li>
+  </ol>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0023<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.3<br />
+            Last Updated: 2009-06-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />Superseded By: XEP-0079<br />
+            Short Name: x-expire<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/x-expire.xsd">http://www.xmpp.org/schemas/x-expire.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0023.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0023.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0023.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>DJ Adams</h3><p class="indent">
+        Email:
+        <a href="mailto:dj.adams@pobox.com">dj.adams@pobox.com</a><br />
+        JabberID: 
+        <a href="xmpp:dj@gnu.mine.nu">dj@gnu.mine.nu</a><br /></p><h3>Harold Gottschalk</h3><p class="indent">
+        Email:
+        <a href="mailto:heg@imissary.com">heg@imissary.com</a><br />
+        JabberID: 
+        <a href="xmpp:heg@imissary.com">heg@imissary.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp98160" id="nt-idp98160">1</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p><p><a name="nt-idp86192" id="nt-idp86192">2</a>. XEP-0079: Advanced Message Processing &lt;<a href="http://xmpp.org/extensions/xep-0079.html">http://xmpp.org/extensions/xep-0079.html</a>&gt;.</p><p><a name="nt-idp94208" id="nt-idp94208">3</a>. The jabberd server is the original server implementation of the Jabber/XMPP protocols, first developed by Jeremie Miller, inventor of Jabber. For further information, see &lt;<a href="http://jabberd.org/">http://jabberd.org/</a>&gt;.</p><p><a name="nt-idp95584" id="nt-idp95584">4</a>. The best-known example of a mechanism that handles storing and forwarding of XML stanzas is the Jabber Session Manager (JSM) within current Jabber server implementations, specifically the mod_offline module. However, expiration of an XML stanza could also be handled by a Jabber client.</p><p><a name="nt-idp949808" id="nt-idp949808">5</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp953216" id="nt-idp953216">6</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.3 (2009-06-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed status to Obsolete.</p> (psa)
+    </div><h4>Version 1.2 (2004-10-18)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Deprecated since message expiration functionality should be implemented via XEP-0079: Advanced Message Processing.</p> (psa)
+    </div><h4>Version 1.1 (2004-01-06)</h4><div class="indent"><p>Added XML schema; added security, IANA, and XMPP Registrar considerations.</p> (psa)
+    </div><h4>Version 1.0 (2002-07-15)</h4><div class="indent"><p>Changed status to Active.</p> (psa)
+    </div><h4>Version 0.9 (2002-03-19)</h4><div class="indent"><p>Added remarks about client-end expiry.</p> (dja)
+    </div><h4>Version 0.1 (2002-03-07)</h4><div class="indent"><p>Initial draft.</p> (dja)
+    </div></div><hr /><p>END</p></body></html>

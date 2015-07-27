@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0029: Definition of Jabber Identifiers (JIDs)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Definition of Jabber Identifiers (JIDs)" /><meta name="DC.Creator" content="Craig Kaes" /><meta name="DC.Description" content="This document defines the exact nature of a Jabber Identifier (JID). Note well: this document was superseded by RFC 3920, which in turn has been superseded by RFC 6122." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-10-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0029" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0029: Definition of Jabber Identifiers (JIDs)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines the exact nature of a Jabber Identifier (JID). Note well: this document was superseded by RFC 3920, which in turn has been superseded by RFC 6122.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Craig Kaes</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-10-03</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp691456">Introduction</a><br />2.  <a href="#sect-idp695840">JIDs</a><br />   
+      2.1.  <a href="#sect-idp700784">Grammar</a><br />   
+      2.2.  <a href="#sect-idp703072">Domain Identifier</a><br />   
+      2.3.  <a href="#sect-idp705712">Node Identifier</a><br />   
+      2.4.  <a href="#sect-idp711872">Resource Identifier</a><br />   
+      2.5.  <a href="#sect-idp713056">Limited Resources</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp691456" id="sect-idp691456">Introduction</a></h2>
+        <p class="box">Note: This document was superseded by <span class="ref"><a href="http://tools.ietf.org/html/rfc3920">RFC 3920</a></span>  [<a href="#nt-idp694560">1</a>], which in turn has been superseded by <span class="ref"><a href="http://tools.ietf.org/html/rfc6122">RFC 6122</a></span>  [<a href="#nt-idp697024">2</a>].</p>
+        <p>Jabber Identifiers (JIDs) uniquely identify individual entities in the Jabber network. To date, their syntax has been defined by convention, existing implementations, and available documentation. As it exists, certain characters that are allowed in JIDs cause ambiguity, and the lack of a size limit on resources defies database schemas and causes some trivial JID operations to require dynamic memory allocation. This document seeks to both define and improve the existing JID syntax. This document will not explain the general usage or nature of JIDs, instead focusing on syntax.</p>
+    <h2>2.
+       <a name="sect-idp695840" id="sect-idp695840">JIDs</a></h2>
+        <p>JIDs consist of three main parts:</p>
+          <ol>
+            <li>The node identifier (optional)</li>
+            <li>The domain identifier (required)</li>
+            <li>The resource identifier (optional)</li>
+          </ol>
+        <p>JIDs are encoded UTF-8. A grammar will be presented first, followed by specific clarifying and further restricting remarks.</p>
+        <div class="indent"><h3>2.1 <a name="sect-idp700784" id="sect-idp700784">Grammar</a></h3>
+                <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;JID&gt; ::= [&lt;node&gt;"@"]&lt;domain&gt;["/"&lt;resource&gt;]
+&lt;node&gt; ::= &lt;conforming-char&gt;[&lt;conforming-char&gt;]*
+&lt;domain&gt; ::= &lt;hname&gt;["."&lt;hname&gt;]*
+&lt;resource&gt; ::= &lt;any-char&gt;[&lt;any-char&gt;]*
+&lt;hname&gt; ::= &lt;let&gt;|&lt;dig&gt;[[&lt;let&gt;|&lt;dig&gt;|"-"]*&lt;let&gt;|&lt;dig&gt;]
+&lt;let&gt; ::= [a-z] | [A-Z]
+&lt;dig&gt; ::= [0-9]
+&lt;conforming-char&gt; ::= #x21 | [#x23-#x25] | [#x28-#x2E] | 
+                      [#x30-#x39] | #x3B | #x3D | #x3F | 
+                      [#x41-#x7E] | [#x80-#xD7FF] | 
+                      [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+&lt;any-char&gt; ::= [#x20-#xD7FF] | [#xE000-#xFFFD] | 
+               [#x10000-#x10FFFF]
+                </pre></div>
+        </div>
+        <div class="indent"><h3>2.2 <a name="sect-idp703072" id="sect-idp703072">Domain Identifier</a></h3>
+            <p>A domain identifier is a standard DNS hostname as specified in RFC952  [<a href="#nt-idp703824">3</a>] and RFC1123.  [<a href="#nt-idp704576">4</a>] It is case-insensitive 7-bit ASCII and limited to 255 bytes.  It is the only required component of a JID.</p>
+        </div>
+        <div class="indent"><h3>2.3 <a name="sect-idp705712" id="sect-idp705712">Node Identifier</a></h3>
+            <p>Node identifiers are restricted to 256 bytes, They may contain any Unicode character higher than #x20 with the exception of the following:</p>
+            <ol>
+                <li>#x22 (")</li>
+                <li>#x26 (&amp;)</li> 
+                <li>#x27 (')</li>
+                <li>#x2F (/)</li>
+                <li>#x3A (:)</li> 
+                <li>#x3C (&lt;)</li> 
+                <li>#x3E (&gt;)</li> 
+                <li>#x40 (@)</li> 
+                <li>#x7F (del)</li>
+                <li>#xFFFE (BOM)</li> 
+                <li>#xFFFF (BOM)</li> 
+            </ol>
+            <p>Case is preserved, but comparisons will be made in case-normalized canonical form.</p>
+        </div>
+        <div class="indent"><h3>2.4 <a name="sect-idp711872" id="sect-idp711872">Resource Identifier</a></h3>
+            <p>Resources identifiers are case-sensitive and are limited to 256 bytes. They may include any Unicode character greater than #x20, except #xFFFE and #xFFFF.</p>
+        </div>
+        <div class="indent"><h3>2.5 <a name="sect-idp713056" id="sect-idp713056">Limited Resources</a></h3>
+            <p>To date, resource identifiers have not had a fixed limit on their length.  This document seeks to limit it to 256 bytes for the following reasons:</p>
+            <ol>
+                <li>In order to perform JID manipulations safely, one cannot use stack space if there is no limit.  This forces temporary calculations onto the heap which is unnecessarily costly.</li>
+                <li>As a fixed length character field, a resource identifier is more easily stored in, searched on, and retrieved from a database.  If an end user may store an encyclopedia's worth of information in their resource, then the only way it can be stored without truncating it is to store it as a large object (BLOB or CLOB).  Depending on the database used, that makes it either grossly inefficient or impossible to search on.</li>
+                <li>There exist denial of service attacks stemming from an unlimited resource length.</li>
+            </ol>
+            <p>In a worst-case encoding, such as Han ideographs, 256 bytes will provide enough storage space for 64 character points.  This provides a lower bound on the number of characters a node may have in its resource.</p>
+            <p>Specifying limits in terms of bytes instead of characters is somewhat arbitrary once a lower bound for characters is established.  This document proposes limits in terms of bytes mainly because doing so results in parsing efficiency; specifically, an implementation does not have to un-encode the UTF-8 string for the sole purpose of further restricting character sets that require fewer than four bytes per character point.  It is sufficient to have a lower bound on characters and an upper bound on bytes.</p>
+        </div>
+    <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0029<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2003-10-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />Superseded By: RFC 6122<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0029.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0029.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0029.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Craig Kaes</h3><p class="indent">
+        Email:
+        <a href="mailto:craigk@jabber.com">craigk@jabber.com</a><br />
+        JabberID: 
+        <a href="xmpp:craigk@jabber.com">craigk@jabber.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp694560" id="nt-idp694560">1</a>. RFC 3920: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc3920">http://tools.ietf.org/html/rfc3920</a>&gt;.</p><p><a name="nt-idp697024" id="nt-idp697024">2</a>. RFC 6122: Extensible Messaging and Presence Protocol (XMPP): Address Format &lt;<a href="http://tools.ietf.org/html/rfc6122">http://tools.ietf.org/html/rfc6122</a>&gt;.</p><p><a name="nt-idp703824" id="nt-idp703824">3</a>. <a href="http://www.ietf.org/rfc/rfc952.txt">http://www.ietf.org/rfc/rfc952.txt</a></p><p><a name="nt-idp704576" id="nt-idp704576">4</a>. <a href="http://www.ietf.org/rfc/rfc1123.txt">http://www.ietf.org/rfc/rfc1123.txt</a></p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2003-10-03)</h4><div class="indent">Changed status to Retracted. This document is superseded by the XMPP Core memo defined by the IETF's XMPP Working Group. (psa)
+    </div><h4>Version 1.0 (2002-05-15)</h4><div class="indent">Changed status to Draft. (psa)
+    </div><h4>Version 0.2 (2002-05-01)</h4><div class="indent">
+                Added info on restricting resource identifier length; standardized nomenclature.
+             (cak)
+    </div><h4>Version 0.1 (2002-04-24)</h4><div class="indent">Initial version (cak)
+    </div></div><hr /><p>END</p></body></html>

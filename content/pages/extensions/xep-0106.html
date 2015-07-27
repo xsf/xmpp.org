@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0106: JID Escaping</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="JID Escaping" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines a mechanism that enables the display in Jabber Identifiers (JIDs) of characters disallowed by the Nodeprep profile of stringprep. Although these characters -- space, double quote, ampersand, single quote, forward slash, colon, less than, greater than, and at-sign -- cannot be included in XMPP node identifiers, JID Escaping provides a native XMPP escaping mechanism for these characters so that the displayed version of a Jabber Identifier can appear to include these characters. This mechanism can also be used to translate non-XMPP addreses into XMPP syntax, for example when gatewaying between XMPP and a non-XMPP communications technology such as email." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2007-06-18" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0106" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0106: JID Escaping</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a mechanism that enables the display in Jabber Identifiers (JIDs) of characters disallowed by the Nodeprep profile of stringprep. Although these characters -- space, double quote, ampersand, single quote, forward slash, colon, less than, greater than, and at-sign -- cannot be included in XMPP node identifiers, JID Escaping provides a native XMPP escaping mechanism for these characters so that the displayed version of a Jabber Identifier can appear to include these characters. This mechanism can also be used to translate non-XMPP addreses into XMPP syntax, for example when gatewaying between XMPP and a non-XMPP communications technology such as email.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2007-06-18</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#transforms">Transformations</a><br />   
+      3.1.  <a href="#concepts">Concepts</a><br />   
+      3.2.  <a href="#escaping">Escaping Transformations</a><br />   
+      3.3.  <a href="#unescaping">Unescaping Transformations</a><br />4.  <a href="#bizrules">Business Rules</a><br />   
+      4.1.  <a href="#bizrules-processing">Native Processing</a><br />   
+      4.2.  <a href="#bizrules-algorithm">Address Transformation Algorithm</a><br />   
+      4.3.  <a href="#bizrules-exceptions">Exceptions</a><br />   
+      4.4.  <a href="#bizrules-othermethods">JID Escaping vs. Older Methods</a><br />5.  <a href="#examples">Examples</a><br />   
+      5.1.  <a href="#examples-xmpp">Jabber Identifiers</a><br />   
+      5.2.  <a href="#examples-email">Email Addresses</a><br />   
+      5.3.  <a href="#examples-sip">SIP Addresses</a><br />   
+      5.4.  <a href="#examples-im">IM and Presence Addresses</a><br />   
+      5.5.  <a href="#examples-imps">IMPS Addresses</a><br />   
+      5.6.  <a href="#examples-ldap">LDAP Distinguished Names</a><br />   
+      5.7.  <a href="#examples-irc">IRC Addresses</a><br />6.  <a href="#disco">Determining Support</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-features">Service Discovery Features</a><br />10.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc3920">RFC 3920</a></span>  [<a href="#nt-idp628912">1</a>] defines the Nodeprep profile of stringprep (<span class="ref"><a href="http://tools.ietf.org/html/rfc3454">RFC 3454</a></span>  [<a href="#nt-idp631040">2</a>]), which specifies that the following nine Unicode code points are disallowed in the node identifier portion of a Jabber Identifier (JID):</p>
+  <ul>
+    <li>U+0020 (" ")  [<a href="#nt-idp627056">3</a>]</li>
+    <li>U+0022 (")</li>
+    <li>U+0026 (&amp;)</li>
+    <li>U+0027 (')</li>
+    <li>U+002F (/)</li>
+    <li>U+003A (:)</li>
+    <li>U+003C (&lt;)</li>
+    <li>U+003E (&gt;)</li>
+    <li>U+0040 (@)</li>
+  </ul>
+  <p>This restriction is an inconvenience for users who have one or more of these "disallowed characters" in their desired usernames, particularly in the case of the ' character, which is common in names like O'Hara and D'Artagnan. The restriction is a positive hardship if existing email addresses are mapped to JIDs, since some of the disallowed characters are allowed in the username portion of an email address (specifically, the characters &amp; ' / as described in Sections 3.2.4 and 3.2.5 of <span class="ref"><a href="http://tools.ietf.org/html/rfc2822">RFC 2822</a></span>  [<a href="#nt-idp1546976">4</a>]).</p>
+  <p>To overcome this restriction, we define a way to escape the disallowed characters in JIDs. An escaped JID contains none of the disallowed characters and therefore can be transported by native XMPP implementations without modification (e.g., existing XMPP servers do not require modification in order to handle escaped JIDs). The escaped JID is unescaped only for presentation to a human user (typically by an XMPP client) or for gatewaying to a non-XMPP system (such as an LDAP database or a messaging system that does not use XMPP).</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This document addresses the following requirements:</p>
+  <ol>
+    <li><p>The escaping mechanism shall apply to the node identitier portion of a JID only, and MUST NOT be applied to domain identifiers or resource identifiers.</p></li>
+    <li><p>Escaped JIDs MUST conform to the definition of a Jabber ID as specified in <span class="ref">RFC 3920</span>, including the Nodeprep profile of stringprep.  In particular this means that even after passing through Nodeprep, the JID MUST be valid, with the result that Unicode look-alikes like U+02BC (Modifier Letter Apostrophe) MUST NOT be used.</p></li>
+    <li><p>It MUST NOT be possible for clients to use this escaping mechanism to avoid the goal of stringprep; namely, that JIDs that look alike should have same character representation after being processed by stringprep. Therefore, this mechanism MUST NOT be applied to any characters other than the disallowed characters (with the exception that, in certain circumstances, the escaping character itself ("\") might also be escaped).</p></li>
+    <li><p>Existing JIDs that include portions of the escaping mechanism MUST continue to be valid.</p></li>
+    <li><p>The escaping mechanism MUST NOT break commonly deployed Jabber/XMPP software implementations such as servers, components, gateways, and clients.</p></li>
+    <li><p>The escaping mechanism SHOULD NOT place undue strain upon server implementations; implementations or deployments that do not need to unescape SHOULD be able to ignore the escaping mechanism.</p></li>
+  </ol>
+<h2>3.
+       <a name="transforms" id="transforms">Transformations</a></h2>
+  <div class="indent"><h3>3.1 <a name="concepts" id="concepts">Concepts</a></h3>
+    <p>This document specifies that each disallowed character shall be escaped as \hexhex -- where "hexhex" is the hexadecimal value of the Unicode code point in question, ignoring the leading "00" in the code point (e.g., 27 for the ' character, resulting in an escaping of \27).</p>
+    <p>If the &amp; character had not been in the list of disallowed characters, then normal XML escaping conventions (as specified in <span class="ref"><a href="http://www.w3.org/TR/REC-xml/">XML 1.0</a></span>  [<a href="#nt-idp1557680">5</a>]) could have been used, with the result that D'Artagnan (for example) could have been rendered as D&amp;apos;artagnan [sic].</p>
+    <p>It might have been desirable to use percent-encoding (e.g., %27 for the ' character) as specified in Section 2.1 of <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp1560688">6</a>]. However, that approach was rejected since the % character is an often-used character in existing JIDs (e.g., to replace the @ character in gateway addresses) and the resulting ambiguity would have caused misdelivered or undeliverable messages.</p>
+    <p>To avoid the problems associated with using &amp; or % as the escaping character, this document specifies a new escaping mechanism that uses the backslash character ("\") followed by "hexhex" (the hexadecimal value of the Unicode code point in question). This escaping method is quite similar to that used for disallowed characters in LDAP distinguished names (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2253">RFC 2253</a></span>  [<a href="#nt-idp1563648">7</a>]) but is used only for the characters that are disallowed in XMPP node identifiers (as well as the escaping character itself in certain special situations).</p>
+    <p>Here is an example of an escaped JID (this would be displayed but never natively transported as "d'artagnan@musketeers.lit"):</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+   d\27artagnan@musketeers.lit
+    </pre></div>
+    <p>This document describes full escaping and unescaping transformations for all nine disallowed characters. In addition, escaping and unescaping transformations are shown for the \ character in case it also needs to be escaped when it occurs in a JID or non-XMPP address as part of a character sequence that corresponds to one of the escaped characters.</p>
+    <p>Note: All transformations are exactly as specified below. CASE IS SIGNIFICANT. Lowercase was selected since Nodeprep will case fold to lowercase for US-ASCII characters such as A, C, E, and F.</p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="escaping" id="escaping">Escaping Transformations</a></h3>
+    <p>The escaping transformations are defined in the following table, whereas the rules that define when to apply these transformations are specified in the <a href="#bizrules">Business Rules</a> section of this specification. Typically, escaping is performed only by a client that is processing information provided by a human user in unescaped form, or by a gateway to some external system (e.g., email or LDAP) that needs to generate a JID.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Mapping from Unescaped to Escaped Characters</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Unescaped Character</th><th>Escaped Character</th></tr>
+      <tr class="body"><td>&lt;space&gt;</td><td>\20 *</td></tr>
+      <tr class="body"><td>"</td><td>\22</td></tr>
+      <tr class="body"><td>&amp;</td><td>\26</td></tr>
+      <tr class="body"><td>'</td><td>\27</td></tr>
+      <tr class="body"><td>/</td><td>\2f</td></tr>
+      <tr class="body"><td>:</td><td>\3a</td></tr>
+      <tr class="body"><td>&lt;</td><td>\3c</td></tr>
+      <tr class="body"><td>&gt;</td><td>\3e</td></tr>
+      <tr class="body"><td>@</td><td>\40</td></tr>
+      <tr class="body"><td>\</td><td>\5c</td></tr>
+    </table></div>
+    <p>* Note: The character sequence \20 MUST NOT be the first or last character of an escaped node identifier.  [<a href="#nt-idp1577440">8</a>]</p>
+    <p>In the following example, Porthos starts a chat with D'Artagnan, typing into his client the string "d'artagnan@musketeers.lit" (which is escaped by his client to "d\27artagnan@musketeers.lit").</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. JID Escaping</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='porthos@musketeers.lit/gate'
+    to='d\27artagnan@musketeers.lit'
+    type='chat'&gt;
+  &lt;body&gt;And do you always forget your eyes when you run?&lt;/body&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="unescaping" id="unescaping">Unescaping Transformations</a></h3>
+    <p>The unescaping transformations are defined in the following table, whereas the rules that define when to apply these transformations are specified in the <a href="#bizrules">Business Rules</a> section of this specification. Typically, unescaping is performed only by a client that wants to display JIDs containing escaped characters to a human user, or by a gateway to some external system (e.g., email or LDAP) that needs to generate identifiers for foreign systems.</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Mapping from Escaped to Unescaped Characters</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Escaped Character</th><th>Unescaped Character</th></tr>
+      <tr class="body"><td>\20</td><td>&lt;space&gt;</td></tr>
+      <tr class="body"><td>\22</td><td>"</td></tr>
+      <tr class="body"><td>\26</td><td>&amp;</td></tr>
+      <tr class="body"><td>\27</td><td>'</td></tr>
+      <tr class="body"><td>\2f</td><td>/</td></tr>
+      <tr class="body"><td>\3a</td><td>:</td></tr>
+      <tr class="body"><td>\3c</td><td>&lt;</td></tr>
+      <tr class="body"><td>\3e</td><td>&gt;</td></tr>
+      <tr class="body"><td>\40</td><td>@</td></tr>
+      <tr class="body"><td>\5c</td><td>\</td></tr>
+    </table></div>
+    <p>In the following example, D'Artagnan the elder sends a message through an SMTP mail gateway (the JID is "treville\40musketeers.lit@smtp.gascon.fr" and the destination email address is "treville@musketeers.lit").</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. JID Unescaping</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='d\27artagnan@gascon.fr/elder'
+    to='tréville\40musketeers.lit@smtp.gascon.fr'&gt;
+  &lt;body&gt;I recommend my son to you.&lt;/body&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="bizrules" id="bizrules">Business Rules</a></h2>
+  <div class="indent"><h3>4.1 <a name="bizrules-processing" id="bizrules-processing">Native Processing</a></h3>
+    <p>The following processing rules apply to native XMPP implementations:</p>
+    <ol>
+      <li><p>A compliant client MUST render an escaped character as its unescaped equivalent when presenting it to a human user (e.g., present \27 as the ' character), but MAY provide a way for the user to view the escaped JID in its wire format (e.g., to compare two JIDs).</p></li>
+      <li><p>A server or gateway MAY unescape an escaped character for communication with external systems (e.g. LDAP), but only <span class="em">after</span> the Nodeprep profile of stringprep has been applied.</p></li>
+      <li><p>An entity MUST unescape only the specified sequences and MUST NOT unescape sequences that do not match the specified sequences.</p></li>
+      <li><p>An entity MUST NOT include the unescaped version of a disallowed character over the wire in any XML stanzas sent to another entity (since by definition the unescaped version of a disallowed character violates Nodeprep).</p></li>
+      <li><p>An entity MUST NOT use the unescaped version of a disallowed character when comparing two JIDs.</p></li>
+      <li><p>The character sequence \20 MUST NOT be the first or last character of an escaped node identifier.</p></li>
+      <li><p>If there are any instances of character sequences that correspond to escapings of the disallowed characters (e.g., the character sequence "\27") or the escaping character (i.e., the character sequence "\5c") in the unescaped address, the leading backslash character MUST be escaped to the character sequence "\5c" (e.g., resulting in the character sequences "\5c27" or "\5c5c").  [<a href="#nt-idp1600336">9</a>]</p></li>
+    </ol>
+  </div>
+  <div class="indent"><h3>4.2 <a name="bizrules-algorithm" id="bizrules-algorithm">Address Transformation Algorithm</a></h3>
+    <p>When transforming a non-XMPP ("source") address into an escaped JID, an implementation MUST adhere to the following process:</p>
+    <ol>
+      <li><p>If the source address is a URI, it MUST first be properly decoded according to the rules in <span class="ref">RFC 3986</span> before it is transformed into a JID.</p></li>
+      <li><p>If the source address is a URI, the URI scheme component MUST be removed.</p></li>
+      <li><p>If there are any instances of character sequences that correspond to escapings of the disallowed characters (e.g., the character sequence "\27") or the escaping character (i.e., the character sequence "\5c") in the source address, the leading backslash character MUST be escaped to the character sequence "\5c" (e.g., resulting in the character sequences "\5c27" or "\5c5c").</p></li>
+      <li><p>All disallowed characters in the source address MUST be properly escaped in the resulting JID (as described above).</p></li>
+    </ol>
+    <p>While the fourth step should be clear from the foregoing text and the second step is necessary since XMPP addresses are not URIs, the meaning of the first and third steps may not be obvious.</p>
+    <p>Regarding step one, many non-XMPP messaging systems use URIs to identify addresses (examples include the mailto:, sip:, sips:, im:, pres:, and wv: URI schemes) or follow some other encoding rules for an identifier (e.g., an LDAP distinguished name). Before transforming a non-XMPP address or identifier into a JID, the address or identifier MUST first be decoded according the rules specified for that type of address or identifier in order to ensure that the proper characters are transformed.</p>
+    <p>Regarding step three, it is possible for some non-XMPP addresses to contain character sequences that correspond to JID-escaped characters (e.g., "\27"). Consider a Wireless Village address of &lt;wv:\3and\2is\5cool@example.com&gt; -- if that address were directly converted into a JID, the resulting XMPP address would be \3and\2is\5cool@example.com, which could be construed as :nd\2is\ool@example.com if JID escaping logic is applied. Therefore the leading \ character and the \ character before the character sequence 5c MUST be converted to the character sequence "\5c" during the transformation, leading to a JID of \5c3and\2is\5c5cool@example.com (which would be presented to a human user as \3and\2is\5cool@example.com).</p>
+  </div>
+  <div class="indent"><h3>4.3 <a name="bizrules-exceptions" id="bizrules-exceptions">Exceptions</a></h3>
+    <p>In order to maintain as much backward compatibility as possible, partial escape sequences and escape sequences corresponding to characters not on the list of disallowed characters MUST be ignored (with the exception of the escaping character '\' itself in the rare case when the source address includes the sequence '\5c').</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Partial escape sequence</p><div class="indent"><pre class="prettyprint"><span class="strong">\2plus\2is\4</span> is not modified by escaping or unescaping transformations.</pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Invalid escape sequence 1</p><div class="indent"><pre class="prettyprint"><span class="strong">foo\bar</span> is not modified (to <span class="strong">fooºr</span>) by escaping or unescaping transformations.</pre></div>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Invalid escape sequence 2</p><div class="indent"><pre class="prettyprint"><span class="strong">foob\41r</span> is not modified (to <span class="strong">foobAr</span>) by escaping or unescaping transformations.</pre></div>
+    <p>However, \5c would be escaped if found in the source address (e.g., a source address of "c:\5commas@example.com" would be escaped to "c\3a\5c5commas@example.com") and unescaped if contained in the JID-on-the-wire (e.g., a JID-on-the-wire of "c\3a\5c5commas@example.com" would be unescaped back to "c:\5commas@example.com").</p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="bizrules-othermethods" id="bizrules-othermethods">JID Escaping vs. Older Methods</a></h3>
+    <p>When a client attempts to communicate with another entity through a gateway, it needs to know which escaping mechanism to use. A client MUST assume that the gateway does not support the JID escaping mechanism unless it explicitly discovers support for the <span class="strong">jid\20escaping</span> [sic] feature as described under <a href="#disco">Determining Support</a>. If there are any errors in the service discovery exchange or if support for JID escaping is not discovered, the client SHOULD proceed as follows:</p>
+    <ol>
+      <li>If the gateway supports the 'jabber:iq:gateway' protocol (as specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0100.html">Gateway Interaction (XEP-0100)</a></span>  [<a href="#nt-idp1629280">10</a>]), use that protocol.</li>
+      <li>If the gateway does not support the 'jabber:iq:gateway' protocol, use customary escaping mechanisms (such as transformation of the @ character to the % character).</li>
+    </ol>
+  </div>
+<h2>5.
+       <a name="examples" id="examples">Examples</a></h2>
+  <p>In order to assist developers, this section shows a large number of examples for XMPP-native JIDs as well as mappings between JIDs and addresses or identifiers used in the following standardized protocols:</p>
+  <ul>
+    <li>Mailboxes and the mailto: URI scheme as used in email.</li>
+    <li>The sip: and sips: URI schemes as used in SIP/SIMPLE.</li>
+    <li>The im: and pres: URI schemes.</li>
+    <li>The wv: URI scheme as used in Wireless Village (IMPS).</li>
+    <li>LDAP distinguished names.</li>
+  </ul>
+  <div class="indent"><h3>5.1 <a name="examples-xmpp" id="examples-xmpp">Jabber Identifiers</a></h3>
+    <p>The following table shows user input, the escaped JID for sending over the wire, and client display (same as user input) for node identifiers that might possibly be used in native JIDs. The examples are numbered for easy reference. Naturally, a client that does not perform JID escaping would display the JIDs in their escaped form (e.g., "space\20cadet" instead of "space cadet").</p>
+    <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: JID Examples</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>#</th><th>User Input</th><th>Escaped JID</th><th>Client Display</th></tr>
+      <tr class="body"><td>1</td><td>space cadet@example.com</td><td>space\20cadet@example.com</td><td>space cadet@example.com</td></tr>
+      <tr class="body"><td>2</td><td>call me "ishmael"@example.com</td><td>call\20me\20\22ishmael\22@example.com</td><td>call me "ishmael"@example.com</td></tr>
+      <tr class="body"><td>3</td><td>at&amp;t guy@example.com</td><td>at\26t\20guy@example.com</td><td>at&amp;t guy@example.com</td></tr>
+      <tr class="body"><td>4</td><td>d'artagnan@example.com</td><td>d\27artagnan@example.com</td><td>d'artagnan@example.com</td></tr>
+      <tr class="body"><td>5</td><td>/.fanboy@example.com</td><td>\2f.fanboy@example.com</td><td>/.fanboy@example.com</td></tr>
+      <tr class="body"><td>6</td><td>::foo::@example.com</td><td>\3a\3afoo\3a\3a@example.com</td><td>::foo::@example.com</td></tr>
+      <tr class="body"><td>7</td><td>&lt;foo&gt;@example.com</td><td>\3cfoo\3e@example.com</td><td>&lt;foo&gt;@example.com</td></tr>
+      <tr class="body"><td>8</td><td>user@host@example.com</td><td>user\40host@example.com</td><td>user@host@example.com</td></tr>
+      <tr class="body"><td>9</td><td>c:\net@example.com</td><td>c\3a\net@example.com</td><td>c:\net@example.com</td></tr>
+      <tr class="body"><td>10</td><td>c:\\net@example.com</td><td>c\3a\\net@example.com</td><td>c:\\net@example.com</td></tr>
+      <tr class="body"><td>11</td><td>c:\cool stuff@example.com</td><td>c\3a\cool\20stuff@example.com</td><td>c:\cool stuff@example.com</td></tr>
+      <tr class="body"><td>12</td><td>c:\5commas@example.com</td><td>c\3a\5c5commas@example.com</td><td>c:\5commas@example.com</td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>5.2 <a name="examples-email" id="examples-email">Email Addresses</a></h3>
+    <p>The address format for an Internet mailbox is specified in <span class="ref">RFC 2822</span>. The identifier of interest in this context is the "addr-spec" address and more particularly the "dot-atom-text" rule specified in Section 3.2.4, i.e., the email address shorn of angle brackets, display names, comments, quoted strings, and the like. Because some deployments of XMPP messaging systems may want to re-use existing email addresses as JIDs, it is helpful to define how to transform an email address into a JID.</p>
+    <p>In general, it is straightforward to transform an email address (i.e., a "dot-atom-text") into a JID, since traditional email addresses allow US-ASCII characters only rather than the nearly full range of Unicode code points allowed in a JID.  [<a href="#nt-idp1655184">11</a>] However, there are three characters allowed in the local-part of an email address that are not allowed in the node identifier portion of a JID: namely, the characters &amp; ' / as described in Sections 3.2.4 and 3.2.5 of <span class="ref">RFC 2822</span>. In order to transform these characters, a compliant implementation MUST use the methods specified herein.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. An Email Address Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p>(Note: Because the backslash character is forbidden in the "dot-atom-text" construction, an email address should not contain a character sequence that corresponds to one of the escaped characters specified in the <a href="#transforms">Transformations</a> section of this document; therefore, no such examples are shown.)</p>
+    <p>An email address may also exist in the form of a mailto: URI as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2368">RFC 2368</a></span>  [<a href="#nt-idp1662416">12</a>]. Before transforming a mailto: URI into a JID, it MUST be URL-decoded and all headers MUST be removed, leaving a mailbox identifier, as shown in the following example.</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. A mailto: URI Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+mailto:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com?subject=that%20is%20crazy%21
+    </pre></div>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. The Resulting Mailbox</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p>The foregoing examples showed how to transform an email address or mailto: URI into a JID. However, it also may be necessary to convert a JID into an email address or mailto: URI, as shown in the following example.</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. User Enters Address, Including Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Client Transforms Address Using JID Escaping</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Application Converts Escaped JID to Mailbox</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Application Converts Mailbox to mailto: URI</p><div class="indent"><pre class="prettyprint">
+mailto:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.3 <a name="examples-sip" id="examples-sip">SIP Addresses</a></h3>
+    <p>As specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a></span>  [<a href="#nt-idp1672288">13</a>], a SIP address (i.e., a sip: or sips: URI) can be quite complex if URI parameters or headers are included. However, a basic SIP address (the combination of the optional "userinfo" and required "hostport" constructions) is essentially similar to an email address (e.g., the same characters &amp; ' / allowed in an email address but disallowed in an XMPP node identifier are also allowed in a basic SIP address).</p>
+    <p class="caption"><a name="example-17" id="example-17"></a>Example 17. A Basic sip: URI Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+sip:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-18" id="example-18"></a>Example 18. The URL-Decoded Address</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-20" id="example-20"></a>Example 20. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p>The foregoing example showed how to transform a sip: or sips: URI into a JID. However, it also may be necessary to convert a JID into a sip: or sips: URI, as shown in the following example.</p>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. User Enters Address, Including Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Client Transforms Address Using JID Escaping</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Application Converts Escaped JID to sip: URI</p><div class="indent"><pre class="prettyprint">
+sip:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.4 <a name="examples-im" id="examples-im">IM and Presence Addresses</a></h3>
+    <p>The im: and pres: URI schemes are specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3860">RFC 3860</a></span>  [<a href="#nt-idp1681232">14</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc3859">RFC 3859</a></span>  [<a href="#nt-idp1683984">15</a>] respectively. With the exception of headers, an im: or pres: URI is simply a mailbox (as specified in <span class="ref">RFC 2822</span>) prepended with the im: or pres: scheme. Thus a basic IM or PRES address (not including optional headers) is essentially similar to an email address (e.g., the same characters &amp; ' / allowed in an email address but disallowed in an XMPP node identifier are also allowed in a basic IM or PRES address).</p>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. A Basic im: URI Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+im:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-25" id="example-25"></a>Example 25. The URL-Decoded Address</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-26" id="example-26"></a>Example 26. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-27" id="example-27"></a>Example 27. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p>The foregoing example showed how to transform an im: or pres: URI into a JID. However, it also may be necessary to convert a JID into an im: or pres: URI, as shown in the following example.</p>
+    <p class="caption"><a name="example-28" id="example-28"></a>Example 28. User Enters Address, Including Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Client Transforms Address Using JID Escaping</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Application Converts Escaped JID to pres: URI</p><div class="indent"><pre class="prettyprint">
+pres:here%27s_a_wild_%26_%2Fcr%zy%2F_address@example.com
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.5 <a name="examples-imps" id="examples-imps">IMPS Addresses</a></h3>
+    <p>The Instant Messaging and Presence Service (IMPS) protocol was originally defined by the Wireless Village consortium and is now maintained by the <span class="ref"><a href="http://www.openmobilealliance.org/">Open Mobile Alliance (OMA)</a></span>  [<a href="#nt-idp1693760">16</a>]. An IMPS address is formatted as a wv: URI, as specified in <span class="ref"><a href="http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html">WV Client-Server Protocol v1.1</a></span>  [<a href="#nt-idp1696800">17</a>]. A basic address (not including a private resource) is of the form &lt;wv:user-id@domain&gt; and an address with a private resource is of the form &lt;wv:user-id/resource@domain&gt;.</p>
+    <p>The "User-ID" construction is either a mobile phone number (beginning with "+1" for international numbers and a digit for national numbers) or an "Internet-Identity". An "Internet-Identity" may contain any US-ASCII character other than / @ + SP TAB and thus may include the following characters that are disallowed in the node identifier portion of a JID: " &amp; ' / : &lt; &gt; (which characters MUST be escaped when transforming an IMPS address into a JID). However, some of those characters are also reserved in URI syntax (namely the &amp; ' / characters) so those characters will be found in escaped form within a wv: URI.</p>
+    <p class="caption"><a name="example-31" id="example-31"></a>Example 31. A Basic wv: URI Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+wv:here%27s_a_wild_%26_%2Fcr%zy%2F_address_for%3A%3Cwv%3E%28%22IMPS%22%29@example.com
+    </pre></div>
+    <p class="caption"><a name="example-32" id="example-32"></a>Example 32. The URL-Decoded Address</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address_for:&lt;wv&gt;("IMPS")@example.com
+    </pre></div>
+    <p class="caption"><a name="example-33" id="example-33"></a>Example 33. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address_for\3a\3cwv\3e(\22IMPS\22)@example.com
+    </pre></div>
+    <p class="caption"><a name="example-34" id="example-34"></a>Example 34. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address_for:&lt;wv&gt;("IMPS")@example.com
+    </pre></div>
+    <p>Unlike the foregoing address types, IMPS addresses are allowed to contain backslashes. This implies that it is possible for an IMPS address to contain a character sequence that corresponds to one of the escaped character representations for code points that are disallowed in XMPP node identifiers. An example would be the IMPS address &lt;wv:\3and\2is\5cool@example.com&gt;, where the character sequence "\3a" could be interpreted as the : character (and the character sequence "\5c" as "\") if that IMPS address is directly converted into a JID. Therefore, the leading \ character MUST be transformed to "\5c" (and the source character sequence "\5c" to "\5c5c") in order to avoid possible ambiguity. Thus the transformed JID would be &lt;\5c3and\2is\5c5cool@example.com&gt;, which would be presented to a user as &lt;\3and\2is\5cool@example.com&gt;.</p>
+    <p>If an IMPS address contains a private resource, a gateway between XMPP and IMPS should process the resource and append it to the end of the JID; however, such gateway behavior is out of scope for this document.</p>
+    <p>The foregoing example showed how to transform a wv: URI into a JID. However, it also may be necessary to convert a JID into a wv: URI, as shown in the following example.</p>
+    <p class="caption"><a name="example-35" id="example-35"></a>Example 35. User Enters Address, Including Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+here's_a_wild_&amp;_/cr%zy/_address_for:&lt;wv&gt;("IMPS")@example.com
+    </pre></div>
+    <p class="caption"><a name="example-36" id="example-36"></a>Example 36. Client Transforms Address Using JID Escaping</p><div class="indent"><pre class="prettyprint">
+here\27s_a_wild_\26_\2fcr%zy\2f_address_for\3a\3cwv\3e(\22IMPS\22)@example.com
+    </pre></div>
+    <p class="caption"><a name="example-37" id="example-37"></a>Example 37. Application Converts Escaped JID to wv: URI</p><div class="indent"><pre class="prettyprint">
+wv:here%27s_a_wild_%26_%2Fcr%zy%2F_address_for%3A%3Cwv%3E%28%22IMPS%22%29@example.com
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.6 <a name="examples-ldap" id="examples-ldap">LDAP Distinguished Names</a></h3>
+    <p>Within the Lightweight Directory Access Protocol (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2251">RFC 2251</a></span>  [<a href="#nt-idp1709632">18</a>]), a "distinguished name" (DN) is a hierarchically-organized string representation that uniquely identifies a user, system, or organization. It is possible that some messaging systems use LDAP distinguished names to identify entities that can communicate using the system (e.g., this is reputed to be the case for certain releases of the Lotus Sametime system sold by IBM), and in any case it may be helpful to transform an LDAP distinguished name into an XMPP address for identification or addressing purposes.</p>
+    <p>As previously mentioned, a UTF-8 string representation of LDAP distinguished names is specified in <span class="ref">RFC 2253</span>. This representation specifies that the characters , + " \ &lt; &gt; ; are to be escaped with the backslash character (e.g., the character sequence "\," would be used to escape the , character) and that any other non-US-ASCII characters are to be escaped using a character sequence of the form "\xx".</p>
+    <p>The following example shows a distinguished name (and transformations thereof) for a person whose common name is "D'Artagnan Saint-André" and who is associated with an organization called "Example &amp; Company, Inc." whose domain name is "example.com":</p>
+    <p class="caption"><a name="example-38" id="example-38"></a>Example 38. A Distinguished Name</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-André,O=Example &amp; Company, Inc.,DC=example,DC=com
+    </pre></div>
+    <p class="caption"><a name="example-39" id="example-39"></a>Example 39. UTF-8 Representation of Distinguished Name</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-Andr\E9,O=Example &amp;amp; Company\, Inc.,DC=example,DC=com
+    </pre></div>
+    <p>This example assumes that the specified user is identified with a gateway running at st.example.com (note that the backslash escaping the , character in the organization name is removed during the transformation).</p>
+    <p class="caption"><a name="example-40" id="example-40"></a>Example 40. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+CN=D\27Artagnan\20Saint-Andr\E9,O=Example\20\26\20Company,\20Inc.,DC=example,DC=com@st.example.com
+    </pre></div>
+    <p class="caption"><a name="example-41" id="example-41"></a>Example 41. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-André,O=Example &amp; Company, Inc.,DC=example,DC=com@st.example.com
+    </pre></div>
+    <p>Naturally, a more intelligent gateway could use the Domain Components to construct a more readable JID, such as &lt;D\27Artagnan\20Saint-André@example.com&gt;; however, such gateway behavior is out of scope for this document.</p>
+    <p>The foregoing example showed how to transform an LDAP distinguished name into a JID. However, it also may be necessary to convert a JID into an LDAP distinguished name, as shown in the following example.</p>
+    <p class="caption"><a name="example-42" id="example-42"></a>Example 42. User Enters Address, Including Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-Andr&amp;#xe9;,O=Example &amp;amp; Company, Inc.,DC=example,DC=com@st.example.com
+    </pre></div>
+    <p class="caption"><a name="example-43" id="example-43"></a>Example 43. Client Transforms Address Using JID Escaping</p><div class="indent"><pre class="prettyprint">
+CN=D\27Artagnan\20Saint-Andr\E9,O=Example\20\26\20Company,\20Inc.,DC=example,DC=com@st.example.com
+    </pre></div>
+    <p class="caption"><a name="example-44" id="example-44"></a>Example 44. Application Converts Escaped JID to UTF-8 Representation of LDAP Distinguished Name</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-Andr\E9,O=Example &amp;amp; Company\, Inc.,DC=example,DC=com
+    </pre></div>
+    <p class="caption"><a name="example-45" id="example-45"></a>Example 45. Application Converts UTF-8 Representation to LDAP Distinguished Name</p><div class="indent"><pre class="prettyprint">
+CN=D'Artagnan Saint-André,O=Example &amp; Company, Inc.,DC=example,DC=com
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.7 <a name="examples-irc" id="examples-irc">IRC Addresses</a></h3>
+    <p><span class="ref"><a href="http://tools.ietf.org/html/rfc2812">RFC 2812</a></span>  [<a href="#nt-idp1724128">19</a>] defines the address format for Internet Relay Chat (IRC) entities, which can be servers, channels, or users. The "user" portion of an IRC address may contain any octet except NUL, CR, LF, SP, and "@"; this includes the characters " &amp; ' / : &lt; &gt; \ (which are disallowed in XMPP node identifiers and therefore MUST be escaped when transforming an IRC address into a JID).</p>
+    <p class="caption"><a name="example-46" id="example-46"></a>Example 46. A Basic IRC address Containing JID-Disallowed Characters</p><div class="indent"><pre class="prettyprint">
+somenick!user"&amp;'/:&lt;&gt;\3address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-47" id="example-47"></a>Example 47. The Transformed JID</p><div class="indent"><pre class="prettyprint">
+somenick!user\22\26\27\2f\3a\3c\3e\5c3address@example.com
+    </pre></div>
+    <p class="caption"><a name="example-48" id="example-48"></a>Example 48. The JID as Presented to a User</p><div class="indent"><pre class="prettyprint">
+somenick!user"&amp;'/:&lt;&gt;\3address@example.com
+    </pre></div>
+    <p>Like IMPS addresses, IRC addresses are allowed to contain backslashes. This implies that it is possible for an IMPS address to contain a character sequence that corresponds to one of the escaped character representations for code points that are disallowed in XMPP node identifiers. An example is shown above.</p>
+  </div>
+<h2>6.
+       <a name="disco" id="disco">Determining Support</a></h2>
+  <p>If an entity needs to determine whether another entity supports JID escaping, it MUST send a disco#info request to the other entity as specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1730192">20</a>].</p>
+  <p class="caption"><a name="example-49" id="example-49"></a>Example 49. Client requests features</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='porthos@musketeers.lit/gate'
+    to='irc.shakespeare.lit'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the queried entity supports JID escaping, it MUST return a <span class="strong">jid\20escaping</span> [sic] feature in its reply.</p>
+  <p class="caption"><a name="example-50" id="example-50"></a>Example 50. Service responds with features</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    to='porthos@musketeers.lit/gate'
+    from='irc.shakespeare.lit'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+...
+    &lt;feature var='jid\20escaping'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>If an entity (e.g., a client or a gateway) performs JID escaping, it MUST do so consistently (for example, a client or server MUST consistently apply JID escaping and unescaping to the JIDs it handles) so that the entity does not present the same JID in two different ways or present two different JIDs in the same way.</p>
+  <p>Naturally, if one entity performs JID escaping and another entity does not perform JID escaping, the same JID could be presented differently by those entities (e.g., the JID d\27artagnan@musketeers.lit would be presented as d'artagnan@musketeers.lit by a client that performs JID escaping but as d\27artagnan@musketeers.lit by a client that does not perform JID escaping). By the same token, two different JIDs could be presented in the same way by those entities (e.g., the JID foo\5cbar@example.com would be presented as foo\bar@example.com by a client that performs JID escaping and the JID foo\bar@example.com would be presented as foo\bar@example.com by a client that does not perform JID escaping). These differing presentations could be a source of confusion (e.g., the same human user could use two different clients, one of which performs JID escaping and one of which does not). This confusion may have security implications since in rare instances messages and other information could be directed to an entity other than the intended recipient; unfortunately, this is unavoidable until all XMPP clients support JID escaping.</p>
+  <p>An entity that performs JID escaping MUST NOT compare unescaped versions, otherwise messages and other information could be directed to an entity other than the intended recipient.</p>
+  <p>An entity that transforms a non-XMPP address into a JID MUST follow the algorithm specified in the <a href="#bizrules-algorithm">Address Transformation Algorithm</a> section of this document, otherwise messages and other information could be directed to an entity other than the intended recipient.</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1743648">21</a>].</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>9.1 <a name="registrar-features" id="registrar-features">Service Discovery Features</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1753104">22</a>] includes the <span class="strong">jid\20escaping</span> [sic] feature in its registry of service discovery features.</p>
+  </div>
+<h2>10.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>The authors would like to thank Robin Redeker for his feedback.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0106<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2007-06-18<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: jid\20escaping<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0106.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0106.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0106.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp628912" id="nt-idp628912">1</a>. RFC 3920: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc3920">http://tools.ietf.org/html/rfc3920</a>&gt;.</p><p><a name="nt-idp631040" id="nt-idp631040">2</a>. RFC 3454: Preparation of Internationalized Strings (stringprep) &lt;<a href="http://tools.ietf.org/html/rfc3454">http://tools.ietf.org/html/rfc3454</a>&gt;.</p><p><a name="nt-idp627056" id="nt-idp627056">3</a>. In fact all ASCII and non-ASCII space characters are disallowed, since the Nodeprep profile of stringprep prohibits all the characters specified in Appendices C.1.1 and C.1.2 of <span class="ref">RFC 3454</span>; however, all of these characters reduce to U+0020, also called SP.</p><p><a name="nt-idp1546976" id="nt-idp1546976">4</a>. RFC 2822: Internet Message Format &lt;<a href="http://tools.ietf.org/html/rfc2822">http://tools.ietf.org/html/rfc2822</a>&gt;.</p><p><a name="nt-idp1557680" id="nt-idp1557680">5</a>. Extensible Markup Language (XML) 1.0 (Fourth Edition) &lt;<a href="http://www.w3.org/TR/REC-xml/">http://www.w3.org/TR/REC-xml/</a>&gt;.</p><p><a name="nt-idp1560688" id="nt-idp1560688">6</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp1563648" id="nt-idp1563648">7</a>. RFC 2253: Lightweight Directory Access Protocol (v3): UTF-8 String Representation of Distinguished Names &lt;<a href="http://tools.ietf.org/html/rfc2253">http://tools.ietf.org/html/rfc2253</a>&gt;.</p><p><a name="nt-idp1577440" id="nt-idp1577440">8</a>. For a similar restriction, see Section 2.4 of <span class="ref">RFC 2253</span>.</p><p><a name="nt-idp1600336" id="nt-idp1600336">9</a>. It is possible that some existing JIDs already contain character sequences matching "\5chexhex" (where "hexhex" is the hexadecimal value of the Unicode code point for a disallowed character or the backslash character), which may result in confusion between escaped JIDs and their presentation in a client; however, a survey of one large XMPP deployment yielded no instances of such sequences or even of the character sequence "\5c".</p><p><a name="nt-idp1629280" id="nt-idp1629280">10</a>. XEP-0100: Gateway Interaction &lt;<a href="http://xmpp.org/extensions/xep-0100.html">http://xmpp.org/extensions/xep-0100.html</a>&gt;.</p><p><a name="nt-idp1655184" id="nt-idp1655184">11</a>. This specification does not cover recent efforts to define internationalized email addresses.</p><p><a name="nt-idp1662416" id="nt-idp1662416">12</a>. RFC 2368: The mailto URL scheme &lt;<a href="http://tools.ietf.org/html/rfc2368">http://tools.ietf.org/html/rfc2368</a>&gt;.</p><p><a name="nt-idp1672288" id="nt-idp1672288">13</a>. RFC 3261: Session Initiation Protocol (SIP) &lt;<a href="http://tools.ietf.org/html/rfc3261">http://tools.ietf.org/html/rfc3261</a>&gt;.</p><p><a name="nt-idp1681232" id="nt-idp1681232">14</a>. RFC 3860: Common Profile for Instant Messaging (CPIM) &lt;<a href="http://tools.ietf.org/html/rfc3860">http://tools.ietf.org/html/rfc3860</a>&gt;.</p><p><a name="nt-idp1683984" id="nt-idp1683984">15</a>. RFC 3859: Common Profile for Presence (CPP) &lt;<a href="http://tools.ietf.org/html/rfc3859">http://tools.ietf.org/html/rfc3859</a>&gt;.</p><p><a name="nt-idp1693760" id="nt-idp1693760">16</a>. The Open Mobile Alliance is the focal point for the development of mobile service enabler specifications, which support the creation of interoperable end-to-end mobile services. For further information, see &lt;<a href="http://www.openmobilealliance.org/">http://www.openmobilealliance.org/</a>&gt;.</p><p><a name="nt-idp1696800" id="nt-idp1696800">17</a>. Wireless Village Client-Server Protocol v1.1 &lt;<a href="http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html">http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html</a>&gt;.</p><p><a name="nt-idp1709632" id="nt-idp1709632">18</a>. RFC 2251: Lightweight Directory Access Protocol (v3) &lt;<a href="http://tools.ietf.org/html/rfc2251">http://tools.ietf.org/html/rfc2251</a>&gt;.</p><p><a name="nt-idp1724128" id="nt-idp1724128">19</a>. RFC 2812: Internet Relay Chat: Client Protocol &lt;<a href="http://tools.ietf.org/html/rfc2812">http://tools.ietf.org/html/rfc2812</a>&gt;.</p><p><a name="nt-idp1730192" id="nt-idp1730192">20</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1743648" id="nt-idp1743648">21</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1753104" id="nt-idp1753104">22</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2007-06-18)</h4><div class="indent"><p>Specified that \20 must not be included at the beginning or end of a node identifier; added security consideration regarding potential confusion caused by mismatch between software that does and software that does not perform JID escaping; added note about existing native JIDs that contain escaped characters; added mapping for IRC addresses; modified terminology to consistently use the terms escaping and unescaping rather than the terms encoding and decoding.</p> (psa)
+    </div><h4>Version 1.0 (2005-05-12)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.7 (2005-05-08)</h4><div class="indent"><p>Added examples of transforming JIDs to non-XMPP address formats.</p> (psa)
+    </div><h4>Version 0.6 (2005-05-06)</h4><div class="indent"><p>Changed format from #xx; to \xx per list discussion; added extensive implementation notes.</p> (psa)
+    </div><h4>Version 0.5 (2005-04-21)</h4><div class="indent"><p>Changed to U+00xx format for code points; added references to various RFCs; corrected terminology; cleaned up text and flow.</p> (psa)
+    </div><h4>Version 0.4 (2005-04-04)</h4><div class="indent"><p>Corrected several small textual errors and ambiguities; slightly reorganized textual flow.</p> (psa)
+    </div><h4>Version 0.3 (2005-03-16)</h4><div class="indent"><p>Clarified relationship between JID escaping and traditional client proxy gateway behavior; fixed several small errors.</p> (psa)
+    </div><h4>Version 0.2 (2003-10-21)</h4><div class="indent"><p>Editorial cleanup; added security considerations.</p> (psa)
+    </div><h4>Version 0.1 (2003-07-21)</h4><div class="indent"><p>Initial published version.</p> (jjh)
+    </div></div><hr /><p>END</p></body></html>

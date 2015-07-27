@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0009: Jabber-RPC</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber-RPC" /><meta name="DC.Creator" content="DJ Adams" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for transporting XML-RPC encoded requests and responses between two XMPP entities. The protocol supports all syntax and semantics of XML-RPC except that it uses XMPP instead of HTTP as the underlying transport." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2011-11-10" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0009" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0009: Jabber-RPC</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for transporting XML-RPC encoded requests and responses between two XMPP entities. The protocol supports all syntax and semantics of XML-RPC except that it uses XMPP instead of HTTP as the underlying transport.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>DJ Adams</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2011-11-10</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp616624">Introduction</a><br />2.  <a href="#sect-idp623168">Jabber-RPC</a><br />3.  <a href="#sect-idp627440">Examples</a><br />4.  <a href="#disco">Service Discovery</a><br />5.  <a href="#security">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-disco">Service Discovery Identity</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp616624" id="sect-idp616624">Introduction</a></h2>
+  <p><span class="ref"><a href="http://www.xmlrpc.com/spec">XML-RPC</a></span>  [<a href="#nt-idp619248">1</a>] is a method of encoding RPC requests and responses in XML. The original specification defines HTTP (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a></span>  [<a href="#nt-idp621696">2</a>]) as the only valid transport for XML-RPC payloads.</p>
+  <p>Various initiatives exist already to transport XML-RPC payloads over Jabber. These initiatives were independent of each other and used slightly differing methods (e.g. carrying the payload in a  element as opposed to an &lt;iq/&gt; stanza), resulting in potential interoperability problems.</p>
+  <p>A working session during JabberCon 2001 resulted in formalisation of a single method. This document describes that method, which is labelled as Jabber-RPC to differentiate it from XML-RPC itself.</p>
+<h2>2.
+       <a name="sect-idp623168" id="sect-idp623168">Jabber-RPC</a></h2>
+  <p>The &lt;iq/&gt; stanza is used to transport XML-RPC payloads. XML-RPC requests are transported using an &lt;iq/&gt; stanza of type "set", and XML-RPC responses are transported using an &lt;iq/&gt; stanza of type "result". An &lt;iq/&gt; stanza MUST NOT contain more than one request or response.</p>
+  <p>The &lt;iq/&gt; stanza contains a single &lt;query/&gt; sub-element in the jabber:iq:rpc namespace. The direct child of the &lt;query/&gt; element will be either a single &lt;methodCall/&gt; element (in the case of a request) or a single &lt;methodResponse/&gt; element (in the case of a response). This child element will contain the XML-RPC payload. Note that the XML declaration that normally appears at the head of an XML-RPC request or response when transported as the payload of an HTTP POST request MUST BE omitted when it is transported via a Jabber &lt;iq/&gt; stanza.</p>
+  <p>The encoding of the Jabber XML stream is UTF-8. It is assumed that the encoding of the XML-RPC payload is also UTF-8.</p>
+  <p>Application-level errors will be indicated within the XML-RPC payload (as is the case with the traditional HTTP-based XML-RPC mechanism). Transport level errors will be indicated in the normal way for &lt;iq/&gt; stanzas -- namely, by an &lt;iq/&gt; stanza of type "error" and the addition of an &lt;error/&gt; tag as a direct child of the &lt;iq/&gt; stanza. There are no specific XML-RPC-related, transport-level errors.</p>
+  <p class="box">In September of 2011, it was discovered that the XML schema quoted in <a href="#schema">Section 8</a> contains an error, showing a child element of &lt;Base64/&gt; (uppercase "B") instead of &lt;base64/&gt; (lowercase "b"). A review of the XML-RPC specification and of numerous XML-RPC and Jabber-RPC implementations showed that the element name is properly "base64" and that the quoted schema was in error by having an element name of "Base64". Therefore this specification and its associated schema were modified to use the correct element name: "base64". It is possible that some existing Jabber-RPC implementations might send a child element of &lt;Base64/&gt;.</p>
+<h2>3.
+       <a name="sect-idp627440" id="sect-idp627440">Examples</a></h2>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. A typical request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' 
+    from='requester@company-b.com/jrpc-client' 
+    to='responder@company-a.com/jrpc-server' 
+    id='rpc1'&gt;
+  &lt;query xmlns='jabber:iq:rpc'&gt;
+    &lt;methodCall&gt;
+      &lt;methodName&gt;examples.getStateName&lt;/methodName&gt;
+      &lt;params&gt;
+        &lt;param&gt;
+          &lt;value&gt;&lt;i4&gt;6&lt;/i4&gt;&lt;/value&gt;
+        &lt;/param&gt;
+      &lt;/params&gt;
+    &lt;/methodCall&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. A typical response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='responder@company-a.com/jrpc-server' 
+    to='requester@company-b.com/jrpc-client' 
+    id='rpc1'&gt;
+  &lt;query xmlns='jabber:iq:rpc'&gt;
+    &lt;methodResponse&gt;
+      &lt;params&gt;
+        &lt;param&gt;
+          &lt;value&gt;&lt;string&gt;Colorado&lt;/string&gt;&lt;/value&gt;
+        &lt;/param&gt;
+      &lt;/params&gt;
+    &lt;/methodResponse&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the requesting entity does not have sufficient permissions to perform remote procedure calls, the responding entity MUST return a &lt;forbidden/&gt; error:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Requesting entity is forbidden to perform remote procedure calls</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' 
+    from='responder@company-a.com/jrpc-server' 
+    to='requester@company-b.com/jrpc-client' 
+    id='rpc1'&gt;
+  &lt;query xmlns='jabber:iq:rpc'&gt;
+    &lt;methodCall&gt;
+      &lt;methodName&gt;examples.getStateName&lt;/methodName&gt;
+      &lt;params&gt;
+        &lt;param&gt;
+          &lt;value&gt;&lt;i4&gt;6&lt;/i4&gt;&lt;/value&gt;
+        &lt;/param&gt;
+      &lt;/params&gt;
+    &lt;/methodCall&gt;
+  &lt;/query&gt;
+  &lt;error code='403' type='auth'&gt;
+    &lt;forbidden xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>4.
+       <a name="disco" id="disco">Service Discovery</a></h2>
+  <p>If an entity supports the Jabber-RPC protocol, it SHOULD advertise that fact in response to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp633184">3</a>] information ("diso#info") requests by returning an identity of "automation/rpc" and a feature of "jabber:iq:rpc":</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. A disco#info query</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' 
+    from='requester@company-b.com/jrpc-client' 
+    to='responder@company-a.com/jrpc-server' 
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. A disco#info response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    to='requester@company-b.com/jrpc-client' 
+    from='responder@company-a.com/jrpc-server' 
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='automation' type='rpc'/&gt;
+    &lt;feature var='jabber:iq:rpc'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>An entity that supports Jabber-RPC SHOULD establish a "whitelist" of entities that are allowed to perform remote procedure calls and MUST return a &lt;forbidden/&gt; error if entities with insufficient permissions attempt such calls.</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1494512">4</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1500688">5</a>] includes 'jabber:iq:rpc' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-disco" id="registrar-disco">Service Discovery Identity</a></h3>
+    <p>The XMPP Registrar includes a Service Discovery type of "rpc" within the "automation" category in its registry of service discovery identities.</p>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:rpc'
+    xmlns='jabber:iq:rpc'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0009: http://www.xmpp.org/extensions/xep-0009.html
+
+      There is no official XML schema for XML-RPC. The main body 
+      of this schema has been borrowed from an unofficial schema 
+      representation contained in the book "Processing XML With 
+      Java" by Elliotte Rusty Harold, as located at:
+
+      http://www.ibiblio.org/xml/books/xmljava/chapters/ch02s05.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs='0' maxOccurs='1'&gt;
+        &lt;xs:element ref='methodCall'/&gt;
+        &lt;xs:element ref='methodResponse'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name="methodCall"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:all&gt;
+        &lt;xs:element name="methodName"&gt;
+          &lt;xs:simpleType&gt;
+            &lt;xs:restriction base="ASCIIString"&gt;
+              &lt;xs:pattern value="([A-Za-z0-9]|/|\.|:|_)*" /&gt;
+            &lt;/xs:restriction&gt;
+          &lt;/xs:simpleType&gt;
+        &lt;/xs:element&gt;
+        &lt;xs:element name="params" minOccurs="0" maxOccurs="1"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="param"  type="ParamType" 
+                           minOccurs="0" maxOccurs="unbounded"/&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+         &lt;/xs:element&gt;
+      &lt;/xs:all&gt;
+    &lt;/xs:complexType&gt;  
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name="methodResponse"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element name="params"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="param" type="ParamType"/&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+        &lt;xs:element name="fault"&gt;
+          &lt;!-- What can appear inside a fault is very restricted --&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="value"&gt;
+                &lt;xs:complexType&gt;
+                  &lt;xs:sequence&gt;
+                    &lt;xs:element name="struct"&gt; 
+                      &lt;xs:complexType&gt; 
+                        &lt;xs:sequence&gt; 
+                          &lt;xs:element name="member" 
+                                       type="MemberType"&gt;
+                          &lt;/xs:element&gt;
+                          &lt;xs:element name="member" 
+                                       type="MemberType"&gt;
+                          &lt;/xs:element&gt;
+                        &lt;/xs:sequence&gt;
+                      &lt;/xs:complexType&gt;
+                    &lt;/xs:element&gt;
+                  &lt;/xs:sequence&gt;
+                &lt;/xs:complexType&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+         &lt;/xs:element&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;  
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name="ParamType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="value" type="ValueType"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="ValueType" mixed="true"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element name="i4"            type="xs:int"/&gt;
+      &lt;xs:element name="int"           type="xs:int"/&gt;
+      &lt;xs:element name="string"        type="ASCIIString"/&gt;
+      &lt;xs:element name="double"        type="xs:decimal"/&gt;
+      &lt;xs:element name="base64"        type="xs:base64Binary"&gt;
+        &lt;xs:annotation&gt;
+          &lt;xs:documentation&gt;
+            Corrected from "Base64" to "base64" in version 2.2 of XEP-0009.
+          &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+      &lt;/xs:element&gt;
+      &lt;xs:element name="boolean"       type="NumericBoolean"/&gt;
+      &lt;xs:element name="dateTime.iso8601" type="xs:dateTime"/&gt;
+      &lt;xs:element name="array"         type="ArrayType"/&gt;
+      &lt;xs:element name="struct"        type="StructType"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="StructType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="member" type="MemberType" 
+                   maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="MemberType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="name"  type="xs:string" /&gt;
+      &lt;xs:element name="value" type="ValueType"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="ArrayType"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="data"&gt;
+        &lt;xs:complexType&gt;
+          &lt;xs:sequence&gt;
+            &lt;xs:element name="value"  type="ValueType" 
+                         minOccurs="0" maxOccurs="unbounded"/&gt;
+          &lt;/xs:sequence&gt;
+        &lt;/xs:complexType&gt;
+      &lt;/xs:element&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:simpleType name="ASCIIString"&gt;
+    &lt;xs:restriction base="xs:string"&gt;
+      &lt;xs:pattern value="([ -~]|\n|\r|\t)*" /&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;xs:simpleType name="NumericBoolean"&gt;
+    &lt;xs:restriction base="xs:boolean"&gt;
+      &lt;xs:pattern value="0|1" /&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0009<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.2<br />
+            Last Updated: 2011-11-10<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XML-RPC<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: jabber-rpc<br />
+        Schema: &lt;<a href="http://xmpp.org/schemas/jabber-rpc.xsd">http://xmpp.org/schemas/jabber-rpc.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0009.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0009.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0009.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>DJ Adams</h3><p class="indent">
+        Email:
+        <a href="mailto:dj.adams@pobox.com">dj.adams@pobox.com</a><br />
+        JabberID: 
+        <a href="xmpp:dj@gnu.mine.nu">dj@gnu.mine.nu</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp619248" id="nt-idp619248">1</a>. XML-RPC &lt;<a href="http://www.xmlrpc.com/spec">http://www.xmlrpc.com/spec</a>&gt;.</p><p><a name="nt-idp621696" id="nt-idp621696">2</a>. RFC 2068: Hypertext Transport Protocol -- HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2068">http://tools.ietf.org/html/rfc2068</a>&gt;.</p><p><a name="nt-idp633184" id="nt-idp633184">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1494512" id="nt-idp1494512">4</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1500688" id="nt-idp1500688">5</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.2 (2011-11-10)</h4><div class="indent">Corrected element name in XML schema from "Base64" to "base64". (psa)
+    </div><h4>Version 2.1 (2006-02-09)</h4><div class="indent">Defined error handling, service discovery, security considerations, and XMPP Registrar considerations. (psa)
+    </div><h4>Version 2.0 (2002-12-09)</h4><div class="indent">Per a vote of the Jabber Council, changed status to Final. (psa)
+    </div><h4>Version 1.0 (2001-09-27)</h4><div class="indent">Changed status to Draft (psa)
+    </div><h4>Version 0.1 (2001-09-14)</h4><div class="indent">Initial version (dja)
+    </div></div><hr /><p>END</p></body></html>

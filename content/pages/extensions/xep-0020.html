@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0020: Feature Negotiation</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Feature Negotiation" /><meta name="DC.Creator" content="Peter Millard" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Ian Paterson" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension that enables two entities to mutually negotiate feature options, such as parameters related to a file transfer or a communications session." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2006-11-21" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0020" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0020: Feature Negotiation</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension that enables two entities to mutually negotiate feature options, such as parameters related to a file transfer or a communications session.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Millard, Peter Saint-Andre, Ian Paterson</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2006-11-21</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#protocol">Protocol Details</a><br />   
+      2.1.  <a href="#protocol-basic">Basic Flow</a><br />   
+      2.2.  <a href="#protocol-query">Querying for Negotiable Features</a><br />3.  <a href="#security">Security Considerations</a><br />4.  <a href="#iana">IANA Considerations</a><br />5.  <a href="#registrar">XMPP Registrar Considerations</a><br />6.  <a href="#schema">XML Schema</a><br />7.  <a href="#authornote">Author Note</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>A discovery protocol such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp643776">1</a>] enables Jabber entities to query other entities regarding the features they support, but does not provide a means for the two entities to negotiate specific options related to the advertised features.</p>
+  <p>The protocol defined herein enables Jabber entities to negotiate options for specific features. These features could be negotiated between any two endpoints on the Jabber network, such as two clients, a client and a component, two components, a client and a server, or two servers. The protocol is generic enough that it can be used whenever options need to be negotiated between two Jabber entities. For examples, <span class="ref"><a href="http://xmpp.org/extensions/xep-0095.html">Stream Initiation (XEP-0095)</a></span>  [<a href="#nt-idp640656">2</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp1494352">3</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0155.html">Stanza Session Negotiation (XEP-0155)</a></span>  [<a href="#nt-idp1496864">4</a>].</p>
+<h2>2.
+       <a name="protocol" id="protocol">Protocol Details</a></h2>
+  <p>Features are negotiated through the exchange of &lt;iq/&gt; or &lt;message/&gt; stanzas containing &lt;feature/&gt; child elements qualified by the 'http://jabber.org/protocol/feature-neg' namespace. However, this &lt;feature/&gt; element is simply a wrapper for structured data encapsulated in the <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp1501264">5</a>] protocol.  [<a href="#nt-idp638608">6</a>]</p>
+  <p>In order to begin a negotation, the initiator sends an &lt;iq/&gt; stanza of type "get" (or a &lt;message/&gt; stanza type "normal" - see <span class="ref">Stanza Session Negotiation</span> for examples) to the recipient with a single &lt;feature/&gt; element containing a data form of type "form" which defines the available options for one or more features. Each feature is represented as an x-data "field".</p>
+  <p>The recipient SHOULD examine each feature and the values of the options provided. In order to indicate preferred values, the recipient then SHOULD specify one value for each feature and return a data form of type "submit" to the initiator in an &lt;iq/&gt; stanza of type "result" (or a &lt;message/&gt; stanza type "normal").</p>
+  <p>The following examples show some likely scenarios for feature negotiation between entities. Further examples can be found in "using protocols", such as <span class="ref">File Transfer</span>.</p>
+  <div class="indent"><h3>2.1 <a name="protocol-basic" id="protocol-basic">Basic Flow</a></h3>
+    <p>A typical negotiation flow is shown in the following example of two entities negotiating the time and place for a meeting.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initiating entity sends offer</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'
+    id='neg1'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field var='FORM_TYPE' type='hidden'&gt;
+        &lt;value&gt;romantic_meetings&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='places-to-meet'&gt;
+         &lt;option&gt;&lt;value&gt;Secret Grotto&lt;/value&gt;&lt;/option&gt;
+         &lt;option&gt;&lt;value&gt;Verona Park&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='times-to-meet'&gt;
+         &lt;option&gt;&lt;value&gt;22:00&lt;/value&gt;&lt;/option&gt;
+         &lt;option&gt;&lt;value&gt;22:30&lt;/value&gt;&lt;/option&gt;
+         &lt;option&gt;&lt;value&gt;23:00&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Responding entity sends preferred option values</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='neg1'
+    from='juliet@jabber.org/balcony'
+    to='romeo@montague.net/orchard'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;romantic_meetings&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='places-to-meet'&gt;
+        &lt;value&gt;Secret Grotto&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='times-to-meet'&gt;
+        &lt;value&gt;22:30&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: If the responding entity does not want to reveal presence to the initiating entity for whatever reason then the responding entity's client SHOULD return a &lt;service-unavailable/&gt; error (or return no response or error whatsoever if the offer was wrapped in a &lt;message/&gt; stanza) - see <a href="#security">Security Considerations</a>.</p>
+    <p>If the responding entity does not support <span class="strong">Feature Negotiation</span> or does not support the specified FORM_TYPE, it SHOULD also return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Responding entity does not support feature negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    id='neg1'
+    from='juliet@jabber.org/balcony'
+    to='romeo@montague.net/orchard'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field var='FORM_TYPE' type='hidden'&gt;
+        &lt;value&gt;romantic_meetings&lt;/value&gt;
+      &lt;/field&gt;
+      ...
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the responding entity does not support one or more of the features, it SHOULD return a &lt;feature-not-implemented/&gt; error, and SHOULD specify the feature(s) not implemented in the XMPP &lt;text/&gt; element.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Responding entity does not support a feature</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    id='neg1'
+    from='juliet@jabber.org/balcony'
+    to='romeo@montague.net/orchard'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field var='FORM_TYPE' type='hidden'&gt;
+        &lt;value&gt;romantic_meetings&lt;/value&gt;
+      &lt;/field&gt;
+      ...
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;error type='cancel'&gt;
+    &lt;feature-not-implemented xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;times-to-meet&lt;/text&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the responding entity supports none of the options offered for one or more of the features, it SHOULD return a &lt;not-acceptable/&gt; error, and SHOULD specify the relevant feature(s) in the XMPP &lt;text/&gt; element.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Responding entity supports no options</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='juliet@jabber.org/balcony'
+    to='romeo@montague.net/orchard'
+    id='neg1'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field var='FORM_TYPE' type='hidden'&gt;
+        &lt;value&gt;romantic_meetings&lt;/value&gt;
+      &lt;/field&gt;
+      ...
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;error type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;places-to-meet&lt;/text&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.2 <a name="protocol-query" id="protocol-query">Querying for Negotiable Features</a></h3>
+    <p>If at least one feature offered by an entity is subject to <span class="strong">Feature Negotiation</span>, the entity's response to a service discovery information request MUST include &lt;feature var='http://jabber.org/protocol/feature-neg'/&gt; as one of the features.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Client queries a chatroom for supported features</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='balconyscene@plays.shakespeare.lit'
+    id='neg1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Chatroom returns supported features</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='balconyscene@plays.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='neg1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/feature-neg'/&gt;
+    &lt;feature var='muc-password'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+    <p>The "using protocol" (in these examples, <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1530912">7</a>]) SHOULD specify which features might be negotiable, either in the relevant documentation or in the entry for that feature in the service discovery features registry maintained by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1533424">8</a>]. However, the initiating entity MAY also query the responding entity in order to determine which features are negotiable, as shown below.</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client queries chatroom regarding options for a negotiable feature</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='balconyscene@plays.shakespeare.lit'
+    id='neg2'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='muc-password'/&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/iq&gt;</pre></div>
+    <p>If that feature is not negotiable, the responding entity SHOULD return a "Feature Not Implemented" error:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Chatroom returns error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='balconyscene@plays.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='neg2'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='muc-password'/&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;error type='cancel'&gt;
+    &lt;feature-not-implemented xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;</pre></div>
+    <p>If that feature is negotiable, the responding entity SHOULD return an appropriate negotiation form:</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Chatroom returns negotiation form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='balconyscene@plays.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='neg2'&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;MUC&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='muc-password' type='list-single'&gt;
+        &lt;option&gt;&lt;value&gt;cleartext&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;SHA1&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;SASL&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/iq&gt;</pre></div>
+    <p>The initiating entity MAY then submit a data form containing the required information.</p>
+  </div>
+<h2>3.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>If the responding entity responds to the initiating entity or returns an error (other than a &lt;service-unavailable/&gt; response to an &lt;iq/&gt; request), the initiating entity will effectively discover the presence of the responding entity's resource. Due care must therefore be exercised in determining how to respond (or whether to respond at all to a &lt;message/&gt; request). For examples, the responding entity SHOULD NOT <span class="em">automatically</span> (i.e. without first asking its human user) either respond to the initiating entity's request or return a specific error unless the initiating entity is subscribing to the responding entity's presence (and the responding entity's presence is not currently "invisible" to the initiating entity). Note: There should be no need for the responding entity's client to consult its block list, since if the initiating entity is on the list then the responding entity would not receive any requests from the initiating entity anyway.</p>
+<h2>4.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1544912">9</a>].</p>
+<h2>5.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>In order for Jabber entities to adequately leverage <span class="strong">Data Forms</span> (e.g., by using machine-readable fields), it is RECOMMENDED to register standard x-data fields with the <span class="ref">XMPP Registrar</span> via the mechanisms defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp1550016">10</a>]. Whether to do so for any given features and options shall be determined by the "using protocol".</p>
+<h2>6.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/feature-neg'
+    xmlns='http://jabber.org/protocol/feature-neg'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import namespace='jabber:x:data'
+             schemaLocation='http://xmpp.org/schemas/x-data.xsd'/&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0020: http://www.xmpp.org/extensions/xep-0020.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='feature'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence xmlns:data='jabber:x:data'&gt;
+        &lt;xs:element ref='data:x'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>7.
+       <a name="authornote" id="authornote">Author Note</a></h2>
+  <p>Peter Millard, the primary author of this specification from version 0.1 through version 1.4, died on April 26, 2006. The remaining authors are thankful for Peter's work on this specification.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0020<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.5<br />
+            Last Updated: 2006-11-21<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0004<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: feature-neg<br />
+        Schema: &lt;<a href="http://xmpp.org/schemas/feature-neg.xsd">http://xmpp.org/schemas/feature-neg.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0020.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0020.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0020.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Millard</h3><p class="indent">
+        See <a href="#authornote">Author Note</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Ian Paterson</h3><p class="indent">
+        Email:
+        <a href="mailto:ian.paterson@clientside.co.uk">ian.paterson@clientside.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:ian@zoofy.com">ian@zoofy.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp643776" id="nt-idp643776">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp640656" id="nt-idp640656">2</a>. XEP-0095: Stream Initiation &lt;<a href="http://xmpp.org/extensions/xep-0095.html">http://xmpp.org/extensions/xep-0095.html</a>&gt;.</p><p><a name="nt-idp1494352" id="nt-idp1494352">3</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp1496864" id="nt-idp1496864">4</a>. XEP-0155: Stanza Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0155.html">http://xmpp.org/extensions/xep-0155.html</a>&gt;.</p><p><a name="nt-idp1501264" id="nt-idp1501264">5</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp638608" id="nt-idp638608">6</a>. Earlier versions of this document defined a structured data format to handle the feature negotiation workflow; versions later than 0.4 use <span class="ref">Data Forms</span>, i.e., the 'jabber:x:data' namespace.</p><p><a name="nt-idp1530912" id="nt-idp1530912">7</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1533424" id="nt-idp1533424">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1544912" id="nt-idp1544912">9</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1550016" id="nt-idp1550016">10</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.5 (2006-11-21)</h4><div class="indent">Added FORM_TYPEs to examples; added service-unavailable error and Security Considerations; various other updates and corrections avoiding material changes. (ip)
+    </div><h4>Version 1.4 (2004-05-21)</h4><div class="indent">Moved remaining feature negotiation text from XEP-0030 to this document. (psa)
+    </div><h4>Version 1.3 (2004-04-23)</h4><div class="indent">Per Council discussion, changed root element from &lt;query/&gt; to &lt;feature/&gt; for the sake of consistency with using protocols; moved some text from XEP-0030 to this document. (psa)
+    </div><h4>Version 1.2 (2004-03-08)</h4><div class="indent">Added XMPP error handling; clarified the text; corrected the examples; fixed an error in the schema; added numerous references. (psa)
+    </div><h4>Version 1.1 (2003-02-16)</h4><div class="indent">Made corrections to the text; added security and IANA considerations; added schema. (psa)
+    </div><h4>Version 1.0 (2002-12-06)</h4><div class="indent">Per a vote of the Jabber Council, revision 0.4 was advanced to Draft on 2002-12-06. (psa)
+    </div><h4>Version 0.4 (2002-11-17)</h4><div class="indent">Changed protocol to use jabber:x:data. (pgm)
+    </div><h4>Version 0.3 (2002-10-01)</h4><div class="indent">Added some extra text to help clarify protocol &amp; purpose. (pgm)
+    </div><h4>Version 0.2 (2002-05-22)</h4><div class="indent">Changed examples. (pgm)
+    </div><h4>Version 0.1 (2002-02-26)</h4><div class="indent">Initial version. (pgm)
+    </div></div><hr /><p>END</p></body></html>

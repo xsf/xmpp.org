@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0126: Invisibility</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Invisibility" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines best practices regarding implementation of invisible presence by means of XMPP privacy lists." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-08-19" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0126" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0126: Invisibility</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines best practices regarding implementation of invisible presence by means of XMPP privacy lists.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-08-19</td></tr></table><hr /><p style="color:green">NOTICE: This Informational specification defines a best practice or protocol profile that has been approved by the XMPP Council and/or the XSF Board of Directors. Implementations are encouraged and the best practice or protocol profile is appropriate for deployment in production systems.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#usecases">Use Cases</a><br />   
+      3.1.  <a href="#invis-login">Log In as Globally Invisible</a><br />   
+      3.2.  <a href="#vis-select">Become Selectively Visible</a><br />      
+      3.2.1.  <a href="#vis-select-jid">Becoming Visible by JID</a><br />      
+      3.2.2.  <a href="#vis-select-roster">Becoming Visible by Roster Group</a><br />      
+      3.2.3.  <a href="#vis-select-sub">Becoming Visible by Subscription Type</a><br />   
+      3.3.  <a href="#vis-global">Become Globally Visible</a><br />   
+      3.4.  <a href="#invis-select">Become Selectively Invisible</a><br />      
+      3.4.1.  <a href="#invis-select-jid">Becoming Invisible by JID</a><br />      
+      3.4.2.  <a href="#invis-select-roster">Becoming Invisible by Roster Group</a><br />      
+      3.4.3.  <a href="#invis-select-sub">Becoming Invisible by Subscription Type</a><br />   
+      3.5.  <a href="#invis-global">Become Globally Invisible</a><br />4.  <a href="#impl">Implementation Notes</a><br />5.  <a href="#security">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>Several popular instant messaging services implement a feature known as invisibility: the ability to remain online yet appear offline to some or all of one's contacts. A number of Jabber servers and clients have also implemented such a feature, using special values of the &lt;presence/&gt; element's 'type' attribute (e.g., &lt;presence type='invisible'/&gt;). Unfortunately, such implementations are not compliant with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp621664">1</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp620320">2</a>], which specify that only the 'type' attribute values defined in the XML schema for the 'jabber:client' and 'jabber:server' namespaces are allowed in XMPP (and those values do not include "invisible"). However, <span class="ref">RFC 3921</span> also defines a privacy lists protocol (i.e., the 'jabber:iq:privacy' namespace) that can be used to implement invisibility in an XMPP-compliant manner. This specification documents how to do just that.</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This document addresses the following requirements:</p>
+  <ul>
+    <li>Enable users to appear visible or invisible to some or all contacts at any time.</li>
+    <li>Enable users to selectively change visibility based on roster group, subscription state, or individual JID.</li>
+    <li>Do so in an XMPP-compliant manner.</li>
+  </ul>
+<h2>3.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <p>This document addresses the following use cases:</p>
+  <ol>
+    <li>Log In as Globally Invisible</li>
+    <li>Become Selectively Visible</li>
+    <li>Become Globally Visible</li>
+    <li>Become Selectively Invisible</li>
+    <li>Become Globally Invisible</li>
+  </ol>
+  <p>These use cases are defined below in "chronological" order by following a scenario in which a user (1) logs in as invisible, (2) becomes selectively visible to certain contacts, (3) becomes visible to all contacts, (4) becomes selectively invisible to certain contacts, and finally (5) becomes invisible to all contacts.</p>
+  <div class="indent"><h3>3.1 <a name="invis-login" id="invis-login">Log In as Globally Invisible</a></h3>
+    <p>If a user wants to log in as invisible, a certain order of events MUST be followed. Specifically, after authenticating but before sending initial presence, the user MUST define (if necessary) and set as active a privacy list that blocks all outbound presence notifications.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Defines and Sets Global Invisibility Privacy Rule</p><div class="indent"><pre class="prettyprint">
+... authentication / session establishment ...
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv1'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='invisible'&gt;
+      &lt;item action='deny' order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active1'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='invisible'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Naturally, the user could have defined this list during a previous session and could simply set the relevant list as active when logging in, rather than defining the list on login. Both steps are shown here for completeness.</p>
+    <p>The user may now send initial presence to the server.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. User Sends Initial Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm not really here, you understand!&lt;/status&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>Even though the user has sent initial presence, that presence information will not be broadcasted to any of the user's contacts, since the active privacy list blocks all outbound presence notifications.</p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="vis-select" id="vis-select">Become Selectively Visible</a></h3>
+    <p>Let us now suppose that the user tires of being globally invisible, and decides to become visible to some -- but not all -- contacts (not even famous magic rings possess this feature). The 'jabber:iq:privacy' namespace gives the user three options:</p>
+    <ul>
+      <li>become visible only to specific JIDs</li>
+      <li>become visible only to specific roster groups</li>
+      <li>become visible based on subscription state</li>
+    </ul>
+    <p>Examples of these options are shown below.</p>
+    <div class="indent"><h3>3.2.1 <a name="vis-select-jid" id="vis-select-jid">Becoming Visible by JID</a></h3>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User Defines and Sets Selective Visibility Privacy Rule (by JID)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv2'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='visible-to-Frodo'&gt;
+      &lt;item type='jid'
+            value='frodo@tolkien.lit'
+            action='allow'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='deny' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active2'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='visible-to-Frodo'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list blocks outbound presence notifications to every JID except one.</p>
+      <p>In order to ensure synchronization of presence notifications, the client SHOULD now re-send the user's presence for broadcasting to all contacts, which the active rule will block to all but the specified JID:</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm not really here, you understand!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.2.2 <a name="vis-select-roster" id="vis-select-roster">Becoming Visible by Roster Group</a></h3>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. User Defines and Sets Selective Visibility Privacy Rule (by Roster Group)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv3'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='visible-to-Bagginses'&gt;
+      &lt;item type='group'
+            value='Bagginses'
+            action='allow'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='deny' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active3'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='visible-to-Bagginses'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list blocks outbound presence notifications to every JID except those in a certain roster group. In order to ensure synchronization of presence notifications, the client SHOULD now re-send the user's presence for broadcasting to all contacts, which the active rule will block to all but those JIDs in the specified roster group:</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm not really here, you understand!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.2.3 <a name="vis-select-sub" id="vis-select-sub">Becoming Visible by Subscription Type</a></h3>
+      <p>Becoming visible or invisible by subscription type is probably much less likely than becoming visible by JID or roster group; however, it is described here for the sake of completeness.</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. User Defines and Sets Selective Visibility Privacy Rule (by Subscription State)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv4'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='visible-to-both'&gt;
+      &lt;item type='subscription'
+            value='both'
+            action='allow'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='deny' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active4'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='visible-to-both'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list blocks outbound presence notifications to every JID except those that are in the user's roster with a subscription type of "both".</p>
+      <p>In order to ensure synchronization of presence notifications, the client SHOULD now re-send the user's presence for broadcasting to all contacts, which the active rule will block to all but those JIDs with the specified subscription type:</p>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm not really here, you understand!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="vis-global" id="vis-global">Become Globally Visible</a></h3>
+    <p>Let us now suppose that the user wants to become visible to all those who are subscribed to his presence. This easy to do by defining and setting as active a new privacy list (here again, the privacy list may have been defined previously).</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. User Defines and Sets Global Visibility Privacy Rule</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv5'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='visible'&gt;
+      &lt;item action='allow' order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active5'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='visible'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Because globally allowing outbound presence notifications is most likely the default behavior of any server, a more straightforward way to become globally visible is to decline the use of any active rule (the equivalent, as it were, of taking off a magic invisibility ring):</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. User Declines the Use of Any Active Rule</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active6'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>In order to ensure synchronization of presence notifications, the client SHOULD now re-send the user's presence for broadcasting to all contacts, which the active rule will block to all but the specified JID:</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm back!&lt;/status&gt;
+&lt;/presence&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.4 <a name="invis-select" id="invis-select">Become Selectively Invisible</a></h3>
+    <p>Let us now suppose that the user no longer wants to be globally visible, but desires to be invisible only to some -- but not all -- contacts. As with visibility, here again the 'jabber:iq:privacy' namespace gives the user three options:</p>
+    <ul>
+      <li>Become invisible only to specific JIDs</li>
+      <li>Become invisible only to specific roster groups</li>
+      <li>Become invisible based on subscription state</li>
+    </ul>
+    <p>Examples of these options are shown below.</p>
+    <p>In general, the process for becoming selectively invisible is as follows:</p>
+    <ol>
+      <li>Send unavailable presence to the server.</li>
+      <li>Define and set a privacy rule for selective invisibility.</li>
+      <li>Send available presence to the server.</li>
+    </ol>
+    <p>This process is necessary so that the contacts covered by the rule will no longer see the user as available.</p>
+    <div class="indent"><h3>3.4.1 <a name="invis-select-jid" id="invis-select-jid">Becoming Invisible by JID</a></h3>
+      <p>First, the user sends unavailable presence for broadcasting to all contacts:</p>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. User Sends Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'/&gt;
+      </pre></div>
+      <p>The server then broadcasts that presence to all of the user's contacts.</p>
+      <p>Second, the user defines and sets a privacy rule that allows selective invisibility:</p>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. User Defines and Sets Selective Invisibility Privacy Rule (by JID)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv6'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='invisible-to-Gandalf'&gt;
+      &lt;item type='jid'
+            value='gandalf@tolkien.lit'
+            action='deny'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='allow' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active7'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='invisible-to-Gandalf'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list allows outbound presence notifications to every JID except one.</p>
+      <p>In order to appear selectively invisible, the client MUST now re-send the user's presence for broadcasting to all contacts, which the active rule will block to the specified JID:</p>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm back!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.4.2 <a name="invis-select-roster" id="invis-select-roster">Becoming Invisible by Roster Group</a></h3>
+      <p>First, the user sends unavailable presence for broadcasting to all contacts:</p>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. User Sends Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'/&gt;
+      </pre></div>
+      <p>The server then broadcasts that presence to all of the user's contacts.</p>
+      <p>Second, the user defines and sets a privacy rule that allows selective invisibility:</p>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. User Defines and Sets Selective Invisibility Privacy Rule (by Roster Group)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv7'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='invisible-to-Wizards'&gt;
+      &lt;item type='group'
+            value='Wizards'
+            action='deny'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='allow' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active8'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='invisible-to-Wizards'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list allows outbound presence notifications to every JID except those in a certain roster group.</p>
+      <p>In order to appear selectively invisible, the client MUST now re-send the user's presence for broadcasting to all contacts, which the active rule will block to those in the specified roster group:</p>
+      <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm back!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.4.3 <a name="invis-select-sub" id="invis-select-sub">Becoming Invisible by Subscription Type</a></h3>
+      <p>Becoming visible or invisible by subscription type is probably much less likely than becoming visible by JID or roster group; however, it is described here for the sake of completeness.</p>
+      <p>First, the user sends unavailable presence for broadcasting to all contacts:</p>
+      <p class="caption"><a name="example-18" id="example-18"></a>Example 18. User Sends Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'/&gt;
+      </pre></div>
+      <p>The server then broadcasts that presence to all of the user's contacts.</p>
+      <p>Second, the user defines and sets a privacy rule that allows selective invisibility:</p>
+      <p class="caption"><a name="example-19" id="example-19"></a>Example 19. User Defines and Sets Selective Invisibility Privacy Rule (by Subscription State)</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='inv8'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;list name='invisible-to-from'&gt;
+      &lt;item type='subscription'
+            value='from'
+            action='deny'
+            order='1'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+      &lt;item action='allow' order='2'&gt;
+        &lt;presence-out/&gt;
+      &lt;/item&gt;
+    &lt;/list&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active9'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='invisible-to-from'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The foregoing privacy list allows outbound presence notifications to every JID except those that are in the user's roster with a subscription type of "to".</p>
+      <p>In order to appear selectively invisible, the client MUST now re-send the user's presence for broadcasting to all contacts, which the active rule will block to those with the specified subscription type:</p>
+      <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm back!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.5 <a name="invis-global" id="invis-global">Become Globally Invisible</a></h3>
+    <p>In order to become globally invisible again, the user does the following.</p>
+    <p>First, the user sends unavailable presence for broadcasting to all contacts:</p>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. User Sends Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'/&gt;
+    </pre></div>
+    <p>Second, the user sets as active the global invisibility list previously defined:</p>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. User Becomes Globally Invisible</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bilbo@tolkien.lit/shire' type='set' id='active10'&gt;
+  &lt;query xmlns='jabber:iq:privacy'&gt;
+    &lt;active name='invisible'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>In order to appear globally invisible, the client MUST now re-send the user's presence for broadcasting to all contacts, which the active rule will block to all contacts:</p>
+      <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Client Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;status&gt;I'm not really here, you understand!&lt;/status&gt;
+&lt;/presence&gt;
+      </pre></div>
+  </div>
+<h2>4.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>The foregoing text explains the protocol used to implement invisibility. Naturally, client developers will most likely want to hide these protocol details from the end user. For example, rather than forcing the end user to navigate the details of privacy list management, a client could simply provide a "Go Invisible" button that sets as active the appropriate privacy list.</p>
+  <p>Note well that the privacy lists used to implement invisibility SHOULD be active lists and <span class="em">not</span> the default list.</p>
+  <p>To help ensure cross-client compatibility, it is RECOMMENDED to use the privacy list names "visible" and "invisible" for simple global visibility and invisibility respectively. It is also RECOMMENDED to use list names of the form "visible-to-GroupName" and "invisible-to-JID" for simple lists that implement visibility or invisibility with regard to roster groups and JIDs. Obviously list names could become rather complex, such as "visible-to-Group1 Group2 Group3". Implementations MUST NOT attempt to derive semantic meaning from privacy list names; these recommendations are provided for ease of use only with regard to basic privacy lists related to visibility/invisibility.</p>
+  <p>In general it is probably easiest for users to become visible/invisible either globally or based on roster group, since these models are conceptually simple. Although, naturally, a client developer cannot tell users what to do, it probably best to encourage the use of conceptually simple models for privacy lists.</p>
+  <p>Privacy lists can become complex and must be carefully managed by clients. For example, let us imagine that the user is currently applying another active list unrelated to visibility (e.g., a list that blocks communications with a stalker); if the user then clicks "Go Invisible" and the client is not smart, it could overwrite the stalker blocking. Therefore, if the user has an active list that incorporates rules other than those related to visibility/invisibility, the client SHOULD either assume that visibility/invisibility is an overlay on the list currently in use (generating an appropriate privacy list that takes both into account) or prompt the user regarding their intentions. In the absence of privacy lists unrelated to visibility/invisibility, the client may proceed in a less cautious fashion.</p>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>For security concerns related to privacy lists, refer to <span class="ref">RFC 3921</span>. Care must be taken regarding privacy lists, especially so that visibility/invisibility rules do not overwrite existing rules the user has set for the sake of security and privacy; for details, see the <a href="#impl">Implementation Notes</a> section of this document.</p>
+  <p>It is important to recognize that invisibility can be defeated without more advanced privacy lists than those defined above and an awareness of context on the part of a client. For example, if a user usually logs in as the same resource (e.g., "Home"), a contact can send an IQ request to that resource's full JID using <span class="ref"><a href="http://xmpp.org/extensions/xep-0012.html">Last Activity (XEP-0012)</a></span>  [<a href="#nt-idp1590208">3</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1592960">4</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0090.html">Legacy Entity Time (XEP-0090)</a></span>  [<a href="#nt-idp1595664">5</a>], or <span class="ref"><a href="http://xmpp.org/extensions/xep-0092.html">Software Version (XEP-0092)</a></span>  [<a href="#nt-idp1598304">6</a>] and receive a reply, thus providing information that reveals the user's availability. In addition, <span class="ref">Last Activity</span> requests sent by a subscribed contact to the user's bare JID will normally reveal the user's availability as well. To help ensure that the user's invisibility cannot be defeated in this way, the user's client SHOULD add IQ blocking to the relevant privacy list. Finally, the user's client SHOULD NOT return "is-composing" events as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0022.html">Message Events (XEP-0022)</a></span>  [<a href="#nt-idp1601424">7</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0085.html">Chat State Notifications (XEP-0085)</a></span>  [<a href="#nt-idp1603808">8</a>].</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1607200">9</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>No namespaces or parameters need to be registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1615120">10</a>] as a result of this specification.</p>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p>The XML schema for the 'jabber:iq:privacy' namespace is defined in <span class="ref">RFC 3921</span>.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0126<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.1<br />
+            Last Updated: 2005-08-19<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0126.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0126.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0126.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp621664" id="nt-idp621664">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp620320" id="nt-idp620320">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1590208" id="nt-idp1590208">3</a>. XEP-0012: Last Activity &lt;<a href="http://xmpp.org/extensions/xep-0012.html">http://xmpp.org/extensions/xep-0012.html</a>&gt;.</p><p><a name="nt-idp1592960" id="nt-idp1592960">4</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1595664" id="nt-idp1595664">5</a>. XEP-0090: Legacy Entity Time &lt;<a href="http://xmpp.org/extensions/xep-0090.html">http://xmpp.org/extensions/xep-0090.html</a>&gt;.</p><p><a name="nt-idp1598304" id="nt-idp1598304">6</a>. XEP-0092: Software Version &lt;<a href="http://xmpp.org/extensions/xep-0092.html">http://xmpp.org/extensions/xep-0092.html</a>&gt;.</p><p><a name="nt-idp1601424" id="nt-idp1601424">7</a>. XEP-0022: Message Events &lt;<a href="http://xmpp.org/extensions/xep-0022.html">http://xmpp.org/extensions/xep-0022.html</a>&gt;.</p><p><a name="nt-idp1603808" id="nt-idp1603808">8</a>. XEP-0085: Chat State Notifications &lt;<a href="http://xmpp.org/extensions/xep-0085.html">http://xmpp.org/extensions/xep-0085.html</a>&gt;.</p><p><a name="nt-idp1607200" id="nt-idp1607200">9</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1615120" id="nt-idp1615120">10</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2005-08-19)</h4><div class="indent">Corrected order of presence and IQ stanzas to ensure proper processing by server. (psa)
+    </div><h4>Version 1.0 (2004-03-05)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Active. (psa)
+    </div><h4>Version 0.4 (2004-02-10)</h4><div class="indent">Minor editorial clarifications. (psa)
+    </div><h4>Version 0.3 (2004-01-22)</h4><div class="indent">Added client responsibility for sending last available or unavailable presence. (psa)
+    </div><h4>Version 0.2 (2004-01-21)</h4><div class="indent">Added more detail to the Security Considerations. (psa)
+    </div><h4>Version 0.1 (2004-01-08)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

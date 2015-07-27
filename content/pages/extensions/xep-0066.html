@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0066: Out of Band Data</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Out of Band Data" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines two XMPP protocol extensions for communicating URIs, one for use in XMPP message stanzas and the other for use in a structured request-response interaction via XMPP IQ stanzas. Among other things, this enables one entity to inform another entity about a file that is available at an HTTP URL." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2006-08-16" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0066" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0066: Out of Band Data</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines two XMPP protocol extensions for communicating URIs, one for use in XMPP message stanzas and the other for use in a structured request-response interaction via XMPP IQ stanzas. Among other things, this enables one entity to inform another entity about a file that is available at an HTTP URL.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2006-08-16</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#iq-oob">jabber:iq:oob</a><br />3.  <a href="#x-oob">jabber:x:oob</a><br />4.  <a href="#disco">Determining Support</a><br />5.  <a href="#nonhttp">Use With Non-HTTP URI Schemes</a><br />6.  <a href="#si">Integration With Stream Initiation</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />10.  <a href="#schemas">XML Schemas</a><br />   
+      10.1.  <a href="#schemas-iq">jabber:iq:oob</a><br />   
+      10.2.  <a href="#schemas-x">jabber:x:oob</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines two XMPP protocol extensions for communicating URIs between Jabber entities, where the data formats are qualified by the 'jabber:iq:oob' and 'jabber:x:oob' namespaces. Although these mechanisms were originally used for out-of-band (OOB) data transfer, they are also used more generally to exchange or communicate URIs.</p>
+<h2>2.
+       <a name="iq-oob" id="iq-oob">jabber:iq:oob</a></h2>
+  <p>The intent of the 'jabber:iq:oob' was to provide a "least common denominator" mechanism for basic file transfers. Although <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp684640">1</a>] defines a more generic method for communicating file exchange options, the 'jabber:iq:oob' namespace can be included as one option therein since it provides a fallback mechanism when clients do not support file transfer options such as those defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0065.html">SOCKS5 Bytestreams (XEP-0065)</a></span>  [<a href="#nt-idp691008">2</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp686048">3</a>].</p>
+  <p>To initiate an out-of-band file transfer with an intended recipient using the 'jabber:iq:oob' namespace (whether or not negotiated via <span class="ref">XEP-0096</span>), the sending application sends an &lt;iq/&gt; of type 'set' to the recipient containing a &lt;query/&gt; child element qualified by the 'jabber:iq:oob' namespace; the &lt;query/&gt; MUST in turn contain a &lt;url/&gt; child specifying the URL of the file to be transferred, and MAY contain an optional &lt;desc/&gt; child describing the file. This usage is shown in the following example.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Sender Initiates Request-Response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='stpeter@jabber.org/work'
+    to='MaineBoy@jabber.org/home'
+    id='oob1'&gt;
+  &lt;query xmlns='jabber:iq:oob'&gt;
+    &lt;url&gt;http://www.jabber.org/images/psa-license.jpg&lt;/url&gt;
+    &lt;desc&gt;A license to Jabber!&lt;/desc&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The expected result is for the recipient to retrieve the file via an HTTP GET request and to then inform the sender of successful receipt of the file. The receiving application MUST NOT send the IQ result until it has retrieved the complete file (e.g., it MUST NOT send the IQ result if it has merely attempted to retrieve the file or the URL provided seems to be valid):</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Recipient Informs Sender of Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='MaineBoy@jabber.org/home'
+    to='stpeter@jabber.org/work'
+    id='oob1'/&gt;
+    </pre></div>
+    <p>If the recipient attempts to retrieve the file but is unable to do so, the receiving application MUST return an &lt;iq/&gt; of type 'error' to the sender specifying a Not Found condition:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Recipient Informs Sender of Failure</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='MaineBoy@jabber.org/home'
+    to='stpeter@jabber.org/work'
+    id='oob1'&gt;
+  &lt;query xmlns='jabber:iq:oob'&gt;
+    &lt;url&gt;http://www.jabber.org/images/psa-license.jpg&lt;/url&gt;
+    &lt;desc&gt;A license to Jabber!&lt;/desc&gt;
+  &lt;/query&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the recipient rejects the request outright, the receiving application MUST return an &lt;iq/&gt; of type 'error' to the sender specifying a Not Acceptable condition:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Recipient Rejects Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='MaineBoy@jabber.org/home'
+    to='stpeter@jabber.org/work'
+    id='oob1'&gt;
+  &lt;query xmlns='jabber:iq:oob'&gt;
+    &lt;url&gt;http://www.jabber.org/images/psa-license.jpg&lt;/url&gt;
+    &lt;desc&gt;A license to Jabber!&lt;/desc&gt;
+  &lt;/query&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+<h2>3.
+       <a name="x-oob" id="x-oob">jabber:x:oob</a></h2>
+  <p>The 'jabber:x:oob' namespace is used to communicate a URI to another user or application. This is done by including an &lt;x/&gt; child element qualified by the 'jabber:x:oob' namespace in either a &lt;message/&gt; and &lt;presence/&gt; stanza; the &lt;x/&gt; child MUST contain a &lt;url/&gt; child specifying the URL of the resource, and MAY contain an optional &lt;desc/&gt; child describing the resource.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Sender Communicates a URI</p><div class="indent"><pre class="prettyprint">
+&lt;message from='stpeter@jabber.org/work'
+         to='MaineBoy@jabber.org/home'&gt;
+  &lt;body&gt;Yeah, but do you have a license to Jabber?&lt;/body&gt;
+  &lt;x xmlns='jabber:x:oob'&gt;
+    &lt;url&gt;http://www.jabber.org/images/psa-license.jpg&lt;/url&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+<h2>4.
+       <a name="disco" id="disco">Determining Support</a></h2>
+  <p>If an entity supports the out of band data protocol, it MUST report that by including a service discovery feature of "jabber:iq:oob" and/or "jabber:x:oob" in response to a <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1605184">4</a>] information request:</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Service Discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.lit/balcony'
+    to='romeo@montague.lit/orchard'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Service Discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='romeo@montague.lit/orchard'
+    to='juliet@capulet.lit/balcony'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='jabber:iq:oob'/&gt;
+    &lt;feature var='jabber:x:oob'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="nonhttp" id="nonhttp">Use With Non-HTTP URI Schemes</a></h2>
+  <p>The value of the &lt;url/&gt; element is not limited to URIs that conform to the http: URI scheme (as specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc2616">RFC 2616</a></span>  [<a href="#nt-idp1610368">5</a>]). For example, file transfers could also be effected using ftp: URIs as (specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc0959">RFC 959</a></span>  [<a href="#nt-idp1612944">6</a>]). Going further afield, several existing Jabber clients use the callto: URI scheme to initiate voice conferencing via NetMeeting or GnomeMeeting. Other out-of-band communications could be initiated in a similar way via URI schemes such as sip: (as specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a></span>  [<a href="#nt-idp1615264">7</a>]). All of these usages are allowed by the existing OOB namespaces, as long as the value of the &lt;url/&gt; element is a valid URI (as specified by <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp1617696">8</a>]).</p>
+<h2>6.
+       <a name="si" id="si">Integration With Stream Initiation</a></h2>
+  <p><span class="em">This section is non-normative.</span></p>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0095.html">Stream Initiation (XEP-0095)</a></span>  [<a href="#nt-idp1621184">9</a>] defines methods for negotiating content streams between any two entities, and XEP-0096 defines a profile of stream initiation for file transfer. Although the use of jabber:iq:oob is not recommended by XEP-0096, it could be offered as one option (e.g., a fallback if SOCKS5 Bytestreams and In-Band Bytestreams are not available). If so, the value of the feature negotiation option MUST be "jabber:iq:oob" and the &lt;query/&gt; element within the &lt;iq/&gt; stanza qualified by the 'jabber:iq:oob' namespace MUST possess a 'sid' attribute whose value is the StreamID negotiated by stream initiation.</p>
+  <p>A sample protocol flow is shown below.</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Stream Initiation Offer</p><div class="indent"><pre class="prettyprint">
+    
+&lt;iq type='set' 
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/chamber'
+    id='offer1'&gt;
+  &lt;si xmlns='http://jabber.org/protocol/si' 
+      id='a0'
+      mime-type='text/plain'
+      profile='http://jabber.org/protocol/si/profile/file-transfer'&gt;
+    &lt;file xmlns='http://jabber.org/protocol/si/profile/file-transfer'
+          name='test.txt'
+          size='1022'/&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;x xmlns='jabber:x:data' type='form'&gt;
+        &lt;field var='stream-method' type='list-single'&gt;
+          &lt;option&gt;&lt;value&gt;http://jabber.org/protocol/bytestreams&lt;/value&gt;&lt;/option&gt;
+          &lt;option&gt;&lt;value&gt;http://jabber.org/protocol/ibb&lt;/value&gt;&lt;/option&gt;
+          &lt;option&gt;&lt;value&gt;jabber:iq:oob&lt;/value&gt;&lt;/option&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/feature&gt;
+  &lt;/si&gt;
+&lt;/iq&gt;
+    
+  </pre></div>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Stream Initiation Result</p><div class="indent"><pre class="prettyprint">
+    
+&lt;iq type='result' 
+    from='juliet@capulet.com/chamber'&gt;
+    to='romeo@montague.net/orchard'
+    id='offer1'&gt;
+  &lt;si xmlns='http://jabber.org/protocol/si'
+      id='a0'
+      profile='http://jabber.org/protocol/si/profile/file-transfer'&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;x xmlns='jabber:x:data' type='submit'&gt;
+        &lt;field var='stream-method'&gt;
+          &lt;value&gt;jabber:iq:oob&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/feature&gt;
+  &lt;/si&gt;
+&lt;/iq&gt;
+    
+  </pre></div>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Sender Initiates Request-Response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/chamber'&gt;
+    id='send1'&gt;
+  &lt;query xmlns='jabber:iq:oob'
+         sid='a0'&gt;
+    &lt;url&gt;http://www.shakespeare.lit/files/letter.txt&lt;/url&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Recipient Informs Sender of Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.com/chamber'
+    to='romeo@montague.net/orchard'
+    id='send1'/&gt;
+  </pre></div>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>As with any mechanism that communicates a URI, care must be taken by the receiving application to ensure that the resource retrieved does not contain harmful or malicious data (e.g., a virus-infected file).</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1633184">10</a>].</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>The 'jabber:iq:oob' and 'jabber:x:oob' namespaces are included in the protocol namespaces registry maintained by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1636848">11</a>] (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+<h2>10.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+  <div class="indent"><h3>10.1 <a name="schemas-iq" id="schemas-iq">jabber:iq:oob</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:oob'
+    xmlns='jabber:iq:oob'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0066: http://www.xmpp.org/extensions/xep-0066.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='url' type='xs:string' minOccurs='1'/&gt;
+        &lt;xs:element name='desc' type='xs:string' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='sid' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>10.2 <a name="schemas-x" id="schemas-x">jabber:x:oob</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:x:oob'
+    xmlns='jabber:x:oob'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0066: http://www.xmpp.org/extensions/xep-0066.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='url' type='xs:string' minOccurs='1'/&gt;
+        &lt;xs:element name='desc' type='xs:string' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0066<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.5<br />
+            Last Updated: 2006-08-16<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: oob<br />
+        XML Schema for jabber:iq:oob namespace: &lt;<a href="http://www.xmpp.org/schemas/iq-oob.xsd">http://www.xmpp.org/schemas/iq-oob.xsd</a>&gt;<br />
+        XML Schema for jabber:x:oob namespace: &lt;<a href="http://www.xmpp.org/schemas/x-oob.xsd">http://www.xmpp.org/schemas/x-oob.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0066.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0066.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0066.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp684640" id="nt-idp684640">1</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp691008" id="nt-idp691008">2</a>. XEP-0065: SOCKS5 Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0065.html">http://xmpp.org/extensions/xep-0065.html</a>&gt;.</p><p><a name="nt-idp686048" id="nt-idp686048">3</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1605184" id="nt-idp1605184">4</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1610368" id="nt-idp1610368">5</a>. RFC 2616: Hypertext Transport Protocol -- HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2616">http://tools.ietf.org/html/rfc2616</a>&gt;.</p><p><a name="nt-idp1612944" id="nt-idp1612944">6</a>. RFC 959: File Transfer Protocol &lt;<a href="http://tools.ietf.org/html/rfc0959">http://tools.ietf.org/html/rfc0959</a>&gt;.</p><p><a name="nt-idp1615264" id="nt-idp1615264">7</a>. RFC 3261: Session Initiation Protocol (SIP) &lt;<a href="http://tools.ietf.org/html/rfc3261">http://tools.ietf.org/html/rfc3261</a>&gt;.</p><p><a name="nt-idp1617696" id="nt-idp1617696">8</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp1621184" id="nt-idp1621184">9</a>. XEP-0095: Stream Initiation &lt;<a href="http://xmpp.org/extensions/xep-0095.html">http://xmpp.org/extensions/xep-0095.html</a>&gt;.</p><p><a name="nt-idp1633184" id="nt-idp1633184">10</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1636848" id="nt-idp1636848">11</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.5 (2006-08-16)</h4><div class="indent"><p>Per a vote of the Jabber Council, converted to Standards Track.</p> (psa)
+    </div><h4>Version 1.4 (2006-01-11)</h4><div class="indent"><p>Removed example of including URL in presence stanza.</p> (psa)
+    </div><h4>Version 1.3 (2004-10-18)</h4><div class="indent"><p>Added non-normative section on integration with stream initiation (XEP-0095); added optional sid attribute to jabber:iq:oob schema.</p> (psa)
+    </div><h4>Version 1.2 (2004-04-13)</h4><div class="indent"><p>Clarified that IQ use is for basic file transfer whereas message and presence use is for communication of URIs; added presence example; added references to file transfer specifications as well as related open issue.</p> (psa)
+    </div><h4>Version 1.1 (2004-02-10)</h4><div class="indent"><p>Editorial adjustments and clarifications; added references to relevant RFCs.</p> (psa)
+    </div><h4>Version 1.0 (2003-10-08)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Active.</p> (psa)
+    </div><h4>Version 0.3 (2003-06-22)</h4><div class="indent"><p>Made several small editorial changes; added XML schemas.</p> (psa)
+    </div><h4>Version 0.2 (2003-01-08)</h4><div class="indent"><p>Added information about non-HTTP URIs.</p> (psa)
+    </div><h4>Version 0.1 (2002-12-16)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

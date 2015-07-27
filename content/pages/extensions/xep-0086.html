@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0086: Error Condition Mappings</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Error Condition Mappings" /><meta name="DC.Creator" content="Robert Norris" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="A mapping to enable legacy entities to correctly handle errors from XMPP-aware entities." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-02-17" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0086" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0086: Error Condition Mappings</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A mapping to enable legacy entities to correctly handle errors from XMPP-aware entities.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Robert Norris, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deprecated</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-02-17</td></tr></table><hr /><p style="color:red">WARNING: This document has been <strong>Deprecated</strong> by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp650688">Introduction</a><br />2.  <a href="#sect-idp653152">Supporting Legacy Entities</a><br />3.  <a href="#sect-idp1538288">Implementing Legacy Protocols</a><br />4.  <a href="#sect-idp1577680">Conclusion</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp650688" id="sect-idp650688">Introduction</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp666320">1</a>] documents formats and semantics for stanza error responses. The XML of these errors is different from that of errors that have been traditionally used on the Jabber network.</p>
+  <p>Until such time that all entities support these new XMPP-style errors, there is a need for entities to issue errors that are understandable by both legacy and XMPP-compliant entities. This document outlines an appropriate mapping to allow this to occur.</p>
+  <p>This document can also be used by implementers of legacy protocols to determine which XMPP-style error should be used when only a legacy error code is documented.</p>
+<h2>2.
+       <a name="sect-idp653152" id="sect-idp653152">Supporting Legacy Entities</a></h2>
+  <p>XMPP-compliant entities can issue errors to legacy clients and servers by adding a "code" attribute to the &lt;error/&gt; element it sends.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. A simple error response</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    to='juliet@capulet.com/balcony'
+    from='romeo@montague.net/garden'
+    type='error'&gt;
+  &lt;body&gt;Wherefore art thou, Romeo?&lt;/body&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+</pre></div>
+
+  <p>Legacy entities receiving this error will use the "404" to determine what happened, while XMPP-compliant entities will use the error type and the child element that specifies the condition.</p>
+
+  <p>XMPP-compliant entities should add the following error codes to errors if they want them to be understood by legacy entities:</p>
+
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error codes to add to XMPP-style errors</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>XMPP error condition</th>
+      <th>XMPP error type</th>
+      <th>Legacy error code</th>
+    </tr>
+    <tr class="body">
+      <td>&lt;bad-request/&gt;</td>
+      <td>modify</td>
+      <td>400</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;conflict/&gt;</td>
+      <td>cancel</td>
+      <td>409</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;feature-not-implemented/&gt;</td>
+      <td>cancel</td>
+      <td>501</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;forbidden/&gt;</td>
+      <td>auth</td>
+      <td>403</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;gone/&gt;</td>
+      <td>modify</td>
+      <td>302 (permanent)</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;internal-server-error/&gt;</td>
+      <td>wait</td>
+      <td>500</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;item-not-found/&gt;</td>
+      <td>cancel</td>
+      <td>404</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;jid-malformed/&gt;</td>
+      <td>modify</td>
+      <td>400</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;not-acceptable/&gt;</td>
+      <td>modify</td>
+      <td>406</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;not-allowed/&gt;</td>
+      <td>cancel</td>
+      <td>405</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;not-authorized/&gt;</td>
+      <td>auth</td>
+      <td>401</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;payment-required/&gt;</td>
+      <td>auth</td>
+      <td>402</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;recipient-unavailable/&gt;</td>
+      <td>wait</td>
+      <td>404</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;redirect/&gt;</td>
+      <td>modify</td>
+      <td>302 (temporary)</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;registration-required/&gt;</td>
+      <td>auth</td>
+      <td>407</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;remote-server-not-found/&gt;</td>
+      <td>cancel</td>
+      <td>404</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;remote-server-timeout/&gt;</td>
+      <td>wait</td>
+      <td>504</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;resource-constraint/&gt;</td>
+      <td>wait</td>
+      <td>500</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;service-unavailable/&gt;</td>
+      <td>cancel</td>
+      <td>503</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;subscription-required/&gt;</td>
+      <td>auth</td>
+      <td>407</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;undefined-condition/&gt;</td>
+      <td>[any]</td>
+      <td>500</td>
+    </tr>
+    <tr class="body">
+      <td>&lt;unexpected-request/&gt;</td>
+      <td>wait</td>
+      <td>400</td>
+    </tr>
+  </table></div>
+<h2>3.
+       <a name="sect-idp1538288" id="sect-idp1538288">Implementing Legacy Protocols</a></h2>
+  <p>Implementors of legacy protocols should use the appropriate XMPP-style error alongside a legacy error code as specified in the following table:</p>
+
+  <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Mapping of legacy error codes to XMPP-style errors</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Legacy error code</th>
+      <th>Meaning</th>
+      <th>XMPP error condition</th>
+      <th>XMPP error type</th>
+    </tr>
+    <tr class="body">
+      <td>302</td>
+      <td>Redirect</td>
+      <td>&lt;redirect/&gt; (temporary) or &lt;gone/&gt; (permanent)</td>
+      <td>modify</td>
+    </tr>
+    <tr class="body">
+      <td>400</td>
+      <td>Bad Request</td>
+      <td>&lt;bad-request/&gt;
+         [<a href="#nt-idp1545008">2</a>]
+      </td>
+      <td>modify</td>
+    </tr>
+    <tr class="body">
+      <td>401</td>
+      <td>Not Authorized</td>
+      <td>&lt;not-authorized/&gt;
+         [<a href="#nt-idp1547504">3</a>]
+      </td>
+      <td>auth</td>
+    </tr>
+    <tr class="body">
+      <td>402</td>
+      <td>Payment Required</td>
+      <td>&lt;payment-required/&gt;</td>
+      <td>auth</td>
+    </tr>
+    <tr class="body">
+      <td>403</td>
+      <td>Forbidden</td>
+      <td>&lt;forbidden/&gt;</td>
+      <td>auth</td>
+    </tr>
+    <tr class="body">
+      <td>404</td>
+      <td>Not Found</td>
+      <td>&lt;item-not-found/&gt;
+         [<a href="#nt-idp1553648">4</a>]
+      </td>
+      <td>cancel</td>
+    </tr>
+    <tr class="body">
+      <td>405</td>
+      <td>Not Allowed</td>
+      <td>&lt;not-allowed/&gt;</td>
+      <td>cancel</td>
+    </tr>
+    <tr class="body">
+      <td>406</td>
+      <td>Not Acceptable</td>
+      <td>&lt;not-acceptable/&gt;
+         [<a href="#nt-idp1558000">5</a>]
+      </td>
+      <td>modify</td>
+    </tr>
+    <tr class="body">
+      <td>407</td>
+      <td>Registration Required</td>
+      <td>&lt;registration-required/&gt;</td>
+      <td>auth</td>
+    </tr>
+    <tr class="body">
+      <td>408</td>
+      <td>Request Timeout</td>
+      <td>&lt;remote-server-timeout/&gt;</td>
+      <td>wait</td>
+    </tr>
+    <tr class="body">
+      <td>409</td>
+      <td>Conflict</td>
+      <td>&lt;conflict/&gt;</td>
+      <td>cancel</td>
+    </tr>
+    <tr class="body">
+      <td>500</td>
+      <td>Internal Server Error</td>
+      <td>&lt;internal-server-error/&gt;
+         [<a href="#nt-idp1566368">6</a>]
+      </td>
+      <td>wait</td>
+    </tr>
+    <tr class="body">
+      <td>501</td>
+      <td>Not Implemented</td>
+      <td>&lt;feature-not-implemented/&gt;</td>
+      <td>cancel</td>
+    </tr>
+    <tr class="body">
+      <td>502</td>
+      <td>Remote Server Error</td>
+      <td>&lt;service-unavailable/&gt;</td>
+      <td>wait</td>
+    </tr>
+    <tr class="body">
+      <td>503</td>
+      <td>Service Unavailable</td>
+      <td>&lt;service-unavailable/&gt;</td>
+      <td>cancel</td>
+    </tr>
+    <tr class="body">
+      <td>504</td>
+      <td>Remote Server Timeout</td>
+      <td>&lt;remote-server-timeout/&gt;</td>
+      <td>wait</td>
+    </tr>
+    <tr class="body">
+      <td>510</td>
+      <td>Disconnected</td>
+      <td>&lt;service-unavailable/&gt;</td>
+      <td>cancel</td>
+    </tr>
+  </table></div>
+<h2>4.
+       <a name="sect-idp1577680" id="sect-idp1577680">Conclusion</a></h2>
+  <p>Mapping legacy error codes to XMPP-style errors is an inexact science, and there are likely to be inconsistencies in some places. However, it is the authors' belief that the mapping presented in this document will be adequate for the majority of cases, and will help smooth the migration to XMPP-compliant implementations.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0086<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deprecated">Deprecated</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-02-17<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0086.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0086.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0086.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Robert Norris</h3><p class="indent">
+        Email:
+        <a href="mailto:rob@cataclysm.cx">rob@cataclysm.cx</a><br />
+        JabberID: 
+        <a href="xmpp:rob@cataclysm.cx">rob@cataclysm.cx</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp666320" id="nt-idp666320">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1545008" id="nt-idp1545008">2</a>. See also the &lt;jid-malformed/&gt; and &lt;unexpected-request/&gt; stanza errors.</p><p><a name="nt-idp1547504" id="nt-idp1547504">3</a>. See also the &lt;not-authorized/&gt; stream error.</p><p><a name="nt-idp1553648" id="nt-idp1553648">4</a>. See also the &lt;remote-server-not-found/&gt; stanza error.</p><p><a name="nt-idp1558000" id="nt-idp1558000">5</a>. See also the &lt;unexpected-request/&gt; stanza error.</p><p><a name="nt-idp1566368" id="nt-idp1566368">6</a>. See also the &lt;undefined-condition/&gt; stanza error.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-02-17)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Active. (psa)
+    </div><h4>Version 0.7 (2003-11-26)</h4><div class="indent">Added &lt;not-authorized/&gt; condition. (psa)
+    </div><h4>Version 0.6 (2003-11-25)</h4><div class="indent">Corrected 'type' of &lt;not-acceptable/&gt; error from "cancel" to "modify". (psa)
+    </div><h4>Version 0.5 (2003-11-17)</h4><div class="indent">Fixed a syntax error. (psa)
+    </div><h4>Version 0.4 (2003-10-30)</h4><div class="indent">Added &lt;gone/&gt; XMPP condition. (psa)
+    </div><h4>Version 0.3 (2003-09-25)</h4><div class="indent">Further updated to track XMPP WG output; fixed several errors. (psa)
+    </div><h4>Version 0.2 (2003-08-13)</h4><div class="indent">Updated to track XMPP WG output. (psa)
+    </div><h4>Version 0.1 (2003-05-21)</h4><div class="indent">Initial release. (rn)
+    </div></div><hr /><p>END</p></body></html>

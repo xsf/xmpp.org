@@ -1,0 +1,2336 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0031: A Framework For Securing Jabber Conversations</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="A Framework For Securing Jabber Conversations" /><meta name="DC.Creator" content="&#10;Paul&#10; &#10;Lloyd&#10;" /><meta name="DC.Description" content="&#10;Although the value and utility of contemporary instant messaging &#10;systems, like Jabber, are now indisputable, current security &#10;features to protect message data are generally inadequate for &#10;many deployments; this is particularly true in security conscious &#10;environments like large, commercial enterprises and government &#10;agencies. These current features suffer from issues of &#10;scalability, usability, and supported features. Furthermore, there is a &#10;lack of standardization.&#10;&#10;We present a protocol to allow communities of Jabber users to &#10;apply cryptographic protection to selected conversation data.&#10;" /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-07-09" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0031" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="" /></head><body onload="prettyPrint()"><h1>XEP-0031: A Framework For Securing Jabber Conversations</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>
+Although the value and utility of contemporary instant messaging 
+systems, like Jabber, are now indisputable, current security 
+features to protect message data are generally inadequate for 
+many deployments; this is particularly true in security conscious 
+environments like large, commercial enterprises and government 
+agencies. These current features suffer from issues of 
+scalability, usability, and supported features. Furthermore, there is a 
+lack of standardization.
+
+We present a protocol to allow communities of Jabber users to 
+apply cryptographic protection to selected conversation data.
+</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>
+Paul
+ 
+Lloyd
+</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-07-09</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp758208">Introduction</a><br />2.  <a href="#sect-idp668304">Requirements And Considerations</a><br />   
+      2.1.  <a href="#sect-idp669200">Security Requirements</a><br />      
+      2.1.1.  <a href="#sect-idp669584">Data Protection Requirements</a><br />      
+      2.1.2.  <a href="#sect-idp679152">Data Classification Requirements</a><br />      
+      2.1.3.  <a href="#sect-idp680368">The End To End Requirement</a><br />      
+      2.1.4.  <a href="#sect-idp688752">Trust Issues</a><br />      
+      2.1.5.  <a href="#sect-idp689888">Cryptosystem Design Considerations</a><br />   
+      2.2.  <a href="#sect-idp691344">Environmental Considerations</a><br />   
+      2.3.  <a href="#sect-idp695296">Usability Requirements</a><br />   
+      2.4.  <a href="#sect-idp1548976">Development And Deployment Requirements</a><br />3.  <a href="#sect-idp1556720">Protocol Specification</a><br />   
+      3.1.  <a href="#sect-idp1557216">Protocol Overview</a><br />   
+      3.2.  <a href="#sect-idp1559344">Definitions And Notation</a><br />   
+      3.3.  <a href="#sect-idp1570480">XML Processing</a><br />      
+      3.3.1.  <a href="#sect-idp1571584">Transporting Binary Content</a><br />      
+      3.3.2.  <a href="#sect-idp1573760">Transporting Encrypted Content</a><br />      
+      3.3.3.  <a href="#sect-idp1574880">HMAC Computation</a><br />      
+      3.3.4.  <a href="#sect-idp1580976">Performing Cryptographic Operations</a><br />   
+      3.4.  <a href="#sect-idp1585168">XML Namespaces</a><br />   
+      3.5.  <a href="#sect-idp1586320">Security Sessions</a><br />      
+      3.5.1.  <a href="#sect-idp1586816">Overview</a><br />      
+      3.5.2.  <a href="#sect-idp1599184">Security Session Negotiation</a><br />      
+      3.5.3.  <a href="#sect-idp1602080">DTDs</a><br />      
+      3.5.4.  <a href="#sect-idp1606336">Generating And Sending the session1 PDU</a><br />      
+      3.5.5.  <a href="#sect-idp1615904">Receiving And Processing the session1 PDU</a><br />      
+      3.5.6.  <a href="#sect-idp1624480">Generating And Sending the session2 PDU</a><br />      
+      3.5.7.  <a href="#sect-idp1639680">Receiving And Processing the session2 PDU</a><br />      
+      3.5.8.  <a href="#sect-idp1648336">Generating And Sending the session3 PDU</a><br />      
+      3.5.9.  <a href="#sect-idp1660368">Receiving And Processing the session3 PDU</a><br />      
+      3.5.10.  <a href="#sect-idp1665680">Session Key Material Derivation</a><br />   
+      3.6.  <a href="#sect-idp1666816">Key Transport</a><br />      
+      3.6.1.  <a href="#sect-idp1667312">Overview</a><br />      
+      3.6.2.  <a href="#sect-idp1668400">The Key Transport Mechanism</a><br />      
+      3.6.3.  <a href="#sect-idp1669552">DTDs</a><br />      
+      3.6.4.  <a href="#sect-idp1671152">Generating And Sending the keyTransport PDU</a><br />      
+      3.6.5.  <a href="#sect-idp1687168">Receiving and Processing the keyTransport PDU</a><br />   
+      3.7.  <a href="#sect-idp1694464">Message Protection</a><br />      
+      3.7.1.  <a href="#sect-idp1694960">Overview</a><br />      
+      3.7.2.  <a href="#sect-idp1696224">The Message Protection Mechanism</a><br />      
+      3.7.3.  <a href="#sect-idp1700256">DTD</a><br />      
+      3.7.4.  <a href="#sect-idp1701920">Generating And Sending the protectedMessage PDU</a><br />      
+      3.7.5.  <a href="#sect-idp1718608">Receiving and Processing the protectedMessage PDU</a><br />   
+      3.8.  <a href="#sect-idp1725040">Requesting Keys</a><br />   
+      3.9.  <a href="#sect-idp1725664">Conformance Profile</a><br />4.  <a href="#sect-idp1733168">Diffie-Hellman Groups</a><br />   
+      4.1.  <a href="#sect-idp1734144">1024 bit Group, modp1024</a><br />   
+      4.2.  <a href="#sect-idp1736352">2048 bit Group, modp2048</a><br />   
+      4.3.  <a href="#sect-idp1738848">4096 bit Group, modp4096</a><br />   
+      4.4.  <a href="#sect-idp1741920">8192 bit Group, modp8192</a><br />5.  <a href="#sect-idp1748576">Security Considerations</a><br />6.  <a href="#sect-idp1755616">Examples</a><br />   
+      6.1.  <a href="#sect-idp1756112">Security Session</a><br />   
+      6.2.  <a href="#sect-idp1760512">Key Transport</a><br />   
+      6.3.  <a href="#sect-idp1762928">Message Protection</a><br />7.  <a href="#sect-idp1765232">References</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp758208" id="sect-idp758208">Introduction</a></h2>
+
+<p>
+Instant messaging has clearly crossed the chasm from experimental 
+to mainstream in a short amount of time. It is particularly 
+interesting to note the extent to which the employees and 
+affiliates of large enterprises have adopted instant messaging as 
+part of their daily professional lives. IM is no longer simply 
+used on Friday evening to select which movie to watch; it's now 
+used on Monday morning to select which company to acquire.
+</p>
+
+<p>
+While the benefits of IM are clear and compelling, the risks 
+associated with sharing sensitive information in an IM 
+environment are often overlooked. We need a mechanism that 
+permits communities of users to protect their IM conversations. 
+This document presents an extension protocol that can be 
+incorporated into the existing Jabber protocol to provide such a 
+mechanism. We hope that this protocol spurs both interest
+and further investigation into mechanisms to protect Jabber 
+conversations. We also hope that the Jabber community can 
+accelerate the adoption of standardized security mechanisms.
+</p>
+
+<p>
+In addition to its ability to protect traditional messaging data,
+the proposed protocol may also serve as a foundation for securing
+other data transported via other Jabber extensions.
+</p>
+
+<p>
+We use the following terms throughout this document to describe 
+the most relevant aspects of the IM environment that we wish to 
+address:
+</p>
+
+<ul>
+<li>
+<p>
+user. A user is simply any Jabber user. Users are uniquely 
+identified by a JID; they connect to Jabber hosts using a 
+Jabber node.
+</p>
+<p>
+Users produce and consume information, and we wish to 
+provide them with mechanisms that can be used to protect 
+this information.
+</p>
+</li>
+<li>
+<p>
+community. A community is a collection of users who wish to 
+communicate via Jabber. No restrictions or assumptions are 
+made about the size of communities or the geographical, 
+organizational, or national attributes of the members. 
+Communities are assumed to be dynamic and ad-hoc. Users 
+typically join communities by the simple act of invitation. 
+All members of a community are assumed to be peers.
+</p>
+<p>
+The members of communities share information among 
+themselves, and we wish to provide them with mechanisms 
+that can permit information to only be shared by community 
+members.
+</p>
+</li>
+<li>
+<p>
+conversation. A conversation is the set of messages 
+that flows among the members of a community via some 
+network. Conversations consist of both the actual 
+conversation data produced and consumed by the various 
+users as well as the Jabber protocol elements that 
+transport it. Members participate in a conversation when 
+they are the source or destination of this traffic.
+</p>
+<p>
+In hostile network environments, like the Internet, 
+conversation data is vulnerable to a variety of well-known 
+attacks.
+</p>
+</li>
+</ul>
+
+<p>
+Other Jabber and IM terms are used in a traditional, intuitive 
+fashion.
+</p>
+
+<h2>2.
+       <a name="sect-idp668304" id="sect-idp668304">Requirements And Considerations</a></h2>
+
+<p>
+The proposed protocol is designed to address the specific 
+requirements and considerations presented in this section.
+</p>
+
+<div class="indent"><h3>2.1 <a name="sect-idp669200" id="sect-idp669200">Security Requirements</a></h3>
+
+<div class="indent"><h3>2.1.1 <a name="sect-idp669584" id="sect-idp669584">Data Protection Requirements</a></h3>
+
+<p>
+A secure IM system must permit conversation participants to 
+preserve the following properties of their conversation data:
+</p>
+
+<ul>
+<li>
+<p>
+confidentiality. Conversation data must only be disclosed 
+to authorized recipients
+</p>
+</li>
+<li>
+<p>
+integrity. Conversation data must not be altered
+</p>
+</li>
+<li>
+<p>
+data origin authentication. Recipients must be able to 
+determine the identity of the sender and trust that the 
+message did, in fact, come from the sender. It is important 
+to note that this requirement does not include the 
+requirement of a durable digital signature on conversation 
+data.
+</p>
+</li>
+<li>
+<p>
+replay protection. Recipients must be able to detect and 
+ignore duplicate conversation data.
+</p>
+</li>
+</ul>
+
+<p>      
+These are established, traditional goals of information security 
+applied to the conversation data. In the IM environment, these 
+goals protect against these attacks:
+</p>
+
+<ul>
+<li>
+<p>
+eavesdropping, snooping, etc.
+</p>
+</li>
+<li>
+<p>
+masquerading as a conversation participant
+</p>
+</li>
+<li>
+<p>
+forging messages
+</p>
+</li>
+</ul>
+
+<p>
+Preserving the availability of conversation data is not addressed 
+by this protocol.
+</p>
+
+<p>
+Preserving the anonymity of conversation participants is an 
+interesting topic which we defer for future exploration.
+</p>
+
+<p>
+Finally, note that this protocol does not concern any authentication
+between a Jabber node and a Jabber host.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.1.2 <a name="sect-idp679152" id="sect-idp679152">Data Classification Requirements</a></h3>
+
+<p>
+A secure IM system must support a data classification feature through the use
+of security labeling. Conversation participants must be
+able to associate a security label with each piece of 
+conversation data. This label may be used to specify a data 
+classification level for the conversation data.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.1.3 <a name="sect-idp680368" id="sect-idp680368">The End To End Requirement</a></h3>
+
+<p>
+It is easy to imagine Jabber systems in which the servers play 
+active, fundamental roles in the protection of conversation 
+data. Such systems could offer many advantages, like:
+</p>
+
+<ul>
+<li>
+<p>
+allowing the servers to function as credential issuing 
+authorities,
+</p>
+</li>
+<li>
+<p>
+allowing the servers to function as policy enforcement 
+points.
+</p>
+</li>
+</ul>
+
+<p>
+Unfortunately, such systems have significant disadvantages when 
+one considers the nature of instant messaging:
+</p>
+
+<ul>
+<li>
+<p>
+Many servers may be untrusted, public servers.
+</p>
+</li>
+<li>
+<p>
+In many conversation communities, decisions of trust and 
+membership can only be adequately defined by the members 
+themselves.
+</p>
+</li>
+<li>
+<p>
+In many conversation communities, membership in the 
+community changes in real time based upon the dynamics of 
+the conversation.
+</p>
+</li>
+<li>
+<p>
+In many conversation communities, the data classifaction of 
+the conversation changes in real time based upon the 
+dynamics of the conversation.
+</p>
+</li>
+</ul>
+
+<p>
+Furthermore, the widespread use of gateways to external IM 
+systems is a further complication.
+</p>
+
+<p>
+Based on this analysis, we propose that security be entirely 
+controlled in an end to end fashion by the conversation 
+participants themselves via their user agent software.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.1.4 <a name="sect-idp688752" id="sect-idp688752">Trust Issues</a></h3>
+
+<p>
+We believe that, ultimately, trust decisions are in the hands of 
+the conversation participants. A security protocol and 
+appropriate conforming user agents must provide a mechanism for them to make 
+informed decisions.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.1.5 <a name="sect-idp689888" id="sect-idp689888">Cryptosystem Design Considerations</a></h3>
+
+<p>
+One of the accepted axioms of security is that people must avoid 
+the temptation to start from scratch and produce new, untested 
+algorithms and protocols. History has demonstrated that such 
+approaches are likely to contain flaws and that considerable time 
+and effort are required to identify and address all of these 
+flaws. Any new security protocol should be based on existing, 
+established algorithms and protocols.
+</p>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>2.2 <a name="sect-idp691344" id="sect-idp691344">Environmental Considerations</a></h3>
+
+<p>
+Any new IM security protocol must integrate smoothly into the 
+existing IM environment, and it must also recognize the nature of 
+the transactions performed by conversation participants. These 
+considerations are especially important:
+</p>
+
+<ul>
+<li>
+<p>
+dynamic communities. The members of a community are defined 
+in near real time by the existing members.
+</p>
+</li>
+<li>
+<p>
+dynamic conversations. Conversations may involve any 
+possible subset of the entire set of community members.
+</p>
+</li>
+</ul>
+
+<p>
+Addressing these considerations becomes especially crucial when 
+selecting a conference keying mechanism.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.3 <a name="sect-idp695296" id="sect-idp695296">Usability Requirements</a></h3>
+
+<p>
+Given the requirement to place the responsibility for the 
+protection of conversation data in the hands of the participants, 
+it is imperative to address some fundamental usability issues:
+</p>
+
+<ul>
+<li>
+<p>
+First, overall ease of use is a requirement. For protocol 
+purposes, one implication is that some form of 
+authentication via passphrases is necessary. While we 
+recognize that this can have appalling consequences, 
+especially when we realize that a passphrase may be shared 
+by all of the community members, we also recognize the 
+utility.
+</p>
+</li>
+<li>
+<p>
+PKIs are well established in many large organizations, and 
+some communities will prefer to rely on credentials issued
+from these authorities. To ensure ease of use, we must 
+strive to allow the use of existing PKI credentials and 
+trust models rather than impose closed, Jabber-specific 
+credentials.
+</p>
+</li>
+<li>
+<p>
+Finally, performance must not be negatively impacted; this 
+is particularly true if we accept that most communities are 
+composed of human users conversing in real time. For 
+protocol purposes, one obvious implication is the desire to 
+minimize computationally expensive public key operations.
+</p>
+</li>
+</ul>
+
+<p>
+We note that, in practice, the design and construction of user 
+agents will also have a major impact on ease of use.
+</p>
+
+</div>
+
+<div class="indent"><h3>2.4 <a name="sect-idp1548976" id="sect-idp1548976">Development And Deployment Requirements</a></h3>
+
+<p>
+To successfully integrate into the existing Jabber environment, 
+an extension protocol for security must satisfy the following:
+</p>
+
+<ul>
+<li>
+<p>
+It must be an optional extension of the existing Jabber protocol.
+</p>
+</li>
+<li>
+<p>
+It must be transparent to existing Jabber servers.
+</p>
+</li>
+<li>
+<p>
+It must function gracefully in cases where some community 
+members are not running a user agent that supports the 
+protocol.
+</p>
+</li>
+<li>
+<p>
+It must make good use of XML.
+</p>
+</li>
+<li>
+<p>
+It must avoid encumbered algorithms.
+</p>
+</li>
+<li>
+<p>
+It must be straightforward to implement using widely 
+available cryptographic toolkits.
+</p>
+</li>
+<li>
+<p>
+It must not require a PKI.
+</p>
+</li>
+</ul>
+
+<p>
+Failure to accommodate these will impede or prohibit adoption of 
+any security protocol.
+</p>
+
+</div>
+
+<h2>3.
+       <a name="sect-idp1556720" id="sect-idp1556720">Protocol Specification</a></h2>
+
+<div class="indent"><h3>3.1 <a name="sect-idp1557216" id="sect-idp1557216">Protocol Overview</a></h3>
+
+<p>
+Ultimately, conversation data is protected by the application of 
+keyed cryptographic operations. One operation is used to provide 
+confidentiality, and a separate operation is used to provide 
+integrity and data origin authentication. The keys used to 
+parameterize these operations are called conversation keys. Each 
+conversation should have its own unique set of conversation keys 
+shared among the conversation participants.
+</p>
+
+<p>
+Conversation keys are transported among the conversation 
+participants within a negotiated security session. A security session allows 
+pairs of conversation participants to securely share conversation keys
+throught all participants in the conversation as required.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.2 <a name="sect-idp1559344" id="sect-idp1559344">Definitions And Notation</a></h3>
+
+<p>
+The following terms are used throughout this specification:
+</p>
+
+<ul>
+<li>
+<p>
+initiator. The initiator is the user who requested a security session
+negotiation. Initiator's are identified by their JID.
+</p>
+</li>
+<li>
+<p>
+responder. The responder is the user who responded to a security session
+negotiation request. Responder's are identified by their JID.
+</p>
+</li>
+<li>
+<p>
+hmac. This indicates the HMAC algorithm. The notation hmac (key, value)
+indicates the HMAC computation of value using key.
+</p>
+</li>
+<li>
+<p>
+concatentation operator. The '|' character is used in character or octet
+string expressions to indicate concatenation.
+</p>
+</li>
+<li>
+<p>
+security session ID. A character string that uniquely identifies a
+security session between two users. Security session IDs MUST only
+consist of Letters, Digits, and these characters: '.', '+', '-',
+'_', '@'. Security session IDs are case sensitive.
+</p>
+</li>
+<li>
+<p>
+SS. This term indicates the security session secret that is agreed to
+during a security session negotiation.
+</p>
+</li>
+<li>
+<p>
+SKc. This term indicates the keying material used within a security session
+to protect confidentiality. The SKc is derived from the security session secret, SS.
+</p>
+</li>
+<li>
+<p>
+SKi. This term indicates the keying material used within a security session
+to protect integrity and to provide authnetication. The SKi is derived from the
+security session secret, SS.
+</p>
+</li>
+<li>
+<p>
+conversation key ID. A character string that uniquely identifies a
+conversation key shared by a community of users. Conversation key IDs MUST only
+consist of Letters, Digits, and these characters: '.', '+', '-',
+'_', '@'. Conversation key IDs are case sensitive. Conversation key IDs SHOULD
+be generated from at least 128 random bits.
+</p>
+</li>
+<li>
+<p>
+passphrase ID. A character string that uniquely identifies a
+passphrase shared by a community of users. Passphrase IDs MUST only
+consist of Letters, Digits, and these characters: '.', '+', '-',
+'_', '@'. Passphrase IDs are case sensitive.
+</p>
+</li>
+</ul>
+
+</div>
+
+<div class="indent"><h3>3.3 <a name="sect-idp1570480" id="sect-idp1570480">XML Processing</a></h3>
+
+<p>
+Since cryptographic operations are applied to data that is 
+transported within an XML stream, the protocol defines a set of 
+rules to ensure a consistent interpretation by all conversation 
+participants.
+</p>
+
+<div class="indent"><h3>3.3.1 <a name="sect-idp1571584" id="sect-idp1571584">Transporting Binary Content</a></h3>
+
+<p>
+Binary data, such as the result of an HMAC, is always transported 
+in an encoded form; the two supported encoding schemes are base64 
+and hex.
+</p>
+
+<p>
+Senders MAY include arbitrary white space within the character 
+stream. Senders SHOULD NOT include any other characters outside 
+of the encoding set.
+</p>
+
+<p>
+Receivers MUST ignore all characters not in the encoding set.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.3.2 <a name="sect-idp1573760" id="sect-idp1573760">Transporting Encrypted Content</a></h3>
+
+<p>
+Encrypted data, including wrapped cryptographic keys, are always
+wrapped per XML Encryption.
+</p>
+
+
+</div>
+
+<div class="indent"><h3>3.3.3 <a name="sect-idp1574880" id="sect-idp1574880">HMAC Computation</a></h3>
+
+<p>
+HMACs are computed over a specific collection of attribute values 
+and character data; when computing an HMAC the following rules 
+apply:
+</p>
+
+<ul>
+<li>
+<p>
+All characters MUST be encoded in UTF-8.
+</p>
+</li>
+<li>
+<p>
+The octets in each character MUST be processed in network 
+byte order.
+</p>
+</li>
+<li>
+<p>
+For a given element, the attribute values that are HMACed 
+MUST be processed in the specified order regardless of the 
+order in which they appear in the element tag.
+</p>
+</li>
+<li>
+<p>
+For each attribute value, the computation MUST only include 
+characters from the anticipated set defined in this 
+specification; in particular, white space MUST always be 
+ignored.
+</p>
+</li>
+<li>
+<p>
+For character data that is represented in an encoded form, 
+such as base64 or hex, the computation MUST only include 
+valid characters from the encoding set.
+</p>
+</li>
+</ul>
+
+</div>
+
+<div class="indent"><h3>3.3.4 <a name="sect-idp1580976" id="sect-idp1580976">Performing Cryptographic Operations</a></h3>
+
+<p>
+The following algorithm is used to encrypt a character string, such as
+an XML element:
+</p>
+
+<ul>
+<li>
+<p>
+The character string MUST be encoded in UTF-8.
+</p>
+</li>
+<li>
+<p>
+The octets in each character MUST be processed in network byte order.
+</p>
+</li>
+<li>
+<p>
+Appropriate cryptographic algorithm parameters, such as an 
+IV for a block cipher, are generated.
+</p>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>3.4 <a name="sect-idp1585168" id="sect-idp1585168">XML Namespaces</a></h3>
+
+<p>
+In order to integrate smoothly with the existing Jabber protocol, 
+this protocol utilizes a new XML namespace, jabber:security.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5 <a name="sect-idp1586320" id="sect-idp1586320">Security Sessions</a></h3>
+
+<div class="indent"><h3>3.5.1 <a name="sect-idp1586816" id="sect-idp1586816">Overview</a></h3>
+
+<p>
+A security session is a pair-wise relationship between two users 
+in which the users have achieved the following:
+</p>
+
+<ul>
+<li>
+<p>
+They have mutually authenticated each other using credentials acceptable to both.
+</p>
+</li>
+<li>
+<p>
+They have agreed on a set of key material known only to both.
+</p>
+</li>
+</ul>
+
+<p>
+Security sessions are identified by a 3-tuple consisting of the following items:
+</p>
+
+<ul>
+<li>
+<p>
+initiator. This is the JID of the user who initiated the session.
+</p>
+</li>
+<li>
+<p>
+responder.  This is the JID of the user who responded to the initiator's request.
+</p>
+</li>
+<li>
+<p>
+sessionId.  A label generated by the initiator.
+</p>
+</li>
+</ul>
+
+<p>
+Security sessions are used to transport conversation keys between the conversation participants.
+</p>
+
+<p>
+Scalabilty is an immediate, obvious concern with such an approach. We expect this
+approach to be viable in practice because:
+</p>
+
+<ul>
+<li>
+<p>
+The number of participants in typical, interactive conversations is generally on the order of 10^1.
+</p>
+</li>
+<li>
+<p>
+New participants are usually invited to dynamically join a 
+conversation by being invited by an existing participant; 
+this existing participant is the only one who needs to 
+establish a security session with the new participant, 
+because this single security session can be used to 
+transport all of the required conversation keys.
+</p>
+</li>
+<li>
+<p>
+User agents can permit the lifetime of security sessions to 
+last long enough to allow transport of conversation keys 
+for a variety of converstions.
+</p>
+</li>
+<li>
+<p>
+Conversation keys can be established with a suitable lifetime.
+</p>
+</li>
+</ul>
+
+<p>
+Other approaches, including the incorporation of more 
+sophisticated conference keying algorithms, are a topic for 
+future exploration.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5.2 <a name="sect-idp1599184" id="sect-idp1599184">Security Session Negotiation</a></h3>
+
+<p>
+Security sessions are negotiated using an authenticated Diffie-Hellman key agreement 
+exchange. The two goals of the exchange are to perform the mutual authentication
+and to agree to a secret that is know only to each.
+</p>
+
+<p>
+The exchange also allows the parties to negotiate the various algorithms
+and authentication mechanisms that will be used.
+</p>
+
+<p>
+Once the pair agree on a shared secret, they each derive key material from the
+secret; this key material is used to securely transport the conversation keys,
+which are used to actually protect conversation data.
+</p>
+
+<p>
+The protocol data units (PDUs) that comprise the exchange are transported
+within existing Jabber protocol elements.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5.3 <a name="sect-idp1602080" id="sect-idp1602080">DTDs</a></h3>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">
+
+&lt;!ELEMENT session1
+          (nonce, keyAgreement, algorithms, authnMethods) &gt;
+&lt;!ATTLIST session1
+          version CDATA #REQUIRED
+          initiator CDATA #REQUIRED
+          responder CDATA #REQUIRED
+          sessionId CDATA #REQUIRED
+          hmac (hmac-sha1) #REQUIRED &gt;
+
+&lt;!ELEMENT nonce
+          (#PCDATA)* &gt;
+&lt;!ATTLIST nonce
+          encoding (base64 | hex) #REQUIRED &gt;
+
+&lt;!ELEMENT keyAgreement
+          (dh) &gt;
+
+&lt;!ELEMENT dh
+          (publicKey) &gt;
+&lt;!ATTLIST dh
+          group (modp1024 | modp2048 | modp4096 | modp8192) #REQUIRED &gt;
+
+&lt;!ELEMENT publicKey
+          (#PCDATA)* &gt;
+&lt;!ATTLIST publicKey
+          encoding (base64 | hex) #REQUIRED &gt;
+
+&lt;!ELEMENT algorithms
+          (algorithm)+ &gt;
+
+&lt;!ELEMENT algorithm
+          (confAlg, hmacAlg) &gt;
+
+&lt;!ELEMENT confAlg EMPTY &gt;
+&lt;!ATTLIST confAlg
+          cipher (3des-cbc | aes-128-cbc | aes-256-cbc) #REQUIRED &gt;
+
+&lt;!ELEMENT hmacAlg EMPTY &gt;
+&lt;!ATTLIST hmacAlg
+          alg (hmac-sha1 | hmac-md5) #REQUIRED&gt;
+
+&lt;!ELEMENT authnMethods
+          (authnMethod)+ &gt;
+
+&lt;!ELEMENT authnMethod
+          (digSig | passphrase) &gt;
+
+&lt;!ELEMENT digSig
+          (certificate+, caCertificate*) &gt;
+&lt;!ATTLIST digSig
+          alg (rsa) #REQUIRED&gt;
+
+&lt;!ELEMENT certificate
+          (#PCDATA)* &gt;
+&lt;!ATTLIST certificate
+          type (x509 | pkcs7) #REQUIRED
+          encoding (base64 | hex) #REQUIRED &gt;
+
+&lt;!ELEMENT caCertificate
+          (#PCDATA)* &gt;
+&lt;!ATTLIST caCertificate
+          type (x509 | pkcs7) #REQUIRED
+          encoding (base64 | hex) #REQUIRED &gt;
+
+&lt;!ELEMENT passphrase EMPTY &gt;
+&lt;!ATTLIST passphrase
+          passphraseId CDATA #REQUIRED &gt;
+
+
+&lt;!ELEMENT session2
+          (nonce, keyAgreement, algorithm, authnMethod, authenticator) &gt;
+&lt;!ATTLIST session2
+          version CDATA #REQUIRED
+          initiator CDATA #REQUIRED
+          responder CDATA #REQUIRED
+          sessionId CDATA #REQUIRED
+          hmac (hmac-sha1) #REQUIRED &gt;
+
+&lt;!ELEMENT authenticator
+          (#PCDATA)* &gt;
+&lt;!ATTLIST authenticator
+          encoding (base64 | hex) #REQUIRED&gt;
+
+
+&lt;!ELEMENT session3
+          (authenticator, keyTransport*) &gt;
+&lt;!ATTLIST session3
+          version CDATA #REQUIRED
+          initiator CDATA #REQUIRED
+          responder CDATA #REQUIRED
+          sessionId CDATA #REQUIRED
+          hmac (hmac-sha1) #REQUIRED &gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.5.4 <a name="sect-idp1606336" id="sect-idp1606336">Generating And Sending the session1 PDU</a></h3>
+
+<p>
+The initiator's user agent employs the following algorithm to generate the session1 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+Appropriate values for the version, initiator, responder, 
+sessionId, and hmac attributes are assembled. The version of 
+this specification is '1.0'. The values of initiator and 
+responder MUST be the JIDs of the two participants, 
+respectively.
+</p>
+</li>
+<li>
+<p>
+The nonce is prepared by first generating a string of 20 
+random octets (160 random bits). The octets are then 
+encoded into a string of 40 hex characters representing the 
+random string.
+</p>
+</li>
+<li>
+<p>
+A Diffie-Hellman group is selected. The appropriate values 
+for g and p will be used to generate the initiator's public 
+key.
+</p>
+</li>
+<li>
+<p>
+An ephemeral private key, x, is generated using g and p 
+for the selected group. This key MUST be generated using an 
+appropriate random number source. The corresponding public 
+key, g^x, is generated and encoded.
+</p>
+</li>
+<li>
+<p>
+The desired set of confidentiality and HMAC cryptographic 
+algorithms is selected. The manner in which these 
+algorithms are selected and all related policy issues are 
+outside the scope of this specification.
+</p>
+</li>
+<li>
+<p>
+The desired set of authentication algorithms is selected. 
+The manner in which these algorithms are selected and all 
+related policy issues are outside the scope of this 
+specification. When the digital signature form of 
+authentication is selected, the relevant end-entity 
+certificate and, optionally, a chain of CA certificates 
+representing a validation path, is assembled and encoded. A 
+set of trusted CA certificates MAY optionally be included 
+via caCertificate elements; if so, the set MUST include the 
+issuer of the initiator's end-entity certificate.
+</p>
+</li>
+</ul>
+
+<p>
+These values are then used to prepare the XML session1 element; 
+this element is transmitted via the existing Jabber iq mechanism:
+</p>
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator's JID" to="responder's JID" type="get" id="whatever"&gt;
+   &lt;query xmlns="jabber:security:session"&gt;
+      &lt;session1&gt;...&lt;/session1&gt;
+   &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.5.5 <a name="sect-idp1615904" id="sect-idp1615904">Receiving And Processing the session1 PDU</a></h3>
+
+<p>
+The responder's user agent employs the following algorithm to process each session1 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+The version and hmac attributes are checked against the 
+values supported by the user agent. An unsupported version 
+results in an error code of 10000, and an unsupported hmac 
+results in an error code of 10001. The responder attribute MUST
+match the JID of the receiver; a mismatch results in an error code of 10009
+</p>
+</li>
+<li>
+<p>
+The nonce is decoded, and its length is checked. The nonce 
+may also be checked to detect replays. An invalid nonce 
+results in an error code of 10002.
+</p>
+</li>
+<li>
+<p>
+The Diffie-Hellman group is checked against the values 
+supported by the user agent. An unsupported group results 
+in an error code of 10003
+</p>
+</li>
+<li>
+<p>
+The desired confidentiality and HMAC cryptographic 
+algorithms are selected from the proposed set. The manner 
+in which these algorithms are selected and all related 
+policy issues are outside the scope of this specification. 
+If none of the proposed algorithms are supported, an error 
+code of 10004 occurs.
+</p>
+</li>
+<li>
+<p>
+The desired authentication algorithm is selected from the 
+proposed set. The manner in which this algorithm is 
+selected and all related policy issues are outside the 
+scope of this specification. In the digital signature case,
+the responder's end-entity 
+certificate MUST be issued by one of the trusted CAs listed 
+in the session1 PDU or by the same issuer as the 
+initiator's end-entity certificate. If none of the proposed 
+algorithms are supported, an error code of 10005 results. 
+If the responder does not have acceptable credentials, an 
+error code of 10006 occurs.
+</p>
+</li>
+</ul>
+
+<p>
+If any errors occur during processing, the session negotiation 
+fails, and the error is communicated via the existing Jabber iq 
+mechanism:
+</p>
+
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder's JID" to="initiator's JID" type="error" id="whatever"&gt;
+   &lt;error code="???"&gt;...&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>
+If no errors occur, then the responder's user agent proceeds with 
+the session2 PDU.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5.6 <a name="sect-idp1624480" id="sect-idp1624480">Generating And Sending the session2 PDU</a></h3>
+
+<p>
+The responder's user agent employs the following algorithm to generate the session2 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+Appropriate values for the version, initiator, responder, 
+sessionId, and hmac attributes are assembled. The version of 
+this specification is '1.0'. The values of initiator and 
+responder MUST be the JIDs of the two participants, 
+respectively. The sessionId and hmac values MUST match the 
+sessionId and hmac values contained in the session1 PDU.
+</p>
+</li>
+<li>
+<p>
+The nonce is prepared by first generating a string of 20 
+random octets (160 random bits). The octets are then 
+encoded into a string of 40 hex characters representing the 
+random string.
+</p>
+</li>
+<li>
+<p>
+An ephemeral private key, y, is generated using g and p 
+for the group indicated by the session1 PDU. This key MUST 
+be generated using an appropriate random number source. The 
+corresponding public key, g^y, is generated and encoded.
+</p>
+</li>
+<li>
+<p>
+The desired pair of confidentiality and HMAC cryptographic 
+algorithms is selected. The manner in which this pair is 
+selected and all related policy issues are outside the 
+scope of this specification.
+</p>
+</li>
+<li>
+<p>
+The desired authentication algorithm is selected. The 
+manner in which this algorithm is selected and all related 
+policy issues are outside the scope of this specification. 
+When the digital signature form of authentication is 
+selected, the relevant end-entity certificate and, 
+optionally, a chain of CA certificates representing a 
+validation path, is assembled and encoded.
+</p>
+</li>
+<li>
+<p>
+Based on the selected authentication algorithm, the 
+responder's authenticator is constructed. A digital signature algorithm
+requires calculating:
+</p>
+<ul>
+<li>
+<p>
+HK  =  hmac (initiator's nonce | responder's nonce, g^xy)
+</p>
+</li>
+<li>
+<p>
+HASH_R  =  hmac (HK, version | sessionId | g^y | g^x | responder's JID)
+</p>
+</li>
+</ul>
+<p>
+HASH_R is signed using the responder's private key and encoded in PKCS#1 format. 
+The PKCS#1 octets are then further encoded in base64 or hex.
+</p>
+<p>
+The passphrase algorithm requires calculating:
+</p>
+<ul>
+<li>
+<p>
+HK  =  hmac (hash (passphrase), initiator's nonce | responder's nonce)
+</p>
+</li>
+<li>
+<p>
+HASH_R  =  hmac (HK, version | sessionId | g^y | g^x | responder's JID)
+</p>
+</li>
+</ul>
+<p>
+The octets of HASH_R are simply encoded in base64 or hex.
+</p>
+<p>
+The manner in which the responder's user agent gains access 
+to the responder's credentials is outside the scope of this 
+specification.
+</p>
+</li>
+</ul>
+
+<p>
+These values are then used to prepare the XML session2 element; 
+this element is transmitted via the existing Jabber iq mechanism:
+</p>
+
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder's JID" to="initiator's JID" type="result" id="whatever"&gt;
+   &lt;query xmlns="jabber:security:session"&gt;
+      &lt;session2&gt;...&lt;/session2&gt;
+   &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.5.7 <a name="sect-idp1639680" id="sect-idp1639680">Receiving And Processing the session2 PDU</a></h3>
+
+<p>
+The initiator's user agent employs the following algorithm to process each session2 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+The attribute values are checked against the values sent in 
+the session1 PDU. A mismatch results in an error code of 
+10008.
+</p>
+</li>
+<li>
+<p>
+The nonce is decoded, and its length is checked. The nonce 
+may also be checked to detect replays. An invalid nonce 
+results in an error code of 10002.
+</p>
+</li>
+<li>
+<p>
+The Diffie-Hellman group is checked against the value sent 
+in the session1 PDU. A mismatch results in an error code of 10003
+</p>
+</li>
+<li>
+<p>
+The confidentiality and HMAC cryptographic algorithms are 
+validated against the set proposed in the session1 PDU. A 
+mismatch results in an error code of 10004.
+</p>
+</li>
+<li>
+<p>
+The authentication algorithm is validated against the set 
+proposed in the session1 PDU. A mismatch results in an 
+error code of 10005.
+</p>
+</li>
+<li>
+<p>
+The authenticator is verified. A failure results in an error code of 10007.
+</p>
+</li>
+</ul>
+
+<p>
+If any errors occur during processing, the session negotiation 
+fails, and the error is communicated via the existing Jabber iq 
+mechanism:
+</p>
+
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator's JID" to="responder's JID" type="error" id="whatever"&gt;
+   &lt;error code="???"&gt;...&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>
+If no errors occur, then the initiator's user agent proceeds with the session3 PDU.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.5.8 <a name="sect-idp1648336" id="sect-idp1648336">Generating And Sending the session3 PDU</a></h3>
+
+<p>
+The initiator's user agent employs the following algorithm to generate the session3 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+Appropriate values for the version, initiator, responder, 
+sessionId, and hmac attributes are assembled. The version of 
+this specification is '1.0'. The values of initiator and 
+responder MUST be the JIDs of the two participants, 
+respectively. The sessionId and hmac values MUST match the 
+sessionId and hmac values contained in both the session1 and 
+session2 PDUs.
+</p>
+</li>
+<li>
+<p>
+Based on the selected authentication algorithm, the 
+initiator's authenticator is constructed. A digital signature algorithm
+requires calculating:
+</p>
+<ul>
+<li>
+<p>
+HK  =  hmac (initiator's nonce | responder's nonce, g^xy)
+</p>
+</li>
+<li>
+<p>
+HASH_I  =  hmac (HK, version | sessionId | g^x | g^y | initiator's JID)
+</p>
+</li>
+</ul>
+<p>
+HASH_I is signed using the responder's private key and encoded in PKCS#1 format. 
+The PKCS#1 octets are then further encoded in base64 or hex.
+</p>
+<p>
+The passphrase algorithm requires calculating:
+</p>
+<ul>
+<li>
+<p>
+HK  =  hmac (hash (passphrase), initiator's nonce | responder's nonce)
+</p>
+</li>
+<li>
+<p>
+HASH_I  =  hmac (HK, version | sessionId | g^x | g^y | initiator's JID)
+</p>
+</li>
+</ul>
+<p>
+The octets of HASH_I are simply encoded in base64 or hex.
+</p>
+<p>
+The manner in which the initiator's user agent gains access 
+to the initiator's credentials is outside the scope of this 
+specification.
+</p>
+</li>
+<li>
+<p>
+A set of conversation keys may optionally be included in 
+the response. This should typically be the case since 
+security sessions are negotiated for the sole purpose of 
+key transport. 
+</p>
+</li>
+</ul>
+
+<p>
+These values are then used to prepare the XML session3 element; 
+this element is transmitted via the existing Jabber iq mechanism:
+</p>
+
+<p class="caption"><a name="example-6" id="example-6"></a>Example 6. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator's JID" to="responder's JID" type="result" id="whatever"&gt;
+   &lt;query xmlns="jabber:security:session"&gt;
+      &lt;session3&gt;...&lt;/session3&gt;
+   &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.5.9 <a name="sect-idp1660368" id="sect-idp1660368">Receiving And Processing the session3 PDU</a></h3>
+
+<p>
+The responder's user agent employs the following algorithm to process each session3 PDU:
+</p>
+
+<ul>
+<li>
+<p>
+The attribute values are checked against the values sent in 
+the session2 PDU. A mismatch results in an error code of 
+10008.
+</p>
+</li>
+<li>
+<p>
+The authenticator is verified. A failure results in an error code of 10007.
+</p>
+</li>
+<li>
+<p>
+Any keys included in the PDU are processed and added to the user agent's key store.
+</p>
+</li>
+</ul>
+
+<p>
+If any errors occur during processing, the session negotiation 
+fails, and the error is communicated via the existing Jabber iq 
+mechanism:
+</p>
+
+<p class="caption"><a name="example-7" id="example-7"></a>Example 7. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder's JID" to="initiator's JID" type="error" id="whatever"&gt;
+   &lt;error code="???"&gt;...&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.5.10 <a name="sect-idp1665680" id="sect-idp1665680">Session Key Material Derivation</a></h3>
+
+<p>
+TBA
+</p>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>3.6 <a name="sect-idp1666816" id="sect-idp1666816">Key Transport</a></h3>
+
+<div class="indent"><h3>3.6.1 <a name="sect-idp1667312" id="sect-idp1667312">Overview</a></h3>
+
+<p>
+Conversation keys are used to protect conversation data.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.6.2 <a name="sect-idp1668400" id="sect-idp1668400">The Key Transport Mechanism</a></h3>
+
+<p>
+Conversation keys are transported using the symmetric key wrap feature of
+XML Encryption embedded in the keyTransport PDU.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.6.3 <a name="sect-idp1669552" id="sect-idp1669552">DTDs</a></h3>
+
+<p class="caption"><a name="example-8" id="example-8"></a>Example 8. </p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT keyTransport
+          (convId, payload, hmac) &gt;
+&lt;!ATTLIST keyTransport
+          version CDATA #REQUIRED
+          initiator CDATA #REQUIRED
+          responder CDATA #REQUIRED
+          sessionId CDATA #REQUIRED &gt;
+
+&lt;!ELEMENT convId
+          (#PCDATA)* &gt;
+
+&lt;!-- These are actually instances of xenc:EncryptedKey --&gt;
+&lt;!ELEMENT payload
+          (confKey, hmacKey) &gt;
+
+&lt;!ELEMENT hmac
+          (#PCDATA)* &gt;
+&lt;!ATTLIST hmac
+          encoding (base64 | hex) #REQUIRED &gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.6.4 <a name="sect-idp1671152" id="sect-idp1671152">Generating And Sending the keyTransport PDU</a></h3>
+
+<p>
+The sender's user agent employs the following algorithm to generate the keyTransport PDU:
+</p>
+
+<ul>
+<li>
+<p>
+Appropriate values for the version, initiator, responder, and 
+sessionId attributes are assembled. The version of 
+this specification is '1.0'. The values of initiator and 
+responder MUST be the JIDs of the two participants who negotiated the
+security session, respectively, and they
+MUST correspond to an existing security session.
+</p>
+</li>
+<li>
+<p>
+The key's identifier, convId, is assembled.
+</p>
+</li>
+<li>
+<p>
+The payload, which consists of the confidentiality key and the integrity key, is wrapped
+in instances of xenc:EncryptedKey as follows:
+</p>
+<ul>
+<li>
+<p>
+The Type attribute of the xenc:EncryptedKey element MUST indicate 'content'.
+</p>
+</li>
+<li>
+<p>
+The Id, MimeType and Encoding attributes of the xenc:EncryptedKey element MUST NOT
+be present.
+</p>
+</li>
+<li>
+<p>
+The xenc:EncryptionMethod element MUST be present, and the Algorithm attribute
+MUST indicate a valid symmetric key wrap algorithm. Furthermore, the
+algorithm MUST be the same as was negotiated for the security session.
+</p>
+</li>
+<li>
+<p>
+The ds:KeyInfo element MUST NOT be present. The key to use is SKc of the 
+security session.
+</p>
+</li>
+<li>
+<p>
+The xenc:CipherData element MUST be present, and it MUST use the CipherValue choice.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+The HMAC is computed using SKi of the security session over the following values:
+</p>
+<ul>
+<li>
+<p>
+the version attribute of the keyTransport element
+</p>
+</li>
+<li>
+<p>
+the initiator attribute of the keyTransport element
+</p>
+</li>
+<li>
+<p>
+the responder attribute of the keyTransport element
+</p>
+</li>
+<li>
+<p>
+the sessionId attribute of the keyTransport element
+</p>
+</li>
+<li>
+<p>
+the character string used to construct the body of the convId element
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+These values are then used to prepare the XML keyTransport element; 
+this element is transmitted via the existing Jabber iq mechanism:
+</p>
+
+<p class="caption"><a name="example-9" id="example-9"></a>Example 9. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="sender's JID" to="receiver's JID" type="set" id="whatever"&gt;
+   &lt;query xmlns="jabber:security:keyTransport"&gt;
+      &lt;keyTransport&gt;...&lt;/keyTransport&gt;
+   &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.6.5 <a name="sect-idp1687168" id="sect-idp1687168">Receiving and Processing the keyTransport PDU</a></h3>
+
+<p>
+The receiver's user agent employs the following algorithm to process each keyTransport PDU:
+</p>
+
+<ul>
+<li>
+<p>
+The values of the version, initiator, responder, and sessionId are validated; initiator,
+responder, and sessionId MUST indicate an existing security session.
+A version mismatch results in an error code of 10000; an invalid security session
+results in an error of 10010.
+</p>
+</li>
+<li>
+<p>
+The payload, which consists of the confidentiality key and the intergrity key, is unwrapped.
+Any failures result in an error code of 10012.
+</p>
+</li>
+<li>
+<p>
+The body of the HMAC element is decoded into the actual HMAC octet string.
+</p>
+</li>
+<li>
+<p>
+The HMAC is validated. An invalid HMAC results in an error code of 10011.
+</p>
+</li>
+<li>
+<p>
+The keys are added to the user agent's key store.
+</p>
+</li>
+</ul>
+
+<p>
+If any errors occur during processing, the error is communicated via the existing Jabber iq 
+mechanism:
+</p>
+
+<p class="caption"><a name="example-10" id="example-10"></a>Example 10. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="receiver's JID" to="sender's JID" type="error" id="whatever"&gt;
+   &lt;error code="???"&gt;...&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>3.7 <a name="sect-idp1694464" id="sect-idp1694464">Message Protection</a></h3>
+
+<div class="indent"><h3>3.7.1 <a name="sect-idp1694960" id="sect-idp1694960">Overview</a></h3>
+
+<p>
+The ultimate goal is, of course, the protection of conversation data. The protocol exchanges
+described above allow the conversation participants to cryptographically protect their conversation data using the conversation keys that they share.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.7.2 <a name="sect-idp1696224" id="sect-idp1696224">The Message Protection Mechanism</a></h3>
+
+<p>
+A protected message is defined as a traditional Jabber message whose body content
+is extended to include the transport of a cryptographically protected message body.
+The two key features are
+</p>
+
+<ul>
+<li>
+<p>
+First, the usual body element contains some arbitrary text. Those familiar with the
+evolution of email protocols will recognize this trick as the same one used
+when MIME was introduced.
+</p>
+</li>
+<li>
+<p>
+Second, the message contains a Jabber x element defining the Jabber:security:message
+namespace; this element transports the protected message.
+</p>
+</li>
+</ul>
+
+<p>
+This mechanism has the advantages of allowing transparent integration with existing
+Jabber servers and existing Jabber clients.
+</p>
+
+</div>
+
+<div class="indent"><h3>3.7.3 <a name="sect-idp1700256" id="sect-idp1700256">DTD</a></h3>
+
+<p class="caption"><a name="example-11" id="example-11"></a>Example 11. </p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT protectedMessage
+          (securityLabel?, payload, hmac) &gt;
+&lt;!ATTLIST protectedMessage
+          version CDATA #REQUIRED
+          from CDATA #REQUIRED
+          to CDATA #REQUIRED
+          convId #REQUIRED
+          seqNum #REQUIRED &gt;
+
+&lt;!ELEMENT securityLabel
+          (#PCDATA)* &gt;
+
+&lt;!-- this is actually an instance of xenc:EncryptedData --&gt;
+&lt;!ELEMENT payload
+          (#PCDATA)* &gt;
+
+&lt;!ELEMENT hmac
+          (#PCDATA)* &gt;
+&lt;!ATTLIST hmac
+          encoding (base64 | hex) #REQUIRED &gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.7.4 <a name="sect-idp1701920" id="sect-idp1701920">Generating And Sending the protectedMessage PDU</a></h3>
+
+<p>
+The sender's user agent employs the following algorithm to generate the protectedMessage PDU:
+</p>
+
+<ul>
+<li>
+<p>
+Appropriate values for the version, from, to, convId, and 
+seqNum attributes are assembled. The version of 
+this specification is '1.0'. The value of convId MUST correspond to an existing, valid key.
+</p>
+</li>
+<li>
+<p>
+The actual message body is encoded into a character string corresponding to a Jabber message body element. This character string is then wrapped in an instance of xenc:EncryptedData as follows:
+</p>
+<ul>
+<li>
+<p>
+The Type attribute of the xenc:EncryptedData element MUST indicate 'element'.
+</p>
+</li>
+<li>
+<p>
+The Id, MimeType and Encoding attributes of the xenc:EncryptedData element MUST NOT
+be present.
+</p>
+</li>
+<li>
+<p>
+The xenc:EncryptionMethod element MUST be present, and the Algorithm attribute
+MUST indicate a valid block encryption algorithm.
+</p>
+</li>
+<li>
+<p>
+The ds:KeyInfo element MUST NOT be present. The key to be used is the confidentiality
+key indicated by the convId attribute.
+</p>
+</li>
+<li>
+<p>
+The xenc:CipherData element MUST be present, and it MUST use the CipherValue choice.
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+Using the HMAC key indicated by the convId attribute, the HMAC is computed
+over the following values:
+</p>
+<ul>
+<li>
+<p>
+the version attribute of the protectedMessage element
+</p>
+</li>
+<li>
+<p>
+the from attribute of the protectedMessage element
+</p>
+</li>
+<li>
+<p>
+the to attribute of the protectedMessage element
+</p>
+</li>
+<li>
+<p>
+the convId attribute of the protectedMessage element
+</p>
+</li>
+<li>
+<p>
+the seqNum attribute of the protectedMessage element
+</p>
+</li>
+<li>
+<p>
+any securityLabel element
+</p>
+</li>
+<li>
+<p>
+the character string used to construct the body of the payload element 
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+These values are then used to prepare the XML protectedMessage element; 
+this element is transmitted via the existing Jabber message mechanism:
+</p>
+
+<p class="caption"><a name="example-12" id="example-12"></a>Example 12. </p><div class="indent"><pre class="prettyprint">
+&lt;message from="sender's JID" to="reveiver's JID" id="whatever"&gt;
+   &lt;body&gt;The real body is protected.&lt;/body&gt;
+   &lt;x xmlns="jabber:security:message"&gt;
+      &lt;protectedMessage&gt;...&lt;/protectedMessage&gt;
+   &lt;/x&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>3.7.5 <a name="sect-idp1718608" id="sect-idp1718608">Receiving and Processing the protectedMessage PDU</a></h3>
+
+<p>
+The receiver's user agent employs the following algorithm to process each protectedMessage PDU:
+</p>
+
+<ul>
+<li>
+<p>
+The values of the version, from, to, convId, and seqNum are validated.
+A version mismatch results in an error code of 10000. An unknown convId
+results in an error code of 10015. If replay protection is utilized, a
+duplicate seqNum results in an error code of 10016.
+</p>
+</li>
+<li>
+<p>
+The body of the HMAC element is decoded into the actual HMAC octet string.
+</p>
+</li>
+<li>
+<p>
+The payload, which consists of the actual message body, is unwrapped.
+Any failures result in an error code of 10012.
+</p>
+</li>
+<li>
+<p>
+The HMAC is validated. An invalid HMAC results in an error code of 10011.
+</p>
+</li>
+</ul>
+
+<p>
+If any errors occur during processing, the error is communicated via the existing Jabber iq 
+mechanism:
+</p>
+
+<p class="caption"><a name="example-13" id="example-13"></a>Example 13. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from="receiver's JID" to="sender's JID" type="error" id="whatever"&gt;
+   &lt;error code="???"&gt;...&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+</div>
+
+<div class="indent"><h3>3.8 <a name="sect-idp1725040" id="sect-idp1725040">Requesting Keys</a></h3>
+
+TBA
+
+</div>
+
+<div class="indent"><h3>3.9 <a name="sect-idp1725664" id="sect-idp1725664">Conformance Profile</a></h3>
+
+<p>
+The following block encryption algorithms are required, as
+specified by XML Encryption:
+</p>
+
+<ul>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#tripledes-cbc
+</p>
+</li>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#aes128-cbc
+</p>
+</li>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#aes256-cbc
+</p>
+</li>
+</ul>
+
+<p>
+The following symmetric key wrap algorithms are required, as
+specified by XML Encryption:
+</p>
+
+<ul>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#kw-tripledes
+</p>
+</li>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#kw-aes128
+</p>
+</li>
+<li>
+<p>
+http://www.w3.org/2001/04/xmlenc#kw-aes256
+</p>
+</li>
+</ul>
+
+</div>
+
+<h2>4.
+       <a name="sect-idp1733168" id="sect-idp1733168">Diffie-Hellman Groups</a></h2>
+
+<p>
+This protocol makes use of the following Diffie-Hellman groups adopted from IKE.
+</p>
+
+<div class="indent"><h3>4.1 <a name="sect-idp1734144" id="sect-idp1734144">1024 bit Group, modp1024</a></h3>
+
+<p>
+The hexidecimal value of the prime, p, is
+</p>
+
+<p class="caption"><a name="example-14" id="example-14"></a>Example 14. </p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE65381
+FFFFFFFF FFFFFFFF
+</pre></div>
+
+<p>
+The decimal value of the generator, g, is 2.
+</p>
+
+</div>
+
+<div class="indent"><h3>4.2 <a name="sect-idp1736352" id="sect-idp1736352">2048 bit Group, modp2048</a></h3>
+
+<p>
+The hexidecimal value of the prime, p, is
+</p>
+
+<p class="caption"><a name="example-15" id="example-15"></a>Example 15. </p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AACAA68 FFFFFFFF FFFFFFFF
+</pre></div>
+
+<p>
+The decimal value of the generator, g, is 2.
+</p>
+
+</div>
+
+<div class="indent"><h3>4.3 <a name="sect-idp1738848" id="sect-idp1738848">4096 bit Group, modp4096</a></h3>
+
+<p>
+The hexidecimal value of the prime, p, is
+</p>
+
+<p class="caption"><a name="example-16" id="example-16"></a>Example 16. </p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A9210801 1A723C12 A787E6D7
+88719A10 BDBA5B26 99C32718 6AF4E23C 1A946834 B6150BDA
+2583E9CA 2AD44CE8 DBBBC2DB 04DE8EF9 2E8EFC14 1FBECAA6
+287C5947 4E6BC05D 99B2964F A090C3A2 233BA186 515BE7ED
+1F612970 CEE2D7AF B81BDD76 2170481C D0069127 D5B05AA9
+93B4EA98 8D8FDDC1 86FFB7DC 90A6C08F 4DF435C9 34063199
+FFFFFFFF FFFFFFFF
+</pre></div>
+
+<p>
+The decimal value of the generator, g, is 2.
+</p>
+
+</div>
+
+<div class="indent"><h3>4.4 <a name="sect-idp1741920" id="sect-idp1741920">8192 bit Group, modp8192</a></h3>
+
+<p>
+The hexidecimal value of the prime, p, is
+</p>
+
+<p class="caption"><a name="example-17" id="example-17"></a>Example 17. </p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A9210801 1A723C12 A787E6D7
+88719A10 BDBA5B26 99C32718 6AF4E23C 1A946834 B6150BDA
+2583E9CA 2AD44CE8 DBBBC2DB 04DE8EF9 2E8EFC14 1FBECAA6
+287C5947 4E6BC05D 99B2964F A090C3A2 233BA186 515BE7ED
+1F612970 CEE2D7AF B81BDD76 2170481C D0069127 D5B05AA9
+93B4EA98 8D8FDDC1 86FFB7DC 90A6C08F 4DF435C9 34028492
+36C3FAB4 D27C7026 C1D4DCB2 602646DE C9751E76 3DBA37BD
+F8FF9406 AD9E530E E5DB382F 413001AE B06A53ED 9027D831
+179727B0 865A8918 DA3EDBEB CF9B14ED 44CE6CBA CED4BB1B
+DB7F1447 E6CC254B 33205151 2BD7AF42 6FB8F401 378CD2BF
+5983CA01 C64B92EC F032EA15 D1721D03 F482D7CE 6E74FEF6
+D55E702F 46980C82 B5A84031 900B1C9E 59E7C97F BEC7E8F3
+23A97A7E 36CC88BE 0F1D45B7 FF585AC5 4BD407B2 2B4154AA
+CC8F6D7E BF48E1D8 14CC5ED2 0F8037E0 A79715EE F29BE328
+06A1D58B B7C5DA76 F550AA3D 8A1FBFF0 EB19CCB1 A313D55C
+DA56C9EC 2EF29632 387FE8D7 6E3C0468 043E8F66 3F4860EE
+12BF2D5B 0B7474D6 E694F91E 6DBE1159 74A3926F 12FEE5E4
+38777CB6 A932DF8C D8BEC4D0 73B931BA 3BC832B6 8D9DD300
+741FA7BF 8AFC47ED 2576F693 6BA42466 3AAB639C 5AE4F568
+3423B474 2BF1C978 238F16CB E39D652D E3FDB8BE FC848AD9
+22222E04 A4037C07 13EB57A8 1A23F0C7 3473FC64 6CEA306B
+4BCBC886 2F8385DD FA9D4B7F A2C087E8 79683303 ED5BDD3A
+062B3CF5 B3A278A6 6D2A13F8 3F44F82D DF310EE0 74AB6A36
+4597E899 A0255DC1 64F31CC5 0846851D F9AB4819 5DED7EA1
+B1D510BD 7EE74D73 FAF36BC3 1ECFA268 359046F4 EB879F92
+4009438B 481C6CD7 889A002E D5EE382B C9190DA6 FC026E47
+9558E447 5677E9AA 9E3050E2 765694DF C81F56E8 80B96E71
+60C980DD 98EDD3DF FFFFFFFF FFFFFFFF
+</pre></div>
+
+<p>
+The decimal value of the generator, g, is 2.
+</p>
+
+</div>
+
+<h2>5.
+       <a name="sect-idp1748576" id="sect-idp1748576">Security Considerations</a></h2>
+
+<p>
+This entire document is about security.
+</p>
+
+<p>
+This version of the protocol deliberately incorporates only a minimal amount
+of cryptographic choice. Examples of possible choices that can readily
+added in future drafts include:
+</p>
+
+<ul>
+<li>
+<p>
+Support for the Digital Signature Standard
+</p>
+</li>
+<li>
+<p>
+Support for Elliptic Curve Cryptography
+</p>
+</li>
+<li>
+<p>
+Additional symmetric algorithms
+</p>
+</li>
+<li>
+<p>
+Additional hash algorithms
+</p>
+</li>
+</ul>
+
+<p>
+Furthermore, additional credential formats, such as OpenPGP, may be addressed
+in future drafts.
+</p>
+
+<p>
+This version of the protocol includes a mechanism that derives a cryptographic key from a
+passphrase shared by a community of users. It is impossible to overstate the security
+issues that such a mechanism raises.
+</p>
+
+<p>
+This version of the protocol does not include a specific rekeying capability. Data volumes
+in IM environments are expected to be small, and the protocol prefers to simply instantiate
+new conversation keys. It is straightforward to extend the security session protocol to
+enable negotiation of a new key.
+</p>
+
+<h2>6.
+       <a name="sect-idp1755616" id="sect-idp1755616">Examples</a></h2>
+
+<div class="indent"><h3>6.1 <a name="sect-idp1756112" id="sect-idp1756112">Security Session</a></h3>
+
+<p class="caption"><a name="example-18" id="example-18"></a>Example 18. </p><div class="indent"><pre class="prettyprint">
+&lt;iq from='initiator@some.tld'
+    to='responder@other.tld'
+    type='get'
+    id='whatever' &gt;
+    &lt;x xmlns='jabber:security:session&gt;
+       &lt;session1 version='1.0'
+                 initiator='initiator@some.tld'
+                 responder='responder@other.tld'
+                 sessionId='session11223344556677@some.tld'
+                 hmac='hmac-sha1'&gt;
+         &lt;nonce encoding='hex'&gt;
+            ...
+         &lt;/nonce&gt;
+         &lt;keyAgreement&gt;
+            &lt;dh group='modp4096'&gt;
+               &lt;publicKey encoding='base64'&gt;
+                  ...
+               &lt;/publicKey&gt;
+            &lt;/dh&gt;
+         &lt;/keyAgreement&gt;
+         &lt;algorithms&gt;
+            &lt;algorithm&gt;
+               &lt;confAlg cipher='3des-cbc'/&gt;
+               &lt;hmacAlg alg='hmac-sha1'/&gt;
+            &lt;/algorithm&gt;
+         &lt;/algorithms&gt;
+         &lt;authnMethods&gt;
+            &lt;authnMethod&gt;
+               &lt;digSig alg='rsa'&gt;
+                  &lt;certificate type='x509' encoding='base64'&gt;
+                     ...
+                  &lt;/certificate&gt;
+               &lt;/digSig&gt;
+            &lt;/authnMethod&gt;
+         &lt;/authnMethods&gt;
+      &lt;/session1&gt;
+   &lt;/x&gt;
+&lt;/iq&gt;
+
+&lt;iq from='responder@other.tld'
+    to='initiator@some.tld'
+    type='result'
+    id='whatever' &gt;
+    &lt;x xmlns='jabber:security:session&gt;
+       &lt;session2 version='1.0'
+                 initiator='initiator@some.tld'
+                 responder='responder@other.tld'
+                 sessionId='session11223344556677@some.tld'
+                 hmac='hmac-sha1'&gt;
+         &lt;nonce encoding='hex'&gt;
+            ...
+         &lt;/nonce&gt;
+         &lt;keyAgreement&gt;
+            &lt;dh group='modp4096'&gt;
+               &lt;publicKey encoding='base64'&gt;
+                  ...
+               &lt;/publicKey&gt;
+            &lt;/dh&gt;
+         &lt;/keyAgreement&gt;
+         &lt;algorithm&gt;
+            &lt;confAlg cipher='3des-cbc'/&gt;
+            &lt;hmacAlg alg='hmac-sha1'/&gt;
+         &lt;/algorithm&gt;
+         &lt;authnMethod&gt;
+            &lt;digSig alg='rsa'&gt;
+               &lt;certificate type='x509' encoding='base64'&gt;
+                  ...
+               &lt;/certificate&gt;
+            &lt;/digSig&gt;
+         &lt;/authnMethod&gt;
+         &lt;authenticator encoding='base64'&gt;
+            ...
+         &lt;/authenticator&gt;
+      &lt;/session2&gt;
+   &lt;/x&gt;
+&lt;/iq&gt;
+
+&lt;iq from='initiator@some.tld'
+    to='responder@other.tld'
+    type='result'
+    id='whatever' &gt;
+    &lt;x xmlns='jabber:security:session&gt;
+       &lt;session3 version='1.0'
+                 initiator='initiator@some.tld'
+                 responder='responder@other.tld'
+                 sessionId='session11223344556677@some.tld'
+                 hmac='hmac-sha1'&gt;
+         &lt;authenticator encoding='base64'&gt;
+            ...
+         &lt;/authenticator&gt;
+      &lt;/session3&gt;
+   &lt;/x&gt;
+&lt;/iq&gt;
+</pre></div>
+
+
+</div>
+
+<div class="indent"><h3>6.2 <a name="sect-idp1760512" id="sect-idp1760512">Key Transport</a></h3>
+
+<p class="caption"><a name="example-19" id="example-19"></a>Example 19. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' &gt;
+   &lt;x xmlns='jabber:security:key&gt;
+      &lt;keyTransport version='1.0'
+                    initiator='initiator@some.tld'
+                    responder='responder@other.tld'
+                    sessionId='session11223344556677@some.tld'&gt;
+         &lt;convId&gt;
+            44d2d2d2d2@some.tld
+         &lt;/convId&gt;
+         &lt;EncryptedKey xmlns='http://www.w3.org/2001/04/xmlenc#'
+                        Type='http://www.w3.org/2001/04/xmlenc#Content'&gt;
+            &lt;EncryptionMethod Algorithm='http://www.w3.org/2001/04/xmlenc#kw-tripledes&gt;
+            &lt;/EncryptionMethod&gt;
+            &lt;CipherData&gt;
+               &lt;CipherValue&gt;
+                  ...
+               &lt;/CipherValue&gt;
+            &lt;/CipherData&gt;
+         &lt;/EncryptedKey&gt;
+         &lt;EncryptedKey xmlns='http://www.w3.org/2001/04/xmlenc#'
+                        Type='http://www.w3.org/2001/04/xmlenc#Content'&gt;
+            &lt;EncryptionMethod Algorithm='http://www.w3.org/2001/04/xmlenc#kw-tripledes&gt;
+            &lt;/EncryptionMethod&gt;
+            &lt;CipherData&gt;
+               &lt;CipherValue&gt;
+                  ...
+               &lt;/CipherValue&gt;
+            &lt;/CipherData&gt;
+         &lt;/EncryptedKey&gt;
+         &lt;hmac encoding='hex'&gt;
+            ...
+         &lt;/hmac&gt;
+      &lt;/keyTransport&gt;
+   &lt;/x&gt;
+&lt;/iq&gt;
+</pre></div>
+
+</div>
+
+<div class="indent"><h3>6.3 <a name="sect-idp1762928" id="sect-idp1762928">Message Protection</a></h3>
+
+<p class="caption"><a name="example-20" id="example-20"></a>Example 20. </p><div class="indent"><pre class="prettyprint">
+&lt;message from='initiator@some.tld'
+         to='responder@other.tld'&gt;
+   &lt;body&gt;
+      The real body is protected.
+   &lt;/body&gt;
+   &lt;x xmlns='jabber:security:message'&gt;
+      &lt;protectedMessage version='1.0'
+                        from='initiator@some.tld'
+                        to='responder@other.tld'
+                        convId='44d2d2d2d2@some.tld'
+                        seqNum='1'&gt;
+         &lt;securityLabel&gt;
+            Confidential
+         &lt;/securityLabel&gt;
+         &lt;EncryptedData xmlns='http://www.w3.org/2001/04/xmlenc#'
+                        Type='http://www.w3.org/2001/04/xmlenc#Element'&gt;
+            &lt;EncryptionMethod Algorithm='http://www.w3.org/2001/04/xmlenc#tripledes-cbc&gt;
+            &lt;/EncryptionMethod&gt;
+            &lt;CipherData&gt;
+               &lt;CipherValue&gt;
+                  ...
+               &lt;/CipherValue&gt;
+            &lt;/CipherData&gt;
+         &lt;/EncryptedData&gt;
+         &lt;hmac encoding='hex'&gt;
+            ...
+         &lt;/hmac&gt;
+      &lt;/protectedMessage&gt;
+   &lt;/x&gt;
+&lt;/message&gt;
+</pre></div>
+
+</div>
+
+<h2>7.
+       <a name="sect-idp1765232" id="sect-idp1765232">References</a></h2>
+
+<p>
+"XML Encryption Syntax and Processing"; http://www.w3.org/TR/xmlenc-core
+</p>
+
+<p>
+more to be added
+</p>
+
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0031<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2002-07-09<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0031.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0031.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0031.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>
+Paul
+ 
+Lloyd
+</h3><p class="indent">
+        Email:
+        <a href="mailto:&#10;paul_lloyd@hp.com&#10;">
+paul_lloyd@hp.com
+</a><br />
+        JabberID: 
+        <a href="xmpp:&#10;paul_lloyd@jabber.hp.com (private)&#10;">
+paul_lloyd@jabber.hp.com (private)
+</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2002-07-09)</h4><div class="indent">
+updated to reflect group consensus to incorporate XML Encryption, as well
+as other group comments from Draft 0.9.
+ (
+PCL
+)
+    </div><h4>Version 0.1 (2002-05-07)</h4><div class="indent">
+initial version
+ (
+PCL
+)
+    </div></div><hr /><p>END</p></body></html>

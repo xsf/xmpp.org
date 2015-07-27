@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0048: Bookmarks</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Bookmarks" /><meta name="DC.Creator" content="Rachel Blackman" /><meta name="DC.Creator" content="Peter Millard" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XML data format for use by XMPP clients in storing bookmarks to mult-user chatrooms and web pages. The chatroom bookmarking function includes the ability to auto-join rooms on login." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2007-11-07" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0048" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0048: Bookmarks</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XML data format for use by XMPP clients in storing bookmarks to mult-user chatrooms and web pages. The chatroom bookmarking function includes the ability to auto-join rooms on login.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Rachel Blackman, Peter Millard, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2007-11-07</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#format">Data Format</a><br />   
+      2.1.  <a href="#format-conference">The conference element</a><br />   
+      2.2.  <a href="#format-url">The url element</a><br />3.  <a href="#storage">Storage</a><br />   
+      3.1.  <a href="#storage-pubsub-upload">Uploading Data</a><br />   
+      3.2.  <a href="#storage-pubsub-notify">Receiving Notifications</a><br />   
+      3.3.  <a href="#storage-pubsub-retrieve">Retrieving Data</a><br />4.  <a href="#security">Security Considerations</a><br />5.  <a href="#iana">IANA Considerations</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />7.  <a href="#schema">XML Schema</a><br />8.  <a href="#authornote">Author Note</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>For ease-of-use in a Jabber client, it is desirable to have a way to store shortcuts to various services and resources (such as conference rooms and web pages) as "bookmarks" that can be displayed in the user's client. Several Jabber clients have already agreed on and implemented a method to provide this service; that informal agreement is documented and expanded upon in this document. In particular, we introduce the &lt;storage/&gt; element (qualified by the 'storage:bookmarks' namespace) as a container for this sort of this data. While bookmarks data can be stored using any XML storage mechanism, this document recommends one method that is specific to XMPP.</p>
+<h2>2.
+       <a name="format" id="format">Data Format</a></h2>
+  <p>A storage element qualified by the 'storage:bookmarks' namespace may contain a collection of child elements, each representing a bookmark to be displayed in a client.  At present, only two sub-elements are defined: &lt;conference/&gt; for bookmarking of <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp656416">1</a>] rooms and &lt;url/&gt; for bookmarking of web pages.</p>
+  <p>All child elements allow a 'name' attribute, which is the friendly name by which they will be displayed in the client.  If an element lacks a 'name' attribute, the client SHOULD generate an appropriate substitution based on the other available data.</p>
+  <div class="indent"><h3>2.1 <a name="format-conference" id="format-conference">The conference element</a></h3>
+    <p>A common use case is bookmarking of multi-user chat rooms.  A room is bookmarked using the &lt;conference/&gt; child element. The syntax is as follows.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Syntax of conference element</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Element or Attribute</th>
+        <th>Definition</th>
+        <th>Datatype</th>
+        <th>Inclusion</th>
+      </tr>
+      <tr class="body">
+        <td>'autojoin' attribute</td>
+        <td>Whether the client should automatically join the conference room on login.</td>
+        <td>boolean defaulting to false  [<a href="#nt-idp664240">2</a>]</td>
+        <td>OPTIONAL</td>
+      </tr>
+      <tr class="body">
+        <td>'jid' attribute</td>
+        <td>The JabberID of the chat room.</td>
+        <td>string</td>
+        <td>REQUIRED</td>
+      </tr>
+      <tr class="body">
+        <td>'name' attribute</td>
+        <td>A friendly name for the bookmark.</td>
+        <td>string</td>
+        <td>RECOMMENDED</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;nick/&gt; element</td>
+        <td>The user's preferred roomnick for the chatroom.</td>
+        <td>string</td>
+        <td>OPTIONAL</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;password/&gt; element</td>
+        <td>Unencrypted string for the password needed to enter a password-protected room. For security reasons, use of this element is NOT RECOMMENDED.</td>
+        <td>string</td>
+        <td>NOT RECOMMENDED</td>
+      </tr>
+    </table></div>
+    <p>Note: The datatypes are as defined in <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp1553584">3</a>].</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. An example of the conference element</p><div class="indent"><pre class="prettyprint">
+    &lt;storage xmlns='storage:bookmarks'&gt;
+      &lt;conference name='Council of Oberon' 
+                  autojoin='true'
+                  jid='council@conference.underhill.org'&gt;
+        &lt;nick&gt;Puck&lt;/nick&gt;
+      &lt;/conference&gt;
+    &lt;/storage&gt;
+    </pre></div>
+   <p>This bookmark would be displayed as 'Council of Oberon' and, if activated, would attempt to join the conference room 'council@conference.underhill.org' with nickname 'Puck'.</p>
+   <p>Note: A bookmark set may contain any number of conference rooms.</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="format-url" id="format-url">The url element</a></h3>
+    <p>The &lt;url/&gt; element is designed for bookmarking web pages, i.e., HTTP or HTTPS URLs. The syntax is as follows.</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Syntax of url element</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Attribute</th>
+        <th>Definition</th>
+        <th>Datatype</th>
+        <th>Inclusion</th>
+      </tr>
+      <tr class="body">
+        <td>'name' attribute</td>
+        <td>A friendly name for the bookmark.</td>
+        <td>string</td>
+        <td>RECOMMENDED</td>
+      </tr>
+      <tr class="body">
+        <td>'url' attribute</td>
+        <td>The HTTP or HTTPS URL of the web page.</td>
+        <td>anyURI</td>
+        <td>REQUIRED</td>
+      </tr>
+    </table></div>
+    <p>When the user chooses a URL bookmark, the client should launch an appropriate browser or load the URL directly in the client (if the client is a web-client or includes web browsing functionality).</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. An example of the url element</p><div class="indent"><pre class="prettyprint">
+    &lt;storage xmlns='storage:bookmarks'&gt;
+      &lt;url name='Complete Works of Shakespeare'
+           url='http://the-tech.mit.edu/Shakespeare/'/&gt;
+    &lt;/storage&gt;
+    </pre></div>
+    <p>This bookmark would be displayed in the client as 'Complete Works of Shakespeare' and would take the user to &lt;<a href="http://the-tech.mit.edu/Shakespeare/">http://the-tech.mit.edu/Shakespeare/</a>&gt; when selected.</p>
+    <p>Note: A bookmark set can contain any number of URLs.</p>
+  </div>
+<h2>3.
+       <a name="storage" id="storage">Storage</a></h2>
+  <p>It is RECOMMENDED to use <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1570576">4</a>] for data storage, specifically through the use of personal data nodes hosted at the user's virtual publish-subscribe service as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0223.html">Best Practices for Persistent Storage of Private Data via Publish-Subscribe (XEP-0223)</a></span>  [<a href="#nt-idp1573392">5</a>] and illustrated in the following sections.</p>
+  <p>Note: In the past, <span class="ref"><a href="http://xmpp.org/extensions/xep-0049.html">Private XML Storage (XEP-0049)</a></span>  [<a href="#nt-idp1576272">6</a>] was the recommended method (see the archived version of this specification at &lt;<a href="http://www.xmpp.org/extensions/attic/xep-0048-1.0.html">http://www.xmpp.org/extensions/attic/xep-0048-1.0.html</a>&gt;). In addition, other methods could be used, such as HTTP or WebDAV.</p>
+  <div class="indent"><h3>3.1 <a name="storage-pubsub-upload" id="storage-pubsub-upload">Uploading Data</a></h3>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Client uploads data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony' type='set' id='pip1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='storage:bookmarks'&gt;
+      &lt;item id='current'&gt;
+        &lt;storage xmlns='storage:bookmarks'&gt;
+          &lt;conference name='The Play&amp;apos;s the Thing' 
+                      autojoin='true'
+                      jid='theplay@conference.shakespeare.lit'&gt;
+            &lt;nick&gt;JC&lt;/nick&gt;
+          &lt;/conference&gt;
+        &lt;/storage&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+    &lt;publish-options&gt;
+      &lt;x xmlns='jabber:x:data' type='submit'&gt;
+        &lt;field var='FORM_TYPE' type='hidden'&gt;
+          &lt;value&gt;http://jabber.org/protocol/pubsub#publish-options&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='pubsub#persist_items'&gt;
+          &lt;value&gt;true&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='pubsub#access_model'&gt;
+          &lt;value&gt;whitelist&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/publish-options&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server acknowledges successful storage</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='juliet@capulet.lit/balcony' type='result' id='pip1'/&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="storage-pubsub-notify" id="storage-pubsub-notify">Receiving Notifications</a></h3>
+    <p>The stored data is automatically pushed to all of the user's connected resources.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Publisher receives event notification</p><div class="indent"><pre class="prettyprint">
+&lt;message from='juliet@capulet.lit'
+         to='juliet@capulet.lit/balcony'
+         type='headline'
+         id='rnfoo1'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='storage:bookmarks'&gt;
+      &lt;item id='current'&gt;
+        &lt;storage xmlns='storage:bookmarks'&gt;
+          &lt;conference name='The Play&amp;apos;s the Thing' 
+                      autojoin='true'
+                      jid='theplay@conference.shakespeare.lit'&gt;
+            &lt;nick&gt;JC&lt;/nick&gt;
+          &lt;/conference&gt;
+        &lt;/storage&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+
+&lt;message from='juliet@capulet.lit'
+         to='juliet@capulet.lit/chamber'
+         type='headline'
+         id='rnfoo2'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='storage:bookmarks'&gt;
+      &lt;item id='current'&gt;
+        &lt;storage xmlns='storage:bookmarks'&gt;
+          &lt;conference name='The Play&amp;apos;s the Thing' 
+                      autojoin='true'
+                      jid='theplay@conference.shakespeare.lit'&gt;
+            &lt;nick&gt;JC&lt;/nick&gt;
+          &lt;/conference&gt;
+        &lt;/storage&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="storage-pubsub-retrieve" id="storage-pubsub-retrieve">Retrieving Data</a></h3>
+    <p>In order to retrieve stored data without receiving notifications (e.g., upon initial login), the user's client sends a retrieve-items request as specified in <span class="ref">XEP-0060</span>.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Client requests all items</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/randomID' type='get' id='retrieve1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;items node='storage:bookmarks'/&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Server returns all items</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    to='juliet@capulet.lit/randomID'
+    id='retrieve1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;items node='storage:bookmarks'&gt;
+      &lt;item id='current'&gt;
+        &lt;storage xmlns='storage:bookmarks'&gt;
+          &lt;conference name='The Play&amp;apos;s the Thing' 
+                      autojoin='true'
+                      jid='theplay@conference.shakespeare.lit'&gt;
+            &lt;nick&gt;JC&lt;/nick&gt;
+          &lt;/conference&gt;
+        &lt;/storage&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Security considerations related to object persistent via publish-subscribe are described in XEP-0060 and <span class="ref">XEP-0223</span>.</p>
+  <p>Use of the &lt;password/&gt; child of the &lt;conference/&gt; element is NOT RECOMMENDED, since the password could be discovered by a third party, e.g. an eavesdropper (if channel encryption is not used) or a server administrator. However, the element MAY be used in suitably secure environments (e.g., where it is known that communications will not be sent over unencrypted channels and the server administrators are trusted). Clients SHOULD NOT default to storing passwords and MUST enable users to disable any password storage.</p> 
+<h2>5.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1594112">7</a>].</p>
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+    <p>No action by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1597824">8</a>] is required, since the 'storage:bookmarks' namespace is already included in the protocol namespaces registry (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+<h2>7.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='storage:bookmarks'
+    xmlns='storage:bookmarks'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0048: http://www.xmpp.org/extensions/xep-0048.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='storage'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element ref='conference'/&gt;
+        &lt;xs:element ref='url'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='conference'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='nick' type='xs:string' minOccurs='0'/&gt;
+        &lt;xs:element name='password' type='xs:string' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='autojoin' type='xs:boolean' use='optional' default='false'/&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='name' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='url'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='name' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='url' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>8.
+       <a name="authornote" id="authornote">Author Note</a></h2>
+  <p>Peter Millard, a co-author of this specification from version 0.1 through version 1.0, died on April 26, 2006.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0048<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2007-11-07<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0060, XEP-0223<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: bookmarks<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/bookmarks.xsd">http://www.xmpp.org/schemas/bookmarks.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0048.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0048.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0048.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Rachel Blackman</h3><p class="indent">
+        Email:
+        <a href="mailto:rcb@ceruleanstudios.com">rcb@ceruleanstudios.com</a><br />
+        JabberID: 
+        <a href="xmpp:sparks@jabber.org">sparks@jabber.org</a><br /></p><h3>Peter Millard</h3><p class="indent">
+        See <a href="#authornote">Author Note</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp656416" id="nt-idp656416">1</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp664240" id="nt-idp664240">2</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp1553584" id="nt-idp1553584">3</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp1570576" id="nt-idp1570576">4</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1573392" id="nt-idp1573392">5</a>. XEP-0223: Best Practices for Persistent Storage of Private Data via Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0223.html">http://xmpp.org/extensions/xep-0223.html</a>&gt;.</p><p><a name="nt-idp1576272" id="nt-idp1576272">6</a>. XEP-0049: Private XML Storage &lt;<a href="http://xmpp.org/extensions/xep-0049.html">http://xmpp.org/extensions/xep-0049.html</a>&gt;.</p><p><a name="nt-idp1594112" id="nt-idp1594112">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1597824" id="nt-idp1597824">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2007-11-07)</h4><div class="indent"><p>For security reasons, actively discouraged use of the password element; specified use of publish-subscribe private information nodes as the preferred storage mechanism; cleaned up the text and examples.</p> (psa)
+    </div><h4>Version 1.0 (2003-10-08)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Active; also added XML schema.</p> (psa)
+    </div><h4>Version 0.3 (2003-05-13)</h4><div class="indent"><p>Re-focused to document only the existing protocol in use.</p> (rcb)
+    </div><h4>Version 0.2 (2002-10-03)</h4><div class="indent"><p>Typos, etc...</p> (pgm)
+    </div><h4>Version 0.1 (2002-10-03)</h4><div class="indent"><p>Initial version.</p> (pgm)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0012: Last Activity</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Last Activity" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for communicating information about the last activity associated with an XMPP entity. It is typically used by an IM client to retrieve the most recent presence information from an offline contact by sending a last activity request to the server that hosts the account controlled by the contact." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-11-26" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0012" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0012: Last Activity</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for communicating information about the last activity associated with an XMPP entity. It is typically used by an IM client to retrieve the most recent presence information from an offline contact by sending a last activity request to the server that hosts the account controlled by the contact.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Jeremie Miller, Thomas Muldowney, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-11-26</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#protocol">Protocol</a><br />3.  <a href="#offline">Offline User Query</a><br />4.  <a href="#online">Online User Query</a><br />5.  <a href="#server">Server and Component Query</a><br />6.  <a href="#support">Determining Support</a><br />7.  <a href="#impl">Implementation Notes</a><br />8.  <a href="#security">Security Considerations</a><br />9.  <a href="#iana">IANA Considerations</a><br />10.  <a href="#registrar">XMPP Registrar Considerations</a><br />11.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>It is often helpful to know the time of the last activity associated with a entity. The canonical usage is to discover when a disconnected user last accessed its server. The 'jabber:iq:last' namespace provides a method for retrieving that information. The 'jabber:iq:last' namespace can also be used to discover or publicize when a connected user was last active on the server (i.e., the user's idle time) or to query servers and components about their current uptime.</p>
+<h2>2.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>In order to request last activity information regarding another entity, the requesting entity sends an &lt;iq/&gt; stanza of type "get" to the target entity, containing a &lt;query/&gt; element qualified by the 'jabber:iq:last' namespace:</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Last Activity Query</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard' 
+    id='last1'
+    to='juliet@capulet.com'
+    type='get'&gt;
+  &lt;query xmlns='jabber:iq:last'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The target entity MUST return either an IQ-result or an IQ-error. When returning an IQ-result, the target entity sends an &lt;iq/&gt; stanza of type='result' containing a &lt;query/&gt; element with a REQUIRED 'seconds' attribute and OPTIONAL XML character data.</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Last Activity Response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com' 
+    id='last1'
+    to='romeo@montague.net/orchard'
+    type='result'&gt;
+  &lt;query xmlns='jabber:iq:last' seconds='903'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The requesting entity interprets the IQ-result based on the responding entity's JID type in order to determine the meaning of the information. Specifically, the information means something different depending on the identity of the responding entity:</p>
+  <ol>
+    <li>An account registered on an XMPP server, with a JID of the form &lt;localpart@domain.tld&gt;.</li>
+    <li>A connected or available resource associated with such an account, with a JID of the form &lt;localpart@domain.tld/resource&gt;.</li>
+    <li>An "always-on" XMPP server or service, with a JID of the form &lt;domain.tld&gt;.</li>
+  </ol>
+  <p>These differences are explained more fully below.</p>
+<h2>3.
+       <a name="offline" id="offline">Offline User Query</a></h2>
+  <p>The primary usage of the 'jabber:iq:last' namespace is to find out how long ago a user logged out (and, additionally, what their status message was at that time). This primary usage assumes that the IQ-get is sent to a bare JID &lt;localpart@domain.tld&gt;. When used in this way, the &lt;query/&gt; element contained in the IQ-result has a 'seconds' attribute, which is the number of seconds that have passed since the user last logged out. In addition, the element MAY contain XML character data that specifies the status message of the last unavailable presence received from the user. An example is shown below:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Last Activity Query</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard' 
+    id='last1'
+    to='juliet@capulet.com'
+    type='get'&gt;
+  &lt;query xmlns='jabber:iq:last'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>As specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp620944">1</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1586096">2</a>], an IQ stanza of type "get" sent to a bare JID &lt;localpart@domain.tld&gt; is handled by the user's server on the user's behalf, not delivered to one or more connected or available resources.</p>
+  <p>If the requesting entity is not authorized to view the user's presence information (normally via a presence subscription as defined in <span class="ref">XMPP-IM</span>), the user's server MUST NOT return last activity information but instead MUST return a &lt;forbidden/&gt; error in response to the last activity request.</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Requesting Entity is Not Authorized to Retrieve Last Activity Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com' 
+    id='last1'
+    to='romeo@montague.net/orchard' 
+    type='error'&gt;
+  &lt;error type='auth'&gt;
+    &lt;forbidden xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the requesting entity is authorized to view the user's presence information, the server shall return information about the last presence activity recorded by the server for that user.</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Last Activity Response by Server</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com'
+    id='last1'
+    to='romeo@montague.net/orchard'
+    type='result'&gt;
+  &lt;query xmlns='jabber:iq:last' seconds='903'&gt;Heading Home&lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In this example, the user logged out fifteen minutes and three seconds ago, and when they logged out they sent a presence stanza of type='unavailable' whose &lt;status/&gt; element contained the text "Heading Home".</p>
+  <p>If the user has at least one connected or available resource when the server receives the request, the response MUST (subject to local security policies) contain an empty &lt;query/&gt; element whose 'seconds' attribute is set to a value of '0'.</p>
+<h2>4.
+       <a name="online" id="online">Online User Query</a></h2>
+  <p>A requesting entity can send a last activity query to the full JID &lt;localpart@domain.tld/resource&gt; of a connected or available resource associated with an account.</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Last Activity Query Sent to Full JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    id='last2'
+    to='juliet@capulet.com/balcony'
+    type='get'&gt;
+  &lt;query xmlns='jabber:iq:last'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In this case, the user's server shall either deliver the IQ to an available resource or respond on behalf of the user.</p>
+  <p>In particular, as with the offline query use case above, if the requesting entity is not authorized to view the user's presence information (normally via a presence subscription as defined in <span class="ref">XMPP IM</span>), the user's server MUST NOT deliver the IQ-get to an available resource but instead MUST return a &lt;forbidden/&gt; error in response to the last activity request.</p>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Requesting Entity is Not Authorized to Retrieve Last Activity Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com' 
+    id='last1'
+    to='romeo@montague.net/orchard'
+    type='error'&gt;
+  &lt;error type='auth'&gt;
+    &lt;forbidden xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the user's server delivers the IQ-get to one of the user's available resources, the user's client MAY respond with the idle time of the user (i.e., the last time that a human user interacted with the client application).</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Last Activity Response by Client</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/balcony' 
+    id='last2'
+    to='romeo@montague.net/orchard' 
+    type='result'&gt;
+  &lt;query xmlns='jabber:iq:last' seconds='123'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In the foregoing example, the user has been idle for about two minutes.</p>
+  <p>Support for this functionality is OPTIONAL. A client that does not support the protocol, or that does not wish to divulge this information, MUST return a &lt;service-unavailable/&gt; error.</p>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Service Unavailable Error</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/balcony' 
+    id='last2'
+    to='romeo@montague.net/orchard'
+    type='error'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If there is no available resource matching the &lt;localpart@domain.tld&gt; in the 'to' attribute of the request, the server MUST follow the rules in <span class="ref">XMPP IM</span> in order to determine what error stanza to return.</p>
+<h2>5.
+       <a name="server" id="server">Server and Component Query</a></h2>
+  <p>When the last activity query is sent to a server or component (i.e., to a JID of the form &lt;domain.tld&gt;), the information contained in the IQ reply reflects the uptime of the JID sending the reply. The seconds attribute specifies how long the host has been running since it was last (re-)started. The &lt;query/&gt; element SHOULD NOT contain XML character data.</p>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Last Activity Query Sent to Server or Service</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard' 
+    id='last3'
+    to='capulet.com' 
+    type='get'&gt;
+  &lt;query xmlns='jabber:iq:last'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Last Activity Response from Server or Service</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='capulet.com' 
+    id='last3'
+    to='romeo@montague.net/orchard'
+    type='result'&gt;
+  &lt;query xmlns='jabber:iq:last' seconds='123456'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In this example, the server has been running for a little more than 34 hours.</p>
+<h2>6.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>If an entity supports the Last Activity protocol, it MUST advertise that fact in its responses to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1606448">3</a>] information ("disco#info") requests by returning a feature of "jabber:iq:last".</p>
+  <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Requesting entity queries responding entity regarding protocol support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stpeter@jabber.org/roundabout'
+    id='disco1'
+    to='jabber.org'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Responding entity communicates protocol support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='jabber.org'
+    id='disco1'
+    to='stpeter@jabber.org/roundabout'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='jabber:iq:last'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1612768">4</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>7.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>The information contained in an IQ reply for this namespace is inherently ambiguous. Specifically, for a bare JID &lt;localpart@domain.tld&gt; the information is the time since the JID was last connected to its server; for a full JID &lt;localpart@domain.tld/resource&gt; the information is the time since the resource was last active in the context of an existing session; and for a bare domain the information is the uptime for the server or component. An application MUST take these differences into account when presenting the information to a human user (if any).</p>
+<h2>8.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>A server MUST NOT allow an unauthorized entity to learn a user's network availability by sending a Last Activity request to a JID of the form &lt;localpart@domain.tld&gt; or &lt;localpart@domain.tld/resource&gt;, since doing so would constitute a "presence leak" as described in <span class="ref">RFC 6120</span>. That is, Last Activity information MAY be divulged only to those entities that have permission to view the user's presence via a presence subscription (potentially as restricted by <span class="ref"><a href="http://xmpp.org/extensions/xep-0016.html">Privacy Lists (XEP-0016)</a></span>  [<a href="#nt-idp1618464">5</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0191.html">Blocking Command (XEP-0191)</a></span>  [<a href="#nt-idp1621024">6</a>]).</p>
+  <p>A client MUST provide a way for a human user to disable sending of Last Activity responses from the client's full JID &lt;localpart@domain.tld/resource&gt;.</p>
+<h2>9.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1629104">7</a>].</p>
+<h2>10.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1624624">8</a>] is necessary as a result of this document, since 'jabber:iq:last' is already registered in the protocol namespaces registry located at &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;.</p>
+<h2>11.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:last'
+    xmlns='jabber:iq:last'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0012: http://www.xmpp.org/extensions/xep-0012.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute
+              name='seconds'
+              type='xs:unsignedLong'
+              use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0012<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.0<br />
+            Last Updated: 2008-11-26<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: iq-last<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/iq-last.xsd">http://www.xmpp.org/schemas/iq-last.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0012.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0012.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0012.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@jabber.org">temas@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp620944" id="nt-idp620944">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1586096" id="nt-idp1586096">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1606448" id="nt-idp1606448">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1612768" id="nt-idp1612768">4</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1618464" id="nt-idp1618464">5</a>. XEP-0016: Privacy Lists &lt;<a href="http://xmpp.org/extensions/xep-0016.html">http://xmpp.org/extensions/xep-0016.html</a>&gt;.</p><p><a name="nt-idp1621024" id="nt-idp1621024">6</a>. XEP-0191: Blocking Command &lt;<a href="http://xmpp.org/extensions/xep-0191.html">http://xmpp.org/extensions/xep-0191.html</a>&gt;.</p><p><a name="nt-idp1629104" id="nt-idp1629104">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1624624" id="nt-idp1624624">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.0 (2008-11-26)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification to Final; clarified a few small points in the text; added a reference to XEP-0115.</p> (psa)
+    </div><h4>Version 1.3 (2008-07-16)</h4><div class="indent"><p>Corrected server processing rules to block queries to a full JID when the requesting entity is not authorized to view the presence of the user.</p> (psa)
+    </div><h4>Version 1.2 (2007-02-15)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed from Historical and Active to Standards Track and Draft; added Implementation Notes and clarified text throughout; added proviso to security considerations regarding client support; added section on Service Discovery.</p> (psa)
+    </div><h4>Version 1.1 (2004-01-22)</h4><div class="indent"><p>Editorial revisions.</p> (psa)
+    </div><h4>Version 1.0 (2002-01-22)</h4><div class="indent"><p>Changed status to Active.</p> (psa)
+    </div><h4>Version 0.3 (2002-01-14)</h4><div class="indent"><p>Made appropriate changes to reflect status as informational.</p> (psa)
+    </div><h4>Version 0.2 (2002-01-04)</h4><div class="indent"><p>Converted to XML format.</p> (tjm)
+    </div><h4>Version 0.1 (2001-01-25)</h4><div class="indent"><p>Initial version from website.</p> (jm)
+    </div></div><hr /><p>END</p></body></html>

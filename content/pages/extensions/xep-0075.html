@@ -1,0 +1,1852 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0075: Jabber Object Access Protocol (JOAP)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Object Access Protocol (JOAP)" /><meta name="DC.Creator" content="Evan Prodromou" /><meta name="DC.Description" content="The Jabber Object Access Protocol, or JOAP, defines a&#10;      mechanism for creating Jabber-accessible object servers, and&#10;      manipulating objects provided by those servers. It is intended&#10;      for development of business applications with Jabber." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-05-22" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0075" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0075: Jabber Object Access Protocol (JOAP)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>The Jabber Object Access Protocol, or JOAP, defines a
+      mechanism for creating Jabber-accessible object servers, and
+      manipulating objects provided by those servers. It is intended
+      for development of business applications with Jabber.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Evan Prodromou</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-05-22</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp617504">Introduction</a><br />2.  <a href="#sect-idp628240">Requirements</a><br />3.  <a href="#sect-idp637584">Overview</a><br />4.  <a href="#sect-idp640928">Entities in the JOAP Universe</a><br />   
+      4.1.  <a href="#sect-idp642048">Object Server Component</a><br />   
+      4.2.  <a href="#sect-idp1491984">Class</a><br />   
+      4.3.  <a href="#sect-idp1498624">Instance</a><br />   
+      4.4.  <a href="#sect-idp556736">Attribute</a><br />   
+      4.5.  <a href="#sect-idp559568">Method</a><br />5.  <a href="#sect-idp1528000">JOAP Data Types</a><br />   
+      5.1.  <a href="#sect-idp1528880">Scalar Types</a><br />   
+      5.2.  <a href="#sect-idp1534800">Instance Addresses</a><br />   
+      5.3.  <a href="#sect-idp1540592">Compound Types</a><br />      
+      5.3.1.  <a href="#sect-idp1541472">Arrays</a><br />      
+      5.3.2.  <a href="#sect-idp1543584">Structs</a><br />   
+      5.4.  <a href="#sect-idp1546480">Specifying Types</a><br />6.  <a href="#sect-idp1548368">JOAP Stanzas</a><br />   
+      6.1.  <a href="#sect-idp1550624">&lt;describe&gt;</a><br />      
+      6.1.1.  <a href="#sect-idp1552928">Targets</a><br />      
+      6.1.2.  <a href="#sect-idp1556464">Descriptive Texts</a><br />      
+      6.1.3.  <a href="#sect-idp1558256">Attribute Definitions</a><br />      
+      6.1.4.  <a href="#sect-idp1563280">Method Definitions</a><br />      
+      6.1.5.  <a href="#sect-idp1567712">Class References</a><br />      
+      6.1.6.  <a href="#sect-idp1568864">Timestamps</a><br />      
+      6.1.7.  <a href="#sect-idp1570064">Superclasses</a><br />      
+      6.1.8.  <a href="#sect-idp1572608">Flattening</a><br />      
+      6.1.9.  <a href="#sect-idp1574768">Examples</a><br />   
+      6.2.  <a href="#sect-idp1587728">&lt;read&gt;</a><br />      
+      6.2.1.  <a href="#sect-idp1592128">Timestamps</a><br />      
+      6.2.2.  <a href="#sect-idp1593840">Error Codes</a><br />      
+      6.2.3.  <a href="#sect-idp1597888">Examples</a><br />   
+      6.3.  <a href="#sect-idp1607216">&lt;add&gt;</a><br />      
+      6.3.1.  <a href="#sect-idp1610688">Error Codes</a><br />      
+      6.3.2.  <a href="#sect-idp1615776">Examples</a><br />   
+      6.4.  <a href="#sect-idp1620224">&lt;edit&gt;</a><br />      
+      6.4.1.  <a href="#sect-idp1622896">Content in &lt;edit&gt; Results</a><br />      
+      6.4.2.  <a href="#sect-idp1624768">Error Codes</a><br />      
+      6.4.3.  <a href="#sect-idp1629072">Examples</a><br />   
+      6.5.  <a href="#sect-idp1636800">&lt;delete&gt;</a><br />      
+      6.5.1.  <a href="#sect-idp1638896">Error Codes</a><br />      
+      6.5.2.  <a href="#sect-idp1642640">Examples</a><br />   
+      6.6.  <a href="#sect-idp1647664">&lt;search&gt;</a><br />      
+      6.6.1.  <a href="#sect-idp1650448">Value Matching</a><br />      
+      6.6.2.  <a href="#sect-idp1656848">Instances of Subclasses</a><br />      
+      6.6.3.  <a href="#sect-idp1660880">Empty &lt;search&gt;</a><br />      
+      6.6.4.  <a href="#sect-idp1662560">Error Codes</a><br />      
+      6.6.5.  <a href="#sect-idp1667360">Examples</a><br />   
+      6.7.  <a href="#sect-idp1674784">Method Calls</a><br />      
+      6.7.1.  <a href="#sect-idp1678368">Examples</a><br />7.  <a href="#sect-idp1688048">Potential Applications</a><br />   
+      7.1.  <a href="#sect-idp1689200">Application Server</a><br />   
+      7.2.  <a href="#sect-idp1690416">Relational Database Interface</a><br />   
+      7.3.  <a href="#sect-idp1691872">N-Tier Application</a><br />   
+      7.4.  <a href="#sect-idp1695648">Jabber Component Controller</a><br />   
+      7.5.  <a href="#sect-idp1700416">Distributed Object System Gateway</a><br />8.  <a href="#sect-idp1702368">Implementation Notes</a><br />9.  <a href="#sect-idp1703376">Security Considerations</a><br />   
+      9.1.  <a href="#sect-idp1704352">Authentication</a><br />   
+      9.2.  <a href="#sect-idp1705552">Authorization</a><br />   
+      9.3.  <a href="#sect-idp1711584">Privacy and Confidentiality</a><br />10.  <a href="#sect-idp1715408">IANA Considerations</a><br />11.  <a href="#sect-idp1716480">XMPP Registrar Considerations</a><br />12.  <a href="#sect-idp1718560">Future Considerations</a><br />13.  <a href="#sect-idp1730112">Appendix A: Glossary</a><br />14.  <a href="#sect-idp1746736">Appendix B: JOAP XML Schema</a><br />15.  <a href="#sect-idp1748064">Appendix C: JOAP DTD</a><br />16.  <a href="#sect-idp1749408">Appendix D: Objects in Extended Example</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp617504" id="sect-idp617504">Introduction</a></h2>
+    <p>This document defines the Jabber Object Access Protocol (JOAP)
+      as an extension to the Jabber protocol. It outlines the
+      addressing scheme and IQ stanzas that comprise the protocol as
+      well as the data types that the protocol models. Example
+      applications are discussed, as well as security
+      considerations.</p>
+    <p>Jabber has a number of attractive features that give it an
+      advantage over existing frameworks for building multi-tier
+      applications, such as the Simple Object Access Protocol (SOAP)
+      or Java 2, Enterprise Edition (J2EE). Among these are:</p>
+    <ul>
+      <li><span class="strong">Built-in authentication.</span> All clients in the
+        Jabber network must be authenticated with their server before
+        sending messages to other Jabber entities. Inter-server
+        communication requires additional authentication, in the form
+        of dialback connections or other trust mechanisms. This
+        ensures that, when a message is delivered to a JOAP object
+        server, there is little doubt as to the authenticity of its
+        originator.</li>
+      <li><span class="strong">Global namespace.</span> Jabber allows namespacing
+        of addresses according to domain names. This allows objects to
+        be accessed globally, according to authorization rules.</li>
+      <li><span class="strong">An asynchronous messaging model.</span> Jabber is
+        built on a store-and-forward mechanism that allows a single
+        client to send messages to multiple servers concurrently. Of
+        course, synchronous messaging can be simulated on the client
+        side.</li>
+      <li><span class="strong">Cross-enterprise messaging.</span> Jabber is
+        designed to allow cross-enterprise messaging. Using Jabber for
+        multitier applications makes development of cross-enterprise
+        systems as easy as intra-enterprise development.</li>
+      <li><span class="strong">Message routing.</span> The architecture of Jabber
+        is based on clients that connect to a local server, and then
+        can send messages through that server to other clients,
+        servers, or components. Topographically, this contrasts well
+        with the one-to-one connections required with, for example,
+        HTTP.</li>
+      <li><span class="strong">Factoring network connections out of
+        scalability.</span> Because messages in Jabber are routed,
+        components need to maintain only one connection -- to their
+        upstream Jabber server. This removes the number of network
+        connections from the scalability equation for object
+        servers.</li>
+      <li><span class="strong">Language independence.</span> Jabber protocol
+        implementations exist for Java, C, and C++ as well as a number
+        of scripting languages such as Perl and Python.</li>
+      <li><span class="strong">Platform independence.</span> The Jabber protocol
+        is implemented on most major modern platforms.</li>
+    </ul>
+    <p>For existing Jabber development efforts, there are significant
+      advantages to building applications within a JOAP
+      framework. It should go without saying that, for developers creating
+      business applications on top of Jabber, a uniform object access
+      protocol provides significant advantage for cross-product
+      integration.</p>
+    <p>In addition, implementers of special-purpose components, such as
+      multi-user chat servers or whiteboarding components, can use an
+      object-server interface to allow fine-grained control of the
+      implementations, especially where such control is not specified
+      by the applicable Jabber protocol.</p>
+  <h2>2.
+       <a name="sect-idp628240" id="sect-idp628240">Requirements</a></h2>
+    <p>JOAP has the following design goals:</p>
+    <ul>
+      <li>Create a protocol for client programs to access object
+        server components.</li>
+      <li>Create a model for addressing object servers, classes, and
+        instances.</li>
+      <li>Define a language for manipulating data.</li>
+      <li>Define a language for describing data structures.</li>
+      <li>Maintain compatibility with <span class="ref"><a href="http://xmpp.org/extensions/xep-0009.html">Jabber-RPC (XEP-0009)</a></span>  [<a href="#nt-idp633024">1</a>].</li>
+      <li>Make classes and instances directly addressable.</li>
+      <li>Allow human- and programming-language independence.</li>
+      <li>Allow easy dynamic mapping of JOAP classes to local classes
+        in Perl, Python, and other dynamic languages.</li>
+    </ul>
+    <p>The following are non-goals:</p>
+    <ul>
+      <li>Enable object-oriented access to all parts of the Jabber
+        network (e.g., clients, other components).</li>
+      <li>Define a language for creating or altering classes on an
+        object server.</li>
+      <li>Define a language for describing or defining the
+        authorization of given users for given objects.</li>
+      <li>Define a programming interface between object servers and
+        classes in those servers (like Enterprise Java Beans).</li>
+    </ul>
+  <h2>3.
+       <a name="sect-idp637584" id="sect-idp637584">Overview</a></h2>
+    <p>The JOAP interface is made up of three key parts:</p>
+    <ul>
+      <li>A scheme for defining the addresses of object servers,
+        classes, and instances (collectively known as
+        "objects").</li>
+      <li>A set of message stanzas in the <tt>jabber:iq:joap</tt>
+        namespace for manipulating data in object servers, classes,
+        and instances. The stanzas allow client programs to analyze
+        the structure of objects, to read object attributes, to edit
+        object attributes, to add new instances, to delete instances,
+        and to search classes.</li>
+      <li>An application of XEP-0009 for calling methods on
+        objects.</li>
+    </ul>
+  <h2>4.
+       <a name="sect-idp640928" id="sect-idp640928">Entities in the JOAP Universe</a></h2>
+    <p>This section describes the various entities in the JOAP
+      universe. Some entities are directly addressable with Jabber IDs
+      (JIDs), as described below. Others are not considered outside of
+      their enclosing entities.</p>
+    <div class="indent"><h3>4.1 <a name="sect-idp642048" id="sect-idp642048">Object Server Component</a></h3>
+      <p>An object server component is a Jabber component that
+        provides object services. It is addressed like any other
+        Jabber component, i.e., with a DNS hostname or
+        pseudo-hostname. Some examples would be:</p>
+      <ul>
+        <li><tt>payroll.example.com</tt> - A payroll application
+          server.</li>
+        <li><tt>jukebox.example.com</tt> - An MP3 jukebox server.</li>
+      </ul>
+      <p>An object server has zero or more attributes, methods, and
+        classes.</p>
+    </div>
+    <div class="indent"><h3>4.2 <a name="sect-idp1491984" id="sect-idp1491984">Class</a></h3>
+      <p>A class is a category of object instances. It defines the
+        structure and interface of these instances. Each class is
+        addressed using the class name as the node identifier, and the
+        object server as the domain identifier. Class names must
+        conform to the node identifier restrictions defined for
+        XMPP. Class names must also be unique, regardless of case,
+        within an object server.</p>
+      <p>For example:</p>
+      <ul>
+        <li><tt>Employee@payroll.example.com</tt> - An employee class
+          at the payroll.example.com server.</li>
+        <li><tt>Song@jukebox.example.net</tt> - A song class on the
+          jukebox server.</li>
+        <li><tt>Board@circuit-design.example.com</tt> - A class for
+          circuit boards.</li>
+        <li><tt>Board@surf-shop.example.net</tt> - A class for
+          surfboards -- distinct from above class!</li>
+      </ul>
+      <p>Beside uniqueness and XMPP compliance, no further requirements are
+        made on class names. However, good design suggests mnemonic names.</p>
+      <p>Classes define the attributes and methods of their instances. In
+        addition, they can have attributes and methods of their own. Finally,
+        classes can have superclasses, which indicate an inheritance structure
+        as well as implementation of a defined interface.</p>
+      <p>JOAP allows for no relative addressing of classes. Classes
+        are always referred to by their full address (node identifier
+        plus domain identifier).</p>
+    </div>
+    <div class="indent"><h3>4.3 <a name="sect-idp1498624" id="sect-idp1498624">Instance</a></h3>
+      <p>An instance is a collection of data with identity, state, and
+        behavior. Each instance is a member of a class, which defines the
+        attributes (data) and methods (behavior) of the instance
+        itself.</p>
+      <p>An instance is addressed using the node plus server that identifies
+        its class, as well as a unique string that occupies the resource
+        identifier section of the Jabber ID. The resource is only unique over
+        the space of the corresponding class. Some example instance addresses:</p>
+      <ul>
+        <li><tt>Room@hotel.example.com/103</tt> - Room 103 in the
+          Example Hotel.</li>
+        <li><tt>Element@periodic-table.example.net/103</tt> - Element
+          103 (rutherfordium) in the periodic table.</li>
+        <li><tt>Employee@payroll.example.com/JohnSmith</tt> - An
+          employee named "John Smith".</li>
+        <li><tt>Customer@videorental.example.net/JohnSmith</tt> - A
+          customer named "John Smith" (not necessarily the
+          same person as the above employee!).</li>
+      </ul>
+      <p>Besides uniqueness within a class, and compliance with the
+        rules for resource identifiers in the XMPP standard, there are
+        no further requirements on instance identifiers in JOAP. In
+        particular, the instance identifier is opaque -- that is, no
+        further information about the state of the object can or
+        should be discerned from the identifier. What visible part of
+        the instance, if any, makes up the unique resource identifier
+        is implementation dependent.</p>
+      <p>That said, it is recommended that the instance identifier be
+        persistent through the life of the instance. In addition, using
+        mnemonic identifiers can greatly enhance the usability of JOAP
+        objects.</p>
+      <p>As with other resource identifiers, instance identifiers are
+        case-sensitive.</p>
+      <p>The instance identifier roughly corresponds to a primary key in a
+        relational database, and for object servers that provide access to
+        relational databases, it is recommended to use the primary key of a
+        table as the instance identifier. For tables with a compound key, a
+        comma (',') dash ('-'), or other non-alphanumeric character can be
+        used to separate parts of the key for better readability. For
+        example:</p>
+      <ul>
+        <li><tt>Date@calendar.example.net/2003-01-26</tt> -- The date
+          January 26th, 2003.</li>
+        <li><tt>City@canada.example.com/Montréal,QC</tt> -- The city
+          of Montréal, in the province of Québec.</li>
+      </ul>
+      <p>JOAP allows for no relative addressing of
+        instances. Instances are always referred to using their full
+        address (node identifier plus domain identifier plus resource
+        identifier).</p>
+    </div>
+    <div class="indent"><h3>4.4 <a name="sect-idp556736" id="sect-idp556736">Attribute</a></h3>
+      <p>An attribute is a unit of state that makes up part of an object
+        server, instance, or class. Each attribute has a name and a
+        type.</p>
+      <p>Attribute names must be strings of characters containing only
+        the characters [a-zA-Z0-9_]. The first character must be an
+        underscore or alphabetic character.  [<a href="#nt-idp558224">2</a>]</p>
+      <p>Attributes cannot be addressed individually. Attributes are
+        manipulated by sending JOAP messages to the object that owns
+        them.</p>
+    </div>
+    <div class="indent"><h3>4.5 <a name="sect-idp559568" id="sect-idp559568">Method</a></h3>
+      <p>A method is a unit of behavior that makes up part of an
+        object. Methods in JOAP are compatible with <span class="ref"><a href="http://www.xmlrpc.com/spec">XML-RPC</a></span>  [<a href="#nt-idp1523696">3</a>], as
+        specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0009.html">Jabber-RPC (XEP-0009)</a></span>  [<a href="#nt-idp1521856">4</a>]. In particular, methods have a name, a
+        return type, and 0 or more parameters, each of which has a
+        type.</p>
+      <p>The one exception to XML-RPC compatibility is that method
+        names for JOAP are restricted to the characters
+        [a-zA-z0-9_].  [<a href="#nt-idp1526080">5</a>]</p>
+      <p>Methods cannot be directly addressed using JOAP. Methods are
+        described and executed by sending messages to the object
+        server, class, or instance that owns them.</p>
+    </div>
+  <h2>5.
+       <a name="sect-idp1528000" id="sect-idp1528000">JOAP Data Types</a></h2>
+    <p>The range of JOAP data types is borrowed directly from
+      XML-RPC.</p>
+    <div class="indent"><h3>5.1 <a name="sect-idp1528880" id="sect-idp1528880">Scalar Types</a></h3>
+      <p>The scalar types include the following:</p>
+      <ul>
+        <li><span class="strong">int</span> or <span class="strong">i4</span>: a 32-bit
+          signed integer</li>
+        <li><span class="strong">boolean</span>: a one-digit integer representing
+          "true" (1) or "false" (0)</li>
+        <li><span class="strong">string</span>: a string of characters</li>
+        <li><span class="strong">double</span>: double-precision signed
+          floating-point number</li>
+        <li><span class="strong">datetime.iso8601</span>: a date value, in ISO
+          8601 format</li>
+        <li><span class="strong">base64</span>: binary data, base64-encoded for
+          transmission</li>
+      </ul>
+    </div>
+    <div class="indent"><h3>5.2 <a name="sect-idp1534800" id="sect-idp1534800">Instance Addresses</a></h3>
+      <p>Instance addresses are a special type of string used for
+        referring to instance objects. They can be passed as
+        parameters to methods, or set as attribute values.</p>
+      <p>If a value can contain an object instance, its type is the
+        address of a class. The address of any object instance that is
+        an instance of that class, or any of its subclasses, can be
+        used in that value.</p>
+      <p>For example, if <tt>Boxcar@trainset.example.com</tt> is a
+        subclass of <tt>Car@trainset.example.com</tt>, then
+        <tt>Boxcar@trainset.example.com/569</tt> can be used as a
+        method parameter, or set as an attribute, where
+        <tt>Car@trainset.example.com</tt> is the defined type.</p>
+      <p>Because addresses are used for instance values, all methods
+        involving instances are implicitly pass-by-reference. If a
+        pass-by-value functionality is needed, a struct (see below)
+        should be used instead.</p>
+      <p>Note that attribute and method param types can use classes
+        and instances from other object servers (that is, with
+        different domain identifiers). For instance, an
+        <tt>Employee@payroll.example.com</tt> class could have an
+        attribute of type <tt>Job@hr.example.com</tt>.</p>
+    </div>
+    <div class="indent"><h3>5.3 <a name="sect-idp1540592" id="sect-idp1540592">Compound Types</a></h3>
+      <p>There are two compound types defined in XML-RPC.</p>
+      <div class="indent"><h3>5.3.1 <a name="sect-idp1541472" id="sect-idp1541472">Arrays</a></h3>
+        <p>An <span class="em">array</span> is an ordered list of values. An array
+          can contain values of any type, including other compound
+          types.</p>
+        <p>In JOAP, as with XML-RPC, it is not possible to address,
+          set, or delete elements of an array. To set values in an
+          array, the entire new array must be specified.</p>
+      </div>
+      <div class="indent"><h3>5.3.2 <a name="sect-idp1543584" id="sect-idp1543584">Structs</a></h3>
+        <p>A <span class="em">struct</span> is a set of name-value pairs organized into
+          a logical grouping. A struct can contain values of any type,
+          including other compound types.</p>
+        <p>In JOAP, as with XML-RPC, it is not possible to address,
+          set, or delete elements of a struct. To set values in an
+          struct, the entire new struct must be specified.</p>
+        <p>Structs are useful mainly for groupings of data that do not
+          have independent identity or behavior.  Where an object
+          needs identity or behavior, an instance should be used
+          instead of a struct.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>5.4 <a name="sect-idp1546480" id="sect-idp1546480">Specifying Types</a></h3>
+      <p>Types are specified by a string name of the type. This can be
+        one of the XML-RPC types described above, or a class
+        address. [<a href="#nt-idp1547392">6</a>]</p>
+    </div>
+  <h2>6.
+       <a name="sect-idp1548368" id="sect-idp1548368">JOAP Stanzas</a></h2>
+    <p>This section defines the Jabber stanzas that make up the JOAP
+      protocol.</p>
+    <p>Each stanza is an information query (IQ). Except for method
+      calls, the stanzas are all in the 'jabber:iq:joap' namespace. Each
+      of the following sections describes a stanza in that namespace,
+      herein called a "verb". The verbs allow basic access
+      to object servers, classes, and instances.</p>
+    <p>Not all verbs can be sent to all JOAP entities. The appropriate JOAP
+      entity a verb should be addressed to is noted under the description of
+      the verb.</p>
+    <div class="indent"><h3>6.1 <a name="sect-idp1550624" id="sect-idp1550624">&lt;describe&gt;</a></h3>
+      <p>The &lt;describe&gt; verb requests the interface -- that is, methods,
+        attributes, and classes -- of a given object server or class. The IQ
+        type is "get".</p>
+      <p>The &lt;describe&gt; verb is useful for creating wrapper
+        classes in JOAP clients, either at runtime or at compile
+        time. It can also be used for object browsers, or for client
+        programs to ascertain that the interface they assume for an
+        object is still valid.</p>
+      <div class="indent"><h3>6.1.1 <a name="sect-idp1552928" id="sect-idp1552928">Targets</a></h3>
+        <p>&lt;describe&gt; verbs can be sent to object servers, classes, and
+          instances. Each will return different data.</p>
+        <ul>
+          <li>Object servers return zero or more descriptive texts,
+            zero or more attribute definitions, zero or more method
+            definitions, zero or more class names, and a
+            timestamp.</li>
+          <li>Classes return zero or more descriptive texts, zero or
+            more attribute definitions, zero or more method
+            definitions, and a timestamp.</li>
+          <li>Instances return the exact results of sending the
+            &lt;describe&gt; method to their class. This is for convenience
+            only; it is preferable to send &lt;describe&gt; to the class
+            directly.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.1.2 <a name="sect-idp1556464" id="sect-idp1556464">Descriptive Texts</a></h3>
+        <p>Each object description can contain one or more strings of
+        descriptive text. This is to indicate the
+        purpose and usage of the object in human-readable form.</p>
+        <p>Multiple descriptions are allowed in the hope that they
+           will be used to describe the attribute in multiple
+           languages (differentiated using the xml:lang
+           attribute).</p>
+      </div>
+      <div class="indent"><h3>6.1.3 <a name="sect-idp1558256" id="sect-idp1558256">Attribute Definitions</a></h3>
+        <p>Attribute definitions have the following parts:</p>
+        <ul>
+          <li>A name, which is a legal attribute name as described
+            above.</li>
+          <li>A type, which is a legal JOAP type as described
+            above.</li>
+          <li>A flag indicating if the attribute is an attribute of the
+            class itself, or of individual instances.</li>
+          <li>A flag indicating if the attribute is writable.</li>
+          <li>A flag indicating if the attribute is required.</li>
+          <li>One or more strings of descriptive text, to indicate the
+            purpose and usage of this attribute. Multiple
+            descriptions are allowed in the hope that they will be
+            used to describe the attribute in multiple languages
+            (differentiated using the 'xml:lang' attribute).</li>
+        </ul>
+        <p>The attribute definitions returned to a client should 
+          include only attributes the user is authorized to access.</p>
+      </div>
+      <div class="indent"><h3>6.1.4 <a name="sect-idp1563280" id="sect-idp1563280">Method Definitions</a></h3>
+        <p>Method definitions have the following parts:</p>
+        <ul>
+          <li>A name, which is a legal method name as described
+            above.</li>
+          <li>A return type, which is a legal JOAP type as described
+            above.</li>
+          <li>A flag indicating if the method is a method of the class
+            itself, or of individual instances.</li>
+          <li>Zero or more parameters, each of which has a name, a
+            type, and one or more strings of descriptive text.</li>
+          <li>One or more strings of descriptive text, indicating the
+            use and behavior of this method.</li>
+        </ul>
+        <p>The method definitions returned to a client should 
+          include only methods the user is authorized to access.</p>
+      </div>
+      <div class="indent"><h3>6.1.5 <a name="sect-idp1567712" id="sect-idp1567712">Class References</a></h3>
+        <p>Classes, in superclass definitions and object server
+          interfaces, are always referred to by their full
+          address.</p>
+      </div>
+      <div class="indent"><h3>6.1.6 <a name="sect-idp1568864" id="sect-idp1568864">Timestamps</a></h3>
+        <p>The timestamp is a date-time value in ISO 8601 format,
+          UTC. The timestamp indicates the last time an interface was
+          changed, if that information is available.</p>
+      </div>
+      <div class="indent"><h3>6.1.7 <a name="sect-idp1570064" id="sect-idp1570064">Superclasses</a></h3>
+        <p>The main point of describing the superclasses a class has
+          is to allow clients to make typing distinctions: that is, to
+          determine if a class presents a given interface, or may be
+          provided as a parameter or attribute in another JOAP
+          call.</p>
+        <p>The list of superclasses given in a class description is
+          flat, not hierarchical. No provision is made to
+          indicate which of a class's superclasses are superclasses of
+          each other, nor is there any implied precedence order in the
+          order of the classes in the returned description.</p>
+        <p>In addition, no provision is made to define which
+          superclass actually implements any methods or attributes
+          defined.</p>
+      </div>
+      <div class="indent"><h3>6.1.8 <a name="sect-idp1572608" id="sect-idp1572608">Flattening</a></h3>
+        <p>When a class receives a &lt;describe&gt; verb, it must
+          return all its superclasses, including multiple
+          ancestors. It must as well return all the attributes and
+          methods that it responds to, including those defined in
+          its superclasses. This is called a "flattened"
+          description of the class.  [<a href="#nt-idp1574080">7</a>]</p>
+      </div>
+      <div class="indent"><h3>6.1.9 <a name="sect-idp1574768" id="sect-idp1574768">Examples</a></h3>
+        <p>The following examples illustrate the use of the &lt;describe&gt;
+          verb.  [<a href="#nt-idp1575632">8</a>]</p>
+        <p>To describe a server, the JOAP client sends this
+          stanza.</p>
+        <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Describing An Object Server</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_describe_1'
+              from='Client@example.com'
+              to='trainset.example.com'&gt;
+            &lt;describe xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The object server returns this response:</p>
+        <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Description of an Object Server</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_describe_1'
+              from='trainset.example.com'
+              to='Client@example.com'&gt;
+            &lt;describe xmlns='jabber:iq:joap'&gt;
+              &lt;desc xml:lang='en-US'&gt;
+                This server provides classes for managing a virtual
+                remote train set.
+              &lt;/desc&gt;
+              &lt;attributeDescription writable='true'&gt;
+                &lt;name&gt;logLevel&lt;/name&gt;
+                &lt;type&gt;i4&lt;/type&gt;
+                &lt;desc xml:lang='en-US'&gt;Verbosity level for access logging.&lt;/desc&gt;
+              &lt;/attributeDescription&gt;
+              &lt;methodDescription&gt;
+                &lt;name&gt;startLogging&lt;/name&gt;
+                &lt;returnType&gt;boolean&lt;/returnType&gt;
+                &lt;desc xml:lang='en-US'&gt;Start logging activity on this
+                  server. Returns true for success and false for an
+                  error.&lt;/desc&gt;
+              &lt;/methodDescription&gt;
+              &lt;methodDescription&gt;
+                &lt;name&gt;stopLogging&lt;/name&gt;
+                &lt;returnType&gt;boolean&lt;/returnType&gt;
+                &lt;desc xml:lang='en-US'&gt;Stop logging activity on this
+                  server. Returns true for success and false for an
+                  error.&lt;/desc&gt;
+              &lt;/methodDescription&gt;
+              &lt;class&gt;Train@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Car@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Caboose@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Engine@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Boxcar@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;PassengerCar@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Building@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;TrackSegment@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Switch@trainset.example.com&lt;/class&gt;
+              &lt;class&gt;Station@trainset.example.com&lt;/class&gt;
+              &lt;timestamp&gt;2003-01-07T20:08:13Z&lt;/timestamp&gt;
+          &lt;/describe&gt;
+        &lt;/iq&gt;</pre></div>
+        <p>To describe the <tt>Car@trainset.example.com</tt> class,
+          the JOAP client sends this stanza to the class for
+          boxcars.</p>
+        <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Describing a Class</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_describe_2'
+              from='Client@example.com'
+              to='Boxcar@trainset.example.com' &gt;
+            &lt;describe xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The class returns this stanza to the JOAP client.</p>
+        <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Description of a Class</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_describe_2'
+              from='Boxcar@trainset.example.com'
+              to='Client@example.com'&gt;
+            &lt;describe xmlns='jabber:iq:joap'&gt;
+              &lt;desc xml:lang='en-US'&gt;
+                A Car in the trainset that can be used to ship cargo.
+              &lt;/desc&gt;
+              &lt;attributeDescription writable='false' required='true'&gt;
+                &lt;name&gt;trackingNumber&lt;/name&gt;
+                &lt;type&gt;i4&lt;/type&gt;
+                &lt;desc xml:lang='en-US'&gt;Tracking number for this car.&lt;/desc&gt;
+              &lt;/attributeDescription&gt;
+              &lt;attributeDescription writable='true' required='true'&gt;
+                &lt;name&gt;contents&lt;/name&gt;
+                &lt;type&gt;string&lt;/type&gt;
+                &lt;desc xml:lang='en-US'&gt;Contents of the boxcar.&lt;/desc&gt;
+              &lt;/attributeDescription&gt;
+              &lt;methodDescription allocation='class'&gt;
+                &lt;name&gt;nextTrackingNumber&lt;/name&gt;
+                &lt;returnType&gt;i4&lt;/returnType&gt;
+                &lt;desc xml:lang='en-US'&gt;The next available tracking number.&lt;/desc&gt;
+              &lt;/methodDescription&gt;
+              &lt;superclass&gt;Car@trainset.example.com&lt;/superclass&gt;
+              &lt;timestamp&gt;2003-01-07T20:08:13Z&lt;/timestamp&gt;
+           &lt;/describe&gt;
+         &lt;/iq&gt;</pre></div>
+        <p>To describe an instance, the JOAP client sends this stanza
+          to a particular track segment.</p>
+        <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Describing an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_describe_3'
+              from='Client@example.com'
+              to='TrackSegment@trainset.example.com/134' &gt;
+            &lt;describe xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;
+          
+        </pre></div>
+        <p>The instance returns this stanza to the JOAP client.</p>
+        <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Description of an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              from='TrackSegment@trainset.example.com/134'
+              to='Client@example.com'
+              id='joap_describe_3'&gt;
+            &lt;describe xmlns='jabber:iq:joap'&gt;
+              &lt;desc xml:lang='en-US'&gt;
+                A length of track in the trainset which can be
+                connected to a previous and next length of track.
+              &lt;/desc&gt;
+              &lt;attributeDescription&gt;
+                &lt;name&gt;previous&lt;/name&gt;
+                &lt;type&gt;TrackSegment@trainset.example.com&lt;/type&gt;
+                &lt;desc&gt;Previous segment of track.&lt;/desc&gt;
+              &lt;/attributeDescription&gt;
+              &lt;attributeDescription&gt;
+                &lt;name&gt;next&lt;/name&gt;
+                &lt;type&gt;TrackSegment@trainset.example.com&lt;/type&gt;
+                &lt;desc&gt;Next segment of track.&lt;/desc&gt;
+              &lt;/attributeDescription&gt;
+              &lt;timestamp&gt;2003-01-07T20:08:13Z&lt;/timestamp&gt;
+            &lt;/describe&gt;
+          &lt;/iq&gt;
+        </pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>6.2 <a name="sect-idp1587728" id="sect-idp1587728">&lt;read&gt;</a></h3>
+      <p>The &lt;read&gt; verb allows clients to retrieve the values
+        of attributes of an object server, class, or instance. The
+        client can specify which attributes to return; if no
+        attributes are specified, then all attributes are
+        returned.  [<a href="#nt-idp1588480">9</a>]</p>
+      <p>The &lt;read&gt; verb uses the "get" IQ type.</p>
+      <div class="indent"><h3>6.2.1 <a name="sect-idp1592128" id="sect-idp1592128">Timestamps</a></h3>
+        <p>A timestamp, in ISO 8601 format, UTC, can be added to the
+          results of a &lt;read&gt;. The timestamp indicates the last
+          time any of an object's attribute values have changed (not
+          just the requested ones). The timestamp can be used, for
+          example, to implement object caching on the client side.</p>
+      </div>
+      <div class="indent"><h3>6.2.2 <a name="sect-idp1593840" id="sect-idp1593840">Error Codes</a></h3>
+        <p>The following are some common error codes may be generated
+          in response to a &lt;read&gt; verb.</p>
+        <ul>
+          <li><span class="strong">404 (Not Found)</span>: The object addressed
+            does not exists.</li>
+          <li><span class="strong">403 (Forbidden)</span>: The user is not
+            authorized to read attributes of this object, or not
+            authorized to read the specified attributes of this
+            object.</li>
+          <li><span class="strong">406 (Not Acceptable)</span>: The client sent
+            an &lt;read&gt; verb specifying attributes that are not
+            defined for the class.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.2.3 <a name="sect-idp1597888" id="sect-idp1597888">Examples</a></h3>
+        <p>This section gives some examples of using the &lt;read&gt;
+          verb.</p>
+        <p>A client would send the following stanza to an instance to
+          read its attributes:</p>
+        <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Reading the Attributes of an         Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_read_1'
+              from='Client@example.com'
+              to='Station@trainset.example.com/Paddington'&gt;
+            &lt;read xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;
+          
+        </pre></div>
+        <p>In return, the instance would send this stanza to the
+          client:</p>
+        <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Attributes of an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_read_1'
+              from='Station@trainset.example.com/Paddington'
+              to='Client@example.com'&gt;
+            &lt;read xmlns='jabber:iq:joap'&gt;             
+              &lt;attribute&gt;
+                &lt;name&gt;name&lt;/name&gt;
+                &lt;value&gt;Paddington Station&lt;/value&gt;
+              &lt;/attribute&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;size&lt;/name&gt;
+                &lt;value&gt;
+                  &lt;struct&gt;
+                    &lt;member&gt;
+                      &lt;name&gt;length&lt;/name&gt;
+                      &lt;value&gt;&lt;i4&gt;4&lt;/i4&gt;&lt;/value&gt;
+                    &lt;/member&gt;
+                    &lt;member&gt;
+                      &lt;name&gt;width&lt;/name&gt;
+                      &lt;value&gt;&lt;i4&gt;3&lt;/i4&gt;&lt;/value&gt;
+                    &lt;/member&gt;
+                  &lt;/struct&gt;
+                &lt;/value&gt;
+              &lt;/attribute&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;previous&lt;/name&gt;
+                &lt;value&gt;TrackSegment@trainset.example.com/334&lt;/value&gt;
+              &lt;/attribute&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;next&lt;/name&gt;
+                &lt;value&gt;TrackSegment@trainset.example.com/271&lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/read&gt;
+          &lt;/iq&gt;
+        </pre></div>
+        <p>To read only specified attributes of an instance, the
+          client would send this stanza:</p>
+        <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Reading Limited Attributes</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_read_2'
+              from='Client@example.com'
+              to='Train@trainset.example.com/38'&gt;
+            &lt;read xmlns='jabber:iq:joap'&gt;
+              &lt;name&gt;location&lt;/name&gt;
+              &lt;name&gt;cars&lt;/name&gt;
+            &lt;/read&gt;
+          &lt;/iq&gt;
+          
+        </pre></div>
+        <p>In return, the instance would send this stanza to the
+          client:</p>
+        <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Limited Attributes</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_read_2'
+              from='Train@trainset.example.com/38'
+              to='Client@example.com'&gt;
+            &lt;read xmlns='jabber:iq:joap'&gt;             
+              &lt;attribute&gt;
+                &lt;name&gt;location&lt;/name&gt;
+                &lt;value&gt;Station@trainset.example.com/Paddington&lt;/value&gt;
+              &lt;/attribute&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;cars&lt;/name&gt;
+                &lt;value&gt;
+                  &lt;array&gt;
+                    &lt;data&gt;
+                      &lt;value&gt;Engine@trainset.example.com/14&lt;/value&gt;
+                      &lt;value&gt;PassengerCar@trainset.example.com/112&lt;/value&gt;
+                      &lt;value&gt;PassengerCar@trainset.example.com/309&lt;/value&gt;
+                      &lt;value&gt;BoxCar@trainset.example.com/212&lt;/value&gt;
+                      &lt;value&gt;Caboose@trainset.example.com/9&lt;/value&gt;
+                    &lt;/data&gt;
+                  &lt;/array&gt;    
+                &lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/read&gt;
+          &lt;/iq&gt;</pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>6.3 <a name="sect-idp1607216" id="sect-idp1607216">&lt;add&gt;</a></h3>
+      <p>The &lt;add&gt; verb is used to create a new instance of a
+        JOAP class. The verb is sent to the JOAP class, which returns
+        the address of the newly-created instance.</p>
+      <p>Within each &lt;add&gt; verb the client must include
+        attribute values for each required, writable attribute of the
+        class.</p>
+      <p>The IQ is of type "set".</p>
+      <div class="indent"><h3>6.3.1 <a name="sect-idp1610688" id="sect-idp1610688">Error Codes</a></h3>
+        <p>The following are some common error codes may be generated
+          in response to an &lt;add&gt; verb.</p>
+        <ul>
+          <li><span class="strong">404 (Not Found)</span>: The class for which an
+            instance is to be instantiated does not exists.</li>
+          <li><span class="strong">403 (Forbidden)</span>: The user is not
+            authorized to instantiate an instance of this class.</li>
+          <li><span class="strong">405 (Not Allowed)</span>: The client sent an
+            &lt;add&gt; verb to something that isn't a class.</li>
+          <li><span class="strong">406 (Not Acceptable)</span>: The client sent an
+            &lt;add&gt; verb containing attributes that are not
+            writable, or without all required, writable attributes,
+            or with attributes that are not defined for the class, or
+            with attribute values that are of the wrong type.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.3.2 <a name="sect-idp1615776" id="sect-idp1615776">Examples</a></h3>
+        <p>To create a new PassengerCar, the client would send the
+          following stanza to the PassengerCar class:</p>
+        <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Adding a New Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_add_1'
+              to='PassengerCar@trainset.example.com'
+              from='Client@example.com'&gt;
+            &lt;add xmlns='jabber:iq:joap'&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;passengers&lt;/name&gt;
+                &lt;value&gt;&lt;i4&gt;38&lt;/i4&gt;&lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/add&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The class would return the following response:</p>
+        <p class="caption"><a name="example-12" id="example-12"></a>Example 12. A New Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_add_1'
+              from='PassengerCar@trainset.example.com'
+              to='Client@example.com'&gt;
+            &lt;add xmlns='jabber:iq:joap'&gt;
+              &lt;newAddress&gt;PassengerCar@trainset.example.com/866&lt;/newAddress&gt;
+            &lt;/add&gt;
+          &lt;/iq&gt;
+          </pre></div>
+        <p>Note that the class created a new instance identifier, 866,
+          for the new instance. Further communications from the client
+          would use the full instance address returned.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>6.4 <a name="sect-idp1620224" id="sect-idp1620224">&lt;edit&gt;</a></h3>
+      <p>The &lt;edit&gt; verb is used to update the attributes of an
+        object. The name and new value of each attribute that is to be
+        updated is listed in the &lt;edit&gt; verb.</p>
+      <p>The IQ is of type "set".</p>
+      <p>Leaving a given attribute out of an &lt;edit&gt; verb does
+        not indicate that the attribute should be set to an undefined
+        or default value. The new values of attributes that are left
+        out is implementation-dependent; in general, though, they
+        should remain unchanged, if possible.</p>
+      <div class="indent"><h3>6.4.1 <a name="sect-idp1622896" id="sect-idp1622896">Content in &lt;edit&gt; Results</a></h3>
+        <p>If the results of an &lt;edit&gt; verb have content, it
+          will contain the new address of the instance that was
+          updated. The new address should be used henceforth by the
+          client.  [<a href="#nt-idp1624096">10</a>]</p>
+      </div>
+      <div class="indent"><h3>6.4.2 <a name="sect-idp1624768" id="sect-idp1624768">Error Codes</a></h3>
+        <p>The following error codes may be generated in response to a
+          &lt;edit&gt; verb.</p>
+        <ul>
+          <li><span class="strong">404 (Not Found)</span>: The object to be
+            edited does not exists.</li>
+          <li><span class="strong">403 (Forbidden)</span>: The user is not
+            authorized to edit this object, or to change one of the
+            attributes specified in the &lt;edit&gt; request.</li>
+          <li><span class="strong">406 (Not Acceptable)</span>: The client sent
+            an &lt;edit&gt; verb containing attributes that are not
+            defined for the class, or with attribute values that are
+            of the wrong type, or with attribute values that are
+            outside the range for the attribute.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.4.3 <a name="sect-idp1629072" id="sect-idp1629072">Examples</a></h3>
+        <p>To change the number of passengers in a PassengerCar, the
+          client would send the following stanza to the instance:</p>
+        <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Editing an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_edit_1'
+              from='Client@example.com'
+              to='PassengerCar@trainset.example.com/199'&gt;
+            &lt;edit xmlns='jabber:iq:joap'&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;passengers&lt;/name&gt;
+                &lt;value&gt;&lt;i4&gt;31&lt;/i4&gt;&lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/edit&gt;
+          &lt;/iq&gt;
+          </pre></div>
+        <p>The client would return the following stanza:</p>
+        <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Results of Editing an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_edit_1'
+              to='Client@example.com'
+              from='PassengerCar@trainset.example.com/199'&gt;
+            &lt;edit xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;
+          </pre></div>
+        <p>If a client wanted to change the name of a Building, it
+          would send the following stanza to the instance:</p>
+        <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Editing an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_edit_2'
+              from='Client@example.com'
+              to='Building@trainset.example.com/JonesFamilyHome'&gt;
+            &lt;edit xmlns='jabber:iq:joap'&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;name&lt;/name&gt;
+                &lt;value&gt;Smith Family Home&lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/edit&gt;
+          &lt;/iq&gt;
+          </pre></div>
+        <p>The results would be as follows:</p>
+        <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Results of Editing an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_edit_2'
+              to='Client@example.com'
+              from='Building@trainset.example.com/JonesFamilyHome'&gt;
+            &lt;edit xmlns='jabber:iq:joap'&gt;
+              &lt;newAddress&gt;Building@trainset.example.com/SmithFamilyHome&lt;/newAddress&gt;
+            &lt;/edit&gt;
+          &lt;/iq&gt;
+          </pre></div>
+        <p>Note that the instance indentifier, and thus the instance
+          address, of the instance has changed. The <tt>from</tt> part
+          of the IQ, however, contains the old address.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>6.5 <a name="sect-idp1636800" id="sect-idp1636800">&lt;delete&gt;</a></h3>
+      <p>The &lt;delete&gt; verb is used to delete an instance. The IQ
+        is of type "set". The &lt;delete&gt; stanza has no
+        sub-elements.</p>
+      <p>Only instances can be deleted. Classes and object servers
+        cannot be deleted. After an instance is deleted, it is no
+        longer addressable.</p>
+      <p>A given user may not be able to delete a particular
+        instance.</p>
+      <div class="indent"><h3>6.5.1 <a name="sect-idp1638896" id="sect-idp1638896">Error Codes</a></h3>
+        <p>The following error codes may be generated in response to a
+          &lt;delete&gt; verb.</p>
+        <ul>
+          <li><span class="strong">404 (Not Found)</span>: The instance to be
+            deleted does not exists.</li>
+          <li><span class="strong">403 (Forbidden)</span>: The user is not
+            authorized to delete this instance.</li>
+          <li><span class="strong">405 (Not Allowed)</span>: The client sent a
+            &lt;delete&gt; verb to an object server or class.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.5.2 <a name="sect-idp1642640" id="sect-idp1642640">Examples</a></h3>
+        <p>To delete an instance, a client would send the following
+          stanza:</p>
+        <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Deleting an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_delete_1'
+              from='Client@example.com'
+              to='Building@trainset.example.com/Courthouse'&gt;
+            &lt;delete xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The instance would return this stanza:</p>
+        <p class="caption"><a name="example-18" id="example-18"></a>Example 18. A Deleted Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_delete_1'
+              to='Client@example.com'
+              from='Building@trainset.example.com/Courthouse'&gt;
+            &lt;delete xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>If the user is not authorized to delete the instance, it
+          would return this error:</p>
+        <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Error on Unauthorized Deletion</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='error'
+              id='joap_delete_1'
+              to='Client@example.com'
+              from='Building@trainset.example.com/Courthouse'&gt;
+            &lt;delete xmlns='jabber:iq:joap' /&gt;
+            &lt;error code='403'&gt;
+              You are not authorized to delete this instance.
+            &lt;/error&gt;
+          &lt;/iq&gt;</pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>6.6 <a name="sect-idp1647664" id="sect-idp1647664">&lt;search&gt;</a></h3>
+      <p>The &lt;search&gt; verb allows rudimentary searching and
+        listing of instances in a class. The IQ is of type
+        "get".</p>
+      <p>The client sends a &lt;search&gt; verb to the class,
+        specifying the attributes that are search criteria and values
+        to search for. The class returns a list of the addresses of
+        matching instances.</p>
+      <p>Multiple attributes are logically AND'd; that
+        is, resulting instances must match <span class="em">all</span> of the
+        attribute values.</p>
+      <div class="indent"><h3>6.6.1 <a name="sect-idp1650448" id="sect-idp1650448">Value Matching</a></h3>
+        <p>How attribute values are specified for matching depends on
+          the type of the attribute.</p>
+        <ul>
+          <li>For numeric types (&lt;int&gt;, &lt;double&gt;),
+            &lt;boolean&gt;, and &lt;dateTime.iso8601&gt;, values match
+            if they are exactly equal.</li>
+          <li>For &lt;string&gt; types, a search value matches an
+            attribute value if it is a case-dependent substring of
+            that value. For example, "hat" will match
+            "hat", "that", and "real-time
+            chat server".</li>
+          <li>For the &lt;base64&gt; type, a search value matches
+            an attribute value if the base64-decoded value of the
+            search value is an 8-bit clean substring of the
+            base64-decoded attribute value. For example,
+            "aGF0Cg==" ("hat") will match
+            "cmVhbC10aW1lIGNoYXQK" ("real-time
+            chat").</li>
+          <li>For instance addresses, a search value matches an
+            attribute value if they are exactly equal.</li>
+          <li>For &lt;struct&gt; types, a search value matches an
+            attribute value if each of its named members matches the
+            corresponding named members in the attribute value, and
+            has the same type.</li>
+          <li>For &lt;array&gt; types, a search value matches an
+            attribute value if each of its members matches the
+            corresponding members in the attribute value, in order,
+            and has the same type.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.6.2 <a name="sect-idp1656848" id="sect-idp1656848">Instances of Subclasses</a></h3>
+        <p>Classes should return all instances of the class that are
+          on the same object server (that is, which have the same
+          domain identifier in their address) and that match the search
+          criteria. This includes instances of subclasses of the
+          class.</p>
+        <p>Whether a class returns instances of subclasses that reside
+          on other object servers is implementation-dependent.
+           [<a href="#nt-idp1658416">11</a>]</p>
+        <p>Classes cannot be searched on attributes that are defined
+          only in subclasses; for example, a search for the attribute
+          "contents" sent to the
+          <tt>Car@trainset.example.com</tt> class should result in a
+          <tt>406 (Not Acceptable)</tt> error.</p>
+      </div>
+      <div class="indent"><h3>6.6.3 <a name="sect-idp1660880" id="sect-idp1660880">Empty &lt;search&gt;</a></h3>
+        <p>The semantics of an empty &lt;search&gt; verb is to request
+          <span class="em">all</span> instances of a class. This provides a listing
+          or browsing functionality.</p>
+      </div>
+      <div class="indent"><h3>6.6.4 <a name="sect-idp1662560" id="sect-idp1662560">Error Codes</a></h3>
+        <p>The following error codes may be generated in response to a
+          &lt;search&gt; verb.</p>
+        <ul>
+          <li><span class="strong">404 (Not Found)</span>: The class to be
+            searched does not exists.</li>
+          <li><span class="strong">403 (Forbidden)</span>: The user is not
+            authorized to search this class.</li>
+          <li><span class="strong">405 (Not Allowed)</span>: The client sent a
+            &lt;search&gt; verb to an object server or instance.</li>
+          <li><span class="strong">406 (Not Acceptable)</span>: The client sent
+            an &lt;search&gt; verb containing attributes that are not
+            defined for the class, or with attribute values that are
+            of the wrong type.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>6.6.5 <a name="sect-idp1667360" id="sect-idp1667360">Examples</a></h3>
+        <p>To search for Boxcar instances carrying coal, the client
+          would send the following stanza to the Boxcar class:</p>
+        <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Searching for Instances</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_search_1'
+              from='Client@example.com'
+              to='Boxcar@trainset.example.com'&gt;
+            &lt;search xmlns='jabber:iq:joap'&gt;
+              &lt;attribute&gt;
+                &lt;name&gt;contents&lt;/name&gt;
+                &lt;value&gt;&lt;string&gt;coal&lt;/string&gt;&lt;/value&gt;
+              &lt;/attribute&gt;
+            &lt;/search&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The Boxcar class would return a list of all matching
+          instances:</p>
+        <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Search Results</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_search_1'
+              from='Boxcar@trainset.example.com'
+              to='Client@example.com'&gt;
+            &lt;search xmlns='jabber:iq:joap'&gt;
+              &lt;item&gt;Boxcar@trainset.example.com/195&lt;/item&gt;
+              &lt;item&gt;Boxcar@trainset.example.com/35&lt;/item&gt;
+              &lt;item&gt;Boxcar@trainset.example.com/681&lt;/item&gt;
+            &lt;/search&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>To get a list of all Building instances, the client would
+          send an empty &lt;search&gt; verb, as follows:</p>
+        <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Listing All Instances of a Class</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='get'
+              id='joap_search_2'
+              from='Client@example.com'
+              to='Building@trainset.example.com'&gt;
+            &lt;search xmlns='jabber:iq:joap' /&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The Building class would return the following stanza:</p>
+        <p class="caption"><a name="example-23" id="example-23"></a>Example 23. List Results</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_search_2'
+              from='Building@trainset.example.com'
+              to='Client@example.com'&gt;
+            &lt;search xmlns='jabber:iq:joap'&gt;
+              &lt;item&gt;Building@trainset.example.com/Courthouse&lt;/item&gt;
+              &lt;item&gt;Station@trainset.example.com/Paddington&lt;/item&gt;
+              &lt;item&gt;Station@trainset.example.com/GareDeLyon&lt;/item&gt;
+              &lt;item&gt;Building@trainset.example.com/SmithFamilyHome&lt;/item&gt;
+            &lt;/search&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>Note that the class returns instances of subclasses, as
+          well as direct instances of the class.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>6.7 <a name="sect-idp1674784" id="sect-idp1674784">Method Calls</a></h3>
+      <p>Method calls in JOAP are simply XML-RPC calls, as defined in
+        XEP-0009. [<a href="#nt-idp1675632">12</a>] To call a method
+        on an object, the client simply sends an XML-RPC message to that
+        object. Method calls must match the parameters as defined in
+        the method definition returned by the &lt;describe&gt;
+        verb.</p>
+      <p>Method names must be the exact method name as returned by
+        &lt;describe&gt;. No class or instance identifier prefix (with
+        "." or ":") is used.</p>
+      <p>Note, also, that the addressee of the method call, that is,
+        the object that defines the method, is not specified as a
+        parameter of the method, as it is in some programming
+        languages. The addressee of the method is implicit in the
+        address to which the method was sent.</p>
+      <div class="indent"><h3>6.7.1 <a name="sect-idp1678368" id="sect-idp1678368">Examples</a></h3>
+        <p>To start the event log on the train set server, the client
+          would send the following stanza:</p>
+        <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Method Call on an Object Server</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_xmlrpc_1'
+              from='Client@example.com'
+              to='trainset.example.com'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodCall&gt;
+                &lt;methodName&gt;startLogging&lt;/methodName&gt;
+              &lt;/methodCall&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The object server would respond with the following results:</p>
+        <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Method Call on an Object Server</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_xmlrpc_1'
+              to='Client@example.com'
+              from='trainset.example.com'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodResponse&gt;
+                &lt;params&gt;
+                  &lt;param&gt;
+                    &lt;value&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/value&gt;
+                  &lt;/param&gt;
+                &lt;/params&gt;
+              &lt;/methodResponse&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>To retrieve the next available Car tracking number, the
+          client would send the following stanza to the Car class:</p>
+        <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Method Call on a Class</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_xmlrpc_2'
+              from='Client@example.com'
+              to='Car@trainset.example.com'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodCall&gt;
+                &lt;methodName&gt;nextTrackingNumber&lt;/methodName&gt;
+              &lt;/methodCall&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The class would respond with the following results:</p>
+        <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Results of a Class Method Call</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_xmlrpc_2'
+              to='Client@example.com'
+              from='Car@trainset.example.com'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodResponse&gt;
+                &lt;params&gt;
+                  &lt;param&gt;
+                    &lt;value&gt;&lt;i4&gt;909&lt;/i4&gt;&lt;/value&gt;
+                  &lt;/param&gt;
+                &lt;/params&gt;
+              &lt;/methodResponse&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>To make a Switch change to a different track segment, the
+          client would send the following stanza to the instance:</p>
+        <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Method Call on an Instance</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='set'
+              id='joap_xmlrpc_3'
+              from='Client@example.com'
+              to='Switch@trainset.example.com/981'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodCall&gt;
+                &lt;methodName&gt;switchTo&lt;/methodName&gt;
+                &lt;params&gt;
+                  &lt;param&gt;
+                    &lt;value&gt;TrackSegment@trainset.example.com/119&lt;/value&gt;
+                  &lt;/param&gt;
+                &lt;/params&gt;
+              &lt;/methodCall&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+        <p>The instance would respond with the following results:</p>
+        <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Results of an Instance Method Call</p><div class="indent"><pre class="prettyprint">
+          &lt;iq type='result'
+              id='joap_xmlrpc_3'
+              from='Switch@trainset.example.com/981'
+              to='Client@example.com'&gt;
+            &lt;query xmlns='jabber:iq:rpc'&gt;
+              &lt;methodResponse&gt;
+                &lt;params&gt;
+                  &lt;param&gt;
+                    &lt;value&gt;&lt;boolean&gt;1&lt;/boolean&gt;&lt;/value&gt;
+                  &lt;/param&gt;
+                &lt;/params&gt;
+              &lt;/methodResponse&gt;
+            &lt;/query&gt;
+          &lt;/iq&gt;</pre></div>
+      </div>
+    </div>
+  <h2>7.
+       <a name="sect-idp1688048" id="sect-idp1688048">Potential Applications</a></h2>
+    <div class="indent"><h3>7.1 <a name="sect-idp1689200" id="sect-idp1689200">Application Server</a></h3>
+      <p>A simple application server can be provided using JOAP. This is merely
+        the degenerate case of an object server that provides only methods and
+        attributes, with no classes.</p>
+    </div>
+    <div class="indent"><h3>7.2 <a name="sect-idp1690416" id="sect-idp1690416">Relational Database Interface</a></h3>
+      <p>A more complex example would be an interface to a relational database
+        server, such as Oracle, PostgreSQL, or mySQL. The object server would
+        represent a single database within the database server. Each table in
+        the database would be represented by a class with no class attributes
+        or methods. Each row in the database would be an instance of its
+        table's class, with attributes but no methods.</p>
+    </div>
+    <div class="indent"><h3>7.3 <a name="sect-idp1691872" id="sect-idp1691872">N-Tier Application</a></h3>
+      <p>A distributed n-tier application can be built fairly directly
+        with JOAP. N-tier applications are usually defined as having
+        three main segments:</p>
+      <ul>
+        <li>A user-interface segment</li>
+        <li>A business-object segment, defining objects with business
+          rules encoded into their behavior</li>
+        <li>A data-storage segment, handling basic storage of
+          relatively unintelligent objects</li>
+      </ul>
+      <p>With JOAP, application developers can create the last two
+        segments with a JOAP interface. User-interface clients can use
+        JOAP to access and manipulate the business objects in a
+        business object server. In turn, the business objects can use
+        JOAP to manipulate underlying database objects in the data
+        storage layer (perhaps implemented using a relational database
+        interface, as defined above).</p>
+    </div>
+    <div class="indent"><h3>7.4 <a name="sect-idp1695648" id="sect-idp1695648">Jabber Component Controller</a></h3>
+      <p>Jabber protocols typically define a base set of functionality
+        for a component to provide. Implementers often want to provide
+        specialized, fine-grained control of the component that is not
+        part of the core functionality of a component. For example,
+        the implementer may wish to allow administrators to get
+        metrics on a component, enable or review logs, note error
+        situations, or configure the component remotely. [<a href="#nt-idp1696880">13</a>]</p>
+      <p>A component can provide an additional JOAP interface, along
+        with its regular protocol-specific interface, to enable this
+        kind of control functionality. Implementers can in this way
+        provide implementation-specific functionality in an open
+        way.</p>
+      <p>For example, if <tt>conference.example.com</tt> is
+        a MUC component, <tt>control.conference.example.com</tt> might
+        be a JOAP component with access to the internal data
+        structures of the MUC component. A conference room addressed
+        in the MUC component as
+        <tt>ModelTrains@conference.example.com</tt> might be addressed
+        in the JOAP component as
+        <tt>Room@control.conference.example.com/ModelTrains</tt>.</p>
+    </div>
+    <div class="indent"><h3>7.5 <a name="sect-idp1700416" id="sect-idp1700416">Distributed Object System Gateway</a></h3>
+      <p>There are a number of existing distributed object systems,
+        such as SOAP, CORBA, distributed OLE, Enterprise Java Beans,
+        etc.</p>
+      <p>It would be reasonable to create gateways for these object
+        systems or object servers implementing their protocols using
+        JOAP. JOAP could also be used to allow disparate object
+        systems to communicate through a common protocol.</p>
+    </div>
+  <h2>8.
+       <a name="sect-idp1702368" id="sect-idp1702368">Implementation Notes</a></h2>
+    <p>To follow.</p>
+  <h2>9.
+       <a name="sect-idp1703376" id="sect-idp1703376">Security Considerations</a></h2>
+    <p>This section describes some security considerations for
+      implementers of JOAP.</p>
+    <div class="indent"><h3>9.1 <a name="sect-idp1704352" id="sect-idp1704352">Authentication</a></h3>
+      <p>No provision is made for authentication of users to the
+        object server. Jabber users authenticate to a login server
+        before they are able to send any Jabber stanzas.</p>
+    </div>
+    <div class="indent"><h3>9.2 <a name="sect-idp1705552" id="sect-idp1705552">Authorization</a></h3>
+      <p>Authorization for users to access and manipulate objects and
+        attributes in JOAP is fine-grained; object servers can return
+        error codes to indicate a lack of authorization for any given
+        attribute, object, or method.</p>
+      <p>No provision is made to define a user's authorization for an
+        object, attribute, or method. Implicit authorization is
+        outlined with the results of the &lt;describe&gt; verb.</p>
+      <ul>
+        <li>For attributes, if a user is unauthorized to &lt;read&gt; the
+          attribute, the object server should not return a definition of
+          the attribute in the &lt;describe&gt; results.</li>
+        <li>If a user is unauthorized to &lt;edit&gt; an attribute, the
+          object server should note that the the attribute is not
+          writable in the &lt;describe&gt; results.</li>
+        <li>If a user is unauthorized to execute a method, the object
+          server should not return a definition of the attribute in
+          the &lt;describe&gt; results.</li>
+        <li>For classes that the user is not allowed to access at all,
+          the object server should not return a reference to that
+          class in the &lt;describe&gt; results for the object
+          server.</li>
+        <li>For instances that the user is not allowed to access at
+          all, the object server should not return references to that
+          instance in &lt;search&gt; results.</li>
+      </ul>
+    </div>
+    <div class="indent"><h3>9.3 <a name="sect-idp1711584" id="sect-idp1711584">Privacy and Confidentiality</a></h3>
+      <p>No provision is made in the JOAP protocol for providing
+        privacy and confidentiality in JOAP conversations. This is
+        left up to existing, more general Jabber protocols and
+        extensions.</p>
+      <p>Confidentiality from external, non-Jabber observers can be
+        obtained using transport-layer security (TLS) in all legs of
+        the Jabber path -- from client to server to (potentially)
+        another server to the object server component.</p>
+      <p>Maintaining confidentiality against observers in the Jabber
+        pathway -- for example, servers relaying JOAP stanzas --
+        requires using end-to-end encryption.</p>
+      <p>Due to the nature of the JOAP addressing scheme, however,
+        perfect confidentiality cannot be preserved. Even if the
+        contents of an IQ packet are encrypted, the address of the
+        object the packet is sent to -- e.g.,
+        <tt>Tips@whistleblower.example.org/NuclearRegulatoryInfractions</tt>
+        -- will reveal some information about the JOAP
+        conversation which could be harmful to the user.</p>
+    </div>
+  <h2>10.
+       <a name="sect-idp1715408" id="sect-idp1715408">IANA Considerations</a></h2>
+    <p>This document requires no interaction with the IANA.</p>
+  <h2>11.
+       <a name="sect-idp1716480" id="sect-idp1716480">XMPP Registrar Considerations</a></h2>
+    <p>This protocol defines one new namespace, 'jabber:iq:joap'.</p>
+    <p>Experimental implementations of this protocol should use the
+    namespace '<tt>http://www.xmpp.org/extensions/xep-0075.html#0.3</tt>' to
+    avoid conflicts with future versions.</p>
+  <h2>12.
+       <a name="sect-idp1718560" id="sect-idp1718560">Future Considerations</a></h2>
+    <ul>
+      <li>The presence mechanism provided by Jabber is currently not
+        integrated into the JOAP protocol. It would be relatively
+        easy to incorporate an observation mechanism, based on
+        presence, that would enable JOAP clients to request state
+        updates on JOAP instances. It is currently an open question
+        as to whether this would be genuinely useful, or merely a
+        "gee-whiz" add-on that needlessly complicates
+        implementation of the JOAP protocol.</li>
+      <li>More sophisticated distributed object protocol mechanisms,
+        such as transactions, are not addressed in this
+        specification.</li>
+      <li>The JOAP addressing mechanism restricts the type of Jabber
+        entity that can act as an object server. A Jabber instant
+        messaging client, for example, is normally addressed with
+        username and resource, such as
+        'AJabberUser@example.com/Home'. This address has no place
+        to hang the class and instance identifiers to allow
+        JOAP interactions.</li>
+      <li>Additionally, the JOAP addressing mechanism inhibits
+        letting components that already use the node and resource
+        identifier parts of their addresses, such as multi-user
+        chat (MUC) services. This restriction can be worked around by
+        providing corresponding JOAP components for existing Jabber
+        components.</li>
+      <li>An additional type for object references may be called
+        for.</li>
+      <li>The addition of the widely used &lt;nil&gt; XML-RPC data
+        type may be called for.</li>
+      <li>Searching is fairly rudimentary; a full boolean logic (and,
+        or, not) may be necessary to provide rich searching.</li>
+      <li>There is no indication in class descriptions of the
+        inheritance hierarchy of the class, or which superclass's
+        implementation of a method the class may use. This is an
+        implementation decision, and it seems counterproductive to
+        force any given inheritance method on the implementer.</li>
+      <li>Some functionality will be expensive using JOAP. An example
+        might be finding all Cars in a Train and adding them to
+        another Train. In our example, this would require one IQ to
+        get the train's cars, and N many other IQs to update each
+        Car. A batching mechanism -- being able to send multiple
+        updates in one IQ message -- would make this somewhat less
+        chatty. However, this functionality may be better addressed by
+        a global Jabber batching mechanism, rather than
+        special-purpose batching just for JOAP.</li>
+      <li>A more appropriate term than &lt;verb&gt; may be necessary
+        to describe the different types of IQs that make up the JOAP
+        namespace.</li>
+      <li>The names of the verbs come from the so-called basic READ
+        data-manipulation functions: read, edit, add, delete. A more
+        SQL-oriented set of names might be SELECT, UPDATE, INSERT,
+        DELETE. A set of names from C-related object languages would
+        be get, set, new, destroy or delete.</li>
+      <li>No mechanism is provided to describe the range of an
+        attribute. For example, if an attribute can only be an integer
+        less than 10, or a string in the set {'open', 'closed'}, there
+        is no allowance for describing this in JOAP.</li>
+      <li>Currently, <tt>struct</tt> and <tt>array</tt> attributes and
+        parameters are described just with the "struct" and
+        "array" types, and no definition is given of their
+        parts' types, names, or semantics. It may be valuable to
+        expand JOAP type descriptions to also describe the members of
+        a <tt>struct</tt> or <tt>array</tt>.</li>
+    </ul>
+  <h2>13.
+       <a name="sect-idp1730112" id="sect-idp1730112">Appendix A: Glossary</a></h2>
+    <p>The following glossary collects some definitions of terms used
+      in this document.</p>
+    <div class="indent"><dl>
+      <di><dt><strong>Object services</strong></dt><dd>Modelling an object or
+        collection of objects, and providing an interface to
+        manipulate those objects to other entities.</dd></di>
+      <di><dt><strong>Object server</strong></dt><dd>A Jabber component that
+        provides object services.</dd></di>
+      <di><dt><strong>Class</strong></dt><dd>A category of object
+        instances that defines their structure and interface.</dd></di>
+      <di><dt><strong>Instance</strong></dt><dd>A collection of
+        data with identity (address), state (attributes), and
+        behavior (methods).</dd></di>
+      <di><dt><strong>Attribute</strong></dt><dd>A unit of state that makes up
+        part of an object server, instance, or class.</dd></di>
+      <di><dt><strong>Method</strong></dt><dd>A unit of behavior.</dd></di>
+      <di><dt><strong>Object</strong></dt><dd>An object server, class, or
+        instance.</dd></di>
+      <di><dt><strong>User</strong></dt><dd>A person or process that accesses
+        object services through JOAP.</dd></di>
+      <di><dt><strong>Client</strong></dt><dd>The software or agent a user
+        employs to access object services through JOAP.</dd></di>
+      <di><dt><strong>Instance address</strong></dt><dd>The full JID of an
+        instance, e.g.,
+        <tt>Train@trainset.example.com/OrangeBlossomSpecial</tt>.</dd></di>
+      <di><dt><strong>Instance identifier</strong></dt><dd>The resource
+        identifier part of an instance address. For example, in
+        <tt>Train@trainset.example.com/OrangeBlossomSpecial</tt>, the
+        instance identifier is <tt>OrangeBlossomSpecial</tt>.</dd></di>
+      <di><dt><strong>Class address</strong></dt><dd>The full JID of a class,
+        e.g., <tt>Switch@trainset.example.com</tt>.</dd></di>
+      <di><dt><strong>Class identifier</strong></dt><dd>The node identifier part
+        of a class address. For example, in
+        <tt>Switch@trainset.example.com</tt>, the class identifier is
+        <tt>Switch</tt></dd></di>
+      <di><dt><strong>Authentication</strong></dt><dd>The act of determining
+        that a user is who they say they are. In the Jabber world, this
+        is done at login time.</dd></di>
+      <di><dt><strong>Authorization</strong></dt><dd>The act of determining
+        whether a given user has the right to execute a particular
+        action.</dd></di>
+    </dl></div>
+  <h2>14.
+       <a name="sect-idp1746736" id="sect-idp1746736">Appendix B: JOAP XML Schema</a></h2>
+    <p>The following is an XML Schema for JOAP.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;schema xmlns='http://www.w3.org/2001/XMLSchema'
+  xmlns:joap='jabber:iq:joap'
+  targetNamespace='jabber:iq:joap'
+  elementFormDefault='qualified'
+  attributeFormDefault='unqualified'&gt;
+  &lt;element name='describe'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:DescribeRequest' /&gt;
+        &lt;group ref='joap:DescribeResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;element name='read'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:ReadRequest' /&gt;
+        &lt;group ref='joap:ReadResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;element name='edit'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:EditRequest' /&gt;
+        &lt;group ref='joap:EditResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;element name='add'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:AddRequest' /&gt;
+        &lt;group ref='joap:AddResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;element name='delete'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:DeleteRequest' /&gt;
+        &lt;group ref='joap:DeleteResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;element name='search'&gt;
+    &lt;complexType&gt;
+      &lt;choice&gt;
+        &lt;group ref='joap:SearchRequest' /&gt;
+        &lt;group ref='joap:SearchResponse' /&gt;
+      &lt;/choice&gt;
+    &lt;/complexType&gt;
+  &lt;/element&gt;
+  &lt;group name='DescribeRequest'&gt;
+    &lt;sequence /&gt; &lt;!-- empty --&gt;
+  &lt;/group&gt;
+  &lt;group name='DescribeResponse'&gt;
+    &lt;sequence&gt;
+      &lt;element name='desc' type='joap:Description'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+      &lt;element name='attributeDescription' type='joap:AttributeDescription'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+      &lt;element name='methodDescription' type='joap:MethodDescription'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+      &lt;choice&gt;
+        &lt;element name='superclass' type='joap:ClassAddress'
+          minOccurs='0' maxOccurs='unbounded' /&gt;
+        &lt;element name='class' type='joap:ClassAddress'
+          minOccurs='0' maxOccurs='unbounded' /&gt;
+      &lt;/choice&gt;
+      &lt;element name='timestamp' type='joap:Timestamp'
+        minOccurs='0' maxOccurs='1' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='ReadRequest'&gt;
+    &lt;sequence&gt;
+      &lt;element name='name' type='joap:JOAPName'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='ReadResponse'&gt;
+    &lt;sequence&gt;
+      &lt;element name='attribute' type='joap:Attribute'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+      &lt;element name='timestamp' type='joap:Timestamp'
+        minOccurs='0' maxOccurs='1' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='EditRequest'&gt;
+    &lt;sequence&gt;
+      &lt;element name='attribute' type='joap:Attribute'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='EditResponse'&gt;
+    &lt;sequence&gt;
+      &lt;element name='newAddress' type='joap:InstanceAddress'
+        minOccurs='0' maxOccurs='1' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='AddRequest'&gt;
+    &lt;sequence&gt;
+      &lt;element name='attribute' type='joap:Attribute'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='AddResponse'&gt;
+    &lt;sequence&gt;
+      &lt;element name='newAddress' type='joap:InstanceAddress'
+        minOccurs='1' maxOccurs='1' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='DeleteRequest'&gt;
+    &lt;sequence /&gt; &lt;!-- empty --&gt;
+  &lt;/group&gt;
+  &lt;group name='DeleteResponse'&gt;
+    &lt;sequence /&gt; &lt;!-- empty --&gt;
+  &lt;/group&gt;
+  &lt;group name='SearchRequest'&gt;
+    &lt;sequence&gt;
+      &lt;element name='attribute' type='joap:Attribute'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;group name='SearchResponse'&gt;
+    &lt;sequence&gt;
+      &lt;element name='item' type='joap:InstanceAddress'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+  &lt;/group&gt;
+  &lt;complexType name='Attribute'&gt;
+    &lt;sequence&gt;
+        &lt;element name='name' type='joap:JOAPName'
+        minOccurs='1' maxOccurs='1' /&gt;
+        &lt;element name='value' type='joap:JOAPValue'
+        minOccurs='1' maxOccurs='1' /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+  &lt;complexType name='AttributeDescription'&gt;
+    &lt;!-- XXX: enforce name rules --&gt;
+    &lt;sequence&gt;
+      &lt;element name='name' type='joap:JOAPName'
+        minOccurs='1' maxOccurs='1' /&gt;
+      &lt;element name='type' type='joap:JOAPType'
+        minOccurs='1' maxOccurs='1' /&gt;
+      &lt;element name='desc' type='joap:Description'
+        minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name='required' type='boolean' default='false' /&gt;
+    &lt;attribute name='writable' type='boolean' default='false' /&gt;
+    &lt;attribute name='allocation' type='joap:Allocation' /&gt;
+  &lt;/complexType&gt;
+  &lt;complexType name='MethodDescription'&gt;
+    &lt;sequence&gt;
+      &lt;element name='name' type='joap:JOAPName'
+        minOccurs='1' maxOccurs='1' /&gt;
+      &lt;element name='returnType' type='joap:JOAPType'
+        minOccurs='1' maxOccurs='1'/&gt;
+      &lt;element name='params' minOccurs='0' maxOccurs='1'&gt;
+        &lt;complexType&gt;
+          &lt;sequence&gt;
+            &lt;element name='param' minOccurs='0' maxOccurs='unbounded' &gt;
+              &lt;complexType&gt;
+                &lt;sequence&gt;
+                  &lt;element name='name' type='joap:JOAPName'
+                    minOccurs='1' maxOccurs='1' /&gt;
+                  &lt;element name='type' type='joap:JOAPType'
+                    minOccurs='1' maxOccurs='1' /&gt;
+                  &lt;element name='desc' type='joap:Description'
+                    minOccurs='0' maxOccurs='unbounded' /&gt;
+                &lt;/sequence&gt;                  
+              &lt;/complexType&gt;
+            &lt;/element&gt;
+          &lt;/sequence&gt;
+        &lt;/complexType&gt;
+      &lt;/element&gt;
+      &lt;element name='desc' type='joap:Description'
+         minOccurs='0' maxOccurs='unbounded' /&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name='allocation' type='joap:Allocation' /&gt;
+  &lt;/complexType&gt;
+  &lt;simpleType name='ClassAddress'&gt;
+    &lt;restriction base='string'&gt;
+      &lt;pattern value='[^@]+@[a-zA-Z0-9\.]+' /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='InstanceAddress'&gt;
+    &lt;restriction base='string'&gt;
+      &lt;pattern value='[^@]+@[a-zA-Z0-9\.]+/.+' /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='XMLRPCType'&gt;
+    &lt;restriction base='string'&gt;
+      &lt;enumeration value='int' /&gt;
+      &lt;enumeration value='i4' /&gt;
+      &lt;enumeration value='double' /&gt;
+      &lt;enumeration value='boolean' /&gt;
+      &lt;enumeration value='string' /&gt;
+      &lt;enumeration value='array' /&gt;
+      &lt;enumeration value='struct' /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='JOAPType'&gt;
+    &lt;union memberTypes='ClassAddress XMLRPCType' /&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='JOAPName'&gt;
+    &lt;restriction base='string'&gt;
+      &lt;pattern value='[a-zA-Z_][0-9a-zA-Z_]*'/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='Boolean'&gt;
+    &lt;restriction base='unsignedByte'&gt;
+      &lt;enumeration value='0' /&gt;
+      &lt;enumeration value='1' /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;!-- FIXME: figure out how to do this without using mixed
+  content, which allows stuff we don't want. --&gt;
+  &lt;complexType name='JOAPValue' mixed='true'&gt;
+    &lt;choice minOccurs='0'&gt;
+      &lt;element name='i4' type='integer' /&gt;
+      &lt;element name='int' type='integer' /&gt;
+      &lt;element name='boolean' type='joap:Boolean' /&gt;
+      &lt;element name='string' type='string' /&gt;
+      &lt;element name='double' type='decimal' /&gt;
+      &lt;element name='datetime.iso8601' type='dateTime' /&gt;
+      &lt;element name='base64' type='base64Binary' /&gt;
+      &lt;element name='struct' type='joap:XMLRPCStruct' /&gt;
+      &lt;element name='array' type='joap:XMLRPCArray' /&gt;
+    &lt;/choice&gt;
+  &lt;/complexType&gt;
+  &lt;complexType name='XMLRPCStruct'&gt;
+    &lt;sequence&gt;
+      &lt;element name='member' minOccurs='1' maxOccurs='unbounded'&gt;
+        &lt;complexType&gt;
+          &lt;sequence&gt;
+            &lt;element name='name' minOccurs='1' maxOccurs='1'
+              type='string' /&gt;
+           &lt;element name='value' minOccurs='1' maxOccurs='1'
+              type='joap:JOAPValue' /&gt;
+          &lt;/sequence&gt;
+        &lt;/complexType&gt;
+      &lt;/element&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+  &lt;complexType name='XMLRPCArray'&gt;
+    &lt;sequence&gt;
+      &lt;element name='data' minOccurs='1' maxOccurs='1'&gt;
+        &lt;complexType&gt;
+          &lt;sequence&gt;
+           &lt;element name='value' type='joap:JOAPValue'
+              minOccurs='0' maxOccurs='unbounded' /&gt;
+          &lt;/sequence&gt;
+        &lt;/complexType&gt;
+      &lt;/element&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+  &lt;simpleType name='Allocation'&gt;
+    &lt;restriction base='string'&gt;
+      &lt;enumeration value='instance' /&gt;
+      &lt;enumeration value='class' /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='Description'&gt;
+    &lt;restriction base='string' /&gt;
+  &lt;/simpleType&gt;
+  &lt;simpleType name='Timestamp'&gt;
+    &lt;restriction base='dateTime' /&gt;
+  &lt;/simpleType&gt;
+&lt;/schema&gt;
+
+    </pre></div>
+  <h2>15.
+       <a name="sect-idp1748064" id="sect-idp1748064">Appendix C: JOAP DTD</a></h2>
+    <p>The following is a document-type description (DTD) for JOAP.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT name (#PCDATA)&gt;
+&lt;!ELEMENT type (#PCDATA)&gt;
+&lt;!ELEMENT desc (#PCDATA)&gt;
+&lt;!ATTLIST desc
+          xml:lang NMTOKEN #IMPLIED&gt;
+&lt;!ELEMENT i4 (#PCDATA)&gt;
+&lt;!ELEMENT int (#PCDATA)&gt;
+&lt;!ELEMENT string (#PCDATA)&gt;
+&lt;!ELEMENT double (#PCDATA)&gt;
+&lt;!ELEMENT datetime.iso8601 (#PCDATA)&gt;
+&lt;!ELEMENT base64 (#PCDATA)&gt;
+&lt;!ELEMENT class (#PCDATA)&gt;
+&lt;!ELEMENT superclass (#PCDATA)&gt;
+&lt;!ELEMENT item (#PCDATA)&gt;
+&lt;!ELEMENT returnType (#PCDATA)&gt;
+&lt;!ELEMENT member (name, value)&gt;
+&lt;!ELEMENT struct (member+)&gt;
+&lt;!ELEMENT data (value+)&gt;
+&lt;!ELEMENT array (data)&gt;
+&lt;!ELEMENT value (#PCDATA|i4|int|string|double|datetime.iso8601|base64|struct|array)*&gt;
+&lt;!ELEMENT attribute (name, value)&gt;
+&lt;!ELEMENT timestamp (#PCDATA)&gt;
+&lt;!ELEMENT newAddress (#PCDATA)&gt;
+&lt;!ELEMENT attributeDescription (name, type, desc*)&gt;
+&lt;!ATTLIST attributeDescription
+          required (true|false|0|1) "false"
+          writable (true|false|0|1) "false"
+          allocation (class|instance) "instance"&gt;
+&lt;!ELEMENT params (param+)&gt;
+&lt;!ELEMENT param (name, type, desc*)&gt;
+&lt;!ELEMENT methodDescription (name, returnType, params?, desc*)&gt;
+&lt;!ATTLIST methodDescription
+          allocation (class|instance) "instance"&gt;
+&lt;!ELEMENT describe (desc*, attributeDescription*, methodDescription*,
+  (class*|superclass*), timestamp?)&gt;
+&lt;!ELEMENT read (name*|(attribute*, timestamp?))&gt;
+&lt;!ELEMENT edit (attribute*|newAddress?)&gt;
+&lt;!ELEMENT add (attribute*|newAddress)&gt;
+&lt;!ELEMENT search (attribute*|item*)&gt;
+&lt;!ELEMENT delete EMPTY&gt;
+
+    </pre></div>
+  <h2>16.
+       <a name="sect-idp1749408" id="sect-idp1749408">Appendix D: Objects in Extended Example</a></h2>
+    <p>Because JOAP requires some significant examples to define the
+      protocol, an example domain was developed to provide
+      consistency. Readers familiar with UML may find the following diagram
+      useful to illustrate some of the fine points of JOAP listed
+      above.</p>
+    <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Object Diagram</p><div class="indent"><pre class="prettyprint">
+      Train:
+      number: i4
+      name: string
+      location: TrackSegment
+      cars: Car[]
+      void forward()
+      void back()
+      void insertCar(Car car, Car before)
+
+      Car:
+      trackingNumber: i4
+      i4 nextTrackingNumber() {class}
+
+      Caboose: Car
+
+      Engine: Car
+      canPull: i4
+
+      Boxcar: Car
+      contents: string
+
+      PassengerCar: Car
+      passengers: i4
+      
+      Building:
+      name: string
+      size: struct (length: i4, width: i4)
+
+      TrackSegment:
+      previous: TrackSegment
+      next: TrackSegment
+
+      Switch: 
+      in: TrackSegment
+      out: TrackSegment[]
+      boolean switchTo(TrackSegment)
+
+      Station: TrackSegment, Building           
+      </pre></div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0075<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.3<br />
+            Last Updated: 2003-05-22<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0075.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0075.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0075.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Evan Prodromou</h3><p class="indent">
+        Email:
+        <a href="mailto:evan@prodromou.san-francisco.ca.us">evan@prodromou.san-francisco.ca.us</a><br />
+        JabberID: 
+        <a href="xmpp:EvanProdromou@jabber.org">EvanProdromou@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp633024" id="nt-idp633024">1</a>. XEP-0009: Jabber-RPC &lt;<a href="http://xmpp.org/extensions/xep-0009.html">http://xmpp.org/extensions/xep-0009.html</a>&gt;.</p><p><a name="nt-idp558224" id="nt-idp558224">2</a>. This requirement is
+          intended to allow easy mapping of attributes in JOAP to
+          attributes of objects in client programming languages. The
+          restriction is the lowest common denominator for variable
+          names in most modern programming languages.</p><p><a name="nt-idp1523696" id="nt-idp1523696">3</a>. XML-RPC &lt;<a href="http://www.xmlrpc.com/spec">http://www.xmlrpc.com/spec</a>&gt;.</p><p><a name="nt-idp1521856" id="nt-idp1521856">4</a>. XEP-0009: Jabber-RPC &lt;<a href="http://xmpp.org/extensions/xep-0009.html">http://xmpp.org/extensions/xep-0009.html</a>&gt;.</p><p><a name="nt-idp1526080" id="nt-idp1526080">5</a>. This is to avoid conceptual mismatch in
+          programming languages where the other three characters allowed
+          by XML-RPC, namely ".", ":", and
+          "/", are used to separate class or instance names
+          from methods.</p><p><a name="nt-idp1547392" id="nt-idp1547392">6</a>. Implementers can determine if a specified type
+        is valid by checking it against a list of the XML-RPC
+        types. If it does not match, it should be checked to see if
+        matches the syntax for a class address (node identifier
+        plus domain identifier). Otherwise, it is not a valid
+        type.</p><p><a name="nt-idp1574080" id="nt-idp1574080">7</a>. Flattening the class
+            interface reduces the need for making multiple
+            "describe" verb calls just to find the interface
+            for one class.</p><p><a name="nt-idp1575632" id="nt-idp1575632">8</a>. All extended examples in this document refer
+            to a particular object domain, based on a fictional model
+            train set. A UML description of the object domain is
+            available in Appendix D.</p><p><a name="nt-idp1588480" id="nt-idp1588480">9</a>. This allows clients to cheaply retrieve
+          meta-information about an instance that may have exceptionally
+          large data, such as bin64-encoded file data.</p><p><a name="nt-idp1624096" id="nt-idp1624096">10</a>. This is to allow updates that alter the unique
+            key or attribute of an instance that determine its instance
+            identifier.</p><p><a name="nt-idp1658416" id="nt-idp1658416">11</a>. This caveat is to allow different types of subclassing
+            policies. Classes that define a well-known, standard
+            interface -- for example, a class defined by a standards
+            organization -- would probably not be "aware" of
+            all instances of that class. However, it is conceivable to
+            have a multi-tier business application where the object
+            servers did know about other servers, their classes, and
+            their instances.</p><p><a name="nt-idp1675632" id="nt-idp1675632">12</a>. XEP-0009 leaves some open questions as to use
+        of widely-defined extensions to the XML-RPC standard, such as
+        the &lt;nil&gt; type.</p><p><a name="nt-idp1696880" id="nt-idp1696880">13</a>. Most
+        Jabber components currently define Web interfaces, or
+        command-line scripts, to perform this kind of
+        control.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2003-05-22)</h4><div class="indent">For consistency, renamed hyphenated elements
+      'new-address' and 'return-type' to 'newAddress' and 'returnType'
+      respectively. Added 'desc' element for human-readable
+      descriptions to object servers and classes. Changed the
+      'writeable' [sic] attribute to the more correct
+      'writable'. Added experimental namespace recommendation in
+      XMPP Registrar section. (esp)
+    </div><h4>Version 0.2 (2003-03-05)</h4><div class="indent">Added a schema and DTD, a number of new examples, and
+        ensured that all examples validate against the DTD and
+        schema. (esp)
+    </div><h4>Version 0.1 (2003-01-28)</h4><div class="indent">Initial version (unpublished). (esp)
+    </div></div><hr /><p>END</p></body></html>

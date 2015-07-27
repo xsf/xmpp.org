@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0076: Malicious Stanzas</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Malicious Stanzas" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Description" content="This document defines an XMPP protocol extension for flagging malicious stanzas." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-04-01" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0076" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0076: Malicious Stanzas</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension for flagging malicious stanzas.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Joe Hildebrand</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Humorous</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-04-01</td></tr></table><hr /><p style="color:green">NOTICE: This document is Humorous. It MAY provide amusement but SHOULD NOT be taken seriously.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp475680">Introduction</a><br />2.  <a href="#sect-idp476192">Requirements and Approach</a><br />3.  <a href="#sect-idp485648">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp486032">Evil Messages</a><br />   
+      3.2.  <a href="#sect-idp487664">Evil Presence</a><br />   
+      3.3.  <a href="#sect-idp490160">Evil IQs</a><br />4.  <a href="#disco">Determining Support</a><br />5.  <a href="#sect-idp499088">Security Considerations</a><br />6.  <a href="#sect-idp502928">IANA Considerations</a><br />7.  <a href="#sect-idp1339680">XMPP Registrar Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp475680" id="sect-idp475680">Introduction</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc3514">RFC 3514</a></span>  [<a href="#nt-idp478464">1</a>], published just today (2003-04-01), defines a mechanism for specifying the "evil bit" in IPv4 in order to determine if a packet was sent with malicious intent. In Section 5 ("Related Work") of that RFC, reference is made to complementary mechanisms for other forms of evil such as IPv6 support and the application/evil MIME type. Because the <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp481024">2</a>] desires to maintain compliance with protocols developed by core Internet standards bodies, the current document defines a complementary mechanism for XMPP support of evil.</p>
+<h2>2.
+       <a name="sect-idp476192" id="sect-idp476192">Requirements and Approach</a></h2>
+  <p>There are three basic XMPP stanza types that may be sent within XML streams:</p>
+  <ul>
+    <li>&lt;message/&gt; -- a "push" medium for sending information to other entities.</li>
+    <li>&lt;presence/&gt; -- a "broadcast" medium for publishing information to entities that have subscribed to an entity's availability status.</li>
+    <li>&lt;iq/&gt; -- a "request-response" medium for executing basic but structured transactions with other entities.</li>
+  </ul>
+  <p>Any one of the foregoing data elements can be used with malicious intent. Therefore a generalized mechanism is needed. Because XML namespaces are used within XMPP to properly scope data, this document proposes a new namespace ('http://jabber.org/protocol/evil') to implement the desired functionality.</p>
+<h2>3.
+       <a name="sect-idp485648" id="sect-idp485648">Use Cases</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp486032" id="sect-idp486032">Evil Messages</a></h3>
+    <p>If an evil entity sends an evil message, it MUST include an appropriately namespaced extension in the message stanza:</p> 
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Evil Entity Sends Evil Message</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='iago@shakespeare.lit/pda'
+    to='emilia@shakespeare.lit/mobile'&gt;
+  &lt;body&gt;
+      I told him what I thought, and told no more
+      Than what he found himself was apt and true.
+  &lt;/body&gt;
+  &lt;evil xmlns='http://jabber.org/protocol/evil'/&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp487664" id="sect-idp487664">Evil Presence</a></h3>
+    <p>If an evil entity sends evil presence information, it MUST include an appropriately namespaced extension in the presence stanza:</p> 
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Evil Entity Sends Evil Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='iago@shakespeare.lit/pda'&gt;
+  &lt;show&gt;dnd&lt;/show&gt;
+  &lt;status&gt;Fomenting dissension&lt;/status&gt;
+  &lt;evil xmlns='http://jabber.org/protocol/evil'/&gt;
+&lt;/presence&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp490160" id="sect-idp490160">Evil IQs</a></h3>
+    <p>If an evil entity provides evil information in an IQ exchange, it MUST include an appropriately namespaced extension in the IQ stanza:</p> 
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Evil Entity Sends Evil Message</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='iago@shakespeare.lit/pda'
+    id='evil1'
+    to='emilia@shakespeare.lit/mobile'&gt;
+  &lt;query xmlns='jabber:iq:version'&gt;
+    &lt;name&gt;Stabber&lt;/name&gt;
+    &lt;version&gt;666&lt;/version&gt;
+    &lt;os&gt;FiendOS&lt;/os&gt;
+  &lt;/query&gt;
+  &lt;evil xmlns='http://jabber.org/protocol/evil'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="disco" id="disco">Determining Support</a></h2>
+  <p>Evil entities MUST advertise their support for this protocol in their responses to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp495712">3</a>] information ("disco#info") requests by returning a feature of "http://jabber.org/protocol/evil":</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. A disco#info query</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='emilia@shakespeare.lit/mobile'
+    id='disco1'
+    to='iago@shakespeare.lit/pda'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. A disco#info response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='iago@shakespeare.lit/pda'
+    id='disco1'
+    to='emilia@shakespeare.lit/mobile'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='http://jabber.org/protocol/evil'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp501104">4</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>5.
+       <a name="sect-idp499088" id="sect-idp499088">Security Considerations</a></h2>
+  <p>Because the 'http://jabber.org/protocol/evil' namespace flags an XML stanza as malicious, it is critically important that an entity appropriately process an XML stanza that contains the evil extension. Mission-critical applications SHOULD ignore any stanzas tagged with the evil extension. Evil servers MAY pass through evil stanzas unmodified. Really evil servers MAY silently delete the evil extension. Entities that are evil to the core SHOULD support channel-level evil as defined in RFC 3514, since this document defines per-stanza evil only.</p>
+<h2>6.
+       <a name="sect-idp502928" id="sect-idp502928">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1341184">5</a>].</p> 
+<h2>7.
+       <a name="sect-idp1339680" id="sect-idp1339680">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1344608">6</a>] shall register the 'http://jabber.org/protocol/evil' namespace as a result of this document.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0076<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Humorous">Humorous</a><br />
+            Version: 1.0<br />
+            Last Updated: 2003-04-01<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, RFC 3514<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: evil<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0076.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0076.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0076.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp478464" id="nt-idp478464">1</a>. RFC 3514: The Security Flag in the IPv4 Header &lt;<a href="http://tools.ietf.org/html/rfc3514">http://tools.ietf.org/html/rfc3514</a>&gt;.</p><p><a name="nt-idp481024" id="nt-idp481024">2</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p><p><a name="nt-idp495712" id="nt-idp495712">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp501104" id="nt-idp501104">4</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1341184" id="nt-idp1341184">5</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1344608" id="nt-idp1344608">6</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2003-04-01)</h4><div class="indent"><p>April Fools!</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

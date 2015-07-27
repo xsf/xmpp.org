@@ -1,0 +1,839 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0077: In-Band Registration</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="In-Band Registration" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for in-band registration with XMPP-based instant messaging servers and other services hosted on an XMPP network (such as groupchat rooms and gateways to non-XMPP IM services). The protocol is extensible via use of data forms, thus enabling services to gather a wide range of information during the registration process. The protocol also supports in-band password changes and cancellation of an existing registration." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2012-01-25" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0077" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0077: In-Band Registration</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for in-band registration with XMPP-based instant messaging servers and other services hosted on an XMPP network (such as groupchat rooms and gateways to non-XMPP IM services). The protocol is extensible via use of data forms, thus enabling services to gather a wide range of information during the registration process. The protocol also supports in-band password changes and cancellation of an existing registration.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2012-01-25</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#usecases">Use Cases</a><br />   
+      3.1.  <a href="#usecases-register">Entity Registers with a Host</a><br />      
+      3.1.1.  <a href="#usecases-register-server">Registration with a Server</a><br />   
+      3.2.  <a href="#usecases-cancel">Entity Cancels an Existing Registration</a><br />   
+      3.3.  <a href="#usecases-changepw">User Changes Password</a><br />4.  <a href="#extensibility">Extensibility</a><br />5.  <a href="#redirect">Redirection</a><br />6.  <a href="#precedence">Precedence Order</a><br />7.  <a href="#key">Key Element</a><br />8.  <a href="#streamfeature">Stream Feature</a><br />9.  <a href="#errors">Error Handling</a><br />10.  <a href="#disco">Determining Support</a><br />11.  <a href="#security">Security Considerations</a><br />12.  <a href="#iana">IANA Considerations</a><br />13.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      13.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      13.2.  <a href="#registrar-stream">Stream Features</a><br />   
+      13.3.  <a href="#registrar-querytypes">URI Query Types</a><br />      
+      13.3.1.  <a href="#registrar-querytypes-register">register</a><br />      
+      13.3.2.  <a href="#registrar-querytypes-unregister">unregister</a><br />   
+      13.4.  <a href="#registrar-formtypes">Field Standardization</a><br />      
+      13.4.1.  <a href="#registrar-formtypes-register">Registration</a><br />      
+      13.4.2.  <a href="#registrar-formtypes-cancel">Cancellation</a><br />      
+      13.4.3.  <a href="#registrar-formtypes-changepassword">Change Password</a><br />14.  <a href="#schemas">XML Schemas</a><br />   
+      14.1.  <a href="#schemas-register">jabber:iq:register</a><br />   
+      14.2.  <a href="#schemas-streams">Stream Feature</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>The Jabber protocols have long included a method for in-band registration with instant messaging servers and associated services. This method makes use of the 'jabber:iq:register' namespace and has been documented variously in Internet-Drafts and elsewhere. Because in-band registration is not required by <span class="ref"><a href="http://tools.ietf.org/html/rfc2779">RFC 2779</a></span>  [<a href="#nt-idp1593696">1</a>], documentation of the 'jabber:iq:register' namespace was removed from <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1595808">2</a>]. This specification fills the void for canonical documentation.</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>In-band registration must make it possible for an entity to register with a host, cancel an existing registration with a host, or change a password with a host. By "host" is meant either of the following:</p>
+  <ol>
+    <li>an instant messaging server, such as described in <span class="ref">XMPP IM</span> and identified by the "server/im" <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1599536">3</a>] category+type</li>
+    <li>an add-on service, such as a gateway (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0100.html">Gateway Interaction (XEP-0100)</a></span>  [<a href="#nt-idp1601648">4</a>]) or a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1603632">5</a>] service</li>
+  </ol>
+  <p>If needed, extensibility with regard to information gathered should be done using <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp1605616">6</a>].</p>
+<h2>3.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <div class="indent"><h3>3.1 <a name="usecases-register" id="usecases-register">Entity Registers with a Host</a></h3>
+    <p>In order to determine which fields are required for registration with a host, an entity SHOULD first send an IQ get to the host. The entity SHOULD NOT attempt to guess at the required fields by first sending an IQ set, since the nature of the required data is subject to service provisioning.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Entity Requests Registration Fields from Host</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='reg1' to='shakespeare.lit'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the entity is not already registered and the host supports In-Band Registration, the host MUST inform the entity of the required registration fields. If the host does not support In-Band Registration, it MUST return a &lt;service-unavailable/&gt; error. If the host is redirecting registration requests to some other medium (e.g., a website), it MAY return an &lt;instructions/&gt; element only, as shown in the <a href="#redirect">Redirection</a> section of this document.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Host Returns Registration Fields to Entity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;instructions&gt;
+      Choose a username and password for use with this service.
+      Please also provide your email address.
+    &lt;/instructions&gt;
+    &lt;username/&gt;
+    &lt;password/&gt;
+    &lt;email/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the host determines (based on the 'from' address) that the entity is already registered, the IQ result that it sends in response to the IQ get MUST contain an empty &lt;registered/&gt; element (indicating that the entity is already registered), SHOULD contain the registration information currently on file for the entity (although the &lt;password/&gt; element MAY be empty), and SHOULD contain an &lt;instructions/&gt; element (whose XML character data MAY be modified to reflect the fact that the entity is currently registered).</p>
+    <p>If the host is an instant messaging server, it SHOULD assume that the requesting entity is unregistered at this stage unless the entity has already authenticated (for details, see the <a href="#usecases-register-server">Registration with a Server</a> section below).</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Host Informs Entity of Current Registration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;registered/&gt;
+    &lt;username&gt;juliet&lt;/username&gt;
+    &lt;password&gt;R0m30&lt;/password&gt;
+    &lt;email&gt;juliet@capulet.com&lt;/email&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the entity is not already registered, the entity SHOULD provide the required information.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Entity Provides Required Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;bill&lt;/username&gt;
+    &lt;password&gt;Calliope&lt;/password&gt;
+    &lt;email&gt;bard@shakespeare.lit&lt;/email&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The requesting entity MUST provide information for all of the elements (other than &lt;instructions/&gt;) contained in the IQ result.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Host Informs Entity of Successful Registration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='reg2'/&gt;
+    </pre></div>
+    <p>Alternatively, registration may fail. Possible causes of failure include a username conflict (the desired username is already in use by another entity) and the fact that the requesting entity neglected to provide all of the required information.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Host Informs Entity of Failed Registration (Username Conflict)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;bill&lt;/username&gt;
+    &lt;password&gt;m1cro$oft&lt;/password&gt;
+    &lt;email&gt;billg@bigcompany.com&lt;/email&gt;
+  &lt;/query&gt;
+  &lt;error code='409' type='cancel'&gt;
+    &lt;conflict xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the requesting entity does not provide all of the requested information during registration  [<a href="#nt-idp1617984">7</a>] then the server or service MUST return a &lt;not-acceptable/&gt; error to the requesting entity.</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Host Informs Entity of Failed Registration (Some Required Information Not Provided)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;bill&lt;/username&gt;
+    &lt;password&gt;Calliope&lt;/password&gt;
+  &lt;/query&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the host requires additional information above and beyond the data elements specified in the schema, it SHOULD use Data Forms as described in the <a href="#extensibility">Extensibility</a> section of this document. (The next three examples show registration of an existing account with a third-party service, not of an entity with a server for the purpose of account registration.)</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Entity Requests Registration Fields from Host</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='contests.shakespeare.lit'
+    id='reg3'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Host Returns Registration Form to Entity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='contests.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='reg3'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;instructions&gt;
+      Use the enclosed form to register. If your Jabber client does not
+      support Data Forms, visit http://www.shakespeare.lit/contests.php
+    &lt;/instructions&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Contest Registration&lt;/title&gt;
+      &lt;instructions&gt;
+        Please provide the following information
+        to sign up for our special contests!
+      &lt;/instructions&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Given Name' var='first'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Family Name' var='last'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Email Address' var='email'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' label='Gender' var='x-gender'&gt;
+        &lt;option label='Male'&gt;&lt;value&gt;M&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Female'&gt;&lt;value&gt;F&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The user then SHOULD return the form:</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. User Submits Registration Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='juliet@capulet.com/balcony'
+    to='contests.shakespeare.lit'
+    id='reg4'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Given Name' var='first'&gt;
+        &lt;value&gt;Juliet&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Family Name' var='last'&gt;
+        &lt;value&gt;Capulet&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Email Address' var='email'&gt;
+        &lt;value&gt;juliet@capulet.com&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' label='Gender' var='x-gender'&gt;
+        &lt;value&gt;F&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <div class="indent"><h3>3.1.1 <a name="usecases-register-server" id="usecases-register-server">Registration with a Server</a></h3>
+      <p>Special care must be taken when an unregistered entity interacts with a server rather than a service. Normally, a server enables in-band registration so that entities can "bootstrap" their participation in the Jabber network; this bootstrapping happens when an unregistered and unauthenticated entity opens a TCP connection to a server and immediately completes the registration use case with the server, then authenticates using the newly-registered identity. As noted, when a server receives an IQ-get for registration information, it SHOULD assume that the requesting entity is unregistered unless the entity has already authenticated.</p>
+      <p>Depending on local service provisioning, a server MAY return a &lt;not-acceptable/&gt; stanza error if an unregistered entity attempts to register too many times before authenticating or if an entity attempts to register a second identity after successfully completing the registration use case; a server MAY also return a &lt;not-authorized/&gt; stream error if the unregistered entity waits too long before authenticating or attempts to complete a task other than authentication after successfully completing the registration use case.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="usecases-cancel" id="usecases-cancel">Entity Cancels an Existing Registration</a></h3>
+    <p>The 'jabber:iq:register' namespace also makes it possible for an entity to cancel a registration with a host by sending a &lt;remove/&gt; element in an IQ set. The host MUST determine the identity of the requesting entity based on the 'from' address of the IQ get.</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Entity Requests Cancellation of Existing Registration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='bill@shakespeare.lit/globe' id='unreg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;remove/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Host Informs Entity of Successful Cancellation</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='bill@shakespeare.lit/globe' id='unreg1'/&gt;
+    </pre></div>
+    <p>There are two scenarios:</p>
+    <ol>
+      <li><p>If the entity cancels its registration with its "home" server (i.e., the server at which it has maintained its XMPP account), then the entity SHOULD NOT include a 'from' or 'to' address in the remove request the server SHOULD then return a &lt;not-authorized/&gt; stream error and terminate all active sessions for the entity. The server SHOULD perform the remove based on the bare JID &lt;localpart@domain.tld&gt; associated with the current session or connection over which it received the remove request. If the server is an instant messaging and presence server that conforms to <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1635152">8</a>], the server SHOULD also cancel all existing presence subscriptions related to that entity (as stored in the entity's roster).</p></li>
+      <li><p>If the entity cancels its registration with a service other than its home server, its home server MUST stamp a 'from' address on the remove request, which in accordance with <span class="ref">XMPP Core</span> will be the entity's full JID &lt;localpart@domain.tld/resource&gt;. The service MUST perform the remove based on the bare JID &lt;localpart@domain.tld&gt; portion of the 'from' address.</p></li>
+    </ol>
+    <p>As specified below, several error cases are possible.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Unregister Error Cases</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Condition</th><th>Description</th></tr>
+      <tr class="body"><td>&lt;bad-request/&gt;</td><td>The &lt;remove/&gt; element was not the only child element of the &lt;query/&gt; element.</td></tr>
+      <tr class="body"><td>&lt;forbidden/&gt;</td><td>The sender does not have sufficient permissions to cancel the registration.</td></tr>
+      <tr class="body"><td>&lt;not-allowed/&gt;</td><td>No sender is allowed to cancel registrations in-band.</td></tr>
+      <tr class="body"><td>&lt;registration-required/&gt;</td><td>The entity sending the remove request was not previously registered.</td></tr>
+      <tr class="body"><td>&lt;unexpected-request/&gt;</td><td>The host is an instant messaging server and the IQ get does not contain a 'from' address because the entity is not registered with the server.</td></tr>
+    </table></div>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Host Informs Client of Failed Cancellation (Bad Request)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='unreg1'&gt;
+  &lt;error code='400' type='modify'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Host Informs Client of Failed Cancellation (Forbidden)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='unreg1'&gt;
+  &lt;error code='401' type='cancel'&gt;
+    &lt;forbidden xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Server Informs Client of Failed Cancellation (Not Allowed)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='unreg1'&gt;
+  &lt;error code='405' type='cancel'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>A given deployment MAY choose to require additional information (such as the old password or previously-gathered personal information) before cancelling the registration. In order to do so, the server or service SHOULD return a Data Form in the error stanza:</p>
+    <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Server Returns Cancellation Form With Error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='unreg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Cancel Registration&lt;/title&gt;
+      &lt;instructions&gt;Use this form to cancel your registration.&lt;/instructions&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register:cancel&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Username' var='username'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' label='Password' var='password'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Mother&amp;apos;s Maiden Name' var='x-mmn'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+  &lt;error code='405' type='cancel'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The user then SHOULD return the form:</p>
+    <p class="caption"><a name="example-17" id="example-17"></a>Example 17. User Returns Cancellation Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='bill@shakespeare.lit/globe' to='shakespeare.lit' id='unreg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register:cancel&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='username'&gt;
+        &lt;value&gt;bill@shakespeare.lit&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='password'&gt;
+        &lt;value&gt;theglobe&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='x-mmn'&gt;
+        &lt;value&gt;Throckmorton&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="usecases-changepw" id="usecases-changepw">User Changes Password</a></h3>
+    <p>The 'jabber:iq:register' namespace enables a user to change his or her password with a server or service. Once registered, the user can change passwords by sending an XML stanza of the following form:</p>
+    <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Password Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='shakespeare.lit' id='change1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;bill&lt;/username&gt;
+    &lt;password&gt;newpass&lt;/password&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Because the password change request contains the password in plain text, a client SHOULD NOT send such a request unless the underlying stream is encrypted (using SSL or TLS) and the client has verified that the server certificate is signed by a trusted certificate authority. A given deployment MAY choose to disable password changes if the stream is not properly encrypted, to disable in-band password changes, or to require additional information (such as the old password or previously-gathered personal information) before changing the password.</p>
+    <p>If the user provides an empty password element or a password element that contains no XML character data (i.e., either &lt;password/&gt; or &lt;password&gt;&lt;/password&gt;), the server or service MUST NOT change the password to a null value, but instead MUST maintain the existing password.</p>
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Host Informs Client of Successful Password Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='change1'/&gt;
+    </pre></div>
+    <p>Several error conditions are possible:</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Password Change Error Cases</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Condition</th><th>Description</th></tr>
+      <tr class="body"><td>&lt;bad-request/&gt;</td><td>The password change request does not contain complete information (e.g., the service requires inclusion of the &lt;username/&gt; element).</td></tr>
+      <tr class="body"><td>&lt;not-authorized/&gt;</td><td>The server or service does not consider the channel safe enough to enable a password change.</td></tr>
+      <tr class="body"><td>&lt;not-allowed/&gt;</td><td>The server or service does not allow password changes.</td></tr>
+      <tr class="body"><td>&lt;unexpected-request/&gt;</td><td>The host is an instant messaging server and the IQ set does not contain a 'from' address because the entity is not registered with the server.</td></tr>
+    </table></div>
+    <p>The server or service SHOULD NOT return the original XML sent in IQ error stanzas related to password changes.</p>
+    <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Host Informs Client of Failed Password Change (Bad Request)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='change1'&gt;
+  &lt;error code='400' type='modify'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Host Informs Client of Failed Password Change (Not Authorized)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='change1'&gt;
+  &lt;error code='401' type='modify'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Server Informs Client of Failed Password Change (Not Allowed)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='change1'&gt;
+  &lt;error code='405' type='cancel'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>In order to require additional information before changing the password, the server or service SHOULD return a Data Form in the error stanza:</p>
+    <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Server Returns Password Change Form With Error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='shakespeare.lit' to='bill@shakespeare.lit/globe' id='change1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Password Change&lt;/title&gt;
+      &lt;instructions&gt;Use this form to change your password.&lt;/instructions&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register:changepassword&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Username' var='username'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' label='Old Password' var='old_password'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' label='New Password' var='password'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' label='Mother&amp;apos;s Maiden Name' var='x-mmn'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+  &lt;error code='401' type='modify'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The user then SHOULD return the form:</p>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. User Returns Password Change Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='bill@shakespeare.lit/globe' to='shakespeare.lit' id='change2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:iq:register:changepassword&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='username'&gt;
+        &lt;value&gt;bill@shakespeare.lit&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='old_password'&gt;
+        &lt;value&gt;theglobe&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='password'&gt;
+        &lt;value&gt;groundlings&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='x-mmn'&gt;
+        &lt;value&gt;Throckmorton&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="extensibility" id="extensibility">Extensibility</a></h2>
+  <p>The fields defined for the 'jabber:iq:register' namespace are strictly limited to those specified in the schema. If a host needs to gather additional information, <span class="ref">XEP-0004: Data Forms</span> ("x:data") SHOULD be used according to the following rules:</p>
+  <ol>
+    <li>A host MUST NOT add new fields to the 'jabber:iq:register' namespace; instead, extensibility SHOULD be pursued via the <span class="ref">Data Forms</span> protocol as specified herein.</li>
+    <li>The x:data form shall be contained as a child element of the &lt;query xmlns='jabber:iq:register'/&gt; element (it cannot be a child of the &lt;iq/&gt; stanza and comply with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idp1675520">9</a>]).</li>
+    <li>The x:data form SHOULD contain x:data fields that correspond to all of the iq:register fields (e.g., username and password).</li>
+    <li>The x:data form SHOULD use a hidden FORM_TYPE field for the purpose of standardizing field names within the form, as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp1678752">10</a>].</li>
+    <li>The x:data form shall take precedence over the iq:register fields; if the submitting entity supports the <span class="ref">Data Forms</span> protocol, it SHOULD submit the data form rather than the predefined 'jabber:iq:register' fields, and MUST NOT submit both the data form and the predefined fields (see the <a href="#precedence">Precedence Order</a> section of this document).</li>
+  </ol>
+  <p>Support for extensibility via <span class="ref">Data Forms</span> is RECOMMENDED but is not required for compliance with this document.</p>
+<h2>5.
+       <a name="redirect" id="redirect">Redirection</a></h2>
+  <p>A given deployment MAY wish to redirect users to another medium (e.g., a website) for registration, rather than allowing in-band registration. The recommended approach is to include only the &lt;instructions/&gt; element rather than the required fields or a data form in the IQ result, as well as a URL encoded using <span class="ref"><a href="http://xmpp.org/extensions/xep-0066.html">Out-of-Band Data (XEP-0066)</a></span>  [<a href="#nt-idp1684768">11</a>] (see the <a href="#precedence">Precedence Order</a> section below for further details).</p>
+  <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Host Redirects Entity to Web Registration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='contests.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='reg3'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;instructions&gt;
+      To register, visit http://www.shakespeare.lit/contests.php
+    &lt;/instructions&gt;
+    &lt;x xmlns='jabber:x:oob'&gt;
+      &lt;url&gt;http://www.shakespeare.lit/contests.php&lt;/url&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>6.
+       <a name="precedence" id="precedence">Precedence Order</a></h2>
+  <p>Given the foregoing discussion, it is evident that an entity could receive any combination of iq:register, x:data, and x:oob namespaces from a service in response to a request for information. The precedence order is as follows:</p>
+  <ol start="1">
+    <li>x:data</li>
+    <li>iq:register</li>
+    <li>x:oob</li>
+  </ol>
+  <p>(Naturally, if the receiving application does not understand any of the foregoing namespaces, it MUST ignore the data qualified by that namespace.)</p>
+  <p>Thus it is possible that the host may return any of the following combinations, in which case the submitting application MUST proceed as defined in the table below (it is assumed that "iq:register fields" means instructions plus fields, whereas "iq:register instructions" means the &lt;instructions/&gt; element only):</p>
+  <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Recommended Processing of Namespace Combinations</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Included Data</th>
+      <th>Recommended Processing</th>
+      <th>Notes</th>
+    </tr>
+    <tr class="body">
+      <td>iq:register fields</td>
+      <td>Submit the completed iq:register fields.</td>
+      <td>This is the normal processing model for "legacy" services and clients.</td>
+    </tr>
+    <tr class="body">
+      <td>x:data form + iq:register fields</td>
+      <td>Submit the completed x:data form if understood, otherwise submit the completed iq:register fields; however, an application MUST NOT submit both.</td>
+      <td>The iq:register fields would be included for "legacy" clients; this combination SHOULD NOT be used if the x:data form includes required fields (e.g., a public key) that are not equivalent to defined iq:register fields (the next combination SHOULD be used instead).</td>
+    </tr>
+    <tr class="body">
+      <td>x:data form + iq:register instructions</td>
+      <td>Submit the completed x:data form if understood, otherwise present the iq:register instructions to the user.</td>
+      <td>This combination SHOULD be used if the x:data form includes required fields (e.g., a public key) that are not equivalent to defined iq:register fields and an alternate URL is not available.</td>
+    </tr>
+    <tr class="body">
+      <td>x:data form + x:oob URL</td>
+      <td>Submit the completed x:data form if understood, otherwise present the provided URL as an alternative.</td>
+      <td>This combination MAY be returned by a host, but a host SHOULD return the next combination instead in order to support the full range of legacy clients.</td>
+    </tr>
+    <tr class="body">
+      <td>x:data form + iq:register instructions + x:oob URL</td>
+      <td>Submit the completed x:data form if understood, otherwise present the iq:register instructions and provided URL as an alternative.</td>
+      <td>This combination SHOULD be used if the x:data form includes required fields (e.g., a public key) that are not equivalent to defined iq:register fields and an alternate URL is available.</td>
+    </tr>
+    <tr class="body">
+      <td>iq:register instructions + x:oob URL</td>
+      <td>Present the iq:register instructions and provided URL as a redirect.</td>
+      <td>This combination MAY be returned by a host that wishes to redirect registration to a URL.</td>
+    </tr>
+    <tr class="body">
+      <td>iq:register fields + x:oob URL</td>
+      <td>Submit the completed iq:register fields but optionally present the provided URL as an alternative.</td>
+      <td>This combination is NOT RECOMMENDED.</td>
+    </tr>
+  </table></div>
+<h2>7.
+       <a name="key" id="key">Key Element</a></h2>
+  <p><span class="em">This element is obsolete, but is documented here for historical completeness.</span></p>
+  <p>The &lt;key/&gt; element was used as a "transaction key" in certain IQ interactions in order to verify the identity of the sender. In particular, it was used by servers (but generally not services) during in-band registration, since normally a user does not yet have a 'from' address before registering. The flow is as follows:</p>
+  <ol>
+    <li>Client sends IQ-get request to server.</li>
+    <li>Server returns required elements to client, including &lt;key/&gt; element containing a random string (often a SHA-1 hash).</li>
+    <li>Client sends registration information to server, including &lt;key/&gt; element with the same value provided by the server.</li>
+    <li>Server checks key information and processes registration request; if key is missing or the key value does not match the transaction key provided, the server returns an error.</li>
+  </ol>
+  <p>The &lt;key/&gt; element was also used during registration removal.</p>
+<h2>8.
+       <a name="streamfeature" id="streamfeature">Stream Feature</a></h2>
+  <p><span class="ref">RFC 6120</span> defines methods for advertising feature support during stream negotiation. For the sake of efficiency, it may be desirable for a server to advertise support for in-band registration as a stream feature. The namespace for reporting support within &lt;stream:features/&gt; is "http://jabber.org/features/iq-register". Upon receiving a stream header qualified by the 'jabber:client' namespace, a server returns a stream header to the client and MAY announce support for in-band registration by including the relevant stream feature:</p>
+  <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Advertising registration as a stream feature</p><div class="indent"><pre class="prettyprint">
+  &lt;stream:features&gt;
+    &lt;register xmlns='http://jabber.org/features/iq-register'/&gt;
+  &lt;/stream:features&gt;
+  </pre></div>
+  <p>A server SHOULD NOT advertise in-band registration to another server (i.e., if the initial stream header was qualified by the 'jabber:server' namespace).</p>
+<h2>9.
+       <a name="errors" id="errors">Error Handling</a></h2>
+  <p>As defined herein, the 'jabber:iq:register' namespace supports both the old (HTTP-style) error codes and the extensible error classes and conditions specified in XMPP Core. A compliant server or service implementation MUST support both old-style and new-style error handling. A compliant client implementation SHOULD support both. For mappings of HTTP-style errors to XMPP-style conditions, refer to <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1719552">12</a>].</p>
+<h2>10.
+       <a name="disco" id="disco">Determining Support</a></h2>
+  <p>If an entity supports the protocol defined herein, it SHOULD report that by including a Service Discovery feature of "jabber:iq:register" in response to disco#info requests.</p>
+  <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Service discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='marlowe.lit'
+    id='jzg2d175'
+    to='shakespeare.lit'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Service discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='shakespeare.lit'
+    id='jzg2d175'
+    to='marlowe.lit'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='jabber:iq:register'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Although connecting clients typically determine support during stream negotiation via the stream feature, the service discovery feature is helpful for server-to-server connections as well as for clients that are already connected (e.g., to determine if password changes are possible in-band).</p>
+<h2>11.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>In-band registration is usually not included in other messaging protocols (for example, SMTP does not include a method for registering with an email server), often for reasons of security. The registration methods defined herein are known to be insecure and SHOULD NOT be used unless the channel between the registrant and the entity that accepts registration has been secured. For these reasons, the deployment of in-band registration is a policy matter and a given deployment MAY choose to disable in-band registration and password changes. Furthermore, this document should be deprecated as soon as a successor protocol is defined and implemented.</p>
+<h2>12.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1729072">13</a>].</p>
+<h2>13.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>13.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1733408">14</a>] includes the 'jabber:iq:register' namespace in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>13.2 <a name="registrar-stream" id="registrar-stream">Stream Features</a></h3>
+    <p>The XMPP Registrar includes the 'http://jabber.org/features/iq-register' namespace in its registry of stream feature namespaces.</p>
+  </div>
+  <div class="indent"><h3>13.3 <a name="registrar-querytypes" id="registrar-querytypes">URI Query Types</a></h3>
+    <p>As authorized by <span class="ref"><a href="http://xmpp.org/extensions/xep-0147.html">XMPP URI Query Components (XEP-0147)</a></span>  [<a href="#nt-idp1742976">15</a>], the XMPP Registrar maintains a registry of queries and key-value pairs for use in XMPP URIs (see &lt;<a href="http://xmpp.org/registrar/querytypes.html">http://xmpp.org/registrar/querytypes.html</a>&gt;).</p>
+    <p>As described below, the registered querytypes for registration management are "register" and "unregister".</p>
+    <div class="indent"><h3>13.3.1 <a name="registrar-querytypes-register" id="registrar-querytypes-register">register</a></h3>
+      <p>The 'jabber:iq:register' namespace include a mechanism for creating a registration. The registered querytype for doing so is "register".</p>
+      <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Register Action: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:marlowe.shakespeare.lit?register
+      </pre></div>
+      <p>Because registration is a two-step process, the application MUST then send an IQ-get to the entity in order to retrieve the required registration fields:</p>
+      <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Retrieving Registration Fields</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='marlowe.shakespeare.lit' type='get'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Receiving Registration Fields</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='marlowe.shakespeare.lit' type='result'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username/&gt;
+    &lt;password/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The application MUST then present an appropriate interface that enables the user to complete the registration form. Once the user provides the information, the application MUST send an IQ-set to the entity.</p>
+      <p class="caption"><a name="example-32" id="example-32"></a>Example 32. Sending Registration Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='marlowe.shakespeare.lit' type='set'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;juliet&lt;/username&gt;
+    &lt;password&gt;R0m30&lt;/password&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The following submission registers the "register" querytype.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;querytype&gt;
+  &lt;name&gt;register&lt;/name&gt;
+  &lt;proto&gt;jabber:iq:register&lt;/proto&gt;
+  &lt;desc&gt;enables registering with a server or service&lt;/desc&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+&lt;/querytype&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>13.3.2 <a name="registrar-querytypes-unregister" id="registrar-querytypes-unregister">unregister</a></h3>
+      <p>The 'jabber:iq:register' namespace include a mechanism for cancelling an existing registration. The registered querytype for doing so is "unregister".</p>
+      <p class="caption"><a name="example-33" id="example-33"></a>Example 33. Unregister Action: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:marlowe.shakespeare.lit?unregister
+      </pre></div>
+      <p class="caption"><a name="example-34" id="example-34"></a>Example 34. Unregister Action: Resulting Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='marlowe.shakespeare.lit' type='set'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;remove/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The following submission registers the "unregister" querytype.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;querytype&gt;
+  &lt;name&gt;unregister&lt;/name&gt;
+  &lt;proto&gt;jabber:iq:register&lt;/proto&gt;
+  &lt;desc&gt;enables cancellation of a registration with a server or service&lt;/desc&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+&lt;/querytype&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>13.4 <a name="registrar-formtypes" id="registrar-formtypes">Field Standardization</a></h3>
+    <p>There is one FORM_TYPE and set of associated field types and names for field standardization in relation to each major use case for the 'jabber:iq:register' namespace: registration, cancellation of registration, and change of password. The initial submissions for these FORM_TYPES are provided below (additional fields may be provided in future submissions).</p>
+    <div class="indent"><h3>13.4.1 <a name="registrar-formtypes-register" id="registrar-formtypes-register">Registration</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;jabber:iq:register&lt;/name&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+  &lt;desc&gt;Standardization of fields related to registration use case.&lt;/desc&gt;
+  &lt;field
+      var='username'
+      type='text-single'
+      label='Account name associated with the user'/&gt;
+  &lt;field
+      var='nick'
+      type='text-single'
+      label='Familiar name of the user'/&gt;
+  &lt;field
+      var='password'
+      type='text-private'
+      label='Password or secret for the user'/&gt;
+  &lt;field
+      var='name'
+      type='text-single'
+      label='Full name of the user'/&gt;
+  &lt;field
+      var='first'
+      type='text-single'
+      label='Given name of the user'/&gt;
+  &lt;field
+      var='last'
+      type='text-single'
+      label='Family name of the user'/&gt;
+  &lt;field
+      var='email'
+      type='text-single'
+      label='Email address of the user'/&gt;
+  &lt;field
+      var='address'
+      type='text-single'
+      label='Street portion of a physical or mailing address'/&gt;
+  &lt;field
+      var='city'
+      type='text-single'
+      label='Locality portion of a physical or mailing address'/&gt;
+  &lt;field
+      var='state'
+      type='text-single'
+      label='Region portion of a physical or mailing address'/&gt;
+  &lt;field
+      var='zip'
+      type='text-single'
+      label='Postal code portion of a physical or mailing address'/&gt;
+  &lt;field
+      var='phone'
+      type='text-single'
+      label='Telephone number of the user'/&gt;
+  &lt;field
+      var='url'
+      type='text-single'
+      label='URL to web page describing the user'/&gt;
+  &lt;field
+      var='date'
+      type='text-single'
+      label='Some date (e.g., birth date, hire date, sign-up date)'/&gt;
+  &lt;field
+      var='misc'
+      type='text-single'
+      label='Free-form text field (obsolete)'/&gt;
+  &lt;field
+      var='text'
+      type='text-single'
+      label='Free-form text field (obsolete)'/&gt;
+  &lt;field
+      var='key'
+      type='text-single'
+      label='Session key for transaction (obsolete)'/&gt;
+&lt;/form_type&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>13.4.2 <a name="registrar-formtypes-cancel" id="registrar-formtypes-cancel">Cancellation</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;jabber:iq:register:cancel&lt;/name&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+  &lt;desc&gt;Standardization of fields related to cancellation use case.&lt;/desc&gt;
+  &lt;field
+      var='password'
+      type='text-private'
+      label='Password or secret for the user'/&gt;
+  &lt;field
+      var='username'
+      type='text-single'
+      label='Account name associated with the user'/&gt;
+&lt;/form_type&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>13.4.3 <a name="registrar-formtypes-changepassword" id="registrar-formtypes-changepassword">Change Password</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;jabber:iq:register:changepassword&lt;/name&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+  &lt;desc&gt;Standardization of fields related to change password use case.&lt;/desc&gt;
+  &lt;field
+      var='old_password'
+      type='text-private'
+      label='Old password for the user'/&gt;
+  &lt;field
+      var='password'
+      type='text-private'
+      label='Desired password for the user'/&gt;
+  &lt;field
+      var='username'
+      type='text-single'
+      label='Account name associated with the user'/&gt;
+&lt;/form_type&gt;
+      </pre></div>
+    </div>
+  </div>
+<h2>14.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+  <div class="indent"><h3>14.1 <a name="schemas-register" id="schemas-register">jabber:iq:register</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:register'
+    xmlns='jabber:iq:register'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import 
+      namespace='jabber:x:data'
+      schemaLocation='http://www.xmpp.org/schemas/x-data.xsd'/&gt;
+  &lt;xs:import 
+      namespace='jabber:x:oob'
+      schemaLocation='http://www.xmpp.org/schemas/x-oob.xsd'/&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0077: http://www.xmpp.org/extensions/xep-0077.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence xmlns:xdata='jabber:x:data'
+                   xmlns:xoob='jabber:x:oob'&gt;
+        &lt;xs:choice minOccurs='0'&gt;
+          &lt;xs:sequence minOccurs='0'&gt;
+            &lt;xs:element name='registered' type='empty' minOccurs='0'/&gt;
+            &lt;xs:element name='instructions' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='username' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='nick' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='password' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='name' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='first' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='last' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='email' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='address' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='city' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='state' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='zip' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='phone' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='url' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='date' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='misc' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='text' type='xs:string' minOccurs='0'/&gt;
+            &lt;xs:element name='key' type='xs:string' minOccurs='0'/&gt;
+          &lt;/xs:sequence&gt;
+          &lt;xs:element name='remove' type='empty' minOccurs='0'/&gt;
+        &lt;/xs:choice&gt;
+        &lt;xs:element ref='xdata:x' minOccurs='0'/&gt;
+        &lt;xs:element ref='xoob:x' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>14.2 <a name="schemas-streams" id="schemas-streams">Stream Feature</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/features/iq-register'
+    xmlns='http://jabber.org/features/iq-register'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0077: http://www.xmpp.org/extensions/xep-0077.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='register' type='empty'/&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0077<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.4<br />
+            Last Updated: 2012-01-25<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: iq-register<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/iq-register.xsd">http://www.xmpp.org/schemas/iq-register.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0077.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0077.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0077.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1593696" id="nt-idp1593696">1</a>. RFC 2779: A Model for Presence and Instant Messaging &lt;<a href="http://tools.ietf.org/html/rfc2779">http://tools.ietf.org/html/rfc2779</a>&gt;.</p><p><a name="nt-idp1595808" id="nt-idp1595808">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1599536" id="nt-idp1599536">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1601648" id="nt-idp1601648">4</a>. XEP-0100: Gateway Interaction &lt;<a href="http://xmpp.org/extensions/xep-0100.html">http://xmpp.org/extensions/xep-0100.html</a>&gt;.</p><p><a name="nt-idp1603632" id="nt-idp1603632">5</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1605616" id="nt-idp1605616">6</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp1617984" id="nt-idp1617984">7</a>. This includes providing an empty password element or a password element that contains no XML character data, i.e., either &lt;password/&gt; or &lt;password&gt;&lt;/password&gt;.</p><p><a name="nt-idp1635152" id="nt-idp1635152">8</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1675520" id="nt-idp1675520">9</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1678752" id="nt-idp1678752">10</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p><p><a name="nt-idp1684768" id="nt-idp1684768">11</a>. XEP-0066: Out of Band Data &lt;<a href="http://xmpp.org/extensions/xep-0066.html">http://xmpp.org/extensions/xep-0066.html</a>&gt;.</p><p><a name="nt-idp1719552" id="nt-idp1719552">12</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1729072" id="nt-idp1729072">13</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1733408" id="nt-idp1733408">14</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1742976" id="nt-idp1742976">15</a>. XEP-0147: XMPP URI Query Components &lt;<a href="http://xmpp.org/extensions/xep-0147.html">http://xmpp.org/extensions/xep-0147.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.4 (2012-01-25)</h4><div class="indent"><p>Defined service discovery support.</p> (psa)
+    </div><h4>Version 2.3 (2009-09-15)</h4><div class="indent"><p>Clarified that fields for "first" and "last" in fact always represent given name and family name, respectively.</p> (psa)
+    </div><h4>Version 2.2 (2006-01-24)</h4><div class="indent"><p>Further specified integration with data forms, specifically if needed to require additional information when cancelling an existing registration (e.g., username and password) or changing a password (e.g., old password); also clarified server handling of cancelled registrations.</p> (psa)
+    </div><h4>Version 2.1 (2005-07-14)</h4><div class="indent"><p>Clarified the extensibility rules; removed expiration date; modified schema to document optional inclusion of jabber:x:data and jabber:x:oob information.</p> (psa)
+    </div><h4>Version 2.0 (2004-08-30)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Final; also specified that by server is meant an instant messaging server.</p> (psa)
+    </div><h4>Version 1.6 (2004-08-23)</h4><div class="indent"><p>In order to address Council concerns, clarified precedence order of x:data, iq:register, and x:oob; further specified server handling of initial registration requests from unregistered entities.</p> (psa)
+    </div><h4>Version 1.5 (2004-07-21)</h4><div class="indent"><p>Specified server handling of requests from unregistered entities.</p> (psa)
+    </div><h4>Version 1.4 (2004-05-10)</h4><div class="indent"><p>Removed conformance language regarding servers and services (belongs in a protocol suite specification).</p> (psa)
+    </div><h4>Version 1.3 (2004-02-24)</h4><div class="indent"><p>Added text about redirection to web registration.</p> (psa)
+    </div><h4>Version 1.2 (2003-11-26)</h4><div class="indent"><p>Documented use of &lt;key/&gt; element; added optional stream feature; added XMPP error handling; specified handling of empty passwords.</p> (psa)
+    </div><h4>Version 1.1 (2003-10-02)</h4><div class="indent"><p>Moved change password use case from XEP-0078.</p> (psa)
+    </div><h4>Version 1.0 (2003-06-18)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.9 (2003-06-18)</h4><div class="indent"><p>Changes to address Council concerns.</p> (psa)
+    </div><h4>Version 0.8 (2003-06-13)</h4><div class="indent"><p>Restored the &lt;misc/&gt; and &lt;text/&gt; elements; added the old &lt;key/&gt; element; specified these three elements as obsolete.</p> (psa)
+    </div><h4>Version 0.7 (2003-06-12)</h4><div class="indent"><p>Added &lt;registered/&gt; element; specified FORM_TYPE for x:data form; clarified that support for the extensibility mechanism is optional; removed the &lt;misc/&gt; and &lt;text/&gt; elements (not necessary given extensibility option); added &lt;nick/&gt;, &lt;first/&gt;, and &lt;last/&gt; elements that were traditionally documented as part of jabber:iq:register.</p> (psa)
+    </div><h4>Version 0.6 (2003-06-06)</h4><div class="indent"><p>Removed XMPP-style error conditions until formats are stable.</p> (psa)
+    </div><h4>Version 0.5 (2003-05-30)</h4><div class="indent"><p>Removed "encrypted secret" content, added information about expiration date.</p> (psa)
+    </div><h4>Version 0.4 (2003-05-28)</h4><div class="indent"><p>Added "encrypted secret" content.</p> (psa)
+    </div><h4>Version 0.3 (2003-05-20)</h4><div class="indent"><p>Slight editorial revisions.</p> (psa)
+    </div><h4>Version 0.2 (2003-04-29)</h4><div class="indent"><p>Fixed schema, made minor editorial changes.</p> (psa)
+    </div><h4>Version 0.1 (2003-04-06)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

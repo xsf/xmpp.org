@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0080: User Location</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="User Location" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for communicating information about the current geographical or physical location of an entity." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2014-05-07" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0080" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0080: User Location</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for communicating information about the current geographical or physical location of an entity.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2014-05-07</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#format">Data Format</a><br />4.  <a href="#transport">Recommended Transport</a><br />   
+      4.1.  <a href="#usecases-pubsub">Entity publishes location via PEP</a><br />5.  <a href="#impl">Implementation Notes</a><br />6.  <a href="#mapping">Mapping to Other Formats</a><br />7.  <a href="#i18n">Internationalization Considerations</a><br />8.  <a href="#security">Security Considerations</a><br />9.  <a href="#iana">IANA Considerations</a><br />10.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      10.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />11.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines a format for capturing data about an entity's geographical location (geoloc). The format defined herein can describe most earthbound geographical locations, especially locations that may change fairly frequently. Potential uses for this approach include:</p>
+  <ul>
+    <li>Publishing location information to a set of subscribers.</li>
+    <li>Querying another entity for its location.</li>
+    <li>Sending location information to another entity.</li>
+    <li>Attaching location information to presence.</li>
+  </ul>
+  <p>Geographical location is captured in terms of Global Positioning System (GPS) coordinates as well as civil location (city, street, building, etc.).</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The format defined herein was designed to address the following requirements:</p>
+  <ul>
+    <li>It shall be possible to encapsulate location in terms of Global Positioning System (GPS) coordinates as well as civil location (city, street, building, etc.).</li>
+    <li>The GPS encoding mechanism shall have a single set of units, so that receivers do not need to use heuristics to determine an entity's position.</li>
+    <li>It shall be possible to specify the known amount of error in the GPS coordinates.</li>
+    <li>It shall be possible to include a natural-language description of the location.</li> 
+  </ul>
+<h2>3.
+       <a name="format" id="format">Data Format</a></h2>
+  <p>Information about the entity's location is provided by the entity and propagated on the network by the entity's associated application (usually a client). The information is structured by means of a &lt;geoloc/&gt; element that is qualified by the 'http://jabber.org/protocol/geoloc' namespace; the location information itself is provided as the XML character data of the following child elements:</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Child Elements</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Element Name</th>
+      <th>Datatype</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+    <tr class="body">
+      <td>accuracy</td>
+      <td>xs:decimal</td>
+      <td>Horizontal GPS error in meters; this element obsoletes the &lt;error/&gt; element</td>
+      <td>10</td>
+    </tr>
+    <tr class="body">
+      <td>alt</td>
+      <td>xs:decimal</td>
+      <td>Altitude in meters above or below sea level</td>
+      <td>1609</td>
+    </tr>
+    <tr class="body">
+      <td>area</td>
+      <td>xs:string</td>
+      <td>A named area such as a campus or neighborhood</td>
+      <td>Central Park</td>
+    </tr>
+    <tr class="body">
+      <td>bearing</td>
+      <td>xs:decimal</td>
+      <td>GPS bearing (direction in which the entity is heading to reach its next waypoint), measured in decimal degrees relative to true north  [<a href="#nt-idp1658960">1</a>]</td>
+      <td> </td>
+    </tr>
+    <tr class="body">
+      <td>building</td>
+      <td>xs:string</td>
+      <td>A specific building on a street or in an area</td>
+      <td>The Empire State Building</td>
+    </tr>
+    <tr class="body">
+      <td>country</td>
+      <td>xs:string</td>
+      <td>The nation where the user is located</td>
+      <td>United States</td>
+    </tr>
+    <tr class="body">
+      <td>countrycode</td>
+      <td>xs:string</td>
+      <td>The ISO 3166 two-letter country code</td>
+      <td>US</td>
+    </tr>
+    <tr class="body">
+      <td>datum</td>
+      <td>xs:string</td>
+      <td>GPS datum  [<a href="#nt-idp1667040">2</a>]</td>
+      <td> </td>
+    </tr>
+    <tr class="body">
+      <td>description</td>
+      <td>xs:string</td>
+      <td>A natural-language name for or description of the location</td>
+      <td>Bill's house</td>
+    </tr>
+    <tr class="body">
+      <td>error</td>
+      <td>xs:decimal</td>
+      <td>Horizontal GPS error in arc minutes; this element is deprecated in favor of &lt;accuracy/&gt;</td>
+      <td>290.8882087</td>
+    </tr>
+    <tr class="body">
+      <td>floor</td>
+      <td>xs:string</td>
+      <td>A particular floor in a building</td>
+      <td>102</td>
+    </tr>
+    <tr class="body">
+      <td>lat</td>
+      <td>xs:decimal</td>
+      <td>Latitude in decimal degrees North</td>
+      <td>39.75</td>
+    </tr>
+    <tr class="body">
+      <td>locality</td>
+      <td>xs:string</td>
+      <td>A locality within the administrative region, such as a town or city</td>
+      <td>New York City</td>
+    </tr>
+    <tr class="body">
+      <td>lon</td>
+      <td>xs:decimal</td>
+      <td>Longitude in decimal degrees East</td>
+      <td>-104.99</td>
+    </tr>
+    <tr class="body">
+      <td>postalcode</td>
+      <td>xs:string</td>
+      <td>A code used for postal delivery</td>
+      <td>10118</td>
+    </tr>
+    <tr class="body">
+      <td>region</td>
+      <td>xs:string</td>
+      <td>An administrative region of the nation, such as a state or province</td>
+      <td>New York</td>
+    </tr>
+    <tr class="body">
+      <td>room</td>
+      <td>xs:string</td>
+      <td>A particular room in a building</td>
+      <td>Observatory</td>
+    </tr>
+    <tr class="body">
+      <td>speed</td>
+      <td>xs:decimal</td>
+      <td>The speed at which the entity is moving, in meters per second</td>
+      <td>52.69</td>
+    </tr>
+    <tr class="body">
+      <td>street</td>
+      <td>xs:string</td>
+      <td>A thoroughfare within the locality, or a crossing of two thoroughfares</td>
+      <td>350 Fifth Avenue / 34th and Broadway</td>
+    </tr>
+    <tr class="body">
+      <td>text</td>
+      <td>xs:string</td>
+      <td>A catch-all element that captures any other information about the location</td>
+      <td>Northwest corner of the lobby</td>
+    </tr>
+    <tr class="body">
+      <td>timestamp</td>
+      <td>xs:dateTime</td>
+      <td>UTC timestamp specifying the moment when the reading was taken (MUST conform to the DateTime profile of <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1694832">3</a>])</td>
+      <td>2004-02-19T21:12Z</td>
+    </tr>
+    <tr class="body">
+      <td>tzo</td>
+      <td>xs:string</td>
+      <td>The time zone offset from UTC for the current location (MUST adhere to the Time Zone Definition (TZD) specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1697264">4</a>])</td>
+      <td>-07:00</td>
+    </tr>
+    <tr class="body">
+      <td>uri</td>
+      <td>xs:anyURI</td>
+      <td>A URI or URL pointing to information about the location</td>
+      <td>http://www.esbnyc.com/</td>
+    </tr>
+  </table></div>
+  <p>NOTE: The datatypes specified above are defined in <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp1703216">5</a>].</p>
+<h2>4.
+       <a name="transport" id="transport">Recommended Transport</a></h2>
+  <p>Location information about human users SHOULD be communicated and transported by means of <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1706048">6</a>] or the subset thereof specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp1708240">7</a>] (the examples below assume that the user's XMPP server supports PEP, thus the publish request lacks a 'to' address and the notification message has a 'from' address of the user's bare JID).</p>
+  <p>Although the XMPP publish-subscribe extension is the preferred means for transporting location information about human users, applications that do not involve human users (e.g., device tracking) MAY use other transport methods; however, because location information is not pure presence information and can change independently of network availability, it SHOULD NOT be provided as an extension to &lt;presence/&gt;.</p>
+  <div class="indent"><h3>4.1 <a name="usecases-pubsub" id="usecases-pubsub">Entity publishes location via PEP</a></h3>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Entity publishes location</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='portia@merchantofvenice.lit/pda' id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/geoloc'&gt;
+      &lt;item&gt;
+        &lt;geoloc xmlns='http://jabber.org/protocol/geoloc' xml:lang='en'&gt;
+          &lt;accuracy&gt;20&lt;/accuracy&gt;
+          &lt;country&gt;Italy&lt;/country&gt;
+          &lt;lat&gt;45.44&lt;/lat&gt;
+          &lt;locality&gt;Venice&lt;/locality&gt;
+          &lt;lon&gt;12.33&lt;/lon&gt;
+        &lt;/geoloc&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Subscriber receives event with payload</p><div class="indent"><pre class="prettyprint">
+&lt;message from='portia@merchantofvenice.lit' 
+         to='bassanio@merchantofvenice.lit'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/geoloc'&gt;
+      &lt;item id='d81a52b8-0f9c-11dc-9bc8-001143d5d5db'&gt;
+        &lt;geoloc xmlns='http://jabber.org/protocol/geoloc' xml:lang='en'&gt;
+          &lt;accuracy&gt;20&lt;/accuracy&gt;
+          &lt;country&gt;Italy&lt;/country&gt;
+          &lt;lat&gt;45.44&lt;/lat&gt;
+          &lt;locality&gt;Venice&lt;/locality&gt;
+          &lt;lon&gt;12.33&lt;/lon&gt;
+        &lt;/geoloc&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>In order to indicate that the user is no longer publishing any location information, the user's client shall send an empty &lt;geoloc/&gt; element, which can be considered a "stop command" for geolocation:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User stops publishing geolocation information</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='portia@merchantofvenice.lit/pda' 
+    id='publish2'
+    type='set'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/geoloc'&gt;
+      &lt;item&gt;
+        &lt;geoloc xmlns='http://jabber.org/protocol/geoloc'/&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Subscriber receives empty event</p><div class="indent"><pre class="prettyprint">
+&lt;message from='portia@merchantofvenice.lit' 
+         to='bassanio@merchantofvenice.lit'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/geoloc'&gt;
+      &lt;item id='d81a52b8-0f9c-11dc-9bc8-001143d5d5db'&gt;
+        &lt;geoloc xmlns='http://jabber.org/protocol/geoloc'/&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>5.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>Avoid "Mars probe" issues: as specified in Table 1, the units for &lt;lat/&gt; and &lt;lon/&gt; MUST be decimal degrees (where South and West are negative, North and East are positive), the units for &lt;alt/&gt; MUST be meters above or below sea level, and the units for &lt;accuracy/&gt; MUST be meters.  [<a href="#nt-idp629120">8</a>]</p>
+  <p>In applications where updates are sent whenever there is a certain distance change in location, those applications SHOULD account for time as well, to avoid rate-limiting when the user is (for example) on a jet plane. One possible way to do this would be to send updates at most once per minute of time (every time 60 seconds have elapsed).</p>
+  <p>Inferences SHOULD NOT be made about accuracy from the number of digits specified in the location or altitude.</p>
+  <p>Why the datum madness? See &lt;<a href="http://www.xmpp.org/extensions/gps_datum.html">http://www.xmpp.org/extensions/gps_datum.html</a>&gt; for an example.</p>
+  <p>An entity can provide a GPS path by publishing a series of items (i.e., multiple pubsub events) with appropriate values of the &lt;timestamp/&gt; element.</p>
+<h2>6.
+       <a name="mapping" id="mapping">Mapping to Other Formats</a></h2>
+  <p>There are many XML data formats for physical location or address information. It is beyond the scope of this document to provide a mapping from the extension defined herein to every such format. However, it would be valuable to provide a mapping from the XMPP format to the formats used in other presence or extended presence protocols. The two main protocols of interest are:</p>
+  <ol>
+    <li><p>The Wireless Village (now "IMPS") specifications for mobile instant messaging; these specifications define a presence attribute for address information as encapsulated in the IMPS "Address" element  [<a href="#nt-idp1729360">9</a>].</p></li>
+    <li><p>The SIP-based SIMPLE specifications; in particular, the IETF's GEOPRIV Working Group has defined an extension to the IETF's <span class="ref"><a href="http://tools.ietf.org/html/rfc3863">Presence Information Data Format (PIDF) </a></span>  [<a href="#nt-idp1733248">10</a>] for location information, as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc4119">RFC 4119</a></span>  [<a href="#nt-idp1735696">11</a>] (also known as "PIDF-LO").</p></li>
+  </ol>
+  <p>The following table also maps the format defined herein to the vCard XML format specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0054.html">vcard-temp (XEP-0054)</a></span>  [<a href="#nt-idp1738144">12</a>].</p>
+  <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Mapping XMPP Physical Location to IMPS, PIDF-LO, and vCard</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>XMPP</th>
+      <th>Wireless Village / IMPS</th>
+      <th>SIMPLE (PIDF-LO)</th>
+      <th>vCard XML</th>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;country/&gt;</td>
+      <td align="center">&lt;Country/&gt;</td>
+      <td align="center">&lt;country/&gt;</td>
+      <td align="center">&lt;CTRY/&gt;
+         [<a href="#nt-idp1742928">13</a>]
+      </td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;region/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;A1/&gt; and/or &lt;A2/&gt;</td>
+      <td align="center">&lt;REGION/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;locality/&gt;</td>
+      <td align="center">&lt;City/&gt;</td>
+      <td align="center">&lt;A3/&gt;</td>
+      <td align="center">&lt;LOCALITY/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;area/&gt;</td>
+      <td align="center">&lt;NamedArea/&gt;</td>
+      <td align="center">&lt;A4/&gt; and/or &lt;A5/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;street/&gt;</td>
+      <td align="center">&lt;Street/&gt;
+         [<a href="#nt-idp1753792">14</a>]
+      </td>
+      <td align="center">&lt;A6/&gt; 
+         [<a href="#nt-idp1755552">15</a>] 
+      </td>
+      <td align="center">&lt;STREET/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;building/&gt;</td>
+      <td align="center">&lt;Building/&gt;</td>
+      <td align="center">&lt;LMK/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;floor/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;FLR/&gt;</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;room/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;postalcode/&gt;</td>
+      <td align="center">--</td>
+      <td align="center">&lt;PC/&gt;</td>
+      <td align="center">&lt;PCODE/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;text/&gt;</td>
+      <td align="center">&lt;FreeTextLocation/&gt;</td>
+      <td align="center">&lt;LOC/&gt;</td>
+      <td align="center">&lt;EXTADR/&gt;</td>
+    </tr>
+    <tr class="body">
+      <td align="center">&lt;accuracy/&gt;</td>
+      <td align="center">&lt;Accuracy/&gt;
+         [<a href="#nt-idp1773904">16</a>]
+      </td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td align="center">--</td>
+      <td align="center">--</td>
+      <td align="center">&lt;NAM/&gt;
+         [<a href="#nt-idp1778288">17</a>]
+      </td>
+      <td align="center">--</td>
+    </tr>
+  </table></div>
+<h2>7.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>Because the character data contained in &lt;geoloc/&gt; child elements of type 'xs:string' is intended to be readable by humans, the &lt;geoloc/&gt; element SHOULD possess an 'xml:lang' attribute specifying the natural language of such character data.</p>
+<h2>8.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>It is imperative to control access to location information, at least by default. Imagine that a stalker got unauthorized access to this information, with enough accuracy and timeliness to be able to find the target person. This scenario could lead to loss of life, so please take access control checks seriously. If an error is deliberately added to a location, the error SHOULD be the same for all receivers, to minimize the likelihood of triangulation. In the case of deliberate error, the &lt;accuracy/&gt; element SHOULD NOT be included.</p>
+<h2>9.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1787360">18</a>].</p>
+<h2>10.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>10.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1796352">19</a>] includes 'http://jabber.org/protocol/geoloc' to its registry of protocol namespaces.</p>
+  </div>
+<h2>11.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema 
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/geoloc' 
+    xmlns='http://jabber.org/protocol/geoloc'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0080: http://www.xmpp.org/extensions/xep-0080.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='geoloc'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence minOccurs='0'&gt;
+        &lt;xs:element name='accuracy' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='alt' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='area' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='bearing' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='building' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='country' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='countrycode' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='datum' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='description' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='error' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='floor' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='lat' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='locality' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='lon' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='postalcode' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='region' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='room' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='speed' minOccurs='0' type='xs:decimal'/&gt;
+        &lt;xs:element name='street' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='text' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='timestamp' minOccurs='0' type='xs:dateTime'/&gt;
+        &lt;xs:element name='tzo' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='uri' minOccurs='0' type='xs:anyURI'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0080<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.8<br />
+            Last Updated: 2014-05-07<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0163<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: geoloc<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/geoloc.xsd">http://www.xmpp.org/schemas/geoloc.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0080.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0080.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0080.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1658960" id="nt-idp1658960">1</a>. It is the responsibility of the receiver to translate bearing into decimal degrees relative to magnetic north, if desired.</p><p><a name="nt-idp1667040" id="nt-idp1667040">2</a>. If datum is not included, receiver MUST assume WGS84; receivers MUST implement WGS84; senders MAY use another datum, but it is not recommended.</p><p><a name="nt-idp1694832" id="nt-idp1694832">3</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1697264" id="nt-idp1697264">4</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1703216" id="nt-idp1703216">5</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp1706048" id="nt-idp1706048">6</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1708240" id="nt-idp1708240">7</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp629120" id="nt-idp629120">8</a>. The &lt;accuracy/&gt; element obsoletes the older &lt;error/&gt; element, which specified units of arc minutes intead of meters.</p><p><a name="nt-idp1729360" id="nt-idp1729360">9</a>. The Wireless Village Initiative: Presence Attributes v1.1 (WV-029); for further information, visit &lt;<a href="http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html">http://www.openmobilealliance.org/tech/affiliates/wv/wvindex.html</a>&gt;.</p><p><a name="nt-idp1733248" id="nt-idp1733248">10</a>. RFC 3863: Presence Information Data Format (PIDF) &lt;<a href="http://tools.ietf.org/html/rfc3863">http://tools.ietf.org/html/rfc3863</a>&gt;.</p><p><a name="nt-idp1735696" id="nt-idp1735696">11</a>. RFC 4119: A Presence-based GEOPRIV Location Object Format &lt;<a href="http://tools.ietf.org/html/rfc4119">http://tools.ietf.org/html/rfc4119</a>&gt;.</p><p><a name="nt-idp1738144" id="nt-idp1738144">12</a>. XEP-0054: vcard-temp &lt;<a href="http://xmpp.org/extensions/xep-0054.html">http://xmpp.org/extensions/xep-0054.html</a>&gt;.</p><p><a name="nt-idp1742928" id="nt-idp1742928">13</a>. As noted in XEP-0054, the XML vCard format defined in draft-dawson-vcard-xml-dtd-01 specified a &lt;COUNTRY/&gt; element rather than a &lt;CTRY/&gt; element; refer to XEP-0054 for details.</p><p><a name="nt-idp1753792" id="nt-idp1753792">14</a>. The IMPS specification also enables one to define an intersection (e.g., "Broadway and 34th Street") as the combination of a &lt;Crossing1/&gt; element (e.g., "Broadway") and a &lt;Crossing2/&gt; element (e.g., "34th Street"). To map from IMPS to XMPP, an application SHOULD map such a combination to one XMPP &lt;street/&gt; element.</p><p><a name="nt-idp1755552" id="nt-idp1755552">15</a>. The PIDF-LO format provides information elements for much more granular control over a traditional street address; in PIDF-LO the &lt;A6/&gt; element is the street name only, and further information is provided in distinct elements for a leading street direction (e.g., "N"), trailing street suffix (e.g., "SW"), street suffix (e.g., "Avenue"), house number (e.g., "909"), and house number suffix (e.g., "1/2"). To map from PIDF-LO to XMPP, an application SHOULD construct the complete street address from the PIDF-LO elements (&lt;A6/&gt;, &lt;PRD/&gt;, &lt;POD/&gt;, &lt;STS/&gt;, &lt;HNO/&gt;, and &lt;HNS/&gt;) and map the result to one XMPP &lt;street/&gt; element.</p><p><a name="nt-idp1773904" id="nt-idp1773904">16</a>. This element specifies accuracy in meters. When mapping from IMPS to XMPP, the IMPS &lt;Accuracy/&gt; element SHOULD be mapped to the XMPP &lt;accuracy/&gt; element (which specifies accuracy in meters), not the deprecated &lt;error/&gt; element (which specified accuracy in arc minutes).</p><p><a name="nt-idp1778288" id="nt-idp1778288">17</a>. This element provides a name for the location, e.g., a certain store in a building. This SHOULD be mapped to the XMPP &lt;text/&gt; element.</p><p><a name="nt-idp1787360" id="nt-idp1787360">18</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1796352" id="nt-idp1796352">19</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.8 (2014-05-07)</h4><div class="indent"><p>Added &lt;tzo/&gt; element.</p> (ls)
+    </div><h4>Version 1.7 (2009-09-15)</h4><div class="indent"><p>Added &lt;countrycode/&gt; element.</p> (psa)
+    </div><h4>Version 1.6 (2008-10-29)</h4><div class="indent"><p>Allowed empty geoloc element to signify a pause in publishing; added &lt;accuracy/&gt; element and deprecated &lt;error/&gt; element to change horizontal GPS error from arc minutes to meters, consistent with IMPS and other formats.</p> (psa/jjh)
+    </div><h4>Version 1.5 (2008-01-30)</h4><div class="indent"><p>Added speed element.</p> (jjh/psa)
+    </div><h4>Version 1.4 (2007-07-16)</h4><div class="indent"><p>Renamed to User Location; corrected pubsub examples; recommended pubsub/PEP as transport for location information about human users; added uri element.</p> (psa)
+    </div><h4>Version 1.3 (2006-08-21)</h4><div class="indent"><p>Folded in civil location from XEP-0112.</p> (psa)
+    </div><h4>Version 1.2 (2005-05-12)</h4><div class="indent"><p>Changed xs:string to xs:decimal for bearing and specified that bearing is to be interpreted as decimal degrees relative to true north.</p> (psa)
+    </div><h4>Version 1.1 (2004-10-29)</h4><div class="indent"><p>Changed xs:int to xs:decimal for altitude; changed MUST NOT to SHOULD NOT regarding inferences about accuracy.</p> (psa)
+    </div><h4>Version 1.0 (2004-10-12)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft; also added internationalization considerations and linked to an archived version of the GPS datum example.</p> (psa)
+    </div><h4>Version 0.9 (2004-10-12)</h4><div class="indent"><p>Clarified several points in the implementation notes.</p> (psa)
+    </div><h4>Version 0.8 (2004-09-15)</h4><div class="indent"><p>Specified error flow for IQ example.</p> (psa)
+    </div><h4>Version 0.7 (2004-04-25)</h4><div class="indent"><p>Corrected several errors; added reference to XEP-0033.</p> (psa)
+    </div><h4>Version 0.6 (2004-02-19)</h4><div class="indent"><p>Reverted from infobits to geoloc elements; moved physical address protocol back to XEP-0112.</p> (psa)
+    </div><h4>Version 0.5 (2003-12-16)</h4><div class="indent"><p>Converted to use of infobits.</p> (psa)
+    </div><h4>Version 0.4 (2003-09-08)</h4><div class="indent"><p>Merged in contents of XEP-0112.</p> (psa)
+    </div><h4>Version 0.3 (2003-08-21)</h4><div class="indent"><p>Changed protocol name from 'location' to 'geoloc'.</p> (psa)
+    </div><h4>Version 0.2 (2003-07-29)</h4><div class="indent"><p>Incorporated Standards list feedback; changed document type to Informational.</p> (psa)
+    </div><h4>Version 0.1 (2003-04-15)</h4><div class="indent"><p>Initial version.</p> (jjh)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0231: Bits of Binary</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Bits of Binary" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Pavel &#x160;imerda" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for including or referring to small bits of binary data in an XML stanza." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-09-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0231" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0231: Bits of Binary</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for including or referring to small bits of binary data in an XML stanza.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Pavel Šimerda</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-09-03</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#proto">Protocol</a><br />   
+      2.1.  <a href="#exchange">Data Exchange</a><br />   
+      2.2.  <a href="#referencing">Referencing Data</a><br />   
+      2.3.  <a href="#retrieving">Retrieving Uncached Data</a><br />   
+      2.4.  <a href="#caching">Caching Data</a><br />   
+      2.5.  <a href="#format">Format of the &lt;data/&gt; Element</a><br />3.  <a href="#support">Determining Support</a><br />4.  <a href="#security">Security Considerations</a><br />5.  <a href="#iana">IANA Considerations</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      6.1.  <a href="#ns">Protocol Namespaces</a><br />7.  <a href="#schema">XML Schema</a><br />8.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>Sometimes it is desirable to include a small bit of binary data in an XMPP stanza. Typical use cases might be to include icon or emoticon in a message, a thumbnail in a file transfer request, a rasterized image in a whiteboarding session, or a small bit of media in a data form. Currently, there is no lightweight method for including such data in an XMPP stanza, since existing methods (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp1501472">1</a>]) are designed for larger blobs of data and therefore require some form of negotiation (e.g., via <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp1504192">2</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0234.html">Jingle File Transfer (XEP-0234)</a></span>  [<a href="#nt-idp1506784">3</a>]).</p>
+  <p>This document specifies just such a lightweight method. The key building blocks are:</p>
+  <ol>
+    <li>A Content-ID ("cid") that uniquely identifies the data.</li>
+    <li>A &lt;data/&gt; element (similar to the data: URL scheme defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc2397">RFC 2397</a></span>  [<a href="#nt-idp1510480">4</a>]) that enables the sender and recipient to exchange the data identified by the cid.</li>
+  </ol>
+<h2>2.
+       <a name="proto" id="proto">Protocol</a></h2>
+
+  <div class="indent"><h3>2.1 <a name="exchange" id="exchange">Data Exchange</a></h3>
+    <p>The RECOMMENDED approach is for the sender to include the cid when communicating with the recipient. The recipient SHOULD then check its cache of data to determine if the data identified by that cid is cached. If the data is cached, the recipient would then load its cached data. If the data is not cached, the recipient would then retrieve the data by sending an IQ-get to the sender (or potentially some other entity) containing an empty &lt;data/&gt; element whose 'cid' attribute specifies the data to be retrieved, to which the sender would reply with an IQ-result containing a &lt;data/&gt; element whose XML character data provides the binary data.</p>
+    <p>The &lt;data/&gt; element MUST be used only to encapsulate small bits of binary data and MUST NOT be used for large data transfers. Naturally the definitions of "small" and "large" are rather loose. In general, the data SHOULD NOT be more than 8 kilobytes, and dedicated file transfer methods (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0065.html">SOCKS5 Bytestreams (XEP-0065)</a></span>  [<a href="#nt-idp1516384">5</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp1515056">6</a>]) SHOULD be used for exchanging blobs of data larger than 8 kilobytes. However, implementations or deployments MAY impose their own limits.</p>
+    <p>If the data to be shared is particularly small (e.g., less than 1k), then the sender MAY send it directly by including a &lt;data/&gt; element directly in a &lt;message/&gt;, &lt;presence/&gt;, or &lt;iq/&gt; stanza. The following rules apply:</p>
+    <ol>
+      <li>When the &lt;data/&gt; element is directly included in an XMPP &lt;message/&gt; or &lt;presence/&gt; stanza, it SHOULD be a first-level child of the stanza.</li>
+      <li>When the &lt;data/&gt; element is directly included in an XMPP &lt;iq/&gt; stanza, it MUST be a child of the appropriate first-level child (since the IQ stanza must not include more than one first-level child).</li>
+      <li>When the &lt;data/&gt; element is used to retrieve the data from the sender as described under <a href="#retrieving">Retrieving Uncached Data</a>, it MUST be a first-level child of the stanza.</li>
+    </ol>
+  </div>
+
+  <div class="indent"><h3>2.2 <a name="referencing" id="referencing">Referencing Data</a></h3>
+    <p>The sender can refer to data that it hosts by including a cid in the data it sends. The following example shows how to include the cid in <span class="ref"><a href="http://xmpp.org/extensions/xep-0071.html">XHTML-IM (XEP-0071)</a></span>  [<a href="#nt-idp1526176">7</a>] but any appropriate format can be used, such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0221.html">Data Forms Media Element (XEP-0221)</a></span>  [<a href="#nt-idp1528880">8</a>].</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. An XHTML-IM message with a cid</p><div class="indent"><pre class="prettyprint">
+&lt;message from='ladymacbeth@shakespeare.lit/castle'
+         to='macbeth@chat.shakespeare.lit'
+         type='groupchat'&gt;
+  &lt;body&gt;Yet here's a spot.&lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;
+        Yet here's a spot.
+        &lt;img alt='A spot'
+             src='cid:sha1+8f35fef110ffc5df08d579a50083ff9308fb6242@bob.xmpp.org'/&gt;
+      &lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>The recipient can then retrieve the data from the sender as described in the next section.</p>
+  </div>
+
+  <div class="indent"><h3>2.3 <a name="retrieving" id="retrieving">Retrieving Uncached Data</a></h3>
+    <p>Data is requested and transferred using the XMPP &lt;iq/&gt; stanza type by making reference to the cid. In particular, the recipient requests the binary data by sending an IQ-get containing an empty &lt;data/&gt; element with a 'cid' attribute that matches the cid URI previously communicated.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Requesting data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='doctor@shakespeare.lit/pda'
+    id='get-data-1'
+    to='ladymacbeth@shakespeare.lit/castle'
+    type='get'&gt;
+  &lt;data xmlns='urn:xmpp:bob' 
+        cid='sha1+8f35fef110ffc5df08d579a50083ff9308fb6242@bob.xmpp.org'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The recipient then would either return an error (e.g., &lt;item-not-found/&gt; if it does not have data matching the Content-ID) or return the data.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Returning data</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='ladymacbeth@shakespeare.lit/castle'
+    id='get-data-1'
+    to='doctor@shakespeare.lit/pda'
+    type='result'&gt;
+  &lt;data xmlns='urn:xmpp:bob' 
+        cid='sha1+8f35fef110ffc5df08d579a50083ff9308fb6242@bob.xmpp.org'
+        max-age='86400'
+        type='image/png'&gt;
+    iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP
+    C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA
+    AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J
+    REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq
+    ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0
+    vr4MkhoXe0rZigAAAABJRU5ErkJggg==
+  &lt;/data&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>2.4 <a name="caching" id="caching">Caching Data</a></h3>
+    <p>It is RECOMMENDED for the recipient to cache data; however, the recipient MAY opt not to cache data, for example because it runs on a device that does not have sufficient space for data storage.</p>
+    <p>The default behavior is for the recipient to cache the data only for the life of the entity's application session (not a client's presence session with the server or the controlling user's communication session with the contact from whom the user received the data); that is, the recipient would clear the cache when the application is terminated or restarted.</p>
+    <p>As a hint regarding the suggested period for caching the data, the sender MAY include a 'max-age' attribute whenever it sends a &lt;data/&gt; element. The meaning of the 'max-age' attribute exactly matches that of the Max-Age attribute from <span class="ref">RFC 2965</span>.</p>
+    <p>If it is not suggested to cache the data (e.g., because it is ephemeral), the value of the 'max-age' attribute MUST be "0" (the number zero).</p>
+    <p>A recipient SHOULD cache data based on the hash of the data as encapsulated in the cid. However, if a hash cannot be extracted from the cid, if the recipient does not support the hashing algorithm used, or the recipient does not support hashes, then the recipient SHOULD cache based on the JID of the sender.</p>
+  </div>
+
+  <div class="indent"><h3>2.5 <a name="format" id="format">Format of the &lt;data/&gt; Element</a></h3>
+    <p>To exchange binary data, the data is encapsulated as the XML character data of a &lt;data/&gt; element qualified by the 'urn:xmpp:bob' namespace, where the data MUST be encoded as Base64 in accordance with Section 4 of <span class="ref"><a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a></span>  [<a href="#nt-idp1543488">9</a>] (note: the Base64 output MUST NOT include whitespace and MUST set the number of pad bits to zero).</p>
+    <p>The following attributes are defined for the &lt;data/&gt; element.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Attributes of the data Element</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Inclusion</th>
+      </tr>
+      <tr class="body">
+        <td>cid</td>
+        <td>A Content-ID that can be mapped to a cid: URL as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2111">RFC 2111</a></span>  [<a href="#nt-idp1549488">10</a>]. The 'cid' value SHOULD be of the form algo+hash@bob.xmpp.org, where the "algo" is the hashing algorithm used (e.g., "sha1" for the SHA-1 algorithm as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3174">RFC 3174</a></span>  [<a href="#nt-idp1552080">11</a>]) and the "hash" is the hex output of the algorithm applied to the binary data itself.</td>
+        <td>REQUIRED</td>
+      </tr>
+      <tr class="body">
+        <td>max-age</td>
+        <td>A suggestion regarding how long (in seconds) to cache the data; the meaning matches the Max-Age attribute from <span class="ref"><a href="http://tools.ietf.org/html/rfc2965">RFC 2965</a></span>  [<a href="#nt-idp1555664">12</a>].</td>
+        <td>RECOMMENDED</td>
+      </tr>
+      <tr class="body">
+        <td>type</td>
+        <td>The value of the 'type' attribute MUST match the syntax specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2045">RFC 2045</a></span>  [<a href="#nt-idp1559360">13</a>]. That is, the value MUST include a top-level media type, the "/" character, and a subtype; in addition, it MAY include one or more optional parameters (e.g., the "audio/ogg" MIME type in the example shown below includes a "codecs" parameter as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc4281">RFC 4281</a></span>  [<a href="#nt-idp1561904">14</a>]). The "type/subtype" string SHOULD be registered in the <span class="ref"><a href="http://www.iana.org/assignments/media-types">IANA MIME Media Types Registry</a></span>  [<a href="#nt-idp1564448">15</a>], but MAY be an unregistered or yet-to-be-registered value.</td>
+        <td>REQUIRED if the &lt;data/&gt; element is non-empty</td>
+      </tr>
+    </table></div>
+    <p>The following example illustrates the format (line endings are provided for readability only).</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Data element format</p><div class="indent"><pre class="prettyprint">
+&lt;data xmlns='urn:xmpp:bob' 
+      cid='sha1+8f35fef110ffc5df08d579a50083ff9308fb6242@bob.xmpp.org'
+      max-age='86400'
+      type='image/png'&gt;
+  iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP
+  C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA
+  AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J
+  REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq
+  ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0
+  vr4MkhoXe0rZigAAAABJRU5ErkJggg==
+&lt;/data&gt;
+    </pre></div>
+  </div>
+
+<h2>3.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>If an entity supports the protocol specified herein, it MUST advertise that fact by returning a feature of "urn:xmpp:bob" in response to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1570240">16</a>] information requests.</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Service discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='doctor@shakespeare.lit/pda'
+    id='disco1'
+    to='ladymacbeth@shakespeare.lit/castle'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Service discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='ladymacbeth@shakespeare.lit/castle'
+    id='disco1'
+    to='doctor@shakespeare.lit/pda'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='urn:xmpp:bob'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1579152">17</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>4.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>The ability to include arbitrary binary data implies that it is possible to send scripts, applets, images, and executable code, which may be potentially harmful. To reduce the risk of such exposure, an implementation MAY choose to not display or process such data but instead either completely ignore the data, show only the value of the 'alt' attribute, or prompt a human user for approval (either explicitly via user action or implicitly via a list of approved entities from whom the user will accept binary data without per-event approval).</p>
+<h2>5.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1576976">18</a>].</p> 
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>6.1 <a name="ns" id="ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp558256">19</a>] includes "urn:xmpp:bob" in its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+  </div>
+<h2>7.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:bob'
+    xmlns='urn:xmpp:bob'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0231: http://www.xmpp.org/extensions/xep-0231.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='data'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:base64Binary'&gt;
+          &lt;xs:attribute name='cid' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='max-age' type='xs:nonNegativeInteger' use='optional'/&gt;
+          &lt;xs:attribute name='type' type='xs:string' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>8.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Thanks to Rachel Blackman, Dave Cridland, Zenon Kuder, and Tomasz Sterna for their feedback.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0231<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2008-09-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, RFC 2045, RFC 2111, RFC 2965, RFC 3174, RFC 4648<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: bob<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/bob.xsd">http://www.xmpp.org/schemas/bob.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0231.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0231.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0231.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Pavel Šimerda</h3><p class="indent">
+        JabberID: 
+        <a href="xmpp:pavlix@pavlix.net">pavlix@pavlix.net</a><br />
+        URI: 
+        <a href="http://www.pavlix.net/">http://www.pavlix.net/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1501472" id="nt-idp1501472">1</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1504192" id="nt-idp1504192">2</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp1506784" id="nt-idp1506784">3</a>. XEP-0234: Jingle File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0234.html">http://xmpp.org/extensions/xep-0234.html</a>&gt;.</p><p><a name="nt-idp1510480" id="nt-idp1510480">4</a>. RFC 2397: The data: URL scheme &lt;<a href="http://tools.ietf.org/html/rfc2397">http://tools.ietf.org/html/rfc2397</a>&gt;.</p><p><a name="nt-idp1516384" id="nt-idp1516384">5</a>. XEP-0065: SOCKS5 Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0065.html">http://xmpp.org/extensions/xep-0065.html</a>&gt;.</p><p><a name="nt-idp1515056" id="nt-idp1515056">6</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1526176" id="nt-idp1526176">7</a>. XEP-0071: XHTML-IM &lt;<a href="http://xmpp.org/extensions/xep-0071.html">http://xmpp.org/extensions/xep-0071.html</a>&gt;.</p><p><a name="nt-idp1528880" id="nt-idp1528880">8</a>. XEP-0221: Data Forms Media Element &lt;<a href="http://xmpp.org/extensions/xep-0221.html">http://xmpp.org/extensions/xep-0221.html</a>&gt;.</p><p><a name="nt-idp1543488" id="nt-idp1543488">9</a>. RFC 4648: The Base16, Base32, and Base64 Data Encodings &lt;<a href="http://tools.ietf.org/html/rfc4648">http://tools.ietf.org/html/rfc4648</a>&gt;.</p><p><a name="nt-idp1549488" id="nt-idp1549488">10</a>. RFC 2111: Content-ID and Message-ID Uniform Resource Locators &lt;<a href="http://tools.ietf.org/html/rfc2111">http://tools.ietf.org/html/rfc2111</a>&gt;.</p><p><a name="nt-idp1552080" id="nt-idp1552080">11</a>. RFC 3174: US Secure Hash Algorithm 1 (SHA1) &lt;<a href="http://tools.ietf.org/html/rfc3174">http://tools.ietf.org/html/rfc3174</a>&gt;.</p><p><a name="nt-idp1555664" id="nt-idp1555664">12</a>. RFC 2965: HTTP State Management Mechanism &lt;<a href="http://tools.ietf.org/html/rfc2965">http://tools.ietf.org/html/rfc2965</a>&gt;.</p><p><a name="nt-idp1559360" id="nt-idp1559360">13</a>. RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies &lt;<a href="http://tools.ietf.org/html/rfc2045">http://tools.ietf.org/html/rfc2045</a>&gt;.</p><p><a name="nt-idp1561904" id="nt-idp1561904">14</a>. RFC 4281: The Codecs Parameter for "Bucket" Media Types &lt;<a href="http://tools.ietf.org/html/rfc4281">http://tools.ietf.org/html/rfc4281</a>&gt;.</p><p><a name="nt-idp1564448" id="nt-idp1564448">15</a>. IANA registry of MIME media types &lt;<a href="http://www.iana.org/assignments/media-types">http://www.iana.org/assignments/media-types</a>&gt;.</p><p><a name="nt-idp1570240" id="nt-idp1570240">16</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1579152" id="nt-idp1579152">17</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1576976" id="nt-idp1576976">18</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp558256" id="nt-idp558256">19</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2008-09-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Draft; concurrently, the XMPP Registrar issued the urn:xmpp:bob namespace.</p> (psa)
+    </div><h4>Version 0.9 (2008-08-16)</h4><div class="indent"><p>Modified cid generation rules to use a hash of the data instead of a UUID (of the form algo+hash@bob.xmpp.org); modified caching rules to typically base checking on the hash, not the sender JID.</p> (psa/ps)
+    </div><h4>Version 0.8 (2008-08-07)</h4><div class="indent"><p>Added section on determining support.</p> (psa/ps)
+    </div><h4>Version 0.7 (2008-08-06)</h4><div class="indent"><p>Simplified the protocol; removed fetch element because the cid: URI uniquely identifies the data; changed the name of the protocol to something more catchy.</p> (psa/ps)
+    </div><h4>Version 0.6 (2008-08-06)</h4><div class="indent"><p>More clearly described recommended protocol and usage; added fetch element to diambiguate data from reference; cleaned up text throughout.</p> (psa/ps)
+    </div><h4>Version 0.5 (2008-08-06)</h4><div class="indent"><p>Removed alt attribute; more clearly specified where to include the data element in message, presence, and IQ stanzas; moved use cases to other specifications; removed service discovery features; modified examples.</p> (psa/ps)
+    </div><h4>Version 0.4 (2008-08-05)</h4><div class="indent"><p>Generalized text regarding inclusion of parameters in type attribute per RFC 2045; added max-age attribute, matching semantics from RFC 2965; added section on caching of data; more clearly specified generation of Content-ID.</p> (psa/ps)
+    </div><h4>Version 0.3 (2008-06-18)</h4><div class="indent"><p>Allowed inclusion of codecs parameter in type attribute per RFC 4281.</p> (psa)
+    </div><h4>Version 0.2 (2008-05-29)</h4><div class="indent"><p>Added service discovery feature for in-band message images use case.</p> (psa)
+    </div><h4>Version 0.1 (2008-01-30)</h4><div class="indent"><p>Initial published version.</p> (psa)
+    </div><h4>Version 0.0.4 (2008-01-29)</h4><div class="indent"><p>Separately described service discovery feature for inclusion of the data element in file previews.</p> (psa)
+    </div><h4>Version 0.0.3 (2007-12-27)</h4><div class="indent"><p>Described use cases for previewing data to be exchanged in file transfers and for inclusion of media information in data forms.</p> (psa)
+    </div><h4>Version 0.0.2 (2007-12-18)</h4><div class="indent"><p>Changed syntax to not use data: URL scheme; added cid and type attributes; described use cases for messaging and data retrieval.</p> (psa)
+    </div><h4>Version 0.0.1 (2007-11-09)</h4><div class="indent"><p>First draft.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0038: Icon Styles</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Icon Styles" /><meta name="DC.Creator" content="Adam Theo" /><meta name="DC.Description" content="A protocol for specifying exchangeable styles of emoticons and genicons within Jabber IM clients." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-06-02" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0038" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0038: Icon Styles</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A protocol for specifying exchangeable styles of emoticons and genicons within Jabber IM clients.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Adam Theo</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-06-02</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp634752">Introduction</a><br />2.  <a href="#sect-idp639920">Requirements</a><br />3.  <a href="#sect-idp649088">Discovery</a><br />4.  <a href="#sect-idp651328">Specification</a><br />   
+      4.1.  <a href="#sect-idp653808">Definition File</a><br />   
+      4.2.  <a href="#sect-idp655168">Meta Elements</a><br />   
+      4.3.  <a href="#sect-idp569856">Text Strings</a><br />      
+      4.3.1.  <a href="#sect-idp572896">Internationalization</a><br />      
+      4.3.2.  <a href="#sect-idp1523312">Whitespace</a><br />      
+      4.3.3.  <a href="#sect-idp1525120">Case Sensitivity</a><br />   
+      4.4.  <a href="#sect-idp1526944">Objects</a><br />   
+      4.5.  <a href="#sect-idp1532592">X Tags</a><br />   
+      4.6.  <a href="#sect-idp1536384">Hierarchy</a><br />   
+      4.7.  <a href="#sect-idp1540784">Packaging</a><br />5.  <a href="#sect-idp1544752">Implementation Notes</a><br />   
+      5.1.  <a href="#sect-idp1545920">Procedure</a><br />   
+      5.2.  <a href="#sect-idp1551664">Text Strings</a><br />   
+      5.3.  <a href="#sect-idp1557456">Objects</a><br />   
+      5.4.  <a href="#sect-idp1568880">Combining Styles</a><br />   
+      5.5.  <a href="#sect-idp1570432">Core Icons</a><br />6.  <a href="#sect-idp1590336">Security Considerations</a><br />7.  <a href="#sect-idp1591424">IANA Considerations</a><br />8.  <a href="#sect-idp1597168">XMPP Registrar Considerations</a><br />9.  <a href="#sect-idp1599984">Formal Definition</a><br />   
+      9.1.  <a href="#sect-idp1600480">Schema</a><br />   
+      9.2.  <a href="#sect-idp1604448">icondef.xml file example</a><br />10.  <a href="#sect-idp1605584">Future Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp634752" id="sect-idp634752">Introduction</a></h2>
+  <p>This proposal standardizes the use of graphical emoticons and "genicons" in Jabber IM clients to prevent confusion and competing conventions that will soon arise, enabling client developers to spend their energy on more important parts of their projects.</p>
+  <p><a href="http://www.wikipedia.com/wiki/Emoticon">Emoticons</a> are the text string 'smiley' or 'frowny' faces such as <tt>:-)</tt> and <tt>:-(</tt> that people often use in email or instant messaging to represent emotions. Genicons are a term being coined here to mean non-emotive text pictures (often called '<a href="http://en.wikipedia.org/wiki/ASCII_art">ASCII Art</a>') that serve to replace typing the full word or to simply be cute or creative in the conversation.</p>
+  <p>Many new Internet users demand graphical emoticon and genicon support in their IM clients. We should satisfy their needs if we ever wish to see them use Jabber instead of another IM system.</p>
+  <p>While traditionally emoticons and genicons have been typed and displayed as text, the recent trend of using graphics, and sometimes sounds, instead of text to represent these pictures will be assumed for purposes of this proposal. Also, the term "icon" will be used in place of "emoticon" and "genicon" for purposes of convenience.</p>
+<h2>2.
+       <a name="sect-idp639920" id="sect-idp639920">Requirements</a></h2>
+  <p>The following issues must be solved for in this specification.</p>
+  <ul>
+    <li>Here and Now: The convention should not rely on technologies such as feature negotiation or generic pub/sub which do not exist yet in Jabber in order to work properly. The convention should be a "here and now" solution, relying only on the current Jabber protocol.</li>
+    <li>Meaningful: The convention for creating the icons must be meaningful to users of clients without icon support, or even users on the other side of transports. Whatever method is used, it should not be cryptic or difficult to understand in text-only mode, in case the user does not have or want the capability to view the icons.</li>
+    <li>Component Friendly: In order for gateways, bots, and other "semi-intelligent" components to be able to convert or otherwise use the specification (such as to and from the MSN icon style, or use icons in conversations with Artificially Intelligent bots), a specific list of icons must be possible. Since these bots do not have an intelligent human behind them deciding their every action, they cannot deal with unlimited possibilities.</li>
+    <li>Protect Privacy: Sender-defined external data must not be required to properly display the icons because it can be used by the sender to track the user, circumventing their privacy. When the sender can define their own graphics or sounds to be used for the icons, they can use unique URLs and monitor when these unique URLs are accessed. External data may be allowed as long as it is not required for proper use of the icons, but it would be best to leave external data completely out of the system.</li>
+    <li>Conserve Bandwidth: The amount of markup used within the messages to define the icons should be kept to a minimum, as well as keeping the media files used for the icons from being transferred over the wire with the messages themselves. These easily consume too much bandwidth, a precious resource to most of the Internet.</li>
+    <li>Be Passive: The convention should not force transports or recipients to take any action to properly display the icons. Not only does it put extra strain on the components, but it would also unnecessarily break old clients. Transports and recieving clients may have the option of taking some actions, but they should not be forced to.</li>
+    <li>Internationalization: The convention must be inherently international in order to ease adoption of Jabber throughout the world and prevent later growing pains. The use of English must be kept to a minimum, restricted to "meta information" about the icons themselves, and must dynamically allow for non-English language sets.</li>
+  </ul>
+  <p>Because icons in Jabber should be easy to use, extensible, and customizable, they will be created using style definition files which can be exchanged between users and supporting clients. The specification will not allow external data, in order to protect the privacy of users, and will not rely on file transfers or directory services in order to not break old clients or components.</p>
+<h2>3.
+       <a name="sect-idp649088" id="sect-idp649088">Discovery</a></h2>
+  <p>To find out if an entity supports Jabber Icon Styles, look for the feature category of <tt>http://jabber.org/protocol/icon-styles</tt> using <tt>jabber:iq:browse</tt> or <tt>http://jabber.org/protocol/disco</tt>. The same feature category can be used with feature negotiation.</p>
+<h2>4.
+       <a name="sect-idp651328" id="sect-idp651328">Specification</a></h2>
+  <p>Because icons in Jabber should be easy to use, extensible, and customizable, they will be created using style definition files which can be exchanged between users and supporting clients. The specification will not require external data, in order to protect the privacy of users, and will not rely on file transfers or directory services in order to not break old clients or components. How these icon styles are exchanged - as well as advertised - is out of the scope of this specification. The text strings representing the icons will be sent like any other text (this document doesn't require extra tags or attributes in the messages being sent).</p>
+  <p>All icons are created by defining each icon then grouping them together into "Icon Definition Files". These files, along with the object files associated with the icons, are called "icon styles". Icon styles may be traded and shared among users of all supporting clients like skins or themes, similar to WinAmp, XMMS, GNOME, and other customizable applications. This creates a platform-independent system, providing a great degree of customization for the user, and allowing client developers to focus on other features.</p>
+
+  <div class="indent"><h3>4.1 <a name="sect-idp653808" id="sect-idp653808">Definition File</a></h3>
+    <p>Each icon in a style is defined and grouped together in an XML document, the "Icon Definition File". Each definition file for all styles is named "icondef.xml". There is only one such Icon Definition File per style. The W3C Schema for the Icon Definition File plus an example finished Icon Definition File can be found under Schema, below.</p>
+  </div>
+
+  <div class="indent"><h3>4.2 <a name="sect-idp655168" id="sect-idp655168">Meta Elements</a></h3>
+    <p>The meta elements contain information about the Icon Style itself, rather that the individual icons. They are contained within the <tt>&lt;meta&gt;</tt> element, which is directly under the root element. There is one and only one the <tt>&lt;meta&gt;</tt> element.</p>
+    <ul>
+      <li>Name: This is an arbitrary text string (spaces allowed) which is the full name of the Icon Style. Only one name can be included.</li>
+      <li>Version: This is an arbitrary text string (no spaces allowed) which is the version number of the Icon Style. Any version format is allowed, but the <tt>major.minor</tt> or <tt>major.minor.trivial</tt> formats are recommended. Only one version can be included.</li>
+      <li>Description: This is the full description of the Icon Style. It summarizes the look and types of the icons, and can be used for keywords in searching. This is optional, but recommended.</li>
+      <li>Author: This is the full name of the author. Multiple authors are allowed.</li>
+      <li>Creation: This is the date of the creation of this version of the Icon Style. The date is in the <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601</a> standard format.</li>
+      <li>Home: This is the full HTTP web address of the Icon Style's homepage. This is optional.</li>
+    </ul>
+  </div>
+
+  <div class="indent"><h3>4.3 <a name="sect-idp569856" id="sect-idp569856">Text Strings</a></h3>
+    <p>The <tt>&lt;text/&gt;</tt> element defines what text string(s) are recognized by the client as an icon. There may be multiple <tt>&lt;text/&gt;</tt> elements in an <tt>&lt;icon/&gt;</tt>, such as for different languages or simply for multiple text strings producing the same result (for example: <tt>:-)</tt> and <tt>:)</tt>)</p>
+
+    <div class="indent"><h3>4.3.1 <a name="sect-idp572896" id="sect-idp572896">Internationalization</a></h3>
+      <p>Each may have an <tt>xml:lang</tt> attribute, as defined in Section 2.12 in the official <a href="http://www.w3.org/TR/REC-xml#sec-lang-tag">XML 1.0 reference document</a>. The <tt>xml:lang</tt> attribute allows for two-letter language codes, dialects, and custom "languages" to define foreign IM protocols, for example.</p>
+    </div>
+
+    <div class="indent"><h3>4.3.2 <a name="sect-idp1523312" id="sect-idp1523312">Whitespace</a></h3>
+      <p>In order to be more accurate in recognizing text strings intended to be icons from those that are just coincidences in normal conversation, the client should follow the "whitespace rule" of making sure there is some form of whitespace on at least one side of the text string. This is only a guideline; individual clients can implement different rules as needed. A newline and tabs count as whitespace in addition to spaces. This is to make sure that chunks of code and URIs are not accidentally converted into graphical pictures. Also, text strings cannot include newlines or tabs. All characters must be on the same line with only spaces within the string, and extra spaces should not be ignored. This is to make it much easier on text parsers looking for these text strings.</p>
+    </div>
+
+    <div class="indent"><h3>4.3.3 <a name="sect-idp1525120" id="sect-idp1525120">Case Sensitivity</a></h3>
+      <p>The text strings must be case sensitive. This is a rule that compliant clients must follow. "Cat" cannot be used in place of "cat" or "CAT". All three are separate text strings, and therefore must have separate <tt>&lt;text/&gt;</tt> elements, although they may of course use the same objects.</p>
+    </div>
+  </div>
+
+  <div class="indent"><h3>4.4 <a name="sect-idp1526944" id="sect-idp1526944">Objects</a></h3>
+    <p>The <tt>&lt;object/&gt;</tt> element defines what multimedia objects are inserted into the displayed message, replacing the text string(s) defined in <tt>&lt;text/&gt;</tt>. An object may be a bitmap graphic, vector graphic, audio clip, rich text formatting rules, or any other media that can be stored in a separate file. The <tt>&lt;object/&gt;</tt> element is identical to <a href="http://www.w3.org/TR/2003/WD-xhtml2-20030131/mod-object.html#s_objectmodule">the OBJECT element used in XHTML 2.0</a>, and the specification used there should be used to govern the <tt>&lt;object/&gt;</tt> element here. Note that because the XHTML 2.0 OBJECT specification is quite complex (although very flexible and future-proof), client developers are encouraged to only implement compliant sub-sets of the OBJECT specification for their clients. There may be one or multiple <tt>&lt;object/&gt;</tt> elements in an <tt>&lt;icon/&gt;</tt>, such as for alternative file formats (such as <tt>
+ GIF</tt> vs. <tt>PNG</tt>), or multiple objects to use at the same time (such as graphic and sound files).</p>
+  </div>
+
+  <div class="indent"><h3>4.5 <a name="sect-idp1532592" id="sect-idp1532592">X Tags</a></h3>
+    <p>The <tt>&lt;x/&gt;</tt> element allows any type of extensions to the <tt>icondef.xml</tt> file, such as to specify how the user's nickname can be colored in multi-user chat windows or defining additional data about the style or authors. Each must have an <tt>xmlns</tt> attribute with a namespace that the extension operates under. Multiple <tt>&lt;x/&gt;</tt> elements may be in the <tt>&lt;icon/&gt;</tt> or <tt>&lt;icondef/&gt;</tt> elements. This functionality is optional for clients to support, and clients should ignore all extensions they do not understand.</p>
+  </div>
+
+  <div class="indent"><h3>4.6 <a name="sect-idp1536384" id="sect-idp1536384">Hierarchy</a></h3>
+    <p>The <tt>icondef.xml</tt> file must all be located in the root directory, which is named after the style and version (example: <tt>./happy_days-1.2</tt> or <tt>./gold_angelic-1.0.0</tt>). There is only one root directory per style. The object files may either be in the root directory as well, or be in sub-directories for categorization and easier maintenance reasons. If sub-directories are used, they must match the URIs used in the <tt>&lt;object/&gt;</tt> element in the <tt>icondef.xml</tt> file.</p>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. Gold Angelic v1.0.0 Hierarchy Example</p><div class="indent"><pre class="prettyprint">
+./gold_angelic-1.0.0
+./gold_angelic-1.0.0/icondef.xml
+./gold_angelic-1.0.0/alert.ogg
+./gold_angelic-1.0.0/red-exclamation-mark.svg
+./gold_angelic-1.0.0/shocked.svg
+./gold_angelic-1.0.0/woman.svg
+./gold_angelic-1.0.0/pngs/happy.png
+./gold_angelic-1.0.0/pngs/sad.png
+./gold_angelic-1.0.0/pngs/man.png
+./gold_angelic-1.0.0/pngs/woman.png
+./gold_angelic-1.0.0/wavs/boohoo.wav
+./gold_angelic-1.0.0/wavs/choir.wav
+./gold_angelic-1.0.0/wavs/alert.wav
+</pre></div>
+  </div>
+
+  <div class="indent"><h3>4.7 <a name="sect-idp1540784" id="sect-idp1540784">Packaging</a></h3>
+    <p>The <tt>icondef.xml</tt> file and all object files must be packaged in the <tt>ZIP</tt> format following the above hierarchy (the directory must exist in the package, with all files in it). The package must have the file extension <tt>.jisp</tt> (Jabber Icon Style Package), and the MIME type <tt>application/vnd.jisp</tt> as defined in the official <a href="http://www.iana.org/assignments/media-types/application/vnd.jisp">IANA registration</a>. This allows Jabber clients to automatically install icon styles through web browsers. When the client installs the package, it should probably be kept in the archived format, instead of unzipped. This not only saves disk space, but also makes the packages easier to manage and exchange.</p>
+  </div>
+<h2>5.
+       <a name="sect-idp1544752" id="sect-idp1544752">Implementation Notes</a></h2>
+  <p>Icons styles should be easy to create, distribute, and most importantly, use. The packaging and official MIME type helps with the first steps, but it is ultimately up to the client developers to fully support the specification and make sure it is easy for users to manage.</p>
+
+   <div class="indent"><h3>5.1 <a name="sect-idp1545920" id="sect-idp1545920">Procedure</a></h3>
+     <p>The procedure for using Jabber icons is simple and straightforward.</p>
+     <ol>
+       <li>The user installs and turns on ("activates") an icon style (using their client's GUI, most likely) they have received off the Internet or somewhere else.</li>
+       <li>The user selects the desired icon they wish to include in their message from their client's GUI (a drop-down list of installed icons, for example).</li>
+       <li>The client translates the selected icon into its main text string equivelent, which is found in the icon's <tt>&lt;text&gt;</tt> element. If there are multiple <tt>&lt;text&gt;</tt> elements, follow the procedure under "Text Strings", below.</li>
+       <li>The client sends the message with the text string to the intended recipient.</li>
+       <li>The recipient client receives the message with the text string.</li>
+       <li>If the recipient has an icon style activated that defines that text string, it is converted into the appropriate object. If there are multiple objects files for each icon, follow the procedure under "Object Files", below. If there are multiple icon styles installed which define that text string, follow the procedure under "Combining Styles", below. If the recipient does not have such an icon activated, then they simply see the text string without any changes.</li>
+     </ol>
+   </div>
+
+  <div class="indent"><h3>5.2 <a name="sect-idp1551664" id="sect-idp1551664">Text Strings</a></h3>
+    <p>Because icons may have multiple text strings associated with them, clients need to be able to figure out which one to use when a user selects the desired icon from their GUI. This is ultimately completely up to the implementation, but here is a suggestion:</p>
+    <ol>
+      <li>First look for any text strings that are the same language as what the user is using (if the user is using english, then look for English text strings, ignoring languages like German or Simplified Chinese). Optionally, if the client is smart enough, it can instead look for text strings in the language that the intended recipient is using (using Browse/Disco or simply keeping track of languages used in an ongoing conversation). The language for text strings is found in the <tt>xml:lang</tt> attribute for <tt>&lt;text/&gt;</tt> elements.</li>
+      <li>If there are no text strings that match the user's language, then look for one that has no defined language.</li>
+      <li>If there are multiple options even after the above steps, select the one that comes first in the <tt>&lt;icon/&gt;</tt> element.</li>
+      <li>If there are no text strings that are in the user's language or no language defined at all, then it is probably best for the client to not even display the icon as a choice at all. But if the client still wants to allow it, then simply select the text string of any language that comes first in the <tt>&lt;icon/&gt;</tt> element.</li>
+    </ol>
+  </div>
+
+  <div class="indent"><h3>5.3 <a name="sect-idp1557456" id="sect-idp1557456">Objects</a></h3>
+    <p>Like multiple text strings, icons can have multiple object data files associated with them, and therefore clients also need to be able to figure out which ones to use when a user selects the desired icon from their GUI. Here is a suggestion of how those files can be chosen among multiple options, although this is completely an implementation issue (as with multiple text strings).</p>
+    <ol>
+      <li>First look for any of these objects that are of MIME types the client can understand and use. For example, most clients could only use <tt>image/bmp</tt> and maybe <tt>audio/x-wav</tt>, but some newer clients may be able to support <tt>image/png</tt>, <tt>image/svg+xml</tt> and <tt>audio/x-ogg</tt>.</li>
+      <li>If there are still multiple object MIME types which the client can understand and use, then the client should rank the MIME types it can support, choosing its favorite.</li>
+      <li>If there are still multiple objects of the same MIME type, then the client should choose the first one in order in the <tt>&lt;icon/&gt;</tt> element.</li>
+      <li>If there are no files of any MIME type the client can understand, then it should ignore using any objects or even the entire icon.</li>
+    </ol>
+    <p>The <a href="http://www.w3.org/TR/2003/WD-xhtml2-20030131/mod-object.html#sec_14.1.3.">Rules for processing objects</a> in the XHTML 2.0 OBJECT specification may also be of help in coding the procedure of choosing an object to use, especially when it comes to nested and author-preferred objects.</p>
+    <p>The client should also take note of the file sizes. The client should set (possibly as a user-defined option) the maximum file size in kilobytes for object files. Anything above this amount implies the file will be too big to properly render, and the icon style developer is probably being abusive.</p>
+    <p>Also, if you are developing an icon style, please make sure the MIME types specified in your <tt>icondef.xml</tt> file are correct. And also make sure that the files you use are reasonable in any byte, pixel, and timelength size. And although any file format can be supported, try to use <tt>BMP</tt>, <tt>PNG</tt>, <tt>SVG</tt>, <tt>WAV</tt>, <tt>OGG</tt> formats because they are open, free, and becoming increasingly supported in developer tools and programming languages.</p>
+  </div>
+
+  <div class="indent"><h3>5.4 <a name="sect-idp1568880" id="sect-idp1568880">Combining Styles</a></h3>
+    <p>A client may permit the user to activate multiple icon styles at one time. This would be useful for styles which make use of different text strings, and the user wants them all. The client should force the user to rank the multiple styles for purposes of conflict resolution between icons. The highest ranking style gets preference over lower ranking styles. This ranking doesn't have to be anything more than simply dragging the style names into top-to-bottom rows, with the styles on top being higher ranked than those below.</p>
+  </div>
+
+  <div class="indent"><h3>5.5 <a name="sect-idp1570432" id="sect-idp1570432">Core Icons</a></h3>
+    <p>Although any text string can be turned into an icon by defining it in an <tt>icondef.xml</tt> file, it is highly reccomended they either follow traditional ASCII Art (smileys and frownys, for example) or full keywords in simple markup such as double-colons. If you want to design icons, always keep in mind that not every Jabber user uses graphics to "translate" this to something visual, as explained in the "Meaningful" requirement, above. Here is a short list of recommended "core" icons that should be in most definitions, as well as possibly be used by transports:</p>
+    <ul>
+      <li>:-) and :) - A smiling face.</li>
+      <li>:-( and :( - A frowing face.</li>
+      <li>;-) and ;) - A winking smiling face.</li>
+      <li>:'-( and :'( - A crying face.</li>
+      <li>&gt;:-( and &gt;:( - An angry face.</li>
+      <li>:yes: - A thumbs-up or checkmark.</li>
+      <li>:no: - A thumbs-down or a crossmark.</li>
+      <li>:wait: - An open hand, palm outstretched.</li>
+      <li>@-&gt;-- and :rose: - A rose flower.</li>
+      <li>:telephone: - A telephone.</li>
+      <li>:email: - An electronic-looking envelope.</li>
+      <li>:jabber: - Jabber's lightbulb logo.</li>
+      <li>:cake: - A birthday cake.</li>
+      <li>:kiss: - A pair of puckered lips.</li>
+      <li>:heart: and :love: - A heart.</li>
+      <li>:brokenheart: - A broken heart.</li>
+      <li>:music: - A musical note or instrument.</li>
+      <li>:beer: - A beer mug.</li>
+      <li>:coffee: - A cup of coffee.</li>
+      <li>:money: - A gold coin.</li>
+      <li>:moon: - A moon.</li>
+      <li>:sun: - A sun.</li>
+      <li>:star: - A star.</li>
+    </ul>
+  </div>
+<h2>6.
+       <a name="sect-idp1590336" id="sect-idp1590336">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>7.
+       <a name="sect-idp1591424" id="sect-idp1591424">IANA Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp1594576">1</a>] shall register and maintain a MIME type and file extension for icon style packages with the IANA. Ones have already been registered by Sebastiaan Deckers (aka 'CBAS') as <tt>application/vnd.jisp</tt> and <tt>.jisp</tt>, respectively. The registration can be found at <a href="http://www.iana.org/assignments/media-types/application/vnd.jisp">http://www.iana.org/assignments/media-types/application/vnd.jisp</a>. Sebastiaan's registration shall be considered the official MIME type and file extension of this specification.</p>
+  <p>Also, this specification uses other MIME types that are maintained by IANA for the object and xml files that are included in the icon style packages.</p>
+<h2>8.
+       <a name="sect-idp1597168" id="sect-idp1597168">XMPP Registrar Considerations</a></h2>
+  <p>JANA shall register the namespace <tt>http://jabber.org/protocol/icon-styles</tt> as an official feature category.</p>
+  <p>Also, JANA may choose to define IM-specific <tt>xml:lang</tt> "language codes" for use within Jabber (in addition to those defined in the XML specification). Such language codes would allow Jabber developers to support icons from MSN, Yahoo, and popular web message programs.</p>
+<h2>9.
+       <a name="sect-idp1599984" id="sect-idp1599984">Formal Definition</a></h2>
+  <div class="indent"><h3>9.1 <a name="sect-idp1600480" id="sect-idp1600480">Schema</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;xs:element name="icondef"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:complexType&gt;
+          &lt;xs:sequence&gt;
+            &lt;xs:element name="name" type="xs:string"/&gt;
+            &lt;xs:element name="version" type="xs:string"/&gt;
+            &lt;xs:element name="description" type="xs:string"/&gt;
+            &lt;xs:element name="author" type="xs:string" maxOccurs="unbounded"&gt;
+              &lt;xs:complexType&gt;
+                &lt;xs:attribute name="jid" type="xs:string" use="optional"/&gt;
+              &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+            &lt;xs:element name="creation" type="xs:date"/&gt;
+          &lt;/xs:sequence&gt;
+        &lt;/xs:complexType&gt;
+        &lt;xs:element name="icon" minOccurs="1" maxOccurs="unbounded"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="text" type="xs:string" minOccurs="1" maxOccurs="unbounded"&gt;
+                &lt;xs:complexType&gt;
+                  &lt;xs:attribute name="xml:lang" type="xs:language" use="optional"/&gt;
+                &lt;/xs:complexType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="object" type="xs:string" minOccurs="1" maxOccurs="unbounded"&gt;
+                &lt;xs:complexType&gt;
+                  &lt;xs:attribute name="mime" type="xs:string" use="required"/&gt;
+                &lt;/xs:complexType&gt;
+              &lt;/xs:element&gt;
+              &lt;xs:element name="x" type="xs:string" minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:complexType&gt;
+                  &lt;xs:attribute name="xmlns" type="xs:anyURI" use="required"/&gt;
+                &lt;/xs:complexType&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+        &lt;xs:element name="x" type="xs:string" minOccurs="0" maxOccurs="unbounded"&gt;
+          &lt;xs:complexType&gt;
+            &lt;xs:attribute name="xmlns" type="xs:anyURI" use="required"/&gt;
+          &lt;/xs:complexType&gt;
+        &lt;/xs:element&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>9.2 <a name="sect-idp1604448" id="sect-idp1604448">icondef.xml file example</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;icondef&gt;
+  &lt;meta&gt;
+    &lt;name&gt;Gold Angelic&lt;/name&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;description&gt;Angelic faces and themes with gold highlights.&lt;/description&gt;
+    &lt;author jid="theo@theoretic.com"&gt;Adam Theo&lt;/author&gt;
+    &lt;author jid="cbas@rhymbox.com"&gt;Sebastiaan Deckers&lt;/author&gt;
+    &lt;author jid="cobnet@jabber.org"&gt;Mattias Campe&lt;/author&gt;
+    &lt;creation&gt;2002-10-31&lt;/creation&gt;
+    &lt;home&gt;http://icon-styles.jabberstudio.org/Gold_Angelic&lt;/home&gt;
+  &lt;/meta&gt;
+  &lt;icon&gt;
+    &lt;text&gt;:-)&lt;/text&gt;
+    &lt;text&gt;:)&lt;/text&gt;
+    &lt;object mime="image/png"&gt;happy.png&lt;/object&gt;
+    &lt;object mime="audio/x-wav"&gt;choir.wav&lt;/object&gt;
+  &lt;/icon&gt;
+  &lt;icon&gt;
+    &lt;text&gt;:-(&lt;/text&gt;
+    &lt;text&gt;:(&lt;/text&gt;
+    &lt;object mime="image/png"&gt;sad.png&lt;/object&gt;
+    &lt;object mime="audio/x-wav"&gt;boohoo.wav&lt;/object&gt;
+  &lt;/icon&gt;
+  &lt;icon&gt;
+    &lt;text&gt;:-O&lt;/text&gt;
+    &lt;text&gt;:O&lt;/text&gt;
+    &lt;object mime="image/svg+xml"&gt;shocked.svg&lt;/object&gt;
+  &lt;/icon&gt;
+  &lt;icon&gt;
+    &lt;text xml:lang="en"&gt;::man::&lt;/text&gt;
+    &lt;text xml:lang="de"&gt;::mann::&lt;/text&gt;
+    &lt;text xml:lang="cs"&gt;::muz::&lt;/text&gt;
+    &lt;text xml:lang="x-msn"&gt;(z)&lt;/text&gt;
+    &lt;object mime="image/png"&gt;man.png&lt;/object&gt;
+  &lt;/icon&gt;
+  &lt;icon&gt;
+    &lt;text xml:lang="en"&gt;::woman::&lt;/text&gt;
+    &lt;text xml:lang="x-msn"&gt;(x)&lt;/text&gt;
+    &lt;object mime="image/svg+xml"&gt;woman.svg&lt;/object&gt;
+    &lt;object mime="image/png"&gt;woman.png&lt;/object&gt;
+  &lt;/icon&gt;
+  &lt;icon&gt;
+    &lt;text xml:lang="en"&gt;::alert::&lt;/text&gt;
+    &lt;object mime="image/svg+xml"&gt;red-exclamation-mark.svg&lt;/object&gt;
+    &lt;object mime="audio/x-ogg"&gt;alert.ogg&lt;/object&gt;
+    &lt;object mime="audio/x-wav"&gt;alert.wav&lt;/object&gt;
+  &lt;/icon&gt;
+&lt;/icondef&gt;
+    </pre></div>
+  </div>
+<h2>10.
+       <a name="sect-idp1605584" id="sect-idp1605584">Future Considerations</a></h2>
+  <ol>
+    <li>This proposes a standard, simple, plaintext-based icon convention. It does not attempt to create a powerful XML-based convention wherein XML tags are used to extensibly represent the icons. However, this proposal isn't exclusive, and does not prevent such an XML-based convention from being created at a later date. It may also be possible to build such an extensible XML-based convention on top of this plaintext one.</li>
+    <li>The Icon Styles that the sender used to create the message may be of use to the recipient. A separate specification can be developed for the transferring of the name and version of the Icon Styles used by the sender. The recipient's client may then be smart enough to automatically use the same icons as the sender intended, possibly even fetching and downloading the icon styles as needed. This would likely require directory services, so has not been included in this proposal.</li>
+    <li>The functionality of the <tt>icondef.xml</tt> files may be useful for variable text strings. Text strings that may change from session to session, such as the user's nickname in a multi-user chat. A set of variables could be defined that represent these variable datas, therefore allowing them to be manipulated in the same way set text strings are.</li>
+    <li>This convention may be adopted beyond the scope of Jabber into web browsers, email clients, and Wiki sites. There is great potential for a generalized, exchangeable convention for emoticons and genicons.</li>
+    <li>A "SVG Transport" may be created to enable clients to send <tt>SVG</tt> icons to it and get back icons in another format of their choice, such as <tt>PNG</tt> or <tt>JPG</tt>. This would speed up the adoption of <tt>SVG</tt> within Jabber greatly.</li>
+    <li>An online Web- (or even Jabber-) based editor to create icon style packages from the individual components would be a great tool for developers. This would be a great project for <a href="http://www.jabberstudio.org">JabberStudio</a> or even the <a href="http://www.theoretic.com/Ransom">Ransom model</a>.</li>
+  </ol>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0038<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.5<br />
+            Last Updated: 2003-06-02<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+        Schema: &lt;<a href=""></a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0038.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0038.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0038.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Adam Theo</h3><p class="indent">
+        Email:
+        <a href="mailto:theo@theoretic.com">theo@theoretic.com</a><br />
+        JabberID: 
+        <a href="xmpp:theo@theoretic.com">theo@theoretic.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1594576" id="nt-idp1594576">1</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.5 (2003-06-02)</h4><div class="indent">Bent to public will on using a common object element and enveloping all meta information into a meta element. (at)
+    </div><h4>Version 0.4 (2003-03-05)</h4><div class="indent">Added "format" back in. Refused to simplify to use "object" for everything. Fixed some typos. (at)
+    </div><h4>Version 0.3 (2002-11-05)</h4><div class="indent">Simplified, even though it loses some flexibility. Should be the final version. (at)
+    </div><h4>Version 0.2 (2002-07-24)</h4><div class="indent">Added feedback, still needs serious Schema work (at)
+    </div><h4>Version 0.1 (2002-06-28)</h4><div class="indent">Initial version (at)
+    </div></div><hr /><p>END</p></body></html>

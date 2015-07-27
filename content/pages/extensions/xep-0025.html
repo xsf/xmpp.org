@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0025: Jabber HTTP Polling</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber HTTP Polling" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Craig Kaes" /><meta name="DC.Creator" content="David Waite" /><meta name="DC.Description" content="This document defines an XMPP protocol extension that enables access to a Jabber server from behind firewalls which do not allow outgoing sockets on port 5222, via HTTP requests." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-06-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0025" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0025: Jabber HTTP Polling</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension that enables access to a Jabber server from behind firewalls which do not allow outgoing sockets on port 5222, via HTTP requests.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Craig Kaes, David Waite</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-06-03</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp697648">Introduction</a><br />2.  <a href="#sect-idp699152">Background</a><br />3.  <a href="#sect-idp703184">Normal data transfer</a><br />   
+      3.1.  <a href="#sect-idp802544">Error conditions</a><br />      
+      3.1.1.  <a href="#sect-idp803584">Unknown Error</a><br />      
+      3.1.2.  <a href="#sect-idp804720">Server Error</a><br />      
+      3.1.3.  <a href="#sect-idp805728">Bad Request</a><br />      
+      3.1.4.  <a href="#sect-idp806736">Key Sequence Error</a><br />4.  <a href="#sect-idp813888">Usage</a><br />5.  <a href="#sect-idp1608464">Known issues</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp697648" id="sect-idp697648">Introduction</a></h2>
+    <p><span class="em">Note Well: This protocol specified in this document has been superseded by the protocol specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0124.html">BOSH (XEP-0124)</a></span>  [<a href="#nt-idp714208">1</a>].</span></p>
+    <p>
+      This specification documents a method to allow Jabber clients to access Jabber
+      servers from behind existing firewalls. Although several similar methods
+      have been proposed, this approach should work through all known firewall
+      configurations which allow outbound HTTP access.
+    </p>
+  <h2>2.
+       <a name="sect-idp699152" id="sect-idp699152">Background</a></h2>
+    <p>
+      In general, a firewall is a box that protects a network from outsiders,
+      by controlling the IP connections that are allowed to pass through the
+      box. Often, a firewall will also allow access outside only by proxy,
+      either explicit proxy support or implicit through Network Address
+      Translation (NAT).
+    </p>
+    <p>
+      In the interest of security, many firewall administrators do not allow
+      outbound connections to unknown and unused ports. Until Jabber becomes
+      more widely deployed, port 5222/tcp (for Jabber client connections) will
+      often be blocked.
+    </p>
+    <p>
+      The best solution for sites that are concerned about security is to run
+      their own Jabber server, either inside the firewall, or in a DMZ
+       [<a href="#nt-idp701616">2</a>]
+      network. However, there are network configuration where an external
+      Jabber server must still be used and port 5222/tcp outbound cannot be
+      allowed. In these situations, different methods for connecting to a
+      Jabber server are required. Several methods exist today for doing this
+      traversal. Most rely on the fact that a most firewalls are configured to
+      allow access through port 80/tcp. Although some less-complicated
+      firewalls will allow any protocol to traverse this port, many will proxy,
+      filter, and verify requests on this port as HTTP. Because of this, a
+      normal Jabber connection on port 80/tcp will not suffice.
+    </p>
+    <p>
+      In addition, many firewalls/proxy servers will also not allow or not
+      honor HTTP Keep-alives (as defined in section 19.7.1.1 of <span class="ref"><a href="http://tools.ietf.org/html/rfc2068">RFC 2068</a></span>  [<a href="#nt-idp707632">3</a>])
+      and will consider long-lived socket connections as security issues.
+      Because of this the traditional Jabber connection model, where one
+      socket is one stream is one session, will not work reliably.
+    </p>
+    <p>
+      In light of all of the ways that default firewall rules can interfere
+      with Jabber connectivity, a lowest-common denominator approach was
+      selected. HTTP is used to send XML as POST requests and receieve pending
+      XML within the responses. Additional information is prepended in the
+      request body to ensure an equivalent level of security to TCP/IP sockets.
+    </p>
+  <h2>3.
+       <a name="sect-idp703184" id="sect-idp703184">Normal data transfer</a></h2>
+    <p>
+      The client makes HTTP requests periodically to the server. Whenever the
+      client has something to send, that XML is included in the body of the
+      request. When the server has something to send to the client, it must be
+      contained in the body of the response.
+    </p>
+    <p>
+      In some browser/platform combinations, sending cookies from the client is
+      not possible due to design choices and limitations in the
+      browser. Therefore, a work-around was needed to support clients based on
+      these application platforms.
+    </p>
+    <p>
+      All requests to the server are HTTP POST requests, with Content-Type:
+      application/x-www-form-urlencoded. Responses from the server have
+      Content-Type: text/xml. Both the request and response bodies are UTF-8
+      encoded text, even if an HTTP header to the contrary exists. All
+      responses contain a Set-Cookie header with an identifier, which is sent
+      along with future requests as described below. This identifier cookie
+      must have a name of 'ID'. The first request to a server always uses 0 as
+      the identifier. The server must always return a 200 response code,
+      sending any session errors as specially-formatted identifiers.
+    </p>
+    <p>The client sends requests with bodies in the following format:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+          identifier ; key [ ; new_key] , [xml_body]
+      </pre></div>
+      <p>If the identifier is zero, key indicates an initial key. In this case,
+      new_key should not be specified, and must be ignored.</p>
+      <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Request Values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Identifier</th>
+          <th>Purpose</th>
+        </tr>
+        <tr class="body">
+          <td>identifier</td>
+          <td>
+            To uniquely identify the session server-side. This field is only
+            used to identify the session, and provides no security.
+          </td>
+        </tr>
+        <tr class="body">
+          <td>key</td>
+          <td>
+            To verify this request is from the originator of the session. The
+            client generates a new key in the manner described below for each
+            request, which the server then verifies before processing the
+            request.
+          </td>
+        </tr>
+        <tr class="body">
+          <td>new_key</td>
+          <td>
+            The key algorithm can exhaust valid keys in a sequence, which
+            requires a new key sequence to be used in order to continue the
+            session. The new key is sent along with the last used key in the
+            old sequence.
+          </td>
+        </tr>
+        <tr class="body">
+          <td>xml_body</td>
+          <td>
+            The body of text to send. Since a POST must be sent in order for
+            the server to respond with recent messages, a client may send
+            a request without an xml_body in order to just retrieve new
+            incoming packets. This is not required to be a full XML document or
+            XML fragment, it does not need to start or end on element boundaries.
+          </td>
+        </tr>
+      </table></div>
+    <p>
+      The identifier is everything before the first semicolon, and must consist
+      of the characters [A-Za-z0-9:-]. The identifier returned from the first
+      request is the identifier for the session. Any new identifier that ends
+      in ':0' indicates an error, with the entire identifier indicating the
+      specific error condition. Any new identifier that does not end in ':0' is
+      a server programming error, the client should discontinue the
+      session. For new sessions, the client identifier is considered to be 0.
+    </p>
+    <div class="indent"><h3>3.1 <a name="sect-idp802544" id="sect-idp802544">Error conditions</a></h3>
+      <p>
+        Any identifier that ends in ':0' indicates an error. Any previous
+        identifier associated with this session is no longer valid.
+      </p>
+      <div class="indent"><h3>3.1.1 <a name="sect-idp803584" id="sect-idp803584">Unknown Error</a></h3>
+        <p>
+          Server returns ID=0:0. The response body can contain a textual error
+          message.
+        </p>
+      </div>
+      <div class="indent"><h3>3.1.2 <a name="sect-idp804720" id="sect-idp804720">Server Error</a></h3>
+        <p>Server returns ID=-1:0</p>
+      </div>
+      <div class="indent"><h3>3.1.3 <a name="sect-idp805728" id="sect-idp805728">Bad Request</a></h3>
+        <p>Server returns ID=-2:0</p>
+      </div>
+      <div class="indent"><h3>3.1.4 <a name="sect-idp806736" id="sect-idp806736">Key Sequence Error</a></h3>
+        <p>Server returns ID=-3:0</p>
+      </div>
+    </div>
+    <p>
+      The key is a client security feature to allow TCP/IP socket equivalent
+      security. It does not protect against intermediary attacks, but does
+      prevent a person who is capable of listening to the HTTP traffic from
+      sending messages and receiving incoming traffic from another machine.
+    </p>
+    <p>The key algorithm should be familiar with those with knowledge of Jabber zero-knowledge authentication.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+        K(n, seed) = Base64Encode(SHA1(K(n - 1, seed))), for n &gt; 0
+        K(0, seed) = seed, which is client-determined
+    </pre></div>
+    <p>Note: Base64 encoding is defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3548">RFC 3548</a></span>  [<a href="#nt-idp816576">4</a>]. SHA1 is defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3174">RFC 3174</a></span>  [<a href="#nt-idp809984">5</a>].</p>
+    <p>
+      No framing is implied by a single request or reply. A single request can
+      have no content sent, in which case the body contains only the identifier
+      followed by a comma. A reply may have no content to send, in which case
+      the body is empty. Zero or more XMPP packets may be sent in a single
+      request or reply, including partial XMPP packets.
+    </p>
+    <p>
+      The absense of a long-lived connection requires the server to consider
+      client traffic as a heartbeat to keep the session alive. If a
+      server-configurable period of time passes without a successful POST
+      request sent by the client, the server must end the client session. Any
+      client requests using the identifier associated with that now dead
+      session must return an error of '0:0'.
+    </p>
+    <p>
+      The maximum period of time to keep a client session active without an
+      incoming POST request is not defined, but five minutes is the recommended
+      minimum. The maximum period of time recommended for clients between
+      requests is two minutes; if the client has not sent any XML out for two
+      minutes, a request without an XML body should be sent. If a client is
+      disconnecting from the server, a closing &lt;stream:stream&gt; must be
+      sent to end the session. Failure to do this may have the client continue
+      to be represented to other users as available.
+    </p>
+    <p>
+      If the server disconnects the user do to a session timeout, the server
+      MUST bounce pending IQ requests and either bounce or store offline
+      incoming messages.
+    </p>
+  <h2>4.
+       <a name="sect-idp813888" id="sect-idp813888">Usage</a></h2>
+    <p>The following is the sequence used for client communication:</p>
+      <ol>
+        <li>
+          The client generates some initial K(0, seed) and runs the algorithm
+          above 'n' times to determine the initial key sent to the server,
+          K(n, seed)
+        </li>
+        <li>
+          The client sends the request to the server to start the stream,
+          including an identifier with a value of zero and K(n, seed)
+        </li>
+        <li>
+          The server responds with the session identifier in the headers
+          (within the Set-Cookie field).
+        </li>
+        <li>
+          For each further request done by the client, the identifier from the
+          server and K(n - 1, seed) are sent along.
+        </li>
+        <li>
+          The server verifies the incoming value by generating
+          K(1, incoming_value), and verifying that value against the value sent
+          along with the last client request. If the values do not match, the
+          request should be ignored or logged, with an error code being
+          returned of -3:0. The request must not be processed, and must not
+          extend the session keepalive. 
+        </li>
+        <li>
+          The client may send a new key K(m, seed') at any point, but should
+          do this for n &gt; 0 and must do this for n = 0. If K(0, seed) is
+          sent without a new key, the client will not be able to continue the
+          session.
+        </li>
+      </ol>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initial request (without keys)</p><div class="indent"><pre class="prettyprint">
+
+POST /wc12/webclient HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: webim.jabber.com
+
+0,&lt;stream:stream to="jabber.com"
+  xmlns="jabber:client"
+  xmlns:stream="http://etherx.jabber.org/streams"&gt;
+ 
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Initial response</p><div class="indent"><pre class="prettyprint">
+
+Date: Fri, 15 Mar 2002 20:30:30 GMT
+Server: Apache/1.3.20
+Set-Cookie: ID=7776:2054; path=/webclient/; expires=-1
+Content-Type: text/xml
+
+&lt;?xml version='1.0'?&gt;
+&lt;stream:stream xmlns:stream='http://etherx.jabber.org/streams'
+  id='3C9258BB'
+  xmlns='jabber:client' from='jabber.com'&gt;
+
+    </pre></div>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Next request (without keys)</p><div class="indent"><pre class="prettyprint">
+
+POST /wc12/webclient HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: webim.jabber.com
+
+7776:2054,&lt;iq type="get" id="WEBCLIENT3"&gt;
+  &lt;query xmlns="jabber:iq:auth"&gt;
+    &lt;username&gt;hildjj&lt;/username&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. key sequence</p><div class="indent"><pre class="prettyprint">
+      K(0, "foo") = "foo"
+      K(1, "foo") = "C+7Hteo/D9vJXQ3UfzxbwnXaijM="
+      K(2, "foo") = "6UU8CDmH3O4aHFmCqSORCn721+M="
+      K(3, "foo") = "vFFYSOhGyaGUgLrldtMBX7x91Wc="
+      K(4, "foo") = "ZaDxCilBVTHS9dJfbBo1NsC2b+8="
+      K(5, "foo") = "moPFsvHytDGiJQOjp186AMXAeP0="
+      K(6, "foo") = "VvxEk07IFy6hUmG/PPBlTLE2fiA="
+    </pre></div>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Initial request (with keys)</p><div class="indent"><pre class="prettyprint">
+
+POST /wc12/webclient HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: webim.jabber.com
+
+0;VvxEk07IFy6hUmG/PPBlTLE2fiA=,&lt;stream:stream to="jabber.com"
+  xmlns="jabber:client"
+  xmlns:stream="http://etherx.jabber.org/streams"&gt;
+ 
+      </pre></div>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Next request (with keys)</p><div class="indent"><pre class="prettyprint">
+
+POST /wc12/webclient HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: webim.jabber.com
+
+7776:2054;moPFsvHytDGiJQOjp186AMXAeP0=,&lt;iq type="get" id="WEBCLIENT3"&gt;
+  &lt;query xmlns="jabber:iq:auth"&gt;
+    &lt;username&gt;hildjj&lt;/username&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+    </pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Changing key</p><div class="indent"><pre class="prettyprint">
+POST /wc12/webclient HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Host: webim.jabber.com
+
+7776:2054;C+7Hteo/D9vJXQ3UfzxbwnXaijM=;Tr697Eff02+32FZp38Xaq2+3Bv4=,&lt;presence/&gt;
+    </pre></div>
+  <h2>5.
+       <a name="sect-idp1608464" id="sect-idp1608464">Known issues</a></h2>
+    <ul>
+      <li>This method works over HTTPS, which is good from the standpoint of functionality, but bad in the sense that a massive amount of hardware would be needed to support reasonable polling intervals for non-trivial numbers of clients.</li>
+    </ul>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0025<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.2<br />
+            Last Updated: 2009-06-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />Superseded By: XEP-0124<br />
+            Short Name: httppoll<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0025.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0025.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0025.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Craig Kaes</h3><p class="indent">
+        Email:
+        <a href="mailto:ckaes@jabber.com">ckaes@jabber.com</a><br />
+        JabberID: 
+        <a href="xmpp:ckaes@corp.jabber.com">ckaes@corp.jabber.com</a><br /></p><h3>David Waite</h3><p class="indent">
+        Email:
+        <a href="mailto:mass@akuma.org">mass@akuma.org</a><br />
+        JabberID: 
+        <a href="xmpp:mass@akuma.org">mass@akuma.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp714208" id="nt-idp714208">1</a>. XEP-0124: Bidirectional-streams Over Synchronous HTTP &lt;<a href="http://xmpp.org/extensions/xep-0124.html">http://xmpp.org/extensions/xep-0124.html</a>&gt;.</p><p><a name="nt-idp701616" id="nt-idp701616">2</a>. 
+        DMZ definition at
+        <a href="http://searchwebmanagement.techtarget.com/sDefinition/0,,sid27_gci213891,00.html">
+          searchwebmanagement.com
+        </a>
+      </p><p><a name="nt-idp707632" id="nt-idp707632">3</a>. RFC 2068: Hypertext Transport Protocol -- HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2068">http://tools.ietf.org/html/rfc2068</a>&gt;.</p><p><a name="nt-idp816576" id="nt-idp816576">4</a>. RFC 3548: The Base16, Base32, and Base64 Data Encodings &lt;<a href="http://tools.ietf.org/html/rfc3548">http://tools.ietf.org/html/rfc3548</a>&gt;.</p><p><a name="nt-idp809984" id="nt-idp809984">5</a>. RFC 3174: US Secure Hash Algorithm 1 (SHA1) &lt;<a href="http://tools.ietf.org/html/rfc3174">http://tools.ietf.org/html/rfc3174</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2009-06-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed status to Obsolete.</p> (psa)
+    </div><h4>Version 1.1 (2006-07-26)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Deprecated.</p> (psa)
+    </div><h4>Version 1.0 (2002-10-11)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Active.</p> (psa)
+    </div><h4>Version 0.2 (2002-09-23)</h4><div class="indent"><p>Changed format to allow socket-equivalent security.</p> (dew)
+    </div><h4>Version 0.1 (2002-03-14)</h4><div class="indent"><p>Initial version.</p> (jjh)
+    </div></div><hr /><p>END</p></body></html>

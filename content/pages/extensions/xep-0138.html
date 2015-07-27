@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0138: Stream Compression</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Stream Compression" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document defines an XMPP protocol extension for negotiating compression of XML streams, especially in situations where standard TLS compression cannot be negotiated. The protocol provides a modular framework that can accommodate a wide range of compression algorithms; the ZLIB compression algorithm is mandatory-to-implement, but implementations may support other algorithms in addition." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-05-27" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0138" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0138: Stream Compression</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension for negotiating compression of XML streams, especially in situations where standard TLS compression cannot be negotiated. The protocol provides a modular framework that can accommodate a wide range of compression algorithms; the ZLIB compression algorithm is mandatory-to-implement, but implementations may support other algorithms in addition.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-05-27</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#usecase">Use Case</a><br />3.  <a href="#bizrules">Business Rules</a><br />4.  <a href="#mandatory">Mandatory-to-Implement Technologies</a><br />5.  <a href="#optional">Optional Technologies</a><br />6.  <a href="#impl">Implementation Notes</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-stream">Stream Features</a><br />   
+      9.2.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      9.3.  <a href="#registrar-methods">Compression Methods Registry</a><br />      
+      9.3.1.  <a href="#registrar-methods-process">Process</a><br />      
+      9.3.2.  <a href="#registrar-methods-init">Registration</a><br />10.  <a href="#schemas">XML Schemas</a><br />   
+      10.1.  <a href="#schemas-stream">Stream Feature</a><br />   
+      10.2.  <a href="#schemas-protocol">Protocol Namespace</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+    <p><span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp693264">1</a>] specifies the use of Transport Layer Security (TLS; see <span class="ref"><a href="http://tools.ietf.org/html/rfc5246">RFC 5246</a></span>  [<a href="#nt-idp689584">2</a>]) for encryption of XML streams, and TLS includes the ability to compress encrypted traffic (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3749">RFC 3749</a></span>  [<a href="#nt-idp1534624">3</a>]). However, not all computing platforms are able to implement TLS, and traffic compression may be desirable for communication by applications on such computing platforms. This document defines a mechanism for negotiating the compression of XML streams outside the context of TLS.</p>
+  <h2>2.
+       <a name="usecase" id="usecase">Use Case</a></h2>
+    <p>The protocol flow is as follows:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Receiving Entity Offers Stream Compression Feature</p><div class="indent"><pre class="prettyprint">
+&lt;stream:features&gt;
+  &lt;starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/&gt;
+  &lt;compression xmlns='http://jabber.org/features/compress'&gt;
+    &lt;method&gt;zlib&lt;/method&gt;
+    &lt;method&gt;lzw&lt;/method&gt;
+  &lt;/compression&gt;
+&lt;/stream:features&gt;
+    </pre></div>
+    <p>Note: The &lt;compression/&gt; element MUST contain at least one &lt;method/&gt; child element. Each &lt;method/&gt; element MUST contain XML character data that specifies the name of a compression method, and such method names SHOULD be registered as described in the <a href="#registrar-methods">Compression Methods Registry</a> section of this document. The methods SHOULD be provided in order of preference.</p>
+    <p>The initiating entity then MAY request compression by specifying one of the methods advertised by the receiving entity:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Initiating Entity Requests Stream Compression</p><div class="indent"><pre class="prettyprint">
+&lt;compress xmlns='http://jabber.org/protocol/compress'&gt;
+  &lt;method&gt;zlib&lt;/method&gt;
+&lt;/compress&gt;
+    </pre></div>
+    <p>Note: If the initiating entity did not understand any of the advertised compression methods, it SHOULD ignore the compression option and proceed as if no compression methods were advertised.</p>
+    <p>If the initiating entity requests a stream compression method that is not supported by the receiving entity, the receiving entity MUST return an &lt;unsupported-method/&gt; error:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Receiving Entity Reports That Method is Unsupported</p><div class="indent"><pre class="prettyprint">
+&lt;failure xmlns='http://jabber.org/protocol/compress'&gt;
+  &lt;unsupported-method/&gt;
+&lt;/failure&gt;
+    </pre></div>
+    <p>If the receiving entity finds the requested method unacceptable or unworkable for any other reason, it MUST return a &lt;setup-failed/&gt; error:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Receiving Entity Reports That Negotiation of Stream Compression Failed</p><div class="indent"><pre class="prettyprint">
+&lt;failure xmlns='http://jabber.org/protocol/compress'&gt;
+  &lt;setup-failed/&gt;
+&lt;/failure&gt;
+    </pre></div>
+    <p>Note: Failure of the negotiation SHOULD NOT be treated as an unrecoverable error and therefore SHOULD NOT result in a stream error. In particular, the initiating entity is free to retry the compression negotiation if it fails.</p>
+    <p>If no error occurs, the receiving entity MUST inform the initiating entity that compression has been successfully negotiated:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Receiving Entity Acknowledges Negotiation of Stream Compression</p><div class="indent"><pre class="prettyprint">
+&lt;compressed xmlns='http://jabber.org/protocol/compress'/&gt;
+    </pre></div>
+    <p>Both entities MUST now consider the previous (uncompressed) stream to be null and void, just as with TLS negotiation and SASL negotiation (as specified in <span class="ref">RFC 3920</span>) and MUST begin compressed communications with a new (compressed) stream. Therefore the initiating entity MUST initiate a new stream to the receiving entity:</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Initiating Entity Initiates New (Compressed) Stream</p><div class="indent"><pre class="prettyprint">
+&lt;stream:stream
+    xmlns='jabber:client'
+    xmlns:stream='http://etherx.jabber.org/streams'
+    to='shakespeare.lit'&gt;
+    </pre></div>
+    <p>If compression processing fails after the new (compressed) stream has been established, the entity that detects the error SHOULD generate a stream error and close the stream:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Entity Closes Stream Because of a Processing Error</p><div class="indent"><pre class="prettyprint">
+&lt;stream:error&gt;
+  &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-streams'/&gt;
+  &lt;failure xmlns='http://jabber.org/protocol/compress'&gt;
+    &lt;processing-failed/&gt;
+  &lt;/failure&gt;
+&lt;/stream:error&gt;
+&lt;/stream:stream&gt;
+    </pre></div>
+  <h2>3.
+       <a name="bizrules" id="bizrules">Business Rules</a></h2>
+    <p>The following business rules apply:</p>
+    <ul>
+      <li>If stream compression is negotiated, it MUST be used in both directions.</li>
+      <li>TLS compression and stream compression SHOULD NOT be used simultaneously.</li>
+      <li>Stream compression MAY be offered after TLS negotiation if TLS compression is not used.</li>
+    </ul>
+    <p>For detailed recommendations regarding the order of stream feature negotiation, refer to <span class="ref"><a href="http://xmpp.org/extensions/xep-0170.html">Recommended Order of Stream Feature Negotiation (XEP-0170)</a></span>  [<a href="#nt-idp1554304">4</a>].</p>
+  <h2>4.
+       <a name="mandatory" id="mandatory">Mandatory-to-Implement Technologies</a></h2>
+    <p>Support for the ZLIB compression method as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc1950">RFC 1950</a></span>  [<a href="#nt-idp1558608">5</a>] is REQUIRED.</p>
+    <p>All other methods are OPTIONAL; such methods may be defined in future specifications or by registration as described in the <a href="#registrar-methods">Compression Methods Registry</a> section of this document.</p>
+  <h2>5.
+       <a name="optional" id="optional">Optional Technologies</a></h2>
+    <p>Implementations MAY support the following methods in addition to ZLIB:</p>
+    <ul>
+      <li><span class="ref"><a href="http://xmpp.org/extensions/xep-0229.html">Stream Compression with LZW (XEP-0229)</a></span>  [<a href="#nt-idp1564128">6</a>]</li>
+    </ul>
+  <h2>6.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+    <p>When using ZLIB for compression, the sending application SHOULD complete a partial flush of ZLIB when its current send is complete. Note that this statement is deliberately somewhat vague: the sending application may end up performing this partial flush after sending every XML stanza, but on the other hand may perform the partial flush only after sending a group of stanzas that have been queued up for delivery. When to flush the state of the compression application is up to the sending application.</p>
+  <h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+    <p>Stream encryption via TLS (as defined in <span class="ref">RFC 3920</span>) and stream compression (as defined herein) are not mutually exclusive, but stream encryption via TLS MUST be negotiated before negotiation of stream compression in order to secure the stream.</p>
+    <p>Many of the security considerations related to TLS compression (see Section 6 of <span class="ref">RFC 3749</span>) also apply to stream compression.</p>
+  <h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+    <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1572016">7</a>]. </p>
+  <h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+    <div class="indent"><h3>9.1 <a name="registrar-stream" id="registrar-stream">Stream Features</a></h3>
+      <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1577104">8</a>] includes 'http://jabber.org/features/compress' in its registry of stream features.</p>
+    </div>
+    <div class="indent"><h3>9.2 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+      <p>The XMPP Registrar includes 'http://jabber.org/protocol/compress' in its registry of protocol namespaces.</p>
+    </div>
+    <div class="indent"><h3>9.3 <a name="registrar-methods" id="registrar-methods">Compression Methods Registry</a></h3>
+      <p>The XMPP Registrar maintains a registry of compression methods at &lt;<a href="http://xmpp.org/registrar/compress.html">http://xmpp.org/registrar/compress.html</a>&gt;.</p>
+      <div class="indent"><h3>9.3.1 <a name="registrar-methods-process" id="registrar-methods-process">Process</a></h3>
+        <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;method&gt;
+  &lt;name&gt;the XML character data of the method element&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the compression method&lt;/desc&gt;
+  &lt;doc&gt;the document that specifies or registers the compression method&lt;/doc&gt;
+&lt;/method&gt;
+        </pre></div>
+        <p>The registrant may register more than one compression method at a time, each contained in a separate &lt;method/&gt; element.</p>
+      </div>
+      <div class="indent"><h3>9.3.2 <a name="registrar-methods-init" id="registrar-methods-init">Registration</a></h3>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;method&gt;
+  &lt;name&gt;zlib&lt;/name&gt;
+  &lt;desc&gt;the ZLIB compression method&lt;/desc&gt;
+  &lt;doc&gt;RFC 1950&lt;/doc&gt;
+&lt;/method&gt;
+        </pre></div>
+      </div>
+    </div>
+  <h2>10.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+    <div class="indent"><h3>10.1 <a name="schemas-stream" id="schemas-stream">Stream Feature</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/features/compress'
+    xmlns='http://jabber.org/features/compress'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0138: http://www.xmpp.org/extensions/xep-0138.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='compression'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='method' type='xs:NCName' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>10.2 <a name="schemas-protocol" id="schemas-protocol">Protocol Namespace</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/compress'
+    xmlns='http://jabber.org/protocol/compress'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0138: http://www.xmpp.org/extensions/xep-0138.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='urn:ietf:params:xml:ns:xmpp-stanzas'
+             schemaLocation='http://xmpp.org/schemas/stanzaerror.xsd'/&gt;
+
+  &lt;xs:element name='compress'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='method' type='xs:NCName' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='compressed' type='empty'/&gt;
+
+  &lt;xs:element name='failure'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element name='setup-failed' type='empty'/&gt;
+        &lt;xs:element name='processing-failed' type='empty'/&gt;
+        &lt;xs:element name='unsupported-method' type='empty'/&gt;
+        &lt;xs:sequence xmlns:err='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;
+          &lt;xs:group ref='err:stanzaErrorGroup'/&gt;
+          &lt;xs:element ref='err:text' minOccurs='0'/&gt;
+        &lt;/xs:sequence&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+      </pre></div>
+    </div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0138<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.0<br />
+            Last Updated: 2009-05-27<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: compress<br />
+        XML Schema for compress namespace: &lt;<a href="http://www.xmpp.org/schemas/compress.xsd">http://www.xmpp.org/schemas/compress.xsd</a>&gt;<br />
+        XML Schema for feature namespace: &lt;<a href="http://www.xmpp.org/schemas/compress-feature.xsd">http://www.xmpp.org/schemas/compress-feature.xsd</a>&gt;<br />
+              Registry: 
+              
+              &lt;<a href="http://xmpp.org/registrar/compress.html">http://xmpp.org/registrar/compress.html</a>&gt;
+              <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0138.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0138.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0138.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp693264" id="nt-idp693264">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp689584" id="nt-idp689584">2</a>. RFC 5246: The Transport Layer Security (TLS) Protocol Version 1.2 &lt;<a href="http://tools.ietf.org/html/rfc5246">http://tools.ietf.org/html/rfc5246</a>&gt;.</p><p><a name="nt-idp1534624" id="nt-idp1534624">3</a>. RFC 3749: Transport Layer Security Protocol Compression Methods &lt;<a href="http://tools.ietf.org/html/rfc3749">http://tools.ietf.org/html/rfc3749</a>&gt;.</p><p><a name="nt-idp1554304" id="nt-idp1554304">4</a>. XEP-0170: Recommended Order of Stream Feature Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0170.html">http://xmpp.org/extensions/xep-0170.html</a>&gt;.</p><p><a name="nt-idp1558608" id="nt-idp1558608">5</a>. RFC 1950: ZLIB Compressed Data Format Specification version 3.3 &lt;<a href="http://tools.ietf.org/html/rfc1950">http://tools.ietf.org/html/rfc1950</a>&gt;.</p><p><a name="nt-idp1564128" id="nt-idp1564128">6</a>. XEP-0229: Stream Compression with LZW &lt;<a href="http://xmpp.org/extensions/xep-0229.html">http://xmpp.org/extensions/xep-0229.html</a>&gt;.</p><p><a name="nt-idp1572016" id="nt-idp1572016">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1577104" id="nt-idp1577104">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.0 (2009-05-27)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Final.</p> (psa)
+    </div><h4>Version 1.3 (2007-09-26)</h4><div class="indent"><p>Moved specification of LZW algorithm to XEP-0229.</p> (psa)
+    </div><h4>Version 1.2 (2007-08-22)</h4><div class="indent"><p>Clarified when compression shall be considered to start; per XEP-0170, specified that compression should be negotiated after SASL.</p> (psa)
+    </div><h4>Version 1.1 (2005-12-14)</h4><div class="indent"><p>More completely specified error handling; mentioned LZW (DCLZ) method.</p> (psa)
+    </div><h4>Version 1.0 (2005-06-16)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.5 (2005-05-18)</h4><div class="indent"><p>Modifications to address Council feedback: used RFC 3920 terminology; specified error conditions; specified ZLIB as mandatory to implement.</p> (psa)
+    </div><h4>Version 0.4 (2005-05-11)</h4><div class="indent"><p>Corrected several errors in the schemas.</p> (psa)
+    </div><h4>Version 0.3 (2005-03-28)</h4><div class="indent"><p>Specified compression methods registry.</p> (psa)
+    </div><h4>Version 0.2 (2004-09-28)</h4><div class="indent"><p>Fixed TLS text per list discussion.</p> (psa)
+    </div><h4>Version 0.1 (2004-07-16)</h4><div class="indent"><p>Initial version.</p> (jjh/psa)
+    </div></div><hr /><p>END</p></body></html>

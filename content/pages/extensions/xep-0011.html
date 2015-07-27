@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0011: Jabber Browsing</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Browsing" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="Julian Missig" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Description" content="This document defines a way to describe information about Jabber entities and the relationships between entities. Note: This document is superseded by XEP-0030: Service Discovery." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-06-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0011" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0011: Jabber Browsing</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a way to describe information about Jabber entities and the relationships between entities. Note: This document is superseded by XEP-0030: Service Discovery.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Jeremie Miller, Julian Missig, Thomas Muldowney</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-06-03</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp782336">Introduction</a><br />2.  <a href="#sect-idp789728">JID-Types</a><br />3.  <a href="#sect-idp1609184">The jabber:iq:browse Namespace</a><br />   
+      3.1.  <a href="#sect-idp1610160">Browsing to a JabberID</a><br />   
+      3.2.  <a href="#sect-idp1611792">Generic Attributes for Browse Results</a><br />   
+      3.3.  <a href="#sect-idp1615680">Expressing Relationships</a><br />   
+      3.4.  <a href="#sect-idp1620944">Namespace Advertising</a><br />   
+      3.5.  <a href="#sect-idp1625712">Empty Results</a><br />4.  <a href="#sect-idp1627408">Supplanting jabber:iq:agents</a><br />5.  <a href="#sect-idp1631296">Implementation Notes</a><br />6.  <a href="#sect-idp1632608">Security Considerations</a><br />7.  <a href="#sect-idp1633616">IANA Considerations</a><br />8.  <a href="#sect-idp1635648">XMPP Registrar Considerations</a><br />9.  <a href="#sect-idp1638608">XML Schema</a><br />10.  <a href="#sect-idp1641904">Future Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp782336" id="sect-idp782336">Introduction</a></h2>
+  <p>The Jabber world is a diverse place, with lots of services, transports, software agents, users, groupchat rooms, translators, headline tickers, and just about anything that might interact on a real-time basis using conversational messages or presence. Every JabberID (JID) is a node that can be interacted with via messages, presence, and special purpose IQ namespaces. Some JIDs are parents (such as transports), and often many JIDs have relationships with other JIDs (such as a user to their resources, a server to its services, etc.). We need a better way to structure and manage this culture of multi-namespace JID stew. The answer: Jabber Browsing.</p>
+  <p><span class="em">Note well that implementors are encouraged to implement <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp790912">1</a>] instead of Jabber Browsing.</span></p>
+<h2>2.
+       <a name="sect-idp789728" id="sect-idp789728">JID-Types</a></h2>
+  <p>One of the concepts in browsing which helps to extend the interaction between JIDs is a "JID-Type", a simple heirarchy for identifying the role of any JabberID that is similar to the mime-type format. Many programmers are comfortable with the concept of identifying file types by mime-types, which use the format "category/type". A JID-Type, once discovered, is to be used in the same way that a mime-type would be for a file, to alter the user interface representing that JID or provide alternative functionality for interacting with it (either automatically or driven by user interaction). The following categories and types are proposed as the canonical list for the purpose of JID-Types:</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Official List of JID-Type Categories and Types</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Category</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+    <tr class="body">
+      <td rowspan="7">application/</td>
+      <td> </td>
+      <td>Specific applications running as a resource on a user@host</td>
+    </tr>
+    <tr class="body">
+      <td>bot</td>
+      <td>Automated conversations</td>
+    </tr>
+    <tr class="body">
+      <td>calendar</td>
+      <td>Calendaring and scheduling service</td>
+    </tr>
+    <tr class="body">
+      <td>editor</td>
+      <td>Collaborative editor</td>
+    </tr>
+    <tr class="body">
+      <td>fileserver</td>
+      <td>Available files</td>
+    </tr>
+    <tr class="body">
+      <td>game</td>
+      <td>Multi-player game</td>
+    </tr>
+    <tr class="body">
+      <td>whiteboard</td>
+      <td>Whiteboard tool</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="7">conference/</td>
+      <td> </td>
+      <td>Nodes of this category provide multi-user chat facilities (a.k.a. conference rooms).</td>
+    </tr>
+    <tr class="body">
+      <td>irc</td>
+      <td>IRC rooms (note: this enables Jabber users to connect to Internet Relay Chat rooms)</td>
+    </tr>
+    <tr class="body">
+      <td>list</td>
+      <td>Mailing-list-style conferences</td>
+    </tr>
+    <tr class="body">
+      <td>private</td>
+      <td>Private, dynamically-generated conference rooms</td>
+    </tr>
+    <tr class="body">
+      <td>public</td>
+      <td>Public, permanent conference rooms</td>
+    </tr>
+    <tr class="body">
+      <td>topic</td>
+      <td>Topic-based conferences</td>
+    </tr>
+    <tr class="body">
+      <td>url</td>
+      <td>Website-hosted conferences</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="5">headline/</td>
+      <td> </td>
+      <td>Recognize different sources of headlines, GUI hints</td>
+    </tr>
+    <tr class="body">
+      <td>logger</td>
+      <td>Log messages (usually presented in a scrolling GUI)</td>
+    </tr>
+    <tr class="body">
+      <td>notice</td>
+      <td>Alerts and warnings (usually presented as popup messages)</td>
+    </tr>
+    <tr class="body">
+      <td>rss</td>
+      <td>Rich Site Summary syndication</td>
+    </tr>
+    <tr class="body">
+      <td>stock</td>
+      <td>Stock market information by symbol (ticker)</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="7">keyword/</td>
+      <td> </td>
+      <td>Keyword-based lookup services (search engines, etc.)</td>
+    </tr>
+    <tr class="body">
+      <td>dictionary</td>
+      <td>Dictionary lookup service</td>
+    </tr>
+    <tr class="body">
+      <td>dns</td>
+      <td>DNS resolver</td>
+    </tr>
+    <tr class="body">
+      <td>software</td>
+      <td>Software search</td>
+    </tr>
+    <tr class="body">
+      <td>thesaurus</td>
+      <td>Thesaurus lookup service</td>
+    </tr>
+    <tr class="body">
+      <td>web</td>
+      <td>Web search</td>
+    </tr>
+    <tr class="body">
+      <td>whois</td>
+      <td>Whois query service</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="4">render/</td>
+      <td> </td>
+      <td>Automated translation services</td>
+    </tr>
+    <tr class="body">
+      <td>en2fr</td>
+      <td>English to French</td>
+    </tr>
+    <tr class="body">
+      <td>*2*</td>
+      <td>Other language to language (using standard language codes)</td>
+    </tr>
+    <tr class="body">
+      <td>tts</td>
+      <td>Text to Speech</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="12">service/</td>
+      <td> </td>
+      <td>Nodes of this category provide a link to another Instant Messaging network or messaging gateway. The 'jabber:iq:register' namespace can be used to gain access to such networks, and the 'jabber:iq:search' namespace may also be available.</td>
+    </tr>
+    <tr class="body">
+      <td>aim</td>
+      <td>AIM transport</td>
+    </tr>
+    <tr class="body">
+      <td>icq</td>
+      <td>ICQ transport</td>
+    </tr>
+    <tr class="body">
+      <td>irc</td>
+      <td>IRC gateway (note: this enables IRC users to connect to Jabber)</td>
+    </tr>
+    <tr class="body">
+      <td>jabber</td>
+      <td>A Jabber server which conforms to the specification for the 'jabber:client' namespace</td>
+    </tr>
+    <tr class="body">
+      <td>jud</td>
+      <td>Jabber User Directory</td>
+    </tr>
+    <tr class="body">
+      <td>msn</td>
+      <td>MSN transport</td>
+    </tr>
+    <tr class="body">
+      <td>pager</td>
+      <td>Pager gateway</td>
+    </tr>
+    <tr class="body">
+      <td>serverlist</td>
+      <td>A list of servers. It is assumed that this node has service/* children</td>
+    </tr>
+    <tr class="body">
+      <td>sms</td>
+      <td>SMS gateway</td>
+    </tr>
+    <tr class="body">
+      <td>smtp</td>
+      <td>SMTP gateway</td>
+    </tr>
+    <tr class="body">
+      <td>yahoo</td>
+      <td>Yahoo! transport</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="6">user/</td>
+      <td> </td>
+      <td>Nodes of this category are Jabber users, typically implementing enough of the 'jabber:client' namespace to be compliant.</td>
+    </tr>
+    <tr class="body">
+      <td>client</td>
+      <td>A standard or fully-featured Jabber client compliant with the 'jabber:client' namespace</td>
+    </tr>
+    <tr class="body">
+      <td>forward</td>
+      <td>A forward alias</td>
+    </tr>
+    <tr class="body">
+      <td>inbox</td>
+      <td>An alternate inbox</td>
+    </tr>
+    <tr class="body">
+      <td>portable</td>
+      <td>A portable device implementing some of the 'jabber:client' namespace</td>
+    </tr>
+    <tr class="body">
+      <td>voice</td>
+      <td>A node providing phone or voice access</td>
+    </tr>
+    <tr class="body">
+      <td rowspan="4">validate/</td>
+      <td> </td>
+      <td>Validation services</td>
+    </tr>
+    <tr class="body">
+      <td>grammar</td>
+      <td>Grammar-checking tool</td>
+    </tr>
+    <tr class="body">
+      <td>spell</td>
+      <td>Spell-checking tool</td>
+    </tr>
+    <tr class="body">
+      <td>xml</td>
+      <td>XML validator</td>
+    </tr>
+  </table></div>
+  <p>Historically each category was used as the name of an element, and the type was an attribute, such as &lt;service type="aim"/&gt;. The proper expression for all new implementations supporting this specification is to express the type information as attributes on a generic item element: &lt;item category="service" type="aim"/&gt;. When processing returned browse information this new syntax should always be handled first, and the old syntax only used if it is important to be able to access older implementations.</p>
+  <p>Additional unofficial categories or types may be specified by prefixing their name with an "x-", such as "service/x-virgeim" or "x-location/gps". Changes to the official categories and subtypes may be defined either by revising this document or by activating another specification. Removal of a category or subtype must be noted in this document.</p>
+<h2>3.
+       <a name="sect-idp1609184" id="sect-idp1609184">The jabber:iq:browse Namespace</a></h2>
+  <p>The namespace containing the Jabber Browsing data is jabber:iq:browse. The primary element within this namespace is 'item' (again, historically every category listed above would also be an element).</p>
+  <div class="indent"><h3>3.1 <a name="sect-idp1610160" id="sect-idp1610160">Browsing to a JabberID</a></h3>
+    <p>The common way to browse to a JabberID using IQ is:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Browsing to a JabberID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="get" to="jer@jabber.org" id="browse1"&gt;
+  &lt;query xmlns="jabber:iq:browse"/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp1611792" id="sect-idp1611792">Generic Attributes for Browse Results</a></h3>
+    <p>The item element has these attributes in a browse result:</p>
+    <ul>
+      <li>jid [required] -- The full JabberID of the entity described.</li>
+      <li>category [optional] -- One of the categories from the list above, or a non-standard category prefixed with the string "x-".</li>
+      <li>type [optional] -- One of the official types from the specified category, or a non-standard type prefixed with the string "x-".</li>
+      <li>name [optional] -- A friendly name that may be used in a user interface.</li>
+      <li>version [optional] -- A string containing the version of the node, equivalent to the response provided to a query in the 'jabber:iq:version' namespace. This is useful for servers, especially for lists of services (see the 'service/serverlist' category/type above).</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp1615680" id="sect-idp1615680">Expressing Relationships</a></h3>
+    <p>Any item may contain any number of additional items as a child, which describes the hierarchical relationship between the parent and the child items. This relationship could be represented as a "link" in a wizard or page-based user interface, or as a branch in a tree as it is expanded. Browse results usually only contain the direct children of a node, not the grandchildren. Browsing to a user, but not a resource, will return results from the server (still with the user's JID) containing the list of resources.</p>
+    <p>For example, this could be the result of browsing to jer@jabber.org:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Result of Browsing to a User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="result" from="jer@jabber.org" id="browse1"&gt;
+  &lt;query
+      xmlns="jabber:iq:browse"
+      category="user"
+      jid="jer@jabber.org"
+      name="jer"&gt;
+    &lt;item
+        category="user"
+        jid="jer@jabber.org/foxy"
+        type="client"/&gt;
+    &lt;item
+        category="application"
+        jid="jer@jabber.org/chess"
+        name="XChess"
+        type="game"/&gt;
+    &lt;item
+        category="user"
+        jid="jer@jabber.org/palm"
+        type="client"/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>More definitively, throughout all of browsing, a parent describes the children, and the children when browsed to fully describe themselves. The browse data received from the child takes precedence.</p>
+    <p>Parents should list children only if they are available. This means that if for a user a child client goes offline, the parent should remove it from its browse result.</p>
+  </div>
+  <div class="indent"><h3>3.4 <a name="sect-idp1620944" id="sect-idp1620944">Namespace Advertising</a></h3>
+    <p>On top of the browsing framework, a simple form of "feature advertisement" can be built. This enables any entity to advertise which features it supports, based on the namespaces associated with those features. The &lt;ns/&gt; element is allowed as a subelement of the item. This element contains a single namespace that the entity supports, and multiple &lt;ns/&gt; elements can be included in any item. For a connected client this might be &lt;ns&gt;jabber:iq:oob&lt;/ns&gt;, or for a service &lt;ns&gt;jabber:iq:search&lt;/ns&gt;. This list of namespaces should be used to present available options for a user or to automatically locate functionality for an application.</p>
+    <p>The children of a browse result may proactively contain a few &lt;ns/&gt; elements (such as the result of the service request to the home server), which advertises the features that the particular service supports. This list may not be complete (it is only for first-pass filtering by simpler clients), and the JID should be browsed if a complete list is required.</p>
+    <p>Clients should answer incoming browsing requests to advertise the namespaces they support.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Result of Browsing to a Resource</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="result" from="jer@jabber.org/foxy" id="browse2"&gt;
+  &lt;query
+      xmlns="jabber:iq:browse"
+      category="user"
+      jid="jer@jabber.org/foxy"
+      name="laptop"
+      type="client"&gt;
+    &lt;ns&gt;jabber:client&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:browse&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:conference&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:time&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:version&lt;/ns&gt;
+    &lt;ns&gt;jabber:x:roster&lt;/ns&gt;
+    &lt;ns&gt;jabber:x:signed&lt;/ns&gt;
+    &lt;ns&gt;jabber:x:encrypted&lt;/ns&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.5 <a name="sect-idp1625712" id="sect-idp1625712">Empty Results</a></h3>
+    <p>When a JabberID is browsed, the result may contain children or it may be empty. An empty result means there are no further relationships or links under that JID, which could be represented as a page containing a list of functions available for the JID, such as vCard, message, register, etc. When the result contains children, they may also be empty (as in the first result from jer@jabber.org above). An empty child does not mean anything, and to determine the namespaces supported or if there are more children, it must be browsed to directly.</p>
+  </div>
+<h2>4.
+       <a name="sect-idp1627408" id="sect-idp1627408">Supplanting jabber:iq:agents</a></h2>
+  <p>The first important use of jabber:iq:browse is to replace the jabber:iq:agents namespace. When a client connects, it may optionally browse to the server to which it connected in order to retrieve a list of available services. The resulting iq might look like the following example:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Result of Browsing to a Server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="result" from="jabber.org" id="browse3"&gt;
+  &lt;query
+      xmlns="jabber:iq:browse"
+      category="service"
+      type="jabber"
+      jid="jabber.org"
+      name="Jabber.org Public Server"&gt;
+    &lt;ns&gt;jabber:client&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:browse&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:conference&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:time&lt;/ns&gt;
+    &lt;ns&gt;jabber:iq:version&lt;/ns&gt;
+    &lt;item
+        category="service"
+        jid="icq.jabber.org"
+        name="ICQ Transport"
+        type="icq"&gt;
+      &lt;ns&gt;jabber:iq:register&lt;/ns&gt;
+      &lt;ns&gt;jabber:iq:search&lt;/ns&gt;
+      &lt;ns&gt;jabber:iq:gateway&lt;/ns&gt;
+    &lt;/item&gt;
+    &lt;item
+      category="conference"
+      type="private"
+      jid="conference.jabber.org"
+      name="Private Chatrooms"/&gt;
+    &lt;item
+        category="application"
+        jid="jabber.org/help"
+        name="Assistance Agent"
+        type="bot"/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>To determine any further details from this list, each child would have to be browsed. The elements within the icq service are only hints to a client for building user interface elements. The icq.jabber.org service would still need to be browsed in order to determine any relationships or additional namespaces. This top-level list is the master "services" list available from the server, and should be used for any default functionality when available. This list could also serve as the "home page" for a page-based browsing user interface.</p>
+<h2>5.
+       <a name="sect-idp1631296" id="sect-idp1631296">Implementation Notes</a></h2>
+  <p>A client should not just blindly request browse information every time the user requests it, rather, a client should cache the browse results based on JabberID. Any display or use of the browse data should then be returned from the cache. This model is similiar to that of presence.</p>
+<h2>6.
+       <a name="sect-idp1632608" id="sect-idp1632608">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>7.
+       <a name="sect-idp1633616" id="sect-idp1633616">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1636896">2</a>].</p>
+<h2>8.
+       <a name="sect-idp1635648" id="sect-idp1635648">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1640432">3</a>] is necessary as a result of this document, since 'jabber:iq:browse' is already a registered protocol namespace.</p>
+<h2>9.
+       <a name="sect-idp1638608" id="sect-idp1638608">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:browse'
+    xmlns='jabber:iq:browse'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+        &lt;xs:element ref='item'/&gt;
+        &lt;xs:element ref='ns'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='category' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='type' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='ns' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='category' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='type' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='ns' type='xs:string'/&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+<h2>10.
+       <a name="sect-idp1641904" id="sect-idp1641904">Future Considerations</a></h2>
+  <p>The 'jabber:iq:browse' namespace has been in use for quite some time. However, live browsing still needs to be better defined by a generic publication/subscription system. It is assumed that when such a system is defined, updates to this document will be made. It is, however, possible that no futher changes to jabber:iq:browse itself may be needed.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0011<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.3<br />
+            Last Updated: 2009-06-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />Superseded By: XEP-0030<br />
+            Short Name: iq-browse<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0011.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0011.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0011.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>Julian Missig</h3><p class="indent">
+        Email:
+        <a href="mailto:julian@jabber.org">julian@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:julian@jabber.org">julian@jabber.org</a><br /></p><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@jabber.org">temas@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp790912" id="nt-idp790912">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1636896" id="nt-idp1636896">2</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1640432" id="nt-idp1640432">3</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.3 (2009-06-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed status to Obsolete.</p> (psa)
+    </div><h4>Version 1.2 (2004-11-12)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Deprecated.</p> (psa)
+    </div><h4>Version 1.1 (2004-01-06)</h4><div class="indent"><p>Added schema.</p> (psa)
+    </div><h4>Version 1.0 (2002-05-08)</h4><div class="indent"><p>Changed status to Active.</p> (psa)
+    </div><h4>Version 0.4 (2002-04-15)</h4><div class="indent"><p>Changed the suggested use of category to an attribute of item instead of the element names.</p> (jer)
+    </div><h4>Version 0.3 (2002-01-16)</h4><div class="indent"><p>Added additional category/type combinations from the protocol draft (also created new category 'validate' as a bucket for the grammar and spelling checkers, which formerly were under the 'render' category).</p> (psa)
+    </div><h4>Version 0.2 (2002-01-04)</h4><div class="indent"><p>Updated to XML format and revised description.</p> (jkm)
+    </div><h4>Version 0.1 (2001-01-25)</h4><div class="indent"><p>Initial draft version.</p> (jm)
+    </div></div><hr /><p>END</p></body></html>

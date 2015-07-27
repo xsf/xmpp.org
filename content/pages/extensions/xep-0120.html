@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0120: Infobits</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Infobits" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Description" content="NOTE: This proposal was retracted by the author on 2004-02-19." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-01-22" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0120" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0120: Infobits</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>NOTE: This proposal was retracted by the author on 2004-02-19.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Matthew Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-01-22</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp669616">Introduction</a><br />2.  <a href="#sect-idp670688">Background</a><br />3.  <a href="#sect-idp1568832">Protocol</a><br />   
+      3.1.  <a href="#sect-idp1569216">Protocol Basics</a><br />   
+      3.2.  <a href="#sect-idp1578144">Discovering Support</a><br />4.  <a href="#sect-idp1590576">Examples</a><br />   
+      4.1.  <a href="#sect-idp1591072">Requesting Geographical Location Information From Another Entity</a><br />   
+      4.2.  <a href="#sect-idp1596944">Requesting All Infobits From Another Entity</a><br />   
+      4.3.  <a href="#sect-idp1604496">Publishing Tune Information</a><br />5.  <a href="#sect-idp1606016">Security Considerations</a><br />6.  <a href="#sect-idp596736">Internationalization Considerations</a><br />7.  <a href="#sect-idp598016">IANA Considerations</a><br />8.  <a href="#sect-idp600384">XMPP Registrar Considerations</a><br />   
+      8.1.  <a href="#sect-idp598768">Namespaces</a><br />   
+      8.2.  <a href="#sect-idp1624704">Registries</a><br />9.  <a href="#sect-idp1644720">XML Schema</a><br />10.  <a href="#sect-idp1645600">Historical Note</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp669616" id="sect-idp669616">Introduction</a></h2>
+  <p>Many Jabber protocols need to define metadata about "things" on the Jabber network; such things are not limited to entities that are addressable as JIDs (e.g., users, servers, services, and chatrooms) nor even to things that are addressable as <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp673072">1</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp688096">2</a>] nodes (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0050.html">Ad-Hoc Commands (XEP-0050)</a></span>  [<a href="#nt-idp676400">3</a>]), but may include anything that Jabber entities can communicate about, including files sent via Jabber file transfer protocols (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0066.html">Out-of-Band Data (XEP-0066)</a></span>  [<a href="#nt-idp678784">4</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp681184">5</a>]), information published via pubsub protocols (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0118.html">User Tune (XEP-0118)</a></span>  [<a href="#nt-idp682976">6</a>]), and other Jabber phenomena. To date, Jabber protocols have used disparate, specialized formats for capturing such meta-information. This document provides a generic information format that can be included whenever a protocol needs to define metadata about something on the network.</p>
+<h2>2.
+       <a name="sect-idp670688" id="sect-idp670688">Background</a></h2>
+  <p>The format defined herein uses a simple "key-value" structure. Although this may seem contrary to the XML basis of Jabber technologies, there are at least two good reasons for pursuing this approach:</p>
+  <ol>
+    <li><p>Using namespaced XML elements would force implementations to maintain a record of all namespaces and to differentiate those that define actionable protocols (e.g., 'http://jabber.org/protocol/si') from those that define informational metadata formats (e.g., 'http://purl.org/dc/elements/1.1'); the only way to do this would be to maintain an internal list of all possible namespaces that might be encountered by an application on the network.</p></li>
+    <li><p>Not all metadata formats that the Jabber community may want to use exist in stable XML representations (e.g., this is true of the vCard format) or in representations for which namespaces exist. In addition, some metadata formats (e.g., <span class="ref"><a href="http://xmlns.com/foaf/0.1/">Friend of a Friend (FOAF)</a></span>  [<a href="#nt-idp1570832">7</a>]) exist only in <span class="ref"><a href="http://www.w3.org/RDF/">Resource Description Framework</a></span>  [<a href="#nt-idp1573488">8</a>], whose syntax is represented in XML but whose semantics impose a more complex structure that requires a specialized (non-XML) parser. As long as a clear mapping can be defined between such metadata formats and Jabber infobits, consistent information representation and exchange can be preserved.</p></li> 
+  </ol>
+<h2>3.
+       <a name="sect-idp1568832" id="sect-idp1568832">Protocol</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp1569216" id="sect-idp1569216">Protocol Basics</a></h3>
+    <p>The "infobits" protocol defined herein provides a data format only. The container element is &lt;info/&gt;, which is qualified by the 'http://jabber.org/protocol/infobits' namespace. There is one allowable child of the &lt;info/&gt; element -- &lt;bundle/&gt; -- and one allowable child of the &lt;bundle/&gt; element -- &lt;bit/&gt;. In order to provide the relevant metadata, the &lt;info/&gt; element MAY contain an unbounded number of &lt;bundle/&gt; elements, each of which MAY contain an unbounded number of &lt;bit/&gt; elements.</p>
+    <p>Each &lt;bundle/&gt; element MUST possess a 'type' attribute, whose value specifies the aspect of reality to which the enclosed bits apply (e.g., geographical location). A &lt;bundle/&gt; element MAY also possess a 'context' attribute, whose value provides further specifying information about the kind of entities described by this bundle (e.g., a home address as opposed to a work address).</p>
+    <p>Each &lt;bit/&gt; element MUST possess a 'key' attribute, whose value specifies the name of the key (this MUST be an NMTOKEN as defined in <span class="ref"><a href="http://www.w3.org/TR/REC-xml/">XML 1.0</a></span>  [<a href="#nt-idp1580064">9</a>]). A &lt;bit/&gt; element MAY also possess a 'datatype' attribute, whose value specifies the datatype of the key (which SHOULD be a datatype specified in <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp1582656">10</a>] or in a registry of values maintained by the XMPP Registrar, such as those described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0122.html">Data Forms Validation (XEP-0122)</a></span>  [<a href="#nt-idp1585392">11</a>]). The &lt;bit/&gt; element SHOULD contain XML character data that specifies the relevant value of the 'key'. A &lt;bundle/&gt; element MAY contain more than one &lt;bit/&gt; element with the same value for the 'key' attribute when necessary (e.g., two instances of 'weblog' if the person has multiple weblogs), but obviously SHOULD NOT do so if a collision would occur (e.g., two instances of 'lat' and 'lon' to define a geographical location).</p>
+    <p><span class="em"><span class="strong">Note well:</span> no keys are defined in this document. All such keys MUST be defined in separate specifications. Keys and associated values shown in this document are provided for explanatory purposes only.</span></p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp1578144" id="sect-idp1578144">Discovering Support</a></h3>
+    <p>When an entity is queried via <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1588992">12</a>] regarding the features it supports, it SHOULD include the 'http://jabber.org/protocol/infobits' namespace.</p>
+  </div>
+<h2>4.
+       <a name="sect-idp1590576" id="sect-idp1590576">Examples</a></h2>
+  <div class="indent"><h3>4.1 <a name="sect-idp1591072" id="sect-idp1591072">Requesting Geographical Location Information From Another Entity</a></h3>
+    <p>This set of examples is borrowed from <span class="ref"><a href="http://xmpp.org/extensions/xep-0080.html">User Geolocation (XEP-0080)</a></span>  [<a href="#nt-idp1594384">13</a>].</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requestor Requests Geolocation</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='linuxwolf@outer-planes.net/gabber2'
+    to='stpeter@jabber.org'
+    id='geoloc1'&gt;
+  &lt;info xmlns='http://jabber.org/protocol/infobits'&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/geoloc'/&gt;
+  &lt;/info&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Entity Returns Geolocation Result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='stpeter@jabber.org'
+    to='linuxwolf@outer-planes.net/gabber2'
+    id='geoloc1'&gt;
+  &lt;info xmlns='http://jabber.org/protocol/infobits'&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/geoloc'&gt;
+      &lt;bit key='geo.lat'&gt;39.75477&lt;/bit&gt;
+      &lt;bit key='geo.lon'&gt;-104.99768&lt;/bit&gt;
+      &lt;bit key='geo.alt'&gt;1609&lt;/bit&gt;
+      &lt;bit key='geo.gpserror'&gt;10&lt;/bit&gt;
+      &lt;bit key='DC.created'&gt;20040116T17:15:25&lt;/bit&gt;
+      &lt;bit key='DC.description'&gt;Jabber, Inc.&lt;/bit&gt;
+    &lt;/bundle&gt;
+  &lt;/info&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.2 <a name="sect-idp1596944" id="sect-idp1596944">Requesting All Infobits From Another Entity</a></h3>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Requestor Requests Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='linuxwolf@outer-planes.net/gabber2'
+    to='stpeter@jabber.org'
+    id='all1'&gt;
+  &lt;info xmlns='http://jabber.org/protocol/infobits'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Entity Returns Information Result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='stpeter@jabber.org'
+    to='linuxwolf@outer-planes.net/gabber2'
+    id='all1'&gt;
+  &lt;info xmlns='http://jabber.org/protocol/infobits'&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/geoloc'&gt;
+      &lt;bit key='geo.lat'&gt;39.75477&lt;/bit&gt;
+      &lt;bit key='geo.lon'&gt;-104.99768&lt;/bit&gt;
+      &lt;bit key='geo.alt'&gt;1609&lt;/bit&gt;
+      &lt;bit key='geo.gpserror'&gt;10&lt;/bit&gt;
+      &lt;bit key='DC.created'&gt;20040116T17:15:25&lt;/bit&gt;
+      &lt;bit key='DC.description'&gt;Jabber, Inc.&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/name'&gt;
+      &lt;bit key='vcard.prefix'&gt;Mr.&lt;/bit&gt;
+      &lt;bit key='vcard.givenname'&gt;Peter&lt;/bit&gt;
+      &lt;bit key='vcard.familyname'&gt;Saint-Andre&lt;/bit&gt;
+      &lt;bit key='vcard.nick'&gt;stpeter&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/address'
+            context='work'&gt;
+      &lt;bit key='addr.floor'&gt;6&lt;/bit&gt;
+      &lt;bit key='vcard.street'&gt;1899 Wynkoop Street&lt;/bit&gt;
+      &lt;bit key='vcard.city'&gt;Denver&lt;/bit&gt;
+      &lt;bit key='vcard.region'&gt;Colorado&lt;/bit&gt;
+      &lt;bit key='vcard.country'&gt;USA&lt;/bit&gt;
+      &lt;bit key='vcard.pcode'&gt;80202&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/address'
+            context='home'&gt;
+      &lt;bit key='vcard.city'&gt;Denver&lt;/bit&gt;
+      &lt;bit key='vcard.region'&gt;Colorado&lt;/bit&gt;
+      &lt;bit key='vcard.country'&gt;USA&lt;/bit&gt;
+      &lt;bit key='vcard.pcode'&gt;80209&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/tel'
+            context='work'&gt;
+      &lt;bit key='vcard.phone'&gt;+1 303-308-3282&lt;/bit&gt;
+      &lt;bit key='vcard.fax'&gt;+1 303-308-3215&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/tel'
+            context='home'&gt;
+      &lt;bit key='vcard.phone'&gt;+1 303-555-1212&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/activity'&gt;
+      &lt;bit key='rpid.activity'&gt;busy&lt;/bit&gt;
+      &lt;bit key='jsf.action'&gt;writing&lt;/bit&gt;
+      &lt;bit key='DC.created'&gt;20040116T16:56:37&lt;/bit&gt;
+    &lt;/bundle&gt;
+    &lt;bundle type='http://jabber.org/protocol/infobits/bundles/mood'&gt;
+      &lt;bit key='jsf.mood'&gt;grumpy&lt;/bit&gt;
+      &lt;bit key='DC.created'&gt;20040116T16:56:37&lt;/bit&gt;
+    &lt;/bundle&gt;
+  &lt;/info&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="sect-idp1604496" id="sect-idp1604496">Publishing Tune Information</a></h3>
+    <p>This set of examples is borrowed from <span class="ref"><a href="http://xmpp.org/extensions/xep-0118.html">User Tune (XEP-0118)</a></span>  [<a href="#nt-idp1599664">14</a>].</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. User Publishes Tune Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='stpeter@jabber.org/work'
+    to='pubsub.jabber.org'
+    id='tunes123'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='generic/tunes/stpeter@jabber.org'&gt;
+      &lt;item id='current'&gt;
+        &lt;info xmlns='http://jabber.org/protocol/infobits'&gt;
+          &lt;bundle type='http://jabber.org/protocol/infobits/bundles/tunes'&gt;
+            &lt;bit key='DC.creator'&gt;Yes&lt;/bit&gt;
+            &lt;bit key='DC.title'&gt;Heart of the Sunrise&lt;/bit&gt;
+            &lt;bit key='DC.source'&gt;Yessongs&lt;/bit&gt;
+            &lt;bit key='DC.identifier'&gt;3&lt;/bit&gt;
+            &lt;bit key='DC.extent'&gt;P11M26S&lt;/bit&gt;
+          &lt;/bundle&gt;
+        &lt;/info&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Tune Information is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='pubsub.jabber.org'
+    to='maineboy@jabber.org/laptop'&gt;
+  &lt;x xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='generic/tunes/stpeter@jabber.org'&gt;
+      &lt;item id='current'&gt;
+        &lt;info xmlns='http://jabber.org/protocol/infobits'&gt;
+          &lt;bundle type='http://jabber.org/protocol/infobits/bundles/tunes'&gt;
+            &lt;bit key='DC.creator'&gt;Yes&lt;/bit&gt;
+            &lt;bit key='DC.title'&gt;Heart of the Sunrise&lt;/bit&gt;
+            &lt;bit key='DC.source'&gt;Yessongs&lt;/bit&gt;
+            &lt;bit key='DC.identifier'&gt;3&lt;/bit&gt;
+            &lt;bit key='DC.extent'&gt;P11M26S&lt;/bit&gt;
+          &lt;/bundle&gt;
+        &lt;/info&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>5.
+       <a name="sect-idp1606016" id="sect-idp1606016">Security Considerations</a></h2>
+  <p>Data provided via the infobits protocol MAY be world-readable. Access control considerations MUST be defined by any protocol that makes use of infobits.</p>
+<h2>6.
+       <a name="sect-idp596736" id="sect-idp596736">Internationalization Considerations</a></h2>
+  <p>Info key names registered with the XMPP Registrar MUST be considered as identifiers, not English-language words. For purposes of internationalization, an identifier SHOULD be rendered as a word or phrase that is appropriate to the end user's preferred language.</p>
+<h2>7.
+       <a name="sect-idp598016" id="sect-idp598016">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp601888">15</a>].</p>
+<h2>8.
+       <a name="sect-idp600384" id="sect-idp600384">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>8.1 <a name="sect-idp598768" id="sect-idp598768">Namespaces</a></h3>
+    <p>Upon advancement of this proposal to a status of Draft, the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1625936">16</a>] shall add the 'http://jabber.org/protocol/infobits' namespace to its registry of official namespaces.</p>
+  </div>
+  <div class="indent"><h3>8.2 <a name="sect-idp1624704" id="sect-idp1624704">Registries</a></h3>
+    <p>The XMPP Registrar shall maintain a registry of infobit keynames and associated information.</p>
+    <p>All keynames MUST begin with a short prefix string (letters and numbers only), followed by the '.' character used as a separator, followed by the name of the key as determined by the particular specification or organization that is identified with the prefix. Arbitrary keynames SHOULD begin with a prefix consisting of the capital 'X' character.</p>
+    <p>The XMPP Registrar shall at its discretion reserve certain keyname prefixes for use in specifying particular classes of information. One example is the prefix 'DC', which is reserved for use by infobits specified by the <span class="ref"><a href="http://www.dublincore.org/">Dublin Core Metadata Initiative (DCMI)</a></span>  [<a href="#nt-idp1635904">17</a>] (for details, see <span class="ref"><a href="http://xmpp.org/extensions/xep-0121.html">Dublin Core Infobits Mapping (XEP-0121)</a></span>  [<a href="#nt-idp1631376">18</a>]). Furthermore, the XMPP Registrar shall reserve the "XMPP" prefix for infobits related to documents created by the <span class="ref"><a href="http://www.ietf.org/html.charters/xmpp-charter.html">XMPP Working Group</a></span>  [<a href="#nt-idp1633984">19</a>] or its successors, and shall reserve the upper-case versions of all protocol "shortnames" specified in XMPP Extension Protocol specifications (e.g., a prefix of "MUC" for infobits related to <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1639760">20</a>]).</p>
+    <p>In order to prevent naming collisions, infobits that will be used in public protocols that may interoperate with other protocols on the network SHOULD be registered with the XMPP Registrar, and MUST be so registered if they are defined in XMPP Extension Protocol specifications (however, registration of private keys is NOT REQUIRED). Registration with the XMPP Registrar shall be considered to entail reservation of that infobit on the network, and a registered bit MUST NOT be re-used by other protocols and applications for purposes other than those implied by the registry entry.</p>
+    <p>In addition to the key name, the following data may be provided (but is not required) for each bit:</p>
+    <ol>
+      <li>datatype -- provide only if well-defined; otherwise assume string</li>
+      <li>doc -- the public identifier (e.g., XEP number or RFC number) of the document in which the info name is defined</li>
+      <li>valid values -- a series of &lt;value/&gt; elements, encapsulated within a &lt;values/&gt; parent whose 'type' attribute is set to "exhaustive" (these are the only valid values) or "nonexhaustive" (these are some of the valid values, but this list is not exhaustive and other values may be provided)</li>
+    </ol>
+    <p>The registry format is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;bit key='thename'&gt;
+  &lt;datatype&gt;some datatype&lt;/datatype&gt;
+  &lt;doc&gt;some document identifier&lt;/doc&gt;
+  &lt;values type='[exhaustive|nonexhaustive]'&gt;
+    &lt;value&gt;first value&lt;/value&gt;
+    &lt;value&gt;second value&lt;/value&gt;
+  &lt;/values&gt;
+&lt;/bit&gt;
+    </pre></div>
+  </div>
+<h2>9.
+       <a name="sect-idp1644720" id="sect-idp1644720">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/infobits'
+    xmlns='http://jabber.org/protocol/infobits'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='info'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='bundle' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='bundle'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='bit' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='type' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='context' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='bit'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='key' type='xs:NMTOKEN' use='required'/&gt;
+          &lt;xs:attribute name='datatype' type='xs:NMTOKEN' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>10.
+       <a name="sect-idp1645600" id="sect-idp1645600">Historical Note</a></h2>
+  <p>Before defining a new protocol for metadata, the primary author of this proposal investigated several promising technologies that could be used to meet the above requirements -- in particular, the Friend of a Friend (FOAF) vocabulary, which is a subset of the Resource Description Framework (RDF). Ultimately, the primary author concluded that, while FOAF and RDF have many merits, they are not ideal for use on the Jabber network. In particular:</p>
+  <ol>
+    <li>Although RDF uses XML syntax, processing of RDF requires an RDF parser, not an XML parser. The benefits of using RDF were outweighed by the costs of requiring an RDF parser in every application that would use the metadata format.</li>
+    <li>By design, FOAF and RDF allow an entity to define information about any other entity; this gives rise to significant concerns about data integrity, which have not been solved (and perhaps even cannot be solved) within the context of an RDF application.</li>
+    <li>The processes for proposing, changing, and approving RDF-related namespaces are not well defined and are outside the control or influence of the Jabber community.</li>
+  </ol>
+  <p>Given these and other concerns, the primary author concluded that the best course would be to define an extensible XML protocol that can be processed using tools that are standard within existing Jabber/XMPP implementations, that allows only the entity itself to define metadata about itself, and that is under the control of the Jabber/XMPP community.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0120<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.5<br />
+            Last Updated: 2004-01-22<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: infobits<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0120.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0120.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0120.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp673072" id="nt-idp673072">1</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp688096" id="nt-idp688096">2</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp676400" id="nt-idp676400">3</a>. XEP-0050: Ad-Hoc Commands &lt;<a href="http://xmpp.org/extensions/xep-0050.html">http://xmpp.org/extensions/xep-0050.html</a>&gt;.</p><p><a name="nt-idp678784" id="nt-idp678784">4</a>. XEP-0066: Out of Band Data &lt;<a href="http://xmpp.org/extensions/xep-0066.html">http://xmpp.org/extensions/xep-0066.html</a>&gt;.</p><p><a name="nt-idp681184" id="nt-idp681184">5</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp682976" id="nt-idp682976">6</a>. XEP-0118: User Tune &lt;<a href="http://xmpp.org/extensions/xep-0118.html">http://xmpp.org/extensions/xep-0118.html</a>&gt;.</p><p><a name="nt-idp1570832" id="nt-idp1570832">7</a>. Friend of a Friend (FOAF) &lt;<a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a>&gt;.</p><p><a name="nt-idp1573488" id="nt-idp1573488">8</a>. Resource Description Framework (RDF) &lt;<a href="http://www.w3.org/RDF/">http://www.w3.org/RDF/</a>&gt;.</p><p><a name="nt-idp1580064" id="nt-idp1580064">9</a>. Extensible Markup Language (XML) 1.0 (Fourth Edition) &lt;<a href="http://www.w3.org/TR/REC-xml/">http://www.w3.org/TR/REC-xml/</a>&gt;.</p><p><a name="nt-idp1582656" id="nt-idp1582656">10</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp1585392" id="nt-idp1585392">11</a>. XEP-0122: Data Forms Validation &lt;<a href="http://xmpp.org/extensions/xep-0122.html">http://xmpp.org/extensions/xep-0122.html</a>&gt;.</p><p><a name="nt-idp1588992" id="nt-idp1588992">12</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1594384" id="nt-idp1594384">13</a>. XEP-0080: User Geolocation &lt;<a href="http://xmpp.org/extensions/xep-0080.html">http://xmpp.org/extensions/xep-0080.html</a>&gt;.</p><p><a name="nt-idp1599664" id="nt-idp1599664">14</a>. XEP-0118: User Tune &lt;<a href="http://xmpp.org/extensions/xep-0118.html">http://xmpp.org/extensions/xep-0118.html</a>&gt;.</p><p><a name="nt-idp601888" id="nt-idp601888">15</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1625936" id="nt-idp1625936">16</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1635904" id="nt-idp1635904">17</a>. The Dublin Core Metadata Initiative (DCMI) is an organization dedicated to promoting the widespread adoption of interoperable metadata standards. For further information, see &lt;<a href="http://www.dublincore.org/">http://www.dublincore.org/</a>&gt;.</p><p><a name="nt-idp1631376" id="nt-idp1631376">18</a>. XEP-0121: Dublin Core Infobits Mapping &lt;<a href="http://xmpp.org/extensions/xep-0121.html">http://xmpp.org/extensions/xep-0121.html</a>&gt;.</p><p><a name="nt-idp1633984" id="nt-idp1633984">19</a>. The XMPP Working Group was created by the Internet Engineering Task Force to define an adaptation of the base Jabber protocols that could be considered an IETF-approved instant messaging and presence technology. For further information, see &lt;<a href="http://www.ietf.org/html.charters/xmpp-charter.html">http://www.ietf.org/html.charters/xmpp-charter.html</a>&gt;.</p><p><a name="nt-idp1639760" id="nt-idp1639760">20</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.5 (2004-01-22)</h4><div class="indent">Clarified rationale for not using namespaces; added bundles; added dataype attribute for &lt;bit/&gt; elements; added Matt Miller as co-author. (psa)
+    </div><h4>Version 0.4 (2003-12-14)</h4><div class="indent">Removed privacy list classes (which are to be defined in a separate proposal); added keynaming considerations; added more examples. (psa)
+    </div><h4>Version 0.3 (2003-10-22)</h4><div class="indent">Major overhaul. Moved entity and relationship elements to XEP-0123, and focused this document only on the information format itself, which in all cases must be contained within another protocol. (psa)
+    </div><h4>Version 0.2 (2003-09-28)</h4><div class="indent">Minor editorial revisions. (psa)
+    </div><h4>Version 0.1 (2003-09-23)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

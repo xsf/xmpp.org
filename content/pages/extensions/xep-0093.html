@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0093: Roster Item Exchange</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Roster Item Exchange" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification provides canonical documentation of the jabber:x:roster namespace historically used within the Jabber community. NOTE WELL: This specification has been superseded by XEP-0144." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-08-26" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0093" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0093: Roster Item Exchange</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification provides canonical documentation of the jabber:x:roster namespace historically used within the Jabber community. NOTE WELL: This specification has been superseded by XEP-0144.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deprecated</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-08-26</td></tr></table><hr /><p style="color:red">WARNING: This document has been <strong>Deprecated</strong> by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp679344">Introduction</a><br />2.  <a href="#sect-idp699776">Definition</a><br />3.  <a href="#sect-idp690768">Examples</a><br />4.  <a href="#sect-idp692112">Security Considerations</a><br />5.  <a href="#sect-idp693728">IANA Considerations</a><br />6.  <a href="#sect-idp695504">XMPP Registrar Considerations</a><br />7.  <a href="#sect-idp1579712">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp679344" id="sect-idp679344">Introduction</a></h2>
+  <p>The Jabber protocols have long included a method for sending roster items to another entity. This method makes use of the 'jabber:x:roster' namespace and has been documented variously in Internet-Drafts and elsewhere. Because this protocol is not required by <span class="ref"><a href="http://tools.ietf.org/html/rfc2779">RFC 2779</a></span>  [<a href="#nt-idp682720">1</a>], the 'jabber:x:roster' namespace was removed from <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp685440">2</a>]. This specification fills the void for canonical documentation.</p>
+  <p><span class="em">NOTE WELL: This document has been superseded by <span class="ref"><a href="http://xmpp.org/extensions/xep-0144.html">Roster Item Exchange (XEP-0144)</a></span>  [<a href="#nt-idp701072">3</a>].</span></p>
+<h2>2.
+       <a name="sect-idp699776" id="sect-idp699776">Definition</a></h2>
+  <p>The 'jabber:x:roster' namespace (which is not to be confused with the 'jabber:iq:roster' namespace) is used to send roster items from one Jabber entity to another. A roster item is sent by adding to the &lt;message/&gt; element an &lt;x/&gt; child scoped by the 'jabber:x:roster' namespace. This &lt;x/&gt; element MUST contain at least one &lt;item/&gt; child elements (one for each roster item to be sent).</p>
+  <p>Each &lt;item/&gt; element may possess the following attributes:</p>
+  <ul>
+    <li><span class="strong">jid</span> -- The Jabber Identifier of the contact being sent. This attribute is REQUIRED.</li>
+    <li><span class="strong">name</span> -- A natural-language nickname for the contact. This attribute is OPTIONAL.</li>
+  </ul>
+  <p>Each &lt;item/&gt; element MAY also contain one or more &lt;group/&gt; children specifying the natural-language name of a user-specified group, for the purpose of categorizing this contact into one or more roster groups.</p>
+<h2>3.
+       <a name="sect-idp690768" id="sect-idp690768">Examples</a></h2>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. A Roster Item Sent to another Entity</p><div class="indent"><pre class="prettyprint">
+&lt;message to='hamlet@denmark' from='horatio@denmark'&gt;
+  &lt;subject&gt;Visitors&lt;/subject&gt;
+  &lt;body&gt;This message contains roster items.&lt;/body&gt;
+  &lt;x xmlns='jabber:x:roster'&gt; 
+    &lt;item jid='rosencrantz@denmark'
+          name='Rosencrantz'&gt;
+      &lt;group&gt;Visitors&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='guildenstern@denmark'
+          name='Guildenstern'&gt;
+      &lt;group&gt;Visitors&lt;/group&gt;
+    &lt;/item&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+<h2>4.
+       <a name="sect-idp692112" id="sect-idp692112">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>5.
+       <a name="sect-idp693728" id="sect-idp693728">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp697008">4</a>].</p>
+<h2>6.
+       <a name="sect-idp695504" id="sect-idp695504">XMPP Registrar Considerations</a></h2>
+  <p>The 'jabber:x:roster' namespace is registered in the protocol namespaces registry maintained by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1580944">5</a>].</p>
+<h2>7.
+       <a name="sect-idp1579712" id="sect-idp1579712">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:x:roster'
+    xmlns='jabber:x:roster'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0093: http://www.xmpp.org/extensions/xep-0093.html
+
+      NOTE WELL: This protocol has been superseded by XEP-0144
+      http://www.xmpp.org/extensions/xep-0144.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='item' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='group' type='xs:string' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0093<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deprecated">Deprecated</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.2<br />
+            Last Updated: 2005-08-26<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />Superseded By: XEP-0144<br />
+            Short Name: x-roster<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/x-roster.xsd">http://www.xmpp.org/schemas/x-roster.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0093.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0093.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0093.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp682720" id="nt-idp682720">1</a>. RFC 2779: A Model for Presence and Instant Messaging &lt;<a href="http://tools.ietf.org/html/rfc2779">http://tools.ietf.org/html/rfc2779</a>&gt;.</p><p><a name="nt-idp685440" id="nt-idp685440">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp701072" id="nt-idp701072">3</a>. XEP-0144: Roster Item Exchange &lt;<a href="http://xmpp.org/extensions/xep-0144.html">http://xmpp.org/extensions/xep-0144.html</a>&gt;.</p><p><a name="nt-idp697008" id="nt-idp697008">4</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1580944" id="nt-idp1580944">5</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2005-08-26)</h4><div class="indent">Per advancement of XEP-0144 by the Jabber Council, changed status to Deprecated. (psa)
+    </div><h4>Version 1.1 (2004-02-24)</h4><div class="indent">Corrected several small textual errors. (psa)
+    </div><h4>Version 1.0 (2003-10-08)</h4><div class="indent">Per a vote of the Jabber Council, changed status to Active. (psa)
+    </div><h4>Version 0.1 (2003-05-22)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

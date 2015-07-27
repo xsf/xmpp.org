@@ -1,0 +1,1763 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0102: Security Extensions</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Security Extensions" /><meta name="DC.Creator" content="Jean-Louis Seguineau" /><meta name="DC.Description" content="Security extensions for Jabber/XMPP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-06-25" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0102" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0102: Security Extensions</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>Security extensions for Jabber/XMPP.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Jean-Louis Seguineau</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-06-25</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp781232">Introduction</a><br />2.  <a href="#sect-idp684080">Terms and Definitions</a><br />3.  <a href="#sect-idp707888">Requirements And Considerations</a><br />   
+      3.1.  <a href="#sect-idp708992">Security Requirements</a><br />      
+      3.1.1.  <a href="#sect-idp709536">Data Protection</a><br />      
+      3.1.2.  <a href="#sect-idp1598096">Data Classification</a><br />      
+      3.1.3.  <a href="#sect-idp1599424">End To End Protection</a><br />      
+      3.1.4.  <a href="#sect-idp1605936">Trust Issues</a><br />      
+      3.1.5.  <a href="#sect-idp1607168">Cryptosystem Design Considerations</a><br />   
+      3.2.  <a href="#sect-idp1608896">2.2 Environmental Considerations</a><br />   
+      3.3.  <a href="#sect-idp1612128">Usability</a><br />   
+      3.4.  <a href="#sect-idp1615712">Development And Deployment</a><br />   
+      3.5.  <a href="#sect-idp1620528">XML Processing</a><br />      
+      3.5.1.  <a href="#sect-idp1621632">Transporting Binary Content</a><br />      
+      3.5.2.  <a href="#sect-idp1623840">Transporting Encrypted Content</a><br />      
+      3.5.3.  <a href="#sect-idp1626016">Performing HMAC Computation</a><br />      
+      3.5.4.  <a href="#sect-idp1631776">Performing Cryptographic Operations</a><br />4.  <a href="#sect-idp1636960">xmpp:sec namespace</a><br />   
+      4.1.  <a href="#sect-idp1637456">Elements within the extension</a><br />   
+      4.2.  <a href="#sect-idp1642384">Attributes</a><br />   
+      4.3.  <a href="#sect-idp1645968">Elements</a><br />   
+      4.4.  <a href="#sect-idp1677280">Attributes values</a><br />5.  <a href="#sect-idp1689104">Base Key Agreement</a><br />   
+      5.1.  <a href="#sect-idp1689600">Overview</a><br />      
+      5.1.1.  <a href="#sect-idp1703376">Secure password registration</a><br />6.  <a href="#sect-idp1712448">Authenticated Key Agreement</a><br />   
+      6.1.  <a href="#sect-idp1712880">Introduction</a><br />   
+      6.2.  <a href="#sect-idp1728352">Key Exchange Protocol</a><br />      
+      6.2.1.  <a href="#sect-idp1735424">Aggressive Mode Key Exchange</a><br />      
+      6.2.2.  <a href="#sect-idp1745664">Main Mode Key Exchange</a><br />      
+      6.2.3.  <a href="#sect-idp1758496">Deriving key material for Cryptographic Transforms</a><br />   
+      6.3.  <a href="#sect-idp1770080">Authenticated Key Exchange Application</a><br />      
+      6.3.1.  <a href="#sect-idp1770624">Main Mode Key Exchange</a><br />        
+      6.3.1.1.  <a href="#sect-idp1771168">Initiator request Security Association parameters</a><br />        
+      6.3.1.2.  <a href="#sect-idp1776912">Responder select Security Association parameters</a><br />        
+      6.3.1.3.  <a href="#sect-idp1782960">Initiator provides its ephemeral public key</a><br />        
+      6.3.1.4.  <a href="#sect-idp619968">Responder provides its ephemeral public key</a><br />        
+      6.3.1.5.  <a href="#sect-idp624464">Initiator provides its encrypted nonce</a><br />        
+      6.3.1.6.  <a href="#sect-idp1804448">Responder provides its encrypted nonce</a><br />        
+      6.3.1.7.  <a href="#sect-idp1812560">Initiator authenticate the final agreement</a><br />        
+      6.3.1.8.  <a href="#sect-idp1822016">Responder checks the final agreement</a><br />      
+      6.3.2.  <a href="#sect-idp1828352">Aggressive Mode Key Exchange</a><br />        
+      6.3.2.1.  <a href="#sect-idp1828784">Initiator provides all Security Association parameters</a><br />        
+      6.3.2.2.  <a href="#sect-idp1838208">Responder respond to Security Association parameters</a><br />        
+      6.3.2.3.  <a href="#sect-idp1849376">Initiator authenticate the final agreement</a><br />        
+      6.3.2.4.  <a href="#sect-idp1857952">Responder check the final agreement</a><br />7.  <a href="#sect-idp1864592">Key Transport</a><br />   
+      7.1.  <a href="#sect-idp1864976">Conversation Key Transport</a><br />      
+      7.1.1.  <a href="#sect-idp1866048">Key transport exchange</a><br />      
+      7.1.2.  <a href="#sect-idp1869792">Generating And Sending a Conversation Key Transport PDU</a><br />      
+      7.1.3.  <a href="#sect-idp1879248">Receiving and Processing the Conversation Key Transport PDU</a><br />   
+      7.2.  <a href="#sect-idp1888256">Public Key Transport</a><br />      
+      7.2.1.  <a href="#sect-idp1889104">Certificate transport</a><br />      
+      7.2.2.  <a href="#sect-idp1890624">Other Public Keys Transport</a><br />8.  <a href="#sect-idp1896400">Message Protection</a><br />   
+      8.1.  <a href="#sect-idp1897776">Overview</a><br />   
+      8.2.  <a href="#sect-idp1899024">Message Protection Mechanism</a><br />   
+      8.3.  <a href="#sect-idp1902112">Generating And Sending the Protected Message PDU</a><br />   
+      8.4.  <a href="#sect-idp1910224">Receiving and Processing the Protected Message PDU</a><br />9.  <a href="#sect-idp1917456">Algorithms</a><br />10.  <a href="#sect-idp1942192">PKCS #3: Diffie-Hellman Key-Agreement Standard</a><br />   
+      10.1.  <a href="#sect-idp1943824">Scope</a><br />   
+      10.2.  <a href="#sect-idp1946416">References</a><br />   
+      10.3.  <a href="#sect-idp1950208">Definitions</a><br />   
+      10.4.  <a href="#sect-idp1953280">Symbols and abbreviations</a><br />   
+      10.5.  <a href="#sect-idp1960208">General overview</a><br />   
+      10.6.  <a href="#sect-idp1964016">Parameter generation</a><br />      
+      10.6.1.  <a href="#sect-idp1966528">Notes</a><br />   
+      10.7.  <a href="#sect-idp1968688">Phase I</a><br />      
+      10.7.1.  <a href="#sect-idp1970848">Private-value generation</a><br />      
+      10.7.2.  <a href="#sect-idp1972576">Exponentiation</a><br />      
+      10.7.3.  <a href="#sect-idp1974608">Integer-to-octet-string conversion</a><br />   
+      10.8.  <a href="#sect-idp1977312">Phase II</a><br />      
+      10.8.1.  <a href="#sect-idp1979632">Octet-string-to-integer conversion</a><br />      
+      10.8.2.  <a href="#sect-idp1981856">Exponentiation</a><br />      
+      10.8.3.  <a href="#sect-idp1985360">Integer-to-octet-string conversion</a><br />   
+      10.9.  <a href="#sect-idp1988064">Object identifier</a><br />   
+      10.10.  <a href="#sect-idp1994320">Revision history</a><br />      
+      10.10.1.  <a href="#sect-idp1994816">Versions 1.0-1.2</a><br />      
+      10.10.2.  <a href="#sect-idp1995984">Version 1.3</a><br />      
+      10.10.3.  <a href="#sect-idp1997168">Version 1.4</a><br />   
+      10.11.  <a href="#sect-idp2000352">Author's address</a><br />11.  <a href="#sect-idp2001632">IKE Diffie-Hellman Groups</a><br />   
+      11.1.  <a href="#sect-idp2002768">768-bit MODP - modp1</a><br />   
+      11.2.  <a href="#sect-idp2005456">1024-bit MODP Group - modp2</a><br />   
+      11.3.  <a href="#sect-idp2008304">1536-bit MODP Group - modp5</a><br />   
+      11.4.  <a href="#sect-idp2010784">2048-bit MODP Group</a><br />   
+      11.5.  <a href="#sect-idp2013168">3072-bit MODP Group</a><br />   
+      11.6.  <a href="#sect-idp2016048">4096-bit MODP Group</a><br />   
+      11.7.  <a href="#sect-idp2019184">6144-bit MODP Group</a><br />   
+      11.8.  <a href="#sect-idp2022656">8192-bit MODP Group</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp781232" id="sect-idp781232">Introduction</a></h2>
+<p>While the benefits of IM are clear and compelling, the risks associated with sharing sensitive information in an IM environment are often overlooked. We need a mechanism that permits communities of users to protect their IM conversations. This document presents an extension protocol that can be incorporated into the existing XMPP protocol to provide such a mechanism. </p>
+<p>In addition to its ability to protect instant message data, the proposed protocol may also serve as a foundation for securing other data transported via XMPP extensions. </p>
+<h2>2.
+       <a name="sect-idp684080" id="sect-idp684080">Terms and Definitions</a></h2>
+<div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Terms and Definitions</p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Term</td><td>Definition</td></tr>
+<tr class="body"><td>User</td><td>A user is simply any XMPP user. Users are uniquely identified by a JID; they connect to XMPP hosts using a XMPP node. Users produce and consume information, and we wish to provide them with mechanisms that can be used to protect this information.</td></tr>
+<tr class="body"><td>Community</td><td>A community is a collection of users who wish to communicate via XMPP. No restrictions or assumptions are made about the size of communities or the geographical, organizational, or national attributes of the members. Communities are assumed to be dynamic and ad-hoc. Users typically join communities by the simple act of invitation. All members of a community are assumed to be peers. The members of communities share information among themselves, and we wish to provide them with mechanisms that can permit information to only be shared by community members.</td></tr>
+<tr class="body"><td>Conversation</td><td>A conversation is the set of messages that flows among the members of a community via some network. Conversations consist of both the actual conversation data produced and consumed by the various users as well as the XMPP protocol elements that transport it. Members participate in a conversation when they are the source or destination of this traffic.</td></tr>
+<tr class="body"><td>Initiator</td><td>The initiator is the user who requested a security session negotiation. Initiator's are identified by their JID.</td></tr>
+<tr class="body"><td>Responder</td><td>The responder is the user who responded to a security session negotiation request. Responder's are identified by their JID.</td></tr>
+<tr class="body"><td>Concatentation operator</td><td>The '|' character is used in character or octet string expressions to indicate concatenation.</td></tr>
+<tr class="body"><td>PFS</td><td>Perfect Forward Secrecy. In cryptography, is said of a key-establishment protocol in which the compromise of a session key or long-term private key after a given session does not cause the compromise of any earlier session.</td></tr>
+<tr class="body"><td>GRP</td><td>The definition of a Diffie-Hellman group length</td></tr>
+<tr class="body"><td>DHx</td><td>The Diffie-Hellman ephemeral public keys for the initiator (x=i) and the responder (x=r)</td></tr>
+<tr class="body"><td>KEY</td><td>The Diffie-Hellman ephemeral session secret that is agreed to during a key exchange negotiation.</td></tr>
+<tr class="body"><td>CKYx</td><td>A 64 bits pseudo-random number or cookie generated by the initiator (x=i) and responder (x=r) in the authenticated key exchange.</td></tr>
+<tr class="body"><td>KEYID</td><td>The concatenation of CKI-I and CKI-r and the domain of interpretation. It is the name of the keying material.</td></tr>
+<tr class="body"><td>sKEYID</td><td>This is the keying material named by KEYID. It is never transmitted but is used in the various calculations made by the exchanging parties.</td></tr>
+<tr class="body"><td>EHAo</td><td>A list of encryption/hash/authentication algorithms choices.</td></tr>
+<tr class="body"><td>EHAs</td><td>The selected reference encryption/hash/authentication choice.</td></tr>
+<tr class="body"><td>Nx</td><td>The nonces selected by the initiator (x=i) and the responder (x=r)</td></tr>
+<tr class="body"><td>JIDx</td><td>The identities of the initiator (x=i) and the responder (x=r)</td></tr>
+<tr class="body"><td>E{value}Kx</td><td>The encryption of value with the public key of the initiator (x=i) and the responder (x=r). Encryption is done using the algorithm associated with the authentication method. Usually this will be RSA</td></tr>
+<tr class="body"><td>D{value}Kx</td><td>The decryption of value with the public key of the initiator (x=i) and the responder (x=r). Decryption is done using the algorithm associated with the authentication method. Usually this will be RSA</td></tr>
+<tr class="body"><td>S{value}Kx</td><td>The signature of value with the private key of the initiator (x=i) and the responder (x=r). Signing is done using the algorithm associated with the authentication method. Usually this will be RSA or DSS</td></tr>
+<tr class="body"><td>prf(a, b)</td><td>The result of applying pseudo-random function "a" to data "b". One may think of "a" as a key or as a value that characterizes the function prf; in the latter case it is the index into a family of functions. Each function in the family provides a "hash" or one-way mixing of the input.</td></tr>
+<tr class="body"><td>prf(0, b)</td><td>The application of a one-way function to data "b".  The similarity with the previous notation is deliberate and indicates that a single algorithm, e.g. MD5, might will used for both purposes. In the first case a "keyed" MD5 transform would be used with key "a"; in the second case the transform would have the fixed key value zero, resulting in a one-way function.</td></tr>
+<tr class="body"><td>hmac(a, b)</td><td>This indicates the HMAC algorithm. pseudo-random function "a" to data "b".</td></tr>
+</table></div>
+<h2>3.
+       <a name="sect-idp707888" id="sect-idp707888">Requirements And Considerations</a></h2>
+<p>The proposed protocol is designed to address the specific requirements and considerations presented in this section. </p>
+<div class="indent"><h3>3.1 <a name="sect-idp708992" id="sect-idp708992">Security Requirements</a></h3>
+<div class="indent"><h3>3.1.1 <a name="sect-idp709536" id="sect-idp709536">Data Protection</a></h3>
+<p>A secure IM system must permit conversation participants to preserve the following properties of their conversation data: </p>
+<div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Property</td><td>Description</td></tr>
+<tr class="body"><td>confidentiality</td><td>Conversation data must only be disclosed to authorized recipients</td></tr>
+<tr class="body"><td>integrity</td><td>Conversation data must not be altered</td></tr>
+<tr class="body"><td>data origin authentication</td><td>Recipients must be able to determine the identity of the sender and trust that the message did, in fact, come from the sender. It is important to note that this requirement does not include the requirement of a durable digital signature on conversation data.</td></tr>
+<tr class="body"><td>replay protection</td><td>Recipients must be able to detect and ignore duplicate conversation data.</td></tr>
+</table></div>
+
+<p>These are established, traditional goals of information security applied to the conversation data. In the IM environment, these goals protect against the following attacks: </p>
+<ul>
+<li>eavesdropping, snooping, etc. </li>
+<li>masquerading as a conversation participant </li>
+<li>forging messages </li>
+</ul>
+
+<p>Preserving the availability of conversation data is not addressed by this protocol. </p>
+<p>Finally, note that this protocol does not concern any authentication between an XMPP node and an XMPP host. </p>
+</div>
+<div class="indent"><h3>3.1.2 <a name="sect-idp1598096" id="sect-idp1598096">Data Classification</a></h3>
+<p>A secure IM system must support a data classification feature through the use of security labeling. Conversation participants must be able to associate a security label with each piece of conversation data. This label may be used to specify a data classification level for the conversation data. </p>
+</div>
+<div class="indent"><h3>3.1.3 <a name="sect-idp1599424" id="sect-idp1599424">End To End Protection</a></h3>
+<p>It is easy to imagine XMPP systems in which the servers play active, fundamental roles in the protection of conversation data. Such systems could offer many advantages, like: </p>
+<ul>
+<li>allowing the servers to function as credential issuing authorities, 
+</li>
+<li>allowing the servers to function as policy enforcement points. </li>
+</ul>
+
+<p>Unfortunately, such systems have significant disadvantages when one considers the nature of instant messaging: </p>
+<ul>
+<li>Many servers may be un-trusted, public servers. 
+</li>
+<li>In many conversation communities, decisions of trust and membership can only be adequately defined by the members themselves. 
+</li>
+<li>In many conversation communities, membership in the community changes in real time based upon the dynamics of the conversation. 
+</li>
+<li>In many conversation communities, the data classification of the conversation changes in real time based upon the dynamics of the conversation. </li>
+</ul>
+
+<p>Furthermore, the use of gateways to external IM systems is a further complication. </p>
+<p>Based on this analysis, we propose that security be entirely controlled in an end to end fashion by the conversation participants themselves via their user agent software. </p>
+</div>
+<div class="indent"><h3>3.1.4 <a name="sect-idp1605936" id="sect-idp1605936">Trust Issues</a></h3>
+<p>Similarly, we believe that trust decisions are in the hands of the conversation participants. A security protocol and appropriate user agents must provide a mechanism for them to make informed decisions. </p>
+</div>
+<div class="indent"><h3>3.1.5 <a name="sect-idp1607168" id="sect-idp1607168">Cryptosystem Design Considerations</a></h3>
+<p>One of the accepted axioms of security is that people must avoid the temptation to start from scratch and produce new, untested algorithms and protocols. History has demonstrated that such approaches are likely to contain flaws and that considerable time and effort are required to identify and address all of these flaws. Any new security protocol should be based on existing, established algorithms and protocols. </p>
+</div>
+</div>
+<div class="indent"><h3>3.2 <a name="sect-idp1608896" id="sect-idp1608896">2.2 Environmental Considerations</a></h3>
+<p>Any new IM security protocol must integrate smoothly into the existing IM environment, and it must also recognize the nature of the transactions performed by conversation participants. These considerations are especially important: </p>
+<ul>
+<li>dynamic communities. The members of a community are defined in near real time by the existing members. 
+</li>
+<li>dynamic conversations. Conversations may involve any possible subset of the entire set of community members. </li>
+</ul>
+
+<p>Addressing these considerations becomes especially crucial when selecting a conference keying mechanism. </p>
+</div>
+<div class="indent"><h3>3.3 <a name="sect-idp1612128" id="sect-idp1612128">Usability</a></h3>
+<p>Given the requirement to place the responsibility for the protection of conversation data in the hands of the participants, it is imperative to address some fundamental usability issues: </p>
+<ul>
+<li>Overall ease of use is a requirement. For protocol purposes, one implication is that some form of authentication via passphrases is necessary. While we recognize that this can have appalling consequences, especially when we realize that a passphrase may be shared by all of the community members, we also recognize its utility. 
+</li>
+<li>PKIs are well established in many large organizations, and some communities will prefer to rely on credentials issued from these authorities. We must allow the use of existing PKI credentials and trust models rather than impose closed, XMPP-specific credentials.
+ </li>
+<li>Performance must not be negatively impacted. This is particularly true if we consider that most communities are composed of human users conversing in real time. For protocol purposes, one obvious implication is the desire to minimize computationally expensive public key operations. </li>
+</ul>
+</div>
+<div class="indent"><h3>3.4 <a name="sect-idp1615712" id="sect-idp1615712">Development And Deployment</a></h3>
+<p>To successfully integrate into the existing XMPP environment, an extension protocol for security must satisfy the following: </p>
+<ul>
+<li>It must be an optional extension of the existing XMPP protocol. 
+</li>
+<li>It must be transparent to existing XMPP servers. 
+</li>
+<li>It must function gracefully in cases where some community members are not running a user agent that supports the protocol. 
+</li>
+<li>It must make good use of XML. 
+</li>
+<li>It must avoid encumbered algorithms. 
+</li>
+<li>It must be straightforward to implement using widely available cryptographic toolkits. 
+</li>
+<li>It must not require a PKI. </li>
+</ul>
+</div>
+<div class="indent"><h3>3.5 <a name="sect-idp1620528" id="sect-idp1620528">XML Processing</a></h3>
+<p>Since cryptographic operations are applied to data that is transported within an XML stream, the protocol defines a set of rules to ensure a consistent interpretation by all conversation participants. </p>
+<div class="indent"><h3>3.5.1 <a name="sect-idp1621632" id="sect-idp1621632">Transporting Binary Content</a></h3>
+<p>Binary data, such as the result of an HMAC, is always transported in an encoded form; the only supported encoding scheme is base64.</p>
+<p>Senders MAY include arbitrary white space within the character stream. Senders SHOULD NOT include any other characters outside of the encoding set. </p>
+<p>Receivers MUST ignore all characters not in the encoding set. </p>
+</div>
+<div class="indent"><h3>3.5.2 <a name="sect-idp1623840" id="sect-idp1623840">Transporting Encrypted Content</a></h3>
+<p>Encrypted data is always transported in an encoded form; the only supported encoding scheme is base64.</p>
+<p>Senders MAY include arbitrary white space within the character stream. Senders SHOULD NOT include any other characters outside of the encoding set. </p>
+<p>Receivers MUST ignore all characters not in the encoding set. </p>
+</div>
+<div class="indent"><h3>3.5.3 <a name="sect-idp1626016" id="sect-idp1626016">Performing HMAC Computation</a></h3>
+<p>HMACs are computed over a specific collection of attribute values and character data; when computing an HMAC the following rules apply: </p>
+<ul>
+<li>All characters MUST be HMACed in their pure Unicode form encoded in UTF-16. </li>
+</ul>
+<ul>
+<li>The octets in each character MUST be processed in network byte order. </li>
+</ul>
+<ul>
+<li>For a given element, the attribute values that are HMACed MUST be processed in the specified order regardless of the order in which they appear in the element tag. </li>
+</ul>
+<ul>
+<li>For each attribute value, the computation MUST only include characters from the anticipated set defined in this specification; in particular, white space MUST always be ignored. </li>
+</ul>
+<ul>
+<li>For character data that is represented in a base64 encoded form, the computation MUST only include valid characters from the encoding set. </li>
+</ul>
+</div>
+<div class="indent"><h3>3.5.4 <a name="sect-idp1631776" id="sect-idp1631776">Performing Cryptographic Operations</a></h3>
+<p>The following algorithm is used to encrypt a character string: </p>
+<ul>
+<li>The character string MUST be represented in Unicode encoded in UTF-16. </li>
+</ul>
+<ul>
+<li>The octets in each character MUST be processed in network byte order. </li>
+</ul>
+<ul>
+<li>Appropriate cryptographic algorithm parameters, such as an IV for a block cipher, are generated. </li>
+</ul>
+<ul>
+<li>The octet string derived from the character string is padded with up to 256 octets of arbitrary padding data. There MUST be at least one padding octet. The last octet of the padding MUST indicate the number of preceeding octets in the stream. All padding octets except the last octet SHOULD be randomly generated. When block ciphers are used, the padding MUST result in a stream of octets that is a multiple of the cipher's block size. </li>
+</ul>
+</div>
+</div>
+<h2>4.
+       <a name="sect-idp1636960" id="sect-idp1636960">xmpp:sec namespace</a></h2>
+<div class="indent"><h3>4.1 <a name="sect-idp1637456" id="sect-idp1637456">Elements within the extension</a></h3>
+<p>When used to extend existing XMPP construct, the container element is an &lt;x/&gt; element. Each &lt;x/&gt; element could have one &lt;SecurityAssociation/&gt; to refer to a particular security session, one &lt;KeyAgreement/&gt; element which would contain the information for an an exchange of keys. The &lt;x/&gt; element could have its content authenticated by one &lt;Signature/&gt; element which contains the information about signature of information exchanged between two nodes. The &lt;x/&gt; element may contains one &lt;KeyTransport/&gt; element which contains the information about keys to be securely exchanged between two nodes.</p>
+<p>When used in an IQ XMPP construct, the container element is a &lt;query/&gt; element. Each &lt;query/&gt; element could have one &lt;SecurityAssociation/&gt; to refer to a particular security session, one &lt;KeyAgreement/&gt; element which would contain the information for an an exchange of keys. The &lt;query/&gt; element could have its content authenticated by one &lt;Signature/&gt; element which contains the information about signature of information exchanged between two nodes. The &lt;query/&gt; element may contains one &lt;KeyTransport/&gt; element which contains the information about keys to be securely exchanged between two nodes.</p>
+<p>Each &lt;SecurityAssociation/&gt; element may have &lt;DigestMethod/&gt;,  &lt;EncryptionMethod/&gt; and &lt;SignatureMethod/&gt; elements to specify the actual algorithms set that will be used in a key exchange.</p>
+<p>Each &lt;KeyAgreement/&gt; element may have a &lt;DHKeyValue/&gt; and a &lt; DHParamters/&gt; elements to specify the actual data and parameters used in the key exchange. It may also contain a &lt;KA-Nonce/&gt; element to specify a nonce to be used in a key exchange.</p>
+</div>
+<div class="indent"><h3>4.2 <a name="sect-idp1642384" id="sect-idp1642384">Attributes</a></h3>
+<div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Attribute</td><td>Meaning</td></tr>
+<tr class="body"><td>id</td><td>The id attribute hold the agreement or security association ID, when present.</td></tr>
+<tr class="body"><td>length</td><td>The length attribute hold the require number of bits in the prime number used to generate the DH key pair.</td></tr>
+</table></div>
+</div>
+<div class="indent"><h3>4.3 <a name="sect-idp1645968" id="sect-idp1645968">Elements</a></h3>
+<div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Element</td><td>Meaning</td></tr>
+<tr class="body"><td>SecurityAssociation</td><td>The &lt;SecurityAssociation/&gt; tag is used to encapsulate EncryptionMethod, DigestMethod, SignatureMethod data. It is used as a container for the different algorithm definition that are negotiated for the session.</td></tr>
+<tr class="body"><td>AgreementMethod</td><td>The &lt;AgreementMethod/&gt; tag is an optional element that identifies the key agreement algorithm to be applied to an object.</td></tr>
+<tr class="body"><td>DigestMethod</td><td>The &lt;DigestMethod/&gt; tag is an optional element that identifies the digest algorithm to be applied to an object.</td></tr>
+<tr class="body"><td>DigestValue</td><td>The &lt;DigestValue/&gt; tag is an optional element that contains the encoded value of a digest.</td></tr>
+<tr class="body"><td>EncryptionMethod</td><td>The &lt;EncryptionMethod/&gt; tag is an optional element that describes the encryption algorithm applied to the cipher data. If the element is absent, the encryption algorithm must be known by the recipient or the decryption will fail.</td></tr>
+<tr class="body"><td>Signature</td><td>The &lt;Signature/&gt; tag is used to encapsulate signature data. It is used as a container of other XML structures that could come from any namespace.</td></tr>
+<tr class="body"><td>SignatureMethod</td><td>The &lt;SignatureMethod/&gt; tag is an optional element that specifies the algorithm used for signature generation and validation.</td></tr>
+<tr class="body"><td>SignatureValue</td><td>The &lt;SignatureValue/&gt; tag is an optional element that contains the encoded value of a signature.</td></tr>
+<tr class="body"><td>SignedInfo</td><td>The &lt;SignedInfo/&gt; tag includes the canonicalization algorithm, a signature algorithm, and one or more references. The SignedInfo element may contain an optional ID attribute that will allow it to be referenced by other signatures and objects. It is in the http://www.w3.org/2000/09/xmldsig# namespace.</td></tr>
+<tr class="body"><td>KA-Nonce</td><td>The &lt;KA-Nonce/&gt; tag is an optional element under &lt;KeyAgreement/&gt; to assure that different keying material is generated even for repeated agreements using the same sender and recipient public keys.</td></tr>
+<tr class="body"><td>KeyAgreement</td><td>The &lt;KeyAgreement/&gt; tag is used to encapsulate key agreement data. It is used as a container of other XML structures that could come from external namespace.</td></tr>
+<tr class="body"><td>KeyInfo</td><td>The &lt;KeyInfo/&gt; tag is used to encapsulate key information data. It enables the recipient to obtain the key needed to validate a signature. &lt;KeyInfo/&gt; may contain keys, names, certificates and other public key management information, such as in-band key distribution or key agreement data. It is used as a container of other XML structures that could come from external namespace.</td></tr>
+<tr class="body"><td>OriginatorKeyInfo</td><td>The &lt;OriginatorKeyInfo/&gt; tag is used to encapsulate originator key information data in a key agreement. It is of type &lt;KeyInfo/&gt; and used as a container of other XML structures that could come from external namespace.</td></tr>
+<tr class="body"><td>RecipientKeyInfo</td><td>The &lt;RecipientKeyInfo/&gt; tag is used to encapsulate recipient key information data in a key agreement. It is It is of type &lt;KeyInfo/&gt; and used as a container of other XML structures that could come from external namespace.</td></tr>
+<tr class="body"><td>KeyName</td><td>The &lt;KeyName/&gt; tag is an optional element of &lt;KeyInfo/&gt; and contains a string value (in which white space is significant) which may be used to communicate a key identifiert to the recipient.</td></tr>
+<tr class="body"><td>KeyValue</td><td>The &lt;KeyValue/&gt; tag contains a single public key that may be useful in validating a signature. The KeyValue element may include externally defined public keys values represented as PCDATA or element types from an external namespace</td></tr>
+<tr class="body"><td>KeyTransport</td><td>The &lt;KeyTransport/&gt; tag is used to encapsulate transported key data. It is used as a container of other XML structures that could come from any namespace.</td></tr>
+<tr class="body"><td>CarriedKeyName</td><td>The &lt;CarriedKeyName/&gt; tag is optional and used to specified the name of the transported key.</td></tr>
+<tr class="body"><td>DHKeyValue</td><td>The &lt;DHKeyValue/&gt; tag is used to encapsulate a Diffie-Hellman key agreement content. It is designed to follow the XML digital signature standard.</td></tr>
+<tr class="body"><td>DHParameters</td><td>The &lt;DHParameters/&gt; tag is used to to encapsulate a Diffie-Hellman key exchange parameters.</td></tr>
+<tr class="body"><td>Public</td><td>The &lt;Public/&gt; tag is holding the actual content of a Diffie-Hellman public key.</td></tr>
+<tr class="body"><td>X509Data</td><td>The &lt;X509Data/&gt; tag is an optional element holding one or more identifiers of keys or X509 certificates, or certificates' identifiers or a revocation list. It is in the http://www.w3.org/2000/09/xmldsig# namespace.</td></tr>
+<tr class="body"><td>PGPData</td><td>The &lt;PGPData/&gt; tag is an optional element used to convey information related to PGP public key pairs and signatures on such keys. It is in the http://www.w3.org/2000/09/xmldsig# namespace.</td></tr>
+<tr class="body"><td>DSAKeyValue</td><td>The &lt;DSAKeyValue/&gt; tag is optional and defines a DSA public key inside a &lt;KeyInfo/&gt; element. It is in the http://www.w3.org/2000/09/xmldsig# namespace.</td></tr>
+<tr class="body"><td>RSAKeyValue</td><td>The &lt;RSAKeyValue/&gt; tag is optional and defines a RSA public key inside a &lt;KeyInfo/&gt; element. It is in the http://www.w3.org/2000/09/xmldsig# namespace.</td></tr>
+</table></div>
+</div>
+<div class="indent"><h3>4.4 <a name="sect-idp1677280" id="sect-idp1677280">Attributes values</a></h3>
+<div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Element</td><td>Attribute</td><td>Value</td><td>Meaning</td></tr>
+<tr class="body"><td>KeyAgreement</td><td>id</td><td>CDATA</td><td>The agreement ID</td></tr>
+<tr class="body"><td>length</td><td>null</td><td>CDATA</td><td>The length of the prime number to be used by default is 768 bits. The length of the prime number to be usedas defined in the IKE Diffie-Hellman groups.</td></tr>
+<tr class="body"><td>SecurityAssocitation</td><td>id</td><td>CDATA</td><td>The security association ID or cookie for a party in the negotiation.</td></tr>
+<tr class="body"><td>AgreementMethod</td><td>Algorithm</td><td>CDATA</td><td>The algorythm URI for the key agreement.</td></tr>
+<tr class="body"><td>DigestMethod</td><td>Algorithm</td><td>CDATA</td><td>The algorythm URI for the digest.</td></tr>
+<tr class="body"><td>EncryptionMethod</td><td>Algorithm</td><td>CDATA</td><td>The algorythm URI for the encryption.</td></tr>
+<tr class="body"><td>SignatureMethod</td><td>Algorithm</td><td>CDATA</td><td>The algorythm URI for the signature.</td></tr>
+</table></div>
+</div>
+<h2>5.
+       <a name="sect-idp1689104" id="sect-idp1689104">Base Key Agreement</a></h2>
+<div class="indent"><h3>5.1 <a name="sect-idp1689600" id="sect-idp1689600">Overview</a></h3>
+<p>The base key agreement (BKE) is an implementation of the "Diffie-Hellman Method For Key Agreement" (DH). It allows two nodes to create and share a secret key. </p>
+<p>DH is not an encryption mechanism as we normally think of them, in that we do not typically use it to encrypt data. Instead, it is a method to securely exchange the keys that encrypt data. DH accomplishes this secure exchange by creating a "shared secret", sometimes called a "key encryption key", between two nodes. The shared secret then encrypts the symmetric key, or "data encryption key" - DES, Triple DES, CAST, IDEA, Blowfish, etc, for secure transmission.</p>
+<p>Two nodes intending to agree on a secret key shall employ the first phase of the agreement independently to produce the public values outputs PV and PV'. The nodes shall exchange the outputs.</p>
+<p>The nodes shall then employ the second phase independently with the other nodes's public value as input. The mathematics of Diffie-Hellman key agreement ensure that the resulting outputs SK of the second phase are the same for both entities.</p>
+<p>1) First the nodes must get the "Diffie-Hellman parameters". A prime number, 'p' (larger than 2) and "base", 'g', an integer that is smaller than 'p'. They can either be hard coded or fetched from a server.</p>
+<p>Diffie-Hellman groups are used to determine the length of the base prime numbers used during the key exchange. The strength of any key derived depends in part on the strength of the Diffie-Hellman group the prime numbers are based on: </p>
+<ul>
+<li>Group 2 (medium) is stronger than Group 1 (low). Group 1 will provide 768 bits of keying material, while Group 2 will provide 1,024 bits. If mismatched groups specified on each peer, negotiation will fail. The group cannot be switched during the negotiation.
+</li>
+<li>A larger group results in more entropy and therefore a key which is harder to break.</li>
+</ul>
+
+<p>2) The nodes each secretly generate a private number called 'x', which is less than "p - 1". </p>
+<p>3) The nodes next generate the ephemeral public keys, 'y'. They are created with the function: </p>
+<p>	y = g^x mod p</p>
+<p>4) The two nodes now exchange the public keys ('y') and the exchanged numbers are converted into a secret key, 'z'. </p>
+<p>	z = y^x mod p</p>
+<p>'z' can now be used as the key for whatever encryption method is used to transfer information between the two nodes. Mathematically, the two nodes should have generated the same value for 'z'. </p>
+<p>	z = (g^x mod p)^x' mod p = (g^x' mod p)^x mod p</p>
+<p>	All of these numbers are positve integers</p>
+<p>	x^y	means: x is raised to the y power</p>
+<p>	xmody	means: x is divided by y and the remainder is returned </p>
+<p>Suppose two nodes want to agree on a shared secret key to exchange information securely, they will exchange their public keys in order to encrypt that information. To this goal, the transport XMPP packet SHOULD include an extension of the form:</p>
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. Key agreement Application</p><div class="indent"><pre class="prettyprint">
+
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyAgreement length="1024"&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&amp;gt;...&amp;lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;/KeyAgreement&gt;
+&lt;/x&gt;
+
+</pre></div>
+<p>In this extension, the only negotiable parameter is the key length that is passed in the length attribute of the &lt;KeyAgreement/&gt; tag. The length attribute is used to retrieve the DH parameter group and the associated prime and generator values. We are using DH groups derived from the Internet Key Exchange protocol (IKE) which is used by IPSec. A summary of these groups and the associated parameters are described later in this document.</p>
+<div class="indent"><h3>5.1.1 <a name="sect-idp1703376" id="sect-idp1703376">Secure password registration</a></h3>
+<p>An example of using this agreement is to send encrypted password on the wire when registering a new user. Registration is the only time a password needs to be exchanged between an XMPP server and a client. Once that has been carried out, then every authentication can be done through digest.</p>
+<p>The client uses an empty &lt;x/&gt; element in the request to signal that it supports the XMPP security extension.</p>
+<p>The flow between client and server will look like:</p>
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. Client requests register parameters</p><div class="indent"><pre class="prettyprint">
+
+&lt;iq to="domain" type="get" id="req-0"&gt;
+&lt;x xmlns="jabber:iq:register"&gt;
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyAgreement length="1024"/&gt;
+&lt;/x&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+
+</pre></div>
+<p>The server will reply to the request by sending out its own ephemeral public key inside the &lt;x/&gt; extension.</p>
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server respond with register parameters</p><div class="indent"><pre class="prettyprint">
+
+&lt;iq from="domain" type="result" id="req-0"&gt;
+&lt;x xmlns="jabber:iq:register"&gt;
+&lt;username/&gt;
+&lt;password/&gt;
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyAgreement&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;encoded server public key&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;/KeyAgreement&gt;
+&lt;/x&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+
+</pre></div>
+<p>The client then generate its own public key, calcultate the shared secret according to the DH method and uses it to encrypt the password accordingly. It includes its own ephemeral  public key into the reply to the server inside the &lt;x/&gt; extension.</p>
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. Client sends register parameters</p><div class="indent"><pre class="prettyprint">
+
+
+&lt;iq to="domain" type="set" id="req-1"&gt;
+&lt;x xmlns="jabber:iq:register"&gt;
+&lt;username&gt;username&lt;/username&gt;
+&lt;password&gt;encrypted password&lt;/password&gt;
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyAgreement&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;encoded client public key&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;/KeyAgreement&gt;
+&lt;/x&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+
+
+</pre></div>
+<p>The server now calculates the shared secret according to the DH method and uses its private key to decrypt the password.</p>
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. Server acknowledge register</p><div class="indent"><pre class="prettyprint">
+
+
+&lt;iq to="domain" type="result" id="req-1"/&gt;
+
+</pre></div>
+</div>
+</div>
+<h2>6.
+       <a name="sect-idp1712448" id="sect-idp1712448">Authenticated Key Agreement</a></h2>
+<div class="indent"><h3>6.1 <a name="sect-idp1712880" id="sect-idp1712880">Introduction</a></h3>
+<p>The Diffie-Hellman key agreement algorithm [10] provides a mechanism to allow key establishment in a scalable and secure way. It allows two parties to agree on a shared value without requiring encryption. An Authenticated Key Agreement (AKE) is a secure protocol ensuring that in addition to securely sharing a secret, the two parties can be certain of each other’s identities, even when an active attacker exists.</p>
+<p>This AKE uses a hybrid protocol derived from the Internet Key Exchange (IKE) [1] and the OAKLEY key determination protocol [2]. The purpose is to negotiate and provide authenticated key material for security association (SA) in a protected manner. The basic mechanism is the Diffie-Hellman Key Exchange. It provides the following addition to base key agreement:</p>
+<ul>
+<li>it uses weak address validation mechanism (cookies) to avoid denial of service attacks.
+</li>
+<li>it provides negotiation of mutually agreeable supporting algorithm for the protocol, such as the encryption method, the key derivation method and the authentication method.
+</li>
+<li>the authentication does not depend on encryption using the DH exponentials, but instead validates the binding of the exponential to the identities of the parties.
+</li>
+<li>it does not require the computation of the shared exponential before the authentication.
+</li>
+<li>it provides additional security to the derivation of encryption keys, as it is made to depend not only of the DH algorithm but also on the cryptographic method used to securely authenticate the parties to each other.
+</li>
+</ul>
+<p>This key agreement protocol is used to establish a shared key with an assigned identifier and associated identities for two parties. The resulting common keying information state comprise a key name, secret keying material, the identification of the two parties, and three algorithms for use during authentication:</p>
+<ul>
+<li>encryption for privacy, 
+</li>
+<li>hashing for protecting the integrity of message and for authentication of message fields
+</li>
+<li>authentication to mutually authenticate the parties </li>
+</ul>
+
+<p>The anti clogging tokens, or cookies, provide a weak form of source address identification for both parties. The cookies exchange can be completed before they perform the expensive computations later in the protocol. The cookies are used also for key naming.</p>
+<ul>
+<li>The construction of the cookies is implementation dependent. It is recommended to make them the result of a one-way function applied to a secret value (changed periodically), and the local and remote addresses. In this way, the cookies remain stateless and expire periodically.  Note that this would cause the KEYID's derived from the secret value to also expire, necessitating the removal of any state information associated with it.  </li>
+<li>The encryption functions must be cryptographic transforms which guarantee privacy and integrity for the message data. They include any that satisfy this criteria and are defined for use with RFC2406 [3].  </li>
+<li>The one-way hash functions must be cryptographic transform which can be used as either keyed hash (pseudo-random) or non keyed transforms. They include any that are defined for use with RFC2406 [3].  </li>
+<li>Where nonces are indicated they will be variable precision integers with an entropy value that match the strength attribute of the DH group used in the exchange.</li>
+</ul>
+</div>
+<div class="indent"><h3>6.2 <a name="sect-idp1728352" id="sect-idp1728352">Key Exchange Protocol</a></h3>
+<p>The main exchange has three optional features: </p>
+<ul>
+<li>stateless cookie exchange, </li>
+<li>perfect forward secrecy for the keying material, </li>
+<li>use of signatures (for non-repudiation). </li>
+</ul>
+
+<p>The two parties can use any combination of these features. The general outline of processing is that the Initiator of the exchange begins by specifying as much information as he wishes in his first message. The Responder replies, supplying as much information as he wishes. The two sides exchange messages, supplying more information each time, until their requirements are satisfied. </p>
+<p>The choice of how much information to include in each message depends on which options are desirable. For example, if stateless cookies are not a requirement, and perfect forward secrecy for the keying material are not requirements, and if non- repudiatable signatures are acceptable, then the exchange can be completed in three messages. Additional features may increase the number of roundtrips needed for the keying material determination. </p>
+<p>The three components of the key determination are:</p>
+<ul>
+<li>Cookies exchange</li>
+<li>DH half key exchange</li>
+<li>Authentication</li>
+</ul>
+
+<p>The initiator can supply as little information as a bare exchange request, carrying no additional information. On the other hand the initiator can begin by supplying all the necessary information for the responder to authenticate the request and complete the key determination quickly, if the responder choose to accept this method. If not the responder can reply with a minimum amount of information.</p>
+<div class="indent"><h3>6.2.1 <a name="sect-idp1735424" id="sect-idp1735424">Aggressive Mode Key Exchange</a></h3>
+
+<p>The following example indicates how two parties can complete a key exchange in three messages.  The identities are not secret, the derived keying material is protected by PFS.</p>
+<p>By using digital signatures, the two parties will have a proof of communication that can be recorded and presented later to a third  party.</p>
+<p>The keying material implied by the group exponentials is not needed for completing the exchange.  If it is desirable to defer the computation, the implementation can save the "x" and "g^y" values and   mark the keying material as "uncomputed".  It can be computed from this information later.</p>
+<div class="indent"><p class="caption"><a name="table-6" id="table-6"></a>Table 6: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Initiator</td><td>Message content</td><td>Responder</td></tr>
+<tr class="body"><td></td><td>GRP, CKYi, DHi, EHAo, JIDi, JIDr, Ni, S{JIDi | JIDr | CKYi | 0 | Ni | 0 | GRP | DHi | 0 | EHAo}Ki</td><td></td></tr>
+<tr class="body"><td></td><td>GRP, CKYr, DHr, EHAs, JIDi, JIDr, Nr, S{JIDr | JIDi| | CKYr | CKYi | Nr | Ni | GRP | DHr | DHi | EHAs}Kr</td><td></td></tr>
+<tr class="body"><td></td><td>GRP, CKYi, CKYr, DHi, EHAs, JIDi, JIDr, Ni, Nr, S{JIDi | JIDr | CKYr | CKYi | Ni | Nr | GRP | DHi | DHr | EHAs}KEY</td><td></td></tr>
+</table></div>
+
+<p>The result of this exchange is a key with :</p>
+<ul>
+<li>KEYID = CKYi | CKYr </li>
+<li>sKEYID = prf(Ni | Nr, KEY | CKYi | CKYr). </li>
+</ul>
+
+<p>The Aggressive Mode example is written to suggest that public key technology is used for the signatures. However, a pseudorandom function can be used, if the parties have previously agreed to such a scheme and have a shared key. </p>
+<p>If the first proposal in the EHAo list is an "existing key" method, then the KEYID named in that proposal will supply the keying material for the "signature" which is computed using the "H" algorithm associated with the KEYID. </p>
+</div>
+<div class="indent"><h3>6.2.2 <a name="sect-idp1745664" id="sect-idp1745664">Main Mode Key Exchange</a></h3>
+<p>In this exchage the two parties are minimally aggressive; they use the cookie exchange to delay creation of state, and they use perfect forward secrecy to protect the identities. </p>
+<p>They use public key encryption for authentication; digital signatures or pre-shared keys can also be used. The Main mode does not change the use of nonces, prf's, etc., but it does change how much information is transmitted in each message. </p>
+<p>The responder considers the ability of the initiator to repeat CKYr as weak evidence that the message originates from a "live" correspondent on the network and the correspondent is associated with the initiator's network address. </p>
+<p>The initiator makes similar assumptions when CKYi is repeated to the initiator. All messages must have valid cookies or at least one zero cookie. If both cookies are zero, this indicates a request for a cookie; if only the initiator cookie is zero, it is a response to a cookie request. </p>
+<p>Information in messages violating the cookie rules cannot be used for any operations. Note that the Initiator and Responder must agree on one set of EHA algorithms; there is not one set for the Responder and one for the Initiator. The Initiator must include at least MD5 and DES in the initial offer.  </p>
+<div class="indent"><p class="caption"><a name="table-7" id="table-7"></a>Table 7: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Initiator</td><td>Message content</td><td>Responder</td></tr>
+<tr class="body"><td></td><td>CKYi, DHi, EHAo, JIDi, JIDr</td><td></td></tr>
+<tr class="body"><td></td><td>CKYr, DHr, EHAs, JIDi, JIDr</td><td></td></tr>
+<tr class="body"><td></td><td>GRP, CKYi, CKYr, DHi, EHAs, JIDi, JIDr, E{Ni}KEY</td><td></td></tr>
+<tr class="body"><td></td><td>GRP, CKYi, CKYr, DHr, JIDi, JIDr, E{Ni | Nr}KEY, prf(Kir, JIDr | JIDi | GRP | DHr | DHi | EHAs )</td><td></td></tr>
+<tr class="body"><td></td><td>GRP, CKYi, CKYr, DHi, JIDi, JIDr, prf(Kir, JIDi | JIDr | GRP | DHi | DHr | EHAs )</td><td></td></tr>
+</table></div>
+
+<p>Where Kir = prf(0, Ni | Nr)</p>
+<p>The result of this exchange is a key with :</p>
+<ul>
+<li>KEYID = CKYi | CKYr </li>
+<li>sKEYID = prf(Kir, KEY | CKYi | CKYr). </li>
+</ul>
+</div>
+<div class="indent"><h3>6.2.3 <a name="sect-idp1758496" id="sect-idp1758496">Deriving key material for Cryptographic Transforms</a></h3>
+
+<p>The keying material computed by the key exchange should have at least 90 bits of entropy, which means that it must be at least 90 bits in length.  This may be more or less than is required for keying the encryption and/or pseudorandom function transforms.</p>
+<p>The transforms used should have auxiliary algorithms which take a variable precision integer and turn it into keying material of the appropriate length. The result of either Main Mode or Aggressive Mode is three groups of authenticated keying material:</p>
+<div class="indent"><p class="caption"><a name="table-8" id="table-8"></a>Table 8: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Context</td><td>Keying Material</td></tr>
+<tr class="body"><td>Digest</td><td>sKEYID_d = prf(sKEYID, KEY | CKYi | CKYi | 0)</td></tr>
+<tr class="body"><td>Authentication</td><td>sKEYID_a = prf(sKEYID, SKEYID_d | KEY | CKYi | CKYr | 1)</td></tr>
+<tr class="body"><td>Encryption</td><td>sKEYID_e = prf(sKEYID, SKEYID_a | KEY | CKYi | CKYr | 2)</td></tr>
+</table></div>
+
+<p>and agreed upon policy to protect further communications. The values of  0, 1, and 2 above are represented by a single octet. The key used for encryption is derived from sKEYID_e in an algorithm-specific manner.</p>
+<p>Encryption keys used to protect the SA are derived from sKEYID_e in an algorithm-specific manner. When SKEYID_e is not long enough to supply all the necessary keying material an algorithm  requires, the key is derived from feeding the results of a pseudo-random function into itself, concatenating the results, and taking the highest necessary bits.</p>
+<p>For example, if the (ficticious) algorithm MYALGO requires 320-bits of key, and the prf used to generate sKEYID_e only generates 120 bits of material, the key for MYALGO, would be the first 320-bits of Ka, where:</p>
+<p>       Ka = K1 | K2 | K3 | ...</p>
+<p>  </p>
+<p> And</p>
+<ul>
+<li>K1 = prf(sKEYID_e, 0)</li>
+<li>K2 = prf(sKEYID_e, K1)</li>
+<li>K3 = prf(sKEYID_e, K2)</li>
+<li>...</li>
+</ul>
+
+<p>prf is the HMAC version of the negotiated hash function and 0 is represented by a single octet. Each result of the prf provides 120 bits of material for a total of 360 bits. MYALGO would use the first 320 bits of that 360 bit string.</p>
+</div>
+</div>
+<div class="indent"><h3>6.3 <a name="sect-idp1770080" id="sect-idp1770080">Authenticated Key Exchange Application</a></h3>
+<div class="indent"><h3>6.3.1 <a name="sect-idp1770624" id="sect-idp1770624">Main Mode Key Exchange</a></h3>
+<div class="indent"><h3>6.3.1.1 <a name="sect-idp1771168" id="sect-idp1771168">Initiator request Security Association parameters</a></h3>
+<p>The intitiator uses a &lt;SecurityAssociation/&gt; element in the request to list all the EHA algorithms that it supports. In addition it provides its own DH ephemeral public key.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initiator cookie is prepared by generating a string of 32 random octets (64 random bits). The cookie resulting octets are then encoded into a string of hex characters. The generated value is used as the originator key name for the security association.</li>
+</ul>
+<ul>
+<li>The available set of confidentiality and HMAC cryptographic algorithms is selected. The manner in which these algorithms are selected and all related policy issues are outside the scope of this specification. 
+</li>
+<li>The available set of authentication algorithms is selected. The manner in which these algorithms are selected and all related policy issues are outside the scope of this specification. When the digital signature form of authentication is selected, the relevant end-entity certificate and, optionally, a chain of CA certificates representing a validation path, is assembled and encoded. A set of trusted CA certificates MAY optionally be included via caCertificate elements; if so, the set MUST include the issuer of the initiator's end-entity certificate. 
+</li>
+</ul>
+<p>These values are then used to prepare the XML element; this element is transmitted via the existing XMPP iq mechanism: </p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="get" id="req-0"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;EncryptionMethod Algorithm="des"/&gt;
+&lt;EncryptionMethod Algorithm="tripledes-cbc"/&gt;
+&lt;EncryptionMethod Algorithm="aes128"/&gt;
+&lt;EncryptionMethod Algorithm="aes129"/&gt;
+&lt;EncryptionMethod Algorithm="aes256"/&gt;
+&lt;DigestMethod Algorithm="hmac-md5"/&gt;
+&lt;DigestMethod Algorithm="hmac-sha1"/&gt;
+&lt;DigestMethod Algorithm="hmac-sha128"/&gt;
+&lt;DigestMethod Algorithm="hmac-sha256"/&gt;
+&lt;DigestMethod Algorithm="hmac-ripemd128"/&gt;
+&lt;DigestMethod Algorithm="hmac-ripemd160"/&gt;
+&lt;SignatureMethod Algorithm="dsa-sha1"/&gt;
+&lt;SignatureMethod Algorithm="rsa-sha1"/&gt;
+&lt;/SecurityAssociation&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.2 <a name="sect-idp1776912" id="sect-idp1776912">Responder select Security Association parameters</a></h3>
+<p>The responder will reply to the request by sending out its own selcted EHA algorithms that will be used in the remainign transaction. </p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The responder cookie is prepared by generating a string of 32 random octets (64 random bits). The cookie resulting octets are then encoded into a string of hex characters. The generated value is used as the recipient key name for the security association..
+</li>
+<li>The algorithms attributes are checked against the values supported by the user agent. If the receiver is not able to select one set out of the proposed algorithms, an error code 406-Unacceptable is returned.
+ </li>
+<li>The desired confidentiality and HMAC cryptographic algorithms are selected from the proposed set. The manner in which these algorithms are selected and all related policy issues are outside the scope of this specification. 
+</li>
+<li>The desired authentication algorithm is selected from the proposed set. The manner in which this algorithm is selected and all related policy issues are outside the scope of this specification. In the digital signature case, the responder's end-entity certificate MUST be issued by one of the trusted CAs listed in the session1 PDU or by the same issuer as the initiator's end-entity certificate. If the responder does not have acceptable credentials, an error code of 401-Unuthorized occurs. 
+</li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-0"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;EncryptionMethod Algorithm="tripledes-cbc"/&gt;
+&lt;DigestMethod Algorithm="hmac-sha1"/&gt;
+&lt;SignatureMethod Algorithm="rsa-sha1"/&gt;
+&lt;/SecurityAssociation&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.3 <a name="sect-idp1782960" id="sect-idp1782960">Initiator provides its ephemeral public key</a></h3>
+<p>The intitiator provides its own DH ephemeral public key.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are used as the originator key name and the recipient key name for the security association..
+</li>
+<li>A Diffie-Hellman group is selected. The appropriate values for g and p will be used to generate the initiator's public key.
+ </li>
+<li>An ephemeral private key, x, is generated using g and p for the selected group. This key MUST be generated using an appropriate random number source. The corresponding public key, g^x, is generated and encoded. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="get" id="req-1"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement length="1024"&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;
+... encoded initiator public key
+&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;/KeyAgreement&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.4 <a name="sect-idp619968" id="sect-idp619968">Responder provides its ephemeral public key</a></h3>
+<p>The responder check the validity of the parameters and eventualy replies with its own DH ephemeral public key.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are checked; a mismatch results in an error code of 406 - Unacceptable .
+</li>
+<li>The Diffie-Hellman group is checked against the values supported by the user agent. An unsupported group results in an error code of 406 - Unacceptable 
+</li>
+<li>An ephemeral private key, y, is generated using g and p for the group indicated by the PDU. This key MUST be generated using an appropriate random number source. The corresponding public key, g^y, is generated and encoded. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-1"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement length="1024"&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;
+... encoded initiator public key
+&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;/KeyAgreement&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.5 <a name="sect-idp624464" id="sect-idp624464">Initiator provides its encrypted nonce</a></h3>
+<p>The intitiator provides its nonce encrypted with the agreed algorithm and the public key of the responder.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are checked; a mismatch results in the procedure being aborted. 
+</li>
+<li>The initiator nonce is prepared by first generating a string of 20 random octets (160 random bits). The nonce is then encrypted using the selected encryption algorithm and the shared secret key. The resulting octets are then encoded into a string of base64 characters. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="get" id="req-1"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement&gt;
+&lt;KA-Nonce&gt;
+&lt;EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#"
+    Type="http://www.w3.org/2001/04/xmlenc#Element"&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+... encoded encrypted initiator nonce
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedData&gt;
+&lt;/KA-Nonce&gt;
+&lt;/KeyAgreement&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.6 <a name="sect-idp1804448" id="sect-idp1804448">Responder provides its encrypted nonce</a></h3>
+<p>The responder replies with the concatenation of its own nonce and the initiator nonce encrypted with the agreed algorithm and the public key of the initiator. The packet is authenticated using the agreed signature algorithm.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are checked; a mismatch results in an error code of 401 - Unauthorized.
+</li>
+<li>The initiator nonce is decrypted using the responder private key.
+</li>
+<li>The responder nonce is prepared by first generating a string of 20 random octets (160 random bits). It is then apended to the initiator nonce and the result encrypted using the selected encryption algorithm and the shared secret key. The resulting octets are then encoded into a string of base64 characters. 
+</li>
+<li>Based on the selected authentication algorithm, the responder's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>Kir = hmac (0, initiator's nonce | responder's nonce) 
+</li>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>HASH_R = hmac (Kir, JID responder | JID initiator | length of DH group | responder DH public key | initiator DH public key | EHAs) 
+</li>
+</ol>
+<ul>
+<li>HASH_R is encoded in base64. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-1"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement&gt;
+&lt;KA-Nonce&gt;
+&lt;EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#"
+    Type="http://www.w3.org/2001/04/xmlenc#Element"&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+... encoded encrypted responder nonce
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedData&gt;
+&lt;/KA-Nonce&gt;
+&lt;/KeyAgreement&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig#xmldsig-core-schema.xsd"&gt;
+&lt;SignaturetValue&gt;
+... encoded signature value
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.7 <a name="sect-idp1812560" id="sect-idp1812560">Initiator authenticate the final agreement</a></h3>
+<p>The initiator authenticate the keying material using the agreed signature algorithm.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are checked; a mismatch results in the procedure being aborted. 
+</li>
+<li>The concatenation of the responder and initiator nonce is decrypted using the initiator private key. The original initiator nonce is compared to the result. An invalid nonce results in aborting the procedure. Otherwise the result is used to generate Kir
+</li>
+<li>Based on the selected authentication algorithm, the responder's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>Kir = hmac (0, initiator's nonce | responder's nonce) 
+</li>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>HASH_R = hmac (Kir, JID responder | JID initiator | length of DH group | responder DH public key | initiator DH public key | EHAs) 
+</li>
+</ol>
+<ul>
+<li>The authenticator is verified. A failure results in aborting the procedure.
+</li>
+<li>Based on the selected authentication algorithm, the initiator’s  authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HASH_I = hmac (Kir, JID initiator | JID responder | length of DH group | initiator DH public key | responder DH public key | EHAs) 
+</li>
+</ol>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="set" id="req-2"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig# 
+xmldsig-core-schema.xsd"&gt;
+&lt;SignaturetValue&gt;
+&lt;p&gt;... encoded signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.1.8 <a name="sect-idp1822016" id="sect-idp1822016">Responder checks the final agreement</a></h3>
+<p>The responder acknowledge the keying material.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initator and responder cookies are checked; a mismatch results in an error code of 401 - Unauthorized.
+</li>
+<li>Based on the selected authentication algorithm, the initiator's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HASH_I = hmac (Kir, JID initiator | JID responder | length of DH group | initiator DH public key | responder DH public key | EHAs) 
+</li>
+</ol>
+<ul>
+<li>The authenticator is verified. A failure results in an error code of 406 - Unacceptable.
+</li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-2"/&gt;
+</pre></div>
+</div>
+</div>
+<div class="indent"><h3>6.3.2 <a name="sect-idp1828352" id="sect-idp1828352">Aggressive Mode Key Exchange</a></h3>
+<div class="indent"><h3>6.3.2.1 <a name="sect-idp1828784" id="sect-idp1828784">Initiator provides all Security Association parameters</a></h3>
+<p>The intitiator uses &lt;SecurityAssociation/&gt; element in the request to list all the EHA algorithms that it supports. In addition it provides its own DH ephemeral public key. The message is signed with its own private key.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The initiator cookie is prepared by generating a string of 32 random octets (64 random bits). The cookie resulting octets are then encoded into a string of hex characters. The generated value will be used as identifier for the initiator leg of the security association.
+</li>
+<li>The available set of confidentiality and HMAC cryptographic algorithms is selected. The manner in which these algorithms are selected and all related policy issues are outside the scope of this specification. 
+</li>
+<li>The available set of authentication algorithms is selected. The manner in which these algorithms are selected and all related policy issues are outside the scope of this specification. When the digital signature form of authentication is selected, the relevant end-entity certificate and, optionally, a chain of CA certificates representing a validation path, is assembled and encoded. A set of trusted CA certificates MAY optionally be included via caCertificate elements; if so, the set MUST include the issuer of the initiator's end-entity certificate. 
+</li>
+<li>A Diffie-Hellman group is selected. The appropriate values for g and p will be used to generate the initiator's public key.
+ </li>
+<li>An ephemeral private key, x, is generated using g and p for the selected group. This key MUST be generated using an appropriate random number source. The corresponding public key, g^x, is generated and encoded. 
+</li>
+<li>The initiator nonce is prepared by first generating a string of 20 random octets (160 random bits). The resulting octets are then encoded into a string of base64 characters.
+</li>
+<li>Based on the selected authentication algorithm, the initiator's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>SIGN_I = S (JID initiator | JID responder | initiator cookie | 0 | initiator nonce | 0 | length of DH group | initiator DH public key | 0 | EHAs) initiator private key
+</li>
+</ol>
+<ul>
+<li>SIGN_I is encoded in base64. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="get" id="req-0"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;RSAKeyValue&gt;
+&lt;p&gt;... encoded initiator public key value &lt;/p&gt;
+&lt;/RSAKeyValue&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;EncryptionMethod Algorithm="tripledes-cbc"/&gt;
+&lt;DigestMethod Algorithm="hmac-sha1"/&gt;
+&lt;SignatureMethod Algorithm="rsa-sha1"/&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement length="1024"&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;
+&lt;p&gt;... encoded initiator public key&lt;/p&gt;
+&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;KA-Nonce&gt;
+&lt;p&gt;... encoded initiator nonce value&gt;
+&lt;/KA-Nonce&gt;
+&lt;/KeyAgreement&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig#xmldsig-core-schema.xsd"&gt;
+&lt;SignatureValue&gt;
+&lt;p&gt;... encoded initiator signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.2.2 <a name="sect-idp1838208" id="sect-idp1838208">Responder respond to Security Association parameters</a></h3>
+<p>The responder will reply to the request by acknowledging the selected EHA algorithms. In addition, it provides its own DH ephemeral public key. The message is signed with its own private key.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>The Diffie-Hellman group is checked against the values supported by the user agent. An unsupported group results in an error code of 406 - Unacceptable 
+</li>
+<li>Based on the selected authentication algorithm, the initiator's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>SIGN_I = S (JID initiator | JID responder | initiator cookie | 0 | initiator nonce | 0 | length of DH group | initiator DH public key | 0 | EHAs) initiator public key
+</li>
+</ol>
+<ul>
+<li>The authenticator is verified. A failure results in an error code of 401 - Unauthorized.
+</li>
+<li>The responder cookie is prepared by generating a string of 32 random octets (64 random bits). The cookie resulting octets are then encoded into a string of hex characters. The generated value will be used as identifier for the responder leg of the security association.
+</li>
+<li>An ephemeral private key, y, is generated using g and p for the group indicated by the PDU. This key MUST be generated using an appropriate random number source. The corresponding public key, g^y, is generated and encoded. 
+</li>
+<li>The responder nonce is prepared by first generating a string of 20 random octets (160 random bits). The resulting octets are then encoded into a string of base64 characters. 
+</li>
+<li>Based on the selected authentication algorithm, the responder's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>SIGN_R = S (JID responder | JID initiator | responder cookie | initiator cookie | responder nonce | initiator nonce | length of DH group | responder DH public key | initiator DH public key | EHAs) responder private key
+</li>
+</ol>
+<ul>
+<li>SIGN_R is encoded in base64. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-0"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;RSAKeyValue&gt;
+&lt;p&gt;... encoded responder public key value &lt;/p&gt;
+&lt;/RSAKeyValue&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;KeyAgreement length="1024"&gt;
+&lt;DHKeyValue&gt;
+&lt;Public&gt;
+&lt;p&gt;... encoded responder public key&lt;/p&gt;
+&lt;/Public&gt;
+&lt;/DHKeyValue&gt;
+&lt;KA-Nonce&gt;
+&lt;p&gt;... encoded responder nonce value&gt;
+&lt;/KA-Nonce&gt;
+&lt;/KeyAgreement&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig# 
+xmldsig-core-schema.xsd"&gt;
+&lt;SignatureValue&gt;
+&lt;p&gt;... encoded responder signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.2.3 <a name="sect-idp1849376" id="sect-idp1849376">Initiator authenticate the final agreement</a></h3>
+<p>The initiator authenticate the keying material using the agreed signature algorithm.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>Based on the selected authentication algorithm, the initiator's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>SIGN_R = S (JID responder | JID initiator | responder cookie | initiator cookie | responder nonce | initiator nonce | length of DH group | responder DH public key | initiator DH public key | EHAs) responder public key
+</li>
+</ol>
+<ul>
+<li>The authenticator is verified. A failure results in the procedure being aborted.
+</li>
+<li>Based on the selected authentication algorithm, the authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>SIGN_I = S (JID initiator | JID responder | initiator cookie | responder cookie | initiator nonce | responder nonce | length of DH group | initiator DH public key | responder DH public key | EHAs) shared secret key
+</li>
+</ol>
+<ul>
+<li>SIGN_I is encoded in base64. </li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="set" id="req-2"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="SA@domain"&gt;
+&lt;OriginatorKeyInfo&gt;
+&lt;KeyName&gt;A32F...245A&lt;/KeyName&gt;
+&lt;/OriginatorKeyInfo&gt;
+&lt;RecipientKeyInfo&gt;
+&lt;KeyName&gt;324A...BF24&lt;/KeyName&gt;
+&lt;/RecipientKeyInfo&gt;
+&lt;/SecurityAssociation&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig# 
+xmldsig-core-schema.xsd"&gt;
+&lt;SignaturetValue&gt;
+&lt;p&gt;... encoded signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&amp;gt;&amp;lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>6.3.2.4 <a name="sect-idp1857952" id="sect-idp1857952">Responder check the final agreement</a></h3>
+<p>The responder acknowledge the keying material.</p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants, respectively. 
+</li>
+<li>Based on the selected authentication algorithm, the initiator's authenticator is constructed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>EHAs = (Encryption algorithm URI | Digest algorithm URI | Signature algorithm URI)
+</li>
+<li>SIGN_I = S (JID initiator | JID responder | initiator cookie | responder cookie | initiator nonce | responder nonce | length of DH group | initiator DH public key | responder DH public key | EHAs) shared secret key
+</li>
+</ol>
+<ul>
+<li>The authenticator is verified. A failure results in an error code of 406 - Unacceptable.
+</li>
+</ul>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-2"/&gt;
+</pre></div>
+
+</div>
+</div>
+</div>
+<h2>7.
+       <a name="sect-idp1864592" id="sect-idp1864592">Key Transport</a></h2>
+<div class="indent"><h3>7.1 <a name="sect-idp1864976" id="sect-idp1864976">Conversation Key Transport</a></h3>
+<p>Conversation keys are transported using the symmetric key wrap feature of XML Encryption embedded in the KeyTransport PDU. </p>
+<div class="indent"><h3>7.1.1 <a name="sect-idp1866048" id="sect-idp1866048">Key transport exchange</a></h3>
+<p>Key transport follow a previous Security Association establishment and the generation of a shared secret key through a key agreement.</p>
+<div class="indent"><p class="caption"><a name="table-9" id="table-9"></a>Table 9: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Initiator</td><td>Message content</td><td>Responder</td></tr>
+<tr class="body"><td></td><td>JIDi, JIDr, CKYe, sKEYID_e, CKYa, sKEYID_a, CKYd, sKEYID_d, S{JIDi | JIDr | Ni | Nr | CKYe | sKEYID_e  | CKYa | sKEYID_a  | CKYd | sKEYID_d }KEY</td><td></td></tr>
+</table></div>
+</div>
+<div class="indent"><h3>7.1.2 <a name="sect-idp1869792" id="sect-idp1869792">Generating And Sending a Conversation Key Transport PDU</a></h3>
+<p>The Key Transport assumes that a security association be negotiated for the purpose of securely transporting conversation keys. The sender's user agent employs the following algorithm to generate the keyTransport PDU: </p>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants who negotiated the security association, respectively. 
+</li>
+<li>The security association identifier is assembled. 
+</li>
+<li>The payload, which consists of the confidentiality key sKEYID_e, digest key sKEYID_d and the integrity key sKEYID_a , is wrapped in instances of xenc:EncryptedKey as follows: 
+</li>
+</ul>
+<ol>
+<li>The Type attribute of the xenc:EncryptedKey element MUST indicate 'content'. 
+</li>
+<li>The Id, MimeType and Encoding attributes of the xenc:EncryptedKey element MUST NOT be present. 
+</li>
+<li>The xenc:EncryptionMethod element MUST be present, and the Algorithm attribute MUST indicate a valid symmetric key wrap algorithm. Furthermore, the algorithm MUST be the same as was negotiated for the security association. 
+</li>
+<li>The ds:KeyInfo element MUST NOT be present. The key to use is the shared secret KEY of the negotiated security association. 
+</li>
+<li>The xenc:ContainedKeyName element MUST be present. 
+</li>
+<li>The xenc:CipherData element MUST be present, and it MUST use the CipherValue choice. </li>
+</ol>
+<ul>
+<li>The HMAC is computed using KEY of the negotiated security association. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HMAC = prf(KEY, JIDi | JIDr | Ni | Nr | sKEYID_e | key name | sKEYID_e | sKEYID_a key name |  sKEYID_a | sKEYID_d key name | sKEYID_d)
+</li>
+</ol>
+<p>These values are then used to prepare the XML KeyTransport element; this element is transmitted via the existing XMPP iq mechanism. The order in which the keys are in the payload is significant. The first mandatory key is sKEYID_e. The second optional key is sKEYID_a. And the last optional key is sKEYID_d. </p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="initiator@domain" to="responder@domain" type="set" id="req-0"&gt;
+&lt;query xmlns="xmpp:sec"&gt;
+&lt;SecurityAssociation id="negotiated SA id"/&gt;
+&lt;KeyTransport&gt;
+&lt;EncryptedKey xmlns='http://www.w3.org/2001/04/xmlenc#' 
+    Type='http://www.w3.org/2001/04/xmlenc#Content'&gt;
+&lt;ContainedKeyName&gt;A32F...245A324A...BF24-enc&amp;lt;/ContainedKeyName&gt;
+&lt;EncryptionMethod Algorithm="kw-tripledes"/&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+&lt;p&gt;... encoded encrypted confidentiality key&lt;/p&gt;
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedKey&gt;
+&lt;EncryptedKey xmlns='http://www.w3.org/2001/04/xmlenc#' 
+    Type='http://www.w3.org/2001/04/xmlenc#Content'&gt;
+&lt;ContainedKeyName&gt;A32F...245A324A...BF24-auth&amp;lt;/ContainedKeyName&gt;
+&lt;EncryptionMethod Algorithm="kw-tripledes"/&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+&lt;p&gt;... encoded encrypted confidentiality key&lt;/p&gt;
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedKey&gt;
+&lt;EncryptedKey xmlns='http://www.w3.org/2001/04/xmlenc#' 
+    Type='http://www.w3.org/2001/04/xmlenc#Content'&gt;
+&lt;ContainedKeyName&gt;A32F...245A324A...BF24-dig&amp;lt;/ContainedKeyName&gt;
+&lt;EncryptionMethod Algorithm="kw-tripledes"/&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+&lt;p&gt;... encoded encrypted confidentiality key&lt;/p&gt;
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedKey&gt;
+&lt;/KeyTransport&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig# 
+xmldsig-core-schema.xsd"&gt;
+&lt;SignedInfo&gt;
+&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa"/&gt;
+&lt;DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/&gt;
+&lt;/SignedInfo&gt;
+&lt;SignaturetValue&gt;
+&lt;p&gt;... encoded signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>7.1.3 <a name="sect-idp1879248" id="sect-idp1879248">Receiving and Processing the Conversation Key Transport PDU</a></h3>
+<p>The receiver's user agent employs the following algorithm to process each KeyTransport PDU: </p>
+<ul>
+<li>The values of initiator, responder, and security association id MUST indicate an existing security association. An invalid security association results in an error of 401 - Unauthorized. 
+</li>
+<li>The payload, which consists of the confidentiality key sKEYID_e, digest key sKEYID_d and the intergrity key sKEYID_a, is unwrapped. Any failures result in an error code of 406-Unacceptable. 
+</li>
+<li>The body of the HMAC element is decoded into the actual HMAC octet string. 
+</li>
+<li>The HMAC is computed using KEY of the security association. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HMAC = prf(KEY, JIDi | JIDr | Ni | Nr | sKEYID_e key name | sKEYID_e | sKEYID_a key name |  sKEYID_a | sKEYID_d key name | sKEYID_d)
+</li>
+</ol>
+<ul>
+<li>The HMAC is validated. An invalid HMAC results in an error code of 406-Unacceptable. 
+</li>
+<li>The keys are added to the user agent's key store. </li>
+</ul>
+
+<p>If any errors occur during processing, the error is communicated via the existing XMPP mechanism: </p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq from="responder@domain" to="initiator@domain" type="result" id="req-0"/&gt;
+</pre></div>
+
+</div>
+</div>
+<div class="indent"><h3>7.2 <a name="sect-idp1888256" id="sect-idp1888256">Public Key Transport</a></h3>
+<p>Public keys are transported embedded in the KeyTransport PDU. </p>
+<div class="indent"><h3>7.2.1 <a name="sect-idp1889104" id="sect-idp1889104">Certificate transport</a></h3>
+<p>X509 certificates can also be transported in existing XMPP message. The following example uses a presence subscription packet as the vehicle PDU. The subscribee public key and certificate are sent to the initiator of a presence subscription.</p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;presence from="responder@domain" to="initiator@domain" type="subscribed"&gt;
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyTransport&gt;
+&lt;KeyInfo&gt;
+&lt;X509Data&gt;
+&lt;X509IssuerSerial&gt;
+&lt;X509IssuerName&gt;
+    CN=TAMURA Kent, OU=TRL, O=IBM, L=Yamato-shi, ST=Kanagawa, C=JP
+&lt;/X509IssuerName&gt;
+&lt;X509SerialNumber&amp;gt;12345678&amp;lt;/X509SerialNumber&gt;
+&lt;/X509IssuerSerial&gt;
+&lt;X509SKI&amp;gt;31d97bd7&amp;lt;/X509SKI&gt;
+&lt;/X509Data&gt;
+&lt;X509Data&gt;
+&lt;X509SubjectName&amp;gt;Subject of Certificate B&amp;lt;/X509SubjectName&gt;
+&lt;/X509Data&gt;
+&lt;X509Data&gt;
+&lt;X509Certificate&amp;gt;MIICXTCCA..&amp;lt;/X509Certificate&gt;
+&lt;X509Certificate&amp;gt;MIICPzCCA...&amp;lt;/X509Certificate&gt;
+&lt;X509Certificate&amp;gt;MIICSTCCA...&amp;lt;/X509Certificate&gt;
+&lt;/X509Data&gt;
+&lt;/KeyInfo&gt;
+&lt;/KeyTransport&gt;
+&lt;/x&gt;
+&lt;/presence&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>7.2.2 <a name="sect-idp1890624" id="sect-idp1890624">Other Public Keys Transport</a></h3>
+<ul>
+<li>The values of initiator and responder MUST be the JIDs of the two participants in the exchange, respectively. 
+</li>
+<li>The payload, which consists of the public key of the responder is assembled. </li>
+</ul>
+<ul>
+<li>The SIGN is computed using the private key of the responder. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>SIGN = S (JIRi | JIDR | Kr name | Kr) responder private key
+</li>
+</ol>
+<p>These values are then used to prepare the XML KeyTransport element; this element is transmitted via an existing XMPP mechanism. In the following example, the responder public key is sent to the initiator of a presence subscription.</p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;presence from="responder@domain" to="initiator@domain" type="subscribed"&gt;
+&lt;x xmlns="xmpp:sec"&gt;
+&lt;KeyTransport&gt;
+&lt;KeyInfo&gt;
+&lt;KeyName&gt;responder@domain key name&lt;/KeyName&gt;
+&lt;RSAKeyValue&gt;
+&lt;p&gt;... encoded responder public key value &lt;/p&gt;
+&lt;/RSAKeyValue&gt;
+&lt;/KeyInfo&gt;
+&lt;/KeyTransport&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig#xmldsig-core-schema.xsd"&gt;
+&lt;SignedInfo&gt;
+&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa"/&gt;
+&lt;/SignedInfo&gt;
+&lt;SignaturetValue&gt;
+&lt;p&gt;... encoded signature value&lt;/p&gt;
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/x&gt;
+&lt;/presence&gt;
+</pre></div>
+</div>
+</div>
+<h2>8.
+       <a name="sect-idp1896400" id="sect-idp1896400">Message Protection</a></h2>
+<div class="indent"><h3>8.1 <a name="sect-idp1897776" id="sect-idp1897776">Overview</a></h3>
+<p>The ultimate goal is the protection of conversation data. The protocol exchanges described above allow the conversation participants to cryptographically protect their conversation data using the conversation keys that they share. </p>
+</div>
+<div class="indent"><h3>8.2 <a name="sect-idp1899024" id="sect-idp1899024">Message Protection Mechanism</a></h3>
+<p>A protected message is defined as a traditional XMPP message whose body content is extended to include the transport of a cryptographically protected message body. The two key features are: </p>
+<ul>
+<li>the usual body element contains some arbitrary text. 
+</li>
+<li>the message contains a XMPP x element defining the xmpp:sec namespace; this element transports the protected message. </li>
+</ul>
+
+<p>This mechanism has the advantages of allowing transparent integration with existing XMPP servers and existing XMPP clients. </p>
+</div>
+<div class="indent"><h3>8.3 <a name="sect-idp1902112" id="sect-idp1902112">Generating And Sending the Protected Message PDU</a></h3>
+<p>The sender's user agent employs the following algorithm to generate the protected Message PDU: </p>
+<ul>
+<li>The security association identifier is assembled. 
+</li>
+<li>The actual message body is encoded into a character string corresponding to a XMPP message body element. This character string is then wrapped in an instance of xenc:EncryptedData as follows: </li>
+</ul>
+
+<ol>
+<li>The Type attribute of the xenc:EncryptedData element MUST indicate 'element'. 
+</li>
+<li>The Id, MimeType and Encoding attributes of the xenc:EncryptedData element MUST NOT be present. 
+</li>
+<li>The xenc:EncryptionMethod element MUST be present, and the Algorithm attribute MUST indicate a valid block encryption algorithm. 
+</li>
+<li>The ds:KeyInfo element MUST NOT be present. The key to be used is the confidentiality key indicated by the convId attribute. 
+</li>
+<li>The xenc:CipherData element MUST be present, and it MUST use the CipherValue choice. </li>
+</ol>
+<ul>
+<li>Using the HMAC key indicated by the security association, the HMAC is computed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HMAC = prf(sKEYID_d, key name | JID from | JID to | message id | message type | message thread | message subject | message body)
+ </li>
+</ol>
+<p>These values are then used to prepare the XML protected element; this element is transmitted via the existing XMPP message mechanism: </p>
+
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;message from="initiator@domain" to="responder@ domain" id="msg-0"&gt;
+&lt;body&gt;
+The real body is protected.
+&lt;/body&gt;
+&lt;x xmlns="xmpp:security"&gt;
+&lt;EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#" 
+    Type="http://www.w3.org/2001/04/xmlenc#Element"&gt;
+&lt;KeyInfo&gt;
+&lt;KeyName&gt;A32F2...45A324A...BF24-enc&lt;/KeyName&gt;
+&lt;/KeyInfo&gt;
+&lt;EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc"/&gt;
+&lt;CipherData&gt;
+&lt;CipherValue&gt;
+... encoded encrypted message content
+&lt;/CipherValue&gt;
+&lt;/CipherData&gt;
+&lt;/EncryptedData&gt;
+&lt;Signature 
+    xmlns="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.w3.org/2000/09/xmldsig#xmldsig-core-schema.xsd"&gt;
+&lt;SignedInfo&gt;
+&lt;SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa"/&gt;
+&lt;/SignedInfo&gt;
+&lt;KeyInfo&gt;
+&lt;KeyName&gt;A32F2...45A324A...BF24-auth&lt;/KeyName&gt;
+&lt;/KeyInfo&gt;
+&lt;SignatureValue&gt;
+... encoded signature value
+&lt;/SignatureValue&gt;
+&lt;/Signature&gt;
+&lt;/x&gt;
+&lt;/message&gt;
+</pre></div>
+</div>
+<div class="indent"><h3>8.4 <a name="sect-idp1910224" id="sect-idp1910224">Receiving and Processing the Protected Message PDU</a></h3>
+<p>The receiver's user agent employs the following algorithm to process each protectedMessage PDU: </p>
+<ul>
+<li>The values of initiator, responder, and key name MUST indicate an existing security association. An invalid security association results in an error of 406-Unacceptable. 
+</li>
+<li>The payload, which consists of the actual message body, is unwrapped. Any failures result in an error code of 406-Unacceptable. 
+</li>
+<li>The body of the HMAC element is decoded into the actual HMAC octet string. 
+</li>
+<li>Using the HMAC key indicated by the security association, the HMAC is computed. A digital signature requires calculating: 
+</li>
+</ul>
+<ol>
+<li>HMAC = prf(sKEYID_d, key name | JID from | JID to | message id | message type | message thread | message subject | message body)
+ </li>
+</ol>
+<ul>
+<li>The HMAC is validated. An invalid HMAC results in an error code of 406-Unacceptable. </li>
+</ul>
+
+<p>If any errors occur during processing, the error is communicated via the existing XMPP mechanism: </p>
+</div>
+<h2>9.
+       <a name="sect-idp1917456" id="sect-idp1917456">Algorithms</a></h2>
+<p>This section discusses algorithms used with the XMPP security specification. Entries contain the identifier to be used as the value of the Algorithm attribute of the EncryptionMethod element or other element representing the role of the algorithm, a reference to the formal specification, definitions for the representation of keys and the results of cryptographic operations where applicable, and general applicability comments.</p>
+<p>The table below lists the categories of algorithms. Within each category, a brief name, the level of implementation requirement, and an identifying URI are given for each algorithm.</p>
+<div class="indent"><p class="caption"><a name="table-10" id="table-10"></a>Table 10: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>Category</td><td>Algorithm</td><td>URI</td></tr>
+<tr class="body"><td>Block Encryption</td><td>TRIPLEDES</td><td>tripledes-cbc</td></tr>
+<tr class="body"><td colspan="2">AES-128</td><td>aes128-cbc</td></tr>
+<tr class="body"><td colspan="2">AES-192</td><td>aes192-cbc</td></tr>
+<tr class="body"><td colspan="2">AES-256</td><td>aes256-cbc</td></tr>
+<tr class="body"><td>Key Transport</td><td>RSA-v1.5</td><td>rsa-1_5</td></tr>
+<tr class="body"><td colspan="2">RSA-OAEP</td><td>rsa-oaep-mgf1p</td></tr>
+<tr class="body"><td>Symmetric Key Wrap</td><td>TRIPLEDES KeyWrap</td><td>kw-tripledes</td></tr>
+<tr class="body"><td colspan="2">AES-128 KeyWrap</td><td>kw-aes128</td></tr>
+<tr class="body"><td colspan="2">AES-256 KeyWrap</td><td>kw-aes256</td></tr>
+<tr class="body"><td colspan="2">AES-192 KeyWrap</td><td>kw-aes192</td></tr>
+<tr class="body"><td>Message Digest</td><td>MD5</td><td>md5</td></tr>
+<tr class="body"><td colspan="2">SHA1</td><td>sha1</td></tr>
+<tr class="body"><td colspan="2">SHA256</td><td>sha256</td></tr>
+<tr class="body"><td colspan="2">SHA512</td><td>sha512</td></tr>
+<tr class="body"><td colspan="2">RIPEMD-160</td><td>ripemd160</td></tr>
+<tr class="body"><td colspan="2">HMAC-MD5</td><td>hmac-md5</td></tr>
+<tr class="body"><td colspan="2">HMAC-SHA1</td><td>hmac-sha1</td></tr>
+<tr class="body"><td colspan="2">HMAC-SHA128</td><td>hmac-sha128</td></tr>
+<tr class="body"><td colspan="2">HMAC-SHA256</td><td>hmac-sha256</td></tr>
+<tr class="body"><td>Signature</td><td>DSAwithSHA1 (DSS)</td><td>dsa-sha1</td></tr>
+<tr class="body"><td colspan="2">RSAwithSHA1</td><td>rsa-sha1</td></tr>
+</table></div>
+<h2>10.
+       <a name="sect-idp1942192" id="sect-idp1942192">PKCS #3: Diffie-Hellman Key-Agreement Standard</a></h2>
+<p>An RSA Laboratories Technical Note
+Version 1.4
+Revised November 1, 1993 [<a href="#nt-idp1943088">1</a>]</p>
+<div class="indent"><h3>10.1 <a name="sect-idp1943824" id="sect-idp1943824">Scope</a></h3>
+<p>This standard describes a method for implementing Diffie-Hellman key agreement, whereby two parties, without any prior arrangements, can agree upon a secret key that is known only to them (and, in particular, is not known to an eavesdropper listening to the dialogue by which the parties agree on the key). This secret key can then be used, for example, to encrypt further communications between the parties.</p>
+<p>The intended application of this standard is in protocols for establishing secure connections, such as those proposed for OSI's transport and network layers [ISO90a][ISO90b].</p>
+<p>Details on the interpretation of the agreed-upon secret key are outside the scope of this standard, as are details on sources of the pseudorandom bits required by this standard.</p>
+</div>
+<div class="indent"><h3>10.2 <a name="sect-idp1946416" id="sect-idp1946416">References</a></h3>
+<p>X.208	CCITT. Recommendation X.208: Specification of Abstract Syntax Notation One (ASN.1). 1988.</p>
+<p>X.509	CCITT. Recommendation X.509: The Directory—Authentication Framework. 1988.</p>
+<p>[DH76]	W. Diffie and M.E. Hellman. New directions in cryptography. IEEE Transactions on Information Theory, IT-22:644-654, 1976.</p>
+<p>[Sch90]	C.P. Schnorr. Efficient identification and signatures for smart cards. In G. Brassard, editor, Advances in Cryptology—CRYPTO '89 Proceedings, volume 435 of Lecture Notes in Computer Science, pages 239-251. Springer-Verlag, New York, 1990.</p>
+<p>[ISO90a]	ISO. JTC1/SC6/N6285: Draft Transport Layer Security Protocol. Draft, November 1990.</p>
+<p>[ISO90b]	ISO. JTC1/SC6/N2559: Draft Network Layer Security Protocol. Draft, September 1990.</p>
+</div>
+<div class="indent"><h3>10.3 <a name="sect-idp1950208" id="sect-idp1950208">Definitions</a></h3>
+<p>For the purposes of this standard, the following definitions apply.</p>
+<p>AlgorithmIdentifier: A type that identifies an algorithm (by object identifier) and any associated parameters. This type is defined in X.509.</p>
+<p>ASN.1: Abstract Syntax Notation One, as defined in X.208.</p>
+<p>Diffie-Hellman parameters: Prime and base.</p>
+<p>Diffie-Hellman: The Diffie-Hellman key-agreement protocol, elsewhere called "exponential key agreement," as defined in [DH76].</p>
+</div>
+<div class="indent"><h3>10.4 <a name="sect-idp1953280" id="sect-idp1953280">Symbols and abbreviations</a></h3>
+<p>Upper-case italic symbols (e.g., PV) denote octet strings; lower-case italic symbols (e.g., g) denote integers.</p>
+<div class="indent"><p class="caption"><a name="table-11" id="table-11"></a>Table 11: </p><table border="1" cellpadding="3" cellspacing="0">
+<tr class="body"><td>PV	public value</td><td>p	prime</td></tr>
+<tr class="body"><td>PV'	other's public value</td><td>x	private value</td></tr>
+<tr class="body"><td>SK	secret key</td><td>x'	other's private value</td></tr>
+<tr class="body"><td>G	base</td><td>y	integer public value</td></tr>
+<tr class="body"><td>K	length of prime in octets</td><td>y'	other's integer public value</td></tr>
+<tr class="body"><td>L	length of private value in bits</td><td>z	integer secret key</td></tr>
+<tr class="body"><td>mod n  modulo n</td></tr>
+</table></div>
+</div>
+<div class="indent"><h3>10.5 <a name="sect-idp1960208" id="sect-idp1960208">General overview</a></h3>
+<p>The next four sections specify parameter generation, two phases of Diffie-Hellman key agreement, and an object identifier.</p>
+<p>A central authority shall generate Diffie-Hellman parameters, and the two phases of key agreement shall be performed with these parameters. It is possible that more than one instance of parameters may be generated by a given central authority, and that there may be more than one central authority. Indeed, each entity may be its own central authority, with different entities having different parameters. The algorithm identifier for Diffie-Hellman key agreement specifies which Diffie-Hellman parameters are employed.</p>
+<p>Two entities intending to agree on a secret key shall employ the first phase independently to produce outputs PV and PV', the public values. The entities shall exchange the outputs.</p>
+<p>The entities shall then employ the second phase independently with the other entity's public value as input. The mathematics of Diffie-Hellman key agreement ensure that the outputs SK of the second phase are the same for both entities.</p>
+</div>
+<div class="indent"><h3>10.6 <a name="sect-idp1964016" id="sect-idp1964016">Parameter generation</a></h3>
+<p>This section describes Diffie-Hellman parameter generation. </p>
+<p>A central authority shall select an odd prime p. The central authority shall also select an integer g, the base, that satisfies 0 &lt; g &lt; p. The central authority may optionally select an integer l, the private-value length in bits, that satisfies 2l-1 ≤ p.</p>
+<p>The length of the prime p in octets is the integer k satisfying</p>
+<p>28(k−1) ≤ p &lt; 28k .</p>
+<div class="indent"><h3>10.6.1 <a name="sect-idp1966528" id="sect-idp1966528">Notes</a></h3>
+<p>1.	The cost of some methods for computing discrete logarithms depends on the the length of the prime, while the cost of others depends on the length of the private value. The intention of selecting a private-value length is to reduce the computation time for key agreement, while maintaining a given level of security. A similar optimization is suggested by Schnorr [Sch90].</p>
+<p>2.	Some additional conditions on the choice of prime, base, and private-value length may well be taken into account in order to deter discrete logarithm computation. These security conditions fall outside the scope of this standard.</p>
+</div>
+</div>
+<div class="indent"><h3>10.7 <a name="sect-idp1968688" id="sect-idp1968688">Phase I</a></h3>
+<p>This section describes the first phase of Diffie-Hellman key agreement.</p>
+<p>The first phase consists of three steps: private-value generation, exponentiation, and integer-to-octet-string conversion. The input to the first phase shall be the Diffie-Hellman parameters. The output from the first phase shall be an octet string PV, the public value; and an integer x, the private value.</p>
+<p>This phase is performed independently by the two parties intending to agree on a secret key.</p>
+<div class="indent"><h3>10.7.1 <a name="sect-idp1970848" id="sect-idp1970848">Private-value generation</a></h3>
+<p>An integer x, the private value, shall be generated privately and randomly. This integer shall satisfy 0 &lt; x &lt; p−1, unless the central authority specifies a private-value length l, in which case the integer shall satisfy 2l-1 ≤ x &lt; 2l.</p>
+</div>
+<div class="indent"><h3>10.7.2 <a name="sect-idp1972576" id="sect-idp1972576">Exponentiation</a></h3>
+<p>The base g shall be raised to the private value x modulo p to give an integer y, the integer public value.</p>
+<p>y = gx mod p,  0 &lt; y &lt; p .</p>
+<p>This is the classic discrete-exponentiation computation. </p>
+</div>
+<div class="indent"><h3>10.7.3 <a name="sect-idp1974608" id="sect-idp1974608">Integer-to-octet-string conversion</a></h3>
+<p>The integer public value y shall be converted to an octet string PV of length k, the public value. The public value PV shall satisfy</p>
+<p>	y =  ,	(1)</p>
+<p>where PV1, ..., PVk are the octets of PV from first to last.</p>
+<p>In other words, the first octet of PV has the most significance in the integer and the last octet of PV has the least significance.</p>
+</div>
+</div>
+<div class="indent"><h3>10.8 <a name="sect-idp1977312" id="sect-idp1977312">Phase II</a></h3>
+<p>This section describes the second phase of Diffie-Hellman key agreement.</p>
+<p>The second phase consists of three steps: octet-string-to-integer conversion, exponentiation, and integer-to-octet-string conversion. The input to the second phase shall be the Diffie-Hellman parameters; an octet string PV', the other entity's public value; and the private value x. The output from the second phase shall be an octet string SK, the agreed-upon secret key.</p>
+<p>This phase is performed independently by the two parties intending to agree on a secret key, after the parties have exchanged public values resulting from the first phase.</p>
+<div class="indent"><h3>10.8.1 <a name="sect-idp1979632" id="sect-idp1979632">Octet-string-to-integer conversion</a></h3>
+<p>The other entity's public value PV' shall be converted to an integer y', the other entity's integer public value. Let PV'1, ..., PV'k be the octets of PV' from first to last. Then the other entity's integer public value y' shall satisfy</p>
+<p>y' =  .</p>
+<p>In other words, the first octet of PV' has the most significance in the integer and the last octet of PV' has the least significance.</p>
+</div>
+<div class="indent"><h3>10.8.2 <a name="sect-idp1981856" id="sect-idp1981856">Exponentiation</a></h3>
+<p>The other entity's integer public value y' shall be raised to the private integer x modulo p to give an integer z, the integer secret key.</p>
+<p>z = (y')x mod p,  0 &lt; z &lt; p .</p>
+<p>This is the classic discrete-exponentiation computation.</p>
+<p>Note. The integer secret key z satisfies</p>
+<p>z = (y')x = (gx')x = (gx)x' = yx' mod p ,</p>
+<p>where x' is the other entity's private value. This mathematical relationship is the reason the two entities arrive at the same key.</p>
+</div>
+<div class="indent"><h3>10.8.3 <a name="sect-idp1985360" id="sect-idp1985360">Integer-to-octet-string conversion</a></h3>
+<p>The integer secret key z shall be converted to an octet string SK, the secret key, of length k. The secret key SK shall satisfy</p>
+<p>z =  ,</p>
+<p>where SK1, ..., SKk are the octets of SK from first to last.</p>
+<p>In other words, the first octet of SK has the most significance in the integer and the last octet of SK has the least significance.</p>
+</div>
+</div>
+<div class="indent"><h3>10.9 <a name="sect-idp1988064" id="sect-idp1988064">Object identifier</a></h3>
+<p>This standard defines two object identifiers: pkcs-3 and DHKeyValue.</p>
+<p>The object identifier pkcs-3 identifies this standard.</p>
+<p>pkcs-3 OBJECT IDENTIFIER ::=
+  { iso(1) member-body(2) US(840) rsadsi(113549)
+      pkcs(1) 3 }</p>
+<p>The object identifier DHKeyValue identifies the Diffie-Hellman key agreement method defined in Sections 7 and 8.</p>
+<p>DHKeyValue OBJECT IDENTIFIER ::= { pkcs-3 1 }</p>
+<p>The DHKeyValue object identifier is intended to be used in the algorithm field of a value of type AlgorithmIdentifier. The parameters field of that type, which has the algorithm-specific syntax ANY DEFINED BY algorithm, would have ASN.1 type DHParameter for this algorithm.</p>
+<p>DHParameter ::= SEQUENCE {
+  prime INTEGER, - p
+  base INTEGER, - g
+  privateValueLength INTEGER OPTIONAL }</p>
+<p>The fields of type DHParameter have the following meanings:</p>
+<ul>
+<li>prime is the prime p.</li>
+<li>base is the base g.</li>
+<li>privateValueLength is the optional private-value length l.</li>
+</ul>
+</div>
+<div class="indent"><h3>10.10 <a name="sect-idp1994320" id="sect-idp1994320">Revision history</a></h3>
+<div class="indent"><h3>10.10.1 <a name="sect-idp1994816" id="sect-idp1994816">Versions 1.0-1.2</a></h3>
+<p>Versions 1.0-1.2 were distributed to participants in RSA Data Security, Inc.'s Public-Key Cryptography Standards meetings in February and March 1991.</p>
+</div>
+<div class="indent"><h3>10.10.2 <a name="sect-idp1995984" id="sect-idp1995984">Version 1.3</a></h3>
+<p>Version 1.3 is part of the June 3, 1991 initial public release of PKCS. Version 1.3 was published as NIST/OSI Implementors' Workshop document SEC-SIG-91-19.</p>
+</div>
+<div class="indent"><h3>10.10.3 <a name="sect-idp1997168" id="sect-idp1997168">Version 1.4</a></h3>
+<p>Version 1.4 incorporates several editorial changes, including updates to the references and the addition of a revision history. The following substantive changes were made:</p>
+<ul>
+<li>Section 6: Parameter generation is modified to allow central authority to select private-value length in bits.</li>
+<li>Section 7.1: Private-value generation is modified to handle private-value length.</li>
+<li>Section 9: Optional privateValueLength field is added to DHParameter type.</li>
+</ul>
+</div>
+</div>
+<div class="indent"><h3>10.11 <a name="sect-idp2000352" id="sect-idp2000352">Author's address</a></h3>
+<p>RSA Laboratories	(415) 595-7703
+100 Marine Parkway	(415) 595-4126 (fax)
+Redwood City, CA  94065  USA	pkcs-editor@rsa.com</p>
+</div>
+<h2>11.
+       <a name="sect-idp2001632" id="sect-idp2001632">IKE Diffie-Hellman Groups</a></h2>
+<p>Different Diffie-Hellman groups are defined for use in IKE. These groups were generated by Richard Schroeppel at the University of Arizona. Properties of these primes are described in [Orm96]. </p>
+<div class="indent"><h3>11.1 <a name="sect-idp2002768" id="sect-idp2002768">768-bit MODP - modp1</a></h3>
+<p>IKE implementations MAY support a MODP group with the following prime and generator. This group is assigned id 1 (one). </p>
+<p>The prime is: 2^768 - 2 ^704 - 1 + 2^64 * { [2^638 pi] + 149686 } Its hexadecimal value is: </p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08
+8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B
+302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9
+A63A3620 FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<div class="indent"><h3>11.2 <a name="sect-idp2005456" id="sect-idp2005456">1024-bit MODP Group - modp2</a></h3>
+<p>IKE implementations SHOULD support a MODP group with the following prime and generator. This group is assigned id 2 (two). </p>
+<p>The prime is 2^1024 - 2^960 - 1 + 2^64 * { [2^894 pi] + 129093 }. Its hexadecimal value is: </p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08
+8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B
+302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9
+A637ED6B 0BFF5CB6 F406B7ED EE386BFB 5A899FA5 AE9F2411 7C4B1FE6
+49286651 ECE65381 FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is 2 (decimal)</p>
+</div>
+<div class="indent"><h3>11.3 <a name="sect-idp2008304" id="sect-idp2008304">1536-bit MODP Group - modp5</a></h3>
+<p>IKE implementations MUST support a MODP group with the following prime and generator. This group is assigned id 5 (five). The 1536 bit MODP group has been used for the implementations for quite a long time, but it has not been documented in the current RFCs or drafts. </p>
+<p>The prime is 2^1536 - 2^1472 - 1 + 2^64 * {[2^1406 pi] + 741804}. Its hexadecimal value is </p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1 29024E08
+8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD EF9519B3 CD3A431B
+302B0A6D F25F1437 4FE1356D 6D51C245 E485B576 625E7EC6 F44C42E9
+A637ED6B 0BFF5CB6 F406B7ED EE386BFB 5A899FA5 AE9F2411 7C4B1FE6
+49286651 ECE45B3D C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8
+FD24CF5F 83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA237327 FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is 2. </p>
+</div>
+<div class="indent"><h3>11.4 <a name="sect-idp2010784" id="sect-idp2010784">2048-bit MODP Group</a></h3>
+<p>This prime is: 2^2048 - 2^1984 - 1 + 2^64 * { [2^1918 pi] + 124476 } Its hexadecimal value is </p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AACAA68 FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<div class="indent"><h3>11.5 <a name="sect-idp2013168" id="sect-idp2013168">3072-bit MODP Group</a></h3>
+<p>This prime is: 2^3072 - 2^3008 - 1 + 2^64 * { [2^2942 pi] + 1690314 }</p>
+<p>Its hexadecimal value is:</p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A93AD2CA FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<div class="indent"><h3>11.6 <a name="sect-idp2016048" id="sect-idp2016048">4096-bit MODP Group</a></h3>
+<p>This prime is: 2^4096 - 2^4032 - 1 + 2^64 * { [2^3966 pi] + 240904 } </p>
+<p>Its hexadecimal value is :</p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A9210801 1A723C12 A787E6D7
+88719A10 BDBA5B26 99C32718 6AF4E23C 1A946834 B6150BDA
+2583E9CA 2AD44CE8 DBBBC2DB 04DE8EF9 2E8EFC14 1FBECAA6
+287C5947 4E6BC05D 99B2964F A090C3A2 233BA186 515BE7ED
+1F612970 CEE2D7AF B81BDD76 2170481C D0069127 D5B05AA9
+93B4EA98 8D8FDDC1 86FFB7DC 90A6C08F 4DF435C9 34063199
+FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<div class="indent"><h3>11.7 <a name="sect-idp2019184" id="sect-idp2019184">6144-bit MODP Group</a></h3>
+<p>This prime is: 2^6144 - 2^6080 - 1 + 2^64 * { [2^6014 pi] + 929484 } </p>
+<p>Its hexadecimal value is :</p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A9210801 1A723C12 A787E6D7
+88719A10 BDBA5B26 99C32718 6AF4E23C 1A946834 B6150BDA
+2583E9CA 2AD44CE8 DBBBC2DB 04DE8EF9 2E8EFC14 1FBECAA6
+287C5947 4E6BC05D 99B2964F A090C3A2 233BA186 515BE7ED
+1F612970 CEE2D7AF B81BDD76 2170481C D0069127 D5B05AA9
+93B4EA98 8D8FDDC1 86FFB7DC 90A6C08F 4DF435C9 34028492
+36C3FAB4 D27C7026 C1D4DCB2 602646DE C9751E76 3DBA37BD
+F8FF9406 AD9E530E E5DB382F 413001AE B06A53ED 9027D831
+179727B0 865A8918 DA3EDBEB CF9B14ED 44CE6CBA CED4BB1B
+DB7F1447 E6CC254B 33205151 2BD7AF42 6FB8F401 378CD2BF
+5983CA01 C64B92EC F032EA15 D1721D03 F482D7CE 6E74FEF6
+D55E702F 46980C82 B5A84031 900B1C9E 59E7C97F BEC7E8F3
+23A97A7E 36CC88BE 0F1D45B7 FF585AC5 4BD407B2 2B4154AA
+CC8F6D7E BF48E1D8 14CC5ED2 0F8037E0 A79715EE F29BE328
+06A1D58B B7C5DA76 F550AA3D 8A1FBFF0 EB19CCB1 A313D55C
+DA56C9EC 2EF29632 387FE8D7 6E3C0468 043E8F66 3F4860EE
+12BF2D5B 0B7474D6 E694F91E 6DCC4024 FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<div class="indent"><h3>11.8 <a name="sect-idp2022656" id="sect-idp2022656">8192-bit MODP Group</a></h3>
+<p>This prime is: 2^8192 - 2^8128 - 1 + 2^64 * { [2^8062 pi] + 4743158 } </p>
+<p>Its hexadecimal value is :</p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+FFFFFFFF FFFFFFFF C90FDAA2 2168C234 C4C6628B 80DC1CD1
+29024E08 8A67CC74 020BBEA6 3B139B22 514A0879 8E3404DD
+EF9519B3 CD3A431B 302B0A6D F25F1437 4FE1356D 6D51C245
+E485B576 625E7EC6 F44C42E9 A637ED6B 0BFF5CB6 F406B7ED
+EE386BFB 5A899FA5 AE9F2411 7C4B1FE6 49286651 ECE45B3D
+C2007CB8 A163BF05 98DA4836 1C55D39A 69163FA8 FD24CF5F
+83655D23 DCA3AD96 1C62F356 208552BB 9ED52907 7096966D
+670C354E 4ABC9804 F1746C08 CA18217C 32905E46 2E36CE3B
+E39E772C 180E8603 9B2783A2 EC07A28F B5C55DF0 6F4C52C9
+DE2BCBF6 95581718 3995497C EA956AE5 15D22618 98FA0510
+15728E5A 8AAAC42D AD33170D 04507A33 A85521AB DF1CBA64
+ECFB8504 58DBEF0A 8AEA7157 5D060C7D B3970F85 A6E1E4C7
+ABF5AE8C DB0933D7 1E8C94E0 4A25619D CEE3D226 1AD2EE6B
+F12FFA06 D98A0864 D8760273 3EC86A64 521F2B18 177B200C
+BBE11757 7A615D6C 770988C0 BAD946E2 08E24FA0 74E5AB31
+43DB5BFC E0FD108E 4B82D120 A9210801 1A723C12 A787E6D7
+88719A10 BDBA5B26 99C32718 6AF4E23C 1A946834 B6150BDA
+2583E9CA 2AD44CE8 DBBBC2DB 04DE8EF9 2E8EFC14 1FBECAA6
+287C5947 4E6BC05D 99B2964F A090C3A2 233BA186 515BE7ED
+1F612970 CEE2D7AF B81BDD76 2170481C D0069127 D5B05AA9
+93B4EA98 8D8FDDC1 86FFB7DC 90A6C08F 4DF435C9 34028492
+36C3FAB4 D27C7026 C1D4DCB2 602646DE C9751E76 3DBA37BD
+F8FF9406 AD9E530E E5DB382F 413001AE B06A53ED 9027D831
+179727B0 865A8918 DA3EDBEB CF9B14ED 44CE6CBA CED4BB1B
+DB7F1447 E6CC254B 33205151 2BD7AF42 6FB8F401 378CD2BF
+5983CA01 C64B92EC F032EA15 D1721D03 F482D7CE 6E74FEF6
+D55E702F 46980C82 B5A84031 900B1C9E 59E7C97F BEC7E8F3
+23A97A7E 36CC88BE 0F1D45B7 FF585AC5 4BD407B2 2B4154AA
+CC8F6D7E BF48E1D8 14CC5ED2 0F8037E0 A79715EE F29BE328
+06A1D58B B7C5DA76 F550AA3D 8A1FBFF0 EB19CCB1 A313D55C
+DA56C9EC 2EF29632 387FE8D7 6E3C0468 043E8F66 3F4860EE
+12BF2D5B 0B7474D6 E694F91E 6DBE1159 74A3926F 12FEE5E4
+38777CB6 A932DF8C D8BEC4D0 73B931BA 3BC832B6 8D9DD300
+741FA7BF 8AFC47ED 2576F693 6BA42466 3AAB639C 5AE4F568
+3423B474 2BF1C978 238F16CB E39D652D E3FDB8BE FC848AD9
+22222E04 A4037C07 13EB57A8 1A23F0C7 3473FC64 6CEA306B
+4BCBC886 2F8385DD FA9D4B7F A2C087E8 79683303 ED5BDD3A
+062B3CF5 B3A278A6 6D2A13F8 3F44F82D DF310EE0 74AB6A36
+4597E899 A0255DC1 64F31CC5 0846851D F9AB4819 5DED7EA1
+B1D510BD 7EE74D73 FAF36BC3 1ECFA268 359046F4 EB879F92
+4009438B 481C6CD7 889A002E D5EE382B C9190DA6 FC026E47
+9558E447 5677E9AA 9E3050E2 765694DF C81F56E8 80B96E71
+60C980DD 98EDD3DF FFFFFFFF FFFFFFFF
+</pre></div>
+<p>The generator is: 2. </p>
+</div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0102<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.1<br />
+            Last Updated: 2003-06-25<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: Not yet assigned<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0102.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0102.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0102.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jean-Louis Seguineau</h3><p class="indent">
+        Email:
+        <a href="mailto:jean-louis.seguineau@antepo.com">jean-louis.seguineau@antepo.com</a><br />
+        JabberID: 
+        <a href="xmpp:jlseguineau@im.antepo.com">jlseguineau@im.antepo.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1943088" id="nt-idp1943088">1</a>. upersedes June 3, 1991 version, which was also published as NIST/OSI Implementors' Workshop document SEC-SIG-91-19. PKCS documents are available by electronic mail to &lt;pkcs@rsa.com&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.1 (2003-06-25)</h4><div class="indent">Initial version. (jls)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,1008 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0100: Gateway Interaction</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Gateway Interaction" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Dave Smith" /><meta name="DC.Description" content="This document specifies best practices for interactions between Jabber clients and client proxy gateways to legacy IM services." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-10-05" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0100" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0100: Gateway Interaction</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies best practices for interactions between Jabber clients and client proxy gateways to legacy IM services.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Dave Smith</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-10-05</td></tr></table><hr /><p style="color:green">NOTICE: This Informational specification defines a best practice or protocol profile that has been approved by the XMPP Council and/or the XSF Board of Directors. Implementations are encouraged and the best practice or protocol profile is appropriate for deployment in production systems.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#glossary">Glossary</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#usecases-jabber">Jabber User Use Cases</a><br />   
+      4.1.  <a href="#usecases-jabber-register">Register</a><br />      
+      4.1.1.  <a href="#usecases-jabber-register-pri">Primary Flow</a><br />      
+      4.1.2.  <a href="#usecases-jabber-register-alt">Alternate Flows</a><br />   
+      4.2.  <a href="#usecases-jabber-edit">Edit Registration</a><br />      
+      4.2.1.  <a href="#usecases-jabber-edit-pri">Primary Flow</a><br />      
+      4.2.2.  <a href="#usecases-jabber-edit-alt">Alternate Flows</a><br />   
+      4.3.  <a href="#usecases-jabber-unregister">Unregister</a><br />      
+      4.3.1.  <a href="#usecases-jabber-unregister-pri">Primary Flow</a><br />      
+      4.3.2.  <a href="#usecases-jabber-unregister-alt">Alternate Flows</a><br />   
+      4.4.  <a href="#usecases-jabber-login">Log In</a><br />      
+      4.4.1.  <a href="#usecases-jabber-login-pri">Primary Flow</a><br />      
+      4.4.2.  <a href="#usecases-jabber-login-alt">Alternate Flows</a><br />   
+      4.5.  <a href="#usecases-jabber-logout">Log Out</a><br />      
+      4.5.1.  <a href="#usecases-jabber-logout-pri">Primary Flow</a><br />      
+      4.5.2.  <a href="#usecases-jabber-logout-alt">Alternate Flows</a><br />   
+      4.6.  <a href="#usecases-jabber-addcontact">Add Contact</a><br />      
+      4.6.1.  <a href="#usecases-jabber-addcontact-pri">Primary Flow</a><br />      
+      4.6.2.  <a href="#usecases-jabber-addcontact-alt">Alternate Flows</a><br />   
+      4.7.  <a href="#usecases-jabber-deletecontact">Delete Contact</a><br />      
+      4.7.1.  <a href="#usecases-jabber-deletecontact-pri">Primary Flow</a><br />      
+      4.7.2.  <a href="#usecases-jabber-deletecontact-alt">Alternate Flows</a><br />   
+      4.8.  <a href="#usecases-jabber-send">Send Message</a><br />      
+      4.8.1.  <a href="#usecases-jabber-send-pri">Primary Flow</a><br />      
+      4.8.2.  <a href="#usecases-jabber-send-alt">Alternate Flows</a><br />5.  <a href="#usecases-legacy">Legacy User Use Cases</a><br />   
+      5.1.  <a href="#usecases-legacy-add">Add Contact</a><br />      
+      5.1.1.  <a href="#usecases-legacy-add-pri">Primary Flow</a><br />      
+      5.1.2.  <a href="#usecases-legacy-add-alt">Alternate Flows</a><br />   
+      5.2.  <a href="#usecases-legacy-delete">Delete Contact</a><br />      
+      5.2.1.  <a href="#usecases-legacy-delete-pri">Primary Flow</a><br />      
+      5.2.2.  <a href="#usecases-legacy-delete-alt">Alternate Flows</a><br />   
+      5.3.  <a href="#usecases-legacy-send">Send Message</a><br />      
+      5.3.1.  <a href="#usecases-legacy-send-pri">Primary Flow</a><br />      
+      5.3.2.  <a href="#usecases-legacy-send-alt">Alternate Flows</a><br />6.  <a href="#addressing">Addressing</a><br />   
+      6.1.  <a href="#addressing-gateway">Gateways</a><br />   
+      6.2.  <a href="#addressing-user">Users</a><br />   
+      6.3.  <a href="#addressing-iqgateway">The jabber:iq:gateway Protocol</a><br />7.  <a href="#rosters">Contact Lists</a><br />8.  <a href="#bizrules">Business Rules</a><br />9.  <a href="#security">Security Considerations</a><br />10.  <a href="#iana">IANA Considerations</a><br />11.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      11.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />12.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>One distinguishing characteristic of Jabber technologies from their earliest days has been the existence of gateways (also called "transports") between the Jabber network and legacy instant messaging services such as AOL Instant Messenger (AIM), ICQ, Windows Live Messenger, and Yahoo! Messenger. Surprisingly, the recommended behavior of such gateways, including the protocol elements used by a client to interact with a gateway, has never been fully documented. This document attempts to fill that void by codifying best practices for gateway interaction.</p>
+  <p>Note well that this document defines protocol usage with regard to client proxy gateways, i.e., gateways that "masquerade" as a client on a non-Jabber IM service. Gateways that perform direct protocol translation without proxying for an account on a non-Jabber service are not addressed in this document. Furthermore, this document does not define any interaction between a gateway and the non-Jabber service, only interactions between a Jabber client and the gateway. Although what happens on the other side of the gateway is highly dependent on the nature of the legacy service, gateways should at least provide a common interface on the Jabber side of the gateway so that Jabber clients can be written in a consistent fashion.</p>
+<h2>2.
+       <a name="glossary" id="glossary">Glossary</a></h2>
+  <div class="indent"><dl>
+    <di>
+      <dt><strong>Gateway</strong></dt>
+      <dd>A service on the Jabber network that translates between the Jabber/XMPP protocols and the protocol used by a Legacy Service; in the context of this document, by "gateway" we mean a "client proxy service" that acts as a client with regard to a Legacy Service and thereby "masquerades" as a user on such a service.</dd>
+    </di>
+    <di>
+      <dt><strong>Jabber User</strong></dt>
+      <dd>A human user who has registered an account with a Jabber server; a Jabber User who wants to use a Gateway must first have also registered an account with a Legacy Service.</dd>
+    </di>
+    <di>
+      <dt><strong>Legacy Service</strong></dt>
+      <dd>A non-XMPP instant messaging service.</dd>
+    </di>
+    <di>
+      <dt><strong>Legacy User</strong></dt>
+      <dd>A human user who has registered an account with a Legacy Service.</dd>
+    </di>
+    <di>
+      <dt><strong>Server</strong></dt>
+      <dd>An instant messaging server as defined in <span class="ref">RFC 6121</span>.</dd>
+    </di>
+  </dl></div>
+<h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The requirements defined by this document are captured in two sets of use cases: one set from the perspective of the Jabber User, and a smaller set from the perspective of the Legacy User who wants to interact with the Jabber User.</p>
+  <p>The Jabber User use cases are:</p>
+  <ol>
+    <li>Register</li>
+    <li>Edit Registration</li>
+    <li>Unregister</li>
+    <li>Log In</li>
+    <li>Log Out</li>
+    <li>Add Contact</li>
+    <li>Delete Contact</li>
+    <li>Send Message</li>
+  </ol>
+  <p>The Legacy User use cases are:</p>
+  <ol>
+    <li>Add Contact</li>
+    <li>Delete Contact</li>
+    <li>Send Message</li>
+  </ol>
+  <p>While more advanced use cases (e.g., sending files and joining chat rooms) are of inherent interest, they are not covered in this document because registration, contact list management, and message exchange define the baseline functionality included in all gateway implementations; future specifications may address the more advanced use cases.</p>
+<h2>4.
+       <a name="usecases-jabber" id="usecases-jabber">Jabber User Use Cases</a></h2>
+  <div class="indent"><h3>4.1 <a name="usecases-jabber-register" id="usecases-jabber-register">Register</a></h3>
+    <p>All existing client proxy gateways require a Jabber User to register with the Gateway before sending messages or presence through the gateway. Although strictly speaking registration is not required (e.g., a Gateway could prompt the Jabber User for credentials every time the user attempted to communicate through the gateway, or once per "session"), in practice this step is required.</p>
+    <div class="indent"><h3>4.1.1 <a name="usecases-jabber-register-pri" id="usecases-jabber-register-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends IQ-get qualified by the <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1517920">1</a>] information namespace to the Gateway, and/or IQ-get qualified by the <span class="ref"><a href="http://xmpp.org/extensions/xep-0094.html">Agent Information (XEP-0094)</a></span>  [<a href="#nt-idp1520944">2</a>] namespace to the Gateway's parent (the latter method is deprecated but still in use).</p>
+          <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Queries Gateway Regarding Service Discovery Identity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p class="caption"><a name="example-2" id="example-2"></a>Example 2. User Queries Gateway's Parent Regarding Agent Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.lit/orchard'
+    to='shakespeare.lit'
+    id='agent1'&gt;
+  &lt;query xmlns='jabber:iq:agents'/&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p>Note: Although many existing gateway implementations support only the older Agent Information protocol, it is RECOMMENDED that gateways support the Service Discovery protocol, since the former protocol is deprecated in favor of the latter. Until existing gateways are upgraded, clients SHOULD support both.</p>
+        </li>
+        <li>
+          <p>Gateway and/or parent returns identity information to Jabber User's Client.</p>
+          <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Gateway Returns Service Discovery Identity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='gateway'
+              type='aim'
+              name='AIM Gateway'/&gt;
+    &lt;feature var='http://jabber.org/protocol/disco#info'/&gt;
+    &lt;feature var='jabber:iq:register'/&gt;
+    &lt;feature var='jabber:iq:time'/&gt;
+    &lt;feature var='jabber:iq:version'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Gateway's Parent Returns Agent Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='romeo@montague.lit/orchard'
+    to='shakespeare.lit'
+    id='agent1'&gt;
+  &lt;query xmlns='jabber:iq:agents'&gt;
+    &lt;agent jid='aim.shakespeare.lit'&gt;
+      &lt;name&gt;AIM Gateway&lt;/name&gt;
+      &lt;service&gt;aim&lt;/service&gt;
+      &lt;transport/&gt;
+      &lt;register/&gt;
+    &lt;/agent&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p>Note: Given the foregoing, a client can determine the identity of the gateway, specifically (1) that it is a gateway and (2) to which legacy service it provides a gateway.</p>
+        </li>
+        <li>
+          <p>Jabber User sends IQ-get qualified by the <span class="ref"><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration (XEP-0077)</a></span>  [<a href="#nt-idp1529824">3</a>] (jabber:iq:register) namespace to Gateway.</p>
+          <p class="caption"><a name="example-5" id="example-5"></a>Example 5. User Queries Gateway Regarding Registration Requirements</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway returns IQ-result to Jabber User, specifying information that is required in order to register.</p>
+          <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Gateway Returns Registration Requirements</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;instructions&gt;
+      Please provide your AIM screen name and password.
+    &lt;/instructions&gt;
+    &lt;username/&gt;
+    &lt;password/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Jabber User sends IQ-set qualified by the 'jabber:iq:register' namespace to Gateway, containing information required to register.</p>
+          <p class="caption"><a name="example-7" id="example-7"></a>Example 7. User Provides Registration Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;RomeoMyRomeo&lt;/username&gt;
+    &lt;password&gt;ILoveJuliet&lt;/password&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p>Note: The XML character data of the &lt;username/&gt; element SHOULD be the Jabber User's LegacyUserAddress as described under <a href="#addressing">Addressing</a>, such as an AOL screen name, ICQ number, Windows Live Messenger (formerly MSN Messenger) address, or Yahoo! ID.</p>
+        </li>
+        <li>
+          <p>Gateway verifies that registration information provided by Jabber User is valid (using whatever means appropriate for the Legacy Service) and informs Jabber User of success [A1].</p>
+          <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Gateway Informs Jabber User of Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='reg2'/&gt;
+          </pre></div>
+        </li>
+        <li><p>If Gateway logged into Legacy Service in preceding step, Gateway buffers any translatable events (e.g., messages and presence) queued up for Jabber User on Legacy Service.</p></li>
+        <li>
+          <p>Optionally, Jabber User sends IQ-set qualified by the 'jabber:iq:roster' namespace to its server (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1542448">4</a>]), containing a roster item for Gateway.</p>
+          <p class="caption"><a name="example-9" id="example-9"></a>Example 9. User Creates Roster Entry</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.lit/orchard'
+    id='roster1'&gt;
+  &lt;query xmlns='jabber:iq:roster'&gt;
+    &lt;item jid='aim.shakespeare.lit' name='AIM Gateway'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+          <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Server Response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    to='romeo@montague.lit/orchard'
+    id='roster1'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends subscription request to Jabber User (i.e., by sending a presence stanza of type "subscribe" to Jabber User's bare JID).</p>
+          <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Gateway Subscribes to User's Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Jabber User's client SHOULD approve the subscription request (i.e., by sending a presence stanza of type "subscribed" to Gateway).</p>
+          <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Jabber User Approves Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='romeo@montague.lit'
+          to='aim.shakespeare.lit'/&gt;
+          </pre></div>
+          <p>Note: As specified in <span class="ref">RFC 6121</span>, Jabber User's server will generate a "roster push" at this point if client did not previously perform a roster set to add Gateway to user's roster (as mentioned above).</p>
+        </li>
+        <li>
+          <p>Jabber User sends subscription request to Gateway (i.e., by sending a presence stanza of type "subscribe" to Gateway).</p>
+          <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Jabber User Subscribes to Gateway's Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='romeo@montague.lit'
+          to='aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends approves subscription request (i.e., by sending a presence stanza of type "subscribed" to Jabber User's bare JID).</p>
+          <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Gateway Approves Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Execute "Log In" use case.</p></li>
+        <li><p>Gateway sends any buffered messages to Jabber User.</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.1.2 <a name="usecases-jabber-register-alt" id="usecases-jabber-register-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>User information not verified:</p>
+          <ol>
+            <li>
+              <p>Gateway returns &lt;not-acceptable/&gt; error to Jabber User. (For detailed information regarding error conditions, refer to <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1558064">5</a>].)</p>
+              <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Gateway Informs Jabber User of Registration Error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;RomeoMyRomeo&lt;/username&gt;
+    &lt;password&gt;ILoveJuliet&lt;/password&gt;
+  &lt;/query&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+              </pre></div>
+            </li>
+            <li><p>Use Case Ends unsuccessfully.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>4.2 <a name="usecases-jabber-edit" id="usecases-jabber-edit">Edit Registration</a></h3>
+    <p>After a Jabber User has registered with a Gateway, the user may wish to modify his or her existing registration information (e.g., because the user has changed his or her password on the legacy IM service).</p>
+    <div class="indent"><h3>4.2.1 <a name="usecases-jabber-edit-pri" id="usecases-jabber-edit-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends IQ-get qualified by the 'jabber:iq:register' namespace to Gateway.</p>
+          <p class="caption"><a name="example-16" id="example-16"></a>Example 16. User Queries Gateway Regarding Registration Requirements</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='edit1'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway returns IQ-result to Jabber User, specifying registration information on record and including empty &lt;registered/&gt; element to signify that user is already registered.  [<a href="#nt-idp1565184">6</a>]</p>
+          <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Gateway Returns Registration Information of Record</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='edit1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;registered/&gt;
+    &lt;username&gt;RomeoMyRomeo&lt;/username&gt;
+    &lt;password&gt;ILoveJuliet&lt;/password&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Jabber User sends IQ-set qualified by the 'jabber:iq:register' namespace to Gateway, containing all information (i.e., not just the "delta").</p>
+          <p class="caption"><a name="example-18" id="example-18"></a>Example 18. User Provides Registration Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='edit2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;RomeoMyRomeo&lt;/username&gt;
+    &lt;password&gt;B4lc0ny&lt;/password&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway verifies that, if changed, information provided by Jabber User is still valid (using whatever means appropriate for the Legacy Service) and informs Jabber User of success [A1].</p>
+          <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Gateway Informs Jabber User of Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='edit2'/&gt;
+          </pre></div>
+        </li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.2.2 <a name="usecases-jabber-edit-alt" id="usecases-jabber-edit-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>Edit unsuccessful:</p>
+          <ol>
+            <li>
+              <p>Gateway returns &lt;not-acceptable/&gt; error to Jabber User.</p>
+              <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Gateway Informs Jabber User of Registration Error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='edit2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;username&gt;RomeoMyRomeo&lt;/username&gt;
+    &lt;password&gt;B4lc0ny&lt;/password&gt;
+  &lt;/query&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+              </pre></div>
+            </li>
+            <li><p>Use Case Ends unsuccessfully.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="usecases-jabber-unregister" id="usecases-jabber-unregister">Unregister</a></h3>
+    <p>After a Jabber User has registered with a Gateway, the user may choose to unregister with the Gateway, effectively ending his or her relationship with the Gateway (e.g., the user will no longer be allowed to communicate through the gateway with legacy users).</p>
+    <div class="indent"><h3>4.3.1 <a name="usecases-jabber-unregister-pri" id="usecases-jabber-unregister-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends IQ-set in 'jabber:iq:register' namespace to Gateway, containing empty &lt;remove/&gt; element.</p>
+          <p class="caption"><a name="example-21" id="example-21"></a>Example 21. User Unregisters</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.lit/orchard'
+    to='aim.shakespeare.lit'
+    id='unreg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;remove/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li><p>Gateway sends unavailable presence from Jabber User to Legacy Users and logs Jabber User out of Legacy Service.</p></li>
+        <li><p>Gateway deletes Jabber User's information.</p></li>
+        <li>
+          <p>Gateway sends IQ-result to Jabber User.</p>
+          <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Gateway Informs Jabber User of Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='aim.shakespeare.lit'
+    to='romeo@montague.lit/orchard'
+    id='unreg1'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway cancels subscriptions.</p>
+          <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Gateway Cancels Subscriptions</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unsubscribe'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+
+&lt;presence type='unsubscribed'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends unavailable presence to Jabber User.</p>
+          <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Gateway Logs User Out</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Jabber User's client SHOULD delete from the user's roster (1) the gateway itself, and (2) all legacy Contacts associated with the gateway.</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.3.2 <a name="usecases-jabber-unregister-alt" id="usecases-jabber-unregister-alt">Alternate Flows</a></h3>
+      <p>None.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>4.4 <a name="usecases-jabber-login" id="usecases-jabber-login">Log In</a></h3>
+    <p>After a Jabber User has registered with a Gateway, the Jabber User may subsequently log in to the Gateway, effectively creating a "session" with the Gateway and enabling the Gateway to log into the Legacy Service on behalf of the user by sending the user's legacy credentials to the Legacy Service.</p>
+    <div class="indent"><h3>4.4.1 <a name="usecases-jabber-login-pri" id="usecases-jabber-login-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends available presence broadcast to Server or sends directed presence to Gateway or a Legacy User.</p>
+          <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Jabber User Sends Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence/&gt;
+          </pre></div>
+          <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Jabber User's Server Broadcasts Available Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='romeo@montague.lit/orchard'
+          to='juliet@aim.shakespeare.lit'/&gt;
+&lt;presence from='romeo@montague.lit/orchard'
+          to='aim.shakespeare.lit'/&gt;
+...
+          </pre></div>
+        </li>
+        <li><p>Upon receiving the first presence notification stanza from Jabber User to Gateway or Legacy User, Gateway logs Jabber User into Legacy Service [A1].</p></li>
+        <li>
+          <p>Gateway sends presence stanza to Jabber User expressing availability.</p>
+          <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Gateway Sends Presence to Jabber User</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Optionally, Gateway handles Legacy Service contact list; see the <a href="#rosters">Contact Lists</a> section of this document.</p></li>
+        <li>
+          <p>Gateway forwards current presence information from Legacy Users to Jabber User, if possible mapping availability status (e.g., "away").</p>
+          <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Gateway Sends Presence from Legacy Users to Jabber User</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='juliet@aim.shakespeare.lit'
+          to='romeo@montague.lit'&gt;
+  &lt;show&gt;away&lt;/show&gt;
+&lt;/presence&gt;
+          </pre></div>
+          <p>Note: If the Legacy Service to which the Gateway connects does not support the concept of "resources", the 'from' address of presence notification stanzas generated by a gateway SHOULD NOT include a resource identifier (i.e., they SHOULD be of the form &lt;user@host&gt; rather than &lt;user@host/resource&gt;). However, the 'from' address MAY include a resource if the Gateway determines that this is appropriate in the context of its communications with the Legacy Service.</p>
+        </li>
+        <li>
+          <p>Gateway forwards all subsequent presence stanzas to Legacy Users (except those of type "probe" and those addressed to the Gateway itself).</p>
+          <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Jabber User Modifies Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='romeo@montague.lit/orchard'
+          to='juliet@aim.shakespeare.lit'&gt;
+  &lt;show&gt;dnd&lt;/show&gt;
+  &lt;status&gt;Wooing Juliet&lt;/status&gt;
+&lt;/presence&gt;
+          </pre></div>
+        </li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.4.2 <a name="usecases-jabber-login-alt" id="usecases-jabber-login-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>Login fails:</p>
+          <ol>
+            <li>
+              <p>Gateway sends appropriate presence error to Jabber User (&lt;not-authorized/&gt; if password is bad, &lt;remote-server-timeout/&gt; if Legacy Service is down, etc.).</p>
+              <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Gateway Informs Jabber User of Failed Login</p><div class="indent"><pre class="prettyprint">
+&lt;presence to='aim.shakespeare.lit'
+          from='romeo@shakespeare.lit'
+          type='error'&gt;
+  &lt;error code='504' type='wait'&gt;
+    &lt;remote-server-timeout
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/presence&gt;
+              </pre></div>
+            </li>
+            <li><p>Use Case Ends unsuccessfully.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>4.5 <a name="usecases-jabber-logout" id="usecases-jabber-logout">Log Out</a></h3>
+    <p>At any time after logging in to the Gateway, the Jabber User may log out of the Gateway and thereby end his or her session on the Legacy Service. This may happen automatically when the Jabber User terminates his or her session with a Jabber server, or independently of any session on the Jabber network by manually logging out of the Gateway.</p>
+    <div class="indent"><h3>4.5.1 <a name="usecases-jabber-logout-pri" id="usecases-jabber-logout-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends unavailable presence broadcast to Server or sends directed presence stanza of type "unavailable" to Gateway or (if Gateway does not support directed presence) Legacy User.</p>
+          <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Jabber User Sends Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'/&gt;
+          </pre></div>
+          <p class="caption"><a name="example-32" id="example-32"></a>Example 32. Jabber User's Server Broadcasts Unavailable Presence</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'
+          from='romeo@montague.lit/orchard'
+          to='aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Gateway transforms unavailable presence stanzas received from the Jabber User's server and routes them to all of the Jabber User's contacts on Legacy Service.</p></li>
+        <li><p>Gateway logs Jabber User out of Legacy Service [A1].</p></li>
+        <li>
+          <p>Gateway sends presence stanza of type "unavailable" to Jabber User.</p>
+          <p class="caption"><a name="example-33" id="example-33"></a>Example 33. Gateway Logs User Out</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'
+          from='aim.shakespeare.lit'
+          to='romeo@montague.lit/orchard'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.5.2 <a name="usecases-jabber-logout-alt" id="usecases-jabber-logout-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>Legacy Service supports directed presence and Gateway receives presence stanza of type "unavailable" directed to a Legacy User:</p>
+          <ol>
+            <li>
+              <p>Gateway passes through directed unavailable presence to Legacy User.</p>
+              <p class="caption"><a name="example-34" id="example-34"></a>Example 34. Jabber User Becomes Unavailable</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unavailable'
+          from='romeo@montague.lit/orchard'
+          to='juliet@aim.shakespeare.lit'/&gt;
+              </pre></div>
+              </li>
+            <li><p>Use Case Ends.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>4.6 <a name="usecases-jabber-addcontact" id="usecases-jabber-addcontact">Add Contact</a></h3>
+    <p>After registering with the Gateway, the Jabber User may want to add Legacy Users to his or her Jabber roster.</p>
+    <div class="indent"><h3>4.6.1 <a name="usecases-jabber-addcontact-pri" id="usecases-jabber-addcontact-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends presence stanza of type "subscribe" to Legacy User.</p>
+          <p class="caption"><a name="example-35" id="example-35"></a>Example 35. Jabber User Sends Subscription Request to Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+          </pre></div>
+          <p>Note: As specified in <span class="ref">RFC 6121</span>, sending this packet will result in a "roster push" from the Server to all of the Jabber User's available resources.</p>
+        </li>
+        <li><p>Gateway transforms subscription request and routes it to Legacy User.</p></li>
+        <li>
+          <p>If Legacy User approves subscription request, Gateway sends presence stanza of type "subscribed" to Jabber User on behalf of Legacy User. [A1]</p>
+          <p class="caption"><a name="example-36" id="example-36"></a>Example 36. Gateway Approves Subscription Request on Behalf of Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends available presence stanza to Jabber User on behalf of Legacy User.</p>
+          <p class="caption"><a name="example-37" id="example-37"></a>Example 37. Gateway Sends Legacy User's Current Presence Information to Jabber User</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit/orchard'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends presence stanza of type "subscribe" to Jabber User on behalf of Legacy User.</p>
+          <p class="caption"><a name="example-38" id="example-38"></a>Example 38. Gateway Sends Subscription Request to Jabber User on Behalf of Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Jabber User sends presence stanza of type "subscribed" to Legacy User.</p>
+          <p class="caption"><a name="example-39" id="example-39"></a>Example 39. Jabber User Approves Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.6.2 <a name="usecases-jabber-addcontact-alt" id="usecases-jabber-addcontact-alt">Alternate Flows</a></h3>
+      <ol>
+        <li>
+          <p>Legacy User denies subscription request:</p>
+          <ol>
+            <li>
+              <p>Gateway transforms subscription denial and routes it to Jabber User.</p>
+              <p class="caption"><a name="example-40" id="example-40"></a>Example 40. Legacy User Denies Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unsubscribed'
+          from='juliet@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+              </pre></div>
+              </li>
+            <li><p>Use Case Ends unsuccessfully.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>4.7 <a name="usecases-jabber-deletecontact" id="usecases-jabber-deletecontact">Delete Contact</a></h3>
+    <p>After adding a Legacy User to his or her Jabber roster, the Jabber User may want to delete that contact.</p>
+    <div class="indent"><h3>4.7.1 <a name="usecases-jabber-deletecontact-pri" id="usecases-jabber-deletecontact-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends IQ-set qualified by the 'jabber:iq:roster' namespace, containing subscription attribute with value of "remove".</p>
+          <p class="caption"><a name="example-41" id="example-41"></a>Example 41. User Removes Roster Entry for Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='romeo@montague.lit/orchard'
+    id='remove1'&gt;
+  &lt;query xmlns='jabber:iq:roster'&gt;
+    &lt;item jid='CapuletNurse@aim.shakespeare.lit'
+          subscription='remove'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Server sends normal "roster push" to Jabber User (see <span class="ref">RFC 6121</span>) and sends presence stanzas of type "unsubscribe", "unsubscribed", and "unavailable" to Legacy User.</p>
+          <p class="caption"><a name="example-42" id="example-42"></a>Example 42. Server Sends Presence Changes to Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unsubscribe'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+
+&lt;presence type='unsubscribed'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+
+&lt;presence type='unavailable'
+          from='romeo@montague.lit/orchard'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Gateway cleans up subscription state, informs Legacy User that Jabber User is unavailable, and MUST NOT send future changes in Jabber User's presence to Legacy User.</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.7.2 <a name="usecases-jabber-deletecontact-alt" id="usecases-jabber-deletecontact-alt">Alternate Flows</a></h3>
+      <p>None.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>4.8 <a name="usecases-jabber-send" id="usecases-jabber-send">Send Message</a></h3>
+    <p>Naturally, the Jabber User may want to exchange messages with a Legacy User. For the purposes of this document, we discuss one-to-one messaging only (i.e., groupchat messages, such as those defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1650992">7</a>], are out of scope).</p>
+    <div class="indent"><h3>4.8.1 <a name="usecases-jabber-send-pri" id="usecases-jabber-send-pri">Primary Flow</a></h3>
+      <ol>
+        <li>
+          <p>Jabber User sends message stanza to Legacy User.</p>
+          <p class="caption"><a name="example-43" id="example-43"></a>Example 43. Jabber User Sends Message to Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;message from='romeo@montague.lit/orchard'
+         to='juliet@aim.shakespeare.lit'
+         type='chat'&gt;
+  &lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;
+&lt;/message&gt;
+          </pre></div>
+        </li>
+        <li><p>Gateway transforms message to legacy protocol and sends to Legacy User [A1].</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>4.8.2 <a name="usecases-jabber-send-alt" id="usecases-jabber-send-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>Legacy Service reports error.</p></li>
+        <li>
+          <p>Gateway sends appropriate error to Jabber User:</p>
+          <ul>
+            <li><p>&lt;item-not-found/&gt; -- Legacy User address is not valid.</p></li>
+            <li><p>&lt;registration-required/&gt; -- Jabber User is not registered with Gateway.</p></li>
+            <li><p>&lt;service-unavailable/&gt; -- Legacy User is offline and Legacy Service (or Gateway) does not provide offline message storage.</p></li>
+            <li><p>&lt;remote-server-timeout/&gt; -- Legacy Service cannot be reached.</p></li>
+          </ul>
+        </li>
+        <li><p>Use Case Ends unsuccessfully.</p></li>
+      </ol>
+    </div>
+  </div>
+<h2>5.
+       <a name="usecases-legacy" id="usecases-legacy">Legacy User Use Cases</a></h2>
+  <div class="indent"><h3>5.1 <a name="usecases-legacy-add" id="usecases-legacy-add">Add Contact</a></h3>
+    <p>The Legacy User may want to add the Jabber User to his or her contact list on the Legacy Service. Because the Jabber User has an account on the Legacy Service by definition, the Legacy User will actually add the Jabber User's legacy address to his or her contact list, not the Jabber User's address on the Jabber/XMPP network.</p>
+    <div class="indent"><h3>5.1.1 <a name="usecases-legacy-add-pri" id="usecases-legacy-add-pri">Primary Flow</a></h3>
+      <ol>
+        <li><p>Legacy User requests subscription to Jabber User's legacy address (using legacy protocol).</p></li>
+        <li>
+          <p>Gateway sends presence stanza of type "subscribe" to Jabber User on behalf of Legacy User. (Note: Gateway MUST NOT send presence stanza of type "subscribed".)</p>
+          <p class="caption"><a name="example-44" id="example-44"></a>Example 44. Gateway Sends Subscription Request on Behalf of Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Jabber User approves subscription request by sending presence stanza of type "subscribed" to Legacy User [A1].</p>
+          <p class="caption"><a name="example-45" id="example-45"></a>Example 45. Jabber User Approves Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Gateway sends Jabber User's presence information to Legacy User.</p></li>
+        <li>
+          <p>Jabber User's Client sends presence stanza of type "subscribe" to Legacy User.</p>
+          <p class="caption"><a name="example-46" id="example-46"></a>Example 46. Jabber User Sends Subscription Request to Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribe'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends presence stanza of type "subscribed" to Jabber User on behalf of Legacy User.</p>
+          <p class="caption"><a name="example-47" id="example-47"></a>Example 47. Gateway Approves Subscription Request on Behalf of Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='subscribed'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+          </pre></div>
+        </li>
+        <li>
+          <p>Gateway sends Legacy User's presence information to Jabber User.</p>
+          <p class="caption"><a name="example-48" id="example-48"></a>Example 48. Gateway Sends Legacy User's Current Presence Information to Jabber User</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit/orchard'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>5.1.2 <a name="usecases-legacy-add-alt" id="usecases-legacy-add-alt">Alternate Flows</a></h3>
+      <ol>
+        <li><p>Jabber User denies subscription request:</p>
+          <ol>
+            <li>
+              <p>Jabber User sends presence stanza of type "unsubscribed" to Legacy User.</p>
+              <p class="caption"><a name="example-49" id="example-49"></a>Example 49. Jabber User Denies Subscription Request</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unsubscribed'
+          from='romeo@montague.lit'
+          to='CapuletNurse@aim.shakespeare.lit'/&gt;
+              </pre></div>
+            </li>
+            <li><p>Gateway cleans up subscription state and MUST NOT send Jabber User's presence to Legacy User.</p></li>
+            <li><p>Use Case Ends unsuccessfully.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="indent"><h3>5.2 <a name="usecases-legacy-delete" id="usecases-legacy-delete">Delete Contact</a></h3>
+    <p>After adding the Jabber User to his or her legacy contact list, the Legacy User may want to delete the Jabber User.</p>
+    <div class="indent"><h3>5.2.1 <a name="usecases-legacy-delete-pri" id="usecases-legacy-delete-pri">Primary Flow</a></h3>
+      <ol>
+        <li><p>Legacy User deletes Jabber User's legacy address (using legacy protocol).</p></li>
+        <li>
+          <p>Gateway sends presence stanzas of type "unsubscribe", "unsubscribed", and "unavailable" to Jabber User on behalf of Legacy User.</p>
+          <p class="caption"><a name="example-50" id="example-50"></a>Example 50. Gateway Cleans Up Subscription on Behalf of Legacy User</p><div class="indent"><pre class="prettyprint">
+&lt;presence type='unsubscribe'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+
+&lt;presence type='unsubscribed'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit'/&gt;
+
+&lt;presence type='unavailable'
+          from='CapuletNurse@aim.shakespeare.lit'
+          to='romeo@montague.lit/orchard'/&gt;
+          </pre></div>
+        </li>
+        <li><p>Jabber User's server performs defined functionality for handling presence stanzas of type "unsubscribe" and "unsubscribed" (see <span class="ref">RFC 6121</span>).</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>5.2.2 <a name="usecases-legacy-delete-alt" id="usecases-legacy-delete-alt">Alternate Flows</a></h3>
+      <p>None.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>5.3 <a name="usecases-legacy-send" id="usecases-legacy-send">Send Message</a></h3>
+    <p>Naturally, the Legacy User may want to exchange messages with the Jabber User. (Here again, groupchat messages are out of scope.)</p>
+    <div class="indent"><h3>5.3.1 <a name="usecases-legacy-send-pri" id="usecases-legacy-send-pri">Primary Flow</a></h3>
+      <ol>
+        <li><p>Legacy User sends message to Jabber User using legacy protocol.</p></li>
+        <li>
+          <p>Gateway transforms message and routes to Jabber User.</p>
+          <p class="caption"><a name="example-51" id="example-51"></a>Example 51. Legacy User Sends Message to Jabber User</p><div class="indent"><pre class="prettyprint">
+&lt;message from='juliet@aim.shakespeare.lit'
+         to='romeo@montague.lit'&gt;
+  &lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;
+&lt;/message&gt;
+          </pre></div>
+          <p>Note: If the Legacy Service to which the Gateway connects does not support a concept equivalent to that of Jabber "resources" as described in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idp1695968">8</a>], the 'from' address of message stanzas generated by a gateway SHOULD NOT include a resource identifier (i.e., they SHOULD be of the form &lt;user@host&gt; rather than &lt;user@host/resource&gt;). However, the 'from' address MAY include a resource if the Gateway determines that this is appropriate in the context of its communications with the Legacy Service.</p>
+        </li>
+        <li><p>Jabber User's Server delivers message or (optionally) stores it for later retrieval.</p></li>
+        <li><p>Use Case Ends.</p></li>
+      </ol>
+    </div>
+    <div class="indent"><h3>5.3.2 <a name="usecases-legacy-send-alt" id="usecases-legacy-send-alt">Alternate Flows</a></h3>
+      <p>None.</p>
+    </div>
+  </div>
+<h2>6.
+       <a name="addressing" id="addressing">Addressing</a></h2>
+  <div class="indent"><h3>6.1 <a name="addressing-gateway" id="addressing-gateway">Gateways</a></h3>
+    <p>The address of a gateway itself SHOULD be a hostname only, and that hostname SHOULD NOT be supplemented with a resource identifier when referring to the gateway's address (e.g., when storing the gateway in a roster).</p>
+  </div>
+  <div class="indent"><h3>6.2 <a name="addressing-user" id="addressing-user">Users</a></h3>
+    <p>The Jabber Identifier corresponding to a Legacy User's address is typically of the form &lt;LegacyUserAddress@gateway.example.com&gt;, where LegacyUserAddress is the Legacy User's address on the Legacy Service and where gateway.example.com is the Jabber address of the gateway.</p>
+    <p>Unfortunately, usernames on some Legacy Services may allow characters that are disallowed in Jabber usernames as specified by the Nodeprep profile of stringprep defined in <span class="ref">RFC 3920</span>. For example, the usernames for a Legacy Service may be of the form &lt;user@domain&gt;, which would result in an illegal JID such as &lt;user@domain@gateway.example.com&gt;.</p>
+    <p>There are two possible ways to solve this problem:</p>
+    <ol>
+      <li>Use <span class="ref"><a href="http://xmpp.org/extensions/xep-0106.html">JID Escaping (XEP-0106)</a></span>  [<a href="#nt-idp1708880">9</a>].</li>
+      <li>Use the older 'jabber:iq:gateway' protocol (as documented in the following section).</li>
+    </ol>
+    <p>Gateways and clients SHOULD implement at least one of these protocols; at a minimum, it is RECOMMENDED for gateways and clients to implement the 'jabber:iq:gateway' protocol.</p>
+  </div>
+  <div class="indent"><h3>6.3 <a name="addressing-iqgateway" id="addressing-iqgateway">The jabber:iq:gateway Protocol</a></h3>
+    <p>The 'jabber:iq:gateway' protocol performs two functions:</p>
+    <ol>
+      <li><p>It enables a client to determine the text for the "prompt" to show to a Jabber User when the user wants to add a legacy contact to the user's roster (e.g., "Please enter the AOL Screen Name of the person you would like to contact"), as well as the preferred name for the prompted item (e.g., "Screen Name"). To do so, the client sends an empty &lt;query/&gt; element and the gateway returns a &lt;prompt/&gt; element (the name for the prompted item) and optionally a &lt;desc/&gt; element (the text of the prompt itself).</p></li>
+      <li><p>It enables a client to send a legacy username to the gateway and receive a properly-formatted JID in return. To do so, the client sends the legacy address to the gateway as the character data of the &lt;prompt/&gt; element and the gateway returns a valid JID as the character data of the &lt;jid/&gt; element.</p></li>
+    </ol>
+    <p>Both uses are illustrated below.</p>
+    <p class="caption"><a name="example-52" id="example-52"></a>Example 52. Client Requests Prompt</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='aim.jabber.org' from='stpeter@jabber.org/roundabout' id='gate1'&gt;
+  &lt;query xmlns='jabber:iq:gateway'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-53" id="example-53"></a>Example 53. Gateway Returns Prompt</p><div class="indent"><pre class="prettyprint">
+  &lt;iq type='result' from='aim.jabber.org' to='stpeter@jabber.org/roundabout' id='gate1'&gt;
+    &lt;query xmlns='jabber:iq:gateway'&gt;
+      &lt;desc&gt;
+        Please enter the AOL Screen Name of the
+        person you would like to contact.
+      &lt;/desc&gt;
+      &lt;prompt&gt;Contact ID&lt;/prompt&gt;
+    &lt;/query&gt;
+  &lt;/iq&gt;
+    </pre></div>
+    <p>The following table is intended to assist implementors with mapping of gateway identities to English-language prompt names and text.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Prompt Item Mapping (English)</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Legacy Service</th>
+        <th>Service Discovery Identity</th>
+        <th>Prompt Name</th>
+        <th>Prompt Text</th>
+      </tr>
+      <tr class="body">
+        <td>AOL Instant Messenger</td>
+        <td>gateway/aim</td>
+        <td>Contact ID</td>
+        <td>Please enter the AOL Screen Name of the person you would like to contact.</td>
+      </tr>
+      <tr class="body">
+        <td>ICQ</td>
+        <td>gateway/icq</td>
+        <td>Contact ID</td>
+        <td>Please enter the ICQ Number of the person you would like to contact.</td>
+      </tr>
+      <tr class="body">
+        <td>Windows Live Messenger</td>
+        <td>gateway/msn  [<a href="#nt-idp559744">10</a>]</td>
+        <td>Contact ID</td>
+        <td>Please enter the Windows Live Messenger address of the person you would like to contact.</td>
+      </tr>
+      <tr class="body">
+        <td>Yahoo! Messenger</td>
+        <td>gateway/yahoo</td>
+        <td>Contact ID</td>
+        <td>Please enter the Yahoo ID of the person you would like to contact.</td>
+      </tr>
+    </table></div>
+    <p>If the client provides an 'xml:lang' attribute with the IQ-get, the gateway SHOULD return localized prompt names and text if available, or default to English if not available.</p>
+    <p>Once the user enters a legacy username or address, the client MUST send it to the gateway as the character data of the &lt;prompt/&gt; element in an IQ-set; the gateway MUST then return a properly-formed JID based on the provided by the client.</p>
+    <p class="caption"><a name="example-54" id="example-54"></a>Example 54. Client Provides Legacy Username</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='aim.jabber.org' from='stpeter@jabber.org/roundabout' id='gate1'&gt;
+  &lt;query xmlns='jabber:iq:gateway'&gt;
+      &lt;prompt&gt;Foo Bar&lt;/prompt&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-55" id="example-55"></a>Example 55. Gateway Returns JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='aim.jabber.org' to='stpeter@jabber.org/roundabout' id='gate1'&gt;
+  &lt;query xmlns='jabber:iq:gateway'&gt;
+    &lt;jid&gt;FooBar@aim.jabber.org&lt;/jid&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>7.
+       <a name="rosters" id="rosters">Contact Lists</a></h2>
+  <p>Some legacy services maintain server-side contact lists, which are sent to the gateway when it logs in to the legacy service on behalf of the user. The gateway MAY initiate adding of the legacy contact list items to the user's Jabber roster. Some existing gateways do this by sending a presence stanza of type "subscribed" from the legacy contact's JID (e.g., &lt;LegacyUser@gateway.jabberserver.com&gt;) to the Jabber user; unfortunately, this behavior violates the presence stanza handling rules specified in <span class="ref">RFC 6121</span>. Therefore, a gateway SHOULD instead send the legacy contact list items to the Jabber User via the <span class="ref"><a href="http://xmpp.org/extensions/xep-0144.html">Roster Item Exchange (XEP-0144)</a></span>  [<a href="#nt-idp1743280">11</a>] protocol.</p>
+<h2>8.
+       <a name="bizrules" id="bizrules">Business Rules</a></h2>
+  <p>The following business rules apply:</p>
+  <ol>
+    <li><p>A client SHOULD send a <span class="ref">Service Discovery</span> request to the gateway (and/or an <span class="ref">Agent Information</span> request to the gateway's parent) before requesting registration information.</p></li>
+    <li><p>A gateway SHOULD support the <span class="ref">Service Discovery</span> protocol.</p></li>
+    <li><p>A gateway SHOULD support the <span class="ref">Agent Information</span> protocol, although it is deprecated.</p></li>
+    <li><p>A gateway SHOULD map, as best it can, the legacy registration fields onto the fields defined for the 'jabber:iq:register' namespace.</p></li>
+    <li><p>A gateway SHOULD NOT attempt to emulate offline message storage functionality for legacy services that lack such functionality.</p></li>
+    <li>
+      <p>Existing gateway implementations do not strictly adhere to the bi-directional nature of Jabber presence notifications, since they do not broadcast presence from the gateway itself to registered users of the gateway, but rather wait for a registered user to send presence to the gateway before sending presence to the user. This sidesteps scalability challenges but may be sub-optimal; while this document does not require existing gateways to change their current behavior, it does RECOMMEND that they broadcast presence notifications to registered users in accordance with the standard Jabber presence model. Specifically:</p>
+      <ul>
+        <li><p>On startup, a gateway (1) SHOULD send presence to all registered users of that gateway but (2) MAY wait to receive presence changes from each registered user.</p></li>
+        <li><p>On shutdown, a gateway SHOULD send unavailable presence to all registered users of the gateway.</p></li>
+      </ul>
+    </li>
+  </ol>
+<h2>9.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>As defined herein, a gateway is a <span class="em">client proxy</span>, since it "masquerades" as a user on a legacy instant messaging service. In order to act as a client proxy, the gateway logs into the user's account on the legacy service. This implies two things:</p>
+  <ul>
+    <li>The gateway must gather the legacy credentials from the user, and perhaps store them on the user's behalf.</li>
+    <li>The gateway must provide the user's credentials to the legacy service.</li>
+  </ul>
+  <p>There are obvious security concerns with this approach. The concerns include:</p>
+  <ol>
+    <li>The user's credentials on the legacy service may be sent in the clear from the gateway to the legacy service if the legacy service does not support channel encryption or strong authentication.</li>
+    <li>When the user informs the gateway of the user's legacy credentials, the credentials may be sent in the clear between the user's Jabber client and the user's Jabber server (if client-to-server channel encryption is not enabled) or between the user's Jabber server and the gateway (if the gateway is not in the user's "home" domain and server-to-server channel encryption is not enabled).</li>
+    <li>If the gateway stores the user's legacy credentials after registration (this is the default behavior of most or all existing gateway implementations), the user's credentials could be acquired by a malicious user if the server hosting the gateway is compromised.</li>
+  </ol>
+  <p>There is no foreseeable solution to these concerns, since they are instrinsic to the client proxy model. Some assurance regarding the second and third concerns can be achieved if the user runs his or her own Jabber server and gateways. However, the only true solution is to move beyond the client proxy model, either by using Jabber for all IM communications or to convince legacy IM services to allow federated server-to-server communications using open protocols such as Jabber/XMPP, thus obviating the need for client proxy gateways entirely.</p>
+<h2>10.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1763152">12</a>].</p>
+<h2>11.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>11.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1768256">13</a>] includes 'jabber:iq:gateway' in its registry of protocol namespaces.</p>
+  </div>
+<h2>12.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:gateway'
+    xmlns='jabber:iq:gateway'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0100: http://www.xmpp.org/extensions/xep-0100.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element name='desc' minOccurs='0' type='xs:string'/&gt;
+          &lt;xs:element name='prompt' type='xs:string'/&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:element name='jid' type='xs:string'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0100<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.0<br />
+            Last Updated: 2005-10-05<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0030, XEP-0077, XEP-0144<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: gateway<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/iq-gateway.xsd">http://www.xmpp.org/schemas/iq-gateway.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0100.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0100.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0100.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Dave Smith</h3><p class="indent">
+        Email:
+        <a href="mailto:dizzyd@jabber.org">dizzyd@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:dizzyd@jabber.org">dizzyd@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1517920" id="nt-idp1517920">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1520944" id="nt-idp1520944">2</a>. XEP-0094: Agent Information &lt;<a href="http://xmpp.org/extensions/xep-0094.html">http://xmpp.org/extensions/xep-0094.html</a>&gt;.</p><p><a name="nt-idp1529824" id="nt-idp1529824">3</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idp1542448" id="nt-idp1542448">4</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1558064" id="nt-idp1558064">5</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1565184" id="nt-idp1565184">6</a>. The fact that the Gateway can determine the Jabber User's legacy username based on the JID of the 'from' address indicates that the client proxy model assumes one registration per Jabber User.</p><p><a name="nt-idp1650992" id="nt-idp1650992">7</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1695968" id="nt-idp1695968">8</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1708880" id="nt-idp1708880">9</a>. XEP-0106: JID Escaping &lt;<a href="http://xmpp.org/extensions/xep-0106.html">http://xmpp.org/extensions/xep-0106.html</a>&gt;.</p><p><a name="nt-idp559744" id="nt-idp559744">10</a>. The service discovery type was originally defined as "msn" to reflect the name of the service as "MSN Messenger"; this type is retained even though the service has been renamed to "Windows Live Messenger".</p><p><a name="nt-idp1743280" id="nt-idp1743280">11</a>. XEP-0144: Roster Item Exchange &lt;<a href="http://xmpp.org/extensions/xep-0144.html">http://xmpp.org/extensions/xep-0144.html</a>&gt;.</p><p><a name="nt-idp1763152" id="nt-idp1763152">12</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1768256" id="nt-idp1768256">13</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2005-10-05)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Active. (psa)
+    </div><h4>Version 0.10 (2005-05-12)</h4><div class="indent">Modified text regarding address transformations and added reference to XEP-0106; corrected several small errors in the text and examples. (psa)
+    </div><h4>Version 0.9 (2004-10-27)</h4><div class="indent">Added specification of jabber:iq:gateway namespace; added reference to XEP-0144. (psa)
+    </div><h4>Version 0.8 (2004-05-07)</h4><div class="indent">Editorial review: made a number of minor textual changes and clarifications throughout; added introductory paragraph to each use case; specified that groupchat is out of scope. (psa)
+    </div><h4>Version 0.7 (2004-03-31)</h4><div class="indent">Cleaned up several notes, examples, and business rules based on feedback received on list. (psa)
+    </div><h4>Version 0.6 (2004-03-08)</h4><div class="indent">Added note about 'from' address on presence notifications and messages received through gateways from legacy users. (psa)
+    </div><h4>Version 0.5 (2004-01-21)</h4><div class="indent">Further specified the rationale for deprecating the "jabber:iq:gateway" protocol. (psa)
+    </div><h4>Version 0.4 (2004-01-05)</h4><div class="indent">Added Edit Registration use case; modified handling of legacy contact lists to conform to RFC 3921; modified addressing rules; defined gateway startup and shutdown behavior; included XMPP error handling. (psa)
+    </div><h4>Version 0.3 (2003-12-10)</h4><div class="indent">Added security considerations; defined handling of legacy contact lists. (psa)
+    </div><h4>Version 0.2 (2003-12-03)</h4><div class="indent">Corrected some errors; clarified some ambiguities; added protocol flows. (psa)
+    </div><h4>Version 0.1 (2003-06-25)</h4><div class="indent">Initial version. (psa/dss)
+    </div></div><hr /><p>END</p></body></html>

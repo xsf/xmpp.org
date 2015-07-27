@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0026: Internationalization (I18N)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Internationalization (I18N)" /><meta name="DC.Creator" content="Max Horn" /><meta name="DC.Description" content="NOTE WELL: this document was retracted on 2003-11-05 since the topic is addressed definitively in XMPP Core. Please refer to XMPP Core for further information." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-11-05" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0026" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0026: Internationalization (I18N)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>NOTE WELL: this document was retracted on 2003-11-05 since the topic is addressed definitively in XMPP Core. Please refer to XMPP Core for further information.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Max Horn</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-11-05</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp617008">Introduction</a><br />2.  <a href="#sect-idp625168">Implementation</a><br />   
+      2.1.  <a href="#sect-idp626272">Encoding the locale</a><br />   
+      2.2.  <a href="#sect-idp629680">Client support</a><br />   
+      2.3.  <a href="#sect-idp636256">Server support</a><br />   
+      2.4.  <a href="#sect-idp640896">Service support</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp617008" id="sect-idp617008">Introduction</a></h2>
+	 <p>
+	 	Jabber is meant to allow people everywhere in the world to communicate
+		with each other. However, people converse in many different languages, not just
+		English. Many humans in fact don't even understand English. Hence,
+		Jabber should not be tied to  a particular language, but rather allow
+		usage of any language, be it English, Chinese, Inuit, or anything else.
+	</p>
+	<p>
+		One important step towards this goal is that Jabber is based upon
+		Unicode, allowing for many different languages. But that alone is not
+		enough. Jabber promotes a server-based system for many of its
+		components and services, like the JUD, or transports. Many of these have
+		to interact with users in some way. Currently, they do so in only one
+		fixed language (usually English). Even if the server admin is willing
+		to translate the messages, forms, etc. involved, there can only be one
+		localization active for a given server/component.
+	</p>
+	<p>
+		Hence, Jabber must support a way for clients to inform the server about
+		their preferred language. In addition, the server and other components
+		have to understand and honor this information. Only this way can we
+		ensure that Jabber is able to work in a multi-national, multi-lingual
+		environment.
+	</p>
+	<p>
+		Some examples on how this information could and should be used, include
+	</p>
+	<ul>
+		<li>Forms (e.g. for registration or searching, refer also to <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp622816">2</a>]) can be localized, so that instructions and field labels are in the native language of the person who has to fill them out</li>
+		<li>Even if the form can't be sent in the proper language (e.g. simply because it hasn't yet been translated), the component still should tag its reply with the language being used</li>
+		<li>Incoming messages in a different language could be automatically translated (server-side or client-side)</li>
+		<li>Redirection of messages based on their language (think of a help desk which services world wide requests)</li>
+		<li>Transports to services which are not unicode based could use the language information as a hint at the best encoding (least lossage) for converted messages</li>
+	</ul>
+<h2>2.
+       <a name="sect-idp625168" id="sect-idp625168">Implementation</a></h2>
+	<p>
+		The basic idea behind this proposal was to use existing standards where possible, and to make it fully backward compatible. Furthermore it was a goal to allow clients to support it now, even without any server support, while at the same time permitting improved functionality once servers start to implement this spec.
+	</p>
+
+	<div class="indent"><h3>2.1 <a name="sect-idp626272" id="sect-idp626272">Encoding the locale</a></h3>
+		<p>To encode the locale on any given XML packet, we use the xml:lang attribute, as defined in the <a href="http://www.w3.org/TR/REC-xml#sec-lang-tag">XML specification</a>. This in turn uses values as specified in <a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766</a> to encode languages and regions. This way, you can even distinguish between British and Australian English.
+		</p>
+		<p class="caption"><a name="example-1" id="example-1"></a>Example 1. Example message with locale set to German</p><div class="indent"><pre class="prettyprint">
+&lt;message to='friedrich@jabber.org' xml:lang='de-DE'&gt;
+  &lt;body&gt;Ich bin ein Berliner!&lt;/body&gt;
+&lt;/message&gt;  </pre></div>
+		<p>
+			An xml:lang tag can be put onto any XML element; for the purposes of this document, however, we will limit its usage to the four central Jabber elements: &lt;stream/&gt;, &lt;message/&gt;, &lt;iq/&gt; and &lt;presence/&gt;.
+		</p>
+	</div>
+	
+	<div class="indent"><h3>2.2 <a name="sect-idp629680" id="sect-idp629680">Client support</a></h3>
+		<p>
+			A client claiming to support this document has to initiate server connection slightly differently by putting an xml:lang attribute in the initial &lt;stream:stream&gt; element.
+		</p>
+		<p class="caption"><a name="example-2" id="example-2"></a>Example 2. Jabber session initiated with Canadian French as default</p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;stream:stream to='jabber.org' xmlns='jabber:client'
+          xmlns:stream='http://etherx.jabber.org/streams' xml:lang='fr-CA'&gt; </pre></div>
+		<p>
+			Servers not supporting this document will just ignore the additional attribute. Compliant server can be distinguished by the fact that their reply &lt;stream:stream&gt; element also contains an xml:lang attribute, indicating the main language of the server. A compliant client has to detect whether the server is compliant or not, and base its future behavior on this information.
+		</p>
+		<p class="caption"><a name="example-3" id="example-3"></a>Example 3. Reply by an English-language Jabber server</p><div class="indent"><pre class="prettyprint">
+&lt;stream:stream from='jabber.org' id='12345' xmlns='jabber:client'
+          xmlns:stream='http://etherx.jabber.org/streams' xml:lang='en'&gt; </pre></div>
+		<p>
+			If the client thus determines that the server is compliant, then it doesn't have to do anything beyond this point. All its outgoing messages will automatically be flagged by the server with an xml:lang attribute if necessary. Thus writing a minimal compliant client is trivial.
+		</p>
+		<p>
+			If it is determined that the server does not support this document, and the client still wants to offer locale support, it may start flagging all its outgoing message/iq/presence elements with the xml:lang attribute, to ensure that other components/clients which do conform to this document can handle the localization despite the local server not doing so.
+		</p>
+		<p>
+			Finally, if for whatever reasons the client wants to flag particular messages with a different locale (e.g. if the user is bilingual), it can do so at any time by putting an appropriate xml:lang element in the outgoing data. This will override the previously set default locale for this message only.
+		</p>
+	</div>
+
+	
+	<div class="indent"><h3>2.3 <a name="sect-idp636256" id="sect-idp636256">Server support</a></h3>
+		<p>
+			A compliant server must detect the xml:lang attribute in incoming &lt;stream:stream&gt; elements. The server then has to store this information for later use, i.e. it has to remember the default language for each active session. 
+		</p>
+		<p>
+			Additionally, a compliant server must attach an xml:lang attribute to the reply &lt;stream:stream&gt; element sent in response to a newly initiated connection. This attribute should reflect the default language of that server, and is used to indicate to clients that the server implements this document.
+		</p>
+		<p>
+			The server should not only allow user clients to specify a default language this way, but also server-side components, like the JUD should be allowed to do this.
+		</p>
+		<p>
+			Whenever a message leave the server, it has to tag the message automatically with the xml:lang attribute of the corresponding seesion, if any was specified, unless the message is already tagged this way. In that case, the already existing xml:lang attribute takes precedence, thus allowing for greater flexibility.
+		</p>
+		<p>
+			If a client send a message to another local client which uses the same xml:lang value, then no change is applied. But if the recipient uses a different xml:lang, and if the message has no xml:lang attribute attached yet, the xml:lang of the server has to be attached before delievey of the message.
+		</p>
+	</div>
+
+	
+	<div class="indent"><h3>2.4 <a name="sect-idp640896" id="sect-idp640896">Service support</a></h3>
+		<p>
+			Jabber based services that wish to comply to this document have to make sure that all information they send to clients is tagged with an xml:lang attribute corresponding to the language used in the outgoing data, if appropriate, even if the component supports no other localizations. An example for this is a search form based on <span class="ref">XEP-0004</span>.
+		</p>
+		<p class="caption"><a name="example-4" id="example-4"></a>Example 4. Search form in English</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='users.jabber.org' type='result' id='4' xml:lang='en'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;instructions&gt;
+        Fill in a field to search for any matching Jabber users.
+    &lt;/instructions&gt;
+    &lt;nick/&gt;
+    &lt;first/&gt;
+    &lt;last/&gt;
+    &lt;email/&gt;
+
+    &lt;x xmlns='jabber:x:data'&gt;
+      &lt;instructions&gt;
+          To search for a user fill out at least one 
+          of the fields below and submit the form.
+      &lt;/instructions&gt;
+      &lt;field type='text-single' label='First (Given)' var='first'/&gt;
+      &lt;field type='text-single' label='Last (Family)' var='last'/&gt;
+      &lt;field type='text-single' label='Nick (Alias)' var='nick'/&gt;
+      &lt;field type='text-single' label='Email' var='email'/&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt; </pre></div>
+		<p>
+			This way, a client could for example offer to translate the form since it now knows the language the form was written in. Previously it could just guess the language was English, which never was guaranteed.
+		</p>
+     	<p>
+     		To be able to tailor replies to the user's preferred language, the component has to know this information. This is simply inferred from any xml:lang attribute on incoming requests. If none is present, the default locale is assumed. If the client's default locale diverges from that of the component, it is the server's responsibility to tag the query with an appropriate xml:lang attribute (refer to the "Server support" section). If on the other hand the server is not compliant, then any interested client will manually tag its queries with an xml:lang attribute. Thus it is sufficient to check for this attribute.
+     	</p>
+		<p class="caption"><a name="example-5" id="example-5"></a>Example 5. Request for a German-language search form</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='users.jabber.org' type='get' id='5' xml:lang='de'&gt;
+  &lt;query xmlns='jabber:iq:search'/&gt;
+&lt;/iq&gt; </pre></div>
+		<p>
+			A more sophisticated component supporting multiple localizations of its forms/messages could now honor the requested language and send this search form instead of the English one shown previously:
+		</p>
+		<p class="caption"><a name="example-6" id="example-6"></a>Example 6. Search form in German</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='users.jabber.org' type='result' id='5' xml:lang='de'&gt;
+  &lt;query xmlns='jabber:iq:search'&gt;
+    &lt;instructions&gt;
+        Füllen Sie ein Feld aus um nach einem beliebigen 
+        passenden Jabber-Benutzer zu suchen.
+    &lt;/instructions&gt;
+    &lt;nick/&gt;
+    &lt;first/&gt;
+    &lt;last/&gt;
+    &lt;email/&gt;
+
+    &lt;x xmlns='jabber:x:data'&gt;
+      &lt;instructions&gt;
+          Um nach einem Benutzer zu suchen, füllen Sie mindestens eines 
+          der folgenden Felder aus und schicken dann das Formular ab.
+      &lt;/instructions&gt;
+      &lt;field type='text-single' label='Vorname' var='first'/&gt;
+      &lt;field type='text-single' label='Nachname' var='last'/&gt;
+      &lt;field type='text-single' label='Spitzname' var='nick'/&gt;
+      &lt;field type='text-single' label='Email' var='email'/&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt; </pre></div>
+		<p>
+			If the component doesn't have the requested localization available, it replies with the default localization (but of course with the matching xml:lang attribute tagged to it, and not the one of the request).
+     	</p>
+     
+	</div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0026<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-11-05<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0026.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0026.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0026.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Max Horn</h3><p class="indent">
+        Email:
+        <a href="mailto:max@quendi.de">max@quendi.de</a><br />
+        JabberID: 
+        <a href="xmpp:black_fingolfin@jabber.org">black_fingolfin@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp711168" id="nt-idp711168">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp622816" id="nt-idp622816">2</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-11-05)</h4><div class="indent">The status of this document has been changed to Retracted since it has been superseded by <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp711168">1</a>]. (psa)
+    </div><h4>Version 0.1 (2002-03-14)</h4><div class="indent">Initial version. (mh)
+    </div></div><hr /><p>END</p></body></html>

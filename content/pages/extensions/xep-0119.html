@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0119: Extended Presence Protocol Suite</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Extended Presence Protocol Suite" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document specifies a set of XMPP extensions that provide support for extended presence information. Note: This document has been retracted since its functionality is handled by XEP-0163." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2006-08-08" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0119" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0119: Extended Presence Protocol Suite</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies a set of XMPP extensions that provide support for extended presence information. Note: This document has been retracted since its functionality is handled by XEP-0163.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2006-08-08</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#background">Background</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#suite">Extended Presence Protocol Suite</a><br />5.  <a href="#discovery">Node Discovery</a><br />6.  <a href="#security">Security Considerations</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="em">Note: This document has been retracted since its functionality is handled by <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp694544">1</a>].</span></p>
+  <p>A number of network services enable the exchange of information about an entity's availability for communications over the network. This information is usually called "presence". Examples include a person's availability to talk over a traditional or mobile telephony network, chat over an instant messaging (IM) network, or participate in a video conference. In this core sense, presence is a boolean, "on/off" indicator of network availability.</p>
+  <p>Over time, this core notion of presence has been extended to include other information about the entity that either (1) changes quickly or (2) affects the entity's interest in or ability to engage in communications. Examples of such "extended presence" include a person's proximity to or interaction with a user agent (e.g., "away" or "do not disturb"), activity (e.g., "driving"), ambient environment (e.g., "noisy"), and mood (e.g., "grumpy"). Related information includes data about the person's available devices (e.g., "phone" or "IM"), current contact modes or address, and date/time ranges for availability. Because extended presence information can change quite often (e.g., several times in the course of a typical IM session), it is distinct from more stable information about the individual (such as is captured in a vCard or other user profile).</p>
+  <p>This document describes a unified approach to the provision and communication of extended presence information using the Extensible Messaging and Presence Protocol (XMPP), in the form of a "protocol suite" that incorporates by reference a number of existing XMPP extensions.</p>
+<h2>2.
+       <a name="background" id="background">Background</a></h2>
+  <p>XMPP began life as a dedicated instant messaging and presence protocol within the Jabber community. The needs of this community were not advanced (simple IM and presence), and the presence model designed by that community mainly takes account of basic presence only (i.e., on/off availability on an IM network). Within this model (and using the terminology of <span class="ref"><a href="http://tools.ietf.org/html/rfc2778">RFC 2778</a></span>  [<a href="#nt-idp702496">2</a>]), the only watchers are those in the principal's contact list (in XMPP called a "roster"). In addition, authorization to receive basic presence broadcasts is handled by the principal through a combination of roster management and basic presence subscriptions as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1553488">3</a>]. The presence service is tied to the principal's session with a server, and the server's internal session manager handles both presence and instant messaging functionality (although IM and presence can be separated in system configuration or "on the fly" via negative presence priorities).</p>
+  <p>This basic presence model was not designed for the more advanced world of extended presence. While some existing IM clients publish extended presence information as XML extensions to the XMPP &lt;presence/&gt; stanza, that model does not scale well, does not respect the bandwidth restrictions of many clients on the network, and does not provide for more granular control over information access (anyone who receives presence will also receive geolocation data and the like). However, there is a more advanced protocol that is specially designed to fully implement the publish-subscribe design pattern on top of XMPP, specified in <span class="strong">XEP-0060:</span> <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1557552">4</a>]. The publish-subscribe protocol can be used to create a service that provides full control over each type of extended presence data, sending that data only to those specifically authorized to receive it and those who have an active interest in each extension. In particular, for extended presence related to IM users, we specify the use of the personal eventing subset of <span class="ref">XEP-0060</span>, as defined in <span class="ref">XEP-0163</span>.</p>
+  <p>The provision and communication of extended presence information follows the classic publish-subscribe design pattern: an individual publishes information such as geographical location data, and the data is broadcasted to all subscribers who are authorized to receive that data. (Alternatively, the data can be published on behalf of the individual, such as by a mobile telephony service that has knowledge of the individual's geographical location and authorization to act as a publisher of that data.) In general, the relationship between the publisher and subscriber is mediated by a service that receives publication requests, broadcasts data to subscribers, and enables the individual to manage lists of entities that are authorized to publish or subscribe to the data. This model makes it possible to deploy highly flexible extended presence services within the context of XMPP.</p>
+  <p>The following diagram provides a schematic representation of such a service.</p>
+<p class="caption"></p><div class="indent"><pre class="prettyprint">
+
+Mobile                                     XMPP
+Telephony          Principal               Session
+Service                |                   Manager
+   |__________ ________|_________  __________|
+             | |   | |   |   |   | |
+             |1| |2| |3| |4| |5| |6|
+           +-------------------------+
+           |                         |
+           |    Extended Presence    |
+	   |         Service         |
+           |                         |
+           +-------------------------+
+             |1| |2| |3| |4| |5| |6|
+             |___| |_|   | _______|_
+               |    |    ||   |    |
+              Sub  Sub  Sub  Sub  Sub
+</pre></div>
+  <p>In this example, there are six different extended presence nodes (these might be, for example, geographical location, avatar, activity, mood, network availability, etc.). The principal is authorized to publish to all six, a Mobile Telephony Service is also authorized to publish to Node 1 (e.g., geolocation), and an XMPP Session Manager is also authorized to publish to Node 6 (e.g., network availability). There are five subscribers: Subscriber 1 is authorized to receive data from Node 1 and Node 2, Subscriber 2 is authorized to Node 2 and Node 3, Subscriber 3 is authorized to receive data from Node 4 and Node 6, and Subscribers 4 and 5 are authorized to receive data from Node 6 only.</p>
+<h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This document follows the same approach as <span class="ref"><a href="http://xmpp.org/extensions/xep-0073.html">Basic IM Protocol Suite (XEP-0073)</a></span>  [<a href="#nt-idp1566848">5</a>]. By design, the Basic IM Protocol Suite does not include more advanced functionality related to "extended presence"; the present document fills the need for a protocol suite that addresses such functionality.</p>
+  <p>A protocol is deemed worthy of inclusion in this protocol suite if:</p>
+  <ul>
+    <li>It addresses "extended presence" data that is defined in other presence services or protocols (e.g., Wireless Village or SIMPLE), or that is felt to be needed within the Jabber/XMPP community.</li>
+    <li>It has achieved a status of at least Draft within the XMPP Standards Foundation's standards process (as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0001.html">XMPP Extension Protocols (XEP-0001)</a></span>  [<a href="#nt-idp1571008">6</a>]).</li>
+  </ul>
+<h2>4.
+       <a name="suite" id="suite">Extended Presence Protocol Suite</a></h2>
+  <p>We define the Extended Presence Protocol Suite as follows:</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Required and Recommended Specifications</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Specification</th>
+      <th>Requirement Level</th>
+    </tr>
+    <tr class="body">
+      <td><span class="strong">XEP-0073: Basic IM Protocol Suite</span></td>
+      <td>REQUIRED (prerequisite)</td>
+    </tr>
+    <tr class="body">
+      <td><span class="strong">XEP-0163: Personal Eventing via Pubsub</span></td>
+      <td>REQUIRED (prerequisite)</td>
+    </tr>
+    <tr class="body">
+      <td><span class="ref"><a href="http://xmpp.org/extensions/xep-0080.html">User Geolocation (XEP-0080)</a></span>  [<a href="#nt-idp1579264">7</a>]</td>
+      <td>REQUIRED</td>
+    </tr>
+    <tr class="body">
+      <td><span class="ref"><a href="http://xmpp.org/extensions/xep-0112.html">User Physical Location (XEP-0112)</a></span>  [<a href="#nt-idp1583040">8</a>]</td>
+      <td>REQUIRED</td>
+    </tr>
+    <tr class="body">
+      <td><span class="ref"><a href="http://xmpp.org/extensions/xep-0108.html">User Activity (XEP-0108)</a></span>  [<a href="#nt-idp1586144">9</a>]</td>
+      <td>REQUIRED</td>
+    </tr>
+    <tr class="body">
+      <td><span class="ref"><a href="http://xmpp.org/extensions/xep-0107.html">User Mood (XEP-0107)</a></span>  [<a href="#nt-idp1589488">10</a>]</td>
+      <td>REQUIRED</td>
+    </tr>
+    <tr class="body">
+      <td><span class="ref"><a href="http://xmpp.org/extensions/xep-0084.html">User Avatar (XEP-0084)</a></span>  [<a href="#nt-idp1592768">11</a>]</td>
+      <td>REQUIRED *</td>
+    </tr>
+  </table></div>
+  <p><span class="em">* Note: The User Avatar specification (<span class="ref">XEP-0084</span>) has not yet advanced to a status of Draft within the XSF's standards process, and the Extended Presence Protocol Suite will not be submitted for approval until it does so.</span></p>
+<h2>5.
+       <a name="discovery" id="discovery">Node Discovery</a></h2>
+  <p>Discovery of extended presence pubsub nodes is expedited through the use of <span class="ref">Personal Eventing via Pubsub</span> (PEP), since in PEP services there is a one-to-one relationship between payload types and NodeIDs. The NodeIDs MUST be as follows:</p>
+  <ul>
+    <li>Activity: http://jabber.org/protocol/activity</li>
+    <li>Avatar: http://jabber.org/protocol/avatar#metadata</li>
+    <li>Geolocation: http://jabber.org/protocol/geoloc</li>
+    <li>Mood: http://jabber.org/protocol/mood</li>
+    <li>Physical Location: http://jabber.org/protocol/physloc</li>
+  </ul>
+  <p>These nodes SHOULD have an access model of either "presence" or "roster".</p>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>This document introduces no new security considerations above and beyond those defined in the documents on which it depends. Because publicly exposing some forms of extended presence information (e.g., geolocation information) may lead to unnecessary risks, care should be taken in setting the access model for the relevant pubsub nodes (minimally, an access model of "presence" to take advantage of the bidirectional authorization scheme inherent in XMPP presence subscriptions).</p>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1603840">12</a>].</p> 
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1607504">13</a>].</p> 
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0119<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.8<br />
+            Last Updated: 2006-08-08<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0060, XEP-0073, XEP-0080, XEP-0084, XEP-0107, XEP-0108, XEP-0112, XEP-0163<br />
+                Supersedes: None<br />Superseded By: XEP-0163<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0119.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0119.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0119.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp694544" id="nt-idp694544">1</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp702496" id="nt-idp702496">2</a>. RFC 2778: A Model for Presence and Instant Messaging &lt;<a href="http://tools.ietf.org/html/rfc2778">http://tools.ietf.org/html/rfc2778</a>&gt;.</p><p><a name="nt-idp1553488" id="nt-idp1553488">3</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1557552" id="nt-idp1557552">4</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1566848" id="nt-idp1566848">5</a>. XEP-0073: Basic IM Protocol Suite &lt;<a href="http://xmpp.org/extensions/xep-0073.html">http://xmpp.org/extensions/xep-0073.html</a>&gt;.</p><p><a name="nt-idp1571008" id="nt-idp1571008">6</a>. XEP-0001: XMPP Extension Protocols &lt;<a href="http://xmpp.org/extensions/xep-0001.html">http://xmpp.org/extensions/xep-0001.html</a>&gt;.</p><p><a name="nt-idp1579264" id="nt-idp1579264">7</a>. XEP-0080: User Geolocation &lt;<a href="http://xmpp.org/extensions/xep-0080.html">http://xmpp.org/extensions/xep-0080.html</a>&gt;.</p><p><a name="nt-idp1583040" id="nt-idp1583040">8</a>. XEP-0112: User Physical Location &lt;<a href="http://xmpp.org/extensions/xep-0112.html">http://xmpp.org/extensions/xep-0112.html</a>&gt;.</p><p><a name="nt-idp1586144" id="nt-idp1586144">9</a>. XEP-0108: User Activity &lt;<a href="http://xmpp.org/extensions/xep-0108.html">http://xmpp.org/extensions/xep-0108.html</a>&gt;.</p><p><a name="nt-idp1589488" id="nt-idp1589488">10</a>. XEP-0107: User Mood &lt;<a href="http://xmpp.org/extensions/xep-0107.html">http://xmpp.org/extensions/xep-0107.html</a>&gt;.</p><p><a name="nt-idp1592768" id="nt-idp1592768">11</a>. XEP-0084: User Avatar &lt;<a href="http://xmpp.org/extensions/xep-0084.html">http://xmpp.org/extensions/xep-0084.html</a>&gt;.</p><p><a name="nt-idp1603840" id="nt-idp1603840">12</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1607504" id="nt-idp1607504">13</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.8 (2006-08-08)</h4><div class="indent"><p>Retracted: superseded by Personal Eventing via Pubsub (XEP-0163).</p> (psa)
+    </div><h4>Version 0.7 (2006-01-19)</h4><div class="indent"><p>Updated to reflect Personal Eventing via Pubsub (XEP-0163).</p> (psa)
+    </div><h4>Version 0.6 (2005-03-28)</h4><div class="indent"><p>Added avatar support to required protocols.</p> (psa)
+    </div><h4>Version 0.5 (2004-07-22)</h4><div class="indent"><p>Further defined the pubsub/disco interaction.</p> (psa)
+    </div><h4>Version 0.4 (2004-05-12)</h4><div class="indent"><p>Removed text on auto-subscribe functionality.</p> (psa)
+    </div><h4>Version 0.3 (2004-05-11)</h4><div class="indent"><p>Added introduction and background; defined well-known service discovery node for extended presence information; described auto-subscribe functionality.</p> (psa)
+    </div><h4>Version 0.2 (2003-11-24)</h4><div class="indent"><p>Status changed to Deferred.</p> (psa)
+    </div><h4>Version 0.1 (2003-09-08)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0088: Client Webtabs</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Client Webtabs" /><meta name="DC.Creator" content="Richard Dobson" /><meta name="DC.Description" content="A protocol for displaying web-based tabs in clients." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-03-14" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0088" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0088: Client Webtabs</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A protocol for displaying web-based tabs in clients.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Richard Dobson</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-03-14</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp611728">Introduction</a><br />2.  <a href="#sect-idp612976">Requirements</a><br />3.  <a href="#sect-idp615968">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp616352">Service Discovery</a><br />   
+      3.2.  <a href="#sect-idp621424">Retrieving list of web tabs</a><br />   
+      3.3.  <a href="#sect-idp627872">Private storage of preferences</a><br />   
+      3.4.  <a href="#sect-idp630752">Service authentication</a><br />4.  <a href="#sect-idp632016">Implementation Notes</a><br />5.  <a href="#sect-idp1494272">Security Considerations</a><br />6.  <a href="#sect-idp1495392">IANA Considerations</a><br />7.  <a href="#sect-idp1496400">XMPP Registrar Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp611728" id="sect-idp611728">Introduction</a></h2>
+  <p>Webtabs are a way for servers to specify a number to web pages which can be used in clients and displayed like the web-based services in Yahoo Messenger, MSN Messenger and JIM. This enables a server administrator to easily create services for Jabber clients and also help to integrate Jabber clients with existing web-based applications.</p>
+<h2>2.
+       <a name="sect-idp612976" id="sect-idp612976">Requirements</a></h2>
+  <p>The motivations for this document are:</p>
+  <ul>
+    <li>To enable servers to specify a selection of web-based services for use in a client.</li>
+    <li>To allow easy integration with existing web-based systems.</li>
+    <li>To give more value to people's Jabber services over another's.</li>
+    <li>To allow the creation of virtually limitless web-based services for Jabber clients without clients needing to be specifically coded to support that service.</li>
+  </ul>
+<h2>3.
+       <a name="sect-idp615968" id="sect-idp615968">Use Cases</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp616352" id="sect-idp616352">Service Discovery</a></h3>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp619152">1</a>] SHALL be used for discovering support for webtabs on servers.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Disco info response containing support for webtabs</p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type='result'
+    from='domain.com'
+    to='user@domain/resource'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='http://jabber.org/protocol/webtab'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+  <p>It is RECOMMENDED that the jabber server itself (JSM in jabberd) serves the webtab list, but if desired by the server implementor they MAY be served by a separate host/component.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Separate webtab host specified by server</p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type='result'
+    from='domain.com'
+    to='user@domain/resource'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item
+        jid='webtabs.domain.com'
+        name='Webtab Provider'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+&lt;iq 
+    type='result'
+    from='webtabs.domain.com'
+    to='user@domain/resource'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='http://jabber.org/protocol/webtab'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp621424" id="sect-idp621424">Retrieving list of web tabs</a></h3>
+  <p>The list of available web tabs is retrieved using the following protocol:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Request for list of webtabs available on a server</p><div class="indent"><pre class="prettyprint">
+&lt;iq
+    to='domain.com'
+    type='get'
+    id='webtab1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/webtab'/&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Response from server listing the available webtabs</p><div class="indent"><pre class="prettyprint">
+&lt;iq
+    to='user@domain.com/resource'
+    from='domain.com'
+    type='result'
+    id='webtab1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/webtab'&gt;
+    &lt;webtab type='email' id='em' name='Webmail'&gt;
+        http://tab.server.com/mail/
+    &lt;/webtab&gt;
+    &lt;webtab type='bookmark' id='bk' name='Bookmarks'&gt;
+        http://webtab.bookmarks.example.com/
+    &lt;/webtab&gt;
+    &lt;webtab type='calendar' id='cal' name='Calendar'&gt;
+        http://calendar.example.com/webtab/
+    &lt;/webtab&gt;
+    &lt;webtab type='news' id='nws' name='BBC News'&gt;
+        http://news.bbc.co.uk/webtab/
+    &lt;/webtab&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+<p>The webtab contains CDATA which is the URL of the webtab, the webtab is an HTML page retrieved from an HTTP server using a standard browser which you embed into your client UI using a technique such as the IWebBrowser2 control interface on windows which allows you to embed either the IE or Gecko engines depending on what you have installed, this data is REQUIRED.</p>
+<p>The "type" attribute tells the client what the service being provided is, this allows a client to display icons on the tabs to represent them, handling of the type in clients is OPTIONAL, inclusion of this attribute is REQUIRED (See "XMPP Registrar Considerations" for examples of values for this attribute).</p>
+<p>The "name" attribute is the offical name of a particular service this can be displayed as the tab name, this attribute is REQUIRED.</p>
+<p>The "id" attribute is a unique identifier for a service which you can use to refer to it later, used for when using private storage to store a preference to which tabs should be visible, this attribute is REQUIRED.</p>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp627872" id="sect-idp627872">Private storage of preferences</a></h3>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0049.html">Private XML Storage (XEP-0049)</a></span>  [<a href="#nt-idp635456">2</a>] SHALL be used for storing webtab preferences.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Request for current webtab preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq
+    to='domain.com'
+    type='get'
+    id='prefs1'&gt;
+  &lt;query xmlns='jabber:iq:private'&gt;
+    &lt;prefs xmlns="webtab:prefs"/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Response with webtab preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq
+    to='user@domain.com/resource'
+    from='domain.com'
+    type='result'
+    id='prefs1'&gt;
+  &lt;query xmlns='jabber:iq:private'&gt;
+    &lt;prefs xmlns='webtab:prefs'&gt;
+      &lt;webtab id='em' visible='true'/&gt;
+      &lt;webtab id='bk' visible='false'/&gt;
+      &lt;webtab id='cal' visible='true'/&gt;
+    &lt;/prefs&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+<p>The "id" attribute matches the "id" attribute from the list of webtabs, this attribute is used to match these preferences to the webtab in question, this attribute is REQUIRED.</p>
+<p>The "visible" attribute tells the client that a tab SHOULD or SHOULD NOT be hidden, a client SHOULD provide an interface for managing the visibility of the tabs and updating the preferences appropriately, this attribute is REQUIRED.</p>
+  </div>
+  <div class="indent"><h3>3.4 <a name="sect-idp630752" id="sect-idp630752">Service authentication</a></h3>
+    <p>It is RECOMMENDED that a mechanism such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0101.html">HTTP Authentication using Jabber Tickets (XEP-0101)</a></span>  [<a href="#nt-idp1491408">3</a>] be used for automatic service authentication.</p>
+  </div>
+
+<h2>4.
+       <a name="sect-idp632016" id="sect-idp632016">Implementation Notes</a></h2>
+  <p>The following guidelines may assist client developers.</p>
+  <ul>
+    <li>Use the "type" attribute as a way of determining what services a webtab provides, you can then use this to possibly display appropriate icons to represent the webtab in the client UI.</li>
+    <li>MUST use the "name" attribute when you have to refer to a webtab by name.</li>
+    <li>MUST use the private storage specification provided to store information about which tabs SHOULD be visible.</li>
+  </ul>
+<h2>5.
+       <a name="sect-idp1494272" id="sect-idp1494272">Security Considerations</a></h2>
+  <p>It is recommended that XEP-0101 be used to provide transparent authentication of the webtabs.</p>
+<h2>6.
+       <a name="sect-idp1495392" id="sect-idp1495392">IANA Considerations</a></h2>
+  <p>No IANA interaction required.</p>
+<h2>7.
+       <a name="sect-idp1496400" id="sect-idp1496400">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1499552">4</a>] will need to register the new namespace of "http://jabber.org/protocol/webtab" and possibly the list of offical types will need to be managed too.</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Possible types for webtabs</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Type</th>
+      <th>Purpose</th>
+    </tr>
+    <tr class="body">
+      <td>email</td>
+      <td>Web based email</td>
+    </tr>
+    <tr class="body">
+      <td>calendar</td>
+      <td>Web based calendar</td>
+    </tr>
+    <tr class="body">
+      <td>bookmark</td>
+      <td>Web based bookmark management service</td>
+    </tr>
+    <tr class="body">
+      <td>news</td>
+      <td>General news headlines</td>
+    </tr>
+    <tr class="body">
+      <td>news/sport</td>
+      <td>Sport headlines</td>
+    </tr>
+  </table></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0088<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 0.4<br />
+            Last Updated: 2004-03-14<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030, XEP-0049<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: webtab<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0088.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0088.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0088.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Richard Dobson</h3><p class="indent">
+        Email:
+        <a href="mailto:richard@dobson-i.net">richard@dobson-i.net</a><br />
+        JabberID: 
+        <a href="xmpp:richard@dobson-i.net">richard@dobson-i.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp619152" id="nt-idp619152">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp635456" id="nt-idp635456">2</a>. XEP-0049: Private XML Storage &lt;<a href="http://xmpp.org/extensions/xep-0049.html">http://xmpp.org/extensions/xep-0049.html</a>&gt;.</p><p><a name="nt-idp1491408" id="nt-idp1491408">3</a>. XEP-0101: HTTP Authentication using Jabber Tickets &lt;<a href="http://xmpp.org/extensions/xep-0101.html">http://xmpp.org/extensions/xep-0101.html</a>&gt;.</p><p><a name="nt-idp1499552" id="nt-idp1499552">4</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.4 (2004-03-14)</h4><div class="indent">Added Terminology section and associated alterations and added clarification about what the webtabs are. (red)
+    </div><h4>Version 0.3 (2003-09-30)</h4><div class="indent">Moved service discovery to top of use cases, added option for separate webtab provider and added reference to XEP-0101. (red)
+    </div><h4>Version 0.2 (2003-05-16)</h4><div class="indent">Clean ups. (red)
+    </div><h4>Version 0.1 (2003-03-02)</h4><div class="indent">Initial version. (red)
+    </div></div><hr /><p>END</p></body></html>

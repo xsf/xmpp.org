@@ -1,0 +1,903 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0131: Stanza Headers and Internet Metadata</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Stanza Headers and Internet Metadata" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for representing non-address-related headers in an XML format that is appropriate for use in XMPP. While the protocol provides a flexible mechanism for representing many kinds of standard Internet metadata, a registry of values is defined to structure the possible range of headers, and the inital registration includes headers from email, HTTP, MIME, and SIP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2006-07-12" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0131" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0131: Stanza Headers and Internet Metadata</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for representing non-address-related headers in an XML format that is appropriate for use in XMPP. While the protocol provides a flexible mechanism for representing many kinds of standard Internet metadata, a registry of values is defined to structure the possible range of headers, and the inital registration includes headers from email, HTTP, MIME, and SIP.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Joe Hildebrand</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2006-07-12</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#disco">Discovery</a><br />   
+      3.1.  <a href="#disco-proto">Protocol Support</a><br />   
+      3.2.  <a href="#disco-header">Header Support</a><br />4.  <a href="#protocol">Protocol</a><br />5.  <a href="#headers">Header Definitions</a><br />   
+      5.1.  <a href="#headers-classification">Classification</a><br />   
+      5.2.  <a href="#headers-created">Created</a><br />   
+      5.3.  <a href="#headers-distribute">Distribute</a><br />   
+      5.4.  <a href="#headers-store">Store</a><br />   
+      5.5.  <a href="#headers-ttl">TTL</a><br />   
+      5.6.  <a href="#headers-urgency">Urgency</a><br />6.  <a href="#dates">A Note About Date-Related Headers</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      9.2.  <a href="#registrar-nodes">Well-Known Service Discovery Nodes</a><br />   
+      9.3.  <a href="#registrar-shim">SHIM Headers Registry</a><br />      
+      9.3.1.  <a href="#registrar-shim-process">Process</a><br />      
+      9.3.2.  <a href="#registrar-shim-init">Initial Registration</a><br />10.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>In order to ensure proper processing by the recipient of an XML stanza, some Jabber protocols and other XMPP extensions may need to enable the sender to communicate non-addressing information about the stanza (this is especially true of protocols that translate from a foreign format to XMPP; a good example is <span class="ref"><a href="http://xmpp.org/extensions/xep-0111.html">A Transport for Initiating and Negotiating Sessions (XEP-0111)</a></span>  [<a href="#nt-idp616400">1</a>]). Such information was formerly included in <span class="ref"><a href="http://xmpp.org/extensions/xep-0033.html">Extended Stanza Addressing (XEP-0033)</a></span>  [<a href="#nt-idp618208">2</a>], but was removed from that specification when it was changed to focus on addressing information only. Therefore, this document defines a mechanism for encapsulating non-addressing "header" information about stanzas, including standard Internet metadata such as that defined by <span class="ref"><a href="http://tools.ietf.org/html/rfc2045">RFC 2045</a></span>  [<a href="#nt-idp620192">3</a>], <span class="ref"><a href="http://tools.ietf.org/html/rfc2616">RFC 2616</a></span>  [<a href="#nt-idp622080">4</a>], <span class="ref"><a href="http://tools.ietf.org/html/rfc2617">RFC 2617</a></span>  [<a href="#nt-idp623872">5</a>], <span class="ref"><a href="http://tools.ietf.org/html/rfc2822">RFC 2822</a></span>  [<a href="#nt-idp625696">6</a>], and <span class="ref"><a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a></span>  [<a href="#nt-idp627472">7</a>]. Such information is encapsulated in a protocol extension qualified by the 'http://jabber.org/protocol/shim' namespace, where "SHIM" stands for "Stanza Headers and Internet Metadata".</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This protocol addresses the following requirements:</p>
+  <ol>
+    <li>Enable the inclusion of any header information</li>
+    <li>Encapsulate all information in XML</li>
+    <li>Ensure interoperability with existing non-XMPP header and metadata formats (HTTP, MIME, SIP, SMTP, etc.)</li>
+  </ol>
+<h2>3.
+       <a name="disco" id="disco">Discovery</a></h2>
+  <div class="indent"><h3>3.1 <a name="disco-proto" id="disco-proto">Protocol Support</a></h3>
+    <p>In order to discover whether another entity supports this protocol, an entity MUST use <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp634448">8</a>].</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Entity queries another entity regarding protocol support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Queried entity communicates protocol support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/shim'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="disco-header" id="disco-header">Header Support</a></h3>
+    <p>It can be desirable (and, in some contexts, necessary) to determine if the intended recipient of an XML stanza supports a specific header (e.g., the "Classification" header) before sending information that may depend on that header. Therefore, implementations of this protocol MUST advertise which particular SHIM headers they support when queried via disco#info at the well-known service discovery node 'http://jabber.org/protocol/shim'.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Entity queries another entity regarding header support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='http://jabber.org/protocol/shim'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Queried entity communicates header support</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='http://jabber.org/protocol/shim'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/shim#Classification'/&gt;
+    &lt;feature var='http://jabber.org/protocol/shim#Distribute'/&gt;
+    &lt;feature var='http://jabber.org/protocol/shim#Store'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The values of the 'var' attribute MUST be of the form "http://jabber.org/protocol/shim#header", where "header" is to be replaced with the name of the header as registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp642960">9</a>] (see below).</p>
+  </div>
+<h2>4.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>In a fashion similar to the structure of <span class="ref">Extended Stanza Addressing</span>, headers for &lt;message/&gt; and &lt;presence/&gt; stanzas are contained in a &lt;headers/&gt; wrapper element qualified by the 'http://jabber.org/protocol/shim' namespace; each header is a child of this wrapper element, and is encapsulated via a &lt;header/&gt; element whose 'name' attribute identifies the header and whose XML character data specifies the relevant value:
+     [<a href="#nt-idp1576144">10</a>]
+  </p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. A basic example</p><div class="indent"><pre class="prettyprint">
+&lt;message from='romeo@montague.net/orchard'
+         to='juliet@capulet.com/balcony'&gt;
+  &lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='In-Reply-To'&gt;123456789@capulet.com&lt;/header&gt;
+    &lt;header name='Keywords'&gt;shakespeare,&amp;lt;xmpp/&amp;gt;&lt;/header&gt;
+  &lt;/headers&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>In accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1580640">11</a>], an &lt;iq/&gt; stanza must not contain more than one non-error child element; this places constraints on the location of SHIM headers in the XML hierarchy. Specifically, the &lt;headers/&gt; wrapper element MUST NOT be a direct child of &lt;iq/&gt; and instead SHOULD be a grandchild of &lt;iq/&gt; and a direct child of the content-bearing child element of &lt;iq/&gt; (e.g., &lt;query/&gt;, <span class="em">not</span> &lt;error/&gt;).</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. An IQ example</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'
+    id='ping1'&gt;
+  &lt;query xmlns='jabber:iq:time'&gt;
+    &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+      &lt;header name='Created'&gt;2004-09-21T03:01:52Z&lt;/header&gt;
+    &lt;/headers&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="headers" id="headers">Header Definitions</a></h2>
+  <p>All public headers SHOULD be registered with the XMPP Registrar following the process specified in the <a href="#registrar">XMPP Registrar Considerations</a> section of this document. Many such headers are defined by other protocol specifications, such as RFCs 2045, 2616, 2617, 2822, and 3261; implementors MUST refer to those specifications for definition of the relevant headers.</p>
+  <p>This document defines several additional headers that may prove useful within Jabber protocols and other XMPP extensions, as specified in the following sections; further headers may be registered with the XMPP Registrar, either directly or via definition in XMPP Extension Protocol specifications.</p>
+  <div class="indent"><h3>5.1 <a name="headers-classification" id="headers-classification">Classification</a></h3>
+    <p>The Classification header enables a sender or other entity to classify a stanza according to some classification scheme. The values of the XML character data contained within this header are out of scope for this document, since they are determined by the using application. Note: This header may be security-sensitive (see the <a href="#security">Security Considerations</a> for details).</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="headers-created" id="headers-created">Created</a></h3>
+    <p>The Date header is defined by RFC 2822 and therefore follows the date and time format defined by RFC 2822; while this header is thus useful for translating email messages into XMPP stanzas, it is not consistent with <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1591552">12</a>]. Therefore we define the "Created" header, which specifies the date and time when a stanza was created by the originating entity, where the value conforms to the DateTime profile specified in XEP-0082.</p>
+  </div>
+  <div class="indent"><h3>5.3 <a name="headers-distribute" id="headers-distribute">Distribute</a></h3>
+    <p>The Distribute header enables a sender to specify whether the stanza may be further distributed by the recipient to other entities on the network. The allowable values for this header are "true" and "false". If the sender specifies a value of "false", the recipient MUST NOT further distribute the stanza or any information contained therein; if the sender specifies a value of "true", the recipient MAY further distribute the stanza or any information contained therein; if the value is anything other than "true" or "false" and the recipient does not understand the value, the recipient MUST assume the default value of "false". This header is semantically equivalent to the "Distribute" flag defined in <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-geopriv-policy">Geopriv Policy</a></span>  [<a href="#nt-idp557104">13</a>]. (The HTTP "Max-Forwards" header is not appropriate for this usage, since it defines proxy and gateway behavior rather than recipient behavior.) Note: This header may be security-sensitive (see the <a href="#security">Security Considerations</a> for details).</p>
+  </div>
+  <div class="indent"><h3>5.4 <a name="headers-store" id="headers-store">Store</a></h3>
+    <p>The Store header enables a sender to specify whether the stanza may be stored or archived by the recipient. The allowable values for this header are "true" and "false". If the sender specifies a value of "false", the recipient MUST NOT store the stanza or any information contained therein; if the sender specifies a value of "true", the recipient MAY store the stanza or any information contained therein; if the value is anything other than "true" or "false" and the recipient does not understand the value, the recipient MUST assume the default value of "false". Note: This header may be security-sensitive (see the <a href="#security">Security Considerations</a> for details).</p> 
+  </div>
+  <div class="indent"><h3>5.5 <a name="headers-ttl" id="headers-ttl">TTL</a></h3>
+    <p>It may be useful to specify that the information contained in a stanza is valid only for a limited period of time. Such is the function of the "TTL" header, the value of which is some number of seconds since the creation of the stanza. Note well that this header is purely informational and MUST NOT be used for routing or delivery of XML stanzas, since that function is already served by <span class="ref"><a href="http://xmpp.org/extensions/xep-0079.html">Advanced Message Processing (XEP-0079)</a></span>  [<a href="#nt-idp1594032">14</a>]. A stanza that includes the "TTL" header SHOULD also include a "Created" header so that the recipient can properly process the stanza.</p>
+    <p>One situation in which both the "Created" and "TTL" headers might prove valuable is the broadcasting of structured presence information, such as a calendar-generated notification that a user will be in a meeting for the next hour:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Time to Live for Presence Information</p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;show&gt;dnd&lt;/show&gt;
+  &lt;status&gt;in a meeting&lt;/status&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Created'&gt;2004-05-10T11:00Z&lt;/header&gt;
+    &lt;header name='TTL'&gt;3600&lt;/header&gt;
+  &lt;/headers&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>Another potential application is specifying a time to live for <span class="ref">Service Discovery</span> results, which helps other entities know how long to cache such information:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Time to Live for Disco Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='example.com'
+    id='some-id'
+    to='example.org'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/amp'/&gt;
+    ...
+    &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+      &lt;header name='Created'&gt;2004-05-17T20:47Z&lt;/header&gt;
+      &lt;header name='TTL'&gt;86400&lt;/header&gt;
+    &lt;/headers&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.6 <a name="headers-urgency" id="headers-urgency">Urgency</a></h3>
+    <p>It can be useful to specify that the information contained in a stanza is more or less time-sensitive (e.g., in order to help the recipient determine whether to attend to the information immediately or to delay attending to the information). Such is the function of the "Urgency" header, the value of which is "high", "medium", or "low". One use of the header is Sieve notifications (see <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-sieve-notify">Sieve Extension: Notifications</a></span>  [<a href="#nt-idp1601392">15</a>]) sent via XMPP, as specified in <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-sieve-notify-xmpp">Sieve Notification Mechanism: xmpp</a></span>  [<a href="#nt-idp1621280">16</a>].</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. An Urgent Message</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='romeo@shakespeare.lit/orchard'
+    to='juliet@capulet.com'
+    type='chat'&gt;
+  &lt;body&gt;Wherefore are thou?!?&lt;/body&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Urgency'&gt;high&lt;/header&gt;
+  &lt;/headers&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>6.
+       <a name="dates" id="dates">A Note About Date-Related Headers</a></h2>
+  <p>Date formats differ widely. <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1623776">17</a>] defines the Date, DateTime, and Time profiles of <span class="ref"><a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">ISO 8601</a></span>  [<a href="#nt-idp1627120">18</a>], which correspond to the Date, DateTime, and Time headers registered herein. The SHIM Date header also corresponds to the Date metadata element used in <span class="ref"><a href="http://www.dublincore.org/">Dublin Core Metadata Initiative (DCMI)</a></span>  [<a href="#nt-idp1629856">19</a>] as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2413">RFC 2413</a></span>  [<a href="#nt-idp1632544">20</a>].</p>
+  <p>However, many Internet standards use a different datetime format that ultimately derives from <span class="ref"><a href="http://tools.ietf.org/html/rfc0822">RFC 822</a></span>  [<a href="#nt-idp1635120">21</a>] as updated by <span class="ref"><a href="http://tools.ietf.org/html/rfc1123">RFC 1123</a></span>  [<a href="#nt-idp1637584">22</a>]; specifically, that format is used by email (<span class="ref">RFC 2822</span>), the World Wide Web (<span class="ref">RFC 2616</span>), and the Session Initiation Protocol (<span class="ref">RFC 3261</span>). To map dates to and from these protocols, we define the SHIM RFC2822Date header.</p>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>In general, security considerations are the responsibility of the "using protocol".</p>
+  <p>Certain SHIM headers MAY be security-sensitive (e.g., the "Classification", "Distribute", and "Store" headers specified herein). If an entity plans to use such headers, it MUST determine whether the intended recipient supports both the SHIM protocol and the particular security-sensitive headers of interst, as described under <a href="#disco">Service Discovery</a>; furthermore, an implementation MUST warn a human user (if any) before use if the security-sensitive headers of interest are not supported.</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1644464">23</a>].</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>9.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The XMPP Registrar includes 'http://jabber.org/protocol/shim' in its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/shim.html">http://xmpp.org/registrar/shim.html</a>&gt;).</p>
+  </div>
+  <div class="indent"><h3>9.2 <a name="registrar-nodes" id="registrar-nodes">Well-Known Service Discovery Nodes</a></h3>
+    <p>The XMPP Registrar includes 'http://jabber.org/protocol/shim' in its registry of well-known Service Discovery nodes.</p>
+  </div>
+  <div class="indent"><h3>9.3 <a name="registrar-shim" id="registrar-shim">SHIM Headers Registry</a></h3>
+    <p>The XMPP Registrar maintains a registry of SHIM headers.</p>
+    <div class="indent"><h3>9.3.1 <a name="registrar-shim-process" id="registrar-shim-process">Process</a></h3>
+      <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;header&gt;
+  &lt;name&gt;the value of the 'name' attribute&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the header&lt;/desc&gt;
+  &lt;doc&gt;the document in which this header is specified&lt;/doc&gt;
+&lt;/header&gt;
+      </pre></div>
+      <p>The registrant may register more than one header at a time, each contained in a separate &lt;header/&gt; element.</p>
+    </div>
+    <div class="indent"><h3>9.3.2 <a name="registrar-shim-init" id="registrar-shim-init">Initial Registration</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;header&gt;
+  &lt;name&gt;Accept&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Accept-Charset&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Accept-Encoding&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Accept-Language&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Accept-Ranges&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Age&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Alert-Info&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Allow&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Authentication-Info&lt;/name&gt;
+  &lt;desc&gt;see RFC 2617&lt;/desc&gt;
+  &lt;doc&gt;RFC 2617&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Cache-Control&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Call-ID&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Call-Info&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Classification&lt;/name&gt;
+  &lt;desc&gt;a level within a classification scheme&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Comments&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Connection&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Contact&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Description&lt;/name&gt;
+  &lt;desc&gt;see RFC 2045&lt;/desc&gt;
+  &lt;doc&gt;RFC 2045&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Disposition&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Encoding&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-ID&lt;/name&gt;
+  &lt;desc&gt;see RFC 2045&lt;/desc&gt;
+  &lt;doc&gt;RFC 2045&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Language&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Length&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Location&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-MD5&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Range&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Transfer-Encoding&lt;/name&gt;
+  &lt;desc&gt;see RFC 2045&lt;/desc&gt;
+  &lt;doc&gt;RFC 2045&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Content-Type&lt;/name&gt;
+  &lt;desc&gt;see RFC 2045 or RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2045 or RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Contributor&lt;/name&gt;
+  &lt;desc&gt;an entity other than the primary Creator who helped to create a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Coverage&lt;/name&gt;
+  &lt;desc&gt;the spatial or temporal characteristics of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Created&lt;/name&gt;
+  &lt;desc&gt;date and time of stanza creation in ISO 8601 format&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Creator&lt;/name&gt;
+  &lt;desc&gt;the person or organization responsible for creating the content of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;CSeq&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Date&lt;/name&gt;
+  &lt;desc&gt;a string that conforms to the Date profile specified in XEP-0082&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;DateTime&lt;/name&gt;
+  &lt;desc&gt;a string that conforms to the DateTime profile specified in XEP-0082&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Description&lt;/name&gt;
+  &lt;desc&gt;a textual description of the content of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Distribute&lt;/name&gt;
+  &lt;desc&gt;whether or not the stanza may be further distributed&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Error-Info&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;ETag&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Expect&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Expires&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Format&lt;/name&gt;
+  &lt;desc&gt;the data format of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Host&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Identifier&lt;/name&gt;
+  &lt;desc&gt;a string or number used to identity a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;If-Match&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;If-Modified-Since&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;If-None-Match&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;If-Range&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;If-Unmodified-Since&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;In-Reply-To&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Keywords&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Language&lt;/name&gt;
+  &lt;desc&gt;the language in expressing the content of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Last-Modified&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Location&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Max-Forwards&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Message-ID&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;MIME-Version&lt;/name&gt;
+  &lt;desc&gt;see RFC 2045&lt;/desc&gt;
+  &lt;doc&gt;RFC 2045&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Organization&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Pragma&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Priority&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Proxy-Authenticate&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Proxy-Authorization&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Publisher&lt;/name&gt;
+  &lt;desc&gt;the entity responsible for making a resource available&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Range&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Received&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Record-Route&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;References&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Referer&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Relation&lt;/name&gt;
+  &lt;desc&gt;the identifier of a second resource related to a primary resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Reply-To&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Require&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-Bcc&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-Cc&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-Date&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-From&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-Message-Id&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-Sender&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Resent-To&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Retry-After&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Return-Path&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;RFC2822Date&lt;/name&gt;
+  &lt;desc&gt;the datetime associated with an email message, SIP exchange, or HTTP request&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Rights&lt;/name&gt;
+  &lt;desc&gt;a rights management statement, identifier, or link&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Route&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Sender&lt;/name&gt;
+  &lt;desc&gt;see RFC 2822&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Server&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Source&lt;/name&gt;
+  &lt;desc&gt;information about the original source of the present resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Store&lt;/name&gt;
+  &lt;desc&gt;whether or not the stanza may be stored or archived&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Subject&lt;/name&gt;
+  &lt;desc&gt;the human-readable topic of a message or resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2822 or RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Supported&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;TE&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Time&lt;/name&gt;
+  &lt;desc&gt;a string that conforms to the Time profile specified in XEP-0082&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Timestamp&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Title&lt;/name&gt;
+  &lt;desc&gt;the name given to a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Trailer&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Transfer-Encoding&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;TTL&lt;/name&gt;
+  &lt;desc&gt;a time to live for the stanza, in seconds&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Type&lt;/name&gt;
+  &lt;desc&gt;the category of a resource&lt;/desc&gt;
+  &lt;doc&gt;RFC 2413&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Unsupported&lt;/name&gt;
+  &lt;desc&gt;see RFC 3261&lt;/desc&gt;
+  &lt;doc&gt;RFC 3261&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Upgrade&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Urgency&lt;/name&gt;
+  &lt;desc&gt;the time sensitivity of a stanza ("high", "medium", or "low")&lt;/desc&gt;
+  &lt;doc&gt;XEP-0131&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;User-Agent&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Vary&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Via&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;Warning&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+&lt;header&gt;
+  &lt;name&gt;WWW-Authenticate&lt;/name&gt;
+  &lt;desc&gt;see RFC 2616&lt;/desc&gt;
+  &lt;doc&gt;RFC 2616&lt;/doc&gt;
+&lt;/header&gt;
+
+      </pre></div>
+    </div>
+  </div>
+<h2>10.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/shim'
+    xmlns='http://jabber.org/protocol/shim'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0131: http://www.xmpp.org/extensions/xep-0131.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='headers'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='header' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='header'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='name' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0131<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.2<br />
+            Last Updated: 2006-07-12<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: shim<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/shim.xsd">http://www.xmpp.org/schemas/shim.xsd</a>&gt;<br />
+              Registry: 
+              
+              &lt;<a href="http://xmpp.org/registrar/shim.html">http://xmpp.org/registrar/shim.html</a>&gt;
+              <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0131.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0131.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0131.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp616400" id="nt-idp616400">1</a>. XEP-0111: A Transport for Initiating and Negotiating Sessions &lt;<a href="http://xmpp.org/extensions/xep-0111.html">http://xmpp.org/extensions/xep-0111.html</a>&gt;.</p><p><a name="nt-idp618208" id="nt-idp618208">2</a>. XEP-0033: Extended Stanza Addressing &lt;<a href="http://xmpp.org/extensions/xep-0033.html">http://xmpp.org/extensions/xep-0033.html</a>&gt;.</p><p><a name="nt-idp620192" id="nt-idp620192">3</a>. RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies &lt;<a href="http://tools.ietf.org/html/rfc2045">http://tools.ietf.org/html/rfc2045</a>&gt;.</p><p><a name="nt-idp622080" id="nt-idp622080">4</a>. RFC 2616: Hypertext Transport Protocol -- HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2616">http://tools.ietf.org/html/rfc2616</a>&gt;.</p><p><a name="nt-idp623872" id="nt-idp623872">5</a>. RFC 2617: HTTP Authentication: Basic and Digest Access Authentication &lt;<a href="http://tools.ietf.org/html/rfc2617">http://tools.ietf.org/html/rfc2617</a>&gt;.</p><p><a name="nt-idp625696" id="nt-idp625696">6</a>. RFC 2822: Internet Message Format &lt;<a href="http://tools.ietf.org/html/rfc2822">http://tools.ietf.org/html/rfc2822</a>&gt;.</p><p><a name="nt-idp627472" id="nt-idp627472">7</a>. RFC 3261: Session Initiation Protocol (SIP) &lt;<a href="http://tools.ietf.org/html/rfc3261">http://tools.ietf.org/html/rfc3261</a>&gt;.</p><p><a name="nt-idp634448" id="nt-idp634448">8</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp642960" id="nt-idp642960">9</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1576144" id="nt-idp1576144">10</a>. Standard XML escaping rules apply to the XML character data, so that the characters &lt; &gt; ' " &amp; MUST be escaped to &amp;lt; &amp;gt; &amp;apos; &amp;quot; &amp;amp; respectively when translating from non-XML protocols (such as MIME and SIP) to SHIM, and the escaped sequences (e.g., &amp;lt;) MUST be transformed to the equivalent non-escaped character (e.g., '&lt;') when translating from SHIM to the non-XML protocol. Escaping and unescaping will normally be performed by a gateway that translates between XMPP and a foreign protocol such as MIME or SIP.</p><p><a name="nt-idp1580640" id="nt-idp1580640">11</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1591552" id="nt-idp1591552">12</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp557104" id="nt-idp557104">13</a>. Geopriv Policy &lt;<a href="http://tools.ietf.org/html/draft-ietf-geopriv-policy">http://tools.ietf.org/html/draft-ietf-geopriv-policy</a>&gt;. Work in progress.</p><p><a name="nt-idp1594032" id="nt-idp1594032">14</a>. XEP-0079: Advanced Message Processing &lt;<a href="http://xmpp.org/extensions/xep-0079.html">http://xmpp.org/extensions/xep-0079.html</a>&gt;.</p><p><a name="nt-idp1601392" id="nt-idp1601392">15</a>. Sieve Extension: Notifications &lt;<a href="http://tools.ietf.org/html/draft-ietf-sieve-notify">http://tools.ietf.org/html/draft-ietf-sieve-notify</a>&gt;. Work in progress.</p><p><a name="nt-idp1621280" id="nt-idp1621280">16</a>. Sieve Notification Mechanism: xmpp &lt;<a href="http://tools.ietf.org/html/draft-ietf-sieve-notify-xmpp">http://tools.ietf.org/html/draft-ietf-sieve-notify-xmpp</a>&gt;. Work in progress.</p><p><a name="nt-idp1623776" id="nt-idp1623776">17</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1627120" id="nt-idp1627120">18</a>. ISO 8601: Representation of Dates and Times (2000). This specification is not freely available; however, a good summary is located at &lt;<a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a>&gt;.</p><p><a name="nt-idp1629856" id="nt-idp1629856">19</a>. The Dublin Core Metadata Initiative (DCMI) is an organization dedicated to promoting the widespread adoption of interoperable metadata standards. For further information, see &lt;<a href="http://www.dublincore.org/">http://www.dublincore.org/</a>&gt;.</p><p><a name="nt-idp1632544" id="nt-idp1632544">20</a>. RFC 2413: Dublin Core Metadata for Resource Discovery &lt;<a href="http://tools.ietf.org/html/rfc2413">http://tools.ietf.org/html/rfc2413</a>&gt;.</p><p><a name="nt-idp1635120" id="nt-idp1635120">21</a>. RFC 822: Standard for the Format of ARPA Internet Text Messages &lt;<a href="http://tools.ietf.org/html/rfc0822">http://tools.ietf.org/html/rfc0822</a>&gt;.</p><p><a name="nt-idp1637584" id="nt-idp1637584">22</a>. RFC 1123: Requirements for Internet Hosts -- Application and Support &lt;<a href="http://tools.ietf.org/html/rfc1123">http://tools.ietf.org/html/rfc1123</a>&gt;.</p><p><a name="nt-idp1644464" id="nt-idp1644464">23</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2006-07-12)</h4><div class="indent"><p>Added Urgency header from registry.</p> (psa)
+    </div><h4>Version 1.1 (2005-08-19)</h4><div class="indent"><p>Added Date, DateTime, and Time headers conforming to profiles from XEP-0082; renamed Date header to RFC2822Date; added note about date-related headers; added headers from RFC 2413 (Dublin Core).</p> (psa)
+    </div><h4>Version 1.0 (2004-10-22)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft; also added more headers from RFC 2822 to the initial registry submission.</p> (psa)
+    </div><h4>Version 0.8 (2004-09-29)</h4><div class="indent"><p>Specified service discovery usage; corrected examples; further specified security considerations.</p> (psa)
+    </div><h4>Version 0.7 (2004-09-20)</h4><div class="indent"><p>Specified location of headers in IQ stanzas.</p> (psa)
+    </div><h4>Version 0.6 (2004-07-06)</h4><div class="indent"><p>Added "Store" header.</p> (psa)
+    </div><h4>Version 0.5 (2004-06-28)</h4><div class="indent"><p>Added "Distribute" header.</p> (psa)
+    </div><h4>Version 0.4 (2004-05-27)</h4><div class="indent"><p>Added "Classification" header.</p> (psa)
+    </div><h4>Version 0.3 (2004-05-10)</h4><div class="indent"><p>Added headers from RFCs 2045, 2616, 2617, and 3261 to initial registration.</p> (psa)
+    </div><h4>Version 0.2 (2004-05-09)</h4><div class="indent"><p>Specified registry process; added headers from RFC 2822 to initial registration; defined "Created" and "TTL" headers.</p> (psa)
+    </div><h4>Version 0.1 (2004-03-19)</h4><div class="indent"><p>Initial version.</p> (psa/jh)
+    </div></div><hr /><p>END</p></body></html>

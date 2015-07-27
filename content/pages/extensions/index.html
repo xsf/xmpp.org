@@ -1,0 +1,2593 @@
+<!doctype html>
+<html>
+<head>
+    <title>Extensions</title>
+    <meta name="url" content="extensions"/>
+    <meta name="save_as" content="extensions/index.html"/>
+
+<!--     <meta name="dropdown_menu_show" content="true"/>
+    <meta name="dropdown_menu_size" content="6"/>
+    <meta name="dropdown_menu_elem_name_1" content="Features and benefits"/>
+    <meta name="dropdown_menu_elem_url_1" content="features-and-benefits"/>
+    <meta name="dropdown_menu_elem_name_2" content="History"/>
+    <meta name="dropdown_menu_elem_url_2" content="history"/>
+    <meta name="dropdown_menu_elem_name_3" content="Who uses XMPP"/>
+    <meta name="dropdown_menu_elem_url_3" content="who-uses-xmpp"/>
+    <meta name="dropdown_menu_elem_name_4" content="Standards Process"/>
+    <meta name="dropdown_menu_elem_url_4" content="standards-process"/>
+    <meta name="dropdown_menu_elem_name_5" content="XMPP Standards Foundation"/>
+    <meta name="dropdown_menu_elem_url_5" content="xsf"/>
+    <meta name="dropdown_menu_elem_name_6" content="FAQ"/>
+    <meta name="dropdown_menu_elem_url_6" content="faq"/> -->
+    <meta name="sidebar_menu_show" content="true"/>
+    <meta name="sidebar_menu_title" content="About XMPP"/>
+    <meta name="sidebar_menu_size" content="7"/>
+    <meta name="sidebar_menu_elem_name_1" content="Features and benefits"/>
+    <meta name="sidebar_menu_elem_url_1" content="about/features-and-benefits"/>
+    <meta name="sidebar_menu_elem_name_2" content="History"/>
+    <meta name="sidebar_menu_elem_url_2" content="about/history"/>
+    <meta name="sidebar_menu_elem_name_3" content="Who uses XMPP"/>
+    <meta name="sidebar_menu_elem_url_3" content="about/who-uses-xmpp"/>
+    <meta name="sidebar_menu_elem_name_4" content="Standards Process"/>
+    <meta name="sidebar_menu_elem_url_4" content="about/standards-process"/>
+    <meta name="sidebar_menu_elem_name_5" content="Extensions"/>
+    <meta name="sidebar_menu_elem_url_5" content="extensions"/>
+    <meta name="sidebar_menu_elem_name_6" content="The XSF"/>
+    <meta name="sidebar_menu_elem_url_6" content="about/xmpp-standards-foundation"/>
+    <meta name="sidebar_menu_elem_name_7" content="FAQ"/>
+    <meta name="sidebar_menu_elem_url_7" content="about/faq"/>
+    <meta name="footer_show" content="left"/>
+    <meta name="footer_order" content="1"/>
+    <meta name="content_layout" content="single-columns"/>
+    </script>
+</head>
+<body>
+    <div id="content">
+        <p>XMPP is the Extensible Messaging and Presence Protocol, a set of open <a href="http://xmpp.org/about-xmpp/technology-overview/">technologies</a> for instant messaging, presence, multi-party chat, voice and video calls, collaboration, lightweight middleware, content syndication, and generalized routing of XML data.</p>
+        <p>The <a href="http://xmpp.org/about-xmpp/xsf/">XMPP Standards Foundation</a> (XSF) develops extensions to <a href="http://xmpp.org/">XMPP</a> through a standards process centered around XMPP Extension Protocols (XEPs). The <a href="http://xmpp.org/extensions/xep-0001.html">process</a> is managed by the <a href="http://xmpp.org/participate/become-a-member/editor-team/">XMPP Extensions Editor</a> and involves intensive discussion on the <a href="http://mail.jabber.org/mailman/listinfo/standards/">Standards mailing list</a>, formal review and <a href="http://xmpp.org/council/votes.shtml">voting</a> by the <a href="http://xmpp.org/about-xmpp/xsf/xmpp-council/">XMPP Council</a>, and modification based on implementation experience and interoperability testing. All documents in the XEP series are available under a liberal <a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">IPR Policy</a> for wide implementation. Submissions are <a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/submitting-a-xep/">welcome</a> (see also the <a href="http://xmpp.org/extensions/inbox/">“inbox”</a>). All XEPs and related files are under <a href="http://xmpp.org/about-xmpp/xsf/xsf-source-control/">source control</a>, <a href="http://xmpp.org/extensions/attic/">old versions</a> are available, and IETF-style <a href="http://xmpp.org/extensions/refs/">XML reference files</a> are provided. A compressed archive of all current XEPs can be downloaded <a href="http://xmpp.org/extensions/xepbundle.tar.bz2">here</a>. You can view and submit XEP-related bugs and feature requests at the <a href="http://tracker.xmpp.org/browse/SPEC">issue tracker</a>.</p>
+        <p>This page lists approved XMPP extensions as well as proposals that are under active consideration. A <a href="http://xmpp.org/extensions/all.shtml">list of all XEPs</a> (including retracted, rejected, deprecated, and obsolete XEPs) is also available. Good places for developers to start are the <a href="http://xmpp.org/extensions/xep-0242.html">client compliance</a> and <a href="http://xmpp.org/extensions/xep-0243.html">server compliance</a> definitions, as well as the <a href="http://xmpp.org/about-xmpp/technology-overview/">technology overview pages</a>.</p>
+    </div>
+    <table border="1" cellpadding="3" cellspacing="0" class="sortable" id="xeplist">
+        <thead>
+            <tr class="xepheader">
+                <th align="left" class="">Number</th>
+                <th align="left" class="sorttable_sorted">Name<span id="sorttable_sortfwdind">&nbsp;▾</span> </th>
+                <th align="left" class="">Type</th>
+                <th align="left" class="">Status</th>
+                <th align="left" class="">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tablebody XEP-Deferred" id="xep0031" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0031.html">XEP-0031</a> <a href="/extensions/xep-0031.pdf">(PDF)</a> </td>
+                <td valign="top">A Framework For Securing Jabber Conversations</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2002-07-09</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0111" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0111.html">XEP-0111</a> <a href="/extensions/xep-0111.pdf">(PDF)</a> </td>
+                <td valign="top">A Transport for Initiating and Negotiating Sessions (TINS)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2005-12-21</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0161" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0161.html">XEP-0161</a> <a href="/extensions/xep-0161.pdf">(PDF)</a> </td>
+                <td valign="top">Abuse Reporting</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-06</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0236" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0236.html">XEP-0236</a> <a href="/extensions/xep-0236.pdf">(PDF)</a> </td>
+                <td valign="top">Abuse Reporting</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2008-05-09</td>
+            </tr>
+            <tr class="tablebody XEP-Rejected" id="xep0015" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0015.html">XEP-0015</a> <a href="/extensions/xep-0015.pdf">(PDF)</a> </td>
+                <td valign="top">Account Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Rejected</td>
+                <td valign="top">2002-04-18</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0050">
+                <td valign="top"> <a href="/extensions/xep-0050.html">XEP-0050</a> <a href="/extensions/xep-0050.pdf">(PDF)</a> </td>
+                <td valign="top">Ad-Hoc Commands</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-06-30</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0079">
+                <td valign="top"> <a href="/extensions/xep-0079.html">XEP-0079</a> <a href="/extensions/xep-0079.pdf">(PDF)</a> </td>
+                <td valign="top">Advanced Message Processing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-11-30</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0094" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0094.html">XEP-0094</a> <a href="/extensions/xep-0094.pdf">(PDF)</a> </td>
+                <td valign="top">Agent Information</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2003-10-08</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0145">
+                <td valign="top"> <a href="/extensions/xep-0145.html">XEP-0145</a> <a href="/extensions/xep-0145.pdf">(PDF)</a> </td>
+                <td valign="top">Annotations</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-03-23</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0182">
+                <td valign="top"> <a href="/extensions/xep-0182.html">XEP-0182</a> <a href="/extensions/xep-0182.pdf">(PDF)</a> </td>
+                <td valign="top">Application-Specific Error Conditions</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-03-05</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0224">
+                <td valign="top"> <a href="/extensions/xep-0224.html">XEP-0224</a> <a href="/extensions/xep-0224.pdf">(PDF)</a> </td>
+                <td valign="top">Attention</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-11-13</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0240" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0240.html">XEP-0240</a> <a href="/extensions/xep-0240.pdf">(PDF)</a> </td>
+                <td valign="top">Auto-Discovery of JabberIDs</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-04-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0252" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0252.html">XEP-0252</a> <a href="/extensions/xep-0252.pdf">(PDF)</a> </td>
+                <td valign="top">BOSH Script Syntax</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-10-31</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0063" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0063.html">XEP-0063</a> <a href="/extensions/xep-0063.pdf">(PDF)</a> </td>
+                <td valign="top">Basic Filtering Operations</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0073" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0073.html">XEP-0073</a> <a href="/extensions/xep-0073.pdf">(PDF)</a> </td>
+                <td valign="top">Basic IM Protocol Suite</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-10-30</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0190" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0190.html">XEP-0190</a> <a href="/extensions/xep-0190.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practice for Closing Idle Streams</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2012-03-06</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0318">
+                <td valign="top"> <a href="/extensions/xep-0318.html">XEP-0318</a> <a href="/extensions/xep-0318.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Client Initiated Presence Probes</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-08-06</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0160">
+                <td valign="top"> <a href="/extensions/xep-0160.html">XEP-0160</a> <a href="/extensions/xep-0160.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Handling Offline Messages</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-01-24</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0201">
+                <td valign="top"> <a href="/extensions/xep-0201.html">XEP-0201</a> <a href="/extensions/xep-0201.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Message Threads</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2010-11-29</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0296" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0296.html">XEP-0296</a> <a href="/extensions/xep-0296.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Resource Locking</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-08-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0162" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0162.html">XEP-0162</a> <a href="/extensions/xep-0162.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Roster and Subscription Management</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-12-06</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0175">
+                <td valign="top"> <a href="/extensions/xep-0175.html">XEP-0175</a> <a href="/extensions/xep-0175.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Use of SASL ANONYMOUS</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0178">
+                <td valign="top"> <a href="/extensions/xep-0178.html">XEP-0178</a> <a href="/extensions/xep-0178.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices for Use of SASL EXTERNAL with Certificates</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2011-05-25</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0205">
+                <td valign="top"> <a href="/extensions/xep-0205.html">XEP-0205</a> <a href="/extensions/xep-0205.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices to Discourage Denial of Service Attacks</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-01-07</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0165" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0165.html">XEP-0165</a> <a href="/extensions/xep-0165.pdf">(PDF)</a> </td>
+                <td valign="top">Best Practices to Discourage JID Mimicking</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-12-13</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0288">
+                <td valign="top"> <a href="/extensions/xep-0288.html">XEP-0288</a> <a href="/extensions/xep-0288.pdf">(PDF)</a> </td>
+                <td valign="top">Bidirectional Server-to-Server Connections</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2013-09-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0124">
+                <td valign="top"> <a href="/extensions/xep-0124.html">XEP-0124</a> <a href="/extensions/xep-0124.pdf">(PDF)</a> </td>
+                <td valign="top">Bidirectional-streams Over Synchronous HTTP (BOSH)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-04-09</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0239">
+                <td valign="top"> <a href="/extensions/xep-0239.html">XEP-0239</a> <a href="/extensions/xep-0239.pdf">(PDF)</a> </td>
+                <td valign="top">Binary XMPP</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0231">
+                <td valign="top"> <a href="/extensions/xep-0231.html">XEP-0231</a> <a href="/extensions/xep-0231.pdf">(PDF)</a> </td>
+                <td valign="top">Bits of Binary</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-09-03</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0191">
+                <td valign="top"> <a href="/extensions/xep-0191.html">XEP-0191</a> <a href="/extensions/xep-0191.pdf">(PDF)</a> </td>
+                <td valign="top">Blocking Command</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2012-07-18</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0048">
+                <td valign="top"> <a href="/extensions/xep-0048.html">XEP-0048</a> <a href="/extensions/xep-0048.pdf">(PDF)</a> </td>
+                <td valign="top">Bookmarks</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2007-11-07</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0218" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0218.html">XEP-0218</a> <a href="/extensions/xep-0218.pdf">(PDF)</a> </td>
+                <td valign="top">Bootstrapping Implementation of Encrypted Sessions</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0208" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0208.html">XEP-0208</a> <a href="/extensions/xep-0208.pdf">(PDF)</a> </td>
+                <td valign="top">Bootstrapping Implementation of Jingle</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2009-01-06</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0056" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0056.html">XEP-0056</a> <a href="/extensions/xep-0056.pdf">(PDF)</a> </td>
+                <td valign="top">Business Data Interchange</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2002-11-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0250" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0250.html">XEP-0250</a> <a href="/extensions/xep-0250.pdf">(PDF)</a> </td>
+                <td valign="top">C2C Authentication Using TLS</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-08</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0158">
+                <td valign="top"> <a href="/extensions/xep-0158.html">XEP-0158</a> <a href="/extensions/xep-0158.pdf">(PDF)</a> </td>
+                <td valign="top">CAPTCHA Forms</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-09-03</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0340">
+                <td valign="top"> <a href="/extensions/xep-0340.html">XEP-0340</a> <a href="/extensions/xep-0340.pdf">(PDF)</a> </td>
+                <td valign="top">COnferences with LIghtweight BRIdging (COLIBRI)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0333" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0333.html">XEP-0333</a> <a href="/extensions/xep-0333.pdf">(PDF)</a> </td>
+                <td valign="top">Chat Markers</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-09-05</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0085">
+                <td valign="top"> <a href="/extensions/xep-0085.html">XEP-0085</a> <a href="/extensions/xep-0085.pdf">(PDF)</a> </td>
+                <td valign="top">Chat State Notifications</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2009-09-23</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0257" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0257.html">XEP-0257</a> <a href="/extensions/xep-0257.pdf">(PDF)</a> </td>
+                <td valign="top">Client Certificate Management for SASL EXTERNAL</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-07-18</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0352">
+                <td valign="top"> <a href="/extensions/xep-0352.html">XEP-0352</a> <a href="/extensions/xep-0352.pdf">(PDF)</a> </td>
+                <td valign="top">Client State Indication</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-08-28</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0088" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0088.html">XEP-0088</a> <a href="/extensions/xep-0088.pdf">(PDF)</a> </td>
+                <td valign="top">Client Webtabs</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2004-03-14</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0266">
+                <td valign="top"> <a href="/extensions/xep-0266.html">XEP-0266</a> <a href="/extensions/xep-0266.pdf">(PDF)</a> </td>
+                <td valign="top">Codecs for Jingle Audio</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-10-04</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0299" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0299.html">XEP-0299</a> <a href="/extensions/xep-0299.pdf">(PDF)</a> </td>
+                <td valign="top">Codecs for Jingle Video</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-06-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0204" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0204.html">XEP-0204</a> <a href="/extensions/xep-0204.pdf">(PDF)</a> </td>
+                <td valign="top">Collaborative Data Objects</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-01-17</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0303" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0303.html">XEP-0303</a> <a href="/extensions/xep-0303.pdf">(PDF)</a> </td>
+                <td valign="top">Commenting</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-07-28</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0127">
+                <td valign="top"> <a href="/extensions/xep-0127.html">XEP-0127</a> <a href="/extensions/xep-0127.pdf">(PDF)</a> </td>
+                <td valign="top">Common Alerting Protocol (CAP) Over XMPP</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-12-09</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0069" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0069.html">XEP-0069</a> <a href="/extensions/xep-0069.pdf">(PDF)</a> </td>
+                <td valign="top">Compliance SIG</td>
+                <td valign="top">SIG Formation</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-01-29</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0225" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0225.html">XEP-0225</a> <a href="/extensions/xep-0225.pdf">(PDF)</a> </td>
+                <td valign="top">Component Connections</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-10-06</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0007" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0007.html">XEP-0007</a> <a href="/extensions/xep-0007.pdf">(PDF)</a> </td>
+                <td valign="top">Conferencing SIG</td>
+                <td valign="top">SIG Proposal</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2002-05-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0051" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0051.html">XEP-0051</a> <a href="/extensions/xep-0051.pdf">(PDF)</a> </td>
+                <td valign="top">Connection Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-07-07</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0157">
+                <td valign="top"> <a href="/extensions/xep-0157.html">XEP-0157</a> <a href="/extensions/xep-0157.pdf">(PDF)</a> </td>
+                <td valign="top">Contact Addresses for XMPP Services</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2007-01-31</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0188" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0188.html">XEP-0188</a> <a href="/extensions/xep-0188.pdf">(PDF)</a> </td>
+                <td valign="top">Cryptographic Design of Encrypted Sessions</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0027" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0027.html">XEP-0027</a> <a href="/extensions/xep-0027.pdf">(PDF)</a> </td>
+                <td valign="top">Current Jabber OpenPGP Usage</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2014-03-14</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0354">
+                <td valign="top"> <a href="/extensions/xep-0354.html">XEP-0354</a> <a href="/extensions/xep-0354.pdf">(PDF)</a> </td>
+                <td valign="top">Customizable Message Routing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-10-15</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0281" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0281.html">XEP-0281</a> <a href="/extensions/xep-0281.pdf">(PDF)</a> </td>
+                <td valign="top">DMUC1: Distributed Multi-User Chat</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2010-07-20</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0282" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0282.html">XEP-0282</a> <a href="/extensions/xep-0282.pdf">(PDF)</a> </td>
+                <td valign="top">DMUC2: Distributed MUC</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-06-11</td>
+            </tr>
+            <tr class="tablebody XEP-Rejected" id="xep0037" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0037.html">XEP-0037</a> <a href="/extensions/xep-0037.pdf">(PDF)</a> </td>
+                <td valign="top">DSPS - Data Stream Proxy Service</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Rejected</td>
+                <td valign="top">2002-09-18</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0046" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0046.html">XEP-0046</a> <a href="/extensions/xep-0046.pdf">(PDF)</a> </td>
+                <td valign="top">DTCP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-11</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0004">
+                <td valign="top"> <a href="/extensions/xep-0004.html">XEP-0004</a> <a href="/extensions/xep-0004.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2007-08-13</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0331">
+                <td valign="top"> <a href="/extensions/xep-0331.html">XEP-0331</a> <a href="/extensions/xep-0331.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms - Color Field Types</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-03-10</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0336">
+                <td valign="top"> <a href="/extensions/xep-0336.html">XEP-0336</a> <a href="/extensions/xep-0336.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms - Dynamic Forms</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0350">
+                <td valign="top"> <a href="/extensions/xep-0350.html">XEP-0350</a> <a href="/extensions/xep-0350.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms Geolocation Element</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-07-03</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0141">
+                <td valign="top"> <a href="/extensions/xep-0141.html">XEP-0141</a> <a href="/extensions/xep-0141.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms Layout</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-05-12</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0221">
+                <td valign="top"> <a href="/extensions/xep-0221.html">XEP-0221</a> <a href="/extensions/xep-0221.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms Media Element</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-09-03</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0122">
+                <td valign="top"> <a href="/extensions/xep-0122.html">XEP-0122</a> <a href="/extensions/xep-0122.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms Validation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2004-09-22</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0315" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0315.html">XEP-0315</a> <a href="/extensions/xep-0315.pdf">(PDF)</a> </td>
+                <td valign="top">Data Forms XML Element</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-10-15</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0029" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0029.html">XEP-0029</a> <a href="/extensions/xep-0029.pdf">(PDF)</a> </td>
+                <td valign="top">Definition of Jabber Identifiers (JIDs)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-10-03</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0203">
+                <td valign="top"> <a href="/extensions/xep-0203.html">XEP-0203</a> <a href="/extensions/xep-0203.pdf">(PDF)</a> </td>
+                <td valign="top">Delayed Delivery</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2009-09-15</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0298">
+                <td valign="top"> <a href="/extensions/xep-0298.html">XEP-0298</a> <a href="/extensions/xep-0298.pdf">(PDF)</a> </td>
+                <td valign="top">Delivering Conference Information to Jingle Participants (Coin)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-07-02</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0274" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0274.html">XEP-0274</a> <a href="/extensions/xep-0274.pdf">(PDF)</a> </td>
+                <td valign="top">Design Considerations for Digital Signatures in XMPP</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-01-28</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0185">
+                <td valign="top"> <a href="/extensions/xep-0185.html">XEP-0185</a> <a href="/extensions/xep-0185.pdf">(PDF)</a> </td>
+                <td valign="top">Dialback Key Generation and Validation</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2007-02-15</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0249">
+                <td valign="top"> <a href="/extensions/xep-0249.html">XEP-0249</a> <a href="/extensions/xep-0249.pdf">(PDF)</a> </td>
+                <td valign="top">Direct MUC Invitations</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-09-22</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0156">
+                <td valign="top"> <a href="/extensions/xep-0156.html">XEP-0156</a> <a href="/extensions/xep-0156.pdf">(PDF)</a> </td>
+                <td valign="top">Discovering Alternative XMPP Connection Methods</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0233" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0233.html">XEP-0233</a> <a href="/extensions/xep-0233.pdf">(PDF)</a> </td>
+                <td valign="top">Domain-Based Service Names in XMPP SASL Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-08-26</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0121" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0121.html">XEP-0121</a> <a href="/extensions/xep-0121.pdf">(PDF)</a> </td>
+                <td valign="top">Dublin Core Infobits Mapping</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-12-15</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0263">
+                <td valign="top"> <a href="/extensions/xep-0263.html">XEP-0263</a> <a href="/extensions/xep-0263.pdf">(PDF)</a> </td>
+                <td valign="top">ECO-XMPP</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0322">
+                <td valign="top"> <a href="/extensions/xep-0322.html">XEP-0322</a> <a href="/extensions/xep-0322.pdf">(PDF)</a> </td>
+                <td valign="top">Efficient XML Interchange (EXI) Format</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2014-03-10</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0290" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0290.html">XEP-0290</a> <a href="/extensions/xep-0290.pdf">(PDF)</a> </td>
+                <td valign="top">Encapsulated Digital Signatures in XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-01-28</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0285" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0285.html">XEP-0285</a> <a href="/extensions/xep-0285.pdf">(PDF)</a> </td>
+                <td valign="top">Encapsulating Digital Signatures in XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-01-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0116" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0116.html">XEP-0116</a> <a href="/extensions/xep-0116.pdf">(PDF)</a> </td>
+                <td valign="top">Encrypted Session Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0241" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0241.html">XEP-0241</a> <a href="/extensions/xep-0241.pdf">(PDF)</a> </td>
+                <td valign="top">Encryption of Archived Messages</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-04-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0246" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0246.html">XEP-0246</a> <a href="/extensions/xep-0246.pdf">(PDF)</a> </td>
+                <td valign="top">End-to-End XML Streams</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-06-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0098" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0098.html">XEP-0098</a> <a href="/extensions/xep-0098.pdf">(PDF)</a> </td>
+                <td valign="top">Enhanced Private XML Storage</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-06-25</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0115">
+                <td valign="top"> <a href="/extensions/xep-0115.html">XEP-0115</a> <a href="/extensions/xep-0115.pdf">(PDF)</a> </td>
+                <td valign="top">Entity Capabilities</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-02-26</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0123" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0123.html">XEP-0123</a> <a href="/extensions/xep-0123.pdf">(PDF)</a> </td>
+                <td valign="top">Entity Metadata</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-12-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0275" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0275.html">XEP-0275</a> <a href="/extensions/xep-0275.pdf">(PDF)</a> </td>
+                <td valign="top">Entity Reputation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-06-06</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0202">
+                <td valign="top"> <a href="/extensions/xep-0202.html">XEP-0202</a> <a href="/extensions/xep-0202.pdf">(PDF)</a> </td>
+                <td valign="top">Entity Time</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2009-09-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deprecated" id="xep0086" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0086.html">XEP-0086</a> <a href="/extensions/xep-0086.pdf">(PDF)</a> </td>
+                <td valign="top">Error Condition Mappings</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deprecated</td>
+                <td valign="top">2004-02-17</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0337">
+                <td valign="top"> <a href="/extensions/xep-0337.html">XEP-0337</a> <a href="/extensions/xep-0337.pdf">(PDF)</a> </td>
+                <td valign="top">Event Logging over XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0119" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0119.html">XEP-0119</a> <a href="/extensions/xep-0119.pdf">(PDF)</a> </td>
+                <td valign="top">Extended Presence Protocol Suite</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2006-08-08</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0057" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0057.html">XEP-0057</a> <a href="/extensions/xep-0057.pdf">(PDF)</a> </td>
+                <td valign="top">Extended Roster</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-28</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0033">
+                <td valign="top"> <a href="/extensions/xep-0033.html">XEP-0033</a> <a href="/extensions/xep-0033.pdf">(PDF)</a> </td>
+                <td valign="top">Extended Stanza Addressing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2004-09-15</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0306" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0306.html">XEP-0306</a> <a href="/extensions/xep-0306.pdf">(PDF)</a> </td>
+                <td valign="top">Extensible Status Conditions for Multi-User Chat</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-12-14</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0215">
+                <td valign="top"> <a href="/extensions/xep-0215.html">XEP-0215</a> <a href="/extensions/xep-0215.pdf">(PDF)</a> </td>
+                <td valign="top">External Service Discovery</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-02-27</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0020">
+                <td valign="top"> <a href="/extensions/xep-0020.html">XEP-0020</a> <a href="/extensions/xep-0020.pdf">(PDF)</a> </td>
+                <td valign="top">Feature Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2006-11-21</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0289" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0289.html">XEP-0289</a> <a href="/extensions/xep-0289.pdf">(PDF)</a> </td>
+                <td valign="top">Federated MUC for Constrained Environments</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-29</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0068">
+                <td valign="top"> <a href="/extensions/xep-0068.html">XEP-0068</a> <a href="/extensions/xep-0068.pdf">(PDF)</a> </td>
+                <td valign="top">Field Standardization for Data Forms</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2012-05-28</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0329">
+                <td valign="top"> <a href="/extensions/xep-0329.html">XEP-0329</a> <a href="/extensions/xep-0329.pdf">(PDF)</a> </td>
+                <td valign="top">File Information Sharing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-11-19</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0214" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0214.html">XEP-0214</a> <a href="/extensions/xep-0214.pdf">(PDF)</a> </td>
+                <td valign="top">File Repository and Sharing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-01-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0135" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0135.html">XEP-0135</a> <a href="/extensions/xep-0135.pdf">(PDF)</a> </td>
+                <td valign="top">File Sharing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2004-06-04</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0052" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0052.html">XEP-0052</a> <a href="/extensions/xep-0052.pdf">(PDF)</a> </td>
+                <td valign="top">File Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0264" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0264.html">XEP-0264</a> <a href="/extensions/xep-0264.pdf">(PDF)</a> </td>
+                <td valign="top">File Transfer Thumbnails</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-04-27</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0013">
+                <td valign="top"> <a href="/extensions/xep-0013.html">XEP-0013</a> <a href="/extensions/xep-0013.pdf">(PDF)</a> </td>
+                <td valign="top">Flexible Offline Message Retrieval</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-07-14</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0346">
+                <td valign="top"> <a href="/extensions/xep-0346.html">XEP-0346</a> <a href="/extensions/xep-0346.pdf">(PDF)</a> </td>
+                <td valign="top">Form Discovery and Publishing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-04-10</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0345">
+                <td valign="top"> <a href="/extensions/xep-0345.html">XEP-0345</a> <a href="/extensions/xep-0345.pdf">(PDF)</a> </td>
+                <td valign="top">Form of Membership Applications</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2014-08-04</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0044" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0044.html">XEP-0044</a> <a href="/extensions/xep-0044.pdf">(PDF)</a> </td>
+                <td valign="top">Full Namespace Support for XML Streams</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2002-08-26</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0100">
+                <td valign="top"> <a href="/extensions/xep-0100.html">XEP-0100</a> <a href="/extensions/xep-0100.pdf">(PDF)</a> </td>
+                <td valign="top">Gateway Interaction</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2005-10-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0089" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0089.html">XEP-0089</a> <a href="/extensions/xep-0089.pdf">(PDF)</a> </td>
+                <td valign="top">Generic Alerts</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-05-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0110" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0110.html">XEP-0110</a> <a href="/extensions/xep-0110.pdf">(PDF)</a> </td>
+                <td valign="top">Generic Maps</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-07-28</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0143">
+                <td valign="top"> <a href="/extensions/xep-0143.html">XEP-0143</a> <a href="/extensions/xep-0143.pdf">(PDF)</a> </td>
+                <td valign="top">Guidelines for Authors of XMPP Extension Protocols</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2011-07-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0101" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0101.html">XEP-0101</a> <a href="/extensions/xep-0101.pdf">(PDF)</a> </td>
+                <td valign="top">HTTP Authentication using Jabber Tickets</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2004-01-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0104" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0104.html">XEP-0104</a> <a href="/extensions/xep-0104.pdf">(PDF)</a> </td>
+                <td valign="top">HTTP Scheme for URL Data</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2004-01-20</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0332">
+                <td valign="top"> <a href="/extensions/xep-0332.html">XEP-0332</a> <a href="/extensions/xep-0332.pdf">(PDF)</a> </td>
+                <td valign="top">HTTP over XMPP transport</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2014-08-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0317" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0317.html">XEP-0317</a> <a href="/extensions/xep-0317.pdf">(PDF)</a> </td>
+                <td valign="top">Hats</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-01-03</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0219" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0219.html">XEP-0219</a> <a href="/extensions/xep-0219.pdf">(PDF)</a> </td>
+                <td valign="top">Hop Check</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2008-06-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0244" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0244.html">XEP-0244</a> <a href="/extensions/xep-0244.pdf">(PDF)</a> </td>
+                <td valign="top">IO Data</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-06-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0099" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0099.html">XEP-0099</a> <a href="/extensions/xep-0099.pdf">(PDF)</a> </td>
+                <td valign="top">IQ Query Action Protocol</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-06-25</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0008" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0008.html">XEP-0008</a> <a href="/extensions/xep-0008.pdf">(PDF)</a> </td>
+                <td valign="top">IQ-Based Avatars</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-06-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0038" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0038.html">XEP-0038</a> <a href="/extensions/xep-0038.pdf">(PDF)</a> </td>
+                <td valign="top">Icon Styles</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-06-02</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0344">
+                <td valign="top"> <a href="/extensions/xep-0344.html">XEP-0344</a> <a href="/extensions/xep-0344.pdf">(PDF)</a> </td>
+                <td valign="top">Impact of TLS and DNSSEC on Dialback</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-03-23</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0047">
+                <td valign="top"> <a href="/extensions/xep-0047.html">XEP-0047</a> <a href="/extensions/xep-0047.pdf">(PDF)</a> </td>
+                <td valign="top">In-Band Bytestreams</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2012-06-22</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0301">
+                <td valign="top"> <a href="/extensions/xep-0301.html">XEP-0301</a> <a href="/extensions/xep-0301.pdf">(PDF)</a> </td>
+                <td valign="top">In-Band Real Time Text</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2013-10-08</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0077">
+                <td valign="top"> <a href="/extensions/xep-0077.html">XEP-0077</a> <a href="/extensions/xep-0077.pdf">(PDF)</a> </td>
+                <td valign="top">In-Band Registration</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2012-01-25</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0268" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0268.html">XEP-0268</a> <a href="/extensions/xep-0268.pdf">(PDF)</a> </td>
+                <td valign="top">Incident Handling</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-29</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0120" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0120.html">XEP-0120</a> <a href="/extensions/xep-0120.pdf">(PDF)</a> </td>
+                <td valign="top">Infobits</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2004-01-22</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0148">
+                <td valign="top"> <a href="/extensions/xep-0148.html">XEP-0148</a> <a href="/extensions/xep-0148.pdf">(PDF)</a> </td>
+                <td valign="top">Instant Messaging Intelligence Quotient (IM IQ)</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2005-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0117" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0117.html">XEP-0117</a> <a href="/extensions/xep-0117.pdf">(PDF)</a> </td>
+                <td valign="top">Intermediate IM Protocol Suite</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-10-30</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0026" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0026.html">XEP-0026</a> <a href="/extensions/xep-0026.pdf">(PDF)</a> </td>
+                <td valign="top">Internationalization (I18N)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0326">
+                <td valign="top"> <a href="/extensions/xep-0326.html">XEP-0326</a> <a href="/extensions/xep-0326.pdf">(PDF)</a> </td>
+                <td valign="top">Internet of Things - Concentrators</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-03-10</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0325">
+                <td valign="top"> <a href="/extensions/xep-0325.html">XEP-0325</a> <a href="/extensions/xep-0325.pdf">(PDF)</a> </td>
+                <td valign="top">Internet of Things - Control</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-04-07</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0347">
+                <td valign="top"> <a href="/extensions/xep-0347.html">XEP-0347</a> <a href="/extensions/xep-0347.pdf">(PDF)</a> </td>
+                <td valign="top">Internet of Things - Discovery</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-11-11</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0324">
+                <td valign="top"> <a href="/extensions/xep-0324.html">XEP-0324</a> <a href="/extensions/xep-0324.pdf">(PDF)</a> </td>
+                <td valign="top">Internet of Things - Provisioning</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-05-21</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0323">
+                <td valign="top"> <a href="/extensions/xep-0323.html">XEP-0323</a> <a href="/extensions/xep-0323.pdf">(PDF)</a> </td>
+                <td valign="top">Internet of Things - Sensor Data</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-03-02</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0126">
+                <td valign="top"> <a href="/extensions/xep-0126.html">XEP-0126</a> <a href="/extensions/xep-0126.pdf">(PDF)</a> </td>
+                <td valign="top">Invisibility</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2005-08-19</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0186">
+                <td valign="top"> <a href="/extensions/xep-0186.html">XEP-0186</a> <a href="/extensions/xep-0186.pdf">(PDF)</a> </td>
+                <td valign="top">Invisible Command</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2012-06-27</td>
+            </tr>
+            <tr class="tablebody XEP-Rejected" id="xep0018" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0018.html">XEP-0018</a> <a href="/extensions/xep-0018.pdf">(PDF)</a> </td>
+                <td valign="top">Invisible Presence</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Rejected</td>
+                <td valign="top">2003-09-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0106">
+                <td valign="top"> <a href="/extensions/xep-0106.html">XEP-0106</a> <a href="/extensions/xep-0106.pdf">(PDF)</a> </td>
+                <td valign="top">JID Escaping</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2007-06-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0328" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0328.html">XEP-0328</a> <a href="/extensions/xep-0328.pdf">(PDF)</a> </td>
+                <td valign="top">JID Prep</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-05-28</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0335">
+                <td valign="top"> <a href="/extensions/xep-0335.html">XEP-0335</a> <a href="/extensions/xep-0335.pdf">(PDF)</a> </td>
+                <td valign="top">JSON Containers</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-10-25</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0295">
+                <td valign="top"> <a href="/extensions/xep-0295.html">XEP-0295</a> <a href="/extensions/xep-0295.pdf">(PDF)</a> </td>
+                <td valign="top">JSON Encodings for XMPP</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2011-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0011" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0011.html">XEP-0011</a> <a href="/extensions/xep-0011.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Browsing</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-06-03</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0114">
+                <td valign="top"> <a href="/extensions/xep-0114.html">XEP-0114</a> <a href="/extensions/xep-0114.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Component Protocol</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2012-01-25</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0043" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0043.html">XEP-0043</a> <a href="/extensions/xep-0043.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Database Access</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-10-20</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0021" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0021.html">XEP-0021</a> <a href="/extensions/xep-0021.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Event Notification Service (ENS)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-22</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0025" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0025.html">XEP-0025</a> <a href="/extensions/xep-0025.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber HTTP Polling</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-06-03</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0005" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0005.html">XEP-0005</a> <a href="/extensions/xep-0005.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Interest Groups</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2002-05-08</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0081" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0081.html">XEP-0081</a> <a href="/extensions/xep-0081.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber MIME Type</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2005-07-19</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0042" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0042.html">XEP-0042</a> <a href="/extensions/xep-0042.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber OOB Broadcast Service (JOBS)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0075" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0075.html">XEP-0075</a> <a href="/extensions/xep-0075.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Object Access Protocol (JOAP)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-05-22</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0040" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0040.html">XEP-0040</a> <a href="/extensions/xep-0040.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Robust Publish-Subscribe</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2004-07-26</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0055">
+                <td valign="top"> <a href="/extensions/xep-0055.html">XEP-0055</a> <a href="/extensions/xep-0055.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber Search</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-09-15</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0032" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0032.html">XEP-0032</a> <a href="/extensions/xep-0032.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber URI Scheme</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-09-02</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0009">
+                <td valign="top"> <a href="/extensions/xep-0009.html">XEP-0009</a> <a href="/extensions/xep-0009.pdf">(PDF)</a> </td>
+                <td valign="top">Jabber-RPC</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2011-11-10</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0166">
+                <td valign="top"> <a href="/extensions/xep-0166.html">XEP-0166</a> <a href="/extensions/xep-0166.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-12-23</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0181" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0181.html">XEP-0181</a> <a href="/extensions/xep-0181.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle DTMF</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-10-02</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0269" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0269.html">XEP-0269</a> <a href="/extensions/xep-0269.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Early Media</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-05-19</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0234">
+                <td valign="top"> <a href="/extensions/xep-0234.html">XEP-0234</a> <a href="/extensions/xep-0234.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle File Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-08-11</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0338">
+                <td valign="top"> <a href="/extensions/xep-0338.html">XEP-0338</a> <a href="/extensions/xep-0338.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Grouping Framework</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0179" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0179.html">XEP-0179</a> <a href="/extensions/xep-0179.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle IAX Transport Method</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2006-03-23</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0176">
+                <td valign="top"> <a href="/extensions/xep-0176.html">XEP-0176</a> <a href="/extensions/xep-0176.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle ICE-UDP Transport Method</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-06-10</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0261">
+                <td valign="top"> <a href="/extensions/xep-0261.html">XEP-0261</a> <a href="/extensions/xep-0261.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle In-Band Bytestreams Transport Method</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-09-23</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0353">
+                <td valign="top"> <a href="/extensions/xep-0353.html">XEP-0353</a> <a href="/extensions/xep-0353.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Message Initiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-10-02</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0293">
+                <td valign="top"> <a href="/extensions/xep-0293.html">XEP-0293</a> <a href="/extensions/xep-0293.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle RTP Feedback Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2015-04-29</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0294">
+                <td valign="top"> <a href="/extensions/xep-0294.html">XEP-0294</a> <a href="/extensions/xep-0294.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle RTP Header Extensions Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2015-03-25</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0167">
+                <td valign="top"> <a href="/extensions/xep-0167.html">XEP-0167</a> <a href="/extensions/xep-0167.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle RTP Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-12-23</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0177">
+                <td valign="top"> <a href="/extensions/xep-0177.html">XEP-0177</a> <a href="/extensions/xep-0177.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Raw UDP Transport Method</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-12-23</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0278" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0278.html">XEP-0278</a> <a href="/extensions/xep-0278.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Relay Nodes</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-06-21</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0260">
+                <td valign="top"> <a href="/extensions/xep-0260.html">XEP-0260</a> <a href="/extensions/xep-0260.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle SOCKS5 Bytestreams Transport Method</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-09-23</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0251" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0251.html">XEP-0251</a> <a href="/extensions/xep-0251.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Session Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-10-05</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0183">
+                <td valign="top"> <a href="/extensions/xep-0183.html">XEP-0183</a> <a href="/extensions/xep-0183.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Telepathy Transport</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0180" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0180.html">XEP-0180</a> <a href="/extensions/xep-0180.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle Video via RTP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2008-06-04</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0247" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0247.html">XEP-0247</a> <a href="/extensions/xep-0247.pdf">(PDF)</a> </td>
+                <td valign="top">Jingle XML Streams</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-02-20</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0171">
+                <td valign="top"> <a href="/extensions/xep-0171.html">XEP-0171</a> <a href="/extensions/xep-0171.pdf">(PDF)</a> </td>
+                <td valign="top">Language Translation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-06-15</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0012">
+                <td valign="top"> <a href="/extensions/xep-0012.html">XEP-0012</a> <a href="/extensions/xep-0012.pdf">(PDF)</a> </td>
+                <td valign="top">Last Activity</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2008-11-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0256">
+                <td valign="top"> <a href="/extensions/xep-0256.html">XEP-0256</a> <a href="/extensions/xep-0256.pdf">(PDF)</a> </td>
+                <td valign="top">Last Activity in Presence</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-09-15</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0308">
+                <td valign="top"> <a href="/extensions/xep-0308.html">XEP-0308</a> <a href="/extensions/xep-0308.pdf">(PDF)</a> </td>
+                <td valign="top">Last Message Correction</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2013-04-08</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0319">
+                <td valign="top"> <a href="/extensions/xep-0319.html">XEP-0319</a> <a href="/extensions/xep-0319.pdf">(PDF)</a> </td>
+                <td valign="top">Last User Interaction in Presence</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2015-04-02</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0091" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0091.html">XEP-0091</a> <a href="/extensions/xep-0091.pdf">(PDF)</a> </td>
+                <td valign="top">Legacy Delayed Delivery</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-05-27</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0090" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0090.html">XEP-0090</a> <a href="/extensions/xep-0090.pdf">(PDF)</a> </td>
+                <td valign="top">Legacy Entity Time</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-05-27</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0255" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0255.html">XEP-0255</a> <a href="/extensions/xep-0255.pdf">(PDF)</a> </td>
+                <td valign="top">Location Query</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-04-09</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0316" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0316.html">XEP-0316</a> <a href="/extensions/xep-0316.pdf">(PDF)</a> </td>
+                <td valign="top">MUC Eventing Protocol</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-01-03</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0311" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0311.html">XEP-0311</a> <a href="/extensions/xep-0311.pdf">(PDF)</a> </td>
+                <td valign="top">MUC Fast Reconnect</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-01-25</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0076">
+                <td valign="top"> <a href="/extensions/xep-0076.html">XEP-0076</a> <a href="/extensions/xep-0076.pdf">(PDF)</a> </td>
+                <td valign="top">Malicious Stanzas</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2003-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0313">
+                <td valign="top"> <a href="/extensions/xep-0313.html">XEP-0313</a> <a href="/extensions/xep-0313.pdf">(PDF)</a> </td>
+                <td valign="top">Message Archive Management</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-01-23</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0136">
+                <td valign="top"> <a href="/extensions/xep-0136.html">XEP-0136</a> <a href="/extensions/xep-0136.pdf">(PDF)</a> </td>
+                <td valign="top">Message Archiving</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2010-06-21</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0280">
+                <td valign="top"> <a href="/extensions/xep-0280.html">XEP-0280</a> <a href="/extensions/xep-0280.pdf">(PDF)</a> </td>
+                <td valign="top">Message Carbons</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-10-17</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0184">
+                <td valign="top"> <a href="/extensions/xep-0184.html">XEP-0184</a> <a href="/extensions/xep-0184.pdf">(PDF)</a> </td>
+                <td valign="top">Message Delivery Receipts</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-03-01</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0022" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0022.html">XEP-0022</a> <a href="/extensions/xep-0022.pdf">(PDF)</a> </td>
+                <td valign="top">Message Events</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-05-27</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0023" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0023.html">XEP-0023</a> <a href="/extensions/xep-0023.pdf">(PDF)</a> </td>
+                <td valign="top">Message Expiration</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-06-03</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0259" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0259.html">XEP-0259</a> <a href="/extensions/xep-0259.pdf">(PDF)</a> </td>
+                <td valign="top">Message Mine-ing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-01-21</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0334">
+                <td valign="top"> <a href="/extensions/xep-0334.html">XEP-0334</a> <a href="/extensions/xep-0334.pdf">(PDF)</a> </td>
+                <td valign="top">Message Processing Hints</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0226" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0226.html">XEP-0226</a> <a href="/extensions/xep-0226.pdf">(PDF)</a> </td>
+                <td valign="top">Message Stanza Profiles</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Rejected" id="xep0014" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0014.html">XEP-0014</a> <a href="/extensions/xep-0014.pdf">(PDF)</a> </td>
+                <td valign="top">Message Tone</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Rejected</td>
+                <td valign="top">2002-01-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0209" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0209.html">XEP-0209</a> <a href="/extensions/xep-0209.pdf">(PDF)</a> </td>
+                <td valign="top">Metacontacts</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-04-10</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0277" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0277.html">XEP-0277</a> <a href="/extensions/xep-0277.pdf">(PDF)</a> </td>
+                <td valign="top">Microblogging over XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-22</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0286">
+                <td valign="top"> <a href="/extensions/xep-0286.html">XEP-0286</a> <a href="/extensions/xep-0286.pdf">(PDF)</a> </td>
+                <td valign="top">Mobile Considerations</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-07-22</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0283" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0283.html">XEP-0283</a> <a href="/extensions/xep-0283.pdf">(PDF)</a> </td>
+                <td valign="top">Moved</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-06-16</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0045">
+                <td valign="top"> <a href="/extensions/xep-0045.html">XEP-0045</a> <a href="/extensions/xep-0045.pdf">(PDF)</a> </td>
+                <td valign="top">Multi-User Chat</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2012-02-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0058" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0058.html">XEP-0058</a> <a href="/extensions/xep-0058.pdf">(PDF)</a> </td>
+                <td valign="top">Multi-User Text Editing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2002-11-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0272" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0272.html">XEP-0272</a> <a href="/extensions/xep-0272.pdf">(PDF)</a> </td>
+                <td valign="top">Multiparty Jingle (Muji)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-09-11</td>
+            </tr>
+            <tr class="tablebody XEP-Rejected" id="xep0017" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0017.html">XEP-0017</a> <a href="/extensions/xep-0017.pdf">(PDF)</a> </td>
+                <td valign="top">Naive Packet Framing Protocol</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Rejected</td>
+                <td valign="top">2002-02-19</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0355">
+                <td valign="top"> <a href="/extensions/xep-0355.html">XEP-0355</a> <a href="/extensions/xep-0355.pdf">(PDF)</a> </td>
+                <td valign="top">Namespace Delegation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-03-21</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0083">
+                <td valign="top"> <a href="/extensions/xep-0083.html">XEP-0083</a> <a href="/extensions/xep-0083.pdf">(PDF)</a> </td>
+                <td valign="top">Nested Roster Groups</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-10-11</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0028" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0028.html">XEP-0028</a> <a href="/extensions/xep-0028.pdf">(PDF)</a> </td>
+                <td valign="top">No Such XEP</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2001-08-20</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0078" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0078.html">XEP-0078</a> <a href="/extensions/xep-0078.pdf">(PDF)</a> </td>
+                <td valign="top">Non-SASL Authentication</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2008-10-29</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0360">
+                <td valign="top"> <a href="/extensions/xep-0360.html">XEP-0360</a> <a href="/extensions/xep-0360.pdf">(PDF)</a> </td>
+                <td valign="top">Nonzas (are not Stanzas)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-07-14</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0235" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0235.html">XEP-0235</a> <a href="/extensions/xep-0235.pdf">(PDF)</a> </td>
+                <td valign="top">OAuth Over XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-03-24</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0187" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0187.html">XEP-0187</a> <a href="/extensions/xep-0187.pdf">(PDF)</a> </td>
+                <td valign="top">Offline Encrypted Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0066">
+                <td valign="top"> <a href="/extensions/xep-0066.html">XEP-0066</a> <a href="/extensions/xep-0066.pdf">(PDF)</a> </td>
+                <td valign="top">Out of Band Data</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2006-08-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0265" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0265.html">XEP-0265</a> <a href="/extensions/xep-0265.pdf">(PDF)</a> </td>
+                <td valign="top">Out-of-Band Stream Data</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-04-02</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0109" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0109.html">XEP-0109</a> <a href="/extensions/xep-0109.pdf">(PDF)</a> </td>
+                <td valign="top">Out-of-Office Messages</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-05-24</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0062" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0062.html">XEP-0062</a> <a href="/extensions/xep-0062.pdf">(PDF)</a> </td>
+                <td valign="top">Packet Filtering</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0223">
+                <td valign="top"> <a href="/extensions/xep-0223.html">XEP-0223</a> <a href="/extensions/xep-0223.pdf">(PDF)</a> </td>
+                <td valign="top">Persistent Storage of Private Data via PubSub</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-09-08</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0222">
+                <td valign="top"> <a href="/extensions/xep-0222.html">XEP-0222</a> <a href="/extensions/xep-0222.pdf">(PDF)</a> </td>
+                <td valign="top">Persistent Storage of Public Data via PubSub</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-09-08</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0163">
+                <td valign="top"> <a href="/extensions/xep-0163.html">XEP-0163</a> <a href="/extensions/xep-0163.pdf">(PDF)</a> </td>
+                <td valign="top">Personal Eventing Protocol</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2010-07-12</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0227">
+                <td valign="top"> <a href="/extensions/xep-0227.html">XEP-0227</a> <a href="/extensions/xep-0227.pdf">(PDF)</a> </td>
+                <td valign="top">Portable Import/Export Format for XMPP-IM Servers</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2010-03-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0276" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0276.html">XEP-0276</a> <a href="/extensions/xep-0276.pdf">(PDF)</a> </td>
+                <td valign="top">Presence Decloaking</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-07-13</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0132">
+                <td valign="top"> <a href="/extensions/xep-0132.html">XEP-0132</a> <a href="/extensions/xep-0132.pdf">(PDF)</a> </td>
+                <td valign="top">Presence Obtained via Kinesthetic Excitation (POKE)</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0310" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0310.html">XEP-0310</a> <a href="/extensions/xep-0310.pdf">(PDF)</a> </td>
+                <td valign="top">Presence State Annotations</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-01-10</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0016">
+                <td valign="top"> <a href="/extensions/xep-0016.html">XEP-0016</a> <a href="/extensions/xep-0016.pdf">(PDF)</a> </td>
+                <td valign="top">Privacy Lists</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2007-02-15</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0049">
+                <td valign="top"> <a href="/extensions/xep-0049.html">XEP-0049</a> <a href="/extensions/xep-0049.pdf">(PDF)</a> </td>
+                <td valign="top">Private XML Storage</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-03-01</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0356">
+                <td valign="top"> <a href="/extensions/xep-0356.html">XEP-0356</a> <a href="/extensions/xep-0356.pdf">(PDF)</a> </td>
+                <td valign="top">Privileged Entity</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-03-23</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0006" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0006.html">XEP-0006</a> <a href="/extensions/xep-0006.pdf">(PDF)</a> </td>
+                <td valign="top">Profiles</td>
+                <td valign="top">SIG Formation</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2002-05-08</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0193" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0193.html">XEP-0193</a> <a href="/extensions/xep-0193.pdf">(PDF)</a> </td>
+                <td valign="top">Proposed Resource Binding Improvements</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2012-02-08</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0192" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0192.html">XEP-0192</a> <a href="/extensions/xep-0192.pdf">(PDF)</a> </td>
+                <td valign="top">Proposed Stream Feature Improvements</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2012-02-08</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0003" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0003.html">XEP-0003</a> <a href="/extensions/xep-0003.pdf">(PDF)</a> </td>
+                <td valign="top">Proxy Accept Socket Service (PASS)</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2009-06-03</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0036" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0036.html">XEP-0036</a> <a href="/extensions/xep-0036.pdf">(PDF)</a> </td>
+                <td valign="top">Pub-Sub Subscriptions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-22</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0253" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0253.html">XEP-0253</a> <a href="/extensions/xep-0253.pdf">(PDF)</a> </td>
+                <td valign="top">PubSub Chaining</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-11-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0248" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0248.html">XEP-0248</a> <a href="/extensions/xep-0248.pdf">(PDF)</a> </td>
+                <td valign="top">PubSub Collection Nodes</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-09-28</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0254" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0254.html">XEP-0254</a> <a href="/extensions/xep-0254.pdf">(PDF)</a> </td>
+                <td valign="top">PubSub Queueing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-11-13</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0312" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0312.html">XEP-0312</a> <a href="/extensions/xep-0312.pdf">(PDF)</a> </td>
+                <td valign="top">PubSub Since</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-29</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0189" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0189.html">XEP-0189</a> <a href="/extensions/xep-0189.pdf">(PDF)</a> </td>
+                <td valign="top">Public Key Publishing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-07-15</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0060">
+                <td valign="top"> <a href="/extensions/xep-0060.html">XEP-0060</a> <a href="/extensions/xep-0060.pdf">(PDF)</a> </td>
+                <td valign="top">Publish-Subscribe</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2010-07-12</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0024" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0024.html">XEP-0024</a> <a href="/extensions/xep-0024.pdf">(PDF)</a> </td>
+                <td valign="top">Publish/Subscribe</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-04-22</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0358">
+                <td valign="top"> <a href="/extensions/xep-0358.html">XEP-0358</a> <a href="/extensions/xep-0358.pdf">(PDF)</a> </td>
+                <td valign="top">Publishing Available Jingle Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-06-29</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0137">
+                <td valign="top"> <a href="/extensions/xep-0137.html">XEP-0137</a> <a href="/extensions/xep-0137.pdf">(PDF)</a> </td>
+                <td valign="top">Publishing Stream Initiation Requests</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-08-26</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0330">
+                <td valign="top"> <a href="/extensions/xep-0330.html">XEP-0330</a> <a href="/extensions/xep-0330.pdf">(PDF)</a> </td>
+                <td valign="top">Pubsub Subscription</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-06-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0173" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0173.html">XEP-0173</a> <a href="/extensions/xep-0173.pdf">(PDF)</a> </td>
+                <td valign="top">Pubsub Subscription Storage</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2006-02-09</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0357">
+                <td valign="top"> <a href="/extensions/xep-0357.html">XEP-0357</a> <a href="/extensions/xep-0357.pdf">(PDF)</a> </td>
+                <td valign="top">Push</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-03-18</td>
+            </tr>
+            <tr class="tablebody XEP-Proposed" id="xep0327">
+                <td valign="top"> <a href="/extensions/xep-0327.html">XEP-0327</a> <a href="/extensions/xep-0327.pdf">(PDF)</a> </td>
+                <td valign="top">Rayo</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Proposed</td>
+                <td valign="top">2015-07-15</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0341">
+                <td valign="top"> <a href="/extensions/xep-0341.html">XEP-0341</a> <a href="/extensions/xep-0341.pdf">(PDF)</a> </td>
+                <td valign="top">Rayo CPA</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-14</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0349">
+                <td valign="top"> <a href="/extensions/xep-0349.html">XEP-0349</a> <a href="/extensions/xep-0349.pdf">(PDF)</a> </td>
+                <td valign="top">Rayo Clustering</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-06-18</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0342">
+                <td valign="top"> <a href="/extensions/xep-0342.html">XEP-0342</a> <a href="/extensions/xep-0342.pdf">(PDF)</a> </td>
+                <td valign="top">Rayo Fax</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-03-13</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0152">
+                <td valign="top"> <a href="/extensions/xep-0152.html">XEP-0152</a> <a href="/extensions/xep-0152.pdf">(PDF)</a> </td>
+                <td valign="top">Reachability Addresses</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-02-25</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0351">
+                <td valign="top"> <a href="/extensions/xep-0351.html">XEP-0351</a> <a href="/extensions/xep-0351.pdf">(PDF)</a> </td>
+                <td valign="top">Recipient Server Side Notifications Filtering</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-08-28</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0170">
+                <td valign="top"> <a href="/extensions/xep-0170.html">XEP-0170</a> <a href="/extensions/xep-0170.pdf">(PDF)</a> </td>
+                <td valign="top">Recommended Order of Stream Feature Negotiation</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2007-01-04</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0041" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0041.html">XEP-0041</a> <a href="/extensions/xep-0041.pdf">(PDF)</a> </td>
+                <td valign="top">Reliable Entity Link</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0146">
+                <td valign="top"> <a href="/extensions/xep-0146.html">XEP-0146</a> <a href="/extensions/xep-0146.pdf">(PDF)</a> </td>
+                <td valign="top">Remote Controlling Clients</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-03-23</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0321" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0321.html">XEP-0321</a> <a href="/extensions/xep-0321.pdf">(PDF)</a> </td>
+                <td valign="top">Remote Roster Management</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-04-16</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0210" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0210.html">XEP-0210</a> <a href="/extensions/xep-0210.pdf">(PDF)</a> </td>
+                <td valign="top">Requirements for Encrypted Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0228" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0228.html">XEP-0228</a> <a href="/extensions/xep-0228.pdf">(PDF)</a> </td>
+                <td valign="top">Requirements for Shared Editing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-08-22</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0168" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0168.html">XEP-0168</a> <a href="/extensions/xep-0168.pdf">(PDF)</a> </td>
+                <td valign="top">Resource Application Priority</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0059">
+                <td valign="top"> <a href="/extensions/xep-0059.html">XEP-0059</a> <a href="/extensions/xep-0059.pdf">(PDF)</a> </td>
+                <td valign="top">Result Set Management</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2006-09-20</td>
+            </tr>
+            <tr class="tablebody XEP-Deprecated" id="xep0093" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0093.html">XEP-0093</a> <a href="/extensions/xep-0093.pdf">(PDF)</a> </td>
+                <td valign="top">Roster Item Exchange</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Deprecated</td>
+                <td valign="top">2005-08-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0144">
+                <td valign="top"> <a href="/extensions/xep-0144.html">XEP-0144</a> <a href="/extensions/xep-0144.pdf">(PDF)</a> </td>
+                <td valign="top">Roster Item Exchange</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-08-26</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0237" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0237.html">XEP-0237</a> <a href="/extensions/xep-0237.pdf">(PDF)</a> </td>
+                <td valign="top">Roster Versioning</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2012-02-08</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0034" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0034.html">XEP-0034</a> <a href="/extensions/xep-0034.pdf">(PDF)</a> </td>
+                <td valign="top">SASL Integration</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0096">
+                <td valign="top"> <a href="/extensions/xep-0096.html">XEP-0096</a> <a href="/extensions/xep-0096.pdf">(PDF)</a> </td>
+                <td valign="top">SI File Transfer</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2004-04-13</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0072">
+                <td valign="top"> <a href="/extensions/xep-0072.html">XEP-0072</a> <a href="/extensions/xep-0072.pdf">(PDF)</a> </td>
+                <td valign="top">SOAP Over XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-12-14</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0065">
+                <td valign="top"> <a href="/extensions/xep-0065.html">XEP-0065</a> <a href="/extensions/xep-0065.pdf">(PDF)</a> </td>
+                <td valign="top">SOCKS5 Bytestreams</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-04-20</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0035" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0035.html">XEP-0035</a> <a href="/extensions/xep-0035.pdf">(PDF)</a> </td>
+                <td valign="top">SSL/TLS Integration</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0102" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0102.html">XEP-0102</a> <a href="/extensions/xep-0102.pdf">(PDF)</a> </td>
+                <td valign="top">Security Extensions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-06-25</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0314" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0314.html">XEP-0314</a> <a href="/extensions/xep-0314.pdf">(PDF)</a> </td>
+                <td valign="top">Security Labels in PubSub</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-07-27</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0258">
+                <td valign="top"> <a href="/extensions/xep-0258.html">XEP-0258</a> <a href="/extensions/xep-0258.pdf">(PDF)</a> </td>
+                <td valign="top">Security Labels in XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2013-04-08</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0139" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0139.html">XEP-0139</a> <a href="/extensions/xep-0139.pdf">(PDF)</a> </td>
+                <td valign="top">Security SIG</td>
+                <td valign="top">SIG Formation</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2004-09-15</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0267" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0267.html">XEP-0267</a> <a href="/extensions/xep-0267.pdf">(PDF)</a> </td>
+                <td valign="top">Server Buddies</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-29</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0220">
+                <td valign="top"> <a href="/extensions/xep-0220.html">XEP-0220</a> <a href="/extensions/xep-0220.pdf">(PDF)</a> </td>
+                <td valign="top">Server Dialback</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-08-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0279" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0279.html">XEP-0279</a> <a href="/extensions/xep-0279.pdf">(PDF)</a> </td>
+                <td valign="top">Server IP Check</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-04-17</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0174">
+                <td valign="top"> <a href="/extensions/xep-0174.html">XEP-0174</a> <a href="/extensions/xep-0174.pdf">(PDF)</a> </td>
+                <td valign="top">Serverless Messaging</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2008-11-26</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0133">
+                <td valign="top"> <a href="/extensions/xep-0133.html">XEP-0133</a> <a href="/extensions/xep-0133.pdf">(PDF)</a> </td>
+                <td valign="top">Service Administration</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2005-08-19</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0291" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0291.html">XEP-0291</a> <a href="/extensions/xep-0291.pdf">(PDF)</a> </td>
+                <td valign="top">Service Delegation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-01-26</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0309" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0309.html">XEP-0309</a> <a href="/extensions/xep-0309.pdf">(PDF)</a> </td>
+                <td valign="top">Service Directories</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-05-29</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0030">
+                <td valign="top"> <a href="/extensions/xep-0030.html">XEP-0030</a> <a href="/extensions/xep-0030.pdf">(PDF)</a> </td>
+                <td valign="top">Service Discovery</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2008-06-06</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0128">
+                <td valign="top"> <a href="/extensions/xep-0128.html">XEP-0128</a> <a href="/extensions/xep-0128.pdf">(PDF)</a> </td>
+                <td valign="top">Service Discovery Extensions</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-10-20</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0230" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0230.html">XEP-0230</a> <a href="/extensions/xep-0230.pdf">(PDF)</a> </td>
+                <td valign="top">Service Discovery Notifications</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-01-30</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0140" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0140.html">XEP-0140</a> <a href="/extensions/xep-0140.pdf">(PDF)</a> </td>
+                <td valign="top">Shared Groups</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2004-10-27</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0061" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0061.html">XEP-0061</a> <a href="/extensions/xep-0061.pdf">(PDF)</a> </td>
+                <td valign="top">Shared Notes</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0284" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0284.html">XEP-0284</a> <a href="/extensions/xep-0284.pdf">(PDF)</a> </td>
+                <td valign="top">Shared XML Editing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-07-02</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0343">
+                <td valign="top"> <a href="/extensions/xep-0343.html">XEP-0343</a> <a href="/extensions/xep-0343.pdf">(PDF)</a> </td>
+                <td valign="top">Signaling WebRTC datachannels in Jingle</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-07-15</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0348">
+                <td valign="top"> <a href="/extensions/xep-0348.html">XEP-0348</a> <a href="/extensions/xep-0348.pdf">(PDF)</a> </td>
+                <td valign="top">Signing Forms</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-05-28</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0074" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0074.html">XEP-0074</a> <a href="/extensions/xep-0074.pdf">(PDF)</a> </td>
+                <td valign="top">Simple Access Control</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-10-20</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0113" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0113.html">XEP-0113</a> <a href="/extensions/xep-0113.pdf">(PDF)</a> </td>
+                <td valign="top">Simple Whiteboarding</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-07</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0217" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0217.html">XEP-0217</a> <a href="/extensions/xep-0217.pdf">(PDF)</a> </td>
+                <td valign="top">Simplified Encrypted Session Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0232" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0232.html">XEP-0232</a> <a href="/extensions/xep-0232.pdf">(PDF)</a> </td>
+                <td valign="top">Software Information</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-02-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0092">
+                <td valign="top"> <a href="/extensions/xep-0092.html">XEP-0092</a> <a href="/extensions/xep-0092.pdf">(PDF)</a> </td>
+                <td valign="top">Software Version</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2007-02-15</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0339">
+                <td valign="top"> <a href="/extensions/xep-0339.html">XEP-0339</a> <a href="/extensions/xep-0339.pdf">(PDF)</a> </td>
+                <td valign="top">Source-Specific Media Attributes in Jingle</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2014-01-08</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0002">
+                <td valign="top"> <a href="/extensions/xep-0002.html">XEP-0002</a> <a href="/extensions/xep-0002.pdf">(PDF)</a> </td>
+                <td valign="top">Special Interest Groups (SIGs)</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2002-01-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0287" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0287.html">XEP-0287</a> <a href="/extensions/xep-0287.pdf">(PDF)</a> </td>
+                <td valign="top">Spim Markers and Reports</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2010-10-04</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0159" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0159.html">XEP-0159</a> <a href="/extensions/xep-0159.pdf">(PDF)</a> </td>
+                <td valign="top">Spim-Blocking Control</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2006-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0200" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0200.html">XEP-0200</a> <a href="/extensions/xep-0200.pdf">(PDF)</a> </td>
+                <td valign="top">Stanza Encryption</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-05-30</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0297">
+                <td valign="top"> <a href="/extensions/xep-0297.html">XEP-0297</a> <a href="/extensions/xep-0297.pdf">(PDF)</a> </td>
+                <td valign="top">Stanza Forwarding</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2013-10-02</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0131">
+                <td valign="top"> <a href="/extensions/xep-0131.html">XEP-0131</a> <a href="/extensions/xep-0131.pdf">(PDF)</a> </td>
+                <td valign="top">Stanza Headers and Internet Metadata</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2006-07-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0273" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0273.html">XEP-0273</a> <a href="/extensions/xep-0273.pdf">(PDF)</a> </td>
+                <td valign="top">Stanza Interception and Filtering Technology (SIFT)</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-06-27</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0155">
+                <td valign="top"> <a href="/extensions/xep-0155.html">XEP-0155</a> <a href="/extensions/xep-0155.pdf">(PDF)</a> </td>
+                <td valign="top">Stanza Session Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-01-14</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0039" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0039.html">XEP-0039</a> <a href="/extensions/xep-0039.pdf">(PDF)</a> </td>
+                <td valign="top">Statistics Gathering</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2002-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0067" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0067.html">XEP-0067</a> <a href="/extensions/xep-0067.pdf">(PDF)</a> </td>
+                <td valign="top">Stock Data Transmission</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-07-19</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0138">
+                <td valign="top"> <a href="/extensions/xep-0138.html">XEP-0138</a> <a href="/extensions/xep-0138.pdf">(PDF)</a> </td>
+                <td valign="top">Stream Compression</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2009-05-27</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0229">
+                <td valign="top"> <a href="/extensions/xep-0229.html">XEP-0229</a> <a href="/extensions/xep-0229.pdf">(PDF)</a> </td>
+                <td valign="top">Stream Compression with LZW</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2007-09-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0095">
+                <td valign="top"> <a href="/extensions/xep-0095.html">XEP-0095</a> <a href="/extensions/xep-0095.pdf">(PDF)</a> </td>
+                <td valign="top">Stream Initiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2004-04-13</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0087" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0087.html">XEP-0087</a> <a href="/extensions/xep-0087.pdf">(PDF)</a> </td>
+                <td valign="top">Stream Initiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-05-22</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0198">
+                <td valign="top"> <a href="/extensions/xep-0198.html">XEP-0198</a> <a href="/extensions/xep-0198.pdf">(PDF)</a> </td>
+                <td valign="top">Stream Management</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-06-29</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0019">
+                <td valign="top"> <a href="/extensions/xep-0019.html">XEP-0019</a> <a href="/extensions/xep-0019.pdf">(PDF)</a> </td>
+                <td valign="top">Streamlining the SIGs</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2002-03-20</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0245">
+                <td valign="top"> <a href="/extensions/xep-0245.html">XEP-0245</a> <a href="/extensions/xep-0245.pdf">(PDF)</a> </td>
+                <td valign="top">The /me Command</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-01-21</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0149">
+                <td valign="top"> <a href="/extensions/xep-0149.html">XEP-0149</a> <a href="/extensions/xep-0149.pdf">(PDF)</a> </td>
+                <td valign="top">Time Periods</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-01-24</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0105" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0105.html">XEP-0105</a> <a href="/extensions/xep-0105.pdf">(PDF)</a> </td>
+                <td valign="top">Tree Transfer Stream Initiation Profile</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-22</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0169">
+                <td valign="top"> <a href="/extensions/xep-0169.html">XEP-0169</a> <a href="/extensions/xep-0169.pdf">(PDF)</a> </td>
+                <td valign="top">Twas The Night Before Christmas (Jabber Version)</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2009-12-24</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0103" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0103.html">XEP-0103</a> <a href="/extensions/xep-0103.pdf">(PDF)</a> </td>
+                <td valign="top">URL Address Information</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2004-01-20</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0307" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0307.html">XEP-0307</a> <a href="/extensions/xep-0307.pdf">(PDF)</a> </td>
+                <td valign="top">Unique Room Names for Multi-User Chat</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-11-10</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0359">
+                <td valign="top"> <a href="/extensions/xep-0359.html">XEP-0359</a> <a href="/extensions/xep-0359.pdf">(PDF)</a> </td>
+                <td valign="top">Unique and Stable Stanza IDs</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-07-14</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0300" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0300.html">XEP-0300</a> <a href="/extensions/xep-0300.pdf">(PDF)</a> </td>
+                <td valign="top">Use of Cryptographic Hash Functions in XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2012-02-08</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0320">
+                <td valign="top"> <a href="/extensions/xep-0320.html">XEP-0320</a> <a href="/extensions/xep-0320.pdf">(PDF)</a> </td>
+                <td valign="top">Use of DTLS-SRTP in Jingle Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-10-22</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0150" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0150.html">XEP-0150</a> <a href="/extensions/xep-0150.pdf">(PDF)</a> </td>
+                <td valign="top">Use of Entity Tags in XMPP Extensions</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-08-09</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0262">
+                <td valign="top"> <a href="/extensions/xep-0262.html">XEP-0262</a> <a href="/extensions/xep-0262.pdf">(PDF)</a> </td>
+                <td valign="top">Use of ZRTP in Jingle RTP Sessions</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2011-06-15</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0108">
+                <td valign="top"> <a href="/extensions/xep-0108.html">XEP-0108</a> <a href="/extensions/xep-0108.pdf">(PDF)</a> </td>
+                <td valign="top">User Activity</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-10-29</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0084">
+                <td valign="top"> <a href="/extensions/xep-0084.html">XEP-0084</a> <a href="/extensions/xep-0084.pdf">(PDF)</a> </td>
+                <td valign="top">User Avatar</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-11-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0195" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0195.html">XEP-0195</a> <a href="/extensions/xep-0195.pdf">(PDF)</a> </td>
+                <td valign="top">User Browsing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-25</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0194" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0194.html">XEP-0194</a> <a href="/extensions/xep-0194.pdf">(PDF)</a> </td>
+                <td valign="top">User Chatting</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-25</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0196" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0196.html">XEP-0196</a> <a href="/extensions/xep-0196.pdf">(PDF)</a> </td>
+                <td valign="top">User Gaming</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-25</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0080">
+                <td valign="top"> <a href="/extensions/xep-0080.html">XEP-0080</a> <a href="/extensions/xep-0080.pdf">(PDF)</a> </td>
+                <td valign="top">User Location</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-05-07</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0107">
+                <td valign="top"> <a href="/extensions/xep-0107.html">XEP-0107</a> <a href="/extensions/xep-0107.pdf">(PDF)</a> </td>
+                <td valign="top">User Mood</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-10-29</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0172">
+                <td valign="top"> <a href="/extensions/xep-0172.html">XEP-0172</a> <a href="/extensions/xep-0172.pdf">(PDF)</a> </td>
+                <td valign="top">User Nickname</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2012-03-21</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0112" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0112.html">XEP-0112</a> <a href="/extensions/xep-0112.pdf">(PDF)</a> </td>
+                <td valign="top">User Physical Location</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2004-10-12</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0154" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0154.html">XEP-0154</a> <a href="/extensions/xep-0154.pdf">(PDF)</a> </td>
+                <td valign="top">User Profile</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-04-18</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0118">
+                <td valign="top"> <a href="/extensions/xep-0118.html">XEP-0118</a> <a href="/extensions/xep-0118.pdf">(PDF)</a> </td>
+                <td valign="top">User Tune</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2008-01-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0197" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0197.html">XEP-0197</a> <a href="/extensions/xep-0197.pdf">(PDF)</a> </td>
+                <td valign="top">User Viewing</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-09-25</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0070">
+                <td valign="top"> <a href="/extensions/xep-0070.html">XEP-0070</a> <a href="/extensions/xep-0070.pdf">(PDF)</a> </td>
+                <td valign="top">Verifying HTTP Requests via XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2005-12-14</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0151" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0151.html">XEP-0151</a> <a href="/extensions/xep-0151.pdf">(PDF)</a> </td>
+                <td valign="top">Virtual Presence</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-07-05</td>
+            </tr>
+            <tr class="tablebody XEP-Deprecated" id="xep0130" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0130.html">XEP-0130</a> <a href="/extensions/xep-0130.pdf">(PDF)</a> </td>
+                <td valign="top">Waiting Lists</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Deprecated</td>
+                <td valign="top">2012-04-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0129" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0129.html">XEP-0129</a> <a href="/extensions/xep-0129.pdf">(PDF)</a> </td>
+                <td valign="top">WebDAV File Transfers</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2007-04-19</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0010" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0010.html">XEP-0010</a> <a href="/extensions/xep-0010.pdf">(PDF)</a> </td>
+                <td valign="top">Whiteboarding SIG</td>
+                <td valign="top">SIG Formation</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2002-05-08</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0304" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0304.html">XEP-0304</a> <a href="/extensions/xep-0304.pdf">(PDF)</a> </td>
+                <td valign="top">Whitespace Keepalive Negotiation</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-08-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0142" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0142.html">XEP-0142</a> <a href="/extensions/xep-0142.pdf">(PDF)</a> </td>
+                <td valign="top">Workgroup Queues</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-05-09</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0071">
+                <td valign="top"> <a href="/extensions/xep-0071.html">XEP-0071</a> <a href="/extensions/xep-0071.pdf">(PDF)</a> </td>
+                <td valign="top">XHTML-IM</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2012-11-28</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0211" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0211.html">XEP-0211</a> <a href="/extensions/xep-0211.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Basic Client 2008</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0212" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0212.html">XEP-0212</a> <a href="/extensions/xep-0212.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Basic Server 2008</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0242" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0242.html">XEP-0242</a> <a href="/extensions/xep-0242.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Client Compliance 2009</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2008-09-08</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0270">
+                <td valign="top"> <a href="/extensions/xep-0270.html">XEP-0270</a> <a href="/extensions/xep-0270.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Compliance Suites 2010</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2009-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0302" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0302.html">XEP-0302</a> <a href="/extensions/xep-0302.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Compliance Suites 2012</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2011-07-21</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0082">
+                <td valign="top"> <a href="/extensions/xep-0082.html">XEP-0082</a> <a href="/extensions/xep-0082.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Date and Time Profiles</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2013-09-26</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0134">
+                <td valign="top"> <a href="/extensions/xep-0134.html">XEP-0134</a> <a href="/extensions/xep-0134.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Design Guidelines</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2004-12-09</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0207">
+                <td valign="top"> <a href="/extensions/xep-0207.html">XEP-0207</a> <a href="/extensions/xep-0207.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Eventing via Pubsub</td>
+                <td valign="top">Humorous</td>
+                <td valign="top">Active</td>
+                <td valign="top">2007-04-01</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0001">
+                <td valign="top"> <a href="/extensions/xep-0001.html">XEP-0001</a> <a href="/extensions/xep-0001.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Extension Protocols</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2010-03-10</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0213" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0213.html">XEP-0213</a> <a href="/extensions/xep-0213.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Intermediate IM Client 2008</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0216" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0216.html">XEP-0216</a> <a href="/extensions/xep-0216.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Intermediate IM Server 2008</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2007-07-11</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0271" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0271.html">XEP-0271</a> <a href="/extensions/xep-0271.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Nodes</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2009-06-26</td>
+            </tr>
+            <tr class="tablebody XEP-Draft" id="xep0206">
+                <td valign="top"> <a href="/extensions/xep-0206.html">XEP-0206</a> <a href="/extensions/xep-0206.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Over BOSH</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Draft</td>
+                <td valign="top">2014-04-09</td>
+            </tr>
+            <tr class="tablebody XEP-Final" id="xep0199">
+                <td valign="top"> <a href="/extensions/xep-0199.html">XEP-0199</a> <a href="/extensions/xep-0199.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Ping</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Final</td>
+                <td valign="top">2009-06-03</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0238" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0238.html">XEP-0238</a> <a href="/extensions/xep-0238.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Protocol Flows for Inter-Domain Federation</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2008-03-31</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0305" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0305.html">XEP-0305</a> <a href="/extensions/xep-0305.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Quickstart</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2013-03-01</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0053">
+                <td valign="top"> <a href="/extensions/xep-0053.html">XEP-0053</a> <a href="/extensions/xep-0053.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Registrar Function</td>
+                <td valign="top">Procedural</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-10-29</td>
+            </tr>
+            <tr class="tablebody XEP-Obsolete" id="xep0243" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0243.html">XEP-0243</a> <a href="/extensions/xep-0243.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP Server Compliance 2009</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Obsolete</td>
+                <td valign="top">2008-09-08</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0147">
+                <td valign="top"> <a href="/extensions/xep-0147.html">XEP-0147</a> <a href="/extensions/xep-0147.pdf">(PDF)</a> </td>
+                <td valign="top">XMPP URI Scheme Query Components</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-09-13</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0064" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0064.html">XEP-0064</a> <a href="/extensions/xep-0064.pdf">(PDF)</a> </td>
+                <td valign="top">XPath Filtering</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-09-30</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0361">
+                <td valign="top"> <a href="/extensions/xep-0361.html">XEP-0361</a> <a href="/extensions/xep-0361.pdf">(PDF)</a> </td>
+                <td valign="top">Zero Handshake Server to Server Protocol</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2015-07-18</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0097" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0097.html">XEP-0097</a> <a href="/extensions/xep-0097.pdf">(PDF)</a> </td>
+                <td valign="top">iCal Envelope</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2003-06-10</td>
+            </tr>
+            <tr class="tablebody XEP-Deferred" id="xep0164" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0164.html">XEP-0164</a> <a href="/extensions/xep-0164.pdf">(PDF)</a> </td>
+                <td valign="top">vCard Filtering</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Deferred</td>
+                <td valign="top">2005-11-16</td>
+            </tr>
+            <tr class="tablebody XEP-Retracted" id="xep0125" style="display: none;">
+                <td valign="top"> <a href="/extensions/xep-0125.html">XEP-0125</a> <a href="/extensions/xep-0125.pdf">(PDF)</a> </td>
+                <td valign="top">vCard Infobits Mapping</td>
+                <td valign="top">Informational</td>
+                <td valign="top">Retracted</td>
+                <td valign="top">2003-12-15</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0153">
+                <td valign="top"> <a href="/extensions/xep-0153.html">XEP-0153</a> <a href="/extensions/xep-0153.pdf">(PDF)</a> </td>
+                <td valign="top">vCard-Based Avatars</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2006-08-16</td>
+            </tr>
+            <tr class="tablebody XEP-Experimental" id="xep0292">
+                <td valign="top"> <a href="/extensions/xep-0292.html">XEP-0292</a> <a href="/extensions/xep-0292.pdf">(PDF)</a> </td>
+                <td valign="top">vCard4 Over XMPP</td>
+                <td valign="top">Standards Track</td>
+                <td valign="top">Experimental</td>
+                <td valign="top">2013-09-12</td>
+            </tr>
+            <tr class="tablebody XEP-Active" id="xep0054">
+                <td valign="top"> <a href="/extensions/xep-0054.html">XEP-0054</a> <a href="/extensions/xep-0054.pdf">(PDF)</a> </td>
+                <td valign="top">vcard-temp</td>
+                <td valign="top">Historical</td>
+                <td valign="top">Active</td>
+                <td valign="top">2008-07-16</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,1155 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0071: XHTML-IM</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="XHTML-IM" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XHTML 1.0 Integration Set for use in exchanging instant messages that contain lightweight text markup. The protocol enables an XMPP entity to format a message using a small range of commonly-used HTML elements, attributes, and style properties that are suitable for use in instant messaging. The protocol also excludes HTML constructs that may introduce malware and other vulnerabilities (such as scripts and objects) for improved security." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2012-11-28" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0071" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0071: XHTML-IM</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XHTML 1.0 Integration Set for use in exchanging instant messages that contain lightweight text markup. The protocol enables an XMPP entity to format a message using a small range of commonly-used HTML elements, attributes, and style properties that are suitable for use in instant messaging. The protocol also excludes HTML constructs that may introduce malware and other vulnerabilities (such as scripts and objects) for improved security.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2012-11-28</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#tech">Choice of Technology</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#concepts">Concepts and Approach</a><br />5.  <a href="#wrapper">Wrapper Element</a><br />6.  <a href="#def">XHTML-IM Integration Set</a><br />   
+      6.1.  <a href="#def-structure">Structure Module Definition</a><br />   
+      6.2.  <a href="#def-text">Text Module Definition</a><br />   
+      6.3.  <a href="#def-hypertext">Hypertext Module Definition</a><br />   
+      6.4.  <a href="#def-list">List Module Definition</a><br />   
+      6.5.  <a href="#def-image">Image Module Definition</a><br />   
+      6.6.  <a href="#def-style">Style Attribute Module Definition</a><br />7.  <a href="#profile">Recommended Profile</a><br />   
+      7.1.  <a href="#profile-structure">Structure Module Profile</a><br />   
+      7.2.  <a href="#profile-text">Text Module Profile</a><br />   
+      7.3.  <a href="#profile-hypertext">Hypertext Module Profile</a><br />   
+      7.4.  <a href="#profile-list">List Module Profile</a><br />   
+      7.5.  <a href="#profile-image">Image Module Profile</a><br />   
+      7.6.  <a href="#profile-style">Style Attribute Module Profile</a><br />      
+      7.6.1.  <a href="#profile-style-properties">Recommended Style Properties</a><br />   
+      7.7.  <a href="#profile-attributes">Recommended Attributes</a><br />      
+      7.7.1.  <a href="#profile-attributes-common">Common Attributes</a><br />      
+      7.7.2.  <a href="#profile-attributes-special">Specialized Attributes</a><br />      
+      7.7.3.  <a href="#profile-attributes-other">Other Attributes</a><br />   
+      7.8.  <a href="#profile-summary">Summary of Recommendations</a><br />8.  <a href="#bizrules">Business Rules</a><br />9.  <a href="#examples">Examples</a><br />10.  <a href="#discovery">Discovering Support for XHTML-IM</a><br />   
+      10.1.  <a href="#discovery-explicit">Explicit Discovery</a><br />   
+      10.2.  <a href="#discovery-implicit">Implicit Discovery</a><br />11.  <a href="#security">Security Considerations</a><br />   
+      11.1.  <a href="#security-code">Malicious Objects</a><br />   
+      11.2.  <a href="#security-phishing">Phishing</a><br />   
+      11.3.  <a href="#security-presence">Presence Leaks</a><br />12.  <a href="#w3c">W3C Considerations</a><br />   
+      12.1.  <a href="#w3c-doctype">Document Type Name</a><br />   
+      12.2.  <a href="#w3c-conformance">User Agent Conformance</a><br />   
+      12.3.  <a href="#w3c-modularization">XHTML Modularization</a><br />   
+      12.4.  <a href="#w3c-review">W3C Review</a><br />   
+      12.5.  <a href="#w3c-versions">XHTML Versioning</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      14.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />15.  <a href="#schemas">XML Schemas</a><br />   
+      15.1.  <a href="#schemas-wrapper">XHTML-IM Wrapper</a><br />   
+      15.2.  <a href="#schemas-driver">XHTML-IM Schema Driver</a><br />   
+      15.3.  <a href="#schemas-model">XHTML-IM Content Model</a><br />16.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines methods for exchanging instant messages that contain lightweight text markup. In the context of this document, "lightweight text markup" is to be understood as a combination of minimal structural elements and presentational styles that can easily be rendered on a wide variety of devices without requiring a full rich-text rendering engine such as a web browser. Examples of lightweight text markup include basic text blocks (e.g., paragraphs and blockquotes), structural elements (e.g., emphasis and strength), lists, hyperlinks, image references, and font styles (e.g., sizes and colors).</p>
+  <p>Note: This specification essentially defines a recommended set of XHTML elements and attributes for use in instant messaging by applying a series of "filters" to the wealth of XHTML features; however, developers of Jabber/XMPP clients mainly need to pay attention to the <a href="#profile-summary">Summary of Recommendations</a> rather than the complexities of how the recommendations are derived.</p>
+<h2>2.
+       <a name="tech" id="tech">Choice of Technology</a></h2>
+  <p>In the past, there have existed several incompatible methods within the Jabber community for exchanging instant messages that contain lightweight text markup. The most notable such methods have included derivatives of <span class="ref"><a href="http://www.w3.org/TR/xhtml1">XHTML 1.0</a></span>  [<a href="#nt-idp1523008">1</a>] as well as of <span class="ref"><a href="http://msdn.microsoft.com/library/en-us/dnrtfspec/html/rtfspec.asp">Rich Text Format (RTF)</a></span>  [<a href="#nt-idp1525536">2</a>].</p>
+  <p>Although it is sometimes easier for client developers to implement RTF support (this is especially true on certain Microsoft Windows operating systems), there are several reasons (consistent with the <span class="ref"><a href="http://xmpp.org/extensions/xep-0134.html">XMPP Design Guidelines (XEP-0134)</a></span>  [<a href="#nt-idp1528320">3</a>]) for the <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp1530976">4</a>] to avoid the use of RTF in developing a protocol for lightweight text markup. Specifically:</p>
+  <ol>
+    <li>RTF is not a structured vocabulary derived from SGML (as is <span class="ref"><a href="http://www.w3.org/TR/REC-html40">HTML 4.0</a></span>  [<a href="#nt-idp1533872">5</a>]) or, more relevantly, from XML (as is XHTML 1.0).</li>
+    <li>RTF is under the control of the Microsoft Corporation and thus is not an open standard maintained by a recognized standards development organization; therefore the XSF is unable to contribute to or influence its development if necessary, and any protocol the XSF developed using RTF would introduce unwanted dependencies.</li>
+  </ol>
+  <p>Conversely, there are several reasons to prefer XHTML for lightweight text markup:</p>
+  <ol>
+    <li>XHTML is a structured format that is defined as an application of <span class="ref"><a href="http://www.w3.org/TR/REC-xml/">XML 1.0</a></span>  [<a href="#nt-idp1537936">6</a>], making it especially appropriate for sending over Jabber/XMPP, which is at root a technology for streaming XML (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1540512">7</a>]).</li>
+    <li>XHTML is an open standard developed by the <span class="ref"><a href="http://www.w3.org/">World Wide Web Consortium (W3C)</a></span>  [<a href="#nt-idp1543104">8</a>], a recognized standards development organization.</li>
+  </ol>
+  <p>Therefore, this document defines support for lightweight text markup in the form of an XMPP extension that encapsulates content defined by an XHTML 1.0 Integration Set that we label "XHTML-IM". The remainder of this document discusses lightweight text markup in terms of XHTML 1.0 only and does not further consider RTF or other technologies.</p>
+<h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>HTML was originally designed for authoring and presenting stuctured documents on the World Wide Web, and was subsequently extended to handle more advanced functionality such as image maps and interactive forms. However, the requirements for publishing documents (or developing transactional websites) for presentation by dedicated XHTML user agents on traditional computers or small-screen devices are fundamentally different from the requirements for lightweight text markup of instant messages; for this reason, only a reduced set of XHTML features is needed for XHTML-IM. In particular:</p>
+  <ol>
+    <li><p>IM clients are not XHTML clients: their primary purpose is not to read pre-existing XHTML documents, but to read <span class="em">and generate</span> relatively large numbers of fairly small instant messages.</p></li>
+    <li><p>The underlying context for XHTML content in Jabber/XMPP instant messaging is provided not by a full XHTML document, but by an XML stream, and specifically by a message stanza within that stream. Thus the &lt;head/&gt; element and all its children are unnecessary. Only the &lt;body/&gt; element and some of its children are appropriate for use in instant messaging.</p></li>
+    <li><p>The XHTML content that is read by one's IM client is normally generated on the fly by one's conversation partner (or, to be precise, by his or her IM client). Thus there is an inherent limit to the sophistication of the XHTML markup involved. Even in normal XHTML documents, fairly basic structural and rendering elements such as definition lists, abbreviations, addresses, and computer input handling (e.g., &lt;kbd/&gt; and &lt;var/&gt;) are relatively rare. There is little or no foreseeable need for such elements within the context of instant messaging.</p></li>
+    <li><p>The foregoing is doubly true of more advanced markup such as tables, frames, and forms (however, there exists an XMPP extension that provides an instant messaging equivalent of the latter, as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp558944">9</a>]).</p></li>
+    <li><p>Although ad-hoc styles are useful for messaging (by means of the 'style' attribute), full support for <span class="ref"><a href="http://www.w3.org/TR/REC-CSS1">Cascading Style Sheets</a></span>  [<a href="#nt-idp1551376">10</a>] (defined by the &lt;style/&gt; element or a standalone .css file, and implemented via the 'class' attribute) would be overkill since many CSS1 properties (e.g., box, classification, and text properties) were developed especially for sophisticated page layout.</p></li>
+    <li><p>Background images, audio, animated text, layers, applets, scripts, and other multimedia content types are unnecessary, especially given the existence of XMPP extensions such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0096.html">SI File Transfer (XEP-0096)</a></span>  [<a href="#nt-idp1546528">11</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp1548928">12</a>], and <span class="ref"><a href="http://xmpp.org/extensions/xep-0234.html">Jingle File Transfer (XEP-0234)</a></span>  [<a href="#nt-idp1571968">13</a>].</p></li>
+    <li><p>Content transformations such as those defined by <span class="ref"><a href="http://www.w3.org/TR/xslt/">XSL Transformations</a></span>  [<a href="#nt-idp1574416">14</a>] must not be necessary in order for an instant messaging application to present lightweight text markup to an end user.</p></li>
+  </ol>
+  <p>As explained below, some of these requirements are addressed by the definition of the XHTML-IM Integration Set itself, while others are addressed by a recommended "profile" for that Integration Set in the context of instant messaging applications.</p>
+<h2>4.
+       <a name="concepts" id="concepts">Concepts and Approach</a></h2>
+  <p>This document defines an adaptation of XHTML 1.0 (specifically, an XHTML 1.0 Integration Set) that makes it possible to provide lightweight text markup of instant messages (mainly for Jabber/XMPP instant messages, although the Integration Set defined herein could be used by other protocols). This pattern is familiar from email, wherein the HTML-formatted version of the message supplements but does not supersede the text-only version of the message.  [<a href="#nt-idp1576448">15</a>]</p>
+  <p>In Jabber/XMPP communications, the meaning (as opposed to markup) of the message MUST always be represented as best as possible in the normal &lt;body/&gt; child element or elements of the &lt;message/&gt; stanza qualified by the 'jabber:client' (or 'jabber:server') namespace. Lightweight text markup is then provided within an &lt;html/&gt; element qualified by the 'http://jabber.org/protocol/xhtml-im' namespace.  [<a href="#nt-idp1578496">16</a>] However, this &lt;html/&gt; element is used solely as a "wrapper" for the XHTML content itself, which content is encapsulated via one or more &lt;body/&gt; elements qualified by the 'http://www.w3.org/1999/xhtml' namespace, along with appropriate child elements thereof.</p>
+  <p>The following example illustrates this approach.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. A simple example</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;hi!&lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p style='font-weight:bold'&gt;hi!&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Technically speaking, there are three aspects to the approach taken herein:</p>
+  <ol>
+    <li>Definition of the &lt;html/&gt; "wrapper" element, which functions as an XMPP extension within XMPP &lt;message/&gt; stanzas.</li>
+    <li>Definition of the XHTML-IM Integration Set itself in terms of supported XHTML 1.0 modules, using the concepts defined in <span class="ref"><a href="http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/">Modularization of XHTML</a></span>  [<a href="#nt-idp1584848">17</a>].</li>
+    <li>A recommended "profile" regarding the specific XHTML 1.0 elements and attributes to be supported from each XHTML 1.0 module.</li>
+  </ol>
+  <p>These three aspects are defined in the three document sections that follow.</p>
+<h2>5.
+       <a name="wrapper" id="wrapper">Wrapper Element</a></h2>
+  <p>The root element for including XHTML content within XMPP stanzas is &lt;html/&gt;. This element is qualified by the 'http://jabber.org/protocol/xhtml-im' namespace. From the perspective of XMPP, the wrapper element functions as an XMPP extension element; from the perspective of XHTML, it functions as a wrapper for XHTML 1.0 content qualified by the 'http://www.w3.org/1999/xhtml' namespace. Such XHTML content MUST be contained in one or more &lt;body/&gt; elements qualified by the 'http://www.w3.org/1999/xhtml' namespace and MUST conform to the XHTML-IM Integration Set defined in the following section. If more than one &lt;body/&gt; element is included in the &lt;html/&gt; wrapper element, each &lt;body/&gt; element MUST possess an 'xml:lang' attribute with a distinct value, where the value of that attribute MUST adhere to the rules defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc5646">RFC 5646</a></span>  [<a href="#nt-idp1594928">18</a>]. A formal definition of the &lt;html/&gt; element is provided in the <a href="#schemas-wrapper">XHTML-IM Wrapper Schema</a>.</p>
+  <p>The XHTML &lt;body/&gt; element is not to be confused with the XMPP &lt;body/&gt; element, which is a child of a &lt;message/&gt; stanza and is qualified by the 'jabber:client' or 'jabber:server' namespace as described in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1591760">19</a>]. The &lt;html/&gt; wrapper element is intended for inclusion only as a direct child element of the XMPP &lt;message/&gt; stanza and only in order to specify a marked-up version of the message &lt;body/&gt; element or elements, but MAY be included elsewhere in accordance with the "extended namespace" rules defined in the <span class="ref">XMPP IM</span> specification.</p>
+  <p>Until and unless (1) additional integration sets are defined and (2) mechanisms are specified for discovering or negotiating which integration sets are supported, the XHTML markup contained within the &lt;html/&gt; wrapper element:</p>
+  <ol>
+    <li>MUST NOT include elements and attributes that are not part of the XHTML-IM Integration Set defined in Section 6 of this document; any such elements and attributes MUST be ignored if received.</li>
+    <li>SHOULD NOT include elements and attributes that are not part of the recommended profile of the XHTML-IM Integration Set defined in Section 7 of this document; any such elements and attributes SHOULD be ignored if received.</li>
+  </ol>
+  <p>Note: In the foregoing restrictions, the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document).</p>
+<h2>6.
+       <a name="def" id="def">XHTML-IM Integration Set</a></h2>
+  <p>This section defines an XHTML 1.0 Integration Set for use in the context of instant messaging. Given its intended usage, we label it "XHTML-IM".</p>
+  <p><span class="ref">Modularization of XHTML</span> provides the ability to formally define subsets of XHTML 1.0 via the concept of "modularization" (which may be familiar from <span class="ref"><a href="http://www.w3.org/TR/xhtml-basic">XHTML Basic</a></span>  [<a href="#nt-idp1603392">20</a>]). Many of the defined modules are not necessary or useful in the context of instant messaging, and in the context of Jabber/XMPP instant messaging specifically some modules have been superseded by well-defined XMPP extensions. This document specifies that XHTML-IM shall be based on the following XHTML 1.0 modules:</p>
+  <ul>
+    <li>Core Modules
+      <ul>
+        <li>Structure Module</li>
+        <li>Text Module</li>
+        <li>Hypertext Module</li>
+        <li>List Module</li>
+      </ul>
+    </li>
+    <li>Image Module</li>
+    <li>Style Attribute Module</li>
+  </ul>
+  <p><span class="ref">Modularization of XHTML</span> defines many additional modules, such as Table Modules, Form Modules, Object Modules, and Frame Modules. None of these modules is part of the XHTML-IM Integration Set. If support for such modules is desired, it MUST be defined in a separate and distinct integration set.</p>
+  <div class="indent"><h3>6.1 <a name="def-structure" id="def-structure">Structure Module Definition</a></h3>
+    <p>The Structure Module is defined as including the following elements and attributes:  [<a href="#nt-idp1608784">21</a>]</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Defined Structure Module Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Element</th><th>Attributes</th></tr>
+      <tr class="body"><td>&lt;body/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;head/&gt;</td><td>profile</td></tr>
+      <tr class="body"><td>&lt;html/&gt;</td><td>version</td></tr>
+      <tr class="body"><td>&lt;title/&gt;</td><td></td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.2 <a name="def-text" id="def-text">Text Module Definition</a></h3>
+    <p>The Text Module is defined as including the following elements and attributes:</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Defined Text Module Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Element</th><th>Attributes</th></tr>
+      <tr class="body"><td>&lt;abbr/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;acronym/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;address/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;blockquote/&gt;</td><td>class, id, title; style; cite</td></tr>
+      <tr class="body"><td>&lt;br/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;cite/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;code/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;dfn/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;div/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;em/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h1/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h2/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h3/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h4/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h5/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;h6/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;kbd/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;p/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;pre/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;q/&gt;</td><td>class, id, title; style; cite</td></tr>
+      <tr class="body"><td>&lt;samp/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;span/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;strong/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;var/&gt;</td><td>class, id, title; style</td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.3 <a name="def-hypertext" id="def-hypertext">Hypertext Module Definition</a></h3>
+    <p>The Hypertext Module is defined as including the &lt;a/&gt; element only:</p> 
+    <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Defined Hypertext Module Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Element</th><th>Attributes</th></tr>
+      <tr class="body"><td>&lt;a/&gt;</td><td>class, id, title; style; accesskey, charset, href, hreflang, rel, rev, tabindex, type</td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.4 <a name="def-list" id="def-list">List Module Definition</a></h3>
+    <p>The List Module is defined as including the following elements and attributes:</p>
+    <div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: Defined List Module Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Element</th><th>Attributes</th></tr>
+      <tr class="body"><td>&lt;dl/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;dt/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;dd/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;ol/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;ul/&gt;</td><td>class, id, title; style</td></tr>
+      <tr class="body"><td>&lt;li/&gt;</td><td>class, id, title; style</td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.5 <a name="def-image" id="def-image">Image Module Definition</a></h3>
+    <p>The Image Module is defined as including the &lt;img/&gt; element only:</p>
+    <div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: Defined Image Module Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body"><th>Element</th><th>Attributes</th></tr>
+      <tr class="body"><td>&lt;img/&gt;</td><td>class, id, title; style; alt, height, longdesc, src, width</td></tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.6 <a name="def-style" id="def-style">Style Attribute Module Definition</a></h3>
+    <p>The Style Attribute Module is defined as including the style attribute only, as included in the preceding definition tables.</p>
+  </div>
+<h2>7.
+       <a name="profile" id="profile">Recommended Profile</a></h2>
+  <p>Even within the restricted set of modules specified as defining the XHTML-IM Integration Set (see preceding section), some elements and attributes are inappropriate or unnecessary for the purpose of instant messaging; although such elements and attributes MAY be included in accordance with the XHTML-IM Integration Set, further recommended restrictions regarding which elements and attributes to include in XHTML content are specified below.</p>
+  <div class="indent"><h3>7.1 <a name="profile-structure" id="profile-structure">Structure Module Profile</a></h3>
+    <p>The intent of the protocol defined herein is to support lightweight text markup of XMPP message bodies only. Therefore the &lt;head/&gt;, &lt;html/&gt;, and &lt;title/&gt; elements SHOULD NOT be generated by a compliant implementation, and SHOULD be ignored if received (where the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document). However, the &lt;body/&gt; element is REQUIRED, since it is the root element for all XHTML-IM content.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="profile-text" id="profile-text">Text Module Profile</a></h3>
+    <p>Not all of the Text Module elements are appropriate in the context of instant messaging, since the XHTML content that one views is generated by one's conversation partner in what is often a rapid-fire conversation thread. Only the following elements are RECOMMENDED in XHTML-IM:</p>
+    <ul>
+      <li>&lt;blockquote/&gt;</li>
+      <li>&lt;br/&gt;</li>
+      <li>&lt;cite/&gt;</li>
+      <li>&lt;em/&gt;</li>
+      <li>&lt;p/&gt;</li>
+      <li>&lt;span/&gt;</li>
+      <li>&lt;strong/&gt;</li>
+    </ul>
+    <p>The other Text Module elements MAY be generated by a compliant implementation but MAY be ignored if received (where the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document).</p>
+  </div>
+  <div class="indent"><h3>7.3 <a name="profile-hypertext" id="profile-hypertext">Hypertext Module Profile</a></h3>
+    <p>The only recommended attributes of the &lt;a/&gt; element are specified in the <a href="#profile-attributes">Recommended Attributes</a> section of this document.</p>
+  </div>
+  <div class="indent"><h3>7.4 <a name="profile-list" id="profile-list">List Module Profile</a></h3>
+    <p>Because it is unlikely that an instant messaging user would generate a definition list, only ordered and unordered lists are RECOMMENDED. Definition lists SHOULD NOT be generated by a compliant implementation, and SHOULD be ignored if received (where the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document).</p>
+  </div>
+  <div class="indent"><h3>7.5 <a name="profile-image" id="profile-image">Image Module Profile</a></h3>
+    <p>The only recommended attributes of the &lt;img/&gt; element are specified in the <a href="#profile-attributes">Recommended Attributes</a> section of this document.</p>
+    <p>The XHTML specification allows a "data:" URL <span class="ref"><a href="http://tools.ietf.org/html/rfc2397">RFC 2397</a></span>  [<a href="#nt-idp1671616">22</a>] as the value of the 'src' attribute. This is NOT RECOMMENDED for use in XHTML-IM, because it can significantly increase the size of the message stanza and XMPP is not optimized for large stanzas. If the image data is small (less than 8 kilobytes), clients MAY use <span class="ref"><a href="http://xmpp.org/extensions/xep-0231.html">Bits of Binary (XEP-0231)</a></span>  [<a href="#nt-idp1674144">23</a>] in coordination with XHTML-IM; if the image data is large, the value of the 'src' SHOULD be a pointer to an externally available file for the image (or the sender SHOULD use a dedicated file transfer method such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp1676848">24</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0065.html">SOCKS5 Bytestreams (XEP-0065)</a></span>  [<a href="#nt-idp1679568">25</a>]).</p>
+    <p>For security reasons or because of display constraints, a compliant client MAY choose to display 'alt' text only, not the image itself (for details, see the <a href="#security-code">Malicious Objects</a> section of this document).</p>
+  </div>
+  <div class="indent"><h3>7.6 <a name="profile-style" id="profile-style">Style Attribute Module Profile</a></h3>
+    <p>This module MUST be supported in XHTML-IM if possible; although clients written for certain platforms (e.g., console clients, mobile phones, and handheld computers) or for certain classes of users (e.g., text-to-speech clients) might not be able to support all of the recommended styles directly, they SHOULD attempt to emulate or translate the defined style properties into text or other presentation styles that are appropriate for the platform or user base in question.</p> 
+    <p>A full list of recommended style properties is provided below.</p>
+    <div class="indent"><h3>7.6.1 <a name="profile-style-properties" id="profile-style-properties">Recommended Style Properties</a></h3>
+      <p><span class="ref">CSS1</span> defines 42 "atomic" style properties (which are categorized into font, color and background, text, box, and classification properties) as well as 11 "shorthand" properties ("font", "background", "margin", "padding", "border-width", "border-top", "border-right", "border-bottom", "border-left", "border", and "list-style"). Many of these properties are not appropriate for use in text-based instant messaging, for one or more of the following reasons:</p>
+      <ol>
+        <li>The property applies to or depends on the inclusion of images other than those handled by the XHTML Image Module (e.g., the "background-image", "background-repeat", "background-attachment", "background-position", and "list-style-image"  properties).</li>
+        <li>The property is intended for advanced document layout (e.g., the "line-height" property and most of the box properties, with the exception of "margin-left", which is useful for indenting text, and "margin-right", which can be useful when dealing with images).</li>
+        <li>The property is unnecessary since it can be emulated via user input or recommended XHTML stuctural elements (e.g., the "text-transform" property can be emulated by the user's keystrokes or use of the caps lock key)</li>
+        <li>The property is otherwise unlikely to ever be used in the context of rapid-fire conversations (e.g., the "font-variant", "word-spacing", "letter-spacing", and "list-style-position" properties).</li>
+        <li>The property is a shorthand property but some of the properties it includes are not appropriate for instant messaging applications according to the foregoing considerations (in fact this applies to all of the shorthand properties).</li>
+      </ol>
+      <p>Unfortunately, <span class="ref">CSS1</span> does not include mechanisms for defining profiles thereof (as does XHTML 1.0 in the form of XHTML Modularization). While there exist reduced sets of CSS2, these introduce more complexity than is desirable in the context of XHTML-IM. Therefore we simply provide a list of recommended CSS1 style properties.</p>
+      <p>XHTML-IM stipulates that only the following style properties are RECOMMENDED:</p>
+      <ul>
+        <li>background-color</li>
+        <li>color</li>
+        <li>font-family</li>
+        <li>font-size</li>
+        <li>font-style</li>
+        <li>font-weight</li>
+        <li>margin-left</li>
+        <li>margin-right</li>
+        <li>text-align</li>
+        <li>text-decoration</li>
+      </ul>
+      <p>Although a compliant implementation MAY generate or process other style properties defined in CSS1, such behavior is NOT RECOMMENDED by this document.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>7.7 <a name="profile-attributes" id="profile-attributes">Recommended Attributes</a></h3>
+    <div class="indent"><h3>7.7.1 <a name="profile-attributes-common" id="profile-attributes-common">Common Attributes</a></h3>
+      <p>Section 5.1 of <span class="ref">Modularization of XHTML</span> describes several "common" attribute collections: a "Core" collection ('class', 'id', 'title'), an "I18N" collection ('xml:lang', not shown below since it is implied in XML), an "Events" collection (not included in the XHTML-IM Integration Set because the Intrinsic Events Module is not selected), and a "Style" collection ('style'). The following table summarizes the recommended profile of these common attributes within the XHTML 1.0 content itself:</p>
+      <div class="indent"><p class="caption"><a name="table-6" id="table-6"></a>Table 6: Recommended Usage of Common Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Attribute</th><th>Usage</th><th>Reason</th></tr>
+        <tr class="body">
+          <td>class</td>
+          <td>NOT RECOMMENDED</td>
+          <td>External stylesheets (which 'class' would typically reference) are not recommended.</td>
+        </tr>
+        <tr class="body">
+          <td>id</td>
+          <td>NOT RECOMMENDED</td>
+          <td>Internal links and message fragments are not recommended in IM content, nor are external stylesheets (which also make use of the 'id' attribute).</td>
+        </tr>
+        <tr class="body">
+          <td>title</td>
+          <td>NOT RECOMMENDED</td>
+          <td>Granting of titles to elements in IM content seems unnecessary.</td>
+        </tr>
+        <tr class="body">
+          <td>style</td>
+          <td>REQUIRED</td>
+          <td>The 'style' attribute is required since it is the vehicle for presentational styles.</td>
+        </tr>
+        <tr class="body">
+          <td>xml:lang</td>
+          <td>NOT RECOMMENDED</td>
+          <td>Differentiation of language identification SHOULD occur at the level of the &lt;body/&gt; element only.</td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>7.7.2 <a name="profile-attributes-special" id="profile-attributes-special">Specialized Attributes</a></h3>
+      <p>Beyond the "common" attributes, certain elements within the modules selected for the XHTML-IM Integration Set are allowed to possess other attributes, such as eight attributes for the &lt;a/&gt; element and five attributes for the &lt;img/&gt; element. The recommended profile for such attributes is provided in the following table:</p>
+      <div class="indent"><p class="caption"><a name="table-7" id="table-7"></a>Table 7: Recommended Usage of Specialized Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body"><th>Element Scope</th><th>Attribute</th><th>Usage</th></tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>accesskey</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>charset</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>href</td>
+          <td>REQUIRED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>hreflang</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>rel</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>rev</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>tabindex</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;a/&gt;</td>
+          <td>type</td>
+          <td>RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;cite/&gt;</td>
+          <td>uri</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;img/&gt;</td>
+          <td>alt</td>
+          <td>REQUIRED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;img/&gt;</td>
+          <td>height</td>
+          <td>RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;img/&gt;</td>
+          <td>longdesc</td>
+          <td>NOT RECOMMENDED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;img/&gt;</td>
+          <td>src</td>
+          <td>REQUIRED</td>
+        </tr>
+        <tr class="body">
+          <td>&lt;img/&gt;</td>
+          <td>width</td>
+          <td>RECOMMENDED</td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>7.7.3 <a name="profile-attributes-other" id="profile-attributes-other">Other Attributes</a></h3>
+      <p>Other XHTML 1.0 attributes SHOULD NOT be generated by a compliant implementation, and SHOULD be ignored if received (where the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document).</p>
+    </div>
+  </div>
+  <div class="indent"><h3>7.8 <a name="profile-summary" id="profile-summary">Summary of Recommendations</a></h3>
+    <p>The following table summarizes the elements and attributes that are recommended within the XHTML-IM Integration Set.</p>
+    <div class="indent"><p class="caption"><a name="table-8" id="table-8"></a>Table 8: Recommended Elements and Attributes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Element</th>
+        <th>Attributes</th>
+      </tr>
+      <tr class="body">
+        <td>&lt;a/&gt;</td>
+        <td>href, style, type</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;blockquote/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;body/&gt;</td>
+        <td>style, xml:lang  [<a href="#nt-idp1740848">26</a>]</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;br/&gt;</td>
+        <td>-none-</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;cite/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;em/&gt;</td>
+        <td>-none-</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;img/&gt;</td>
+        <td>alt, height, src, style, width</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;li/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;ol/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;p/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;span/&gt;</td>
+        <td>style</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;strong/&gt;</td>
+        <td>-none-</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;ul/&gt;</td>
+        <td>style</td>
+      </tr>
+    </table></div>
+    <p>Any other elements and attributes defined in the XHTML 1.0 modules that are included in the XHTML-IM Integration Set SHOULD NOT be generated by a compliant implementation, and SHOULD be ignored if received (where the meaning of "ignore" is defined by the conformance requirements of <span class="ref">Modularization of XHTML</span>, as summarized in the <a href="#w3c-conformance">User Agent Conformance</a> section of this document).</p>
+  </div>
+<h2>8.
+       <a name="bizrules" id="bizrules">Business Rules</a></h2>
+  <p>The following rules apply to the generation and processing of XHTML content by Jabber clients or other XMPP entities.</p>
+  <ol>
+    <li><p>XHTML-IM content is designed to provide a formatted version of the XML character data provided in the &lt;body/&gt; of an XMPP &lt;message/&gt; stanza; if such content is included in an XMPP message, the &lt;html/&gt; element MUST be a direct child of the &lt;message/&gt; stanza and the XHTML-IM content MUST be understood as a formatted version of the message body. XHTML-IM content MAY be included within XMPP &lt;iq/&gt; stanzas (or children thereof), but any such usage is undefined. In order to preserve bandwidth, XHTML-IM content SHOULD NOT be included within XMPP &lt;presence/&gt; stanzas; however, if it is so included, the &lt;html/&gt; element MUST be a direct child of the &lt;presence/&gt; stanza and the XHTML-IM content MUST be understood as a formatted version of the XML character data provided in the &lt;status/&gt; element.</p></li>
+    <li><p>The sending client MUST ensure that, if XHTML content is sent, its meaning is the same as that of the plaintext version, and that the two versions differ only in markup rather than meaning.</p></li>
+    <li><p>XHTML-IM is a reduced set of <span class="ref">XHTML 1.0</span> and thus also of <span class="ref">XML 1.0</span>. Therefore all opening tags MUST be completed by inclusion of an appropriate closing tag.</p></li>
+    <li><p><span class="ref">XMPP Core</span> specifies that an XMPP &lt;message/&gt; MAY contain more than one &lt;body/&gt; child as long as each &lt;body/&gt; possesses an 'xml:lang' attribute with a distinct value. In order to ensure correct internationalization, if an XMPP &lt;message/&gt; stanza contains more than one &lt;body/&gt; child and is also sent as XHTML-IM, the &lt;html/&gt; element SHOULD also contain more than one &lt;body/&gt; child, with one such element for each &lt;body/&gt; child of the &lt;message/&gt; stanza (distinguished by an appropriate 'xml:lang' attribute).</p></li>
+    <li><p>Section 11.1 of <span class="ref">XMPP Core</span> stipulates that character entities other than the five general entities defined in Section 4.6 of the XML specification (i.e., &amp;lt;, &amp;gt;, &amp;amp;, &amp;apos;, and &amp;quot;) MUST NOT be sent over an XML stream. Therefore implementations of XHTML-IM MUST NOT include predefined XHTML 1.0 entities such as &amp;nbsp; -- instead, implementations MUST use the equivalent character references as specified in Section 4.1 of the XML specification (even in non-obvious places such as URIs that are included in the 'href' attribute).</p></li>
+    <li><p>For elements and attributes qualified by the 'http://www.w3.org/1999/xhtml' namespace, user agent conformance is guided by the requirements defined in <span class="ref">Modularization of XHTML</span>; for details, refer to the <a href="#w3c-conformance">User Agent Conformance</a> section of this document.</p></li>
+    <li><p>Where strictly presentational style are desired (e.g., colored text), it might be necessary to use 'style' attributes (e.g., &lt;span style='font-color: green'&gt;this is green&lt;/span&gt;). However, where possible it is instead RECOMMENDED to use appropriate structural elements (e.g., &lt;strong/&gt; and &lt;blockquote/&gt; instead of, say, style='font-weight: bold' or style='margin-left: 5%').</p></li>
+    <li><p>Nesting of block structural elements (&lt;p/&gt;) and list elements (&lt;dl/&gt;, &lt;ol/&gt;, &lt;ul/&gt;) is NOT RECOMMENDED, except within &lt;div/&gt; elements.</p></li>
+    <li><p>It is RECOMMENDED for implementations to replace line breaks with the &lt;br/&gt; element and to replace significant whitepace with the appropriate number of non-breaking spaces (via the NO-BREAK SPACE character or its equivalent), where "significant whitespace" means whitespace that makes some material difference (e.g., one or more spaces at the beginning of a line or more than one space anywhere else within a line), not "normal" whitespace separating words or punctuation.</p></li>
+    <li><p>When rendering XHTML-IM content, a receiving user agent MUST NOT render as XHTML any text that was not structured by the sending user agent using XHTML elements and attributes; if the sender wishes text to be structured (e.g., for certain words to be emphasized or for URIs to be linked), the sending user agent MUST represent the text using the appropriate XHTML elements and attributes.</p></li>
+  </ol>
+<h2>9.
+       <a name="examples" id="examples">Examples</a></h2>
+  <p>The following examples provide an insight into the inclusion of XHTML content in XMPP &lt;message/&gt; stanzas but are by no means exhaustive or definitive.</p>
+  <p>(Note: The examples might not render correctly in all web browsers, since not all web browsers comply fully with the XHTML 1.0 and CSS1 standards. Markup in the examples may include line breaks for readability. Example renderings are shown with a colored background to set them off from the rest of the text.)</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Emphasis, font colors, strength</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;Wow, I&amp;apos;m green with envy!&lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p style='font-size:large'&gt;
+        &lt;em&gt;Wow&lt;/em&gt;, I&amp;apos;m &lt;span style='color:green'&gt;green&lt;/span&gt;
+        with &lt;strong&gt;envy&lt;/strong&gt;!
+      &lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>This could be rendered as follows:</p>
+  <div class="example">
+    <p style="font-size: large"><span class="em">Wow</span>, I'm <span style="color:green">green</span> with <span class="strong">envy</span>!</p>
+  </div>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Blockquote, cite</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;As Emerson said in his essay Self-Reliance:
+
+     &amp;quot;A foolish consistency is the hobgoblin of little minds.&amp;quot;
+  &lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;As Emerson said in his essay &lt;cite&gt;Self-Reliance&lt;/cite&gt;:&lt;/p&gt;
+      &lt;blockquote&gt;
+        &amp;quot;A foolish consistency is the hobgoblin of little minds.&amp;quot;
+      &lt;/blockquote&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>This could be rendered as follows:</p>
+  <div class="example">
+    <p>As Emerson said in his essay <span class="ref">Self-Reliance</span>:</p>
+    <blockquote>
+      "A foolish consistency is the hobgoblin of little minds."
+    </blockquote>
+  </div>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. An image and a hyperlink</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;Hey, are you licensed to Jabber?
+
+  http://www.xmpp.org/images/psa-license.jpg
+  &lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;Hey, are you licensed to &lt;a href='http://www.jabber.org/'&gt;Jabber&lt;/a&gt;?&lt;/p&gt;
+      &lt;p&gt;&lt;img src='http://www.xmpp.org/images/psa-license.jpg'
+              alt='A License to Jabber'
+              height='261'
+              width='537'/&gt;&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>This could be rendered as follows:</p>
+  <div class="indent">
+    <p>Hey, are you licensed to <a href="http://www.jabber.org/">Jabber</a>?</p>
+    <p><img alt="A License to Jabber" height="261" src="http://www.xmpp.org/images/psa-license.jpg" width="537" /></p>
+  </div>
+  <p>Note the large size of the image. Including the 'height' and 'width' attributes is therefore quite friendly, since it gives the receiving application hints as to whether the image is too large to fit into the current interface (naturally, these are hints only and cannot necessarily be relied upon in determining the size of the image).</p>
+  <p>Rendering the 'alt' value rather than the image would yield something like the following:</p>
+  <div class="example">
+    <p>Hey, are you licensed to <a href="http://www.jabber.org/">Jabber</a>?</p>
+    <p>IMG: "A License to Jabber"</p>
+  </div>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Two lists</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;Here&amp;apos;s my .plan for today:
+  1. Add the following examples to XEP-0071:
+     - ordered and unordered lists
+     - more styles (e.g., indentation)
+  2. Kick back and relax
+  &lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;Here&amp;apos;s my .plan for today:&lt;/p&gt;
+      &lt;ol&gt;
+        &lt;li&gt;Add the following examples to XEP-0071:
+          &lt;ul&gt;
+            &lt;li&gt;ordered and unordered lists&lt;/li&gt;
+            &lt;li&gt;more styles (e.g., indentation)&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Kick back and relax&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>This could be rendered as follows:</p>
+  <div class="example">
+    <p>Here's my .plan for today:</p>
+    <ol>
+      <li>Add the following examples to XEP-0071:
+        <ul>
+          <li>ordered and unordered lists</li>
+          <li>more styles (e.g., indentation)</li>
+        </ul>
+      </li>
+      <li>Kick back and relax</li>
+    </ol>
+  </div>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Quoted text</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;
+You wrote:
+
+   I think we have consensus on the following:
+
+   1. Remove &lt;div/&gt;
+   2. Nesting is not recommended
+   3. Don't preserve whitespace
+
+   Yes, no, maybe?
+
+That seems fine to me.
+  &lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;You wrote:&lt;/p&gt;
+      &lt;blockquote&gt;
+        &lt;p&gt;I think we have consensus on the following:&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;Remove &amp;lt;div/&amp;gt;&lt;/li&gt;
+          &lt;li&gt;Nesting is not recommended&lt;/li&gt;
+          &lt;li&gt;Don't preserve whitespace&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;p&gt;Yes, no, maybe?&lt;/p&gt;
+      &lt;/blockquote&gt;
+      &lt;p&gt;That seems fine to me.&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Although quoting received messages is relatively uncommon in IM, it does happen. This could be rendered as follows:</p>
+  <div class="example">
+      <p>You wrote:</p>
+      <div style="margin-left: 5%">
+        <p>I think we have consensus on the following:</p>
+        <ol>
+          <li>Remove &lt;div/&gt;</li>
+          <li>Nesting is not recommended</li>
+          <li>Don't preserve whitespace</li>
+        </ol>
+        <p>Yes, no, maybe?</p>
+      </div>
+      <p>That seems fine to me.</p>
+  </div>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Multiple bodies</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body xml:lang='en-US'&gt;awesome!&lt;/body&gt;
+  &lt;body xml:lang='de-DE'&gt;ausgezeichnet!&lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;&lt;strong&gt;awesome!&lt;/strong&gt;&lt;/p&gt;
+    &lt;/body&gt;
+    &lt;body xml:lang='de-DE' xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;&lt;strong&gt;ausgezeichnet!&lt;/strong&gt;&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>How multiple bodies would best be rendered will depend on the user agent and relevant application. For example, a specialized Jabber client that is used in foreign language instruction might show two languages side by side, whereas a dedicated IM client might show content only in a human user's preferred language as captured in the client configuration.</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Unrecognized Elements and Attributes</p><div class="indent"><pre class="prettyprint">
+&lt;message&gt;
+  &lt;body&gt;
+    The XHTML user agent conformance requirements say to ignore
+    elements and attributes you don't understand, to wit:
+
+      4. If a user agent encounters an element it does 
+         not recognize, it must continue to process the 
+         children of that element. If the content is text, 
+         the text must be presented to the user.
+
+      5. If a user agent encounters an attribute it does 
+         not recognize, it must ignore the entire attribute 
+         specification (i.e., the attribute and its value).
+  &lt;/body&gt;
+  &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt;
+    &lt;body xmlns='http://www.w3.org/1999/xhtml'&gt;
+      &lt;p&gt;The &lt;acronym&gt;XHTML&lt;/acronym&gt; user agent conformance 
+         requirements say to ignore elements and attributes 
+         you don't understand, to wit:&lt;/p&gt;
+      &lt;ol type='1' start='4'&gt;
+        &lt;li&gt;&lt;p&gt;
+          If a user agent encounters an element it does 
+          not recognize, it must continue to process the 
+          children of that element. If the content is text,
+          the text must be presented to the user.
+        &lt;/p&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;p&gt;
+          If a user agent encounters an attribute it does 
+          not recognize, it must ignore the entire attribute 
+          specification (i.e., the attribute and its value).
+        &lt;/p&gt;&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Let us assume that the recipient's user agent recognizes neither the &lt;acronym/&gt; element (which is discouraged in XHTML-IM) nor the 'type' and 'start' attributes of the &lt;ol/&gt; element (which, after all, were deprecated in HTML 4.0), and that it does not render nested elements (e.g., the &lt;p/&gt; elements within the &lt;li/&gt; elements); in this case, it could render the content as follows (note that the element value is shown as text and the attribute value is not rendered):</p>
+  <div class="example">
+    <p>The XHTML user agent conformance requirements say to ignore elements and attributes you don't understand, to wit:</p>
+    <ol>
+      <li>If a user agent encounters an element it does not recognize, it must continue to process the children of that element. If the content is text, the text must be presented to the user.</li>
+      <li>If a user agent encounters an attribute it does not recognize, it must ignore the entire attribute specification (i.e., the attribute and its value).</li>
+    </ol>
+  </div>
+<h2>10.
+       <a name="discovery" id="discovery">Discovering Support for XHTML-IM</a></h2>
+  <p>This section describes methods for discovering whether a Jabber client or other XMPP entity supports the protocol defined herein.</p>
+  <div class="indent"><h3>10.1 <a name="discovery-explicit" id="discovery-explicit">Explicit Discovery</a></h3>
+    <p>The primary means of discovering support for XHTML-IM is <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1816144">27</a>] (or the dynamic profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1819392">28</a>]).</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Seeking to Discover XHTML-IM Support</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@shakespeare.lit/balcony'
+    to='romeo@shakespeare.lit/orchard'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the queried entity supports XHTML-IM, it MUST return a &lt;feature/&gt; element with a 'var' attribute set to a value of "http://jabber.org/protocol/xhtml-im" in the IQ result.</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Contact Returns Disco Info Results</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='romeo@shakespeare.lit/orchard'
+    to='juliet@shakespeare.lit/balcony'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/xhtml-im'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Naturally, support can also be discovered via the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1823152">29</a>].</p>
+  </div>
+  <div class="indent"><h3>10.2 <a name="discovery-implicit" id="discovery-implicit">Implicit Discovery</a></h3>
+    <p>A Jabber user's client MAY send XML &lt;message/&gt; stanzas containing XHTML-IM extensions without first discovering if the conversation partner's client supports XHTML-IM. If the user's client sends a message that includes XHTML-IM markup and the conversation partner's client replies to that message but does not include XHTML-IM markup, the user's client SHOULD NOT continue sending XHTML-IM markup.</p>
+  </div>
+<h2>11.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <div class="indent"><h3>11.1 <a name="security-code" id="security-code">Malicious Objects</a></h3>
+    <p>The exclusion of scripts, applets, binary objects, and other potentially executable code from XHTML-IM reduces the risk of exposure to harmful or malicious objects caused by inclusion of XHTML content. To further reduce the risk of such exposure, an implementation MAY choose to:</p>
+    <ul>
+      <li>Not make hyperlinks clickable</li>
+      <li>Not fetch or present images but instead show only the 'alt' text.</li>
+    </ul>
+    <p>In addition, an implementation MUST make it possible for a user to prevent the automatic fetching and presentation of images (rather than leave it up to the implementation).</p>
+  </div>
+  <div class="indent"><h3>11.2 <a name="security-phishing" id="security-phishing">Phishing</a></h3>
+    <p>To reduce the risk of phishing attacks  [<a href="#nt-idp1831648">30</a>], an implementation MAY choose to:</p>
+    <ul>
+      <li>Display the value of the XHTML 'href' attribute instead of the XML character data of the &lt;a/&gt; element.</li>
+      <li>Display the value of XHTML 'href' attribute in addition to the XML character data of the &lt;a/&gt; element if the two values do not match.</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>11.3 <a name="security-presence" id="security-presence">Presence Leaks</a></h3>
+    <p>The network availability of the receiver may be revealed if the receiver's client automatically loads images or the receiver clicks a link included in a message. Therefore an implementation MAY choose to:</p>
+    <ul>
+      <li>Not fetch images offered by senders that are not authorized to view the receiver's presence.</li>
+      <li>Warn the receiver before allowing the user to visit a URI provided by the sender.</li>
+    </ul>
+  </div>
+<h2>12.
+       <a name="w3c" id="w3c">W3C Considerations</a></h2>
+  <p>The usage of XHTML 1.0 defined herein meets the requirements for XHTML 1.0 Integration Set document type conformance as defined in Section 3 ("Conformance Definition") of <span class="ref">Modularization of XHTML</span>.</p>
+  <div class="indent"><h3>12.1 <a name="w3c-doctype" id="w3c-doctype">Document Type Name</a></h3>
+    <p>The Formal Public Identifier (FPI) for the XHTML-IM document type definition is:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+-//JSF//DTD Instant Messaging with XHTML//EN
+    </pre></div>
+    <p>The fields of this FPI are as follows:</p>
+    <ol>
+      <li>The leading field is "-", which indicates that this is a privately-defined resource.</li>
+      <li>The second field is "JSF" (an abbreviation for Jabber Software Foundation, the former name for the <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp1843520">31</a>]), which identifies the organization that maintains the named item.</li>
+      <li>The third field contains two constructs:
+        <ol>
+          <li>The public text class is "DTD", which adheres to ISO 8879 Clause 10.2.2.1.</li>
+          <li>The public text description is "Instant Messaging with XHTML", which contains but does not begin with the string "XHTML" (as recommended for an XHTML 1.0 Integration Set).</li>
+        </ol>
+      </li>
+      <li>The fourth field is "EN", which identifies the language (English) in which the item is defined.</li>
+    </ol>
+  </div>
+  <div class="indent"><h3>12.2 <a name="w3c-conformance" id="w3c-conformance">User Agent Conformance</a></h3>
+    <p>A user agent that implements this specification MUST conform to Section 3.5 ("XHTML Family User Agent Conformance") of <span class="ref">Modularization of XHTML</span>. Many of the requirements defined therein are already met by Jabber clients simply because they already include XML parsers.</p>
+    <p>However, "ignore" has a special meaning in XHTML modularization (different from its meaning in XMPP). Specifically, criteria 4 through 6 of Section 3.5 of <span class="ref">Modularization of XHTML</span> state:</p>
+    <ol start="4">
+      <li>
+        <p><span class="em">W3C TEXT:</span> If a user agent encounters an element it does not recognize, it must continue to process the children of that element. If the content is text, the text must be presented to the user.</p>
+        <p><span class="em">XSF COMMENT:</span> This behavior is different from that defined by <span class="ref">XMPP Core</span>, and in the context of XHTML-IM implementations applies only to XML elements qualified by the 'http://www.w3.org/1999/xhtml' namespace as defined herein. This criterion MUST be applied to all XHTML 1.0 elements except those explicitly included in XHTML-IM as described in the <a href="#def">XHTML-IM Integration Set</a> and <a href="#profile">Recommended Profile</a> sections of this document. Therefore, an XHTML-IM implementation MUST process all XHTML 1.0 child elements of the XHTML-IM &lt;html/&gt; element even if such child elements are not included in the XHTML 1.0 Integration Set defined herein, and MUST present to the recipient the XML character data contained in such child elements.</p>
+      </li>
+      <li>
+        <p><span class="em">W3C TEXT:</span> If a user agent encounters an attribute it does not recognize, it must ignore the entire attribute specification (i.e., the attribute and its value).</p>
+        <p><span class="em">XSF COMMENT:</span> This criterion MUST be applied to all XHTML 1.0 attributes except those explicitly included in XHTML-IM as described in the <a href="#def">XHTML-IM Integration Set</a> and <a href="#profile">Recommended Profile</a> sections of this document. Therefore, an XHTML-IM implementation MUST ignore all attributes of elements qualified by the 'http://www.w3.org/1999/xhtml' namespace if such attributes are not explicitly included in the XHTML 1.0 Integration Set defined herein.</p>
+      </li>
+      <li>
+        <p><span class="em">W3C TEXT:</span> If a user agent encounters an attribute value it doesn't recognize, it must use the default attribute value.</p>
+        <p><span class="em">XSF COMMENT:</span> Since not one of the attributes included in XHTML-IM has a default value defined for it in <span class="ref">XHTML 1.0</span>, in practice this criterion does not apply to XHTML-IM implementations.</p>
+      </li>
+    </ol>
+  </div>
+  <div class="indent"><h3>12.3 <a name="w3c-modularization" id="w3c-modularization">XHTML Modularization</a></h3>
+    <p>For information regarding XHTML modularization in XML schema for the XHTML 1.0 Integration Set defined in this specification, refer to the <a href="#schemas-driver">Schema Driver</a> section of this document.</p>
+  </div>
+  <div class="indent"><h3>12.4 <a name="w3c-review" id="w3c-review">W3C Review</a></h3>
+    <p>The XHTML 1.0 Integration Set defined herein has been reviewed informally by an editor of the <span class="ref">XHTML Modularization in XML Schema</span> specification but has not undergone formal review by the W3C. Before the XHTML-IM specification proceeds to a status of Final within the standards process of the XMPP Standards Foundation, the <span class="ref"><a href="http://xmpp.org/council/">XMPP Council</a></span>  [<a href="#nt-idp1869296">32</a>] is encouraged to pursue a formal review through communication with the Hypertext Coordination Group within the W3C.</p>
+  </div>
+  <div class="indent"><h3>12.5 <a name="w3c-versions" id="w3c-versions">XHTML Versioning</a></h3>
+    <p>The W3C is actively working on <span class="ref"><a href="http://www.w3.org/TR/xhtml2">XHTML 2.0</a></span>  [<a href="#nt-idp1878448">33</a>] and may produce additional versions of XHTML in the future. This specification addresses XHTML 1.0 only, but it may be superseded or supplemented in the future by a XMPP Extension Protocol specification that defines methods for encapsulating XHTML 2.0 content in XMPP.</p>
+  </div>
+<h2>13.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1873840">34</a>].</p>
+<h2>14.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>14.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1887408">35</a>] includes 'http://jabber.org/protocol/xhtml-im' in its registry of protocol namespaces.</p>
+  </div>
+<h2>15.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+  <div class="indent"><h3>15.1 <a name="schemas-wrapper" id="schemas-wrapper">XHTML-IM Wrapper</a></h3>
+    <p>The following schema defines the XMPP extension element that serves as a wrapper for XHTML content.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:xhtml='http://www.w3.org/1999/xhtml'
+    targetNamespace='http://jabber.org/protocol/xhtml-im'
+    xmlns='http://jabber.org/protocol/xhtml-im'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import namespace='http://www.w3.org/1999/xhtml'
+             schemaLocation='http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd'/&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+
+      This schema defines the &lt;html/&gt; element qualified by
+      the 'http://jabber.org/protocol/xhtml-im' namespace.
+      The only allowable child is a &lt;body/&gt; element qualified
+      by the 'http://www.w3.org/1999/xhtml' namespace. Refer 
+      to the XHTML-IM schema driver for the definition of the 
+      XHTML 1.0 Integration Set.
+
+      Full documentation of this Integration Set is contained in
+      "XEP-0071: XHTML-IM", a specification published by the
+      XMPP Standards Foundation.
+
+         http://www.xmpp.org/extensions/xep-0071.html
+
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="http://www.xmpp.org/extensions/xep-0071.html"/&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='html'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='xhtml:body' 
+                    minOccurs='0' 
+                    maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>15.2 <a name="schemas-driver" id="schemas-driver">XHTML-IM Schema Driver</a></h3>
+    <p>The following schema defines the modularization schema driver for XHTML-IM.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://www.w3.org/1999/xhtml'
+    xmlns='http://www.w3.org/1999/xhtml'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+
+      This is the XML Schema driver for XHTML-IM, an XHTML 1.0
+      Integration Set for use in exchanging marked-up instant
+      messages between entities that conform to the Extensible
+      Messaging and Presence Protocol (XMPP). This Integration
+      Set includes a subset of the modules defined for XHTML 1.0
+      but does not redefine any existing modules, nor does it
+      define any new modules. Specifically, it includes the
+      following modules only:
+
+         - Structure
+         - Text
+         - Hypertext
+         - List
+         - Image
+         - Style Attribute
+     
+      The Formal Public Identifier (FPI) for this Integration
+      Set is:
+
+         -//JSF//DTD Instant Messaging with XHTML//EN
+
+      Full documentation of this Integration Set is contained in
+      "XEP-0071: XHTML-IM", a specification published by the
+      XMPP Standards Foundation, which is available at the
+      following URL:
+
+         http://www.xmpp.org/extensions/xep-0071.html
+
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="http://www.xmpp.org/extensions/xep-0071.html"/&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-blkphras-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-blkstruct-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-hypertext-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-image-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-inlphras-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-inlstruct-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-inlstyle-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-list-1.xsd"/&gt;
+  &lt;xs:include 
+      schemaLocation="http://www.w3.org/MarkUp/SCHEMA/xhtml-struct-1.xsd"/&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>15.3 <a name="schemas-model" id="schemas-model">XHTML-IM Content Model</a></h3>
+    <p>The following schema defines the content model for XHTML-IM.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3.org/1999/xhtml"
+           xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+
+      This is the XML Schema module of named XHTML 1.0 content models 
+      for XHTML-IM, an XHTML 1.0 Integration Set for use in exchanging 
+      marked-up instant messages between entities that conform to 
+      the Extensible Messaging and Presence Protocol (XMPP). This 
+      Integration Set includes a subset of the modules defined for 
+      XHTML 1.0 but does not redefine any existing modules, nor 
+      does it define any new modules. Specifically, it includes the 
+      following modules only:
+
+         - Structure
+         - Text
+         - Hypertext
+         - List
+         - Image
+         - Style Attribute
+     
+      Therefore XHTML-IM uses the following content models:
+
+          Block.mix;            Block-like elements, e.g., paragraphs
+          Flow.mix;             Any block or inline elements
+          Inline.mix;           Character-level elements
+          InlineNoAnchor.class; Anchor element
+          InlinePre.mix;        Pre element
+
+      XHTML-IM also uses the following Attribute Groups:
+
+           Core.extra.attrib
+           I18n.extra.attrib
+           Common.extra
+
+      Full documentation of this Integration Set is contained in
+      "XEP-0071: XHTML-IM", a specification published by the
+      XMPP Standards Foundation.
+
+         http://www.xmpp.org/extensions/xep-0071.html
+
+    &lt;/xs:documentation&gt;
+    &lt;xs:documentation source="http://www.xmpp.org/extensions/xep-0071.html"/&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;!-- BEGIN ATTRIBUTE GROUPS --&gt;
+
+  &lt;xs:attributeGroup name="Core.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="I18n.extra.attrib"/&gt;
+  &lt;xs:attributeGroup name="Common.extra"&gt;
+    &lt;xs:attributeGroup ref="style.attrib"/&gt;
+  &lt;/xs:attributeGroup&gt;
+
+  &lt;!-- END ATTRIBUTE GROUPS --&gt;
+
+  &lt;!-- BEGIN HYPERTEXT MODULE "PRIMITIVES" --&gt;
+
+  &lt;xs:group name="Anchor.class"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element ref="a"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END HYPERTEXT MODULE "PRIMITIVES" --&gt;
+
+  &lt;!-- BEGIN IMAGE MODULE "PRIMITIVES" --&gt;
+
+  &lt;xs:group name="Image.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="img"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END IMAGE MODULE "PRIMITIVES" --&gt;
+
+  &lt;!-- BEGIN LIST MODULE "PRIMITIVES" --&gt;
+
+  &lt;xs:group name="List.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="ul"/&gt;
+      &lt;xs:element ref="ol"/&gt;
+      &lt;xs:element ref="dl"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END LIST MODULE "PRIMITIVES" --&gt;
+
+  &lt;!-- BEGIN TEXT MODULE "PRIMITIVES" --&gt;
+
+  &lt;xs:group name="BlkPhras.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="address"/&gt;
+      &lt;xs:element ref="blockquote"/&gt;
+      &lt;xs:element ref="pre"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="BlkStruct.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="div"/&gt;
+      &lt;xs:element ref="p"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="Heading.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="h1"/&gt;
+      &lt;xs:element ref="h2"/&gt;
+      &lt;xs:element ref="h3"/&gt;
+      &lt;xs:element ref="h4"/&gt;
+      &lt;xs:element ref="h5"/&gt;
+      &lt;xs:element ref="h6"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="InlPhras.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="abbr"/&gt;
+      &lt;xs:element ref="acronym"/&gt;
+      &lt;xs:element ref="cite"/&gt;
+      &lt;xs:element ref="code"/&gt;
+      &lt;xs:element ref="dfn"/&gt;
+      &lt;xs:element ref="em"/&gt;
+      &lt;xs:element ref="kbd"/&gt;
+      &lt;xs:element ref="q"/&gt;
+      &lt;xs:element ref="samp"/&gt;
+      &lt;xs:element ref="strong"/&gt;
+      &lt;xs:element ref="var"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="InlStruct.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:element ref="br"/&gt;
+      &lt;xs:element ref="span"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END TEXT MODULE "PRIMITIVES" --&gt;
+
+  &lt;!-- BEGIN BLOCK COMBINATIONS --&gt;
+
+  &lt;xs:group name="Block.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="BlkPhras.class"/&gt;
+      &lt;xs:group ref="BlkStruct.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END BLOCK COMBINATIONS --&gt;
+
+  &lt;!-- BEGIN INLINE COMBINATIONS --&gt;
+
+  &lt;!-- Any inline content --&gt;
+  &lt;xs:group name="Inline.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Anchor.class"/&gt;
+      &lt;xs:group ref="Image.class"/&gt;
+      &lt;xs:group ref="InlPhras.class"/&gt;
+      &lt;xs:group ref="InlStruct.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- Inline content contained in a hyperlink --&gt;
+  &lt;xs:group name="InlNoAnchor.class"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Image.class"/&gt;
+      &lt;xs:group ref="InlStruct.class"/&gt;
+      &lt;xs:group ref="InlPhras.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END INLINE COMBINATIONS --&gt;
+
+  &lt;!-- BEGIN TOP-LEVEL MIXES --&gt;
+
+  &lt;xs:group name="Block.mix"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Block.class"/&gt;
+      &lt;xs:group ref="Heading.class"/&gt;
+      &lt;xs:group ref="List.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="Flow.mix"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Block.class"/&gt;
+      &lt;xs:group ref="Heading.class"/&gt;
+      &lt;xs:group ref="Inline.class"/&gt;
+      &lt;xs:group ref="List.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="Inline.mix"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Inline.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="InlNoAnchor.mix"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="InlNoAnchor.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;xs:group name="InlinePre.mix"&gt;
+    &lt;xs:choice&gt;
+      &lt;xs:group ref="Anchor.class"/&gt;
+      &lt;xs:group ref="InlPhras.class"/&gt;
+      &lt;xs:group ref="InlStruct.class"/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:group&gt;
+
+  &lt;!-- END TOP-LEVEL MIXES --&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<h2>16.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>This specification formalizes and extends earlier work by Jeremie Miller and Julian Missig on XHTML formatting of Jabber messages. Many thanks to Shane McCarron for his assistance regarding XHTML modularization and conformance issues. Thanks also to contributors on the discussion list of the XSF's <span class="ref"><a href="http://mail.jabber.org/mailman/listinfo/standards/">Standards SIG</a></span>  [<a href="#nt-idp1901920">36</a>] for their feedback and suggestions.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0071<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.5<br />
+            Last Updated: 2012-11-28<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XHTML 1.0, Modularization of XHTML, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: xhtml-im<br />
+        XML Schema for wrapper namespace namespace: &lt;<a href="http://www.xmpp.org/schemas/xhtml-im-wrapper.xsd">http://www.xmpp.org/schemas/xhtml-im-wrapper.xsd</a>&gt;<br />
+        XML Schema for schema driver namespace: &lt;<a href="http://www.xmpp.org/schemas/xhtml-im-driver.xsd">http://www.xmpp.org/schemas/xhtml-im-driver.xsd</a>&gt;<br />
+        XML Schema for content model namespace: &lt;<a href="http://www.xmpp.org/schemas/xhtml-im-model.xsd">http://www.xmpp.org/schemas/xhtml-im-model.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0071.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0071.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0071.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1523008" id="nt-idp1523008">1</a>. XHTML 1.0 &lt;<a href="http://www.w3.org/TR/xhtml1">http://www.w3.org/TR/xhtml1</a>&gt;.</p><p><a name="nt-idp1525536" id="nt-idp1525536">2</a>. Rich Text Format (RTF) Version 1.5 Specification &lt;<a href="http://msdn.microsoft.com/library/en-us/dnrtfspec/html/rtfspec.asp">http://msdn.microsoft.com/library/en-us/dnrtfspec/html/rtfspec.asp</a>&gt;.</p><p><a name="nt-idp1528320" id="nt-idp1528320">3</a>. XEP-0134: XMPP Design Guidelines &lt;<a href="http://xmpp.org/extensions/xep-0134.html">http://xmpp.org/extensions/xep-0134.html</a>&gt;.</p><p><a name="nt-idp1530976" id="nt-idp1530976">4</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p><p><a name="nt-idp1533872" id="nt-idp1533872">5</a>. HTML 4.0 &lt;<a href="http://www.w3.org/TR/REC-html40">http://www.w3.org/TR/REC-html40</a>&gt;.</p><p><a name="nt-idp1537936" id="nt-idp1537936">6</a>. Extensible Markup Language (XML) 1.0 (Fourth Edition) &lt;<a href="http://www.w3.org/TR/REC-xml/">http://www.w3.org/TR/REC-xml/</a>&gt;.</p><p><a name="nt-idp1540512" id="nt-idp1540512">7</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1543104" id="nt-idp1543104">8</a>. The World Wide Web Consortium defines data formats and markup languages (such as HTML and XML) for use over the Internet. For further information, see &lt;<a href="http://www.w3.org/">http://www.w3.org/</a>&gt;.</p><p><a name="nt-idp558944" id="nt-idp558944">9</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp1551376" id="nt-idp1551376">10</a>. Cascading Style Sheets, level 1 &lt;<a href="http://www.w3.org/TR/REC-CSS1">http://www.w3.org/TR/REC-CSS1</a>&gt;.</p><p><a name="nt-idp1546528" id="nt-idp1546528">11</a>. XEP-0096: SI File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0096.html">http://xmpp.org/extensions/xep-0096.html</a>&gt;.</p><p><a name="nt-idp1548928" id="nt-idp1548928">12</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp1571968" id="nt-idp1571968">13</a>. XEP-0234: Jingle File Transfer &lt;<a href="http://xmpp.org/extensions/xep-0234.html">http://xmpp.org/extensions/xep-0234.html</a>&gt;.</p><p><a name="nt-idp1574416" id="nt-idp1574416">14</a>. XSL Transformations &lt;<a href="http://www.w3.org/TR/xslt/">http://www.w3.org/TR/xslt/</a>&gt;.</p><p><a name="nt-idp1576448" id="nt-idp1576448">15</a>. The XHTML is merely an alternative version of the message body or bodies, and the semantic meaning is to be derived from the textual message body or bodies rather than the XHTML version.</p><p><a name="nt-idp1578496" id="nt-idp1578496">16</a>. It might have been better to use an element name other than &lt;html/&gt; for the wrapper element; however, changing it would not be backwards-compatible with the older protocol and existing implementations.</p><p><a name="nt-idp1584848" id="nt-idp1584848">17</a>. Modularization of XHTML &lt;<a href="http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/">http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/</a>&gt;.</p><p><a name="nt-idp1594928" id="nt-idp1594928">18</a>. RFC 5646: Tags for Identifying Languages &lt;<a href="http://tools.ietf.org/html/rfc5646">http://tools.ietf.org/html/rfc5646</a>&gt;.</p><p><a name="nt-idp1591760" id="nt-idp1591760">19</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1603392" id="nt-idp1603392">20</a>. XHTML Basic &lt;<a href="http://www.w3.org/TR/xhtml-basic">http://www.w3.org/TR/xhtml-basic</a>&gt;.</p><p><a name="nt-idp1608784" id="nt-idp1608784">21</a>. The 'style' attribute is specified herein where appropriate because the Style Attribute Module is included in the definition of the XHTML-IM Integration Set, whereas the event-related attributes (e.g., 'onclick') are not specified because the Implicit Events Module is not included.</p><p><a name="nt-idp1671616" id="nt-idp1671616">22</a>. RFC 2397: The data: URL scheme &lt;<a href="http://tools.ietf.org/html/rfc2397">http://tools.ietf.org/html/rfc2397</a>&gt;.</p><p><a name="nt-idp1674144" id="nt-idp1674144">23</a>. XEP-0231: Bits of Binary &lt;<a href="http://xmpp.org/extensions/xep-0231.html">http://xmpp.org/extensions/xep-0231.html</a>&gt;.</p><p><a name="nt-idp1676848" id="nt-idp1676848">24</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1679568" id="nt-idp1679568">25</a>. XEP-0065: SOCKS5 Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0065.html">http://xmpp.org/extensions/xep-0065.html</a>&gt;.</p><p><a name="nt-idp1740848" id="nt-idp1740848">26</a>. When contained within the &lt;html xmlns='http://jabber.org/protocol/xhtml-im'&gt; element, a &lt;body/&gt; element is qualified by the 'http://www.w3.org/1999/xhtml' namespace; naturally, this is a namespace declaration rather than an attribute per se, and therefore is not mentioned in the attribute enumeration.</p><p><a name="nt-idp1816144" id="nt-idp1816144">27</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1819392" id="nt-idp1819392">28</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1823152" id="nt-idp1823152">29</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1831648" id="nt-idp1831648">30</a>. Phishing has been defined by the Financial Services Technology Consortium Counter-Phishing Initiative as "a broadly launched social engineering attack in which an electronic identity is misrepresented in an attempt to trick individuals into revealing personal credentials that can be used fraudulently against them".</p><p><a name="nt-idp1843520" id="nt-idp1843520">31</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p><p><a name="nt-idp1869296" id="nt-idp1869296">32</a>. The XMPP Council is a technical steering committee, authorized by the XSF Board of Directors and elected by XSF members, that approves of new XMPP Extensions Protocols and oversees the XSF's standards process. For further information, see &lt;<a href="http://xmpp.org/council/">http://xmpp.org/council/</a>&gt;.</p><p><a name="nt-idp1878448" id="nt-idp1878448">33</a>. XHTML 2.0 &lt;<a href="http://www.w3.org/TR/xhtml2">http://www.w3.org/TR/xhtml2</a>&gt;.</p><p><a name="nt-idp1873840" id="nt-idp1873840">34</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1887408" id="nt-idp1887408">35</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1901920" id="nt-idp1901920">36</a>. The Standards SIG is a standing Special Interest Group devoted to development of XMPP Extension Protocols. The discussion list of the Standards SIG is the primary venue for discussion of XMPP protocol extensions, as well as for announcements by the XMPP Extensions Editor and XMPP Registrar. To subscribe to the list or view the list archives, visit &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards/">http://mail.jabber.org/mailman/listinfo/standards/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.5 (2012-11-28)</h4><div class="indent"><p>Addressed feedback received during Call for Experience: (1) generalized business rule about not adding XHTML rendering in the receiving client, (2) modified business rule about structure vs. style to recommend structural elements.</p> (psa)
+    </div><h4>Version 1.4 (2008-09-03)</h4><div class="indent"><p>Encouraged support for several more structural elements from the text module (blockquote, cite, em, and strong); further clarified security considerations regarding fetching and presentation of images; modified several examples; clarified several points throughout the text.</p> (psa)
+    </div><h4>Version 1.3 (2007-08-29)</h4><div class="indent"><p>Reorganized and further clarified security considerations regarding malicious objects, phishing, and presence leaks; added business rule about inclusion and processing of hyperlinks.</p> (psa)
+    </div><h4>Version 1.2 (2007-03-14)</h4><div class="indent"><p>Clarified security considerations regarding images.</p> (psa)
+    </div><h4>Version 1.1 (2006-01-11)</h4><div class="indent"><p>More clearly specified that XHTML-IM content is intended for use only within message stanzas, that it may be included in IQ stanzas (usage undefined) and that it may be included in presence stanzas (usage: formatted version of status); specified security consideration regarding hyperlinks.</p> (psa)
+    </div><h4>Version 1.0 (2004-09-29)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.19 (2004-09-27)</h4><div class="indent"><p>Per list discussion, removed recommendation to preserve whitespace in XHTML bodies (instead, use of &lt;br/&gt; and non-breaking spaces is recommended); noted that nesting of elements is not recommended except within &lt;div/&gt; elements; and switched from padding-left to margin-left for indentation.</p> (psa)
+    </div><h4>Version 0.18 (2004-09-15)</h4><div class="indent"><p>Added recommendation to preserve whitespace in XHTML bodies.</p> (psa)
+    </div><h4>Version 0.17 (2004-09-08)</h4><div class="indent"><p>Simplified the recommended profiles based on list discussion; changed the examples accordingly.</p> (psa)
+    </div><h4>Version 0.16 (2004-08-30)</h4><div class="indent"><p>Specified the scope of the proposal; clarified reasons for the choice of technology; clarified one business rule; corrected several typographical errors.</p> (psa)
+    </div><h4>Version 0.15 (2004-07-29)</h4><div class="indent"><p>Based on W3C feedback, added content model and refactored the text to ensure separation between the XHTML 1.0 Integration Set itself and the XSF's recommended profile of the Integration Set; also split the requirements out from the Concepts and Approach section, added several more examples, and showed renderings of the examples.</p> (psa)
+    </div><h4>Version 0.14 (2004-05-19)</h4><div class="indent"><p>Clarified relationship between wrapper element and XHTML content.</p> (psa)
+    </div><h4>Version 0.13 (2004-05-18)</h4><div class="indent"><p>Initial version of XHTML modularization.</p> (psa)
+    </div><h4>Version 0.12 (2004-03-10)</h4><div class="indent"><p>Clarified and corrected several points in the text; improved and added to the examples.</p> (psa)
+    </div><h4>Version 0.11 (2003-12-05)</h4><div class="indent"><p>Defined XHTML 1.0 Integration Set conformance; removed schema pending work on XHTML modularization with W3C.</p> (psa)
+    </div><h4>Version 0.10 (2003-11-25)</h4><div class="indent"><p>Cleaned up the schema; added W3C considerations.</p> (psa)
+    </div><h4>Version 0.9 (2003-09-30)</h4><div class="indent"><p>Changed status to Deferred pending discussion with the W3C regarding XHTML modularization.</p> (psa)
+    </div><h4>Version 0.8 (2003-09-16)</h4><div class="indent"><p>Changed MUST to SHOULD for support of the Style Attribute Module; clarified relationship of XHTML-IM schema to XHTML schema; slight text cleanup.</p> (psa)
+    </div><h4>Version 0.7 (2003-08-19)</h4><div class="indent"><p>Added the &lt;code/&gt; element.</p> (psa)
+    </div><h4>Version 0.6 (2003-06-24)</h4><div class="indent"><p>Made image support recommended (not mandatory); removed references to conversation threads; fixed some issues in the schema; made small editorial changes throughout.</p> (psa)
+    </div><h4>Version 0.5 (2003-04-29)</h4><div class="indent"><p>Fixed the schema, made several small editorial changes.</p> (psa)
+    </div><h4>Version 0.4 (2003-02-20)</h4><div class="indent"><p>Brought back several content-based elements; added preliminary schema.</p> (psa)
+    </div><h4>Version 0.3 (2003-02-19)</h4><div class="indent"><p>Defined the attributes and style properties required by this document.</p> (psa)
+    </div><h4>Version 0.2 (2003-02-17)</h4><div class="indent"><p>Described the requirements more fully; added additional restrictions above and beyond the standard XHTML 1.0 Modules; added disco examples.</p> (psa)
+    </div><h4>Version 0.1 (2003-02-16)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

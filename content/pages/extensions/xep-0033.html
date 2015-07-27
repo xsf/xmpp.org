@@ -1,0 +1,601 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0033: Extended Stanza Addressing</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Extended Stanza Addressing" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension that enables entities to include RFC822-style address headers within XMPP stanzas in order to specify multiple recipients or sub-addresses." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-09-15" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0033" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0033: Extended Stanza Addressing</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension that enables entities to include RFC822-style address headers within XMPP stanzas in order to specify multiple recipients or sub-addresses.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-09-15</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#disco">Discovering Server Support</a><br />   
+      2.1.  <a href="#disco-support">Disco to determine support</a><br />   
+      2.2.  <a href="#disco-multicast">Multicast service</a><br />   
+      2.3.  <a href="#disco-caching">Caching</a><br />3.  <a href="#outer">Outer Stanza</a><br />4.  <a href="#addresses">Addresses</a><br />   
+      4.1.  <a href="#addr-jid">'jid' attribute</a><br />   
+      4.2.  <a href="#addr-uri">'uri' attribute</a><br />   
+      4.3.  <a href="#addr-node">'node' attribute</a><br />   
+      4.4.  <a href="#addr-desc">'desc' attribute</a><br />   
+      4.5.  <a href="#addr-delivered">'delivered' attribute</a><br />   
+      4.6.  <a href="#addr-type">'type' attribute</a><br />      
+      4.6.1.  <a href="#addr-type-to">Address type='to'</a><br />      
+      4.6.2.  <a href="#addr-type-cc">Address type='cc'</a><br />      
+      4.6.3.  <a href="#addr-type-bcc">Address type='bcc'</a><br />      
+      4.6.4.  <a href="#addr-type-replyto">Address type='replyto'</a><br />      
+      4.6.5.  <a href="#addr-type-replyroom">Address type='replyroom'</a><br />      
+      4.6.6.  <a href="#addr-type-noreply">Address type='noreply'</a><br />   
+      4.7.  <a href="#extensibility">Extensibility</a><br />5.  <a href="#multicast">Multicast Usage</a><br />6.  <a href="#examples">Example Flow</a><br />7.  <a href="#replies">Reply Handling</a><br />8.  <a href="#errors">Error Conditions</a><br />9.  <a href="#security">Security Considerations</a><br />10.  <a href="#iana">IANA Considerations</a><br />11.  <a href="#registrar">XMPP Registrar Considerations</a><br />12.  <a href="#schema">XML Schema</a><br />13.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+            <p>On the existing Jabber network, there are many opportunities to optimize stanza traffic. For example, clients that want to send the same stanza to multiple recipients currently must send multiple stanzas. Similarly, when a user comes online the server sends many nearly-identical presence stanzas to remote servers.</p>
+      
+            <p>The 'http://jabber.org/protocol/address' specification provides a method for both clients and servers to send a single stanza and have it be delivered to multiple recipients, similar to that found in <span class="ref"><a href="http://tools.ietf.org/html/rfc0822">RFC 822</a></span>  [<a href="#nt-idp525168">1</a>].  As a side-effect, it also provides all of the functionality specified by the old 'jabber:x:envelope'  [<a href="#nt-idp523856">2</a>] proposal, which this XEP can supersede.</p>
+    <h2>2.
+       <a name="disco" id="disco">Discovering Server Support</a></h2>
+        <p>Support for Extended Stanza Addressing in a given server instance SHOULD be determined using <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1374896">3</a>]. A conforming server MUST respond to disco#info requests.</p>
+        
+        <div class="indent"><h3>2.1 <a name="disco-support" id="disco-support">Disco to determine support</a></h3>
+            <p>To determine if a server or service supports Extended Stanza Addressing, the requesting entity SHOULD send a disco#info request to it.</p>
+
+           <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Disco request for address header support</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='multicast.montague.net'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+           </pre></div>
+            <p>If the server supports Extended Stanza Addressing, it MUST include a "http://jabber.org/protocol/address" feature in the response.</p>
+           <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Disco response for server supporting address headers</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='multicast.montague.net'
+    to='romeo@montague.net/orchard'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/address'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+           </pre></div>
+        </div>
+
+        <div class="indent"><h3>2.2 <a name="disco-multicast" id="disco-multicast">Multicast service</a></h3>
+            <p>The IM service MAY implement multicast directly, or it MAY delegate that chore to a separate service. A client can use the following approach to find a multicast-capable service hosted by its domain:</p>
+            <ol>
+              <li>Send a disco#info request to the IM server; if its reply includes the 'http://jabber.org/protocol/address' feature, then it is a multicast-capable service.</li>
+              <li>If the IM server is not a multicast-capable service, send a disco#items request to the IM server; the IM server will then return a list of associated services.</li>
+              <li>Send a disco#info request to each of the services associated with the IM server; if one of the replies includes the 'http://jabber.org/protocol/address' feature, then that service is a multicast-capable service.</li>
+            </ol>
+
+            <p>The multicast service MAY choose to limit which local users can use the service.  The server MAY choose to limit whether non-local servers can send address headers that require the local server to send to third parties (relaying).  In either case, if the server chooses to disallow the request, the server MUST return a Forbidden error (see the <a href="#errors">Error Conditions</a> section below).  In the relaying case, the server SHOULD NOT deliver to <span class="em">any</span> of the addresses (even the local ones) if the sender is disallowed.</p>
+        </div>
+
+        <div class="indent"><h3>2.3 <a name="disco-caching" id="disco-caching">Caching</a></h3>
+            <p>Implementations MAY choose to cache the disco response.
+            Positive responses MAY be cached differently than negative
+            responses.  The result SHOULD NOT be cached for more than 24
+            hours, unless some sort of time-to-live information is
+            added to the Service Discovery protocol in the future.</p>
+        </div>
+    <h2>3.
+       <a name="outer" id="outer">Outer Stanza</a></h2>
+        <p>For multicast processing, the stanza containing an address header
+        (the 'outer stanza') MUST be addressed to the multicast service,
+        with no username or resource in the 'to' attribute.</p>
+
+        <p>When used for additional information in a one-to-one stanza
+        (e.g. using the 'node' attribute), the outer stanza SHOULD be
+        addressed directly to the recipient, not to the multicast
+        service.</p>
+
+        <p>A multicast service MUST NOT change the 'from' address on
+        the outer stanza.  Note that this will limit third-party
+        relaying across server-to-server connections as a side-effect.</p>
+
+        <p>Address headers MAY be included in message or presence
+        stanzas.  They MUST NOT be included as the direct child of an 
+        IQ stanza.</p>
+    <h2>4.
+       <a name="addresses" id="addresses">Addresses</a></h2>
+        <p>Address values are packaged together into an
+        &lt;addresses/&gt; element.</p>
+
+        <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Message with an extended address</p><div class="indent"><pre class="prettyprint">&lt;message to='multicast.jabber.org'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+       &lt;address type='to' jid='hildjj@jabber.org/Work' desc='Joe Hildebrand'/&gt;
+       &lt;address type='cc' jid='jer@jabber.org/Home' desc='Jeremie Miller'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, world!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+
+        <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Presence with an extended address</p><div class="indent"><pre class="prettyprint">&lt;presence from='hildjj@jabber.com' to='multicast.jabber.org' type='unavailable'&gt;
+    &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+        &lt;address type='bcc' jid='temas@jabber.org'/&gt;
+        &lt;address type='bcc' jid='jer@jabber.org'/&gt;
+    &lt;/addresses&gt;
+&lt;/presence&gt;</pre></div>
+
+        
+        <p>Each address to which the sender wants the stanza to be re-sent will show up as an &lt;address/&gt; in the &lt;addresses/&gt; element.  There are several different types of address, shown below.</p>
+
+        <p>An &lt;address/&gt; element MUST possess a 'type' attribute, and MUST possess at least one of the 'jid', 'uri', 'node', and 'desc' attributes. An &lt;address/&gt; element MUST NOT possess both a 'jid' attribute and a 'uri' attribute. If sending through a multicast service, an address MUST include a 'jid' or a 'uri' attribute, unless it is of type 'noreply'.</p>
+
+        <div class="indent"><h3>4.1 <a name="addr-jid" id="addr-jid">'jid' attribute</a></h3>
+            <p>The 'jid' attribute is used to specify a simple Jabber ID associated with this address.  If the 'jid' attribute is specified, the 'uri' attribute MUST NOT be specified. Support for the 'jid' attribute is REQUIRED.</p>
+        </div>
+
+        <div class="indent"><h3>4.2 <a name="addr-uri" id="addr-uri">'uri' attribute</a></h3>
+            <p>The 'uri' attribute is used to specify an external system address, such as a sip:, sips:, or im: URI.  If the 'uri' attribute is specified, the 'jid' and 'node' attributes MUST NOT be specified.  These URIs MUST be formatted as specified in their respective RFCs, however with the characters &amp; &lt; &gt; ' " replaced by their equivalent XML escapes, &amp;amp; &amp;lt; &amp;gt; &amp;apos; &amp;quot;. If a receiving entity does not understand the given URI scheme, or if the URI is not formatted correctly, a "JID Malformed" error SHOULD be returned. Support for the 'uri' attribute is OPTIONAL.</p>
+        </div>
+
+        <div class="indent"><h3>4.3 <a name="addr-node" id="addr-node">'node' attribute</a></h3>
+            <p>The 'node' attribute is used to specify a sub-addressable unit at a particular JID, corresponding to a Service Discovery node.  A node attribute MAY be included if a 'jid' attribute is specified.  If a 'uri' attribute is specified, a 'node' attribute MUST NOT be specified. Support for the 'node' attribute is RECOMMENDED.</p>
+        </div>
+
+        <div class="indent"><h3>4.4 <a name="addr-desc" id="addr-desc">'desc' attribute</a></h3>
+            <p>The 'desc' attribute is used to specify human-readable information for this address.  This data may be used by clients to provide richer address-book integration.  This information is in the language of the sender, which MAY be identified using the standard xml:lang rules from <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1403520">4</a>]. Support for the 'desc' attribute is RECOMMENDED.</p>
+        </div>
+
+        <div class="indent"><h3>4.5 <a name="addr-delivered" id="addr-delivered">'delivered' attribute</a></h3>
+            <p>When a multicast service delivers the stanza to a non-bcc address, it MUST add a delivered='true' attribute to the address element.  A multicast service MUST NOT deliver to an address that was marked with a delivered='true' attribute when the service received the stanza.  A multicast service SHOULD attempt to deliver to all addresses that are not marked with a delivered='true' attribute.  The delivered attribute is used to prevent loops.  See the <a href="#multicast">Multicast Usage</a> section below for more details. Support for the 'delivered' attribute is REQUIRED.</p>
+        </div>
+
+        <div class="indent"><h3>4.6 <a name="addr-type" id="addr-type">'type' attribute</a></h3>
+            <p>The 'type' attribute is used to specify the semantics of a particular address. Support for the 'type' attribute is REQUIRED.</p>
+
+            <div class="indent"><h3>4.6.1 <a name="addr-type-to" id="addr-type-to">Address type='to'</a></h3>
+                <p>These addressees are the primary recipients of the stanza.</p>
+            </div>
+            <div class="indent"><h3>4.6.2 <a name="addr-type-cc" id="addr-type-cc">Address type='cc'</a></h3>
+                <p>These addressees are the secondary recipients of the stanza.</p>
+            </div>
+            <div class="indent"><h3>4.6.3 <a name="addr-type-bcc" id="addr-type-bcc">Address type='bcc'</a></h3>
+                <p>These addressees should receive 'blind carbon copies' of the stanza.  This means that the server MUST remove these addresses before the stanza is delivered to anyone other than the given bcc addressee or the multicast service of the bcc addressee.</p>
+            </div>
+            <div class="indent"><h3>4.6.4 <a name="addr-type-replyto" id="addr-type-replyto">Address type='replyto'</a></h3>
+                <p>This is the address to which all replies are requested to be sent.  Clients SHOULD respect this request unless an explicit override occurs.  There MAY be more than one replyto or replyroom on a stanza, in which case the reply stanza MUST be routed to all of the addresses.</p>
+            </div>
+            <div class="indent"><h3>4.6.5 <a name="addr-type-replyroom" id="addr-type-replyroom">Address type='replyroom'</a></h3>
+                <p>This is the JID of a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1416368">5</a>] room to which responses should be sent.  When a user wants to reply to this stanza, the client SHOULD join this room first.  Clients SHOULD respect this request unless an explicit override occurs. There MAY be more than one replyto or replyroom on a stanza, in which case the reply stanza MUST be routed to all of the addresses.</p>
+            </div>
+            <div class="indent"><h3>4.6.6 <a name="addr-type-noreply" id="addr-type-noreply">Address type='noreply'</a></h3>
+                <p>This address type contains no actual address information.  Instead, it means that the receiver SHOULD NOT reply to the message.  This is useful when broadcasting messages to many receivers.</p>
+            </div>
+        </div>
+
+        <div class="indent"><h3>4.7 <a name="extensibility" id="extensibility">Extensibility</a></h3>
+            <p>As specified herein, the &lt;address/&gt; element is empty.  Implementations or future protocols MAY extend the &lt;address/&gt; element for additional functionality, but any extensions are out of scope for this XEP. Such extensions SHOULD be appropriately qualified with a new namespace, and any extensions that are not understood by an implementation MUST be ignored.</p>
+
+            <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Possible future extension</p><div class="indent"><pre class="prettyprint">&lt;message to='groups.jabber.org'&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='to' desc='Foo Group'&gt;
+      &lt;group xmlns='some:funny:group:ns'&gt;foo&lt;/group&gt;
+    &lt;/address&gt;
+    &lt;address type='replyroom' jid='jdev@conference.jabber.org'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;</pre></div>      
+        </div>
+    <h2>5.
+       <a name="multicast" id="multicast">Multicast Usage</a></h2>
+        <p>The following usage scenario shows how messages flow through both address-enabled and non-address-enabled portions of the Jabber network.</p>
+    
+        <p>Note: the logic associated with <span class="em">how</span> to perform the following tasks is purely informational.  A conforming service MUST generate output as if these rules had been followed, but need not (and probably <span class="em">will not</span>) use this algorithm.</p>
+
+        <ol>
+            <li>User desires to send a stanza to more than one
+            recipient.</li>
+      
+            <li>Client determines the JID of a multicast service,
+            using Service Discovery.</li>
+      
+            <li>If no multicast service is found, the client MAY
+            choose to deliver each stanza individually, or it MAY
+            query each of the servers associated with desired
+            recipients, and batch stanzas to those servers
+            itself.</li>
+
+            <li>If a multicast service is found, the client constructs
+            a stanza with an address block, and sends it to the
+            multicast service. (Note: For the following rules, any 
+            address that was marked on the incoming address header 
+            with delivered='true' is never re-delivered.)</li>
+
+            <li>The server checks to see if it can deliver to all of
+            the specified addresses.  If not, the stanza is returned
+            with a "Forbidden" error, and processing stops.</li>
+
+            <li>The server adds a delivered='true' attribute to all
+            addresses.</li>
+
+            <li>The server removes all type='bcc' attributes.</li>
+
+            <li>The server delivers the stanza to all of the 'to',
+            'cc', and 'bcc' addresses from the original address header that
+            are being handled locally.  The server replaces the
+            'to' attribute on the outer stanza with the JID of each
+            addressee.  Each 'bcc' recipient MUST receive only the
+            &lt;address type='bcc'/&gt; associated with that
+            addressee.</li>
+
+            <li>For each non-local server (the 'target server') that
+            has addresses specified in 'to', 'cc', or 'bcc' addresses
+            in the original address header, the local server determines
+            whether the target server supports multicast, using Service
+            Discovery.</li>
+      
+            <li>If the target server does not support address headers, the
+            local server sends a copy of the stanza to each address,
+            with the 'to' attribute on the outer stanza set to the JID
+            of the given addressee.</li>
+      
+            <li>If the target server does support address headers, the server
+            removes the delivered='true' attributes on each of the
+            addresses bound for that server, and replaces the 'to'
+            attribute on the outer stanza with the adress of the
+            multicast service for the target server.  The 'bcc'
+            addresses for the target server from the original address header
+            are added back to the address header.  A single stanza is sent to
+            the target server.</li>
+        </ol>
+    <h2>6.
+       <a name="examples" id="examples">Example Flow</a></h2>
+        <p>Assume for these examples that header1.org and header2.org
+        support address headers, and noheader.org does not.</p>
+
+        <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Client checks local server for address header support</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='header1.org' from='a@header1.org/work' id='id_1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Client receives positive results from server</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' from='header1.org' to='a@header1.org/work' id='id_1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='http://jabber.org/protocol/address'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client sends message to local server with address header</p><div class="indent"><pre class="prettyprint">&lt;message to='header1.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+     &lt;address type='to'  jid='to@header1.org'/&gt;
+     &lt;address type='cc'  jid='cc@header1.org'/&gt;
+     &lt;address type='bcc' jid='bcc@header1.org'/&gt;
+     &lt;address type='to'  jid='to@header2.org'/&gt;
+     &lt;address type='cc'  jid='cc@header2.org'/&gt;
+     &lt;address type='bcc' jid='bcc@header2.org'/&gt;
+     &lt;address type='to'  jid='to@noheader.org'/&gt;
+     &lt;address type='cc'  jid='cc@noheader.org'/&gt;
+     &lt;address type='bcc' jid='bcc@noheader.org'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+
+        <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Server delivers to local addresses</p><div class="indent"><pre class="prettyprint">&lt;message to='to@header1.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org' delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org' delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='cc@header1.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+     &lt;address type='to' jid='to@header1.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@header1.org' delivered='true'/&gt;
+     &lt;address type='to' jid='to@header2.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@header2.org' delivered='true'/&gt;
+     &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='bcc@header1.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+     &lt;address type='to' jid='to@header1.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@header1.org' delivered='true'/&gt;
+     &lt;address type='to' jid='to@header2.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@header2.org' delivered='true'/&gt;
+     &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+     &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+
+        <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Local server checks target server for address support</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='header2.org' from='header1.org' id='id_2'&gt;
+   &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+        <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Local server receives initial negative results from target server</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' from='header2.org' to='header1.org' id='id_2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+... no address feature ...
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Local server checks target server for another component having address support</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='header2.org' from='header1.org' id='id_3'&gt;
+   &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+        <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Local server receives associated services from target server</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' from='header2.org' to='header1.org' id='id_3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item jid='multicast.header2.org'
+          name='Multicast Service'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Local server checks associated services for address support</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='multicast.header2.org' from='header1.org' id='id_4'&gt;
+   &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+</pre></div>
+
+        <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Local server receives positive results from target server</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' from='multicast.header2.org' to='header1.org/work' id='id_4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='http://jabber.org/protocol/address'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Local server delivers to target server supporting address headers</p><div class="indent"><pre class="prettyprint">&lt;message to='multicast.header2.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to'  jid='to@header1.org' delivered='true'/&gt;
+      &lt;address type='cc'  jid='cc@header1.org' delivered='true'/&gt;
+      &lt;address type='to'  jid='to@header2.org'/&gt;
+      &lt;address type='cc'  jid='cc@header2.org'/&gt;
+      &lt;address type='bcc' jid='bcc@header2.org'/&gt;
+      &lt;address type='to'  jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc'  jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+         <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Target server delivers to its recipients</p><div class="indent"><pre class="prettyprint">&lt;message to='to@header2.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='cc@header2.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='bcc@header2.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+
+        <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Local server checks target server for address header support</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='noheader.org' from='header1.org' id='id_5'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Local server receives negative results from target server (assume no associated services found)</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' from='noheader.org' to='header1.org' id='id_5'&gt;
+   &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+... no address feature ...
+   &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+
+        <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Server delivers to each address on the target server not supporting address headers</p><div class="indent"><pre class="prettyprint">&lt;message to='to@noheader.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='cc@noheader.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;
+&lt;message to='bcc@noheader.org' from='a@header1.org/work'&gt;
+   &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+      &lt;address type='to' jid='to@header1.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header1.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@header2.org'  delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@header2.org'  delivered='true'/&gt;
+      &lt;address type='to' jid='to@noheader.org' delivered='true'/&gt;
+      &lt;address type='cc' jid='cc@noheader.org' delivered='true'/&gt;
+   &lt;/addresses&gt;
+   &lt;body&gt;Hello, World!&lt;/body&gt;
+&lt;/message&gt;</pre></div>
+    <h2>7.
+       <a name="replies" id="replies">Reply Handling</a></h2>
+        <p>When replying to a message stanza that contains an extended
+        address, the following rules apply:</p>
+
+        <ol>
+            <li>If a noreply address is
+            specified, a reply SHOULD NOT be generated.</li> 
+
+            <li>If a replyroom address is specified, the client SHOULD
+            join the specified chat room instead of replying directly
+            to the specified user.  No further extended address
+            processing is required.</li>
+
+            <li>If a replyto address is specified, the reply SHOULD go
+            to the specified address.  No further extended address
+            processing is required.  Any &lt;thread/&gt; element from
+            the initial message MUST be copied into the reply.</li>
+
+            <li>Otherwise, an extended-address aware client MUST copy
+            the address header from the original message into the reply,
+            removing any delivered attributes.  If the original sender
+            is not in the copied list, the original sender MUST be
+            added as a 'to' address.  The recipient's address SHOULD
+            be removed from the list.  The client then proceeds with
+            the rules from the <a href="#multicast">Multicast Usage</a>
+            section above for delivery of the message.</li>
+        </ol>
+    <h2>8.
+       <a name="errors" id="errors">Error Conditions</a></h2>
+        <p>The following error conditions are to be used by implementations (for further information regarding error syntax, see <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1461504">6</a>]):</p>
+        <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error Conditions</p><table border="1" cellpadding="3" cellspacing="0">
+          <tr class="body">
+            <th>XMPP Condition</th>
+            <th>Purpose</th>
+          </tr>
+          <tr class="body">
+            <td>&lt;forbidden/&gt;</td>
+            <td>The sending user does not have permission to use this multicast service.</td>
+          </tr>
+          <tr class="body">
+            <td>&lt;jid-malformed/&gt;</td>
+            <td>A URI attribute was invalid or not understood (note that support for the 'uri' attribute is optional).</td>
+          </tr>
+          <tr class="body">
+            <td>&lt;not-acceptable/&gt;</td>
+            <td>Too many receiver fields were specified.  Servers SHOULD have a configurable upper limit for the number of addresses. The limit SHOULD be more than 20 and less than 100.</td>
+          </tr>
+        </table></div>
+    <h2>9.
+       <a name="security" id="security">Security Considerations</a></h2>
+    <p>A recipient SHOULD trust a stanza's extended addressing headers only as much as it trusts the sender of the stanza.</p>
+    <p>Furthermore, there exists the potential for abuse related to the 'replyto' and 'replyroom' features (e.g., an entity could send messages with 'replyroom' set to the address of a room that hosts salacious content or with 'replyto' set to the address of a spambot that harvests Jabber addresses). Therefore if a human user's receiving application receives a message with extended stanza addressing that specifies a 'replyto' or 'replyroom' address other than that of the sender, it SHOULD inform the user of that fact. (Naturally, the receiving application MAY also limit the entities to which the recipient can reply using privacy lists as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1472368">7</a>].)</p>
+  <h2>10.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+    <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1476128">8</a>].</p>
+  <h2>11.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1479792">9</a>] shall include 'http://jabber.org/protocol/address' in its registry of protocol namespaces.</p>
+  <h2>12.
+       <a name="schema" id="schema">XML Schema</a></h2>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/address'
+    xmlns='http://jabber.org/protocol/address'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0033: http://www.xmpp.org/extensions/xep-0033.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='addresses'&gt;
+     &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+           &lt;xs:element ref='address'
+                       minOccurs='1'
+                       maxOccurs='unbounded'/&gt;
+        &lt;/xs:sequence&gt;
+     &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='address'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='delivered' use='optional' fixed='true'/&gt;
+          &lt;xs:attribute name='desc' use='optional' type='xs:string'/&gt;
+          &lt;xs:attribute name='jid' use='optional' type='xs:string'/&gt;
+          &lt;xs:attribute name='node' use='optional' type='xs:string'/&gt;
+          &lt;xs:attribute name='type' use='required'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='bcc'/&gt;
+                &lt;xs:enumeration value='cc'/&gt;
+                &lt;xs:enumeration value='noreply'/&gt;
+                &lt;xs:enumeration value='replyroom'/&gt;
+                &lt;xs:enumeration value='replyto'/&gt;
+                &lt;xs:enumeration value='to'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name='uri' use='optional' type='xs:string'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+        </pre></div>
+    <h2>13.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+        <p>Sections of this document were inspired by RFC 822.</p>
+    <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0033<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2004-09-15<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: address<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/address.xsd">http://www.xmpp.org/schemas/address.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0033.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0033.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0033.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp525168" id="nt-idp525168">1</a>. RFC 822: Standard for the Format of ARPA Internet Text Messages &lt;<a href="http://tools.ietf.org/html/rfc0822">http://tools.ietf.org/html/rfc0822</a>&gt;.</p><p><a name="nt-idp523856" id="nt-idp523856">2</a>. <a href="http://archive.jabber.org/docs/proto-draft/envelope.html">jabber:x:envelope</a> - Message Envelope Information Extension</p><p><a name="nt-idp1374896" id="nt-idp1374896">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1403520" id="nt-idp1403520">4</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1416368" id="nt-idp1416368">5</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1461504" id="nt-idp1461504">6</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1472368" id="nt-idp1472368">7</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1476128" id="nt-idp1476128">8</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1479792" id="nt-idp1479792">9</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2004-09-15)</h4><div class="indent">Per list discussion, removed prohibition on multiple replyto and replyroom addresses, since this is allowed by RFC 822. (psa)
+    </div><h4>Version 1.0 (2004-05-10)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Draft; also added Security Considerations in consultation with author. (psa)
+    </div><h4>Version 0.10 (2004-03-18)</h4><div class="indent">Disallowed &lt;addresses/&gt; as direct child 
+            of &lt;iq/&gt;. (psa)
+    </div><h4>Version 0.9 (2004-02-27)</h4><div class="indent">Added language note on desc attribute.  Ensured
+            that if uri attribute is used, node MUST NOT be. (jjh)
+    </div><h4>Version 0.8 (2004-02-11)</h4><div class="indent">Editorial cleanups, rearrangement.  Allowed IQ's
+            in certain cases.  Clarified node rules.  Changed
+            delivered='yes' to delivered='true'.  Noreply shouldn't
+            imply no other addresses.  Clarified when authorization
+            checks take place.  Remove own address on reply.  Bad URI
+            error added. (jjh)
+    </div><h4>Version 0.7 (2004-02-04)</h4><div class="indent">Clarified that a node attribute refers to a disco
+            node. (jjh)
+    </div><h4>Version 0.6 (2004-02-04)</h4><div class="indent">Changed namespace to
+            'http://www.jabber.org/protocol/address', and removed one
+            level of nesting, since addresses are the only block left.
+            Made it clearer that the session manager can implement
+            multicast directly.  Removed infobits (needs to be a
+            separate specification).  Reworked the examples to be more correct.
+            Added reply handling rules. Added schema. (jjh)
+    </div><h4>Version 0.5 (2003-12-17)</h4><div class="indent">Replaced info with infobits, added noreply address
+            type. (jjh)
+    </div><h4>Version 0.4 (2003-12-15)</h4><div class="indent">Removed trace; if you want that, use a different
+            namespace.  Required disco use, and removed agents/browse.
+            Added URI addressing. (jjh)
+    </div><h4>Version 0.3 (2002-07-29)</h4><div class="indent">Made addresses extensible, added replyroom (jjh)
+    </div><h4>Version 0.2 (2002-05-06)</h4><div class="indent">Re-worked to simpler/more structured XML. (jjh)
+    </div><h4>Version 0.1 (2002-04-19)</h4><div class="indent">Initial version. (jjh)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,1501 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0136: Message Archiving</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Message Archiving" /><meta name="DC.Creator" content="Ian Paterson" /><meta name="DC.Creator" content="Jon Perlow" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Justin Karneges" /><meta name="DC.Creator" content="Alexander Tsvyashchenko" /><meta name="DC.Creator" content="Yann Leboulanger" /><meta name="DC.Description" content="This document defines mechanisms and preferences for the server-side archiving and retrieval of XMPP messages." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2010-06-21" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0136" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0136: Message Archiving</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines mechanisms and preferences for the server-side archiving and retrieval of XMPP messages.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ian Paterson, Jon Perlow, Peter Saint-Andre, Justin Karneges, Alexander Tsvyashchenko, Yann Leboulanger</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2010-06-21</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#pref">Archiving Preferences</a><br />   
+      2.1.  <a href="#pref-reqs">Introduction</a><br />   
+      2.2.  <a href="#pref-syntax">Preference Syntax</a><br />      
+      2.2.1.  <a href="#pref-syntax-auto">Auto Element</a><br />      
+      2.2.2.  <a href="#pref-syntax-default">Default Element</a><br />        
+      2.2.2.1.  <a href="#pref-syntax-default-expire">expire Attribute</a><br />        
+      2.2.2.2.  <a href="#pref-syntax-default-otr">otr Attribute</a><br />        
+      2.2.2.3.  <a href="#pref-syntax-default-save">save Attribute</a><br />      
+      2.2.3.  <a href="#pref-syntax-item">Item Element</a><br />        
+      2.2.3.1.  <a href="#pref-syntax-expire">expire Attribute</a><br />        
+      2.2.3.2.  <a href="#pref-syntax-item-jid">jid Attribute</a><br />        
+      2.2.3.3.  <a href="#pref-syntax-item-otr">otr Attribute</a><br />        
+      2.2.3.4.  <a href="#pref-syntax-item-save">save Attribute</a><br />      
+      2.2.4.  <a href="#pref-syntax-session">Session Element</a><br />        
+      2.2.4.1.  <a href="#pref-syntax-timeout">timeout Attribute</a><br />        
+      2.2.4.2.  <a href="#pref-syntax-thread">thread Attribute</a><br />        
+      2.2.4.3.  <a href="#pref-syntax-session-save">save Attribute</a><br />      
+      2.2.5.  <a href="#pref-syntax-method">Method Element</a><br />        
+      2.2.5.1.  <a href="#pref-syntax-method-type">type Attribute</a><br />        
+      2.2.5.2.  <a href="#pref-syntax-method-use">use Attribute</a><br />   
+      2.3.  <a href="#pref-determine">Determining Preferences</a><br />   
+      2.4.  <a href="#pref-default">Setting Default Modes</a><br />   
+      2.5.  <a href="#pref-contact">Setting Modes for a Contact</a><br />   
+      2.6.  <a href="#pref-session">Setting Modes for a Chat Session</a><br />   
+      2.7.  <a href="#pref-archive">Setting Archiving Method Preferences</a><br />   
+      2.8.  <a href="#pref-server">Server Archiving Preferences Interpretation</a><br />   
+      2.9.  <a href="#pref-precedence">Preferences precedence rules</a><br />3.  <a href="#otr">Off The Record</a><br />   
+      3.1.  <a href="#otr-nego">OTR Negotiation</a><br />   
+      3.2.  <a href="#otr-notes">Notes</a><br />4.  <a href="#collections">Collections: The Chat Element</a><br />   
+      4.1.  <a href="#collections-start">start Attribute</a><br />   
+      4.2.  <a href="#collections-subject">subject Attribute</a><br />   
+      4.3.  <a href="#collections-thread">thread Attribute</a><br />   
+      4.4.  <a href="#collections-version">version Attribute</a><br />   
+      4.5.  <a href="#collections-with">with Attribute</a><br />   
+      4.6.  <a href="#collections-fromto">from and to Elements</a><br />   
+      4.7.  <a href="#collections-note">note Element</a><br />5.  <a href="#manual">Manual Archiving</a><br />   
+      5.1.  <a href="#manual-intro">Introduction</a><br />   
+      5.2.  <a href="#manual-upload">Uploading Messages to a Collection</a><br />   
+      5.3.  <a href="#impl-subject">Changing the Subject of a Collection</a><br />   
+      5.4.  <a href="#impl-offline">Offline Messages</a><br />   
+      5.5.  <a href="#impl-muc">Groupchat Messages</a><br />   
+      5.6.  <a href="#impl-link">Linking Collections</a><br />   
+      5.7.  <a href="#impl-form">Associating Attributes with a Collection</a><br />6.  <a href="#auto">Automatic Archiving</a><br />7.  <a href="#manage">Archive Management</a><br />   
+      7.1.  <a href="#manage-list">Retrieving a List of Collections</a><br />   
+      7.2.  <a href="#manage-retrieve">Retrieving a Collection</a><br />   
+      7.3.  <a href="#manage-remove">Removing a Collection</a><br />8.  <a href="#replication">Replication</a><br />9.  <a href="#disco">Determining Server Support</a><br />10.  <a href="#impl">Implementation Notes</a><br />   
+      10.1.  <a href="#impl-jidmatch">JID Matching</a><br />   
+      10.2.  <a href="#impl-sync">Time Synchronization</a><br />   
+      10.3.  <a href="#impl-bandwidth">Bandwidth Considerations</a><br />   
+      10.4.  <a href="#impl-storage">Storage Considerations</a><br />   
+      10.5.  <a href="#impl-convtracking">Conversations Tracking In Automatic Archiving</a><br />11.  <a href="#streamfeature">Stream Feature</a><br />12.  <a href="#security">Security Considerations</a><br />   
+      12.1.  <a href="#security-autoon">Automatic Archiving Defaulting to On</a><br />   
+      12.2.  <a href="#security-store">Store Headers</a><br />13.  <a href="#iana">IANA Considerations</a><br />14.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      14.1.  <a href="#ns">Protocol Namespace</a><br />   
+      14.2.  <a href="#registrar-features">Service Discovery Features</a><br />15.  <a href="#schema">XML Schema</a><br />16.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p class="box"><span class="em">Notice (2010-06-21): The <span class="ref"><a href="http://xmpp.org/council/">XMPP Council</a></span>  [<a href="#nt-idp1771984">1</a>] believes that the Message Archiving protocol is unduly complex and will likely request a thorough review and simplification of this specification before advancing it to Final.</span></p>
+  <p>Many XMPP clients implement some form of client-side message archiving. However, it is not always convenient or even possible to archive messages locally, e.g., because it is easier to keep all archives in one universally accessible place (not scattered around on multiple computers or devices) or because the client operates in a web browser or resides on a mobile device that does not have sufficient local storage for message archiving. In addition, server-side archiving makes it possible to offer new services such as integration of instant messaging and email. Therefore it is beneficial to define methods for server-side archiving of XMPP messages.</p>
+  <p>There are two main approaches to this problem:</p>
+  <ol start="1">
+    <li>Enable the client to send individual messages or entire conversations to the server for archiving; we call this MANUAL ARCHIVING.</li>
+    <li>Enable the server (at the user's request) to archive messages as they pass through the server; we call this AUTOMATED ARCHIVING.</li>
+  </ol>
+  <p>So that client and server developers can refer to one specification, both approaches are defined in this document. In addition, this document defines common methods for retrieving and managing archived messages.</p>
+  <p>Note: Complying with <span class="strong">XMPP Core</span>, the server MUST respond to all &lt;iq/&gt; element of type 'get' or 'set'. However, most successful responses have been omitted from this document in the interest of conciseness.</p>
+<h2>2.
+       <a name="pref" id="pref">Archiving Preferences</a></h2>
+  <div class="indent"><h3>2.1 <a name="pref-reqs" id="pref-reqs">Introduction</a></h3>
+    <p>Not all users want to archive messages. A client SHOULD save its user's default archiving preference (or "Save Mode") to its own server (i.e., specify whether by default all conversations should be archived or not). In addition, a client MAY save different preferences for particular contacts.</p>
+    <p>Some users may also prefer that the messages they exchange with contacts are "<a href="#otr">Off The Record</a>" (OTR).  [<a href="#nt-idp1780768">2</a>] A client SHOULD save its user's default and contact-specific OTR preferences (or "OTR Modes") to its own server.</p>
+    <p>Whichever archiving method a client uses (e.g., local archiving to files or a database, or server-side archiving that happens either automatically or manually), it SHOULD adhere to its user's archiving preferences as stored on the server. However, a client MAY maintain a set of preferences in a local file which takes precedence over the preferences stored on the server for both local archiving and server-side archiving.</p>
+    <p>This section addresses the following use cases:</p>
+    <ol start="1">
+      <li>A client determines its user's current default Save Mode and OTR Mode, and the Modes for particular contacts.</li>
+      <li>A client sets the default Save Mode and OTR Mode.</li>
+      <li>A client sets the Save Mode and OTR Mode for a particular contact.</li>
+      <li>A client sets the Save Mode for a particular chat session.</li>
+    </ol>
+  </div>
+  <div class="indent"><h3>2.2 <a name="pref-syntax" id="pref-syntax">Preference Syntax</a></h3>
+    <p>Archiving preferences are encapsulated in four children of the &lt;pref/&gt; element: &lt;auto/&gt;, &lt;default/&gt;, &lt;item/&gt;, and &lt;method/&gt;. These are defined in the following sections.</p>
+    <p>In order to capture a complete set of preferences, when the server returns the user's preferences to the client the &lt;pref/&gt; element:</p>
+    <ul>
+      <li>MUST include an &lt;auto/&gt; element that specifies whether automatic archiving is on or off.</li>
+      <li>MUST include a &lt;default/&gt; element that specifies the user's default settings for OTR Mode and Save Mode.</li> 
+      <li>MAY include one or more &lt;item/&gt; elements that specify preferences related to particular contacts.</li>
+      <li>MAY include one or more &lt;session/&gt; elements that specifies whether automatic archiving is on or off for a given chat session.</li>
+      <li>MUST include at least three &lt;method/&gt; elements, differentiated by the value of the 'type' attribute (i.e., at least one &lt;method/&gt; element each for "auto", "local", and "manual").</li>
+    </ul>
+    <p>An example follows.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Complete Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref1' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;auto save='false'/&gt;
+    &lt;default expire='31536000' otr='concede' save='body'/&gt;
+    &lt;item jid='romeo@montague.net' otr='require' save='false'/&gt;
+    &lt;item expire='630720000' jid='benvolio@montague.net' otr='forbid' save='message'/&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866' save='body'/&gt;
+    &lt;method type='auto' use='forbid'/&gt;
+    &lt;method type='local' use='concede'/&gt;
+    &lt;method type='manual' use='prefer'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <div class="indent"><h3>2.2.1 <a name="pref-syntax-auto" id="pref-syntax-auto">Auto Element</a></h3>
+      <p>The &lt;auto/&gt; element specifies the current <a href="#auto">Automatic Archiving</a> settings for <span class="em">this stream</span>.</p>
+      <p>This element MUST be empty and MUST include a boolean 'save' attribute  [<a href="#nt-idp1797168">3</a>] that specifies whether automatic archiving is enabled or disabled for this stream. The element MAY include a 'scope' attribute that specifies how long this setting is true. The allowable values are:</p>
+        <ul>
+          <li>global -- the setting will remain for next streams.</li>
+          <li>stream -- the setting is true only until the end of the stream. For next stream, server default value will be used.</li>
+        </ul>
+        <p>Note: If 'scope' attribute is not set, it SHOULD be considered as 'stream'.</p>
+    </div>
+    <div class="indent"><h3>2.2.2 <a name="pref-syntax-default" id="pref-syntax-default">Default Element</a></h3>
+      <p>The &lt;default/&gt; element specifies the default settings for both OTR Mode and Save Mode. The element MUST be empty and MUST include an 'otr' attribute and a 'save' attribute. The element MAY include an 'expire' attribute.</p>
+      <div class="indent"><h3>2.2.2.1 <a name="pref-syntax-default-expire" id="pref-syntax-default-expire">expire Attribute</a></h3>
+        <p>If the 'save' attribute is <span class="em">not</span> set to 'false' then is RECOMMENDED to also include an 'expire' attribute, which indicates how many seconds after messages are archived that the server SHOULD delete them.</p>
+      </div>
+      <div class="indent"><h3>2.2.2.2 <a name="pref-syntax-default-otr" id="pref-syntax-default-otr">otr Attribute</a></h3>
+        <p>The 'otr' attribute specifies the user's default setting for OTR Mode. The allowable values are:</p>
+        <ul>
+          <li>approve -- the user MUST explicitly approve off-the-record communication.</li>
+          <li>concede -- communications MAY be off the record if requested by another user.</li>
+          <li>forbid -- communications MUST NOT be off the record.</li>
+          <li>oppose -- communications SHOULD NOT be off the record even if requested.</li>
+          <li>prefer -- communications SHOULD be off the record if possible.</li>
+          <li>require -- communications MUST be off the record. *</li>
+        </ul>
+        <p>* Note: If the OTR Mode is 'require' then the Save Mode MUST be 'false'. An 'otr' attribute value of "require" in Message Archiving is equivalent to a 'logging' attribute value of "mustnot" in Stanza Session Negotiation; for details, see the <a href="#otr-nego">OTR Negotiation</a> section of this document.</p>
+      </div>
+      <div class="indent"><h3>2.2.2.3 <a name="pref-syntax-default-save" id="pref-syntax-default-save">save Attribute</a></h3>
+        <p>The 'save' attribute specifies the user's default setting for Save Mode. The allowable values are:</p>
+        <ul>
+          <li>body -- the saving entity SHOULD save only &lt;body/&gt; elements. *</li>
+          <li>false -- the saving entity MUST save nothing.</li>
+          <li>message -- the saving entity SHOULD save the full XML content of each &lt;message/&gt; element. **</li>
+          <li>stream -- the saving entity SHOULD save every byte that passes over the stream in either direction. ***</li>
+        </ul>
+        <p>* Note: When archiving <span class="em">locally</span> a client MAY save the full XML content of each &lt;message/&gt; element even if the Save Mode is 'body'.</p>
+        <p>** Note: Support for the 'message' value is optional and, to conserve bandwidth and storage space, it is RECOMMENDED that client implementations do not specify the 'message' value.  [<a href="#nt-idp1813808">4</a>]</p>
+        <p>*** Note: The upload, retrieval and management of 'stream' archives is currently beyond the scope of this document.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>2.2.3 <a name="pref-syntax-item" id="pref-syntax-item">Item Element</a></h3>
+      <p>The &lt;item/&gt; element specifies the settings for both the OTR Mode and Save Mode with regard to a particular entity. The element MUST be empty and MUST include a 'jid' attribute, an 'otr' attribute, and a 'save' attribute. The element MAY include an 'expire' attribute.</p>
+      <div class="indent"><h3>2.2.3.1 <a name="pref-syntax-expire" id="pref-syntax-expire">expire Attribute</a></h3>
+        <p>If the 'save' attribute is <span class="em">not</span> set to 'false' then is RECOMMENDED to also include an 'expire' attribute, which indicates how many seconds after messages are archived that the server SHOULD delete them.</p>
+      </div>
+      <div class="indent"><h3>2.2.3.2 <a name="pref-syntax-item-jid" id="pref-syntax-item-jid">jid Attribute</a></h3>
+        <p>The 'jid' attribute specifies the JabberID of the XMPP entities to which the preferences specified in this &lt;item/&gt; element apply, see the <a href="#impl-jidmatch">JID Matching</a> section of this document.</p>
+      </div>
+      <div class="indent"><h3>2.2.3.3 <a name="pref-syntax-item-otr" id="pref-syntax-item-otr">otr Attribute</a></h3>
+        <p>The 'otr' attribute specifies the user's setting for OTR Mode with regard to the specified JID. The allowable values are:</p>
+        <ul>
+          <li>approve -- the user MUST explicitly approve off-the-record communication.</li>
+          <li>concede -- communications MAY be off the record if requested by another user.</li>
+          <li>forbid -- communications MUST NOT be off the record.</li>
+          <li>oppose -- communications SHOULD NOT be off the record even if requested.</li>
+          <li>prefer -- communications SHOULD be off the record if possible.</li>
+          <li>require -- communications MUST be off the record. *</li>
+        </ul>
+        <p>* Note: If the OTR Mode is 'require' then the Save Mode MUST be 'false'. An 'otr' attribute value of "require" in Message Archiving is equivalent to a 'logging' attribute value of "mustnot" in Stanza Session Negotiation; for details, see the <a href="#otr-nego">OTR Negotiation</a> section of this document.</p>
+      </div>
+      <div class="indent"><h3>2.2.3.4 <a name="pref-syntax-item-save" id="pref-syntax-item-save">save Attribute</a></h3>
+        <p>The 'save' attribute specifies the user's setting for Save Mode with regard to the specified JID. The allowable values are:</p>
+        <ul>
+          <li>body -- the saving entity SHOULD save only &lt;body/&gt; elements.</li>
+          <li>false -- the saving entity MUST save nothing.</li>
+          <li>message -- the saving entity SHOULD save the full XML content of each &lt;message/&gt; element.</li>
+          <li>stream -- the saving entity SHOULD save every byte that passes over the stream in either direction. *</li>
+        </ul>
+        <p>* Note: The upload, retrieval and management of 'stream' archives is <span class="em">currently</span> beyond the scope of this document.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>2.2.4 <a name="pref-syntax-session" id="pref-syntax-session">Session Element</a></h3>
+      <p>The &lt;session/&gt; element specifies the settings for Save Mode with regard to a particular chat session. The element MUST be empty and MUST include a 'thread' attribute, and a 'save' attribute. The element MAY include a 'timeout' attribute.</p>
+      <p>Server implementations SHOULD remove all &lt;session/&gt; elements when stream is closed.</p>
+      <div class="indent"><h3>2.2.4.1 <a name="pref-syntax-timeout" id="pref-syntax-timeout">timeout Attribute</a></h3>
+        <p>The 'timeout' attribute indicates how long this rule will stay in server after the latest message in this thread is exchanged. Server MUST NOT forget this rule before 'timeout' seconds after latest message in this thread is exchanged but MAY keep this rule longer than 'timeout' value specifies.</p>
+        <p>Client MUST NOT set this attribute, but wait for server's answer to know this value.</p>
+	<p>If the client wants to keep this rule longer, it must send a new &lt;session/&gt; element to the server before this timeout expires.</p>
+      </div>
+      <div class="indent"><h3>2.2.4.2 <a name="pref-syntax-thread" id="pref-syntax-thread">thread Attribute</a></h3>
+        <p>The 'thread' attribute specifies the ThreadID of the chat session (in the sense of <span class="ref"><a href="http://xmpp.org/extensions/xep-0201.html">Best Practices for Message Threads (XEP-0201)</a></span>  [<a href="#nt-idp1838848">5</a>]) to which the preferences specified in this &lt;session/&gt; element apply.</p>
+      </div>
+      <div class="indent"><h3>2.2.4.3 <a name="pref-syntax-session-save" id="pref-syntax-session-save">save Attribute</a></h3>
+        <p>The 'save' attribute specifies the user's setting for Save Mode with regard to the specified chat session. The allowable values are:</p>
+        <ul>
+          <li>body -- the saving entity SHOULD save only &lt;body/&gt; elements.</li>
+          <li>false -- the saving entity MUST save nothing.</li>
+          <li>message -- the saving entity SHOULD save the full XML content of each &lt;message/&gt; element.</li>
+          <li>stream -- the saving entity SHOULD save every byte that passes over the stream in either direction. *</li>
+        </ul>
+        <p>* Note: The upload, retrieval and management of 'stream' archives is <span class="em">currently</span> beyond the scope of this document.</p>
+      </div>
+    </div>
+    <div class="indent"><h3>2.2.5 <a name="pref-syntax-method" id="pref-syntax-method">Method Element</a></h3>
+      <p>Each &lt;method/&gt; element specifies the the user's preferences for one available archiving method. The &lt;method/&gt; element MUST be empty and MUST include both the 'type' and 'use' attributes.</p>
+      <div class="indent"><h3>2.2.5.1 <a name="pref-syntax-method-type" id="pref-syntax-method-type">type Attribute</a></h3>
+        <p>The allowable values of the 'type' attribute are:</p>
+        <ul>
+          <li>auto -- preferences for use of automatic archiving on the user's server.</li>
+          <li>local -- preferences for use of local archiving to a file or database on the user's machine or device.</li>
+          <li>manual -- preferences for use of manual archiving by the user's client to the user's server.</li>
+        </ul>
+      </div>
+      <div class="indent"><h3>2.2.5.2 <a name="pref-syntax-method-use" id="pref-syntax-method-use">use Attribute</a></h3>
+        <p>The allowable values of the 'use' attribute are:</p>
+        <ul>
+          <li>concede -- this method MAY be used if no other methods are available.</li>
+          <li>forbid -- this method MUST NOT be used.</li>
+          <li>prefer -- this method SHOULD be used if available.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.3 <a name="pref-determine" id="pref-determine">Determining Preferences</a></h3>
+    <p>In order to determine its user's current Save Mode(s) and OTR Mode(s), a client sends to its server an IQ-get containing an empty &lt;pref/&gt; element qualified by the 'urn:xmpp:archive' namespace.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Client Requests Archiving Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='pref1'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The server responds with the default Save Mode and OTR Mode (a single &lt;default/&gt; element) and any specific Save Modes and OTR Modes for individual contacts (zero or more &lt;item/&gt; elements).</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server Returns Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref1' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;auto save='false'/&gt;
+    &lt;default expire='31536000' otr='concede' save='body'/&gt;
+    &lt;item jid='romeo@montague.net' otr='require' save='false'/&gt;
+    &lt;item expire='630720000' jid='benvolio@montague.net' otr='forbid' save='message'/&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866' save='body'/&gt;
+    &lt;method type='auto' use='forbid'/&gt;
+    &lt;method type='local' use='concede'/&gt;
+    &lt;method type='manual' use='prefer'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The foregoing preferences can be explained as follows:</p>
+    <ol>
+      <li>By default, message bodies should be saved (according the preferred method specified later), communications may be off the record if requested, and any saved messages should be expired after 1 year.</li>
+      <li>When communicating with romeo@montague.net, both entities must not save messages and all communications must be off the record.</li>
+      <li>When communicating with benvolio@montague.net, both entities should save full messages, communications must not be off the record, and any saved messages should be expired after 20 years.</li>
+      <li>Message bodies in thread ffd7076498744578d10edabfe7f4a866 should be saved.</li>
+      <li>Server-side archiving must not occur automatically.</li>
+      <li>Local archiving may be used if requested.</li>
+      <li>Manual server-side archiving is preferred.</li>
+    </ol>
+    <p>If the user has never set the default Modes, the 'save' and 'otr' attributes SHOULD specify the server's default settings, and the 'unset' attribute SHOULD be set to 'true'. Note: The 'unset' attribute defaults to 'false'.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server Returns Service Default Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref1' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;default otr='concede' save='false' unset='true'/&gt;
+    &lt;method type='auto' use='concede'/&gt;
+    &lt;method type='local' use='concede'/&gt;
+    &lt;method type='manual' use='concede'/&gt;
+    &lt;auto save='false'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Once it has received a request for archiving preferences from the client, the server MUST send any subsequent changes to any of the user's archiving preferences to the client until the stream is closed (see below). Note: changes to the &lt;auto/&gt; element MUST NOT be replicated in this way.</p>
+  </div>
+  <div class="indent"><h3>2.4 <a name="pref-default" id="pref-default">Setting Default Modes</a></h3>
+    <p>A client may set the default Modes:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Client Sets Default Modes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='pref2'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;default otr='prefer' save='false'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the server can process the request, it acknowledges the change:</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server Acknowledges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref2' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+    <p>The server then MUST inform all of the user's connected resources that have previously requested the user's archiving preferences:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Server Pushes New Modes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='push1' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;default otr='prefer' save='false'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+
+&lt;iq type='set' id='push2' to='juliet@capulet.com/pda'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;default otr='prefer' save='false'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the server does not allow the saving of full message stanza content, the client set the value of the 'save' attribute to 'message' or 'stream', and any of the user's connected resources have <a href="#auto">Automatic Archiving</a> enabled, then the server SHOULD return a &lt;feature-not-implemented/&gt; error.</p>
+    <p>If administrator policies require that at least the &lt;body/&gt; elements (or the full content) of every message must be logged automatically and the client attempts to set the value of the 'save' attribute to 'false' or 'body', then the server SHOULD return a &lt;not-acceptable/&gt; error.</p>
+  </div>
+  <div class="indent"><h3>2.5 <a name="pref-contact" id="pref-contact">Setting Modes for a Contact</a></h3>
+    <p>A client may use a similar protocol to set the Modes for a particular contact or domain of contacts (bare JID, full JID or domain). Note: It is STRONGLY RECOMMENDED for the value of the 'jid' attribute to be a bare JID &lt;localpart@domain.tld&gt; rather than a full JID &lt;localpart@domain.tld/resource&gt;.</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client Sets Modes for a Contact</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='pref3'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;item jid='romeo@montague.net' save='body' expire='604800' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Server Acknowleges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref3' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Server Pushes New Modes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='push3' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;item jid='romeo@montague.net' save='body' expire='604800' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+
+&lt;iq type='set' id='push4' to='juliet@capulet.com/pda'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;item jid='romeo@montague.net' save='body' expire='604800' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The same error cases apply as when <a href="#auto">Setting Default Modes</a>.</p>
+    <p>In order to remove all preferences for a contact, the client shall send an &lt;itemremove/&gt; element to the server.</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Client Removes Preferences for a Contact</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove1'&gt;
+  &lt;itemremove xmlns='urn:xmpp:archive'&gt;
+    &lt;item jid='benvolio@montague.net'/&gt;
+  &lt;/itemremove&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Server Acknowleges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='remove1' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.6 <a name="pref-session" id="pref-session">Setting Modes for a Chat Session</a></h3>
+	  <p>A client may use a similar protocol to set the Modes for a particular chat session. A chat session is identified by its unique 'thread' attributes in &lt;message&gt; stanza (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0155.html">Stanza Session Negotiation (XEP-0155)</a></span>  [<a href="#nt-idp1889728">6</a>]).</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Client Sets Modes for a Chat Session</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='pref4'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866' save='body' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Server Acknowleges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref4' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Server Pushes New Modes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='push5' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866' save='body' timeout='3600' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+
+&lt;iq type='set' id='push6' to='juliet@capulet.com/pda'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866' save='body' timeout='3600' otr='concede'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The same error cases apply as when <a href="#auto">Setting Default Modes</a>.</p>
+    <p>In order to remove a preference for a chat session, the client shall send an &lt;sessionremove/&gt; element to the server.</p>
+    <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Client Removes Preferences for a Contact</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove2'&gt;
+  &lt;sessionremove xmlns='urn:xmpp:archive'&gt;
+    &lt;session thread='ffd7076498744578d10edabfe7f4a866'/&gt;
+  &lt;/sessionremove&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Server Acknowleges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='remove2' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.7 <a name="pref-archive" id="pref-archive">Setting Archiving Method Preferences</a></h3>
+    <p>The client can set one or more method preferences by sending an IQ-set containing a &lt;pref/&gt; element that in turn contains one or more &lt;method/&gt; elements.</p> 
+    <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Client Sets Method Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='pref5'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;method type='auto' use='concede'/&gt;
+    &lt;method type='local' use='forbid'/&gt;
+    &lt;method type='manual' use='prefer'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Server Acknowleges Change</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='pref5' to='juliet@capulet.com/chamber'/&gt;
+    </pre></div>
+    <p>If the client includes less than three &lt;method/&gt; elements, the server MUST NOT modify the unspecified methods and MUST leave them as currently stored on the server. However, when the server pushes the method preferences it MUST include all of the preferences, not only those that were set by the client.</p>
+    <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Server Pushes New Method Preferences</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='push7' to='juliet@capulet.com/chamber'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;method type='auto' use='concede'/&gt;
+    &lt;method type='local' use='forbid'/&gt;
+    &lt;method type='manual' use='prefer'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+
+&lt;iq type='set' id='push8' to='juliet@capulet.com/pda'&gt;
+  &lt;pref xmlns='urn:xmpp:archive'&gt;
+    &lt;method type='auto' use='concede'/&gt;
+    &lt;method type='local' use='forbid'/&gt;
+    &lt;method type='manual' use='prefer'/&gt;
+  &lt;/pref&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.8 <a name="pref-server" id="pref-server">Server Archiving Preferences Interpretation</a></h3>
+    <p>Most archiving preferences are designed for interpretation only by the client. The server MUST NOT take into account any of the archiving preferences when server administration policies <span class="em">require</span> that every message is to be logged automatically. Otherwise, the server MUST interpret the following archiving preferences (and SHOULD NOT interpret any other ones):</p>
+    <ol>
+      <li>The &lt;auto/&gt; element.</li>
+      <li>When performing automatic archiving: the 'save' attribute of the &lt;default&gt; element, the 'jid' and 'save' attributes of the &lt;item&gt; element, and the 'thread' and 'save' attributes of the &lt;session&gt; element. See <a href="#pref-precedence">Preferences precedence rules</a> for details.</li>
+      <li>When performing expiration of old messages: the 'jid' and 'expire' attributes of the &lt;item&gt; element.</li>
+      <li>When performing expiration of old rules: the 'thread' and 'timeout' attributes of the &lt;session&gt; element.</li>
+    </ol>
+  </div>
+  <div class="indent"><h3>2.9 <a name="pref-precedence" id="pref-precedence">Preferences precedence rules</a></h3>
+    <p>When determining archiving preferences for a given message, the following rules shall apply:</p>
+    <ol>
+      <li>'save' value is taken from the &lt;session&gt; element that matches the conversation, if present, else from the &lt;item&gt; element that matches the contact (see <a href="#impl-jidmatch">JID Matching</a>), if present, else from default element.</li>
+      <li>'otr' and 'expire' value are taken from the &lt;item&gt; element that matches the contact (see <a href="#impl-jidmatch">JID Matching</a>), if present, else from default element.</li>
+    </ol>
+  </div>
+<h2>3.
+       <a name="otr" id="otr">Off The Record</a></h2>
+  <p>A user will sometimes exchange messages with contacts who prefer that their conversations are not archived by either party.</p>
+  <div class="indent"><h3>3.1 <a name="otr-nego" id="otr-nego">OTR Negotiation</a></h3>
+    <p>Any client that archives messages SHOULD support <span class="ref">Stanza Session Negotiation</span> and its 'logging' field both to give other contacts the opportunity to indicate this preference, and to negotiate an "Off The Record" (OTR) policy that complies with its user's own <a href="#pref">Archiving Preferences</a>.</p>
+    <p>Note: A client MUST NOT propose or agree to enable OTR (i.e., disallow message logging) unless it has confirmed that its server will allow it to switch off <a href="#auto">Automatic Archiving</a>. The client can do so based on the rules in the <a href="#auto">Automatic Archiving</a> section of this document. If the client logs in and does not receive a warning message, it can assume that automatic archiving is not on by default. If the client does receive a warning message because automatic archiving is on by default, the client can determine if auto-archiving can be turned off by trying to do so; if the client receives an error, it knows that automatic archiving cannot be turned off.</p>
+    <p>Both parties to a stanza session negotiation may have OTR preferences (i.e, the initiating party or "user" and the responding party or "contact"). These preferences will interact in the ways specified below, resulting either in a successful negotiation or an unsuccessful negotiation (naturally, an unsuccessful negotiation can lead to a subsequent negotiation attempt by the user or the contact).</p>
+    <p>The following table shows how to instantiate the user's OTR preference in a stanza session negotiation (SSN) offer. The various OTR preferences map to particular values of the SSN 'logging' field, including the order of values for that field. In particular, an SSN logging value of 'may' means that the receiving party MAY enable message logging and an SSN logging value of 'mustnot' means that the receiving party MUST NOT enable message logging.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Stanza Session Negotiation logging options offered by initiating party (user)</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>User's OTR Preference</th>
+        <th>Offering 'logging' Negotiation Option(s)*</th>
+      </tr>
+      <tr class="body">
+        <td>require</td>
+        <td>mustnot**</td>
+      </tr>
+      <tr class="body">
+        <td>prefer</td>
+        <td>mustnot,may</td>
+      </tr>
+      <tr class="body">
+        <td>approve</td>
+        <td>mustnot,may</td>
+      </tr>
+      <tr class="body">
+        <td>concede</td>
+        <td>may,mustnot***</td>
+      </tr>
+      <tr class="body">
+        <td>oppose</td>
+        <td>may,mustnot***</td>
+      </tr>
+      <tr class="body">
+        <td>forbid</td>
+        <td>may***</td>
+      </tr>
+    </table></div>
+    <p>* In order of preference, the first value is the default.</p>
+    <p>** If the user receives no response it MUST NOT send any messages to the contact.</p>
+    <p>*** Alternatively, the user MAY decide not to <span class="em">initiate</span> an OTR negotiation and to save messages (until the contact initiates a negotiation).</p>
+    <p>Note: When negotiating a stanza session, the user MUST include the &lt;required/&gt; element inside the 'logging' &lt;field/&gt; element. If the user does not receive a successful response to its chat negotiation request (and if the OTR Mode is not 'require'), then it SHOULD proceed as if the contact had responded with the value of the 'logging' &lt;field/&gt; element set to 'may'.</p>
+    <p>The following table shows what stanza session negotiation values the responding party (i.e., "contact") should send for the 'logging' field in its response to a stanza session negotiation request from the user.</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Stanza Session Negotiation logging value selected by responding party (contact)</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Contact's OTR Preference</th>
+        <th colspan="4">Responding 'logging' Negotiation Values*</th>
+      </tr>
+      <tr class="body">
+        <th>Initiator Options --&gt;</th>
+        <th>mustnot</th>
+        <th>mustnot,may*</th>
+        <th>may,mustnot*</th>
+        <th>may</th>
+      </tr>
+      <tr class="body">
+        <td>require OTR mode</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>fail**</td>
+      </tr>
+      <tr class="body">
+        <td>prefer OTR mode</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>may</td>
+      </tr>
+      <tr class="body">
+        <td>approve OTR mode</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>may</td>
+        <td>may</td>
+      </tr>
+      <tr class="body">
+        <td>concede OTR mode</td>
+        <td>mustnot</td>
+        <td>mustnot</td>
+        <td>may</td>
+        <td>may</td>
+      </tr>
+      <tr class="body">
+        <td>oppose OTR mode</td>
+        <td>mustnot</td>
+        <td>may</td>
+        <td>may</td>
+        <td>may</td>
+      </tr>
+      <tr class="body">
+        <td>forbid OTR mode</td>
+        <td>fail**</td>
+        <td>may</td>
+        <td>may</td>
+        <td>may</td>
+      </tr>
+    </table></div>
+    <p>* The first value is the default.</p>
+    <p>** The negotiation fails and the parties MUST NOT exchange any messages; however, the recipient MAY attempt to initiate a stanza session negotiation with the other party.</p>
+    <p>Note: If a contact does not include a 'logging' field in its initial Stanza Session Negotiation request, and a user's Archiving Preferences indicate that OTR is <span class="em">required</span>, then the client MUST refuse the request. It MAY then send its own Stanza Session Negotiation request with a 'logging' field.</p>
+    <p>If a user's OTR preference for a contact changes during a Chat Session that has been negotiated with the contact, and if the new preference would affect the value of the 'logging' field that was previously negotiated, then the client MUST immediately renegotiate the 'logging' field according to the user's new OTR preference (or terminate the Chat Session).</p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="otr-notes" id="otr-notes">Notes</a></h3>
+    <p>If a Stanza Session Negotiation result differ from current preferences of archiving for the contact (negotiation agreed to enable OTR and current 'save' value for this contact is <span class="em">not</span> 'false', or negotiation agreed to disable OTR and current 'save' value for this contact is 'false'), the client MUST send a new &lt;session/&gt; element with the corresponding 'thread' attribute to the server to inform it to save or not the session.</p>
+    <p>If a Stanza Session Negotiation agreed to enable OTR then the clients MUST NOT allow messages sent in <span class="em">either</span> direction to be archived in any way (including <a href="#manual">Manual Archiving</a> and <a href="#auto">Automatic Archiving</a>).  [<a href="#nt-idp1955520">7</a>]</p>
+    <p>If a Stanza Session Negotiation agreed to enable OTR then both clients MUST ensure that the Stanza Session Negotiation messages themselves are not archived. For example, if <a href="#auto">Automatic Archiving</a> was enabled when the client received the initial Stanza Session Negotiation request, then the client MUST immediately ask its server to delete its copy of the request (see <a href="#manage-remove">Removing a Collection</a> for a description of how to remove the messages currently being recorded by the server).</p>
+  </div>
+<h2>4.
+       <a name="collections" id="collections">Collections: The Chat Element</a></h2>
+  <p>Whether manual archiving or automatic archiving is used, messages are archived in the form of "collections". A collection is a set of messages to/from the same user that are received near each other in time or as part of the same conversation thread. A collection is intended to mimic the natural flow of human conversations, which in instant messaging (IM) systems tend to occur in bursts (e.g., a five-minute conversation one day, followed by a ten-minute conversation the next).</p>
+  <p>Each collection of messages and notes is encapsulated in a &lt;chat/&gt; element and is uniquely identified by the combination of the 'start' and 'with' attributes as defined below. The syntax of the &lt;chat/&gt; element is specified in this section.</p>
+  <div class="indent"><h3>4.1 <a name="collections-start" id="collections-start">start Attribute</a></h3>
+    <p>The 'start' attribute specifies the start time of the conversation thread, which MUST be UTC and adhere to the DateTime format specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1964544">8</a>].</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="collections-subject" id="collections-subject">subject Attribute</a></h3>
+    <p>The 'subject' attribute specifies a friendly name for the collection (note the <a href="#security-subject">Security Considerations</a> regarding the subject attribute). Inclusion of the 'subject' attribute is OPTIONAL.</p>
+  </div>
+  <div class="indent"><h3>4.3 <a name="collections-thread" id="collections-thread">thread Attribute</a></h3>
+    <p>A client SHOULD include a thread ID in each &lt;message/&gt; element it sends that is part of a conversation it expects will be archived (as explained in <span class="ref"><a href="http://xmpp.org/extensions/xep-0201.html">Best Practices for Message Threads (XEP-0201)</a></span>  [<a href="#nt-idp1968976">9</a>], a thread ID is captured in the &lt;thread/&gt; child of the &lt;message/&gt; element).</p>
+    <p>If the messages contained in a conversation contain a thread ID, then the server MUST map that thread ID to the 'thread' attribute of the &lt;chat/&gt; element. There MUST be a one-to-one mapping between the &lt;thread/&gt; element and the 'thread' attribute.</p>
+    <p>If a thread ID is not included, the server may use its own implementation-specific methods for mapping messages and conversations to collections.</p>
+    <p>The content of &lt;message/&gt; elements that have different thread IDs SHOULD be archived in separate collections and the content of &lt;message/&gt; elements that have the same thread IDs SHOULD be archived in the same collection; this is the responsibility of the client if manual archiving is used and the responsibility of the server if automatic archiving is used. The thread attribute SHOULD NOT be set to any value other than the exact content of the &lt;thread/&gt; elements. If no &lt;thread/&gt; elements appeared in the conversation then the &lt;chat/&gt; element SHOULD have no thread attribute. Implementations SHOULD use the thread attribute for cross-referencing purposes only, within the archive each collection MUST be uniquely identified by the combination of its 'with' and 'start' attributes.</p>
+    <p>Inclusion of the 'thread' attribute is RECOMMENDED.</p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="collections-version" id="collections-version">version Attribute</a></h3>
+    <p>Upon receiving a manually-uploaded collection or creating a collection as a result of auto-archiving, the server MUST assign a version number to the collection, which MUST start at zero (0). Whenever the collection is modified, the server MUST increment the version number by one (1). The server MUST include the version number attribute whenever it sends the collection or information about the collection to the client, by including a 'version' attribute in the &lt;chat/&gt;, &lt;changed/&gt;, or &lt;removed/&gt; element. If the client includes a 'version' attribute in an IQ-set, the server MUST ignore it.</p>
+    <p>Inclusion of the 'version' attribute is REQUIRED of servers.</p>
+  </div>
+  <div class="indent"><h3>4.5 <a name="collections-with" id="collections-with">with Attribute</a></h3>
+    <p>The 'with' attribute specifies the JID with which the messages were exchanged.</p>
+    <p>Inclusion of the 'with' attribute is REQUIRED.</p>
+  </div>
+  <div class="indent"><h3>4.6 <a name="collections-fromto" id="collections-fromto">from and to Elements</a></h3>
+    <p>The content of each individual message MUST be encapsulated in a &lt;to/&gt; or &lt;from/&gt; element. The time in whole seconds of the message relative to the previous message in the collection (or, for the first message, relative to the start of the collection) SHOULD be specified with a 'secs' attribute. Note: When deciding whether to round up or down to a number of whole seconds, entities MUST ensure that the sum of the 'secs' attribute and the 'secs' attributes of the preceeding messages will accurately reflect the absolute time of the message. (e.g., if a sequence of messages occur at exactly 0.51-second intervals then the 'secs' attributes should generally alternate between '0' or '1'.)</p>
+    <p>The content of each &lt;to/&gt; or &lt;from/&gt; element SHOULD depend on the user's <a href="#pref">Archiving Preferences</a>. &lt;to/&gt; or &lt;from/&gt; elements MUST NOT be empty. Note: A server MAY be configured to return a &lt;feature-not-implemented/&gt; error if any &lt;to/&gt; or &lt;from/&gt; element contains anything other than &lt;body/&gt; elements.</p>
+  </div>
+  <div class="indent"><h3>4.7 <a name="collections-note" id="collections-note">note Element</a></h3>
+    <p>The &lt;note/&gt; element specifies a private note about the conversation. The absolute time the note was created SHOULD be specified with a 'utc' attribute (which MUST be UTC and adhere to the DateTime format specified in <span class="ref">XEP-0082</span>). Inclusion of the &lt;note/&gt; element is OPTIONAL.</p>
+  </div>
+<h2>5.
+       <a name="manual" id="manual">Manual Archiving</a></h2>
+  <div class="indent"><h3>5.1 <a name="manual-intro" id="manual-intro">Introduction</a></h3>
+    <p>While automatic archiving is easy for the client and server to implement, there are many contexts in which manual archiving is required. For examples, when:</p>
+    <ul>
+      <li>Messages are encrypted using evanescent keys, as in <span class="ref"><a href="http://xmpp.org/extensions/xep-0116.html">Encrypted Session Negotiation (XEP-0116)</a></span>  [<a href="#nt-idp1990256">10</a>]</li>
+      <li>A client's own server does not support automatic archiving but it (or another server) does support manual archiving</li>
+      <li>A server does not support encryption of auto-archived collections (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0241.html">Encryption of Archived Messages (XEP-0241)</a></span>  [<a href="#nt-idp1993760">11</a>])</li>
+      <li>A client wants to maintain a unified archive for messages that were transmitted both in and out-of-band (e.g. SMS or email)</li>
+      <li>A client wants to append private notes to a conversation</li>
+    </ul>
+    <p>Therefore, often a client will want to send or receive a sequence of messages, optionally add private notes to the sequence, optionally encrypt the sequence (see <span class="ref">XEP-0241</span>), and then ask the server to archive it. Such messages and notes SHOULD be stored on the server in the form of a "collection".</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="manual-upload" id="manual-upload">Uploading Messages to a Collection</a></h3>
+    <p>A collection of messages and notes is uploaded to the server encapsulated in a &lt;save/&gt; element.</p>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Storing messages in a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='up1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          thread='damduoeg08'
+          subject='She speaks!'&gt;
+      &lt;from secs='0'&gt;&lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;&lt;/from&gt;
+      &lt;to secs='11'&gt;&lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;&lt;/to&gt;
+      &lt;from secs='7'&gt;&lt;body&gt;How cam'st thou hither, tell me, and wherefore?&lt;/body&gt;&lt;/from&gt;
+      &lt;note utc='1469-07-21T03:04:35Z'&gt;I think she might fancy me.&lt;/note&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the collection does not exist then the server MUST create a new collection and inform the client that the collection version number is zero.</p>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Collection created</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='up1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          thread='damduoeg08'
+          subject='She speaks!'
+          version='0'/&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the collection already exists then the server MUST append the messages to the existing collection (which MAY involve adding messages that appear to be duplicates, i.e., messages that have identical &lt;from/&gt; elements, &lt;to/&gt; elements, and dateTimes).</p>
+    <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Messages appended to collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='up1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          thread='damduoeg08'
+          subject='She speaks!'
+          version='1'/&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: Clients MUST take care to append each sequence of messages to the collection before the sequence becomes so large that uploading it may violate common rate limiting restrictions (in Jabber systems, often called "karma").</p>
+    <p>If the server cannot service an upload request because the collection is too large then it MUST return a &lt;not-acceptable/&gt; error:</p>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Unsuccessful reply</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='romeo@montague.net/orchard' id='up1'&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.3 <a name="impl-subject" id="impl-subject">Changing the Subject of a Collection</a></h3>
+    <p>If the client specifies a new value for the 'subject' attribute of any existing collection then the server MUST update the existing value and increment the collection version. Note: The client cannot specify new values for the 'with' or 'start' attributes. The only way to change these values is to delete the collection (see <a href="#manage-remove">Removing a Collection</a>) and then create a new one.</p>
+    <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Changing the subject of a collection without appending messages</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='subject1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          subject='She speaks twice!'/&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Collection subject updated</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='subject1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          subject='She speaks twice!'
+          version='1'/&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.4 <a name="impl-offline" id="impl-offline">Offline Messages</a></h3>
+    <p>The client MAY specify an absolute time for any message by providing a 'utc' attribute (which MUST be UTC and adhere to the DateTime format specified in <span class="ref">XEP-0082</span>) instead of a 'secs' attribute. The absolute time MAY be earlier than the start time of the collection:</p>
+    <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Storing offline messages in a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='up2'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'
+          subject='She speaks!'&gt;
+      &lt;from utc='1469-07-21T00:32:29Z'&gt;&lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;&lt;/from&gt;
+      &lt;to secs='11'&gt;&lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;&lt;/to&gt;
+      &lt;from secs='7'&gt;&lt;body&gt;How cam'st thou hither, tell me, and wherefore?&lt;/body&gt;&lt;/from&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.5 <a name="impl-muc" id="impl-muc">Groupchat Messages</a></h3>
+    <p>A client MAY archive messages that it receives from <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp2014144">12</a>] rooms. The 'with' attribute MUST be the bare JID of the room. The client MUST include a 'name' attribute for each &lt;from/&gt; element to specify the room nickname of the message sender and MAY include a 'jid' attribute to specify the full or bare JID of the sender (if available).</p>
+    <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Storing groupchat messages in a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='up3'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='balcony@house.capulet.com'
+          start='1469-07-21T03:16:37Z'&gt;
+      &lt;from secs='0' name='benvolio'&gt;&lt;body&gt;She will invite him to some supper.&lt;/body&gt;&lt;/from&gt;
+      &lt;from secs='6' name='mercutio'&gt;&lt;body&gt;A bawd, a bawd, a bawd! So ho!&lt;/body&gt;&lt;/from&gt;
+      &lt;from secs='3' name='romeo' jid='romeo@montague.net'&gt;&lt;body&gt;What hast thou found?&lt;/body&gt;&lt;/from&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.6 <a name="impl-link" id="impl-link">Linking Collections</a></h3>
+    <p>Collections MAY be linked together by including a &lt;previous/&gt; and/or &lt;next/&gt; element. Each such element MUST include both a 'with' and a 'start' element to identify the other collection to which the collection is linked. For example, the &lt;previous/&gt; and &lt;next/&gt; elements in the two examples below are being used to link a groupchat between Romeo, Benvolio and Mercutio to a private chat that Romeo was having with Benvolio before they invited Mercutio to join them. Note: Collections MAY be linked in only one direction, they are not required to be double-linked in the way the examples below are.</p>
+    <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Private chat linked to later groupchat</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='link1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='benvolio@montague.net'
+          start='1469-07-21T03:01:54Z'&gt;
+      &lt;next with='balcony@house.capulet.com' start='1469-07-21T03:16:37Z'/&gt;
+      &lt;to secs='0'&gt;&lt;body&gt;O, I am fortune's fool!&lt;/body&gt;&lt;/to&gt;
+      &lt;from secs='4'&gt;&lt;body&gt;Why dost thou stay?&lt;/body&gt;&lt;/from&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Groupchat linked to earlier private chat</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='link2'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='balcony@house.capulet.com'
+          start='1469-07-21T03:16:37Z'&gt;
+      &lt;previous with='benvolio@montague.net' start='1469-07-21T03:01:54Z'/&gt;
+      &lt;from secs='0' name='benvolio'&gt;&lt;body&gt;She will invite him to some supper.&lt;/body&gt;&lt;/from&gt;
+      &lt;from secs='6' name='mercutio'&gt;&lt;body&gt;A bawd, a bawd, a bawd! So ho!&lt;/body&gt;&lt;/from&gt;
+      &lt;from secs='3' name='romeo'&gt;&lt;body&gt;What hast thou found?&lt;/body&gt;&lt;/from&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>A collection MUST NOT contain more than one &lt;previous/&gt; and one &lt;next/&gt; element. If a &lt;previous/&gt; element is uploaded to a collection that already contains one then the older &lt;previous/&gt; element MUST be discarded. The same requirement applies for &lt;next/&gt; elements.</p>
+    <p>When a collection is retrieved (see <a href="#manage-retrieve">Retrieving a Collection</a>) the &lt;previous/&gt; and &lt;next/&gt; elements MUST appear as the first elements in the collection, whatever order they were uploaded in.</p>
+    <p>&lt;previous/&gt; and &lt;next/&gt; elements MAY be removed from a collection simply by uploading a &lt;previous/&gt; and/or &lt;next/&gt; element without any 'with' or 'start' attributes. Note: The server SHOULD NOT return an error if it finds that a link to be deleted does not exist.</p>
+    <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Deleting any links to other collections</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='link3'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='balcony@house.capulet.com'
+          start='1469-07-21T03:16:37Z'&gt;
+      &lt;previous/&gt;
+      &lt;next/&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.7 <a name="impl-form" id="impl-form">Associating Attributes with a Collection</a></h3>
+    <p>A client MAY append attributes to a collection by including an x:data form of type 'submit' (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp2029664">13</a>]) when it uploads to a collection.</p>
+    <p>A collection MUST NOT contain more than one x:data form. If a form is uploaded to a collection that already contains one then the older form element MUST be discarded. When a collection is retrieved (see <a href="#manage-retrieve">Retrieving a Collection</a>) the x:data form MUST appear as the first element in the collection after any &lt;previous/&gt; or &lt;next/&gt; elements, whatever order it was uploaded in. Upon retrieval the 'type' attribute of the form MAY be 'submit' or 'form'.</p>
+    <p>Any data forms for associating attributes are application-specific and are to be defined outside this specification. The following example shows attributes generated by a fictional application.</p>
+    <p class="caption"><a name="example-32" id="example-32"></a>Example 32. Private chat with attributes form</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='form1'&gt;
+  &lt;save xmlns='urn:xmpp:archive'&gt;
+    &lt;chat with='benvolio@montague.net'
+          start='1469-07-21T03:01:54Z'&gt;
+      &lt;to secs='0'&gt;&lt;body&gt;O, I am fortune's fool!&lt;/body&gt;&lt;/to&gt;
+      &lt;from secs='4'&gt;&lt;body&gt;Why dost thou stay?&lt;/body&gt;&lt;/from&gt;
+      &lt;x xmlns='jabber:x:data' type='submit'&gt;
+        &lt;field var='FORM_TYPE'&gt;&lt;value&gt;http://example.com/archiving&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='task'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='important'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='action_before'&gt;&lt;value&gt;1469-07-29T12:00:00Z&lt;/value&gt;&lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/chat&gt;
+  &lt;/save&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>As described in <span class="ref">XEP-0241</span>, the content of the uploaded x:data form MAY be encrypted.</p>
+  </div>
+<h2>6.
+       <a name="auto" id="auto">Automatic Archiving</a></h2>
+  <p>If server administration policies <span class="em">require</span> that every message is logged automatically (see <a href="#security">Security Considerations</a>) then:</p>
+  <ul>
+    <li>The server MUST enable automatic archiving when each stream is opened.</li>
+    <li>Clients MUST NOT be allowed to disable automatic archiving.</li>
+    <li>If the server has not received a request from a client for its user's archiving preferences (see <a href="#pref-determine">Determining Preferences</a>) within a few seconds of authenticating the client then the server MUST send a warning message to the client:</li>
+  </ul>
+  <p class="caption"><a name="example-33" id="example-33"></a>Example 33. Server warns user of a legacy client about compulsory archiving</p><div class="indent"><pre class="prettyprint">
+&lt;message from='capulet.com' to='juliet@capulet.com/chamber'&gt;
+  &lt;body&gt;WARNING: All messages that you send or
+        receive will be recorded by the server.&lt;/body&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Otherwise:</p>
+  <ul>
+	  <li>Automatic archiving MUST default to enabled or disabled when each stream is opened according to the last value of &lt;auto/&gt; element if 'scope' was set to 'global' (see <a href="#pref-syntax-auto">Auto element</a>), else Automatic archiving MUST default disabled.</li>
+    <li>A client MAY enable or disable automatic archiving for messages sent over its stream at any time. Note: If the client switches off all auto-archiving then the server MUST close and archive all active collections.</li>
+    <li>Once automatic archiving is switched on then the server MUST automatically archive messages only according to the user's <a href="#pref">Archiving Preferences</a>.</li>
+    <li>Note: Both parties to an ESession (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0116.html">Encrypted Session Negotiation (XEP-0116)</a></span>  [<a href="#nt-idp2045120">14</a>]) SHOULD either disable archiving or use an archiving method other than automatic, since ESession decryption keys are short-lived -- making it impossible to decrypt automatically archived messages.</li>
+  </ul>
+  <p>The client can enable auto-archiving by setting the 'save' attribute to "true" or "1".</p>
+  <p class="caption"><a name="example-34" id="example-34"></a>Example 34. Client enables auto archiving</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='auto1'&gt;
+  &lt;auto save='true' xmlns='urn:xmpp:archive'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the server does not support the saving of full message stanza or stream content and the user has specified the 'message' or 'stream' Save Mode in one of its <a href="#pref">Archiving Preferences</a>, the server MUST return a &lt;feature-not-implemented/&gt; error.</p>
+  <p class="caption"><a name="example-35" id="example-35"></a>Example 35. Server Does Not Support Full Message or Stream Content</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='auto1'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;feature-not-implemented xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The client can disable auto-archiving by setting the 'save' attribute to "false" or "0".</p>
+  <p class="caption"><a name="example-36" id="example-36"></a>Example 36. Client disables auto archiving</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='auto3'&gt;
+  &lt;auto save='false' xmlns='urn:xmpp:archive'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If service policies require that every message is logged automatically, the server MUST return a &lt;not-allowed/&gt; error.</p>
+  <p class="caption"><a name="example-37" id="example-37"></a>Example 37. Automatic Archiving is Compulsory</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='auto3'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>7.
+       <a name="manage" id="manage">Archive Management</a></h2>
+  <p>Manually uploaded and automatically saved collections are managed in the same way. There are three main areas of functionality related to archive management:</p>
+  <ol start="1">
+    <li>Retrieving a list of collections</li>
+    <li>Retrieving a collection</li>
+    <li>Removing a collection</li>
+  </ol>
+  <p>Requirements and protocol flows for each of these use cases are defined below. The protocols to retrieve a list of collections and an indivdual collection both make extensive use of <span class="ref"><a href="http://xmpp.org/extensions/xep-0059.html">Result Set Management (XEP-0059)</a></span>  [<a href="#nt-idp2058832">15</a>]. Clients and servers SHOULD support all the features defined in that protocol.</p>
+  <div class="indent"><h3>7.1 <a name="manage-list" id="manage-list">Retrieving a List of Collections</a></h3>
+    <p>To request a list of collections, the client sends a &lt;list/&gt; element. The 'start' and 'end' attributes MAY be specified to indicate a date range (the values of these attributes MUST be UTC and adhere to the DateTime format specified in <span class="ref">XEP-0082</span>). The 'with' attribute MAY specify the JIDs of XMPP entities (see the <a href="#impl-jidmatch">JID Matching</a> section of this document).</p>
+    <p>If the 'with' attribute is omitted then collections with any JID are returned. If only 'start' is specified then all collections on or after that date should be returned. If only 'end' is specified then all collections prior to that date should be returned.</p>
+    <p>The client SHOULD use <span class="ref">Result Set Management</span> to limit the number of collections returned by the server in a single stanza, taking care not to request a page of collections that is so big it might exceed rate limiting restrictions.</p>
+    <p class="caption"><a name="example-38" id="example-38"></a>Example 38. Requesting the first page of a list with same JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='juliet1'&gt;
+  &lt;list xmlns='urn:xmpp:archive'
+        with='juliet@capulet.com'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;30&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/list&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-39" id="example-39"></a>Example 39. Requesting the first page of a list with same JID between two times</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='period1'&gt;
+  &lt;list xmlns='urn:xmpp:archive'
+        with='juliet@capulet.com'
+        start='1469-07-21T02:00:00Z'
+        end='1479-07-21T04:00:00Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;30&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/list&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-40" id="example-40"></a>Example 40. Requesting the first page of a list after a time</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='list1'&gt;
+  &lt;list xmlns='urn:xmpp:archive'
+        start='1469-07-21T02:00:00Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;30&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/list&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The server MUST list the collections (empty &lt;chat/&gt; elements including all attributes) in chronological order when responding to any request.</p>
+    <p>Note: In accordance with <span class="ref">Result Set Management</span>, the client MUST assume that the unique IDs it receives in the &lt;first/&gt; and &lt;last/&gt; elements are opaque. Servers MAY adopt a unique ID format other than the one suggested in the example above.</p>
+    <p>If no collections correspond to the request the server MUST return an empty &lt;list/&gt; element:</p>
+    <p class="caption"><a name="example-41" id="example-41"></a>Example 41. Receiving an empty list</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='romeo@montague.net/orchard' id='list1'&gt;
+  &lt;list xmlns='urn:xmpp:archive'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-42" id="example-42"></a>Example 42. Requesting the second page of a list</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='list2'&gt;
+  &lt;list xmlns='urn:xmpp:archive'
+        start='1469-07-21T02:00:00Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;30&lt;/max&gt;
+      &lt;after&gt;1469-07-21T03:16:37Zbalcony@house.capulet.com&lt;/after&gt;
+    &lt;/set&gt;
+  &lt;/list&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Refer to <span class="ref">Result Set Management</span> to learn more about the various ways that the pages of the list may be accessed.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="manage-retrieve" id="manage-retrieve">Retrieving a Collection</a></h3>
+    <p>To request a page of messages from a collection the client sends a &lt;retrieve/&gt; element. The 'with' and 'start' attributes specify the participating JID and the start time (see <span class="ref">XEP-0082</span>). Both attributes MUST be included to uniquely identify a collection.</p>
+    <p class="box">Note: the &lt;retrieve/&gt; SHALL NOT possess the 'exactmatch' attribute, because exact JID matching is always implied for this command (see the <a href="#impl-jidmatch">JID Matching</a> section of this document). This is done to prevent the return of multiple collections in response to the &lt;retrieve/&gt; command.</p>
+    <p>The client SHOULD use <span class="ref">Result Set Management</span> to limit the number of messages returned by the server in a single stanza, taking care not to request a page of messages that is so big it might exceed rate limiting restrictions.</p>
+    <p class="caption"><a name="example-43" id="example-43"></a>Example 43. Requesting the first page of a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='page1'&gt;
+  &lt;retrieve xmlns='urn:xmpp:archive'
+            with='juliet@capulet.com/chamber'
+            start='1469-07-21T02:56:15Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;100&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/retrieve&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-44" id="example-44"></a>Example 44. Receiving the first page of a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='romeo@montague.net/orchard' id='page1'&gt;
+  &lt;chat xmlns='urn:xmpp:archive'
+        with='juliet@capulet.com/chamber'
+        start='1469-07-21T02:56:15Z'
+        subject='She speaks!'
+        version='4'&gt;
+    &lt;from secs='0'&gt;&lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;&lt;/from&gt;
+    &lt;to secs='11'&gt;&lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;&lt;/to&gt;
+    .
+    [97 more messages]
+    .
+    &lt;from secs='9'&gt;&lt;body&gt;How cam'st thou hither, tell me, and wherefore?&lt;/body&gt;&lt;/from&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;first index='0'&gt;0&lt;/first&gt;
+      &lt;last&gt;99&lt;/last&gt;
+      &lt;count&gt;217&lt;/count&gt;
+    &lt;/set&gt;
+  &lt;/chat&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: In accordance with <span class="ref">Result Set Management</span>, the client MUST assume the unique IDs it receives in the &lt;first/&gt; and &lt;last/&gt; elements are opaque. Servers MAY adopt a unique ID format other than the one suggested in the example above.</p>
+    <p>If the specified collection does not exist then the server MUST return an &lt;item-not-found/&gt; error:</p>
+    <p class="caption"><a name="example-45" id="example-45"></a>Example 45. Unsuccessful reply</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='romeo@montague.net/orchard' id='page1'&gt;
+  &lt;retrieve xmlns='urn:xmpp:archive'
+            with='juliet@capulet.com/chamber'
+            start='1469-07-21T02:56:15Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;100&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/retrieve&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the requested collection is empty the server MUST return an empty &lt;chat/&gt; element:</p>
+    <p class="caption"><a name="example-46" id="example-46"></a>Example 46. Receiving an empty collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='romeo@montague.net/orchard' id='page1'&gt;
+  &lt;chat xmlns='urn:xmpp:archive'
+        with='juliet@capulet.com/chamber'
+        start='1469-07-21T02:56:15Z'
+        subject='She speaks!'
+        version='5'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-47" id="example-47"></a>Example 47. Requesting the second page of a collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='page2'&gt;
+  &lt;retrieve xmlns='urn:xmpp:archive'
+            with='juliet@capulet.com/chamber'
+            start='1469-07-21T02:56:15Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;100&lt;/max&gt;
+      &lt;after&gt;99&lt;/after&gt;
+    &lt;/set&gt;
+  &lt;/retrieve&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Refer to <span class="ref">Result Set Management</span> to learn more about the various ways that the pages of a collection may be accessed.</p>
+  </div>
+  <div class="indent"><h3>7.3 <a name="manage-remove" id="manage-remove">Removing a Collection</a></h3>
+    <p>To request the removal of a single collection the client sends an empty &lt;remove/&gt; element. The 'with' and 'start' attributes MUST be included to uniquely identify the collection.</p>
+    <p class="caption"><a name="example-48" id="example-48"></a>Example 48. Removing a single collection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove1'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The client MAY remove several collections at once. The 'start' and 'end' elements MAY be specified to indicate a date range. The 'with' attribute MAY specify JID of XMPP entities, see the <a href="#impl-jidmatch">JID Matching</a> section of this document.</p>
+    <p class="caption"><a name="example-49" id="example-49"></a>Example 49. Removing all collections with a specified bare JID between two times</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove3'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          with='juliet@capulet.com'
+          start='1469-07-21T02:00:00Z'
+          end='1469-07-21T04:00:00Z'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the 'with' attribute is omitted then collections with any JID are removed.</p>
+    <p>If the end date is in the future then all collections on or after the start date are removed.</p>
+    <p class="caption"><a name="example-50" id="example-50"></a>Example 50. Removing all collections after a date</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove4'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          start='1469-07-21T02:00:00Z'
+          end='2038-01-01T00:00:00Z'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the start date is before all the collections in the archive then all collections prior to the end date are removed.</p>
+    <p class="caption"><a name="example-51" id="example-51"></a>Example 51. Removing all collections before a date</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove5'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          start='0000-01-01T00:00:00Z'
+          end='1469-07-21T04:00:00Z'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-52" id="example-52"></a>Example 52. Removing all collections</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove6'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the value of the optional 'open' attribute is set to 'true' then only collections that are currently being recorded automatically by the server (see <a href="#auto">Automatic Archiving</a>) are removed.</p>
+    <p class="caption"><a name="example-53" id="example-53"></a>Example 53. Removing a collection being recorded by the server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove7'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          with='juliet@capulet.com/chamber'
+          open='true'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-54" id="example-54"></a>Example 54. Removing all collections being recorded by the server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='remove8'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          open='true'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the specified collection (or collections) do not exist then the server MUST return an &lt;item-not-found/&gt; error:</p>
+    <p class="caption"><a name="example-55" id="example-55"></a>Example 55. Unsuccessful reply</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='romeo@montague.net/orchard' id='remove1'&gt;
+  &lt;remove xmlns='urn:xmpp:archive'
+          with='juliet@capulet.com/chamber'
+          start='1469-07-21T02:56:15Z'/&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>8.
+       <a name="replication" id="replication">Replication</a></h2>
+  <p>This section describes how a client can replicate an archive locally.  [<a href="#nt-idp2099600">16</a>] The existence of a local copy of the archive enables clients to search the content of all messages (including collections saved by another client machine).  [<a href="#nt-idp2100320">17</a>]</p>
+  <p>The client can "synchronize" its local copy of the archive with the "master" archive on the server at any time. The first step is to request the list of collections that the server has modified (created, changed, or removed) in its master archive since the last update to the client's copy of the archive.</p>
+  <p>Replication uses the &lt;modified/&gt; element. The list of collections that have been modified since a given time is requested by sending a &lt;modified/&gt; element to the server. The server then returns the list of collections that have been created, changed, or removed. A collection that has been created or changed is specified with a &lt;changed/&gt; element (with version zero for created collections), and a collection that has been removed is specified with a &lt;removed/&gt; element.</p>
+  <p>When requesting the list of modified collections, the client MUST embed appropriate <span class="ref">Result Set Management</span> data in the &lt;modified/&gt; element. The &lt;modified/&gt; element MUST include a 'start' attribute that specifies a UTC datetime (see <span class="ref">XEP-0082</span>) that it has previously received from the server or that it has determined locally (e.g., when synchronizing for the first time the client SHOULD choose a suitable time for the first page request, such as 1970-01-01T00:00:00Z).</p>
+  <p class="caption"><a name="example-56" id="example-56"></a>Example 56. Requesting a page of modifications</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='sync1'&gt;
+  &lt;modified xmlns='urn:xmpp:archive'
+            start='1469-07-21T01:14:47Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;max&gt;50&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/modified&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The server MUST return the changed collections in the chronological order that they were changed (most recent last). If a collection has been modified, created, or removed <span class="em">after</span> the time specified by the 'start' attribute, then the server MUST include it in the returned result set page of collections (unless the specified maximum page size would be exceeded). Each &lt;changed/&gt; or &lt;removed/&gt; collection element (for modified/created, or removed collections respectively) in the returned list MUST include the 'with' and 'start' attribues. The XML character data of the &lt;last/&gt; element is a unique, persistent identifier created by the server, which MUST be treated as opaque by the client.</p>
+  <p class="caption"><a name="example-57" id="example-57"></a>Example 57. Receiving a page of modifications</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='romeo@montague.net/orchard' id='sync1'&gt;
+  &lt;modified xmlns='urn:xmpp:archive'&gt;
+    &lt;changed with='juliet@capulet.com/chamber'
+             start='1469-07-21T02:56:15Z'
+             version='0'/&gt;
+    [ ... up to 48 more collections ... ]
+    &lt;removed with='balcony@house.capulet.com'
+             start='1469-07-21T03:16:37Z'
+             version='3'/&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;last&gt;ja923ljasnvla09woei777&lt;/last&gt;
+      &lt;count&gt;1372&lt;/count&gt;
+    &lt;/set&gt;
+  &lt;/modified&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Note: The server should remember the 'with' and 'start' attribues and the time of removal of all deleted collections. If this "state" cannot be maintained indefinitely, then unless all the user's clients replicate before the server deletes its memory of a removal it will not be reflected in all the local copies of the archive.</p>
+  <p>Note: Along with its copy of the archive the client SHOULD save the most recent &lt;last/&gt; identifier that it received from the server. The next time it synchronizes with the server it SHOULD specify that identifier when requesting the first result set page by including it as the XML character data of the &lt;after/&gt; element in Result Set Management.</p>
+  <p class="caption"><a name="example-58" id="example-58"></a>Example 58. Requesting the next page of modifications</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='sync2'&gt;
+  &lt;modified xmlns='urn:xmpp:archive'
+            start='1469-07-21T01:14:47Z'&gt;
+    &lt;set xmlns='http://jabber.org/protocol/rsm'&gt;
+      &lt;after&gt;ja923ljasnvla09woei777&lt;/after&gt;
+      &lt;max&gt;50&lt;/max&gt;
+    &lt;/set&gt;
+  &lt;/modified&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>After receiving each result set page the client SHOULD delete from its local archive any collections that have been removed from the master archive. The client should also retrieve from the server the content of each collection that has been modified (see <a href="#retrieve">Retrieving a Collection</a>) and add it to its local copy of the archive (deleting any older version of the same collection that it may already have).</p>
+<h2>9.
+       <a name="disco" id="disco">Determining Server Support</a></h2>
+  <p>A client discovers whether its server supports this protocol using <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp2116864">18</a>].</p>
+  <p class="caption"><a name="example-59" id="example-59"></a>Example 59. Client Service Discovery request</p><div class="indent"><pre class="prettyprint">
+    
+&lt;iq from='romeo@montague.net/orchard'
+    id='disco1' 
+    to='montague.net'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>For each feature defined herein, if the server supports that feature it MUST return a &lt;feature/&gt; element with the 'var' attribute set to 'urn:xmpp:archive:[name]', where '[name]' is 'auto' for the <a href="#auto">Automatic Archiving</a> feature, 'manage' for the <a href="#manage">Archive Management</a> feature, 'manual' for the <a href="#manual">Manual Archiving</a> feature, and 'pref' for the <a href="#pref">Archiving Preferences</a> feature.</p>
+  <p class="caption"><a name="example-60" id="example-60"></a>Example 60. Server Service Discovery response</p><div class="indent"><pre class="prettyprint">
+    
+&lt;iq from='montague.net'
+    id='disco1' 
+    to='romeo@montague.net/orchard'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='urn:xmpp:archive'/&gt;
+    &lt;feature var='urn:xmpp:archive:auto'/&gt;
+    &lt;feature var='urn:xmpp:archive:manage'/&gt;
+    &lt;feature var='urn:xmpp:archive:manual'/&gt;
+    &lt;feature var='urn:xmpp:archive:pref'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>10.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>10.1 <a name="impl-jidmatch" id="impl-jidmatch">JID Matching</a></h3>
+    <p>&lt;list/&gt;, &lt;remove/&gt; commands and &lt;item/&gt; element in archiving preferences require the ability to match multiple collections by given JID. Therefore, the following rules apply.</p>
+    <ol>
+      <li>If the JID is of the form &lt;localpart@domain.tld/resource&gt;, only this particular JID matches.</li>
+      <li>If the JID is of the form &lt;localpart@domain.tld&gt;, any resource matches.</li>
+      <li>If the JID is of the form &lt;domain.tld&gt;, any node matches.</li>
+    </ol>
+    <p>However, having these rules only would make impossible a match like "all collections having JID exactly equal to bare JID/domain JID". Therefore, when the 'exactmatch' attribute is set to "true" or "1"  [<a href="#nt-idp2127744">19</a>] on the &lt;list/&gt;, &lt;remove/&gt; or &lt;item/&gt; element, a JID value such as "example.com" matches that exact JID only rather than &lt;*@example.com&gt;, &lt;*@example.com/*&gt;, or &lt;example.com/*&gt;, and a JID value such as "localpart@example.com" matches that exact JID only rather than &lt;localpart@example.com/*&gt;.</p>
+  </div>
+  <div class="indent"><h3>10.2 <a name="impl-sync" id="impl-sync">Time Synchronization</a></h3>
+    <p>When creating a new collection, it is RECOMMENDED that the client synchronizes the collection start time that it sends to the server with server time. This is important since the user may subsequently retrieve the archived collection using client machines whose UTC clocks are not synchronized with the client machine that uploaded the collection. (i.e. Either or both of the clients' UTC clocks may be wrong.) The client can achieve this synchronization with server time by using <span class="ref"><a href="http://xmpp.org/extensions/xep-0202.html">Entity Time (XEP-0202)</a></span>  [<a href="#nt-idp2138432">20</a>] to estimate the difference between the server and client UTC clocks.</p>
+    <p>When retrieving collections, it is RECOMMENDED that the client adjusts the start times of the collections it receives from server to be synchronized with the clock of the client machine.</p>
+  </div>
+  <div class="indent"><h3>10.3 <a name="impl-bandwidth" id="impl-bandwidth">Bandwidth Considerations</a></h3>
+    <p>When uploading messages using manual archiving, a client SHOULD NOT upload one message at a time to the server since this increases both bandwidth consumption and the total number of transactions. It is instead RECOMMENDED that clients upload messages only when the conversation thread <span class="em">appears</span> to be terminated, e.g. when the user closes the chat window. If the user reopens the window and the thread continues then the client should append the new messages to the collection when the user closes the window again.</p>
+  </div>
+  <div class="indent"><h3>10.4 <a name="impl-storage" id="impl-storage">Storage Considerations</a></h3>
+    <p>Server implementations SHOULD give system administrators the option to disable support for both automatic and manual archiving, since archived conversations can consume significant storage space.</p>
+  </div>
+  <div class="indent"><h3>10.5 <a name="impl-convtracking" id="impl-convtracking">Conversations Tracking In Automatic Archiving</a></h3>
+    <p>When starting automatic archiving for a new conversation, it is possible that the initial message might not be enough to determine the full JID of the recipient. For example, if the conversation is initiated by a client whose server performs automatic archiving and that client does not know which full JID it ought to use for the recipient, it will send the initial message to bare JID. As a result, automatic archiving will create a collection that is identified by the bare JID of the recipient.</p>
+    <p>However, once the client receives a reply from the contact, it knows the full JID of the recipient. At that point, the initial collection can be adjusted, changing the bare JID to the full JID of the recipient.</p>
+    <p>The server SHOULD attempt to perform conversation tracking and JID adjustment to ensure that the identifying JID for the collection reflects the actual full JID used during conversation rather than initial bare JID used when the conversation started. However, the server MAY use the bare JID for the collection if there is evidence that the conversation involves several different full JIDs, such as receiving messages from different full JIDs with the same &lt;thread/&gt; element.</p>
+  </div>
+<h2>11.
+       <a name="streamfeature" id="streamfeature">Stream Feature</a></h2>
+  <p>Although message archiving is not negotiated between a client and its server as part of stream negotiation, a server MAY advertise a stream feature of "urn:xmpp:archive" during stream setup (via the &lt;feature/&gt; element, which MUST contain an empty &lt;optional/&gt; child), and MUST do so if automatic archiving is on by default (if so, the &lt;feature/&gt; element MUST include an empty &lt;default/&gt; child).</p>
+  <p class="caption"><a name="example-61" id="example-61"></a>Example 61. Stream Feature</p><div class="indent"><pre class="prettyprint">
+&lt;feature xmlns='urn:xmpp:archive'&gt;
+  &lt;optional/&gt;
+&lt;/feature&gt;
+  </pre></div>
+  <p class="caption"><a name="example-62" id="example-62"></a>Example 62. Stream Feature (Automatic Archiving on By Default)</p><div class="indent"><pre class="prettyprint">
+&lt;feature xmlns='urn:xmpp:archive'&gt;
+  &lt;optional/&gt;
+  &lt;default/&gt;
+&lt;/feature&gt;
+  </pre></div>
+<h2>12.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <div class="indent"><h3>12.1 <a name="security-autoon" id="security-autoon">Automatic Archiving Defaulting to On</a></h3>
+    <p>If automatic archiving defaults to enabled then that creates serious privacy issues for users of legacy clients that do not support this protocol, and (more seriously) for those contacts who they unwittingly mislead by agreeing to disable logging (via the 'logging' field defined in <span class="ref">XEP-0155</span>).</p>
+    <p>If a server deployment enables automatic archiving by default, then it MUST return a stream feature containing an empty &lt;default/&gt; element (see the <a href="#streamfeature">Stream Feature</a> section of this document).</p>
+  </div>
+  <div class="indent"><h3>12.2 <a name="security-store" id="security-store">Store Headers</a></h3>
+    <p>The client that originates a message MAY specify a 'false' value for the 'store' header (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0131.html">Stanza Headers and Internet Metadata (XEP-0131)</a></span>  [<a href="#nt-idp2152944">21</a>]). The recipient MUST NOT archive such a message or any of the information it contains.</p>
+    <p>If the sender plans to use 'store' headers it MUST use Service Discovery to determine whether or not the recipient supports them. Note: Since servers are not required to check the content of message stanzas for headers, if the recipient is using automatic archiving then it MUST indicate that it does not support 'store' headers.</p>
+    <p>If the recipient does not support 'store' headers, then the sender MUST confirm with its human user (if any) before sending such a message.</p>
+  </div>
+<h2>13.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>No interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp2162848">22</a>] is required as a result of this document.</p>
+<h2>14.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>14.1 <a name="ns" id="ns">Protocol Namespace</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp2160592">23</a>] includes "urn:xmpp:archive:data" in its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+  </div>
+  <div class="indent"><h3>14.2 <a name="registrar-features" id="registrar-features">Service Discovery Features</a></h3>
+    <p>The XMPP Registrar includes the following features in its registry of service discovery features (see &lt;<a href="http://xmpp.org/registrar/disco-features.html">http://xmpp.org/registrar/disco-features.html</a>&gt;):</p>
+    <ul>
+      <li>urn:xmpp:archive:auto</li>
+      <li>urn:xmpp:archive:manage</li>
+      <li>urn:xmpp:archive:manual</li>
+      <li>urn:xmpp:archive:pref</li>
+    </ul>
+  </div>
+<h2>15.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:archive'
+    xmlns='urn:xmpp:archive'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0136: http://www.xmpp.org/extensions/xep-0136.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The allowable root elements for the namespace defined
+      herein are:
+        - auto
+        - chat
+        - itemremove
+        - list
+        - modified
+        - pref
+        - remove
+        - retrieve
+        - save
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='auto'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:any processContents='lax' namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='save' type='xs:boolean' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='changed'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+          &lt;xs:attribute name='with' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='version' type='xs:nonNegativeInteger' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='chat'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+        &lt;xs:element name='from' type='messageType'/&gt;
+        &lt;xs:element name='next' type='linkType'/&gt;
+        &lt;xs:element ref='note'/&gt;
+        &lt;xs:element name='previous' type='linkType'/&gt;
+        &lt;xs:element name='to' type='messageType'/&gt;
+        &lt;xs:any processContents='lax' namespace='##other'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+      &lt;xs:attribute name='subject' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='thread' use='optional' type='xs:string'/&gt;
+      &lt;xs:attribute name='version' use='optional' type='xs:nonNegativeInteger'/&gt;
+      &lt;xs:attribute name='with' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name='messageType'&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name='body' type='xs:string' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;xs:any processContents='lax' namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name='jid' type='xs:string' use='optional'/&gt;
+    &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+    &lt;xs:attribute name='secs' type='xs:nonNegativeInteger' use='optional'/&gt;
+    &lt;xs:attribute name='utc' type='xs:dateTime' use='optional'/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='linkType'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='empty'&gt;
+        &lt;xs:attribute name='start' type='xs:dateTime' use='optional'/&gt;
+        &lt;xs:attribute name='with' type='xs:string' use='optional'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:element name='default'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='expire' type='xs:nonNegativeInteger' use='optional'/&gt;
+          &lt;xs:attribute name='otr' use='required'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='approve'/&gt;
+                &lt;xs:enumeration value='concede'/&gt;
+                &lt;xs:enumeration value='forbid'/&gt;
+                &lt;xs:enumeration value='oppose'/&gt;
+                &lt;xs:enumeration value='prefer'/&gt;
+                &lt;xs:enumeration value='require'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name='save' use='required'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='body'/&gt;
+                &lt;xs:enumeration value='false'/&gt;
+                &lt;xs:enumeration value='message'/&gt;
+                &lt;xs:enumeration value='stream'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name='unset' use='optional' type='xs:boolean'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='feature'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='optional' minOccurs='1' maxOccurs='1'/&gt;
+        &lt;xs:element ref='default' minOccurs='0' maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='exactmatch' type='xs:boolean' use='optional'/&gt;
+          &lt;xs:attribute name='expire' type='xs:nonNegativeInteger' use='optional'/&gt;
+          &lt;xs:attribute name='jid' use='required' type='xs:string'/&gt;
+          &lt;xs:attribute name='otr' use='optional'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='approve'/&gt;
+                &lt;xs:enumeration value='concede'/&gt;
+                &lt;xs:enumeration value='forbid'/&gt;
+                &lt;xs:enumeration value='oppose'/&gt;
+                &lt;xs:enumeration value='prefer'/&gt;
+                &lt;xs:enumeration value='require'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name='save' use='optional'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='body'/&gt;
+                &lt;xs:enumeration value='false'/&gt;
+                &lt;xs:enumeration value='message'/&gt;
+                &lt;xs:enumeration value='stream'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='list'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='chat' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:any processContents='lax' namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='end' type='xs:dateTime' use='optional'/&gt;
+      &lt;xs:attribute name='exactmatch' type='xs:boolean' use='optional'/&gt;
+      &lt;xs:attribute name='start' type='xs:dateTime' use='optional'/&gt;
+      &lt;xs:attribute name='with' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='method'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='type' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='use' use='required'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='concede'/&gt;
+                &lt;xs:enumeration value='forbid'/&gt;
+                &lt;xs:enumeration value='prefer'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='modified'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='changed' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='removed' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:any processContents='lax' namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='note'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='utc' type='xs:dateTime' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='pref'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='auto' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='default' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='item' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='method' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='itemremove'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='item' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='remove'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='end' type='xs:dateTime' use='optional'/&gt;
+          &lt;xs:attribute name='exactmatch' type='xs:boolean' use='optional'/&gt;
+          &lt;xs:attribute name='open' use='optional' type='xs:boolean'/&gt;
+          &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+          &lt;xs:attribute name='with' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='removed'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+          &lt;xs:attribute name='with' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='version' type='xs:nonNegativeInteger' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='retrieve'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:any processContents='lax' namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='start' type='xs:dateTime' use='required'/&gt;
+      &lt;xs:attribute name='with' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='save'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='chat' minOccurs='1' maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>16.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Thanks to Alexey Melnikov and Alexander Tsvyashchenko for their comments and suggestions.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0136<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.2<br />
+            Last Updated: 2010-06-21<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0004, XEP-0030, XEP-0059, XEP-0060<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: archive<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/archive.xsd">http://www.xmpp.org/schemas/archive.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0136.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0136.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0136.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ian Paterson</h3><p class="indent">
+        Email:
+        <a href="mailto:ian.paterson@clientside.co.uk">ian.paterson@clientside.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:ian@zoofy.com">ian@zoofy.com</a><br /></p><h3>Jon Perlow</h3><p class="indent">
+        Email:
+        <a href="mailto:jonp@google.com">jonp@google.com</a><br />
+        JabberID: 
+        <a href="xmpp:jonp@google.com">jonp@google.com</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Justin Karneges</h3><p class="indent">
+        Email:
+        <a href="mailto:justin@affinix.com">justin@affinix.com</a><br />
+        JabberID: 
+        <a href="xmpp:justin@andbit.net">justin@andbit.net</a><br /></p><h3>Alexander Tsvyashchenko</h3><p class="indent">
+        Email:
+        <a href="mailto:lists@ndl.kiev.ua">lists@ndl.kiev.ua</a><br /></p><h3>Yann Leboulanger</h3><p class="indent">
+        Email:
+        <a href="mailto:asterix@lagaule.org">asterix@lagaule.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1771984" id="nt-idp1771984">1</a>. The XMPP Council is a technical steering committee, authorized by the XSF Board of Directors and elected by XSF members, that approves of new XMPP Extensions Protocols and oversees the XSF's standards process. For further information, see &lt;<a href="http://xmpp.org/council/">http://xmpp.org/council/</a>&gt;.</p><p><a name="nt-idp1780768" id="nt-idp1780768">2</a>. The "OTR" mode for message archiving is not to be confused with the "OTR" technology for "off-the-record communications" described at &lt;<a href="http://www.cypherpunks.ca/otr/">http://www.cypherpunks.ca/otr/</a>&gt;.</p><p><a name="nt-idp1797168" id="nt-idp1797168">3</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp1813808" id="nt-idp1813808">4</a>. Stream compression typically does not mitigate bandwidth and storage issues since clients running in constrained runtime environments typically cannot take advantage of stream compression (no binary data, only XML, may be transfered).</p><p><a name="nt-idp1838848" id="nt-idp1838848">5</a>. XEP-0201: Best Practices for Message Threads &lt;<a href="http://xmpp.org/extensions/xep-0201.html">http://xmpp.org/extensions/xep-0201.html</a>&gt;.</p><p><a name="nt-idp1889728" id="nt-idp1889728">6</a>. XEP-0155: Stanza Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0155.html">http://xmpp.org/extensions/xep-0155.html</a>&gt;.</p><p><a name="nt-idp1955520" id="nt-idp1955520">7</a>. If a client (or user) acts in bad faith then its contacts cannot prevent it from archiving conversations.</p><p><a name="nt-idp1964544" id="nt-idp1964544">8</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1968976" id="nt-idp1968976">9</a>. XEP-0201: Best Practices for Message Threads &lt;<a href="http://xmpp.org/extensions/xep-0201.html">http://xmpp.org/extensions/xep-0201.html</a>&gt;.</p><p><a name="nt-idp1990256" id="nt-idp1990256">10</a>. XEP-0116: Encrypted Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0116.html">http://xmpp.org/extensions/xep-0116.html</a>&gt;.</p><p><a name="nt-idp1993760" id="nt-idp1993760">11</a>. XEP-0241: Encryption of Archived Messages &lt;<a href="http://xmpp.org/extensions/xep-0241.html">http://xmpp.org/extensions/xep-0241.html</a>&gt;.</p><p><a name="nt-idp2014144" id="nt-idp2014144">12</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp2029664" id="nt-idp2029664">13</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp2045120" id="nt-idp2045120">14</a>. XEP-0116: Encrypted Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0116.html">http://xmpp.org/extensions/xep-0116.html</a>&gt;.</p><p><a name="nt-idp2058832" id="nt-idp2058832">15</a>. XEP-0059: Result Set Management &lt;<a href="http://xmpp.org/extensions/xep-0059.html">http://xmpp.org/extensions/xep-0059.html</a>&gt;.</p><p><a name="nt-idp2099600" id="nt-idp2099600">16</a>. Clients that run in constrained environments may not be able to implement replication if they are prevented from accessing (sufficient) local storage.</p><p><a name="nt-idp2100320" id="nt-idp2100320">17</a>. Since collections SHOULD be stored on the server in a form that it cannot decrypt, server-side searching of the content of messages is beyond the scope of this protocol.</p><p><a name="nt-idp2116864" id="nt-idp2116864">18</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp2127744" id="nt-idp2127744">19</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp2138432" id="nt-idp2138432">20</a>. XEP-0202: Entity Time &lt;<a href="http://xmpp.org/extensions/xep-0202.html">http://xmpp.org/extensions/xep-0202.html</a>&gt;.</p><p><a name="nt-idp2152944" id="nt-idp2152944">21</a>. XEP-0131: Stanza Headers and Internet Metadata &lt;<a href="http://xmpp.org/extensions/xep-0131.html">http://xmpp.org/extensions/xep-0131.html</a>&gt;.</p><p><a name="nt-idp2162848" id="nt-idp2162848">22</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp2160592" id="nt-idp2160592">23</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2010-06-21)</h4><div class="indent"><p>Added persistent auto save setting and ability to control settings per chat session; XMPP Council added a statement regarding a future review and simplification of this protocol.</p> (at/yl)
+    </div><h4>Version 1.1 (2009-09-23)</h4><div class="indent"><p>Moved JID matching text to a dedicated section and clarified matching rules; described implementation notes regarding server interpretation of archiving preferences and conversation tracking.</p> (at/psa)
+    </div><h4>Version 1.0 (2008-07-16)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Draft; concurrently, the XMPP Registrar issued the urn:xmpp:archive namespace.</p> (psa)
+    </div><h4>Version 0.18 (2008-05-19)</h4><div class="indent"><p>Corrected and clarified usage of exactmatch attribute; removed out-of-date archive, delete, and keys elements from schema.</p> (psa)
+    </div><h4>Version 0.17 (2008-04-30)</h4><div class="indent"><p>Split encryption content off into new specification.</p> (psa)
+    </div><h4>Version 0.16 (2008-04-15)</h4><div class="indent"><p>Addressed last call comments; clarified syntax of the pref and chat elements; deferred definition of data forms for attribute association to future specifications; removed registration of field standardization fields.</p> (psa)
+    </div><h4>Version 0.15 (2008-03-03)</h4><div class="indent"><p>Changed temporary namespace per XEP-0053 procedures; moved all encrypted-related material to dedicated section; removed text about file format; modified replication to use start attribute, not after element; added version attribute for tracking collection changes; added itemremove element to delete all preferences for a contact.</p> (psa)
+    </div><h4>Version 0.14 (2007-08-16)</h4><div class="indent"><p>Clarified text regarding preference syntax; completed copy edit.</p> (psa)
+    </div><h4>Version 0.13 (2007-01-08)</h4><div class="indent"><p>Harmonized stanza session negotiation of message logging settings with XEP-0155; defined stream feature.</p> (psa/ip)
+    </div><h4>Version 0.12 (2006-11-23)</h4><div class="indent"><p>All modes allow multiple body children of to and from elements; changed namespace and collection element name to chat; renamed all value of save attribute to message; added stream value of the save attribute, thread attribute, save wrapper element, and Linking Collections and Associating Attributes sections</p> (ip)
+    </div><h4>Version 0.11 (2006-11-06)</h4><div class="indent"><p>Added more otr attribute values and clarified their meanings, changed the names of the use attribute values</p> (ip)
+    </div><h4>Version 0.10 (2006-10-11)</h4><div class="indent"><p>Added auto-archiving warning for legacy clients; corrected examples</p> (ip)
+    </div><h4>Version 0.9 (2006-10-02)</h4><div class="indent"><p>Added method child elements and expire attribute to pref element</p> (ip)
+    </div><h4>Version 0.8 (2006-09-29)</h4><div class="indent"><p>Server generates encryption secrets for auto-archiving; specified use of W3C XML Encryption standard; enabled replacement of keys encrypted with an obsolete public key; enabled removal of open collections</p> (ip)
+    </div><h4>Version 0.7 (2006-09-08)</h4><div class="indent"><p>Added preferences, results set management and notes; reinstated encryption and replication; simplified auto-archiving and off-the-record (with XEP-0155); many minor changes</p> (ip)
+    </div><h4>Version 0.6 (2006-08-18)</h4><div class="indent"><p>Added unset value for save attribute and added service attribute on default element; added source attribute on record element; specified that services should (not must) support save mode for particular contacts.</p> (jp/psa)
+    </div><h4>Version 0.5 (2006-05-03)</h4><div class="indent"><p>Integrated text from server-side archiving proposal; added partial support to collection retrieval; harmonized XML formats and namespaces; defined XMPP Registrar considerations and XML schema.</p> (psa/jp/jk)
+    </div><h4>Version 0.4 (2005-12-21)</h4><div class="indent"><p>Added Replication and Searching section, partial attribute; minor improvements</p> (ip)
+    </div><h4>Version 0.3 (2005-10-21)</h4><div class="indent"><p>Added more examples to Removing Collections</p> (ip)
+    </div><h4>Version 0.2 (2005-04-18)</h4><div class="indent"><p>Complete rewrite.</p> (ip)
+    </div><h4>Version 0.1 (2004-06-04)</h4><div class="indent"><p>Initial version.</p> (jk)
+    </div></div><hr /><p>END</p></body></html>

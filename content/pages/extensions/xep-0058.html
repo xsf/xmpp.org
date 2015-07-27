@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0058: Multi-User Text Editing</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Multi-User Text Editing" /><meta name="DC.Creator" content="Alexey Shchepin" /><meta name="DC.Description" content="This document defines how several people may simultaneously edit text." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-11-12" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0058" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0058: Multi-User Text Editing</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines how several people may simultaneously edit text.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Alexey Shchepin</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-11-12</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp703712">Introduction</a><br />2.  <a href="#sect-idp704672">Protocol description</a><br />3.  <a href="#sect-idp623264">Formal Definitions</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp703712" id="sect-idp703712">Introduction</a></h2>
+    This document defines an XMPP protocol extension for editing one text document by several people.
+    This can be useful when several people write different parts of one single document, or
+    one person edits the text and other people can see the changes.  The advantage of
+    using this protocol in compared to using a  version control systems is that all
+    changes are distributed between editors in real-time.
+  <h2>2.
+       <a name="sect-idp704672" id="sect-idp704672">Protocol description</a></h2>
+    <p>
+      To start editing a file, the user must subscribe to it on special "server"
+      The server stores text files.  A User first can ask for list of these documents.
+    </p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User asks the server list of editable texts</p><div class="indent"><pre class="prettyprint">&lt;iq type='get' to='server' id='mute1'&gt;
+  &lt;list xmlns='http://jabber.org/protocol/mute#server'/&gt;
+&lt;/iq&gt;</pre></div>
+    <p>
+      After that the server returns a list of the documents.  For each list
+      item an ID and description is given.
+    </p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Ancestor returns list of editable texts</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' to='editor1' id='mute1'&gt;
+  &lt;list xmlns='http://jabber.org/protocol/mute#server'&gt;
+    &lt;item id='id1' desc='Useful text'/&gt;
+    &lt;item id='id2' desc='Useless text'/&gt;
+  &lt;/list&gt;
+&lt;/iq&gt;</pre></div>
+    <p>
+      Then the user can send a subscribe request to the server by sending the documents ID.
+      Attribute <tt>type</tt> can be <tt>rdwr</tt> for full access or
+      <tt>rdonly</tt> for read-only access.
+    </p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User sends subscribe request</p><div class="indent"><pre class="prettyprint">&lt;iq type='set' to='server' id='mute2'&gt;
+  &lt;subscribe xmlns='http://jabber.org/protocol/mute#server'&gt;
+    &lt;item id='id1' type='rdwr'/&gt;
+  &lt;/subscribe&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Positive response from server on subscribe       request</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' to='editor1' id='mute2'/&gt;</pre></div>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Negative response from server on subscribe       request</p><div class="indent"><pre class="prettyprint">&lt;iq type='error' to='editor1' id='mute2'&gt;
+  &lt;subscribe xmlns='http://jabber.org/protocol/mute#server'&gt;
+    &lt;item id='id1' type='rdwr'/&gt;
+  &lt;/subscribe&gt;
+  &lt;error code="405"&gt;Not Allowed&lt;/error&gt;
+&lt;/iq&gt;</pre></div>
+    <p>
+      After successful subscription, the server sends the full contents of the document to
+      the new editor.
+    </p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server sends text to editor</p><div class="indent"><pre class="prettyprint">&lt;iq type='set' to='editor1' id='mute3'&gt;
+  &lt;text xmlns='http://jabber.org/protocol/mute#editor' id='id1'&gt;
+...
+8. Admin Use Cases
+   8.1. Banning a User
+   8.2. Modifying the Ban List
+   8.3. Granting Membership
+   8.4. Revoking Mambership
+   8.5. Modifying the Member List
+   8.6. Granting Moderator Privileges
+   8.7. Revoking Moderator Privileges
+   8.8. Modifying the Moderator List  
+...
+  &lt;/text&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Positive response from editor</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' to='server' id='mute3'/&gt;</pre></div>
+    <p>
+      If an editor wants to commit the changes he made, then he sends a  patch file to this text
+      in GNU diff(1) unified format without first two lines (they specify file
+      names and modification dates, that is not needed).
+    </p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Editor sends patch to server</p><div class="indent"><pre class="prettyprint">&lt;iq type='set' to='server' id='mute4'&gt;
+  &lt;patch xmlns='http://jabber.org/protocol/mute#server' id='id1'&gt;
+@@ -2,7 +2,7 @@
+    8.1. Banning a User
+    8.2. Modifying the Ban List
+    8.3. Granting Membership
+-   8.4. Revoking Mambership
++   8.4. Revoking Membership
+    8.5. Modifying the Member List
+    8.6. Granting Moderator Privileges
+    8.7. Revoking Moderator Privileges
+  &lt;/patch&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Server accepts patch</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' to='editor1' id='mute4'/&gt;</pre></div>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Server not accepts patch</p><div class="indent"><pre class="prettyprint">&lt;iq type='error' to='editor1' id='mute4'&gt;
+  &lt;patch xmlns='http://jabber.org/protocol/mute#server' id='id1'&gt;
+@@ -2,7 +2,7 @@
+    8.1. Banning a User
+    8.2. Modifying the Ban List
+    8.3. Granting Membership
+-   8.4. Revoking Mambership
++   8.4. Revoking Membership
+    8.5. Modifying the Member List
+    8.6. Granting Moderator Privileges
+    8.7. Revoking Moderator Privileges
+  &lt;/patch&gt;
+  &lt;error code="405"&gt;Not Allowed&lt;/error&gt;
+&lt;/iq&gt;</pre></div>
+    <p>
+      If server accepts the patch, then it resends it to all subscribed text editors and readers.
+    </p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Server resend accepted patch to all editors and readers       of this text</p><div class="indent"><pre class="prettyprint">&lt;iq type='set' to='editor1' id='mute5'&gt;
+  &lt;patch xmlns='http://jabber.org/protocol/mute#editor' id='id1'&gt;
+@@ -2,7 +2,7 @@
+    8.1. Banning a User
+    8.2. Modifying the Ban List
+    8.3. Granting Membership
+-   8.4. Revoking Mambership
++   8.4. Revoking Membership
+    8.5. Modifying the Member List
+    8.6. Granting Moderator Privileges
+    8.7. Revoking Moderator Privileges
+  &lt;/patch&gt;
+&lt;/iq&gt;</pre></div>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Positive response from editors and readers</p><div class="indent"><pre class="prettyprint">&lt;iq type='result' to='server' id='mute5'/&gt;</pre></div>
+
+    <p>
+      If server receives an  error IQ reply from one of the editors/readers on any of
+      above requests, then it must remove him from subscribers list and may
+      send a message to him about this.
+    </p>
+
+  <h2>3.
+       <a name="sect-idp623264" id="sect-idp623264">Formal Definitions</a></h2>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. DTD for http://jabber.org/protocol/mute#server</p><div class="indent"><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+
+&lt;!ELEMENT list ((item)*)&gt;
+&lt;!ELEMENT subscribe (item)&gt;
+
+&lt;!ELEMENT item EMPTY&gt;
+&lt;!ATTLIST item
+          id CDATA #REQUIRED
+          desc CDATA #IMPLIED
+          type ( rdwr | rdonly ) #IMPLIED &gt;
+
+&lt;!ELEMENT patch (#PCDATA)&gt;</pre></div>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. DTD for http://jabber.org/protocol/mute#editor</p><div class="indent"><pre class="prettyprint">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+
+&lt;!ELEMENT patch (#PCDATA)&gt;
+&lt;!ELEMENT text (#PCDATA)&gt;</pre></div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0058<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.1<br />
+            Last Updated: 2002-11-12<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0058.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0058.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0058.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Alexey Shchepin</h3><p class="indent">
+        Email:
+        <a href="mailto:alexey@sevcom.net">alexey@sevcom.net</a><br />
+        JabberID: 
+        <a href="xmpp:aleksey@jabber.ru">aleksey@jabber.ru</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.1 (2002-11-12)</h4><div class="indent">Initial version. (as)
+    </div></div><hr /><p>END</p></body></html>

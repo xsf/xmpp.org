@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0199: XMPP Ping</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="XMPP Ping" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for sending application-level pings over XML streams. Such pings can be sent from a client to a server, from one server to another, or end-to-end." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-06-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0199" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0199: XMPP Ping</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for sending application-level pings over XML streams. Such pings can be sent from a client to a server, from one server to another, or end-to-end.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-06-03</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#protocol">Protocol</a><br />4.  <a href="#usecases">Use Cases</a><br />   
+      4.1.  <a href="#s2c">Server-To-Client Pings</a><br />   
+      4.2.  <a href="#c2s">Client-To-Server Pings</a><br />   
+      4.3.  <a href="#s2s">Server-To-Server Pings</a><br />   
+      4.4.  <a href="#e2e">Client-to-Client Pings</a><br />   
+      4.5.  <a href="#other">Component-to-Client Pings</a><br />5.  <a href="#support">Determining Support</a><br />6.  <a href="#impl">Implementation Notes</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />10.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>As specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp714896">1</a>], the XML streams used in XMPP are bound to TCP. Unfortunately, TCP connections can go down without the application (XMPP) layer knowing about it. The traditional approach to solving this issue has been to periodically send so-called "whitespace pings" over the XML stream. This document recommends a more XML-friendly approach, which can be used over more than one hop in the communication path (e.g., from one client to another) and can also be used with other bindings such as the <span class="ref"><a href="http://xmpp.org/extensions/xep-0124.html">BOSH (XEP-0124)</a></span>  [<a href="#nt-idp702608">2</a>] method for which <span class="ref"><a href="http://xmpp.org/extensions/xep-0206.html">XMPP Over BOSH (XEP-0206)</a></span>  [<a href="#nt-idp704736">3</a>] is the XMPP profile.</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This specification addresses the following requirements:</p>
+  <ol start="1">
+    <li>Determining the viability of an XML stream (i.e., its underlying binding) between a client and a server, or between two servers.</li>
+    <li>Determining end-to-end connectivity between any two XMPP entities (e.g., two clients).</li>
+  </ol>
+  <p>The number of "hops" for which the ping tests connectivity depends on how far the pinged entity is from the pinging entity, as shown in the following use cases. However, this specification does not provide per-hop information similar to that provided by the traceroute protocol (<span class="ref"><a href="http://tools.ietf.org/html/rfc1393">RFC 1393</a></span>  [<a href="#nt-idp709968">4</a>]); a future specification may define such functionality for XMPP.</p>
+<h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>The XMPP ping protocol is extremely simple:</p>
+  <ol>
+    <li>The pinging entity sends an IQ-get containing a &lt;ping/&gt; element qualified by the 'urn:xmpp:ping' namespace.</li>
+    <li>The pinged entity returns either an IQ-result (if it supports the namespace) or an IQ-error (if it does not).</li>
+  </ol>
+<h2>4.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <div class="indent"><h3>4.1 <a name="s2c" id="s2c">Server-To-Client Pings</a></h3>
+    <p>One popular usage is for a server to test the viability of the underlying stream connection by pinging a connected client. This is done by sending an &lt;iq/&gt; get over the stream from the server to the client.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Ping</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='capulet.lit' to='juliet@capulet.lit/balcony' id='s2c1' type='get'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the client supports the ping namespace, it MUST return an IQ-result, which functions as a "pong":</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Pong</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony' to='capulet.lit' id='s2c1' type='result'/&gt;
+    </pre></div>
+    <p>If the client does not support the ping namespace, it MUST return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Ping Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony' to='capulet.lit' id='s2c1' type='error'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other error conditions defined in <span class="ref">RFC 6120</span> could also be returned if appropriate.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="c2s" id="c2s">Client-To-Server Pings</a></h3>
+    <p>A client may also ping its server by sending an IQ-get over the stream between the two entities.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Ping</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony' to='capulet.lit' id='c2s1' type='get'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The client MAY include a 'to' address of the client's bare JID &lt;localpart@domain.tld&gt;, in this instance "juliet@capulet.lit" or MAY include no 'to' address (this signifies that the stanza shall be handled by the server on behalf of the connected user's bare JID, which in the case of &lt;iq/&gt; stanzas is equivalent to directing the IQ-get to the server itself).</p>
+    <p>If the server supports the ping namespace, it MUST return an IQ-result:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Pong</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='capulet.lit' to='juliet@capulet.lit/balcony' id='c2s1' type='result'/&gt;
+    </pre></div>
+    <p>If the server does not support the ping namespace, it MUST return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Ping Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='capulet.lit' to='juliet@capulet.lit/balcony' id='c2s1' type='error'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other error conditions defined in <span class="ref">RFC 6120</span> could also be returned if appropriate.</p>
+  </div>
+  <div class="indent"><h3>4.3 <a name="s2s" id="s2s">Server-To-Server Pings</a></h3>
+    <p>Pings can also be used to test a server-to-server connection. This is done by sending an IQ-get over the stream from one server to another.</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Ping</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='capulet.lit' to='montague.lit' id='s2s1' type='get'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the other party to the stream supports the ping namespace, it MUST return an IQ-result:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Pong</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='montague.lit' to='capulet.lit' id='s2s1' type='result'/&gt;
+    </pre></div>
+    <p>If the other party to the stream does not support the ping namespace, it MUST return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Ping Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='montague.lit' to='capulet.lit' id='s2s1' type='error'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other error conditions defined in <span class="ref">RFC 6120</span> could also be returned if appropriate.</p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="e2e" id="e2e">Client-to-Client Pings</a></h3>
+    <p>Pings can also be used for client-to-client (i.e., end-to-end) pings.</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Ping</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/home' 
+    to='juliet@capulet.lit/chamber'
+    type='get' 
+    id='e2e1'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The 'to' address should be a full JID &lt;localpart@domain.tld/resource&gt;, since a ping sent to a bare JID &lt;localpart@domain.tld&gt; will be handled by the server on behalf of the client.</p>
+    <p>If the pinged entity supports the ping namespace, it SHOULD return an IQ-result:</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Pong</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/chamber'
+    to='romeo@montague.lit/home' 
+    id='e2e1'
+    type='result'/&gt;
+    </pre></div>
+    <p>If the pinged entity does not support the ping namespace, it MUST return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Ping Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/chamber'
+    to='romeo@montague.lit/home' 
+    id='e2e1'
+    type='result'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other error conditions defined in <span class="ref">RFC 6120</span> could also be returned if appropriate.</p>
+  </div>
+  <div class="indent"><h3>4.5 <a name="other" id="other">Component-to-Client Pings</a></h3>
+    <p>Pings can also be used for component-to-client pings, for example from a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1593792">5</a>] component to a client.</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Ping</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='chat.shakespeare.lit'
+    to='juliet@capulet.lit/chamber'
+    type='get' 
+    id='comp1'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The 'to' address should be a full JID &lt;localpart@domain.tld/resource&gt;, since a ping sent to a bare JID &lt;localpart@domain.tld&gt; will be handled by the server on behalf of the client.</p>
+    <p>If the pinged entity supports the ping namespace, it SHOULD return an IQ-result:</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Pong</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/chamber'
+    to='chat.shakespeare.lit'
+    id='comp1'
+    type='result'/&gt;
+    </pre></div>
+    <p>If the pinged entity does not support the ping namespace, <span class="ref">RFC 6120</span> requires it to return a &lt;service-unavailable/&gt; error:</p>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Ping Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/chamber'
+    to='chat.shakespeare.lit'
+    id='comp1'
+    type='error'&gt;
+  &lt;ping xmlns='urn:xmpp:ping'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other error conditions defined in <span class="ref">RFC 6120</span> could also be returned if appropriate.</p>
+  </div>
+<h2>5.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>If an entity supports the XMPP Ping protocol, it MUST report that fact by including a service discovery feature of "urn:xmpp:ping" in response to a <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1598528">6</a>] information request:</p>
+  <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Service Discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.lit/balcony'
+    to='capulet.lit'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Service Discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='capulet.lit'
+    to='juliet@capulet.lit/balcony'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='urn:xmpp:ping'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1603520">7</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>6.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>Some XMPP clients do not respond to IQ stanzas containing unsupported payloads. Although this is in violation of <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1605456">8</a>], this behavior can result in disconnection of clients that are in fact actively connected to the server.</p>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>If a server receives a ping request directed to a full JID &lt;localpart@domain.tld/resource&gt; associated with a registered account but there is no connected resource matching the 'to' address, <span class="ref">RFC 6120</span> requires it to reply with a &lt;service-unavailable/&gt; error and set the 'from' address of the IQ-error to the full JID provided in the 'to' address of the ping request. If a connected resource receives a ping request but it does not want to reveal its network availability to the sender for any reason (e.g., because the sender is not authorized to know the connected resource's availability), then it too MUST reply with a &lt;service-unavailable/&gt; error. This consistency between the server response and the client response helps to prevent presence leaks.</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>No interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1612848">9</a>] is necessary as a result of this document.</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>9.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1621760">10</a>] includes "urn:xmpp:ping" in its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+  </div>
+<h2>10.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:ping'
+    xmlns='urn:xmpp:ping'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0199: http://www.xmpp.org/extensions/xep-0199.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='ping' type='empty'/&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0199<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.0<br />
+            Last Updated: 2009-06-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: ping<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/ping.xsd">http://www.xmpp.org/schemas/ping.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0199.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0199.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0199.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp714896" id="nt-idp714896">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp702608" id="nt-idp702608">2</a>. XEP-0124: Bidirectional-streams Over Synchronous HTTP &lt;<a href="http://xmpp.org/extensions/xep-0124.html">http://xmpp.org/extensions/xep-0124.html</a>&gt;.</p><p><a name="nt-idp704736" id="nt-idp704736">3</a>. XEP-0206: XMPP Over BOSH &lt;<a href="http://xmpp.org/extensions/xep-0206.html">http://xmpp.org/extensions/xep-0206.html</a>&gt;.</p><p><a name="nt-idp709968" id="nt-idp709968">4</a>. RFC 1393: Traceroute Using an IP Option &lt;<a href="http://tools.ietf.org/html/rfc1393">http://tools.ietf.org/html/rfc1393</a>&gt;.</p><p><a name="nt-idp1593792" id="nt-idp1593792">5</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1598528" id="nt-idp1598528">6</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1603520" id="nt-idp1603520">7</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1605456" id="nt-idp1605456">8</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1612848" id="nt-idp1612848">9</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1621760" id="nt-idp1621760">10</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.0 (2009-06-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Final.</p> (psa)
+    </div><h4>Version 1.0 (2007-06-12)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Draft; XMPP Registrar issued urn:xmpp:ping namespace.</p> (psa)
+    </div><h4>Version 0.5 (2007-05-30)</h4><div class="indent"><p>Clarified error handling and recommended against sending to bare JIDs.</p> (psa)
+    </div><h4>Version 0.4 (2007-05-21)</h4><div class="indent"><p>Modified security considerations to ensure coherence of error handling between client and server.</p> (psa)
+    </div><h4>Version 0.3 (2007-05-07)</h4><div class="indent"><p>Added use case for client pinging server; changed namespace to conform to XMPP Registrar requirements, with namespace to be issued upon advancement to Draft; added section on discovering support.</p> (psa)
+    </div><h4>Version 0.2 (2006-11-22)</h4><div class="indent"><p>Changed IQ-set to IQ-get; clarified requirements; specified protocol description; added use cases.</p> (psa)
+    </div><h4>Version 0.1 (2006-11-21)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

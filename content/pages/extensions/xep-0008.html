@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0008: IQ-Based Avatars</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="IQ-Based Avatars" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Creator" content="Julian Missig" /><meta name="DC.Creator" content="Jens Alfke" /><meta name="DC.Creator" content="Peter Millard" /><meta name="DC.Description" content="This specification provides historical documentation of an IQ-based protocol for exchanging user avatars." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-06-16" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0008" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0008: IQ-Based Avatars</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification provides historical documentation of an IQ-based protocol for exchanging user avatars.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Thomas Muldowney, Julian Missig, Jens Alfke, Peter Millard</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-06-16</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp616656">Introduction</a><br />2.  <a href="#sect-idp617936">Image Requirements</a><br />3.  <a href="#sect-idp619728">Avatar Availability</a><br />4.  <a href="#sect-idp629136">Avatar Retrieval</a><br />5.  <a href="#sect-idp1547552">Future Considerations</a><br />6.  <a href="#authornote">Author Note</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp616656" id="sect-idp616656">Introduction</a></h2>
+  <p>Many communication applications now allow for the association of a small image or buddy icon (avatar) with a user of that application. The avatar is not intended to be a defining portrait of the user, but rather a simple expression of the user's appearance, mood, status, and the like. This proposal outlines a way to incorporate avatars into the current Jabber platform.</p>
+<h2>2.
+       <a name="sect-idp617936" id="sect-idp617936">Image Requirements</a></h2>
+  <p>Certain restrictions are placed upon the image. First, the image height and width must be between thirty-two (32) and sixty-four (64) pixels. The suggested size is sixty-four (64) pixels high and sixty-four (64) pixels wide  [<a href="#nt-idp618816">1</a>]. Images should be square, but this is not required. Images should be in GIF, JPEG, or PNG format, although it is possible that in future revisions of this spec more formats will be allowed. Finally, images must use less than eight (8) kilobytes of data.</p>
+<h2>3.
+       <a name="sect-idp619728" id="sect-idp619728">Avatar Availability</a></h2>
+  <p>There are two methods of showing that a client has an avatar available:</p>
+  <ol>
+    <li>Embedding the jabber:x:avatar namespace within &lt;presence/&gt; packets using Jabber's &lt;x/&gt; element</li>
+    <li>Displaying the jabber:iq:avatar namespace in browse requests</li>
+  </ol>
+  <p>Partly because Jabber browsing is relatively undeveloped, this proposal focuses on the first option.</p>
+  <p>The &lt;x/&gt; element in the jabber:x:avatar namespace contains a SHA1 hash (hexadecimal, not base64) of the image data itself (not the base64-encoded version) in a &lt;hash/&gt; element. (Because the odds of creating an identical hash are small, the hash is considered unique to the image and can be used to cache images between client sessions, resulting in fewer requests for the image.) The initial announcement of the availability of an avatar is done by sending a presence packet with the jabber:x:avatar information, as follows:</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;x xmlns='jabber:x:avatar'&gt;
+    &lt;hash&gt;SHA1 of image data&lt;/hash&gt;
+  &lt;/x&gt;
+&lt;/presence&gt;
+  </pre></div>
+  <p>If the avatar-generating user changes the avatar, a new presence packet is sent out with the updated information:</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;x xmlns='jabber:x:avatar'&gt;
+    &lt;hash&gt;SHA1 of new image data&lt;/hash&gt;
+  &lt;/x&gt;
+&lt;/presence&gt;
+  </pre></div>
+  <p>To disable the avatar, the avatar-generating user's client will send a presence packet with the jabber:x:avatar namespace but with no hash information:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">
+&lt;presence&gt;
+  &lt;x xmlns='jabber:x:avatar'/&gt;
+&lt;/presence&gt;
+  </pre></div>
+  <p>Clients should send the current avatar hash in every &lt;presence/&gt; packet even if the avatar has not changed. Remember that other clients logging in will receive a copy of the most recent &lt;presence/&gt; element, which should therefore always contain the most recent avatar hash. However, if the client's connection is lost unexpectedly or the client disconnects without sending an unavailable presence, the server will send other clients a &lt;presence/&gt; element containing no jabber:x:avatar extension. Therefore if, after receiving one or more presence packets containing jabber:x:avatar information, an avatar-receiving client receives a presence packet that does not include the jabber:x:avatar namespace, it is recommended that the client save the avatar image until the next set of information is received. In this case the avatar-generating client might send something as simple as the following:</p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;presence/&gt;
+  </pre></div>
+<h2>4.
+       <a name="sect-idp629136" id="sect-idp629136">Avatar Retrieval</a></h2>
+  <p>There are two methods for retrieving the actual avatar data:</p>
+  <ol>
+    <li>An exchange between clients of &lt;iq/&gt; elements in the jabber:iq:avatar namespace</li>
+    <li>Public XML storage from the avatar-generating client to the server and public XML retrieval from the server to the avatar-requesting client (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0049.html">Private XML Storage (XEP-0049)</a></span>  [<a href="#nt-idp637696">2</a>]).</li>
+  </ol>
+  <p>The first of these methods is preferred. On this model, a query is sent directly to the avatar-generating client using an &lt;iq/&gt; element of type "get" in the jabber:iq:avatar namespace  [<a href="#nt-idp631584">3</a>]  [<a href="#nt-idp632656">4</a>]:</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+&lt;iq id='2' type='get' to='user@server/resource'&gt;
+  &lt;query xmlns='jabber:iq:avatar'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The avatar-generating client will reply with an &lt;iq/&gt; element of type "result" in the jabber:iq:avatar namespace; this reply will contain a query element that in turn contains a &lt;data/&gt; element with the MIME type in the 'mimetype' attribute and the data base64-encoded in the body of the &lt;data/&gt; element:</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. </p><div class="indent"><pre class="prettyprint">
+&lt;iq id='2' type='result' to='user@server/resource'&gt;
+  &lt;query xmlns='jabber:iq:avatar'&gt;
+    &lt;data mimetype='image/jpeg'&gt;
+      Base64-Encoded Data
+    &lt;/data&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If the first method fails, the second method that should be attempted by sending a request to the server for the avatar-generating user's public XML containing the avatar data. This data is to be stored in the storage:client:avatar namespace. This method presumes that the avatar-generating client has already stored its avatar data on the server:</p>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. </p><div class="indent"><pre class="prettyprint">
+&lt;iq id='0' type='set' to='user@server'&gt;
+  &lt;query xmlns='storage:client:avatar'&gt;
+    &lt;data mimetype='image/jpeg'&gt;
+      Base64 Encoded Data
+    &lt;/data&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Once such data has been set, the avatar can be retrieved by any requesting client from the avatar-generating client's public XML storage:</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. </p><div class="indent"><pre class="prettyprint">
+&lt;iq id='1' type='get' to='user@server'&gt;
+  &lt;query xmlns='storage:client:avatar'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="sect-idp1547552" id="sect-idp1547552">Future Considerations</a></h2>
+  <p>It is acknowledged that sending avatar information within presence packets is less than desirable in many respects (e.g., in network traffic generated); however, there currently exists in Jabber no generic framework for addressing these shortcomings. Possible solutions on the horizon include live browsing and a pub/sub model, but these are still embryonic and experimental. Once something of that nature is accepted by the Council, the avatar spec will be modified to work within that framework rather than by attaching to presence.</p>
+<h2>6.
+       <a name="authornote" id="authornote">Author Note</a></h2>
+  <p>Peter Millard, a co-author of this specification from version 0.1 through version 0.3, died on April 26, 2006.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0008<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 0.3<br />
+            Last Updated: 2005-06-16<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0008.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0008.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0008.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@jabber.org">temas@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p><h3>Julian Missig</h3><p class="indent">
+        Email:
+        <a href="mailto:julian@jabber.org">julian@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:julian@jabber.org">julian@jabber.org</a><br /></p><h3>Jens Alfke</h3><p class="indent">
+        Email:
+        <a href="mailto:jens@mac.com">jens@mac.com</a><br /></p><h3>Peter Millard</h3><p class="indent">
+        See <a href="#authornote">Author Note</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp618816" id="nt-idp618816">1</a>. It is highly recommended that clients never scale up images when displaying them.</p><p><a name="nt-idp637696" id="nt-idp637696">2</a>. XEP-0049: Private XML Storage &lt;<a href="http://xmpp.org/extensions/xep-0049.html">http://xmpp.org/extensions/xep-0049.html</a>&gt;.</p><p><a name="nt-idp631584" id="nt-idp631584">3</a>. Whenever possible, the avatar-requesting client should attempt to determine if the avatar-generating client has an avatar available before requesting it.</p><p><a name="nt-idp632656" id="nt-idp632656">4</a>. It is suggested that no request be made if it is known (such as through a browse reply) that a client does not support the jabber:iq:avatar namespace.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2005-06-16)</h4><div class="indent">Coincident with publication of XEP-0153, changed type to Historical. (psa)
+    </div><h4>Version 0.2 (2003-05-06)</h4><div class="indent">At the request of the authors, the status of this document has been changed to Retracted. (psa)
+    </div><h4>Version 0.1 (2001-09-14)</h4><div class="indent">Initial release (tm)
+    </div></div><hr /><p>END</p></body></html>

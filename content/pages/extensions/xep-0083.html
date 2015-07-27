@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0083: Nested Roster Groups</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Nested Roster Groups" /><meta name="DC.Creator" content="Rachel Blackman" /><meta name="DC.Description" content="This document defines an XMPP protocol extension that enables nested sub-groups to exist within the Jabber roster, while retaining backwards compatibility and ensuring that the roster remains usable by all clients." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-10-11" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0083" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0083: Nested Roster Groups</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension that enables nested sub-groups to exist within the Jabber roster, while retaining backwards compatibility and ensuring that the roster remains usable by all clients.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Rachel Blackman</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-10-11</td></tr></table><hr /><p style="color:green">NOTICE: This Informational specification defines a best practice or protocol profile that has been approved by the XMPP Council and/or the XSF Board of Directors. Implementations are encouraged and the best practice or protocol profile is appropriate for deployment in production systems.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#namespace">roster:delimiter Namespace</a><br />3.  <a href="#usecases">Use Cases</a><br />   
+      3.1.  <a href="#usecases-query">Querying for the delimiter</a><br />   
+      3.2.  <a href="#usecases-retrieve">Retrieving the Roster</a><br />4.  <a href="#security">Security Considerations</a><br />5.  <a href="#iana">IANA Considerations</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      6.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />7.  <a href="#schema">Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>In many modern instant messaging clients, client authors implement a way to nest contact groups within other contact groups.  Usually this is implemented on the client side, since many instant messaging networks do not support nesting contact groups in this manner.  The limitation of this system is that if the user changes from one client to another, or even a second installation of the same client, the user loses all of his or her sub-group information.  This document aims to solve that problem within Jabber, by providing for a way to store sub-groups on the Jabber roster without breaking existing clients.</p>
+<h2>2.
+       <a name="namespace" id="namespace">roster:delimiter Namespace</a></h2>
+  <p>Jabber already provides a useful method for storing client data on the server using <span class="ref"><a href="http://xmpp.org/extensions/xep-0049.html">Private XML Storage (XEP-0049)</a></span>  [<a href="#nt-idp590848">1</a>].  All we need to do is create a new roster element and a namespace to store the delimiter for nested groups, roster:delimiter.  This element MUST contain XML character data that defines a string to be used as a delimiter in the roster groups.  [<a href="#nt-idp589664">2</a>]</p>
+  <p>A single-character roster delimiter (e.g., "/") would make client implementation easier, but be more limiting to the end-user in terms of choices for naming roster groups, so a string is ideal.  Therefore, the delimiter SHOULD contain multiple characters in order to avoid inconveniencing the user, but single-character delimiters MUST be honored by the client.  The exception is if the delimiter is a single alphanumeric character (a-z, A-Z, 0-9); in this case compliant clients MUST treat the situation as if nesting were disabled, to avoid malicious use of this element by setting 'e' or 'm' or some other common single character as a delimiter.</p>
+  <p>A compliant client SHOULD ask for the nested delimiter before requesting the user's roster, in order to know whether or not to parse the roster 'group' fields accordingly.  If there is no delimiter stored, a client MAY set a delimiter but MUST either prompt the user for a delimiter, or use a user-configurable default.</p>
+<h2>3.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <p>Use cases for this extension are straightforward, and are shown below as examples.</p>
+  <div class="indent"><h3>3.1 <a name="usecases-query" id="usecases-query">Querying for the delimiter</a></h3>
+    <p>All compliant clients SHOULD query for an existing delimiter at login.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Querying for the Delimiter</p><div class="indent"><pre class="prettyprint">
+CLIENT:
+&lt;iq type='get'
+    id='1'&gt;
+  &lt;query xmlns='jabber:iq:private'&gt;
+    &lt;roster xmlns='roster:delimiter'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+
+SERVER:
+&lt;iq type='result'
+    id='1'
+    from='bill@shakespeare.lit/Globe'
+    to='bill@shakespeare.lit/Globe'&gt;
+  &lt;query xmlns='jabber:iq:private'&gt;
+    &lt;roster xmlns='roster:delimiter'&gt;::&lt;/roster&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="usecases-retrieve" id="usecases-retrieve">Retrieving the Roster</a></h3>
+    <p>Now that the client has a delimiter, we can retrieve and parse the roster properly.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Retrieving a Roster with Nested Groups</p><div class="indent"><pre class="prettyprint">
+
+CLIENT:
+&lt;iq type='get'
+    id='2'&gt;
+  &lt;query xmlns='jabber:iq:roster'/&gt;
+&lt;/iq&gt;
+
+SERVER:
+&lt;iq type='result'
+    to='bill@shakespeare.lit/Globe'
+    id='2'&gt;
+  &lt;query xmlns='jabber:iq:roster'&gt;
+    &lt;item jid='bottom@athens.gr' subscription='both'&gt;
+      &lt;group&gt;Midsummer::Actors&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='quince@athens.gr' subscription='both'&gt;
+      &lt;group&gt;Midsummer::Actors&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='snug@athens.gr' subscription='both'&gt;
+      &lt;group&gt;Midsummer::Actors&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='theseus@athens.gr' subscription='both'&gt;
+      &lt;group&gt;Midsummer::Royalty&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='hippolyta@athens.gr' subscription='both'&gt;
+      &lt;group&gt;Midsummer::Royalty&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='robin@faeries.underhill.org' subscription='both'&gt;
+      &lt;group&gt;Midsummer&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='hamlet@denmark.net' subscription='both'&gt;
+      &lt;group&gt;Hamlet&lt;/group&gt;
+    &lt;/item&gt;
+    &lt;item jid='gertrude@denmark.net' subscription='both'&gt;
+      &lt;group&gt;Hamlet&lt;/group&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Bottom, Quince and Snug should be grouped together in a group 'Actors' underneath the group 'Midsummer'.  Theseus and Hippolyta should be grouped together in a group 'Royalty' under 'Midsummer'.  Robin Goodfellow, meanwhile, being in a class unto himself, is a plain contact under the 'Midsummer' group rather than in an actual sub-group.  The group Hamlet, containing only one melancholy prince and his mother, contains no sub-groups at all.</p>
+  <p>As should be apparent, a client which does not support the delimiter will instead create a separate group -- such as 'Midsummer::Actors' -- and thus will still have each set of contacts grouped with the other appropriate contacts.</p>
+  </div>
+<h2>4.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal above and beyond those specified for roster management in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp605168">3</a>] and for private XML storage in XEP-0049.</p>
+<h2>5.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp609600">4</a>].</p>
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>6.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp613920">5</a>] includes 'roster:delimiter' in its registry of protocol namespaces.</p>
+  </div>
+<h2>7.
+       <a name="schema" id="schema">Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='roster:delimiter'
+    xmlns='roster:delimiter'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0083: http://www.xmpp.org/extensions/xep-0083.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='roster' type='xs:string'/&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0083<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-10-11<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0049<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: nestedgroups<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/delimiter.xsd">http://www.xmpp.org/schemas/delimiter.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0083.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0083.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0083.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Rachel Blackman</h3><p class="indent">
+        Email:
+        <a href="mailto:rcb@ceruleanstudios.com">rcb@ceruleanstudios.com</a><br />
+        JabberID: 
+        <a href="xmpp:sparks@jabber.org">sparks@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp590848" id="nt-idp590848">1</a>. XEP-0049: Private XML Storage &lt;<a href="http://xmpp.org/extensions/xep-0049.html">http://xmpp.org/extensions/xep-0049.html</a>&gt;.</p><p><a name="nt-idp589664" id="nt-idp589664">2</a>. If the element does not contain XML character data, a compliant client SHOULD assume that nested groups are disabled for the user's account.</p><p><a name="nt-idp605168" id="nt-idp605168">3</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp609600" id="nt-idp609600">4</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp613920" id="nt-idp613920">5</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-10-11)</h4><div class="indent">Per a vote of the Jabber Council, advanced to a status of Active. (psa)
+    </div><h4>Version 0.1 (2003-05-05)</h4><div class="indent">Initial version. (rcb)
+    </div></div><hr /><p>END</p></body></html>

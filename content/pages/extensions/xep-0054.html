@@ -1,0 +1,630 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0054: vcard-temp</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="vcard-temp" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification provides canonical documentation of the vCard-XML format currently in use within the Jabber community." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-07-16" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0054" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0054: vcard-temp</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification provides canonical documentation of the vCard-XML format currently in use within the Jabber community.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-07-16</td></tr></table><hr /><p style="color:green">NOTICE: This Historical specification provides canonical documentation of a protocol that is in use within the Jabber/XMPP community. This document is not a standards-track specification within the XMPP Standards Foundation's standards process; however, it might be converted to standards-track in the future or might be obsoleted by a more modern protocol.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#history">History</a><br />3.  <a href="#usecases">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp664272">Retrieving One's vCard</a><br />   
+      3.2.  <a href="#sect-idp671584">Updating One's vCard</a><br />   
+      3.3.  <a href="#sect-idp1533488">Viewing Another User's vCard</a><br />4.  <a href="#support">Determining Support</a><br />5.  <a href="#security">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-querytypes">URI Query Types</a><br />8.  <a href="#impl">Implementation Notes</a><br />9.  <a href="#dtd">DTD</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This specification documents the vCard-XML format currently in use within the Jabber community. A future specification will recommend a standards-track protocol to supersede this informational document.</p>
+  <p>The basic functionality is for a user to store and retrieve an XML representation of his or her vCard using the data storage capabilities native to all existing Jabber server implementations. This is done by by sending an &lt;iq/&gt; of type "set" (storage) or "get" (retrieval) to one's Jabber server containing a &lt;vCard/&gt; child scoped by the 'vcard-temp' namespace, with the &lt;vCard/&gt; element containing the actual vCard-XML elements as defined by the vCard-XML DTD. Other users may then view one's vCard information.</p>
+<h2>2.
+       <a name="history" id="history">History</a></h2>
+  <p>vCards are an existing and widely-used standard for personal user information storage, somewhat like an electronic business card. The vCard format is defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc2426">RFC 2426</a></span>  [<a href="#nt-idp663024">1</a>].</p>
+  <p>In 1998 and 1999, Frank Dawson submitted four revisions of an Internet-Draft proposing to represent the standard vCard format in XML. When the jabberd open-source project was originally looking for a method to store personal user information, the most recent revision consulted by the jabberd developers was draft-dawson-vcard-xml-dtd-01  [<a href="#nt-idp660976">2</a>]. He also submitted a -02 revision on November 15, 1998  [<a href="#nt-idp674912">3</a>] and a -03 revision on June 22, 1999  [<a href="#nt-idp676160">4</a>].</p>
+  <p>Unfortunately, Dawson's proposal did not move forward within the IETF's standards process. For reasons now lost in the mists of time, the Jabber project continued to use the DTD from draft-dawson-vcard-xml-dtd-01, making two small modifications to adapt it for use within the Jabber community (adding the JABBERID and DESC elements) but also specifying element names in all caps rather than lowercase as defined in draft-dawson-vcard-xml-dtd-01. In addition, the Jabber community followed the usage (but not DTD) in that draft regarding version information, including it as an attribute of the vCard element rather than as a child element. This format was implemented within the Jabber community under the 'vcard-temp' namespace.</p>
+<h2>3.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp664272" id="sect-idp664272">Retrieving One's vCard</a></h3>
+    <p>A user retrieves his or her own vCard by sending an IQ-get with no 'to' address and containing a &lt;vCard/&gt; child element qualified by the 'vcard-temp' namespace.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. vCard Retrieval Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stpeter@jabber.org/roundabout'
+    id='v1'
+    type='get'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If a vCard exists for the user, the server MUST return in an IQ-result:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server Returns vCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v1'
+    to='stpeter@jabber.org/roundabout'
+    type='result'&gt;
+  &lt;vCard xmlns='vcard-temp'&gt;
+    &lt;FN&gt;Peter Saint-Andre&lt;/FN&gt;
+    &lt;N&gt;
+      &lt;FAMILY&gt;Saint-Andre&lt;/FAMILY&gt;
+      &lt;GIVEN&gt;Peter&lt;/GIVEN&gt;
+      &lt;MIDDLE/&gt;
+    &lt;/N&gt;
+    &lt;NICKNAME&gt;stpeter&lt;/NICKNAME&gt;
+    &lt;URL&gt;http://www.xmpp.org/xsf/people/stpeter.shtml&lt;/URL&gt;
+    &lt;BDAY&gt;1966-08-06&lt;/BDAY&gt;
+    &lt;ORG&gt;
+      &lt;ORGNAME&gt;XMPP Standards Foundation&lt;/ORGNAME&gt;
+      &lt;ORGUNIT/&gt;
+    &lt;/ORG&gt;
+    &lt;TITLE&gt;Executive Director&lt;/TITLE&gt;
+    &lt;ROLE&gt;Patron Saint&lt;/ROLE&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;VOICE/&gt;&lt;NUMBER&gt;303-308-3282&lt;/NUMBER&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;FAX/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;MSG/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;ADR&gt;
+      &lt;WORK/&gt;
+      &lt;EXTADD&gt;Suite 600&lt;/EXTADD&gt;
+      &lt;STREET&gt;1899 Wynkoop Street&lt;/STREET&gt;
+      &lt;LOCALITY&gt;Denver&lt;/LOCALITY&gt;
+      &lt;REGION&gt;CO&lt;/REGION&gt;
+      &lt;PCODE&gt;80202&lt;/PCODE&gt;
+      &lt;CTRY&gt;USA&lt;/CTRY&gt;
+    &lt;/ADR&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;VOICE/&gt;&lt;NUMBER&gt;303-555-1212&lt;/NUMBER&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;FAX/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;MSG/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;ADR&gt;
+      &lt;HOME/&gt;
+      &lt;EXTADD/&gt;
+      &lt;STREET/&gt;
+      &lt;LOCALITY&gt;Denver&lt;/LOCALITY&gt;
+      &lt;REGION&gt;CO&lt;/REGION&gt;
+      &lt;PCODE&gt;80209&lt;/PCODE&gt;
+      &lt;CTRY&gt;USA&lt;/CTRY&gt;
+    &lt;/ADR&gt;
+    &lt;EMAIL&gt;&lt;INTERNET/&gt;&lt;PREF/&gt;&lt;USERID&gt;stpeter@jabber.org&lt;/USERID&gt;&lt;/EMAIL&gt;
+    &lt;JABBERID&gt;stpeter@jabber.org&lt;/JABBERID&gt;
+    &lt;DESC&gt;
+      More information about me is located on my 
+      personal website: http://www.saint-andre.com/
+    &lt;/DESC&gt;
+  &lt;/vCard&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If no vCard exists, the server MUST return a stanza error (which SHOULD be &lt;item-not-found/&gt;) or an IQ-result containing an empty &lt;vCard/&gt; element.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. No vCard (item-not-found)</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v1'
+    to='stpeter@jabber.org/roundabout'
+    type='error'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. No vCard (empty element)</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v1'
+    to='stpeter@jabber.org/roundabout'
+    type='result'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp671584" id="sect-idp671584">Updating One's vCard</a></h3>
+    <p>A user may publish or update his or her vCard by sending an IQ of type "set" with no 'to' address, following the format in the previous use case.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. vCard Update Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v2' type='set'&gt;
+  &lt;vCard xmlns='vcard-temp'&gt;
+    &lt;FN&gt;Peter Saint-Andre&lt;/FN&gt;
+    &lt;N&gt;
+      &lt;FAMILY&gt;Saint-Andre&lt;/FAMILY&gt;
+      &lt;GIVEN&gt;Peter&lt;/GIVEN&gt;
+      &lt;MIDDLE/&gt;
+    &lt;/N&gt;
+    &lt;NICKNAME&gt;stpeter&lt;/NICKNAME&gt;
+    &lt;URL&gt;http://www.xmpp.org/xsf/people/stpeter.shtml&lt;/URL&gt;
+    &lt;BDAY&gt;1966-08-06&lt;/BDAY&gt;
+    &lt;ORG&gt;
+      &lt;ORGNAME&gt;XMPP Standards Foundation&lt;/ORGNAME&gt;
+      &lt;ORGUNIT/&gt;
+    &lt;/ORG&gt;
+    &lt;TITLE&gt;Executive Director&lt;/TITLE&gt;
+    &lt;ROLE&gt;Patron Saint&lt;/ROLE&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;VOICE/&gt;&lt;NUMBER&gt;303-308-3282&lt;/NUMBER&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;FAX/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;WORK/&gt;&lt;MSG/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;ADR&gt;
+      &lt;WORK/&gt;
+      &lt;EXTADD&gt;Suite 600&lt;/EXTADD&gt;
+      &lt;STREET&gt;1899 Wynkoop Street&lt;/STREET&gt;
+      &lt;LOCALITY&gt;Denver&lt;/LOCALITY&gt;
+      &lt;REGION&gt;CO&lt;/REGION&gt;
+      &lt;PCODE&gt;80202&lt;/PCODE&gt;
+      &lt;CTRY&gt;USA&lt;/CTRY&gt;
+    &lt;/ADR&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;VOICE/&gt;&lt;NUMBER&gt;303-555-1212&lt;/NUMBER&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;FAX/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;TEL&gt;&lt;HOME/&gt;&lt;MSG/&gt;&lt;NUMBER/&gt;&lt;/TEL&gt;
+    &lt;ADR&gt;
+      &lt;HOME/&gt;
+      &lt;EXTADD/&gt;
+      &lt;STREET/&gt;
+      &lt;LOCALITY&gt;Denver&lt;/LOCALITY&gt;
+      &lt;REGION&gt;CO&lt;/REGION&gt;
+      &lt;PCODE&gt;80209&lt;/PCODE&gt;
+      &lt;CTRY&gt;USA&lt;/CTRY&gt;
+    &lt;/ADR&gt;
+    &lt;EMAIL&gt;&lt;INTERNET/&gt;&lt;PREF/&gt;&lt;USERID&gt;stpeter@jabber.org&lt;/USERID&gt;&lt;/EMAIL&gt;
+    &lt;JABBERID&gt;stpeter@jabber.org&lt;/JABBERID&gt;
+    &lt;DESC&gt;
+      Check out my blog at https://stpeter.im/
+    &lt;/DESC&gt;
+  &lt;/vCard&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The server then returns an IQ-result (or an IQ-error).</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server Returns Success</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v2'
+    to='stpeter@jabber.org/roundabout'
+    type='result'/&gt;
+    </pre></div>
+    <p>Notice that the previous IQ-set included only one changed element (the &lt;DESC/&gt; element). Currently there is no method for partial updates of a vCard, and the entire vCard must be sent to the server in order to update any part of the vCard.</p>
+    <p>If a user attempts to perform an IQ set on another user's vCard (i.e., by setting a 'to' address to a JID other than the sending user's bare JID), the server MUST return a stanza error, which SHOULD be &lt;forbidden/&gt; or &lt;not-allowed/&gt;.</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Entity Attempts to Modify Another Entity's vCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v2'
+    to='stpeter@jabber.org/roundabout'
+    type='error'&gt;
+  &lt;error type='auth'&gt;
+    &lt;forbidden xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp1533488" id="sect-idp1533488">Viewing Another User's vCard</a></h3>
+    <p>A user may view another user's vCard by sending an IQ of type "get" to the other user's bare JID.</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Requesting Another User's vCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='stpeter@jabber.org/roundabout'
+    id='v3'
+    to='jer@jabber.org'
+    type='get'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>In accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1537872">5</a>], a compliant server MUST respond on behalf of the requestor and not forward the IQ to the requestee's connected resource.</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Receiving Another User's vCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='jer@jabber.org' 
+    to='stpeter@jabber.org/roundabout' 
+    type='result'
+    id='v3'&gt;
+  &lt;vCard xmlns='vcard-temp'&gt;
+    &lt;FN&gt;JeremieMiller&lt;/FN&gt;
+    &lt;N&gt;
+      &lt;GIVEN&gt;Jeremie&lt;/GIVEN&gt;
+      &lt;FAMILY&gt;Miller&lt;/FAMILY&gt;
+      &lt;MIDDLE/&gt;
+    &lt;/N&gt;
+    &lt;NICKNAME&gt;jer&lt;/NICKNAME&gt;
+    &lt;EMAIL&gt;&lt;INTERNET/&gt;&lt;PREF/&gt;&lt;USERID&gt;jeremie@jabber.org&lt;/USERID&gt;&lt;/EMAIL&gt;
+    &lt;JABBERID&gt;jer@jabber.org&lt;/JABBERID&gt;
+  &lt;/vCard&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If no vCard exists or the user does not exist, the server MUST return a stanza error, which SHOULD be either &lt;service-unavailable/&gt; or &lt;item-not-found/&gt; (but the server MUST return the same error condition in both cases to help prevent directory harvesting attacks).</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. No vCard</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='v3'
+    to='stpeter@jabber.org/roundabout'
+    type='error'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The use of vCards is not limited to accounts associated with human users. For example, an XMPP server could itself have a vCard that defines the server's hosting organization, physical location, and relevant contact addresses.</p>
+  </div>
+<h2>4.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>If an entity supports the vcard-temp protocol, it MUST report that by including a service discovery feature of "vcard-temp" (see <a href="#ns">Protocol Namespaces</a> regarding issuance of one or more permanent namespaces) in response to a <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1546560">6</a>] information request:</p>
+  <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Service Discovery Information Request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.lit/balcony'
+    to='capulet.lit'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Service Discovery Information Response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='capulet.lit'
+    to='juliet@capulet.lit/balcony'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='vcard-temp'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>This information can also be encapsulated via <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1551280">7</a>] for entities who share presence.</p>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>The vCard information published to one's Jabber server is world-readable; therefore, users should exercise due caution when determining what information to include (e.g., street addresses, personal telephone numbers, or email addresses).</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1556128">8</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1565040">9</a>] includes the 'vcard-temp' namespace in its registry of official namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-querytypes" id="registrar-querytypes">URI Query Types</a></h3>
+    <p>As authorized by <span class="ref"><a href="http://xmpp.org/extensions/xep-0147.html">XMPP URI Query Components (XEP-0147)</a></span>  [<a href="#nt-idp1562192">10</a>], the XMPP Registrar maintains a registry of queries and key-value pairs for use in XMPP URIs (see &lt;<a href="http://xmpp.org/registrar/querytypes.html">http://xmpp.org/registrar/querytypes.html</a>&gt;).</p>
+    <p>The "vcard" querytype is registered as a vCard-related action.</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. vCard Action: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:romeo@montague.net?vcard
+    </pre></div>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. vCard Action: Resulting Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='romeo@montague.net' type='get'&gt;
+  &lt;vCard xmlns='vcard-temp'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The following submission registers the "vcard" querytype.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;querytype&gt;
+  &lt;name&gt;vcard&lt;/name&gt;
+  &lt;proto&gt;vcard-temp&lt;/proto&gt;
+  &lt;desc&gt;enables retrieval of an entity's vCard data&lt;/desc&gt;
+  &lt;doc&gt;XEP-0054&lt;/doc&gt;
+&lt;/querytype&gt;
+    </pre></div>
+  </div>
+<h2>8.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>Note the following:</p>
+  <ul>
+    <li>The correct capitalization of the wrapper element is &lt;vCard/&gt; (and XML element names are case-sensitive).</li>
+    <li>All elements within the &lt;vCard/&gt; element MUST be in ALL CAPS (even though this is at odds with draft-dawson-vcard-xml-dtd-01).</li>
+    <li>The country abbreviation is contained in a &lt;CTRY/&gt; element, <span class="em">not</span> a &lt;COUNTRY/&gt; element (even though this is at odds with draft-dawson-vcard-xml-dtd-01).</li>
+    <li>Phone numbers MUST be contained in a &lt;NUMBER&gt; element, not included as CDATA within the &lt;TEL/&gt; element.</li>
+    <li>If no telephone number is included in a &lt;TEL/&gt; element, an empty &lt;NUMBER/&gt; child MUST be included.</li>
+    <li>Email addresses MUST be contained in a &lt;USERID&gt; element, not included as CDATA within the &lt;EMAIL/&gt; element.</li>
+    <li>Some Jabber implementations add a 'version' attribute to the &lt;vCard/&gt; element, with the value set at "2.0" or "3.0". The DTD is incorrect, and the examples in draft-dawson-vcard-xml-dtd-01 clearly show that version information is to be included by means of a 'version' attribute, not the &lt;VERSION/&gt; element as defined in the DTD. However, to conform to draft-dawson-vcard-xml-dtd-01, the value should be "3.0", not "2.0".</li>
+  </ul>
+<h2>9.
+       <a name="dtd" id="dtd">DTD</a></h2>
+  <p>The following DTD is a slightly modified version of that contained in draft-dawson-vcard-xml-dtd-01. The only modifications were to add the JABBERID and DESC elements.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;!--
+Copyright (C) The Internet Society (2000). All Rights Reserved.
+
+This document and translations of it may be copied and
+furnished to others, and derivative works that comment
+on or otherwise explain it or assist in its implmentation 
+may be prepared, copied, published and distributed, in whole
+or in part, without restriction of any kind, provided that
+the above copyright notice and this paragraph are included
+on all such copies and derivative works.
+
+However, this document itself may not be modified in any
+way, such as by removing the copyright notice or references
+to the Internet Society or other Internet organizations,
+except as needed for the purpose of developing Internet
+standards in which case the procedures for copyrights
+defined in the Internet Standards process MUST be followed,
+or as required to translate it into languages other than English.
+
+The limited permissions granted above are perpetual and will
+not be revoked by the Internet Society or its successors or
+assigns.
+
+This document and the information contained herein is provided
+on an "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET
+ENGINEERING TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE
+USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS OR
+ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE.
+--&gt;
+
+&lt;!-- ==== --&gt;
+
+&lt;!-- NOTE: the following root element is not used in the
+           modified vcard-temp DTD published by the Jabber 
+           project (now XMPP Standards Foundation) and is
+           included here only for historical purposes; 
+           implementations that comply with vcard-temp must
+           specify the root element as vCard, not xCard. --&gt;
+
+&lt;!-- Root element and container for one
+  or more vCard objects --&gt;
+&lt;!ELEMENT xCard (vCard)+&gt;
+
+&lt;!-- Individual vCard container --&gt;
+&lt;!ELEMENT vCard (
+  (VERSION, FN, N),
+  (NICKNAME?,
+  PHOTO?, 
+  BDAY?, 
+  ADR?, 
+  LABEL?, 
+  TEL?, 
+  EMAIL?,
+  JABBERID?,
+  MAILER?, 
+  TZ?, 
+  GEO?, 
+  TITLE?, 
+  ROLE?,  
+  LOGO?, 
+  AGENT?, 
+  ORG?, 
+  CATEGORIES?, 
+  NOTE?, 
+  PRODID?, 
+  REV?, 
+  SORT-STRING?, 
+  SOUND?, 
+  UID?, 
+  URL?, 
+  CLASS?, 
+  KEY?,
+  DESC?
+)*)&gt;
+
+  &lt;!-- vCard specification version property. 
+    This MUST be 2.0, if the document conforms to RFC 2426. --&gt;
+  &lt;!ELEMENT VERSION (#PCDATA)&gt;
+
+  &lt;!-- Formatted or display name property. --&gt;
+  &lt;!ELEMENT FN (#PCDATA)&gt;
+
+  &lt;!-- Structured name property. Name components with multiple
+    values must be specified as a comma separated
+	list of values. --&gt;
+  &lt;!ELEMENT N ( FAMILY?, GIVEN?, MIDDLE?, PREFIX?, SUFFIX?)&gt;
+  
+    &lt;!ELEMENT FAMILY (#PCDATA)&gt;
+    &lt;!ELEMENT GIVEN (#PCDATA)&gt;
+    &lt;!ELEMENT MIDDLE (#PCDATA)&gt;
+    &lt;!ELEMENT PREFIX (#PCDATA)&gt;
+    &lt;!ELEMENT SUFFIX (#PCDATA)&gt;
+
+  &lt;!-- Nickname property. Multiple nicknames must be
+    specified as a comma separated list value. --&gt;
+  &lt;!ELEMENT NICKNAME (#PCDATA)&gt;
+
+  &lt;!-- Photograph property. Value is either a BASE64 encoded
+    binary value or a URI to the external content. --&gt;
+  &lt;!ELEMENT PHOTO ((TYPE, BINVAL) | EXTVAL)&gt;
+
+  &lt;!-- Birthday property. Value must be an ISO 8601 formatted
+    date or date/time value. --&gt;
+  &lt;!ELEMENT BDAY (#PCDATA)&gt;
+
+  &lt;!-- Structured address property. Address components with
+    multiple values must be specified as a comma separated list
+    of values. --&gt;
+  &lt;!ELEMENT ADR (
+    HOME?, 
+    WORK?, 
+    POSTAL?, 
+    PARCEL?, 
+    (DOM | INTL)?, 
+    PREF?, 
+    POBOX?, 
+    EXTADD?, 
+    STREET?, 
+    LOCALITY?, 
+    REGION?, 
+    PCODE?, 
+    CTRY?
+  )&gt;
+  
+    &lt;!ELEMENT POBOX (#PCDATA)&gt;
+    &lt;!ELEMENT EXTADD (#PCDATA)&gt;
+    &lt;!ELEMENT STREET (#PCDATA)&gt;
+    &lt;!ELEMENT LOCALITY (#PCDATA)&gt;
+    &lt;!ELEMENT REGION (#PCDATA)&gt;
+    &lt;!ELEMENT PCODE (#PCDATA)&gt;
+    &lt;!ELEMENT CTRY (#PCDATA)&gt;
+
+  &lt;!-- Address label property. --&gt;
+  &lt;!ELEMENT LABEL (
+    HOME?, 
+    WORK?, 
+    POSTAL?, 
+    PARCEL?, 
+    (DOM | INTL)?, 
+    PREF?, 
+    LINE+
+  )&gt;
+
+    &lt;!-- Individual label lines. --&gt;
+    &lt;!ELEMENT LINE (#PCDATA)&gt;
+
+  &lt;!-- Telephone number property. --&gt;
+  &lt;!ELEMENT TEL (
+    HOME?, 
+    WORK?, 
+    VOICE?, 
+    FAX?, 
+    PAGER?, 
+    MSG?, 
+    CELL?, 
+    VIDEO?, 
+    BBS?, 
+    MODEM?, 
+    ISDN?, 
+    PCS?, 
+    PREF?, 
+    NUMBER
+  )&gt;
+
+    &lt;!-- Phone number value. --&gt;
+    &lt;!ELEMENT NUMBER (#PCDATA)&gt;
+
+  &lt;!-- Email address property. Default type is INTERNET. --&gt;
+  &lt;!ELEMENT EMAIL (
+    HOME?, 
+    WORK?, 
+    INTERNET?, 
+    PREF?, 
+    X400?, 
+    USERID
+  )&gt;
+
+    &lt;!ELEMENT USERID (#PCDATA)&gt;
+  
+  &lt;!-- NOTE: the following element was added by the Jabber
+             project (now XMPP Standards Foundation) to
+             handle Jabber IDs; the value must be in the
+             form of user@host --&gt;
+
+  &lt;!ELEMENT JABBERID (#PCDATA)&gt;
+  
+  &lt;!-- Mailer (e.g., Mail User Agent Type) property. --&gt;
+  &lt;!ELEMENT MAILER (#PCDATA)&gt;
+  
+  &lt;!-- Time zone's Standard Time UTC offset. Value must be an
+    ISO 8601 formatted UTC offset. --&gt;
+  &lt;!ELEMENT TZ (#PCDATA)&gt;
+  
+  &lt;!-- Geographical position. Values are the decimal degress of
+    LATitude and LONgitude. The value should be specified to 
+    six decimal places.--&gt;
+  &lt;!ELEMENT GEO (LAT, LON)&gt;
+  
+    &lt;!-- Latitude value. --&gt;
+    &lt;!ELEMENT LAT (#PCDATA)&gt;
+	
+    &lt;!-- Longitude value. --&gt;
+    &lt;!ELEMENT LON (#PCDATA)&gt;
+	
+  &lt;!-- Title property. --&gt;
+  &lt;!ELEMENT TITLE (#PCDATA)&gt;
+
+  &lt;!-- Role property. --&gt;
+  &lt;!ELEMENT ROLE (#PCDATA)&gt;
+  
+  &lt;!-- Organization logo property. --&gt;
+  &lt;!ELEMENT LOGO ((TYPE, BINVAL) | EXTVAL)&gt;
+  
+  &lt;!-- Administrative agent property. --&gt;
+  &lt;!ELEMENT AGENT (vCard | EXTVAL)&gt;
+  
+  &lt;!-- Organizational name and units property. --&gt;
+  &lt;!ELEMENT ORG (ORGNAME, ORGUNIT*)&gt;
+  
+    &lt;!ELEMENT ORGNAME (#PCDATA)&gt;
+  
+    &lt;!ELEMENT ORGUNIT (#PCDATA)&gt;
+  
+  &lt;!-- Application specific categories property. --&gt;
+  &lt;!ELEMENT CATEGORIES (KEYWORD+)&gt;
+  
+    &lt;!ELEMENT KEYWORD (#PCDATA)&gt;
+  
+  &lt;!-- Commentary note property. --&gt;
+  &lt;!ELEMENT NOTE (#PCDATA)&gt;
+  
+  &lt;!-- Identifier of product that generated the vCard property. --&gt;
+  &lt;!ELEMENT PRODID (#PCDATA)&gt;
+  
+  &lt;!-- Last revised property. The value must be an 
+       ISO 8601 formatted UTC date/time. --&gt;
+  &lt;!ELEMENT REV (#PCDATA)&gt;
+  
+  &lt;!-- Sort string property. --&gt;
+  &lt;!ELEMENT SORT-STRING (#PCDATA)&gt;
+  
+  &lt;!-- Formatted name pronunciation property. The value is 
+       either a textual phonetic pronunciation, a BASE64 
+       encoded binary digital audio pronunciation or a URI to
+       an external binary digital audio pronunciation.--&gt;	
+  &lt;!ELEMENT SOUND (PHONETIC | BINVAL | EXTVAL)&gt;
+  
+    &lt;!-- Textual phonetic pronunciation. --&gt;
+    &lt;!ELEMENT PHONETIC (#PCDATA)&gt;
+   
+  &lt;!-- Unique identifier property. --&gt;
+  &lt;!ELEMENT UID (#PCDATA)&gt;
+  
+  &lt;!-- Directory URL property. --&gt;
+  &lt;!ELEMENT URL (#PCDATA)&gt;
+
+  &lt;!-- NOTE: the following element was added by the Jabber
+             project (now XMPP Standards Foundation) to
+             handle free-form descriptive text. --&gt;
+
+  &lt;!ELEMENT DESC (#PCDATA)&gt;
+  
+  &lt;!-- Privacy classification property. --&gt;
+  &lt;!ELEMENT CLASS (PUBLIC | PRIVATE | CONFIDENTIAL)&gt;
+  
+    &lt;!ELEMENT PUBLIC EMPTY&gt;
+	
+    &lt;!ELEMENT PRIVATE EMPTY&gt;
+	
+    &lt;!ELEMENT CONFIDENTIAL EMPTY&gt;
+	
+  &lt;!-- Authentication credential or encryption  key property. --&gt;
+  &lt;!ELEMENT KEY (TYPE?, CRED)&gt;
+  
+    &lt;!ELEMENT CRED (#PCDATA)&gt;
+
+&lt;!-- ==== --&gt;
+
+&lt;!-- Common elements. --&gt;
+
+&lt;!-- Addressing type indicators. --&gt;
+&lt;!ELEMENT HOME EMPTY&gt;
+&lt;!ELEMENT WORK EMPTY&gt;
+&lt;!ELEMENT POSTAL EMPTY&gt;
+&lt;!ELEMENT PARCEL EMPTY&gt;
+&lt;!ELEMENT DOM EMPTY&gt;
+&lt;!ELEMENT INTL EMPTY&gt;
+&lt;!ELEMENT PREF EMPTY&gt;
+&lt;!ELEMENT VOICE EMPTY&gt;
+&lt;!ELEMENT FAX EMPTY&gt;
+&lt;!ELEMENT PAGER EMPTY&gt;
+&lt;!ELEMENT MSG EMPTY&gt;
+&lt;!ELEMENT CELL EMPTY&gt;
+&lt;!ELEMENT VIDEO EMPTY&gt;
+&lt;!ELEMENT BBS EMPTY&gt;
+&lt;!ELEMENT MODEM EMPTY&gt;
+&lt;!ELEMENT ISDN EMPTY&gt;
+&lt;!ELEMENT PCS EMPTY&gt;
+&lt;!ELEMENT INTERNET EMPTY&gt;
+&lt;!ELEMENT X400 EMPTY&gt;
+
+&lt;!-- Format type parameter. --&gt;
+&lt;!ELEMENT TYPE (#PCDATA)&gt;
+
+&lt;!-- Base64 encoded binary value. --&gt;
+&lt;!ELEMENT BINVAL (#PCDATA)&gt;
+
+&lt;!-- URI to external binary value --&gt;
+&lt;!ELEMENT EXTVAL (#PCDATA)&gt;
+
+&lt;!-- ==== --&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0054<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.2<br />
+            Last Updated: 2008-07-16<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: vcard-temp<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0054.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0054.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0054.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp663024" id="nt-idp663024">1</a>. RFC 2426: vCard MIME Directory Profile &lt;<a href="http://tools.ietf.org/html/rfc2426">http://tools.ietf.org/html/rfc2426</a>&gt;.</p><p><a name="nt-idp660976" id="nt-idp660976">2</a>. This document is archived at &lt;<a href="http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-01.txt">http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-01.txt</a>&gt;.</p><p><a name="nt-idp674912" id="nt-idp674912">3</a>. This document is archived at &lt;<a href="http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-02.txt">http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-02.txt</a>&gt;.</p><p><a name="nt-idp676160" id="nt-idp676160">4</a>. This document is archived at &lt;<a href="http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-03.txt">http://www.watersprings.org/pub/id/draft-dawson-vcard-xml-dtd-03.txt</a>&gt;.</p><p><a name="nt-idp1537872" id="nt-idp1537872">5</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1546560" id="nt-idp1546560">6</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1551280" id="nt-idp1551280">7</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1556128" id="nt-idp1556128">8</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1565040" id="nt-idp1565040">9</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1562192" id="nt-idp1562192">10</a>. XEP-0147: XMPP URI Query Components &lt;<a href="http://xmpp.org/extensions/xep-0147.html">http://xmpp.org/extensions/xep-0147.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2008-07-16)</h4><div class="indent"><p>More fully specified error cases; added section on determining support.</p> (psa)
+    </div><h4>Version 1.1 (2003-03-26)</h4><div class="indent"><p>Clarified certain historical inaccuracies and added links to archived versions of Frank Dawson's Internet-Drafts.</p> (psa)
+    </div><h4>Version 1.0 (2003-01-09)</h4><div class="indent"><p>Updated status to Active per vote of the Jabber Council.</p> (psa)
+    </div><h4>Version 0.2 (2002-11-06)</h4><div class="indent"><p>Many small fixes; added implementation notes.</p> (psa)
+    </div><h4>Version 0.1 (2002-10-31)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

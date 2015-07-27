@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0003: Proxy Accept Socket Service (PASS)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Proxy Accept Socket Service (PASS)" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="Ryan Eatmon" /><meta name="DC.Description" content="This document defines a method for relaying media via proxies on the Jabber/XMPP network." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-06-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0003" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0003: Proxy Accept Socket Service (PASS)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a method for relaying media via proxies on the Jabber/XMPP network.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Jeremie Miller, Ryan Eatmon</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-06-03</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp88416">Introduction</a><br />2.  <a href="#sect-idp89744">Registration/Setup</a><br />3.  <a href="#sect-idp98208">Incoming Connections</a><br />4.  <a href="#sect-idp979040">Controls</a><br />   
+      4.1.  <a href="#sect-idp980096">expire</a><br />   
+      4.2.  <a href="#sect-idp983392">oneshot</a><br />   
+      4.3.  <a href="#sect-idp986944">close</a><br />5.  <a href="#sect-idp1000240">Security Considerations</a><br />   
+      5.1.  <a href="#sect-idp1000736">Client Authentication</a><br />   
+      5.2.  <a href="#sect-idp1004992">Denying a Connection</a><br />6.  <a href="#sect-idp1014096">IANA Considerations</a><br />7.  <a href="#sect-idp1016352">XMPP Registrar Considerations</a><br />8.  <a href="#sect-idp1027680">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp88416" id="sect-idp88416">Introduction</a></h2>
+  <p>Complete direct client-to-client file transfers presents a major problem for clients that are behind a firewall or NAT. Proxy Accept Socket Service (PASS) enables clients to do real-time file transfers via a third party; in addition, it does not limit clients to file transfers but enables any two clients to create a raw TCP socket between them for any purpose, such as VoIP (SIP/RTP), BEEP, or binary game data.</p>
+<h2>2.
+       <a name="sect-idp89744" id="sect-idp89744">Registration/Setup</a></h2>
+  <p>The first step is to communicate with a PASS service to set it up.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Registration request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='pass1' type='set' to='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;expire&gt;600&lt;/expire&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Result from PASS Service</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='pass1' type='result' from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;server port='43253'&gt;1.2.3.4&lt;/server&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>At this point, the PASS service is now listening on the given IP and port for incoming connections on behalf of the Jabber Entity. The provided IP and port can now be sent to any other entity as a connection point, for file transfers or any other use.</p>
+  <p>The default behavior for the PASS service is to listen on the port forever, unless the requesting client specifies an &lt;expire/&gt; value (in seconds).  If the service is not configured with an expire value, it will not timeout the connection, and will start listening on the port again after one of the two sides disconnects.</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error Codes</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Code</th>
+      <th>Message</th>
+      <th>Cause</th>
+    </tr>
+    <tr class="body">
+      <td>502</td>
+      <td>No more ports available. Try again later.</td>
+      <td>The PASS service is listening on all of its available ports.</td>
+    </tr>
+  </table></div>
+<h2>3.
+       <a name="sect-idp98208" id="sect-idp98208">Incoming Connections</a></h2>
+  <p>When an incoming connection is attempted to that IP and port, the PASS service MUST send an IQ request to the entity on whose behalf it is listening:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Request to entity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    id='pass2'
+    to='user@jabber.org/resource'
+    from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;client port='1234'&gt;4.3.2.1&lt;/client&gt;
+    &lt;proxy port='43523'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. IQ result to accept connection</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='pass2'
+    from='user@jabber.org/resource'
+    to='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The entity SHOULD now immediately connect to the given proxy IP and port, and upon connection all data written to that socket will be copied to the client connection, and vice-versa. Any disconnect on either side MUST cause a disconnect on the other (initiated by the service). If the IQ set to the entity fails or returns an error, the client socket MUST be dropped as well. The client XML element provides the information about the remote end of the incoming socket.</p>
+  <p>Abuse in bandwidth or resources could become an issue, so PASS implementations SHOULD include strict and detailed rate and usage limits, allowing only limited usage by single entities and rate-limiting bandwidth used if necessary for both single connections or overall usage. These limits are implementation-specific.</p>
+<h2>4.
+       <a name="sect-idp979040" id="sect-idp979040">Controls</a></h2>
+  <p>A Jabber client can send various controls to the PASS service via the set to control how the PASS service behaves, how the server handles a listening port.</p>
+  <div class="indent"><h3>4.1 <a name="sect-idp980096" id="sect-idp980096">expire</a></h3>
+    <p>This tells the server to shut down the port after a specified number of seconds.  After the timeout period, the PASS service MUST send an  to the JID to tell it that the port has been closed down.  It notifies the client with:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Notification of expiration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    id='pass3'
+    to='user@jabber.org/resource'
+    from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;expire/&gt;
+    &lt;close/&gt;
+    &lt;proxy port='43253'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Acknowledgement of expiration</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='pass3'
+    from='user@jabber.org/resource'
+    to='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.2 <a name="sect-idp983392" id="sect-idp983392">oneshot</a></h3>
+    <p>This tells the server to listen once, and then close the port.  Even if the  has not been met, the  overrides that and shuts down the listening port.  When this happens the server notifies the client with the following packet:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Server notifies client of oneshot port closing</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    id='pass4'
+    to='user@jabber.org/resource'
+    from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;oneshot/&gt;
+    &lt;close/&gt;
+    &lt;proxy port='43253'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client acknowledges closing of oneshot port</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='pass4'
+    from='user@jabber.org/resource'
+    to='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="sect-idp986944" id="sect-idp986944">close</a></h3>
+    <p>This tells the server to explicitly shut down a listening port.  Useful for when the client shuts down and can tell the PASS service to recycle the port. The server sends back:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Client request to shut down port</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    id='pass5'
+    to='pass.jabber.org'
+    from='user@jabber.org/resource'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;close/&gt;
+    &lt;proxy port='43253'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Server acknowledges port closing request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='pass5'
+    to='user@jabber.org/resource'
+    from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Error Codes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Code</th>
+        <th>Message</th>
+        <th>Cause</th>
+      </tr>
+      <tr class="body">
+        <td>400</td>
+        <td>Missing  specification.</td>
+        <td>Sent a  w/o a </td>
+      </tr>
+      <tr class="body">
+        <td>401</td>
+        <td>Port not registered to your JID.</td>
+        <td>You did not register this port with the server.</td>
+      </tr>
+      <tr class="body">
+        <td>404</td>
+        <td>Port not found in registry.</td>
+        <td>The  was not a defined port.</td>
+      </tr>
+      <tr class="body">
+        <td>405</td>
+        <td>Proxy IP does not match.</td>
+        <td>The IP sent in the  does not match the IP of the pass-service</td>
+      </tr>
+    </table></div>
+  </div>
+<h2>5.
+       <a name="sect-idp1000240" id="sect-idp1000240">Security Considerations</a></h2>
+  <div class="indent"><h3>5.1 <a name="sect-idp1000736" id="sect-idp1000736">Client Authentication</a></h3>
+    <p>The PASS protocol can be used for clients to talk to each other and find out information about each other.  When a client wants to send a file to another client, it can use the jabber:iq:pass namespace to query the IP address of the other client.  For example:</p>
+    <p>You send the other client:</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    id='pass6'
+    to='them@jabber.org/resource'
+    from='you@jabber.org/resource'&gt;
+  &lt;query xmlns='jabber:iq:pass'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other client SHOULD send back:</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    id='pass6'
+    to='you@jabber.org/resource'
+    from='them@jabber.org/resource'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;client&gt;4.3.2.1&lt;/client&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Obviously the port is not going to be known, but the IP address will let you authenticate the JID via the PASS service since the PASS service tells you the  information upon a connection.</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="sect-idp1004992" id="sect-idp1004992">Denying a Connection</a></h3>
+    <p>When a server gets an Incoming Connection notification the client has the right to deny that connection based on the  information that it receives.  It can return an error to the PASS service specifying the  port and hangup on the active  connection and start listening again.  This does not affect the  control.  For example:</p>
+    <p>The PASS service sends you:</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    id='pass7'
+    to='user@jabber.org/resource'
+    from='pass.jabber.org'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;client port='1234'&gt;4.3.2.1&lt;/client&gt;
+    &lt;proxy port='43523'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Your client would send back:</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    id='pass7'
+    to='pass.jabber.org'
+    from='user@jabber.org/resource'&gt;
+  &lt;query xmlns='jabber:iq:pass'&gt;
+    &lt;client port='1234'&gt;4.3.2.1&lt;/client&gt;
+    &lt;proxy port='43523'&gt;1.2.3.4&lt;/proxy&gt;
+  &lt;/query&gt;
+  &lt;error code='401' type='auth'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Error Codes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Code</th>
+        <th>Message</th>
+        <th>Cause</th>
+      </tr>
+      <tr class="body">
+        <td>401</td>
+        <td>Unauthorized</td>
+        <td>The incoming  does not match the  from the client you want to exchange data with.</td>
+      </tr>
+    </table></div>
+  </div>
+<h2>6.
+       <a name="sect-idp1014096" id="sect-idp1014096">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1017744">1</a>].</p>
+<h2>7.
+       <a name="sect-idp1016352" id="sect-idp1016352">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1026240">2</a>] is necessary as a result of this document, since 'jabber:iq:pass' is already a registered protocol namespace.</p>
+<h2>8.
+       <a name="sect-idp1027680" id="sect-idp1027680">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:iq:pass'
+    xmlns='jabber:iq:pass'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0003: http://www.xmpp.org/extensions/xep-0003.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+        &lt;xs:element name='client' type='PassEntity'/&gt;
+        &lt;xs:element name='close' type='empty'/&gt;
+        &lt;xs:element name='expire' type='xs:unsignedLong'/&gt;
+        &lt;xs:element name='oneshot' type='empty'/&gt;
+        &lt;xs:element name='proxy' type='PassEntity'/&gt;
+        &lt;xs:element name='server' type='PassEntity'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name='PassEntity'&gt;
+    &lt;xs:simpleContent&gt;
+      &lt;xs:extension base='xs:NMTOKEN'&gt;
+        &lt;xs:attribute name='port' type='xs:short' use='optional'/&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:simpleContent&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0003<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.4<br />
+            Last Updated: 2009-06-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: pass<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/pass.xsd">http://www.xmpp.org/schemas/pass.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0003.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0003.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0003.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>Ryan Eatmon</h3><p class="indent">
+        Email:
+        <a href="mailto:reatmon@jabber.org">reatmon@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:reatmon@jabber.org">reatmon@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1017744" id="nt-idp1017744">1</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1026240" id="nt-idp1026240">2</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.4 (2009-06-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed status to Obsolete.</p> (psa)
+    </div><h4>Version 1.3 (2007-01-17)</h4><div class="indent"><p>Per a vote of the XMPP Council, changed status to Deprecated.</p> (psa)
+    </div><h4>Version 1.2 (2004-01-22)</h4><div class="indent"><p>Editorial revisions.</p> (psa)
+    </div><h4>Version 1.1 (2004-01-06)</h4><div class="indent"><p>Added XML schema.</p> (psa)
+    </div><h4>Version 1.0 (2002-10-15)</h4><div class="indent"><p>Changed status to Active.</p> (psa)
+    </div><h4>Version 0.4 (2001-07-02)</h4><div class="indent"><p>Error codes update</p> (rwe)
+    </div><h4>Version 0.3 (2001-06-29)</h4><div class="indent"><p>Protocol update</p> (rwe)
+    </div><h4>Version 0.2 (2001-06-28)</h4><div class="indent"><p>DocBook version</p> (psa)
+    </div><h4>Version 0.1 (2001-06-01)</h4><div class="indent"><p>Initial release</p> (jer)
+    </div></div><hr /><p>END</p></body></html>

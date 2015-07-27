@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0122: Data Forms Validation</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Data Forms Validation" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Description" content="This specification defines a backwards-compatible extension to the XMPP Data Forms protocol that enables applications to specify additional validation guidelines related to a form, such as validation of standard XML datatypes, application-specific datatypes, value ranges, and regular expressions." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-09-22" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0122" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0122: Data Forms Validation</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a backwards-compatible extension to the XMPP Data Forms protocol that enables applications to specify additional validation guidelines related to a form, such as validation of standard XML datatypes, application-specific datatypes, value ranges, and regular expressions.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Matthew Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-09-22</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#usecases">Use Cases</a><br />   
+      3.1.  <a href="#usecases-datatypes">Datatype Validation</a><br />   
+      3.2.  <a href="#usecases-validation">Validation Methods</a><br />      
+      3.2.1.  <a href="#usercases-validation.basic">&lt;basic/&gt; Validation</a><br />      
+      3.2.2.  <a href="#usercases-validation.open">&lt;open/&gt; Validation</a><br />      
+      3.2.3.  <a href="#usercases-validation.range">&lt;range/&gt; Validation</a><br />      
+      3.2.4.  <a href="#usercases-validatoin.regex">&lt;regex/&gt; Validation</a><br />   
+      3.3.  <a href="#usecases-ranges">Selection Ranges in "list-multi"</a><br />4.  <a href="#impl">Implementation Notes</a><br />   
+      4.1.  <a href="#impl-req">Required to Support</a><br />   
+      4.2.  <a href="#impl-ns">Namespacing</a><br />   
+      4.3.  <a href="#impl-i18n">Internationalization/Localization</a><br />   
+      4.4.  <a href="#impl-submit">Form Submissions</a><br />   
+      4.5.  <a href="#impl-proto">Existing Protocols</a><br />   
+      4.6.  <a href="#impl-display">Display Considerations</a><br />   
+      4.7.  <a href="#impl-ranges">Validation Ranges</a><br />5.  <a href="#sec">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registar-reg">Registries</a><br />      
+      7.2.1.  <a href="#registar-reg-prefixes">Datatype Prefixes Registry</a><br />        
+      7.2.1.1.  <a href="#registrar-reg-prefixes-process">Process</a><br />        
+      7.2.1.2.  <a href="#registrar-reg-prefixes-init">Initial Submission</a><br />      
+      7.2.2.  <a href="#registar-reg-datatypes">Datatypes Registry</a><br />        
+      7.2.2.1.  <a href="#registrar-reg-datatypes-process">Process</a><br />        
+      7.2.2.2.  <a href="#registrar-reg-datatypes-init">Initial Submission</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp679664">1</a>] ("x:data") provides a simple and interoperable way to request and present information for both applications and humans. However, the simple nature of "x:data" requires the form interpreter at times to guess as to exactly what type of information is being requested or provided. This document builds upon "x:data" to provide this additional validation.</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The requirements for this document are:</p>
+  <ul>
+    <li>Backwards compatible with the existing "x:data" protocol.</li>
+    <li>Provide extended datatypes (such as dates, times, and numbers).</li>
+    <li>Allow for multiple validation methods.</li>
+    <li>Allow for user-defined datatypes.</li>
+    <li>Accommodate value ranges.</li>
+    <li>Accommodate regular expression matching.</li>
+  </ul>
+<h2>3.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <p>This document defines a new namespace, "http://jabber.org/protocols/xdata-validate". The root element for this namespace is &lt;validate/&gt;, and MUST be contained within a &lt;field/&gt; element (qualified by the 'jabber:x:data' namespace) for each <span class="ref">Data Forms</span> field that possesses additional validation information.</p>
+  <div class="indent"><h3>3.1 <a name="usecases-datatypes" id="usecases-datatypes">Datatype Validation</a></h3>
+    <p>The simplest usage is to provide a more-granular datatype for a &lt;field/&gt; element used in <span class="ref">Data Forms</span>. To provide this datatype information, a &lt;validate/&gt; element is included whose 'datatype' attribute specifies the data type of any &lt;value/&gt; contained within the &lt;field/&gt; element:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Field with extended datatype</p><div class="indent"><pre class="prettyprint">
+&lt;field var='evt.date' type='text-single' label='Event Date/Time'&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:dateTime'/&gt;
+  &lt;value&gt;2003-10-06T11:22:00-07:00&lt;/value&gt;
+&lt;/field&gt;
+    </pre></div>
+    <p>The preceding example demonstrates a field that is expected to contain a date/time value.</p>
+    <p>The 'datatype' attribute specifies the datatype. This attribute is OPTIONAL, and defaults to "xs:string". It MUST meet one of the following conditions:</p>
+    <ul>
+      <li>Start with "xs:", and be one of the "built-in" datatypes defined in <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp691376">2</a>]</li>
+      <li>Start with a prefix registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp693440">3</a>]</li>
+      <li>Start with "x:", and specify a user-defined datatype [<a href="#nt-idp689648">4</a>]</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.2 <a name="usecases-validation" id="usecases-validation">Validation Methods</a></h3>
+    <p>In addition to datatypes, the validation method can also be provided. The method is specified via a child element. The validation methods defined in this document are:</p>
+    <ul>
+      <li>&lt;basic/&gt; for validation only against the datatype itself</li>
+      <li>&lt;open/&gt; for open-ended validation against the datatype</li>
+      <li>&lt;range/&gt; for validation against a given min/max and the datatype</li>
+      <li>&lt;regex/&gt; for validation against a given regular expression and the datatype</li>
+    </ul>
+    <p>If no validation method is specified, form processors MUST assume &lt;basic/&gt; validation. The &lt;validate/&gt; element SHOULD include one of the above validation method elements, and MUST NOT include more than one.</p>
+    <p>Any validation method applied to a field of type "list-multi", "list-single", or "text-multi" (other than &lt;basic/&gt;) MUST imply the same behavior as &lt;open/&gt;, with the additional constraints defined by that method.</p>
+    <div class="indent"><h3>3.2.1 <a name="usercases-validation.basic" id="usercases-validation.basic">&lt;basic/&gt; Validation</a></h3>
+      <p>Building upon the earlier example, to indicate that the value(s) should simply match the field type and datatype constraints, the &lt;validate/&gt; element shall contain a &lt;basic/&gt; child element.</p>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Basic validation</p><div class="indent"><pre class="prettyprint">
+&lt;field var='evt.date' type='text-single' label='Event Date/Time'&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:dateTime'&gt;
+    &lt;basic/&gt;
+  &lt;/validate&gt;
+  &lt;value&gt;2003-10-06T11:22:00-07:00&lt;/value&gt;
+&lt;/field&gt;
+      </pre></div>
+      <p>Using &lt;basic/&gt; validation, the form interpreter MUST follow the validation rules of the datatype (if understood) and the field type.</p>
+      <p>The &lt;basic/&gt; element MUST be empty (i.e., not contain any character data or child elements) and MUST NOT possess any attributes.</p>
+    </div>
+    <div class="indent"><h3>3.2.2 <a name="usercases-validation.open" id="usercases-validation.open">&lt;open/&gt; Validation</a></h3>
+      <p>For "list-single" or "list-multi", to indicate that the user may enter a custom value (matching the datatype constraints) or choose from the predefined values, the &lt;validate/&gt; element shall contain an &lt;open/&gt; child element:</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Open validation</p><div class="indent"><pre class="prettyprint">
+&lt;field var='evt.category' 
+       type='list-single' 
+       label='Event Category'&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:string'&gt;
+    &lt;open/&gt;
+  &lt;/validate&gt;
+  &lt;option&gt;&lt;value&gt;holiday&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;reminder&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;appointment&lt;/value&gt;&lt;/option&gt;
+&lt;/field&gt;
+      </pre></div>
+      <p>The &lt;open/&gt; validation method applies to "text-multi" differently; it hints that each value for a "text-multi" field shall be validated separately. This effectively turns "text-multi" fields into an open-ended "list-multi", with no options and all values automatically selected.</p>
+      <p>The &lt;open/&gt; element MUST be empty (i.e., not contain any character data or child elements) and MUST NOT possess any attributes.</p>
+    </div>
+    <div class="indent"><h3>3.2.3 <a name="usercases-validation.range" id="usercases-validation.range">&lt;range/&gt; Validation</a></h3>
+      <p>To indicate that the value should fall within a certain range, the &lt;validate/&gt; element shall contain a &lt;range/&gt; child element:</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Range validation</p><div class="indent"><pre class="prettyprint">
+&lt;field var='evt.date' type='text-single' label='Event Date/Time'&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:dateTime'&gt;
+    &lt;range min='2003-10-05T00:00:00-07:00' 
+           max='2003-10-24T23:59:59-07:00'/&gt;
+  &lt;/validate&gt;
+  &lt;value&gt;2003-10-06T11:22:00-07:00&lt;/value&gt;
+&lt;/field&gt;
+      </pre></div>
+      <p>The 'min' and 'max' attributes of the &lt;range/&gt; element specify the minimum and maximum values allowed, respectively.</p>
+      <p>The 'max' attribute specifies the maximum allowable value. This attribute is OPTIONAL. The value depends on the datatype in use.</p>
+      <p>The 'min' attribute specifies the minimum allowable value. This attribute is OPTIONAL. The value depends on the datatype in use.</p>
+      <p>The &lt;range/&gt; element SHOULD possess either a 'min' or 'max' attribute, and MAY possess both. If neither attribute is included, the processor MUST assume that there are no range constraints.</p>
+      <p>The &lt;range/&gt; element MUST be empty (i.e., not contain any character data or child elements).</p>
+    </div>
+    <div class="indent"><h3>3.2.4 <a name="usercases-validatoin.regex" id="usercases-validatoin.regex">&lt;regex/&gt; Validation</a></h3>
+      <p>To indicate that the value should be restricted to a regular expression, the &lt;validate/&gt; element shall contain a &lt;regex/&gt; child element:</p>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Regular expression validation</p><div class="indent"><pre class="prettyprint">
+&lt;field var='ssn' type='text-single' label='Social Security Number'&gt;
+  &lt;desc&gt;This field should be your SSN, including '-' (e.g. 123-12-1234)&lt;/desc&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:string'&gt;
+    &lt;regex&gt;([0-9]{3})-([0-9]{2})-([0-9]{4})&lt;/regex&gt;
+  &lt;/validate&gt;
+&lt;/field&gt;
+      </pre></div>
+      <p>The XML character data of this element is the pattern to apply. The syntax of this content MUST be that defined for POSIX extended regular expressions [<a href="#nt-idp1640160">5</a>], including support for Unicode [<a href="#nt-idp1640928">6</a>].</p>
+      <p>The &lt;regex/&gt; element MUST contain character data only (i.e., not contain any child elements) and MUST NOT possess any attributes.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="usecases-ranges" id="usecases-ranges">Selection Ranges in "list-multi"</a></h3>
+    <p>For "list-multi", validation can indicate (via the &lt;list-range/&gt; element) that a minimum and maximum number of options should be selected and/or entered. This selection range MAY be combined with the other methods to provide more flexibility.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Selection Range validation</p><div class="indent"><pre class="prettyprint">
+&lt;field var='evt.notify-methods' 
+       type='list-multi' 
+       label='Notify me by'&gt;
+  &lt;validate xmlns='http://jabber.org/protocol/xdata-validate'
+            datatype='xs:string'&gt;
+    &lt;basic/&gt;
+    &lt;list-range min='1' max='3'/&gt;
+  &lt;/validate&gt;
+  &lt;option&gt;&lt;value&gt;e-mail&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;jabber/xmpp&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;work phone&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;home phone&lt;/value&gt;&lt;/option&gt;
+  &lt;option&gt;&lt;value&gt;cell phone&lt;/value&gt;&lt;/option&gt;
+&lt;/field&gt;
+    </pre></div>
+    <p>The &lt;list-range/&gt; element SHOULD be included only when the &lt;field/&gt; is of type "list-multi" and SHOULD be ignored otherwise.</p>
+    <p>The 'max' attribute specifies the maximum allowable number of selected/entered values. This attribute is OPTIONAL. The value MUST be a positive integer.</p>
+    <p>The 'min' attribute specifies the minimum allowable number of selected/entered values. This attribute is OPTIONAL. The value MUST be a positive integer.</p>
+    <p>The &lt;list-range/&gt; element SHOULD possess either a 'min' or 'max' attribute, and MAY possess both. If neither attribute is included, the processor MUST assume that there are no selection constraints.</p>
+  </div>
+<h2>4.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>4.1 <a name="impl-req" id="impl-req">Required to Support</a></h3>
+    <p>At a minimum, implementations MUST support the following:</p>
+    <ul>
+      <li>Datatype validation</li>
+      <li>The &lt;basic/&gt; validation method</li>
+    </ul>
+    <p>If an implementation does not understand the specified datatype, it MUST validate according to the default "xs:string" datatype. If an implementation does not understand the specified method, it MUST validate according to the &lt;basic/&gt; method.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="impl-ns" id="impl-ns">Namespacing</a></h3>
+    <p>While all elements associated with this document MUST be qualified by the 'http://jabber.org/protocol/xdata-validate' namespace, explicitly declaring the default namespace for each instance can be overly verbose. However, Jabber/XMPP implementations have historically been very lax regarding namespacing, thus requiring some careful use of prefixes.</p>
+    <p>The use of namespace prefixes is RECOMMENDED for large forms, to reduce the data size. To maintain the highest level of compatibility, implementations sending the form using prefixes SHOULD use the namespace prefix "xdv", and SHOULD declare the namespace prefix mapping in the ancestor &lt;x xmlns='jabber:x:data'/&gt; element:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Example of recommended namespace prefixing</p><div class="indent"><pre class="prettyprint">
+&lt;x xmlns='jabber:x:data' 
+   xmlns:xdv='http://jabber.org/protocols/xdata-validate'
+   type='form'&gt;
+  &lt;title&gt;Sample Form&lt;/title&gt;
+  &lt;instructions&gt;
+    Please provide information for the following fields...
+  &lt;/instructions&gt;
+  &lt;field type='text-single' var='name' label='Event Name'/&gt;
+  &lt;field type='text-single' var='date/start' label='Starting Date'&gt;
+    &lt;xdv:validate datatype='xs:date'&gt;
+      &lt;basic/&gt;
+    &lt;/xdv:validate&gt;
+  &lt;/field&gt;
+  &lt;field type='text-single' var='date/end' label='Ending Date'&gt;
+    &lt;xdv:validate datatype='xs:date'&gt;
+      &lt;basic/&gt;
+    &lt;/xdv:validate&gt;
+  &lt;/field&gt;
+&lt;/x&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="impl-i18n" id="impl-i18n">Internationalization/Localization</a></h3>
+    <p>This document relies on the internationalization/localization mechanisms provided by <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1658336">7</a>]. As much as possible, all datatype formats MUST be locale-independent.</p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="impl-submit" id="impl-submit">Form Submissions</a></h3>
+    <p>Form processors MUST NOT assume that a form with validation has actually been validated when submitted. There is no realistic expectation that form interpreters honor validation.</p>
+  </div>
+  <div class="indent"><h3>4.5 <a name="impl-proto" id="impl-proto">Existing Protocols</a></h3>
+    <p>While this document is compatible with the existing "x:data" definition, form providers SHOULD first determine support for it, using either <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1667872">8</a>] if presence-aware or <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1662368">9</a>]. This is especially important for limited-connection and/or limited-capabilities devices, such as cell phones.</p>
+  </div>
+  <div class="indent"><h3>4.6 <a name="impl-display" id="impl-display">Display Considerations</a></h3>
+    <p>Although primarily intended for validating form submission, validation MAY have an impact on display, and MAY be applied to data forms that are not submitted (e.g. 'result' type forms). The following table outlines which field types a particular validation method is or is not appropriate for, and how a display SHOULD interpret the validation methods if considered [<a href="#nt-idp1663712">10</a>]:</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Validation Methods and Field Types</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Validation Method</th>
+        <th>SHOULD be Allowed</th>
+        <th>SHOULD NOT be Allowed</th>
+        <th>Display Suggestions</th>
+      </tr>
+      
+      <tr class="body">
+        <td>basic</td>
+        <td><ul>
+          <li>fixed</li>
+          <li>list-multi</li>
+          <li>list-single</li>
+          <li>text-multi</li>
+          <li>text-single</li>
+        </ul></td>
+        <td><ul>
+          <li>hidden</li>
+          <li>jid-multi</li>
+          <li>jid-single</li>
+        </ul></td>
+        <td>Display the datatype appropriate to the locale</td>
+      </tr>
+      
+      <tr class="body">
+        <td>open</td>
+        <td><ul>
+          <li>jid-multi</li>
+          <li>jid-single</li>
+          <li>list-multi</li>
+          <li>list-single</li>
+          <li>text-multi</li>
+          <li>text-single</li>
+        </ul></td>
+        <td><ul>
+          <li>hidden</li>
+        </ul></td>
+        <td>Display the datatype appropriate to the locale. For "text-multi" treat each value as a discrete entry (e.g. a user-entered list). For "list-multi" or "list-single", allow user to add/remove entries to select.</td>
+      </tr>
+      
+      <tr class="body">
+        <td>range</td>
+        <td><ul>
+          <li>text-single</li>
+        </ul></td>
+        <td><ul>
+          <li>hidden</li>
+          <li>jid-multi</li>
+          <li>list-multi</li>
+          <li>text-multi</li>
+        </ul></td>
+        <td>Display the datatype appropriate to the locale. For "text-single", allow user to increment/decrement through possible values. For "text-multi" treat each value as a discrete entry (e.g. a user-entered list). For "list-multi" or "list-single", allow user to add/remove entries to select.</td>
+      </tr>
+      
+      <tr class="body">
+        <td>regex</td>
+        <td><ul>
+          <li>text-single</li>
+        </ul></td>
+        <td><ul>
+          <li>hidden</li>
+          <li>jid-multi</li>
+          <li>list-multi</li>
+          <li>text-multi</li>
+        </ul></td>
+        <td>Display the datatype appropriate to the locale. If possible, display a valid example. For "text-multi" treat each value as a discrete entry (e.g. a user-entered list). For "list-multi" or "list-single", allow user to add/remove entries to select.</td>
+      </tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>4.7 <a name="impl-ranges" id="impl-ranges">Validation Ranges</a></h3>
+    <p>The &lt;range/&gt; validation method MUST be used only with datatypes that have finite quantities.  Within the standard datatype set, it MUST NOT be used with "xs:string".</p>
+  </div>
+<h2>5.
+       <a name="sec" id="sec">Security Considerations</a></h2>
+  <p>This document introduces no security concerns above and beyond those specified in <span class="ref">XEP-0004: Data Forms</span>.</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1696544">11</a>].</p>
+<h2>7.
+       <a name="registar" id="registar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registar-ns" id="registar-ns">Protocol Namespaces</a></h3>
+    <p>The XMPP Registrar includes 'http://jabber.org/protocol/xdata-validate' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registar-reg" id="registar-reg">Registries</a></h3>
+    <div class="indent"><h3>7.2.1 <a name="registar-reg-prefixes" id="registar-reg-prefixes">Datatype Prefixes Registry</a></h3>
+      <p>The XMPP Registrar maintains a registry of datatype prefixes used in the context of Data Forms Validation (see &lt;<a href="http://xmpp.org/registrar/xdv-prefixes.html">http://xmpp.org/registrar/xdv-prefixes.html</a>&gt;), where each prefix denotes a group of related datatypes.</p>
+      <div class="indent"><h3>7.2.1.1 <a name="registrar-reg-prefixes-process" id="registrar-reg-prefixes-process">Process</a></h3>
+        <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;datatype-prefix&gt;
+  &lt;prefix&gt;the prefix token (e.g., "xs")&lt;/prefix&gt;
+  &lt;desc&gt;a natural-language description of the datatype family&lt;/desc&gt;
+  &lt;doc&gt;the document in which datatype family is specified&lt;/doc&gt;
+&lt;/datatype-prefix&gt;
+         </pre></div>
+         <p>The registrant may register more than one prefix at a time, each contained in a separate &lt;datatype-prefix/&gt; element.</p>
+       </div>
+       <div class="indent"><h3>7.2.1.2 <a name="registrar-reg-prefixes-init" id="registrar-reg-prefixes-init">Initial Submission</a></h3>
+         <p>As part of this document, the following datatype prefixes shall be registered:</p>
+         <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;datatype-prefix&gt;
+  &lt;prefix&gt;x&lt;/prefix&gt;
+  &lt;desc&gt;An ad-hoc datatype&lt;/desc&gt;
+  &lt;doc&gt;XEP-0122&lt;/doc&gt;
+&lt;/datatype-prefix&gt;
+&lt;datatype-prefix&gt;
+  &lt;prefix&gt;xs&lt;/prefix&gt;
+  &lt;desc&gt;A "standard" datatype as defined in XML Schema Part 2&lt;/desc&gt;
+  &lt;doc&gt;XML Schema Part 2&lt;/doc&gt;
+&lt;/datatype-prefix&gt;
+        </pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>7.2.2 <a name="registar-reg-datatypes" id="registar-reg-datatypes">Datatypes Registry</a></h3>
+      <p>The XMPP Registrar maintains a registry of datatypes used in the context of Data Forms Validation (see &lt;<a href="http://xmpp.org/registrar/xdv-datatypes.html">http://xmpp.org/registrar/xdv-datatypes.html</a>&gt;), where each datatype name includes the relevant prefix (e.g., "xs:anyURI").</p>
+      <div class="indent"><h3>7.2.2.1 <a name="registrar-reg-datatypes-process" id="registrar-reg-datatypes-process">Process</a></h3>
+        <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;datatype&gt;
+  &lt;name&gt;the full datatype name (e.g., "xs:string")&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the datatype&lt;/desc&gt;
+  &lt;methods&gt;the validation methods that may apply to the datatype&lt;/methods&gt;
+  &lt;min&gt;the minimum value for the datatype (if any)&lt;/min&gt;
+  &lt;max&gt;the maximum value for the datatype (if any)&lt;/max&gt;
+&lt;/datatype&gt;
+        </pre></div>
+        <p>The registrant may register more than one datatype at a time, each contained in a separate &lt;datatype/&gt; element.</p>
+      </div>
+      <div class="indent"><h3>7.2.2.2 <a name="registrar-reg-datatypes-init" id="registrar-reg-datatypes-init">Initial Submission</a></h3>
+        <p>The following submission contains the built-in datatypes defined in <span class="ref">XML Schema Part 2</span> that are deemed mostly like to be useful in the context of the Data Forms protocol; additional datatypes defined therein, as well as other datatypes not defined in XML Schema Part 2, may be registered via separate submissions in the future.</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;datatype&gt;
+  &lt;name&gt;xs:anyURI&lt;/name&gt;
+  &lt;desc&gt;a Uniform Resource Identifier Reference (URI)&lt;/desc&gt;
+  &lt;methods&gt;basic regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:byte&lt;/name&gt;
+  &lt;desc&gt;an integer with the specified min/max&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;-128&lt;/min&gt;
+  &lt;max&gt;127&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:date&lt;/name&gt;
+  &lt;desc&gt;a calendar date&lt;/desc&gt;
+  &lt;methods&gt;basic range regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:dateTime&lt;/name&gt;
+  &lt;desc&gt;a specific instant of time&lt;/desc&gt;
+  &lt;methods&gt;basic range regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:decimal&lt;/name&gt;
+  &lt;desc&gt;an arbitrary-precision decimal number&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;none&lt;/min&gt;
+  &lt;max&gt;none&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:double&lt;/name&gt;
+  &lt;desc&gt;an IEEE double-precision 64-bit floating point type&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;none&lt;/min&gt;
+  &lt;max&gt;none&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:int&lt;/name&gt;
+  &lt;desc&gt;an integer with the specified min/max&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;-2147483648&lt;/min&gt;
+  &lt;max&gt;2147483647&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:integer&lt;/name&gt;
+  &lt;desc&gt;a decimal number with no fraction digits&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;none&lt;/min&gt;
+  &lt;max&gt;none&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:language&lt;/name&gt;
+  &lt;desc&gt;a language identifier as defined by RFC 1766&lt;/desc&gt;
+  &lt;methods&gt;basic regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:long&lt;/name&gt;
+  &lt;desc&gt;an integer with the specified min/max&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;-9223372036854775808&lt;/min&gt;
+  &lt;max&gt;9223372036854775807&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:short&lt;/name&gt;
+  &lt;desc&gt;an integer with the specified min/max&lt;/desc&gt;
+  &lt;methods&gt;basic range&lt;/methods&gt;
+  &lt;min&gt;-32768&lt;/min&gt;
+  &lt;max&gt;32767&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:string&lt;/name&gt;
+  &lt;desc&gt;a character strings in XML&lt;/desc&gt;
+  &lt;methods&gt;basic regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+&lt;datatype&gt;
+  &lt;name&gt;xs:time&lt;/name&gt;
+  &lt;desc&gt;an instant of time that recurs every day&lt;/desc&gt;
+  &lt;methods&gt;basic range regex&lt;/methods&gt;
+  &lt;min&gt;N/A&lt;/min&gt;
+  &lt;max&gt;N/A&lt;/max&gt;
+&lt;/datatype&gt;
+        </pre></div>
+      </div>
+    </div>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+  
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/xdata-validate'
+    xmlns='http://jabber.org/protocol/xdata-validate'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='validate'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:choice minOccurs='0' maxOccurs='1'&gt;
+          &lt;xs:element ref='basic'/&gt;
+          &lt;xs:element ref='open'/&gt;
+          &lt;xs:element ref='range'/&gt;
+          &lt;xs:element ref='regex'/&gt;
+        &lt;/xs:choice&gt;
+        &lt;xs:element ref='list-range' minOccurs='0' maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='datatype' 
+                    type='xs:string' 
+                    use='optional' 
+                    default='xs:string'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:element name='basic' type='empty'/&gt;
+  
+  &lt;xs:element name='open' type='empty'/&gt;
+  
+  &lt;xs:element name='range'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='min' use='optional'/&gt;
+          &lt;xs:attribute name='max' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:element name='regex' type='xs:string'/&gt;
+  
+  &lt;xs:element name='list-range'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='min' 
+                        type='xs:unsignedInt'
+                        use='optional'/&gt;
+          &lt;xs:attribute name='max' 
+                        type='xs:unsignedInt'
+                        use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0122<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-09-22<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0004<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: xdata-validate<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/xdata-validate.xsd">http://www.xmpp.org/schemas/xdata-validate.xsd</a>&gt;<br />
+              Registry: 
+              
+              &lt;<a href="http://xmpp.org/registrar/xdata-validate.html">http://xmpp.org/registrar/xdata-validate.html</a>&gt;
+              <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0122.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0122.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0122.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp679664" id="nt-idp679664">1</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp691376" id="nt-idp691376">2</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp693440" id="nt-idp693440">3</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp689648" id="nt-idp689648">4</a>. While "x:" allows for ad-hoc definitions, its use is NOT RECOMMENDED.</p><p><a name="nt-idp1640160" id="nt-idp1640160">5</a>. The "best" definition of this syntax can be found in the <a href="http://www.gsp.com/cgi-bin/man.cgi?section=7&amp;topic=re_format">re_format(7) man page</a></p><p><a name="nt-idp1640928" id="nt-idp1640928">6</a>. Guidelines for adapting regular expressions to support Unicode is defined at <a href="http://www.unicode.org/reports/tr18/">http://www.unicode.org/reports/tr18/</a></p><p><a name="nt-idp1658336" id="nt-idp1658336">7</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1667872" id="nt-idp1667872">8</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1662368" id="nt-idp1662368">9</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1663712" id="nt-idp1663712">10</a>. If a particular field type is not listed, the display MAY include validation support, but is not expected to do so.</p><p><a name="nt-idp1696544" id="nt-idp1696544">11</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-09-22)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Draft. (psa)
+    </div><h4>Version 0.8 (2004-09-20)</h4><div class="indent">Synchronized descriptive text with schema. (lw)
+    </div><h4>Version 0.7 (2004-08-23)</h4><div class="indent">Replaced method attribute with dedicated elements; removed Formal Definition section in favor of defining requirements within the use-cases and XML schema; included display considerations; added reference to XEP-0115. (lw)
+    </div><h4>Version 0.6 (2004-07-23)</h4><div class="indent">Replaced &lt;text-list/&gt; with specific interpretations for other validation methods; Further clarified use of validation methods (other than "basic") with "list-single", "list-multi", and "text-multi"; Fixed errors in some examples; initial datatype registrations. (lw/psa)
+    </div><h4>Version 0.5 (2004-05-27)</h4><div class="indent">Added &lt;text-list/&gt; ("text as a list") support; Clarified &lt;list-range/&gt; expanded discussion on datatype registries. (lw)
+    </div><h4>Version 0.4 (2004-01-29)</h4><div class="indent">Removed "std" datatypes; Added references to XML Schema built-in datatypes. (lw)
+    </div><h4>Version 0.3 (2003-12-10)</h4><div class="indent">Added "open" method; Added "list-range" validation. (lw)
+    </div><h4>Version 0.2 (2003-10-15)</h4><div class="indent">Added consideration about "unvalidated" submits; Reworked introduction. (lw)
+    </div><h4>Version 0.1 (2003-10-06)</h4><div class="indent">Initial version. (lw)
+    </div></div><hr /><p>END</p></body></html>

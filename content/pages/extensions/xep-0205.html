@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0205: Best Practices to Discourage Denial of Service Attacks</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Best Practices to Discourage Denial of Service Attacks" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document recommends a number of practices that can help discourage denial of service attacks on XMPP-based networks." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-01-07" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0205" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0205: Best Practices to Discourage Denial of Service Attacks</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document recommends a number of practices that can help discourage denial of service attacks on XMPP-based networks.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-01-07</td></tr></table><hr /><p style="color:green">NOTICE: This Informational specification defines a best practice or protocol profile that has been approved by the XMPP Council and/or the XSF Board of Directors. Implementations are encouraged and the best practice or protocol profile is appropriate for deployment in production systems.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#attacks">Potential Attacks</a><br />3.  <a href="#solutions">Potential Solutions</a><br />4.  <a href="#rec">Recommendations</a><br />   
+      4.1.  <a href="#rec-connections">Simultaneous Connections</a><br />   
+      4.2.  <a href="#rec-attempts">Connection Attempts</a><br />   
+      4.3.  <a href="#rec-auth">Unauthenticated Connections</a><br />   
+      4.4.  <a href="#rec-resources">Simultaneous Resources</a><br />   
+      4.5.  <a href="#rec-stanzasize">Stanza Size</a><br />   
+      4.6.  <a href="#rec-recipients">Multiple Recipients</a><br />   
+      4.7.  <a href="#rec-bandwidth">Bandwidth Limits</a><br />   
+      4.8.  <a href="#rec-stanzas">Stanza Limits</a><br />   
+      4.9.  <a href="#rec-services">Service Restrictions</a><br />5.  <a href="#impl">Implementation Considerations</a><br />6.  <a href="#security">Security Considerations</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a><br />9.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>A key factor in the reliability and security of network infrastructure is its resilience in the face of denial of service attacks (see <span class="ref"><a href="http://tools.ietf.org/html/rfc4732">RFC 4732</a></span>  [<a href="#nt-idp499776">1</a>]). Although the existing network of servers and clients that communicate via the Extensible Messaging and Presence Protocol (<span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp514672">2</a>]) has not yet been subject to such attacks, that is no cause for complacency. Therefore this document specifies a set of best practices that server implementations and deployments can follow in order to reduce the likelihood of denial of service attacks on the Jabber network.</p>
+<h2>2.
+       <a name="attacks" id="attacks">Potential Attacks</a></h2>
+  <p><span class="ref">RFC 4732</span> defines denial of service as follows:</p>
+  <p class="indent">A Denial-of-Service (DoS) attack is an attack in which one or more machines target a victim and attempt to prevent the victim from doing useful work. The victim can be a network server, client or router, a network link or an entire network, an individual Internet user or a company doing business using the Internet, an Internet Service Provider (ISP), country, or any combination of or variant on these.</p>
+  <p>The authors list a number of attacks, of which the following seem most likely against XMPP systems:</p>
+  <ol start="1">
+    <li>Exploiting poor software quality (e.g., buffer overlow attacks).</li>
+    <li>Exhausting application or operating system resources (e.g., memory, CPU cycles, disk space, configured maximum simultaneous connections).</li>
+    <li>Triggering lockouts and quota exhaustion (e.g., quotas associated with the bandwidth limits common in numerous XMPP server implementations.</li>
+    <li>Hijacking the TCP connection of a client or server (see <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-tcpm-tcpsecure">Improving TCP's Robustness to Blind In-Window Attacks</a></span>  [<a href="#nt-idp510784">3</a>]).</li>
+    <li>Attacking the Domain Name System (DNS) infrastructure on which XMPP typically depends.</li>
+    <li>Poisoning blacklists.</li>
+    <li>Amplifying network traffic (this could be done through reflectors such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp506144">4</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp508720">5</a>] services).</li>
+  </ol>
+<h2>3.
+       <a name="solutions" id="solutions">Potential Solutions</a></h2>
+  <p>Numerous potential solutions have been suggested to deal with the threat of denial of service attacks against XMPP servers, including the following:</p>
+  <ol start="1">
+    <li><p>Limiting the number of connections that a server will accept from a given IP address at any one time. Such a limit may help to prevent automated processes from exhausting the server's resources (such as available ports or XML parser processing resources).</p></li>
+    <li><p>Limiting the number of connection attempts (via the TCP binding specified in <span class="ref">RFC 6120</span> or via the <span class="ref"><a href="http://xmpp.org/extensions/xep-0124.html">BOSH (XEP-0124)</a></span>  [<a href="#nt-idp1364608">6</a>]) that a server will accept from a given IP address in a given time period. Such a limit may help to prevent automated processes from exhausting the server's resources (such as available ports or XML parser processing capacity).</p></li>
+    <li><p>Limiting the number of authentication attempts for a given Jabber ID in a given time period. While such a limit may seem beneficial, in fact it might result in locking out the legitimate owner of a Jabber ID if a malicious entity attempts a large number of illegitimate authentication attempts for the Jabber ID; therefore such a limit is not recommended except as described in Section 6.4.5 of <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">RFC 6120</a></span>  [<a href="#nt-idp1368496">7</a>], and it is instead recommended to limit the number of connections and connection attempts on a per-IP basis.</p></li>
+    <li><p>Disallowing unauthenticated connections from clients and from peer servers; as mentioned below, this is required by <span class="ref">RFC 6120</span>.</p></li>
+    <li><p>Limiting the number of XMPP resource identifiers allowed to an account at any one time. This may help to prevent a rogue account from creating an unlimited number of sessions and therefore exhausting the resources of the server's session manager.</p></li>
+    <li><p>Limiting the absolute size in bytes of XML stanzas accepted by the server, or of particular aspects of an XML stanza (e.g., attribute values, element names, XML character data). Limits on particular aspects of an XML stanza are probably not needed, as long as it is possible to limit the absolute size of each XML stanza, since such a limit may help to prevent exhaustion of server resources (e.g., XML parser processing capacity).</p></li>
+    <li><p>Limiting the number of bytes or XML stanzas that a server will accept over a given TCP connection or for a given JabberID in a given time period. Such a limit, which helps to prevent rogue accounts or hijacked clients from flooding the server, is common in existing XMPP server implementations and often goes by the name "karma".</p></li>
+    <li><p>Limiting the number of XML stanzas that a connected client may send to different recipients in a given time period. Such a limit may help to prevent automated processes (e.g., bots) from sending unsolicited bulk communications (known in the instant messaging domain as "spim").</p></li>
+    <li><p>Limiting or prohibiting the sending of certain stanzas based on payload, type, or other appropriate features.</p></li>
+    <li><p>Restricting access to services (such as multi-user chat and publish-subscribe) that enable traffic amplification.</p></li>
+    <li><p>More strictly limiting the proposed restrictions depending on connection type, authentication type, or user class.</p></li>
+  </ol>
+<h2>4.
+       <a name="rec" id="rec">Recommendations</a></h2>
+  <p>The following recommendations are presented roughly in order of interaction (e.g., recommendations related to the number of TCP connections or connection attempts are presented before recommendations related to authentication, which are presented before recommendations related to XML stanza handling).</p>
+  <div class="indent"><h3>4.1 <a name="rec-connections" id="rec-connections">Simultaneous Connections</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the number of connections that it will accept from a given IP address at any one time.  [<a href="#nt-idp1377344">8</a>]</p>
+    <p>If an entity attempts to connect but the maximum number of connections has been reached, the receiving server MUST NOT allow the new connection to proceed. There are no XMPP errors associated with this behavior, since it occurs at the binding (TCP or HTTP) level before an XML stream is initiated.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="rec-attempts" id="rec-attempts">Connection Attempts</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the number of connection attempts that it will accept from a given IP address in a given time period (e.g., one hour).  [<a href="#nt-idp1380192">9</a>]</p>
+    <p>If an entity attempts to connect but the maximum number of connection attempts has been reached, the receiving server MUST NOT allow the new connection to proceed. There are no XMPP errors associated with this behavior, since it occurs at the binding (TCP or HTTP) level before an XML stream is initiated.</p>
+  </div>
+  <div class="indent"><h3>4.3 <a name="rec-auth" id="rec-auth">Unauthenticated Connections</a></h3>
+    <p>In accordance with <span class="ref">RFC 6120</span>, a server MUST NOT process XML stanzas (i.e., &lt;message/&gt;, &lt;presence/&gt;, or &lt;iq/&gt;) from clients that have not yet provided appropriate authentication credentials, and MUST NOT process XML stanzas from peer servers whose identity it has not either authenticated via SASL (see <span class="ref"><a href="http://tools.ietf.org/html/rfc4422">RFC 4422</a></span>  [<a href="#nt-idp1386528">10</a>]) or verified via server dialback.</p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="rec-resources" id="rec-resources">Simultaneous Resources</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the number of resources it will allow an account to bind at any one time.</p>
+    <p>If a connected client attempts to bind a resource but has already reached the configured number of allowable resources, the receiving server MUST return a &lt;resource-constraint/&gt; stanza error, where the XMPP &lt;error/&gt; element SHOULD also include an application-specific error condition of &lt;resource-limit-exceeded/&gt;, as shown in the following example:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Resource number limit violation</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='bind_2'&gt;
+  &lt;bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'&gt;
+    &lt;resource&gt;someresource&lt;/resource&gt;
+  &lt;/bind&gt;
+  &lt;error type='cancel'&gt;
+    &lt;resource-constraint xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;resource-limit-exceeded xmlns='urn:xmpperrors'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.5 <a name="rec-stanzasize" id="rec-stanzasize">Stanza Size</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the size of stanzas it will accept from a connected client or peer server.</p>
+    <p>If a connected client or peer server sends a stanza that violates the upper limit, the receiving server SHOULD NOT process the stanza and instead SHOULD return a &lt;not-allowed/&gt; stanza error, where the XMPP &lt;error/&gt; element SHOULD also include an application-specific error condition of &lt;stanza-too-big/&gt;, as shown in the following example:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Stanza size limit violation: stanza error</p><div class="indent"><pre class="prettyprint">
+&lt;message from='shakespeare.lit' to='iago@shakespare.lit/evilos'&gt;
+  &lt;error type='modify'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;stanza-too-big xmlns='urn:xmpp:errors'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>Note: In the case of a stanza size limit, the server SHOULD NOT include the original payload in the error stanza.</p>
+    <p>Alternatively (e.g., if the sender has sent a seriously large stanza), the server MAY instead return a &lt;policy-violation/&gt; stream error:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Stanza size limit violation: stream error</p><div class="indent"><pre class="prettyprint">
+&lt;stream:error&gt;
+  &lt;policy-violation xmlns='urn:ietf:params:xml:ns:xmpp-streams'/&gt;
+  &lt;stanza-too-big xmlns='urn:xmpp:errors'/&gt;
+&lt;/stream:error&gt;
+&lt;/stream:stream&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.6 <a name="rec-recipients" id="rec-recipients">Multiple Recipients</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the number of XML stanzas that a connected client may send to distinct recipients within a given time period.</p>
+    <p>If a connected client sends too many stanzas to distinct recipients in a given time period, the receiving server SHOULD NOT process the stanza and instead SHOULD return an &lt;unexpected-request/&gt; stanza error, where the XMPP &lt;error/&gt; element SHOULD also include an application-specific error condition of &lt;too-many-stanzas/&gt;, as shown in the following example:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Stanza recipients violation: stanza error</p><div class="indent"><pre class="prettyprint">
+&lt;message from='iago@shakespeare.lit/evilos' to='juliet@capulet.lit'&gt;
+  &lt;error type='wait'&gt;
+    &lt;unexpected-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;too-many-stanzas xmlns='urn:xmpp:errors'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.7 <a name="rec-bandwidth" id="rec-bandwidth">Bandwidth Limits</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the amount of bandwidth it will allow a connected client or peer server to use in a given time period.</p>
+    <p>Bandwidth limits in existing XMPP server implementations (often called "karma") can be somewhat complex, since they dynamically respond to usage patterns, take into account temporary traffic bursts, enable the server administrator to modify recovery times and penalty lengths, etc. An example of low average bandwidth limits would be 1k-2k per second, of medium limits 4k-6k per second, of high limits 8k-10k per second. For details, see documentation for existing implementations.</p>
+  </div>
+  <div class="indent"><h3>4.8 <a name="rec-stanzas" id="rec-stanzas">Stanza Limits</a></h3>
+    <p>A server implementation SHOULD enable a server administrator to limit the types of stanzas (based on payload etc.) it will allow a connected client send over an active connection. Possible restrictions include:</p>
+    <ul>
+      <li>Forbidding XMPP protocol extensions that typically involve the sending of large stanzas, such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0008.html">IQ-Based Avatars (XEP-0008)</a></span>  [<a href="#nt-idp1406080">11</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp1408592">12</a>]</li>
+      <li>Prohibiting <span class="ref"><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration (XEP-0077)</a></span>  [<a href="#nt-idp1411040">13</a>] when directed to the server itself (i.e., disallowing open registration of new accounts).</li>
+      <li>Limiting the number of roster requests that a user may request in a given time period.</li>
+      <li>Not supporting offline message storage (or limiting the size of offline storage).</li>
+      <li>Limiting the number of presence subscription requests that a user may send in a given time period.</li>
+      <li>Limiting the number of stanzas that a user may generate in a given time period that are intended for unknown or non-existent JIDs, that are intended for JIDs at remote domains, or that are intended for distinct JIDs.</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>4.9 <a name="rec-services" id="rec-services">Service Restrictions</a></h3>
+    <p>An implementation of a service that enables traffic amplification (e.g., multi-user chat or publish-subscribe) SHOULD enable an administrator of that service to limit (based on JabberID or other characteristics) what entities may send information through the service. (See <span class="ref">XEP-0045</span> regarding methods of banning users from multi-user chat rooms and <span class="ref">XEP-0060</span> regarding methods for prohibiting users from interacting with publish-subscribe nodes.)</p>
+    <p>In fact, the "session manager" of an XMPP presence server also acts as just such an amplifier, since presence information is broadcast to all subscribers. Any such service SHOULD enable an administrator to limit the number of stanzas sent through the service in any given period of time (presence changes in a session manager, presence changes or messages in a chatroom, published items in a pubsub service).</p>
+  </div>
+<h2>5.
+       <a name="impl" id="impl">Implementation Considerations</a></h2>
+  <p>Implementations MAY enable administrators to configure appropriate exceptions to some of the recommendations specified in this document. Examples include:</p>
+  <ul>
+    <li>Less strict limits for server administrators compared to entities associated with registered accounts, and for entities associated with registered accounts compared to anonymous entities.</li>
+    <li>Less strict limits for entities that authenticate via strong authentication methods (e.g., TLS + SASL EXTERNAL) compared to entities that authenticate via weaker authentication methods (e.g., TLS + SASL PLAIN or server dialback).</li>
+    <li>Less strict limits for connections from known IP addresses.</li>
+    <li>Less strict limits for connections made via the TCP binding compared to connections made via the HTTP binding.</li>
+  </ul>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>This entire document is about security.</p>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1424736">14</a>].</p> 
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1428400">15</a>] includes &lt;resource-limit-exceeded/&gt; and &lt;too-many-stanzas/&gt; in its registry of application-specific error conditions (see &lt;<a href="http://xmpp.org/registrar/errors.html">http://xmpp.org/registrar/errors.html</a>&gt;), where the element is qualified by the 'urn:xmpp:errors' namespace as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0182.html">Application-Specific Error Conditions  (XEP-0182)</a></span>  [<a href="#nt-idp1433328">16</a>].</p>
+  <p>The registry submission is as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;condition&gt;
+  &lt;ns&gt;urn:xmpp:errors&lt;/ns&gt;
+  &lt;element&gt;resource-limit-exceeded&lt;/element&gt;
+  &lt;desc&gt;
+    The account is not allowed to bind more resources at this time.
+  &lt;/desc&gt;
+  &lt;doc&gt;XEP-0205&lt;/doc&gt;
+&lt;/condition&gt;
+&lt;condition&gt;
+  &lt;ns&gt;urn:xmpp:errors&lt;/ns&gt;
+  &lt;element&gt;too-many-stanzas&lt;/element&gt;
+  &lt;desc&gt;
+    A connected client has attempted to send multiple stanzas to 
+    too many different intended recipients in a given time period.
+  &lt;/desc&gt;
+  &lt;doc&gt;XEP-0205&lt;/doc&gt;
+&lt;/condition&gt;
+  </pre></div>
+<h2>9.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Special thanks to Chris Mullins for calling attention to the need for a specification on this topic. Thanks also to Thiago Camargo, Bruce Campbell, Dave Cridland, Gustavo Felisberto, Justin Karneges, Alexey Melnikov, Pedro Melo, Kevin Smith, Michal Vaner, and Matthew Wild for their suggestions.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0205<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 1.0<br />
+            Last Updated: 2009-01-07<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0205.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0205.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0205.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp499776" id="nt-idp499776">1</a>. RFC 4732: Internet Denial-of-Service Considerations &lt;<a href="http://tools.ietf.org/html/rfc4732">http://tools.ietf.org/html/rfc4732</a>&gt;.</p><p><a name="nt-idp514672" id="nt-idp514672">2</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp510784" id="nt-idp510784">3</a>. Improving TCP's Robustness to Blind In-Window Attacks &lt;<a href="http://tools.ietf.org/html/draft-ietf-tcpm-tcpsecure">http://tools.ietf.org/html/draft-ietf-tcpm-tcpsecure</a>&gt;. Work in progress.</p><p><a name="nt-idp506144" id="nt-idp506144">4</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp508720" id="nt-idp508720">5</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1364608" id="nt-idp1364608">6</a>. XEP-0124: Bidirectional-streams Over Synchronous HTTP &lt;<a href="http://xmpp.org/extensions/xep-0124.html">http://xmpp.org/extensions/xep-0124.html</a>&gt;.</p><p><a name="nt-idp1368496" id="nt-idp1368496">7</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1377344" id="nt-idp1377344">8</a>. Alternatively, it is possible to limit the number of connections at the TCP layer rather than at the XMPP application layer. Care must be taken in doing so, since limits at the TCP layer might result in an inability to access non-XMPP services.</p><p><a name="nt-idp1380192" id="nt-idp1380192">9</a>. Alternatively, it is possible to limit the number of connections at the TCP layer rather than at the XMPP application layer. Care must be taken in doing so, since limits at the TCP layer might result in an inability to access non-XMPP services.</p><p><a name="nt-idp1386528" id="nt-idp1386528">10</a>. RFC 4422: Simple Authentication and Security Layer (SASL) &lt;<a href="http://tools.ietf.org/html/rfc4422">http://tools.ietf.org/html/rfc4422</a>&gt;.</p><p><a name="nt-idp1406080" id="nt-idp1406080">11</a>. XEP-0008: IQ-Based Avatars &lt;<a href="http://xmpp.org/extensions/xep-0008.html">http://xmpp.org/extensions/xep-0008.html</a>&gt;.</p><p><a name="nt-idp1408592" id="nt-idp1408592">12</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1411040" id="nt-idp1411040">13</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idp1424736" id="nt-idp1424736">14</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1428400" id="nt-idp1428400">15</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1433328" id="nt-idp1433328">16</a>. XEP-0182: Application-Specific Error Conditions &lt;<a href="http://xmpp.org/extensions/xep-0182.html">http://xmpp.org/extensions/xep-0182.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2009-01-07)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification to Active; also corrected errors namespace for consistency with XEP-0182.</p> (psa)
+    </div><h4>Version 0.3 (2008-12-19)</h4><div class="indent"><p>Incorporated Last Call comments: removed paragraph about compression, added paragraph about rate limiting in message or presence amplifiers, corrected simultaneous connections error per revisions to RFC 3920.</p> (psa)
+    </div><h4>Version 0.2 (2007-07-10)</h4><div class="indent"><p>Add recommendation regarding multiple messages to distinct recipients; removed numerical recommendations since they are a matter of implementation or deployment.</p> (psa)
+    </div><h4>Version 0.1 (2007-01-31)</h4><div class="indent"><p>Initial published version.</p> (psa)
+    </div><h4>Version 0.0.2 (2007-01-29)</h4><div class="indent"><p>Incorporated feedback; specified recommendations regarding bandwidths, payload types, and service access.</p> (psa)
+    </div><h4>Version 0.0.1 (2007-01-21)</h4><div class="indent"><p>First draft.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>
