@@ -23,7 +23,7 @@ Sidebar_menu_elem_url_5: community/sponsors
 Content_layout: multiple-columns
 ---
 
-The XSF hosts a variety of chat rooms and all historical archives are available online.
+The XSF hosts a variety of chat rooms and all archives are available online.
 
 ### Jabber support chatroom
 Chat about using Jabber/XMPP technologies ([webchat](http://speeqe.com/room/jabber@conference.jabber.org/) | [join](xmpp:jabber@conference.jabber.org?join) | [logs](http://logs.jabber.org/jabber@conference.jabber.org/))
