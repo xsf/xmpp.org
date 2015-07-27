@@ -8,20 +8,20 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_title: About XMPP
+Sidebar_menu_title: About the XSF
 Sidebar_menu_size: 6
-Sidebar_menu_elem_name_1: Features and benefits
-Sidebar_menu_elem_url_1: about/features-and-benefits
-Sidebar_menu_elem_name_2: History
-Sidebar_menu_elem_url_2: about/history
-Sidebar_menu_elem_name_3: Who uses XMPP
-Sidebar_menu_elem_url_3: about/who-uses-xmpp
-Sidebar_menu_elem_name_4: Standards Process
-Sidebar_menu_elem_url_4: about/standards-process
-Sidebar_menu_elem_name_5: The XSF
-Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_6: FAQ
-Sidebar_menu_elem_url_6: about/faq
+Sidebar_menu_elem_name_1: The XSF
+Sidebar_menu_elem_url_1: about/xmpp-standards-foundation
+Sidebar_menu_elem_name_2: Members
+Sidebar_menu_elem_url_2: about/xsf/members
+Sidebar_menu_elem_name_3: Editor Team
+Sidebar_menu_elem_url_3: about/xsf/editor-team
+Sidebar_menu_elem_name_4: Infrastructure Team
+Sidebar_menu_elem_url_4: about/xsf/infrastructure-team
+Sidebar_menu_elem_name_5: UPnP Liaison Team
+Sidebar_menu_elem_url_5: about/xsf/upnp-liaison-team
+Sidebar_menu_elem_name_6: Standards Process
+Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
 ---
 
@@ -31,7 +31,7 @@ The XSF also provides information and infrastructure to the worldwide community 
 
 At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). 
 
-If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership).
+If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
 ## The Board
 
