@@ -33,7 +33,6 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | agsXMPP SDK                  | C# / .NET / Mono                    | GPL / commercial | ag-software.net          |                |
 | AnyEvent::XMPP               | Perl                                | Artistic         | ta-sa.org                | 2012-06-14     |
 | as3xmpp                      | Flash / ActionScript                | GPLv2            | code.google.com          | 2909-08-25     |
-| asmack                       | Java (Android)                      | Apache2          | github.com               | 2013-05-29     |
 | AXMPP                        | Ada                                 | BSD              | forge.ada-ru.org         | 2011-03-07     |
 | Babbler                      | Java                                | MIT              | babbler-xmpp.blogspot.de |                |
 | Babylon                      | Ruby                                | MIT              | github.com               | 2009-03-31     |
@@ -77,7 +76,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | QXmpp                        | C++                                 |                  | code.google.com          |                |
 | seesmic-as3-xmpp             | Flash / ActionScript                |                  | code.google.com          |                |
 | SleekXMPP                    | Python                              |                  | github.com               |                |
-| Smack                        | Java                                |                  | igniterealtime.org       |                |
+| Smack                        | Java (Java SE 7 and Android)        | Apache 2.0       | igniterealtime.org       | 2015-07-15     |
 | stanza.io                    | JavaScript                          |                  | github.com               |                |
 | strophe.js                   | JavaScript                          |                  | Website                  |                |
 | StropheCappuccino            | Objective-J                         |                  | github.com               |                |
