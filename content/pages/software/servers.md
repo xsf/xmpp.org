@@ -41,7 +41,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | Isode M-Link                    | Linux / Solaris / Windows            | Commercial                 | isode.com                 | 2013-06-24     |
 | Jabber XCP                      | Linux / Solaris / Windows            | Commercial                 | cisco.com                 | 2008-10-31     |
 | jabberd 1.x                     | Linux                                | GPL2                       | jabberd.org               | 2012-06-28     |
-| jabberd 2.x                     | Linux / Solaris / Windows            | GPL2                       | jabberd2.org              | 2012-08-26     |
+| jabberd 2.x                     | Linux / *BSD / Solaris / Windows     | GPL2                       | jabberd2.org              | 2015-04-13     |
 | Jerry Messenger                 | Linux / Windows                      | Commercial                 | j-livesupport.com         | unknown        |
 | Kwickserver                     | Windows                              | GPL                        | kwickserver.info          | 2010-10-15     |
 | Metronome IM                    | Linux / Mac OS X                     | ISC/MIT                    | lightwitch.org/metronome  | 2013-10-02     |
