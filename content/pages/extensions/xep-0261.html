@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0261: Jingle In-Band Bytestreams Transport Method</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jingle In-Band Bytestreams Transport Method" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines a Jingle transport method that results in sending data via the In-Band Bytestreams (IBB) protocol defined in XEP-0047. Essentially this transport method reuses XEP-0047 semantics for sending the data and defines native Jingle methods for starting and ending an IBB session." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2011-09-23" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0261" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0261: Jingle In-Band Bytestreams Transport Method</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a Jingle transport method that results in sending data via the In-Band Bytestreams (IBB) protocol defined in XEP-0047. Essentially this transport method reuses XEP-0047 semantics for sending the data and defines native Jingle methods for starting and ending an IBB session.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2011-09-23</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#protocol">Protocol</a><br />   
+      2.1.  <a href="#protocol-flow">Flow</a><br />   
+      2.2.  <a href="#protocol-start">Establishing a Bytestream</a><br />   
+      2.3.  <a href="#protocol-data">Exchanging Data</a><br />   
+      2.4.  <a href="#protocol-multi">Managing Multiple IBB Sessions</a><br />   
+      2.5.  <a href="#protocol-close">Closing the Bytestream</a><br />3.  <a href="#rules">Processing Rules and Usage Guidelines</a><br />4.  <a href="#support">Determining Support</a><br />5.  <a href="#security">Security Considerations</a><br />   
+      5.1.  <a href="#security-media">Encryption of Media</a><br />   
+      5.2.  <a href="#security-base64">Use of Base64</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-versioning">Protocol Versioning</a><br />   
+      7.3.  <a href="#registrar-transports">Jingle Transport Methods</a><br />8.  <a href="#schema">XML Schema</a><br />9.  <a href="#ack">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp523824">1</a>] defines a framework for negotiating and managing data sessions over XMPP. In order to provide a flexible framework, the base Jingle specification defines neither data transport methods nor application formats, leaving that up to separate specifications. The current document defines a transport method for establishing and managing data exchanges between XMPP entities using the existing In-Band Bytestreams (IBB) protocol specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp519568">2</a>]. This "jingle-ibb" method results in a streaming transport method suitable for use in Jingle application types where packet loss cannot be tolerated (e.g., file transfer); however, because the "jingle-ibb" transport method sends data over the XMPP channel itself (albeit not the Jingle signalling channel), it is intended as a transport of last resort when other streaming transports (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0260.html">Jingle SOCKS5 Bytestreams Transport Method (XEP-0260)</a></span>  [<a href="#nt-idp521824">3</a>]) cannot be negotiated.</p>
+  <p>The approach taken in this specification is to use the existing IBB mechanisms described in <span class="ref">XEP-0047</span> for transporting the data, and to define Jingle-specific methods only to start and end the in-band bytestream.</p>
+<h2>2.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+
+  <div class="indent"><h3>2.1 <a name="protocol-flow" id="protocol-flow">Flow</a></h3>
+    <p>The basic flow is as follows.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+Initiator                   Responder
+  |                            |
+  |  session-initiate          |
+  |  (with IBB info)           |
+  |---------------------------&gt;|
+  |  ack                       |
+  |&lt;---------------------------|
+  |  session-accept            |
+  |&lt;---------------------------|
+  |  ack                       |
+  |---------------------------&gt;|
+  |  IBB &lt;open/&gt;               |
+  |---------------------------&gt;|
+  |  ack                       |
+  |&lt;---------------------------|
+  |  IBB "SESSION"             |
+  |&lt;==========================&gt;|
+  |  IBB &lt;close/&gt;              |
+  |---------------------------&gt;|
+  |  ack                       |
+  |&lt;---------------------------|
+  |  session-terminate         |
+  |&lt;---------------------------|
+  |  ack                       |
+  |---------------------------&gt;|
+  |                            |
+    </pre></div>
+    <p>This flow is illustrated in the following sections (to prevent confusion these use an "example" description instead of a real application type).</p>
+  </div>
+
+  <div class="indent"><h3>2.2 <a name="protocol-start" id="protocol-start">Establishing a Bytestream</a></h3>
+    <p>First the initiator sends a Jingle session-initiate request.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initiator sends session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='xn28s7gk'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-initiate'
+          initiator='romeo@montague.lit/orchard'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='ex'&gt;
+      &lt;description xmlns='urn:xmpp:example'/&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ibb:1'
+                 block-size='4096'
+                 sid='ch3d9s71'/&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Note: The default value of the 'stanza' attribute is "iq", signifying use of &lt;iq/&gt; stanzas for data exchange; a value of "message" signifies that &lt;message/&gt; stanzas are to be used for data exchange. See <span class="ref">XEP-0047</span> for further discussion regarding use of these stanza types for data exchange.</p>
+    <p>The responder immediately acknowledges receipt (but does not yet accept the session).</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Responder acknowledges session-initiate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='xn28s7gk'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>If the offer is acceptable, the responder returns a Jingle session-accept. If the responder wishes to use a smaller block-size, the responder can specify that in the session-accept by returning a different value for the 'block-size' attribute.</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Responder definitively accepts the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='bsa91h56'
+    to='romeo@montague.lit/orchard'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-accept'
+          responder='juliet@capulet.lit/balcony'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='ex'&gt;
+      &lt;description xmlns='urn:xmpp:example'/&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ibb:1'
+                 block-size='2048'
+                 sid='ch3d9s71'/&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The initiator then acknowledges the session-accept.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Initiator acknowledges session-accept</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='bsa91h56'
+    to='juliet@capulet.lit/balcony'
+    type='result'/&gt;
+    </pre></div>
+    <p>In essence, the foregoing Jingle negotiation replaces the &lt;open/&gt; element from <span class="ref">XEP-0047</span>. However, to provide consistent layering of Jingle on top of IBB (thus enabling separation of existing IBB code from new Jingle code), the initiator now MUST also send the &lt;open/&gt; element, with the same 'block-size' and 'sid' values as for the Jingle &lt;transport/&gt; element it negotiated with the recipient (i.e., if the recipient sent a modified &lt;transport/&gt; element element containing a different block size, the initiator MUST use the negotiated values). This adds a roundtrip to the negotiation and could be considered a "no-op", but the extra roundtrip is inconsequential given that the parties will be exchanging base64-encoded data in-band.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Initiator sends IBB &lt;open/&gt;</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    id='jn3h8g65'
+    to='juliet@capulet.com/balcony'
+    type='set'&gt;
+  &lt;open xmlns='http://jabber.org/protocol/ibb'
+        block-size='2048'
+        sid='ch3d9s71'
+        stanza='iq'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If no error occurs, the responder returns an IQ-result to the initiator.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Responder accepts IBB &lt;open/&gt;</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/balcony'
+    id='jn3h8g65'
+    to='romeo@montague.net/orchard'
+    type='result'/&gt;
+    </pre></div>
+    <p>However, one of the errors described in <span class="ref">XEP-0047</span> might occur; in particular, if the value of the IBB 'block-size' attribute sent by the initiator in the &lt;open/&gt; element does not match the value of the 'block-size' attribute communicated by the responder in the Jingle session-accept message then the responder SHOULD return a &lt;resource-constraint/&gt; error as described in <span class="ref">XEP-0047</span>.</p>
+  </div>
+
+  <div class="indent"><h3>2.3 <a name="protocol-data" id="protocol-data">Exchanging Data</a></h3>
+    <p>Now the initiator can begin sending IBB packets using an IQ-set for each chunk as described in <span class="ref">XEP-0047</span>, where the responder will acknowledge each IQ-set in accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp614720">4</a>].</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. An IBB packet</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard' 
+    id='ls72b58f'
+    to='juliet@capulet.com/balcony' 
+    type='set'&gt;
+  &lt;data xmlns='http://jabber.org/protocol/ibb' seq='0' sid='ch3d9s71'&gt;
+    qANQR1DBwU4DX7jmYZnncmUQB/9KuKBddzQH+tZ1ZywKK0yHKnq57kWq+RFtQdCJ
+    WpdWpR0uQsuJe7+vh3NWn59/gTc5MDlX8dS9p0ovStmNcyLhxVgmqS8ZKhsblVeu
+    IpQ0JgavABqibJolc3BKrVtVV1igKiX/N7Pi8RtY1K18toaMDhdEfhBRzO/XB0+P
+    AQhYlRjNacGcslkhXqNjK5Va4tuOAPy2n1Q8UUrHbUd0g+xJ9Bm0G0LZXyvCWyKH
+    kuNEHFQiLuCY6Iv0myq6iX6tjuHehZlFSh80b5BVV9tNLwNR5Eqz1klxMhoghJOA
+  &lt;/data&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. An IBB ack</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/balcony' 
+    id='ls72b58f'
+    to='romeo@montague.net/orchard' 
+    type='result'/&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>2.4 <a name="protocol-multi" id="protocol-multi">Managing Multiple IBB Sessions</a></h3>
+    <p>As IBB is defined in <span class="ref">XEP-0047</span>, there is one session per bytestream (which can be used in both directions). However, because Jingle-IBB provides a management layer on top of IBB, it can be used to run multiple IBB sessions over a single bytestream. This can be done by sending a transport-info message that authorizes an additional session, as shown in the following example (although this example shows the initiator adding a session, the responder could just as well do so).</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Initiator adds a session to the bytestream</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='znb376s4'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='transport-info'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;content creator='initiator' name='ex'&gt;
+      &lt;transport xmlns='urn:xmpp:jingle:transports:ibb:1'
+                 block-size='2048'
+                 sid='bt8a71h6'/&gt;
+    &lt;/content&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Here the Jingle Session ID is the same ("a73sjjvkla37jfea") but the new IBB Session ID ("bt8a71h6") is different from the old IBB Session ID that is already in use ("ch3d9s71").</p>
+    <p>The initiator opens the second session by sending an IBB &lt;open/&gt; element, which the responder acknowledges (not shown).</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Initiator sends IBB &lt;open/&gt;</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    id='yh3vs613'
+    to='juliet@capulet.com/balcony'
+    type='set'&gt;
+  &lt;open xmlns='http://jabber.org/protocol/ibb'
+        block-size='2048'
+        sid='pd51xa96'
+        stanza='iq'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The parties can then exchange data over the second session (see <span class="ref">XEP-0047</span>).</p>
+    <p>If a party wishes to close one session within a bytestream, it sends an IBB &lt;close/&gt; element as defined in <span class="ref">XEP-0047</span> specifying the appropriate IBB SessionID.</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Ending an IBB session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/orchard'
+    id='us71g45j'
+    to='juliet@capulet.com/balcony'
+    type='set'&gt;
+  &lt;close xmlns='http://jabber.org/protocol/ibb' 
+         sid='bt8a71h6'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The receiving party then acknowledges that the IBB session has been closed by returning an IQ-result.</p>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Success response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/balcony'
+    id='us71g45j'
+    to='romeo@montague.net/orchard'
+    type='result'/&gt; 
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>2.5 <a name="protocol-close" id="protocol-close">Closing the Bytestream</a></h3>
+    <p>Whenever a party is finished with a particular session within the bytestream, it SHOULD send an IBB &lt;close/&gt; as shown above. This applies to all sessions, including the last one.</p>
+    <p>To close the bytestream itself (e.g., because the parties have finished using all sessions associated with the bytestream), a party sends a Jingle session-terminate action as defined in <span class="ref">XEP-0166</span>.</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Initiator terminates the session</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='hz81vf48'
+    to='juliet@capulet.lit/balcony'
+    type='set'&gt;
+  &lt;jingle xmlns='urn:xmpp:jingle:1'
+          action='session-terminate'
+          sid='a73sjjvkla37jfea'&gt;
+    &lt;reason&gt;&lt;success/&gt;&lt;/reason&gt;
+  &lt;/jingle&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The other party then acknowledges the session-terminate and the Jingle session is finished.</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Responder acknowledges session-terminate</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='hz81vf48'
+    to='romeo@montague.lit/orchard'
+    type='result'/&gt;
+    </pre></div>
+  </div>
+<h2>3.
+       <a name="rules" id="rules">Processing Rules and Usage Guidelines</a></h2>
+  <p>The same processing rules and usage guidelines defined in <span class="ref">XEP-0047</span> apply to the Jingle IBB Transport Method.</p>
+<h2>4.
+       <a name="support" id="support">Determining Support</a></h2>
+  <p>To advertise its support for the Jingle In-Band Bytestreams Transport Method, when replying to <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1482768">5</a>] information requests an entity MUST return URNs for any version of this protocol that the entity supports -- e.g., "urn:xmpp:jingle:transports:ibb:1" for this version (see <a href="#registrar-versioning">Namespace Versioning</a> regarding the possibility of incrementing the version number).</p>
+  <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Service discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.lit/orchard'
+    id='uw72g176'
+    to='juliet@capulet.lit/balcony'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Service discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='uw72g176'
+    to='romeo@montague.lit/orchard'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;feature var='urn:xmpp:jingle:1'/&gt;
+    &lt;feature var='urn:xmpp:jingle:transports:ibb:1'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>In order for an application to determine whether an entity supports this protocol, where possible it SHOULD use the dynamic, presence-based profile of service discovery defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1488352">6</a>]. However, if an application has not received entity capabilities information from an entity, it SHOULD use explicit service discovery instead.</p>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <div class="indent"><h3>5.1 <a name="security-media" id="security-media">Encryption of Media</a></h3>
+    <p>This specification, like <span class="ref">XEP-0047</span> before it, does not directly support end-to-end encryption of the media sent over the transport.</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="security-base64" id="security-base64">Use of Base64</a></h3>
+    <p>See <span class="ref">XEP-0047</span> for security considerations related to the use of Base64.</p>
+  </div>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1495808">7</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1501056">8</a>] includes 'urn:xmpp:jingle:transports:ibb:1' in its registry of protocol namespaces at &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;, as described in Section 4 of <span class="ref"><a href="http://xmpp.org/extensions/xep-0053.html">XMPP Registrar Function (XEP-0053)</a></span>  [<a href="#nt-idp1504912">9</a>].</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-versioning" id="registrar-versioning">Protocol Versioning</a></h3>
+    <p>If the protocol defined in this specification undergoes a revision that is not fully backwards-compatible with an older version, the XMPP Registrar shall increment the protocol version number found at the end of the XML namespaces defined herein, as described in Section 4 of <span class="ref">XEP-0053</span>.</p>
+  </div>
+  <div class="indent"><h3>7.3 <a name="registrar-transports" id="registrar-transports">Jingle Transport Methods</a></h3>
+    <p>The XMPP Registrar includes "jingle-ibb" in its registry of Jingle transport methods at &lt;<a href="http://xmpp.org/registrar/jingle-transports.html">http://xmpp.org/registrar/jingle-transports.html</a>&gt;. The registry submission is as follows.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;transport&gt;
+  &lt;name&gt;ibb&lt;/name&gt;
+  &lt;desc&gt;
+    A method for data exchange over In-Band Bytestreams.
+  &lt;/desc&gt;
+  &lt;type&gt;streaming&lt;/type&gt;
+  &lt;doc&gt;XEP-0261&lt;/doc&gt;
+&lt;/transport&gt;
+    </pre></div>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:jingle:transports:ibb:1'
+    xmlns='urn:xmpp:jingle:transports:ibb:1'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0261: http://www.xmpp.org/extensions/xep-0261.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+   &lt;xs:element name='transport'&gt;
+     &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='block-size' 
+                        type='xs:short' 
+                        use='required'/&gt;
+          &lt;xs:attribute name='sid' 
+                        type='xs:string' 
+                        use='required'/&gt;
+          &lt;xs:attribute name='stanza' 
+                        use='optional' 
+                        default='iq'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='iq'/&gt;
+                &lt;xs:enumeration value='message'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+     &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>9.
+       <a name="ack" id="ack">Acknowledgements</a></h2>
+  <p>Thanks to Paul Aurich, Fabio Forno, and Marcus Lundblad for their feedback.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0261<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2011-09-23<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0047<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: jingle-ibb<br />
+        Schema: &lt;<a href="http://xmpp.org/schemas/jingle-transports-ibb.xsd">http://xmpp.org/schemas/jingle-transports-ibb.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0261.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0261.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0261.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">There exists a special venue for discussion related to the technology described in this document: the &lt;<a href="http://mail.jabber.org/mailman/listinfo/jingle">jingle@xmpp.org</a>&gt; mailing list.</p><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp523824" id="nt-idp523824">1</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp519568" id="nt-idp519568">2</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp521824" id="nt-idp521824">3</a>. XEP-0260: Jingle SOCKS5 Bytestreams Transport Method &lt;<a href="http://xmpp.org/extensions/xep-0260.html">http://xmpp.org/extensions/xep-0260.html</a>&gt;.</p><p><a name="nt-idp614720" id="nt-idp614720">4</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1482768" id="nt-idp1482768">5</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1488352" id="nt-idp1488352">6</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1495808" id="nt-idp1495808">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1501056" id="nt-idp1501056">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1504912" id="nt-idp1504912">9</a>. XEP-0053: XMPP Registrar Function &lt;<a href="http://xmpp.org/extensions/xep-0053.html">http://xmpp.org/extensions/xep-0053.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2011-09-23)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced specification from Experimental to Draft.</p> (psa)
+    </div><h4>Version 0.8 (2011-08-31)</h4><div class="indent"><p>Per feedback from the XMPP Council, modified the security considerations to remove the recommendation to use XTLS (since it is not longer being actively developed).</p> (psa)
+    </div><h4>Version 0.7 (2011-05-16)</h4><div class="indent"><p>Further clarified order of layers, in particular the reuse of IBB &lt;open/&gt; and &lt;close/&gt; elements.</p> (psa)
+    </div><h4>Version 0.6 (2011-03-07)</h4><div class="indent"><p>Clarified error flows and handling of multiple IBB sessions within the bytestream.</p> (psa)
+    </div><h4>Version 0.5 (2010-04-14)</h4><div class="indent"><p>Incremented the protocol version from 0 to 1 because the changes in document version 0.4 are backward-incompatible.</p> (psa)
+    </div><h4>Version 0.4 (2010-04-13)</h4><div class="indent"><p>Added roundtrip for exchange of IBB &lt;open/&gt; element to provide proper layering between Jingle and IBB; defined how to close a single session within the bytestream; defined how to close the bytestream itself.</p> (psa)
+    </div><h4>Version 0.3 (2010-02-16)</h4><div class="indent"><p>Added negotiation flow for block size; corrected some slight errors.</p> (psa)
+    </div><h4>Version 0.2 (2009-03-09)</h4><div class="indent"><p>Minor changes to track modifications to XEP-0166; updated security considerations for consistency with other transport methods; added section on service discovery.</p> (psa)
+    </div><h4>Version 0.1 (2009-02-19)</h4><div class="indent"><p>Initial published version.</p> (psa)
+    </div><h4>Version 0.0.2 (2009-02-11)</h4><div class="indent">Defined ability to add more session IDs to a bytestream using Jingle transport-info. (psa)
+    </div><h4>Version 0.0.1 (2009-02-10)</h4><div class="indent">Rough draft. (psa)
+    </div></div><hr /><p>END</p></body></html>

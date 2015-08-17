@@ -1,0 +1,802 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0043: Jabber Database Access</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Database Access" /><meta name="DC.Creator" content="Justin Kirby" /><meta name="DC.Description" content="Expose RDBM systems directly to the jabber network" /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-10-20" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0043" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0043: Jabber Database Access</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>Expose RDBM systems directly to the jabber network</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Justin Kirby</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-10-20</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp705616">Introduction</a><br />2.  <a href="#sect-idp608976">Prerequisites</a><br />   
+      2.1.  <a href="#sect-idp609744">Namespace</a><br />   
+      2.2.  <a href="#sect-idp611808">Elements</a><br />   
+      2.3.  <a href="#sect-idp622928">Data Types</a><br />   
+      2.4.  <a href="#sect-idp631216">Assumed Database Setup</a><br />3.  <a href="#sect-idp634096">Usage</a><br />   
+      3.1.  <a href="#sect-idp634592">Requesting Schemas</a><br />   
+      3.2.  <a href="#sect-idp1488960">Manipulating Data</a><br />      
+      3.2.1.  <a href="#sect-idp1490160">Selects</a><br />      
+      3.2.2.  <a href="#sect-idp1497744">Constraining Result Sets</a><br />      
+      3.2.3.  <a href="#sect-idp1508064">Inserts</a><br />      
+      3.2.4.  <a href="#sect-idp1514208">Updates</a><br />      
+      3.2.5.  <a href="#sect-idp1518976">Deletes</a><br />   
+      3.3.  <a href="#sect-idp1523648">Procedures</a><br />   
+      3.4.  <a href="#sect-idp547344">Errors</a><br />   
+      3.5.  <a href="#sect-idp1550992">Optional Features</a><br />      
+      3.5.1.  <a href="#sect-idp1552496">Embedded SQL</a><br />      
+      3.5.2.  <a href="#sect-idp1559088">Version Negotiation</a><br />4.  <a href="#sect-idp1568480">Limitations</a><br />5.  <a href="#sect-idp1571536">Todos</a><br />6.  <a href="#sect-idp1573440">Thanks</a><br />7.  <a href="#sect-idp1574608">DTD and Schema</a><br />   
+      7.1.  <a href="#sect-idp1575104">DTD</a><br />   
+      7.2.  <a href="#sect-idp1577168">Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp705616" id="sect-idp705616">Introduction</a></h2>
+    <p>Accessing a RDBMS in a generic fashion is a complex and difficult
+    task. Consequently, this will not be an attempt to XMLize a generic
+    Database API or query language. Instead, it will providing a
+    simple mechanism for a JID to read/write data that it has access to 
+    and specifying a model for those schemas to use in xml.</p>
+  
+    <p>This document has two aims.</p>
+
+    <ol>
+      <li>Be able to request the available schemas</li>
+      <li>Perform near SQL-like data manipulation</li>
+    </ol>
+  
+    <p>Although designed for use with an RDBMS this document is not
+    restricted to such uses. It may be used with any data storage 
+    system that can be broken down to a simple table, column/row 
+    format. for example comma delimited files.</p>
+  <h2>2.
+       <a name="sect-idp608976" id="sect-idp608976">Prerequisites</a></h2>
+    <p>To understand the following sections of this document the reader
+    must be aware of the following.</p>
+
+    <div class="indent"><h3>2.1 <a name="sect-idp609744" id="sect-idp609744">Namespace</a></h3>
+      <p>The current namespace of <a href="">http://openaether.org/projects/jabber_database.html</a> 
+      will be used until this becomes a jep. Once officially accepted as
+      a jep and approved as final by the council, it will become 
+      <a href="">http://www.xmpp.org/extensions/xep-0043.html</a>.</p>
+    </div>
+    <div class="indent"><h3>2.2 <a name="sect-idp611808" id="sect-idp611808">Elements</a></h3>
+      <ul>
+        <li>version - specify the version of the protocol that the client/server supports</li>
+        <li>database - specify the database/catalog has the following attributes:
+          <ul>
+            <li>name - name of the database/catalog</li>
+            <li>sql - embed native SQL queries directly</li>
+            <li>table - the element scopes the children into the table. has the following attributes:
+              <ul>
+                <li>name - name of the table</li>
+                <li>permission - what the user can do with the data</li>
+                <li>col - describes the column. has the following attributes
+                  <ul>
+                    <li>name - name of the column</li>
+                    <li>type - SQL99 datatype of the column</li>
+                    <li>size - size of the datatype if required</li>
+                    <li>op - comparison operator, used only if child of where element</li>
+                  </ul>
+                </li>
+                <li>where - scopes col elements into a 'sql-like' where clause
+                  <ul>
+                    <li>col - see above</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>proc - element scopes the children into a procedure has the following attributes:
+              <ul>
+                <li>name - name of the sproc</li>
+                <li>permission - what the user can do with the data</li>
+                <li>col - see above</li>
+                <li>result - indicated return value by running the procedure (restricted to integer)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="indent"><h3>2.3 <a name="sect-idp622928" id="sect-idp622928">Data Types</a></h3>
+      <p>There are a limited subset of data types available:</p>
+      <ul>
+        <li>bit - a single 'bit', usually used to represent boolean values</li>
+        <li>tinyint - signed 8bit integer, has a range from   -128  to +127</li>
+        <li>integer - signed 32bit integer, has a range from -2147483648 to +2147483647</li>
+        <li>utinyint - unsigned 8bit integer, has a range from 0 to +255</li>
+        <li>uinteger - usigned 32bit integer, has a range from   0 to +4294967296</li>
+        <li>float - allowed values are -3.402823466E+38 to
+        -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38 (can NOT be  unsigned)</li>
+        <li>numeric - unlimited size (some databases constrain this though)</li>
+        <li>date - resolution is one day. acceptable ranges vary (TODO: constrain minimal range to something)</li>
+        <li>datetime - a date and time combination (often has range dependencies)</li>
+        <li>timestamp - a datetime used most often to record events</li>
+        <li>time - a time in the format HH:MM:SS (TODO: specify valid range)</li>
+        <li>char - an unsigned byte representing a single character (ASCII)</li>
+        <li>vchar - a variable width char</li>
+        <li>text - an extremely large chunk of text</li>
+        <li>blob - an extremely large chunk of binary data (encode in MIME)</li>
+      </ul>
+    </div>
+    <div class="indent"><h3>2.4 <a name="sect-idp631216" id="sect-idp631216">Assumed Database Setup</a></h3>
+      <p>All SQL/RDBMS units will be scoped in the xml hierarchy:</p>
+
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;database&gt;
+  &lt;table&gt;
+    &lt;col/&gt;
+  &lt;/table&gt;
+&lt;/database&gt;
+      </pre></div>
+
+      <p>All examples will assume the existence of the following rdbms setup. A 
+      database named 'testdb' with tables created with following SQL
+      script:</p>
+  
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+        create table tbl_one 
+        ( 
+          a_int int, 
+          a_float float, 
+          a_char  char(10)  
+        )
+        create table tbl_two 
+        ( 
+          a_date datetime, 
+      a_numeric numeric(9,3) 
+        )
+      </pre></div>
+    </div>
+<h2>3.
+       <a name="sect-idp634096" id="sect-idp634096">Usage</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp634592" id="sect-idp634592">Requesting Schemas</a></h3>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. A simple schema request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="001" to="db.host" type="get"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+&lt;/iq&gt;
+      </pre></div>
+  
+      <p>This is a simple request to discover what tables/procedures
+      exist on the database testdb. And what permissions are available 
+      to the user. All schema requests will respond within the scope that 
+      was asked for. This is to prevent unnecessary data from flooding
+      the network. So the response for the above request would look
+      something like:</p>                                     
+  
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Response to a schema request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="001" type="result" from="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one" permission="both"/&gt;
+      &lt;table  name="tbl_two" permission="read"/&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+  
+      <p>The response is scoped to only the 'children' of the request. 
+      Since the request was for the testdb database, only the tables 
+      within that database were returned in the result. The reason for 
+      the limitation is to prevent excessively large packets from filling 
+      the network from large schemas.</p>
+   
+      <p>The response indicates that the user has both read and write
+      permissions on the table 'tbl_one' and only read permissions on 
+      the table 'tbl_two'. Consequently, the user may only perform get 
+      requests on 'tbl_two'.</p>
+   
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Request detailed table schema</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="002" type="get" to="db.host"&gt; 
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"/&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+   
+      <p>The response would look like:</p>
+
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Response to detailed request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="002" type="result" from="db.host"&gt;             
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"    permission="both"&gt; 
+     &lt;col name="a_int" type="int"/&gt;
+      &lt;col name="a_float" type="float"/&gt;
+      &lt;col name="a_char" type="char" size="10"/&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt; 
+      </pre></div>
+   
+      <p>The schema response for tbl_one is quite intuitive. Three
+      columns exist, one called a_int of type int (integer), another 
+      a_float of type float and  a third called a_char of type char 
+      with a size of ten characters.</p>
+    
+
+    </div>
+
+    <div class="indent"><h3>3.2 <a name="sect-idp1488960" id="sect-idp1488960">Manipulating Data</a></h3>
+  
+      <p>Manipulation of data (select, insert, update, delete) will
+      definitely not be elegant or easy. SQL allows for some fairly 
+      complex queries on any fully  functional RDBMS. Consequently, 
+      the data manipulation will be  relatively limited since it is 
+      not a goal to translate SQL into xml.</p>
+    
+      <div class="indent"><h3>3.2.1 <a name="sect-idp1490160" id="sect-idp1490160">Selects</a></h3>
+        <p>To indicate a select like query, specify an &lt;iq&gt; of
+        type get. The table that the query is to be performed against 
+        must be specified. The columns   that are to be returned in 
+        the result set must be scoped within  the relative   table. 
+        Any attribute on the &lt;col&gt; element besides name will be 
+        ignored.  e.g. it is not required nor recommended to specify 
+        the data types  or the  sizes while performing a get.</p>
+      
+        <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Basic select</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="003" type="get" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"/&gt;
+      &lt;col name="a_float"/&gt;
+      &lt;col name="a_char"/&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+
+      SQL Syntax:
+        select a_int, a_float, a_char
+        from tbl_one
+        </pre></div>
+      
+       <p>It is also possible to specify a limit on the number of rows 
+       returned in the result set by specifying a value for the limit 
+       attribute.</p>
+     
+       <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Basic select with limit</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="003" type="get" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one"  limit="2"&gt;
+      &lt;col name="a_int"/&gt;
+      &lt;col name="a_float"/&gt;
+      &lt;col name="a_char"/&gt;
+      &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+       </pre></div>
+
+       <p>In this case a limit of two rows will be returned in the result set.</p>
+    
+       <p> The result set which is returned will contain all the rows
+       that met the criteria of the select. There is no schema
+       information beyond the column names included in the result set. 
+       Each 'row' in the result set is scoped within the corresponding 
+       &lt;table&gt; element. This allows for queries on multiple
+       tables to be used in one &lt;iq&gt; packet.</p>
+
+       <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Response to basic select</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="003" type="result" from="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;1234&lt;/col&gt;
+      &lt;col name="a_float"&gt;123.45&lt;/col&gt;
+      &lt;col name="a_char"&gt;onetwothre&lt;/col&gt;
+    &lt;/table&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;2345&lt;/col&gt;
+      &lt;col name="a_float"&gt;234.56&lt;/col&gt;
+      &lt;col name="a_char"&gt;twothreefo&lt;/col&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+       </pre></div>
+     </div>
+
+     <div class="indent"><h3>3.2.2 <a name="sect-idp1497744" id="sect-idp1497744">Constraining Result Sets</a></h3>
+       <p>It would be impractical to request the entire contents of the 
+       table every time you needed one row or a subset of the data. You 
+       can constrain the result set by specifying a where clause.</p>
+
+       <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Select with constraints</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="004" type="get" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"/&gt;
+      &lt;col name="a_float"/&gt;
+      &lt;col name="a_char"/&gt;
+      &lt;where&gt;
+        &lt;col name="a_int" op="eq"&gt;1234&lt;/col&gt;
+        &lt;col name="a_float" op="lt" conj="and"&gt;200.00&lt;/col&gt;
+      &lt;/where&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+
+         SQL Syntax:
+         select a_int, a_float, a_char from tbl_one
+         where   a_int = 1234 and a_float &lt; 200.00
+       </pre></div>
+      
+       <p>Attributes only used in the &lt;col&gt; element within a 
+       &lt;where&gt; element are the op (for operator) and conj for 
+       (conjunction). The op is used for comparison operators such 
+       as &lt;, &gt;, =, &lt;&gt;, &lt;=, &gt;=</p>
+
+       <ul>
+     <li>eq - equivalent =</li>
+     <li>neq - not-equivalent &lt;&gt;</li>
+     <li>lt - less than &lt;</li>
+     <li>gt - greater than &gt;</li>
+     <li>let - less than or equivalent &lt;=</li>
+     <li>get - greater than or equivalent &gt;=</li>
+     <li>null - IS NULL (the column is null in  the   database  sense of the word)</li>
+       </ul>
+
+      <p>The conjuction attribute is used to combined constraints in the where clause</p>
+
+      <ul>
+        <li>not - to negate a result</li>
+    <li>or - logical OR ||</li>
+    <li>and - logical AND &amp;&amp;</li>
+      </ul>      
+
+      <p><span class="strong">Result</span></p>
+
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Response to select with constraints</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="003" type="result" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;1234&lt;/col&gt;
+      &lt;col name="a_float"&gt;123.45&lt;/col&gt;
+      &lt;col name="a_char"&gt;onetwothre&lt;/col&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+
+    <div class="indent"><h3>3.2.3 <a name="sect-idp1508064" id="sect-idp1508064">Inserts</a></h3>
+      <p>Inserting or altering the stored data in anyway requires
+      setting the type attribute to a value of set. This indicates 
+      that the user wants to perform a 'insert/update'. The
+      differentiating factor between an insert and an update operation 
+      is whether a &lt;where&gt; element is used. If there is no
+&lt;where&gt; element then it must be interpreted as an insert. 
+      If a &lt;where&gt; element does exist, then it must be
+      interpreted as an update.</p>
+
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Inserting data</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="004" type="set" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;3456&lt;/col&gt;
+      &lt;col name="a_float"&gt;345.67&lt;/col&gt;
+      &lt;col name="a_char"&gt;threefour&lt;/col&gt;
+    &lt;/table&gt;
+    &lt;table  name="tbl_two"&gt;
+      &lt;col name="a_date"&gt;02/16/2002&lt;/col&gt;
+      &lt;col name="a_numeric"&gt;123456789123.123&lt;/col&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+
+SQL syntax:
+insert tbl_one (a_int, a_float,a_char)VALUES(3456,   345.67, 'threefour')
+insert tbl_two (a_date, a_numeric) VALUES('02/16/2002', 123456789123.123)
+      </pre></div>
+
+      <p><span class="strong">Result</span></p>
+
+      <p> If there is no result set for the query, as in an update,
+      insert, delete, then the response must indicate success or 
+      failure within the &lt;table&gt; element scope. An empty
+&lt;table&gt; element indicates success, and a &lt;table&gt; 
+      element containing an &lt;error&gt; element indicates a failure.</p>
+
+      <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Response to data insert</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="004" type="result" from="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one"/&gt;
+    &lt;table name="tbl_two"&gt;
+      &lt;error code="380"&gt;permission denied on table&lt;/error&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p> The insert into tbl_one succeeded since the response has an 
+      empty &lt;table&gt; element. However, the insert into tbl_two 
+      failed with a permission denied error. Which is indicated with a 
+      non-empty &lt;table&gt; element.</p>
+    </div>
+
+    <div class="indent"><h3>3.2.4 <a name="sect-idp1514208" id="sect-idp1514208">Updates</a></h3>
+
+      <p> As stated previously, if the type attribute has a value of
+      set and a &lt;where&gt; element exists, then it must be interpreted as an update.</p>
+
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Updating</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="005" type="set" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table  name="tbl_one"&gt;
+      &lt;col name="a_char"&gt;aaaaaaaaaa&lt;/col&gt;
+      &lt;where&gt;
+        &lt;col name=c"a_int"&gt;1234&lt;/col&gt;
+      &lt;/where&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+
+        SQL Syntax:
+    update tbl_one 
+    set a_char = 'aaaaaaaaaa'
+    where a_int = 1234
+      </pre></div>
+
+      <p><span class="strong">Result</span></p>
+
+      <p> Again, if there is no result set returned by the query, then
+      success or failure must be indicated.</p>
+
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Response to update</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="005" type="result" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one"/&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+
+    <div class="indent"><h3>3.2.5 <a name="sect-idp1518976" id="sect-idp1518976">Deletes</a></h3>
+
+    <p> If the type attribute has a value of set and there are no
+    &lt;col&gt; elements scoped within the &lt;table&gt; element, 
+    then the query must be interpreted as a delete.</p>
+
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Simple delete</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="006" type="set"  to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one"&gt;
+      &lt;where&gt;
+        &lt;col name="a_int" op="eq"&gt;1234&lt;/col&gt;
+      &lt;/where&gt;
+    &lt;/table&gt;
+    &lt;/database&gt;
+&lt;/iq&gt;
+
+      SQL Syntax:
+      delete from tbl_one where a_int = 1234
+    </pre></div>
+
+    <p><span class="strong">Result</span></p>
+    
+    <p>Again, if a result set is not generated by a query, then
+    success or failure must be indicated by the &lt;table&gt; element</p>
+
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Response to delete</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="006" type="result"    to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one"/&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+    </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp1523648" id="sect-idp1523648">Procedures</a></h3>
+
+  <p> Procedures, or stored procedures  [<a href="#nt-idp1524400">1</a>]  
+, are often handy to make frequently used sql queries execute faster. 
+  These are simply queries stored in a precompiled form and given a 
+  name with a list of parameters. Each RDBMS handles procedures 
+  differently, but the common characteristics are that they are 
+  stored server side and have in/out parameters.</p>
+
+  <p> The &lt;proc&gt; element will be used to indicate a procedure. 
+  It has similar characteristics to the &lt;table&gt; element. The 
+  core differences are that the &lt;col&gt; elements have permissions 
+  and a &lt;result&gt; element can be used to indicate the value 
+  returned by the procedure.</p>
+
+  <p> The permission attribute on a &lt;col&gt; element is used to 
+  indicate whether the parameter is in (read), out (write) or in/out (both). </p>
+  
+  <p> The only result set acceptable from a procedure is that of the 
+  parameters or &lt;col&gt; element. If the procedure produces a
+  result set outside of the parameters this should be ignored.</p>
+
+  </div>
+  <div class="indent"><h3>3.4 <a name="sect-idp547344" id="sect-idp547344">Errors</a></h3>
+
+  <p> The server must be able to let the client know when an error 
+  occurs, instead of just being silent.</p>
+  
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error Codes</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>Code</th>
+      <th>Message</th>
+      <th>Description</th>
+    </tr>
+    <tr class="body">
+      <td>399</td>
+      <td>Invalid Database Name</td>
+      <td>Returned when the client has requested information from a
+      database which does not exist according to the component.</td>
+    </tr>
+    <tr class="body">
+      <td>398</td>
+      <td>Invalid Table Name</td>
+      <td>Returned when the client has requested information from a 
+      table/procedure which does not exist according to the component.</td>
+    </tr>
+    <tr class="body">
+      <td>397</td>
+      <td>Invalid Column Name</td>
+      <td>Returned when the client has requested information from a 
+      column which does not exist according to the component.</td>
+    </tr>
+    <tr class="body">
+      <td>380</td>
+      <td>Permission Denied on Table</td>
+      <td>Returned when the requested action is not allowed for the 
+      user on the table</td>
+    </tr>
+    <tr class="body">
+      <td>401</td>
+      <td>Access Denied</td>
+      <td>Returned when the user does not have permission to use the 
+      component.</td>
+    </tr>
+  </table></div>
+
+  <p>If the user requests an action on a table which they do not have 
+  permission to do the following should be returned</p>
+  
+  <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Permission denied error</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="004" type="error" from="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_two"&gt;
+      &lt;error code="380"&gt;permission denied on table&lt;/error&gt;
+    &lt;/table&gt;
+&lt;/database&gt;
+    &lt;/iq&gt;  
+  </pre></div>
+
+  <p>If the user is not allowed to access the component the following should be returned</p>
+
+  <p class="caption"><a name="example-17" id="example-17"></a>Example 17. General access denied</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="004" type="error" from="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;error code="401"&gt;Access Denied&lt;/error&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+  </pre></div>
+
+  </div>
+  <div class="indent"><h3>3.5 <a name="sect-idp1550992" id="sect-idp1550992">Optional Features</a></h3>
+  <p> There are requirements which can be provided by other jabber 
+  components/namespaces, namely the jabber:iq:browse namespace 
+  in-place of Version Negotiation. Due to the inherent limitations 
+  of the above data retrieval mechanisms more sophisticated querying 
+  techniques might be desired. The &lt;query&gt; element will extend 
+  the functionality </p>
+
+  <div class="indent"><h3>3.5.1 <a name="sect-idp1552496" id="sect-idp1552496">Embedded SQL</a></h3>
+    <p> The abilities described in the Basics section are just that, 
+    basic. To provide more flexibility and allow for the full power 
+    of SQL without xmlifying everything, a &lt;sql&gt; element may 
+    be implemented to provide this feature.</p>
+    
+    <p> The &lt;sql&gt; element must be scoped within the &lt;database&gt; element.</p>
+
+    <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Embedded sql query</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="007" type="get" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;sql&gt; select a_int, a_float from tbl_one &lt;/sql&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+    </pre></div>
+
+    <p><span class="strong">Result</span></p>
+
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Response to embedded query</p><div class="indent"><pre class="prettyprint">
+&lt;iq id="007" type="result" to="db.host"&gt;
+  &lt;database 
+      name="testdb"
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+    &lt;table name="tbl_one" permission="both"&gt;
+      &lt;col name="a_int" type="integer"/&gt;
+      &lt;col name="a_float" type="float"/&gt;
+    &lt;/table&gt;
+    &lt;table name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;1234&lt;/col&gt;
+      &lt;col name="a_float"&gt;123.45&lt;/col&gt;
+    &lt;/table&gt;
+    &lt;table name="tbl_one"&gt;
+      &lt;col name="a_int"&gt;2345&lt;/col&gt;
+      &lt;col name="a_float"&gt;234.56&lt;/col&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+&lt;/iq&gt;
+    </pre></div>
+
+    <p> Since SQL is so flexible, the result set schema is not known 
+    until it is returned as a result of the query. Consequently, it 
+    must be sent as the first 'row' of the returned result. Each 
+    following row will be the actual data queried for.</p>
+
+    <p> If multiple tables are used within one SQL statement, then 
+    then name attribute within the &lt;table&gt; element can not be 
+    accurately denoted with a single table name. The best way to deal 
+    with this situation is to simply use a unique identifier within 
+    the scope of the &lt;database&gt; element. This will allow for 
+    multiple &lt;sql&gt; results to be scoped within the same result.</p>
+
+    </div>  
+    <div class="indent"><h3>3.5.2 <a name="sect-idp1559088" id="sect-idp1559088">Version Negotiation</a></h3>
+
+    <p>It is expected that this protocol will grow and be extended 
+    to meet various demands. Therefore, version
+    negotiation [<a href="#nt-idp1559984">2</a>] will be 
+    incorporated up front.</p>
+    
+    <p>When the connection initiator, client end-user or
+    server/transport, starts a session, it must first send 
+    the version number it expects to use, otherwise, behavior 
+    is undefined.</p>
+
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq id="000" type="get" to="db.host"&gt;
+  &lt;database 
+      xmlns="http://openaether.org/projects/jabber_database.html"&gt;
+      &lt;version&gt;0.1&lt;/version&gt;
+    &lt;/database&gt;
+&lt;/iq&gt;
+    </pre></div>
+
+    <p>Three responses are possible from the server.</p>
+    <ol>    
+      <li>
+      <p>It supports that version number and responds with:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq id="000" type="result" from="db.host"&gt;
+  &lt;database 
+      xmlns="http://openaether.org/projects/jabber_database.html"&gt;
+    &lt;version&gt;0.1&lt;/version&gt;
+    &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The type of 'result' indicates that the version request was
+      successful and if the client is satisfied with the version number, 
+      may continue with schema requests or whatever.</p></li>
+    
+      <li><p>It does not support that version number and responds with:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq id="000" type="error" from="db.host"&gt;
+  &lt;database 
+      xmlns="http://openaether.org/projects/jabber_database.html"/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The type of 'error' indicates a failure in conforming to the
+      desired version number. The server may optionally send an
+      alternative option.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;iq id="000" type="error" from="db.host"&gt;
+  &lt;database 
+      xmlns="http://openaether.org/projects/jabber_database.html"&gt;
+      &lt;version&gt;0.2&lt;/version&gt;
+    &lt;/database&gt;
+&lt;/iq&gt;
+      </pre></div></li>
+      <li>If the server has no idea what the client is talking
+      about it should send the appropriate Jabber error code.</li>
+    </ol>
+    </div>
+  </div>
+<h2>4.
+       <a name="sect-idp1568480" id="sect-idp1568480">Limitations</a></h2>
+  <ol>
+    <li>No joins, roll ups, cubes</li>
+    <li>Views are not differentiated from tables</li>
+    <li>provides basic sql-like functionality only</li>
+    <li>Utilizes <span class="em">lowest common denominator</span> approach</li>
+  </ol>
+<h2>5.
+       <a name="sect-idp1571536" id="sect-idp1571536">Todos</a></h2>
+  <ul>
+    <li>define procedures; what they are and how they work</li>
+    <li>determine value of adding administration features</li>
+  </ul>
+<h2>6.
+       <a name="sect-idp1573440" id="sect-idp1573440">Thanks</a></h2>
+  <p>Thanks to Russell Davis (ukscone) for fine tuning the layout and wording of this jep. It would probably have been unreadable if it wasn't for him.</p>
+<h2>7.
+       <a name="sect-idp1574608" id="sect-idp1574608">DTD and Schema</a></h2>
+  <div class="indent"><h3>7.1 <a name="sect-idp1575104" id="sect-idp1575104">DTD</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT version (#PCDATA)&gt;
+&lt;!ELEMENT error (#PCDATA)&gt;
+&lt;!ELEMENT sql(#PCDATA)&gt;
+&lt;!ELEMENT database (table | sproc | sql | error)*&gt;
+&lt;!ELEMENT table (col | where | error)*&gt;
+&lt;!ELEMENT where (col+)&gt;
+&lt;!ELEMENT col (#PCDATA)&gt;
+&lt;!ELEMENT proc(col | result | error)*&gt;
+&lt;!ELEMENT result (#PCDATA)&gt;
+&lt;!ATTLIST error code CDATA #IMPLIED&gt;
+&lt;!ATTLIST database name CDATA #IMPLIED&gt;
+&lt;!ATTLIST table 
+name CDATA #IMPLIED 
+    permission (read | write | both) #IMPLIED 
+    limit CDATA #IMPLIED
+&gt;
+&lt;!ATTLIST proc name CDATA #IMPLIED&gt;
+&lt;!ATTLIST col 
+    name CDATA #IMPLIED 
+    size CDATA #IMPLIED 
+    op (eq | neq | lt | gt | let | get | null) #IMPLIED 
+    conj (not | or | and ) #IMPLIED 
+    permission (read | write | both) #IMPLIED 
+    type (bit | tinyint | integer | utinyint | uinteger | 
+          float | numeric | date | datetime | timestamp | 
+          time | char | vchar | text | blob) #IMPLIED 
+&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>7.2 <a name="sect-idp1577168" id="sect-idp1577168">Schema</a></h3>
+    <p><span class="strong">Anyone care to do this?</span></p>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0043<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-10-20<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0043.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0043.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0043.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Justin Kirby</h3><p class="indent">
+        Email:
+        <a href="mailto:justin@openaether.org">justin@openaether.org</a><br />
+        JabberID: 
+        <a href="xmpp:zion@openaether.org">zion@openaether.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1524400" id="nt-idp1524400">1</a>. Apparently procedures 
+  are not as common in RDBMS as I thought. Postgres and MySQL have 
+  functions, but not procedures. So until I, or someone else, 
+  researches this issue this feature is on hold.</p><p><a name="nt-idp1559984" id="nt-idp1559984">2</a>. Version Negotiation is being killed since browsing, feature 
+    negotiation, or disco will be able to perform this function, 
+    however it might be useful as an optional feature for clients 
+    that don't implement these yet, especially considering none 
+    of these have been standardized.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-10-20)</h4><div class="indent">At the request of the author, changed status to Retracted. (psa)
+    </div><h4>Version 0.1 (2002-08-21)</h4><div class="indent">Initial public release (jk)
+    </div></div><hr /><p>END</p></body></html>

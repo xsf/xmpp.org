@@ -1,0 +1,959 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0130: Waiting Lists</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Waiting Lists" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Yehezkel Dallal" /><meta name="DC.Creator" content="Alexandre Nolle" /><meta name="DC.Creator" content="Jean-Louis Seguineau" /><meta name="DC.Creator" content="Mark Troyer" /><meta name="DC.Creator" content="Valerie Mercier" /><meta name="DC.Description" content="This document defines an XMPP protocol extension that enables a user to add a non-IM user to a waiting list and be informed when the contact creates an IM account." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2012-04-18" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0130" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0130: Waiting Lists</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension that enables a user to add a non-IM user to a waiting list and be informed when the contact creates an IM account.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Yehezkel Dallal, Alexandre Nolle, Jean-Louis Seguineau, Mark Troyer, Valerie Mercier</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deprecated</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2012-04-18</td></tr></table><hr /><p style="color:red">WARNING: This document has been <strong>Deprecated</strong> by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#glossary">Glossary</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#usecases">Use Cases</a><br />   
+      4.1.  <a href="#imuser-retrieve">IM User Retrieves Current WaitingList</a><br />      
+      4.1.1.  <a href="#imuser-retrieve-primary">Primary Flow</a><br />      
+      4.1.2.  <a href="#imuser-retrieve-alt">Alternate Flows</a><br />   
+      4.2.  <a href="#imuser-add">IM User Adds Contact to WaitingList</a><br />      
+      4.2.1.  <a href="#imuser-add-primary">Primary Flow</a><br />      
+      4.2.2.  <a href="#imuser-add-alt">Alternate Flows</a><br />   
+      4.3.  <a href="#imuser-remove">IM User Removes Contact from WaitingList</a><br />      
+      4.3.1.  <a href="#imuser-remove-primary">Primary Flow</a><br />      
+      4.3.2.  <a href="#imuser-remove-alt">Alternate Flows</a><br />5.  <a href="#protocol">Protocol</a><br />   
+      5.1.  <a href="#protocol-imuser">IM User Interaction With WaitingListService</a><br />      
+      5.1.1.  <a href="#protocol-imuser-retrieve">IM User Retrieves Current WaitingList</a><br />      
+      5.1.2.  <a href="#protocol-imuser-add">IM User Adds Contact to WaitingList</a><br />      
+      5.1.3.  <a href="#protocol-imuser-remove">IM User Removes Contact from WaitingList</a><br />   
+      5.2.  <a href="#protocol-service">WaitingListService Interaction With InteropPartners</a><br />      
+      5.2.1.  <a href="#protocol-service-retrieve">ServiceProvider's WaitingListService Retrieves Current WaitingList</a><br />      
+      5.2.2.  <a href="#protocol-service-add">ServiceProvider's WaitingListService Adds Contact to WaitingList</a><br />      
+      5.2.3.  <a href="#protocol-service-remove">ServiceProvider's WaitingListService Removes Contact from WaitingList</a><br />6.  <a href="#impl">Implementation Notes</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      9.2.  <a href="#registrar-identities">Service Discovery Identities</a><br />   
+      9.3.  <a href="#registrar-features">Service Discovery Features</a><br />10.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+    <p>An IM user may want to be informed when a contact creates an IM account. If the user knows some information about the contact (e.g., a phone number or email address), the user's service can use that information to place the contact on a "waiting list", then inform the user when the contact creates an IM account. This document defines an extension to <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1563984">1</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1566576">2</a>] that enables such "waiting list" functionality, including the ability to add contacts on other domains if service providers agree to interoperate (e.g., to add a contact who uses a different mobile telephony service provider).</p>
+    <p><span class="em">Note: The protocol defined herein is currently in use at several large service providers in Europe. Others are welcome to use the protocol.</span></p>
+  <h2>2.
+       <a name="glossary" id="glossary">Glossary</a></h2>
+    <div class="indent"><dl>
+      <di>
+        <dt><strong>Contact</strong></dt>
+        <dd>A person with whom an IM User seeks to communicate, identified by a URI such as &lt;tel:PhoneNumber&gt; (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3966">RFC 3966</a></span>  [<a href="#nt-idp1576272">3</a>]) or &lt;mailto:EmailAddress&gt; (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2368">RFC 2368</a></span>  [<a href="#nt-idp1571584">4</a>]).</dd>
+      </di>
+      <di>
+        <dt><strong>Customer</strong></dt>
+        <dd>A person who is contracted for services with a ServiceProvider.</dd>
+      </di>
+      <di>
+        <dt><strong>IM User</strong></dt>
+        <dd>Any Customer who has registered for instant messaging services.</dd>
+      </di>
+      <di>
+        <dt><strong>InteropPartner</strong></dt>
+        <dd>Any company that agrees to interoperate using the protocol defined herein.</dd>
+      </di>
+      <di>
+        <dt><strong>JID</strong></dt>
+        <dd>The unique identifier of an IM User in the XMPP protocol. Outside the context of an IM session, a JID is of the form (&lt;localpart@domain.tld&gt; or &lt;domain.tld&gt;) ("bare JID"); within the context of an IM session, a JID is of the form (&lt;localpart@domain.tld/resource&gt; or &lt;domain.tld/resource&gt;) ("full JID").</dd>
+      </di>
+      <di>
+        <dt><strong>ServiceProvider</strong></dt>
+        <dd>A company that provides telephony or email services to a Customer.</dd>
+      </di>
+      <di>
+        <dt><strong>URI</strong></dt>
+        <dd>A Uniform Resource Identifier as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp1584256">5</a>]. Specific URI schemes that may be useful in this specification include 'tel:', 'mailto:', and 'sip:', but any URI scheme may be used.</dd>
+      </di>
+      <di>
+        <dt><strong>Waiting List</strong></dt>
+        <dd>A list of Contacts whom an entity (IM User or InteropPartner) is waiting to hear about regarding their status as instant messaging users.</dd>
+      </di>
+      <di>
+        <dt><strong>WaitingListService</strong></dt>
+        <dd>An XMPP service that maintains Waiting lists for IM Users and/or InteropPartners.</dd>
+      </di>
+    </dl></div>
+  <h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+    <p>This protocol is designed so that an IM User can:</p>
+    <ol>
+      <li>Request the user's current Waiting List</li>
+      <li>Add a Contact to a local WaitingList (based on some URI associated with the Contact)</li>
+      <li>Receive notification from a local WaitingListService if the Contact has (or subsequently creates) an IM account</li>
+      <li>Remove a Contact from the Waiting List</li>
+    </ol>
+    <p>In addition, this protocol is designed so that a ServiceProvider can:</p>
+    <ol>
+      <li>Request the service's current WaitingList</li>
+      <li>Add a Contact to a WaitingList at an InteroPartner (based on some URI associated with the Contact)</li>
+      <li>Receive notification from the InteropPartner if the Contact has (or subsequently creates) an IM account</li>
+      <li>Remove a Contact from the Waiting List</li>
+    </ol>
+  <h2>4.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+    <div class="indent"><h3>4.1 <a name="imuser-retrieve" id="imuser-retrieve">IM User Retrieves Current WaitingList</a></h3>
+      <p>Before adding or removing Contacts from its WaitingList, an IM User SHOULD retrieve its current WaitingList. The activity flow is as follows:</p>
+      <div class="indent"><h3>4.1.1 <a name="imuser-retrieve-primary" id="imuser-retrieve-primary">Primary Flow</a></h3>
+        <ol>
+          <li>IM User discovers WaitingListService hosted by ServiceProvider [A1]; it is RECOMMENDED to do this immediately after logging in.</li>
+          <li>IM User requests current WaitingList from WaitingListService.</li>
+          <li>WaitingListService returns WaitingList to IM User, including any items for which JIDs have been discovered. [A2]</li>
+        </ol>
+      </div>
+      <div class="indent"><h3>4.1.2 <a name="imuser-retrieve-alt" id="imuser-retrieve-alt">Alternate Flows</a></h3>
+        <ol>
+          <li>ServiceProvider does not host a WaitingListService:
+          <ol>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>IM User does not have a Waiting List:
+          <ol>
+              <li>WaitingListService returns &lt;item-not-found/&gt; error to IM User.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="indent"><h3>4.2 <a name="imuser-add" id="imuser-add">IM User Adds Contact to WaitingList</a></h3>
+      <p>An IM User may know a URI for a Contact (e.g., a phone number or email address) but not the Contact's JID. In order to subscribe to the Contact's presence or otherwise communicate with the Contact over an instant messaging system, the IM User first needs to discover the Contact's JID based on a URI for the Contact. However, the Contact may not yet have an IM account. Because the IM User may therefore need to wait until the Contact creates an account, the IM User needs to add the Contact to a WaitingList. The activity flow is as follows:</p>
+      <div class="indent"><h3>4.2.1 <a name="imuser-add-primary" id="imuser-add-primary">Primary Flow</a></h3>
+        <ol>
+          <li>IM User completes <a href="#imuser-retrieve">IM User Retrieves Current WaitingList</a> use case.</li>
+          <li>IM User requests addition of Contact to WaitingList based on Contact's URI.</li>
+          <li>WaitingListService determines that the URI scheme is supported. [A1]</li>
+          <li>WaitingListService determines that the information provided is a valid URI for that URI scheme. [A2]</li>
+          <li>WaitingListService determines that Contact's URI does not belong to a person served by ServiceProvider. [A3]</li>
+          <li>WaitingListService acknowledges addition of Contact to IM User's WaitingList.</li>
+          <li>WaitingListService discovers WaitingListServices hosted by one or more InteropPartners.</li>
+          <li>WaitingListService queries one or more InteropPartner's WaitingListServices for JID associated with URI.</li>
+          <li>InteropPartner's WaitingListService determines that Contact's URI belongs to a person served by that partner. [A4]</li>
+          <li>InteropPartner's WaitingListService determines that Contact is an IM User. [A5]</li>
+          <li>InteropPartner's WaitingListService informs ServiceProvider's WaitingListService of JID associated with Contact's URI. [A6] [A10]</li>
+          <li>ServiceProvider's WaitingListService informs IM User of Contact's JID. [A8]</li>
+          <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+          <li>Use Case Ends.</li>
+        </ol>
+      </div>
+      <div class="indent"><h3>4.2.2 <a name="imuser-add-alt" id="imuser-add-alt">Alternate Flows</a></h3>
+        <ol>
+          <li>The URI scheme is not supported:
+            <ol>
+              <li>WaitingListService sends &lt;bad-request/&gt; error to IM User and does not add contact to WaitingList.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>The information provided is not a valid URI:
+            <ol>
+              <li>WaitingListService sends &lt;not-acceptable/&gt; error to IM User and does not add contact to WaitingList.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>URI belongs to person served by ServiceProvider:
+            <ol>
+              <li>WaitingListService determines that Contact is an IM User registered with ServiceProvider [A7].</li>
+              <li>WaitingListService informs IM User of Contact's JID. [A9]</li>
+              <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+              <li>Use Case Ends.</li>
+            </ol>
+          </li>
+          <li>URI does not belong to a person served by InteropPartner:
+            <ol>
+              <li>InteropPartner sends &lt;item-not-found/&gt; error to WaitingListService.</li>
+              <li>If all InteropPartners queried return &lt;item-not-found/&gt; error, WaitingListService sends &lt;item-not-found/&gt; error (or local equivalent) to IM User.</li>
+              <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>Contact is not an IM User registered with InteropPartner:
+            <ol>
+              <li>InteropPartner records and acknowledges WaitingListService's request for JID associated with URI.</li>
+              <li>OPTIONALLY, InteropPartner invites Contact to register as an IM User.</li>
+              <li>Contact registers.</li>
+              <li>InteropPartner informs Service Provider's WaitingListService of JID associated with Contact's URI.</li>
+              <li>ServiceProvider's WaitingListService informs all IM Users who requested JID associated with Contact's URI.</li>
+              <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+              <li>Use Case Ends.</li>
+            </ol>
+          </li>
+          <li>InteropPartner refuses to provide service to ServiceProvider:
+            <ol>
+              <li>InteropPartner's WaitingListService sends &lt;not-authorized/&gt; error to ServiceProvider's WaitingListService.</li>
+              <li>If all other InteropPartners also return errors, WaitingListService returns &lt;item-not-found/&gt; error to IM User.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>Contact is not an IM User registered with ServiceProvider:
+            <ol>
+              <li>WaitingListService records IM User's request for JID associated with URI.</li>
+              <li>OPTIONALLY, WaitingListService invites Contact to register as an IM User.</li>
+              <li>Contact registers.</li>
+              <li>WaitingListService informs all IM Users who requested JID associated with Contact's URI.</li>
+              <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+              <li>Use Case Ends.</li>
+            </ol>
+          </li>
+          <li>Contact's URI is not handled by any ServiceProvider:
+            <ol>
+              <li>WaitingListService informs all IM Users who requested JID associated with Contact's URI that no InteropPartner services Contact's URI.</li>
+              <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</li>
+              <li>Use Case Ends unsuccessfully.</li>
+            </ol>
+          </li>
+          <li>IM User completes <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.
+           <ol>     
+             <li>ServiceProvider's WaitingListService removes item from WaitingList.</li>   
+             <li>Use Case Ends unsuccessfully.</li>    
+           </ol>       
+         </li>
+         <li>All Users Remove Contact from Their WaitingLists
+           <ol>     
+             <li>ServiceProvider's WaitingListService removes item from WaitingList at InteropPartner's WaitingListService.</li>   
+             <li>Use Case Ends unsuccessfully.</li>
+           </ol>       
+         </li>
+        </ol>
+      </div>
+    </div>
+    <div class="indent"><h3>4.3 <a name="imuser-remove" id="imuser-remove">IM User Removes Contact from WaitingList</a></h3>
+      <p>An IM User should remove a contact from the WaitingList after the <a href="#imuser-add">IM User Adds Contact to WaitingList</a> use case ends (either successfully or unsuccessfully), and may remove a contact from the WaitingList at any other time.</p>
+      <div class="indent"><h3>4.3.1 <a name="imuser-remove-primary" id="imuser-remove-primary">Primary Flow</a></h3>
+        <ol>
+          <li>IM User sends removal request to WaitingListService.</li>
+          <li>WaitingListService removes IM User's request for JID associated with URI.</li>
+          <li>WaitingListService informs IM User of successful removal [A1].</li>
+          <li>WaitingListService sends removal request to appropriate InteropPartner's WaitingListService [A2].</li>
+          <li>InteropPartner's WaitingListService determines that URI belongs to a person served by that partner.</li>
+          <li>InteropPartner's WaitingListService removes ServiceProvider's WaitingListService's request for JID.</li>
+          <li>InteropPartner's WaitingListService informs ServiceProvider's WaitingListService of successful removal.</li>
+          <li>Use Case Ends.</li>
+        </ol>
+      </div>
+      <div class="indent"><h3>4.3.2 <a name="imuser-remove-alt" id="imuser-remove-alt">Alternate Flows</a></h3>
+        <ol>
+          <li>IM User never requested JID associated with URI:
+            <ol>
+              <li>WaitingListService sends &lt;item-not-found/&gt; error to IM User.</li>
+              <li>Use Case Ends.</li>
+            </ol>
+          </li>
+          <li>Contact URI is served by WaitingListService or IM User was not the only person who requested the JID:
+            <ol>
+              <li>Use Case Ends.</li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </div>
+  <h2>5.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+    <div class="indent"><h3>5.1 <a name="protocol-imuser" id="protocol-imuser">IM User Interaction With WaitingListService</a></h3>
+      <p>
+        <span class="em">This section of the document is provided for the sake of domains that implement XMPP as their local protocol; domains that implement another protocol will use their service-specific protocol to complete the user-to-domain interaction.</span>
+      </p>
+      <div class="indent"><h3>5.1.1 <a name="protocol-imuser-retrieve" id="protocol-imuser-retrieve">IM User Retrieves Current WaitingList</a></h3>
+        <p>It is RECOMMENDED for an IM User's client to retrieve the WaitingList immediately after logging in. However, first it must discover its local WaitingListService. An IM User MAY use either <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1660560">6</a>] or the deprecated <span class="ref"><a href="http://xmpp.org/extensions/xep-0094.html">Agent Information (XEP-0094)</a></span>  [<a href="#nt-idp1663280">7</a>] protocol.</p>
+        <p class="caption"><a name="example-1" id="example-1"></a>Example 1. IM User Discovers WaitingListService by Sending Agent Information Request to its Server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='agent1'&gt;
+  &lt;query xmlns='jabber:iq:agents'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server Returns Address of its WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='agent1'&gt;
+  &lt;query xmlns='jabber:iq:agents'&gt;
+    ...
+    &lt;agent jid='waitlist.service-provider.com'&gt;
+      &lt;name&gt;Waiting List Service&lt;/name&gt;
+      &lt;service&gt;waitinglist&lt;/service&gt;
+    &lt;/agent&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-3" id="example-3"></a>Example 3. IM User Discovers WaitingListService by Sending Service Discovery Request to its Server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server Returns Address of its WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    ...
+    &lt;item jid='waitlist.service-provider.com'
+          name='Waiting List Service'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-5" id="example-5"></a>Example 5. IM User Queries WaitingListService for Detailed Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='user@service-provider.com/resource'
+    to='waitlist.service-provider.com'
+    id='disco2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>The WaitingListService SHOULD return detailed information about the service it provides, including the URI schemes it supports (see also the <a href="#registrar-features">Service Discovery Features</a> section of this document).</p>
+        <p class="caption"><a name="example-6" id="example-6"></a>Example 6. WaitingListService Returns Detailed Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='disco2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='directory' type='waitinglist'/&gt;
+    &lt;feature var='http://jabber.org/protocol/waitinglist'/&gt;
+    &lt;feature var='http://jabber.org/protocol/waitinglist/schemes/mailto'/&gt;
+    &lt;feature var='http://jabber.org/protocol/waitinglist/schemes/tel'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>Once an IM User has discovered the WaitingListService, the user's client SHOULD request its current Waiting List. This is done by sending an IQ-get to the WaitingListService containing an empty &lt;query/&gt; element qualified by the 'http://jabber.org/protocol/waitinglist' namespace:</p>
+        <p class="caption"><a name="example-7" id="example-7"></a>Example 7. IM User Requests its Current WaitingList</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='user@service-provider.com/resource'
+    to='waitlist.service-provider.com'
+    id='request1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>Upon request, the WaitingListService MUST return the current WaitingList to the IM User:</p>
+        <p class="caption"><a name="example-8" id="example-8"></a>Example 8. WaitingListService Returns WaitingList to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='request1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='12345'&gt;
+      &lt;uri scheme='tel'&gt;3033083282&lt;/uri&gt;
+      &lt;name&gt;PSA&lt;/name&gt;
+    &lt;/item&gt;
+    &lt;item id='23456'&gt;
+      &lt;uri scheme='mailto'&gt;editor@xmpp.org&lt;/uri&gt;
+      &lt;name&gt;XMPP Extensions Editor&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>Each ItemID MUST be unique within the scope of the client's WaitingList items. The value of the ItemID is an opaque string; an implementation MAY assign semantic meaning to the ItemID (e.g., id="John Smith (mobile)" rather than id="12345"), but such meaning is implementation-specific and outside the scope of the protocol defined herein. The user MAY include a &lt;name/&gt; element containing a natural-language name for the Contact.</p>
+        <p>The WaitingList MAY contain an item for which a JID has been discovered.</p>
+        <p class="caption"><a name="example-9" id="example-9"></a>Example 9. IM User Asks for its WaitingList including Newly Discovered JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='user@service-provider.com/resource'
+    to='waitlist.service-provider.com'
+    id='jidask1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'/&gt;
+&lt;/iq&gt;
+
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='jidask1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='12345' jid='stpeter@jabber.org'&gt;
+      &lt;uri scheme='tel'&gt;3033083282&lt;/uri&gt;
+      &lt;name&gt;PSA&lt;/name&gt;
+    &lt;/item&gt;
+    &lt;item id='23456'&gt;
+      &lt;uri scheme='mailto'&gt;editor@xmpp.org&lt;/uri&gt;
+      &lt;name&gt;XMPP Extensions Editor&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+      </div>
+      <div class="indent"><h3>5.1.2 <a name="protocol-imuser-add" id="protocol-imuser-add">IM User Adds Contact to WaitingList</a></h3>
+        <p>Once an IM User's client has discovered the WaitingListService and requested the user's WaitingList, the user can add Contacts to the WaitingList based on the Contact's URI. (Note: This document uses the example of phone numbers via the 'tel' URI scheme, but the same rules apply to WaitingList items based on email addresses or other URI schemes.)</p>
+        <p class="caption"><a name="example-10" id="example-10"></a>Example 10. IM User Requests Addition of Contact to WaitingList</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    to='waitlist.service-provider.com'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>As described below, various error conditions may occur. (For information about error syntax, refer to <span class="ref">RFC 6120</span> and <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1682048">8</a>].)</p>
+        <p>If the IM User provided a URI whose scheme is not supported, WaitingListService MUST return a &lt;bad-request/&gt; error to the IM User and MUST NOT add the Contact to the WaitingList.</p>
+        <p class="caption"><a name="example-11" id="example-11"></a>Example 11. WaitingListService Returns &lt;bad-request/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tag'&gt;shakespeare.lit,2005-08:waitlist1&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='400' type='modify'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If the IM User included a JID in the request, WaitingListService MUST return a &lt;bad-request/&gt; error to IM User and MUST NOT add the Contact to the WaitingList. (Note: A WaitingListService MUST NOT return a non-XMPP URI to an IM User based on the Contact's JID; see the <a href="#security">Security Considerations</a> section of this document.)</p>
+        <p class="caption"><a name="example-12" id="example-12"></a>Example 12. WaitingListService Returns &lt;bad-request/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item jid='some-jid'&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='400' type='modify'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If the IM User provided an invalid URI (e.g., a phone number with too many digits or an email address with no '@' character), WaitingListService MUST return a &lt;not-acceptable/&gt; error to the IM User and MUST NOT add the Contact to the WaitingList.</p>
+        <p class="caption"><a name="example-13" id="example-13"></a>Example 13. WaitingListService Returns &lt;not-acceptable/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;+1234563033083283&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='406' type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If one of the foregoing errors was generated (all of which have a type of "modify"), IM User SHOULD modify the request and re-submit it.</p>
+        <p>If none of the "modify" errors was generated, WaitingListService MUST inform the IM User that the request was successfully received, including a unique ID number for the new WaitingList item.</p>
+        <p class="caption"><a name="example-14" id="example-14"></a>Example 14. WaitingListService Informs IM User that Request was Received</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If none of the "modify" errors was generated and WaitingListService knows Contact JID when the IQ result is returned to the user (e.g., because Contact is served by ServiceProvider), WaitingListService MAY include the WaitingList item in the IQ result:  [<a href="#nt-idp604608">9</a>]</p>
+        <p class="caption"><a name="example-15" id="example-15"></a>Example 15. WaitingListService Returns IQ Result to IM User (With Contact JID)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567' jid='contact@service-provider.com'&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If none of the "modify" errors was generated and WaitingListService does not know Contact JID when the IQ result is returned to the user, it needs to contact InteropPartners in order to determine if the Contact is associated with one of the InteropPartners. Thus before it returns the Contact JID to the IM User, it needs to wait for the one of the InteropPartners to return Contact JID or for all of the InteropPartners to return errors.</p>
+        <p>If all of the InteropPartners return an error of type "cancel" (typically &lt;item-not-found/&gt; and/or &lt;not-authorized/&gt;) to WaitingListService, WaitingListService MUST return an &lt;item-not-found/&gt; error (or local equivalent) to the IM User (and IM User SHOULD complete <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case).</p>
+        <p class="caption"><a name="example-16" id="example-16"></a>Example 16. WaitingListService Returns &lt;item-not-found/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    type='error'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;waitlist xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;+1234563033083283&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/waitlist&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>If the connection to at least one of the InteropPartners times out (a &lt;remote-server-timeout/&gt; error), WaitingListService MUST return an IQ-result as described above (indicating that the request was received) and resend the request to the InteropPartners that timed out. If connections continue to time out (over some configurable time period and for some configurable number of retries), WaitingListService SHOULD then return a &lt;remote-server-timeout/&gt; error to IM User via a "JID push" message as shown below.</p>
+        <p>If InterPartner's WaitingListService knows the Contact JID, it sends it to ServiceProvider's WaitingListService as shown in the <a href="#protocol-service-add">ServiceProvider's WaitingListService Adds Contact to WaitingList</a> section of this document.</p>
+        <p>If WaitingListService knows Contact JID (or learns Contact JID from InteropPartner), it MUST inform IM User through a "JID push" message, which consists of a message stanza that contains a &lt;waitlist/&gt; element qualified by the 'http://jabber.org/protocol/waitinglist' namespace:
+           [<a href="#nt-idp1690432">10</a>]
+        </p>
+        <p class="caption"><a name="example-17" id="example-17"></a>Example 17. WaitingListService Pushes Contact's JID to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com'&gt;
+  &lt;body&gt;This message contains a WaitingList item.&lt;/body&gt;
+  &lt;waitlist xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567' jid='contact@service-provider.com'&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/waitlist&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>Note: The JID push uses an XMPP &lt;message/&gt; stanza because the WaitingListService has no knowledge of the user's presence and therefore cannot assume that an &lt;iq/&gt; stanza will be received by the user at a specific resource.</p>
+        <p>If WaitingListService learns that Contact's URI is not handled by any InteropPartner, it MUST inform IM User through a "JID push" message:</p>
+        <p class="caption"><a name="example-18" id="example-18"></a>Example 18. WaitingListService Informs IM User that No InteropPartner Handles Contact's URI</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com'&gt;
+  &lt;body&gt;Sorry, we cannot find this contact.&lt;/body&gt;
+  &lt;waitlist xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567' 
+          jid='contact@service-provider.com'
+          type='error'&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+      &lt;error code='404' 
+             type='cancel'
+             xmlns='jabber:client'&gt;
+        &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+      &lt;/error&gt;
+    &lt;/item&gt;
+  &lt;/waitlist&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>After receiving the "JID push" message, IM User SHOULD complete the <a href="#imuser-remove">IM User Removes Contact from WaitingList</a> use case.</p>
+      </div>
+      <div class="indent"><h3>5.1.3 <a name="protocol-imuser-remove" id="protocol-imuser-remove">IM User Removes Contact from WaitingList</a></h3>
+        <p>In order to remove the item from the WaitingList, the IM User MUST complete the <a href="#imuser-remove">Remove Contact from WaitingList</a> use case.</p>
+        <p class="caption"><a name="example-19" id="example-19"></a>Example 19. IM User Sends Removal Request to WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='user@service-provider.com/resource'
+    to='waitlist.service-provider.com'
+    id='remove1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'&gt;
+      &lt;remove/&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If WaitingListService previously recorded request, WaitingListService removes request from list and returns result to IM User.</p>
+        <p class="caption"><a name="example-20" id="example-20"></a>Example 20. WaitingListService Returns Result to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='remove1'/&gt;
+        </pre></div>
+        <p>If WaitingListService did not previously record this request, WaitingListService MUST return an &lt;item-not-found/&gt; error to the IM User.</p>
+        <p class="caption"><a name="example-21" id="example-21"></a>Example 21. WaitingListService Returns &lt;item-not-found/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='remove1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'&gt;
+      &lt;remove/&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>5.2 <a name="protocol-service" id="protocol-service">WaitingListService Interaction With InteropPartners</a></h3>
+      <p>
+        <span class="em">This section of the document describes the inter-domain protocol for communication between WaitingListServices. The protocol defined in this section MUST be implemented by ServiceProviders.</span>
+      </p>
+      <p>A ServiceProvider's WaitingListService MUST be configured with a "whitelist" of InteropPartner's WaitingListServices with which it communicates. Therefore service discovery SHOULD NOT be necessary. However, if necessary it MAY use either the <span class="ref">Agent Information</span> protocol or the <span class="ref">Service Discovery</span> protocol as described in the following examples.</p>
+      <p>Note: The InteropPartner's WaitingListService is not required to be hosted by InteropPartner, and could be hosted by a third party (e.g., a neutral phone number translation service). In this case, InteropPartner would simply advertise 'waitlist.third-party.com' as its WaitingListService.</p>
+      <div class="indent"><h3>5.2.1 <a name="protocol-service-retrieve" id="protocol-service-retrieve">ServiceProvider's WaitingListService Retrieves Current WaitingList</a></h3>
+        <p class="caption"><a name="example-22" id="example-22"></a>Example 22. ServiceProvider Discovers InteropPartner's WaitingListService by Sending Agent Information Request to InteropPartner</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='waitlist.service-provider.com'
+    to='interop-partner.com'
+    id='agent2'&gt;
+  &lt;query xmlns='jabber:iq:agents'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-23" id="example-23"></a>Example 23. InteropPartner Returns Address of its WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='agent2'&gt;
+  &lt;query xmlns='jabber:iq:agents'&gt;
+    ...
+    &lt;agent jid='waitlist.interop-partner.com'&gt;
+      &lt;name&gt;Waiting List Service&lt;/name&gt;
+      &lt;service&gt;waitinglist&lt;/service&gt;
+    &lt;/agent&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-24" id="example-24"></a>Example 24. ServiceProvider Discovers InteropPartner's WaitingListService by Sending Service Discovery Request to InteropPartner</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='waitlist.service-provider.com'
+    to='interop-partner.com'
+    id='disco3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-25" id="example-25"></a>Example 25. InteropPartner Returns Address of its WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='disco3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    ...
+    &lt;item jid='waitlist.service-provider.com'
+          name='Waiting List Service'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Service Provider Queries InteropPartner's WaitingListService for Detailed Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='waitlist.service-provider.com'
+    to='waitlist.interop-partner.com'
+    id='disco4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-27" id="example-27"></a>Example 27. InteropPartner's WaitingListService Returns Detailed Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='disco4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='directory'
+              type='waitinglist'/&gt;
+    &lt;feature var='http://jabber.org/protocol/waitinglist'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+      </div>
+      <div class="indent"><h3>5.2.2 <a name="protocol-service-add" id="protocol-service-add">ServiceProvider's WaitingListService Adds Contact to WaitingList</a></h3>
+        <p>Once a ServiceProvider's WaitingListService has discovered the InteropPartner's WaitingListService and requested its WaitingList, the ServiceProvider's WaitingListService can add items to its WaitingList based on URI.</p>
+        <p class="caption"><a name="example-28" id="example-28"></a>Example 28. ServiceProvider's WaitingListService Adds New Item to WaitingList</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='waitlist.service-provider.com'
+    to='waitlist.interop-partner.com'
+    id='waitinglist2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If InteropPartner refuses to provide service to ServiceProvider, it MUST return a &lt;not-authorized/&gt; error to the ServiceProvider:</p>
+        <p class="caption"><a name="example-29" id="example-29"></a>Example 29. InteropPartner Returns &lt;not-authorized/&gt; Error to ServiceProvider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='waitinglist2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='401' type='cancel'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If Contact's URI is not associated with a person served by this InteropPartner, the InteropPartner MUST return an &lt;item-not-found/&gt; error to the ServiceProvider.</p>
+        <p class="caption"><a name="example-30" id="example-30"></a>Example 30. InteropPartner Returns &lt;item-not-found/&gt; Error to ServiceProvider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='waitinglist2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If ServiceProvider's WaitingListService receives &lt;not-authorized/&gt; and/or &lt;item-not-found/&gt; errors from all InteropPartners, it returns a &lt;item-not-found/&gt; error to IM User:</p>
+        <p class="caption"><a name="example-31" id="example-31"></a>Example 31. WaitingListService Returns &lt;item-not-found/&gt; Error to IM User</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    type='error'
+    from='waitlist.service-provider.com'
+    to='user@service-provider.com/resource'
+    id='waitinglist1'&gt;
+  &lt;waitlist xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item&gt;
+      &lt;uri scheme='tel'&gt;+1234563033083283&lt;/uri&gt;
+      &lt;name&gt;contact-name&lt;/name&gt;
+    &lt;/item&gt;
+  &lt;/waitlist&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>If Contact's URI is associated with a person served by this InteropPartner, InteropPartner MUST return acknowledgement of the WaitingList addition to the ServiceProvider's WaitingListService.</p>
+        <p class="caption"><a name="example-32" id="example-32"></a>Example 32. InteropPartner's WaitingListService Acknowledges Receipt</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='waitinglist2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If Contact is an IM User served by InteropPartner, InteropPartner's WaitingListService pushes Contact's JID to ServiceProvider's WaitingListService.</p>
+        <p class="caption"><a name="example-33" id="example-33"></a>Example 33. InteropPartner's WaitingListService Pushes Contact's JID to ServiceProvider's WaitingListService</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='jidpush1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567' jid='user@domain'&gt;
+      &lt;uri scheme='tel'&gt;contact-number&lt;/uri&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p class="caption"><a name="example-34" id="example-34"></a>Example 34. ServiceProvider's WaitingListService Acknowledges Receipt of JID Push</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.service-provider.com'
+    to='waitlist.interop-partner.com'
+    id='jidpush1'/&gt;
+        </pre></div>
+        <p>After receiving acknowledgement (but not before), InteropPartner's WaitingListService MUST remove that item from the WaitingList for the ServiceProvider's WaitingListService.</p>
+      </div>
+      <div class="indent"><h3>5.2.3 <a name="protocol-service-remove" id="protocol-service-remove">ServiceProvider's WaitingListService Removes Contact from WaitingList</a></h3>
+        <p class="caption"><a name="example-35" id="example-35"></a>Example 35. ServiceProvider Requests Removal of Item from WaitingList</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='waitlist.service-provider.com'
+    to='waitlist.interop-partner.com'
+    id='remove2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'&gt;
+      &lt;remove/&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If item exists on WaitingList, InteropPartner's WaitingListService removes item from list and returns result to ServiceProvider's WaitingListService.</p>
+        <p class="caption"><a name="example-36" id="example-36"></a>Example 36. InteropPartner Returns Result to ServiceProvider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='remove2'/&gt;
+        </pre></div>
+        <p>If item does not exist on WaitingList, InteropPartner's WaitingListService MUST return an &lt;item-not-found/&gt; error to the ServiceProvider's WaitingListService.</p>
+        <p class="caption"><a name="example-37" id="example-37"></a>Example 37. InteropPartner Returns &lt;item-not-found/&gt; Error to ServiceProvider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='waitlist.interop-partner.com'
+    to='waitlist.service-provider.com'
+    id='remove2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/waitinglist'&gt;
+    &lt;item id='34567'&gt;
+      &lt;remove/&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+  &lt;error code='404' type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+        </pre></div>
+      </div>
+    </div>
+  <h2>6.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+    <ol>
+      <li><p>Protocols and mechanisms for inviting a Contact to register as an IM User are out of scope for this document and shall be determined by each InteropPartner individually.</p></li>
+      <li><p>A ServiceProvider's WaitingListService MUST record which of its IM Users have requested the JID associated with Contact's URI, and an InteropPartner's WaitingListService MUST record that Service Provider's WaitingListService (not User) has requested JID associated with Contact's URI. Therefore when Contact registers, InteropPartner's WaitingListService informs its local users as well as ServiceProvider's WaitingListService, and ServiceProvider's WaitingListService informs its local users.</p></li>
+      <li><p>The InteropPartner's WaitingListService is not required to be hosted by InteropPartner, and could be hosted by a third party (e.g., a neutral phone number translation service). In this case, InteropPartner would simply advertise 'waitlist.third-party.com' as its WaitingListService.</p></li>
+      <li><p>Once an IM User learns a Contact's JID, the IM User MAY send a normal subscription request to the Contact, setting the "to" address to Contact's JID. This interaction is defined in the base XMPP specifications and is out of scope for this document.</p></li>
+      <li><p>For historical reasons, implementations MUST support the older <span class="ref">Agent Information</span> protocol (XEP-0094) and SHOULD support <span class="ref">Service Discovery</span> (XEP-0030). Note well that the <span class="ref">Agent Information</span> protocol will eventually be deprecated in favor of <span class="ref">Service Discovery</span>.</p></li>
+      <li><p>An IM User's client receives WaitingList information either through a "JID push" message (received from WaitingListService at any time) or in the IQ result received after requesting the WaitingList (since one or more of the WaitingList items may contain a JID). (The same rule applies to a ServiceProvider's WaitingListService that receives an IQ set from an InteropPartner's WaitingListService.)</p></li>
+      <li><p>When an IM User logs in, the user's client SHOULD request the current WaitingList.</p></li>
+      <li><p>Although the examples in this document show the hostname of the WaitingListService as 'waitlist.third-party.com' (etc.), this is for convenience only; the hostname MAY be any valid DNS hostname.</p></li>
+      <li><p>When sending JID pushes, an implementation MAY specify a message type of 'headline', which in some deployments will prevent such messages from being stored offline for later delivery.</p></li>
+      <li><p>It can happen that WaitingListService does not receive a reply from InteropPartner within a certain amount of time or the connection to InteropPartner times out. Because such behavior is often transient, WaitingListService MAY attempt to reconnect and then resend the request (although any retry logic to handle these cases is a matter of implementation). However, WaitingListService SHOULD NOT return an &lt;item-not-found/&gt; error to IM User unless it knows definitively that the Contact's InteropPartner is permanently unavailable, since returning an &lt;item-not-found/&gt; error in response to temporary connection timeouts is likely to be misleading.</p></li>
+    </ol>
+  <h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+    <p>A ServiceProvider's WaitingListService MUST be configured with a "whitelist" of InteropPartners with which it communicates. The WaitingListService SHOULD NOT communicate with any InteropPartners that are not on the whitelist.</p>
+    <p>Requesting JIDs via WaitingLists is not bidirectional; i.e., a service MUST NOT allow an IM User to discover a Contact's non-XMPP URI based on the Contact's JID.</p>
+    <p>A service MAY require a Contact to approve the disclosure of the Contact's JID, either as a global preference or for each request; however, this is a local policy matter.</p>
+  <h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+    <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1764832">11</a>].</p>
+  <h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+    <div class="indent"><h3>9.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+      <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1769936">12</a>] includes 'http://jabber.org/protocol/waitinglist' in its registry of protocol namespaces.</p>
+    </div>
+    <div class="indent"><h3>9.2 <a name="registrar-identities" id="registrar-identities">Service Discovery Identities</a></h3>
+      <p>The Jabber Registar includes a type of "waitinglist" in the "directory" category in its registry of service discovery identities.</p>
+    </div>
+    <div class="indent"><h3>9.3 <a name="registrar-features" id="registrar-features">Service Discovery Features</a></h3>
+      <p>The XMPP Registrar includes supported URI schemes in its registry of service discovery features. These features shall be of the form 'http://jabber.org/protocol/waitlist/schemes/SCHEME-NAME'.</p>
+      <p>This document registers the following two namespace names for URI schemes, but others MAY be registered in the future using standard registration procedures:</p>
+      <ul>
+        <li>http://jabber.org/protocol/waitlist/schemes/mailto</li>
+        <li>http://jabber.org/protocol/waitlist/schemes/tel</li>
+      </ul>
+    </div>
+  <h2>10.
+       <a name="schema" id="schema">XML Schema</a></h2>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/waitinglist'
+    xmlns='http://jabber.org/protocol/waitinglist'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0130: http://www.xmpp.org/extensions/xep-0130.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='jabber:client'
+             schemaLocation='http://xmpp.org/schemas/jabber-client.xsd'/&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      Note: there are two allowable root elements for the
+      'http://jabber.org/protocol/waitinglist' namespace,
+      query and waitlist. The query element is used within
+      IQ stanzas and the waitlist element is used within
+      message stanzas. See XEP-0130 for details.
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='waitlist'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='item'
+                    minOccurs='0'
+                    maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='item'
+                    minOccurs='0'
+                    maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice minOccurs='0'
+                 maxOccurs='unbounded'
+                 xmlns:xmpp='jabber:client'&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element ref='uri'/&gt;
+          &lt;xs:element ref='name' minOccurs='0'/&gt;
+          &lt;xs:element ref='xmpp:error' minOccurs='0'/&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:element ref='remove'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='id'
+                    type='xs:string'
+                    use='optional'/&gt;
+      &lt;xs:attribute name='jid'
+                    type='xs:string'
+                    use='optional'/&gt;
+      &lt;xs:attribute name='type'
+                    use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='error'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='uri'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='scheme'
+                        type='xs:NCName'
+                        use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='name' type='string1023'/&gt;
+
+  &lt;xs:element name='remove' type='empty'/&gt;
+
+  &lt;xs:simpleType name='string1023'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:maxLength value='1023'/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0130<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deprecated">Deprecated</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.4<br />
+            Last Updated: 2012-04-18<br />
+              Expires: 2012-10-18<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0094, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: waitinglist<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/waitinglist.xsd">http://www.xmpp.org/schemas/waitinglist.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0130.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0130.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0130.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Yehezkel Dallal</h3><p class="indent">
+        Email:
+        <a href="mailto:yehezkeld@followap.com">yehezkeld@followap.com</a><br /></p><h3>Alexandre Nolle</h3><p class="indent">
+        Email:
+        <a href="mailto:anolle@francetelecom.com">anolle@francetelecom.com</a><br /></p><h3>Jean-Louis Seguineau</h3><p class="indent">
+        Email:
+        <a href="mailto:jean-louis.seguineau@antepo.com">jean-louis.seguineau@antepo.com</a><br />
+        JabberID: 
+        <a href="xmpp:jlseguineau@im.antepo.com">jlseguineau@im.antepo.com</a><br /></p><h3>Mark Troyer</h3><p class="indent">
+        Email:
+        <a href="mailto:mtroyer@jabber.com">mtroyer@jabber.com</a><br />
+        JabberID: 
+        <a href="xmpp:mtroyer@corp.jabber.com">mtroyer@corp.jabber.com</a><br /></p><h3>Valerie Mercier</h3><p class="indent">
+        Email:
+        <a href="mailto:valerie.mercier@orange-ftgroup.com">valerie.mercier@orange-ftgroup.com</a><br />
+        JabberID: 
+        <a href="xmpp:vmercier@jabber.com">vmercier@jabber.com</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1563984" id="nt-idp1563984">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1566576" id="nt-idp1566576">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1576272" id="nt-idp1576272">3</a>. RFC 3966: The tel URI for Telephone Numbers &lt;<a href="http://tools.ietf.org/html/rfc3966">http://tools.ietf.org/html/rfc3966</a>&gt;.</p><p><a name="nt-idp1571584" id="nt-idp1571584">4</a>. RFC 2368: The mailto URL scheme &lt;<a href="http://tools.ietf.org/html/rfc2368">http://tools.ietf.org/html/rfc2368</a>&gt;.</p><p><a name="nt-idp1584256" id="nt-idp1584256">5</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp1660560" id="nt-idp1660560">6</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1663280" id="nt-idp1663280">7</a>. XEP-0094: Agent Information &lt;<a href="http://xmpp.org/extensions/xep-0094.html">http://xmpp.org/extensions/xep-0094.html</a>&gt;.</p><p><a name="nt-idp1682048" id="nt-idp1682048">8</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp604608" id="nt-idp604608">9</a>. Even if WaitingListService returns Contact JID in the IQ-result, it MUST also send a "JID push" message.</p><p><a name="nt-idp1690432" id="nt-idp1690432">10</a>. When waiting list information is included in a message stanza, the root element for the 'http://jabber.org/protocol/waitinglist' namespace is &lt;waitlist/&gt; rather than &lt;query/&gt; (as used within IQ stanzas). This disparity is historical and tracks the protocol syntax that was most widely implemented, as defined in version 0.4 of this specification. In the interest of interoperability, the IQ usage was changed back to &lt;query/&gt; in version 1.1 of this specification. If this document were not historical, the root element usage would be harmonized to use only the &lt;waitlist/&gt; element.</p><p><a name="nt-idp1764832" id="nt-idp1764832">11</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1769936" id="nt-idp1769936">12</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.4 (2012-04-18)</h4><div class="indent"><p>Changed status to Deprecated, per a vote of the XMPP Council.</p> (psa)
+    </div><h4>Version 1.3 (2006-09-13)</h4><div class="indent">Clarified alternate flow for main use case; corrected order of errors and JID pushes; specified that item removal is always the responsibility of the IM user; removed remote-server-not-found example (use item-not-found instead). (psa)
+    </div><h4>Version 1.2 (2006-01-24)</h4><div class="indent">Adjusted remote-server-timeout flow to recommend IQ result followed by JID push message. (psa)
+    </div><h4>Version 1.1 (2005-11-30)</h4><div class="indent">Harmonized root element specification with implemented usage, reversing change made in version 0.5. (psa)
+    </div><h4>Version 1.0 (2005-08-26)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Active. (psa)
+    </div><h4>Version 0.6 (2005-08-16)</h4><div class="indent">Added error case for remote server timeout; specified client and service responsibilities regarding removal of waiting list items in error cases. (psa)
+    </div><h4>Version 0.5 (2005-05-16)</h4><div class="indent">Corrected schema and IQ examples by changing root element for namespace from &lt;query/&gt; to &lt;waitlist/&gt; (this had been used for message examples but not IQ examples). (psa)
+    </div><h4>Version 0.4 (2005-04-01)</h4><div class="indent">Changed document type to Informational; corrected Remote Server Error example to use &lt;remote-server-not-found/&gt; rather than &lt;service-unavailable/&gt;; added service discovery identity to XMPP Registrar Considerations; corrected text regarding registration of service discovery features; corrected some small errors in the text, examples, and schema. (psa)
+    </div><h4>Version 0.3 (2004-09-27)</h4><div class="indent">Corrected error syntax used when Contact URI is not handled by any InteropPartner. (psa)
+    </div><h4>Version 0.2 (2004-09-03)</h4><div class="indent">Added alternate flow for situation in which Contact URI is not handled by any InteropPartner; changed headline message type for JID pushes from SHOULD to MAY; clarified semantics of item ID; added name child of item; corrected and updated the XML schema; updated examples to use XMPP error conditions. (psa)
+    </div><h4>Version 0.1 (2004-03-18)</h4><div class="indent">Initial version. (psa)
+    </div><h4>Version 0.0.10 (2003-09-03)</h4><div class="indent">Fixed several small errors in the examples. (psa)
+    </div><h4>Version 0.0.9 (2003-08-22)</h4><div class="indent">Specified optional use of message type 'headline'; fixed one small error in the examples. (psa)
+    </div><h4>Version 0.0.8 (2003-07-23)</h4><div class="indent">Changed client-server push mechanism to use &lt;message/&gt; rather than &lt;iq/&gt;, since client may not be online; allowed IQ result to include waitlist information if known; added more detailed disco#info lookup to support discovery of URI types supported. (psa)
+    </div><h4>Version 0.0.7 (2003-07-02)</h4><div class="indent">Modified to use a generic &lt;uri scheme=''/&gt; element. (psa)
+    </div><h4>Version 0.0.6 (2003-06-26)</h4><div class="indent">Refactored protocol to use IQ sets that are "pushed" to the component or client (similar to XMPP rosters); added service discovery and agents support; made text more generic; simplified error handling; change name to "Waiting Lists". (psa)
+    </div><h4>Version 0.0.5 (2003-06-24)</h4><div class="indent">Added remove use case and protocol; added XML schema. (psa)
+    </div><h4>Version 0.0.4 (2003-06-19)</h4><div class="indent">Specified protocol. (psa)
+    </div><h4>Version 0.0.3 (2003-06-18)</h4><div class="indent">Simplified requirements; defined main use case. (psa)
+    </div><h4>Version 0.0.2 (2003-06-16)</h4><div class="indent">Converted to XML format; formalized use case definitions; minor editorial changes. (psa)
+    </div><h4>Version 0.0.1 (2003-06-10)</h4><div class="indent">First draft. (an)
+    </div></div><hr /><p>END</p></body></html>

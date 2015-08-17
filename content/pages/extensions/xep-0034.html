@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0034: SASL Integration</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="SASL Integration" /><meta name="DC.Creator" content="Robert Norris" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="NOTE WELL: this specification was retracted on 2003-11-05 since the topic is addressed definitively in XMPP Core. Please refer to XMPP Core for further information." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-11-05" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0034" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0034: SASL Integration</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>NOTE WELL: this specification was retracted on 2003-11-05 since the topic is addressed definitively in XMPP Core. Please refer to XMPP Core for further information.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Robert Norris, Jeremie Miller, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-11-05</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp509120">Introduction</a><br />2.  <a href="#sect-idp511696">Protocol</a><br />   
+      2.1.  <a href="#sect-idp512192">Overview</a><br />   
+      2.2.  <a href="#sect-idp520720">Stream initialization</a><br />   
+      2.3.  <a href="#sect-idp601248">Mechanism selection and handshake</a><br />   
+      2.4.  <a href="#sect-idp608832">Success, failure and client abort</a><br />   
+      2.5.  <a href="#sect-idp613872">Session start</a><br />3.  <a href="#sect-idp617536">Support for existing authentication methods</a><br />   
+      3.1.  <a href="#sect-idp618608">Legacy client-to-server authentication support</a><br />   
+      3.2.  <a href="#sect-idp621424">Dialback support for server-to-server authentication</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp509120" id="sect-idp509120">Introduction</a></h2>
+  <p>The Simple Authentication and Security Layer (SASL) (see <span class="ref"><a href="http://tools.ietf.org/html/rfc4422">RFC 4422</a></span>  [<a href="#nt-idp524816">2</a>]) provides a generalized method for adding authentication support to connection-based protocols. This document describes a generic XML namespace profile for SASL, that conforms to section 4 of RFC 4422, "Profiling requirements".</p>
+  
+  <p>This profile may be used for both client-to-server and server-to-server connections. For client connections, the service name used is "jabber-client". For server connections, the service name used is "jabber-server". Both these names are registered in the IANA service registry.</p>
+
+  <p>The reader is expected to have read and understood the SASL specification before reading this document.</p>
+<h2>2.
+       <a name="sect-idp511696" id="sect-idp511696">Protocol</a></h2>
+
+  <div class="indent"><h3>2.1 <a name="sect-idp512192" id="sect-idp512192">Overview</a></h3>
+    <p>In these examples, "client" refers to the remote entity that initiated the connection, either a Jabber client or a Jabber server. "Server" refers to the server that the remote entity is attempting to connect and authenticate to.</p>
+
+    <p>The steps involved for a SASL negotiation are as follows:</p>
+
+    <ol>
+      <li>Client requests SASL authentication</li>
+      <li>Server responds with list of available SASL authentication mechanisms</li>
+      <li>Client selects mechanism</li>
+      <li>Server sends a challenge</li>
+      <li>Client responds to challenge</li>
+      <li>Server sends more challenges, client sends more responses</li>
+    </ol>
+
+    <p>This series of challenge/response pairs continues until one of three things happens:</p>
+
+    <ol>
+      <li>Client aborts the handshake.</li>
+      <li>Server reports failure.</li>
+      <li>Server reports success.</li>
+    </ol>
+
+    <p>After authentication has completed, the client sends a packet to begin the session.</p>
+    
+    <p>The namespace identifier for this protocol is http://www.iana.org/assignments/sasl-mechanisms.</p>
+
+    <p>The following examples show the dialogue between a client [C] and a server [S].</p>
+
+    <p>
+    </p>
+  </div>
+
+  <div class="indent"><h3>2.2 <a name="sect-idp520720" id="sect-idp520720">Stream initialization</a></h3>
+    <p>The client begins by requesting SASL authentication as part of the normal Jabber stream negotiation.  [<a href="#nt-idp521584">3</a>] The server responds by sending the available authentication mechanisms to the client along with the stream information:</p>
+
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Stream initialization</p><div class="indent"><pre class="prettyprint">
+C: &lt;stream:stream xmlns='jabber:client'
+                  xmlns:stream='http://etherx.jabber.org/streams'
+                  xmlns:sasl='http://www.iana.org/assignments/sasl-mechanisms'
+                  to='jabber.org'&gt;
+S: &lt;stream:stream xmlns='jabber:client'
+                  xmlns:stream='http://etherx.jabber.org/streams'
+                  xmlns:sasl='http://www.iana.org/assignments/sasl-mechanisms'
+                  id='12345678'&gt;
+   &lt;sasl:mechanisms&gt;
+     &lt;sasl:mechanism&gt;PLAIN&lt;/sasl:mechanism&gt;
+     &lt;sasl:mechanism&gt;DIGEST-MD5&lt;/sasl:mechanism&gt;
+     &lt;sasl:mechanism&gt;EXTERNAL&lt;/sasl:mechanism&gt;
+   &lt;sasl:mechanisms&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>2.3 <a name="sect-idp601248" id="sect-idp601248">Mechanism selection and handshake</a></h3>
+    <p>Next, the client selects an authentication mechanism:</p>
+
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Plaintext mechanism selection</p><div class="indent"><pre class="prettyprint">
+C: &lt;sasl:auth mechanism='PLAIN'/&gt;
+    </pre></div>
+
+    <p>The server responds with a mechanism-specific challenge, which the client must respond to. More than one challenge/response pair can take place; this is mechanism-specific.</p>
+
+    <p>Challenges and responses are Base64 [<a href="#nt-idp603584">4</a>] encoded.</p>
+
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Plaintext handshake</p><div class="indent"><pre class="prettyprint">
+S: &lt;sasl:challenge/&gt;
+C: &lt;sasl:response&gt;cm9iAHNlY3JldA==&lt;/sasl:response&gt;
+    </pre></div>
+
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Digest handshake</p><div class="indent"><pre class="prettyprint">
+S: &lt;sasl:challenge&gt;
+     cmVhbG09ImNhdGFjbHlzbS5jeCIsbm9uY2U9Ik9BNk1HOXRFUUdtMmhoIi
+     xxb3A9ImF1dGgiLGNoYXJzZXQ9dXRmLTgsYWxnb3JpdGhtPW1kNS1zZXNz
+   &lt;/sasl:challenge&gt;
+C: &lt;sasl:response&gt;
+     dXNlcm5hbWU9InJvYiIscmVhbG09ImNhdGFjbHlzbS5jeCIsbm9uY2U9Ik
+     9BNk1HOXRFUUdtMmhoIixjbm9uY2U9Ik9BNk1IWGg2VnFUclJrIixuYz0w
+     MDAwMDAwMSxxb3A9YXV0aCxkaWdlc3QtdXJpPSJqYWJiZXIvY2F0YWNseX
+     NtLmN4IixyZXNwb25zZT1kMzg4ZGFkOTBkNGJiZDc2MGExNTIzMjFmMjE0
+     M2FmNyxjaGFyc2V0PXV0Zi04
+   &lt;/sasl:response&gt;
+S: &lt;sasl:challenge&gt;
+     cnNwYXV0aD1lYTQwZjYwMzM1YzQyN2I1NTI3Yjg0ZGJhYmNkZmZmZA==
+   &lt;/sasl:challenge&gt;
+C: &lt;sasl:response/&gt;
+    </pre></div>
+
+    <p>For mechanisms that require the client to send data first (ie the first challenge from the server is empty), the client may optionally send its first response as part of the mechanism selection:</p>
+
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Plaintext mechanism selection; client sends data first</p><div class="indent"><pre class="prettyprint">
+C: &lt;sasl:auth mechanism='PLAIN'&gt;cm9iAHNlY3JldA==&lt;/sasl:auth&gt;
+    </pre></div>
+  </div>
+
+  <div class="indent"><h3>2.4 <a name="sect-idp608832" id="sect-idp608832">Success, failure and client abort</a></h3>
+    <p>The handshake continues until authentication completes successfully, authentication fails, or the client aborts the handshake:</p>
+
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Authentication success</p><div class="indent"><pre class="prettyprint">
+S: &lt;sasl:success/&gt;
+    </pre></div>
+
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Authentication failure</p><div class="indent"><pre class="prettyprint">
+S: &lt;sasl:failure/&gt;
+    </pre></div>
+
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client abort</p><div class="indent"><pre class="prettyprint">
+C: &lt;sasl:abort/&gt;
+    </pre></div>
+
+    <p>Optionally, the server or client may send an informative message along with the success, failure or abort command:</p>
+
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Authentication failure; optional informative message</p><div class="indent"><pre class="prettyprint">
+S: &lt;sasl:failure&gt;Plaintext authentication failed (Incorrect username or password)&lt;/sasl:failure&gt;
+    </pre></div>
+
+    <p>Following a failure or client abort, the client may start a new handshake. Following a successful authentication, any further attempts by the client to begin a new authentication handshake will automatically result in the server sending a failure.</p>
+  </div>
+
+  <div class="indent"><h3>2.5 <a name="sect-idp613872" id="sect-idp613872">Session start</a></h3>
+    <p>Note: that this section only applies to client-to-server connections.</p>
+
+    <p>Following successful authentication, the client must send a standard IQ set packet in the jabber:iq:auth namespace to start a session. The client must supply a username and resource for the session along with this packet.</p>
+
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Session start after successful authentication</p><div class="indent"><pre class="prettyprint">
+C: &lt;iq id="a1" type="get"&gt;
+     &lt;query xmlns="jabber:iq:auth"&gt;
+       &lt;username&gt;rob&lt;/username&gt;
+     &lt;/query&gt;
+   &lt;/iq&gt;
+S: &lt;iq id="a1" type="result"&gt;
+     &lt;query xmlns="jabber:iq:auth"&gt;
+       &lt;username&gt;rob&lt;/username&gt;
+       &lt;resource/&gt;
+     &lt;/query&gt;
+   &lt;/iq&gt;
+C: &lt;iq id="a2" type="set"&gt;
+     &lt;query xmlns="jabber:iq:auth"&gt;
+       &lt;username&gt;rob&lt;/username&gt;
+       &lt;resource&gt;laptop&lt;/resource&gt;
+     &lt;/query&gt;
+   &lt;/iq&gt;
+S: &lt;iq id="a2" type="result"&gt;
+     &lt;query xmlns="jabber:iq:auth"/&gt;
+   &lt;/iq&gt;
+    </pre></div>
+
+    <p>If the client attempts to start a session before authenticating, or the username given in the jabber:iq:auth packet does not match the username given in the authentication credentials (when the SASL mechanism supports it), the server will return a 401 (Unauthorized) error packet.</p>
+  </div>
+<h2>3.
+       <a name="sect-idp617536" id="sect-idp617536">Support for existing authentication methods</a></h2>
+  <p>Traditionally, Jabber servers have supported two authentication models - jabber:iq:auth for client-to-server authentication, and dialback for server-to-server authentication.</p>
+
+  <div class="indent"><h3>3.1 <a name="sect-idp618608" id="sect-idp618608">Legacy client-to-server authentication support</a></h3>
+    <p>Until SASL authentication is in widespread use, clients and servers may support both SASL and the legacy jabber:iq:auth authentication system for client-to-server connections. Note that neither the client nor the server are required to support legacy authentication; it is simply a courtesy to users until the majority of clients and servers support SASL authentication.</p>
+
+    <p>If a client connects and does not request the use of SASL (that is, the SASL profile namespace identifier does not appear in the stream initializer response), then the server should disable SASL for this connection; that is, it should not add the SASL profile namespace identifier to the stream initialization response, nor should it offer any SASL mechanisms.</p>
+
+    <p>If a client connects to a server that does not support SASL (identified by the lack of the SASL profile namespace identifier in the stream initializer response, even though the client requested it), the client may choose to fall back to use legacy authentication.</p>
+  </div>
+
+  <div class="indent"><h3>3.2 <a name="sect-idp621424" id="sect-idp621424">Dialback support for server-to-server authentication</a></h3>
+    <p>SASL authentication for server-to-server connections is not intended to replace dialback, as there are uses for both. Dialback is useful in an uncontrolled environment, such as the global Internet, where it is necessary to verify the identity of the remote server. SASL authentication has uses in a more controlled environment, where the administrator wishes to restrict access to a certain number of known remote servers.</p>
+
+    <p>To this end, the use of dialback is not deprecated. If a remote server connects and requests the use of dialback (by specifying the "jabber:server:dialback" namespace, the the local server shall not offer SASL authentication. Similarly, if the remote server connects and requests the use of SASL authentication, then the local server shall not offer dialback. In the event that the remote server requests both, the local server should terminate the stream immediately and close the connection. If the remote server requests neither, then the local server may choose to support the pre-dialback server-to-server stream, but it is recommended that the local server terminate the stream and close the connection.</p>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0034<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2003-11-05<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0034.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0034.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0034.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Robert Norris</h3><p class="indent">
+        Email:
+        <a href="mailto:rob@cataclysm.cx">rob@cataclysm.cx</a><br />
+        JabberID: 
+        <a href="xmpp:rob@cataclysm.cx">rob@cataclysm.cx</a><br /></p><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jeremie@jabber.org">jeremie@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:stpeter@jabber.org">stpeter@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@jabber.org">stpeter@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp500320" id="nt-idp500320">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp524816" id="nt-idp524816">2</a>. RFC 4422: Simple Authentication and Security Layer (SASL) &lt;<a href="http://tools.ietf.org/html/rfc4422">http://tools.ietf.org/html/rfc4422</a>&gt;.</p><p><a name="nt-idp521584" id="nt-idp521584">3</a>. In the case of the remote entity being a server, the default namespace in the stream header will be "jabber:server".</p><p><a name="nt-idp603584" id="nt-idp603584">4</a>. <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>, section 6.8.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2003-11-05)</h4><div class="indent">The status of this specification has been changed to Retracted since it has been superseded by <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp500320">1</a>]. (psa)
+    </div><h4>Version 1.0 (2002-08-13)</h4><div class="indent">Changed status to Draft. (psa)
+    </div><h4>Version 0.3 (2002-07-26)</h4><div class="indent">Reworked for server-to-server SASL; added jabber:iq:auth get (as in xmpp-im). (rn)
+    </div><h4>Version 0.2 (2002-06-05)</h4><div class="indent">Fleshed out. (rn)
+    </div><h4>Version 0.1 (2002-06-03)</h4><div class="indent">Initial version based on Jer's notes. (psa)
+    </div></div><hr /><p>END</p></body></html>

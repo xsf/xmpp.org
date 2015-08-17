@@ -1,0 +1,920 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0050: Ad-Hoc Commands</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Ad-Hoc Commands" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Description" content="This document defines an XMPP protocol extension for advertising and executing application-specific commands, such as those related to a configuration workflow. Typically the commands contain data forms (XEP-0004) in order to structure the information exchange." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-06-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0050" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0050: Ad-Hoc Commands</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension for advertising and executing application-specific commands, such as those related to a configuration workflow. Typically the commands contain data forms (XEP-0004) in order to structure the information exchange.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Matthew Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-06-30</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />   
+      1.1.  <a href="#motivation">Motivation</a><br />   
+      1.2.  <a href="#concepts">Concepts</a><br />   
+      1.3.  <a href="#prerequisites">Prerequisites</a><br />2.  <a href="#usecases">Use Cases</a><br />   
+      2.1.  <a href="#discover">Discovering Support</a><br />   
+      2.2.  <a href="#retrieve">Retrieving the Command List</a><br />   
+      2.3.  <a href="#announce">Announcing the Command List</a><br />   
+      2.4.  <a href="#execute">Executing Commands</a><br />      
+      2.4.1.  <a href="#execute-simple">Simple Execution</a><br />      
+      2.4.2.  <a href="#execute-multiple">Multiple Stages</a><br />      
+      2.4.3.  <a href="#cancel">Canceling</a><br />3.  <a href="#impl">Implementation Notes</a><br />   
+      3.1.  <a href="#impl-req">Defined/Required Command Nodes</a><br />   
+      3.2.  <a href="#impl-nodes">Command Nodes</a><br />   
+      3.3.  <a href="#impl-session">Session Lifetime</a><br />   
+      3.4.  <a href="#impl-actions">Command Actions</a><br />   
+      3.5.  <a href="#impl-payloads">Command Payloads</a><br />      
+      3.5.1.  <a href="#impl-forms">Use of Data Forms</a><br />   
+      3.6.  <a href="#impl-commands">Commands Successful/Failed</a><br />   
+      3.7.  <a href="#impl-i18n">Internationalization and Localization</a><br />4.  <a href="#desc">Formal Description</a><br />   
+      4.1.  <a href="#desc-command">&lt;command/&gt; Element</a><br />   
+      4.2.  <a href="#desc-actions">&lt;actions/&gt; Element</a><br />   
+      4.3.  <a href="#desc-note">&lt;note/&gt; Element</a><br />   
+      4.4.  <a href="#desc-errors">Possible Errors</a><br />5.  <a href="#sec">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-disco-identity">Service Discovery Identities</a><br />   
+      7.3.  <a href="#registrar-disco-nodes">Well-Known Service Discovery Nodes</a><br />   
+      7.4.  <a href="#registrar-querytypes">URI Query Types</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document specifies an XMPP protocol extension that enables an entity to initiate a command session where there is no preferred namespace. It also specifies a protocol extension for describing the types of ad hoc sessions, similar in concept to a menu.</p>
+  <div class="indent"><h3>1.1 <a name="motivation" id="motivation">Motivation</a></h3>
+    <p>The motivation for such a protocol comes from the desire to expand Jabber technologies outside the domain of instant messaging. Similar to web applications, these "Jabber applications" are systems in which, via a compliant Jabber client, a user (or automated process) can interact with the application. The client need not be specially-written in order to take advantage of this Jabber application.</p>
+    <p>This mechanism allows for a larger base of Jabber entities to participate as part of larger application architectures.  Although specialized clients would be preferred in many environments, this protocol allows for applications to have a wider audience (i.e., any compliant Jabber client).</p>
+  </div>
+  <div class="indent"><h3>1.2 <a name="concepts" id="concepts">Concepts</a></h3>
+      <p>The namespace governing this protocol is "http://jabber.org/protocol/commands" (hereafter referred to as x-commands). This namespace relies on the  &lt;iq/&gt; element for execution, and can use the &lt;message/&gt; element for announcing command lists. This protocol depends on <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1502368">1</a>] for reporting and announcing command lists. This namespace is intended to complement <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp1504832">2</a>] (jabber:x:data), but is not necessarily dependent upon it.</p>
+  </div>
+  <div class="indent"><h3>1.3 <a name="prerequisites" id="prerequisites">Prerequisites</a></h3>
+    <p>Support of x-commands implies support for "jabber:x:data" (although this requirement may be replaced and/or amended with a requirement to support <span class="ref"><a href="http://xmpp.org/extensions/xep-0020.html">Feature Negotiation (XEP-0020)</a></span>  [<a href="#nt-idp1508240">3</a>] by performing the appropriate negotations before executing commands). x-commands provides a bootstrap for performing ad-hoc "jabber:x:data" processes, while the data itself is conveyed using "jabber:x:data".</p>
+    <p>The x-commands namespace is not designed to replace machine-to-machine oriented RPC systems such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0009.html">Jabber-RPC (XEP-0009)</a></span>  [<a href="#nt-idp1511600">4</a>], where the two entities fully understand the command's purpose and behavior prior to execution. x-commands is oriented more for human interaction, where the user agent (such as a compliant Jabber client) most likely has no prior knowledge of the command's purpose and behavior.</p>
+  </div>
+<h2>2.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <div class="indent"><h3>2.1 <a name="discover" id="discover">Discovering Support</a></h3>
+    <p>To determine if an entity supports x-commands, the requester uses Service Discovery. The requester makes an "#info" query to the responder. If supported, the responder includes a &lt;feature/&gt; with the "var" of "http://jabber.org/protocol/commands".</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Disco request for information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    to='responder@domain'
+    from='requester@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Disco result for information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='responder@domain'
+    to='requester@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/commands'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.2 <a name="retrieve" id="retrieve">Retrieving the Command List</a></h3>
+    <p>To find what commands an entity provides, the requester uses Service Discovery. Each command is a node of the responder, under the fixed node "http://jabber.org/protocol/commands" (for which the service discovery identity category is "automation" and type is "command-list"). Use of a fixed node for all commands of an entity allows for immediate retrieval of commands.</p>
+    <p>Each command is a disco item. The node attribute of &lt;item/&gt; identifies the command, and the name attribute is the label for the command.</p>
+    <p>The requester retrieves the list of commands by querying for the responder's items for the node "http://jabber.org/protocol/commands":</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Disco request for items</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='requester@domain'
+    to='responder@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'
+         node='http://jabber.org/protocol/commands'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Disco result for items</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    to='requester@domain'
+    from='responder@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'
+         node='http://jabber.org/protocol/commands'&gt;
+    &lt;item jid='responder@domain'
+          node='list'
+          name='List Service Configurations'/&gt;
+    &lt;item jid='responder@domain'
+          node='config'
+          name='Configure Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='reset'
+          name='Reset Service Configuration'/&gt;
+    &lt;item jid='responder@domain'
+          node='start'
+          name='Start Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='stop'
+          name='Stop Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='restart'
+          name='Restart Service'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The result can then be used by the client to populate a menu, a dialog of buttons, or whatever is appropriate to the current user interface. The responder is not required to send the same list of commands to all requesters.</p>
+    <p>If additional information about a command is desired, the requester queries for disco information on the command node:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Disco request for command information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='requester@domain'
+    to='responder@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='config'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Disco result for command information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    to='requester@domain'
+    from='responder@domain'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='config'&gt;
+    &lt;identity name='Configure Service'
+              category='automation'
+              type='command-node'/&gt;
+    &lt;feature var='http://jabber.org/protocol/commands'/&gt;
+    &lt;feature var='jabber:x:data'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>A responder MUST at least provide &lt;identity category='automation' type='command-node'/&gt; and &lt;feature var='http://jabber.org/protocol/commands'/&gt;, and SHOULD include &lt;feature var='jabber:x:data'/&gt;. It is not required to support additional information about a command. If the command is not available to the requester, the responder SHOULD respond with a 403 "Forbidden" error.</p>
+  </div>
+  <div class="indent"><h3>2.3 <a name="announce" id="announce">Announcing the Command List</a></h3>
+    <p>In some cases, a responder entity may find it appropriate to automatically push this information (e.g. a subscribed entity becomes available). In this case, the entity sends a &lt;message/&gt; containing the proper disco#items &lt;query/&gt;:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Announcing commands (via &lt;message/&gt;)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='responder@domain' to='requester@domain'&gt;
+  &lt;subject&gt;Service Controls&lt;/subject&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'
+         node='http://jabber.org/protocol/commands'&gt;
+    &lt;item jid='responder@domain'
+          node='list'
+          name='List Service Configurations'/&gt;
+    &lt;item jid='responder@domain'
+          node='config'
+          name='Configure Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='reset'
+          name='Reset Service Configuration'/&gt;
+    &lt;item jid='responder@domain'
+          node='start'
+          name='Start Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='stop'
+          name='Stop Service'/&gt;
+    &lt;item jid='responder@domain'
+          node='restart'
+          name='Restart Service'/&gt;
+  &lt;/query&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>The only portion required is &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;. Any other information (such as the &lt;subject/&gt; in the foregoing example) is OPTIONAL.</p>
+  </div>
+  <div class="indent"><h3>2.4 <a name="execute" id="execute">Executing Commands</a></h3>
+    <div class="indent"><h3>2.4.1 <a name="execute-simple" id="execute-simple">Simple Execution</a></h3>
+    <p>To execute a command, the requester sends an &lt;iq/&gt; containing the command to execute:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Execute command request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='list'
+           action='execute'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    <p>The requester MAY include the "action='execute'", although this is implied.</p>
+    <p>If the command does not require any user interaction (returns results only), the responder sends a packet similar to the following:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Execute command result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='list:20020923T213616Z-700'
+           node='list'
+           status='completed'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;title&gt;Available Services&lt;/title&gt;
+      &lt;reported&gt;
+        &lt;field var='service' label='Service'/&gt;
+        &lt;field var='runlevel-1' label='Single-User mode'/&gt;
+        &lt;field var='runlevel-2' label='Non-Networked Multi-User mode'/&gt;
+        &lt;field var='runlevel-3' label='Full Multi-User mode'/&gt;
+        &lt;field var='runlevel-5' label='X-Window mode'/&gt;
+      &lt;/reported&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;httpd&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;postgresql&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;jabberd&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <p>The above example shows the command execution resulting in a "jabber:x:data" form. It is also possible that one or more URLs (specified via <span class="ref"><a href="http://xmpp.org/extensions/xep-0066.html">Out-of-Band Data (XEP-0066)</a></span>  [<a href="#nt-idp552512">5</a>]) could be returned.</p>
+    <div class="indent"><h3>2.4.2 <a name="execute-multiple" id="execute-multiple">Multiple Stages</a></h3>
+      <p>If the command requires more interaction, the responder sends a result &lt;iq/&gt; that contains the command information and the form to be filled out:</p>
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Execute command request (stage 1)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='config'
+           action='execute'/&gt;
+&lt;/iq&gt;
+   </pre></div>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Execute command result (stage 1)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           status='executing'&gt;
+    &lt;actions execute='next'&gt;
+      &lt;next/&gt;
+    &lt;/actions&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Configure Service&lt;/title&gt;
+      &lt;instructions&gt;
+        Please select the service to configure.
+      &lt;/instructions&gt;
+      &lt;field var='service' label='Service' type='list-single'&gt;
+        &lt;option&gt;&lt;value&gt;httpd&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;jabberd&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;postgresql&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The &lt;command/&gt; SHOULD include an &lt;actions/&gt; element, which specifies the details of what the allowed actions are for this stage of execution. Each element within &lt;action/&gt; matches a possible value for the &lt;command/&gt; element's "action" attribute. The "execute" attribute defines which of the included actions is considered the equivalent to "execute" for this stage. In the above example, the only allowed action is to progress to the next stage, which is also the default.</p>
+    <p>The requester then submits the form, maintaining the command node and sessionid:</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Execute command request (stage 2)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='service'&gt;
+        &lt;value&gt;httpd&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The responder then provides the next stage's form in the result  [<a href="#nt-idp1553840">6</a>]:</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Execute command result (stage 2)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           status='executing'&gt;
+    &lt;actions execute='complete'&gt;
+      &lt;prev/&gt;
+      &lt;complete/&gt;
+    &lt;/actions&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Configure Service&lt;/title&gt;
+      &lt;instructions&gt;
+        Please select the run modes and state for 'httpd'.
+      &lt;/instructions&gt;
+      &lt;field var='runlevel' label='Run Modes' type='list-multi'&gt;
+        &lt;value&gt;3&lt;/value&gt;
+        &lt;value&gt;5&lt;/value&gt;
+        &lt;option label='Single-User'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Non-Networked Multi-User'&gt;&lt;value&gt;2&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Full Multi-User'&gt;&lt;value&gt;3&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='X-Window'&gt;&lt;value&gt;5&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field var='state' label='Run State' type='list-single'&gt;
+        &lt;value&gt;off&lt;/value&gt;
+        &lt;option label='Active'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Inactive'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The requester then submits the second stage's form, again maintaining the node and sessionid:</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Execute command request (stage 3)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec3'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='mode'&gt;
+        &lt;value&gt;3&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='state'&gt;
+        &lt;value&gt;on&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Execute command result (stage 3)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec3'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           status='completed'&gt;
+    &lt;note type='info'&gt;Service 'httpd' has been configured.&lt;/note&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the requester wishes to revert to the previous stage, it sends an &lt;iq/&gt; with the command's node and sessionid, and "action='prev'":</p>
+    <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Execute command request (revert from stage 2 to stage 1)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           action='prev'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the responder accepts this, it responds with the previous stage's command  [<a href="#nt-idp1561072">7</a>]:</p>
+    <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Execute command result (revert from stage 2 to stage 1)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           status='executing'&gt;
+    &lt;actions execute='next'&gt;
+      &lt;next/&gt;
+    &lt;/actions&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Configure Service&lt;/title&gt;
+      &lt;instructions&gt;
+        Please select the service to configure.
+      &lt;/instructions&gt;
+      &lt;field var='service' label='Service' type='list-single'&gt;
+        &lt;value&gt;httpd&lt;/value&gt;
+        &lt;option&gt;&lt;value&gt;httpd&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;jabberd&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;postgresql&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>2.4.3 <a name="cancel" id="cancel">Canceling</a></h3>
+    <p>In the case where a command has multiple stages, the requester may wish to cancel at some point. To cancel, the requester sends the continuing command request with an "action='cancel'":</p>
+  <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Execute command request (stage 2; canceling)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec3'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           action='cancel'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>This enables the responder to free any resources allocated during the process. The responder MUST reply with the success of the command:</p>
+    <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Execute command result (stage 2; canceled)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='responder@domain' to='requester@domain' id='exec3'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='config:20020923T213616Z-700'
+           node='config'
+           status='canceled'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    </div>
+  </div>
+<h2>3.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>3.1 <a name="impl-req" id="impl-req">Defined/Required Command Nodes</a></h3>
+    <p>All commands used in the above examples are for illustrative purposes only. There are no predefined or required commands.</p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="impl-nodes" id="impl-nodes">Command Nodes</a></h3>
+    <p>Each command is identified by its 'node' attribute. This matches the 'node' attribute from the service discovery &lt;item/&gt; element. Service Discovery requires that all 'node' values be unique within a given JID. This document requires that the 'node' value used in &lt;command/&gt; exactly match the value used in the &lt;item/&gt; element. It is the responsibility of the responder implementation to ensure each command's node is unique for their JID.</p>
+  </div>
+  <div class="indent"><h3>3.3 <a name="impl-session" id="impl-session">Session Lifetime</a></h3>
+    <p>The execution of a command exists within the concept of a session. Each session is identified by the 'sessionid' attribute, and SHOULD be valid only between one requester/responder pair. The responder is responsible for determining the session lifetime, with some help from the requester.</p>
+    <p>The requester starts a new session for a command by simply sending a &lt;command/&gt; with the 'node' attribute (and optionally the 'status' attribute with a value of "execute"). Once the 'sessionid' attribute is given to the requester, it is the requester's responsibility to maintain it for the session's lifetime. A session ends when the responder sends a &lt;command status='completed'/&gt; or the requester sends a &lt;command action='cancel'/&gt; with the provided 'sessionid' value.</p>
+    <p>Once a session has ended, its 'sessionid' value SHOULD NOT be used again. It is the responder's responsibility to ensure that each 'sessionid' value is unique.</p>
+    <p>It may be possible for a requester to be executing more than one session of the same command with a given responder. If the responder does not allow more than one session of the same command with the same requester, the responder MUST return a &lt;not-allowed/&gt; error (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1578592">8</a>]).</p>
+  </div>
+  <div class="indent"><h3>3.4 <a name="impl-actions" id="impl-actions">Command Actions</a></h3>
+    <p>The result for each stage (other than the last) of a command's execution SHOULD include an &lt;actions/&gt; element. The user-agent can use this information to present a more-intelligent user interface, such as a "druid" or "wizard".</p>
+    <p>For a user-agent, a typical interpretation of the &lt;actions/&gt; information (or lack thereof) would be the following:</p>
+    <ol>
+      <li>The action "cancel" is always allowed.</li>
+      <li>If there is no &lt;actions/&gt; element, the user-agent can use a single-stage dialog or view.
+        <ul>
+          <li>The action "execute" is equivalent to the action "complete".</li>
+        </ul>
+      </li>
+      <li>If there is an &lt;actions/&gt; element, the user-agent usually uses a multi-stage dialog or view, such as a wizard.
+        <ul>
+          <li>The action "execute" is always allowed, and is equivalent to the action "next".</li>
+          <li>The "prev" action is typically the "back" or "previous" button or option in a wizard. If &lt;prev/&gt; is not contained by the &lt;actions/&gt;, it is disabled.</li>
+          <li>The "next" action is typically the "next" button or option in a wizard. If &lt;next/&gt; is not contained by the &lt;actions/&gt;, it is disabled.</li>
+          <li>The "complete" action is typically the "finish" or "done" button or option in a wizard. If &lt;complete/&gt; is not contained by the &lt;actions/&gt;, it is disabled.</li>
+          <li>If the &lt;actions/&gt; possesses the "execute" attribute, that value is the default button or option. If the &lt;actions/&gt; does not possess the "execute" attribute, there is no default button or option.</li>
+        </ul>
+      </li>
+    </ol>
+    <p>Responders SHOULD use the following guidelines when providing &lt;actions/&gt;:</p>
+    <ul>
+      <li>The "execute" attribute SHOULD NOT specify a value that does not match one of the allowed actions.</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.5 <a name="impl-payloads" id="impl-payloads">Command Payloads</a></h3>
+    <p>On its own, the &lt;command/&gt; has very little usefulness. It relies on its payload to give full meaning to its use. The payload can be elements in any namespace that makes sense and is understood (such as "jabber:x:data"), and/or one or more &lt;note/&gt; elements. Any namespaced elements can be used within a &lt;command/&gt;. The only limitations are that the elements not require certain parent elements (such as &lt;iq/&gt;), or specifically allow for &lt;command/&gt; qualified by the "http://jabber.org/protocol/commands" namespace as a possible parent element.</p>
+    <p>As a general rule, the payload is provided only by the responder. The primary exception to this rule is with the "jabber:x:data" extension (and other namespaces with similar semantics). In this case, if the responder provides a form to submit, the requester SHOULD respond with the submitted data (using the semantics from XEP-0004).</p>
+    <p>When the precedence of these payload elements becomes important (such as when both "jabber:x:data" and "jabber:x:oob" elements are present), the order of the elements SHOULD be used. Those elements that come earlier in the child list take precedence over those later in the child list. The requester SHOULD consider those elements qualified by the same namespace as having an equivalent precedence (such as if multiple "jabber:x:oob" elements are included).</p>
+    <div class="indent"><h3>3.5.1 <a name="impl-forms" id="impl-forms">Use of Data Forms</a></h3>
+      <p>When the payload is "jabber:x:data", there are certain conditions applied. The requester SHOULD NOT use a "jabber:x:data" type other than "submit". Responders SHOULD consider any &lt;x type='cancel'/&gt; to be &lt;x type='submit'/&gt;.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>3.6 <a name="impl-commands" id="impl-commands">Commands Successful/Failed</a></h3>
+    <p>The status of command execution signals only if the command is executing, has been completed, or been canceled. If completed, the "status" attribute does not specify if it completed successfully or not. If a command completes but fails, the responder MUST include at least one &lt;note type='error'/&gt; with the &lt;command status='completed'/&gt; it returns.</p>
+  </div>
+  <div class="indent"><h3>3.7 <a name="impl-i18n" id="impl-i18n">Internationalization and Localization</a></h3>
+    <p>The requester SHOULD provide its locale information using the "xml:lang" attribute on either the &lt;iq/&gt; (RECOMMENDED) or &lt;command/&gt; element. Each execution session (identified by the "sessionid" attribute) SHOULD use only one language/locale, and requesters and responders SHOULD assume the first language/locale specified applies. The responder SHOULD specify the language/locale with the every command session's response.</p>
+    <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Execute command request (with language/locale)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec1' xml:lang='en-us'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='list'
+           action='execute'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Execute command result (with language/locale)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='responder@domain' 
+    to='requester@domain' 
+    id='exec1' 
+    xml:lang='en-us'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           sessionid='list:20020923T213616Z-700'
+           node='list'
+           status='completed'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;title&gt;Available Services&lt;/title&gt;
+      &lt;reported&gt;
+        &lt;field var='service' label='Service'/&gt;
+        &lt;field var='runlevel-1' label='Single-User mode'/&gt;
+        &lt;field var='runlevel-2' label='Non-Networked Multi-User mode'/&gt;
+        &lt;field var='runlevel-3' label='Full Mult-User mode'/&gt;
+        &lt;field var='runlevel-5' label='X-Window mode'/&gt;
+      &lt;/reported&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;httpd&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;postgresql&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='service'&gt;&lt;value&gt;jabberd&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-1'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-2'&gt;&lt;value&gt;off&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-3'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+        &lt;field var='runlevel-5'&gt;&lt;value&gt;on&lt;/value&gt;&lt;/field&gt;
+      &lt;/item&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+      </pre></div>
+    <p>Within the "http://jabber.org/protocol/commands" schema, the language/locale applies only to the human-readable character data for &lt;info/&gt; elements. It SHOULD also apply to all payload elements, appropriate to their respective specifications.</p>
+    <p>Responders MUST take this into consideration, and properly account for the language/locale settings within payloads. If the responder cannot accomodate the requested language/locale, it SHOULD respond with a &lt;bad-request/&gt; (&lt;bad-locale/&gt;) error condition.</p>
+    <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Execute command request (with language/locale)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='responder@domain' id='exec1' xml:lang='fr-ca'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='list'
+           action='execute'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Execute command failed result (with language/locale)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='responder@domain' to='requester@domain/resource' id='exec1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='list'
+           action='execute'
+           xml:lang='fr-ca'/&gt;
+  &lt;error type='modify' code='400'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;bad-locale xmlns='http://jabber.org/protocol/commands'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="desc" id="desc">Formal Description</a></h2>
+  <p>The focal element in x-commands is &lt;command/&gt;. It is the element used to guide the process, and the element used to report command options.</p>
+  <div class="indent"><h3>4.1 <a name="desc-command" id="desc-command">&lt;command/&gt; Element</a></h3>
+    <p>Each &lt;command/&gt; contains attributes for a node, a "session id", an action type, a status type, and a language/locale specifier. A command MAY contain zero or more &lt;note/&gt; elements and MAY contain other namespaced elements as payload. Elements qualified by the "jabber:x:data" and "jabber:x:oob" namespaces are the typical payload.</p>
+    <p>The "node" attribute uniquely identifies the command. This attribute MUST be present.</p>
+    <p>The "sessionid" attribute helps to track a command execution across multiple stages. This attribute MUST be present for subsequent stages, and the responder SHOULD initialize (if not provided) or maintain this attribute. The value of this attribute MUST NOT be empty or null, but otherwise can be any string value. This value MUST be maintained by a requester while executing a command.</p>
+    <p>The "status" attribute describes the current status of this command. This value SHOULD be set only by the responder. If specified by the requester, the responder MUST ignore it. The value of "status" MUST be one of the following:</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Possible "status" values</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Status</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>executing</td>
+        <td>The command is being executed.</td>
+      </tr>
+      <tr class="body">
+        <td>completed</td>
+        <td>The command has completed. The command session has ended.</td>
+      </tr>
+      <tr class="body">
+        <td>canceled</td>
+        <td>The command has been canceled. The command session has ended.</td>
+      </tr>
+    </table></div>
+    <p>The "action" attribute specifies the action to undertake with the given command. This value SHOULD be set only by the requester. If specified by the responder, the requester MUST ignore it. The value of "action" MUST be one of the following:</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Possible "action" values</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Action</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>execute</td>
+        <td>The command should be executed or continue to be executed. This is the default value.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>The command should be canceled.</td>
+      </tr>
+      <tr class="body">
+        <td>prev</td>
+        <td>The command should be digress to the previous stage of execution.</td>
+      </tr>
+      <tr class="body">
+        <td>next</td>
+        <td>The command should progress to the next stage of execution.</td>
+      </tr>
+      <tr class="body">
+        <td>complete</td>
+        <td>The command should be completed (if possible).</td>
+      </tr>
+    </table></div>
+    <p>The "xml:lang" attribute specifies the language/locale this &lt;command/&gt; is intended for. This element MAY be specified by the requester to request a specific language/locale, and SHOULD be included by the responder to indicate the language/locale in use.</p>
+    <p>The children of a &lt;command/&gt; element (other than &lt;actions/&gt; and &lt;note/&gt;) pertain to the command's execution. The order of these elements denote their precedence, so that those elements earlier in the list have higher precedence.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="desc-actions" id="desc-actions">&lt;actions/&gt; Element</a></h3>
+    <p>The allowed actions for a particular stage of execution are provided by the &lt;actions/&gt; element. This element SHOULD be provided by the responder if the command's execution is not complete, and SHOULD NOT ever be provided by the requester. It contains a single attribute to specify what the "execute" action equals. It contains child elements to specify what the allowed actions are.</p>
+    <p>The "execute" attribute specifies what the action "execute" is equivalent to. In user-agent interfaces, this represents the default behavior. This attribute MAY be specified by the responder, and MUST equal one of the "action" attribute values for &lt;command/&gt;. The value of this attribute SHOULD match the local name of one of the contained child elements.</p>
+    <p>The child elements contained by &lt;action/&gt; specify the allowed actions. The name of each child element MUST be one of the following:</p>
+    <ul>
+      <li>prev</li>
+      <li>next</li>
+      <li>complete</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>4.3 <a name="desc-note" id="desc-note">&lt;note/&gt; Element</a></h3>
+    <p>Notes about the current status of commands are provided by &lt;note/&gt; elements. This element contains information about current conditions in a command sequence. This element has an attribute that defines the type of note. The body of a &lt;note/&gt; should contain a user-readable text message.</p>
+    <p>The "type" attribute specifies the severity of the note. This attribute is OPTIONAL, and implies "info" if not present. The value of this attribute MUST be one of the following:</p>
+    <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Possible "type" values</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>info</td>
+        <td>The note is informational only. This is not really an exceptional condition.</td>
+      </tr>
+      <tr class="body">
+        <td>warn</td>
+        <td>The note indicates a warning. Possibly due to illogical (yet valid) data.</td>
+      </tr>
+      <tr class="body">
+        <td>error</td>
+        <td>The note indicates an error. The text should indicate the reason for the error.</td>
+      </tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>4.4 <a name="desc-errors" id="desc-errors">Possible Errors</a></h3>
+    <p>To simplify the discussion on error conditions, this document uses the following mapping between namespace URIs and namespace prefixes  [<a href="#nt-idp1639616">9</a>]:</p>
+    <div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: Namespace Mappings</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Prefix</th>
+        <th>URI</th>
+      </tr>
+      <tr class="body">
+        <td>xmpp</td>
+        <td>urn:ietf:params:xml:ns:xmpp-stanzas</td>
+      </tr>
+      <tr class="body">
+        <td>cmd</td>
+        <td>http://jabber.org/protocol/commands</td>
+      </tr>
+    </table></div>
+    <p>Below are the possible errors that can occur during execution.</p>
+    <div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: Command execution errors</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Error Type</th>
+        <th>General Condition</th>
+        <th>Specific Condition</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;cmd:malformed-action/&gt;</td>
+        <td>The responding JID does not understand the specified action.</td>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;cmd:bad-action/&gt;</td>
+        <td>The responding JID cannot accept the specified action.</td>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;cmd:bad-locale/&gt;</td>
+        <td>The responding JID cannot accept the specified language/locale.</td>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;cmd:bad-payload/&gt;</td>
+        <td>The responding JID cannot accept the specified payload (e.g. the data form did not provide one or more required fields).</td>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;cmd:bad-sessionid/&gt;</td>
+        <td>The responding JID cannot accept the specified sessionid.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:not-allowed/&gt;</td>
+        <td>&lt;cmd:session-expired/&gt;</td>
+        <td>The requesting JID specified a sessionid that is no longer active (either because it was completed, canceled, or timed out).</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:forbidden/&gt;</td>
+        <td>NONE</td>
+        <td>The requesting JID is not allowed to execute the command.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:item-not-found/&gt;</td>
+        <td>NONE</td>
+        <td>The responding JID cannot find the requested command node.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:feature-not-implemented/&gt;</td>
+        <td>NONE</td>
+        <td>The responding JID does not support "http://jabber.org/protocol/commands".</td>
+      </tr>
+    </table></div>
+  </div>
+<h2>5.
+       <a name="sec" id="sec">Security Considerations</a></h2>
+  <p>Determining when a command can be executed based on permissions or rights is considered outside the scope of this document. Although such mechanisms are considered specific to the application and/or implementation of this document, future specifications may address these concerns.</p>
+  <p>When processing reported commands, the requester SHOULD consider any command node that does not match the JID of the responder to be suspicious, and ignore those command nodes. Responders MUST report their own command nodes only, and not the command nodes of other entities. This can help prevent limited cases of spoofing and "social engineering".</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1671632">10</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1676736">11</a>] includes 'http://jabber.org/protocol/commands' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-disco-identity" id="registrar-disco-identity">Service Discovery Identities</a></h3>
+    <p>The XMPP Registrar includes "automation" in its registry of Service Discovery categories for use for any entities and nodes that provide automated or programmed interaction. This category has the following types:</p>
+    <div class="indent"><p class="caption"><a name="table-6" id="table-6"></a>Table 6: Types for Category "automation"</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>command-list</td>
+        <td>The node for a list of commands; valid only for the node "http://jabber.org/protocol/commands".</td>
+      </tr>
+      <tr class="body">
+        <td>command-node</td>
+        <td>A node for a specific command; the 'node' attribute uniquely identifies the command.</td>
+      </tr>
+    </table></div>
+    <p>The registry submission is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+  &lt;category&gt;
+    &lt;name&gt;automation&lt;/name&gt;
+    &lt;desc&gt;The "automation" category consists of entities and nodes that provide automated or programmed interaction.&lt;/desc&gt;
+    &lt;type&gt;
+      &lt;name&gt;command-list&lt;/name&gt;
+      &lt;desc&gt;The node for a list of commands; valid only for the node "http://jabber.org/protocol/commands"&lt;/desc&gt;
+      &lt;doc&gt;XEP-0050&lt;/doc&gt;
+    &lt;/type&gt;
+    &lt;type&gt;
+      &lt;name&gt;command-node&lt;/name&gt;
+      &lt;desc&gt;A node for a specific command; the 'node' attribute uniquely identifies the command&lt;/desc&gt;
+      &lt;doc&gt;XEP-0050&lt;/doc&gt;
+    &lt;/type&gt;
+  &lt;/category&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>7.3 <a name="registrar-disco-nodes" id="registrar-disco-nodes">Well-Known Service Discovery Nodes</a></h3>
+    <p>The XMPP Registrar includes "http://jabber.org/protocol/commands" in its registry of well-known Service Discovery nodes.</p>
+  </div>
+  <div class="indent"><h3>7.4 <a name="registrar-querytypes" id="registrar-querytypes">URI Query Types</a></h3>
+    <p>As authorized by <span class="ref"><a href="http://xmpp.org/extensions/xep-0147.html">XMPP URI Query Components (XEP-0147)</a></span>  [<a href="#nt-idp1688736">12</a>], the XMPP Registrar maintains a registry of queries and key-value pairs for use in XMPP URIs (see &lt;<a href="http://xmpp.org/registrar/querytypes.html">http://xmpp.org/registrar/querytypes.html</a>&gt;).</p>
+    <p>The "command" querytype is defined herein for interaction with entities that support the ad-hoc command protocol, with keys of "action" and "node".</p>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Command Action: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:montague.net?command;node=stats
+    </pre></div>
+    <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Command Action: Resulting Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='montague.net' type='set'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' node='stats'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The following submission registers the "command" querytype.</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;querytype&gt;
+  &lt;name&gt;command&lt;/name&gt;
+  &lt;proto&gt;http://jabber.org/protocol/commands&lt;/proto&gt;
+  &lt;desc&gt;enables completion of ad-hoc commands&lt;/desc&gt;
+  &lt;doc&gt;XEP-0050&lt;/doc&gt;
+  &lt;keys&gt;
+    &lt;key&gt;
+      &lt;name&gt;action&lt;/name&gt;
+      &lt;desc&gt;the ad-hoc commands action type&lt;/desc&gt;
+      &lt;values&gt;
+        &lt;value&gt;
+	  &lt;name&gt;cancel&lt;/name&gt;
+          &lt;desc&gt;a request to cancel processing of the command&lt;/desc&gt;
+        &lt;/value&gt;
+        &lt;value&gt;
+	  &lt;name&gt;complete&lt;/name&gt;
+          &lt;desc&gt;a request to complete processing of the command&lt;/desc&gt;
+        &lt;/value&gt;
+        &lt;value&gt;
+	  &lt;name&gt;execute&lt;/name&gt;
+          &lt;desc&gt;a request to execute the command (the default implied action)&lt;/desc&gt;
+        &lt;/value&gt;
+        &lt;value&gt;
+	  &lt;name&gt;next&lt;/name&gt;
+          &lt;desc&gt;a request to move to the next command in a series&lt;/desc&gt;
+        &lt;/value&gt;
+        &lt;value&gt;
+	  &lt;name&gt;prev&lt;/name&gt;
+          &lt;desc&gt;a request to move to the previous command in a series&lt;/desc&gt;
+        &lt;/value&gt;
+      &lt;/values&gt;
+    &lt;/key&gt;
+    &lt;key&gt;
+      &lt;name&gt;node&lt;/name&gt;
+      &lt;desc&gt;the command node&lt;/desc&gt;
+    &lt;/key&gt;
+  &lt;/keys&gt;
+&lt;/querytype&gt;
+    </pre></div>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/commands'
+    xmlns='http://jabber.org/protocol/commands'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0050: http://www.xmpp.org/extensions/xep-0050.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='http://www.w3.org/XML/1998/namespace'
+             schemaLocation='http://www.w3.org/2001/03/xml.xsd'/&gt;
+
+  &lt;xs:element name='command'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element ref='actions' minOccurs='0'/&gt;
+        &lt;xs:element ref='note' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:any namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='action' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='cancel'/&gt;
+            &lt;xs:enumeration value='complete'/&gt;
+            &lt;xs:enumeration value='execute'/&gt;
+            &lt;xs:enumeration value='next'/&gt;
+            &lt;xs:enumeration value='prev'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute name='node' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='sessionid' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='status' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='canceled'/&gt;
+            &lt;xs:enumeration value='completed'/&gt;
+            &lt;xs:enumeration value='executing'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:element name='actions'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='prev' type='empty' minOccurs='0'/&gt;
+        &lt;xs:element name='next' type='empty' minOccurs='0'/&gt;
+        &lt;xs:element name='complete' type='empty' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='execute' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='complete'/&gt;
+            &lt;xs:enumeration value='next'/&gt;
+            &lt;xs:enumeration value='prev'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:element name='note'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute name='type' use='required'&gt;
+            &lt;xs:simpleType&gt;
+              &lt;xs:restriction base='xs:NCName'&gt;
+                &lt;xs:enumeration value='error'/&gt;
+                &lt;xs:enumeration value='info'/&gt;
+                &lt;xs:enumeration value='warn'/&gt;
+              &lt;/xs:restriction&gt;
+            &lt;/xs:simpleType&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='bad-action' type='empty'/&gt;
+  &lt;xs:element name='bad-locale' type='empty'/&gt;
+  &lt;xs:element name='bad-payload' type='empty'/&gt;
+  &lt;xs:element name='bad-sessionid' type='empty'/&gt;
+  &lt;xs:element name='malformed-action' type='empty'/&gt;
+  &lt;xs:element name='session-expired' type='empty'/&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0050<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.2<br />
+            Last Updated: 2005-06-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0004, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: commands<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/commands.xsd">http://www.xmpp.org/schemas/commands.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0050.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0050.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0050.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1502368" id="nt-idp1502368">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1504832" id="nt-idp1504832">2</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp1508240" id="nt-idp1508240">3</a>. XEP-0020: Feature Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0020.html">http://xmpp.org/extensions/xep-0020.html</a>&gt;.</p><p><a name="nt-idp1511600" id="nt-idp1511600">4</a>. XEP-0009: Jabber-RPC &lt;<a href="http://xmpp.org/extensions/xep-0009.html">http://xmpp.org/extensions/xep-0009.html</a>&gt;.</p><p><a name="nt-idp552512" id="nt-idp552512">5</a>. XEP-0066: Out of Band Data &lt;<a href="http://xmpp.org/extensions/xep-0066.html">http://xmpp.org/extensions/xep-0066.html</a>&gt;.</p><p><a name="nt-idp1553840" id="nt-idp1553840">6</a>. Note that the second stage can be reverted to the first stage or completed (signaled by the inclusion of the &lt;prev/&gt; and &lt;complete/&gt; elements), and that the default action is to complete execution (signaled by the "execute" attribute's value of "complete").</p><p><a name="nt-idp1561072" id="nt-idp1561072">7</a>. The responder MAY present "remembered" field values, but doing so is OPTIONAL.</p><p><a name="nt-idp1578592" id="nt-idp1578592">8</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1639616" id="nt-idp1639616">9</a>. This mapping is provided solely for the purpose of simplifying this discussion.</p><p><a name="nt-idp1671632" id="nt-idp1671632">10</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1676736" id="nt-idp1676736">11</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1688736" id="nt-idp1688736">12</a>. XEP-0147: XMPP URI Query Components &lt;<a href="http://xmpp.org/extensions/xep-0147.html">http://xmpp.org/extensions/xep-0147.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2005-06-30)</h4><div class="indent">Corrected typos and other small errors. (psa)
+    </div><h4>Version 1.1.1 (2004-01-02)</h4><div class="indent">Cleaned up errors in schema; added more clarifications about actions (lw)
+    </div><h4>Version 1.1 (2003-12-30)</h4><div class="indent">More strict usage of the terms "requester" and "responder"; added explicit flow-control information; cleaned up i18n and l10n based on IETF efforts (lw)
+    </div><h4>Version 1.0 (2003-05-19)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Draft. (psa)
+    </div><h4>Version 0.13 (2003-04-28)</h4><div class="indent">More clarity on security; added notes about i18n and l10n; included xml:lang in XML-Schema. (lw)
+    </div><h4>Version 0.12 (2003-04-22)</h4><div class="indent">Fixed typos; removed references to &lt;presence/&gt;; added more security condiderations; added notes about &lt;command/&gt; child precedence. (lw)
+    </div><h4>Version 0.11 (2003-02-20)</h4><div class="indent">Created XML Schema. (lw)
+    </div><h4>Version 0.10 (2003-02-20)</h4><div class="indent">Relaxed and clarified &lt;command/&gt; payload requirements; Fixed minor errors in examples. (lw)
+    </div><h4>Version 0.9.1 (2003-02-12)</h4><div class="indent">Fixed disco examples to reflect specification text. (lw)
+    </div><h4>Version 0.9 (2003-02-09)</h4><div class="indent">Added "Implementation Notes" section; Removed syntax requirements for disco &lt;item/&gt; "node" attributes; Added "disclaimer" with regards to "node" values; Added clarifications regarding predefined/required commands; Added clarifications for command payloads; Added clarifications for command success versus failure; Added clarifications on "sessionid"; Fixed "x:data" errors. (lw)
+    </div><h4>Version 0.8 (2003-01-26)</h4><div class="indent">Fixed minor grammatical errors; Changed some MUSTs to SHOULDs. (lw)
+    </div><h4>Version 0.7 (2003-01-22)</h4><div class="indent">Added disco node syntax for commands; Expanded "XMPP Registrar" section. (lw)
+    </div><h4>Version 0.6 (2003-01-21)</h4><div class="indent">Consistency in the usage of the "x-commands" short name; Added "Discovering Support" usecase; made other disco usage more "disco-like". (lw)
+    </div><h4>Version 0.5 (2003-01-18)</h4><div class="indent">Fixed minor errors; Removed "complete" action value from &lt;command/&gt;; Removed &lt;list/&gt; in favor of disco. (lw)
+    </div><h4>Version 0.4 (2002-11-05)</h4><div class="indent">Fixed minor errors with examples; Changed position of DTD to be more consistent with other XEPs by this author; Added details for "disco" support; Added section on "Security Considerations", "IANA Considerations", and "JANA Considerations". (lw)
+    </div><h4>Version 0.3 (2002-10-11)</h4><div class="indent">Fixed minor errors with examples; Changed from using &lt;query/&gt; and &lt;x/&gt; to &lt;list/&gt; for command lists; Made the "cancel" use-case more explicit. (lw)
+    </div><h4>Version 0.2 (2002-10-10)</h4><div class="indent">Changed namespace from "jabber:x:commands" to "http://jabber.org/protocol/commands"; Changed execution to use &lt;iq/&gt; instead of any packet element; Changed execution to contain extensions; Reorganized for better clarity; Corrected spelling and grammar errors. (lw)
+    </div><h4>Version 0.1 (2002-10-08)</h4><div class="indent">Initial release. (lw)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,826 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0030: Service Discovery</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Service Discovery" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Millard" /><meta name="DC.Creator" content="Ryan Eatmon" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for discovering information about other XMPP entities. Two kinds of information can be discovered: (1) the identity and capabilities of an entity, including the protocols and features it supports; and (2) the items associated with an entity, such as the list of rooms hosted at a multi-user chat service." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-06-06" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0030" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0030: Service Discovery</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for discovering information about other XMPP entities. Two kinds of information can be discovered: (1) the identity and capabilities of an entity, including the protocols and features it supports; and (2) the items associated with an entity, such as the list of rooms hosted at a multi-user chat service.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Millard, Ryan Eatmon, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-06-06</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#info">Discovering Information About a Jabber Entity</a><br />   
+      3.1.  <a href="#info-basic">Basic Protocol</a><br />   
+      3.2.  <a href="#info-nodes">Info Nodes</a><br />4.  <a href="#items">Discovering the Items Associated with a Jabber Entity</a><br />   
+      4.1.  <a href="#items-basic">Basic Protocol</a><br />   
+      4.2.  <a href="#items-nodes">Items Nodes</a><br />   
+      4.3.  <a href="#items-hierarchy">Node Hierarchies</a><br />   
+      4.4.  <a href="#items-relationship">Relationship Between an Entity and its Items</a><br />5.  <a href="#publish">Publishing Available Items</a><br />6.  <a href="#impl">Implementation Notes</a><br />   
+      6.1.  <a href="#impl-info">Number of Info Requests</a><br />   
+      6.2.  <a href="#impl-items">Number of Items Requests</a><br />   
+      6.3.  <a href="#impl-consistency">Response Consistency</a><br />7.  <a href="#errors">Error Conditions</a><br />8.  <a href="#security">Security Considerations</a><br />9.  <a href="#iana">IANA Considerations</a><br />10.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      10.1.  <a href="#registrar-protocol">Protocol Namespaces</a><br />   
+      10.2.  <a href="#registrar-reg">Registries</a><br />      
+      10.2.1.  <a href="#registrar-reg-identity">Identity Categories and Types Registry</a><br />        
+      10.2.1.1.  <a href="#registrar-identity">Process</a><br />        
+      10.2.1.2.  <a href="#registrar-reg-identity-init">Initial Submission</a><br />      
+      10.2.2.  <a href="#registrar-reg-features">Features Registry</a><br />        
+      10.2.2.1.  <a href="#registrar-reg-features-process">Process</a><br />      
+      10.2.3.  <a href="#registrar-reg-nodes">Well-Known Nodes</a><br />        
+      10.2.3.1.  <a href="#registrar-reg-nodes-process">Process</a><br />   
+      10.3.  <a href="#registrar-querytypes">URI Query Types</a><br />11.  <a href="#schemas">XML Schemas</a><br />   
+      11.1.  <a href="#schemas-info">disco#info</a><br />   
+      11.2.  <a href="#schemas-items">disco#items</a><br />12.  <a href="#authornote">Author Note</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+    <p>The ability to discover information about entities on the Jabber network is extremely valuable. Such information might include features offered or protocols supported by the entity, the entity's type or identity, and additional entities that are associated with the original entity in some way (often thought of as "children" of the "parent" entity). While mechanisms for doing so are not defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1599152">1</a>], several protocols have been used in the past within the Jabber community for service discovery, specifically <span class="ref"><a href="http://xmpp.org/extensions/xep-0011.html">Jabber Browsing (XEP-0011)</a></span>  [<a href="#nt-idp1601808">2</a>] and <span class="ref"><a href="http://xmpp.org/extensions/xep-0094.html">Agent Information (XEP-0094)</a></span>  [<a href="#nt-idp1604448">3</a>]. However, those protocols are perceived to be inadequate for several reasons:</p>
+    <ol>
+      <li><p>Neither Jabber Browsing nor Agent Information is easily extensible. For example, the categories and subcategories listed for JID-Types in XEP-0011 are explicitly defined as the only official categories, and any additions to the list of JID-Types would require a modification to XEP-0011. While the Jabber Browsing specification does allow for the use of unofficial categories and types prefixed with the string 'x-', this introduces migration issues. This lack of flexibility violates one of the Jabber community's core <span class="ref"><a href="http://xmpp.org/extensions/xep-0134.html">XMPP Design Guidelines (XEP-0134)</a></span>  [<a href="#nt-idp1607872">4</a>].</p></li>
+      <li><p>In Agent Information, there is no way to advertise supported features. While Jabber Browsing includes such a mechanism, the only way to express the availability of a feature is to advertise a supported protocol namespace. Yet some features may not be uniquely associated with a protocol namespace, which are one implementation of features but not the only one.</p></li>
+      <li><p>A Jabber Browsing result returns a combination of (1) namespaces supported by a Jabber Entity, (2) items associated with a Jabber Entity, and (3) namespaces supported by the associated items. This approach mixes information levels and requires parents to know everything about child nodes, thereby introducing significant confusion.</p></li>
+      <li><p>In both Jabber Browsing and Agent Information, items must be addressable as JIDs; however, this may not be possible in some applications.</p></li>
+    </ol>
+    <p>This document addresses the perceived weaknesses of both the Jabber Browsing and Agent Information protocols. The result is a standards-track protocol for service discovery (often abbreviated to "disco", as is familiar in protocols such as <span class="ref"><a href="http://www.w3.org/TR/SOAP/">SOAP</a></span>  [<a href="#nt-idp1613312">5</a>]).</p>
+  <h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+    <p>The authors have designed the service discovery protocol with the following requirements in mind:</p>
+    <ul>
+      <li><p>The protocol MUST support all functionality supported by the protocols it supersedes (Jabber Browsing and Agent Information).</p></li>
+      <li>
+        <p>There are three kinds of information that need to be discovered about an entity:</p>
+        <ol>
+          <li>its basic identity (type and/or category)</li>
+          <li>the features it offers and protocols it supports</li>
+          <li>any additional items associated with the entity, whether or not they are addressable as JIDs</li>
+        </ol>
+        <p>All three MUST be supported, but the first two kinds of information relate to the entity itself whereas the third kind of information relates to items associated with the entity itself; therefore two different query types are needed.</p>
+      </li>
+      <li><p>Discovering information about a child item MUST be accomplished by sending a separate discovery request to that item, not to the parent entity. (One result of this is that discovering complete information about an entire tree will require multiple request/response pairs in order to "walk the tree".)</p></li>
+      <li><p>The lists of identities and features MUST be flexible.</p></li>
+      <li><p>The protocol itself MUST be extensible.</p></li>
+    </ul>
+  <h2>3.
+       <a name="info" id="info">Discovering Information About a Jabber Entity</a></h2>
+    <div class="indent"><h3>3.1 <a name="info-basic" id="info-basic">Basic Protocol</a></h3>
+      <p>A requesting entity may want to discover information about another entity on the network. The information desired generally is of two kinds:</p>
+      <ol>
+        <li><p><span class="strong">The target entity's identity.</span> In disco, an entity's identity is broken down into its category (server, client, gateway, directory, etc.) and its particular type within that category (IM server, phone vs. handheld client, MSN gateway vs. AIM gateway, user directory vs. chatroom directory, etc.). This information helps requesting entities to determine the group or "bucket" of services into which the entity is most appropriately placed (e.g., perhaps the entity is shown in a GUI with an appropriate icon). An entity MAY have multiple identities. When multiple identity elements are provided, the name attributes for each identity element SHOULD have the same value.</p>
+        </li>
+        <li><p><span class="strong">The features offered and protocols supported by the target entity.</span> This information helps requesting entities determine what actions are possible with regard to this entity (registration, search, join, etc.), what protocols the entity supports, and specific feature types of interest, if any (e.g., for the purpose of feature negotiation).</p></li>
+      </ol>
+      <p>In order to discover such information, the requesting entity MUST send an IQ stanza of type "get", containing an empty &lt;query/&gt; element qualified by the 'http://jabber.org/protocol/disco#info' namespace, to the JID of the target entity (a 'node' attribute on the &lt;query/&gt; element is OPTIONAL as described in the <a href="#info-nodes">Info Nodes</a> and <a href="#items-nodes">Items Nodes</a> section of this document):</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Querying for information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='plays.shakespeare.lit'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The target entity then MUST either return an IQ result, or return an error (see the <a href="#errors">Error Conditions</a> section of this document). The result MUST contain a &lt;query/&gt; element qualified by the 'http://jabber.org/protocol/disco#info' namespace, which in turn contains one or more &lt;identity/&gt; elements and one or more &lt;feature/&gt; elements. (Note: Every entity MUST have at least one identity, and every entity MUST support at least the 'http://jabber.org/protocol/disco#info' feature; however, an entity is not required to return a result and MAY return an error, most likely &lt;feature-not-implemented/&gt; or &lt;service-unavailable/&gt;, although other error conditions may be appropriate.)</p>
+      <p>Each &lt;identity/&gt; element MUST possess the 'category' and 'type' attributes specifying the category and type for the entity, and MAY possess a 'name' attribute specifying a natural-language name for the entity; the &lt;identity/&gt; element MAY also possess a standard 'xml:lang' attribute, which enables the entity to return localized results if desired (i.e., the &lt;query/&gt; element MAY include multiple &lt;identity/&gt; elements with the same category+type but with different 'xml:lang' values, however the &lt;query/&gt; element MUST NOT include multiple &lt;identity/&gt; elements with the same category+type+xml:lang but with different 'name' values).</p>
+      <p>Each &lt;feature/&gt; element MUST possess a 'var' attribute whose value is a protocol namespace or other feature offered by the entity.</p>
+      <p>Preferably, both the category/type values and the feature values will be registered in a public registry, as described in the <a href="#registrar">XMPP Registrar Considerations</a> section of this document.</p>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Result-set for information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='plays.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity
+        category='conference'
+        type='text'
+        name='Play-Specific Chatrooms'/&gt;
+    &lt;identity
+        category='directory'
+        type='chatroom'
+        name='Play-Specific Chatrooms'/&gt;
+    &lt;feature var='http://jabber.org/protocol/disco#info'/&gt;
+    &lt;feature var='http://jabber.org/protocol/disco#items'/&gt;
+    &lt;feature var='http://jabber.org/protocol/muc'/&gt;
+    &lt;feature var='jabber:iq:register'/&gt;
+    &lt;feature var='jabber:iq:search'/&gt;
+    &lt;feature var='jabber:iq:time'/&gt;
+    &lt;feature var='jabber:iq:version'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+    </pre></div>
+      <p>If the JID of the specified target entity does not exist, the server or other authoritative entity SHOULD return an &lt;item-not-found/&gt; error, unless doing so would violate the privacy and security considerations specified in <span class="ref">XMPP Core</span> and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1633680">6</a>] or local privacy and security policies (see also the <a href="#security">Security Considerations</a> of this document):</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Target entity does not exist</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='plays.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;item-not-found xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If privacy and security considerations or policies prevent the server or other authoritative entity from returning an &lt;item-not-found/&gt; error, it SHOULD return a &lt;service-unavailable/&gt; error instead:</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Service unavailable</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='plays.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='info1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>When an entity sends a disco#info request to a bare JID (&lt;account@domain.tld&gt;) hosted by a server, the server itself MUST reply on behalf of the hosted account, either with an IQ-error or an IQ-result. For important rules regarding access to this functionality, see the <a href="#security">Security Considerations</a> section of this document. In particular, in response to a disco#info request sent to a bare JID with no node, if access is not denied the server SHOULD return an IQ-result for the bare JID, in which the primary identity SHOULD have a category of "account" with an appropriate type as specified in the Service Discovery Identities registry (most likely, a type of "registered"). Note: This enables authorized or trusted entities to discover whether the account exists and its account type (e.g., in IM systems to determine the existence of an account before adding it to a contact's roster).</p>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Requesting info from a bare JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='shakespeare.lit'
+    to='juliet@capulet.com'
+    id='info2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>Here we assume that shakespeare.lit is trusted by capulet.com and that the account &lt;juliet@capulet.com&gt; is a registered account:</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server replies on behalf of bare JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.com'
+    to='shakespeare.lit'
+    id='info2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='account' type='registered'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>A query sent to an associated entity may result in different or more detailed information. One example is sending a query to a particular conference room rather than the parent conference service:</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Querying a specific conference room</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='balconyscene@plays.shakespeare.lit'
+    id='info3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+
+&lt;iq type='result'
+    from='balconyscene@plays.shakespeare.lit'
+    to='juliet@capulet.com/balcony'
+    id='info3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity
+        category='conference'
+        name='A Dark Cave'
+        type='text'/&gt;
+    &lt;feature var='http://jabber.org/protocol/muc'/&gt;
+    &lt;feature var='muc_passwordprotected'/&gt;
+    &lt;feature var='muc_hidden'/&gt;
+    &lt;feature var='muc_temporary'/&gt;
+    &lt;feature var='muc_open'/&gt;
+    &lt;feature var='muc_unmoderated'/&gt;
+    &lt;feature var='muc_nonanonymous'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;</pre></div>
+      <p>Another example of this is sending a query to a specific connected resource for an IM user:</p>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Querying a connected resource for further information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='juliet@capulet.com/balcony'
+    to='romeo@montague.net/orchard'
+    id='info4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+
+&lt;iq type='result'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'
+    id='info4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity
+        category='client'
+        type='pc'
+        name='Gabber'/&gt;
+    &lt;feature var='jabber:iq:time'/&gt;
+    &lt;feature var='jabber:iq:version'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.2 <a name="info-nodes" id="info-nodes">Info Nodes</a></h3>
+      <p>A disco#info query MAY also be directed to a specific node identifier associated with a JID, although the primary use of nodes is as <a href="#items-nodes">Items Nodes</a> rather than as info nodes:</p>
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Querying a specific JID and node combination</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='mim.shakespeare.lit'
+    id='info3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info' 
+         node='http://jabber.org/protocol/commands'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If the request included a 'node' attribute, the response MUST mirror the specified 'node' attribute to ensure coherence between the request and the response.</p>
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. JID+node result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='mim.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='info3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info' 
+         node='http://jabber.org/protocol/commands'&gt;
+    &lt;identity
+        category='automation'
+        type='command-list'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  <h2>4.
+       <a name="items" id="items">Discovering the Items Associated with a Jabber Entity</a></h2>
+    <div class="indent"><h3>4.1 <a name="items-basic" id="items-basic">Basic Protocol</a></h3>
+      <p>In order for the requesting entity to discover the items associated with a Jabber Entity, it MUST send an IQ stanza of type "get" to the target entity, containing an empty &lt;query/&gt; element qualified by the 'http://jabber.org/protocol/disco#items' namespace:</p>
+      <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Requesting all items</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='shakespeare.lit'
+    id='items1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The target entity then MUST either return its list of publicly-available items, or return an error. The list of items MUST be provided in an IQ stanza of type "result", with each item specified by means of an &lt;item/&gt; child of a &lt;query/&gt; element qualified by the 'http://jabber.org/protocol/disco#items' namespace (the &lt;item/&gt; child MUST possess a 'jid' attribute specifying the JID of the item and MAY possess a 'name' attribute specifying a natural-language name for the item):</p>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Result-set for all items</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='items1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item jid='people.shakespeare.lit'
+          name='Directory of Characters'/&gt;
+    &lt;item jid='plays.shakespeare.lit'
+          name='Play-Specific Chatrooms'/&gt;
+    &lt;item jid='mim.shakespeare.lit'
+          name='Gateway to Marlowe IM'/&gt;
+    &lt;item jid='words.shakespeare.lit'
+          name='Shakespearean Lexicon'/&gt;
+    &lt;item jid='globe.shakespeare.lit'
+          name='Calendar of Performances'/&gt;
+    &lt;item jid='headlines.shakespeare.lit'
+          name='Latest Shakespearean News'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          name='Buy Shakespeare Stuff!'/&gt;
+    &lt;item jid='en2fr.shakespeare.lit'
+          name='French Translation Service'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The &lt;item/&gt; element MUST NOT contain XML character data and SHOULD be empty; while it MAY contain XML data in another namespace, such data MUST be ignored if an implementation does not understand it.</p>
+      <p>If there are no items associated with an entity (or if those items are not publicly available), the target entity MUST return an empty query element to the requesting entity:</p>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Empty result set</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='items1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>As with disco#info requests, when an entity sends a disco#items request to a bare JID (&lt;account@domain.tld&gt;) hosted by a server, the server itself MUST reply on behalf of the hosted account. For important rules regarding access to this functionality, see the <a href="#security">Security Considerations</a> section of this document. In particular, in response to a disco#items request sent to a bare JID with no node, if access is not denied the server SHOULD return the associated items including connected or available resources as appropriate:</p>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Requesting items from a bare JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='shakespeare.lit'
+    to='juliet@capulet.com'
+    id='items2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>Here we assume that shakespeare.lit is trusted by capulet.com and that the account &lt;juliet@capulet.com&gt; has two available resources:</p>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Server replies on behalf of bare JID</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.com'
+    to='shakespeare.lit'
+    id='items2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item jid='juliet@capulet.com/balcony'/&gt;
+    &lt;item jid='juliet@capulet.com/chamber'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.2 <a name="items-nodes" id="items-nodes">Items Nodes</a></h3>
+      <p>It is possible that an item associated with an entity will not be addressable as a JID; examples might include offline messages stored in an inbox (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0013.html">Flexible Offline Message Retrieval (XEP-0013)</a></span>  [<a href="#nt-idp1672000">7</a>]), entries in a Jabber-enabled weblog, XML-RPC services associated with a client or component, items available in an online trading system (e.g., a catalog or auction), news postings located at an NNTP gateway, and topics hosted by a <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1674752">8</a>] component. In order to handle such items, the &lt;item/&gt; element MAY possess an OPTIONAL 'node' attribute that supplements the REQUIRED 'jid' attribute.</p>
+      <p>The value of the node attribute may or may not have semantic meaning; from the perspective of Service Discovery, a node is merely something that is associated with an entity. In order to discover more about the node, the requesting entity MUST query the entity's JID while specifying the node. If the value of the 'node' attribute has semantic meaning, that meaning is provided by the "using protocol" or application, not by the Service Discovery protocol. A node attribute SHOULD NOT be included unless it is necessary to provide or discover information about an entity that cannot be directly addressed as a JID (i.e., if the associated item can be addressed as a JID, do not include a node). The value of the 'node' attribute MUST NOT be null.</p>
+      <p>In the following example, a user requests all available items from an online catalog service:</p>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Requesting nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='catalog.shakespeare.lit'
+    id='items2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+        </pre></div>
+        <p>If there are items associated with the target entity but they are not addressable as JIDs, the service SHOULD then return a list of nodes (where each &lt;item/&gt; element MUST possess a 'jid' attribute, SHOULD possess a 'node' attribute, and MAY possess a 'name' attribute):</p>
+        <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Service returns nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='catalog.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='items2'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='books'
+          name='Books by and about Shakespeare'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='clothing'
+          name='Wear your literary taste with pride'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music'
+          name='Music from the time of Shakespeare'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>There may be futher nodes associated with the "first-level" nodes returned in the above query (e.g., the nodes may be categories that have associated items). The requesting entity can query a node further by sending a request to the JID and specifying the node of interest in the query.</p>
+      <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Requesting further nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='catalog.shakespeare.lit'
+    id='items3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='music'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The service then returns the further nodes associated with the "parent" node. In the following example, the service itself enforces an alphabetically-ordered hierarchical structure on the nodes that are returned, but such a structure is a matter of implementation rather than protocol.</p>
+      <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Service returns further nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='catalog.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='items3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='music'&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/A'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/B'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/C'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/D'/&gt;
+    .
+    .
+    .
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The requesting entity can then query further if desired:</p>
+      <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Requesting even more nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='catalog.shakespeare.lit'
+    id='items4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='music/D'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Service returns even more nodes</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='catalog.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='items4'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='music/D'&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/D/dowland-firstbooke'
+          name='John Dowland - First Booke of Songes or Ayres'/&gt;
+    &lt;item jid='catalog.shakespeare.lit'
+          node='music/D/dowland-solace'
+          name='John Dowland - A Pilgrimes Solace'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.3 <a name="items-hierarchy" id="items-hierarchy">Node Hierarchies</a></h3>
+      <p>The foregoing examples show a hierarchy of nodes, in which some nodes are branches (i.e., contain further nodes) and some nodes are leaves (i.e., do not contain further nodes). The "hierarchy" category SHOULD be used to identify such nodes, where the "branch" and "leaf" types are exhaustive of the types within this category.</p>
+      <p>If the hierarchy category is used, every node in the hierarchy MUST be identified as either a branch or a leaf; however, since a node MAY have multiple identities, any given node MAY also possess an identity other than "hierarchy/branch" or "hierarchy/leaf".</p>
+      <p>Therefore, a disco#info request to the "music/D" node shown above would yield &lt;identity category='hierarchy' type='branch'/&gt; while a disco#info request to the "music/D/dowland-firstbooke" node would yield &lt;identity category='hierarchy' type='leaf'/&gt; (and each node could yield additional identities as appropriate).</p>
+    </div>
+    <div class="indent"><h3>4.4 <a name="items-relationship" id="items-relationship">Relationship Between an Entity and its Items</a></h3>
+      <p>This section explains in greater detail the relationship between an entity and its associated items.</p>
+      <p>In general, the items returned by an entity in a disco#items result MUST be items over which the entity has some relationship of ownership -- either direct control over the item itself (e.g., <span class="ref">Publish-Subscribe</span> nodes owned by the entity) or at least the ability to provide or vouch for the item in a canonical way on the Jabber network (e.g., groupchat rooms directly hosted by a multi-user chat service or IRC channels to which a gateway provides access).</p>
+      <p>Such a relationship does not constrain the relationship between the owning entity's address and the address of the associated entity. In particular, any of the following scenarios is perfectly acceptable:</p>
+      <ol>
+        <li><p>Upon querying an entity (JID1) for items, one receives a list of items that can be addressed as JIDs; each associated item has its own JID, but no such JID equals JID1.</p></li>
+        <li><p>Upon querying an entity (JID1) for items, one receives a list of items that cannot be addressed as JIDs; each associated item has its own JID+node, where each JID equals JID1 and each NodeID is unique.</p></li>
+        <li><p>Upon querying an entity (JID1+NodeID1) for items, one receives a list of items that can be addressed as JIDs; each associated item has its own JID, but no such JID equals JID1.</p></li>
+        <li><p>Upon querying an entity (JID1+NodeID1) for items, one receives a list of items that cannot be addressed as JIDs; each associated item has its own JID+node, but no such JID+node equals JID1+NodeID1 and each NodeID is unique in the context of the associated JID.</p></li>
+      </ol>
+      <p>In addition, the results MAY also be mixed, so that a query to a JID or a JID+node could yield both (1) items that are addressed as JIDs and (2) items that are addressed as JID+node combinations.</p>
+      <p>Consider the case of an entity that owns multiple publish-subscribe nodes -- for example, a person who owns one such node for each of his music players. The following examples show what the disco#items query and result might look like (using the protocol defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0118.html">User Tune (XEP-0118)</a></span>  [<a href="#nt-idp1699200">9</a>]):</p>
+      <p class="caption"><a name="example-22" id="example-22"></a>Example 22. User queries entity regarding tunes</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/chamber'
+    id='items4'
+    to='romeo@montague.net'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='http://jabber.org/protocol/tune'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The queried entity now returns a list of publish-subscribe nodes over which it has control, each of which is hosted on a different pubsub service:</p> 
+      <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Entity returns multiple items</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net'
+    id='items4'
+    to='juliet@capulet.com/chamber'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items' 
+         node='http://jabber.org/protocol/tune'&gt;
+    &lt;item jid='pubsub.shakespeare.lit'
+          name='Romeo&amp;apos;s CD player'
+          node='s623nms9s3bfh8js'/&gt;
+    &lt;item jid='pubsub.montague.net'
+          node='music/R/Romeo/iPod'/&gt;
+    &lt;item jid='tunes.characters.lit'
+          node='g8k4kds9sd89djf3'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  <h2>5.
+       <a name="publish" id="publish">Publishing Available Items</a></h2>
+    <p>This feature has been removed in favor of the XMPP publish-subscribe technology defined in <span class="ref">XEP-0060</span>.</p>
+  <h2>6.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+    <div class="indent"><h3>6.1 <a name="impl-info" id="impl-info">Number of Info Requests</a></h3>
+      <p>When the requesting application is a client, it may want to retrieve service discovery information about all of a user's contacts after retrieving the user's roster and receiving presence from contacts in the user's roster (e.g., to show capabilities). Unfortunately, a user's roster can be quite large, resulting in sending a large number of outbound disco#info requests and receiving a large number of inbound disco#info responses upon login. Because this "disco flood" is undesirable for reasons of scalability and bandwidth usage, client applications SHOULD use <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1708864">10</a>] to determine the capabilities of entities from which they receive presence information and SHOULD NOT send disco#info requests to such entities.</p>
+    </div>
+    <div class="indent"><h3>6.2 <a name="impl-items" id="impl-items">Number of Items Requests</a></h3>
+      <p>In order to retrieve full information about an entity and its associated items, the requesting application needs to "walk the tree" of items. Naturally, this can result in a large number of requests and responses. The requesting application SHOULD NOT send follow-up requests to all items associated with an entity if the list of such items is long (e.g., more than twenty items). Entities that will routinely host a large number of items (e.g., IRC gateways or NNTP services) SHOULD structure nodes into hierarchies and/or provide more robust searching capabilities, for example via <span class="ref"><a href="http://xmpp.org/extensions/xep-0055.html">Jabber Search (XEP-0055)</a></span>  [<a href="#nt-idp1713152">11</a>]; they SHOULD NOT return extremely large result sets via Service Discovery.</p>
+    </div>
+    <div class="indent"><h3>6.3 <a name="impl-consistency" id="impl-consistency">Response Consistency</a></h3>
+      <p>This document recommends but does not require that a responding entity must return the same results in response to the same request from different requesting entities (e.g., an entity could return a different list of items or features based on the degree to which it trusts the requesting entity, or based on the known capabilities of the requesting entity). However, the responding entity SHOULD return the same &lt;identity/&gt; element (category+type) to all disco#info requests sent to the same JID+node combination.</p>
+    </div>
+  <h2>7.
+       <a name="errors" id="errors">Error Conditions</a></h2>
+    <p>If a specific entity (JID or JID+node) does not support the disco namespace, refuses to return disco results to the specific requesting entity, or refuses to return disco results to any requesting entity, it SHOULD return an appropriate error message (such as &lt;service-unavailable/&gt;, &lt;forbidden/&gt;, or &lt;not-allowed/&gt;, respectively). One example is shown below.</p>
+    <p class="caption"><a name="example-24" id="example-24"></a>Example 24. JID+node error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='mim.shakespeare.lit'
+    to='romeo@montague.net/orchard'
+    id='info3'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info' 
+         node='http://jabber.org/protocol/commands'/&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-allowed xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Other error conditions may be appropriate depending on the application.</p>
+    <p>The following table summarizes the common error conditions that can have special meaning in the context of Service Discovery (for information regarding error condition syntax and semantics, see <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1721200">12</a>]).</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Error Conditions</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Condition</th>
+        <th>Cause</th>
+      </tr>
+      <tr class="body">
+        <td>&lt;item-not-found/&gt;</td>
+        <td>The JID or JID+NodeID of the specified target entity does not exist and that fact can be divulged in accordance with privacy and security considerations and policies.</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;service-unavailable/&gt;</td>
+        <td>The target entity does not support this protocol, or the specified target entity does not exist but that fact cannot be divulged because of privacy and security considerations.</td>
+      </tr>
+    </table></div>
+    <p>The other error conditions specified in <span class="ref">XMPP Core</span> MAY be returned as well (&lt;forbidden/&gt;, &lt;not-allowed/&gt;, &lt;not-authorized/&gt;, etc.), including application-specific conditions.</p>
+    <p>As noted above, if an entity has no associated items, it MUST return an empty &lt;query/&gt; element (rather than an error) in response to a disco#items request.</p>
+  <h2>8.
+       <a name="security" id="security">Security Considerations</a></h2>
+    <p>Certain attacks may be made easier when an entity discloses (via disco#info responses) that it supports particular protocols or features; however, in general, service discovery introduces no new vulnerabilities, since a malicious entity could discover that the responding entity supports such protocols and features by sending requests specific to those protocols rather than by sending service discovery requests.</p>
+    <p>A responding entity is under no obligation to return the identical service discovery response when replying to service discovery requests received from different requesting entities, and MAY perform authorization checks before responding in order to determine how (or whether) to respond.</p>
+    <p>A server MUST carefully control access to any functionality that would enable directory harvesting attacks or that would leak information about connected or available resources; this functionality consists of the server's replies to disco#info and disco#items requests sent to bare JIDs (addresses of the form account@domain.tld) hosted on the server, since the server responds to such requests on behalf of the account. The following rules apply to the handling of service discovery requests sent to bare JIDs:</p>
+    <ol>
+      <li>
+        <p>In response to a disco#info request, the server MUST return a &lt;service-unavailable/&gt; error if one of the following is true:</p>
+        <ol>
+          <li>The target entity does not exist (no matter if the request specifies a node or not).</li>
+          <li>The requesting entity is not authorized to receive presence from the target entity (i.e., via a presence subscription of type "both" or "from") or is not otherwise trusted (e.g., another server in a trusted network).</li>
+        </ol>
+      </li>
+      <li>
+        <p>In response to a disco#items request, the server MUST return an empty result set if:</p>
+        <ol>
+          <li>The target entity does not exist (no matter if the request specifies a node or not).</li>
+          <li>The request did not specify a node, the only items are available resources (as defined in <span class="ref">RFC 3921</span>), and the requesting entity is not authorized to receive presence from the target entity (i.e., via a presence subscription of type "both" or "from") or is not otherwise trusted (e.g., another server in a trusted network).  [<a href="#nt-idp1735456">13</a>]</li>
+        </ol>
+      </li>
+    </ol>
+  <h2>9.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+    <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1740032">14</a>].</p>
+  <h2>10.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+    <div class="indent"><h3>10.1 <a name="registrar-protocol" id="registrar-protocol">Protocol Namespaces</a></h3>
+      <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1745120">15</a>] includes the 'http://jabber.org/protocol/disco#info' and 'http://jabber.org/protocol/disco#items' namespaces in its registry of protocol namespaces.</p>
+    </div>
+    <div class="indent"><h3>10.2 <a name="registrar-reg" id="registrar-reg">Registries</a></h3>
+      <div class="indent"><h3>10.2.1 <a name="registrar-reg-identity" id="registrar-reg-identity">Identity Categories and Types Registry</a></h3>
+        <p>The XMPP Registrar maintains a registry of values for the 'category' and 'type' attributes of the &lt;identity/&gt; element in the 'http://jabber.org/protocol/disco#info' namespace; see &lt;<a href="http://xmpp.org/registrar/disco-categories.html">http://xmpp.org/registrar/disco-categories.html</a>&gt;.</p>
+        <div class="indent"><h3>10.2.1.1 <a name="registrar-identity" id="registrar-identity">Process</a></h3>
+          <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;category&gt;
+  &lt;name&gt;the name of the category (all lower-case)&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the category&lt;/desc&gt;
+  &lt;type&gt;
+    &lt;name&gt;the name of the specific type (all lower-case)&lt;/name&gt;
+    &lt;desc&gt;a natural-language description of the type&lt;/desc&gt;
+    &lt;doc&gt;the document (e.g., XEP) in which this type is specified&lt;/doc&gt;
+  &lt;/type&gt;
+&lt;/category&gt;
+          </pre></div>
+          <p>The registrant may register more than one category at a time, each contained in a separate &lt;category/&gt; element. The registrant may also register more than one type at a time, each contained in a separate &lt;type/&gt; child element. Registrations of new types within an existing category must include the full XML snippet but should not include the category description (only the name).</p>
+        </div>
+        <div class="indent"><h3>10.2.1.2 <a name="registrar-reg-identity-init" id="registrar-reg-identity-init">Initial Submission</a></h3>
+          <p>This document defines a "hierarchy" category that contains two and only two types: "branch" and "leaf"; the associated registry submission is as follows:</p>
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;category&gt;
+  &lt;name&gt;hierarchy&lt;/name&gt;
+  &lt;desc&gt;
+    An entity that exists in the context of a 
+    service discovery node hierarchy.
+  &lt;/desc&gt;
+  &lt;type&gt;
+    &lt;name&gt;branch&lt;/name&gt;
+    &lt;desc&gt;
+      A "container node" for other entities in a 
+      service discovery node hierarchy.
+    &lt;/desc&gt;
+    &lt;doc&gt;XEP-0030&lt;/doc&gt;
+  &lt;/type&gt;
+  &lt;type&gt;
+    &lt;name&gt;leaf&lt;/name&gt;
+    &lt;desc&gt;
+      A "terminal node" in a service discovery 
+      node hierarchy.
+    &lt;/desc&gt;
+    &lt;doc&gt;XEP-0030&lt;/doc&gt;
+  &lt;/type&gt;
+&lt;/category&gt;
+          </pre></div>
+        </div>
+      </div>
+      <div class="indent"><h3>10.2.2 <a name="registrar-reg-features" id="registrar-reg-features">Features Registry</a></h3>
+        <p>The XMPP Registrar maintains a registry of features for use as values of the 'var' attribute of the &lt;feature/&gt; element in the 'http://jabber.org/protocol/disco#info' namespace; see &lt;<a href="http://xmpp.org/registrar/disco-features.html">http://xmpp.org/registrar/disco-features.html</a>&gt;.</p>
+        <div class="indent"><h3>10.2.2.1 <a name="registrar-reg-features-process" id="registrar-reg-features-process">Process</a></h3>
+          <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;var&gt;
+  &lt;name&gt;name of feature or namespace&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the feature&lt;/desc&gt;
+  &lt;doc&gt;the document (e.g., XEP) in which this feature is specified&lt;/doc&gt;
+&lt;/var&gt;
+          </pre></div>
+          <p>The registrant may register more than one feature at a time, each contained in a separate &lt;feature/&gt; element.</p>
+        </div>
+      </div>
+      <div class="indent"><h3>10.2.3 <a name="registrar-reg-nodes" id="registrar-reg-nodes">Well-Known Nodes</a></h3>
+        <p>A "using protocol" may specify one or more service discovery nodes that have a special and well-defined meaning in the context of that protocol. For the purpose of reserving these node names globally across all Jabber protocols, the XMPP Registrar maintains a registry of well-known service discovery nodes at &lt;<a href="http://xmpp.org/registrar/nodes.html">http://xmpp.org/registrar/nodes.html</a>&gt;.</p>
+        <div class="indent"><h3>10.2.3.1 <a name="registrar-reg-nodes-process" id="registrar-reg-nodes-process">Process</a></h3>
+          <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;node&gt;
+  &lt;name&gt;the name of the node&lt;/name&gt;
+  &lt;desc&gt;a natural-language description of the node&lt;/desc&gt;
+  &lt;doc&gt;the document (e.g., XEP) in which this node is specified&lt;/doc&gt;
+&lt;/node&gt;
+          </pre></div>
+          <p>The registrant may register more than one node at a time, each contained in a separate &lt;node/&gt; element.</p>
+        </div>
+      </div>
+    </div>
+    <div class="indent"><h3>10.3 <a name="registrar-querytypes" id="registrar-querytypes">URI Query Types</a></h3>
+      <p>As authorized by <span class="ref"><a href="http://xmpp.org/extensions/xep-0147.html">XMPP URI Query Components (XEP-0147)</a></span>  [<a href="#nt-idp1765600">16</a>], the XMPP Registrar maintains a registry of queries and key-value pairs for use in XMPP URIs (see &lt;<a href="http://xmpp.org/registrar/querytypes.html">http://xmpp.org/registrar/querytypes.html</a>&gt;).</p>
+      <p>The "disco" querytype is defined herein for service discovery interactions, with three keys: (1) "node" (the optional node to query), (2) "request" (with values of "info" to retrieve service discovery information and "items" to retrieve service discovery items), and (3) "type" (with values of "get" for IQ-gets and "set" for IQ-sets).</p>
+      <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Service Discovery Information Request: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:romeo@montague.net?disco;type=get;request=info
+      </pre></div>
+      <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Service Discovery Information Request: Resulting Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='romeo@montague.net' type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Service Discovery Items Request: IRI/URI</p><div class="indent"><pre class="prettyprint">
+xmpp:romeo@montague.net?disco;type=get;request=items
+      </pre></div>
+      <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Service Discovery Items Request: Resulting Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='romeo@montague.net' type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The following submission registers the "disco" querytype.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;querytype&gt;
+  &lt;name&gt;disco&lt;/name&gt;
+  &lt;proto&gt;http://jabber.org/protocol/disco&lt;/proto&gt;
+  &lt;desc&gt;enables interaction for the purpose of service discovery&lt;/desc&gt;
+  &lt;doc&gt;XEP-0030&lt;/doc&gt;
+  &lt;keys&gt;
+    &lt;key&gt;
+      &lt;name&gt;node&lt;/name&gt;
+      &lt;desc&gt;the (optional) service discovery node&lt;/desc&gt;
+    &lt;/key&gt;
+    &lt;key&gt;
+      &lt;name&gt;request&lt;/name&gt;
+      &lt;desc&gt;the service discovery request type&lt;/desc&gt;
+      &lt;values&gt;
+        &lt;value&gt;
+	  &lt;name&gt;info&lt;/name&gt;
+          &lt;desc&gt;a service discovery information (disco#info) request&lt;/desc&gt;
+        &lt;/value&gt;
+        &lt;value&gt;
+	  &lt;name&gt;items&lt;/name&gt;
+          &lt;desc&gt;a service discovery items (disco#items) request&lt;/desc&gt;
+        &lt;/value&gt;
+      &lt;/values&gt;
+    &lt;/key&gt;
+    &lt;key&gt;
+      &lt;name&gt;type&lt;/name&gt;
+      &lt;desc&gt;the IQ type&lt;/desc&gt;
+      &lt;values&gt;
+        &lt;value&gt;
+	  &lt;name&gt;get&lt;/name&gt;
+          &lt;desc&gt;an IQ get&lt;/desc&gt;
+        &lt;/value&gt;
+      &lt;/values&gt;
+    &lt;/key&gt;
+  &lt;/keys&gt;
+&lt;/querytype&gt;
+
+      </pre></div>
+    </div>
+  <h2>11.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+    <div class="indent"><h3>11.1 <a name="schemas-info" id="schemas-info">disco#info</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/disco#info'
+    xmlns='http://jabber.org/protocol/disco#info'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0030: http://www.xmpp.org/extensions/xep-0030.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence minOccurs='0'&gt;
+        &lt;xs:element ref='identity' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='feature' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='node' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='identity'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='category' type='nonEmptyString' use='required'/&gt;
+          &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+          &lt;xs:attribute name='type' type='nonEmptyString' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='feature'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='var' type='xs:string' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='nonEmptyString'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:minLength value='1'/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>11.2 <a name="schemas-items" id="schemas-items">disco#items</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/disco#items'
+    xmlns='http://jabber.org/protocol/disco#items'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0030: http://www.xmpp.org/extensions/xep-0030.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence minOccurs='0'&gt;
+        &lt;xs:element ref='item' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='node' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='jid' type='fullJIDType' use='required'/&gt;
+          &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+          &lt;xs:attribute name='node' type='xs:string' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='fullJIDType'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:minLength value='8'/&gt;
+      &lt;xs:maxLength value='3071'/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+      </pre></div>
+    </div>
+  <h2>12.
+       <a name="authornote" id="authornote">Author Note</a></h2>
+  <p>Peter Millard, a co-author of this specification from version 0.1 through version 2.2, died on April 26, 2006.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0030<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.4<br />
+            Last Updated: 2008-06-06<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />Supersedes: XEP-0011, XEP-0094<br />
+                Superseded By: None<br />
+            Short Name: disco<br />
+        XML Schema for disco#info namespace: &lt;<a href="http://www.xmpp.org/schemas/disco-info.xsd">http://www.xmpp.org/schemas/disco-info.xsd</a>&gt;<br />
+        XML Schema for disco#items namespace: &lt;<a href="http://www.xmpp.org/schemas/disco-items.xsd">http://www.xmpp.org/schemas/disco-items.xsd</a>&gt;<br />
+              Registry: 
+              
+              &lt;<a href="http://xmpp.org/registrar/disco.html">http://xmpp.org/registrar/disco.html</a>&gt;
+              <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0030.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0030.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0030.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Millard</h3><p class="indent">
+        See <a href="#authornote">Author Note</a><br /></p><h3>Ryan Eatmon</h3><p class="indent">
+        Email:
+        <a href="mailto:reatmon@jabber.org">reatmon@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:reatmon@jabber.org">reatmon@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1599152" id="nt-idp1599152">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1601808" id="nt-idp1601808">2</a>. XEP-0011: Jabber Browsing &lt;<a href="http://xmpp.org/extensions/xep-0011.html">http://xmpp.org/extensions/xep-0011.html</a>&gt;.</p><p><a name="nt-idp1604448" id="nt-idp1604448">3</a>. XEP-0094: Agent Information &lt;<a href="http://xmpp.org/extensions/xep-0094.html">http://xmpp.org/extensions/xep-0094.html</a>&gt;.</p><p><a name="nt-idp1607872" id="nt-idp1607872">4</a>. XEP-0134: XMPP Design Guidelines &lt;<a href="http://xmpp.org/extensions/xep-0134.html">http://xmpp.org/extensions/xep-0134.html</a>&gt;.</p><p><a name="nt-idp1613312" id="nt-idp1613312">5</a>. SOAP &lt;<a href="http://www.w3.org/TR/SOAP/">http://www.w3.org/TR/SOAP/</a>&gt;.</p><p><a name="nt-idp1633680" id="nt-idp1633680">6</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1672000" id="nt-idp1672000">7</a>. XEP-0013: Flexible Offline Message Retrieval &lt;<a href="http://xmpp.org/extensions/xep-0013.html">http://xmpp.org/extensions/xep-0013.html</a>&gt;.</p><p><a name="nt-idp1674752" id="nt-idp1674752">8</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1699200" id="nt-idp1699200">9</a>. XEP-0118: User Tune &lt;<a href="http://xmpp.org/extensions/xep-0118.html">http://xmpp.org/extensions/xep-0118.html</a>&gt;.</p><p><a name="nt-idp1708864" id="nt-idp1708864">10</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1713152" id="nt-idp1713152">11</a>. XEP-0055: Jabber Search &lt;<a href="http://xmpp.org/extensions/xep-0055.html">http://xmpp.org/extensions/xep-0055.html</a>&gt;.</p><p><a name="nt-idp1721200" id="nt-idp1721200">12</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1735456" id="nt-idp1735456">13</a>. However, the server MAY return items other than available resources (if any).</p><p><a name="nt-idp1740032" id="nt-idp1740032">14</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1745120" id="nt-idp1745120">15</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1765600" id="nt-idp1765600">16</a>. XEP-0147: XMPP URI Query Components &lt;<a href="http://xmpp.org/extensions/xep-0147.html">http://xmpp.org/extensions/xep-0147.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.4 (2008-06-06)</h4><div class="indent"><p>Per Council consensus, removed disco-publish feature (implementations should use publish-subscribe instead).</p> (psa)
+    </div><h4>Version 2.3 (2007-02-15)</h4><div class="indent"><p>Added implementation note regarding Entity Capabilities.</p> (psa)
+    </div><h4>Version 2.2 (2006-01-24)</h4><div class="indent"><p>Further specified and clarified security considerations relating to server handling of requests sent to bare JIDs.</p> (psa)
+    </div><h4>Version 2.1 (2005-03-03)</h4><div class="indent"><p>Added paragraph to implementation notes about server handling of requests sent to bare JIDs.</p> (psa)
+    </div><h4>Version 2.0 (2004-07-20)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Final.</p> (psa)
+    </div><h4>Version 1.10 (2004-06-29)</h4><div class="indent"><p>Defined security considerations; changed extended presence example to use a fictitious protocol; further specified publish feature; defined registry submissions.</p> (psa/jjh)
+    </div><h4>Version 1.9 (2004-05-27)</h4><div class="indent"><p>Clarified error conditions.</p> (psa)
+    </div><h4>Version 1.8 (2004-05-21)</h4><div class="indent"><p>Moved remaining feature negotiation text to XEP-0020.</p> (psa)
+    </div><h4>Version 1.7 (2004-05-13)</h4><div class="indent"><p>Added implementation note regarding flexibility of feature and item results; final editorial cleanup.</p> (psa)
+    </div><h4>Version 1.6 (2004-05-11)</h4><div class="indent"><p>Corrected examples of publishing available items; further clarified nature of node hierarchies.</p> (psa)
+    </div><h4>Version 1.5 (2004-05-10)</h4><div class="indent"><p>Added clarifying note about node hierarchies.</p> (psa)
+    </div><h4>Version 1.4 (2004-05-07)</h4><div class="indent"><p>Clarified usage of "directory"; added section defining the relationship between an entity and its associated items.</p> (psa)
+    </div><h4>Version 1.3 (2004-04-23)</h4><div class="indent"><p>Further clarified item-publication protocol; moved some feature negotiation text to XEP-0020; added information about registry of well-known service discovery nodes; added implementation notes regarding tree-walking and large result sets; incorporated additional Call for Experience suggestions.</p> (psa)
+    </div><h4>Version 1.2 (2004-04-20)</h4><div class="indent"><p>Editorial cleanup; incorporated some Call for Experience suggestions.</p> (psa)
+    </div><h4>Version 1.1 (2004-03-15)</h4><div class="indent"><p>Described requirements, syntax, and use cases in a more formal manner; corrected several errors in the examples and schemas; defined XMPP Registrar procedures; added a number of references; specified XMPP error handling.</p> (psa)
+    </div><h4>Version 1.0 (2003-04-21)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft; also added XML schemas.</p> (psa)
+    </div><h4>Version 0.13 (2003-02-25)</h4><div class="indent"><p>Added remarks about empty node attributes; described semantics regarding multiple identity elements.</p> (pgm)
+    </div><h4>Version 0.12 (2003-02-06)</h4><div class="indent"><p>Added support for IQ-set; added example for disco#info to a specific node.</p> (pgm)
+    </div><h4>Version 0.11 (2002-12-17)</h4><div class="indent"><p>Added support for the 'node' attribute per discussion on the Standards list in order to support items that are not JID-addressable.</p> (psa)
+    </div><h4>Version 0.10 (2002-11-21)</h4><div class="indent"><p>Changed &lt;feature type='foo'/&gt; to &lt;feature var='foo'/&gt; to track changes in feature negotiation (XEP-0020); added initial registry parameters.</p> (psa)
+    </div><h4>Version 0.9 (2002-11-07)</h4><div class="indent"><p>Added support for empty result sets in disco#item.</p> (psa)
+    </div><h4>Version 0.8 (2002-11-01)</h4><div class="indent"><p>Removed the max, start, and total attributes for item queries (this will be handled by a generic paging protocol); added "http://jabber.org/protocol/feature-neg" namespace as a feature to signal negotiability regarding one or more features.</p> (psa)
+    </div><h4>Version 0.7 (2002-10-28)</h4><div class="indent"><p>Cleaned up the feature text and examples.</p> (psa)
+    </div><h4>Version 0.6 (2002-10-27)</h4><div class="indent"><p>Added the 'category' attribute to the &lt;feature/&gt; element; added security, IANA, and XMPP Registrar considerations; added a number of examples.</p> (psa)
+    </div><h4>Version 0.5 (2002-10-15)</h4><div class="indent"><p>Total overhaul and simplification.</p> (psa)
+    </div><h4>Version 0.4 (2002-07-16)</h4><div class="indent"><p>Major additions and fixes, many more examples.</p> (psa)
+    </div><h4>Version 0.3 (2002-05-30)</h4><div class="indent"><p>Re-organized around use cases, made some minor fixes.</p> (psa)
+    </div><h4>Version 0.2 (2002-05-05)</h4><div class="indent"><p>Incorporated comments from co-authors and added notes.</p> (psa)
+    </div><h4>Version 0.1 (2002-05-03)</h4><div class="indent"><p>Initial draft.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

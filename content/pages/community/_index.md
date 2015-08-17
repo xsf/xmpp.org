@@ -6,7 +6,7 @@ Menu_name: Community
 Top_menu_show: true
 Top_menu_order: 5
 Dropdown_menu_show: true
-Dropdown_menu_size: 5
+Dropdown_menu_size: 6
 Dropdown_menu_elem_name_1: Chat / logs
 Dropdown_menu_elem_url_1: chat
 Dropdown_menu_elem_name_2: Mailing lists
@@ -17,11 +17,13 @@ Dropdown_menu_elem_name_4: Events
 Dropdown_menu_elem_url_4: events
 Dropdown_menu_elem_name_5: Sponsors
 Dropdown_menu_elem_url_5: sponsors
+Dropdown_menu_elem_name_6: Sponsorship
+Dropdown_menu_elem_url_6: sponsorship
 Footer_show: left
 Footer_order: 5
 Sidebar_menu_show: true
 Sidebar_menu_title: Community
-Sidebar_menu_size: 5
+Sidebar_menu_size: 6
 Sidebar_menu_elem_name_1: Chat / logs
 Sidebar_menu_elem_url_1: community/chat
 Sidebar_menu_elem_name_2: Mailing lists
@@ -32,6 +34,8 @@ Sidebar_menu_elem_name_4: Events
 Sidebar_menu_elem_url_4: community/events
 Sidebar_menu_elem_name_5: Sponsors
 Sidebar_menu_elem_url_5: community/sponsors
+Sidebar_menu_elem_name_6: Sponsorship
+Sidebar_menu_elem_url_6: community/sponsorship
 Content_layout: multiple-columns
 ---
 

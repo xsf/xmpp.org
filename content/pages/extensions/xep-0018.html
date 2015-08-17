@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0018: Invisible Presence</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Invisible Presence" /><meta name="DC.Creator" content="Ben Schumacher" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Description" content="Documentation of invisible presence." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-09-26" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0018" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0018: Invisible Presence</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>Documentation of invisible presence.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ben Schumacher, Jeremie Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Rejected</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-09-26</td></tr></table><hr /><p style="color:red">WARNING: This document has been Rejected by the XMPP Council. Implementation of the protocol described herein is not recommended under any circumstances.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp616208">Introduction</a><br />2.  <a href="#sect-idp619424">Requirements</a><br />3.  <a href="#sect-idp623232">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp625584">User Becomes Invisible to All Contacts</a><br />   
+      3.2.  <a href="#sect-idp627872">User Becomes Visible to All Contacts</a><br />   
+      3.3.  <a href="#sect-idp629744">User Becomes Invisible to Selected Contact</a><br />   
+      3.4.  <a href="#sect-idp633360">User Becomes Visible to Selected Contact</a><br />4.  <a href="#sect-idp635360">Server Implementation Details</a><br />   
+      4.1.  <a href="#sect-idp637664">Undirected Presence While Invisible to Selected Contacts</a><br />5.  <a href="#sect-idp1536736">Security Considerations</a><br />6.  <a href="#sect-idp1537824">IANA Considerations</a><br />7.  <a href="#sect-idp1539920">XMPP Registrar Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp616208" id="sect-idp616208">Introduction</a></h2>
+    <p>Jabber users have long wanted the ability to come online using Jabber, but appear "unavailable" to a subset of their roster, an ability which is commonly referred to as invisible mode. While several current implementations have various ways of providing this functionality, the systems currently in place often lack clear behavior and documentation. This document provides requirements for invisible mode and clarifies the existing protocol-in-use to provide the desired functionality.</p>
+    <p><span class="strong">Note well:</span> The functionality described herein can and should be implemented by means of the Privacy Rules namespace defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp620752">1</a>]. This document is provided for historical purposes only.</p>
+  <h2>2.
+       <a name="sect-idp619424" id="sect-idp619424">Requirements</a></h2>
+    <p>The requirements for invisible mode are basic:</p>
+    <ol>
+      <li>A user should be able to become visible or invisible at any time.</li>
+      <li>When in either mode, users should be able to selectively allow or block presence updates to be distributed to their contacts.</li>
+    </ol>
+  <h2>3.
+       <a name="sect-idp623232" id="sect-idp623232">Use Cases</a></h2>
+    <p>For the purposes of this discussion, we will assume this terminology.</p>
+    <ul>
+      <li>Undirected Presence - A presence stanza without a "to" attribute.</li>
+      <li>Directed Presence - A presence stanza with a "to" attribute.</li>
+    </ul>
+    <div class="indent"><h3>3.1 <a name="sect-idp625584" id="sect-idp625584">User Becomes Invisible to All Contacts</a></h3>
+      <p>Assuming the user's client has authenticated with the system normally, it would send the following presence stanza to become invisible (note: this can be the initial presence stanza sent by the user). To do so, the client will send undirected presence with a type="invisible" attribute.</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Invisible presence stanza</p><div class="indent"><pre class="prettyprint">&lt;presence type="invisible"/&gt;</pre></div>
+    </div>
+    <div class="indent"><h3>3.2 <a name="sect-idp627872" id="sect-idp627872">User Becomes Visible to All Contacts</a></h3>
+      <p>If a user chooses to become visible after being invisible, the client will send undirected presence with a type="visible" attribute.</p>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Visible presence stanza</p><div class="indent"><pre class="prettyprint">&lt;presence type="visible"/&gt;</pre></div>
+    </div>
+    <div class="indent"><h3>3.3 <a name="sect-idp629744" id="sect-idp629744">User Becomes Invisible to Selected Contact</a></h3>
+      <p>If a user is visible to all of their contacts, and wishes to become invisible to selected contacts on their roster, then their client will send the following directed presence stanza.</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User becomes invisible to joe@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence to="joe@foo.com" type="invisible"/&gt;</pre></div>
+      <p>In this case, the server begins to track that the user is invisible to the contact joe@foo.com, and does not forward further presence updates to joe@foo.com. If the user wishes joe@foo.com to received further presence updates, then their client must send either an undirected presence stanza with a type="visible" attribute (see Example 2), or a directed presence stanza to joe@foo.com with a type="visible" attribute as below.</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. User becomes visible to joe@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence to="joe@foo.com" type="visible"/&gt;</pre></div>
+    </div>
+    <div class="indent"><h3>3.4 <a name="sect-idp633360" id="sect-idp633360">User Becomes Visible to Selected Contact</a></h3>
+      <p>The opposite behavior of the previous section should, also, be present in the server. For example, if a user is invisible to all of their contacts, they should be able to become visible to a selected contact by send a stanza similar to the one in Example 4.</p>
+      <p>As with the previous section, a user can later choose to hide his presence updates for joe@foo.com by either sending an undirected presence stanza (see Example 1), or by sending a directed presence stanza to joe@foo.com (see Example 3).</p>
+    </div>
+  <h2>4.
+       <a name="sect-idp635360" id="sect-idp635360">Server Implementation Details</a></h2>
+    <p>The above section documents the major points of the invisible mode protocol. It is important to understand how the server should interact with the protocol documented above.</p>
+    <p>Normally, when a server receives a presence stanza, it stamps the appropriate 'from' attribute on the stanza and sends it on its way. If the stanza does not possess a 'to' attribute, the process of sending the stanza on its way involves broadcasting that stanza to all contacts listed in the user's roster. If the stanza does have a 'to' attribute, the stanza is simply routed to the correct contact. With the addition of invisible mode presence, the server MUST now verify that a stanza should be directed to contacts on a user's roster before sending it on. In addition, stanzas that are directly related to invisible presence (stanzas with a 'type' attribute of either "visible" or "invisible") MUST NOT be sent to any contacts, but MAY cause other presence stanzas to be sent instead.</p>
+    <div class="indent"><h3>4.1 <a name="sect-idp637664" id="sect-idp637664">Undirected Presence While Invisible to Selected Contacts</a></h3>
+      <p>One of the biggest failings of older invisible mode implementations were client features like auto-away. In most cases, these auto-away stanza would inadvertently cause a user to become visible (although away) to all contacts on its roster. This invisible presence protocol has been designed to deal with that problem elegantly.</p>
+      <p>Consider the following situation (the protocol for which is shown in the examples below):</p>
+      <ol>
+        <li>joe@foo.com has contacts stpeter@foo.com, pgmillard@foo.com and rynok@foo.com on his roster.</li>
+        <li>joe@foo.com has logged into the foo.com sever, but has set his presence to invisible.</li>
+        <li>Assume that stpeter@foo.com, pgmillard@foo.com and rynok@foo.com are all online and visible.</li>
+        <li>joe@foo.com wants rynok@foo.com to see his presence updates, but not stpeter@foo.com or pgmillard@foo.com</li>
+        <li>joe@foo.com sets his presence to extended away.</li>
+        <li>joe@foo.com decides to become visible to all contacts on his roster.</li>
+        <li>joe@foo.com decides to become invisible to pgmillard@foo.com.</li>
+        <li>joe@foo.com set his presence to free to chat.</li>
+      </ol>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. joe@foo.com sends initial presence stanza</p><div class="indent"><pre class="prettyprint">&lt;presence type="invisible"/&gt;</pre></div>
+      <p>Since joe@foo.com has just come online, the server SHOULD NOT forward any presence stanzas to contacts on his roster.</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. joe@foo.com sends visible presence to rynok@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence to="rynok@foo.com" type="visible"/&gt;</pre></div>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Server forwards presence update to rynok@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence from="joe@foo.com/resource" to="rynok@foo.com"/&gt;</pre></div>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. joe@foo.com sets his presence to extended away</p><div class="indent"><pre class="prettyprint">&lt;presence&gt;&lt;show&gt;xa&lt;/show&gt;&lt;status&gt;Away (due to idle)&lt;/status&gt;&lt;/presence&gt;</pre></div>
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Server forwards presence update to rynok@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence from="joe@foo.com/resource" to="rynok@foo.com"&gt;
+    &lt;show&gt;away&lt;/show&gt;&lt;status&gt;Meeting&lt;/status&gt;
+&lt;/presence&gt;</pre></div>
+      <p>Note that in this example, presence updates from joe@foo.com are routed only to rynok@foo.com, despite the fact that stpeter@foo.com and pgmillard@foo.com are both online and available. This is because joe@foo.com has chosen to be visible only to rynok@foo.com. If joe@foo.com chooses to become visible to his entire roster, he simply sends an undirected presence stanza with the type="visible" attribute. In this case the server SHOULD forward the last undirected presence stanza received to stpeter@foo.com and pgmillard@foo.com.</p>
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. joe@foo.com sends undirected visible stanza</p><div class="indent"><pre class="prettyprint">&lt;presence type="visible"/&gt;</pre></div>
+      <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Server forwards last presence update to stpeter@foo.com and pgmillard@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence from="joe@foo.com/resource" to="stpeter@foo.com"/&gt;
+
+&lt;presence from="joe@foo.com/resource" to="pgmillard@foo.com"/&gt;</pre></div>
+      <p>Now Joe has decided that he doesn't want pgmillard@foo.com to receive further presence updates. Since he is currently visible to all contacts, he simply needs to send a directed presence stanza to pgmillard@foo.com with the type="invisible" attribute set.</p>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. joe@foo.com sends directed presence stanza to pgmillard@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence to="pgmillard@foo.com" type="invisible"/&gt;</pre></div>
+      <p>In this case, the server will send a directed presence stanza to pgmillard@foo.com with the type="unavailable" attribute set, which indicates to pgmillard@foo.com's client that joe@foo.com has gone "offline."</p>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Server sends unavailable presence stanza to pgmillard@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence from="joe@foo.com/resource" to="pgmillard@foo.com" type="unavailable"/&gt;</pre></div>
+      <p>Further presence updates sent by joe@foo.com will now be forwarded to stpeter@foo.com and rynok@foo.com, and MUST NOT be forwarded pgmillard@foo.com.</p>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. joe@foo.com set his presence to free to chat</p><div class="indent"><pre class="prettyprint">&lt;presence&gt;&lt;show&gt;chat&lt;/show&gt;&lt;/presence&gt;</pre></div>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Server forwards presence update to stpeter@foo.com and rynok@foo.com</p><div class="indent"><pre class="prettyprint">&lt;presence from="joe@foo.com/resource" to="stpeter@foo.com"&gt;
+    &lt;show&gt;chat&lt;/show&gt;
+&lt;/presence&gt;
+    
+&lt;presence from="joe@foo.com/resource" to="rynok@foo.com/resource"&gt;
+    &lt;show&gt;chat&lt;/show&gt;
+&lt;/presence&gt;</pre></div>
+      <p>The server MUST NOT forward presence stanzas containing the type="visible" or type="invisible" attribute to a client.</p>
+    </div>
+  <h2>5.
+       <a name="sect-idp1536736" id="sect-idp1536736">Security Considerations</a></h2>
+    <p>There are no security features or concerns related to this proposal.</p>
+  <h2>6.
+       <a name="sect-idp1537824" id="sect-idp1537824">IANA Considerations</a></h2>
+    <p>No interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1541168">2</a>] is required as a result of this document.</p>
+  <h2>7.
+       <a name="sect-idp1539920" id="sect-idp1539920">XMPP Registrar Considerations</a></h2>
+    <p>No namespaces or parameters need to be registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1545648">3</a>] as a result of this document.</p>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0018<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Rejected">Rejected</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-09-26<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0018.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0018.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0018.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ben Schumacher</h3><p class="indent">
+        Email:
+        <a href="mailto:ben@blahr.com">ben@blahr.com</a><br />
+        JabberID: 
+        <a href="xmpp:rynok@jabber.com">rynok@jabber.com</a><br /></p><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp620752" id="nt-idp620752">1</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1541168" id="nt-idp1541168">2</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1545648" id="nt-idp1545648">3</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-09-26)</h4><div class="indent">Updated to focus solely on &lt;presence type='invisible'/&gt;. (bs)
+    </div><h4>Version 0.1 (2002-01-28)</h4><div class="indent">Initial draft. (jmm)
+    </div></div><hr /><p>END</p></body></html>

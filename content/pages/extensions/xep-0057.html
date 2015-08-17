@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0057: Extended Roster</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Extended Roster" /><meta name="DC.Creator" content="Alexey Shchepin" /><meta name="DC.Description" content="This document defines a way to handle extended roster items." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-04-28" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0057" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0057: Extended Roster</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a way to handle extended roster items.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Alexey Shchepin</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-04-28</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp721984">Introduction</a><br />2.  <a href="#sect-idp723248">What we need to store</a><br />3.  <a href="#sect-idp626928">Where to store</a><br />4.  <a href="#sect-idp632976">How to store</a><br />   
+      4.1.  <a href="#sect-idp633552">General information</a><br />   
+      4.2.  <a href="#sect-idp634832">Server-side information</a><br />   
+      4.3.  <a href="#sect-idp652368">Client-side information</a><br />      
+      4.3.1.  <a href="#sect-idp654176">Generic JIDs</a><br />      
+      4.3.2.  <a href="#sect-idp640400">Client JIDs</a><br />      
+      4.3.3.  <a href="#sect-idp642816">Conference JIDs</a><br />   
+      4.4.  <a href="#sect-idp647696">Complete example</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp721984" id="sect-idp721984">Introduction</a></h2>
+    <p>The main purpose of this document is to make roster not only a "contact list", but also a "list of useful items".  This means that the user has the ability to store not only users' JIDs, but any JID that he wants to quickly access with more information than just the name, subscription and roster groups.</p>
+  <h2>2.
+       <a name="sect-idp723248" id="sect-idp723248">What we need to store</a></h2>
+    <p>All information, that can be stored for each item can be divided into three categories:</p>
+    <ol>
+      <li>Information necessary only for server-side.  E.g. we can have a server module that can process "visibility" to each user in roster (by sending custom presence to this user automatically, without special client-side support of this).</li>
+      <li>Information, neccessary only for client-side.  E.g. user description of this item.</li>
+      <li>Information for both sides.  This is at least the JID, category and type.</li>
+    </ol>
+  <h2>3.
+       <a name="sect-idp626928" id="sect-idp626928">Where to store</a></h2>
+    <p>Using <tt>jabber:iq:private</tt> as in <span class="ref"><a href="http://xmpp.org/extensions/xep-0048.html">Bookmark Storage (XEP-0048)</a></span>  [<a href="#nt-idp630352">1</a>] for storing this information has one big problem: it is hard to mantain roster data in two separate places.  When a client is online, then the client application can handle <tt>jabber:iq:roster</tt> changes and make similar changes in private storage, but when the user is online with a few different resources, or when he is offline, then making the information consistent is very hard task (a roster can be changed when user offline, e.g. if someone is making an account transfer).</p>
+    <p>But we have a place where this problem does not exist: <tt>jabber:iq:roster</tt>.  We can store it in <tt>&lt;item/&gt;</tt> subtags.  Existing server implementation MUST NOT remove <tt>&lt;x/&gt;</tt> tags from it.  In this case all information always relates to its JID and disappears when this JID removed.</p>
+  <h2>4.
+       <a name="sect-idp632976" id="sect-idp632976">How to store</a></h2>
+    <div class="indent"><h3>4.1 <a name="sect-idp633552" id="sect-idp633552">General information</a></h3>
+      <p> JID, category and type are stored as attributes of <tt>&lt;item/&gt;</tt> tag.  Categories and types are the same as in disco.  Official categories and types associated with disco are administered by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp637216">2</a>] see &lt;<a href="http://xmpp.org/registrar/disco-categories.html">http://xmpp.org/registrar/disco-categories.html</a>&gt;.</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">&lt;item jid="jdev@conference.jabber.org"
+      category="conference"
+      type="text"&gt;</pre></div>
+    </div>
+    <div class="indent"><h3>4.2 <a name="sect-idp634832" id="sect-idp634832">Server-side information</a></h3>
+      <p>This information is implementation-dependent, so to provide flexibility for it, the <tt>jabber:x:data</tt> namespace defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp650176">3</a>] must be used.  The client can set these parameters by setting this item with this form with <tt>type='submit'</tt>.</p>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">&lt;item jid="romeo@montague.net"
+      name="Romeo" 
+      subscription="both"&gt;
+  &lt;x xmlns='jabber:x:data' type='form'&gt;
+    &lt;field type='list-single' label='Visibility' var='visibility'&gt;
+      &lt;value&gt;visible&lt;/value&gt;
+      &lt;option label='Normal'&gt;
+        &lt;value&gt;normal&lt;/value&gt;
+      &lt;/option&gt;
+      &lt;option label='Always visible'&gt;
+        &lt;value&gt;visible&lt;/value&gt;
+      &lt;/option&gt;
+      &lt;option label='Always invisible'&gt;
+        &lt;value&gt;invisible&lt;/value&gt;
+      &lt;/option&gt;
+    &lt;/field&gt;
+  &lt;/x&gt;
+  ...
+&lt;/item&gt;</pre></div>
+    </div>
+    <div class="indent"><h3>4.3 <a name="sect-idp652368" id="sect-idp652368">Client-side information</a></h3>
+      <p>This information stored in <tt>&lt;x/&gt;</tt> tag with namespace <tt>jabber:x:roster:item</tt>.  Following subtags can be used for diferent types of JIDs, however client applications can make this set bigger, to implement more functions.</p>
+      <div class="indent"><h3>4.3.1 <a name="sect-idp654176" id="sect-idp654176">Generic JIDs</a></h3>
+	<p>
+	  For all categories and types of JID allowed following subtag:
+	</p>
+	<ul>
+	  <li>
+	    <span class="strong">desc</span>: A description or note describing the JID.
+	  </li>
+	</ul>
+      </div>
+      <div class="indent"><h3>4.3.2 <a name="sect-idp640400" id="sect-idp640400">Client JIDs</a></h3>
+	  For all JIDs with category=client allowed following subtags:
+	<ul>
+	  <li>
+	    <span class="strong">always-visible</span>, <span class="strong">always-invisible</span>:
+	    The client should send custom presence to this JID to be always
+	    visible or invisible to it.
+	  </li>
+	</ul>
+      </div>
+      <div class="indent"><h3>4.3.3 <a name="sect-idp642816" id="sect-idp642816">Conference JIDs</a></h3>
+	<p>
+	  For all JIDs with category=conference allowed following subtags:
+	</p>
+	<ul>
+	  <li>
+	    <span class="strong">nick</span>: The nickname to be used when joining the
+	    room.  If few such tags in one item, then first is used by default,
+	    and others used if first not available.
+	  </li>
+	  <li>
+	    <span class="strong">password</span>: The password to be used to joing the
+	    room.
+	  </li>
+	  <li>
+	    <span class="strong">auto-join</span>: The client should automatically join
+	    this room once the user has been authenticated, and the roster have
+	    been fetched.
+	  </li>
+	</ul>
+      </div>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">&lt;x xmlns="jabber:x:roster:item"&gt;
+  &lt;always-visible/&gt;
+  &lt;desc&gt;My old good friend&lt;/desc&gt;
+&lt;/x&gt;</pre></div>
+    </div>
+
+    <div class="indent"><h3>4.4 <a name="sect-idp647696" id="sect-idp647696">Complete example</a></h3>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">&lt;iq id="roster_1" type="result"&gt;
+  &lt;query xmlns="jabber:iq:roster"&gt;
+    &lt;item jid="romeo@montague.net"
+  	name="Romeo" 
+        category="user"
+  	type="client"
+  	subscription="both"&gt;
+      &lt;x xmlns="jabber:x:roster:item"&gt;
+        &lt;always-visible/&gt;
+        &lt;desc&gt;bla bla bla&lt;/desc&gt;
+      &lt;/x&gt;
+      &lt;x xmlns='jabber:x:data' type='form'&gt;
+        &lt;field type='list-single' label='Visibility' var='visibility'&gt;
+          &lt;value&gt;visible&lt;/value&gt;
+          &lt;option label='Normal'&gt;
+            &lt;value&gt;normal&lt;/value&gt;
+          &lt;/option&gt;
+          &lt;option label='Always visible'&gt;
+            &lt;value&gt;visible&lt;/value&gt;
+          &lt;/option&gt;
+          &lt;option label='Always invisible'&gt;
+            &lt;value&gt;invisible&lt;/value&gt;
+          &lt;/option&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/item&gt;
+    &lt;item jid="jdev@conference.jabber.org"
+  	name="Developers Zone" 
+          category="conference"
+  	type="text"
+  	subscription="none"&gt;
+      &lt;x xmlns="jabber:x:roster:item"&gt;
+        &lt;password&gt;bigsecret&lt;/password&gt;
+        &lt;auto-join/&gt;
+        &lt;nick&gt;aleksey&lt;/nick&gt;
+        &lt;nick&gt;alexey&lt;/nick&gt;
+        &lt;desc&gt;Jabber developers talks&lt;/desc&gt;
+      &lt;/x&gt;
+    &lt;/item&gt;
+  &lt;/query&gt;
+&lt;/iq&gt; </pre></div>
+
+    </div>
+  <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0057<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-04-28<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0057.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0057.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0057.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Alexey Shchepin</h3><p class="indent">
+        Email:
+        <a href="mailto:alexey@sevcom.net">alexey@sevcom.net</a><br />
+        JabberID: 
+        <a href="xmpp:aleksey@jabber.ru">aleksey@jabber.ru</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp630352" id="nt-idp630352">1</a>. XEP-0048: Bookmark Storage &lt;<a href="http://xmpp.org/extensions/xep-0048.html">http://xmpp.org/extensions/xep-0048.html</a>&gt;.</p><p><a name="nt-idp637216" id="nt-idp637216">2</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp650176" id="nt-idp650176">3</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-04-28)</h4><div class="indent">Changed the status to Retracted at the request of the author, since the proposed protocol was incompatible with XMPP and clients have begun using jabber:iq:private for this kind of functionality. (psa)
+    </div><h4>Version 0.1 (2002-11-12)</h4><div class="indent">Initial version. (as)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0113: Simple Whiteboarding</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Simple Whiteboarding" /><meta name="DC.Creator" content="Huib-Jan Imbens" /><meta name="DC.Description" content="A proposal for an extremely simple whiteboarding protocol over Jabber." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-09-07" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0113" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0113: Simple Whiteboarding</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A proposal for an extremely simple whiteboarding protocol over Jabber.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Huib-Jan Imbens</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-09-07</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp635296">Introduction</a><br />2.  <a href="#sect-idp642672">Requirements</a><br />3.  <a href="#sect-idp647920">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp650720">Single whiteboard message</a><br />   
+      3.2.  <a href="#sect-idp656416">Whiteboard chat session</a><br />   
+      3.3.  <a href="#sect-idp1509072">Conference room whiteboard</a><br />4.  <a href="#sect-idp1511312">Implementation Notes</a><br />   
+      4.1.  <a href="#sect-idp1511808">The GUI</a><br />   
+      4.2.  <a href="#sect-idp1513584">Karma</a><br />   
+      4.3.  <a href="#sect-idp1520592">Text</a><br />   
+      4.4.  <a href="#sect-idp1526032">Clearing the screen</a><br />5.  <a href="#sect-idp1527840">Security Considerations</a><br />6.  <a href="#sect-idp1524048">IANA Considerations</a><br />7.  <a href="#sect-idp578208">XMPP Registrar Considerations</a><br />8.  <a href="#sect-idp575488">Formal Definition</a><br />   
+      8.1.  <a href="#sect-idp574128">Schema</a><br />   
+      8.2.  <a href="#sect-idp1545872">DTD</a><br />   
+      8.3.  <a href="#sect-idp1546752">Grammar of "d" attribute</a><br />9.  <a href="#sect-idp1551248">Conclusion</a><br />10.  <a href="#sect-idp1554032">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp635296" id="sect-idp635296">Introduction</a></h2>
+  <p>As explained in the now obsolete XEP-0010: Whiteboarding  [<a href="#nt-idp635936">1</a>]: "Jabber is often thought of simply as a system for instant messaging, albeit an open one. However, Jabber technology can be used, and is being used, in applications quite different from simple IM. One of these applications is whiteboarding. In collaborative work, the ability to draw (for example, to design sketches, UML schemas, house architectures, and organizational plans) is essential, as exemplified by the success of real-world whiteboarding applications such as Microsoft NetMeeting. Whiteboarding can also be used for entertainment purposes such as games and quizzes. Because of the value of whiteboarding as an important real-time collaboration tool, other IM services are beginning to offer these capabilities. For these and other reasons, I believe that a good protocol for whiteboarding in Jabber would be of great value".</p>
+  <p>The increasing penetration of pen-based devices, such as PDAs and tablet PCs, makes the need for a protocol that allows for sending freehand drawing information more urgent.</p>
+  <p>Several attempts have been made to create a whiteboarding protocol for Jabber:</p>
+  <ol>
+    <li>Collaborative Imaging (Whiteboarding via Streaming XPM) describes a protocol that sends partial bitmaps. This protocol is not suitable for freehand drawing and has not been implemented.</li>
+    <li>Jabber Whiteboarding using SVG  [<a href="#nt-idp639856">2</a>] describes a protocol that uses a subset of SVG. It refers to a missing DTD that describes the precise subset, but there is little doubt that that subset will be hard to implement. This protocol has not been implemented.</li>
+    <li>The Coccinella client includes an open source implementation of a whiteboarding protocol. However, the protocol has not been documented and does not seem easy to implement. In fact it is mostly raw TCL, making an implementation of that protocol in a language other than TCL rather difficult.</li>
+    <li>The Tkabber client has a whiteboard plugin. The protocol has not been documented, but it uses a subset of SVG, similar to the one defined in this document.</li>
+  </ol>
+<h2>2.
+       <a name="sect-idp642672" id="sect-idp642672">Requirements</a></h2>
+  <p>The protocol has the following requirements in order of importance:</p>
+  <ol>
+    <li>It should allow for freehand drawing because that will be its principal use on pen-based devices.</li>
+    <li>It should be extremely easy to implement to ensure its rapid adaptation.</li>
+    <li>It should be light-weight.</li>
+    <li>It should not require server modifications.</li>
+  </ol>
+  <p>The following are definitely not objectives of the protocol:</p>
+  <ol>
+    <li>It need not be complete. Eventually an SVG-based protocol will be defined that will either replace or coexist with this protocol and that will satisfy all drawing needs. However, given the history of whiteboarding protocols, such a protocol is far away.</li>
+    <li>It need not be extensible. As a "Simple Whiteboarding protocol" it should not try to grow into a more complex protocol that would be more difficult to implement.</li>
+  </ol>
+<h2>3.
+       <a name="sect-idp647920" id="sect-idp647920">Use Cases</a></h2>
+  <p>There are three scenarios where whiteboarding can be used:</p>
+  <ul>
+    <li>One person sends a single, completed, whiteboard to another person.</li>
+    <li>The more typical scenario is the one where one person starts a whiteboard session with another person and both persons collaborate in the drawing. Both sides may add paths, move them around or delete them.</li>
+    <li>Finally multiple people gathered in a conference room can use single whiteboard.</li>
+  </ul>
+  <div class="indent"><h3>3.1 <a name="sect-idp650720" id="sect-idp650720">Single whiteboard message</a></h3>
+    <p>Typically the user right-clicks on the destination contact and will select a "whiteboard message" option. The client will show a dialog where the user can create the drawing. It is up to the implementation to decide whether the user can include text in the message as well. Upon clicking a send button the client will close the dialog and send the following message:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Single whiteboard message</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='painter@shakespeare.lit'
+    to='timon@shakespeare.lit/hall'&gt;
+  &lt;body&gt;A piece of painting, which I do beseech your lordship to accept.&lt;/body&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;path d='M 100 100 L 300 100 200 300 100 100' stroke='#ff0000' stroke-width='1' id='painter1'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+	<p>The path node is a simplified SVG path node that allows only 'M', 'm', 'L' and 'l' commands. 'M' ('m') command is a (relative) moveto command, 'L' ('l') is a (relative) lineto command. All four commands take one or more coordinate pairs (in pixels). 'M' sets the current point to the coordinate pair. 'm' adds the coordinate pair to the current point. 'L' draws a line from the current point to the point designated by the coordinate pair and sets the current point to the coordinate pair. 'l' draws a line from the current point to the sum of the currentpoint and the coordinate pair and adds the coordinate pair to the current point. The optional stroke attribute indicates the color of the path and defaults to black, the optional stroke-width indicates the width of the path in pixels and defaults to 1. The id attribute can be used for later reference to the path. If there is no id attribute, the path can not be referred to.</p>
+	<p>The path in example 1, draws a red triangle with vertices (100,100), (300,100) and (200, 300)</p>
+	<p>Other respresentations of the same path are 'M100.0,100.0L300.0,100.0,200.0,300.0,100.0,100.0', 'M100,100l200,0-100,200-100-200' and 'M100,100l200,0L200,300,100,100'. Note that in the second representation some commas can be left out because the sign indicates that a new coordinate is starting. This fact can be used to reduce data size as much as possible to avoid karma problems. A precise grammar of the "d" attribute is given below.</p>
+	<p>A typical implementation will generate such paths by adding an 'M' command with the mouse coordinates on a mouse down event and adding an 'L' command with the mouse coordinates on every mouse move event as long as the mouse is down. It is up to the implementation to decide whether to complete and send the message on a mouse up event or to wait for a click on a send button.</p>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp656416" id="sect-idp656416">Whiteboard chat session</a></h3>
+  <p>A more typical use case is where two clients share a whiteboard. Again the user will right click on the destination and will select a "whiteboard chat" option. The client will present a dialog where the user can create a drawing. Upon clicking a send button or releasing the mouse button, the client will send the following message:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Initiating a whiteboard chat session</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='kingclaudius@shakespeare.lit/castle'
+    to='laertes@shakespeare.lit/castle'
+    type='chat'&gt;
+  &lt;thread&gt;c357e044c676cc5e3c729d07544c87b58a366dba&lt;/thread&gt;
+  &lt;body&gt;... like the painting ... ?&lt;/body&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;path d='M100.0,100.0L300.0,100.0,200.0,300.0,100.0,100.0' id='kingclaudius1' /&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+	<p>In this case the dialog will not close. At the destination client a similar dialog will pop up, allowing the user at the other end to add her own part of the drawing. The resulting message will look like this (line breaks provided for readability only):</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Continuing a whiteboard chat session</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='laertes@shakespeare.lit/castle'
+    to='kingclaudius@shakespeare.lit/castle'
+    type='chat'&gt;
+  &lt;thread&gt;c357e044c676cc5e3c729d07544c87b58a366dba&lt;/thread&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;path d='M 32 41 L 33 40 33 39 34 38 34 37 35 36 35 34 36 33 37 
+             32 38 31 38 30 39 30 40 28 41 27 42 26 43 26 44 25 45 
+             24 46 24 48 23 50 22 52 21 53 21 54 21 55 21 55 20 56 
+             20 58 20 59 20 60 20 61 20 62 20 63 20 64 20 65 20 66 
+             20 67 20 68 20 69 20 69 21 70 21 71 22 72 23 72 24 73 
+             25 73 26 73 27 73 28 73 29 73 30 74 30 74 31 74 32 75 
+             33 75 34 75 35 75 36 75 37 75 38 75 39 75 40 75 41 75 
+             43 75 44 75 46 75 47 75 48 75 49 75 50 74 52 74 53 74 
+             54 73 55 72 55 72 57 72 58 71 58 70 60 69 61 69 63 68 
+             64 67 64 67 65 67 66 66 67 65 67 65 69 64 70 64 71 63 
+             72 62 73 62 74 62 75 61 75 60 76 60 77 59 77 59 78 59 
+             79 58 79 58 80 58 81 58 82 57 82 57 83 57 84 57 86 57 
+             87 56 87 56 88 56 89 55 89 55 90 55 91 55 92 54 93 54 
+             94 54 95 54 96 M 55 113 L 54 113 53 113 52 113 51 113 
+             49 114 49 115 48 115 47 115 47 116 47 117 46 117 45 117
+             45 118 45 120 45 121 45 123 45 124 45 125 45 127 45 128
+             45 130 46 131 46 132 46 133 47 133 47 134 48 134 49 134
+             49 135 50 135 51 135 52 135 52 136 54 136 55 136 56 136
+             57 136 58 136 59 136 59 135 60 134 61 133 61 132 61 131
+             61 130 62 130 62 129 62 128 62 127 62 126 62 125 62 123
+             62 122 62 120 61 120 61 119 61 118 61 117 60 117 59 117
+             58 117 56 117 55 117 54 117' /&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+	<p>It is left as a mental exercise to the reader to imagine Laertes answer. Alternatively the reader could build this protocol into her favorite Jabber client, set a breakpoint, and paste the path above at the appropriate place.</p>
+	<p>Alternatively Laertes could respond like:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Moving a path</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='laertes@shakespeare.lit/castle'
+    to='kingclaudius@shakespeare.lit/castle'
+    type='chat'&gt;
+  &lt;thread&gt;c357e044c676cc5e3c729d07544c87b58a366dba&lt;/thread&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;move id='kingclaudius1' dx='-100' dy='-100'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+	<p>This would move the King's triangle 100 pixels to the left and top, to the upper left corner of the screen.</p>
+	<p>If Laertes were bold enough he might even answer:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Deleting a path</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='laertes@shakespeare.lit/castle'
+    to='kingclaudius@shakespeare.lit/castle'
+    type='chat'&gt;
+  &lt;thread&gt;c357e044c676cc5e3c729d07544c87b58a366dba&lt;/thread&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;delete id='kingclaudius1'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+	<p>This would remove King Claudius's triangle from the screen.</p>
+  </div>
+  <div class="indent"><h3>3.3 <a name="sect-idp1509072" id="sect-idp1509072">Conference room whiteboard</a></h3>
+	<p>The final use case is the one where multiple users, gathered in a conference room, share a single whiteboard. Messages will typically look like this:</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Conference room whiteboard</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='nestor@shakespeare.lit'
+    to='plains@conference.shakespeare.lit'
+    type='groupchat'&gt;
+  &lt;body&gt;So, so, we draw together.&lt;/body&gt;
+  &lt;x xmlns='http://jabber.org/protocol/swb'&gt;
+    &lt;path d='M100,100l200,0L200,300,100,100' /&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="sect-idp1511312" id="sect-idp1511312">Implementation Notes</a></h2>
+  <div class="indent"><h3>4.1 <a name="sect-idp1511808" id="sect-idp1511808">The GUI</a></h3>
+  <p>Usually when a user wants to send a message to a contact, the client will present her with a choice between sending a message or starting a chat. If the client implements the present protocol, the client can add the options of sending a whiteboard message and starting a whiteboard chat. Whether the client offers these options for an individual contact could be based on standard <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1515360">3</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0011.html">Jabber Browsing (XEP-0011)</a></span>  [<a href="#nt-idp1518080">4</a>] techniques.</p>
+  <p>Presentation of a path in case of a "Single whiteboard message" is rather obvious. The presentation of multiple-user whiteboards, either chat or conference, leaves more to the imagination of the implementor. The implementor could decide to use different colors for paths drawn by different users. The saturation of a path could decrease with age.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="sect-idp1513584" id="sect-idp1513584">Karma</a></h3>
+  <p>One issue that will hinder all whiteboard protocol implementations is the karma problem. At least jabberd uses karma to make sure that a client does not send to much data to the server. This should help against denial-of-service attacks. When you use up all your karma, the server stops handling your messages for a while. This is a problem for whiteboards because it is much easier to send a lot of drawing data, than to send a lot of textual data. Usually combining paths, that is, sending paths when the user clicks on a send button instead of on mouse up, reduces data size because it reduces the overhead of the message element. Using the relative lineto command ('l') instead of the absolute lineto ('L') command will also reduce message size, because usually relative coordinates will only use one or two digits whereas absolute coordinates will typically use three. Finally implementations can reduce message size by not recording every mouse move event, e.g. by dropping mouse events whose locations would be accurately interpolated.</p>
+  </div>
+  <div class="indent"><h3>4.3 <a name="sect-idp1520592" id="sect-idp1520592">Text</a></h3>
+  <p>The protocol does not provide explicit support for drawing text. The reason for this is that explicit support, eg. in the form of the SVG text element  [<a href="#nt-idp1521504">5</a>], would break the second and third requirements above. However a client can still provide text support by representing characters as paths, eg. by using a Hershey font.</p>
+  <p>The code snippet below shows the lines along which this could be done:</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Coding the letter A into a path</p><div class="indent"><pre class="prettyprint">
+	// generating the path &lt;path d='M14 6l-8,21M14 6l8,21M9 20l10,0'/&gt; from the letter 'A'
+
+	static char* sHersheyFontData[] = {
+		...
+		"I[RFJ[ RRFZ[ RMTWT", // the character A, consisting of three strokes
+		...
+		};
+
+	for (int i = 0 ; sHersheyFontData ['A'][2*i+2] != 0 ; i++) {
+		// read a new coordinate pair		
+		POINT myPoint = {sHersheyFontData ['A'][2*i+2]-'R', sHersheyFontData ['A'][2*i+2+1]-'R')};
+		// test for the special case pen up
+		if (myPoint.x  == -50 &amp;&amp; myPoint.y == 0) {
+			penUp = true;
+		} else {
+			if (penUp) {
+				penUp = false;
+				currentPathSet.push_back (std::vector &lt;POINT&gt; ()); // pen goes down, add a new path
+			}
+			currentPathSet.back ().push_back (myPoint); // pen is down add a new point to the latest path
+		}
+	}
+    </pre></div>
+	<p>The string 'Jabber' would be encoded as the path 'M24 59l0,16-1,3-1,1-2,1-2,0-2-1-1-1-1-3 0-2M43 66l0,14M43 69l-2-2-2-1-3,0-2,1-2,2-1,3 0,2 1,3 2,2 2,1 3,0 2-1 2-2M51 59l0,21M51 69l2-2 2-1 3,0 2,1 2,2 1,3 0,2-1,3-2,2-2,1-3,0-2-1-2-2M70 59l0,21M70 69l2-2 2-1 3,0 2,1 2,2 1,3 0,2-1,3-2,2-2,1-3,0-2-1-2-2M88 72l12,0 0-2-1-2-1-1-2-1-3,0-2,1-2,2-1,3 0,2 1,3 2,2 2,1 3,0 2-1 2-2M107 66l0,14M107 72l1-3 2-2 2-1 3,0', which is 357 characters long. That is no more than twice the size of a typical groupchat text message. </p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="sect-idp1526032" id="sect-idp1526032">Clearing the screen</a></h3>
+  <p>Some of the protocols mentioned in the introduction, have a clear-screen command. However the benefits of such a command are doubtful. Of course clients can implement such a command locally. A client might even implement finer control such as the possibility of opening new windows that will receive new paths, or showing paths based on whether they were drawn in a selectable timespan. Synchronization of such complex actions between clients is clearly beyond the scope of this protocol. Of course when it is absolutely necessary to clear the screens of both sides in a whiteboard chat, that could be implemented by sending delete-commands for all paths.</p>
+  </div>
+<h2>5.
+       <a name="sect-idp1527840" id="sect-idp1527840">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>6.
+       <a name="sect-idp1524048" id="sect-idp1524048">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp579392">6</a>].</p>
+<h2>7.
+       <a name="sect-idp578208" id="sect-idp578208">XMPP Registrar Considerations</a></h2>
+  <p>This document requires registration of the namespace "http://jabber.org/protocol/swb" by the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp576672">7</a>].</p>
+<h2>8.
+       <a name="sect-idp575488" id="sect-idp575488">Formal Definition</a></h2>
+  <div class="indent"><h3>8.1 <a name="sect-idp574128" id="sect-idp574128">Schema</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/swb'
+    xmlns='http://jabber.org/protocol/swb'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+       &lt;xs:element ref='path' minOccurs='0' maxOccurs='unbounded'/&gt;
+       &lt;xs:element ref='move' minOccurs='0' maxOccurs='unbounded'/&gt;
+       &lt;xs:element ref='delete' minOccurs='0' maxOccurs='unbounded'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='path'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute name='d' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='stroke' type='xs:string' use='optional' default='#000000'/&gt;
+      &lt;xs:attribute name='stroke-width' type='xs:integer' use='optional' default='1'/&gt;
+      &lt;xs:attribute name='id' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='move'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute name='id' type='xs:string' use='required'/&gt;
+      &lt;xs:attribute name='dx' type='xs:integer' use='required'/&gt;
+      &lt;xs:attribute name='dy' type='xs:integer' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='delete'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute name='id' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>8.2 <a name="sect-idp1545872" id="sect-idp1545872">DTD</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+ &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+	&lt;!ELEMENT x (path*, move*, delete*) &gt;
+	&lt;!ELEMENT path EMPTY &gt;
+	&lt;!ATTLIST path d CDATA #REQUIRED
+		stroke CDATA #IMPLIED
+		stroke-width CDATA #IMPLIED 
+		id CDATA #IMPLIED &gt;
+	&lt;!ELEMENT move EMPTY &gt;
+	&lt;!ATTLIST move id CDATA #REQUIRED
+		dx CDATA #REQUIRED
+		dy CDATA #REQUIRED &gt;
+	&lt;!ELEMENT delete EMPTY &gt;
+	&lt;!ATTLIST delete id CDATA #REQUIRED &gt;
+   </pre></div>
+  </div>
+  <div class="indent"><h3>8.3 <a name="sect-idp1546752" id="sect-idp1546752">Grammar of "d" attribute</a></h3>
+  <p>The grammar of the "d" attribute below is a slight simplification of section 8.3.9 in  [<a href="#nt-idp1549616">8</a>].</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+	simple-whiteboard-path:
+		wsp* moveto-drawto-command-groups? wsp*
+
+	moveto-drawto-command-groups:
+		moveto-drawto-command-group
+		| moveto-drawto-command-group wsp* moveto-drawto-command-groups
+
+	moveto-drawto-command-group:
+		moveto wsp* drawto-commands?
+
+	drawto-commands:
+		drawto-command
+		| drawto-command wsp* drawto-commands
+
+	drawto-command:
+		lineto
+
+	moveto:
+		( "M" | "m" ) wsp* moveto-argument-sequence
+
+	moveto-argument-sequence:
+		coordinate-pair
+		| coordinate-pair comma-wsp? lineto-argument-sequence
+
+	lineto:
+		( "L" | "l" ) wsp* lineto-argument-sequence
+
+	lineto-argument-sequence:
+		coordinate-pair
+		| coordinate-pair comma-wsp? lineto-argument-sequence
+
+	coordinate-pair:
+		coordinate comma-wsp? coordinate
+
+	coordinate:
+		number
+
+	nonnegative-number:
+		integer-constant
+		| floating-point-constant
+
+	number:
+		sign? integer-constant
+		| sign? floating-point-constant
+
+	flag:
+		"0" | "1"
+
+	comma-wsp:
+		(wsp+ comma? wsp*) | (comma wsp*)
+
+	comma:
+		","
+
+	integer-constant:
+		digit-sequence
+
+	floating-point-constant:
+		fractional-constant exponent?
+		| digit-sequence exponent
+
+	fractional-constant:
+		digit-sequence? "." digit-sequence
+		| digit-sequence "."
+
+	exponent:
+		( "e" | "E" ) sign? digit-sequence
+
+	sign:
+		"+" | "-"
+
+	digit-sequence:
+		digit
+		| digit digit-sequence
+
+	digit:
+		"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+	wsp:
+		(#x20 | #x9 | #xD | #xA)
+
+   </pre></div>
+  </div>
+<h2>9.
+       <a name="sect-idp1551248" id="sect-idp1551248">Conclusion</a></h2>
+  <p>The present protocol satisfies its basic requirements: it allows for freehand drawing, it is easy to implement, light-weight and it requires no server changes.</p>
+<h2>10.
+       <a name="sect-idp1554032" id="sect-idp1554032">Acknowledgements</a></h2>
+  <p>The author would like to thank Alexey Shchepin for helpful comments.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0113<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-09-07<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: Not yet assigned<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0113.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0113.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0113.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Huib-Jan Imbens</h3><p class="indent">
+        Email:
+        <a href="mailto:jabber@imbens.nl">jabber@imbens.nl</a><br />
+        JabberID: 
+        <a href="xmpp:imbens@jabber.org">imbens@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp635936" id="nt-idp635936">1</a>. XEP-0010: Whiteboarding SIG <a href="http://www.xmpp.org/extensions/xep-0010.html">http://www.xmpp.org/extensions/xep-0010.html</a></p><p><a name="nt-idp639856" id="nt-idp639856">2</a>. Jabber Whiteboarding using SVG <a href="http://www.protocol7.com/jabber/whiteboard_proposal.txt">http://www.protocol7.com/jabber/whiteboard_proposal.txt</a></p><p><a name="nt-idp1515360" id="nt-idp1515360">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1518080" id="nt-idp1518080">4</a>. XEP-0011: Jabber Browsing &lt;<a href="http://xmpp.org/extensions/xep-0011.html">http://xmpp.org/extensions/xep-0011.html</a>&gt;.</p><p><a name="nt-idp1521504" id="nt-idp1521504">5</a>. Text - SVG 1.0 <a href="http://www.w3.org/TR/SVG/text.html">http://www.w3.org/TR/SVG/text.html</a></p><p><a name="nt-idp579392" id="nt-idp579392">6</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp576672" id="nt-idp576672">7</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1549616" id="nt-idp1549616">8</a>. Scalable Vector Graphics (SVG) 1.0 Specification, section 8.3.1.: The grammar for path data <a href="http://www.w3.org/TR/SVG/paths.html#PathDataBNF">http://www.w3.org/TR/SVG/paths.html#PathDataBNF</a></p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-09-07)</h4><div class="indent">Added optional stroke, stroke-width and id attributes to the path element; added move and delete elements; added remark on Coccinella protocol and tkabber to introduction; added explanation about text-drawing and clear-screen discussion to implementation notes. (hji)
+    </div><h4>Version 0.1 (2003-08-26)</h4><div class="indent">Initial version. (hji)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,1270 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0079: Advanced Message Processing</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Advanced Message Processing" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension that enables entities to request, and servers to perform, advanced processing of XMPP message stanzas, including reliable data transport, time-sensitive delivery, and expiration of transient messages." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-11-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0079" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0079: Advanced Message Processing</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension that enables entities to request, and servers to perform, advanced processing of XMPP message stanzas, including reliable data transport, time-sensitive delivery, and expiration of transient messages.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Matthew Miller, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-11-30</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />   
+      1.1.  <a href="#intro-motivation">Motivation</a><br />   
+      1.2.  <a href="#intro-concepts">Concepts</a><br />   
+      1.3.  <a href="#intro-prereq">Prerequisites</a><br />2.  <a href="#process">Process Flows</a><br />   
+      2.1.  <a href="#process-s2s">Sender-to-Server</a><br />      
+      2.1.1.  <a href="#process-s2s-disco">Discovery</a><br />      
+      2.1.2.  <a href="#process-s2s-semantics">Specifying Semantics</a><br />   
+      2.2.  <a href="#process-server">Server Processing</a><br />      
+      2.2.1.  <a href="#process-server-semantics">Validating Semantics</a><br />      
+      2.2.2.  <a href="#process-server-default">Determine Default Action</a><br />      
+      2.2.3.  <a href="#process-server-rules">Process Rules</a><br />      
+      2.2.4.  <a href="#process-server-execute">Execute Determined Action</a><br />      
+      2.2.5.  <a href="#process-server-event">Return Event</a><br />3.  <a href="#conditionsactions">Conditions and Actions</a><br />   
+      3.1.  <a href="#conditions-guide">Rule Condition Guidelines</a><br />   
+      3.2.  <a href="#actions-guide">Rule Action Guidelines</a><br />   
+      3.3.  <a href="#conditions-def">Defined Conditions</a><br />      
+      3.3.1.  <a href="#conditions-def-deliver">deliver</a><br />      
+      3.3.2.  <a href="#conditions-def-expireat">expire-at</a><br />      
+      3.3.3.  <a href="#conditions-def-match">match-resource</a><br />   
+      3.4.  <a href="#actions-def">Defined Actions</a><br />      
+      3.4.1.  <a href="#actions-def-alert">alert</a><br />      
+      3.4.2.  <a href="#actions-def-drop">drop</a><br />      
+      3.4.3.  <a href="#actions-def-error">error</a><br />      
+      3.4.4.  <a href="#actions-def-notify">notify</a><br />   
+      3.5.  <a href="#description">Description of Condition/Action Combinations</a><br />      
+      3.5.1.  <a href="#description-deliver">Deliver Rules</a><br />      
+      3.5.2.  <a href="#description-expire-at">Expire-at Rules</a><br />      
+      3.5.3.  <a href="#description-match-resource">Match-resource Rules</a><br />4.  <a href="#formal">Formal Description</a><br />   
+      4.1.  <a href="#formal-root">&lt;amp/&gt; Root Element</a><br />   
+      4.2.  <a href="#formal-rule">&lt;rule/&gt; Element</a><br />5.  <a href="#examples">Example Scenarios</a><br />   
+      5.1.  <a href="#examples-reliabledata">Reliable Data Transport</a><br />   
+      5.2.  <a href="#examples-time">Time-Sensitive Messages</a><br />   
+      5.3.  <a href="#examples-transient">Transient Messages</a><br />6.  <a href="#errors">Error Handling</a><br />   
+      6.1.  <a href="#errors-conditions">Conditions</a><br />   
+      6.2.  <a href="#errors-examples">Examples</a><br />      
+      6.2.1.  <a href="#errors-action">Unsupported Action</a><br />      
+      6.2.2.  <a href="#errors-condition">Unsupported Condition</a><br />      
+      6.2.3.  <a href="#errors-notacceptable">Not Acceptable</a><br />      
+      6.2.4.  <a href="#errors-unavail">Service Unavailable</a><br />      
+      6.2.5.  <a href="#errors-undefined">Undefined Condition</a><br />7.  <a href="#impl">Implementation Notes</a><br />8.  <a href="#streamfeature">Stream Feature</a><br />9.  <a href="#security">Security Considerations</a><br />10.  <a href="#iana">IANA Considerations</a><br />11.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      11.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      11.2.  <a href="#registrar-stream">Stream Features</a><br />   
+      11.3.  <a href="#registrar-nodes">Well-Known Service Discovery Nodes</a><br />   
+      11.4.  <a href="#registrar-reg">Registries</a><br />      
+      11.4.1.  <a href="#registrar-reg-conditions">Rule Conditions Registry</a><br />        
+      11.4.1.1.  <a href="#registrar-reg-conditions-process">Process</a><br />        
+      11.4.1.2.  <a href="#registrar-reg-conditions-initial">Initial Submission</a><br />      
+      11.4.2.  <a href="#registrar-reg-actions">Rule Actions Registry</a><br />        
+      11.4.2.1.  <a href="#registrar-reg-actions-process">Process</a><br />        
+      11.4.2.2.  <a href="#registrar-reg-actions-initial">Initial Submission</a><br />12.  <a href="#schemas">XML Schemas</a><br />   
+      12.1.  <a href="#schemas-amp">AMP</a><br />   
+      12.2.  <a href="#schemas-err">Errors</a><br />   
+      12.3.  <a href="#schemas-streams">Stream Feature</a><br />13.  <a href="#acks">Acknowledgements</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines a protocol that enables an end-point entity to specify additional delivery semantics for an XMPP &lt;message/&gt; stanza. This protocol is typically used by clients to inform the receiving server how to deliver a particular stanza, such as providing an expiration time or a resource-matching strategy.</p>
+  <div class="indent"><h3>1.1 <a name="intro-motivation" id="intro-motivation">Motivation</a></h3>
+    <p>The built-in delivery semantics for &lt;message/&gt; stanzas (defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1547072">1</a>] and, for instant messaging applications, also in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1549664">2</a>]) are adequate for most current applications. However, there are various cases where more stringent delivery semantics are necessary. The most common cases discussed in this document are:</p>
+    <ul>
+      <li>Reliable data transport -- the sender requires notification (positive and/or negative) of message delivery.</li>
+      <li>Time-sensitive messages -- the message is valid only until a certain date and time.</li>
+      <li>Transient messages -- the message should not be stored offline for later delivery.</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>1.2 <a name="intro-concepts" id="intro-concepts">Concepts</a></h3>
+    <p>This protocol is mostly handled by the server or servers processing the &lt;message/&gt;. The protocol consists of a list of rules, with conditions and actions for each rule. Upon receipt of an appropriately marked message, the server interprets the rules in the order they are received, looking for met conditions. When a condition is met, the action for that rule is executed, and message processing stops.</p>
+    <p>Each rule is flagged for the scope it applies to, whether it be the overall route, or for each hop in the route.  Additionally, while this document defines a default set of conditions and actions, the protocol is extensible enough to allow for more to be defined in the future.</p>
+    <p>The namespace for the protocol is "http://jabber.org/protocol/amp".</p>
+  </div>
+  <div class="indent"><h3>1.3 <a name="intro-prereq" id="intro-prereq">Prerequisites</a></h3>
+    <p>In order for this protocol to function properly, the containing &lt;message/&gt; stanza MUST possess an 'id' attribute, and the value of the 'id' attribute MUST NOT be an empty string. The server MUST include this 'id' attribute value with any response back to the sender; this enables servers and clients to properly relate the initial request with any subsequent alert, error, or notification.</p>
+  </div>
+<h2>2.
+       <a name="process" id="process">Process Flows</a></h2>
+  <div class="indent"><h3>2.1 <a name="process-s2s" id="process-s2s">Sender-to-Server</a></h3>
+    <p>The following use case flow describes the interaction between the sender and a server. As illustrated below, this interaction is actually rather simple:</p>
+    <ol>
+      <li>Sender determines support (E1)</li>
+      <li>Sender specifies appropriate rules and sends message to server (E1,E2)</li>
+      <li>Sender awaits any protocol-specific responses (UCE)</li>
+    </ol>
+    <ul>
+      <li><span class="ref">E1:</span> The server does not support this protocol (UCE unsuccessfully)</li>
+      <li><span class="ref">E2:</span> The server does not support one or more specified rule conditions/actions (UCE unsuccessfully)</li>
+    </ul>
+    <div class="indent"><h3>2.1.1 <a name="process-s2s-disco" id="process-s2s-disco">Discovery</a></h3>
+      <p>Sending entities that wish to use AMP SHOULD discover support for this protocol (using <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1565056">3</a>]) along the intended path. Typically, this would involve sending disco#info queries to the sending entity's own server and the server of the intended recipient. The results of these queries MAY be cached for up to 24 hours, unless otherwise expired.</p>
+      <p>If a server supports Advanced Message Processing, it MUST report that by including a service discovery feature of "http://jabber.org/protocol/amp" in the service discovery information result that it returns to the requesting entity.</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Initial Service Discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='northumberland@shakespeare.lit/westminster'
+    to='shakespeare.lit'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Service Discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='shakespeare.lit'
+    to='northumberland@shakespeare.lit/westminster'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity name='Shakespeare IM' category='im' type='server'/&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/amp'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>A server SHOULD also maintain a service discovery node named "http://jabber.org/protocol/amp", at which it advertises the individual actions and conditions it supports. If an entity needs to determine whether the server supports individual actions and conditions, it SHOULD send a service discovery information request to that node; the server then MUST either return the list of supported actions and conditions or return an error such as &lt;feature-not-implemented/&gt;. (Note: If the server does not provide information for this disco node, the requesting entity MUST assume that all actions and conditons are supported for each reported action set or condition set.)</p>
+      <p>Each supported action shall be reported as a feature using the following format:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">http://jabber.org/protocol/amp?action={action}</pre></div>
+      <p>Each supported condition shall be reported as a feature using the following format:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">http://jabber.org/protocol/amp?condition={condition}</pre></div>
+      <p>The following examples show the request-response flow for information about individual actions and conditions (note the inclusion of the 'node' attribute).</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Request for information about individual actions and conditions</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='northumberland@shakespeare.lit/westminster'
+    to='shakespeare.lit'
+    type='get'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='http://jabber.org/protocol/amp'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Response for individual actions and conditions</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='shakespeare.lit'
+    to='northumberland@shakespeare.lit/westminster'
+    type='result'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'
+         node='http://jabber.org/protocol/amp'&gt;
+    &lt;identity name='Shakespeare IM AMP Support' category='im' type='server'/&gt;
+    ...
+    &lt;feature var='http://jabber.org/protocol/amp'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?action=drop'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?action=error'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?action=notify'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?condition=deliver'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?condition=expire-at'/&gt;
+    &lt;feature var='http://jabber.org/protocol/amp?condition=match-resource'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>2.1.2 <a name="process-s2s-semantics" id="process-s2s-semantics">Specifying Semantics</a></h3>
+      <p>Once support is determined, the sender can attach the desired delivery semantics to the message:</p>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='northumberland@shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule condition='expire-at'
+          action='drop'
+          value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>The semantics are defined as a set of &lt;rule/&gt; elements within the &lt;amp/&gt; root element. Each &lt;rule/&gt; declares the condition to trigger on and the action to execute if triggered.</p>
+      <p>By default, the ruleset applies only to the "edge servers": those servers to which the sending and receiving entities are connected. (Note: For the purposes of Advanced Message Processing, "server" is defined as in <span class="ref">XMPP Core</span> and does not include any internal components, such as connection managers, that may provide functionality within a server implementation or installation.)</p>
+      <p>The ruleset MAY be applied to all server-to-server "hops" along the route from the sending and receiving entities by adding the "per-hop' attribute to the &lt;amp/&gt; element. The value of this attribute is either "true" (apply rules to all hops) or "false" (follow default behavior, i.e., apply rules at the edge servers only).</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Another message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='northumberland@shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'
+       per-hop='true'&gt;
+    &lt;rule condition='expire-at'
+          action='drop'
+          value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>For examples of validation failure, refer to the <a href="#errors">Error Handling</a> section of this document.</p>
+      <p>Note: Even if "per-hop" processing is requested, each server in the route MUST ignore rules that cannot apply to it; the <a href="#conditions-def">Defined Conditions</a> outline if they can be applied per-hop.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>2.2 <a name="process-server" id="process-server">Server Processing</a></h3>
+    <p>Server operation is where the bulk of the work is performed. Upon receiving a message with an AMP extension, the server performs the following flow:</p>
+    <ol>
+      <li>Validate the semantics (E1, E2).</li>
+      <li>Determine the default behavior.</li>
+      <li>Process rules until condition is met.
+        <ul>
+          <li>If a condition is met, execute that rule's action</li>
+          <li>If no conditions are met, perform "default" behavior for message</li>
+        </ul>
+      </li>
+      <li>Execute determined action (UCE) (E3).</li>
+    </ol>
+    <ul>
+      <li><span class="ref">E1:</span> The provided semantics (condition and/or action) are not supported or valid (UCE unsuccessfully)</li>
+      <li><span class="ref">E2:</span> The requested semantics are not acceptable (UCE unsuccessfully)</li>
+      <li><span class="ref">E3:</span> The next server does not support this protocol (UCE unsuccessfully)</li>
+    </ul>
+    <div class="indent"><h3>2.2.1 <a name="process-server-semantics" id="process-server-semantics">Validating Semantics</a></h3>
+      <p>Validation can take many forms, but at the very least the server MUST verify that it understands each of the rule conditions and actions, and that the condition contents are appropriate. The server MAY also refuse to accept certain combinations of conditions and actions, for example if they present a risk of violating security policies. If the semantics are not valid, supported, or acceptable, the server MUST reply with an error specifying the rule(s) that are at issue. The server SHOULD validate all the semantics before returning an error. For syntax and examples of error handling related to validation failure, refer to the <a href="#errors">Error Handling</a> section of this document.</p>
+    </div>
+    <div class="indent"><h3>2.2.2 <a name="process-server-default" id="process-server-default">Determine Default Action</a></h3>
+      <p>This step is essentially what a server normally does, except that it does not actually perform the action. This determines what would happen to the message if there were no semantics attached (such as dispatch to another server or store offline). At this point, the server SHOULD also calculate any timing or calendar requirements (if applicable).</p>
+    </div>
+    <div class="indent"><h3>2.2.3 <a name="process-server-rules" id="process-server-rules">Process Rules</a></h3>
+      <p>At this step, the server processes the attached semantics. The server MUST process the rules serially, and in the order they are presented within the &lt;amp/&gt; element. As soon as a rule's condition is met, processing ends with that action overriding the default action determined earlier (unless the action permits continued processing).</p>
+    </div>
+    <div class="indent"><h3>2.2.4 <a name="process-server-execute" id="process-server-execute">Execute Determined Action</a></h3>
+      <p>Once all rules have been processed or otherwise accounted for, the server executes the action determined at this point.</p>
+      <p>A server SHOULD NOT dispatch a &lt;message/&gt; stanza with AMP semantics to another server unless it knows that the next server supports AMP (this SHOULD be discovered via <span class="ref">Service Discovery</span> and MAY be cached to avoid delivery delays). If the next server does not support AMP, the current server replies to the original sender with a &lt;service-unavailable/&gt; error condition. Otherwise this flow starts again for the server to which the message has been dispatched.</p>
+    </div>
+    <div class="indent"><h3>2.2.5 <a name="process-server-event" id="process-server-event">Return Event</a></h3>
+      <p>If the determined action involves returning an event (alert, error, or notification) to the sender, a server MUST send a &lt;message/&gt; stanza to the sender containing the rule that was met. This &lt;message/&gt; stanza MUST include the original value of the 'id' attribute and SHOULD NOT contain the non-AMP contents (e.g., &lt;body/&gt; child) originally included by the sender.</p>
+    </div>
+  </div>
+<h2>3.
+       <a name="conditionsactions" id="conditionsactions">Conditions and Actions</a></h2>
+  <p>The preceding sections of this document define the general behavior regarding AMP. This section outlines how &lt;rule/&gt; action and condition sets are specified. It also provides defined action and condition sets; these action and condition sets SHOULD be supported by any implementation of Advanced Message Processing, but support for any given action or condition set it not required. (Note: The action and condition sets defined herein may be supplemented in the future via registration of additional action and condition sets with the XMPP Registrar.)</p>
+  <div class="indent"><h3>3.1 <a name="conditions-guide" id="conditions-guide">Rule Condition Guidelines</a></h3>
+    <p>The definition of a &lt;rule/&gt; condition MUST provide the following information:</p>
+    <ul>
+      <li>Define a namespace governing the condition set</li>
+      <li>Define the condition:
+        <ul>
+          <li>Define the 'condition' attribute value</li>
+          <li>Specify if the "per-hop" flag applies</li>
+          <li>Define the syntax/format of the 'value' attribute value</li>
+          <li>Define how the "value" is interpreted to meet a condition</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.2 <a name="actions-guide" id="actions-guide">Rule Action Guidelines</a></h3>
+    <p>The definition of a &lt;rule/&gt; action MUST provide the following information:</p>
+    <ul>
+      <li>Define a namespace governing the action set</li>
+      <li>Define the action:
+        <ul>
+          <li>Define each 'action' attribute value</li>
+          <li>Define the expected behavior if the &lt;rule/&gt; is triggered</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.3 <a name="conditions-def" id="conditions-def">Defined Conditions</a></h3>
+    <p>The condition defines how or when a particular rule is triggered. The value of the condition attribute determines what the contents of the &lt;rule/&gt; mean.</p>
+    <p>The following conditions are defined by this document and SHOULD be supported by any implementation.</p>
+    <p>In the following sections, the terms "content" and "contents" refers to the XML character data contained by the &lt;rule/&gt; element.</p>
+    <div class="indent"><h3>3.3.1 <a name="conditions-def-deliver" id="conditions-def-deliver">deliver</a></h3>
+      <p>The "deliver" condition is used to ensure delivery (or non-delivery) in one of five ways:</p>
+      <ol>
+        <li>Directly to the specified address or account over XMPP</li>
+        <li>Delayed to offline storage (for later delivery via XMPP)</li>
+        <li>Forwarded to an alternate address or account over XMPP</li>
+        <li>Indirectly to an alternate address or account through a gateway to a non-XMPP system</li>
+      </ol>
+      <p>This condition is met based on what the processor would do with the message at the moment of receipt, as follows:</p>
+      <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: "deliver" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>direct</td>
+          <td>The message would be immediately delivered to the intended recipient or routed to the next hop.</td>
+        </tr>
+        <tr class="body">
+          <td>forward</td>
+          <td>The message would be forwarded to another XMPP address or account.</td>
+        </tr>
+        <tr class="body">
+          <td>gateway</td>
+          <td>The message would be sent through a gateway to an address or account on a non-XMPP system.</td>
+        </tr>
+        <tr class="body">
+          <td>none</td>
+          <td>The message would not be delivered at all (e.g., because the intended recipient is offline and message storage is not enabled).</td>
+        </tr>
+        <tr class="body">
+          <td>stored</td>
+          <td>The message would be stored offline for later delivery to the intended recipient.</td>
+        </tr>
+      </table></div>
+      <p>This condition MAY be applied to each "hop" in the server route.</p>
+    </div>
+    <div class="indent"><h3>3.3.2 <a name="conditions-def-expireat" id="conditions-def-expireat">expire-at</a></h3>
+      <p>The "expire-at" condition is used to ensure delivery before an absolute point in time. Naturally, this does not <span class="em">guarantee</span>  [<a href="#nt-idp1628896">4</a>] that the message will not be delivered after that time from the sender's perspective, since this document does not assume that all machine clocks (e.g., for all servers along the delivery route) are synchronized. However, in order to help ensure that this condition is met correctly, servers that implement this document (or the machines that host such servers) SHOULD use the Network Time Protocol (<span class="ref"><a href="http://tools.ietf.org/html/rfc1305">RFC 1305</a></span>  [<a href="#nt-idp1632720">5</a>]) to keep in sync with established time authorities. Note also that expire-at functionality becomes less reliable the closer the expire-at time is to the present (e.g., the sender will receive less reliable delivery of a message speciifying an expire-at time two seconds in the future than of a message specifying an expire-at time two hours or two days in the future).</p>
+      <p>The content of the 'value' attribute specifies some point after the exact moment the message is sent; the content MUST be a DateTime as specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp1636048">6</a>], and the timezone MUST be UTC.</p>
+      <p>The condition is met if the message would be delivered to the recipient after the specified datetime. To determine the datetime to compare to, the processor first determines if and when a message can be dispatched (e.g. not stored offline). The processor then records this datetime, and compares it with the specified datetime. If the current datetime is on or after that specified, the condition is met.</p>
+      <p>This condition MAY be applied to each "hop" in the server route.</p>
+    </div>
+    <div class="indent"><h3>3.3.3 <a name="conditions-def-match" id="conditions-def-match">match-resource</a></h3>
+      <p>The "match-resource" condition is used to restrict delivery based on the resource identifier of the recipient JID.</p>
+      <p>The defined values for this condition are:</p>
+      <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: "match-resource" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr class="body">
+          <td>any</td>
+          <td>Destination resource matches any value, effectively ignoring the intended resource.</td>
+          <td>"home/laptop" matches "home", "home/desktop" or "work/desktop"</td>
+        </tr>
+        <tr class="body">
+          <td>exact</td>
+          <td>Destination resource exactly matches the intended resource.</td>
+          <td>"home/laptop" only matches "home/laptop" and not "home/desktop" or "work/desktop"</td>
+        </tr>
+        <tr class="body">
+          <td>other</td>
+          <td>Destination resource matches any value except for the intended resource.</td>
+          <td>"home/laptop" matches "work/desktop", "home" or "home/desktop", but not "home/laptop"</td>
+        </tr>
+      </table></div>
+      <p>The condition is met if the resource for the actual destination JID matches the intended JID using the above rules. For instance, if a message is intended for "romeo@montague.net/work" with the "match-resource" condition of "exact", the condition is met if the message can be immediately delivered only to "romeo@montague.net/work".</p>
+      <p>For purposes of this condition, an intended JID with no resource has the following behavior:</p>
+      <ul>
+        <li>If the value is "exact", the condition is met only if the server would deliver to a destination JID without a resource identifier (e.g., a <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1650640">7</a>] room or offline storage).</li>
+        <li>If the value is "other", the condition is met only if the server would not deliver to a destination JID without a resource identifier.</li>
+      </ul>
+      <p>This condition MUST NOT be applied to each "hop" in the server route, only at the edge servers. If an &lt;amp/&gt; element includes this condition and also indicates that it should be processed per hop, this &lt;rule/&gt; shall be ignored.</p>
+      <p>Note: By design, this protocol does not include support for partial resource matching (which would stipulate, for example, that the resource identifiers "home/laptop" and "homeboy" both match "home").</p>
+    </div>
+  </div>
+  <div class="indent"><h3>3.4 <a name="actions-def" id="actions-def">Defined Actions</a></h3>
+    <p>The action defines what occurs when a particular rule is triggered. The value of the action attribute determines the behavior if the rule's condition is met.</p>
+    <p>The following actions are defined by this document.</p>
+    <div class="indent"><h3>3.4.1 <a name="actions-def-alert" id="actions-def-alert">alert</a></h3>
+      <p>The "alert" action triggers a reply &lt;message/&gt; stanza to the sending entity. This &lt;message/&gt; stanza MUST contain the element &lt;amp status='alert'/&gt;, which itself contains the &lt;rule/&gt; that triggered this action. In all other respects, this action behaves as "drop".</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Alert Response</p><div class="indent"><pre class="prettyprint">
+  &lt;message from='hamlet.lit'
+           to='bernardo@hamlet.lit/elsinore'
+           id='chatty2'&gt;
+    &lt;amp xmlns='http://jabber.org/protocol/amp'
+         status='alert'
+         from='bernardo@hamlet.lit/elsinore'
+         to='francisco@hamlet.lit'&gt;
+      &lt;rule action='alert' condition='deliver' value='stored'/&gt;
+    &lt;/amp&gt;
+  &lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.4.2 <a name="actions-def-drop" id="actions-def-drop">drop</a></h3>
+      <p>The "drop" action silently discards the message from any further delivery attempts and ensures that it is not placed into offline storage. The drop MUST NOT result in other responses.</p>
+    </div>
+    <div class="indent"><h3>3.4.3 <a name="actions-def-error" id="actions-def-error">error</a></h3>
+      <p>The "error" action triggers a reply &lt;message/&gt; stanza of type "error" to the sending entity. The &lt;message/&gt; stanza's &lt;error/&gt; child MUST contain a &lt;failed-rules xmlns='http://jabber.org/protocol/amp#errors'/&gt; error condition, which itself contains the rules that triggered this action.</p>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Error Response</p><div class="indent"><pre class="prettyprint">
+  &lt;message from='hamlet.lit'
+           to='bernardo@hamlet.lit/elsinore'
+           type='error'
+           id='chatty2'&gt;
+    &lt;amp xmlns='http://jabber.org/protocol/amp'
+         status='error'
+         to='bernardo@hamlet.lit/elsinore'
+         from='francisco@hamlet.lit'&gt;
+      &lt;rule action='error' condition='deliver' value='stored'/&gt;
+    &lt;/amp&gt;
+    &lt;error type='modify' code='500'&gt;
+      &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+      &lt;failed-rules xmlns='http://jabber.org/protocol/amp#errors'&gt;
+        &lt;rule action='error' condition='deliver' value='stored'/&gt;
+      &lt;/failed-rules&gt;
+    &lt;/error&gt;
+  &lt;/message&gt;
+      </pre></div>
+      <p>Note that the error SHOULD be of type "modify", and the general error condition SHOULD be &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;.</p>
+    </div>
+    <div class="indent"><h3>3.4.4 <a name="actions-def-notify" id="actions-def-notify">notify</a></h3>
+      <p>The "notify" action triggers a reply &lt;message/&gt; stanza to the sending entity. This &lt;message/&gt; stanza MUST contain the element &lt;amp status='notify'/&gt;, which itself contains the &lt;rule/&gt; that triggered this action. Unlike the other actions, this action does not override the default behavior for a server. Instead, the server then executes its default behavior after sending the notify.</p>
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Notify Response</p><div class="indent"><pre class="prettyprint">
+  &lt;message from='hamlet.lit'
+           to='bernardo@hamlet.lit/elsinore'
+           id='chatty2'&gt;
+    &lt;amp xmlns='http://jabber.org/protocol/amp'
+         status='notify'
+         to='bernardo@hamlet.lit/elsinore'
+         from='francisco@hamlet.lit'&gt;
+      &lt;rule action='notify' condition='deliver' value='stored'/&gt;
+    &lt;/amp&gt;
+  &lt;/message&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.5 <a name="description" id="description">Description of Condition/Action Combinations</a></h3>
+    <p>In general, a rule can be read as "do {action} if {condition} is true for {value}"; however, to facilitate understanding, this section describes the various condition/action combinations in plain English.</p>
+    <div class="indent"><h3>3.5.1 <a name="description-deliver" id="description-deliver">Deliver Rules</a></h3>
+      <p>When the condition is "deliver", the rules can be described as follows:</p>
+      <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Deliver Rules</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Action</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>direct</td>
+          <td>Return an alert if the message would be delivered directly.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>forward</td>
+          <td>Return an alert if the message would be forwarded to another XMPP address.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>gateway</td>
+          <td>Return an alert if the message would be delivered to a non-XMPP address through a gateway.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>none</td>
+          <td>Return an alert if no delivery is possible.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>stored</td>
+          <td>Return an alert if the message would be stored offline for later delivery via XMPP.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>direct</td>
+          <td>Drop the message if it would be delivered directly.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>forward</td>
+          <td>Drop the message if it would be forwarded to another XMPP address.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>gateway</td>
+          <td>Drop the message if it would be delivered to a non-XMPP address through a gateway.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>none</td>
+          <td>Drop the message if no delivery is possible.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>stored</td>
+          <td>Drop the message if it would be stored offline for later delivery via XMPP.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>direct</td>
+          <td>Return an error if the message would be delivered directly.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>forward</td>
+          <td>Return an error if the message would be forwarded to another XMPP address.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>gateway</td>
+          <td>Return an error if the message would be delivered to a non-XMPP address through a gateway.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>none</td>
+          <td>Return an error if no delivery is possible.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>stored</td>
+          <td>Return an error if the message would be stored offline for later delivery via XMPP.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>direct</td>
+          <td>Return a notification if the message would be delivered directly.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>forward</td>
+          <td>Return a notification if the message would be forwarded to another XMPP address.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>gateway</td>
+          <td>Return a notification if the message would be delivered to a non-XMPP address through a gateway.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>none</td>
+          <td>Return a notification if no delivery is possible.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>stored</td>
+          <td>Return a notification if the message would be stored offline for later delivery via XMPP.</td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.5.2 <a name="description-expire-at" id="description-expire-at">Expire-at Rules</a></h3>
+      <p>When the condition is "expire-at", the rules can be described as follows:</p>
+      <div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: Expiration Rules</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Action</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>Return an alert if the message would be delivered after the specified timestamp.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>Drop the message if it would be delivered after the specified timestamp.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>Return an error if the message would be delivered after the specified timestamp.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>Return a notification if the message would be delivered after the specified timestamp.</td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.5.3 <a name="description-match-resource" id="description-match-resource">Match-resource Rules</a></h3>
+      <p>When the condition is "match-resource", the rules can be described as follows:</p>
+      <div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: Resource Matching Rules</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Action</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>any</td>
+          <td>Return an alert if the message would be delivered to any resource.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>exact</td>
+          <td>Return an alert if the message would be delivered to the exact resource.</td>
+        </tr>
+        <tr class="body">
+          <td>alert</td>
+          <td>other</td>
+          <td>Return an alert if the message would be delivered to a resource other than that specified.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>any</td>
+          <td>Drop the message if it would be delivered to any resource.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>exact</td>
+          <td>Drop the message if it would be delivered to the exact resource.</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>other</td>
+          <td>Drop the message if it would be delivered to a resource other than that specified.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>any</td>
+          <td>Return an error if the message would be delivered to any resource.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>exact</td>
+          <td>Return an error if the message would be delivered to the exact resource.</td>
+        </tr>
+        <tr class="body">
+          <td>error</td>
+          <td>other</td>
+          <td>Return an error if the message would be delivered to a resource other than that specified.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>any</td>
+          <td>Return a notification if the message would be delivered to any resource.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>exact</td>
+          <td>Return a notification if the message would be delivered to the exact resource.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>other</td>
+          <td>Return a notification if the message would be delivered to a resource other than that specified.</td>
+        </tr>
+      </table></div>
+    </div>
+  </div>
+<h2>4.
+       <a name="formal" id="formal">Formal Description</a></h2>
+  <div class="indent"><h3>4.1 <a name="formal-root" id="formal-root">&lt;amp/&gt; Root Element</a></h3>
+    <p>All delivery semantics are encapsulated in the &lt;amp/&gt; element. This element contains one or more &lt;rule/&gt; elements specifying the specific rules to process. It can optionally possess attributes about the current status, the original sender and recipient, and route applicability.</p>
+    <p>The 'status' attribute specifies the reason for this &lt;amp/&gt; element. When specifying semantics to be applied (client to server), this attribute MUST NOT be present. When replying to a sending entity regarding a met condition, this attribute MUST be present and SHOULD be the value of the 'action' attribute for the triggered rule. (Note: Individual action definitions MAY provide their own requirements.)</p>
+    <p>The 'from' attribute specifies the original sender of the containing &lt;message/&gt; stanza. This attribute MUST be specified for any &lt;message/&gt; stanza sent from a supporting server, regardless of the recipient. It SHOULD NOT be specified otherwise. The value of the 'from' attribute MUST be the full JID (node@domain/resource) of the sender for the original &lt;message/&gt; stanza.</p>
+    <p>The 'to' attribute specifies the original (intended) recipient of the containing &lt;message/&gt; stanza. This attribute MUST be specified for any &lt;message/&gt; stanza sent from a supporting server, regardless of the recipient. It SHOULD NOT be specified otherwise. The value of the 'to' attribute MUST be the full JID (node@domain/resource) of the intended recipient for the original &lt;message/&gt; stanza.</p>
+    <p>The 'per-hop' attribute flags the contained ruleset for processing at each server in the route between the original sender and original intended recipient. This attribute MAY be present, and MUST be either "true" or "false". If not present, the default is "false".</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="formal-rule" id="formal-rule">&lt;rule/&gt; Element</a></h3>
+    <p>Each semantic rule is specified with a &lt;rule/&gt; element. This element possesses attributes for the condition, value, and action.</p>
+    <p>The 'action' attribute defines the result for this rule. This attribute MUST be present, and MUST be either a value defined in the <a href="#actions-def">Defined Actions</a> section, or one registered with the XMPP Registrar.</p>
+    <p>The 'condition' attribute defines the overall condition this rule applies to. This attribute MUST be present, and MUST be either a value defined in the <a href="#conditions-def">Defined Conditions</a> section, or one registered with the XMPP Registrar.</p>
+    <p>The 'value' attribute defines how the condition is matched. This attribute MUST be present, and MUST NOT be an empty string (""). The interpretation of this attribute's value is determined by the 'condition' attribute.</p>
+  </div>
+<h2>5.
+       <a name="examples" id="examples">Example Scenarios</a></h2>
+  <div class="indent"><h3>5.1 <a name="examples-reliabledata" id="examples-reliabledata">Reliable Data Transport</a></h3>
+    <p>The &lt;message/&gt; stanza is nearly ideal for data transport, but to ensure reliability it is often desirable that such messages not be delivered to any resource but that specified. To facilitate this, the sending entity includes a &lt;rule action='drop' condition='match-resource' value='other'/&gt; (if failure notification is unnecessary) or &lt;rule action='error' condition='match-resource' value='other'/&gt; (if failure notification is required). The following example illustrates this using <span class="ref"><a href="http://xmpp.org/extensions/xep-0047.html">In-Band Bytestreams (XEP-0047)</a></span>  [<a href="#nt-idp1751632">8</a>]:</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Sending a message for reliable data transport</p><div class="indent"><pre class="prettyprint">
+&lt;message to='francisco@hamlet.lit/pda'
+         from='bernardo@hamlet.lit/elsinore'
+         id='ibb1'&gt;
+  &lt;data xmlns='http://jabber.org/protocol/ibb' sid='mySID' seq='0'&gt;
+    qANQR1DBwU4DX7jmYZnncmUQB/9KuKBddzQH+tZ1ZywKK0yHKnq57kWq+RFtQdCJ
+    WpdWpR0uQsuJe7+vh3NWn59/gTc5MDlX8dS9p0ovStmNcyLhxVgmqS8ZKhsblVeu
+    IpQ0JgavABqibJolc3BKrVtVV1igKiX/N7Pi8RtY1K18toaMDhdEfhBRzO/XB0+P
+    AQhYlRjNacGcslkhXqNjK5Va4tuOAPy2n1Q8UUrHbUd0g+xJ9Bm0G0LZXyvCWyKH
+    kuNEHFQiLuCY6Iv0myq6iX6tjuHehZlFSh80b5BVV9tNLwNR5Eqz1klxMhoghJOA
+  &lt;/data&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp' per-hop='true'&gt;
+    &lt;rule action='error' condition='expire-at' value='2004-09-10T08:33:14Z'/&gt;
+    &lt;rule action='error' condition='match-resource' value='other'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>In the above case, the sender would receive an error reply if the message could not be delivered specifically to "francisco@hamlet.lit/pda" by the specified time. For example, if the intended resource went offline before the message could be delivered, the processing server would return the following error:</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Failed reliable data transport message</p><div class="indent"><pre class="prettyprint">
+&lt;message from='hamlet.lit'
+         to='bernardo@hamlet.lit/elsinore'
+         id='ibb1'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'
+      from='bernardo@hamlet.lit/elsinore'
+      to='francisco@hamlet.lit/pda'&gt;
+    &lt;rule action='error' condition='match-resource' value='other'/&gt;
+  &lt;/amp&gt;
+  &lt;error type='modify' code='500'&gt;
+    &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;failed-rules xmlns='http://jabber.org/protocol/amp#errors'&gt;
+      &lt;rule action='error' condition='match-resource' value='other'/&gt;
+    &lt;/failed-rules&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.2 <a name="examples-time" id="examples-time">Time-Sensitive Messages</a></h3>
+    <p>Time-sensitive messages are a frequent occurrence in some environments (e.g., front-office personnel routinely notify others of "events" such as guests, unexpected refreshments, and ad-hoc gatherings). To send a time-sensitive message, the sending entity includes a &lt;rule action='drop' condition='expire-at'/&gt; with the time when the event is to occur:</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Sending a time-sensitive message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='linuxwolf@outer-planes.net'
+         from='receptionist@outer-planes.net'
+         id='alert849'&gt;
+  &lt;subject&gt;Guest Alert!&lt;/subject&gt;
+  &lt;body&gt;
+    There will be clients in the conference room today around 1 PM!
+    As always, be courteous and quiet nearby...
+  &lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2003-06-23T23:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>In the above case, the server for "linuxwolf@outer-planes.net" would not deliver the message once 23:00 UTC (3:00 PM Pacific Daylight Time) has passed.</p>
+  </div>
+  <div class="indent"><h3>5.3 <a name="examples-transient" id="examples-transient">Transient Messages</a></h3>
+    <p>Transient messages are messages that should never be stored offline. To send a transient message, the sending entity includes a &lt;rule action='drop' condition='deliver' value='stored'/&gt;:</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Sending a transient message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='francisco@hamlet.lit'
+         from='bernardo@hamlet.lit/elsinore'
+         type='chat'
+         id='chatty1'&gt;
+  &lt;body&gt;Who&amp;apos;s there?&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='deliver' value='stored'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>Alternatively, the sending entity includes a &lt;rule action='alert' condition='deliver' value='stored'/&gt; to be alerted instead of having the message silently dropped:</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Sending a transient message (requesting alert)</p><div class="indent"><pre class="prettyprint">
+&lt;message to='francisco@hamlet.lit'
+         from='bernardo@hamlet.lit/elsinore'
+         type='chat'
+         id='chatty2'&gt;
+  &lt;body&gt;Who&amp;apos;s there?&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='alert' condition='deliver' value='stored'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Sender alerted regarding transient message</p><div class="indent"><pre class="prettyprint">
+&lt;message from='hamlet.lit'
+         to='bernardo@hamlet.lit/elsinore'
+         id='chatty2'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'
+       status='alert'
+       from='bernardo@hamlet.lit/elsinore'
+       to='francisco@hamlet.lit'&gt;
+    &lt;rule action='alert' condition='deliver' value='stored'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>6.
+       <a name="errors" id="errors">Error Handling</a></h2>
+  <div class="indent"><h3>6.1 <a name="errors-conditions" id="errors-conditions">Conditions</a></h3>
+    <p>To simplify the discussion of error conditions, this document uses the following mappings between namespace URIs and namespace prefixes (note: this mapping is provided only for the purpose of simplifying the discussion and is not intended for use within the protocol itself).</p>
+    <div class="indent"><p class="caption"><a name="table-6" id="table-6"></a>Table 6: Namespace Mappings</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Prefix</th>
+        <th>URI</th>
+      </tr>
+      <tr class="body">
+        <td>xmpp</td>
+        <td>urn:ietf:params:xml:ns:xmpp-stanzas</td>
+      </tr>
+      <tr class="body">
+        <td>msg</td>
+        <td>http://jabber.org/protocol/amp</td>
+      </tr>
+      <tr class="body">
+        <td>err</td>
+        <td>http://jabber.org/protocol/amp#errors</td>
+      </tr>
+    </table></div>
+    <p>The following table shows the possible error conditions in relation to general AMP rules and conditions as well as the <a href="#actions-def">Defined Actions</a>.</p>
+    <div class="indent"><p class="caption"><a name="table-7" id="table-7"></a>Table 7: Error conditions</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>General Condition</th>
+        <th>Error Type</th>
+        <th>Specific Condition</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>modify</td>
+        <td>&lt;msg:unsupported-actions/&gt;</td>
+        <td>One or more rule's specified actions are not supported. The element &lt;msg:unsupported-actions/&gt; contains the &lt;rule/&gt; elements that specify the unsupported actions.</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>modify</td>
+        <td>&lt;msg:unsupported-conditions/&gt;</td>
+        <td>One or more rule's specified conditions are not supported. The element &lt;msg:unsupported-conditions/&gt; contains the &lt;rule/&gt; elements that specify the unsupported conditions.</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;xmpp:not-acceptable/&gt;</td>
+        <td>modify</td>
+        <td>&lt;msg:invalid-rules/&gt;</td>
+        <td>One or more rules are not acceptable by this server, usually because the condition/action combination is restricted. The element &lt;msg:invalid-rules/&gt; contains the &lt;rule/&gt; elements that are not acceptable.</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;xmpp:service-unavailable/&gt;</td>
+        <td>cancel</td>
+        <td>NONE</td>
+        <td>This protocol is not supported. This error is returned to the sending entity if a server along the route to the recipient does not implement this protocol.</td>
+      </tr>
+      <tr class="body">
+        <td>&lt;xmpp:undefined-condition/&gt;</td>
+        <td>modify</td>
+        <td>&lt;err:failed-rules/&gt;</td>
+        <td>One or more &lt;rule/&gt; elements triggered the "error" action. This condition contains the triggered &lt;rule/&gt; elements.</td>
+      </tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>6.2 <a name="errors-examples" id="errors-examples">Examples</a></h3>
+    <p>This section shows examples of the error conditions described in the previous section (for information regarding mapping of XMPP error conditions to Jabber error codes, refer to <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1798192">9</a>]).</p>
+    <div class="indent"><h3>6.2.1 <a name="errors-action" id="errors-action">Unsupported Action</a></h3>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='northumberland@shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Server does not support action</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='shakespeare.lit'
+    id='richard2-4.1.247'
+    to='northumberland@shakespeare.lit'
+    type='error'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+  &lt;error type='modify' code='400'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;unsupported-actions xmlns='http://jabber.org/protocol/amp'&gt;
+      &lt;rule condition='expire-at'
+            action='drop'
+            value='2004-01-01T00:00:00Z'/&gt;
+    &lt;/unsupported-actions&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>6.2.2 <a name="errors-condition" id="errors-condition">Unsupported Condition</a></h3>
+      <p class="caption"><a name="example-18" id="example-18"></a>Example 18. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Server does not support condition</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='shakespeare.lit'
+    id='richard2-4.1.247'
+    to='northumberland@shakespeare.lit'
+    type='error'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+  &lt;error type='modify' code='400'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;unsupported-conditions xmlns='http://jabber.org/protocol/amp'&gt;
+      &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+    &lt;/unsupported-conditions&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>6.2.3 <a name="errors-notacceptable" id="errors-notacceptable">Not Acceptable</a></h3>
+      <p class="caption"><a name="example-20" id="example-20"></a>Example 20. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='northumberland@shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p class="caption"><a name="example-21" id="example-21"></a>Example 21. The rule is not acceptable to the server</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='shakespeare.lit'
+    id='richard2-4.1.247'
+    to='northumberland@shakespeare.lit'
+    type='error'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+  &lt;error type='modify' code='405'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;invalid-rules xmlns='http://jabber.org/protocol/amp'&gt;
+      &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+    &lt;/invalid-rules&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>6.2.4 <a name="errors-unavail" id="errors-unavail">Service Unavailable</a></h3>
+      <p class="caption"><a name="example-22" id="example-22"></a>Example 22. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='northumberland@shakespeare.lit'
+    id='richard2-4.1.247'
+    to='kingrichard@royalty.england.lit'&gt;
+  &lt;body&gt;My lord, dispatch; read o'er these articles.&lt;/body&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p class="caption"><a name="example-23" id="example-23"></a>Example 23. AMP service is unavailable</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='royalty.england.lit'
+    id='richard2-4.1.247'
+    to='northumberland@shakespeare.lit'
+    type='error'&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp'&gt;
+    &lt;rule action='drop' condition='expire-at' value='2004-01-01T00:00:00Z'/&gt;
+  &lt;/amp&gt;
+  &lt;error type='cancel' code='503'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>6.2.5 <a name="errors-undefined" id="errors-undefined">Undefined Condition</a></h3>
+      <p class="caption"><a name="example-24" id="example-24"></a>Example 24. A message with AMP semantics</p><div class="indent"><pre class="prettyprint">
+  &lt;message from='hamlet.lit'
+           to='bernardo@hamlet.lit/elsinore'
+           id='chatty2'&gt;
+    &lt;body&gt;Who&amp;apos;s there?&lt;/body&gt;
+    &lt;amp xmlns='http://jabber.org/protocol/amp'
+         status='error'
+         from='francisco@hamlet.lit'
+         to='bernardo@hamlet.lit/elsinore'&gt;
+      &lt;rule action='error' condition='deliver' value='stored'/&gt;
+    &lt;/amp&gt;
+  &lt;/message&gt;
+      </pre></div>
+      <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Failed rules</p><div class="indent"><pre class="prettyprint">
+  &lt;message from='hamlet.lit'
+           to='bernardo@hamlet.lit/elsinore'
+           type='error'
+           id='chatty2'&gt;
+    &lt;amp xmlns='http://jabber.org/protocol/amp'
+         status='error'
+         from='francisco@hamlet.lit'
+         to='bernardo@hamlet.lit/elsinore'&gt;
+      &lt;rule action='error' condition='deliver' value='stored'/&gt;
+    &lt;/amp&gt;
+    &lt;error type='modify' code='500'&gt;
+      &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+      &lt;failed-rules xmlns='http://jabber.org/protocol/amp#errors'&gt;
+        &lt;rule action='error' condition='deliver' value='stored'/&gt;
+      &lt;/failed-rules&gt;
+    &lt;/error&gt;
+  &lt;/message&gt;
+      </pre></div>
+    </div>
+  </div>
+<h2>7.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>If the recipient's server implements "offline storage", it will need to keep track of which offline messages are subject to expiration and not deliver those which have expired. Exactly how to do so is a matter of implementation. One possible implementation is for the server to maintain a separate database of expirable messages and periodically scan it; upon discovering an expired message, it could flag the message as eligible for discarding and inform the sender, but not discard the message until the intended recipient next becomes available.</p>
+<h2>8.
+       <a name="streamfeature" id="streamfeature">Stream Feature</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1818144">10</a>] defines methods for advertising feature support during stream negotiation. For the sake of efficiency, it may be desirable for a server to advertise support for Advanced Message Processing as a stream feature. The namespace for reporting support within &lt;stream:features/&gt; is "http://jabber.org/features/amp". Upon receiving a stream header from the initiating entity, the receiving entity (usually a server) returns a stream header to initiating entity and MAY announce support for Advanced Message Processing registration by including the relevant stream feature:</p>
+  <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Advertising Advanced Message Processing as a stream feature</p><div class="indent"><pre class="prettyprint">
+  &lt;stream:features&gt;
+    &lt;amp xmlns='http://jabber.org/features/amp'/&gt;
+  &lt;/stream:features&gt;
+  </pre></div>
+<h2>9.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Most AMP conditions could be used by unauthorized individuals to gain access to presence information about users of IM servers and other presence-based messaging systems. For example, consider the following scenario: the user &lt;romeo@montague.net&gt; is not an authorized subscriber to the presence of the user &lt;nurse@capulet.com&gt;, but sends a &lt;message/&gt; stanza with a "deliver" rule of "stored" and an action of "alert" to that address; if the Nurse is not online, Romeo would receive an AMP alert that the message has been stored offline, in the process discovering that the Nurse is offline. Similar scenarios are possible with the "match-resource" rule (send to the user's usual resource) and the "expire-at" rule (send messages every minute to poll for presence). If a server implements presence subscriptions as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3921">RFC 3921</a></span>  [<a href="#nt-idp1826416">11</a>], it SHOULD NOT return alerts, errors, or other AMP notifications to senders who are not authorized to view the recipient's presence information (via a subscription of "both" or "from") if the notification would reveal the recipient's status as online or offline.  [<a href="#nt-idp1823056">12</a>]
+   ).</p>
+  <p>There are several directions server implementors can follow in this regard:</p>
+  <ul>
+    <li><p>Do not implement the relevant condition, as a result of which the server MUST reply with a &lt;feature-not-implemented/&gt; error condition if the condition is specified; however, this is unduly restricts the supported conditions and effectively cripples the AMP functionality, so is NOT RECOMMENDED.</p></li>
+    <li><p>Accept the relevant condition only if the action is "drop", as a result of which the server MUST reply with a &lt;not-acceptable/&gt; error condition if the action is "alert", "error", or "notify"; this is slightly less restrictive but still unnecessarily restricts the functionality of the system, so is NOT RECOMMENDED.</p></li>
+    <li><p>Accept the relevant condition only if the sender is authorized to receive the receiver's presence, as a result of which the server MUST reply with a &lt;not-acceptable/&gt; error condition if the sender is not so authorized; this is the RECOMMENDED behavior.</p></li>
+  </ul>
+<h2>10.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>No interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1833600">13</a>] is necessary as a result of this document.</p>
+<h2>11.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>11.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1838704">14</a>] includes 'http://jabber.org/protocol/amp' and 'http://jabber.org/protocol/amp#errors' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>11.2 <a name="registrar-stream" id="registrar-stream">Stream Features</a></h3>
+    <p>The XMPP Registrar includes the 'http://jabber.org/features/amp' namespace in its registry of stream feature namespaces.</p>
+  </div>
+  <div class="indent"><h3>11.3 <a name="registrar-nodes" id="registrar-nodes">Well-Known Service Discovery Nodes</a></h3>
+    <p>The XMPP Registrar includes 'http://jabber.org/protocol/amp' in its registry of well-known Service Discovery nodes.</p>
+  </div>
+  <div class="indent"><h3>11.4 <a name="registrar-reg" id="registrar-reg">Registries</a></h3>
+    <div class="indent"><h3>11.4.1 <a name="registrar-reg-conditions" id="registrar-reg-conditions">Rule Conditions Registry</a></h3>
+      <p>The XMPP Registrar maintains a registry of AMP &lt;rule/&gt; conditions at &lt;<a href="http://xmpp.org/registrar/amp-conditions.html">http://xmpp.org/registrar/amp-conditions.html</a>&gt;.</p>
+      <div class="indent"><h3>11.4.1.1 <a name="registrar-reg-conditions-process" id="registrar-reg-conditions-process">Process</a></h3>
+        <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;condition&gt;
+  &lt;name&gt;the value of the 'condition' attribute&lt;/name&gt;
+  &lt;ns&gt;the namespace to be used as a service discovery feature&lt;/ns&gt;
+  &lt;per-hop&gt;does the "per-hop" flag apply? [true|false]&lt;/per-hop&gt;
+  &lt;value&gt;
+     The syntax (e.g., datatype or allowable values) of the
+     'value' attribute.
+  &lt;/value&gt;
+  &lt;processing&gt;values that result in message processing&lt;/processing&gt;
+  &lt;doc&gt;the document (e.g., XEP) in which this condition is specified&lt;/doc&gt;
+&lt;/condition&gt;
+        </pre></div>
+        <p>The registrant may register more than one condition at a time, each contained in a separate &lt;condition/&gt; element.</p>
+        <p>Note: The namespace for the condition set shall be included in the Service Discovery features registry.</p>
+      </div>
+      <div class="indent"><h3>11.4.1.2 <a name="registrar-reg-conditions-initial" id="registrar-reg-conditions-initial">Initial Submission</a></h3>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;condition&gt;
+  &lt;name&gt;deliver&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?condition=deliver&lt;/ns&gt;
+  &lt;per-hop&gt;true&lt;/per-hop&gt;
+  &lt;value&gt;[direct|forward|gateway|none|stored]&lt;/value&gt;
+  &lt;processing&gt;
+    The condition is met if (1) the value is "direct" and the message
+    can be immediately delivered or further dispatched, (2) the value
+    is "forward" and the message can be forwarded to another XMPP
+    address, (3) the value is "gateway" and the message can be sent
+    to a non-XMPP address via a gateway, (4) the value is "none" and
+    the message cannot be delivered at all, or (5) the value is 
+    "stored" and the message can be stored for later delivery.
+  &lt;/processing&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/condition&gt;
+
+&lt;condition&gt;
+  &lt;name&gt;expire-at&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?condition=expire-at&lt;/ns&gt;
+  &lt;per-hop&gt;true&lt;/per-hop&gt;
+  &lt;value&gt;DateTime per XEP-0082&lt;/value&gt;
+  &lt;processing&gt;
+    The condition is met if the message would be delivered after
+    the specified DateTime.
+  &lt;/processing&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/condition&gt;
+
+&lt;condition&gt;
+  &lt;name&gt;match-resource&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?condition=match-resource&lt;/ns&gt;
+  &lt;per-hop&gt;false&lt;/per-hop&gt;
+  &lt;value&gt;[any|exact|other]&lt;/value&gt;
+  &lt;processing&gt;
+    The condition is met if (1) the value is "any" and the intended
+    recipient has at least one available resource (as defined in the
+    XMPP IM specification); (2) the value "exact" and the intended
+    recipient has an available resource that exactly matches the JID
+    specified in the 'to' address; (3) the value is "other" and the
+    intended recipient has an available resource whose full JID is
+    other than that specified in the 'to' address.
+  &lt;/processing&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/condition&gt;
+        </pre></div>
+      </div>
+    </div>
+    <div class="indent"><h3>11.4.2 <a name="registrar-reg-actions" id="registrar-reg-actions">Rule Actions Registry</a></h3>
+      <p>The XMPP Registrar maintains a registry of AMP &lt;rule/&gt; actions at &lt;<a href="http://xmpp.org/registrar/amp-actions.html">http://xmpp.org/registrar/amp-actions.html</a>&gt;.</p>
+      <div class="indent"><h3>11.4.2.1 <a name="registrar-reg-actions-process" id="registrar-reg-actions-process">Process</a></h3>
+        <p>In order to submit new values to this registry, the registrant shall define an XML fragment of the following form and either include it in the relevant XMPP Extension Protocol or send it to the email address &lt;registrar@xmpp.org&gt;:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;action&gt;
+  &lt;name&gt;the value of the 'action' attribute&lt;/name&gt;
+  &lt;ns&gt;the namespace to be used as a service discovery feature&lt;/ns&gt;
+  &lt;behavior&gt;the expected behavior if the rule is triggered&lt;/behavior&gt;
+  &lt;doc&gt;the document (e.g., XEP) in which this action is specified&lt;/doc&gt;
+&lt;/action&gt;
+        </pre></div>
+        <p>The registrant may register more than one action at a time, each contained in a separate &lt;action/&gt; element.</p>
+        <p>Note: The namespace for the action set shall be included in the Service Discovery features registry.</p>
+      </div>
+      <div class="indent"><h3>11.4.2.2 <a name="registrar-reg-actions-initial" id="registrar-reg-actions-initial">Initial Submission</a></h3>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;action&gt;
+  &lt;name&gt;alert&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?action=drop&lt;/ns&gt;
+  &lt;behavior&gt;
+    The message is silently discarded but an alert is returned to the
+    sender.
+  &lt;/behavior&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/action&gt;
+
+&lt;action&gt;
+  &lt;name&gt;drop&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?action=drop&lt;/ns&gt;
+  &lt;behavior&gt;
+    The message is silently discarded.
+  &lt;/behavior&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/action&gt;
+
+&lt;action&gt;
+  &lt;name&gt;error&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?action=error&lt;/ns&gt;
+  &lt;behavior&gt;
+    The message is not processed and an error is returned to the sender,
+    specifying which rule resulted in failed processing.
+  &lt;/behavior&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/action&gt;
+
+&lt;action&gt;
+  &lt;name&gt;notify&lt;/name&gt;
+  &lt;ns&gt;http://jabber.org/protocol/amp?action=notify&lt;/ns&gt;
+  &lt;behavior&gt;
+    The message is processed and a notification message is returned to
+    the sender, specifying which rule was processed.
+  &lt;/behavior&gt;
+  &lt;doc&gt;XEP-0079&lt;/doc&gt;
+&lt;/action&gt;
+        </pre></div>
+      </div>
+    </div>
+  </div>
+<h2>12.
+       <a name="schemas" id="schemas">XML Schemas</a></h2>
+  <div class="indent"><h3>12.1 <a name="schemas-amp" id="schemas-amp">AMP</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/amp'
+    xmlns='http://jabber.org/protocol/amp'
+    elementFormDefault='qualified'&gt;
+ 
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0079: http://www.xmpp.org/extensions/xep-0079.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='amp'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='rule' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='from' use='optional' type='xs:string'/&gt;
+      &lt;xs:attribute name='per-hop' use='optional' type='xs:boolean' default='false'/&gt;
+      &lt;xs:attribute name='status' use='optional' type='xs:NCName'/&gt;
+      &lt;xs:attribute name='to' use='optional' type='xs:string'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+ 
+  &lt;xs:element name='invalid-rules'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='rule' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='unsupported-actions'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='rule' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='unsupported-conditions'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='rule' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='rule'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute name='action' use='required' type='xs:NCName'/&gt;
+      &lt;xs:attribute name='condition' use='required' type='xs:NCName'/&gt;
+      &lt;xs:attribute name='value' use='required' type='xs:string'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>12.2 <a name="schemas-err" id="schemas-err">Errors</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/amp#errors'
+    xmlns='http://jabber.org/protocol/amp#errors'
+    elementFormDefault='qualified'&gt;
+ 
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0079: http://www.xmpp.org/extensions/xep-0079.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='failed-rules'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='rule' minOccurs='1' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='rule'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute name='action' use='required' type='xs:NCName'/&gt;
+      &lt;xs:attribute name='condition' use='required' type='xs:NCName'/&gt;
+      &lt;xs:attribute name='value' use='required' type='xs:string'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>12.3 <a name="schemas-streams" id="schemas-streams">Stream Feature</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/features/amp'
+    xmlns='http://jabber.org/features/amp'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0079: http://www.xmpp.org/extensions/xep-0079.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='amp' type='empty'/&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<h2>13.
+       <a name="acks" id="acks">Acknowledgements</a></h2>
+  <p>Thanks to Marshall Rose and Craig Kaes for their comments.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0079<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.2<br />
+            Last Updated: 2005-11-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0030, XEP-0082<br />Supersedes: XEP-0023<br />
+                Superseded By: None<br />
+            Short Name: amp<br />
+        XML Schema for amp namespace: &lt;<a href="http://www.xmpp.org/schemas/amp.xsd">http://www.xmpp.org/schemas/amp.xsd</a>&gt;<br />
+        XML Schema for amp#errors namespace: &lt;<a href="http://www.xmpp.org/schemas/amp-errors.xsd">http://www.xmpp.org/schemas/amp-errors.xsd</a>&gt;<br />
+        XML Schema for feature namespace: &lt;<a href="http://www.xmpp.org/schemas/amp-feature.xsd">http://www.xmpp.org/schemas/amp-feature.xsd</a>&gt;<br />
+              Registry: 
+              
+              &lt;<a href="http://xmpp.org/registrar/amp.html">http://xmpp.org/registrar/amp.html</a>&gt;
+              <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0079.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0079.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0079.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1547072" id="nt-idp1547072">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1549664" id="nt-idp1549664">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1565056" id="nt-idp1565056">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1628896" id="nt-idp1628896">4</a>. Guarantee is a strong word. This document defines methods for making message delivery more reliable within certain bounds, but does not pretend that such methods provide any form of guaranteed delivery.</p><p><a name="nt-idp1632720" id="nt-idp1632720">5</a>. RFC 1305: Network Time Protocol (Version 3) &lt;<a href="http://tools.ietf.org/html/rfc1305">http://tools.ietf.org/html/rfc1305</a>&gt;.</p><p><a name="nt-idp1636048" id="nt-idp1636048">6</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1650640" id="nt-idp1650640">7</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1751632" id="nt-idp1751632">8</a>. XEP-0047: In-Band Bytestreams &lt;<a href="http://xmpp.org/extensions/xep-0047.html">http://xmpp.org/extensions/xep-0047.html</a>&gt;.</p><p><a name="nt-idp1798192" id="nt-idp1798192">9</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1818144" id="nt-idp1818144">10</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1826416" id="nt-idp1826416">11</a>. RFC 3921: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc3921">http://tools.ietf.org/html/rfc3921</a>&gt;.</p><p><a name="nt-idp1823056" id="nt-idp1823056">12</a>. An exception might be fully-trusted or closed networks.</p><p><a name="nt-idp1833600" id="nt-idp1833600">13</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1838704" id="nt-idp1838704">14</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2005-11-30)</h4><div class="indent">Consolidated and generalized security considerations. (psa)
+    </div><h4>Version 1.1 (2005-10-19)</h4><div class="indent">Reversed the meaning of conditions other than expire-at (per list discussion); correctly specified stream feature. (psa)
+    </div><h4>Version 1.0 (2004-10-11)</h4><div class="indent">Per a vote of the Jabber Council, advanced to a status of Draft. (psa)
+    </div><h4>Version 0.12 (2004-09-09)</h4><div class="indent">Relaxed server-to-server requirements; clarified discovery rules; removed expire-in condition. (lw)
+    </div><h4>Version 0.11 (2004-08-25)</h4><div class="indent">Specified that the timestamp for an expire-at condition must be a UTC DateTime per XEP-0082; provided further explanation regarding expire-at and expire-in conditions. (lw/psa)
+    </div><h4>Version 0.10 (2004-07-14)</h4><div class="indent">Changes to address Council feedback: clarified error handling and provided error examples; specified that server should validate all rule semantics before returning an error; specified that service discovery information can be cached (not necessary to send disco query before dispatching each message); added "forward" and "gateway" to values of "deliver" condition to handle redirection of messages to alternate XMPP addresses and non-XMPP systems respectively; more clearly specified processing rules for "expire-in" condition; changed milliseconds to seconds for "expire-in"; made explicit that partial JID-matching is not included for "match-resource" condition; added clarifying note to security consideration regarding "deliver" condition; corrected values of per-hop from [yes|no] to [true|false]; changed "standard" conditions to "defined" conditions and mandated that they should be supported; changed "http://jabber.org/protocol/amp#std-actions" namespace to "http://jabber.org/protocol/amp#errors". (lw/psa)
+    </div><h4>Version 0.9 (2004-04-25)</h4><div class="indent">Editorial review: clarified some matters in the text; fully defined the XMPP Registrar Considerations. (psa)
+    </div><h4>Version 0.8 (2004-01-20)</h4><div class="indent">Reorganized for Editorial preferences; revised error conditions to properly align with XMPP-Core (lw)
+    </div><h4>Version 0.7 (2003-12-10)</h4><div class="indent">Incorported changes requested from Standards list discussions: Changed entity-to-server discovery behavior; s2s discovery behavior; Expanded application-specific error conditions; Reorganized for better presentation; Changed "per-hop" to apply to the entire ruleset; Fixed minor typos and missteps (lw)
+    </div><h4>Version 0.6 (2003-10-15)</h4><div class="indent">Changed disco behavior; Changed schema to reflect customizations (lw)
+    </div><h4>Version 0.5.1 (2003-09-20)</h4><div class="indent">Fixed many typos (lw)
+    </div><h4>Version 0.5 (2003-08-28)</h4><div class="indent">Renamed to "amp" (thanks stpeter!); Added information about the original addressing; Added requirement for id attribute in &lt;message/&gt;; Restricted behavior within the "Security Considerations"; (lw)
+    </div><h4>Version 0.4 (2003-06-23)</h4><div class="indent">Completely rewritten to better account for various suggested usage details and requirements; Completely reorganized to better codify the protocol(s) and their possible uses; Added more conditions; Added more actions; Added common usage scenarios (lw)
+    </div><h4>Version 0.3 (2003-04-21)</h4><div class="indent">Clarified client-side processing; Removed semantics scope; Clarified "fail" action; Moved existing "use-cases" into "Usage" section in "Overview"; Added more relevant use cases; Added XMPP-style error conditions (lw)
+    </div><h4>Version 0.2 (2003-04-15)</h4><div class="indent">Added XML Schema (with author's assistance). (psa)
+    </div><h4>Version 0.1 (2003-04-15)</h4><div class="indent">Initial version. (lw)
+    </div></div><hr /><p>END</p></body></html>

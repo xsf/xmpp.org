@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0046: DTCP</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="DTCP" /><meta name="DC.Creator" content="Justin Karneges" /><meta name="DC.Description" content="Direct TCP connection between two Jabber entities." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-04-11" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0046" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0046: DTCP</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>Direct TCP connection between two Jabber entities.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Justin Karneges</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-04-11</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp79504">Introduction</a><br />2.  <a href="#sect-idp80704">Requirements</a><br />3.  <a href="#sect-idp83952">Implementation</a><br />   
+      3.1.  <a href="#sect-idp84448">Requesting a DTCP connection</a><br />   
+      3.2.  <a href="#sect-idp89824">Establishing the TCP connection</a><br />   
+      3.3.  <a href="#sect-idp93328">The handshake</a><br />      
+      3.3.1.  <a href="#sect-idp96272">SSL/TLS</a><br />      
+      3.3.2.  <a href="#sect-idp942128">Authenticating</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp79504" id="sect-idp79504">Introduction</a></h2>
+
+<p>There are cases where it would be more optimal for clients to exchange data directly with each other rather than through the server.  DTCP specifies a method for establishing a direct TCP socket connection between two entities, so that a reliable bytestream can be created out-of-band.</p>
+
+<h2>2.
+       <a name="sect-idp80704" id="sect-idp80704">Requirements</a></h2>
+
+<p>The following design goals are considered:</p>
+
+<ul>
+  <li>The protocol should be reasonably effective in scenarios involving NAT and/or firewalls. [<a href="#nt-idp82096">1</a>]</li>
+  <li>It should be reasonably secure.</li>
+  <li>Establishing a connection should be fast.</li>
+  <li>The protocol should be simple.</li>
+</ul>
+
+<h2>3.
+       <a name="sect-idp83952" id="sect-idp83952">Implementation</a></h2>
+<div class="indent"><h3>3.1 <a name="sect-idp84448" id="sect-idp84448">Requesting a DTCP connection</a></h3>
+
+<p>Say you wish to initiate a DTCP session with Joe:</p>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requesting a DTCP session</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="set" id="dtcp_1" to="joe@blow.com/Home"&gt;
+  &lt;query xmlns="http://jabber.org/protocol/dtcp"&gt;
+    &lt;key&gt;c7b5ea3f&lt;/key&gt;
+    &lt;host&gt;192.168.0.32:8000&lt;/host&gt;
+    &lt;host&gt;63.110.44.12:8000&lt;/host&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>The 'key' given is a unique key for Joe to use when referencing this session with you.  If a 'host' element is present, then you are indicating that you can be reached at the given "host:port".  Multiple hosts may be specified, but Joe cannot be expected to act on more than three of them.</p>
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. Success response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="result" id="dtcp_1" from="joe@blow.com/Home"&gt;
+  &lt;query xmlns="http://jabber.org/protocol/dtcp"&gt;
+    &lt;key&gt;a1b2c3d4&lt;/key&gt;
+    &lt;host&gt;192.168.0.33:8000&lt;/host&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>The success response is in exactly the same format as the request.  As before, Joe cannot expect you to act on more than three hosts.  The 'key' is a unique key from Joe that you will use when referring to the session with him.</p>
+
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. Error response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type="error" id="dtcp_1" from="joe@blow.com/Home"&gt;
+  &lt;error code="501"&gt;DTCP not supported&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>Or he may send an error.</p>
+
+</div>
+<div class="indent"><h3>3.2 <a name="sect-idp89824" id="sect-idp89824">Establishing the TCP connection</a></h3>
+
+<p>If you received a success response, then the next step is to form the TCP connection.  Each entity should have a list of hosts (between 0-3 inclusive) and key of the other.  With this information, they should each try to establish a direct connection with the hosts provided.  When these connections take place is implementation dependent.  Clients may choose to connect to all provided hosts at once, and both clients may even end up connecting to each other simultaneously.  Clients may delay between connections, etc.  As such, clients that are listening for connections should be prepared for anything.</p>
+
+<p>The procedure ends when either a successful DTCP connection is formed (and all other TCP connections discarded), or when both entities have given up.  An entity gives up when it is no longer trying to connect to any hosts.  This is done by sending an additional iq-error packet, with the key of the other entity:</p>
+
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type="error" to="joe@blow.com/Home"&gt;
+  &lt;query xmlns="http://jabber.org/protocol/dtcp"&gt;
+    &lt;key&gt;a1b2c3d4&lt;/key&gt;
+  &lt;/query&gt;
+  &lt;error code="503"&gt;Could not connect to any of the hosts.&lt;/error&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>If an entity was not provided any hosts, then it is assumed that he has given up and this packet need not be sent.</p>
+
+</div>
+
+<div class="indent"><h3>3.3 <a name="sect-idp93328" id="sect-idp93328">The handshake</a></h3>
+<p>For a given host, a TCP socket connection is established.  Once connected, the connecting client must send a command across the channel.  Each command is a line of text terminated by the ASCII linefeed character (0x0A).</p>
+
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. Command format</p><div class="indent"><pre class="prettyprint">
+    [command]:[argument]&lt;LF&gt;
+</pre></div>
+
+<p>Some commands may have an argument, which is placed on the same line and separated by a colon character.  If there is no argument, then the colon need not be present.</p>
+
+<p>The serving client should keep the connection open after responding to a command, even if it resulted in an error, in case the connecting client wishes to try another command.</p>
+
+<div class="indent"><h3>3.3.1 <a name="sect-idp96272" id="sect-idp96272">SSL/TLS</a></h3>
+<p>If you want an encrypted channel, then it must be requested using the 'starttls' command</p>
+
+<p class="caption"><a name="example-6" id="example-6"></a>Example 6. </p><div class="indent"><pre class="prettyprint">
+    starttls&lt;LF&gt;
+</pre></div>
+
+<p>If successful, the serving client should send back:</p>
+
+<p class="caption"><a name="example-7" id="example-7"></a>Example 7. </p><div class="indent"><pre class="prettyprint">
+    ok&lt;LF&gt;
+</pre></div>
+
+<p>This means that the serving client supports SSL and the connecting client should begin the SSL/TLS negotiation.  After this, further data sent/received over the channel should be in encrypted form.</p>
+
+<p>Or the serving client might report an error:</p>
+<p class="caption"><a name="example-8" id="example-8"></a>Example 8. </p><div class="indent"><pre class="prettyprint">
+    error&lt;LF&gt;
+</pre></div>
+
+<p>This means SSL is not supported by the serving client.</p>
+</div>
+
+<div class="indent"><h3>3.3.2 <a name="sect-idp942128" id="sect-idp942128">Authenticating</a></h3>
+<p>To complete the DTCP connection, the connecting client must authenticate with the serving client.  This is done by exchanging keys.  First, the connecting client sends the serving client's key:</p>
+
+<p class="caption"><a name="example-9" id="example-9"></a>Example 9. </p><div class="indent"><pre class="prettyprint">
+    key:a1b2c3d4&lt;LF&gt;
+</pre></div>
+
+<p>If the serving client recognizes the key, then it should respond by sending the connecting client's key:</p>
+<p class="caption"><a name="example-10" id="example-10"></a>Example 10. </p><div class="indent"><pre class="prettyprint">
+    ok:c7b5ea3f&lt;LF&gt;
+</pre></div>
+
+<p>Or the serving client might report an error:</p>
+<p class="caption"><a name="example-11" id="example-11"></a>Example 11. </p><div class="indent"><pre class="prettyprint">
+    error&lt;LF&gt;
+</pre></div>
+
+<p>On success, there may be one more step necessary.  If the connecting client is also the original requestor of the DTCP connection (ie, he did the iq-set), then he must send the following "ack":</p>
+<p class="caption"><a name="example-12" id="example-12"></a>Example 12. </p><div class="indent"><pre class="prettyprint">
+    ok&lt;LF&gt;
+</pre></div>
+
+<p>This gives the final say to the requestor, to prevent any sort of race-condition due to the clients contacting each other at the same time.  If the serving client is the requestor, then this extra "ack" is NOT needed and must NOT be sent.</p>
+
+<p>At this point, the channel is established.  No further commands may be issued, as the TCP connection is now for application data only.</p>
+
+</div>
+
+</div>
+
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0046<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.8<br />
+            Last Updated: 2003-04-11<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0046.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0046.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0046.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Justin Karneges</h3><p class="indent">
+        Email:
+        <a href="mailto:justin@affinix.com">justin@affinix.com</a><br />
+        JabberID: 
+        <a href="xmpp:justin@andbit.net">justin@andbit.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp82096" id="nt-idp82096">1</a>. DTCP works in situations where at least one client can accept incoming connections.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.8 (2003-04-11)</h4><div class="indent">At the request of the author, changed status to Retracted. (psa)
+    </div><h4>Version 0.7 (2002-12-10)</h4><div class="indent">Remove 'comment' block (jk)
+    </div><h4>Version 0.6 (2002-12-02)</h4><div class="indent">Simplification of the document (jk)
+    </div><h4>Version 0.5 (2002-11-19)</h4><div class="indent">Changed handshake and namespace, merged active/passive (jk)
+    </div><h4>Version 0.4 (2002-10-10)</h4><div class="indent">Change to 'comment' block (jk)
+    </div><h4>Version 0.3 (2002-09-18)</h4><div class="indent">Support for SSL (jk)
+    </div><h4>Version 0.2 (2002-09-18)</h4><div class="indent">Simplified things. (jk)
+    </div><h4>Version 0.1 (2002-09-12)</h4><div class="indent">Initial version. (jk)
+    </div></div><hr /><p>END</p></body></html>

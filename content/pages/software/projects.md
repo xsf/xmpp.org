@@ -21,4 +21,6 @@ Sidebar_menu_elem_url_4: software/projects
 Content_layout: multiple-columns
 ---
 
-This page is about XMPP projects.
+Does your project use XMPP? Please [submit a pull request](https://github.com/xsf/xmpp.org) and add your project's info to this page.
+
+And don't forget to also submit a pull request to add your organization as an [XMPP user](/about/who-uses-xmpp).

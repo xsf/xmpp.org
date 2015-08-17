@@ -1,0 +1,508 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0114: Jabber Component Protocol</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Component Protocol" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification documents the existing protocol used for communication between servers and &quot;external&quot; components over the Jabber network." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2012-01-25" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0114" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0114: Jabber Component Protocol</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification documents the existing protocol used for communication between servers and "external" components over the Jabber network.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.6</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2012-01-25</td></tr></table><hr /><p style="color:green">NOTICE: This Historical specification provides canonical documentation of a protocol that is in use within the Jabber/XMPP community. This document is not a standards-track specification within the XMPP Standards Foundation's standards process; however, it might be converted to standards-track in the future or might be obsoleted by a more modern protocol.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#concepts">Concepts</a><br />3.  <a href="#proto">Protocol Flow</a><br />4.  <a href="#security">Security Considerations</a><br />5.  <a href="#iana">IANA Considerations</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />7.  <a href="#schema">XML Schemas</a><br />   
+      7.1.  <a href="#schema-accept">jabber:component:accept</a><br />   
+      7.2.  <a href="#schema-connect">jabber:component:connect</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>The Jabber network has long included a wire protocol that enables trusted components to connect to Jabber servers. While this component protocol is minimal and will probably be superseded by a more comprehensive component protocol at some point, informational documentation of the existing protocol would be helpful for component and server developers. This specification provides such documentation.</p>
+<h2>2.
+       <a name="concepts" id="concepts">Concepts</a></h2>
+  <p>Traditionally there have been two basic kinds of server-side components: "internal components" (which utilize the internal API of a server, in the past particularly the <span class="ref"><a href="http://jabberd.org/">jabberd</a></span>  [<a href="#nt-idp626592">1</a>] server) and "external components" (which communicate with a server over a wire protocol and therefore are not tied to any particular server implementation). The wire component protocol in use today enables an external component to connect to a server (with proper configuration and authentication) and to send and receive XML stanzas through the server. There are two connection methods: "accept" and "connect". When the "accept" method is used, the server waits for connections from components and accepts them when they are initiated by a component. When the "connect" method is used, the server initiates the connection to a component. The "accept" method is by far the most common method, but both are documented herein. (In the past, there has been one other connection method for external components: "execute". However, this method is obsolete and is not documented herein.)</p>
+  <p>An external component is called "trusted" because it authenticates with a server using authentication credentials that include a shared secret. This secret is commonly specified in the configuration files used by the server and component, but could be provided at runtime on the command line or extracted from a database. An external component is commonly trusted to do things that clients cannot, such as write 'from' addresses for the server's domain(s). Some server may also allow components to send packets that are used by the server's internal protocol (e.g., &lt;log/&gt; and &lt;xdb/&gt; packets in the jabberd 1.x series); however, those internal protocols are out of scope for this document.</p>
+<h2>3.
+       <a name="proto" id="proto">Protocol Flow</a></h2>
+  <p>The main difference between the jabber:component:* namespaces and the 'jabber:client' or 'jabber:server' namespace is authentication. External components do not use the obsolete <span class="ref"><a href="http://xmpp.org/extensions/xep-0078.html">Non-SASL Authentication (XEP-0078)</a></span>  [<a href="#nt-idp633296">2</a>] protocol (i.e., the 'jabber:iq:auth' namespace), nor do they (yet) use SASL authentication as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp636144">3</a>] (although a future component protocol would most likely use SASL). Instead, they use a special &lt;handshake/&gt; element whose XML character data specifies credentials for the component's session with the server. The protocol flow for stream negotiation and authentication using jabber:component:accept is as follows:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Component sends stream header to server</p><div class="indent"><pre class="prettyprint">
+&lt;stream:stream
+    xmlns='jabber:component:accept'
+    xmlns:stream='http://etherx.jabber.org/streams'
+    to='plays.shakespeare.lit'&gt;
+    </pre></div>
+    <p>Note: In the 'jabber:component:accept' namespace, the value of the 'to' address is the component name, not the server name;  [<a href="#nt-idp1485312">4</a>] this enables the server to determine whether it will service a component of that name (e.g., based on server configuration or some other implementation-specific mechanism). If so, the server MUST reply with a stream header.</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server replies with stream header, including StreamID</p><div class="indent"><pre class="prettyprint">
+&lt;stream:stream
+    xmlns:stream='http://etherx.jabber.org/streams'
+    xmlns='jabber:component:accept'
+    from='plays.shakespeare.lit'
+    id='3BF96D32'&gt;
+    </pre></div>
+    <p>If the server will not service the component name specified in the 'to' attribute of the stream header, it MUST return a stream error (e.g., &lt;conflict/&gt; or &lt;host-unknown/&gt;). If the server does not recognize or support the namespace specified in the stream header (e.g., it does not support streams qualified by the 'jabber:component:accept' namespace), it MUST return an &lt;invalid-namespace/&gt; stream error. For all errors related to the stream header, the server MUST follow the rules in Section 4.7.1 of <span class="ref">XMPP Core</span> by returning an opening stream tag, stream error element, and closing stream tag rather than merely a stream error element (refer to <span class="ref">RFC 3920</span> for details).</p> 
+    <p>After receiving the stream header reply from the server, the component MUST send a &lt;handshake/&gt; element with appropriate contents.  [<a href="#nt-idp1489696">5</a>]</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Component sends handshake element</p><div class="indent"><pre class="prettyprint">
+&lt;handshake&gt;aaee83c26aeeafcbabeabfcbcd50df997e0a2a1e&lt;/handshake&gt;
+    </pre></div>
+    <p>The XML character data of the handshake element is computed according to the following algorithm:</p>
+    <ol>
+      <li>Concatenate the Stream ID received from the server with the shared secret.</li>
+      <li>Hash the concatenated string according to the SHA1 algorithm, i.e., SHA1( concat (sid, password)).</li>
+      <li>Ensure that the hash output is in hexadecimal format, not binary or base64.</li>
+      <li>Convert the hash output to all lowercase characters.</li>
+    </ol>
+    <p>If the credentials supplied by the initiator are not valid, the receiver MUST close the stream and the underlying TCP connection, and SHOULD return a &lt;not-authorized/&gt; stream error.</p>
+    <p>If the credentials are acceptable, the receiving application (in this case the server) MUST return an empty &lt;handshake/&gt; element.</p> 
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server sends empty handshake element to acknowledge success</p><div class="indent"><pre class="prettyprint">
+&lt;handshake/&gt;
+    </pre></div>
+    <p>Once authenticated, the component can send stanzas through the server and receive stanzas from the server. All stanzas sent to the server MUST possess a 'from' attribute and a 'to' attribute, as in the 'jabber:server' namespace. The domain identifier portion of the JID contained in the 'from' attribute MUST match the hostname of the component. However, this is the only restriction on 'from' addresses, and the component MAY send stanzas from any user at its hostname.</p>
+<h2>4.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Given that an external component is trusted to write 'from' addresses for any user at the component's hostname, server administrators SHOULD make sure that they in fact do trust the component software.</p>
+<h2>5.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1501504">6</a>]</p>
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1505168">7</a>] includes 'jabber:component:accept' and 'jabber:component:connect' in its registry of protocol namespaces.</p>
+<h2>7.
+       <a name="schema" id="schema">XML Schemas</a></h2>
+  <div class="indent"><h3>7.1 <a name="schema-accept" id="schema-accept">jabber:component:accept</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:xml='http://www.w3.org/XML/1998/namespace'
+    targetNamespace='jabber:component:accept'
+    xmlns='jabber:component:accept'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0114: http://xmpp.org/extensions/xep-0114.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='urn:ietf:params:xml:ns:xmpp-stanzas'
+             schemaLocation='http://xmpp.org/schemas/stanzaerror.xsd'/&gt;
+
+  &lt;xs:import namespace='http://www.w3.org/XML/1998/namespace'
+             schemaLocation='http://www.w3.org/2001/03/xml.xsd'/&gt;
+
+  &lt;xs:element name='handshake' type='xs:string'/&gt;
+
+  &lt;xs:element name='message'&gt;
+     &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+            &lt;xs:element ref='subject'/&gt;
+            &lt;xs:element ref='body'/&gt;
+            &lt;xs:element ref='thread'/&gt;
+          &lt;/xs:choice&gt;
+          &lt;xs:any     namespace='##other'
+                      minOccurs='0'
+                      maxOccurs='unbounded'/&gt;
+          &lt;xs:element ref='error'
+                      minOccurs='0'/&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute name='from'
+                      type='xs:string'
+                      use='required'/&gt;
+        &lt;xs:attribute name='id'
+                      type='xs:NMTOKEN'
+                      use='optional'/&gt;
+        &lt;xs:attribute name='to'
+                      type='xs:string'
+                      use='required'/&gt;
+        &lt;xs:attribute name='type' use='optional' default='normal'&gt;
+          &lt;xs:simpleType&gt;
+            &lt;xs:restriction base='xs:NCName'&gt;
+              &lt;xs:enumeration value='chat'/&gt;
+              &lt;xs:enumeration value='error'/&gt;
+              &lt;xs:enumeration value='groupchat'/&gt;
+              &lt;xs:enumeration value='headline'/&gt;
+              &lt;xs:enumeration value='normal'/&gt;
+            &lt;/xs:restriction&gt;
+          &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+     &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='body'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='subject'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='thread' type='xs:NMTOKEN'/&gt;
+
+  &lt;xs:element name='presence'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+          &lt;xs:element ref='show'/&gt;
+          &lt;xs:element ref='status'/&gt;
+          &lt;xs:element ref='priority'/&gt;
+        &lt;/xs:choice&gt;
+        &lt;xs:any     namespace='##other'
+                    minOccurs='0'
+                    maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='error'
+                    minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='from'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='id'
+                    type='xs:NMTOKEN'
+                    use='optional'/&gt;
+      &lt;xs:attribute name='to'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='type' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='subscribe'/&gt;
+            &lt;xs:enumeration value='subscribed'/&gt;
+            &lt;xs:enumeration value='unsubscribe'/&gt;
+            &lt;xs:enumeration value='unsubscribed'/&gt;
+            &lt;xs:enumeration value='unavailable'/&gt;
+            &lt;xs:enumeration value='probe'/&gt;
+            &lt;xs:enumeration value='error'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='show'&gt;
+    &lt;xs:simpleType&gt;
+      &lt;xs:restriction base='xs:NCName'&gt;
+        &lt;xs:enumeration value='away'/&gt;
+        &lt;xs:enumeration value='chat'/&gt;
+        &lt;xs:enumeration value='dnd'/&gt;
+        &lt;xs:enumeration value='xa'/&gt;
+      &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='status'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='priority' type='xs:byte'/&gt;
+
+  &lt;xs:element name='iq'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:any     namespace='##other'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+        &lt;xs:element ref='error'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='from'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='id'
+                    type='xs:NMTOKEN'
+                    use='required'/&gt;
+      &lt;xs:attribute name='to'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='type' use='required'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='get'/&gt;
+            &lt;xs:enumeration value='set'/&gt;
+            &lt;xs:enumeration value='result'/&gt;
+            &lt;xs:enumeration value='error'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='error'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence  xmlns:err='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;
+        &lt;xs:group   ref='err:stanzaErrorGroup'/&gt;
+        &lt;xs:element ref='err:text'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='by' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='type' use='required'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NMTOKEN'&gt;
+            &lt;xs:enumeration value='cancel'/&gt;
+            &lt;xs:enumeration value='continue'/&gt;
+            &lt;xs:enumeration value='modify'/&gt;
+            &lt;xs:enumeration value='auth'/&gt;
+            &lt;xs:enumeration value='wait'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>7.2 <a name="schema-connect" id="schema-connect">jabber:component:connect</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:xml='http://www.w3.org/XML/1998/namespace'
+    targetNamespace='jabber:component:connect'
+    xmlns='jabber:component:connect'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0114: http://xmpp.org/extensions/xep-0114.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='urn:ietf:params:xml:ns:xmpp-stanzas'
+             schemaLocation='http://xmpp.org/schemas/stanzaerror.xsd'/&gt;
+
+  &lt;xs:import namespace='http://www.w3.org/XML/1998/namespace'
+             schemaLocation='http://www.w3.org/2001/03/xml.xsd'/&gt;
+
+  &lt;xs:element name='handshake' type='xs:string'/&gt;
+
+  &lt;xs:element name='message'&gt;
+     &lt;xs:complexType&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+            &lt;xs:element ref='subject'/&gt;
+            &lt;xs:element ref='body'/&gt;
+            &lt;xs:element ref='thread'/&gt;
+          &lt;/xs:choice&gt;
+          &lt;xs:any     namespace='##other'
+                      minOccurs='0'
+                      maxOccurs='unbounded'/&gt;
+          &lt;xs:element ref='error'
+                      minOccurs='0'/&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute name='from'
+                      type='xs:string'
+                      use='required'/&gt;
+        &lt;xs:attribute name='id'
+                      type='xs:NMTOKEN'
+                      use='optional'/&gt;
+        &lt;xs:attribute name='to'
+                      type='xs:string'
+                      use='required'/&gt;
+        &lt;xs:attribute name='type' use='optional' default='normal'&gt;
+          &lt;xs:simpleType&gt;
+            &lt;xs:restriction base='xs:NCName'&gt;
+              &lt;xs:enumeration value='chat'/&gt;
+              &lt;xs:enumeration value='error'/&gt;
+              &lt;xs:enumeration value='groupchat'/&gt;
+              &lt;xs:enumeration value='headline'/&gt;
+              &lt;xs:enumeration value='normal'/&gt;
+            &lt;/xs:restriction&gt;
+          &lt;/xs:simpleType&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+     &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='body'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='subject'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='thread' type='xs:NMTOKEN'/&gt;
+
+  &lt;xs:element name='presence'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;
+          &lt;xs:element ref='show'/&gt;
+          &lt;xs:element ref='status'/&gt;
+          &lt;xs:element ref='priority'/&gt;
+        &lt;/xs:choice&gt;
+        &lt;xs:any     namespace='##other'
+                    minOccurs='0'
+                    maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='error'
+                    minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='from'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='id'
+                    type='xs:NMTOKEN'
+                    use='optional'/&gt;
+      &lt;xs:attribute name='to'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='type' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='subscribe'/&gt;
+            &lt;xs:enumeration value='subscribed'/&gt;
+            &lt;xs:enumeration value='unsubscribe'/&gt;
+            &lt;xs:enumeration value='unsubscribed'/&gt;
+            &lt;xs:enumeration value='unavailable'/&gt;
+            &lt;xs:enumeration value='probe'/&gt;
+            &lt;xs:enumeration value='error'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='show'&gt;
+    &lt;xs:simpleType&gt;
+      &lt;xs:restriction base='xs:NCName'&gt;
+        &lt;xs:enumeration value='away'/&gt;
+        &lt;xs:enumeration value='chat'/&gt;
+        &lt;xs:enumeration value='dnd'/&gt;
+        &lt;xs:enumeration value='xa'/&gt;
+      &lt;/xs:restriction&gt;
+    &lt;/xs:simpleType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='status'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='priority' type='xs:byte'/&gt;
+
+  &lt;xs:element name='iq'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:any     namespace='##other'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+        &lt;xs:element ref='error'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='from'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='id'
+                    type='xs:NMTOKEN'
+                    use='required'/&gt;
+      &lt;xs:attribute name='to'
+                    type='xs:string'
+                    use='required'/&gt;
+      &lt;xs:attribute name='type' use='required'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='get'/&gt;
+            &lt;xs:enumeration value='set'/&gt;
+            &lt;xs:enumeration value='result'/&gt;
+            &lt;xs:enumeration value='error'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='error'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence  xmlns:err='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;
+        &lt;xs:group   ref='err:streamErrorGroup'/&gt;
+        &lt;xs:element ref='err:text'
+                    minOccurs='0'
+                    maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='by' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='type' use='required'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NMTOKEN'&gt;
+            &lt;xs:enumeration value='cancel'/&gt;
+            &lt;xs:enumeration value='continue'/&gt;
+            &lt;xs:enumeration value='modify'/&gt;
+            &lt;xs:enumeration value='auth'/&gt;
+            &lt;xs:enumeration value='wait'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0114<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.6<br />
+            Last Updated: 2012-01-25<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: component<br />
+        XML Schema for jabber:component:accept namespace: &lt;<a href="http://xmpp.org/schemas/component-accept.xsd">http://xmpp.org/schemas/component-accept.xsd</a>&gt;<br />
+        XML Schema for jabber:component:connect namespace: &lt;<a href="http://xmpp.org/schemas/component-connect.xsd">http://xmpp.org/schemas/component-connect.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0114.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0114.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0114.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp626592" id="nt-idp626592">1</a>. The jabberd server is the original server implementation of the Jabber/XMPP protocols, first developed by Jeremie Miller, inventor of Jabber. For further information, see &lt;<a href="http://jabberd.org/">http://jabberd.org/</a>&gt;.</p><p><a name="nt-idp633296" id="nt-idp633296">2</a>. XEP-0078: Non-SASL Authentication &lt;<a href="http://xmpp.org/extensions/xep-0078.html">http://xmpp.org/extensions/xep-0078.html</a>&gt;.</p><p><a name="nt-idp636144" id="nt-idp636144">3</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1485312" id="nt-idp1485312">4</a>. In the 'jabber:component:connect' namespace, the server would set the 'from' attribute to the component name.</p><p><a name="nt-idp1489696" id="nt-idp1489696">5</a>. The handshake value is always supplied by the initiator. Thus for jabber:component:accept connections, the handshake value is provided by the component, whereas for jabber:component:connect connections, the handshake value is provided by the server.</p><p><a name="nt-idp1501504" id="nt-idp1501504">6</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1505168" id="nt-idp1505168">7</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.6 (2012-01-25)</h4><div class="indent">Removed unnecessary and unimplemented requirement to escape predefined XML entities. (psa)
+    </div><h4>Version 1.5 (2005-03-03)</h4><div class="indent">Clarified handling of errors related to initial stream header and referred the reader to RFC 3920 for details. (psa)
+    </div><h4>Version 1.4 (2004-11-05)</h4><div class="indent">Corrected error regarding to and from attributes. (psa)
+    </div><h4>Version 1.3 (2004-07-21)</h4><div class="indent">Removed reference to UTF-16; further modified schema to track XMPP specifications. (psa)
+    </div><h4>Version 1.2 (2004-03-01)</h4><div class="indent">Modified schema to track XMPP specifications. (psa)
+    </div><h4>Version 1.1 (2004-01-06)</h4><div class="indent">Added schema. (psa)
+    </div><h4>Version 1.0 (2003-10-08)</h4><div class="indent">Per a vote of the Jabber Council, changed status to Active. (psa)
+    </div><h4>Version 0.1 (2003-08-26)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,981 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0116: Encrypted Session Negotiation</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Encrypted Session Negotiation" /><meta name="DC.Creator" content="Ian Paterson" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Dave Smith" /><meta name="DC.Description" content="This document specifies an XMPP protocol extension for negotiating an end-to-end encrypted session." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2007-05-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0116" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0116: Encrypted Session Negotiation</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies an XMPP protocol extension for negotiating an end-to-end encrypted session.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ian Paterson, Peter Saint-Andre, Dave Smith</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.16</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2007-05-30</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#personae">Dramatis Personae</a><br />3.  <a href="#disco">Discovering Support</a><br />4.  <a href="#init">Online ESession Negotiation</a><br />   
+      4.1.  <a href="#init-intro">Introduction</a><br />   
+      4.2.  <a href="#init-variants">Three- or Four-Message Negotiation?</a><br />   
+      4.3.  <a href="#init-online-request">ESession Request (Alice)</a><br />   
+      4.4.  <a href="#init-online-reject">ESession Rejection (Bob)</a><br />   
+      4.5.  <a href="#init-response">ESession Response (Bob)</a><br />      
+      4.5.1.  <a href="#init-online-bobprep">Diffie-Hellman Preparation (Bob)</a><br />      
+      4.5.2.  <a href="#init-online-form">Response Form</a><br />      
+      4.5.3.  <a href="#init-keys">Generating Session Keys</a><br />      
+      4.5.4.  <a href="#init-hide">Hiding Bob's Identity</a><br />      
+      4.5.5.  <a href="#init-online-send3">Sending the Response (3-message negotiations)</a><br />   
+      4.6.  <a href="#init-acceptalice">ESession Accept (Alice)</a><br />      
+      4.6.1.  <a href="#init-acceptalice-prep">Diffie-Hellman Preparation (Alice)</a><br />      
+      4.6.2.  <a href="#init-online-bobid">Verifying Bob's Identity</a><br />      
+      4.6.3.  <a href="#init-acceptalice-hide">Hiding Alice's Identity</a><br />      
+      4.6.4.  <a href="#init-acceptalice-send">Sending Alice's Identity</a><br />   
+      4.7.  <a href="#init-acceptbob">ESession Accept (Bob)</a><br />      
+      4.7.1.  <a href="#init-acceptbob-verify">Verifying Alice's Identity</a><br />      
+      4.7.2.  <a href="#init-acceptbob-sas">Short Authentication String</a><br />      
+      4.7.3.  <a href="#init-finalbob">Generating Bob's Final Session Keys</a><br />      
+      4.7.4.  <a href="#init-acceptbob-send">Sending Bob's Identity</a><br />   
+      4.8.  <a href="#init-complete">Final Steps (Alice)</a><br />      
+      4.8.1.  <a href="#init-finalalice">Generating Alice's Final Session Keys</a><br />      
+      4.8.2.  <a href="#init-complete-verify">Verifying Bob's Identity</a><br />5.  <a href="#terminate">ESession Termination</a><br />6.  <a href="#implement">Implementation Notes</a><br />   
+      6.1.  <a href="#sign-bigint">Multiple-Precision Integers</a><br />   
+      6.2.  <a href="#sign-normal">XML Normalization</a><br />7.  <a href="#sec">Security Considerations</a><br />   
+      7.1.  <a href="#sec-prng">Random Numbers</a><br />   
+      7.2.  <a href="#sec-replay">Replay Attacks</a><br />   
+      7.3.  <a href="#sec-keys">Verifying Keys</a><br />   
+      7.4.  <a href="#sec-associations">Key Associations</a><br />   
+      7.5.  <a href="#sec-unencrypted">Unencrypted ESessions</a><br />   
+      7.6.  <a href="#sec-backdoor">Back Doors</a><br />   
+      7.7.  <a href="#sec-general">Extra Responsabilities of Implementors</a><br />8.  <a href="#sec-mandatory">Mandatory to Implement Technologies</a><br />   
+      8.1.  <a href="#sec-mandatory-encryption">Block Cipher Algorithms</a><br />   
+      8.2.  <a href="#sec-mandatory-sign">Key Signing Algorithms</a><br />   
+      8.3.  <a href="#sec-mandatory-public">Public Signature-Verification-Key Formats</a><br />   
+      8.4.  <a href="#sec-mandatory-hash">Hash Algorithms</a><br />   
+      8.5.  <a href="#sec-mandatory-sas">Short Authentication String Generation Algorithms</a><br />   
+      8.6.  <a href="#sec-mandatory-compress">Compression Algorithms</a><br />9.  <a href="#sas">The sas28x5 SAS Algorithm</a><br />10.  <a href="#iana">IANA Considerations</a><br />11.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      11.1.  <a href="#ns">Protocol Namespaces</a><br />   
+      11.2.  <a href="#registrar-formtype">Field Standardization</a><br />12.  <a href="#open">Open Issues</a><br />   
+      12.1.  <a href="#open-tothink">To Think About</a><br />   
+      12.2.  <a href="#open-todo">To Do</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>End-to-end encryption is a desirable feature for any communication technology. Ideally, such a technology would design encryption in from the beginning and would forbid unencrypted communications. Realistically, most communication technologies have not been designed in that manner, and Jabber/XMPP technologies are no exception. In particular, the original Jabber technologies developed in 1999 did not include end-to-end encryption by default. PGP-based encryption of message bodies and signing of presence information was added as an extension to the core protocols in the year 2000; this extension is documented in <span class="ref"><a href="http://xmpp.org/extensions/xep-0027.html">Current Jabber OpenPGP Usage (XEP-0027)</a></span>  [<a href="#nt-idp1519616">1</a>]. When the core protocols were formalized within the Internet Standards Process by the IETF's XMPP Working Group in 2003 (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3920">RFC 3920</a></span>  [<a href="#nt-idp1522288">2</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc3921">RFC 3921</a></span>  [<a href="#nt-idp1524640">3</a>]), a different extension was defined using S/MIME-based signing and encryption of CPIM-formatted messages (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3862">RFC 3862</a></span>  [<a href="#nt-idp1527168">4</a>]) and PIDF-formatted presence information (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3863">RFC 3863</a></span>  [<a href="#nt-idp1529648">5</a>]); this extension is specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc3923">RFC 3923</a></span>  [<a href="#nt-idp1531840">6</a>].</p>
+  <p>For reasons described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0210.html">Requirements for Encrypted Sessions (XEP-0210)</a></span>  [<a href="#nt-idp1534352">7</a>], the foregoing proposals (and others not mentioned) have not been widely implemented and deployed. This is unfortunate, since an open communication protocol needs to enable end-to-end encryption in order to be seriously considered for deployment by a broad range of users.</p>
+  <p>This proposal describes a different approach to end-to-end encryption for use by entities that communicate using XMPP. The requirements and the consequent cryptographic design that underpin this protocol are described in <span class="ref">Requirements for Encrypted Sessions</span> and <span class="ref"><a href="http://xmpp.org/extensions/xep-0188.html">Cryptographic Design of Encrypted Sessions (XEP-0188)</a></span>  [<a href="#nt-idp1537744">8</a>]. The basic concept is that of an encrypted session which acts as a secure tunnel between two endpoints. Once the tunnel is established, the content of each one-to-one XML stanza exchanged between the endpoints will be encrypted and then transmitted within a "wrapper" stanza using <span class="ref"><a href="http://xmpp.org/extensions/xep-0200.html">Stanza Encryption (XEP-0200)</a></span>  [<a href="#nt-idp1540384">9</a>].</p>
+  <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0217.html">Simplified Encrypted Session Negotiation (XEP-0217)</a></span>  [<a href="#nt-idp1542896">10</a>] describes a minimal subset of this protocol chosen to enable developers to produce working code before they have finished implementing the optional parts of this protocol.</p>
+<h2>2.
+       <a name="personae" id="personae">Dramatis Personae</a></h2>
+  <p>This document introduces two characters to help the reader follow the necessary exchanges:</p>
+  <ol start="1">
+    <li>"Alice" is the name of the initiator of the ESession. Within the scope of this document, we stipulate that her fully-qualified JID is: &lt;alice@example.org/pda&gt;.</li>
+    <li>"Bob" is the name of the other participant in the ESession started by Alice. Within the scope of this document, his fully-qualified JID is: &lt;bob@example.com/laptop&gt;.</li>
+    <li>"Aunt Tillie" the archetypal typical user (i.e. non-technical, with only very limited knowledge of how to use a computer, and averse to performing any procedures that are not familiar).</li>
+  </ol>
+  <p>While Alice and Bob are introduced as "end users", they are simply meant to be examples of XMPP entities. Any directly addressable XMPP entity may participate in an ESession.</p>
+<h2>3.
+       <a name="disco" id="disco">Discovering Support</a></h2>
+  <p>Before attempting to engage in an ESession with Bob, Alice MAY discover whether he supports this protocol, using either <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1551088">11</a>] or the presence-based profile of <span class="ref">XEP-0030</span> specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp1553664">12</a>].</p>
+  <p>The normal course of events is for Alice to authenticate with her server, retrieve her roster (see <span class="ref">RFC 3921</span>), send initial presence to her server, and then receive presence information from all the contacts in her roster. If the presence information she receives from some contacts does not include capabilities data (per <span class="ref">XEP-0115</span>), Alice SHOULD then send a service discovery information ("disco#info") request to each of those contacts (in accordance with <span class="ref">XEP-0030</span>). Such initial service discovery stanzas MUST NOT be considered part of encrypted communication sessions for the purposes of this document, since they perform a "bootstrapping" function that is a prerequisite to encrypted communications. The disco#info request sent from Alice to Bob might look as follows:</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Alice Queries Bob for ESession Support via Disco</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='alice@example.org/pda'
+    to='bob@example.com/laptop'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If Bob sends a disco#info reply and he supports the protocol defined herein, then he MUST include a service discovery feature variable of "http://www.xmpp.org/extensions/xep-0116.html#ns" (see <a href="#ns">Protocol Namespaces</a> regarding issuance of one or more permanent namespaces).</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Bob Returns disco#info Data</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='bob@example.com/laptop'
+    to='alice@example.org/pda'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='client' type='pc'/&gt;
+    ...
+    &lt;feature var='http://www.xmpp.org/extensions/xep-0116.html#ns'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>4.
+       <a name="init" id="init">Online ESession Negotiation</a></h2>
+    <div class="indent"><h3>4.1 <a name="init-intro" id="init-intro">Introduction</a></h3>
+      <p>The process for establishing a secure session over an insecure transport is essentially a negotiation of various ESession algorithms and other parameters, combined with a translation into XMPP syntax of the <span class="ref"><a href="http://web.archive.org/web/20040409013835/http://www.ee.technion.ac.il/~hugo/sigma.ps">SIGMA</a></span>  [<a href="#nt-idp1562080">13</a>] approach to key exchange (see <span class="ref">Cryptographic Design of Encrypted Sessions</span>).</p>
+      <p>If Alice believes Bob may be online then she SHOULD use the protocol specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0155.html">Stanza Session Negotiation (XEP-0155)</a></span>  [<a href="#nt-idp1567856">14</a>] and in this section to negotiate the ESession options and the keys.</p>
+      <p>Note: If Alice believes Bob is offline then she SHOULD NOT use this negotiation protocol. However, she MAY use the protocol specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0187.html">Offline Encrypted Sessions (XEP-0187)</a></span>  [<a href="#nt-idp1570592">15</a>] to establish the ESession options and keys. Alternatively, she MAY send stanzas without encryption - in which case her client MUST make absolutely clear to her that the stanzas will not be protected and give her the option not to send the stanzas.</p>
+    </div>
+
+    <div class="indent"><h3>4.2 <a name="init-variants" id="init-variants">Three- or Four-Message Negotiation?</a></h3>
+      <p>This protocol supports both 3- and 4-message key negotiations.</p>
+      <p>The 3-message SIGMA-I-based key exchange (see <a href="http://www.xmpp.org/extensions/xep-0188.html#design-online-i">useful summary of 3-message negotiation</a>) protects the identity of the <span class="em">initiator</span> against active attacks. This SHOULD NOT be used to establish client-to-client sessions since the <span class="em">responder's</span> identity is not protected against active attacks. However, it SHOULD be used to establish client-to-service (server) sessions, especially where the identity of the service is well known to third parties.</p>
+      <p>The 4-message SIGMA-R-based key exchange (see <a href="http://www.xmpp.org/extensions/xep-0188.html#design-online-r">useful summary of 4-message negotiation</a>) with hash commitment defends the <span class="em">responder's</span> identity against active attacks and facilitates detection of a Man in the Middle attack. It SHOULD be used to establish client-to-client sessions. The 4-message key exchange also includes the following optional security enhancements:</p>
+      <ul>
+        <li><p>"Secret Retention": If retained secrets are employed <span class="em">consistently</span> during key exchanges, then the Man in the Middle would need to be present for every session, including the first. Sessions remain secure even if a long-lived private signing key is compromised at some time <span class="em">after</span> the first session.</p></li>
+        <li><p>"Short-Authentication-String": Alice and Bob can use SAS once to quickly authenticate each other's public keys. Only a very short human-friendly string needs to be verified out-of-band (e.g. by recognizable voice communication).</p>
+            <p>Alternatively, thanks to its protection against Man-in-the-Middle attacks, SAS can be used to eliminate the need to generate, distribute or authenticate any public keys. Note: When this protocol is being used without public keys Alice and Bob SHOULD employ Secret Retention, then the out-of-band verification only needs to be performed once to verify the absence of a Man in the Middle for all sessions (past, present and future).  [<a href="#nt-idp1579088">16</a>]</p></li>
+        <li><p>"Other Secret": Alice and Bob agree a password out-of-band and their clients use it to authenticate each other every time a session is negotiated.</p></li>
+      </ul>
+    </div>
+
+    <div class="indent"><h3>4.3 <a name="init-online-request" id="init-online-request">ESession Request (Alice)</a></h3>
+      <p>In addition to the "accept", "security", "logging" and "disclosure" fields (see <a href="#sec-backdoor">Back Doors</a>) specified in <span class="ref">Stanza Session Negotiation</span>, Alice MUST send to Bob each of the ESession options (see list below) that she is willing to use (see <a href="#sec-mandatory">Mandatory to Implement Technologies</a>).</p>
+      <ol>
+        <li><p>The list of Modular Exponential (MODP) group numbers (as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc2409">RFC 2409</a></span>  [<a href="#nt-idp1586944">17</a>] or <span class="ref"><a href="http://tools.ietf.org/html/rfc3526">RFC 3526</a></span>  [<a href="#nt-idp1589488">18</a>]) that MAY be used for Diffie-Hellman key exchange in a "modp" field (valid group numbers include 1,2,3,4,5,14,15,16,17 and 18)  [<a href="#nt-idp1585648">19</a>]</p></li>
+        <li><p>Symmetric block cipher algorithm names in a "crypt_algs" field</p></li>
+        <li><p>Hash algorithm names in a "hash_algs" field</p></li>
+        <li><p>Compression algorithm names in a "compress" field</p></li>
+        <li><p>Short Authentication String generation algorithm names in a "sas_algs" field</p></li>
+        <li><p>The list of stanza types that MAY be encrypted and decrypted in a "stanzas" field (message, presence, iq)</p></li>
+        <li><p>The different versions of this protocol that are supported in a "ver" field  [<a href="#nt-idp1593008">20</a>]</p></li>
+        <li><p>The minimum number of stanzas that MUST be exchanged before an entity MAY initiate a key re-exchange in a "rekey_freq" field (1 - every stanza, 100 - every hundred stanzas). Note: This value MUST be less than 2<span class="super">32</span> (see <a href="#sec-rekey">Re-Keying Limits</a>)</p></li>
+        <li><p>The methods of identification of the other entity that would be acceptable, and the methods of identification that this entity is prepared to offer ("init_pubkey" and "resp_pubkey" parameters). The values of these two parameters MUST be either 'key' (a public signature-verification key wrapped in a &lt;KeyValue/&gt; element as specified in <span class="ref"><a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/">XML Signature</a></span>  [<a href="#nt-idp1599072">21</a>]), or 'hash' (a fingerprint of the public key - the result of processing the <a href="#sign-normal">Normalized</a> &lt;KeyValue/&gt; element with the selected hash algorithm, "HASH")  [<a href="#nt-idp1597536">22</a>], or 'none' (no authentication via public keys). Note: 'none' MUST NOT be specified with 3-message negotiation.</p></li>
+        <li><p>Signature algorithm names (unless the values of the "init_pubkey" and "resp_pubkey" parameters are fixed to 'none')</p></li>
+      </ol>
+      <p>Each MODP group has at least two well known constants: a large prime number p, and a generator g for a subgroup of GF(p). For <span class="em">each</span> MODP group that Alice specifies she MUST perform the following computations to calculate her Diffie-Hellman keys (where n is the number of bits per cipher block for the block cipher algorithm with the largest block size out of those she specified):</p>
+      <ol>
+        <li><p>Generate: a secret random number x (where 2<span class="super">2n-1</span> &lt; x &lt; p - 1)</p></li>
+        <li><p>Calculate: e = g<span class="super">x</span> mod p</p></li>
+        <li><p>Calculate: He = SHA256(e) (see <span class="ref"><a href="http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf">SHA</a></span>  [<a href="#nt-idp1609328">23</a>])</p></li>
+      </ol>
+      <p>Note: The last step is not necessary for 3-message negotiations.</p>
+      <p>Alice MUST send all her calculated values of 'He' (for 4-message negotiations) or 'e' (for 3-message negotiations) to Bob (in a "dhhashes" field in the same order as the associated MODP groups are being sent) Base64 encoded (in accordance with Section 4 of <span class="ref"><a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a></span>  [<a href="#nt-idp1612672">24</a>]). She MUST also specify a randomly generated Base64 encoded value of N<span class="sub">A</span> (her ESession ID in a "my_nonce" field).</p>
+      <p>The options in each field MUST appear in Alice's order of preference.</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Initiates a 4-message ESession Negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;message from='alice@example.org/pda' to='bob@example.com'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='form' xmlns='jabber:x:data'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:ssn&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='boolean' var='accept'&gt;
+        &lt;value&gt;1&lt;/value&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='logging'&gt;
+        &lt;option&gt;&lt;value&gt;false&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;true&lt;/value&gt;&lt;/option&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='disclosure'&gt;
+        &lt;option&gt;&lt;value&gt;never&lt;/value&gt;&lt;/option&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='security'&gt;
+        &lt;option&gt;&lt;value&gt;e2e&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;c2s&lt;/value&gt;&lt;/option&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='modp'&gt;
+        &lt;option&gt;&lt;value&gt;5&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;14&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;2&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;1&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='crypt_algs'&gt;
+        &lt;option&gt;&lt;value&gt;aes256-ctr&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;twofish256-ctr&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;aes128-ctr&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='hash_algs'&gt;
+        &lt;option&gt;&lt;value&gt;whirlpool&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;sha256&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='sign_algs'&gt;
+        &lt;option&gt;&lt;value&gt;http://www.w3.org/2000/09/xmldsig#rsa-sha256&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;http://www.w3.org/2000/09/xmldsig#dsa-sha256&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='compress'&gt;
+        &lt;option&gt;&lt;value&gt;none&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-multi' var='stanzas'&gt;
+        &lt;option&gt;&lt;value&gt;message&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;iq&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;presence&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='init_pubkey'&gt;
+        &lt;option&gt;&lt;value&gt;key&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;hash&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;none&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='resp_pubkey'&gt;
+        &lt;option&gt;&lt;value&gt;key&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;hash&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;none&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='ver'&gt;
+        &lt;option&gt;&lt;value&gt;1.3&lt;/value&gt;&lt;/option&gt;
+        &lt;option&gt;&lt;value&gt;1.2&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='rekey_freq'&gt;
+        &lt;value&gt;1&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='my_nonce'&gt;
+        &lt;value&gt; ** Alice's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='sas_algs'&gt;
+        &lt;option&gt;&lt;value&gt;sas28x5&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='dhhashes'&gt;
+        &lt;value&gt; ** Base64 encoded value of He5 ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded value of He14 ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded value of He2 ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded value of He1 ** &lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp' per-hop='true'&gt;
+    &lt;rule action='drop' condition='deliver' value='stored'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>The first message of a 3-message negotiation is identical except there MUST be no 'sas_algs' field and a 'dhkeys' field MUST be included instead of the 'dhhashes' field:</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Alice Initiates a 3-message ESession Negotiation</p><div class="indent"><pre class="prettyprint">
+&lt;message from='alice@example.org/pda' to='bob@example.com'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='form' xmlns='jabber:x:data'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:ssn&lt;/value&gt;
+      &lt;/field&gt;
+      ...
+      ...
+      ...
+      &lt;field type='hidden' var='my_nonce'&gt;
+        &lt;value&gt; ** Alice's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='dhkeys'&gt;
+        &lt;value&gt; ** Base64 encoded value of e5 ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded value of e14 ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded value of e2 ** &lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;amp xmlns='http://jabber.org/protocol/amp' per-hop='true'&gt;
+    &lt;rule action='drop' condition='deliver' value='stored'/&gt;
+  &lt;/amp&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+
+    <div class="indent"><h3>4.4 <a name="init-online-reject" id="init-online-reject">ESession Rejection (Bob)</a></h3>
+      <p>If Bob does not want to reveal presence to Alice for whatever reason then Bob SHOULD return no response or error.</p>
+      <p>If Alice initiated a 3-message negotiation but Bob only supports 4-message negotiations (with Alice) then he SHOULD return a &lt;feature-not-implemented/&gt; error specifying the 'dhkeys' field:</p>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Bob Informs Alice that 3-message Negotiation is Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;message type='error'
+         from='bob@example.com/laptop'
+         to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    ...
+  &lt;/feature&gt;
+  &lt;error type='cancel'&gt;
+    &lt;feature-not-implemented xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;field var='dhkeys'/&gt;
+    &lt;/feature&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>If Bob supports <span class="em">none</span> of the options for one or more ESession fields, then he SHOULD return a &lt;not-acceptable/&gt; error specifying the field(s) with unsupported options:</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Bob Informs Alice that Her Options are Not Supported</p><div class="indent"><pre class="prettyprint">
+&lt;message type='error'
+         from='bob@example.com/laptop'
+         to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    ...
+  &lt;/feature&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;field var='modp'/&gt;
+      &lt;field var='ver'/&gt;
+    &lt;/feature&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>Either Bob or Alice MAY attempt to initiate a new ESession after any error during the negotiation process. However, both MUST consider the previous negotiation to have failed and MUST discard any information learned through the previous negotiation.</p>
+      <p>If Bob is unwilling to start an ESession, but he <span class="em">is</span> ready to initiate a one-to-one stanza session with Alice (see <span class="ref">Stanza Session Negotiation</span>), and if Alice included an option for the "security" field with the value "none" or "c2s", then Bob SHOULD accept the stanza session and terminate the ESession negotiation by specifying "none" or "c2s" for the value of the "security" field in his response.</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Bob Accepts Stanza Session</p><div class="indent"><pre class="prettyprint">
+&lt;message from='bob@example.com/laptop' to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='submit' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:ssn&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='accept'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='logging'&gt;&lt;value&gt;true&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='disclosure'&gt;&lt;value&gt;never&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='security'&gt;&lt;value&gt;c2s&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+
+    <div class="indent"><h3>4.5 <a name="init-response" id="init-response">ESession Response (Bob)</a></h3>
+
+      <div class="indent"><h3>4.5.1 <a name="init-online-bobprep" id="init-online-bobprep">Diffie-Hellman Preparation (Bob)</a></h3>
+        <p>If Bob supports one or more of each of Alice's ESession options and is willing to start an ESession with Alice, then he MUST select one of the options from each of the ESession fields he received from Alice including one hash algorithm ("HASH"), and one of the MODP groups (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3766">RFC 3766</a></span>  [<a href="#nt-idp1641616">25</a>] or <span class="ref">RFC 3526</span> for recommendations regarding balancing the sizes of symmetric cipher blocks and Diffie-Hellman moduli) and Alice's corresponding value of 'He' (for 4-message negotiations) or 'e' (for 3-message negotiations).</p>
+        <p>Note: Each MODP group has at least two well known constants: a large prime number p, and a generator g for a subgroup of GF(p).</p>
+        <p>For 3-message negotiations, Bob SHOULD return a &lt;feature-not-implemented/&gt; error unless: 1 &lt; e &lt; p - 1</p>
+        <p>Bob MUST then perform the following computations (where n is the number of bits per cipher block for the selected block cipher algorithm):</p>
+        <ol start="1">
+          <li><p>Generate a random number N<span class="sub">B</span> (his ESession ID)</p></li>
+          <li><p>Generate an n-bit random number C<span class="sub">A</span> (the block cipher counter for stanzas sent from Alice to Bob)</p></li>
+          <li><p>Set C<span class="sub">B</span> = C<span class="sub">A</span> XOR 2<span class="super">n-1</span> (where C<span class="sub">B</span> is the block counter for stanzas sent from Bob to Alice)</p></li>
+          <li><p>Generate a secret random number y (where 2<span class="super">2n-1</span> &lt; y &lt; p - 1)</p></li>
+          <li><p>Calculate d = g<span class="super">y</span> mod p</p></li>
+          <li><p>Calculate K = HASH(e<span class="super">y</span> mod p) (the Diffie-Hellman shared secret)</p></li>
+        </ol>
+        <p>If this is a 4-message negotiation Bob MUST skip the last step above.</p>
+      </div>
+
+      <div class="indent"><h3>4.5.2 <a name="init-online-form" id="init-online-form">Response Form</a></h3>
+        <p>Bob SHOULD generate the form that he will send back to Alice, including his responses for all the fields Alice sent him except that he MUST NOT include a 'dhhashes' field.</p>
+        <p>He MUST set the 'init_pubkey' field to specify what sort of identification he requires from Alice (see <a href="#init-online-request">ESession Request</a>). He MUST set the value of the 'rekey_freq' field to be less than 2<span class="super">32</span> and greater than or equal to the value specified by Alice. Bob MUST place his Base64 encoded values of N<span class="sub">B</span> and d in the 'my_nonce' and 'dhkeys' fields. Note: Bob MUST NOT return Alice's values of N<span class="sub">A</span> and e in these fields.</p>
+        <p>Bob MUST encapsulate the Base64 encoded values of C<span class="sub">A</span> and Alice's N<span class="sub">A</span> in two new 'counter' and 'nonce' fields and append them to the form.</p>
+        <p>If this is a 4-message negotiation Bob SHOULD respond to Alice by sending her the form (form<span class="sub">B</span>) immediately - there is nothing more for him to do until he receives Alice's next message (i.e. he can skip the following sections). If this is a 3-message negotiation Bob MUST NOT send the form until he has completed the steps in the following sections.</p>
+        <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Bob Responds to Alice (4-Message Negotiation only)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='bob@example.com/laptop' to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='submit' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:ssn&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='accept'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='logging'&gt;&lt;value&gt;true&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='disclosure'&gt;&lt;value&gt;never&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='security'&gt;&lt;value&gt;e2e&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='modp'&gt;&lt;value&gt;5&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='crypt_algs'&gt;&lt;value&gt;aes256-ctr&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='hash_algs'&gt;&lt;value&gt;sha256&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='sign_algs'&gt;&lt;value&gt;http://www.w3.org/2000/09/xmldsig#rsa-sha256&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='compress'&gt;&lt;value&gt;none&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='stanzas'&gt;&lt;value&gt;message&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='init_pubkey'&gt;&lt;value&gt;hash&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='resp_pubkey'&gt;&lt;value&gt;hash&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ver'&gt;&lt;value&gt;1.3&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='rekey_freq'&gt;&lt;value&gt;50&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='my_nonce'&gt;
+        &lt;value&gt; ** Bob's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='sas_algs'&gt;&lt;value&gt;sas28x5&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='dhkeys'&gt;
+        &lt;value&gt; ** Base64 encoded value of d ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='nonce'&gt;
+        &lt;value&gt; ** Alice's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='counter'&gt;
+        &lt;value&gt; ** Base64 encoded block counter ** &lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/message&gt;
+        </pre></div>
+      </div>
+
+      <div class="indent"><h3>4.5.3 <a name="init-keys" id="init-keys">Generating Session Keys</a></h3>
+        <p>Bob MUST use HMAC with the selected hash algorithm ("HASH") and the shared secret ("K") to generate two sets of three keys, one set for each direction of the ESession.</p>
+        <p>For stanzas that Alice will send to Bob, the keys are calculated as:</p>
+        <ol>
+          <li><p>Encryption key KC<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, K, "Initiator Cipher Key")</p></li>
+          <li><p>Integrity key KM<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, K, "Initiator MAC Key")</p></li>
+          
+          <li><p>SIGMA key KS<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, K, "Initiator SIGMA Key")</p></li>
+        </ol>
+        <p>For stanzas that Bob will send to Alice the keys are calculated as:</p>
+        <ol start="4">
+          <li><p>Encryption key KC<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, K, "Responder Cipher Key")</p></li>
+          <li><p>Integrity key KM<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, K, "Responder MAC Key")</p></li>
+          <li><p>SIGMA key KS<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, K, "Responder SIGMA Key")</p></li>
+        </ol>
+        <p>Note: As many bits of key data as are needed for each key MUST be taken from the least significant bits of the HMAC output. When negotiating a hash, entities MUST ensure that the hash output is no shorter than the required key data. For algorithms with variable-length keys the maximum length (up to the hash output length) SHOULD be used.</p>
+        <p>Once the sets of keys have been calculated the value of K MUST be securely destroyed, unless it will be used later to generate the final shared secret (see <a href="#init-finalbob">Generating Bob's Final Session Keys</a>.</p>
+      </div>
+
+      <div class="indent"><h3>4.5.4 <a name="init-hide" id="init-hide">Hiding Bob's Identity</a></h3>
+        <p>Bob MUST perform the following steps before he can prove his identity to Alice while protecting it from third parties.</p>
+        <ol>
+				  <li><p>Bob MUST select one method of identification from the values in the 'resp_pubkey' field he received from Alice. If he selects the 'none' method of identification then he MUST set pubKey<span class="sub">B</span> to a zero length string of characters. Otherwise Bob SHOULD select pubKey<span class="sub">B</span>, which MUST be a <a href="#sign-normal">Normalized</a> &lt;KeyValue/&gt; element (as specified in <span class="ref">XML Signature</span>). This is the public key Alice will use to authenticate his signature with the signature algorithm he selected ("SIGN").</p></li>
+          <li><p>Set form<span class="sub">B</span> to be the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of the reponse data form he generated above (see <a href="#init-online-form">Response Form</a>). Note: this MUST NOT include 'identity' or 'mac' fields.</p></li>
+          <li><p>Concatenate Alice's ESession ID, Bob's ESession ID, d, pubKey<span class="sub">B</span> and form<span class="sub">B</span>, and calculate the HMAC of the resulting byte string using the selected hash algorithm ("HASH") and the key KS<span class="sub">B</span>.</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, KS<span class="sub">B</span>, {N<span class="sub">A</span>, N<span class="sub">B</span>, d, pubKey<span class="sub">B</span>, form<span class="sub">B</span>})</pre></div></li>
+          <li><p>If the value of the 'resp_pubkey' field that Alice sent Bob was <span class="em">not</span> 'none' then Bob MUST calculate sign<span class="sub">B</span>, the signature (using his private signature key that corresponds to pubKey<span class="sub">B</span>) of the HMAC result wrapped in a &lt;SignatureValue/&gt; element. Note: sign<span class="sub">B</span> MUST be calculated as specified in <span class="ref">XML Signature</span> except that it is signature of the HMAC result, <span class="em">not</span> of a &lt;SignedInfo/&gt; element.</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">if (resp_pubkey != 'none') sign<span class="sub">B</span> = SIGN(signKey<span class="sub">B</span>, mac<span class="sub">B</span>)</pre></div></li>
+          <li><p>If the value of the 'resp_pubkey' field that Alice sent Bob was 'hash' then Bob SHOULD set pubKey<span class="sub">B</span> to the key's fingerprint wrapped in a &lt;fingerprint/&gt; element</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">if (resp_pubkey == 'hash') pubKey<span class="sub">B</span> = '&lt;fingerprint&gt;' + HASH(pubKey<span class="sub">B</span>) + '&lt;/fingerprint&gt;'</pre></div></li>
+          <li><p>Encrypt the byte string resulting from the concatenation of pubKey<span class="sub">B</span> and sign<span class="sub">B</span> (or, if the value of the 'resp_pubkey' field that Alice sent Bob was 'none', encrypt just the HMAC result) with the agreed algorithm ("CIPHER") in counter mode (see <span class="ref"><a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">Recommendation for Block Cipher Modes of Operation</a></span>  [<a href="#nt-idp1714272">26</a>]), using the encryption key KC<span class="sub">B</span> and block counter C<span class="sub">B</span>. Note: C<span class="sub">B</span> MUST be incremented by 1 for each encrypted block or partial block (i.e. C<span class="sub">B</span> = (C<span class="sub">B</span> + 1) mod 2<span class="super">n</span>, where n is the number of bits per cipher block for the agreed block cipher algorithm).</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">ID<span class="sub">B</span> = CIPHER(KC<span class="sub">B</span>, C<span class="sub">B</span>, {pubKey<span class="sub">B</span>, sign<span class="sub">B</span>})</pre></div>
+              <p>or</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">ID<span class="sub">B</span> = CIPHER(KC<span class="sub">B</span>, C<span class="sub">B</span>, mac<span class="sub">B</span>)</pre></div></li>
+          <li><p>Calculate the HMAC of the encrypted identity (ID<span class="sub">B</span>) and the value of Bob's block cipher counter C<span class="sub">B</span> <span class="em">before</span> the encryption above using the selected hash algorithm ("HASH") and the integrity key KM<span class="sub">B</span>.</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">M<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, KM<span class="sub">B</span>, C<span class="sub">B</span>, ID<span class="sub">B</span>)</pre></div></li>
+        </ol>
+      </div>
+
+      <div class="indent"><h3>4.5.5 <a name="init-online-send3" id="init-online-send3">Sending the Response (3-message negotiations)</a></h3>
+        <p>For 3-message negotiations Bob should append the Base64 encoded values of ID<span class="sub">B</span> and M<span class="sub">B</span> to form<span class="sub">B</span> wrapped in 'identity' and 'mac' fields, and send the resulting form to Alice:</p>
+        <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Bob Responds to Alice (3-Message Negotiation)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='bob@example.com/laptop' to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='submit' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:ssn&lt;/value&gt;
+      &lt;/field&gt;
+      ...
+      ...
+      ...
+      &lt;field var='my_nonce'&gt;
+        &lt;value&gt; ** Bob's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='dhkeys'&gt;
+        &lt;value&gt; ** Base64 encoded value of d ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='nonce'&gt;
+        &lt;value&gt; ** Alice's Base64 encoded ESession ID ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='counter'&gt;
+        &lt;value&gt; ** Base64 encoded block counter ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='identity'&gt;
+        &lt;value&gt; ** Encrypted identity ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='mac'&gt;
+        &lt;value&gt; ** Integrity of identity ** &lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/message&gt;
+        </pre></div>
+      </div>
+
+    </div>
+
+    <div class="indent"><h3>4.6 <a name="init-acceptalice" id="init-acceptalice">ESession Accept (Alice)</a></h3>
+
+      <div class="indent"><h3>4.6.1 <a name="init-acceptalice-prep" id="init-acceptalice-prep">Diffie-Hellman Preparation (Alice)</a></h3>
+        <p>After Alice receives Bob's response, she MUST use the value of d and the ESession options specified in Bob's response to perform the following steps (where p and g are the constants associated with the selected MODP group, HASH is the selected hash algorithm, and n is the number of bits per cipher block for the agreed block cipher algorithm):</p>
+        <ol start="1">
+          <li><p>Verify that the ESession options selected by Bob are acceptable</p></li>
+          <li><p>Return a &lt;not-acceptable/&gt; error to Bob unless: 1 &lt; d &lt; p - 1</p></li>
+          <li><p>Set C<span class="sub">B</span> = C<span class="sub">A</span> XOR 2<span class="super">n-1</span> (where C<span class="sub">B</span> is the block counter for stanzas sent from Bob to Alice)</p></li>
+          <li><p>Select her values of x and e that correspond to the selected MODP group (from all the values of x and e she calculated previously - see <a href="#init-online-request">ESession Request</a>)</p></li>
+          <li><p>Calculate K = HASH(d<span class="super">x</span> mod p) (the shared secret)</p></li>
+          <li><p>Generate the session keys (KC<span class="sub">A</span>, KM<span class="sub">A</span>, KS<span class="sub">A</span>, KC<span class="sub">B</span>, KM<span class="sub">B</span> and KS<span class="sub">B</span>) in exactly the same way as Bob did (see <a href="#init-keys">Generating Session Keys</a>). Note: In the case of 4-message negotiation it is only necessary to generate provisory keys for the messages Alice sends to Bob (KC<span class="sub">A</span>, KM<span class="sub">A</span>, KS<span class="sub">A</span>).</p></li>
+        </ol>
+        <p>If this is a 4-message negotiation then Alice MUST skip the next section and proceed by executing the steps in the <a href="#init-acceptalice-hide">Hiding Alice's Identity</a> section.</p>
+      </div>
+      <div class="indent"><h3>4.6.2 <a name="init-online-bobid" id="init-online-bobid">Verifying Bob's Identity</a></h3>
+        <p>If this is a 3-message negotiation then Alice MUST also perform the following steps:</p>
+        <ol start="1">
+          <li><p>Calculate the HMAC of the encrypted identity (ID<span class="sub">B</span>) and the value of Bob's block cipher counter using HASH and the integrity key KM<span class="sub">B</span>.</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">M<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, KM<span class="sub">B</span>, C<span class="sub">B</span>, ID<span class="sub">B</span>)</pre></div></li>
+          <li><p>Return a &lt;feature-not-implemented/&gt; error to Bob unless the value of M<span class="sub">B</span> she calculated matches the one she received in the 'mac' field</p></li>
+          <li><p>Obtain mac<span class="sub">B</span> (if the value of the 'resp_pubkey' field she sent to Bob in her <a href="#init-online-request">ESession Request</a> was 'none') or pubKey<span class="sub">B</span> and sign<span class="sub">B</span> (otherwise) by decrypting ID<span class="sub">B</span> with the agreed symmetric block cipher algorithm ("DECIPHER") in counter mode, using the encryption key KC<span class="sub">B</span> and block counter C<span class="sub">B</span>. Note: C<span class="sub">B</span> MUST be incremented by 1 for each encrypted block or partial block (i.e. C<span class="sub">B</span> = (C<span class="sub">B</span> + 1) mod 2<span class="super">n</span>, where n is the number of bits per cipher block for the agreed block cipher algorithm).</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">B</span> = DECIPHER(KC<span class="sub">B</span>, C<span class="sub">B</span>, ID<span class="sub">B</span>)</pre></div>
+              <p>or</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">{pubKey<span class="sub">B</span>, sign<span class="sub">B</span>} = DECIPHER(KC<span class="sub">B</span>, C<span class="sub">B</span>, ID<span class="sub">B</span>)</pre></div></li>
+          <li><p>If the value of the 'resp_pubkey' field that Alice sent Bob was 'none' then Alice MUST set pubKey<span class="sub">B</span> to be a zero length string of characters. Otherwise, if the value was 'hash', then Alice SHOULD change the value of pubKey<span class="sub">B</span> to be her copy of the public key (a <a href="#sign-normal">Normalized</a> &lt;KeyValue/&gt; element) whose HASH matches the value wrapped in the pubKey<span class="sub">B</span> &lt;fingerprint/&gt; element that she received from Bob.</p>
+              <p>Note: If she cannot find a copy of the public key then Alice MUST terminate the ESession. She MAY then request a new ESession with the 'resp_pubkey' field set to 'key' or 'none'.</p></li>
+          <li><p>Set the value of form<span class="sub">B</span> to be the <a href="#sign-normal">Normalized</a> <span class="em">content</span> of the form she received from Bob without any 'identity' or 'mac' fields.</p></li>
+          <li><p>Concatenate Alice's ESession ID, Bob's ESession ID, d, pubKey<span class="sub">B</span> and form<span class="sub">B</span>, and calculate the HMAC of the resulting byte string using HASH and the key KS<span class="sub">B</span>.</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, KS<span class="sub">B</span>, {N<span class="sub">A</span>, N<span class="sub">B</span>, d, pubKey<span class="sub">B</span>, form<span class="sub">B</span>})</pre></div></li>
+          <li><p>If the value of the 'resp_pubkey' field that Alice sent Bob was 'none' then return a &lt;feature-not-implemented/&gt; error to Bob if the two values of mac<span class="sub">B</span> she calculated in the steps above do not match.</p>
+              <p>If the value of the 'resp_pubkey' field was not 'none', return a &lt;feature-not-implemented/&gt; error unless she can confirm (or has previously confirmed) that pubKey<span class="sub">B</span> really is Bob's public key (see <a href="#sec-keys">Verifying Keys</a>) and she can use pubKey<span class="sub">B</span> with the selected signature verification algorithm ("VERIFY") to confirm that sign<span class="sub">B</span> is the signature of the HMAC result (see <span class="ref">XML Signature</span>).</p>
+              <p class="caption"></p><div class="indent"><pre class="prettyprint">VERIFY(sign<span class="sub">B</span>, pubKey<span class="sub">B</span>, mac<span class="sub">B</span>)</pre></div></li>
+        </ol>
+      </div>
+
+      <div class="indent"><h3>4.6.3 <a name="init-acceptalice-hide" id="init-acceptalice-hide">Hiding Alice's Identity</a></h3>
+        <p>Alice MUST then prove her identity to Bob while protecting it from third parties. She MUST perform the steps equivalent to those Bob performed above (see <a href="#init-hide">Hiding Bob's Identity</a> for a more detailed description). Alice's calculations are summarised below. Note: When calculating mac<span class="sub">A</span> pay attention to the order of N<span class="sub">B</span> and N<span class="sub">A</span> and to the inclusion of form<span class="sub">A2</span>.</p>
+        <p>Note: form<span class="sub">A</span> is the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of the <a href="#init-online-request">ESession Request</a> data form that Alice sent to Bob at the start of the negotiation, while form<span class="sub">A2</span> is the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of Alice's session negotiation completion form <span class="em">excluding</span> the 'identity' and 'mac' fields (see <a href="#init-acceptalice-send">Sending Alice's Identity</a> below).</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, KS<span class="sub">A</span>, {N<span class="sub">B</span>, N<span class="sub">A</span>, e, pubKey<span class="sub">A</span>, form<span class="sub">A</span>, form<span class="sub">A2</span>})</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">if (init_pubkey != 'none') sign<span class="sub">A</span> = SIGN(signKey<span class="sub">A</span>, mac<span class="sub">A</span>)</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">if (init_pubkey == 'hash') pubKey<span class="sub">A</span> = HASH(pubKey<span class="sub">A</span>)</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">ID<span class="sub">A</span> = CIPHER(KC<span class="sub">A</span>, C<span class="sub">A</span>, {pubKey<span class="sub">A</span>, sign<span class="sub">A</span>})  <span class="em">OR</span>  ID<span class="sub">A</span> = CIPHER(KC<span class="sub">A</span>, C<span class="sub">A</span>, mac<span class="sub">A</span>)</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">M<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, KM<span class="sub">A</span>, C<span class="sub">A</span>, ID<span class="sub">A</span>)</pre></div>
+      </div>
+
+      <div class="indent"><h3>4.6.4 <a name="init-acceptalice-send" id="init-acceptalice-send">Sending Alice's Identity</a></h3>
+        <p>Alice MUST send the Base64 encoded values of N<span class="sub">B</span> (wrapped in a 'nonce' field), ID<span class="sub">A</span> (wrapped in an 'identity' field) and M<span class="sub">A</span> (wrapped in a 'mac' field) to Bob in her session negotiation completion message.</p>
+        <p>In the case of a 3-message negotiation Alice MAY also send encrypted content (see <span class="ref">Stanza Encryption</span>) in the same stanza as the proof of her identity:</p>
+        <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Alice Sends Bob Her Identity (3-Message Negotiation)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='alice@example.org/pda' to='bob@example.com/laptop'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='result' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;&lt;value&gt;urn:xmpp:ssn&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='accept'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='nonce'&gt;&lt;value&gt; ** Bob's Base64 encoded ESession ID ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='identity'&gt;&lt;value&gt; ** Encrypted identity ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='mac'&gt;&lt;value&gt; ** Integrity of identity ** &lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+  &lt;c xmlns='http://www.xmpp.org/extensions/xep-0200.html#ns'&gt;
+    &lt;data&gt; ** Base64 encoded m_final ** &lt;/data&gt;
+    &lt;mac&gt; ** Base64 encoded a_mac ** &lt;/mac&gt;
+  &lt;/c&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>Note: If Alice also includes a 'terminate' field with its value set to "1" or "true" (see <a href="#terminate">ESession Termination</a>) within the form then the ESession is terminated immediately. Note: This special case, where a single stanza is encrypted and sent in isolation, is equivalent to object encryption (or object signing if no encryption is specified) and offers several significant advantages over non-session approaches - including perfect forward secrecy.</p>
+        <p>In the case of a 4-message negotiation Alice MUST also include in the data form her Base64 encoded values of e (wrapped in a 'dhkeys' field) and the Base64 encoded HMAC (using HASH and the key N<span class="sub">A</span>  [<a href="#nt-idp1861712">27</a>]) of each secret that Alice has retained from her previous session with each of Bob's clients (wrapped in a 'rshashes' field) - see <a href="#init-acceptbob-send">Sending Bob's Identity</a>. Note: Alice MUST also append a few random numbers to the 'rshashes' field to make it difficult for an active attacker to discover if she has communicated with Bob before or how many clients Bob has used to communicate with her.</p>
+        <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Alice Sends Bob Her Identity (4-Message Negotiation)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='alice@example.org/pda' to='bob@example.com/laptop'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+    &lt;x type='result' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;&lt;value&gt;urn:xmpp:ssn&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='accept'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='nonce'&gt;&lt;value&gt; ** Bob's Base64 encoded ESession ID ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='dhkeys'&gt;
+        &lt;value&gt; ** Base64 encoded value of e5 ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='rshashes'&gt;
+        &lt;value&gt; ** Base64 encoded hash of retained secret ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded hash of retained secret ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded random value ** &lt;/value&gt;
+        &lt;value&gt; ** Base64 encoded random value ** &lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='identity'&gt;&lt;value&gt; ** Encrypted identity ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='mac'&gt;&lt;value&gt; ** Integrity of identity ** &lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/feature&gt;
+&lt;/message&gt;
+        </pre></div>
+      </div>
+    </div>
+
+    <div class="indent"><h3>4.7 <a name="init-acceptbob" id="init-acceptbob">ESession Accept (Bob)</a></h3>
+      <div class="indent"><h3>4.7.1 <a name="init-acceptbob-verify" id="init-acceptbob-verify">Verifying Alice's Identity</a></h3>
+        <p>In the case of a 4-message negotiation Bob MUST perform the following four steps:</p>
+        <ol>
+          <li><p>Return a &lt;feature-not-implemented/&gt; error unless SHA256(e) equals 'He', the value he received from Alice in her original session request.</p></li>
+          <li><p>Return a &lt;feature-not-implemented/&gt; error unless: 1 &lt; e &lt; p - 1</p></li>
+          <li><p>Use the value of e he received from Alice, his secret value of y and their agreed value of p to calculate the value of the Diffie-Hellman shared secret: K = HASH(e<span class="super">y</span> mod p)</p></li>
+          <li><p>Generate Alice's provisory session keys (KC<span class="sub">A</span>, KM<span class="sub">A</span>, KS<span class="sub">A</span>) in exactly the same way as specified for 3-message negotiations in the <a href="#init-keys">Generating Session Keys</a> section.</p></li>
+        </ol>
+        <p>After receiving Alice's identity Bob MUST verify it by performing steps equivalent to those performed by Alice above (see <a href="#init-online-bobid">Verifying Bob's Identity</a> for a more detailed description). Some of Bob's calculations are summarised below. Note: When calculating mac<span class="sub">A</span> pay attention to the order of N<span class="sub">B</span> and N<span class="sub">A</span> and to the inclusion of form<span class="sub">A2</span>.</p>
+        <p>Note: form<span class="sub">A</span> is the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of the <a href="#init-online-request">ESession Request</a> data form that Alice sent to Bob at the start of the negotiation, while form<span class="sub">A2</span> is the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of Alice's session negotiation completion form <span class="em">excluding</span> the 'identity' and 'mac' fields (see <a href="#init-acceptalice-send">Sending Alice's Identity</a>).</p>
+        <p>Note: If Bob sends an error to Alice then he SHOULD ignore any encrypted content he received in the stanza.</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">M<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, KM<span class="sub">A</span>, C<span class="sub">A</span>, ID<span class="sub">A</span>)</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">A</span> = DECIPHER(KC<span class="sub">A</span>, C<span class="sub">A</span>, ID<span class="sub">A</span>)  <span class="em">OR</span>  {pubKey<span class="sub">A</span>, sign<span class="sub">A</span>} = DECIPHER(KC<span class="sub">A</span>, C<span class="sub">A</span>, ID<span class="sub">A</span>)</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">A</span> = <span class="em">HMAC</span>(HASH, KS<span class="sub">A</span>, {N<span class="sub">B</span>, N<span class="sub">A</span>, e, pubKey<span class="sub">A</span>, form<span class="sub">A</span>, form<span class="sub">A2</span>})</pre></div>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">VERIFY(sign<span class="sub">A</span>, pubKey<span class="sub">A</span>, mac<span class="sub">A</span>)</pre></div>
+        <p><span class="em">In the case of a 3-message negotiation, the ESession negotiation is now complete.</span></p>
+      </div>
+
+      <div class="indent"><h3>4.7.2 <a name="init-acceptbob-sas" id="init-acceptbob-sas">Short Authentication String</a></h3>
+        <p><span class="em">Note: The steps in this and all the following Online ESession Negotiation sections are only necessary for 4-message negotiations.</span></p>
+        <p>Bob and Alice MAY confirm out-of-band that the Short Authentication Strings (SAS) their clients generate for them (using the SAS generation algorithm that they agreed on) are the same. This out-of-band step MAY be performed at any time. However, if either Bob or Alice has not provided a public key, or if either of their public keys has never been authenticated by the other party, then they SHOULD confirm out-of-band that their SAS match as soon as they realise that the two clients have no retained secret in common (see <a href="#init-finalbob">Generating Bob's Final Session Keys</a> below, or <a href="#init-finalalice">Generating Alice's Final Session Keys</a>). However, if it is inconvenient for Bob and Alice to confirm the match immediately, both clients MAY remember (in a secure way) that a SAS match has not yet been confirmed and remind Bob and Alice at the start of each ESession that they should confirm the SAS match (even if they have a retained secret in common). Their clients should continue to remind them until they either confirm a SAS match, or indicate that security is not important enough for them to bother.</p>
+      </div>
+
+      <div class="indent"><h3>4.7.3 <a name="init-finalbob" id="init-finalbob">Generating Bob's Final Session Keys</a></h3>
+        <p>Bob MUST identify the shared retained secret (SRS) by selecting from his client's list of the secrets it retained from previous sessions with Alice's clients (i.e., secrets from sessions where the bareJID was the same as the one Alice is currently using). Note: The list contains the most recent shared secret for each of Alice's clients that she has previously used to negotiate ESessions with the client Bob is currently using.</p>
+        <p>Bob does this by calculating the HMAC (using HASH and the key N<span class="sub">A</span>) of each secret in the list in turn and comparing it with each of the values in the 'rshashes' field he received from Alice (see <a href="#init-acceptalice-send">Sending Alice's Identity</a>). Once he finds a match, and has confirmed that the secret has not expired (because it is older than an implementation-defined period of time), then he has found the SRS.</p>
+        <p>If Bob cannot find a match, then he SHOULD search through all the retained secrets that have not expired for all the other JIDs his client has communicated with to try to find a match with one of the values in the 'rshashes' field he received from Alice (since she may simply be using a different JID, perhaps in order to protect her identity from third parties). Once he finds a match then he has found the SRS. Note: Resource-constrained implementations MAY make the performance of this second extended search an optional feature.</p>
+        <p>Bob MUST calculate the final session key by appending to K (the Diffie-Hellman shared secret) the SRS (only if one was found) and then the Other Shared Secret (only if one exists) and then setting K to be the HASH result of the concatenated string of bytes:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">K = HASH(K | SRS | OSS)</pre></div>
+        <p>Bob MUST now use the new value of K to generate the new session keys (KC<span class="sub">A</span>, KM<span class="sub">A</span>, KC<span class="sub">B</span>, KM<span class="sub">B</span> and KS<span class="sub">B</span>) in exactly the same way as he does for 3-message negotiations (see <a href="#init-keys">Generating Session Keys</a>). These keys will be used to exchange encrypted stanzas. Note: Bob will still need the value of K in the next section.</p>
+      </div>
+
+      <div class="indent"><h3>4.7.4 <a name="init-acceptbob-send" id="init-acceptbob-send">Sending Bob's Identity</a></h3>
+        <p>Bob MUST now prove his identity to Alice while protecting it from third parties. He does this in the same way as he does for 3-message negotiations (see <a href="#init-hide">Hiding Bob's Identity</a> for a more detailed description) except that, when calculating mac<span class="sub">B</span>, he MUST include form<span class="sub">B2</span>:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">mac<span class="sub">B</span> = <span class="em">HMAC</span>(HASH, KS<span class="sub">B</span>, {N<span class="sub">A</span>, N<span class="sub">B</span>, d, pubKey<span class="sub">B</span>, form<span class="sub">B</span>, form<span class="sub">B2</span>})</pre></div>
+        <p>Note: form<span class="sub">B2</span> is the full <a href="#sign-normal">Normalized</a> <span class="em">content</span> of Bob's session negotiation completion form <span class="em">excluding</span> the 'identity' and 'mac' fields (see below).</p>
+        <p>Bob MUST send Alice the Base64 encoded value of the HMAC (using HASH and the key SRS) of the string "Shared Retained Secret" (wrapped in an 'srshash' field). If no SRS was found then he MUST use a random number instead.  [<a href="#nt-idp1940800">28</a>]</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint"><span class="em">HMAC</span>(HASH, SRS, "Shared Retained Secret")</pre></div>
+        <p>Bob MUST also include in the data form the Base64 encoded values of N<span class="sub">A</span>, and ID<span class="sub">B</span> and M<span class="sub">B</span> (that he just calculated). Note: He MAY also send encrypted content (see <span class="ref">Stanza Encryption</span>) in the same stanza.</p>
+        <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Bob Sends Alice His Identity</p><div class="indent"><pre class="prettyprint">
+&lt;message from='bob@example.com/laptop' to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;init xmlns='http://www.xmpp.org/extensions/xep-0116.html#ns-init'&gt;
+    &lt;x type='result' xmlns='jabber:x:data'&gt;
+      &lt;field var='FORM_TYPE'&gt;&lt;value&gt;urn:xmpp:ssn&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='nonce'&gt;&lt;value&gt; ** Alice's Base64 encoded ESession ID ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='srshash'&gt;&lt;value&gt; ** HMAC with shared retained secret ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='identity'&gt;&lt;value&gt; ** Encrypted identity ** &lt;/value&gt;&lt;/field&gt;
+      &lt;field var='mac'&gt;&lt;value&gt; ** Integrity of identity ** &lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/init&gt;
+&lt;/message&gt;
+        </pre></div>
+        <p>Finally, Bob MUST destroy all his copies of the old retained secret (SRS) he was keeping for Alice's client, and calculate a new retained secret for this session:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint"><span class="em">HMAC</span>(HASH, K, "New Retained Secret")</pre></div>
+        <p>Bob MUST <span class="em">securely</span> store the new value along with the retained secrets his client shares with Alice's other clients.</p>
+        <p>Bob's value of K MUST now be securely destroyed.</p>
+      </div>
+    </div>
+
+    <div class="indent"><h3>4.8 <a name="init-complete" id="init-complete">Final Steps (Alice)</a></h3>
+      <div class="indent"><h3>4.8.1 <a name="init-finalalice" id="init-finalalice">Generating Alice's Final Session Keys</a></h3>
+        <p>Alice MUST identify the shared retained secret (SRS) by selecting from her client's list of the secrets it retained from sessions with Bob's clients (the most recent secret for each of the clients he has used to negotiate ESessions with Alice's client).</p>
+        <p>Alice does this by using each secret in the list in turn as the key to calculate the HMAC (with HASH) of the string "Shared Retained Secret", and comparing the calculated value with the value in the 'srshash' field she received from Bob (see <a href="#init-acceptbob-send">Sending Bob's Identity</a>). Once she finds a match, and has confirmed that the secret has not expired (because it is older than an implementation-defined period of time), then she has found the SRS.</p>
+        <p>Alice MUST calculate the final session key by appending to K (the Diffie-Hellman shared secret) the SRS (only if one was found) and then the Other Shared Secret (only if one exists) and then setting K to be the HASH result of the concatenated string of bytes:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint">K = HASH(K | SRS | OSS)</pre></div>
+        <p>Alice MUST destroy all her copies of SRS (the retained secret she was keeping for Bob's client), calculate a new retained secret for this session (see below) and <span class="em">securely</span> store the new value along with the other retained secrets her client shares with Bob's clients:</p>
+        <p class="caption"></p><div class="indent"><pre class="prettyprint"><span class="em">HMAC</span>(HASH, K, "New Retained Secret")</pre></div>
+        <p>Alice MUST now use the new value of K to generate the new session keys (KC<span class="sub">A</span>, KM<span class="sub">A</span>, KC<span class="sub">B</span>, KM<span class="sub">B</span> and KS<span class="sub">B</span>) in exactly the same way as Bob did (see <a href="#init-keys">Generating Session Keys</a>). These keys will be used to exchange encrypted stanzas.</p>
+      </div>
+
+      <div class="indent"><h3>4.8.2 <a name="init-complete-verify" id="init-complete-verify">Verifying Bob's Identity</a></h3>
+        <p>Finally, Alice MUST verify the identity she received from Bob. She does this in the same way as she does for 3-message negotiations  <a href="#init-online-bobid">Verifying Bob's Identity</a> above. Note: If Alice discovers an error then she SHOULD ignore any encrypted content she received in the stanza.</p>
+        <p>Once ESession negotiation is complete, Alice and Bob MUST exchange only encrypted forms of the one-to-one stanza types they agreed upon (e.g., &lt;message/&gt; and &lt;iq/&gt; stanzas) within the session.</p>
+      </div>
+    </div>
+<h2>5.
+       <a name="terminate" id="terminate">ESession Termination</a></h2>
+    <p>Either entity MAY terminate an ESession at any time. Entities MUST terminate all open ESessions before they go offline. To terminate an ESession Alice MUST send an encrypted stanza (see <span class="ref">Stanza Encryption</span>) to Bob including within the encrypted XML of the &lt;data/&gt; element a stanza session negotiation form with a "terminate" field (as specified in the Termination section of <span class="ref">Stanza Session Negotiation</span>). Note: She MAY publish old values of KM<span class="sub">A</span> and/or KM<span class="sub">B</span> within her termination stanza as long as she is sure all the stanzas that MAY use the old values have been received and validated (see <span class="ref">Stanza Encryption</span>). She MUST then securely destroy all keys associated with the ESession.</p>
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Alice Terminates an ESession</p><div class="indent"><pre class="prettyprint">
+&lt;message from='alice@example.org/pda' to='bob@example.com/laptop'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;c xmlns='http://www.xmpp.org/extensions/xep-0200.html#ns'&gt;
+    &lt;data&gt; ** Base64 encoded encrypted terminate form ** &lt;/data&gt;
+    &lt;old&gt; ** Base64 encoded old MAC key ** &lt;/old&gt;
+    &lt;mac&gt; ** Base64 encoded a_mac ** &lt;/mac&gt;
+  &lt;/c&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>When Bob receives a termination stanza he MUST verify the MAC (to be sure he received all the stanzas Alice sent him during the ESession) and immediately send an encrypted termination acknowledgement form (as specified in the Termination section of <span class="ref">Stanza Session Negotiation</span>) back to Alice. Note: He MAY publish <span class="em">any</span> old values of KM<span class="sub">A</span> or KM<span class="sub">B</span> within the acknowledgement stanza. He MUST then securely destroy all keys associated with the ESession.</p>
+    <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Bob Acknowledges ESession Termination</p><div class="indent"><pre class="prettyprint">
+&lt;message from='bob@example.com/laptop' to='alice@example.org/pda'&gt;
+  &lt;thread&gt;ffd7076498744578d10edabfe7f4a866&lt;/thread&gt;
+  &lt;c xmlns='http://www.xmpp.org/extensions/xep-0200.html#ns'&gt;
+    &lt;data&gt; ** Base64 encoded encrypted acknowledgement form ** &lt;/data&gt;
+    &lt;old&gt; ** Base64 encoded old MAC key ** &lt;/old&gt;
+    &lt;mac&gt; ** Base64 encoded b_mac ** &lt;/mac&gt;
+  &lt;/c&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>When Alice receives the stanza she MUST verify the MAC to be sure she received all the stanzas Bob sent her during the ESession. Once an entity has sent a termination or termination acknowledgement stanza it MUST NOT send another stanza within the ESession.</p>
+  <h2>6.
+       <a name="implement" id="implement">Implementation Notes</a></h2>
+  <div class="indent"><h3>6.1 <a name="sign-bigint" id="sign-bigint">Multiple-Precision Integers</a></h3>
+    <p>Before Base-64 encoding, hashing or HMACing an arbitrary-length integer, the integer MUST first be converted to a "big endian" bitstring. The bitstring MUST then be padded with leading zero bits so that there are an integral number of octets. Finally, if the integer is not of fixed bit-length (i.e. not a hash or HMAC result) and the bitstring contains leading octets that are zero, these MUST be removed (so the high-order octet is non-zero).</p>
+  </div>
+
+  <div class="indent"><h3>6.2 <a name="sign-normal" id="sign-normal">XML Normalization</a></h3>
+    <p>Before the signature or MAC of a block of XML is generated or verified, all character data <span class="em">between</span> all elements MUST be removed and the XML MUST be converted to canonical form (see <span class="ref"><a href="http://www.w3.org/TR/xml-c14n">Canonical XML</a></span>  [<a href="#nt-idp1983872">29</a>]).</p>
+    <p>All the XML this protocol requires to be signed or MACed is very simple, so in this case, canonicalization SHOULD only require the following changes:</p>
+    <ul>
+      <li>Set attribute value delimiters to single quotation marks (i.e. simply replace all single quotes in the serialized XML with double quotes)</li>
+      <li>Impose lexicographic order on the attributes of "field" elements (i.e. ensure "type" is before "var")</li>
+    </ul>
+    <p>Implementations MAY conceivably also need to make the following changes. Note: Empty elements and special characters SHOULD NOT appear in the signed or MACed XML specified in this protocol.</p>
+    <ul>
+      <li>Ensure there are no character references</li>
+      <li>Convert empty elements to start-end tag pairs</li>
+      <li>Ensure there is no whitespace except for single spaces before attributes</li>
+      <li>Ensure there are no "xmlns" attributes or namespace prefixes.</li>
+    </ul>
+  </div>
+<h2>7.
+       <a name="sec" id="sec">Security Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="sec-prng" id="sec-prng">Random Numbers</a></h3>
+    <p>Weak pseudo-random number generators (PRNG) enable successful attacks. Implementors MUST use a cryptographically strong PRNG to generate all random numbers (see <span class="ref"><a href="http://tools.ietf.org/html/rfc1750">RFC 1750</a></span>  [<a href="#nt-idp1993936">30</a>]).</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="sec-replay" id="sec-replay">Replay Attacks</a></h3>
+    <p>Alice and Bob MUST ensure that the value of e or d they provide when negotiating each online ESession is unique. This prevents complete online ESessions being replayed.</p>
+  </div>
+  <div class="indent"><h3>7.3 <a name="sec-keys" id="sec-keys">Verifying Keys</a></h3>
+    <p>The trust system outlined in this document is based on Alice trusting that the public key presented by Bob (wrapped in a &lt;KeyValue/&gt; element) is <span class="em">actually</span> Bob's key (and vice versa). Determining this trust may be done in a variety of ways depending on the entities' support for different public key (certificate) formats, signing algorithms and signing authorities. For instance, if Bob publishes a PGP/GPG public key, Alice MAY verify that his key is signed by another key that she knows to be good. Or, if Bob provides an X.509 certificate, she MAY check that his key has been signed by a Certificate Authority that she trusts.</p>
+    <p>When trust cannot be achieved automatically, methods that are not transparent to the users may be employed. The out-of-band Short Authentication String mechanism described in this document is an easy way for people to do that. Alternatively, Bob could communicate the <span class="em">full</span> SHA-256 fingerprint of his public key to Alice via secure out-of-band communication (e.g. face-to-face). This would enable Alice to confirm that the public key she receives in-band is valid. Note: Since very few people bother to (consistently) verify SAS or fingerprints, entities SHOULD protect against 'man-in-the-middle' attacks using retained secrets and/or other secrets. In the case of retained secrets entities SHOULD remember whether or not the whole chain of retained secrets (and the associated sessions) has ever been validated by the user verifying a SAS.</p>
+    <p>Note: If no keys are acceptable to Alice (because Alice has never verified any of the keys, and because either the keys are not signed, or Alice does not support the signature algorithms of the keys, or she cannot parse the certificate formats, or she does not recognise the authorities that signed the keys) then, although the ESession can still be encrypted, she cannot be sure she is communicating with Bob.</p>
+  </div>
+  <div class="indent"><h3>7.4 <a name="sec-associations" id="sec-associations">Key Associations</a></h3>
+    <p>An entity SHOULD remember the fingerprints of all public keys it receives, and remember whether or not they have been validated by the user (see <a href="#sec-keys">Verifying Keys</a>).</p>
+    <p>Entities MUST associate one or more JIDs with each public key fingerprint that they store, and alert their users immediately if another JID presents the same public key. This is necessary since if Bob already has fingerprints from Alice and Mallory, and Bob's client presents only the JID (or a name associated with the JID) to Bob, then Mallory could use his own public key (that is trusted by Bob) and pretend to be Alice simply by exchanging stanzas with Bob using Alice's JID.</p>
+    <p>If a JID for which a key has previously been stored attempts to establish an ESession using a public key with a different fingerprint (or no key at all) then the entity MUST alert its user.</p>
+    <p>Since Alice MAY use many different JIDs to talk to Bob, but always identify herself to him with the same public key, Entities SHOULD associate a "petname" with each public key fingerprint they store. Entities MUST present any public key petnames clearly to their users, and more prominently than any petname or nickname associated with the JID or the JID itself.</p>
+  </div>
+  <div class="indent"><h3>7.5 <a name="sec-unencrypted" id="sec-unencrypted">Unencrypted ESessions</a></h3>
+    <p>Organisations with full disclosure policies may require entities to disable encryption (see <a href="#sec-backdoor">Back Doors</a>) to enable the logging of all messages on their server. Unencrypted ESessions meet all the Security Requirements (see <span class="ref">Cryptographic Design of Encrypted Sessions</span>) except for Confidentiality. Unencrypted ESessions enable Alice to to confirm <span class="em">securely</span> with Bob that both client-server connections are secure. i.e. that the value of the 'security' option (as specified in <span class="ref">Stanza Session Negotiation</span>) has not been tampered with.</p>
+  </div>
+  <div class="indent"><h3>7.6 <a name="sec-backdoor" id="sec-backdoor">Back Doors</a></h3>
+    <p>The authors and the XSF would like to discourage the deliberate inclusion of "back doors" in implementations of this protocol. However, we recognize that some organizations must monitor stanza sessions or record stanza sessions in decryptable form for legal compliance reasons, or may choose to monitor stanza sessions for quality assurance purposes. In these cases it is important to inform the other entity of the (potential for) disclosure before starting the ESession (if only to maintain public confidence in this protocol).</p>
+    <p>Both implementations MUST immediately and clearly inform their users if the negotiated value of the 'disclose' field is not 'never'.</p>
+    <p>Before disclosing any stanza session, an entity SHOULD either negotiate the value of the 'disclose' field to be 'enabled' or terminate the negotiation unsuccessfully. It MUST NOT negotiate the value of the 'disclose' field to be 'disabled' unless it would be illegal for it to divulge the disclosure to the other entity.</p>
+    <p>In any case an implementation MUST NOT negotiate the value of the 'disclose' field to be 'never' unless it implements no feature or mechanism (not even a disabled feature or mechanism) that could be used directly or indirectly to divulge to <span class="em">any</span> third-party either the identites of the participants, or the keys, or the content of <span class="em">any</span> ESession (or information that could be used to recover any of those items). If an implementation deliberately fails to observe this last point (or fails to correct an accidental back door) then it is not compliant with this protocol and MUST NOT either claim or imply any compliance with this protocol or any of the other protocols developed by the authors or the XSF. In this case the authors and the XSF reserve all rights regarding the names of the protocols.</p>
+    <p>The expectation is that this legal requirement will persuade many implementors either to tell the users of their products that a back door exists, or not to implement a back door at all (if, once informed, the market demands that).</p>
+  </div>
+  <div class="indent"><h3>7.7 <a name="sec-general" id="sec-general">Extra Responsabilities of Implementors</a></h3>
+    <p>Cryptography plays only a small part in an entity's security. Even if it implements this protocol perfectly it may still be vulnerable to other attacks. For examples, an implementation might store ESession keys on swap space or save private keys to a file in cleartext! Implementors MUST take very great care when developing applications with secure technologies.</p>
+  </div>
+<h2>8.
+       <a name="sec-mandatory" id="sec-mandatory">Mandatory to Implement Technologies</a></h2>
+  <p>An implementation of ESession MUST support the Diffie-Hellman Key Agreement and HMAC (see Section 2 of <span class="ref"><a href="http://tools.ietf.org/html/rfc2104">RFC 2104</a></span>  [<a href="#nt-idp2019664">31</a>]) algorithms. Note: Some of the parameter names mentioned below are related to secure shell; see <span class="ref">SSH Transport Layer Encryption Modes</span> for block cipher algorithm details; see the <span class="ref"><a href="http://www.iana.org/assignments/ssh-parameters">IANA Secure Shell Protocol Parameters Registry</a></span>  [<a href="#nt-idp2022496">32</a>] for some of the other names.</p>
+  <div class="indent"><h3>8.1 <a name="sec-mandatory-encryption" id="sec-mandatory-encryption">Block Cipher Algorithms</a></h3>
+    <p>An implementation of ESession MUST support the following block cipher algorithm:</p>
+    <ul>
+      <li>aes128-ctr (see <span class="ref"><a href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">AES</a></span>  [<a href="#nt-idp2026544">33</a>])</li>
+    </ul>
+    <p>The block length of an block cipher algorithm's cipher SHOULD be at least 128 bits. An implementation of ESession MAY also support the following block cipher algorithms:</p>
+    <ul>
+      <li>aes256-ctr</li>
+      <li>aes192-ctr</li>
+      <li>twofish256-ctr (see <span class="ref"><a href="http://www.schneier.com/twofish.html">Twofish</a></span>  [<a href="#nt-idp2032640">34</a>])</li>
+      <li>twofish192-ctr</li>
+      <li>twofish128-ctr</li>
+      <li>serpent256-ctr (see <span class="ref"><a href="http://www.cl.cam.ac.uk/~rja14/serpent.html">Serpent</a></span>  [<a href="#nt-idp2036080">35</a>])</li>
+      <li>serpent192-ctr</li>
+      <li>serpent128-ctr</li>
+      <li>none (no encryption, only signing)</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>8.2 <a name="sec-mandatory-sign" id="sec-mandatory-sign">Key Signing Algorithms</a></h3>
+    <p>An implementation of ESession MUST support the following signing algorithm:</p>
+    <ul>
+      <li><p>http://www.w3.org/2000/09/xmldsig#rsa-sha256</p>
+    <p>(the same as http://www.w3.org/2000/09/xmldsig#rsa-sha1 except that it uses SHA256 instead of SHA1, see <span class="ref">XML Signature</span>)</p></li>
+    </ul>
+    <p>An implementation of ESession SHOULD also support at least the following signing algorithm:</p>
+    <ul>
+      <li><p>http://www.w3.org/2000/09/xmldsig#dsa-sha256</p>
+    <p>(the same as http://www.w3.org/2000/09/xmldsig#dsa-sha1 except that it uses SHA256 instead of SHA1, see <span class="ref">XML Signature</span>)</p></li>
+    </ul>
+  </div>
+  <div class="indent"><h3>8.3 <a name="sec-mandatory-public" id="sec-mandatory-public">Public Signature-Verification-Key Formats</a></h3>
+    <p>&lt;KeyValue/&gt; elements (as specified in <span class="ref">XML Signature</span>) may contain different public key formats. An implementation of ESession MUST support the following format:</p>
+    <ul>
+      <li>&lt;RSAKeyValue/&gt;</li>
+    </ul>
+    <p>An implementation of ESession SHOULD also support the following public key format:</p>
+    <ul>
+      <li>&lt;DSAKeyValue/&gt;</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>8.4 <a name="sec-mandatory-hash" id="sec-mandatory-hash">Hash Algorithms</a></h3>
+    <p>An implementation of ESession MUST support the following hash algorithm:</p>
+    <ul>
+      <li>sha256 (see <span class="ref">Secure Hash Standard</span>)</li>
+    </ul>
+    <p>An implementation of ESession SHOULD also support at least the following hash algorithm (sha1 and md5 are broken and therefore NOT RECOMMENDED):</p>
+    <ul>
+      <li>whirlpool (see <span class="ref"><a href="http://paginas.terra.com.br/informatica/paulobarreto/WhirlpoolPage.html">Whirlpool</a></span>  [<a href="#nt-idp2052784">36</a>])</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>8.5 <a name="sec-mandatory-sas" id="sec-mandatory-sas">Short Authentication String Generation Algorithms</a></h3>
+    <p>An implementation of ESession MUST support the following SAS generation algorithm:</p>
+    <ul>
+      <li>sas28x5 (see <a href="#sas">The sas28x5 SAS Algorithm</a>)</li>
+    </ul>
+  </div>
+  <div class="indent"><h3>8.6 <a name="sec-mandatory-compress" id="sec-mandatory-compress">Compression Algorithms</a></h3>
+    <p>An implementation of ESession MUST support the following compression algorithm:</p>
+    <ul>
+      <li>none (no compression, the output MUST be the same as the input)</li>
+    </ul>
+    <p>Support for other algorithms is NOT RECOMMENDED since compression partially defeats the <a href="#reqs-repudiate">Repudiability</a> requirement of this document by making it more difficult for a third party (with some knowledge of the plaintext) to modify a transcript of an encrypted session in a meaningful way. However, encrypted content is pseudo-random and cannot be compressed, so, in those cases where bandwidth is severely constrained, an implementation of ESession MAY support the following algorithms to compress content before it is encrypted:</p>
+    <ul>
+      <li>lzw (see <span class="ref"><a href="http://www.ecma-international.org/publications/standards/Ecma-151.htm">Standard ECMA-151</a></span>  [<a href="#nt-idp2063328">37</a>])</li>
+      <li>zlib (see <span class="ref"><a href="http://tools.ietf.org/html/rfc1950">RFC 1950</a></span>  [<a href="#nt-idp2066416">38</a>])</li>
+    </ul>
+  </div>
+<h2>9.
+       <a name="sas" id="sas">The sas28x5 SAS Algorithm</a></h2>
+  <p>Given the multi-precision integer M<span class="sub">A</span> (a big-endian byte array), the UTF-8 byte string form<span class="sub">B</span> (see <a href="#init-hide">Hiding Bob's Identity</a>) and the hash function "HASH", the following steps can be used to calculate a 5-character SAS with over 16 million possible values that is easy to read and communicate verbally:</p>
+  <ol>
+    <li><p>Concatenate M<span class="sub">A</span>, form<span class="sub">B</span> and the UTF-8 byte string "Short Authentication String" into a string of bytes</p></li>
+    <li><p>Calculate the least significant 24-bits of the HASH of the string</p></li>
+    <li><p>Convert the 24-bit integer into a base-28  [<a href="#nt-idp2073696">39</a>] 5-character string using the following "digits": acdefghikmopqruvwxy123456789 (the digits have values 0-27)</p></li>
+  </ol>
+<h2>10.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp2078608">40</a>]. </p>
+<h2>11.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>11.1 <a name="ns" id="ns">Protocol Namespaces</a></h3>
+    <p>Until this specification advances to a status of Draft, its associated namespaces shall be "http://www.xmpp.org/extensions/xep-0116.html#ns" and "http://www.xmpp.org/extensions/xep-0116.html#ns-init"; upon advancement of this specification, the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp2088304">41</a>] shall issue permanent namespaces in accordance with the process defined in Section 4 of <span class="ref"><a href="http://xmpp.org/extensions/xep-0053.html">XMPP Registrar Function (XEP-0053)</a></span>  [<a href="#nt-idp2083856">42</a>].</p>
+  </div>
+  <div class="indent"><h3>11.2 <a name="registrar-formtype" id="registrar-formtype">Field Standardization</a></h3>
+    <p><span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp2090768">43</a>] defines a process for standardizing the fields used within Data Forms qualified by a particular namespace. The following fields shall be registered for use in <span class="em">both</span> Encrypted Session Negotiation and Stanza Session Negotiation:</p>
+    <p class="caption">Registry Submission</p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;http://www.xmpp.org/extensions/xep-0116.html#ns&lt;/name&gt;
+  &lt;doc&gt;XEP-0116&lt;/doc&gt;
+  &lt;desc&gt;ESession negotiation forms&lt;/desc&gt;
+  &lt;field
+      var='compress'
+      type='list-single'
+      label='Compression algorithm options'/&gt;
+  &lt;field
+      var='counter'
+      type='hidden'
+      label='Initial block counter'/&gt;
+  &lt;field
+      var='crypt_algs'
+      type='list-single'
+      label='Symmetric block cipher options'/&gt;
+  &lt;field
+      var='dhhashes'
+      type='hidden'
+      label='Hashes of Diffie-Hellman public keys'/&gt;
+  &lt;field
+      var='dhkeys'
+      type='hidden'
+      label='Diffie-Hellman public keys'/&gt;
+  &lt;field
+      var='expires'
+      type='hidden'
+      label='Expiry time of offline ESession options'/&gt;
+  &lt;field
+      var='hash_algs'
+      type='list-single'
+      label='Hash algorithm options'/&gt;
+  &lt;field
+      var='match_resource'
+      type='text-single'
+      label='Target resource for offline ESessions'/&gt;
+  &lt;field
+      var='modp'
+      type='list-single'
+      label='MODP group number'/&gt;
+  &lt;field
+      var='my_nonce'
+      type='hidden'
+      label='ESession ID of Sender'/&gt;
+  &lt;field
+      var='nonce'
+      type='hidden'
+      label='ESession ID of Receiver'/&gt;
+  &lt;field
+      var='init_pubkey'
+      type='list-single'
+      label='Initiator public key required'&gt;
+    &lt;option label='No Key'&gt;
+      &lt;value&gt;none&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option label='Full Key'&gt;
+      &lt;value&gt;key&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option label='Key Fingerprint'&gt;
+      &lt;value&gt;hash&lt;/value&gt;
+    &lt;/option&gt;
+  &lt;/field&gt;
+  &lt;field
+      var='resp_pubkey'
+      type='list-single'
+      label='Responder public key required'&gt;
+    &lt;option label='No Key'&gt;
+      &lt;value&gt;none&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option label='Full Key'&gt;
+      &lt;value&gt;key&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option label='Key Fingerprint'&gt;
+      &lt;value&gt;hash&lt;/value&gt;
+    &lt;/option&gt;
+  &lt;/field&gt;
+  &lt;field
+      var='rekey_freq'
+      type='text-single'
+      label='Minimum number of stanzas between key exchanges'/&gt;
+  &lt;field
+      var='rshashes'
+      type='hidden'
+      label='Hashes of retained secrets'/&gt;
+  &lt;field
+      var='sas_algs'
+      type='list-single'
+      label='SAS generation algorithm options'/&gt;
+  &lt;field
+      var='sign_algs'
+      type='list-single'
+      label='Signature algorithm options'/&gt;
+  &lt;field
+      var='signs'
+      type='list-single'
+      label='Data form signatures'/&gt;
+  &lt;field
+      var='srshash'
+      type='hidden'
+      label='Hash of shared retained secret'/&gt;
+  &lt;field
+      var='stanzas'
+      type='list-multi'
+      label='Stanzas types to encrypt'/&gt;
+    &lt;option&gt;
+      &lt;value&gt;message&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option&gt;
+      &lt;value&gt;presence&lt;/value&gt;
+    &lt;/option&gt;
+    &lt;option&gt;
+      &lt;value&gt;iq&lt;/value&gt;
+    &lt;/option&gt;
+  &lt;/field&gt;
+  &lt;field
+      var='ver'
+      type='list-single'
+      label='Supported versions of ESessions'&gt;
+    &lt;option&gt;
+      &lt;value&gt;1.0&lt;/value&gt;
+    &lt;/option&gt;
+  &lt;/field&gt;
+&lt;/form_type&gt;
+
+&lt;form_type&gt;
+  &lt;name&gt;urn:xmpp:ssn&lt;/name&gt;
+  &lt;doc&gt;XEP-0155&lt;/doc&gt;
+  ...
+&lt;/form_type&gt;
+    </pre></div>
+  </div>
+<h2>12.
+       <a name="open" id="open">Open Issues</a></h2>
+  <div class="indent"><h3>12.1 <a name="open-tothink" id="open-tothink">To Think About</a></h3>
+    <ol>
+      <li>What challenges exist to make the OTR Gaim Plugin use this protocol natively when talking to XMPP entities? Can these be mitigated by 'non-critical' protocol changes?</li>
+      <li>Would anything in this protocol (e.g., its dependency on in-order stanza delivery) prevent an XMPP entity using it to exchange encrypted messages and presence with a user of a non-XMPP messaging system, assuming that the gateway both supports this protocol and is compatible with a purpose-built security plugin on the other user's client (e.g. a Gaim plugin connects to the gateway via a non-XMPP network)?</li>
+      <li>Could use <span class="ref"><a href="http://xmpp.org/extensions/xep-0013.html">Flexible Offline Message Retrieval (XEP-0013)</a></span>  [<a href="#nt-idp2100848">44</a>] (FOMR) instead of AMP to prevent any offline ESessions Bob can't decrypt being delivered to him. (Each &lt;item/&gt; that corresponds to an ESession message would have to contain a &lt;ESessionID/&gt; child, to allow Bob to discover which of his stored values of y was used to encrypt the message.)</li>
+    </ol>
+  </div>
+  <div class="indent"><h3>12.2 <a name="open-todo" id="open-todo">To Do</a></h3>
+    <ol>
+      <li>Ask the authors of AMP to explain how to achieve the match_resource functionality specified in XEP-0187.</li>
+      <li>Add non-repudiable signing option</li>
+      <li>Perhaps the document needs to specify more carefully how block counters are handled between messages, especially in the event of partial blocks?</li>
+      <li>Give examples of specific errors and discuss error scenarios throughout document (e.g., what should Bob do if he is not offline and he receives an offline key exchange stanza?).</li>
+      <li>Define an <span class="em">optional</span> protocol that would allow Alice to store values of N<span class="sub">A</span> and x (and the PKIDs she trusts) 'securely' on her own server (before she goes offline).</li>
+    </ol>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0116<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.16<br />
+            Last Updated: 2007-05-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, RFC 2104, RFC 2409, RFC 3526, RFC 4648, SHA256, xml-c14n, XEP-0004, XEP-0020, XEP-0030, XEP-0068, XEP-0115, XEP-0155, XEP-0200<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: TO BE ASSIGNED<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0116.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0116.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0116.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ian Paterson</h3><p class="indent">
+        Email:
+        <a href="mailto:ian.paterson@clientside.co.uk">ian.paterson@clientside.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:ian@zoofy.com">ian@zoofy.com</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Dave Smith</h3><p class="indent">
+        Email:
+        <a href="mailto:dizzyd@jabber.org">dizzyd@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:dizzyd@jabber.org">dizzyd@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1519616" id="nt-idp1519616">1</a>. XEP-0027: Current Jabber OpenPGP Usage &lt;<a href="http://xmpp.org/extensions/xep-0027.html">http://xmpp.org/extensions/xep-0027.html</a>&gt;.</p><p><a name="nt-idp1522288" id="nt-idp1522288">2</a>. RFC 3920: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc3920">http://tools.ietf.org/html/rfc3920</a>&gt;.</p><p><a name="nt-idp1524640" id="nt-idp1524640">3</a>. RFC 3921: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc3921">http://tools.ietf.org/html/rfc3921</a>&gt;.</p><p><a name="nt-idp1527168" id="nt-idp1527168">4</a>. RFC 3862: Common Presence and Instant Messaging (CPIM): Message Format &lt;<a href="http://tools.ietf.org/html/rfc3862">http://tools.ietf.org/html/rfc3862</a>&gt;.</p><p><a name="nt-idp1529648" id="nt-idp1529648">5</a>. RFC 3863: Presence Information Data Format (PIDF) &lt;<a href="http://tools.ietf.org/html/rfc3863">http://tools.ietf.org/html/rfc3863</a>&gt;.</p><p><a name="nt-idp1531840" id="nt-idp1531840">6</a>. RFC 3923: End-to-End Signing and Object Encryption for the Extensible Messaging and Presence Protocol (XMPP) &lt;<a href="http://tools.ietf.org/html/rfc3923">http://tools.ietf.org/html/rfc3923</a>&gt;.</p><p><a name="nt-idp1534352" id="nt-idp1534352">7</a>. XEP-0210: Requirements for Encrypted Sessions &lt;<a href="http://xmpp.org/extensions/xep-0210.html">http://xmpp.org/extensions/xep-0210.html</a>&gt;.</p><p><a name="nt-idp1537744" id="nt-idp1537744">8</a>. XEP-0188: Cryptographic Design of Encrypted Sessions &lt;<a href="http://xmpp.org/extensions/xep-0188.html">http://xmpp.org/extensions/xep-0188.html</a>&gt;.</p><p><a name="nt-idp1540384" id="nt-idp1540384">9</a>. XEP-0200: Stanza Encryption &lt;<a href="http://xmpp.org/extensions/xep-0200.html">http://xmpp.org/extensions/xep-0200.html</a>&gt;.</p><p><a name="nt-idp1542896" id="nt-idp1542896">10</a>. XEP-0217: Simplified Encrypted Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0217.html">http://xmpp.org/extensions/xep-0217.html</a>&gt;.</p><p><a name="nt-idp1551088" id="nt-idp1551088">11</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1553664" id="nt-idp1553664">12</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp1562080" id="nt-idp1562080">13</a>. SIGMA: the 'SIGn-and-MAc' Approach to Authenticated Diffie-Hellman and its Use in the IKE Protocols (Hugo Krawczyk, June 12 2003) &lt;<a href="http://web.archive.org/web/20040409013835/http://www.ee.technion.ac.il/~hugo/sigma.ps">http://www.ee.technion.ac.il/~hugo/sigma.ps</a>&gt;.</p><p><a name="nt-idp1567856" id="nt-idp1567856">14</a>. XEP-0155: Stanza Session Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0155.html">http://xmpp.org/extensions/xep-0155.html</a>&gt;.</p><p><a name="nt-idp1570592" id="nt-idp1570592">15</a>. XEP-0187: Offline Encrypted Sessions &lt;<a href="http://xmpp.org/extensions/xep-0187.html">http://xmpp.org/extensions/xep-0187.html</a>&gt;.</p><p><a name="nt-idp1579088" id="nt-idp1579088">16</a>. This combination of techniques underpins the <span class="ref">ZRTP</span> key agreement protocol.</p><p><a name="nt-idp1586944" id="nt-idp1586944">17</a>. RFC 2409: The Internet Key Exchange (IKE) &lt;<a href="http://tools.ietf.org/html/rfc2409">http://tools.ietf.org/html/rfc2409</a>&gt;.</p><p><a name="nt-idp1589488" id="nt-idp1589488">18</a>. RFC 3526: More Modular Exponential (MODP) Diffie-Hellman Groups &lt;<a href="http://tools.ietf.org/html/rfc3526">http://tools.ietf.org/html/rfc3526</a>&gt;.</p><p><a name="nt-idp1585648" id="nt-idp1585648">19</a>. Entities SHOULD offer even the lowest MODP groups since some entities are CPU-constrained, and security experts tend to agree that "longer keys do not protect against the most realistic security threats".</p><p><a name="nt-idp1593008" id="nt-idp1593008">20</a>. This version of this document describes version 1.0 of this protocol.</p><p><a name="nt-idp1599072" id="nt-idp1599072">21</a>. XML Signature Syntax and Processing &lt;<a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/">http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/</a>&gt;.</p><p><a name="nt-idp1597536" id="nt-idp1597536">22</a>. If the entity already possesses one of the other entity's public keys then it is RECOMMENDED that the fingerprint is requested from the other entity instead of the public key - since this saves bandwidth.</p><p><a name="nt-idp1609328" id="nt-idp1609328">23</a>. Secure Hash Standard: Federal Information Processing Standards Publication 180-2  &lt;<a href="http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf">http://csrc.nist.gov/publications/fips/fips180-2/fips186-2withchangenotice.pdf</a>&gt;.</p><p><a name="nt-idp1612672" id="nt-idp1612672">24</a>. RFC 4648: The Base16, Base32, and Base64 Data Encodings &lt;<a href="http://tools.ietf.org/html/rfc4648">http://tools.ietf.org/html/rfc4648</a>&gt;.</p><p><a name="nt-idp1641616" id="nt-idp1641616">25</a>. RFC 3766: Determining Strengths For Public Keys Used For Exchanging Symmetric Keys &lt;<a href="http://tools.ietf.org/html/rfc3766">http://tools.ietf.org/html/rfc3766</a>&gt;.</p><p><a name="nt-idp1714272" id="nt-idp1714272">26</a>. Recommendation for Block Cipher Modes of Operation: Federal Information Processing Standards Publication 800-38a &lt;<a href="http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf">http://csrc.nist.gov/publications/ nistpubs/800-38a/sp800-38a.pdf</a>&gt;.</p><p><a name="nt-idp1861712" id="nt-idp1861712">27</a>. The HMACs of the retained secrets are generated using Alice's unique session nonce to prevent her being identified by her retained secrets (only one secret changes each session, and some might not change very often).</p><p><a name="nt-idp1940800" id="nt-idp1940800">28</a>. Bob always sends a value in the 'srshash' field to prevent an attacker learning that the session is not protected by a retained secret.</p><p><a name="nt-idp1983872" id="nt-idp1983872">29</a>. Canonical XML 1.0 &lt;<a href="http://www.w3.org/TR/xml-c14n">http://www.w3.org/TR/xml-c14n</a>&gt;.</p><p><a name="nt-idp1993936" id="nt-idp1993936">30</a>. RFC 1750: Randomness Recommendations for Security &lt;<a href="http://tools.ietf.org/html/rfc1750">http://tools.ietf.org/html/rfc1750</a>&gt;.</p><p><a name="nt-idp2019664" id="nt-idp2019664">31</a>. RFC 2104: HMAC: Keyed-Hashing for Message Authentication &lt;<a href="http://tools.ietf.org/html/rfc2104">http://tools.ietf.org/html/rfc2104</a>&gt;.</p><p><a name="nt-idp2022496" id="nt-idp2022496">32</a>. IANA registry of parameters related to secure shell &lt;<a href="http://www.iana.org/assignments/ssh-parameters">http://www.iana.org/assignments/ssh-parameters</a>&gt;.</p><p><a name="nt-idp2026544" id="nt-idp2026544">33</a>. Advanced Encryption Standard: Federal Information Processing Standards Publication 197 &lt;<a href="http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf">http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf</a>&gt;.</p><p><a name="nt-idp2032640" id="nt-idp2032640">34</a>. The Twofish Block Cipher &lt;<a href="http://www.schneier.com/twofish.html">http://www.schneier.com/twofish.html</a>&gt;.</p><p><a name="nt-idp2036080" id="nt-idp2036080">35</a>. The Serpent Block Cipher &lt;<a href="http://www.cl.cam.ac.uk/~rja14/serpent.html">http://www.cl.cam.ac.uk/~rja14/serpent.html</a>&gt;.</p><p><a name="nt-idp2052784" id="nt-idp2052784">36</a>. The Whirlpool Hash Function &lt;<a href="http://paginas.terra.com.br/informatica/paulobarreto/WhirlpoolPage.html">http://paginas.terra.com.br/informatica/paulobarreto/WhirlpoolPage.html</a>&gt;.</p><p><a name="nt-idp2063328" id="nt-idp2063328">37</a>. Standard ECMA-151: Data Compression for Information Interchange - Adaptive Coding with Embedded Dictionary - DLCZ Algorithm &lt;<a href="http://www.ecma-international.org/publications/standards/Ecma-151.htm">http://www.ecma-international.org/publications/standards/Ecma-151.htm</a>&gt;.</p><p><a name="nt-idp2066416" id="nt-idp2066416">38</a>. RFC 1950: ZLIB Compressed Data Format Specification version 3.3 &lt;<a href="http://tools.ietf.org/html/rfc1950">http://tools.ietf.org/html/rfc1950</a>&gt;.</p><p><a name="nt-idp2073696" id="nt-idp2073696">39</a>. Base-28 was used instead of Base-36 because some characters are often confused when communicated verbally (n, s, b, t, z, j), and because zero is often read as the letter 'o', and the letter 'l' is often read as the number '1'.</p><p><a name="nt-idp2078608" id="nt-idp2078608">40</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp2088304" id="nt-idp2088304">41</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp2083856" id="nt-idp2083856">42</a>. XEP-0053: XMPP Registrar Function &lt;<a href="http://xmpp.org/extensions/xep-0053.html">http://xmpp.org/extensions/xep-0053.html</a>&gt;.</p><p><a name="nt-idp2090768" id="nt-idp2090768">43</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p><p><a name="nt-idp2100848" id="nt-idp2100848">44</a>. XEP-0013: Flexible Offline Message Retrieval &lt;<a href="http://xmpp.org/extensions/xep-0013.html">http://xmpp.org/extensions/xep-0013.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.16 (2007-05-30)</h4><div class="indent"><p>Split pubkey field into init_pubkey and resp_pubkey fields; modified namespaces to reflect XMPP Registrar procedures regarding URN issuance.</p> (ip)
+    </div><h4>Version 0.15 (2007-03-16)</h4><div class="indent"><p>Clarified procedure for identification of the shared retained secret</p> (ip)
+    </div><h4>Version 0.14 (2007-03-15)</h4><div class="indent"><p>Clarified representation of Big Ints, incorporated whole forms into SAS calculation</p> (ip)
+    </div><h4>Version 0.13 (2006-11-27)</h4><div class="indent"><p>Added optional public key independence, hash commitment, SAS authentication, retained secrets and other secrets to the 4-message key exchange; defined when 3- and 4-message negotiations should be used; added disclosure field; added Back Doors and Key Associations sections; employed HMAC instead of hash; required public keys to be in W3C xmldsig KeyValue format and signatures to be wrapped in a SignatureValue element; deleted Signature Generation and Verification section in favor of xmldsig; moved exchanging stanzas and rekeying sections to XEP-0200; changed namespace</p> (ip)
+    </div><h4>Version 0.12 (2006-10-05)</h4><div class="indent"><p>Replaced secure field with security field; changed otr field to list-single</p> (ip)
+    </div><h4>Version 0.11 (2006-10-02)</h4><div class="indent"><p>Harmonised session termination with the protocol added to XEP-0155; added XML schema; minor clarifications</p> (ip)
+    </div><h4>Version 0.10 (2006-07-18)</h4><div class="indent"><p>Added Upgradability requirement; added expires field to offline options; updated in line with latest version of PEP; moved some content to new XEPs (0187, 0188 and 0189)</p> (ip)
+    </div><h4>Version 0.9 (2005-11-29)</h4><div class="indent"><p>Modified protocol in line with SIGMA: added Identity Protection requirement, no pre-indication of acceptable keys, send multiple values of e with ESession request, offline options published via SPPS, added LZW compression</p> (ip)
+    </div><h4>Version 0.8 (2005-09-27)</h4><div class="indent"><p>Added diagramatic synopses; Added match_resource field; replaced req_mac and kid fields with prev_hash; Alice specifies initial counter (doubles as nonce); many other improvements</p> (ip)
+    </div><h4>Version 0.7 (2005-08-26)</h4><div class="indent"><p>Simplified XML normalization; added Synopsis and Efficiency requirement; defined signature formats</p> (ip)
+    </div><h4>Version 0.6 (2005-08-12)</h4><div class="indent"><p>Extended termination procedure; added object encryption/signing requirement and special case; clarified expired MAC publishing; added Flexible Offline Message Retrieval to Open Issues.</p> (ip)
+    </div><h4>Version 0.5 (2005-08-10)</h4><div class="indent"><p>Added flexibility requirement; added late signature of initial request; added termination MAC.</p> (ip)
+    </div><h4>Version 0.4 (2005-08-09)</h4><div class="indent"><p>Added (offline) replay protection; required offline Created header; compression is NOT RECOMMENDED; added second set of offline options for subscribers; added JIDs to session key generation; unencrypted sessions; added secure option; sign whole data form; HMAC whole &lt;encrypted/&gt; element; added ESession termination; option to distribute public keys within session negotiation; added Integrity requirement; several clarifications</p> (ip)
+    </div><h4>Version 0.3 (2005-08-02)</h4><div class="indent"><p>Restored status to Experimental; complete rewrite; new Introduction, Background, Requirements and Security Considerations; new OTR-inspired protocol; XEP-0155-based negotiation; counter mode encryption; more secure hashes; offline sessions; re-keying; mac publishing; preliminary key and options publishing protocol.</p> (ip/psa)
+    </div><h4>Version 0.2 (2004-07-26)</h4><div class="indent"><p>At the request of the author, changed status to Retracted.</p> (psa)
+    </div><h4>Version 0.1 (2003-09-09)</h4><div class="indent"><p>Initial version.</p> (dss/psa)
+    </div></div><hr /><p>END</p></body></html>

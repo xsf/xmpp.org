@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0118: User Tune</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="User Tune" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines a payload format for communicating information about music to which a user is listening, including the title, track number, collection, performer, composer, length, and user rating. The payload format is typically transported using the personal eventing protocol, a profile of XMPP publish-subscribe specified in XEP-0163." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-01-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0118" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0118: User Tune</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a payload format for communicating information about music to which a user is listening, including the title, track number, collection, performer, composer, length, and user rating. The payload format is typically transported using the personal eventing protocol, a profile of XMPP publish-subscribe specified in XEP-0163.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-01-30</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#protocol">Protocol</a><br />   
+      2.1.  <a href="#protocol-elements">Container Element and Child Elements</a><br />   
+      2.2.  <a href="#protocol-transport">Transport Mechanism</a><br />3.  <a href="#impl">Implementation Notes</a><br />4.  <a href="#security">Security Considerations</a><br />5.  <a href="#iana">IANA Considerations</a><br />6.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      6.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />7.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines a protocol for communicating information about the music to which a user is listening. Such information may be seen as a kind of "extended presence", and users may want to communicate such information to their contacts on the network as a fun add-on to traditional IM applications or to provide integration with common music-player applications.</p>
+<h2>2.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <div class="indent"><h3>2.1 <a name="protocol-elements" id="protocol-elements">Container Element and Child Elements</a></h3>
+    <p>Information about tunes is provided by the user and propagated on the network by the user's client. The information container for tune data is a &lt;tune/&gt; element that is qualified by the 'http://jabber.org/protocol/tune' namespace. The tune information itself is provided as the XML character data of the following children of the &lt;tune/&gt; element:</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Child Elements</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Element</th>
+        <th>Description</th>
+        <th>Example</th>
+        <th>Datatype</th>
+      </tr>
+      <tr class="body">
+        <td>artist</td>
+        <td>The artist or performer of the song or piece</td>
+        <td>Yes</td>
+        <td>xs:string</td>
+      </tr>
+      <tr class="body">
+        <td>length</td>
+        <td>The duration of the song or piece in seconds</td>
+        <td>686</td>
+        <td>xs:unsignedShort</td>
+      </tr>
+      <tr class="body">
+        <td>rating</td>
+        <td>The user's rating of the song or piece, from 1 (lowest) to 10 (highest).</td>
+        <td>8</td>
+        <td>xs:positiveInteger</td>
+      </tr>
+      <tr class="body">
+        <td>source</td>
+        <td>The collection (e.g., album) or other source (e.g., a band website that hosts streams or audio files)</td>
+        <td>Yessongs</td>
+        <td>xs:string</td>
+      </tr>
+      <tr class="body">
+        <td>title</td>
+        <td>The title of the song or piece</td>
+        <td>Heart of the Sunrise</td>
+        <td>xs:string</td>
+      </tr>
+      <tr class="body">
+        <td>track</td>
+        <td>A unique identifier for the tune; e.g., the track number within a collection or the specific URI for the object (e.g., a stream or audio file)</td>
+        <td>3</td>
+        <td>xs:string</td>
+      </tr>
+      <tr class="body">
+        <td>uri</td>
+        <td>A URI or URL pointing to information about the song, collection, or artist</td>
+        <td>http://www.yesworld.com/lyrics/Fragile.html#9</td>
+        <td>xs:anyURI</td>
+      </tr>
+    </table></div>
+    <p>NOTE: The datatypes specified above are defined in <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp1522528">1</a>].</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="protocol-transport" id="protocol-transport">Transport Mechanism</a></h3>
+    <p>Tune information SHOULD be communicated and transported by means of the <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1525824">2</a>] subset specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp1532768">3</a>]. Because tune information is not pure presence information and can change independently of the user's availability, it SHOULD NOT be provided as an extension to &lt;presence/&gt;.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Publishes Tune Information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='stpeter@jabber.org/14793c64-0f94-11dc-9430-000bcd821bfb'
+    id='tunes123'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/tune'&gt;
+      &lt;item&gt;
+        &lt;tune xmlns='http://jabber.org/protocol/tune'&gt;
+          &lt;artist&gt;Yes&lt;/artist&gt;
+          &lt;length&gt;686&lt;/length&gt;
+          &lt;rating&gt;8&lt;/rating&gt;
+          &lt;source&gt;Yessongs&lt;/source&gt;
+          &lt;title&gt;Heart of the Sunrise&lt;/title&gt;
+          &lt;track&gt;3&lt;/track&gt;
+          &lt;uri&gt;http://www.yesworld.com/lyrics/Fragile.html#9&lt;/uri&gt;
+        &lt;/tune&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The tune information is then delivered to all subscribers:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Tune Information is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='stpeter@jabber.org'
+    to='maineboy@jabber.org'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/tune'&gt;
+      &lt;item id='bffe6584-0f9c-11dc-84ba-001143d5d5db'&gt;
+        &lt;tune xmlns='http://jabber.org/protocol/tune'&gt;
+          &lt;artist&gt;Yes&lt;/artist&gt;
+          &lt;length&gt;686&lt;/length&gt;
+          &lt;rating&gt;8&lt;/rating&gt;
+          &lt;source&gt;Yessongs&lt;/source&gt;
+          &lt;title&gt;Heart of the Sunrise&lt;/title&gt;
+          &lt;track&gt;3&lt;/track&gt;
+          &lt;uri&gt;http://www.yesworld.com/lyrics/Fragile.html#9&lt;/uri&gt;
+        &lt;/tune&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>In order to indicate that the user is no longer listening to any tunes (or has simply disabled publication), the user's client shall send an empty &lt;tune/&gt; element, which can be considered a "stop command" for user tunes:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User Disables Publishing</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='stpeter@jabber.org/14793c64-0f94-11dc-9430-000bcd821bfb'
+    id='tunes345'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/tune'&gt;
+      &lt;item&gt;
+        &lt;tune xmlns='http://jabber.org/protocol/tune'/&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Empty Tune Information is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='stpeter@jabber.org'
+    to='maineboy@jabber.org'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/tune'&gt;
+      &lt;item id='cbbb3f5a-0f9c-11dc-afe0-001143d5d5db'&gt;
+        &lt;tune xmlns='http://jabber.org/protocol/tune'/&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>3.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>To prevent a large number of updates when a user is skipping through tracks, an implementation SHOULD wait several seconds before publishing new tune information.</p>
+  <p>If the length is unknown (e.g., the user is listening to a stream), the &lt;length/&gt; element SHOULD NOT be included.</p>
+  <p>A typical interface for user ratings is to show one to five star icons such as ★★★★. If this interface is used, the numbers 2, 4, 6, 8, and 10 should be mapped to one, two, three, four, and five stars respectively, and odd numbers should be mapped to half stars (e.g., the number 9 would be mapped to four-and-a-half stars).</p>
+<h2>4.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>The publication of user tune information is not known to introduce any new security considerations above and beyond those defined in <span class="ref">XEP-0060: Publish-Subscribe</span>.</p>
+<h2>5.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1551824">4</a>].</p>
+<h2>6.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>6.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1560496">5</a>] includes 'http://jabber.org/protocol/tune' in its registry of protocol namespaces.</p>
+  </div>
+<h2>7.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/tune'
+    xmlns='http://jabber.org/protocol/tune'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0118: http://www.xmpp.org/extensions/xep-0118.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='tune'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence minOccurs='0'&gt;
+        &lt;xs:element name='artist' type='xs:string' minOccurs='0'/&gt;
+        &lt;xs:element name='length' type='xs:unsignedShort' minOccurs='0'/&gt;
+        &lt;xs:element name='rating'&gt;
+          &lt;xs:simpleType&gt;
+            &lt;xs:restriction base='xs:positiveInteger'&gt;
+              &lt;xs:maxInclusive value='10'/&gt;
+            &lt;/xs:restriction&gt;
+          &lt;/xs:simpleType&gt;
+        &lt;/xs:element&gt;
+        &lt;xs:element name='source' type='xs:string' minOccurs='0'/&gt;
+        &lt;xs:element name='title' type='xs:string' minOccurs='0'/&gt;
+        &lt;xs:element name='track' type='xs:string' minOccurs='0'/&gt;
+        &lt;xs:element name='uri' type='xs:anyURI' minOccurs='0'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0118<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.2<br />
+            Last Updated: 2008-01-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0163<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: tune<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/tune.xsd">http://www.xmpp.org/schemas/tune.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0118.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0118.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0118.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1522528" id="nt-idp1522528">1</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp1525824" id="nt-idp1525824">2</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1532768" id="nt-idp1532768">3</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp1551824" id="nt-idp1551824">4</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1560496" id="nt-idp1560496">5</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.2 (2008-01-30)</h4><div class="indent"><p>Added rating element.</p> (psa)
+    </div><h4>Version 1.1 (2007-06-04)</h4><div class="indent"><p>Removed non-PEP examples; added uri element.</p> (psa)
+    </div><h4>Version 1.0 (2004-11-12)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.10 (2004-10-29)</h4><div class="indent"><p>Added example with URL.</p> (psa)
+    </div><h4>Version 0.9 (2004-10-27)</h4><div class="indent"><p>Changed recommendation to not include the &lt;length/&gt; element if the track time is unknown.</p> (psa)
+    </div><h4>Version 0.8 (2004-10-26)</h4><div class="indent"><p>Added implementation notes; clarified nature of &lt;source/&gt; and &lt;track/&gt; elements; if length is unknown, set to zero.</p> (psa)
+    </div><h4>Version 0.7 (2004-05-20)</h4><div class="indent"><p>Changed &lt;length/&gt; datatype from xs:duration to xs:unsignedShort.</p> (psa)
+    </div><h4>Version 0.6 (2004-04-25)</h4><div class="indent"><p>Corrected several errors; added reference to XEP-0033.</p> (psa)
+    </div><h4>Version 0.5 (2004-02-19)</h4><div class="indent"><p>Reverted from infobits to tune elements.</p> (psa)
+    </div><h4>Version 0.4 (2003-12-14)</h4><div class="indent"><p>Slight modifications to track changes to infobits specifications.</p> (psa)
+    </div><h4>Version 0.3 (2003-10-23)</h4><div class="indent"><p>Replaced tune elements with infobits.</p> (psa)
+    </div><h4>Version 0.2 (2003-09-10)</h4><div class="indent"><p>Added "stop" function via empty &lt;tune/&gt; element.</p> (psa)
+    </div><h4>Version 0.1 (2003-09-08)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div></div><hr /><p>END</p></body></html>

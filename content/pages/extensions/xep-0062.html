@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0062: Packet Filtering</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Packet Filtering" /><meta name="DC.Creator" content="Robert Norris" /><meta name="DC.Description" content="A framework for packet filtering rules." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-09-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0062" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0062: Packet Filtering</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A framework for packet filtering rules.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Robert Norris</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Informational</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-09-30</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp606016">Introduction</a><br />   
+      1.1.  <a href="#sect-idp614576">Definitions</a><br />2.  <a href="#sect-idp621216">Structure</a><br />3.  <a href="#sect-idp630352">Filter modules</a><br />4.  <a href="#sect-idp1485104">Protocol</a><br />   
+      4.1.  <a href="#sect-idp1486864">Module discovery</a><br />   
+      4.2.  <a href="#sect-idp1489440">Setting the ruleset</a><br />   
+      4.3.  <a href="#sect-idp1495872">Retrieving the ruleset</a><br />5.  <a href="#sect-idp1504064">Error Codes</a><br />6.  <a href="#sect-idp1509632">Implementation notes</a><br />7.  <a href="#sect-idp1511312">Security Considerations</a><br />8.  <a href="#sect-idp1512320">IANA Considerations</a><br />9.  <a href="#sect-idp1513328">JANA Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp606016" id="sect-idp606016">Introduction</a></h2>
+  <p>Traditionally, the <span class="ref"><a href="http://jabberd.org/">jabberd</a></span>  [<a href="#nt-idp609056">1</a>] server included an internal server module called "mod_filter", which provided a packet filtering facility for users. That service had the following problems:</p>
+
+  <ul>
+    <li>The service and protocol were undocumented, apart from some documentation reverse-engineered from the source code.</li>
+    <li>The processing requirements that the service required made it unusable for large installations.</li>
+    <li>Bugs in the service often caused the Jabber server to crash.</li>
+  </ul>
+
+  <p>The most common use for this service was to provide server-side blacklists. Unforuntately, mod_filter was overpowered even by this relatively simple form of packet filtering (matching the sending JID and dropping the packet if necessary), so this need has been neatly filled by <span class="ref"><a href="http://xmpp.org/extensions/xep-0016.html">Privacy Lists (XEP-0016)</a></span>  [<a href="#nt-idp618512">2</a>].</p>
+
+  <p>However, packet filtering (as opposed to the subset of JID blacklisting) is still of use, for the following tasks:</p>
+
+  <ul>
+    <li>Setting up automatic responses to messages (e.g., "vacation" messages).</li>
+    <li>Redirecting packets to another JID.</li>
+    <li>Modifying the contents of a packet in-transit (e.g., language translation, adding &lt;x/&gt; data).</li>
+    <li>Force incoming messages to be stored offline (e.g., for low-bandwidth clients).</li>
+  </ul>
+
+  <p>This document proposes a modular, extensible framework for specifying packet filtering rules. This document does not, however, propose any specific filter conditions or actions - that is left to other proposals.</p>
+
+  <p>The framework itself operates in the "http://jabber.org/protocol/filter" namespace.</p>
+
+  <div class="indent"><h3>1.1 <a name="sect-idp614576" id="sect-idp614576">Definitions</a></h3>
+    <p>The following definitions are used throughout this document:</p>
+
+    <ul>
+      <li>ruleset - a set of filtering rules.</li>
+      <li>rule - a set of conditions with an associated action.</li>
+      <li>condition - an expression (or set of expressions) that, when applied to a packet, is either true or false.</li>
+      <li>action - a task that may be performed on a packet.</li>
+    </ul>
+  </div>
+
+<h2>2.
+       <a name="sect-idp621216" id="sect-idp621216">Structure</a></h2>
+  <p>A single rule is be expressed in XML like so:</p>
+
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. XML representation of a rule</p><div class="indent"><pre class="prettyprint">
+&lt;rule description='natural-language description of rule'&gt;
+  &lt;condition&gt;[conditionexpr]&lt;/condition&gt;
+  &lt;action&gt;[actionspec]&lt;/action&gt;
+&lt;/rule&gt;
+</pre></div>
+
+  <p>A rule is processed by applying its condition to the packet. If the condition is true, then the action is taken. The "description" attribute is provided so a rule generator can assign a meaningful and user-readable description of a rule.</p>
+
+  <p>A ruleset is be expressed in XML like so:</p>
+ 
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. XML representation of a ruleset</p><div class="indent"><pre class="prettyprint">
+&lt;ruleset&gt;
+  &lt;rule description='rule description'&gt;
+    &lt;condition&gt;[conditionexpr]&lt;/condition&gt;
+    &lt;action&gt;[actionspec]&lt;/action&gt;
+  &lt;/rule&gt;
+  &lt;rule description='rule description'&gt;
+    &lt;condition&gt;[conditionexpr]&lt;/condition&gt;
+    &lt;action&gt;[actionspec]&lt;/action&gt;
+  &lt;/rule&gt;
+  &lt;rule description='rule description'&gt;
+    &lt;condition&gt;[conditionexpr]&lt;/condition&gt;
+    &lt;action&gt;[actionspec]&lt;/action&gt;
+  &lt;/rule&gt;
+&lt;/ruleset&gt;
+</pre></div>
+
+  <p>A ruleset is processed by applying each rule to the packet, one at a time. Processing of the ruleset stops after the first matching rule is found and its action taken, unless the "continue" attribute is found on the matched rule, in which case the remaining rules get processed as though the current rule did not match. If no rules match, packet processing continues as though no rules were specified.</p>
+
+  <p>If the &lt;condition/&gt; element contains no condition expression, then the rule matches all packets.</p>
+
+  <p>A ruleset does not have to contain any rules:</p>
+
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Empty ruleset</p><div class="indent"><pre class="prettyprint">
+&lt;ruleset/&gt;
+</pre></div>
+
+  <p>Conditions may be aggregated using AND or OR modifiers, like so:</p>
+
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Aggregated condition</p><div class="indent"><pre class="prettyprint">
+&lt;condition&gt;
+  &lt;and&gt;
+    [conditionexpr1]
+    [conditionexpr2]
+    &lt;or&gt;
+      [conditionexpr3]
+      [conditionexpr4]
+    &lt;/or&gt;
+  &lt;/and&gt;
+&lt;/condition&gt;
+</pre></div>
+
+  <p>The above example is equivalent to "conditionexpr1 AND conditionexpr2 AND (conditionexpr3 OR conditionexpr4)".</p>
+
+  <p>No such aggregation exists for actions - only a single action expression may be included within an &lt;action/&gt; element.</p>
+ 
+<h2>3.
+       <a name="sect-idp630352" id="sect-idp630352">Filter modules</a></h2>
+  <p>A filter module is a document that defines conditions and/or actions that can be use by this framework. Each module should have its own namespace, and should clearly define the effect of each condition and action it defines.</p>
+
+  <p>Consider a hypothetical module that defines conditions that match packets based on their header information. It might use the namespace "http://jabber.org/protocol/filter/header" and might define the following conditions:</p>
+
+  <ul>
+    <li>&lt;to/&gt; - true when the CDATA of this element matches the "to" attribute of the packet.</li>
+    <li>&lt;from/&gt; - true when the CDATA of this element matches the "from" attribute of the packet.</li>
+    <li>&lt;type/&gt; - true when the CDATA of this element matches the "type" attribute of the packet.</li>
+  </ul>
+
+  <p>Equally, consider a hypothetical module that defines actions for redirecting messages. It might use the namespace "http://jabber.org/protocol/filter/redirect" and might define the following conditions:</p>
+
+  <ul>
+    <li>&lt;redirect/&gt; - redirects the packet to the JID specified in the CDATA of this element.</li>
+    <li>&lt;copy/&gt; - sends a copy of the packet to the JID specified in the CDATA of this element, while giving the original packet to the user.</li>
+  </ul>
+
+  <p>These two modules might be combined to produce a ruleset like the following:</p>
+
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Using modules in a ruleset</p><div class="indent"><pre class="prettyprint">
+&lt;ruleset&gt;
+  &lt;rule description='Send messages from my friend to my home account to be dealt with later'&gt;
+    &lt;condition&gt;
+      &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;friend@theirisp.com&lt;/from&gt;
+    &lt;/condition&gt;
+    &lt;action&gt;
+      &lt;redirect xmlns='http://jabber.org/protocol/filter/redirect'&gt;me@home.com&lt;/redirect&gt;
+    &lt;/action&gt;
+  &lt;/rule&gt;
+&lt;/ruleset&gt;
+</pre></div>
+
+  <p>Using modules in this way enables this framework to be easily extended to support new types of filtering, as well as enabling site administrators to select the types of functionallity that are best suited to their site.</p>
+
+<h2>4.
+       <a name="sect-idp1485104" id="sect-idp1485104">Protocol</a></h2>
+  <p>It will not always be appropriate for a service to provide a Jabber-based interface to its filter settings (e.g., in the case of an XML router, it will almost always be more appropriate to limit the specification of rules and rulesets to the router configuration). However, this will be appropriate sometimes (e.g., a session manager providing per-user packet filtering). In these cases, the following protocol should be used.
+  </p>
+
+  <div class="indent"><h3>4.1 <a name="sect-idp1486864" id="sect-idp1486864">Module discovery</a></h3>
+    <p>An entity may find out if a service supports filtering, and the modules its supports, by issuing a discovery request to the service:</p>
+
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Module discovery</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='jabber.org' 'disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Module discovery response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='jabber.org' id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    &lt;identity category='server' type='jabber' name='Jabber server'/&gt;
+    &lt;feature var='http://jabber.org/protocol/filter'/&gt;
+    &lt;feature var='http://jabber.org/protocol/filter/header'/&gt;
+    &lt;feature var='http://jabber.org/protocol/filter/redirect'/&gt;
+    &lt;feature var='...'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+ </pre></div>
+  </div>
+
+  <div class="indent"><h3>4.2 <a name="sect-idp1489440" id="sect-idp1489440">Setting the ruleset</a></h3>
+    <p>An entity may set the filter ruleset for an entity (which may be itself) like so:</p>
+
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Setting the ruleset</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='rob@cataclysm.cx' id='filter1'&gt;
+  &lt;ruleset xmlns='http://jabber.org/protocol/filter'&gt;
+    &lt;rule description='Send messages from my friend to my home account to be dealt with later'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;friend@theirisp.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;redirect xmlns='http://jabber.org/protocol/filter/redirect'&gt;me@home.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+    &lt;rule description='Copy messages from this spammer to our abuse address'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;spammer@badsite.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;copy xmlns='http://jabber.org/protocol/filter/redirect'&gt;abuse@company.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+  &lt;/ruleset&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p>On success, the service returns:</p>
+
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Setting the ruleset result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='rob@cataclysm.cx' id='filter1'/&gt;
+ </pre></div>
+
+    <p>On error, the server returns the original packet with an appropriate error:</p>
+
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Setting the ruleset failure</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='rob@cataclysm.cx' id='filter1'&gt;
+  &lt;ruleset xmlns='http://jabber.org/protocol/filter'&gt;
+    &lt;rule description='Send messages from my friend to my home account to be dealt with later'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;friend@theirisp.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;redirect xmlns='http://jabber.org/protocol/filter/redirect'&gt;me@home.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+    &lt;rule description='Copy messages from this spammer to our abuse address'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;spammer@badsite.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;copy xmlns='http://jabber.org/protocol/filter/redirect'&gt;abuse@company.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+  &lt;/ruleset&gt;
+  &lt;error code='403'&gt;Forbidden&lt;/error&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+  </div>
+
+  <div class="indent"><h3>4.3 <a name="sect-idp1495872" id="sect-idp1495872">Retrieving the ruleset</a></h3>
+    <p>An entity may retrieve the filter ruleset for an entity (which may be itself) like so:</p>
+
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Requesting the ruleset</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='filter2'&gt;
+  &lt;ruleset xmlns='http://jabber.org/protocol/filter'/&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p>If the requesting entity has permissions to view the ruleset, the server must return the ruleset to the entity:</p>
+
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Retrieving the ruleset result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='rob@cataclysm.cx' id='filter2'&gt;
+  &lt;ruleset xmlns='http://jabber.org/protocol/filter'&gt;
+    &lt;rule description='Send messages from my friend to my home account to be dealt with later'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;friend@theirisp.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;redirect xmlns='http://jabber.org/protocol/filter/redirect'&gt;me@home.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+    &lt;rule description='Copy messages from this spammer to our abuse address'&gt;
+      &lt;condition&gt;
+        &lt;from xmlns='http://jabber.org/protocol/filter/header'&gt;spammer@badsite.com&lt;/from&gt;
+      &lt;/condition&gt;
+      &lt;action&gt;
+        &lt;copy xmlns='http://jabber.org/protocol/filter/redirect'&gt;abuse@company.com&lt;/redirect&gt;
+      &lt;/action&gt;
+    &lt;/rule&gt;
+  &lt;/ruleset&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p>On error, the server returns the original packet with an appropriate error:</p>
+
+    <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Retrieving the ruleset failure</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' to='rob@cataclysm.cx' id='filter2'&gt;
+  &lt;ruleset xmlns='http://jabber.org/protocol/filter'/&gt;
+  &lt;error code='403'&gt;Forbidden&lt;/error&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+  </div>
+
+<h2>5.
+       <a name="sect-idp1504064" id="sect-idp1504064">Error Codes</a></h2>
+    <p>Possible errors are:</p>
+
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Errors returned when retrieving the ruleset</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Code</th><th>Text</th><th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>403</td><td>Forbidden</td><td>The sender does not have permission to modify the ruleset for this entity.</td>
+      </tr>
+      <tr class="body">
+        <td>404</td><td>Not Found</td><td>The entity does not exist.</td>
+      </tr>
+    </table></div>
+
+<h2>6.
+       <a name="sect-idp1509632" id="sect-idp1509632">Implementation notes</a></h2>
+  <p>Ruleset processing should be the first thing that a service does when it receives a packet - even before processing privacy rules per XEP-0016.</p>
+
+  <p>Rules must be processed in the order they are given, and must be returned to a requesting entity in the same order.</p>
+<h2>7.
+       <a name="sect-idp1511312" id="sect-idp1511312">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>8.
+       <a name="sect-idp1512320" id="sect-idp1512320">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the IANA.</p>
+<h2>9.
+       <a name="sect-idp1513328" id="sect-idp1513328">JANA Considerations</a></h2>
+  <p>No namespaces or parameters need to be registered with JANA as a result of this document.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0062<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Informational">Informational</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-09-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: Not yet assigned<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0062.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0062.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0062.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Robert Norris</h3><p class="indent">
+        Email:
+        <a href="mailto:rob@cataclysm.cx">rob@cataclysm.cx</a><br />
+        JabberID: 
+        <a href="xmpp:rob@cataclysm.cx">rob@cataclysm.cx</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp609056" id="nt-idp609056">1</a>. The jabberd server is the original server implementation of the Jabber/XMPP protocols, first developed by Jeremie Miller, inventor of Jabber. For further information, see &lt;<a href="http://jabberd.org/">http://jabberd.org/</a>&gt;.</p><p><a name="nt-idp618512" id="nt-idp618512">2</a>. XEP-0016: Privacy Lists &lt;<a href="http://xmpp.org/extensions/xep-0016.html">http://xmpp.org/extensions/xep-0016.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-09-30)</h4><div class="indent">At the request of the author, changed the status of this document to Deferred pending development of an implementation; also changed the type to Informational. (psa)
+    </div><h4>Version 0.1 (2002-12-05)</h4><div class="indent">Initial version. (rn)
+    </div></div><hr /><p>END</p></body></html>

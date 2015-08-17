@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0109: Out-of-Office Messages</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Out-of-Office Messages" /><meta name="DC.Creator" content="Darrell Piner" /><meta name="DC.Creator" content="Robert Norris" /><meta name="DC.Description" content="This document defines an XMPP protocol extension for communicating out-of-office status." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2010-05-24" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0109" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0109: Out-of-Office Messages</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension for communicating out-of-office status.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Darrell Piner, Robert Norris</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2010-05-24</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp624800">Introduction</a><br />2.  <a href="#sect-idp627408">Requirements</a><br />3.  <a href="#sect-idp634096">Format</a><br />4.  <a href="#sect-idp641840">Use cases</a><br />   
+      4.1.  <a href="#sect-idp642224">Retrieving the current out-of-office settings</a><br />   
+      4.2.  <a href="#sect-idp650784">Publishing new out-of-office settings</a><br />   
+      4.3.  <a href="#sect-idp560688">Removing out-of-office settings</a><br />   
+      4.4.  <a href="#sect-idp564096">Hiding vacation settings</a><br />5.  <a href="#sect-idp1530944">Server requirements</a><br />6.  <a href="#sect-idp1534144">Security Considerations</a><br />7.  <a href="#sect-idp1535152">IANA Considerations</a><br />8.  <a href="#sect-idp1537408">XMPP Registrar Considerations</a><br />9.  <a href="#sect-idp1541616">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp624800" id="sect-idp624800">Introduction</a></h2>
+  <p>Popular electronic mail systems include features allowing users to set up
+  automated messages that are returned to message senders when the user is not
+  able to deal with the message immediately. This feature is commonly known as
+  "out-of-office" or "vacation" messages, because it is most commonly used when
+  a user is unable to read their messages because they are out of the office
+  (e.g., on vacation).</p>
+  <p>This document describes a similar system that enables XMPP users to setup
+  out-of-office messages when they are away.</p>
+  <p>The basis for the e-mail system mechanism is considering an incoming
+  message at the server level and determining whether to respond with a canned
+  out-of-office message. While a system may send a response for each incoming
+  message, many systems provide an optimization where a response to subsequent
+  e-mail messages is sent after some period of time expires.</p>
+<h2>2.
+       <a name="sect-idp627408" id="sect-idp627408">Requirements</a></h2>
+  <p>The requirements for this feature are fairly straightforward. A user MUST be able to:</p>
+
+  <ul>
+    <li>Retrieve their current out-of-office settings.</li>
+    <li>Set new out-of-office settings.</li>
+    <li>Remove out-of-office settings.</li>
+    <li>Notify interested parties of the out-of-office settings when it
+    is in effect.</li>
+  </ul>
+
+  <p>All these requirements are satisfied by <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp632864">1</a>], which is a subset of <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp635536">2</a>].</p> 
+
+<h2>3.
+       <a name="sect-idp634096" id="sect-idp634096">Format</a></h2>
+  <p>The out-of-office setting contains a start-time, an end-time and a
+  short message text.</p>
+
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Sample Out-of-Office message</p><div class="indent"><pre class="prettyprint">
+&lt;start&gt;2003-07-06T10:30:00+10:00&lt;/start&gt;
+&lt;end&gt;2003-07-13T08:00:00+10:00&lt;/end&gt;
+&lt;message&gt;I'm attending OSCON in sunny Portland and won't be able to
+       read your message until I get back. If its urgent, please
+       send email to rob@cataclysm.cx.&lt;/message&gt;
+</pre></div>
+
+  <p>The start and end times are informational only; i.e., the server does
+  nothing with these values other than store them. PEP does not include node
+  lifetime management (i.e., start and end times for the node); therefore, the server is unable
+  to enforce any start and end times included in the settings.</p>
+
+  <p>Using the PEP mechanism a client creates
+  out-of-office settings on a PEP node with the desired access model (such as Presence or Open). When
+  a user (or their client) sends presence containing CAPS (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp640752">3</a>]) with an
+  entry for out-of-office to a contact with an out-of-office message, the user's
+  client is notified of the out-of-office message and may display, in a client-defined 
+  fashion, the out-of-office settings information.</p>
+
+  <p>Clients may rely on the PEP node for notifications of changes as well as
+  automatic notification when the user logs-in (i.e., a user is notified of the
+  current item on the out-of-office PEP node of another user on sending initial
+  presence).</p>
+<h2>4.
+       <a name="sect-idp641840" id="sect-idp641840">Use cases</a></h2>
+
+  <div class="indent"><h3>4.1 <a name="sect-idp642224" id="sect-idp642224">Retrieving the current out-of-office settings</a></h3>
+
+    <p>A user may request their current out-of-office message by sending an IQ get to the local server like so:</p>
+
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Retrieving the current out-of-office settings</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='user@example.com'
+    to='example.com'
+    id='get1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;items node='urn:xmpp:ooo:0'/&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server returns out-of-office settings</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='example.com'
+    id='get1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub&gt;
+    &lt;items node='urn:xmpp:ooo:0&gt;
+      &lt;item id='current'&gt;
+        &lt;ooo xmlns='urn:xmpp:ooo:0'&gt;
+          &lt;start&gt;2003-07-06T10:30:00+10:00&lt;/start&gt;
+          &lt;end&gt;2003-07-13T08:00:00+10:00&lt;/end&gt;
+          &lt;message&gt;I'm attending OSCON in sunny Portland and won't be able to
+                   read your message until I get back. If its urgent, please
+                   send email to rob@cataclysm.cx.&lt;/message&gt;
+        &lt;/ooo&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+    <p>The &lt;start/&gt; and &lt;end/&gt; elements define the times between which this vacation
+    message should be considered valid by a supporting client; the times are in
+    the format specified by <span class="ref"><a href="http://xmpp.org/extensions/xep-0082.html">XMPP Date and Time Profiles (XEP-0082)</a></span>  [<a href="#nt-idp649280">4</a>].</p> 
+    
+    <p>The &lt;message/&gt; element contains the text of the message which the client may
+    display for the user (when appropriate).</p>
+
+    <p>If the user has no stored vacation message, the user will receive a
+    result like the following:</p>
+
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. User does not have any out-of-office settings</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='get1'/&gt;
+ </pre></div>
+
+  </div>
+
+  <div class="indent"><h3>4.2 <a name="sect-idp650784" id="sect-idp650784">Publishing new out-of-office settings</a></h3>
+
+    <p>A user may set new vacation message by publishing a new item with an id
+    of 'current' to the out-of-office node:</p>
+
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Publishing new out-of-office settings</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' 
+    from='user@example.com/client' 
+    to='example.com' 
+    id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='urn:xmpp:ooo:0'&gt;
+      &lt;item id='current'&gt;
+        &lt;ooo xmlns='urn:xmpp:ooo:0'&gt;
+          &lt;start&gt;2003-07-06T10:30:00+10:00&lt;/start&gt;
+          &lt;end&gt;2003-07-13T08:00:00+10:00&lt;/end&gt;
+          &lt;message&gt;I'm attending OSCON in sunny Portland and won't be able to
+                   read your message until I get back. If its urgent, please
+                   send email to rob@cataclysm.cx.&lt;/message&gt;
+        &lt;/ooo&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+   <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Out-of-office settings published successfully</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='example.com' 
+    to='user@example.com/client' 
+    id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='urn:xmpp:ooo:0'&gt;
+      &lt;item id='current'&gt;
+        &lt;ooo xmlns='urn:xmpp:ooo:0'&gt;
+           &lt;start&gt;2003-07-06T10:30:00+10:00&lt;/start&gt;
+           &lt;end&gt;2003-07-13T08:00:00+10:00&lt;/end&gt;
+           &lt;message&gt;I'm attending OSCON in sunny Portland and won't be able to
+                    read your message until I get back. If its urgent, please
+                    send email to rob@cataclysm.cx.&lt;/message&gt;
+        &lt;/ooo&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+</pre></div>
+
+    <p>And by design, PEP sends a notification to all the user's resources.</p>
+
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. PEP node notification sent to user</p><div class="indent"><pre class="prettyprint">
+&lt;message from='user@example.com' 
+         id='notification_1781477179'
+         to='user@example.com/client' type='headline'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='urn:xmpp:ooo:0'&gt;
+      &lt;item id='current'&gt;
+        &lt;ooo xmlns='urn:xmpp:ooo:0'&gt;
+           &lt;start&gt;2003-07-06T10:30:00+10:00&lt;/start&gt;
+           &lt;end&gt;2003-07-13T08:00:00+10:00&lt;/end&gt;
+           &lt;message&gt;I'm attending OSCON in sunny Portland and won't be able to
+                    read your message until I get back. If its urgent, please
+                    send email to rob@cataclysm.cx.&lt;/message&gt;
+        &lt;/ooo&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+ </pre></div>
+
+    <p>The meaning of each element is as outlined above. All elements are required.</p>
+
+    <p>Additionally, the &lt;start/&gt; and &lt;end/&gt; elements MAY be empty (i.e.,
+    have no CDATA). When &lt;start/&gt; is empty, the client MUST take this to mean
+    that the settings should take effect immediately. Similarly, when &lt;end/&gt;
+    is empty, the client MUST take this to mean that the settings should never
+    expire (unless they are explicitly removed).</p>
+
+  </div>
+
+  <div class="indent"><h3>4.3 <a name="sect-idp560688" id="sect-idp560688">Removing out-of-office settings</a></h3>
+
+    <p>A user may remove all stored vacation settings by sending an IQ to the local server like so:</p>
+
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Remove vacation settings</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='user@example.com/client'
+    to='example.com'
+    it='retract1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;retract node='urn:xmpp:ooo:0'&gt;
+      &lt;item id='current' /&gt;
+    &lt;/retract&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+ </pre></div>
+
+   <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Vacation settings removed successfully</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='example.com'
+    to='user@example.com/client'
+    id='retract1' /&gt;
+ </pre></div>
+
+    <p>TODO: Is the Delete And Notify functionality described in XEP-0060
+    7.2.2.1 widely implemented? If so, should that case be included here?</p>
+
+  </div>
+
+  <div class="indent"><h3>4.4 <a name="sect-idp564096" id="sect-idp564096">Hiding vacation settings</a></h3>
+    <p>In PEP, a node's default access model is 'presence' (i.e., any other user
+    with a subscription type "from" or "both" may subscribe to the node. PEP
+    provides other access models including a 'whitelist.' See <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1517360">5</a>] section
+    4.5 for a list of Node Access Models.</p>
+
+    <p>The whitelist access model can be used to hide the current
+    out-of-office message. With an empty whitelist, no other users
+    receive notification when the node changes. The client may also use this
+    fact to allow the client's user to set up an out-of-office message
+    before it becomes active.</p>
+
+    <p>See <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1520448">6</a>] Section 8.2 for details on configuration the out-of-office
+    node's access model.</p>
+
+    <p>See also <span class="ref"><a href="http://xmpp.org/extensions/xep-0223.html">Best Practices for Persistent Storage of Private Data via Publish-Subscribe (XEP-0223)</a></span>  [<a href="#nt-idp1524624">7</a>].</p>
+
+    <p>PEP and PubSub allow for publishing an item and setting configuration on
+    a node. A user may wish to create an initial, hidden out-of-office
+    setting. They may do so by publishing an item with id='archive' and an
+    access model of 'whitelist.' When the user enables the
+    out-of-office settings, a configuration changing the access model
+    to some other mode sends notifications as defined by PEP.</p>
+
+    <p>TODO: add an example of publishing an item and setting configuration with
+    a single stanza i.e., find the appropriate example from <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1526976">8</a>] or
+    <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp1529424">9</a>] and include it here.</p>
+
+  </div>
+<h2>5.
+       <a name="sect-idp1530944" id="sect-idp1530944">Server requirements</a></h2>
+  <p>A server implementing out-of-office messages MUST implement
+  <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp1532752">10</a>].</p> 
+<h2>6.
+       <a name="sect-idp1534144" id="sect-idp1534144">Security Considerations</a></h2>
+  <p>None yet defined.</p>
+<h2>7.
+       <a name="sect-idp1535152" id="sect-idp1535152">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1538656">11</a>].</p>
+<h2>8.
+       <a name="sect-idp1537408" id="sect-idp1537408">XMPP Registrar Considerations</a></h2>
+  <p>The 'urn:xmpp:ooo:0' namespace shall be registered with the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1542672">12</a>] as a result of this document.</p>
+<h2>9.
+       <a name="sect-idp1541616" id="sect-idp1541616">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:ooo:0'
+    xmlns='urn:xmpp:ooo:0'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='start' minOccurs='0' maxOccurs='1' type='xs:string'/&gt;
+        &lt;xs:element name='end' minOccurs='0' maxOccurs='1' type='xs:string'/&gt;
+        &lt;xs:element name='message' minOccurs='0' maxOccurs='1' type='xs:string'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0109<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.3<br />
+            Last Updated: 2010-05-24<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: ooo<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0109.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0109.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0109.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Darrell Piner</h3><p class="indent">
+        Email:
+        <a href="mailto:dpiner@cisco.com">dpiner@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:dpiner@cisco.com">dpiner@cisco.com</a><br /></p><h3>Robert Norris</h3><p class="indent">
+        Email:
+        <a href="mailto:rob@cataclysm.cx">rob@cataclysm.cx</a><br />
+        JabberID: 
+        <a href="xmpp:rob@cataclysm.cx">rob@cataclysm.cx</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp632864" id="nt-idp632864">1</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp635536" id="nt-idp635536">2</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp640752" id="nt-idp640752">3</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp649280" id="nt-idp649280">4</a>. XEP-0082: XMPP Date and Time Profiles &lt;<a href="http://xmpp.org/extensions/xep-0082.html">http://xmpp.org/extensions/xep-0082.html</a>&gt;.</p><p><a name="nt-idp1517360" id="nt-idp1517360">5</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1520448" id="nt-idp1520448">6</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1524624" id="nt-idp1524624">7</a>. XEP-0223: Best Practices for Persistent Storage of Private Data via Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0223.html">http://xmpp.org/extensions/xep-0223.html</a>&gt;.</p><p><a name="nt-idp1526976" id="nt-idp1526976">8</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1529424" id="nt-idp1529424">9</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp1532752" id="nt-idp1532752">10</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp1538656" id="nt-idp1538656">11</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1542672" id="nt-idp1542672">12</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2010-05-24)</h4><div class="indent">Modified specification to use PEP instead of a dedicated protocol; streamlined use cases; changed namespace to urn:xmpp:ooo:0. (rdp)
+    </div><h4>Version 0.2 (2003-08-12)</h4><div class="indent">Added use cases for removing vacation settings; described semantics when start and end times are not specified; changed document type to Informational; small editorial changes. (rn)
+    </div><h4>Version 0.1 (2003-07-28)</h4><div class="indent">Initial version. (rn)
+    </div></div><hr /><p>END</p></body></html>

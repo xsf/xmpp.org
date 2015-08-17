@@ -16,7 +16,7 @@ Dropdown_menu_elem_url_3: who-uses-xmpp
 Dropdown_menu_elem_name_4: Standards Process
 Dropdown_menu_elem_url_4: standards-process
 Dropdown_menu_elem_name_5: The XSF
-Dropdown_menu_elem_url_5: xsf
+Dropdown_menu_elem_url_5: xmpp-standards-foundation
 Dropdown_menu_elem_name_6: FAQ
 Dropdown_menu_elem_url_6: faq
 Sidebar_menu_show: true

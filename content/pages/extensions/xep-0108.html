@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0108: User Activity</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="User Activity" /><meta name="DC.Creator" content="Ralph Meijer" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines a payload format for communicating information about user activities, such as whether a person is currently working, travelling, or relaxing. The payload format is typically transported using the personal eventing protocol, a profile of XMPP publish-subscribe specified in XEP-0163." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-10-29" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0108" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0108: User Activity</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines a payload format for communicating information about user activities, such as whether a person is currently working, travelling, or relaxing. The payload format is typically transported using the personal eventing protocol, a profile of XMPP publish-subscribe specified in XEP-0163.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ralph Meijer, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-10-29</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#proto">Protocol</a><br />   
+      2.1.  <a href="#proto-format">Data Format</a><br />   
+      2.2.  <a href="#proto-pubsub">Pubsub Transport</a><br />3.  <a href="#activities">Activity Values</a><br />4.  <a href="#rpid-mapping">Mapping to RPID</a><br />5.  <a href="#i18n">Internationalization Considerations</a><br />6.  <a href="#security">Security Considerations</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      8.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />9.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>This document defines an extension mechanism for capturing "extended presence" data about user activities, above and beyond availability as defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp691024">1</a>] (e.g., the 'away', 'extended away', and 'dnd' values of the &lt;show/&gt; child of the &lt;presence/&gt; stanza).</p>
+<h2>2.
+       <a name="proto" id="proto">Protocol</a></h2>
+  <div class="indent"><h3>2.1 <a name="proto-format" id="proto-format">Data Format</a></h3>
+    <p>Information about user activities is provided by the user and propagated on the network by the user's client. The information is structured by means of an &lt;activity/&gt; element that is qualified by the 'http://jabber.org/protocol/activity' namespace. The general activity is provided as the element name of a first-level child of the &lt;activity/&gt; element (e.g., &lt;relaxing/&gt;); one such general activity element is REQUIRED. The general activity element MAY contain a child element that specifies a more particular form of the general activity (e.g., &lt;partying/&gt;). The user MAY also specify a natural-language description of the activity in the OPTIONAL &lt;text/&gt; child of the &lt;activity/&gt; element. Here is an example:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;activity xmlns='http://jabber.org/protocol/activity'&gt;
+  &lt;relaxing&gt;
+    &lt;partying/&gt;
+  &lt;/relaxing&gt;
+  &lt;text xml:lang='en'&gt;My nurse&amp;apos;s birthday!&lt;/text&gt;
+&lt;/activity&gt;
+    </pre></div>
+    <p>Instead of (but not in addition to) one of the specific activity elements defined herein, an application MAY include a properly-namespaced child element for the specific activity. Here is an example:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;activity xmlns='http://jabber.org/protocol/activity'&gt;
+  &lt;relaxing&gt;
+    &lt;tanning xmlns='http://www.ilovetanning.info'/&gt;
+  &lt;/relaxing&gt;
+&lt;/activity&gt;
+    </pre></div>
+    <p>Finally, one of the specific activity elements defined herein MAY itself contain a properly-namespaced child element that provides more detailed information about the specific activity. Here is an example:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;activity xmlns='http://jabber.org/protocol/activity'&gt;
+  &lt;inactive&gt;
+    &lt;sleeping&gt;
+      &lt;hibernating xmlns='http://www.ursus.info/states'/&gt;
+    &lt;/sleeping&gt;
+  &lt;/inactive&gt;
+&lt;/activity&gt;
+    </pre></div>
+    <p>In accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp700400">2</a>], the receiving application MUST ignore a specific activity element or detailed activity element if it does not understand the namespace that qualifies the element.</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="proto-pubsub" id="proto-pubsub">Pubsub Transport</a></h3>
+    <p>Activity information SHOULD be communicated and transported by means of the <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1550352">3</a>] subset specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0163.html">Personal Eventing Protocol (XEP-0163)</a></span>  [<a href="#nt-idp1552928">4</a>]. Because activity information is not pure presence information and can change independently of the user's availability, it SHOULD NOT be provided as an extension to &lt;presence/&gt;.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Publishes Activity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' 
+    from='juliet@capulet.lit/ca486eba-0f9a-11dc-8835-000bcd821bfb'
+    id='publish1'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/activity'&gt;
+      &lt;item&gt;
+        &lt;activity xmlns='http://jabber.org/protocol/activity'&gt;
+          &lt;relaxing&gt;
+            &lt;partying/&gt;
+          &lt;/relaxing&gt;
+          &lt;text xml:lang='en'&gt;My nurse&amp;apos;s birthday!&lt;/text&gt;
+        &lt;/activity&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The activity is then delivered to all subscribers:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Activity is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='juliet@capulet.lit' 
+    to='romeo@montague.lit'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/activity'&gt;
+      &lt;item id='b5ac48d0-0f9c-11dc-8754-001143d5d5db'&gt;
+        &lt;activity xmlns='http://jabber.org/protocol/activity'&gt;
+          &lt;relaxing&gt;
+            &lt;partying/&gt;
+          &lt;/relaxing&gt;
+          &lt;text xml:lang='en'&gt;My nurse&amp;apos;s birthday!&lt;/text&gt;
+        &lt;/activity&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>In order to indicate that the user is no longer publishing activities, the user's client shall send an empty &lt;activity/&gt; element, which can be considered a "stop command" for user activities:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User Disables Publishing</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.lit/balcony'
+    id='publish1'
+    type='set'&gt;
+  &lt;pubsub xmlns='http://jabber.org/protocol/pubsub'&gt;
+    &lt;publish node='http://jabber.org/protocol/activity'&gt;
+      &lt;item&gt;
+        &lt;activity xmlns='http://jabber.org/protocol/activity'/&gt;
+      &lt;/item&gt;
+    &lt;/publish&gt;
+  &lt;/pubsub&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Empty Activity Information is Delivered to All Subscribers</p><div class="indent"><pre class="prettyprint">
+&lt;message 
+    from='juliet@capulet.lit'
+    to='romeo@montague.net'&gt;
+  &lt;event xmlns='http://jabber.org/protocol/pubsub#event'&gt;
+    &lt;items node='http://jabber.org/protocol/activity'&gt;
+      &lt;item id='b5ac48d0-0f9c-11dc-8754-001143d5d5db'&gt;
+        &lt;activity xmlns='http://jabber.org/protocol/activity'/&gt;
+      &lt;/item&gt;
+    &lt;/items&gt;
+  &lt;/event&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+<h2>3.
+       <a name="activities" id="activities">Activity Values</a></h2>
+  <p>Each activity has a REQUIRED general category and an OPTIONAL specific instance. One can understand each specifier as '[user] is [activity]' (e.g., 'Juliet is partying'), where the relevant value is the most specific activity provided (e.g., specifically "partying" rather than generally "relaxing").</p>
+  <p>The activity values defined in this taxonomy are as follows, where the first indentation level is the general category and the second indentation level is the specific instance. Note: The specific activity elements are RECOMMENDED as forms of the general activities shown below, but can be included under any general activity (e.g., "gardening" could be used as the specific activity under "relaxing" rather than "doing_chores").</p>
+
+  <ul>
+
+    <li>doing_chores
+      <ul>
+        <li>buying_groceries</li>
+        <li>cleaning</li>
+        <li>cooking</li>
+        <li>doing_maintenance</li>
+        <li>doing_the_dishes</li>
+        <li>doing_the_laundry</li>
+        <li>gardening</li>
+        <li>running_an_errand</li>
+        <li>walking_the_dog</li>
+      </ul>
+    </li>
+
+    <li>drinking
+      <ul>
+        <li>having_a_beer</li>
+        <li>having_coffee</li>
+        <li>having_tea</li>
+      </ul>
+    </li>
+
+    <li>eating
+      <ul>
+        <li>having_a_snack</li>
+        <li>having_breakfast</li>
+        <li>having_dinner</li>
+        <li>having_lunch</li>
+      </ul>
+    </li>
+
+    <li>exercising
+      <ul>
+        <li>cycling</li>
+        <li>dancing</li>
+        <li>hiking</li>
+        <li>jogging</li>
+        <li>playing_sports</li>
+        <li>running</li>
+        <li>skiing</li>
+        <li>swimming</li>
+        <li>working_out</li>
+      </ul>
+    </li>
+
+    <li>grooming
+      <ul>
+        <li>at_the_spa</li>
+        <li>brushing_teeth</li>
+        <li>getting_a_haircut</li>
+        <li>shaving</li>
+        <li>taking_a_bath</li>
+        <li>taking_a_shower</li>
+      </ul>
+    </li>
+  
+    <li>having_appointment</li>
+
+    <li>inactive
+      <ul>
+        <li>day_off</li>
+        <li>hanging_out</li>
+        <li>hiding</li>
+        <li>on_vacation</li>
+        <li>praying</li>
+        <li>scheduled_holiday</li>
+        <li>sleeping</li>
+        <li>thinking</li>
+      </ul>
+    </li>
+
+    <li>relaxing
+      <ul>
+        <li>fishing</li>
+        <li>gaming</li>
+        <li>going_out</li>
+        <li>partying</li>
+        <li>reading</li>
+        <li>rehearsing</li>
+        <li>shopping</li>
+        <li>smoking</li>
+        <li>socializing</li>
+        <li>sunbathing</li>
+        <li>watching_tv</li>
+        <li>watching_a_movie</li>
+      </ul>
+    </li>
+
+    <li>talking
+      <ul>
+        <li>in_real_life</li>
+        <li>on_the_phone</li>
+        <li>on_video_phone</li>
+      </ul>
+    </li>
+
+    <li>traveling
+      <ul>
+        <li>commuting</li>
+        <li>cycling</li>
+        <li>driving</li>
+        <li>in_a_car</li>
+        <li>on_a_bus</li>
+        <li>on_a_plane</li>
+        <li>on_a_train</li>
+        <li>on_a_trip</li>
+        <li>walking</li>
+      </ul>
+    </li>
+
+    <li>working
+      <ul>
+        <li>coding</li>
+        <li>in_a_meeting</li>
+        <li>studying</li>
+        <li>writing</li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <p>In addition, the specific activity element can be &lt;other/&gt; in order to handle activities not defined herein.  [<a href="#nt-idp1595552">5</a>]</p>
+
+<h2>4.
+       <a name="rpid-mapping" id="rpid-mapping">Mapping to RPID</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc4480">RFC 4480</a></span>  [<a href="#nt-idp1599760">6</a>] defines several extensions to the <span class="ref"><a href="http://tools.ietf.org/html/rfc3863">Presence Information Data Format (PIDF) </a></span>  [<a href="#nt-idp1602400">7</a>] for so-called "rich presence". One such extension is the &lt;activity/&gt; element (see Section 4.2), which "describes what the presentity is currently doing". The following table shows a mapping from the defined RPID activity values to the Jabber values defined herein.</p>
+  <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: RPID-to-Jabber mappings</p><table border="1" cellpadding="3" cellspacing="0">
+    <tr class="body">
+      <th>RPID &lt;activity/&gt;</th>
+      <th>General activity element</th>
+      <th>Specific activity element</th>
+    </tr>
+    <tr class="body">
+      <td>appointment</td>
+      <td align="center">having_appointment</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td>away</td>
+      <td align="center" colspan="2"> [<a href="#nt-idp1607936">8</a>]</td>
+    </tr>
+    <tr class="body">
+      <td>busy</td>
+      <td align="center" colspan="2"> [<a href="#nt-idp1610272">9</a>]</td>
+    </tr>
+    <tr class="body">
+      <td>holiday</td>
+      <td align="center">inactive</td>
+      <td align="center">scheduled_holiday</td>
+    </tr>
+    <tr class="body">
+      <td>in-transit</td>
+      <td align="center">traveling</td>
+      <td align="center"> [<a href="#nt-idp1615152">10</a>]</td>
+    </tr>
+    <tr class="body">
+      <td>meal</td>
+      <td align="center">eating</td>
+      <td align="center"> [<a href="#nt-idp1617424">11</a>]</td>
+    </tr>
+    <tr class="body">
+      <td>meeting</td>
+      <td align="center">working</td>
+      <td align="center">in_a_meeting</td>
+    </tr>
+    <tr class="body">
+      <td>on-the-phone</td>
+      <td align="center">talking</td>
+      <td align="center">on_the_phone</td>
+    </tr>
+    <tr class="body">
+      <td>performance</td>
+      <td align="center">--</td>
+      <td align="center">--</td>
+    </tr>
+    <tr class="body">
+      <td>permanent-absence</td>
+      <td align="center" colspan="2"> [<a href="#nt-idp1625376">12</a>]</td>
+    </tr>
+    <tr class="body">
+      <td>sleeping</td>
+      <td align="center">inactive</td>
+      <td align="center">sleeping</td>
+    </tr>
+    <tr class="body">
+      <td>steering</td>
+      <td align="center">traveling</td>
+      <td align="center">driving</td>
+    </tr>
+    <tr class="body">
+      <td>travel</td>
+      <td align="center">traveling</td>
+      <td align="center">on_a_trip</td>
+    </tr>
+    <tr class="body">
+      <td>vacation</td>
+      <td align="center">inactive</td>
+      <td align="center">on_vacation</td>
+    </tr>
+  </table></div>
+  <p>The full range of activities defined herein is considerably richer than that defined in RPID; no mapping to RPID is provided by this specification for activity values that are not present in RPID, and any such mapping is the responsibility of a gateway between the two systems.</p>
+<h2>5.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>The XML character data values of the &lt;text/&gt; element are intended for presentation to human users; therefore, if a &lt;text/&gt; element is included the sending application SHOULD also ensure that the &lt;text/&gt; element or the parent &lt;activity/&gt; element possesses an 'xml:lang' attribute with an appropriate value.</p>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Because user activities may be published to a large number of pubsub subscribers, users should take care in approving subscribers and in characterizing their current activities.</p>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1644112">14</a>].</p>
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>8.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1653024">15</a>] includes 'http://jabber.org/protocol/activity' in its registry of protocol namespaces.</p>
+  </div>
+<h2>9.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/activity'
+    xmlns='http://jabber.org/protocol/activity'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='activity'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+	&lt;xs:choice minOccurs='0'&gt;
+          &lt;xs:element name='doing_chores' type='general'/&gt;
+          &lt;xs:element name='drinking' type='general'/&gt;
+          &lt;xs:element name='eating' type='general'/&gt;
+          &lt;xs:element name='exercising' type='general'/&gt;
+          &lt;xs:element name='grooming' type='general'/&gt;
+          &lt;xs:element name='having_appointment' type='general'/&gt;
+          &lt;xs:element name='inactive' type='general'/&gt;
+          &lt;xs:element name='relaxing' type='general'/&gt;
+          &lt;xs:element name='talking' type='general'/&gt;
+          &lt;xs:element name='traveling' type='general'/&gt;
+          &lt;xs:element name='undefined' type='general'/&gt;
+          &lt;xs:element name='working' type='general'/&gt;
+        &lt;/xs:choice&gt;
+        &lt;xs:element name='text' minOccurs='0' type='xs:string'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name='general'&gt;
+    &lt;xs:choice minOccurs='0'&gt;
+      &lt;xs:choice minOccurs='0'&gt;
+        &lt;xs:element name='at_the_spa' type='specific'/&gt;
+        &lt;xs:element name='brushing_teeth' type='specific'/&gt;
+        &lt;xs:element name='buying_groceries' type='specific'/&gt;
+        &lt;xs:element name='cleaning' type='specific'/&gt;
+        &lt;xs:element name='coding' type='specific'/&gt;
+        &lt;xs:element name='commuting' type='specific'/&gt;
+        &lt;xs:element name='cooking' type='specific'/&gt;
+        &lt;xs:element name='cycling' type='specific'/&gt;
+        &lt;xs:element name='dancing' type='specific'/&gt;
+        &lt;xs:element name='day_off' type='specific'/&gt;
+        &lt;xs:element name='doing_maintenance' type='specific'/&gt;
+        &lt;xs:element name='doing_the_dishes' type='specific'/&gt;
+        &lt;xs:element name='doing_the_laundry' type='specific'/&gt;
+        &lt;xs:element name='driving' type='specific'/&gt;
+        &lt;xs:element name='fishing' type='specific'/&gt;
+        &lt;xs:element name='gaming' type='specific'/&gt;
+        &lt;xs:element name='gardening' type='specific'/&gt;
+        &lt;xs:element name='getting_a_haircut' type='specific'/&gt;
+        &lt;xs:element name='going_out' type='specific'/&gt;
+        &lt;xs:element name='hanging_out' type='specific'/&gt;
+        &lt;xs:element name='having_a_beer' type='specific'/&gt;
+        &lt;xs:element name='having_a_snack' type='specific'/&gt;
+        &lt;xs:element name='having_breakfast' type='specific'/&gt;
+        &lt;xs:element name='having_coffee' type='specific'/&gt;
+        &lt;xs:element name='having_dinner' type='specific'/&gt;
+        &lt;xs:element name='having_lunch' type='specific'/&gt;
+        &lt;xs:element name='having_tea' type='specific'/&gt;
+        &lt;xs:element name='hiding' type='specific'/&gt;
+        &lt;xs:element name='hiking' type='specific'/&gt;
+        &lt;xs:element name='in_a_car' type='specific'/&gt;
+        &lt;xs:element name='in_a_meeting' type='specific'/&gt;
+        &lt;xs:element name='in_real_life' type='specific'/&gt;
+        &lt;xs:element name='jogging' type='specific'/&gt;
+        &lt;xs:element name='on_a_bus' type='specific'/&gt;
+        &lt;xs:element name='on_a_plane' type='specific'/&gt;
+        &lt;xs:element name='on_a_train' type='specific'/&gt;
+        &lt;xs:element name='on_a_trip' type='specific'/&gt;
+        &lt;xs:element name='on_the_phone' type='specific'/&gt;
+        &lt;xs:element name='on_vacation' type='specific'/&gt;
+        &lt;xs:element name='on_video_phone' type='specific'/&gt;
+        &lt;xs:element name='other' type='specific'/&gt;
+        &lt;xs:element name='partying' type='specific'/&gt;
+        &lt;xs:element name='playing_sports' type='specific'/&gt;
+        &lt;xs:element name='praying' type='specific'/&gt;
+        &lt;xs:element name='reading' type='specific'/&gt;
+        &lt;xs:element name='rehearsing' type='specific'/&gt;
+        &lt;xs:element name='running' type='specific'/&gt;
+        &lt;xs:element name='running_an_errand' type='specific'/&gt;
+        &lt;xs:element name='scheduled_holiday' type='specific'/&gt;
+        &lt;xs:element name='shaving' type='specific'/&gt;
+        &lt;xs:element name='shopping' type='specific'/&gt;
+        &lt;xs:element name='skiing' type='specific'/&gt;
+        &lt;xs:element name='sleeping' type='specific'/&gt;
+        &lt;xs:element name='smoking' type='specific'/&gt;
+        &lt;xs:element name='socializing' type='specific'/&gt;
+        &lt;xs:element name='studying' type='specific'/&gt;
+        &lt;xs:element name='sunbathing' type='specific'/&gt;
+        &lt;xs:element name='swimming' type='specific'/&gt;
+        &lt;xs:element name='taking_a_bath' type='specific'/&gt;
+        &lt;xs:element name='taking_a_shower' type='specific'/&gt;
+        &lt;xs:element name='thinking' type='specific'/&gt;
+        &lt;xs:element name='walking' type='specific'/&gt;
+        &lt;xs:element name='walking_the_dog' type='specific'/&gt;
+        &lt;xs:element name='watching_a_movie' type='specific'/&gt;
+        &lt;xs:element name='watching_tv' type='specific'/&gt;
+        &lt;xs:element name='working_out' type='specific'/&gt;
+        &lt;xs:element name='writing' type='specific'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:any namespace='##other'/&gt;
+    &lt;/xs:choice&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name='specific'&gt;
+    &lt;xs:sequence minOccurs='0'&gt;
+      &lt;xs:any namespace='##other'/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0108<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.3<br />
+            Last Updated: 2008-10-29<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0163<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: activity<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/activity.xsd">http://www.xmpp.org/schemas/activity.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0108.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0108.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0108.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ralph Meijer</h3><p class="indent">
+        Email:
+        <a href="mailto:ralphm@ik.nu">ralphm@ik.nu</a><br />
+        JabberID: 
+        <a href="xmpp:ralphm@ik.nu">ralphm@ik.nu</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp691024" id="nt-idp691024">1</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp700400" id="nt-idp700400">2</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1550352" id="nt-idp1550352">3</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1552928" id="nt-idp1552928">4</a>. XEP-0163: Personal Eventing Protocol &lt;<a href="http://xmpp.org/extensions/xep-0163.html">http://xmpp.org/extensions/xep-0163.html</a>&gt;.</p><p><a name="nt-idp1595552" id="nt-idp1595552">5</a>. In the absence of a &lt;text/&gt; element, the recipient is free to draw whatever conclusions he or she may like regarding the nature of the "other" activity. Naturally, emoticons can be provided as the XML character data of the &lt;text/&gt; element. ;-)</p><p><a name="nt-idp1599760" id="nt-idp1599760">6</a>. RFC 4480: RPID: Rich Presence Extensions to the Presence Information Data Format (PIDF) &lt;<a href="http://tools.ietf.org/html/rfc4480">http://tools.ietf.org/html/rfc4480</a>&gt;.</p><p><a name="nt-idp1602400" id="nt-idp1602400">7</a>. RFC 3863: Presence Information Data Format (PIDF) &lt;<a href="http://tools.ietf.org/html/rfc3863">http://tools.ietf.org/html/rfc3863</a>&gt;.</p><p><a name="nt-idp1607936" id="nt-idp1607936">8</a>. In XMPP, "away" is not an activity, but an availability state captured by means of a &lt;presence/&gt; stanza with a &lt;show&gt;away&lt;/show&gt; child (see <span class="ref">XMPP IM</span>).</p><p><a name="nt-idp1610272" id="nt-idp1610272">9</a>. In XMPP, "busy" is not an activity, but an availability state captured by means of a &lt;presence/&gt; stanza with &lt;show&gt;dnd&lt;/show&gt; child (see <span class="ref">XMPP IM</span>). Alternatively, the RPID "busy" activity could map to any number of more specific Jabber activities as defined herein.</p><p><a name="nt-idp1615152" id="nt-idp1615152">10</a>. Appropriate specific values in the "traveling" category would be "in_a_car", "on_a_bus", and "on_a_train".</p><p><a name="nt-idp1617424" id="nt-idp1617424">11</a>. The "eating" category can be further specified by "having_a_snack", "having_breakfast", "having_lunch", or "having_dinner".</p><p><a name="nt-idp1625376" id="nt-idp1625376">12</a>. In XMPP, "permanent absence" is not an activity, but instead would be sent to a contact via the &lt;gone/&gt; stanza error (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1626832">13</a>]).</p><p><a name="nt-idp1626832" id="nt-idp1626832">13</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1644112" id="nt-idp1644112">14</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1653024" id="nt-idp1653024">15</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.3 (2008-10-29)</h4><div class="indent"><p>Allowed empty activity element to signify a pause in publishing; added undefined element to handle any unspecified activity; also added more activities: dancing, fishing, hiding, praying, smoking, thinking.</p> (psa)
+    </div><h4>Version 1.2 (2007-07-11)</h4><div class="indent"><p>Added on_video_phone activity.</p> (psa)
+    </div><h4>Version 1.1 (2007-06-04)</h4><div class="indent"><p>Corrected PEP examples.</p> (psa)
+    </div><h4>Version 1.0 (2004-10-20)</h4><div class="indent"><p>Per a vote of the Jabber Council, advanced status to Draft; per Council discussion, also adjusted structure to use nested elements rather than XML character data.</p> (psa/rm)
+    </div><h4>Version 0.4 (2004-09-15)</h4><div class="indent"><p>Added internationalization considerations.</p> (psa)
+    </div><h4>Version 0.3 (2004-04-25)</h4><div class="indent"><p>Corrected several errors; added reference to XEP-0033.</p> (psa)
+    </div><h4>Version 0.2 (2004-02-19)</h4><div class="indent"><p>Minor text and schema changes; added RPID mapping.</p> (psa)
+    </div><h4>Version 0.1 (2003-07-22)</h4><div class="indent"><p>Initial version.</p> (rm)
+    </div></div><hr /><p>END</p></body></html>

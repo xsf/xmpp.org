@@ -1,0 +1,1086 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0042: Jabber OOB Broadcast Service (JOBS)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber OOB Broadcast Service (JOBS)" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Description" content="A protocol for enabling uni-directional multicast data transfers out of band." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-04-11" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0042" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0042: Jabber OOB Broadcast Service (JOBS)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A protocol for enabling uni-directional multicast data transfers out of band.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Matthew Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-04-11</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp665728">Overview</a><br />   
+      1.1.  <a href="#sect-idp666112">Introduction</a><br />   
+      1.2.  <a href="#sect-idp668448">Design Concepts</a><br />2.  <a href="#sect-idp682112">Use Cases</a><br />   
+      2.1.  <a href="#sect-idp682608">Discovering the Service</a><br />      
+      2.1.1.  <a href="#sect-idp685328">"jabber:iq:browse"</a><br />   
+      2.2.  <a href="#sect-idp1538496">Creating a Session</a><br />      
+      2.2.1.  <a href="#sect-idp1540272">Simple</a><br />      
+      2.2.2.  <a href="#sect-idp1544240">With Parameters</a><br />      
+      2.2.3.  <a href="#sect-idp1552560">Form-based</a><br />   
+      2.3.  <a href="#sect-idp1562912">Inviting Receivers</a><br />      
+      2.3.1.  <a href="#sect-idp1564064">Inviting Directly</a><br />      
+      2.3.2.  <a href="#sect-idp1568672">Inviting via JOBS</a><br />   
+      2.4.  <a href="#sect-idp1572832">Retrieving Session Information</a><br />      
+      2.4.1.  <a href="#sect-idp1574256">Service-wide</a><br />      
+      2.4.2.  <a href="#sect-idp1577472">Session-specific</a><br />   
+      2.5.  <a href="#sect-idp1581936">Connecting OOB</a><br />      
+      2.5.1.  <a href="#sect-idp1582432">Initiating and Authenticating</a><br />      
+      2.5.2.  <a href="#sect-idp600272">Authorizing</a><br />      
+      2.5.3.  <a href="#sect-idp1607136">Dropping</a><br />   
+      2.6.  <a href="#sect-idp1611328">Deleting a Session</a><br />      
+      2.6.1.  <a href="#sect-idp1612976">Expiring</a><br />      
+      2.6.2.  <a href="#sect-idp1614192">Deleting Explicitly</a><br />   
+      2.7.  <a href="#sect-idp1617232">Being Notified about Events</a><br />      
+      2.7.1.  <a href="#sect-idp1617728">Connection Accepted</a><br />      
+      2.7.2.  <a href="#sect-idp1620480">Connection Rejected</a><br />      
+      2.7.3.  <a href="#sect-idp1623248">Connection Dropped</a><br />      
+      2.7.4.  <a href="#sect-idp1626000">Session Deleted</a><br />3.  <a href="#sect-idp1630048">Formal Description</a><br />   
+      3.1.  <a href="#sect-idp1630544">In-Band Protocol</a><br />      
+      3.1.1.  <a href="#sect-idp1631040">DTD</a><br />      
+      3.1.2.  <a href="#sect-idp1632032">&lt;session/&gt; Element</a><br />      
+      3.1.3.  <a href="#sect-idp1655008">&lt;item/&gt; Element</a><br />      
+      3.1.4.  <a href="#sect-idp1676400">&lt;connect/&gt; Element</a><br />      
+      3.1.5.  <a href="#sect-idp1679392">&lt;limit/&gt; Element</a><br />      
+      3.1.6.  <a href="#sect-idp1688928">Possible Errors</a><br />   
+      3.2.  <a href="#sect-idp1734368">OOB Protocol</a><br />      
+      3.2.1.  <a href="#sect-idp1735616">Header EBNF</a><br />      
+      3.2.2.  <a href="#sect-idp1736240">State Details</a><br />      
+      3.2.3.  <a href="#sect-idp1756496">Possible Errors</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp665728" id="sect-idp665728">Overview</a></h2>
+  <div class="indent"><h3>1.1 <a name="sect-idp666112" id="sect-idp666112">Introduction</a></h3>
+    <p>Distributing data out-of-band (OOB) to one or more end-points is a requirement for many Jabber clients. The Jabber OOB Broadcast Service (JOBS) is a mechanism to allow end-points to open uni-directional data streams between each other, on top of which any number of applications can be built  [<a href="#nt-idp667168">1</a>].</p>
+
+    <p>The aim of this document is to define a process of connecting a sender to one or more receivers through a secondary TCP port.</p>
+  </div>
+  <div class="indent"><h3>1.2 <a name="sect-idp668448" id="sect-idp668448">Design Concepts</a></h3>
+    <p>As the name implies, JOBS is designed to enable multicast, uni-directional OOB connections. These connections are usually between a "sender" client, a JOBS "service", and one or more "receiver" clients. Each such set of connections is collectively called a session. JOBS is designed to allow a single service to handle multiple sessions over a single host/port combination.</p>
+
+    <p>To address a large number of typical uses efficiently, JOBS can multicast the data from a sender to multiple receivers. In order to keep the protcol as simple as possible, it only allows data to flow in one direction.</p>
+
+    <p>JOBS utilizes a "two-band" authentication mechanism. This allows the end-points to know practically nothing about each other, yet still be assured that the OOB connection is really to/from the Jabber entity its intended to be. The authentication system is then backed-up with explicit authorization requests.</p>
+
+    <p>For the OOB portion, clients connect to the host/address and port of the JOBS service for a given session. Once connected, a client-initiated handshake process occurs, and (if successful), then data is routed from the sender's connection to each receiver's connection. The only point at which any error information may be conveyed over the OOB connection is during the handshake process.</p>
+    
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Terms in Use</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Term</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>OOB</td>
+        <td>Out-Of-Band. Any network connection that exists outside of the normal Jabber protocol traffic.</td>
+      </tr>
+      <tr class="body">
+        <td>session</td>
+        <td>A session registered with a "server" for clients to connect to.</td>
+      </tr>
+      <tr class="body">
+        <td>client</td>
+        <td>An end-point on a JOBS session.</td>
+      </tr>
+      <tr class="body">
+        <td>service</td>
+        <td>The JOBS Jabber component/server.</td>
+      </tr>
+      <tr class="body">
+        <td>server</td>
+        <td>A particular host/port of the JOBS service.</td>
+      </tr>
+      <tr class="body">
+        <td>sender</td>
+        <td>The client sending data.</td>
+      </tr>
+      <tr class="body">
+        <td>receiver</td>
+        <td>A client receiving data.</td>
+      </tr>
+    </table></div>
+  </div>
+<h2>2.
+       <a name="sect-idp682112" id="sect-idp682112">Use Cases</a></h2>
+  <div class="indent"><h3>2.1 <a name="sect-idp682608" id="sect-idp682608">Discovering the Service</a></h3>
+    <p>Discovering support for JOBS involves either <span class="ref"><a href="http://xmpp.org/extensions/xep-0011.html">Jabber Browsing (XEP-0011)</a></span>  [<a href="#nt-idp684320">2</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp686960">3</a>]. This determines if the end-point understands the JOBS protocol.</p>
+    <div class="indent"><h3>2.1.1 <a name="sect-idp685328" id="sect-idp685328">"jabber:iq:browse"</a></h3>
+      <p>To determine support for JOBS via jabber:iq:browse, look for an item with a nested &lt;ns/&gt; with a value of "http://jabber.org/protocol/jobs":</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Browse request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='domain'&gt;
+  &lt;query xmlns='jabber:iq:browse'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Browse result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='sender@domain/res' from='domain'&gt;
+  ...
+  &lt;item xmlns='jabber:iq:browse'
+      category='service'
+      type='x-jobs'
+      jid='jobs.domain'
+      version='0.4'&gt;
+    &lt;ns&gt;http://jabber.org/protocol/jobs&lt;/ns&gt;
+  &lt;/item&gt;
+  ...
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.2 <a name="sect-idp1538496" id="sect-idp1538496">Creating a Session</a></h3>
+    <p>The JOBS protocol supports various scenarios to create sessions. Most of these scenarios allow an entity to determine the possible parameters to create a session with. To actually create a session, the (would-be) sender sends an "iq-set" with a &lt;session action="create"/&gt;. This returns the details of the newly created session, including the ID and OOB host/port.</p>
+    
+    <p>This use-case can be completely ignored for true "peer-to-peer" systems.</p>
+    
+    <div class="indent"><h3>2.2.1 <a name="sect-idp1540272" id="sect-idp1540272">Simple</a></h3>
+      <p>The simplest create request is:</p>
+    
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Creation request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='sender@domain/res' to='jobs.domain' id='JOBS1'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='create'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Creation result</p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type='result' to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      status='pending'
+      host='jobs.domain' 
+      id='01234567'
+      port='12676' 
+      sender='sender@domain/res'
+      buffer='0'
+      expires='30' 
+      receivers='1'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    
+      <p>This creates a session between sender@domain/resource and any one receiver. At this point, the JOBS service is ready to accept connections for this session. The &lt;session/&gt; element describes the details for the session. The value returned in the "id" attribute is the JOBS session ID  [<a href="#nt-idp1543600">4</a>].</p>
+    </div>
+    <div class="indent"><h3>2.2.2 <a name="sect-idp1544240" id="sect-idp1544240">With Parameters</a></h3>
+      <p>When creating a session, parameters to &lt;session/&gt; can be supplied, explicitly requesting that certain parameters be met (such as buffer size, time to expire, and receiver limit). Since these parameters have lower- and upper-bounds specific to the JOBS service, a sender may need to determine these limits.</p>
+      
+      <p>To determine the limits, the sender sends an "iq-get" with a &lt;session action="create"/&gt;:</p>
+      
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Parameter statistics request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS0' type='get' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs' action='create'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Parameter statistics result</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS0' type='result' to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      host='jobs.domain'
+      port='12676'
+      sender='sender@domain/res'
+      buffer='0'
+      expires='30'
+      receivers='1'&gt;
+    &lt;connect host='jobs.domain' port='12676'/&gt;
+    &lt;limit  type='buffer'
+        default='0'
+        max='1024'
+        min='0'/&gt;
+    &lt;limit  type='expires'
+        default='30'
+        max='3600'
+        min='5'/&gt;
+    &lt;limit  type='receivers'
+        default='1'
+        max='15'
+        min='1'/&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+
+      <p>The returned &lt;session/&gt; is also prefilled with default values for all known parameters.</p>
+      
+      <p>To create a session with specific parameters, the sender sends an "iq-set" as in the "simple" use-case, but then specifying the parameter values desired:</p>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Creation request, with parameters</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS1' type='set' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs' action='create'
+      expires='-1'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Creation result, with parameters</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      status='pending'
+      host='jobs.domain' 
+      id='01234567'
+      port='12676' 
+      sender='sender@domain/res'
+      buffer='0'
+      expires='-1' 
+      receivers='1'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    
+      <p>The above example creates a session that does not timeout. A JOBS service uses values from the default information set for any parameters that are missing.</p>
+      
+      <p>Any parameters that exceed the minimums/maximums causes an error.</p>
+    </div>
+    <div class="indent"><h3>2.2.3 <a name="sect-idp1552560" id="sect-idp1552560">Form-based</a></h3>
+      <p>In some cases, the session creation process requires an interface more suitable for human consumption. In such cases the JOBS protocol helps by allowing for contained elements governed by other namespaces. For form-based creation, a <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp1555904">5</a>] form can be embedded in the &lt;session/&gt;.</p>
+      
+      <p>To create a session using forms, send a &lt;session action="create"/&gt; with an embedded &lt;x xmlns="jabber:x:data"/&gt;:</p>
+      
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Creation form request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs' action='create'&gt;
+    &lt;x xmlns='jabber:x:data'/&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Creation form result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='jobs.domain' to='sender@domain/res'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      host='jobs.domain' 
+      port='12676' 
+      buffer='0'
+      expires='-1' 
+      receivers='1'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;instructions&gt;Please specify values for the given fields.&lt;/instructions&gt;
+      &lt;field var='hostport' type='select-single' label='JOBS host/port'&gt;
+        &lt;option&gt;jobs.domain:12676&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field var='buffer' type='text' label='Buffer Size (in bytes)'&gt;&lt;value&gt;0&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='expires' type='text' label='Timeout (in seconds)'&gt;&lt;value&gt;30&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='receivers' type='text' label='Number of Recipients'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p>The exact fields present in the form are dependent upon the JOBS implementation. The form SHOULD allow a user to at least specify the &lt;session/&gt; attributes.</p>
+      <p>Using the form-based approach, the session is then created by sending a &lt;session action='create'/&gt; with a form submission (as defined for "jabber:x:data"):</p>
+      
+      <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Creation request (form-based)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs' action='create'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='hostport'&gt;&lt;value&gt;jobs.domain:12676&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='buffer'&gt;&lt;value&gt;0&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='expires'&gt;&lt;value&gt;300&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='receivers'&gt;&lt;value&gt;1&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Creation result (form-based)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='jobs.domain' to='sender@domain/res'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      status='pending'
+      host='jobs.domain' 
+      id='01234567'
+      port='12676' 
+      sender='sender@domain/res'
+      buffer='0'
+      expires='300' 
+      receivers='1'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.3 <a name="sect-idp1562912" id="sect-idp1562912">Inviting Receivers</a></h3>
+    <p>Once the session is created, the sender invites receivers to connect. The sender can invite receivers either directly, or via the JOBS service. Most invitations are distributed via &lt;message/&gt;.</p>
+    
+    <div class="indent"><h3>2.3.1 <a name="sect-idp1564064" id="sect-idp1564064">Inviting Directly</a></h3>
+      <p>The sender can invite receivers directly. This is done using a &lt;message/&gt;:</p>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Invitation message (direct)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='sender@domain/res' to='receiver@domain/res'&gt;
+  &lt;body&gt;Let's connect!&lt;/body&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      host='jobs.domain'
+      id='01234567'
+      port='12676'
+      sender='sender@domain/res'
+      buffer='0'
+      expires='30'
+      receivers='1'/&gt;
+&lt;/message&gt;
+      </pre></div>
+      
+      <p>When inviting directly, the &lt;session/&gt; MUST contain enough information for a receiver to connect OOB. The required information is:</p>
+      <ul>
+        <li>host</li>
+        <li>id</li>
+        <li>port</li>
+      </ul>
+    </div>
+    <div class="indent"><h3>2.3.2 <a name="sect-idp1568672" id="sect-idp1568672">Inviting via JOBS</a></h3>
+      <p>Alternatively, a sender can invite receivers via the JOBS service. This is also done using a &lt;message/&gt;, with a &lt;session action="notify"/&gt; containing one or more &lt;item action="invite" type="connection"/&gt;:</p>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Invitation message (to JOBS service)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='sender@domain/res' to='jobs.domain'&gt;
+  &lt;body&gt;Let's connect!&lt;/body&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      id='01234567'&gt;
+    &lt;item type='connection' action='invite'&gt;receiver@domain&lt;/item&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>This results in the JOBS service sending the &lt;message/&gt; to each &lt;item/&gt;. Any additional elements (such as a &lt;body/&gt;) are passed onto those invited:</p>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Invitation message (from JOBS service)</p><div class="indent"><pre class="prettyprint">
+&lt;message from='jobs.domain' to='receiver@domain'&gt;
+  &lt;body&gt;Let's connect!&lt;/body&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='pending'
+      host='jobs.domain'
+      id='01234567'
+      port='12676'
+      sender='sender@domain/res'
+      buffer='0'
+      expires='30'
+      receivers='1'&gt;
+    &lt;item type='connection' action='invite'/&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.4 <a name="sect-idp1572832" id="sect-idp1572832">Retrieving Session Information</a></h3>
+    <p>At any time, a client can request information about sessions for a JOBS service. The request can be directed for "all" sessions, or a specific session [<a href="#nt-idp1573744">6</a>].</p>
+
+    <div class="indent"><h3>2.4.1 <a name="sect-idp1574256" id="sect-idp1574256">Service-wide</a></h3>
+      <p>A client can request all the sessions for a JOBS service by sending an "iq-get" containing a &lt;session action="info"/&gt; with no ID:</p>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Information request (all sessions)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The JOBS service responds with all the sessions within the "iq-result". This is the only case where a result can have more than one &lt;session/&gt;.</p>
+      <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Information result (all sessions)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='jobs.domain' to='sender@domain/res'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='info'
+      status='active'
+      host='jobs.domain'
+      id='01234567'
+      port='12676'
+      buffer='0'
+      expires='30'
+      receivers='1'&gt;
+    &lt;item type='connection' action='accept'&gt;sender@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='info'
+      status='pending'
+      host='jobs.domain'
+      id='87654321'
+      port='12676'
+      buffer='0'
+      expires='30'
+      receivers='1'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>2.4.2 <a name="sect-idp1577472" id="sect-idp1577472">Session-specific</a></h3>
+      <p>Alternatively, a client can request the information for a specific session by sending an "iq-get" containing a &lt;session action="info"/&gt; with the ID:</p>
+      <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Information request (session-specific)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='info'
+      id='01234567'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>The service responds with an "iq-result" of just the requested session.</p>
+      <p class="caption"><a name="example-19" id="example-19"></a>Example 19. Information result (session-specific)</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='jobs.domain' sender='sender@domain/res'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='info'
+      status='active'
+      host='jobs.domain'
+      id='01234567'
+      port='12676'
+      buffer='0'
+      expires='30'
+      receivers='1'&gt;
+    &lt;item type='connection' action='accept'&gt;sender@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.5 <a name="sect-idp1581936" id="sect-idp1581936">Connecting OOB</a></h3>
+    <div class="indent"><h3>2.5.1 <a name="sect-idp1582432" id="sect-idp1582432">Initiating and Authenticating</a></h3>
+      <p>When a client connects (sender or receivers), a client-initiated handshake takes place. The purpose of this handshake is to authenticate the OOB connection, in relation to the client's JID. This authentication utilizes both in-band and OOB packets.</p>
+    
+      <p>To start the handshake, the client sends an "init" packet on its established connection:</p>
+      
+      <p class="caption"><a name="example-20" id="example-20"></a>Example 20. Client INIT</p><div class="indent"><pre class="prettyprint">
+jobs/0.4 init
+session-id: 01234567
+client-jid: sender@domain/res
+
+      </pre></div>
+      
+      <p>If the session exists, and the client's JID is not automatically rejected, the JOBS service responds with an auth-challenge packet, containing an unique, arbitrary token:</p>
+      
+      <p class="caption"><a name="example-21" id="example-21"></a>Example 21. Server AUTH-CHALLENGE</p><div class="indent"><pre class="prettyprint">
+jobs/0.4 auth-challenge
+confirm: SID00001234
+
+      </pre></div>
+      
+      <p>Once received, the client then sends an "iq-set" containing a &lt;session action="authenticate"/&gt;, which itself contains an &lt;item type='auth' action='confirm'/&gt; with this confirm key:</p>
+      
+      <p class="caption"><a name="example-22" id="example-22"></a>Example 22. Authentication request (from Client)</p><div class="indent"><pre class="prettyprint">
+  &lt;iq type='set' to='jobs.domain'&gt;
+    &lt;session xmlns='http://jabber.org/protocol/jobs'
+        action='authenticate'
+        id='01234567'&gt;
+      &lt;item type='auth' action='confirm'&gt;SID00001234&lt;/item&gt;
+    &lt;/session&gt;
+  &lt;/iq&gt;hehe
+      </pre></div>
+    
+      <p>The service then compares this confirm key to that sent with the "auth-challenge" OOB packet. If this matches correctly, and the service determines this connection is authorized, the session will respond with a &lt;session action="authenticate"/&gt; containing a &lt;item type="auth" action="accept"/&gt; with the accept key:</p>
+    
+      <p class="caption"><a name="example-23" id="example-23"></a>Example 23. Authentication result (from Server)</p><div class="indent"><pre class="prettyprint">
+  &lt;iq type='result' from='jobs.domain' to='sender@domain/res'&gt;
+    &lt;session xmlns='http://jabber.org/protocol/jobs'
+        action='authenticate'
+        status='pending'
+        id='01234567'&gt;
+      &lt;item type='auth' action='accept'&gt;SID88884321&lt;/accept&gt;
+    &lt;/session&gt;
+  &lt;/iq&gt;
+    </pre></div>
+    
+      <p>At this point, the client responds on the OOB data stream with an "auth-response" packet:</p>
+    
+      <p class="caption"><a name="example-24" id="example-24"></a>Example 24. Client AUTH-RESPONSE</p><div class="indent"><pre class="prettyprint">
+  jobs/0.4 auth-response
+  accept: SID88884321
+  
+    </pre></div>
+    
+      <p>If the connection is accepted, the JOBS service sends a "connected" packet:</p>
+    
+      <p class="caption"><a name="example-25" id="example-25"></a>Example 25. Server CONNECTED</p><div class="indent"><pre class="prettyprint">
+  jobs/0.4 connected
+
+      </pre></div>
+      <p>and after this, the data transfer occurs. If this connection is the sender, they may start sending data now (regardless if receivers are connected). If this connection is a receiver, the sender's data immediately follows the terminating "newline".</p>
+    </div>
+    <div class="indent"><h3>2.5.2 <a name="sect-idp600272" id="sect-idp600272">Authorizing</a></h3>
+      <p>Authenticating ensures the OOB connection matches a particular JID. Authorizing ensures to the service that receiver is allowed to be connected to the session. To determine if the session connection should be accepted or rejected, the JOBS service first checks if the JID matches the sender. This matches against the "full" JID, including node, domain, and resource. If this connection is the sender, it is allowed. Otherwise, the service confirms the connection with the sender.</p>
+      
+      <p>If a confirmation is required, the service sends an "iq-get" to the sender, with a &lt;session action="authorize"/&gt; containing an &lt;item type"connection" action="confirm"/&gt; with the full JID of the receiver:</p>
+      
+      <p class="caption"><a name="example-26" id="example-26"></a>Example 26. Confirmation request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='sender@domain/res' id='JOBS5' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='authorize'
+      status='active'
+      id='01234567'&gt;
+    &lt;item type='connection' action='confirm'&gt;receiver@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+
+      <p>One or more &lt;item type="connection" action="confirm/&gt; elements, each specifying a JID to accept/reject. To accept (or reject) a connection, the sender responds with an "iq-result", wrapping each JID in either an &lt;item type="connection" action="accept"/&gt; or &lt;item type="connection" action="reject"/&gt;.</p>
+
+      <p class="caption"><a name="example-27" id="example-27"></a>Example 27. Confirmation result (accept)</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS5' type='result' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='authorize'
+      id='01234567'&gt;
+    &lt;item type='connection' action='accept'&gt;receiver@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-28" id="example-28"></a>Example 28. Confirmation result (reject)</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS5' type='result' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='authorize'
+      id='01234567'&gt;
+    &lt;item type='connection' action='reject'&gt;receiver@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p>If the connection is rejected, the service drops the connection, and notifies the sender and receiver of the dropped connection.</p>
+    </div>
+    <div class="indent"><h3>2.5.3 <a name="sect-idp1607136" id="sect-idp1607136">Dropping</a></h3>
+      <p>The sender may drop a connection at any time. To drop a connection, the sender sends an "iq-set" with the &lt;session/&gt; containing the "connection" to drop:</p>
+      
+      <p class="caption"><a name="example-29" id="example-29"></a>Example 29. Drop request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      id='01234567'&gt;
+    &lt;item type='connection' action='drop'&gt;receiver@domain/res&lt;/item&gt;
+  &lt;/session&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p>If the connection is successfully dropped, the service returns an "iq-result":</p>
+      
+      <p class="caption"><a name="example-30" id="example-30"></a>Example 30. Drop result</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='jobs.domain' to='sender@domain/res'&gt;
+  &lt;session  xmlns='http://jabber.org/protocol/jobs'
+      status='active'
+      id='01234567'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p>The service also sends notification messages to the sender and the JID of the dropped connection (detailed in the "Being Notified about Events" section).</p>
+    </div>
+  </div>
+  <div class="indent"><h3>2.6 <a name="sect-idp1611328" id="sect-idp1611328">Deleting a Session</a></h3>
+    <p>Sessions are deleted either by timeout or explicitly. Sessions are deleted by timeout automatically under certain conditions. Sessions can also be deleted explicity by their senders, at any time. Regardless of the method of deletion, a notice is sent to all connected.</p>
+    
+    <p>This use-case can be completely ignored for true "peer-to-peer" systems.</p>
+    <div class="indent"><h3>2.6.1 <a name="sect-idp1612976" id="sect-idp1612976">Expiring</a></h3>
+      <p>The exact conditions that expire a session are mostly up to the implementation. At a minimum, a session SHOULD be expired when there are less than two connections, and the "expires" time is reached.</p>
+    </div>
+    <div class="indent"><h3>2.6.2 <a name="sect-idp1614192" id="sect-idp1614192">Deleting Explicitly</a></h3>
+      <p>To explictly delete a session, the sender sends an "iq-set" containing a &lt;session action="delete"/&gt;:</p>
+  
+      <p class="caption"><a name="example-31" id="example-31"></a>Example 31. Delete request</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS50' type='set' to='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='delete'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-32" id="example-32"></a>Example 32. Delete result</p><div class="indent"><pre class="prettyprint">
+&lt;iq id='JOBS50' type='result' to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      status='closed'
+      id='01234567'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>2.7 <a name="sect-idp1617232" id="sect-idp1617232">Being Notified about Events</a></h3>
+    <div class="indent"><h3>2.7.1 <a name="sect-idp1617728" id="sect-idp1617728">Connection Accepted</a></h3>
+      <p>When a connection is accepted, the service sends a "notify" message to the sender and (if appropriate) the accepted receiver, with a &lt;item type='connection' action='accept'/&gt;:</p>
+      
+      <p class="caption"><a name="example-33" id="example-33"></a>Example 33. "Connection Accepted" message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='pending'
+      id='01234567'&gt;
+    &lt;item type='connection' action='accept'/&gt;
+  &lt;/session&gt;
+&lt;/message&gt;
+      </pre></div>
+      
+      <p>If the notification is not about the recipient of the message, then the &lt;item/&gt; contains the JID this notification pertains to.</p>
+    </div>
+    <div class="indent"><h3>2.7.2 <a name="sect-idp1620480" id="sect-idp1620480">Connection Rejected</a></h3>
+      <p>When a connection is rejected, the service sends a "notify" message to the sender and (if appropriate) the accepted receiver, with a &lt;item type='connection' action='reject'/&gt;:</p>
+      
+      <p class="caption"><a name="example-34" id="example-34"></a>Example 34. "Connection Rejected" message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='receiver@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='pending'
+      id='01234567'&gt;
+    &lt;item type='connection' action='reject'/&gt;
+  &lt;/session&gt;
+&lt;/message&gt;
+      </pre></div>
+      
+      <p>If the notification is not about the recipient of the message, then the &lt;item/&gt; contains the JID this notification pertains to.</p>
+    </div>
+    <div class="indent"><h3>2.7.3 <a name="sect-idp1623248" id="sect-idp1623248">Connection Dropped</a></h3>
+      <p>When a connection is dropped, the service sends a "notify" message to the sender and (if appropriate) the accepted receiver, with a &lt;item type='connection' action='drop'/&gt;:</p>
+      
+      <p class="caption"><a name="example-35" id="example-35"></a>Example 35. "Connection Dropped" message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='receiver@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='pending'
+      id='01234567'&gt;
+    &lt;item type='connection' action='drop'/&gt;
+  &lt;/session&gt;
+&lt;/message&gt;
+      </pre></div>
+      
+      <p>If the notification is not about the recipient of the message, then the &lt;item/&gt; contains the JID this notification pertains to.</p>
+    </div>
+    <div class="indent"><h3>2.7.4 <a name="sect-idp1626000" id="sect-idp1626000">Session Deleted</a></h3>
+      <p>When a session is deleted, any clients connected to the session are immediately disconnected. The "notify" message is sent to the sender and any receivers still connected, with the &lt;session action="notify"/&gt; containing an &lt;item type="status"/&gt;:</p>
+      
+      <p class="caption"><a name="example-36" id="example-36"></a>Example 36. "Session Deleted (explicitly)" message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='closed'
+      id='01234567'&gt;
+    &lt;item type='status' action='delete'/&gt;
+  &lt;/session&gt;
+&lt;/message&gt;
+      </pre></div>
+
+      <p class="caption"><a name="example-37" id="example-37"></a>Example 37. "Session Deleted (timed out)" message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='sender@domain/res' from='jobs.domain'&gt;
+  &lt;session xmlns='http://jabber.org/protocol/jobs'
+      action='notify'
+      status='closed'
+      id='01234567'&gt;
+    &lt;item type='status' action='expire'/&gt;
+  &lt;/session&gt;
+&lt;/message&gt;
+      </pre></div>
+      
+      <p>The reason the session is deleted is specified by the action attribute. A value of "delete" means it was explicitly deleted. A value of "expire" means it timed out.</p>
+    </div>
+  </div>
+<h2>3.
+       <a name="sect-idp1630048" id="sect-idp1630048">Formal Description</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp1630544" id="sect-idp1630544">In-Band Protocol</a></h3>
+    <div class="indent"><h3>3.1.1 <a name="sect-idp1631040" id="sect-idp1631040">DTD</a></h3>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT session ( ( item | ( connect? , limit+ ) )* | #PCDATA* ) &gt;
+&lt;!ATTLIST session
+    action  ( 'authenticate' | 'authorize' | 'create' | 'delete' | 'info' | 'notify' )  #OPTIONAL
+    status  ( 'active' | 'closed' | 'in-use' | 'pending' )                              #OPTIONAL
+    host      CDATA #OPTIONAL
+    id        CDATA #OPTIONAL
+    port      CDATA #OPTIONAL
+    sender    CDATA #OPTIONAL
+    buffer    CDATA #OPTIONAL
+    expires   CDATA #OPTIONAL
+    receivers CDATA #OPTIONAL
+&gt;
+
+&lt;!ELEMENT item ( #PCDATA )* &gt;
+&lt;!ATTLIST item
+    action  ( 'accept' | 'confirm' | 'delete' | 'drop' | 'expire' | 'invite' | 'reject')  #OPTIONAL
+    type    ( 'auth' | 'connection' | 'status' )                                          #OPTIONAL
+&gt;
+
+&lt;!ELEMENT connect () &gt;
+&lt;!ATTLIST connect
+    host  CDATA #REQUIRED
+    port  CDATA #REQUIRED
+&gt;
+
+&lt;!ELEMENT limit () &gt;
+&lt;!ATTLIST limit
+    default CDATA #REQUIRED
+    max     CDATA #REQUIRED
+    min     CDATA #REQUIRED
+&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.1.2 <a name="sect-idp1632032" id="sect-idp1632032">&lt;session/&gt; Element</a></h3>
+      <p>The &lt;session/&gt; element is the core element to the protocol. This element provides both information about a session and the action applied to it. It has a large number of attributes, and contains zero or more &lt;item/&gt; elements, zero or more &lt;connect/&gt; elements, and zero or three &lt;limit/&gt; elements. It may also contain elements governed by other namespaces.</p>
+      <p>The "action" attribute specifies the action to apply or being applied to the session. From clients, this attribute MUST be specified. From the service this attribute MAY be specified (to prevent ambiguity). The value of "action" MUST be one of the following:</p>
+      <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Possible "action" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>authenticate</td>
+          <td>Authenticating one or more connections.</td>
+        </tr>
+        <tr class="body">
+          <td>authorize</td>
+          <td>Authorizing one or more connections.</td>
+        </tr>
+        <tr class="body">
+          <td>create</td>
+          <td>Create a new session.</td>
+        </tr>
+        <tr class="body">
+          <td>delete</td>
+          <td>Delete an existing session.</td>
+        </tr>
+        <tr class="body">
+          <td>notify</td>
+          <td>Notification about the session.</td>
+        </tr>
+      </table></div>
+      <p>The "status" attribute specifies the current status of the session. This attribute MUST NOT be present if the session does not have an identifier (i.e. does not yet exist). Only the service can provide this attribute. The value of "status" MUST be one of the following:</p>
+      <div class="indent"><p class="caption"><a name="table-3" id="table-3"></a>Table 3: Possible "status" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>active</td>
+          <td>The session is active, but not yet in use.</td>
+        </tr>
+        <tr class="body">
+          <td>closed</td>
+          <td>The session has closed.</td>
+        </tr>
+        <tr class="body">
+          <td>in-use</td>
+          <td>The session is in use (e.g. data is being transferred).</td>
+        </tr>
+        <tr class="body">
+          <td>pending</td>
+          <td>The session is ready, but not yet active (e.g. not enough connections).</td>
+        </tr>
+      </table></div>
+      <p>The "host" attribute specifies the OOB hostname for the session. This attribute SHOULD be specified when possible. The value of this attribute can either be the "raw" dotted-decimal address or a fully-qualified domain name.</p>
+      <p>The "id" attribute identifies the session. This attribute is required for all uses of &lt;session/&gt; except the request to create a session. This value is any string that the service and clients can use to uniquely identify it.</p>
+      <p>The "port" attribute specifies the OOB port number for the session. This attribute SHOULD be specified when possible.</p>
+      <p>The "sender" attribute specifies the JID of the sender. This attribute SHOULD be specified when possible. The value of this attribute MUST be the full JID of the sender, including node and resource (if possible).</p>
+      <p>The "buffer" attribute specifies the size of a temporary transfer buffer. This attribute MAY be present at any time, and SHOULD be presented by the service wherever possible. The value of this attribute MUST be a non-negative number. A value of 0 means there is no buffer. This value has limits defined by the "jobs:buffer" parameter statistic.</p>
+      <p>The "expires" attribute specifies the number of seconds before this session times out. This attribute MAY be present at any time, and SHOULD be presented by the service wherever possible. The value of this attribute MUST be either a positive number or -1. A value of -1 means this session does not expire. This value has limits defined by the "jobs:expires" parameter statistic.</p>
+      <p>The "receivers" attribute specifies the maximum number of receivers this session can have. this attribute MAY be present at any time, and SHOULD be presented by the service wherever possible. The value of this attribute MUST be either a positive number of -1. A value of -1 means this session can (theoretically) have any number of receivers. This value has limits defined by the "jobs:receivers" parameter statistic.</p>
+    </div>
+    <div class="indent"><h3>3.1.3 <a name="sect-idp1655008" id="sect-idp1655008">&lt;item/&gt; Element</a></h3>
+      <p>The &lt;item/&gt; element is used for detailed information about specific items of a session. It is used to contain authentication keys, to define connections, and provide more detailed status for a session. It has attributes for the type of item and the action associated with this item. This element contains only character data.</p>
+      <p>The "action" attribute specifies the action to apply or being applied to this item. From clients, this attribute SHOULD be specified. From the service, this attribute MUST be specified (to prevent ambiguity). The value of "action" MUST be one of the following:</p>
+      <div class="indent"><p class="caption"><a name="table-4" id="table-4"></a>Table 4: Possible "action" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+          <th>Notes</th>
+        </tr>
+        <tr class="body">
+          <td>accept</td>
+          <td>The item is accepted.</td>
+          <td>This value MUST only be used when the type is "auth" or "connection".</td>
+        </tr>
+        <tr class="body">
+          <td>confirm</td>
+          <td>The item needs confirmation.</td>
+          <td>This value MUST only be used when the type is "auth" or "connection".</td>
+        </tr>
+        <tr class="body">
+          <td>delete</td>
+          <td>The item is deleted.</td>
+          <td>This value MUST only be used when the type is "status".</td>
+        </tr>
+        <tr class="body">
+          <td>drop</td>
+          <td>The item is dropped.</td>
+          <td>This value MUST only be used when the type is "connection".</td>
+        </tr>
+        <tr class="body">
+          <td>expire</td>
+          <td>The item has expired.</td>
+          <td>This value MUST only be used when the type is "status".</td>
+        </tr>
+        <tr class="body">
+          <td>invite</td>
+          <td>The item is invited to the session.</td>
+          <td>This value MUST only be used when the type is "connection".</td>
+        </tr>
+        <tr class="body">
+          <td>reject</td>
+          <td>The item is rejected.</td>
+          <td>This value MUST only be used when the type is "auth" or "connection".</td>
+        </tr>
+      </table></div>
+      <p>The "type" attribute specifies the type of item. This attribute MUST be present. The value of "type" MUST be one of the following:</p>
+      <div class="indent"><p class="caption"><a name="table-5" id="table-5"></a>Table 5: Possible "action" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>auth</td>
+          <td>The item pertains to authentication keys.</td>
+        </tr>
+        <tr class="body">
+          <td>connection</td>
+          <td>The item details a session connection. The CDATA is the JID that is connected.</td>
+        </tr>
+        <tr class="body">
+          <td>status</td>
+          <td>The item details a session status event.</td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.1.4 <a name="sect-idp1676400" id="sect-idp1676400">&lt;connect/&gt; Element</a></h3>
+      <p>The &lt;connect/&gt; element specifies a valid host/port combination for a session. An instance of this element MUST be present for each host/port combination possible. This element SHOULD only be present when information on creating sessions is requested. It has attributes to define the OOB hostname and port number. This element is empty.</p>
+      <p>The "host" attribute specifies the OOB hostname. This attribute MUST be present. The value is either the "raw" dotted-decimal IP address, or the fully-qualified domain name.</p>
+      <p>The "port" attribute specifies the OOB port number. This attribute MUST be present. The value MUST be a positive integer in the range (0 &lt; port &lt;= 1024).</p>
+    </div>
+    <div class="indent"><h3>3.1.5 <a name="sect-idp1679392" id="sect-idp1679392">&lt;limit/&gt; Element</a></h3>
+      <p>The &lt;limit/&gt; element specifies a valid host/port combination for a session. An instance of this element MUST be present for each "type". This element SHOULD only be present when information on creating sessions is requested. It has attributes to define the type of limit, the default value, the minimum value, and the maximum value. This element is empty.</p>
+      <p>The "type" attribute specifies the type of limit. This attribute MUST be present. Each type corresponds to an attribute of &lt;session/&gt;. The value of "type" MUST be one of the following:</p>
+      <div class="indent"><p class="caption"><a name="table-6" id="table-6"></a>Table 6: Possible "type" values</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr class="body">
+          <td>buffer</td>
+          <td>The buffer size limits. The units for "default", "max", and "min" are bytes.</td>
+        </tr>
+        <tr class="body">
+          <td>expires</td>
+          <td>The expires time limits. The units for "default", "max", and "min" are seconds.</td>
+        </tr>
+        <tr class="body">
+          <td>receivers</td>
+          <td>The receiver count limits. The units for "default", "max", and "min" are number of connections.</td>
+        </tr>
+      </table></div>
+      <p>The "default" attribute specifies the default value for this limit. This attribute MUST be present. The value of "default" MUST be a number.</p>
+      <p>The "max" attribute specifies the maximum value for this limit. This attribute MUST be present. The value of "max" MUST be a number. A value of -1 means there is no maximum value.</p>
+      <p>The "min" attribute specifies the minimum value for this limit. This attribute MUST be present. The value of "min" MUST be a number. A value of -1 means there is no minimum value.</p>
+    </div>
+    <div class="indent"><h3>3.1.6 <a name="sect-idp1688928" id="sect-idp1688928">Possible Errors</a></h3>
+      <div class="indent"><p class="caption"><a name="table-7" id="table-7"></a>Table 7: &lt;session action="authenticate"/&gt; errors</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Code</th>
+          <th>Message</th>
+          <th>Cause</th>
+        </tr>
+        <tr class="body">
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The JOBS service did not understand the request.</td>
+        </tr>
+        <tr class="body">
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The JOBS service cannot accept the authentication request from the requesting JID.</td>
+        </tr>
+        <tr class="body">
+          <td>404</td>
+          <td>Not Found</td>
+          <td>The JOBS service could not find the given session.</td>
+        </tr>
+        <tr class="body">
+          <td>406</td>
+          <td>Not Acceptable</td>
+          <td>The authentication is not valid.</td>
+        </tr>
+      </table></div>
+
+      <div class="indent"><p class="caption"><a name="table-8" id="table-8"></a>Table 8: &lt;session action="authorize"/&gt; errors</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Code</th>
+          <th>Message</th>
+          <th>Cause</th>
+        </tr>
+        <tr class="body">
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The JOBS service did not understand the request.</td>
+        </tr>
+        <tr class="body">
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The JOBS service cannot accept the authorization request from the requesting JID.</td>
+        </tr>
+        <tr class="body">
+          <td>404</td>
+          <td>Not Found</td>
+          <td>The JOBS service could not find the given session.</td>
+        </tr>
+        <tr class="body">
+          <td>406</td>
+          <td>Not Acceptable</td>
+          <td>The authorization is not valid.</td>
+        </tr>
+      </table></div>
+
+      <div class="indent"><p class="caption"><a name="table-9" id="table-9"></a>Table 9: &lt;session action="create"/&gt; errors</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Code</th>
+          <th>Message</th>
+          <th>Cause</th>
+        </tr>
+        <tr class="body">
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The JOBS service did not understand the request.</td>
+        </tr>
+        <tr class="body">
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The JOBS service cannot accept any creation requests from this JID.</td>
+        </tr>
+        <tr class="body">
+          <td>406</td>
+          <td>Server Not Acceptable</td>
+          <td>The JOBS service cannot accept any creation requests using the requested &lt;server/&gt; parameters.</td>
+        </tr>
+        <tr class="body">
+          <td>406</td>
+          <td>Restrictions Not Acceptable</td>
+          <td>The JOBS service cannot accept any creation requests using the requested &lt;accept/&gt;, &lt;confirm/&gt;, and/or &lt;reject/&gt; parameters.</td>
+        </tr>
+        <tr class="body">
+          <td>503</td>
+          <td>Service Unavailable</td>
+          <td>The JOBS service cannot accept any additional sessions at this time. Future requests may be accepted.</td>
+        </tr>
+      </table></div>
+  
+      <div class="indent"><p class="caption"><a name="table-10" id="table-10"></a>Table 10: &lt;session action="delete"/&gt; errors</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Code</th>
+          <th>Message</th>
+          <th>Cause</th>
+        </tr>
+        <tr class="body">
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The JOBS service did not understand the request.</td>
+        </tr>
+        <tr class="body">
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The JOBS service cannot accept deletion requests from the requesting JID.</td>
+        </tr>
+        <tr class="body">
+          <td>404</td>
+          <td>Not Found</td>
+          <td>The JOBS service could not find a given session.</td>
+        </tr>
+      </table></div>
+
+      <div class="indent"><p class="caption"><a name="table-11" id="table-11"></a>Table 11: &lt;session action="notify"/&gt; errors</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Code</th>
+          <th>Message</th>
+          <th>Cause</th>
+        </tr>
+        <tr class="body">
+          <td>400</td>
+          <td>Bad Request</td>
+          <td>The JOBS service did not understand the request.</td>
+        </tr>
+        <tr class="body">
+          <td>403</td>
+          <td>Forbidden</td>
+          <td>The JOBS service denied the connection for any reason.</td>
+        </tr>
+        <tr class="body">
+          <td>404</td>
+          <td>Not Found</td>
+          <td>The JOBS service could not find a given connection and/or JID.</td>
+        </tr>
+        <tr class="body">
+          <td>406</td>
+          <td>Not Acceptable</td>
+          <td>The JOBS service denied the notify for some reason.</td>
+        </tr>
+        <tr class="body">
+          <td>504</td>
+          <td>Remote Server Timeout</td>
+          <td>The JOBS connection timed out.</td>
+        </tr>
+      </table></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp1734368" id="sect-idp1734368">OOB Protocol</a></h3>
+    <p>The OOB protocol consists of a series of hanshaking headers, then the normal data transfer process. The syntax of the hanshake packets is similar to HTTP and SIP, in that it includes a "version and method" line, followed by zero or more "headers". The end of a packet is marked by two adjacent carriage returns (i.e. a single "empty" line). The primary difference is with the first line ("version and method"), where the protocol name and version precede the method.</p>
+    <div class="indent"><h3>3.2.1 <a name="sect-idp1735616" id="sect-idp1735616">Header EBNF</a></h3><p class="caption"></p><div class="indent"><pre class="prettyprint">
+jobs-oob :=         header CRLF ?(BINDATA)
+header :=           command-line CRLF *( header-field CRLF )
+
+command-line :=     jobs-version-tag SP method
+
+jobs-version-tag := "jobs" "/" *DIGIT 1*( "." *DIGIT )
+method :=           "init" | "auth-challenge" | "auth-response" | "connected" | "error"
+
+header-field :=     header-name ":" *1(SP header-value)
+header-name :=      NMCHAR *1( ( "." | "-" | NMCHAR ) NMCHAR)
+header-value :=     TEXT
+
+name-char :=        UALPHA | LALPHA | DIGIT
+
+CRLF :=             CR LF
+
+TEXT :=             &lt;any OCTECT except CTLs&gt;
+OCTET :=            &lt;any 8-bit sequence of data&gt;
+CTL :=              &lt;any US-ASCII control character (octets 0 - 31) and DEL (127)&gt;
+UALPHA :=           &lt;any US-ASCII uppercase letter "A".."Z"&gt;
+LALPHA :=           &lt;any US-ASCII lowercase letter "a".."z"&gt;
+DIGIT :=            &lt;any US-ASCII digit "0".."9"&gt;
+SP :=               &lt;US-ASCII SP, space (32)&gt;
+CR :=               &lt;US-ASCII CR, carriage return (13)&gt;
+LF :=               &lt;US-ASCII LF, linefeed (10)&gt;
+BINDATA :=          &lt;Arbitrary Binary Data&gt;
+      </pre></div></div>
+    <div class="indent"><h3>3.2.2 <a name="sect-idp1736240" id="sect-idp1736240">State Details</a></h3>
+      <div class="indent"><p class="caption"><a name="table-12" id="table-12"></a>Table 12: "init" details</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Comand-line (example)</th>
+          <td><p class="caption"></p><div class="indent"><pre class="prettyprint">jobs/0.4 init</pre></div></td>
+        </tr>
+        <tr class="body">
+          <th>Expected header-fields</th>
+          <td><ul>
+            <li>"session-id" - The JOBS session ID</li>
+            <li>"client-jid" - The (full) client JID</li>
+          </ul></td>
+        </tr>
+      </table></div>
+      <div class="indent"><p class="caption"><a name="table-13" id="table-13"></a>Table 13: "auth-challenge" details</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Comand-line (example)</th>
+          <td><p class="caption"></p><div class="indent"><pre class="prettyprint">jobs/0.4 auth-challenge</pre></div></td>
+        </tr>
+        <tr class="body">
+          <th>Expected header-fields</th>
+          <td><ul>
+            <li>confirm - A unique &lt;item type="auth" action="confirm"/&gt; token</li>
+          </ul></td>
+        </tr>
+      </table></div>
+      <div class="indent"><p class="caption"><a name="table-14" id="table-14"></a>Table 14: "auth-response" details</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Comand-line (example)</th>
+          <td><p class="caption"></p><div class="indent"><pre class="prettyprint">jobs/0.4 auth-response</pre></div></td>
+        </tr>
+        <tr class="body">
+          <th>Expected header-fields</th>
+          <td><ul>
+            <li>accept - A unique &lt;item type="auth" action="accept"/&gt; token</li>
+          </ul></td>
+        </tr>
+      </table></div>
+      <div class="indent"><p class="caption"><a name="table-15" id="table-15"></a>Table 15: "connected" details</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Comand-line (example)</th>
+          <td><p class="caption"></p><div class="indent"><pre class="prettyprint">jobs/0.4 connected</pre></div></td>
+        </tr>
+        <tr class="body">
+          <th>Expected header-fields</th>
+          <td>NONE</td>
+        </tr>
+      </table></div>
+      <div class="indent"><p class="caption"><a name="table-16" id="table-16"></a>Table 16: "error" details</p><table border="1" cellpadding="3" cellspacing="0">
+        <tr class="body">
+          <th>Comand-line (example)</th>
+          <td><p class="caption"></p><div class="indent"><pre class="prettyprint">jobs/0.4 error</pre></div></td>
+        </tr>
+        <tr class="body">
+          <th>Expected header-fields</th>
+          <td><ul>
+            <li>error-code - The HTTP-like error code</li>
+            <li>error-msg - Detailed error message</li>
+          </ul></td>
+        </tr>
+      </table></div>
+    </div>
+    <div class="indent"><h3>3.2.3 <a name="sect-idp1756496" id="sect-idp1756496">Possible Errors</a></h3>
+    </div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0042<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.5<br />
+            Last Updated: 2003-04-11<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: JOBS<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0042.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0042.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0042.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp667168" id="nt-idp667168">1</a>. Possible applications include file transfer, audio/video streaming, and some gaming implementations.</p><p><a name="nt-idp684320" id="nt-idp684320">2</a>. XEP-0011: Jabber Browsing &lt;<a href="http://xmpp.org/extensions/xep-0011.html">http://xmpp.org/extensions/xep-0011.html</a>&gt;.</p><p><a name="nt-idp686960" id="nt-idp686960">3</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1543600" id="nt-idp1543600">4</a>. The exact value of the ID is left to JOBS implementations.</p><p><a name="nt-idp1555904" id="nt-idp1555904">5</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp1573744" id="nt-idp1573744">6</a>. Who is allowed to perform this action is left up to the JOBS service implementation.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.5 (2003-04-11)</h4><div class="indent">At the request of the author, changed status to Retracted. (psa)
+    </div><h4>Version 0.4 (2002-10-22)</h4><div class="indent">More restrictive on usage of "action" attributes; Reduced session information returned in most use-cases; Added action for retrieving session information; Added action for service ("proxy") invites (lw)
+    </div><h4>Version 0.3 (2002-10-20)</h4><div class="indent">Complete overhaul (redesign to allow for peer-to-peer operation; reduced element-set; removed "session types"; reorganized into use-cases) (lw)
+    </div><h4>Version 0.2 (2002-08-20)</h4><div class="indent">Added "detailed" description of OOB headers (lw)
+    </div><h4>Version 0.1 (2002-08-14)</h4><div class="indent">Initial Release (lw)
+    </div></div><hr /><p>END</p></body></html>

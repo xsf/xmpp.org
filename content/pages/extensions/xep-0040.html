@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0040: Jabber Robust Publish-Subscribe</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber Robust Publish-Subscribe" /><meta name="DC.Creator" content="Tim Carpenter" /><meta name="DC.Description" content="Note: This proposal has been superseded by XEP-0060; please refer to that document for the successor protocol." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-07-26" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0040" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0040: Jabber Robust Publish-Subscribe</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>Note: This proposal has been superseded by XEP-0060; please refer to that document for the successor protocol.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Tim Carpenter</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-07-26</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp607968">Introduction</a><br />   
+      1.1.  <a href="#sect-idp613408">Background</a><br />   
+      1.2.  <a href="#sect-idp617616">Positioning</a><br />2.  <a href="#sect-idp544320">Gap Detection And Repair</a><br />   
+      2.1.  <a href="#sect-idp545296">Sequence Numbering</a><br />   
+      2.2.  <a href="#sect-idp550224">Link Level Swquence Numbering</a><br />   
+      2.3.  <a href="#sect-idp631152">Source Level Sequence Numbering</a><br />   
+      2.4.  <a href="#sect-idp634704">Gap Filling</a><br />   
+      2.5.  <a href="#sect-idp1589856">Heartbeats</a><br />3.  <a href="#sect-idp1592832">Publish Types</a><br />   
+      3.1.  <a href="#sect-idp1596752">Publish Type Field Values</a><br />4.  <a href="#sect-idp1602240">Source Queries</a><br />5.  <a href="#sect-idp1607872">Implementation Issues</a><br />   
+      5.1.  <a href="#sect-idp1608368">Permissioning Requirements</a><br />   
+      5.2.  <a href="#sect-idp1614896">Contributions</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp607968" id="sect-idp607968">Introduction</a></h2>
+      <p><span class="em">Note: This XEP has been superseded by <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp611456">1</a>]; please refer to that document for the successor protocol.</span></p>
+      <p>This document introduces and lays out a preliminary protocol for a robust form of publish-subscribe over the Jabber messaging environment -- Jabber Robust Publish Subscribe (JRPS).</p>
+      <p>Implementation issues in the environment are appended, covering Permissioning and Contributions. Both are likely to require separate XEPs, but need to be constructed sympathetically.</p>
+      <p>In creating this addition, I have an underlying philosophy to sustain a "fractal" world of publish-subscribe components, such that a subscriber to a pubsub component may well be a pubsub component in itself, representing its own community of subscribers. This will allow Jabber to support organic scalability found on other platforms.</p>
+      <div class="indent"><h3>1.1 <a name="sect-idp613408" id="sect-idp613408">Background</a></h3>
+         <p>Publish-Subscribe and other messaging environments that exist are often classified as providing one or more of the following three levels of service.</p>
+         <ol>
+         <li>Best Try, where data may on rare occasions get lost. Small footprints and ultimate performance are the aim where the impact of occasional data loss in business, legal, confidential or other terms is not significant compared with the core priority of performance.</li>
+         <li>Robust, where non-delivery of data can be detected and recovered by recipients and that the sequence, integrity and completeness of data can be ascertained with a high level of confidence. Non-delivery of data would have a significant and lasting negative impact on the quality and integrity of the data.</li>
+         <li>Transactional, where there is an absolute, mission-critical need to ensure that all communication flow is guaranteed and if problems occur during a set of connected steps, then the situation can be rolled back (reversed) to the state before the operation commenced.</li>
+         </ol>
+         <p>This document concerns itself with level 2 Publish Subscribe -- "Robust".</p>
+      </div>
+      <div class="indent"><h3>1.2 <a name="sect-idp617616" id="sect-idp617616">Positioning</a></h3>
+        <p>JRPS is required in environments where there is a higher demand for guaranteed delivery in high throughput, low latency environments where data has value and can contain business intelligence, but does not demand a full transactional (e.g. 2-phase commit) strength environment.</p>
+        <p>Such environments often exercise business logic upon data received, so the notion of updates to all or part of data, the expression of the definitive, full compliment of a particular set of related data, the correction of data in full or in part and the notification that data is no longer valid needs to be supported. The existing type="set", though very suitable in a wide range of applications, does not provide suitable granularity in all environments.</p>
+        <p>Robust environments require that a receiver can tell when data has been lost and that a receiver also has the means to request the repair of any gaps efficiently. This must be done whilst keeping delay or disruption to ongoing data flow to a minimum. Jabber does not provide the means to detect or repair gaps, and traditional ACKing of each packet is slow and costly.</p>
+        <p>It would be advantageous to permit forms of permissioning and access control upon data that has value. Such permissioning and control should not be overly burdensome on the rapid transmission of data. It should allow a suitable level of abstraction to keep changes to a data item"s expression of permission coding/level to a minimum, to avoid the need for excessive changes to such codes. Abstraction will also permit permission coding to be kept compact, as it will, in effect, be tokenised.</p>
+        <p>JRPS then requires the ability to detect and repair gaps in the stream, to provide a means to convey richer information about the nature of the data in context to what has come before and to enable the publisher to have control over who sees what.</p>
+        <p>In addition, a pubsub component should be able to provide information and parameters about its implementation of JRPS to subscribers. Subscribers must inquire about such information from the pubsub component to gain the full benefit of a JRPS service.</p>
+       <ol>
+         <li>Identify the tasks that users can't complete because we are lacking this crucial piece of protocol. (Note: users are not just IM users, but any person, system, or application that could gain value from interacting with Jabber.)</li>
+         <li>Discuss other projects or protocols and how Jabber could interface with them because of your proposed protocol enhancement (e.g., XML-RPC, SOAP, DotGNU).</li>
+         <li>Compare Jabber to "the competition" (other IM systems or other messaging protocols) and point out holes in the Jabber protocol that need to be filled in order to offer similar functionality.</li>
+         <li>Review the relevant history of thinking within the Jabber community.</li>
+       </ol>
+       <p>JRPS is a layer on Jabber Publish-Subscribe (XEP0024, XEP0036) and should interoperate with them and support namespaces and topics. Included in this document is the capability for permission tokens. It is included as the author believes that such tokens should exist within the &lt;publish&gt; tag, being a means to identify data much as the namespace or topic does.</p>
+       <p>JRPS is different from other IM systems in that the publisher and pubsub components send out the data so that downstream entities can detect if problems occur. As a comparison, a sender in, say, MSN is told that the packet they sent cannot be delivered but in JRPS, the receiver knows that a packet or packets have not been delivered and can ask for retransmissions.  The sender need not normally know about such events as the intermediate components can usually cater for it. Thus JRPS has a future in areas such as Multicasting, large distributed and proxy-based environments where the end subscribers may be very remote from the publisher.</p>
+       <p>Existing commercial middlewares provide such facilities and it is especially necessary when data is pushed between applications and may not have an obvious "context" in the stream to data immediately before or after. Thus, JRPS may seem over-the-top for a chatroom world, but is a basic requirement for, say, distributing real-time process states, events or persistent, mutable data.</p>
+     </div>
+   <h2>2.
+       <a name="sect-idp544320" id="sect-idp544320">Gap Detection And Repair</a></h2>
+      <p>This can be achieved by the use of packet sequence numbering and heartbeats whilst avoiding the necessity to positively ACK each packet.</p>
+      <div class="indent"><h3>2.1 <a name="sect-idp545296" id="sect-idp545296">Sequence Numbering</a></h3>
+         <p>Multiple levels of sequence numbers are envisaged and will be used in different circumstances. Multiple levels allow a rapid repair of short "transient" breaks whilst catering for longer breaks, recoveries and resynchronisations without placing too great a burden on either subscriber or pubsub component. This discussion explains the use of a dual sequence number environment: link and source.</p>
+         <p>Sequence numbers will be sent in each publish thus:</p>
+         <p class="caption"><a name="example-1" id="example-1"></a>Example 1. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type="set" 
+    to="myclient@server.net"
+    from="pubsub.localhost"&gt;
+  &lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;publish ns="data topics"
+        linkseq="57372"
+        sourceseq="7547392"
+        from="publisher.fromaplace"&gt;
+    &lt;/publish&gt;
+    &lt;publish ns="data topics"
+        linkseq="57373"
+        sourceseq="44211"
+        from="publisher.elsewhere"&gt;
+    &lt;/publish&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+         <p>The above shows sequence numbers placed in the &lt;publish/&gt; node or element. This is to abstract the publishing from any packet construction algorithms that may occur and thus allow a recovery to make use of network capacity as it sees fit and to interleave recovery and ongoing publishing data.</p>
+         <p>The subscriber stub is responsible for ordering information and detecting and repairing any gaps to provide sequential data for consumption by the application, which should not concern itself with such issues.</p>
+         <p>The operation of LINK and SOURCE sequence numbers are described below.</p>
+      </div>
+      <div class="indent"><h3>2.2 <a name="sect-idp550224" id="sect-idp550224">Link Level Swquence Numbering</a></h3>
+         <p>This will concern itself with data sent on each channel. A 
+channel can be, but is not limited to the following:</p>
+         <ul>
+           <li>Socket connection between Subscriber (and/or resource within same) and the Jabber pubsub component.</li>
+           <li>Multicast datastream sent from a pubsub component but shared amongst 0..n subscribers.</li>
+         </ul>
+         <p>Each publish received should contain an incremental sequence number to the previous or Zero. Zero is used to reset (or resynchronise) the sequence numbering. Zero should not be used in the situation of sequence number wrapping/rollover, wherein the value1 should be used. Sequence numbering bit resolution should be ascertained by querying the pubsub component in an &lt;iq/&gt; before subscription requests are levied.</p>
+         <p>E.g., in a 16-bit sequence number resolution channel, the sequence numbers would run as follows</p>
+         <p>1, 2, 3, 65533, 65534, 65535, 1, 2,</p>
+         <p>For information on sequence number bit resolution, see section 4, Source Queries.</p>
+      </div>
+      <div class="indent"><h3>2.3 <a name="sect-idp631152" id="sect-idp631152">Source Level Sequence Numbering</a></h3>
+         <p>This will indicate the sequence number of messages sent from the publisher to the pubsub component. Should a link be lost, timeout or other such eventuality where the context of link sequence number be lost (e.g. the pubsub component decides the subscriber has disappeared and discards context), the pubsub component is still in a position to re-filter and retransmit data cached locally or even refer back to its source to maintain integrity and temporal ordering of data to the subscriber.</p>
+         <p>To repair larger gaps, the pubsub component may provide the capability to request upwards to the source using the source sequence number, or the pubsub component may draw upon local or remote journaling services to repair the gap. The source sequence number seen by the subscriber may be the link level sequence number between publisher and pubsub component, may be the ultimate publisher sequence number or even an internal sequence number given to the incoming published data to the pubsub component on a per source basis.</p>
+         <p>The subscriber need not know how the source sequencing operates, only notify from when the link last gave a contiguous datastream.</p>
+         <p>One can now see that the pubsub component's conversation to the source is akin to that of a subscriber to a pubsub component.</p>
+      </div>
+      <div class="indent"><h3>2.4 <a name="sect-idp634704" id="sect-idp634704">Gap Filling</a></h3>
+         <p>When a subscriber detects a gap on its link, it can request for the data to be resent thus:</p>
+         <p class="caption"><a name="example-2" id="example-2"></a>Example 2. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="get" 
+    id="plugthegap1"
+    from="myclient@server.net"
+    to="pubsub.localhost"&gt;
+  &lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;gap linkfrom="56737" linkto="56739"&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+         <p>The values represent the missed link sequence numbers. For a gap of 1, the linkfrom and linkto are the same.</p>
+         <p>Should the pubsub have lost the link context and thus is unable to plug the gaps it will return an error &lt;iq/&gt; packet.</p>
+         <p>All is not lost. The subscriber has a last-ditch repair scenario by sending last-received source sequence numbers. </p>
+         <p class="caption"><a name="example-3" id="example-3"></a>Example 3. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="get" 
+    id="plugthegap1"
+    from="myclient@server.net"
+    to="pubsub.localhost"&gt;
+  &lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;gap ns="publisher.fromaplace" after="56737"&gt;
+    &lt;gap ns="publisher.elsewhere" after="211234"&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+         <p>Due to the non-contiguous nature of source sequence numbers from the subscriber point of view, the values sent must represent not the gap, but the last valid sequence number received. Each source may have a separate sequence number stream. This allows the pubsub component to manage and, if necessary, request gaps itself from the publisher to resynchronise the subscriber. The pubsub or publishing source should have the ability to refuse a rebuild/resynchronise.</p>
+         <p>It should be possible for the subscriber to send the link and source sequence numbers in the initial request. However, if link information has been discarded by the pubsub component (e.g. the connection was dropped and presence set offline) the link sequence numbers will be reset to zero (re-synchronised) thus:</p>
+         <p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="set"
+    to="myclient@server.net"
+    from="pubsub.localhost"&gt;
+&lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;publish 
+        ns="data topics"
+        linkseq="0"
+        sourceseq="7547392"
+        from="publisher.fromaplace"&gt;
+    &lt;/publish&gt;
+    &lt;publish 
+        ns="data topics"
+        linkseq="1"
+        sourceseq="44211"
+        from="publisher.elsewhere"&gt;
+    &lt;/publish&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+      </div>
+      <div class="indent"><h3>2.5 <a name="sect-idp1589856" id="sect-idp1589856">Heartbeats</a></h3>
+         <p>During times of low traffic, an active circuit can be provided with regular heartbeat transmissions. Heartbeats will increment the link level sequence numbers. Subscribers missing or detecting overdue heartbeats will thus be able to detect gaps or delays even in low traffic scenarios. If the data is simply delayed, the subscriber stub is in a position to take action (and/or alert the application/user). If data is lost or heartbeats do not arrive in time, the subscriber can decide to request retransmission, disconnect or wait.</p>
+         <p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="set"
+    to="myclient@server.net"
+    from="pubsub.localhost"&gt;
+  &lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;publish 
+        ns="link.heartbeat"
+        linkseq="57374"
+        from="pubsub.localhost"&gt;
+    &lt;/publish&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+         <p>No source sequence numbering exists here, as it is purely a link-level entity.</p>
+      </div>
+   <h2>3.
+       <a name="sect-idp1592832" id="sect-idp1592832">Publish Types</a></h2>
+      <p>To be able to interpret published data in a more logical manner, more meaning needs to be given to data received.</p>
+      <p>When a publish packet arrives with a topic or data namespace, there is currently no way of knowing how to interpret the tags therein. Do they replace existing tag values seen? Should previously sent tags that are not  in the publish be kept or discarded? Are tag values being updated or was the previous value incorrect?</p>
+      <p>To resolve this a type field may be added to the &lt;publish/&gt; tag.</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="set"
+    to="myclient@server.net"
+    from="pubsub.localhost"&gt;
+&lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;publish 
+        ns="data topics"
+        linkseq="57372"
+        sourceseq="7547392"
+        from="publisher.fromaplace"
+        type="update"&gt;
+    &lt;/publish&gt;
+    &lt;publish 
+        ns="data topics"
+        linkseq="57373"
+        sourceseq="44211"
+        from="publisher.elsewhere"
+        type="correction"&gt;
+    &lt;/publish&gt;
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+      <p>This option is preferable to extending the &lt;iq/&gt; type field as there will then be no need to split &lt;iq/&gt; packets if &lt;publish/&gt; elements have different types.</p>
+      <div class="indent"><h3>3.1 <a name="sect-idp1596752" id="sect-idp1596752">Publish Type Field Values</a></h3>
+         <p>The following extensions would be used in environments where topic/namespaces define discrete sets of data items and/or data items changing over time, as opposed to only referring to a topic datastream consisting of atomic, unrelated data. Other types can be defined as the need arises.</p>
+         <p>'update' - partial update of data. Replaces the values of the fields of the topic/namespace it contains. Other fields held/cached downstream for this data item are still valid.</p>
+         <p>'correction' - previous data for contained fields was incorrect - e.g. paragraph in a news story, but, as per update, unsent items are still valid.</p>
+         <p>'image' - payload contains ALL the data for a data item/topic/namespace. All existing values should be dropped and replaced with the new data. Previously received fields not now contained within the image should be discarded. </p>
+         <p>'drop' - namespace/topic item is now dead and all data in it should be deleted and purged from cache.</p>
+         <p>'snapshot' - requested by subscriber and is a request for data (an image if empty of granular topics/namespaces) and no further updates, as distinct from a get, which is an on-going subscription in pubsub world.</p>
+         <p>'add' - new topic/data item on publisher's feed. Note that an "image" publish for an item can be interpreted in the same way. Previous systems have had the ADD mechanism, but use of "add" has been discontinued, with the role taken up by the "image". (thoughts?)</p>
+         <p>The above states (except "add") are very important for downstream caches and for applications that apply business logic to the datastreams.</p>
+      </div>
+   <h2>4.
+       <a name="sect-idp1602240" id="sect-idp1602240">Source Queries</a></h2>
+      <p>As touched on above, subscribers should be able to enquire of the publisher regarding what capabilities it provides and what to expect. Some items of use for JRPS are as follows:</p>
+      <ul>
+        <li>Heartbeat. Integer milliseconds. Represents the interval between heartbeat messages. Useful for rapid detection of link level problems.</li>
+        <li>Link Sequence Resolution. Integer. Allows subscriber to predict link sequence number rollover. Zero would indicate that it is not supported.</li>
+        <li>Source Sequence Resolution. Integer. Allows a subscriber to predict source sequence number rollover. A zero would indicate that it is not supported.</li>
+        <li>Gap Support. Boolean. Used to indicate if the publisher supports gap filling.</li>
+        <li>Permissioning Scheme. There may be some standardisation of permissioning schemes so that common plugins or mechanisms can be adopted. The publisher should be able to define this.</li>
+        <li>Rebuild On Demand. If the pubsub can support a rebuild/refresh of the current values of all subscribed-to data on demand.</li>
+        <li>Refresh Cycle. It has been common practice to transmit a regular refresh cycle for all subscribed data. If a data item does not get an 'image' from the source for a period of time, the cache performs a logical 'drop'. Without this, intermediate caches would very soon balloon with stale data, or publishers would get every cache re-requesting or confirming if data is still alive. Zero would indicate that no refresh cycle exists for the source.</li>
+</ul>
+   <h2>5.
+       <a name="sect-idp1607872" id="sect-idp1607872">Implementation Issues</a></h2>
+      <div class="indent"><h3>5.1 <a name="sect-idp1608368" id="sect-idp1608368">Permissioning Requirements</a></h3>
+         <p>Permissioning protocols should be open to permit a multitude of permissioning schemas. Data providers may wish to enforce their schemes in ways that suit their particular business models. The protocol should not bind or dictate such mechanisms.</p>
+         <p>The implementation of permissioning systems and regimes over time has repeatedly shown that it is especially dangerous to assume the behaviour of data and to disregard how information is used, protected, valued and owned or to force a scheme that is rigid and assumes a narrow problem domain. Thus the scheme should permit explicit and tokenised permissioning mechanisms.</p>
+         <p>Tokenised permissioning allows sets of data can be treated en masse. By permitting the concept of "grant" and "deny" permissions simultaneously (settings that define who CAN see something or defining who CANNOT) individual publishers can manage access both broadly and down to very fine granularity.</p>
+         <p>Permission tokens, if used, should be sent in-band with the data. This will allow data to change its coding online and thus immediately affect permissioning without a redistribution of the permissioning information.</p>
+         <p class="caption"><a name="example-7" id="example-7"></a>Example 7. </p><div class="indent"><pre class="prettyprint">
+&lt;iq 
+    type="set"
+    to="myclient@server.net"
+    from="pubsub.localhost"&gt;
+  &lt;query xmlns="jabber:iq:pubsub"&gt;
+    &lt;publish 
+        ns="data topics"
+        type="update"
+        permtoken="6747"
+        linkseq="57372"
+        sourceseq="7547392"
+        from="publisher.fromaplace"&gt;
+    &lt;/publish&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+         <p>This does not prevent namespace/topic permissioning systems from being applied, nor should the permtoken be compulsory1.</p>
+         <p>The pubsub systems should be able to &lt;iq/&gt; the publisher for the permissioning regime that applies.</p>
+         <p>The definition of the XML carrying permissioning tables/information should be regime specific.</p>
+         <p>Further information on why tokenised grant and deny permissioning is advantageous can be provided upon request.</p></div>
+      <div class="indent"><h3>5.2 <a name="sect-idp1614896" id="sect-idp1614896">Contributions</a></h3>
+         <p>Contributions in this context are when a subscriber publishes to one or more sources for redistribution so that it may reach the communities that subscribe to that source. By doing this, the subscriber reaches large communities, focus on specific communities and can abstract itself from delivery issues.  The publisher gains information and broadens its appeal. Delivery abstraction is valuable, as a subscriber can then connect once to the publisher to gain access to all systems, networks, technologies, subscribers and media that the publisher and contributor agree upon. As you may guess, there is a need for content, flow control/throttling and ongoing permissioning to be specified and handled over time.</p>
+         <p>Contributions requires a separate XEP, but the issues are important to the implementation of pubsub and of its permissions (Contributors have specific, complex and business-critical reasons to tightly control who sees data -- e.g. only customers, not competition!)</p>
+       </div>
+   <hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0040<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2004-07-26<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: None<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0040.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0040.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0040.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Tim Carpenter</h3><p class="indent">
+        Email:
+        <a href="mailto:tim.carpenter@in8limited.co.uk">tim.carpenter@in8limited.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:"></a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp611456" id="nt-idp611456">1</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2004-07-26)</h4><div class="indent">Formally retracted this proposal in favor of XEP-0060: Publish-Subscribe. (psa)
+    </div><h4>Version 0.1 (2002-08-02)</h4><div class="indent">Initial Release For Comment (tc)
+    </div></div><hr /><p>END</p></body></html>

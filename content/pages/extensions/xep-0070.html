@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0070: Verifying HTTP Requests via XMPP</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Verifying HTTP Requests via XMPP" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Dave Smith" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension that enables verification of an HTTP request via XMPP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-12-14" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0070" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0070: Verifying HTTP Requests via XMPP</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension that enables verification of an HTTP request via XMPP.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Matthew Miller, Joe Hildebrand, Dave Smith, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-12-14</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#terms">Terminology</a><br />   
+      2.1.  <a href="#terms-http">HTTP Terms</a><br />   
+      2.2.  <a href="#terms-entities">Entities</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#usecase">Use Case</a><br />   
+      4.1.  <a href="#http-request">HTTP Client Sends Request via HTTP</a><br />   
+      4.2.  <a href="#http-response">HTTP Server Returns Authenticate Response via HTTP</a><br />   
+      4.3.  <a href="#http-authz">HTTP Client Sends Authorization Request via HTTP</a><br />      
+      4.3.1.  <a href="#http-authz-basic">Basic Access Authentication Scheme</a><br />      
+      4.3.2.  <a href="#http-authz-digest">Digest Access Authentication Scheme</a><br />      
+      4.3.3.  <a href="#http-authz-add">Additional Authentication Schemes</a><br />   
+      4.4.  <a href="#http-process">HTTP Server Processes Request</a><br />   
+      4.5.  <a href="#xmpp-request">XMPP Server Requests Confirmation via XMPP</a><br />   
+      4.6.  <a href="#xmpp-confirm">XMPP Client Confirms Request via XMPP</a><br />   
+      4.7.  <a href="#http-access">HTTP Server Allows HTTP Client to Access Object</a><br />5.  <a href="#impl">Implementation Notes</a><br />   
+      5.1.  <a href="#impl-methods">Interaction of HTTP methods</a><br />6.  <a href="#security">Security Considerations</a><br />   
+      6.1.  <a href="#security-association">Association of Request</a><br />   
+      6.2.  <a href="#security-channel">Channel Encryption</a><br />   
+      6.3.  <a href="#security-e2e">End-to-End Encryption</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      8.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />9.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>HTTP (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2616">RFC 2616</a></span>  [<a href="#nt-idp750624">1</a>]) is a nearly-ubiquitous mechanism for the publication and retrieval of information over the Internet. Sometimes it is appropriate for an HTTP Server to allow access to that information only if the HTTP Client first provides authentication credentials. While there exist several standardized HTTP authentication schemes (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2617">RFC 2617</a></span>  [<a href="#nt-idp752848">2</a>]), it may be useful in some applications to enforce verification of an HTTP request by requiring an XMPP entity (normally an IM user) to confirm that it made the request. This request verification can be combined with native HTTP authentication to provide a stronger association between the request and a particular user, as well as to take advantage of the strong user authentication provided in XMPP (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp755456">3</a>]).</p>
+<h2>2.
+       <a name="terms" id="terms">Terminology</a></h2>
+  <div class="indent"><h3>2.1 <a name="terms-http" id="terms-http">HTTP Terms</a></h3>
+    <p>This document inherits terminology about the HyperText Transfer Protocol from <span class="ref">RFC 2616</span> and <span class="ref">RFC 2617</span>.</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="terms-entities" id="terms-entities">Entities</a></h3>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Terms for Entities Described Herein</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Term</th>
+        <th>Definition</th>
+      </tr>
+      <tr class="body">
+        <td>HTTP Client</td>
+        <td>A client that implements the HyperText Transfer Protocol (HTTP)</td>
+      </tr>
+      <tr class="body">
+        <td>HTTP Server</td>
+        <td>A server that implements the HyperText Transfer Protocol (HTTP)</td>
+      </tr>
+      <tr class="body">
+        <td>XMPP Client</td>
+        <td>A client that implements the Extensible Messaging and Presence Protocol (XMPP) or its antecedents</td>
+      </tr>
+      <tr class="body">
+        <td>XMPP Server</td>
+        <td>A server that implements the Extensible Messaging and Presence Protocol (XMPP) or its antecedents</td>
+      </tr>
+    </table></div>
+    <p>Note well that an XMPP Client can simultaneously be an HTTP Client (or vice-versa), and that an XMPP Server can simultaneously be an HTTP Server (or vice-versa). However, for the purposes of this discussion, we assume that these entities are logically if not physically separate and distinct.</p>
+  </div>
+<h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The motivations for this document are to:</p>
+  <ul>
+    <li>Use an existing XMPP connection to associate an HTTP request with an XMPP entity.</li>
+    <li>Require confirmation of the request by the XMPP entity before allowing access.</li>
+    <li>Ensure that the HTTP request was generated by the principal controlling the XMPP entity.</li>
+  </ul>
+<h2>4.
+       <a name="usecase" id="usecase">Use Case</a></h2>
+  <p>The process flow for this protocol is as follows:</p>
+  <ol>
+    <li>HTTP Client requests object via HTTP.</li>
+    <li>HTTP Server sends Authenticate Response via HTTP.</li>
+    <li>HTTP Client sends Authorization Request via HTTP (E1).</li>
+    <li>HTTP Server processes request and forwards it to XMPP Server.</li>
+    <li>XMPP Server requests confirmation via XMPP (E2).</li>
+    <li>XMPP Client confirms request via XMPP.</li>
+    <li>XMPP Server delivers confirmation to HTTP Server.</li>
+    <li>HTTP Server allows HTTP Client to access object (E3).</li>
+  </ol>
+  <p>Error cases:</p>
+  <ul>
+    <li>E1: HTTP Client does not understand the presented authentication scheme.</li>
+    <li>E2: HTTP Server does not recognize or understand the request.</li>
+    <li>E3: HTTP Server denies access.</li>
+  </ul>
+  <p>This process flow is described in more detail in the following sections.</p>
+  <div class="indent"><h3>4.1 <a name="http-request" id="http-request">HTTP Client Sends Request via HTTP</a></h3>
+    <p>Let us stipulate that an XMPP user (say, &lt;juliet@capulet.com&gt;) learns of an HTTP URL (e.g., &lt;https://files.shakespeare.lit:9345/missive.html&gt;). The user then attempts to retrieve the URL using her HTTP Client, which opens a TCP connection to the appropriate port of the host and sends an HTTP request as defined in <span class="ref">RFC 2616</span>. The request method MAY be any valid HTTP request method, including user-defined methods.</p>
+    <p>An example is provided below:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. HTTP Client Makes Request (No Credentials)</p><div class="indent"><pre class="prettyprint">
+GET https://files.shakespeare.lit:9345/missive.html HTTP/1.1
+    </pre></div>
+    <p>In order to avoid a round trip, the initial request MAY contain HTTP authorization credentials as described below.</p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="http-response" id="http-response">HTTP Server Returns Authenticate Response via HTTP</a></h3>
+    <p>If the user did not provide authorization credentials in the initial request, the HTTP Server then MUST respond with a (401) Authenticate response as defined in <span class="ref">RFC 2616</span>. The response MUST contain an HTTP 401 error and one WWW-Authenticate header for each authentication scheme recognized by the HTTP Server. In order to provide verification via XMPP, at least one of these headers MUST specify a realm of "xmpp" (case-sensitive).</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. HTTP Server Returns Authenticate Response</p><div class="indent"><pre class="prettyprint">
+401 Unauthorized HTTP/1.1
+WWW-Authenticate: Basic realm="xmpp"
+WWW-Authenticate: Digest realm="xmpp", 
+                  domain="files.shakespeare.lit", 
+                  stale=false, 
+                  nonce="ec2cc00f21f71acd35ab9be057970609", 
+                  qop="auth", 
+                  algorithm="MD5"
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="http-authz" id="http-authz">HTTP Client Sends Authorization Request via HTTP</a></h3>
+    <p>The HTTP Client responds with an Authorization Request as defined in <span class="ref">RFC 2616</span>. The following rules apply:</p>
+    <ol>
+      <li>The request MUST include the Jabber Identifier (JID) of the user making the request. This SHOULD be the full JID (&lt;user@host/resource&gt;) of a client that supports the protocol defined herein, although it MAY be the user's bare JID (&lt;user@host&gt;) instead.</li>
+      <li>The request MUST include a transaction identifier for the request. This identifier MUST be unique within the context of the HTTP Client's interaction with the HTTP Server. If the HTTP request is generated by the XMPP Client (e.g., because the HTTP URL was discovered via <span class="ref"><a href="http://xmpp.org/extensions/xep-0066.html">Out-of-Band Data (XEP-0066)</a></span>  [<a href="#nt-idp1567520">4</a>]) then the transaction identifier SHOULD be generated by the client; if not, the transaction identifier SHOULD be provided by the human user who controls the HTTP Client.</li>
+    </ol>
+    <p>The Authorization Request process is described in the following subsections.</p>
+    <div class="indent"><h3>4.3.1 <a name="http-authz-basic" id="http-authz-basic">Basic Access Authentication Scheme</a></h3>
+      <p>The Basic Access Authentication scheme is defined in <span class="ref">RFC 2617</span>. This scheme specifies that the authorization information shall consist of a userid and password, separated by a ':' character and then encoded using Base64. When the realm is "xmpp", the profile defined herein further specifies that the userid MUST be a valid JID as described above, that the password entity MUST be a transaction identifier as described above, that any character in the JID or transaction identifier that is outside the range of the US-ASCII coded character set MUST be transformed into a percent-encoded octet as specified in Section 2.1 of <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp1577056">5</a>] prior to Base64 encoding, and that Base64 encoding MUST adhere to Section 4 of <span class="ref"><a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a></span>  [<a href="#nt-idp1572352">6</a>].</p>
+      <p>(Refer to <span class="ref">RFC 2617</span> for specification of the syntax of the Basic Access Authentication scheme; that information is not duplicated here.)</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. HTTP Client Makes Basic Authorization Request</p><div class="indent"><pre class="prettyprint">
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.3.2 <a name="http-authz-digest" id="http-authz-digest">Digest Access Authentication Scheme</a></h3>
+      <p>The Digest Access Authentication scheme is defined in <span class="ref">RFC 2617</span>. This scheme specifies that the authorization information shall consist of the MD5 checksum of the username, a cnonce generated by the client, a nonce value provided in the challenge, the HTTP method, and the requested URL. When the realm is "xmpp", the profile defined herein further specifies that prior to creating the MD5 checksum the username MUST be a valid JID as described above, that the cnonce MUST be a transaction identifier as described above, and that any character in the JID or transaction identifier that is outside the range of the US-ASCII coded character set MUST be transformed into a percent-encoded octet as specified in Section 2.1 of <span class="ref">RFC 3986</span>.</p>
+      <p>(Refer to <span class="ref">RFC 2617</span> for specification of the syntax of the Digest Access Authentication scheme; that information is not duplicated here.)</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. HTTP Client Makes Digest Authorization Request</p><div class="indent"><pre class="prettyprint">
+Authorization: Digest username="juliet@capulet.com",
+               realm="xmpp",
+               nonce="ec2cc00f21f71acd35ab9be057970609", 
+               uri="missive.html",
+               qop=auth,
+               nc=00000001,
+               cnonce="0a4f113b",
+               response="6629fae49393a05397450978507c4ef1",
+               opaque="5ccc069c403ebaf9f0171e9517f40e41" 
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.3.3 <a name="http-authz-add" id="http-authz-add">Additional Authentication Schemes</a></h3>
+      <p>The HTTP Server MAY offer any other valid authentication scheme, instead of or in addition to the Basic and Digest schemes mentioned above, as long as the scheme makes it possible to specify a userid (JID) and transaction identifier as described above. However, it is RECOMMENDED to implement both the Basic and Digest authentication schemes.</p>
+    </div>
+  </div>
+  <div class="indent"><h3>4.4 <a name="http-process" id="http-process">HTTP Server Processes Request</a></h3>
+    <p>Once the HTTP Client has communicated the JID and transaction identifier to the HTTP Server, the HTTP Server MUST verify that the JID is authorized to access the HTTP resource. This may involve JID-level or domain-level access checks, or (depending on local service policies) potentially no access checks at all if only verification is required.</p>
+    <p>If the JID is authorized to access the HTTP resource, the HTTP Server MUST pass the URL, method, JID, and transaction identifier to the XMPP Server for confirmation. Exactly how this is done is up to the implementation. It is RECOMMENDED for the HTTP Server to connect to the XMPP Server as a trusted server component and to itself generate the confirmation request as described below.</p>
+  </div>
+  <div class="indent"><h3>4.5 <a name="xmpp-request" id="xmpp-request">XMPP Server Requests Confirmation via XMPP</a></h3>
+    <p>Upon receiving the JID and transaction identifier from the HTTP Server, the XMPP Server MUST send a confirmation request (via XMPP) to the XMPP Client (or route the confirmation request generated by the HTTP Server acting as a trusted XMPP server component).</p>
+    <p>The confirmation request shall consist of an empty &lt;confirm/&gt; element qualified by the ''http://jabber.org/protocol/http-auth' namespace. This element MUST possess a 'method' attribute whose value is the method of the HTTP request, MUST possess a 'url' attribute whose value is the full HTTP URL that was requested, and MUST possess an 'id' attribute whose value is the transaction identifier provided in the HTTP Authorization Request.</p>
+    <p>If the JID provided was a full JID, the confirmation request SHOULD be sent in an &lt;iq/&gt; stanza of type "get" whose 'to' attribute is set to the full JID, but MAY be sent in a &lt;message/&gt; stanza.</p>
+    <p>If the JID provided was a bare JID, the confirmation request MUST be sent in a &lt;message/&gt; stanza whose 'to' attribute is set to the bare JID; this enables delivery to the "most available" resource for the user (however "most available" is determined by the XMPP Server). The &lt;message/&gt; stanza SHOULD include a &lt;thread/&gt; element for tracking purposes and MAY include a &lt;body/&gt; element that provides human-readable information or instructions.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Confirmation Request Sent via IQ</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' 
+    from='files.shakespeare.lit' 
+    to='juliet@capulet.com/balcony' 
+    id='ha000'&gt;
+  &lt;confirm xmlns='http://jabber.org/protocol/http-auth'
+           id='a7374jnjlalasdf82'
+           method='GET'
+           url='https://files.shakespeare.lit:9345/missive.html'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Confirmation Request Sent via Message</p><div class="indent"><pre class="prettyprint">
+&lt;message type='normal'
+         from='files.shakespeare.lit' 
+         to='juliet@capulet.com'&gt;
+  &lt;thread&gt;e0ffe42b28561960c6b12b944a092794b9683a38&lt;/thread&gt;
+  &lt;body&gt;
+    Someone (maybe you) has requested the following file:
+
+       https://files.shakespeare.lit:9345/missive.html.
+
+    The transaction identifier is:
+
+       a7374jnjlalasdf82
+
+    If you wish to confirm the request, please reply
+    to this message by typing "OK". If not, please 
+    reply with "No".
+  &lt;/body&gt;
+  &lt;confirm xmlns='http://jabber.org/protocol/http-auth'
+           id='a7374jnjlalasdf82'
+           method='GET'
+           url='https://files.shakespeare.lit:9345/missive.html'/&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.6 <a name="xmpp-confirm" id="xmpp-confirm">XMPP Client Confirms Request via XMPP</a></h3>
+    <p>If the confirmation request was provided via an &lt;iq/&gt; stanza, the XMPP Client MUST respond to the request by sending an &lt;iq/&gt; stanza back to the XMPP Server. If the user wishes to confirm the request, the &lt;iq/&gt; response stanza MUST be of type "result" and MAY contain the original &lt;confirm/&gt; child element (although this is not necessary since the XMPP 'id' attribute can be used for tracking purposes):</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. XMPP Client Confirms Request via IQ</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' 
+    from='juliet@capulet.com/balcony' 
+    to='files.shakespeare.lit' 
+    id='ha000'/&gt;
+    </pre></div>
+    <p>If the user wishes to deny the request, the &lt;iq/&gt; response stanza MUST be of type "error", MAY contain the original &lt;confirm/&gt; child element (although this is not necessary since the XMPP 'id' attribute can be used for tracking purposes), and MUST specify an error, which SHOULD be &lt;not-authorized/&gt;:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. XMPP Client Denies Request via IQ</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' 
+    from='juliet@capulet.com/balcony' 
+    to='files.shakespeare.lit' 
+    id='ha000'&gt;
+  &lt;confirm xmlns='http://jabber.org/protocol/http-auth'
+           id='a7374jnjlalasdf82'
+           method='GET'
+           url='https://files.shakespeare.lit:9345/missive.html'/&gt;
+  &lt;error code='401' type='auth'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the confirmation request was provided via a &lt;message/&gt; stanza and the &lt;message/&gt; contains a human-readable &lt;body/&gt; or does not contain a &lt;body/&gt; but the XMPP Client understands the 'http://jabber.org/protocol/http-auth' namespace, the XMPP Client SHOULD respond to the request by sending a &lt;message/&gt; stanza back to the XMPP Server. If the user wishes to confirm the request, the &lt;message/&gt; response stanza SHOULD be of type "normal", MUST mirror the &lt;thread/&gt; ID (if provided by the XMPP Server), and MUST contain the original &lt;confirm/&gt; child element:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. XMPP Client Confirms Request via Message</p><div class="indent"><pre class="prettyprint">
+&lt;message from='juliet@capulet.com/balcony'
+         to='files.shakespeare.lit'&gt;
+  &lt;thread&gt;e0ffe42b28561960c6b12b944a092794b9683a38&lt;/thread&gt;
+  &lt;confirm xmlns='http://jabber.org/protocol/http-auth'
+           id='a7374jnjlalasdf82'
+           method='GET'
+           url='https://files.shakespeare.lit:9345/missive.html'/&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>If the user wishes to deny the request, the &lt;message/&gt; response stanza MUST be of type "error", MUST mirror the &lt;thread/&gt; ID (if provided by the XMPP Server), MUST contain the original &lt;confirm/&gt; child element, and MUST specify an error, which SHOULD be &lt;not-authorized/&gt;:</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. XMPP Client Denies Request via Message</p><div class="indent"><pre class="prettyprint">
+&lt;message type='error' 
+         from='juliet@capulet.com/balcony'
+         to='files.shakespeare.lit'&gt;
+  &lt;thread&gt;e0ffe42b28561960c6b12b944a092794b9683a38&lt;/thread&gt;
+  &lt;confirm xmlns='http://jabber.org/protocol/http-auth'
+           id='a7374jnjlalasdf82'
+           method='GET'
+           url='https://files.shakespeare.lit:9345/missive.html'/&gt;
+  &lt;error code='401' type='auth'&gt;
+    &lt;not-authorized xmlns='urn:ietf:params:xml:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>4.7 <a name="http-access" id="http-access">HTTP Server Allows HTTP Client to Access Object</a></h3>
+    <p>Once the XMPP Client has successfully confirmed the request, the XMPP Server forwards that confirmation to the HTTP Server, which allows access:</p>
+    <p class="caption"><a name="example-11" id="example-11"></a>Example 11. HTTP Server Allows Access to Object</p><div class="indent"><pre class="prettyprint">
+200 OK HTTP/1.1
+Content-Type: text/html
+Content-Length: 3032
+
+...
+    </pre></div>
+    <p>If the XMPP Client denied the request, the HTTP Server MUST return a Forbidden error:</p>
+    <p class="caption"><a name="example-12" id="example-12"></a>Example 12. HTTP Server Denies Access to Object</p><div class="indent"><pre class="prettyprint">
+403 Forbidden HTTP/1.1
+    </pre></div>
+  </div>
+<h2>5.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <div class="indent"><h3>5.1 <a name="impl-methods" id="impl-methods">Interaction of HTTP methods</a></h3>
+    <p>For the HEAD and OPTIONS methods, the credentials SHOULD be usable for a subsequent request from the same entity. This enables an entity to both determine support for the mechanism defined herein and start the authentication process.</p>
+    <p>For the POST and PUT methods (or any method containing a message body), clients MUST send all data with each request (if needed, the client should obtain credentials with a previous HEAD or OPTIONS method).</p>
+  </div>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <div class="indent"><h3>6.1 <a name="security-association" id="security-association">Association of Request</a></h3>
+    <p>In order to associate the HTTP request with the XMPP confirmation, a transaction identifier MUST be provided by the user in the HTTP Authorization Request, then passed unchanged to the XMPP Client as the value of the &lt;confirm/&gt; element's 'id' attribute. If the XMPP Client generated the HTTP request, it MUST check the transaction identifier against the requests it has made to verify that the request has not yet been confirmed. If the XMPP Client did not generate the HTTP request, it MUST present the transaction identifier to the user for confirmation. If the XMPP Client or User confirms the request, the XMPP Client MUST then return a confirmation to the XMPP Server for delivery to the HTTP Server.</p>
+  </div>
+  <div class="indent"><h3>6.2 <a name="security-channel" id="security-channel">Channel Encryption</a></h3>
+    <p>To reduce the likelihood of man-in-the-middle attacks, channel encryption SHOULD be used for both the XMPP channel and the HTTP channel. In particular:</p>
+    <ol>
+      <li>The channel used for HTTP requests and responses SHOULD be encrypted via SSL (secure HTTP via https: URLs) or TLS (<span class="ref"><a href="http://tools.ietf.org/html/rfc2817">RFC 2817</a></span>  [<a href="#nt-idp1624880">7</a>]).</li>
+      <li>If the standard binding of XMPP to TCP is used, TLS SHOULD be negotiated for the XMPP channel in accordance with <span class="ref">RFC 6120</span>.</li>
+      <li>If a binding of XMPP to HTTP is used (e.g., as specified in <span class="ref">XEP-0124</span>), exchanges between the XMPP Client and XMPP Server (connection manager) SHOULD be sent over a channel that is encrypted using SSL or TLS.</li>
+    </ol> 
+  </div>
+  <div class="indent"><h3>6.3 <a name="security-e2e" id="security-e2e">End-to-End Encryption</a></h3>
+    <p>For added security, the XMPP Server and XMPP Client may wish to communicate using end-to-end encryption. Methods for doing so are outside the scope of this proposal.</p>
+  </div>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1630688">8</a>].</p>
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>8.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1637008">9</a>] includes "http://jabber.org/protocol/http-auth" in its registry of protocol namespaces.</p>
+  </div>
+<h2>9.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/http-auth'
+    xmlns='http://jabber.org/protocol/http-auth'
+    elementFormDefault='qualified'&gt;
+  
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0070: http://www.xmpp.org/extensions/xep-0070.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='confirm'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='id' use='required' type='xs:string'/&gt;
+          &lt;xs:attribute name='method' use='required' type='xs:NCName'/&gt;
+          &lt;xs:attribute name='url' use='required' type='xs:anyURI'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0070<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2005-12-14<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, RFC 2616, RFC 2617, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: http-auth<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/http-auth.xsd">http://www.xmpp.org/schemas/http-auth.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0070.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0070.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0070.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Dave Smith</h3><p class="indent">
+        Email:
+        <a href="mailto:dizzyd@jabber.org">dizzyd@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:dizzyd@jabber.org">dizzyd@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp750624" id="nt-idp750624">1</a>. RFC 2616: Hypertext Transport Protocol -- HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2616">http://tools.ietf.org/html/rfc2616</a>&gt;.</p><p><a name="nt-idp752848" id="nt-idp752848">2</a>. RFC 2617: HTTP Authentication: Basic and Digest Access Authentication &lt;<a href="http://tools.ietf.org/html/rfc2617">http://tools.ietf.org/html/rfc2617</a>&gt;.</p><p><a name="nt-idp755456" id="nt-idp755456">3</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1567520" id="nt-idp1567520">4</a>. XEP-0066: Out of Band Data &lt;<a href="http://xmpp.org/extensions/xep-0066.html">http://xmpp.org/extensions/xep-0066.html</a>&gt;.</p><p><a name="nt-idp1577056" id="nt-idp1577056">5</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp1572352" id="nt-idp1572352">6</a>. RFC 4648: The Base16, Base32, and Base64 Data Encodings &lt;<a href="http://tools.ietf.org/html/rfc4648">http://tools.ietf.org/html/rfc4648</a>&gt;.</p><p><a name="nt-idp1624880" id="nt-idp1624880">7</a>. RFC 2817: Upgrading to TLS Within HTTP/1.1 &lt;<a href="http://tools.ietf.org/html/rfc2817">http://tools.ietf.org/html/rfc2817</a>&gt;.</p><p><a name="nt-idp1630688" id="nt-idp1630688">8</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1637008" id="nt-idp1637008">9</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2005-12-14)</h4><div class="indent">Per a vote of the Jabber Council, advanced status to Draft. (psa)
+    </div><h4>Version 0.10 (2005-12-01)</h4><div class="indent">Corrected several errors in the text. (psa)
+    </div><h4>Version 0.9 (2005-11-09)</h4><div class="indent">Changed use of transaction identifier from SHOULD to MUST; removed x-xmpp-auth scheme; clarified requirements, business rules, and confirm element syntax; added several more examples; more clearly specified how HTTP server communicates with XMPP server; updated schema and security considerations. (psa)
+    </div><h4>Version 0.8 (2005-10-19)</h4><div class="indent">Changed use of transaction identifier from MAY to SHOULD; updated and clarified security considerations. (psa)
+    </div><h4>Version 0.7 (2005-10-11)</h4><div class="indent">Added more HTTP examples to illustrate process flow; updated IANA considerations and security considerations. (psa)
+    </div><h4>Version 0.6 (2005-07-21)</h4><div class="indent">Updated references; clarified several points in the text; rewrote introduction. (psa)
+    </div><h4>Version 0.5 (2004-04-27)</h4><div class="indent">Added optional id attribute in order to track requests, described in new implementation note. (psa)
+    </div><h4>Version 0.4 (2004-01-14)</h4><div class="indent">Incorporated results of IRL and IM discussions: simplified the flow; added x-xmpp-auth authentication scheme. (psa/dss/jh)
+    </div><h4>Version 0.3 (2003-06-27)</h4><div class="indent">Removed hashing requirements; added/clarified JID fields in HTTP headers; added XML Schema; added XMPP error conditions; added more descriptions for confirm and accept tokens; fixed discrepancies in examples. (lw)
+    </div><h4>Version 0.2 (2003-06-26)</h4><div class="indent">Updated to reflect feedback received (moved to using standard HTTP authentication headers; included token-authority JID in HTTP header; removed example involving deprecated protocol). (lw)
+    </div><h4>Version 0.1 (2003-01-31)</h4><div class="indent">Initial draft. (lw)
+    </div></div><hr /><p>END</p></body></html>

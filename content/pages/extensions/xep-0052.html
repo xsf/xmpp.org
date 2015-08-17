@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0052: File Transfer</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="File Transfer" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Creator" content="Justin Karneges" /><meta name="DC.Description" content="A protocol for transferring a file between two Jabber IDs." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-09-30" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0052" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0052: File Transfer</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A protocol for transferring a file between two Jabber IDs.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Thomas Muldowney, Matthew Miller, Justin Karneges</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.2</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-09-30</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp697936">Introduction</a><br />2.  <a href="#sect-idp699328">Use Cases</a><br />   
+      2.1.  <a href="#sect-idp700272">Send File Use Case</a><br />3.  <a href="#sect-idp612112">Basic Usage</a><br />4.  <a href="#sect-idp630864">Stream Relation</a><br />   
+      4.1.  <a href="#sect-idp633216">"iq:oob" Relation</a><br />5.  <a href="#sect-idp635088">Formal Description</a><br />   
+      5.1.  <a href="#sect-idp635584">DTD</a><br />   
+      5.2.  <a href="#sect-idp636336">&lt;file/&gt; Element</a><br />   
+      5.3.  <a href="#sect-idp1516208">&lt;desc/&gt; Element</a><br />   
+      5.4.  <a href="#sect-idp1517504">&lt;range/&gt; Element</a><br />   
+      5.5.  <a href="#sect-idp1521440">Error Descriptions</a><br />6.  <a href="#sect-idp1527440">Security Considerations</a><br />7.  <a href="#sect-idp1528736">IANA Considerations</a><br />8.  <a href="#sect-idp1530000">JANA Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp697936" id="sect-idp697936">Introduction</a></h2>
+  <p>
+    This document describes the http://www.jabber.org/protocol/filexfer
+    namespace, which is used for offering and transferring files from one Jabber
+    ID to another.  It tries to expand the basic method (iq:oob) that currently
+    exists to allow for numerous stream methods, and more detailed file
+    information before accepting an offer.  This document only describes the
+    negotiation method and suggests how streams could link back to the
+    negotiated information.
+  </p>
+<h2>2.
+       <a name="sect-idp699328" id="sect-idp699328">Use Cases</a></h2>
+  <p>
+    This document covers one use case of sending a file to another user.  Future specifications
+    may enhance this to include searching and offering.
+  </p>
+
+  <div class="indent"><h3>2.1 <a name="sect-idp700272" id="sect-idp700272">Send File Use Case</a></h3>
+    <p>Primary Flow:</p>
+    <ol>
+      <li>Determine if the receiver supports FT through disco/browse. [E1]</li>
+      <li>Sender sends meta-data and available methods to receiver</li>
+      <li>Receiver sends the accepted method to Sender and any range/offset
+        information. [E2],[E3]</li>
+      <li>Sender and Receiver establish the negotiated method[E4]</li>
+      <li>Sender sends data as described by method</li>
+      <li>After the stream closes the Receiver notifies the Sender of
+        completion.  [E5]</li>
+      <li>END</li>
+    </ol>
+    <p>Errors Conditions:</p>
+    <ol>
+      <li>User does not support filetransfer.  END</li>
+      <li>Receiver rejects send.  END</li>
+      <li>Receiver does not have any methods shared with the sender.  END</li>
+      <li>The stream is unable to be started.  END</li>
+      <li>The Receiver notifies sender of an error transferring.  END</li>
+    </ol>
+  </div>
+<h2>3.
+       <a name="sect-idp612112" id="sect-idp612112">Basic Usage</a></h2>
+
+  <p>
+    In order to send a file, the sender must first tell the receiver a little
+    bit about the file to make sure they will accept it.  At the same time they
+    list the stream methods they support in the order they wish to use them.  
+    This is done by sending the information in the http://www.jabber.org/protocol/filexfer namespace.
+  </p>
+
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Generic Offer</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='set' id='ft_1' to='recvr@jabber.org/Home'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer'
+              action='offer'
+              id='a0' 
+              name='myfile.txt' 
+              size='1024' 
+              mime-type='text/plain'&gt;
+        &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+          &lt;x xmlns='jabber:x:data'&gt;
+            &lt;field var='file-transfer-method' type='list-single'&gt;
+              &lt;option&gt;&lt;value&gt;jabber:iq:oob&lt;/value&gt;&lt;/option&gt;
+            &lt;/field&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/file&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    That is the basic request, a more complete requeset with range support is 
+    shown below.
+  </p>
+
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Complete File Offer</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='set' id='ft_1' to='recvr@jabber.org/Home'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer'
+            action='offer'
+            id='a0' 
+            name='myfile.txt' 
+            size='1024' 
+            mime-type='text/plain'
+            date='20020412T00:00:00'
+            hash='23e4ad6b63343b33a333c334'&gt;
+        &lt;desc&gt;A cool file&lt;/desc&gt;
+        &lt;range/&gt;
+        &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+          &lt;x xmlns='jabber:x:data'&gt;
+            &lt;field var='file-transfer-method' type='list-single'&gt;
+              &lt;option&gt;&lt;value&gt;jobs&lt;/value&gt;&lt;/option&gt;
+              &lt;option&gt;&lt;value&gt;dtcp&lt;/value&gt;&lt;/option&gt;
+              &lt;option&gt;&lt;value&gt;jabber:iq:oob&lt;/value&gt;&lt;/option&gt;
+              &lt;option&gt;&lt;value&gt;ibb&lt;/value&gt;&lt;/option&gt;
+            &lt;/field&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/file&gt;
+    &lt;/iq&gt;
+  </pre></div>
+    
+  <p>If a receiver decides to accept an offered file they request it from the sending with an &lt;iq/&gt; type result. The receiver sends back the id of the file being sent, the method they wish to use, and the range they wish to download (if the sender announced support). When range support is being used the receiver MUST specify the length and MAY specify a beginning offset with the acceptance.</p>
+
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Request the Offered File</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='result' id='ft_req_1' to='sender@jabber.org/res'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='get'&gt;
+        &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+          &lt;x xmlns='jabber:x:data'&gt;
+            &lt;field var='file-transfer-method'&gt;
+              &lt;option&gt;&lt;value&gt;jabber:iq:oob&lt;/value&gt;&lt;/option&gt;
+            &lt;/field'&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/file&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Accept the Offered File with a Range and Offset</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='result' id='ft_req_q' to='sender@jabber.org/res'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='get'&gt;
+        &lt;range offset='100' length='500' /&gt;
+          &lt;x xmlns='jabber:x:data'&gt;
+            &lt;field var='file-transfer-method'&gt;
+              &lt;option&gt;&lt;value&gt;jobs&lt;/value&gt;&lt;/option&gt;
+            &lt;/field&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/file&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    If the receiver decides to not accept the file they SHOULD send back an 
+    error 403 to the sender.
+  </p>
+
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Declining the Offered File</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='error' id='ft_1' to='sender@jabber.org/res'&gt;
+      &lt;error code='403'&gt;Offer Declined&lt;/error&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    If the receiver does not support any of the offered stream methods they
+    SHOULD send back an error 406 to the sender.
+  </p>
+
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. No Acceptable Methods</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='error' id='ft_1' to='sender@jabber.org/res'&gt;
+      &lt;error code='406'&gt;No Acceptable Methods&lt;/error&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    At this point the sender will setup the stream method and begin to transfer
+    data.  The stream itself can use the file transfer namespace to tie the
+    meta-data to the actual data sent, this is illustrated below using iq:oob.
+  </p>
+
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Starting an iq:oob transfer</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='set' id='ft_oob_1' to='recvr@jabber.org/Home'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='start'/&gt;
+      &lt;query xmlns='jabber:iq:oob'&gt;
+        &lt;url&gt;http://www.jabber.org/file.txt&lt;/url&gt;
+        &lt;desc&gt;Here is the file&lt;/desc&gt;
+      &lt;/query&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    If the receiver is unable to start the negotiated stream for any reason they
+    should send an &lt;error/&gt; with a 502 code to the sender.
+  </p>
+
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Unable to Start Stream</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='error' id='ft_oob_e_1' to='sender@jabber.org/res'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='error'/&gt;
+      &lt;error code='502'&gt;Unable to Start Stream&lt;/error&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    Once the data has been transferred the receiver SHOULD send the sender a
+    notification that the transfer completed.  This is done by sending an
+    &lt;iq/&gt; type set with the file id and a completed action.
+  </p>
+
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Completed Transfer Notification</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='set' id='ft_c_1' to='sender@jabber.org/res'&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='complete' /&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+  <p>
+    If the transfer does not complete, for any reason after the meta-data
+    negotiation, the party that has the error SHOULD send an error 500 and 
+    the file id to the other party.
+  </p>
+
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Failed Transfer Error</p><div class="indent"><pre class="prettyprint">
+    &lt;iq type='error' id='ft_1' to='sender@jabber.org/res'&gt;
+      &lt;error code='500'&gt;File Transfer Failed&lt;/error&gt;
+      &lt;file xmlns='http://www.jabber.org/protocol/filexfer' id='a0' action='error'/&gt;
+    &lt;/iq&gt;
+  </pre></div>
+
+<h2>4.
+       <a name="sect-idp630864" id="sect-idp630864">Stream Relation</a></h2>
+  <p>By staying in just the realm of negotiating the meta-data to a file, we allow for multiple transport layers, or streams, to be used. Some streams will need to tie the meta-data to the actual data transfer, to help accomodate this the stream may use the &lt;file/&gt; with an action of start and the correct id. The &lt;file/&gt; could be transported in the stream negotiations, or along side it. Although this spec does not mandate any specific methods to new stream authors, it does provide the syntax for the currently existing "iq:oob" system.</p>
+  <div class="indent"><h3>4.1 <a name="sect-idp633216" id="sect-idp633216">"iq:oob" Relation</a></h3>
+    <p>For an "iq:oob" transfer to be related to it's meta-data, a &lt;file/&gt; is transported along side the &lt;query/&gt;. The id used on the &lt;file/&gt; is the id for the meta-data of the actual data that is being sent. The action on the &lt;file/&gt; is "start".  An example of this can be found in the Basic Usage section.</p>
+  </div>
+<h2>5.
+       <a name="sect-idp635088" id="sect-idp635088">Formal Description</a></h2>
+  <div class="indent"><h3>5.1 <a name="sect-idp635584" id="sect-idp635584">DTD</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;!ELEMENT file  ( ( desc )? | ( range )? | ( PCDATA )* ) &gt;
+&lt;!ELEMENT desc    ( #PCDATA )*  &gt;
+&lt;!ELEMENT range   EMPTY         &gt;
+
+&lt;!ATTLIST file
+    id        CDATA   #REQUIRED
+    action    "offer" | "get" | "complete" | "start" | "error"  #IMPLIED "offer"
+    name      CDATA   #OPTIONAL
+    size      CDATA   #OPTIONAL &gt;
+    mime-type CDATA   #OPTIONAL
+    date      CDATA   #OPTIONAL
+    hash      CDATA   #OPTIONAL
+&lt;!ATTLIST range
+    length    CDATA   #OPTIONAL
+    offset    CDATA   #OPTIONAL &gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.2 <a name="sect-idp636336" id="sect-idp636336">&lt;file/&gt; Element</a></h3>
+    <p>The &lt;file/&gt; element is the "workhorse" element. This element is used to convey meta-data and report file transfer actions. This elemnt contains attributes for file meta-data and actions, and MAY contain a &lt;desc/&gt;, a &lt;range/&gt;, and zero or more &lt;feature xmlns='jabber:iq:negotiate'/&gt; (<span class="ref"><a href="http://xmpp.org/extensions/xep-0020.html">Feature Negotiation (XEP-0020)</a></span>  [<a href="#nt-idp1502400">1</a>]) elements.</p>
+    <p>The "id" attribute specifies the identifier for this particular file transfer. This attribute MUST be present at all times. There are no value requirements other than it MUST be unique between the sender and receiver.</p>
+    <p>The "action" attribute specifies the action to undertake with the given file. This attribute SHOULD be present in most cases. If not present, the value "offer" is implied. The value of "action" MUST be one of the following:</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Possible "action" values</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>complete</td>
+        <td>The file transfer is complete.</td>
+      </tr>
+      <tr class="body">
+        <td>get</td>
+        <td>The file transfer should start.</td>
+      </tr>
+      <tr class="body">
+        <td>offer</td>
+        <td>The file transfer is offered (meta-data MUST be present)</td>
+      </tr>
+      <tr class="body">
+        <td>start</td>
+        <td>The file transfer is starting.</td>
+      </tr>
+      <tr class="body">
+        <td>error</td>
+        <td>The file transfer has failed.  The outlying error tag has more
+          information.
+        </td>
+      </tr>
+    </table></div>
+    <p>The "name" attribute specifies the file name. This attribute MUST be present if the action is "offer", otherwise it SHOULD NOT be present.</p>
+    <p>The "size" attribute specifies the file size, in bytes. This attribute MUST be present if the action is "offer", otherwise it SHOULD NOT be present.</p>
+    <p>The "mime-type" attribute specifies the MIME-type for the file. This attribute SHOULD be present if the action is "offer", otherwise it SHOULD NOT be present. The value of this attribute MUST follow the specification for MIME-types from RFC-2046 [<a href="#nt-idp1512864">2</a>].</p>
+    <p>The "date" attribute specifies the file date. This attribute MAY be present if the action is "offer", otherwise it SHOULD NOT be present. The value MUST follow the specification for ISO 8601 date/time formats [<a href="#nt-idp1514352">3</a>].</p>
+    <p>The "hash" attribute specifies the hash of the file contents. This attribute MAY be present if the action is "offer", otherwise it SHOULD NOT be present. The value MUST be an SHA1 hash of the file contents.</p>
+  </div>
+  <div class="indent"><h3>5.3 <a name="sect-idp1516208" id="sect-idp1516208">&lt;desc/&gt; Element</a></h3>
+    <p>The &lt;desc/&gt; element contains a human-readable description of the file. This element has no attributes, and contains character data content.</p>
+  </div>
+  <div class="indent"><h3>5.4 <a name="sect-idp1517504" id="sect-idp1517504">&lt;range/&gt; Element</a></h3>
+    <p>The &lt;range/&gt; element describes range information for a partial transfer. This element has attributes to define the range length and range offset.  This element contains no content.</p>
+    <p>The "length" attribute defines the range length, in bytes. This attribute MUST be present if the containing &lt;file/&gt; has an action value of "get", otherwise it SHOULD NOT be present. The value of this attribute MUST be an integer value and MUST be less than or equal to the (size + offset) of the file.</p>
+    <p>The "offset" attribute defines the range offset, in bytes. This attribute MAY be present if the containing &lt;file/&gt; has an action value of "get", otherwise it SHOULD NOT be present. If this attribute is not present, a value of 0 is implied. The value of this attribute MUST be an integer, MUST NOT be less than 0, and MUST be less than (size - length).</p>
+  </div>
+  <div class="indent"><h3>5.5 <a name="sect-idp1521440" id="sect-idp1521440">Error Descriptions</a></h3>
+    <p>There are three main error conditions in file transfer.  Following are the
+      conditions, error codes and descriptions:</p>
+      <ul>
+        <li>
+          <span class="em">Declining Transfer (403)</span>:  During the meta-data negotiation 
+          the receiver may decline the transfer by sending the 403 error.  The
+          &lt;error/&gt; CDATA MAY contain a descriptive reason why, but is not
+          necessary.
+        </li>
+        <li>
+          <span class="em">No Available Methods (406)</span>:  When the sender presents the
+          available stream methods, and the receiver can not use any of them,
+          they send a 406 error.  The &lt;error/&gt; CDATA is not important.
+        </li>
+        <li>
+          <span class="em">Transfer Failed (500)</span>:  If the file transfer fails for any
+          reason after negotiation, the error generator SHOULD send a 500 error
+          to the other party.  This is the only error message that both the
+          sender and reciever may send.  The &lt;error/&gt; CDATA MAY contain 
+          information about the failure.
+        </li>
+        <li>
+          <span class="em">Unable to Start Stream (502)</span>:  When the receiver is unable to
+          start the negotiated stream method they send a 502 error to the
+          sender.  The &lt;error/&gt; CDATA is not important.
+        </li>
+      </ul>
+  </div>
+<h2>6.
+       <a name="sect-idp1527440" id="sect-idp1527440">Security Considerations</a></h2>
+  <p>
+    Data integrity can be checked with the sha1 of the file that is sent.  This
+    could be attacked via a man in the middle attack, but much more embarrasing
+    things could result from that than a bad file.  The wire integrity is left
+    to the stream method.
+  </p>
+<h2>7.
+       <a name="sect-idp1528736" id="sect-idp1528736">IANA Considerations</a></h2>
+  <p>
+    The mime-type attribute on &lt;file/&gt; is a valid MIME type as controlled
+    by the IANA.
+  </p>
+<h2>8.
+       <a name="sect-idp1530000" id="sect-idp1530000">JANA Considerations</a></h2>
+  <p>
+    The "http://jabber.org/protocol/filexfer" is the only namespace that needs
+    to be registered with the JANA.
+  </p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0052<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.2<br />
+            Last Updated: 2003-09-30<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: N/A<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0052.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0052.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0052.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@box5.net">temas@box5.net</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p><h3>Justin Karneges</h3><p class="indent">
+        Email:
+        <a href="mailto:justin@affinix.com">justin@affinix.com</a><br />
+        JabberID: 
+        <a href="xmpp:justin@andbit.net">justin@andbit.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1502400" id="nt-idp1502400">1</a>. XEP-0020: Feature Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0020.html">http://xmpp.org/extensions/xep-0020.html</a>&gt;.</p><p><a name="nt-idp1512864" id="nt-idp1512864">2</a>. RFC 2046: "Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types" -- <a href="http://www.ietf.org/rfc/rfc2046.txt">http://www.ietf.org/rfc/rfc2046.txt</a></p><p><a name="nt-idp1514352" id="nt-idp1514352">3</a>. ISO 8601: "[Summary of the] International Standard Date and Time Notation" -- <a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a></p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.2 (2003-09-30)</h4><div class="indent">At the request of the authors, the status of this document has been changed to Retracted since it has been superseded by XEP-0095 and XEP-0096. (psa)
+    </div><h4>Version 0.1 (2002-12-03)</h4><div class="indent">Initial version, based on original XEP-0052 revision 0.1. (tjm)
+    </div></div><hr /><p>END</p></body></html>

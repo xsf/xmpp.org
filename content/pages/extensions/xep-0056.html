@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0056: Business Data Interchange</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Business Data Interchange" /><meta name="DC.Creator" content="Ulrich Staudinger" /><meta name="DC.Description" content="This document defines a way to transmit ebXML messages, ANSI X.11, EDIFACT/UN, and SAP iDoc over Jabber/XMPP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2002-11-18" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0056" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0056: Business Data Interchange</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a way to transmit ebXML messages, ANSI X.11, EDIFACT/UN, and SAP iDoc over Jabber/XMPP.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Ulrich Staudinger</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.3</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2002-11-18</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp684912">Introduction</a><br />2.  <a href="#sect-idp685984">Transmitting ebXML via XMPP</a><br />   
+      2.1.  <a href="#sect-idp686480">Introduction to ebXML</a><br />   
+      2.2.  <a href="#sect-idp688656">Protocol</a><br />   
+      2.3.  <a href="#sect-idp694880">Examples</a><br />3.  <a href="#sect-idp698992">Transmitting ANSI X.12 via XMPP</a><br />   
+      3.1.  <a href="#sect-idp699488">Introduction</a><br />   
+      3.2.  <a href="#sect-idp701392">Protocol</a><br />   
+      3.3.  <a href="#sect-idp702752">Example</a><br />4.  <a href="#sect-idp704224">Transmitting UN/EDIFACT via XMPP</a><br />   
+      4.1.  <a href="#sect-idp704720">Introduction</a><br />   
+      4.2.  <a href="#sect-idp705856">Protocol</a><br />5.  <a href="#sect-idp707328">Transmitting SAP iDoc via XMPP</a><br />   
+      5.1.  <a href="#sect-idp707824">Introduction</a><br />   
+      5.2.  <a href="#sect-idp708672">Protocol</a><br />   
+      5.3.  <a href="#sect-idp709936">Example</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp684912" id="sect-idp684912">Introduction</a></h2>
+<p>
+ANSI X.12, EDIFACT/UN and ebXML are all standards. This document describes a fundamental approach to transmit messages that conform to these standards.
+</p>
+
+<h2>2.
+       <a name="sect-idp685984" id="sect-idp685984">Transmitting ebXML via XMPP</a></h2>
+<div class="indent"><h3>2.1 <a name="sect-idp686480" id="sect-idp686480">Introduction to ebXML</a></h3>
+
+<p>EbXML  [<a href="#nt-idp687232">1</a>], a subset of XML that is defined through OASIS.org, is quickly becoming a de-facto standard for electronic, unified, inter and intra business process communication and for business process specification. The direct adjacency to UN/CEFACT EDIFACT, especially object-oriented EDI, make the widespread use of ebXML for automatic business transaction negotiation, process definition, etc. quite likely.   
+</p>
+</div>
+
+
+<div class="indent"><h3>2.2 <a name="sect-idp688656" id="sect-idp688656">Protocol</a></h3>
+<p>
+ebXML Messages SHALL be transmitted within Jabber IQ chunks. The value of the 'type' attribute SHALL be 'set' and the chunk SHALL contain a &lt;query/&gt; child element with the namespace declaration set to 'http://jabber.org/protocol/ebxml'. The query element MUST contain the pure ebXML message. No SOAP envelope SHALL exist around the ebXML message. Reception of an ebXML iqed message must be acknowledged with an iq chunk including an empty query tag of the same namespace, the iq tag SHALL have the same ID.
+</p>
+
+<p class="caption"><a name="example-1" id="example-1"></a>Example 1. ebXML Envelope</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='a@b.c' to='d@e.f' type='set' id='some'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/ebxml'&gt;
+    [data]
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+
+<p>
+EbXML information is always transmitted in this envelope. No transformation of native ebXML tags into native Jabber tags is performed (e.g., ebXML reception receipt into Jabber reception receipt). The business logic, on top of Jabber transport logic, has to parse incoming IQ chunks and forward received ebXML information to the ebXML Messaging Service. The business logic has as well to pack the ebXML messages into IQ chunks and invoke the message delivery.   
+</p>
+<p>
+Although a complex business transaction between two or more Trading Partners might require a payload that contains an array of business documents, binary images, or other related Business Information'  [<a href="#nt-idp693040">2</a>], only one ebXML message can be (at the moment) transmitted at a time in one message. However, the ebXML Message MAY contain payload in it's own payload envelope. 
+</p>
+<p>It has to be noted: The karma restriction of XMPP, implied on clients, makes transmission of large amounts of payload (at the moment) to services or other clients from client side nearly impossible. However, components' karma is not restrained. 
+</p>
+
+</div>
+
+<div class="indent"><h3>2.3 <a name="sect-idp694880" id="sect-idp694880">Examples</a></h3>
+
+<p class="caption"><a name="example-2" id="example-2"></a>Example 2. ebXML Query from a client to a Gateway</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='ebxml.gateway.com' type='set' id='f0a0f0'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/ebxml'&gt;
+    &lt;RegistryEntryQuery&gt;
+      &lt;RegistryEntryFilter&gt;
+        objectType EQUAL "CPP" AND status EQUAL "Approved"
+      &lt;/RegistryEntryFilter&gt;
+      &lt;HasClassificationBranch&gt;
+        &lt;ClassificationNodeFilter&gt;
+          id STARTSWITH "urn:urn:spsc:321118'
+        &lt;/ClassificationNodeFilter&gt;
+      &lt;/HasClassificationBranch&gt;
+    &lt;/RegistryEntryQuery&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+<p>
+The previous example transmits a query to a database with an ebXML interface. A requester searches for all companies dealing with 'Integrated curcuit components', here with UNSPSC code '321118'.
+</p>
+
+
+<p class="caption"><a name="example-3" id="example-3"></a>Example 3. ebXML component OK from component to client</p><div class="indent"><pre class="prettyprint">
+&lt;iq to='client@server.com' from='ebxml.gateway.com' type='result' id='f0a0f0'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/ebxml'/&gt;
+&lt;/iq&gt;
+</pre></div>
+<p>
+This prior xml code is the result which every recieving unit has to send, after successfully recieving the iq chunk. Note, that this does not mean, the ebxml chunk has been accepted, parsed, or whatever, this is only on jabber level.
+</p>
+
+</div>
+
+
+
+<h2>3.
+       <a name="sect-idp698992" id="sect-idp698992">Transmitting ANSI X.12 via XMPP</a></h2>
+<div class="indent"><h3>3.1 <a name="sect-idp699488" id="sect-idp699488">Introduction</a></h3>
+<p>ANSI X.12 is a character oriented protocol. X.12 is separated into segments. Segments are separated by an asterisk  [<a href="#nt-idp700368">3</a>].</p>
+</div>
+<div class="indent"><h3>3.2 <a name="sect-idp701392" id="sect-idp701392">Protocol</a></h3>
+<p>ANSI X.12 messages SHALL be delivered in a query tag of an IQ chunk. The IQ chunk's type attribute SHALL be set to 'set'. The query's namespace attribute SHALL be set to 'http://jabber.org/protocol/ansi_x.12'. The query tag shall contain the ANSI X.12 message. The ANSI X.12 message SHALL NOT be Base64 encoded, but SHALL be XML aware.</p>
+ </div>
+
+
+<div class="indent"><h3>3.3 <a name="sect-idp702752" id="sect-idp702752">Example</a></h3>
+
+<p class="caption"><a name="example-4" id="example-4"></a>Example 4. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='ANY' to='ANSI_X12Gate@way.com'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/ansi_x.12'&gt;
+  ST*850*000000101~
+  BEG*00*NE*123456789*991125**AC~
+  N1*BT***0111213~
+  N1*ST***5566789~
+  PO1*1*250*KGM*15.3*SR*EAN*MY1001~
+  CTT*1*2~
+  SE*7*000000101~
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<h2>4.
+       <a name="sect-idp704224" id="sect-idp704224">Transmitting UN/EDIFACT via XMPP</a></h2>
+<div class="indent"><h3>4.1 <a name="sect-idp704720" id="sect-idp704720">Introduction</a></h3>
+<p>
+EDIFACT/UN is very similar to X.12 and differs only in the meaning of tags and in some syntactical details.
+</p>
+</div>
+<div class="indent"><h3>4.2 <a name="sect-idp705856" id="sect-idp705856">Protocol</a></h3>
+<p>EDIFACT/UN messages SHALL be delivered in a query tag of an IQ chunk. The IQ chunk's type attribute SHALL be set to 'set'. The query's namespace attribute SHALL be set to 'http://jabber.org/protocol/edifact'. The query tag SHALL contain the UN/EDIFACT message. The UN/EDIFACT message SHALL NOT be Base64 encoded.</p>
+ </div>
+<h2>5.
+       <a name="sect-idp707328" id="sect-idp707328">Transmitting SAP iDoc via XMPP</a></h2>
+<div class="indent"><h3>5.1 <a name="sect-idp707824" id="sect-idp707824">Introduction</a></h3>
+SAP Systems can create IDocs as receipts of transactions. These receipts can be used within other EDI systems, or within the SAP system. Of course transmission of IDocs can take place through XMPP as well.
+</div>
+
+<div class="indent"><h3>5.2 <a name="sect-idp708672" id="sect-idp708672">Protocol</a></h3>
+<p>SAP IDocs SHALL be transmitted in a query tag of an IQ chunk. The IQ chunk's type attribute SHALL be 'set. The query's namespace attribute SHALL be set to 'http://jabber.org/protocol/sap_idoc'. The query tag SHALL contain the iDoc, XML aware. 
+</p>
+</div>
+
+<div class="indent"><h3>5.3 <a name="sect-idp709936" id="sect-idp709936">Example</a></h3>
+<p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='ANY' from='sap_idoc_gate@way.com'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/sap_idoc'&gt;
+    EDI_DC0350000000000000001301230C30USDEL4111SAPI10
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+</pre></div>
+</div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0056<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.3<br />
+            Last Updated: 2002-11-18<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: <br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0056.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0056.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0056.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ulrich Staudinger</h3><p class="indent">
+        Email:
+        <a href="mailto:chicago5@gmx.de">chicago5@gmx.de</a><br />
+        JabberID: 
+        <a href="xmpp:uls@jabber.org">uls@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp687232" id="nt-idp687232">1</a>. <a href="http://www.ebxml.org">http://www.ebxml.org</a></p><p><a name="nt-idp693040" id="nt-idp693040">2</a>. Walsh. 2002. <span class="em">ebXML: The Technical Specifications</span>; p. 69</p><p><a name="nt-idp700368" id="nt-idp700368">3</a>. Angeli, Streit, Gonfaloniere. 2000. <span class="em">The SAP R/3 Guide to EDI and interfaces</span>; p. 133</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.3 (2002-11-18)</h4><div class="indent">added SAP iDoc, EDIFACT, changed from Base64 to XML aware, minor changes in wording (uls)
+    </div><h4>Version 0.2 (2002-11-06)</h4><div class="indent">Changed namespace, improved structure, added ANSI X.12 (uls)
+    </div><h4>Version 0.1 (2002-11-06)</h4><div class="indent">Initial release. (uls)
+    </div></div><hr /><p>END</p></body></html>

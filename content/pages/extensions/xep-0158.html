@@ -1,0 +1,811 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0158: CAPTCHA Forms</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="CAPTCHA Forms" /><meta name="DC.Creator" content="Ian Paterson" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document specifies an XMPP protocol extension that entities may use to discover whether the sender of an XML stanza is a human user or a robot." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2008-09-03" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0158" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0158: CAPTCHA Forms</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies an XMPP protocol extension that entities may use to discover whether the sender of an XML stanza is a human user or a robot.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ian Paterson, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2008-09-03</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#require">Requirements</a><br />   
+      2.1.  <a href="#require-extend">Extensibility</a><br />   
+      2.2.  <a href="#require-variety">Variety</a><br />3.  <a href="#protocol">Protocol</a><br />   
+      3.1.  <a href="#protocol-simple">Simple Challenge</a><br />      
+      3.1.1.  <a href="#protocol-trigger">Triggering Stanza</a><br />      
+      3.1.2.  <a href="#protocol-challenge">Challenge Stanza</a><br />      
+      3.1.3.  <a href="#protocol-response">Response Stanza</a><br />      
+      3.1.4.  <a href="#protocol-result">Result Stanza</a><br />   
+      3.2.  <a href="#protocol-multiple">Multiple Challenges</a><br />4.  <a href="#register">Extended In-Band Registration</a><br />5.  <a href="#muc">Multi-User Chat</a><br />6.  <a href="#challenge">Challenge Types</a><br />   
+      6.1.  <a href="#challenge-intro">Introduction</a><br />   
+      6.2.  <a href="#challenge-hashcash">SHA-256 Hashcash</a><br />   
+      6.3.  <a href="#challenge-captcha">CAPTCHAs</a><br />7.  <a href="#legacy">Question and Answer for Legacy Clients</a><br />8.  <a href="#stop">Discontinuation Policy</a><br />9.  <a href="#i18n">Internationalization Considerations</a><br />10.  <a href="#sec">Security Considerations</a><br />11.  <a href="#iana">IANA Considerations</a><br />12.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      12.1.  <a href="#ns">Protocol Namespaces</a><br />   
+      12.2.  <a href="#registrar-formtypes">Field Standardization</a><br />      
+      12.2.1.  <a href="#registrar-formtypes-captcha">CAPTCHA FORM_TYPE</a><br />      
+      12.2.2.  <a href="#registrar-formtypes-register">jabber:iq:register FORM_TYPE</a><br />13.  <a href="#schema">XML Schema</a><br />14.  <a href="#open">Open Issues</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>The appearance of large public IM services based on <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1543152">1</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1545744">2</a>] makes it desirable to implement protocols that <span class="em">discourage</span> the sending of large quantities of instant messaging spam (a.k.a. "spim") or, in general, abusive traffic. Abusive stanzas could be generated by XMPP clients connected to legitimate servers or by XMPP servers with virtual clients, where the malicious entities are hosted on networks of "zombie" machines. Such abusive stanas could take many forms; a full taxonomy is outside the scope of this document.</p>
+  <p>One technique developed to combat abusive messages and behavior via non-XMPP technologies requires humans to be differentiated from bots using a "Completely Automated Public Turing Test to Tell Computers and Humans Apart" or CAPTCHA (see &lt;<a href="http://www.captcha.net/">http://www.captcha.net/</a>&gt;). These challenge techniques are easily adapted to discourage XMPP abuse. The very occasional inconvenience of responding to a CAPTCHA (e.g., when creating an IM account or sending a message to a new correspondent) is small and perfectly acceptable -- especially when compared to the countless robot-generated interruptions people might otherwise have to filter every day.</p>
+  <p>An alternative technique to CAPTCHAs requires Desktop PC clients to undertake a <span class="ref">Hashcash</span>  [<a href="#nt-idp1549488">3</a>] challenge. These are completely transparent to PC users. They require clients to perform specified CPU-intensive work, making it difficult to send large amounts of abusive traffic.</p>
+  <p>Both CAPTCHAs and hashcash have been criticized regarding their effectiveness (or lack thereof). Therefore, the challenge protocol specified herein provides a great deal of flexibility, so that challenges can include CAPTCHAs, hashcash, word puzzles, so-called kitten authentication, and any other mechanism that may be developed in the future.</p>
+  <p>The generic challenge protocol described in this document is designed for incorporation into protocols such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration (XEP-0077)</a></span>  [<a href="#nt-idp1554352">4</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1557008">5</a>], <span class="ref"><a href="http://xmpp.org/extensions/xep-0016.html">Privacy Lists (XEP-0016)</a></span>  [<a href="#nt-idp1559584">6</a>], and <span class="ref"><a href="http://xmpp.org/extensions/xep-0159.html">SPIM-Blocking Control (XEP-0159)</a></span>  [<a href="#nt-idp1561520">7</a>].</p>
+<h2>2.
+       <a name="require" id="require">Requirements</a></h2>
+  <div class="indent"><h3>2.1 <a name="require-extend" id="require-extend">Extensibility</a></h3>
+    <p>The CAPTCHAs in most common use today are Optical Character Recognition (OCR) challenges where an image containing deformed text is presented and the human enters the characters they can read. However, if OCR software advances more rapidly than the techniques used to disguise text from Artificial Intelligence (AI) then very different CAPTCHAs will need to be deployed. This protocol must be extensible enough to allow the incorporation of CAPTCHA techniques that may not have been envisaged.</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="require-variety" id="require-variety">Variety</a></h3>
+    <p>Several common CAPTCHA techniques present major problems to users with disabilities (see <span class="ref"><a href="http://www.w3.org/TR/turingtest/">Inaccessibility of Visually-Oriented Anti-Robot Tests</a></span>  [<a href="#nt-idp1567328">8</a>]). Clients running in constrained environments may not be able to perform some challenges (e.g., due to the absence of audio output or a lack of CPU performance). This protocol must allow clients to be offered a choice from a variety of challenges.</p>
+  </div>
+<h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <div class="indent"><h3>3.1 <a name="protocol-simple" id="protocol-simple">Simple Challenge</a></h3>
+    <div class="indent"><h3>3.1.1 <a name="protocol-trigger" id="protocol-trigger">Triggering Stanza</a></h3>
+      <p>A "triggering stanza" is an XMPP &lt;message/&gt;, &lt;presence/&gt;, or &lt;iq/&gt; stanza that is deemed abusive by the receiving entity (e.g., a client) or an intermediate router (e.g., a server). The entity that generates a triggering stanza is called a "sender".</p>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Sender Generates Triggering Stanza</p><div class="indent"><pre class="prettyprint">
+&lt;message from='robot@abuser.com/zombie'
+    to='innocent@victim.com'
+    xml:lang='en'
+    id='spam1'&gt;
+  &lt;body&gt;Love pills - 75% OFF&lt;/body&gt;
+  &lt;x xmlns='jabber:x:oob'&gt;
+    &lt;url&gt;http://www.abuser.com/lovepills.html&lt;/url&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>3.1.2 <a name="protocol-challenge" id="protocol-challenge">Challenge Stanza</a></h3>
+     <p>Upon receiving a triggering stanza, an entity MAY send a "challenge stanza". An entity MUST NOT send a challenge stanza under any other circumstances. The entity that generates the challenge stanza is called the "challenger".</p>
+    <p>The challange stanza consists of an XMPP &lt;message/&gt; stanza containing a data form for the sender to fill out, formatted according to <span class="ref"><a href="http://xmpp.org/extensions/xep-0004.html">Data Forms (XEP-0004)</a></span>  [<a href="#nt-idp1576240">9</a>], optionally along with a &lt;body/&gt; and other elements. The following rules apply to the challenge stanza.</p>
+    <ol>
+      <li>The challenge stanza MUST include an 'id' attribute set to the challenge ID (i.e., a unique identifier for this challenge within the challenger's application).</li>
+      <li>The challenge stanza SHOULD include a &lt;body/&gt; element that provides an explanation of the challenge for clients that do not yet support CAPTCHA forms.</li>
+      <li>The challenge stanza MAY include a URL (typically a Web page with instructions) using <span class="ref"><a href="http://xmpp.org/extensions/xep-0066.html">Out-of-Band Data (XEP-0066)</a></span>  [<a href="#nt-idp1580448">10</a>] as an alternative for clients that do not yet support CAPTCHA forms.</li>
+      <li>The 'xml:lang' attribute of the challenge stanza SHOULD be the same as the one received from the sender, if any.</li>
+      <li>The challenge stanza MUST include a CAPTCHA form, i.e., a data form of type "form" containing one or more challenges.  [<a href="#nt-idp1579008">11</a>]</li>
+      <li>The CAPTCHA form MUST include a hidden field named "FORM_TYPE" (in accordance with <span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp1585568">12</a>]) whose value MUST be "urn:xmpp:captcha".</li>
+      <li>The CAPTCHA form MUST include a hidden field named "challenge" set to the challenge ID.</li>
+      <li>The CAPTCHA form MUST include a hidden field named "from" set to the value of the 'to' attribute from the triggering stanza.</li>
+      <li>If the triggering stanza included an 'id' attribute, then the CAPTCHA form MUST include a hidden field named "sid" set to that value.</li>
+      <li>Each of the CAPTCHA form's non-hidden &lt;field/&gt; elements MAY contain a different challenge.</li>
+      <li>Each CAPTCHA field MAY contain a media element (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0221.html">Data Forms Media Element (XEP-0221)</a></span>  [<a href="#nt-idp1590208">13</a>]) that in turn contains a pointer to media that the sender shall use in solving puzzles, performing optical character recognition, identifying audio or video samples, etc. When the sender replies to a media element via a data form of type "submit", the field type SHOULD be "text-single" (which is the default for data form fields) but MAY in turn include a media element if acceptable to the challenger application.</li>
+    </ol>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Challenger Offers a Choice of Challenges to Sender</p><div class="indent"><pre class="prettyprint">
+&lt;message from='victim.com'
+    to='robot@abuser.com/zombie'
+    xml:lang='en'
+    id='F3A6292C'&gt;
+  &lt;body&gt;
+    Your messages to innocent@victim.com are being blocked. To unblock
+    them, visit http://www.victim.com/challenge.html?F3A6292C
+  &lt;/body&gt;
+  &lt;x xmlns='jabber:x:oob'&gt;
+    &lt;url&gt;http://www.victim.com/challenge.html?F3A6292C&lt;/url&gt;
+  &lt;/x&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='from'&gt;&lt;value&gt;innocent@victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='challenge'&gt;&lt;value&gt;F3A6292C&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='sid'&gt;&lt;value&gt;spam1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr' label='Enter the text you see'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='80'
+               width='290'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/ocr.jpeg?F3A6292C
+          &lt;/uri&gt;
+          &lt;uri type='image/jpeg'&gt;
+            cid:sha1+f24030b8d91d233bac14777be5ab531ca3b9f102@bob.xmpp.org
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='picture_recog' label='Identify the picture'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='150'
+               width='150'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/picture.jpeg?F3A6292C
+          &lt;/uri&gt;
+          &lt;uri type='image/jpeg'&gt;
+            cid:sha1+f2377f3a3287eac81028243079e1aa9905c466bc@bob.xmpp.org
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='speech_recog' label='Enter the words you hear'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'&gt;
+          &lt;uri type='audio/x-wav'&gt;
+            http://www.victim.com/challenges/speech.wav?F3A6292C
+          &lt;/uri&gt;
+          &lt;uri type='audio/ogg-speex'&gt;
+            http://www.victim.com/challenges/speech.ogg?F3A6292C
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='video_recog' label='Identity the video'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='150'
+               width='150'&gt;
+          &lt;uri type='video/mpeg'&gt;
+            http://www.victim.com/challenges/video.mpeg?F3A6292C
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field label='Type the color of a stop light' type='text-single' var='qa'/&gt;
+      &lt;field label='93C7A' type='text-single' var='SHA-256'/&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/message&gt;
+      </pre></div>
+      <p>The sender then would retrieve the media data via HTTP or (for the cid: URIs) via XMPP as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0231.html">Bits of Binary (XEP-0231)</a></span>  [<a href="#nt-idp596848">14</a>].</p>
+    </div>
+
+    <div class="indent"><h3>3.1.3 <a name="protocol-response" id="protocol-response">Response Stanza</a></h3>
+    <p>The sender's client SHOULD ignore the challenge stanza in either of the following cases:</p>
+    <ul>
+      <li>If it has not recently sent (e.g., in the last two minutes) a stanza to the JID specified in the 'from' field of the form with the 'id' specified in the 'sid' field (or with no 'id' if no 'sid' field is included).  [<a href="#nt-idp598656">15</a>]</li>
+      <li>If the 'from' attribute of the challenge stanza does not match the 'from' field of the form. (If the values are different, then they still match if the bare JIDs are the same, or if the 'from' attribute is the domain of the other JID.)</li>
+    </ul>
+    <p>Otherwise, if the challenger provided a URL using <span class="ref">Out-of-Band Data</span>, then the sender's client MAY present the URL to the sender, instead of responding to the CAPTCHA form, in any of the following cases:</p>
+    <ul>
+      <li>if it does not understand the CAPTCHA form</li>
+      <li>if it does not support all of the <span class="em">required</span> challenges (see <a href="#protocol-multiple">Multiple Challenges</a>)</li>
+      <li>if it does not support enough of the challenges (see <a href="#protocol-multiple">Multiple Challenges</a>)</li>
+    </ul>
+    <p>Otherwise, the sender's client MUST respond to the challenge.</p>
+    <p>The sender's client MUST respond with a &lt;not-acceptable/&gt; error in any of the following cases:</p>
+    <ul>
+      <li>if it does not support all of the required challenges (see <a href="#protocol-multiple">Multiple Challenges</a>)</li>
+      <li>if it does not support enough of the challenges (see <a href="#protocol-multiple">Multiple Challenges</a>)</li>
+      <li>if the sender declines the challenge</li>
+    </ul>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Sender Reports Challenge Not Acceptable</p><div class="indent"><pre class="prettyprint">
+&lt;message type='error'
+    from='robot@abuser.com/zombie'
+    to='victim.com'
+    xml:lang='en'
+    id='F3A6292C'&gt;
+  &lt;error type='modify'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>Otherwise, it MUST select one challenge according to the sender's preferences and submit the sender's response form to the challenger.</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Sender Sends One Response to Challenger</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='robot@abuser.com/zombie'
+    to='victim.com'
+    xml:lang='en'
+    id='z140r0s'&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='from'&gt;&lt;value&gt;innocent@victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='challenge'&gt;&lt;value&gt;F3A6292C&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='sid'&gt;&lt;value&gt;spam1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr'&gt;&lt;value&gt;7nHL3&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/iq&gt;
+    </pre></div>
+    </div>
+
+    <div class="indent"><h3>3.1.4 <a name="protocol-result" id="protocol-result">Result Stanza</a></h3>
+    <p>The challenger SHOULD send a &lt;service-unavailable/&gt; error to the sender if:</p>
+    <ul>
+      <li>The challenger did not send the specified challenge.  [<a href="#nt-idp1620832">16</a>]</li>
+      <li>The sender already submitted its response to this challenge.</li>
+      <li>The sender took too long to submit its response.</li>
+    </ul>
+    <p>Note: This error MAY be sent even in cases where the challenge became unnecessary while the challenger was waiting for the response.</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Challenger Indicates Challenge Not Found</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='victim.com'
+    to='robot@abuser.com/zombie'
+    id='z140r0s'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>After receiving a correct response to its challenge, the challenger SHOULD inform the sender that it was successful.</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Challenger Tells Sender it Passed</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='victim.com'
+    to='robot@abuser.com/zombie'
+    id='z140r0s'/&gt;
+    </pre></div>
+    <p>However, if the sender submits an incorrect response the challenger SHOULD send it a &lt;not-acceptable/&gt; error with type "cancel":  [<a href="#nt-idp1613968">17</a>]</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Challenger Tells Sender it Failed</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='victim.com'
+    to='robot@abuser.com/zombie'
+    id='z140r0s'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="protocol-multiple" id="protocol-multiple">Multiple Challenges</a></h3>
+    <p>The challenger MAY demand responses to more than one of the challenges it is offering; this is done by including an 'answers' &lt;field/&gt; element in the form, which specifies how many answers the sender needs to include. The challenger also MAY require responses to particular challenges; this is done by including a &lt;required/&gt; element in the compulsory fields.</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Challenger Sets Multiple Challenges</p><div class="indent"><pre class="prettyprint">
+&lt;message from='victim.com'
+    to='robot@abuser.com/zombie'
+    xml:lang='en'
+    id='73DE28A2'&gt;
+  &lt;body&gt;Your messages to innocent@victim.com are being blocked.
+    To unblock them, ask innocent@victim.com to send you a message.&lt;/body&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='from'&gt;&lt;value&gt;innocent@victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='challenge'&gt;&lt;value&gt;73DE28A2&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='sid'&gt;&lt;value&gt;spam2&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='answers'&gt;&lt;value&gt;2&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr' label='Enter the text you see'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='80'
+               width='290'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/ocr.jpeg?F3A6292C
+          &lt;/uri&gt;
+          &lt;uri type='image/jpeg'&gt;
+            cid:sha1+f24030b8d91d233bac14777be5ab531ca3b9f102@bob.xmpp.org
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='audio_recog' label='Describe the sound you hear'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'&gt;
+          &lt;uri type='audio/x-wav'&gt;
+            http://www.victim.com/challenges/audio.wav?F3A6292C
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field label='Type the color of a stop light' type='text-single' var='qa'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field label='e03d7' type='text-single' var='SHA-256'/&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/message&gt;
+    </pre></div>
+
+    <p>If the sender finds the request acceptable, it MUST answer all challenges that include a &lt;required/&gt; element. If the total number of answers was specified and it is greater than the number of &lt;required/&gt; elements then the sender MUST also answer one or more of the challenges without a &lt;required/&gt; element. In the example above, the sender should respond to the 'qa' challenge <span class="em">and</span> one of the other challenges ('ocr', 'audio_recog' or 'SHA-256').</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Sender Sends Multiple Responses to the Challenger</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set'
+    from='robot@abuser.com/zombie'
+    to='victim.com'
+    xml:lang='en'
+    id='73DE28A2'&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='from'&gt;&lt;value&gt;innocent@victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='challenge'&gt;&lt;value&gt;73DE28A2&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='sid'&gt;&lt;value&gt;spam2&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='answers'&gt;&lt;value&gt;2&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='qa'&gt;&lt;value&gt;red&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='SHA-256'&gt;&lt;value&gt;innocent@victim.com2450F06C173B05E3&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The challenger MAY decide the sender has passed a challenge even if the responses are not all perfectly correct.</p>
+  </div>
+<h2>4.
+       <a name="register" id="register">Extended In-Band Registration</a></h2>
+  <p>This section shows how challenges SHOULD be combined with the existing In-Band Registration protocol according to the rules defined in the Extensibility section of <span class="ref">XEP-0077</span>.</p>
+  <p>Note: The &lt;challenge/&gt; wrapper element is not included, because <span class="ref">XEP-0077</span> specifies that data forms shall be contained as the direct children of the &lt;query/&gt; element.</p>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Entity Requests Registration Fields from Host</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' xml:lang='en' id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>Note that the CAPTCHA form MUST be inside the &lt;query/&gt; element, and the server's challenge ID is specified within the form:</p>
+  <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Host Returns Registration and Challenge Fields to Entity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' xml:lang='en' id='reg1'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='challenge'&gt;&lt;value&gt;F3A6292C&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='sid'&gt;&lt;value&gt;reg1&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='answers'&gt;&lt;value&gt;3&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr' label='Enter the text you see'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='80'
+               width='290'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/ocr.jpeg?F3A6292C
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field label='93C7A' type='text-single' var='SHA-256'/&gt;
+      &lt;field type='text-single' var='username'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='password'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+    &lt;instructions&gt;
+      To register, visit http://www.victim.com/register.html
+    &lt;/instructions&gt;
+    &lt;x xmlns='jabber:x:oob'&gt;
+      &lt;url&gt;http://www.victim.com/register.html&lt;/url&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>The server MAY include an &lt;instructions/&gt; element and a URL using <span class="ref">Out-of-Band Data</span> (e.g., a web page) in the &lt;query/&gt; element (see example above). <span class="ref">In-Band Registration</span> recommends that the challenger SHOULD submit the completed x:data form, however if it does not understand the form, then it MAY present the instructions and the included URL to the user instead of providing the required information in-band.</p>
+  <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Entity Provides Required Information In-Band</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' xml:lang='en' id='reg2'&gt;
+  &lt;query xmlns='jabber:iq:register'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field var='challenge'&gt;&lt;value&gt;F3A6292C&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='sid'&gt;&lt;value&gt;reg1&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='answers'&gt;&lt;value&gt;3&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr'&gt;&lt;value&gt;7nHL3&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='username'&gt;&lt;value&gt;bill&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='password'&gt;&lt;value&gt;Calliope&lt;/value&gt;&lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+<h2>5.
+       <a name="muc" id="muc">Multi-User Chat</a></h2>
+  <p>A service that hosts multi-user chat rooms in accordance with <span class="ref">XEP-0045</span> MAY challenge unknown entities that seek to join such rooms or that send messages in such rooms.</p>
+  <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Sender Attempts to Join Chat Room</p><div class="indent"><pre class="prettyprint">
+&lt;presence from='robot@abuser.com/zombie'
+          to='friendly-chat@muc.victim.com/robot101'/&gt;
+  </pre></div>
+  <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Challenger Offers a Choice of Challenges to Sender</p><div class="indent"><pre class="prettyprint">
+&lt;message from='friendly-chat@muc.victim.com'
+         to='robot@abuser.com/zombie'
+         id='A4C7303D'&gt;
+  &lt;body&gt;
+    Your messages to friendly-chat@muc.victim.com are being blocked. To unblock
+    them, visit http://www.victim.com/challenge.html?A4C7303D
+  &lt;/body&gt;
+  &lt;x xmlns='jabber:x:oob'&gt;
+    &lt;url&gt;http://www.victim.com/challenge.html?A4C7303D&lt;/url&gt;
+  &lt;/x&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='from'&gt;&lt;value&gt;friendly-chat@muc.victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='challenge'&gt;&lt;value&gt;A4C7303D&lt;/value&gt;&lt;/field&gt;
+      &lt;field var='ocr' label='Enter the text you see'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='80'
+               width='290'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/ocr.jpeg?A4C7303D
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='picture_recog' label='Identify the picture'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='150'
+               width='150'&gt;
+          &lt;uri type='image/jpeg'&gt;
+            http://www.victim.com/challenges/picture.jpeg?A4C7303D
+          &lt;/uri&gt;
+          &lt;uri type='image/jpeg'&gt;
+            cid:sha1+f2377f3a3287eac81028243079e1aa9905c466bc@bob.xmpp.org
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='speech_recog' label='Enter the words you hear'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'&gt;
+          &lt;uri type='audio/x-wav'&gt;
+            http://www.victim.com/challenges/speech.wav?A4C7303D
+          &lt;/uri&gt;
+          &lt;uri type='audio/ogg-speex'&gt;
+            http://www.victim.com/challenges/speech.ogg?A4C7303D
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field var='video_recog' label='Identity the video'&gt;
+        &lt;media xmlns='urn:xmpp:media-element'
+               height='150'
+               width='150'&gt;
+          &lt;uri type='video/mpeg'&gt;
+            http://www.victim.com/challenges/video.mpeg?A4C7303D
+          &lt;/uri&gt;
+        &lt;/media&gt;
+      &lt;/field&gt;
+      &lt;field label='Type the color of a stop light' type='text-single' var='qa'/&gt;
+      &lt;field label='93C7A' type='text-single' var='SHA-256'/&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/message&gt;
+  </pre></div>
+<h2>6.
+       <a name="challenge" id="challenge">Challenge Types</a></h2>
+  <div class="indent"><h3>6.1 <a name="challenge-intro" id="challenge-intro">Introduction</a></h3>
+    <p>Entities MUST address the needs of disabled people and CPU-constrained clients by offering senders a reasonable choice of different types of challenges.</p>
+    <p>Desktop clients running on modern PCs will typically be configured to automatically perform a specified 'SHA-256' Hashcash challenge (see below) whenever it is below a certain level of difficulty, with the result that many people may not even notice challenges most of the time. However, people using CPU-constrained clients (e.g. Web or mobile clients) would notice the performance hit. They might prefer to take a CAPTCHA challenge instead.  [<a href="#nt-idp1654112">20</a>]</p>
+    <p>Visually disabled people using a CPU-constrained client could configure their client to always present them with an audio CAPTCHA challenge.</p>
+    <p>Most of the challenges below are language sensitive. However, the evaluation of the OCR and Hashcash responses does not depend on the language the sender is using.</p>
+    <p>Challenge types are distinguished by the 'var' attribute of each &lt;field/&gt; element. Several types of challenges are described below. More challenges MAY be documented elsewhere and registered with the XMPP Registrar (see <a href="#registrar-formtypes">Field Standardization</a>).</p>
+  </div>
+  <div class="indent"><h3>6.2 <a name="challenge-hashcash" id="challenge-hashcash">SHA-256 Hashcash</a></h3>
+    <p>The SHA-256 Hashcash challenge is transparent to average PC users. It is indicated when the value of the 'var' attribute is 'SHA-256'. It forces clients to perform CPU-intensive work, making it difficult to send large amounts of abusive traffic. This significantly reduces abusive traffic, but alone it will not completely stop abusive stanzas from being sent through large collections of 'zombie' computers.  [<a href="#nt-idp1598160">21</a>]</p>
+    <p>The challenger MUST set the 'label' attribute of the &lt;field/&gt; element to a hexadecimal random number containing a configured number of bits (e.g., 2<span class="super">20</span> ≤ label &lt; 2<span class="super">21</span>).</p>
+    <p>To pass the test, the sender MUST return a text string that starts with the JID the sender sent the first stanza to (i.e., the stanza that triggered the challenge). The least significant bits of the SHA-256 hash (see <span class="ref"><a href="http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf">SHA</a></span>  [<a href="#nt-idp1608224">22</a>]) of the string MUST equal the hexadecimal value specified by the challenger (in the 'label' attribute of the &lt;field/&gt; element). For example, if the 'label' attribute is the 20-bit value 'e03d7' then the following string would be correct:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">innocent@victim.com2450F06C173B05E3</pre></div>
+    <p>Note: When configuring the number of bits to be specified by a challenger in the 'label' attribute values, administrators MUST balance the need to make mass abuse as difficult as possible, with the inconvenience that may be caused to the users of less powerful computers. (Most clients will be challenged only very occasionally, so the consumption of 70% of a typical desktop CPU for 4 seconds might be considered appropriate.) Administrators SHOULD increment the configured number of bits from time to time to match increases in the performance of typical desktop PCs. If an administrator notices that abusive robots never attempt the Hashcash challenge, then he SHOULD consider reducing the number of bits, to avoid inconveniencing people unnecessarily.</p>
+  </div>
+  <div class="indent"><h3>6.3 <a name="challenge-captcha" id="challenge-captcha">CAPTCHAs</a></h3>
+    <p>Note: It may be profitable to send abusive stanzas even if less than one percent of CAPTCHA responses are successful. The effectiveness of a CAPTCHA challenge needs to be close to perfect, unless it is used in combination with other anti-abuse techniques.</p>
+    <p>If a media type is specified (see table below) then the &lt;field/&gt; element MUST contain a &lt;media/&gt; element that includes a &lt;uri/&gt; element of that type. Clients that support the CAPTCHA type MUST be able to play or render the specified MIME-types (see table below). They MAY also support other formats.  [<a href="#nt-idp1690384">23</a>]</p>
+    <p>The 'type' attribute of the &lt;field/&gt; element SHOULD be 'text-single', 'text-private', or 'text-multi' (if no 'type' is specified, the default is 'text-single').  [<a href="#nt-idp1691728">24</a>] The response MUST be provided in the language specified by the 'xml:lang' attribute of the challenge stanza.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: CAPTCHAs</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>'var'</th>
+        <th>Name</th>
+        <th>Media type</th>
+        <th>MIME-type</th>
+        <th>Suggested generic instructions *</th>
+      </tr>
+      <tr class="body">
+        <td>audio_recog</td>
+        <td>Audio Recognition</td>
+        <td>audio</td>
+        <td>audio/x-wav</td>
+        <td>Describe the sound you hear</td>
+      </tr>
+      <tr class="body">
+        <td>ocr **</td>
+        <td>Optical Character Recognition</td>
+        <td>image</td>
+        <td>image/jpeg</td>
+        <td>Enter the text you see</td>
+      </tr>
+      <tr class="body">
+        <td>picture_q</td>
+        <td>Picture Question</td>
+        <td>image</td>
+        <td>image/jpeg</td>
+        <td>Answer the question you see</td>
+      </tr>
+      <tr class="body">
+        <td>picture_recog</td>
+        <td>Picture Recognition</td>
+        <td>image</td>
+        <td>image/jpeg</td>
+        <td>Identify the picture</td>
+      </tr>
+      <tr class="body">
+        <td>qa</td>
+        <td>Text Question and Answer</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr class="body">
+        <td>speech_q</td>
+        <td>Speech Question</td>
+        <td>audio</td>
+        <td>audio/x-wav</td>
+        <td>Answer the question you hear</td>
+      </tr>
+      <tr class="body">
+        <td>speech_recog</td>
+        <td>Speech Recognition</td>
+        <td>audio</td>
+        <td>audio/x-wav</td>
+        <td>Enter the words you hear</td>
+      </tr>
+      <tr class="body">
+        <td>video_q</td>
+        <td>Video Question</td>
+        <td>video</td>
+        <td>video/mpeg</td>
+        <td>Answer the question in the video</td>
+      </tr>
+      <tr class="body">
+        <td>video_recog</td>
+        <td>Video Recognition</td>
+        <td>video</td>
+        <td>video/mpeg</td>
+        <td>Identify the video</td>
+      </tr>
+    </table></div>
+    <p>* See the <a href="#i18n">Internationalization Considerations</a> section of this document.</p>
+    <p>** The image portrays random characters that humans can read but OCR software cannot.  [<a href="#nt-idp1717440">25</a>] To pass the challenge, the sender must simply type the characters. The correct answer SHOULD NOT depend on the language specified by the 'xml:lang' attribute of the challenge stanza.</p>
+  </div>
+<h2>7.
+       <a name="legacy" id="legacy">Question and Answer for Legacy Clients</a></h2>
+  <p>A challenger MAY provide a text question in the &lt;body/&gt; element of a challenge stanza for clients that do not support CAPTCHA forms. Entities that cannot serve <span class="ref">Out-of-Band Data</span> URLs MAY use this option to challenge legacy clients.</p>
+  
+  <p>Note: Robots always attempt the easiest challenge they are offered. So the question MUST be at least as difficult for a robot as the CAPTCHA form.</p>
+  <p>Note: Even if it provides a text question in the &lt;body/&gt; element, a challenger MUST always provide a CAPTCHA form.</p>
+  <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Challenger Includes a Legacy Challenge</p><div class="indent"><pre class="prettyprint">
+&lt;message from='innocent@victim.com/pda'
+    to='robot@abuser.com/zombie'
+    xml:lang='en'
+    id='F3A6292C'&gt;
+  &lt;body&gt;Your messages to me are being blocked. To unblock them,
+    reply with the color of a stop light followed by 'F3A6292C'.&lt;/body&gt;
+  &lt;captcha xmlns='urn:xmpp:captcha'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;urn:xmpp:captcha&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='hidden' var='from'&gt;&lt;value&gt;innocent@victim.com&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='challenge'&gt;&lt;value&gt;F3A6292C&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='hidden' var='sid'&gt;&lt;value&gt;spam1&lt;/value&gt;&lt;/field&gt;
+      &lt;field label='Type the color of a stop light' type='text-single' var='qa'/&gt;
+      &lt;field label='93C7A' type='text-single' var='SHA-256'/&gt;
+    &lt;/x&gt;
+  &lt;/captcha&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Legacy clients respond to the challenger using a &lt;message/&gt; stanza (not an &lt;iq/&gt;).</p>
+  <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Legacy Sender Responds</p><div class="indent"><pre class="prettyprint">
+&lt;message from='robot@abuser.com/zombie' to='innocent@victim.com/pda'&gt;
+  &lt;body&gt;red F3A6292C&lt;/body&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>The challenger SHOULD treat the stanza as a normal message (instead of as a response to its challenge) if the legacy client either takes too long to submit it or has already responded to the challenge. The challenger MAY treat the response as a normal message even in cases where the challenge became unnecessary while the challenger was waiting for the response.</p>
+  <p>Otherwise the challenger MUST report the result of the challenge to the legacy client using a &lt;message/&gt; stanza (not an &lt;iq/&gt;).</p>
+  <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Challenger Tells Legacy Sender it Passed</p><div class="indent"><pre class="prettyprint">
+&lt;message from='innocent@victim.com/pda' to='robot@abuser.com/zombie'&gt;
+  &lt;body&gt;Your message was delivered. Your messages
+        to me are no longer being blocked.&lt;/body&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p class="caption"><a name="example-18" id="example-18"></a>Example 18. Challenger Tells Legacy Sender it Failed</p><div class="indent"><pre class="prettyprint">
+&lt;message type='error'
+         from='innocent@victim.com/pda'
+         to='robot@abuser.com/zombie'&gt;
+  &lt;error type='cancel'&gt;
+    &lt;not-acceptable xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;
+      Your message to me was not delivered.
+    &lt;/text&gt;
+  &lt;/error&gt;
+&lt;/message&gt;
+  </pre></div>
+<h2>8.
+       <a name="stop" id="stop">Discontinuation Policy</a></h2>
+  <p>It is RECOMMENDED that entities employ other techniques to combat abusive stanzas in addition to those described in this document (e.g., see <span class="ref">XEP-0161</span> and <span class="ref"><a href="http://xmpp.org/extensions/xep-0205.html">Best Practices to Discourage Denial of Service Attacks (XEP-0205)</a></span>  [<a href="#nt-idp1732304">26</a>]).</p>
+  <p>It is expected that this protocol will be an important and successful tool for discouraging abusive traffic. However, much of its success is dependent on the quality of the CAPTCHAs and other puzzles employed by a particular implementation.</p>
+  <p>The administrator of an application that functions as a challenger SHOULD discontinue the use of CAPTCHA forms under the following circumstances:</p>
+  <ul>
+    <li>If he realises that the challenger's challenges are largely ineffective in combating abusive traffic, and that the reduction in abuse does not compensate for the inconvenience to humans of responding to the challenger's challenges.</li>
+    <li>If other, <span class="em">more transparent</span>, techniques being employed by the challenger are so successful that challenges are offering only negligible additional protection against abusive traffic.</li>
+    <li>If the challenger needs no protection at all because it receives only a negligible amount of abusive traffic.</li>
+  </ul>
+<h2>9.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>Each form field SHOULD include a 'label' attribute. If the sender did not include an 'xml:lang' attribute, then the challenger may not know the correct language for the labels. Therefore, depending on user preferences, the client that receives a challenge MAY present generic but localized text instead of label text that would not be understood by the user. Suggested generic text (to be suitably localized) is provided by <a href="#table-1">Table 1</a> in the <a href="#challenge-captcha">CAPTCHAs</a> section of this document.</p>
+<h2>10.
+       <a name="sec" id="sec">Security Considerations</a></h2>
+  <p>The use of CAPTCHAs is not a panacea, and should be combined with other anti-abuse mechanisms, such as those described in <span class="ref">XEP-0161</span> and <span class="ref">XEP-0205</span>. For example, the task of finding solutions to CAPTCHAs and other computational puzzles is becoming easier for computer programs, and in any case can be farmed out to third parties. Therefore challengers should limit the number of triggering stanzas (e.g., registration attempts, subscription requests, or chatroom joins) allowed per JabberID or IP address during any given time period, and may simply refuse repeated stanzas by terminating an XML stream with a &lt;policy-violation/&gt; stream error or returning a &lt;not-acceptable/&gt; stanza error as appropriate. In addition, a challenger should feel free to deploy additional anti-abuse mechanisms as needed.</p>
+<h2>11.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1746032">27</a>]. </p>
+<h2>12.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>12.1 <a name="ns" id="ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1750784">28</a>] includes "urn:xmpp:captcha" in its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+  </div>
+  <div class="indent"><h3>12.2 <a name="registrar-formtypes" id="registrar-formtypes">Field Standardization</a></h3>
+    <div class="indent"><h3>12.2.1 <a name="registrar-formtypes-captcha" id="registrar-formtypes-captcha">CAPTCHA FORM_TYPE</a></h3>
+      <p>The <span class="ref">XMPP Registrar</span> registers following FORM_TYPE. Additional fields might be defined in future submissions.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;urn:xmpp:captcha&lt;/name&gt;
+  &lt;doc&gt;XEP-0158&lt;/doc&gt;
+  &lt;desc&gt;Forms enabling the use of CAPTCHAs.&lt;/desc&gt;
+  &lt;field
+      var='answers'
+      type='hidden'
+      label='number of answers required'/&gt;
+  &lt;field
+      var='audio_recog'
+      type='text-single'
+      label='text associated with a sound'/&gt;
+  &lt;field
+      var='challenge'
+      type='hidden'
+      label='challenge ID'/&gt;
+  &lt;field
+      var='from'
+      type='hidden'
+      label='to attribute of stanza that triggered challenge'/&gt;
+  &lt;field
+      var='ocr'
+      type='text-single'
+      label='code appearing in an image'/&gt;
+  &lt;field
+      var='picture_q'
+      type='text-single'
+      label='answer associated with a picture'/&gt;
+  &lt;field
+      var='picture_recog'
+      type='text-single'
+      label='text associated with a picture'/&gt;
+  &lt;field
+      var='qa'
+      type='text-single'
+      label='answer to a question'/&gt;
+  &lt;field
+      var='SHA-256'
+      type='text-single'
+      label='least significant bits of SHA-256 hash of text should equal hexadecimal label'/&gt;
+  &lt;field
+      var='sid'
+      type='hidden'
+      label='stanza ID'/&gt;
+  &lt;field
+      var='speech_q'
+      type='text-single'
+      label='answer associated with speech'/&gt;
+  &lt;field
+      var='speech_recog'
+      type='text-single'
+      label='text associated with speech'/&gt;
+  &lt;field
+      var='video_q'
+      type='text-single'
+      label='answer associated with a video'/&gt;
+  &lt;field
+      var='video_recog'
+      type='text-single'
+      label='text associated with a video'/&gt;
+&lt;/form_type&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>12.2.2 <a name="registrar-formtypes-register" id="registrar-formtypes-register">jabber:iq:register FORM_TYPE</a></h3>
+      <p>The <span class="ref">XMPP Registrar</span> registers the following fields for the existing jabber:iq:register FORM_TYPE. Additional fields might be defined in future submissions.</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;form_type&gt;
+  &lt;name&gt;jabber:iq:register&lt;/name&gt;
+  &lt;doc&gt;XEP-0077&lt;/doc&gt;
+  &lt;field
+      var='answers'
+      type='hidden'
+      label='number of answers required'/&gt;
+  &lt;field
+      var='audio_recog'
+      type='text-single'
+      label='text associated with a sound'/&gt;
+  &lt;field
+      var='challenge'
+      type='hidden'
+      label='challenge ID'/&gt;
+  &lt;field
+      var='ocr'
+      type='text-single'
+      label='code appearing in an image'/&gt;
+  &lt;field
+      var='picture_q'
+      type='text-single'
+      label='answer associated with a picture'/&gt;
+  &lt;field
+      var='picture_recog'
+      type='text-single'
+      label='text associated with a picture'/&gt;
+  &lt;field
+      var='qa'
+      type='text-single'
+      label='answer to a question'/&gt;
+  &lt;field
+      var='SHA-256'
+      type='text-single'
+      label='least significant bits of SHA-256 hash of text should equal hexadecimal label'/&gt;
+  &lt;field
+      var='sid'
+      type='hidden'
+      label='stanza ID'/&gt;
+  &lt;field
+      var='speech_q'
+      type='text-single'
+      label='answer associated with speech'/&gt;
+  &lt;field
+      var='speech_recog'
+      type='text-single'
+      label='text associated with speech'/&gt;
+  &lt;field
+      var='video_q'
+      type='text-single'
+      label='answer associated with a video'/&gt;
+  &lt;field
+      var='video_recog'
+      type='text-single'
+      label='text associated with a video'/&gt;
+&lt;/form_type&gt;
+      </pre></div>
+    </div>
+  </div>
+<h2>13.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:xmpp:captcha'
+    xmlns='urn:xmpp:captcha'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0158: http://xmpp.org/extensions/xep-0158.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:import namespace='jabber:x:data'
+             schemaLocation='http://xmpp.org/schemas/x-data.xsd'/&gt;
+
+  &lt;xs:element name='captcha'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence xmlns:xdata='jabber:x:data'&gt;
+        &lt;xs:element ref='xdata:x' minOccurs='1' maxOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+
+<h2>14.
+       <a name="open" id="open">Open Issues</a></h2>
+  <p>Another protocol could allow users to edit the challenges their server will make on their behalf. For example, the number of SHA-256 bits, a personal or original question and answer, a picture, a video, or a sound recording. Of course Aunt Tillie would typically use this feature only if she was plagued by abusive traffic.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0158<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.0<br />
+            Last Updated: 2008-09-03<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0004, XEP-0066, XEP-0221<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: captcha<br />
+        Schema: &lt;<a href="http://xmpp.org/schemas/captcha.xsd">http://xmpp.org/schemas/captcha.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0158.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0158.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0158.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ian Paterson</h3><p class="indent">
+        Email:
+        <a href="mailto:ian.paterson@clientside.co.uk">ian.paterson@clientside.co.uk</a><br />
+        JabberID: 
+        <a href="xmpp:ian@zoofy.com">ian@zoofy.com</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1543152" id="nt-idp1543152">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1545744" id="nt-idp1545744">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1549488" id="nt-idp1549488">3</a>. Hashcash &lt;<a href="http://hashcash.org/">http://hashcash.org/</a>&gt;.</p><p><a name="nt-idp1554352" id="nt-idp1554352">4</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idp1557008" id="nt-idp1557008">5</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1559584" id="nt-idp1559584">6</a>. XEP-0016: Privacy Lists &lt;<a href="http://xmpp.org/extensions/xep-0016.html">http://xmpp.org/extensions/xep-0016.html</a>&gt;.</p><p><a name="nt-idp1561520" id="nt-idp1561520">7</a>. XEP-0159: SPIM-Blocking Control &lt;<a href="http://xmpp.org/extensions/xep-0159.html">http://xmpp.org/extensions/xep-0159.html</a>&gt;.</p><p><a name="nt-idp1567328" id="nt-idp1567328">8</a>. Inaccessibility of Visually-Oriented Anti-Robot Tests &lt;<a href="http://www.w3.org/TR/turingtest/">http://www.w3.org/TR/turingtest/</a>&gt;.</p><p><a name="nt-idp1576240" id="nt-idp1576240">9</a>. XEP-0004: Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0004.html">http://xmpp.org/extensions/xep-0004.html</a>&gt;.</p><p><a name="nt-idp1580448" id="nt-idp1580448">10</a>. XEP-0066: Out of Band Data &lt;<a href="http://xmpp.org/extensions/xep-0066.html">http://xmpp.org/extensions/xep-0066.html</a>&gt;.</p><p><a name="nt-idp1579008" id="nt-idp1579008">11</a>. Inclusion of a CAPTCHA form not only makes it possible to flexibly support or require a large number of challenge types, but also enables constrained clients to respond to challenges (e.g., mobile phone clients that cannot present web pages, or clients on XMPP-only networks).</p><p><a name="nt-idp1585568" id="nt-idp1585568">12</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p><p><a name="nt-idp1590208" id="nt-idp1590208">13</a>. XEP-0221: Data Forms Media Element &lt;<a href="http://xmpp.org/extensions/xep-0221.html">http://xmpp.org/extensions/xep-0221.html</a>&gt;.</p><p><a name="nt-idp596848" id="nt-idp596848">14</a>. XEP-0231: Bits of Binary &lt;<a href="http://xmpp.org/extensions/xep-0231.html">http://xmpp.org/extensions/xep-0231.html</a>&gt;.</p><p><a name="nt-idp598656" id="nt-idp598656">15</a>. Otherwise the user's presence would be disclosed, or a robot might dupe the user into providing answers to other people's challenges!</p><p><a name="nt-idp1620832" id="nt-idp1620832">16</a>. If the challenger is a client then it SHOULD be careful not to leak information about the presence of the sender and reply to potentially bogus challenge responses with exactly the same XML that its server would send if the sender were offline.</p><p><a name="nt-idp1613968" id="nt-idp1613968">17</a>. If a large proportion of the responses a server is receiving from another IP are incorrect then it SHOULD inform the administrator of the other server using the protocol specified in <span class="ref"><a href="http://xmpp.org/extensions/xep-0161.html">Abuse Reporting (XEP-0161)</a></span>  [<a href="#nt-idp1629152">18</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0236.html">Abuse Reporting (XEP-0236)</a></span>  [<a href="#nt-idp1631728">19</a>]. It SHOULD also automatically block all stanzas from the abusive user, users, server or IP.</p><p><a name="nt-idp1629152" id="nt-idp1629152">18</a>. XEP-0161: Abuse Reporting &lt;<a href="http://xmpp.org/extensions/xep-0161.html">http://xmpp.org/extensions/xep-0161.html</a>&gt;.</p><p><a name="nt-idp1631728" id="nt-idp1631728">19</a>. XEP-0236: Abuse Reporting &lt;<a href="http://xmpp.org/extensions/xep-0236.html">http://xmpp.org/extensions/xep-0236.html</a>&gt;.</p><p><a name="nt-idp1654112" id="nt-idp1654112">20</a>. A CPU-constrained client could ask a faster computer (e.g., its server) to perform a Hashcash challenge for it.</p><p><a name="nt-idp1598160" id="nt-idp1598160">21</a>. The hope is that the extra CPU usage will often be noticed by the owners of the zombie machines, who will be more likely to fix them.</p><p><a name="nt-idp1608224" id="nt-idp1608224">22</a>. Secure Hash Standard: Federal Information Processing Standards Publication 180-2  &lt;<a href="http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf">http://csrc.nist.gov/publications/fips/fips180-2/fips186-2withchangenotice.pdf</a>&gt;.</p><p><a name="nt-idp1690384" id="nt-idp1690384">23</a>. Audio CAPTCHAs typically require challengers to provide at least the 'audio/x-wav' MIME-type (with the PCM codec) because more efficient patent-free formats are often not supported by constrained clients. It is RECOMMENDED that challengers provide more compact formats (like Ogg Speex or MP3) too.</p><p><a name="nt-idp1691728" id="nt-idp1691728">24</a>. The 'boolean' and 'list-single' field types would make it trivial for a robot to provide a correct response at least some of the time.</p><p><a name="nt-idp1717440" id="nt-idp1717440">25</a>. See PWNtcha &lt;<a href="http://sam.zoy.org/pwntcha/">http://sam.zoy.org/pwntcha/</a>&gt; for some example OCR CAPTCHA images.</p><p><a name="nt-idp1732304" id="nt-idp1732304">26</a>. XEP-0205: Best Practices to Discourage Denial of Service Attacks &lt;<a href="http://xmpp.org/extensions/xep-0205.html">http://xmpp.org/extensions/xep-0205.html</a>&gt;.</p><p><a name="nt-idp1746032" id="nt-idp1746032">27</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1750784" id="nt-idp1750784">28</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2008-09-03)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Draft; concurrently, the XMPP Registrar issued the urn:xmpp:captcha namespace; also changed element name from challenge to captcha in order to match the namespace name.</p> (psa)
+    </div><h4>Version 0.11 (2008-08-06)</h4><div class="indent"><p>Further modified examples to track changes to XEP-0231.</p> (psa)
+    </div><h4>Version 0.10 (2008-08-06)</h4><div class="indent"><p>Modified examples to track changes to XEP-0231; to avoid confusion with cid URIs, changed name of challenge ID form field from cid to challenge.</p> (psa)
+    </div><h4>Version 0.9 (2008-05-12)</h4><div class="indent"><p>Specified that cid field is required; more clearly defined structure of challenge stanza; added several security considerations; corrected several errors in the text and examples.</p> (psa)
+    </div><h4>Version 0.8 (2008-05-12)</h4><div class="indent"><p>Moved text regarding labels to new internationalization considerations section; removed necessity that ID of IQ-set shall match ID of challenge, since this is not consistent with existing usage that IDs are generated by the sender of an IQ.</p> (psa)
+    </div><h4>Version 0.7 (2008-04-28)</h4><div class="indent"><p>Generalized text to cover abuse rather than just spim; modified temporary namespace to adhere to XMPP Registrar procedures; added use case for joining multi-user chat rooms.</p> (psa)
+    </div><h4>Version 0.6 (2007-07-11)</h4><div class="indent"><p>Moved media element definition to XEP-0221; consistently used the terms sender and challenger rather than client and entity; modified provisional namespaces to adhere to XMPP Registrar policies; completed editorial review.</p> (psa/ip)
+    </div><h4>Version 0.5 (2006-10-30)</h4><div class="indent"><p>Added reference to SPIM Reporting.</p> (ip)
+    </div><h4>Version 0.4 (2005-09-30)</h4><div class="indent"><p>Required WAV instead of MP3 for audio CAPTCHAs; minor corrections.</p> (ip)
+    </div><h4>Version 0.3 (2005-09-28)</h4><div class="indent"><p>Added more CAPTCHA types and the legacy question and answer section.</p> (ip)
+    </div><h4>Version 0.2 (2005-09-14)</h4><div class="indent"><p>Minor fixes.</p> (ip)
+    </div><h4>Version 0.1 (2005-09-14)</h4><div class="indent"><p>Initial version.</p> (ip)
+    </div><h4>Version 0.0.1 (2005-09-07)</h4><div class="indent"><p>First draft.</p> (ip)
+    </div></div><hr /><p>END</p></body></html>

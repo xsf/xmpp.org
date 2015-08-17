@@ -9,7 +9,7 @@ Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: Community
-Sidebar_menu_size: 5
+Sidebar_menu_size: 6
 Sidebar_menu_elem_name_1: Chat / logs
 Sidebar_menu_elem_url_1: community/chat
 Sidebar_menu_elem_name_2: Mailing lists
@@ -20,7 +20,20 @@ Sidebar_menu_elem_name_4: Events
 Sidebar_menu_elem_url_4: community/events
 Sidebar_menu_elem_name_5: Sponsors
 Sidebar_menu_elem_url_5: community/sponsors
+Sidebar_menu_elem_name_6: Sponsorship
+Sidebar_menu_elem_url_6: community/sponsorship
 Content_layout: multiple-columns
 ---
 
-This page is about chat and chat logs.
+The XSF hosts a variety of chat rooms and all archives are available online.
+
+### Jabber support chatroom
+Chat about using Jabber/XMPP technologies ([webchat](http://speeqe.com/room/jabber@conference.jabber.org/) | [join](xmpp:jabber@conference.jabber.org?join) | [logs](http://logs.jabber.org/jabber@conference.jabber.org/))
+
+### Operators chatroom
+Chat about the Jabber/XMPP network ([webchat](http://speeqe.com/room/operators@conference.jabber.org/) | [join](xmpp:operators@conference.jabber.org?join) | [logs](http://logs.jabber.org/operators@conference.jabber.org/))
+
+### Developer chatroom
+Chat about software and protocols ([webchat](http://speeqe.com/room/jdev@conference.jabber.org/) | [join](xmpp:jdev@conference.jabber.org?join) | [logs](http://logs.jabber.org/jdev@conference.jabber.org/))
+
+All of these venues are completely free and open to any interested individual.

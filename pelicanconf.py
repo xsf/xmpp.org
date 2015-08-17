@@ -18,7 +18,7 @@ DEFAULT_METADATA = [
   ('is_blog', 'false')
 ]
 
-STATIC_PATHS = [ 'CNAME' ]
+STATIC_PATHS = [ 'CNAME', 'images' ]
 
 ARTICLE_PATHS = [ 'posts/blog', 'posts/learn' ]
 ARTICLE_URL = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}'

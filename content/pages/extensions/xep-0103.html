@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0103: URL Address Information</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="URL Address Information" /><meta name="DC.Creator" content="Matthew Miller" /><meta name="DC.Description" content="This document defines a structure for providing information about an Uniform Resource Locator (URL), and a protocol signaling retrieval states." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-01-20" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0103" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0103: URL Address Information</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines a structure for providing information about an Uniform Resource Locator (URL), and a protocol signaling retrieval states.</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Matthew Miller</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Deferred</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-01-20</td></tr></table><hr /><p style="color:red">WARNING: This document has been automatically Deferred after 12 months of inactivity in its previous Experimental state. Implementation of the protocol described herein is not recommended for production systems. However, exploratory implementations are encouraged to resume the standards process.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp475808">Introduction</a><br />2.  <a href="#sect-idp478128">Requirements</a><br />3.  <a href="#sect-idp482352">Use Cases</a><br />   
+      3.1.  <a href="#sect-idp482736">"Publishing" URLs</a><br />   
+      3.2.  <a href="#sect-idp492112">SI Usage</a><br />4.  <a href="#sect-idp1364224">Implementation Notes</a><br />   
+      4.1.  <a href="#sect-idp1365360">Schemes</a><br />5.  <a href="#sect-idp1368272">Formal Description</a><br />   
+      5.1.  <a href="#sect-idp1368880">&lt;url-data/&gt; Root Element</a><br />   
+      5.2.  <a href="#sect-idp1371568">&lt;desc/&gt; Element</a><br />   
+      5.3.  <a href="#sect-idp1373056">Error Conditions</a><br />   
+      5.4.  <a href="#sect-idp1387696">XML Schema</a><br />6.  <a href="#sect-idp1388704">Security Considerations</a><br />7.  <a href="#sect-idp1389792">IANA Considerations</a><br />8.  <a href="#sect-idp1393120">XMPP Registrar Considerations</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp475808" id="sect-idp475808">Introduction</a></h2>
+  <p>As Jabber becomes more widely utilized, applications of the protocol are veering away from traditional use as an IM product and are utilizing it for more generic data transportation and negotiation. While many advances are being made to facilitate non-IM data transportation, they do not address the use of already-established mechanisms of transporting data via URLs. This document provides a method that is compatible with these data transportation mechanisms and that is based on standard Internet Uniform Resource Locators (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp479440">1</a>]).</p>
+<h2>2.
+       <a name="sect-idp478128" id="sect-idp478128">Requirements</a></h2>
+  <p>The requirements this protocol fulfills are:</p>
+  <ul>
+    <li>Simple usage that can be easily extended</li>
+    <li>Provide any meta-data necessary for using the URL</li>
+    <li>Compatibility with <span class="ref"><a href="http://xmpp.org/extensions/xep-0095.html">Stream Initiation (XEP-0095)</a></span>  [<a href="#nt-idp497008">2</a>]</li>
+  </ul>
+<h2>3.
+       <a name="sect-idp482352" id="sect-idp482352">Use Cases</a></h2>
+  <div class="indent"><h3>3.1 <a name="sect-idp482736" id="sect-idp482736">"Publishing" URLs</a></h3>
+    <p>The simplest use of this protocol is to provide just a URL to another entity.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Exchanging a simple HTTP URL</p><div class="indent"><pre class="prettyprint">
+&lt;message from='d20M@festhall.outer-planes.net'
+         to='linuxwolf@outer-planes.net'&gt;
+  &lt;body&gt;ANNOUNCEMENT:  Next Session&lt;/body&gt;
+  &lt;url-data
+      xmlns='http://jabber.org/protocol/url-data'
+      target='http://festhall.outer-planes.net/d20M/announce/latest/'/&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>If more information is necessary for successfully using the URL, the sender includes meta-information in a scheme-specific format such as that defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0104.html">HTTP Scheme for URL Data (XEP-0104)</a></span>  [<a href="#nt-idp486304">3</a>]:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Exchanging a HTTP URL with Headers</p><div class="indent"><pre class="prettyprint">
+&lt;message from='d20M@festhall.outer-planes.net'
+         to='linuxwolf@outer-planes.net'&gt;
+  &lt;body&gt;ANNOUNCEMENT:  Next Session&lt;/body&gt;
+  &lt;url-data
+      xmlns='http://jabber.org/protocol/url-data'
+      xmlns:http='http://jabber.org/protocol/url-data/scheme/http'
+      target='http://festhall.outer-planes.net/d20M/announce/latest/'&gt;
+    &lt;http:header name='Cookie'&gt;jsessionid=1324123wdwfq341w1243asdf'&lt;/http:header&gt;
+  &lt;/url-data&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p>The above example illustrates supplying a HTTP URL with a cookie header. Additional information could be provided, such as HTTP authentication requirements or even POST data.</p>
+    <p>To support the use of bulk publishing methods such as <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp495184">4</a>] or messages of type "headline", the &lt;desc/&gt; element is used to provide a textual description:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. &lt;message/&gt; Headines</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='d20M@festhall.outer-planes.net'
+    to='linuxwolf@outer-planes.net'
+    type='headline'&gt;
+  &lt;body&gt;Complete list of Session Announcements&lt;/body&gt;
+  &lt;url-data
+      xmlns='http://jabber.org/protocol/url-data'
+      xmlns:http='http://jabber.org/protocol/url-data/scheme/http'
+      target='http://festhall.outer-planes.net/d20M/announce/latest/'&gt;
+    &lt;http:header name='Cookie'&gt;jsessionid=1324123wdwfq341w1243asdf'&lt;/http:header&gt;
+    &lt;desc&gt;Dept-7 d20M Campaign&lt;/desc&gt;
+  &lt;/url-data&gt;
+  &lt;url-data
+      xmlns='http://jabber.org/protocol/url-data'
+      xmlns:http='http://jabber.org/protocol/url-data/scheme/http'
+      target='http://festhall.outer-planes.net/add2/announce/latest/'&gt;
+    &lt;http:header name='Cookie'&gt;jsessionid=234asa4123wdwfq341w1243asdf'&lt;/http:header&gt;
+    &lt;desc&gt;Forgotten Realms, 2nd Edition&lt;/desc&gt;
+  &lt;/url-data&gt;
+  &lt;url-data
+      xmlns='http://jabber.org/protocol/url-data'
+      xmlns:http='http://jabber.org/protocol/url-data/scheme/http'
+      target='http://festhall.outer-planes.net/dd3/announce/latest/'&gt;
+    &lt;http:header name='Cookie'&gt;jsessionid=234asa4123wdwfq341w1242341f'&lt;/http:header&gt;
+    &lt;desc&gt;Greyhawk in 3rd Edition&lt;/desc&gt;
+  &lt;/url-data&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="sect-idp492112" id="sect-idp492112">SI Usage</a></h3>
+    <p>To use "url-data" in conjunction with SI, the "sid" attribute of &lt;url-data/&gt; is used. This attribute MUST be equal to the SI session id.</p>
+    <p>The general process flow for using "url-data" with SI is as follows [<a href="#nt-idp489408">5</a>]:</p>
+    <ol>
+      <li>The sender makes a SI request, adding "http://jabber.org/protocols/url-data" as one of the "stream-method" features.</li>
+      <li>The receiver accepts the SI request, and selects "http://jabber.org/protocols/url-data".</li>
+      <li>The sender provides an &lt;iq/&gt; with the &lt;url-data/&gt;.</li>
+      <li>The receiver retrieves the data from the provided URL [E1, E2].</li>
+      <li>Once retrieval is complete, the Receiver responds to Sender (EUC).</li>
+    </ol>
+    <ul>
+      <li>E1: The given URL is not supported/understood</li>
+      <li>E2: Failure to connect to the given URL</li>
+    </ul>
+    <p>The sender starts with an SI request, using the semantics from XEP-0095:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Requesting SI transfer</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' id='offer1' to='receiver@jabber.org/resource'&gt;
+  &lt;si xmlns='http://jabber.org/protocol/si' 
+      id='a0'
+      mime-type='text/plain'
+      profile='http://jabber.org/protocol/si/profile/file-transfer'&gt;
+    &lt;file xmlns='http://jabber.org/protocol/si/profile/file-transfer'
+          name='test.txt'
+          size='1022'/&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;x xmlns='jabber:x:data' type='form'&gt;
+        &lt;field var='stream-method' type='list-single'&gt;
+          &lt;option&gt;&lt;value&gt;http://jabber.org/protocol/url-data&lt;/value&gt;&lt;/option&gt;
+          &lt;option&gt;&lt;value&gt;http://jabber.org/protocol/bytestreams&lt;/value&gt;&lt;/option&gt;
+          &lt;option&gt;&lt;value&gt;http://jabber.org/protocol/ibb&lt;/value&gt;&lt;/option&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/feature&gt;
+  &lt;/si&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The receiver then accepts the request, specifying "url-data" as the stream method:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. </p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='sender@jabber.org/resource' id='offer1'&gt;
+  &lt;si xmlns='http://jabber.org/protocol/si'&gt;
+    &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+      &lt;x xmlns='jabber:x:data' type='submit'&gt;
+        &lt;field var='stream-method'&gt;
+          &lt;value&gt;http://jabber.org/protocol/url-data&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/x&gt;
+    &lt;/feature&gt;
+  &lt;/si&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The sender then sends an &lt;iq/&gt; with type "set" to the receiver, providing the &lt;url-data/&gt; element with the URL in the "target" attribute:</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Providing &lt;url-data/&gt;</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='set' from='sender@jabber.org/resource' to='receiver@jabber.org/resource' id='offer2'&gt;
+  &lt;url-data xmlns='http://jabber.org/protocol/url-data'
+      sid='a0'
+      target='http://pass.jabber.org:8519/test.txt'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The receiver attempts to retrieve the data from the given URL. The receiver MUST NOT respond to the &lt;iq/&gt; until the data is completely retrieved, or an error occurs. If the retrieval is successful, the receiver responds with an "iq-result":</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Receiver responds successfully</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' from='receiver@jabber.org/resource' to='sender@jabber.org/resource' id='offer2'&gt;
+  &lt;url-data xmlns='http://jabber.org/protocol/url-data'
+      sid='a0'
+      target='http://pass.jabber.org:8519/test.txt'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Including the &lt;url-data/&gt; element in the result is NOT REQUIRED.</p>
+    <p>If the receiver does not understand or support the URL, it responds with an "iq-error" with the &lt;malformed-url/&gt; condition:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Receiver does not understand/support URL</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='receiver@jabber.org/resource' to='sender@jabber.org/resource' id='offer2'&gt;
+  &lt;url-data xmlns='http://jabber.org/protocol/url-data'
+      sid='a0'
+      target='http://pass.jabber.org:8519/thefile.txt'/&gt;
+  &lt;error type='cancel' code='400'&gt;Malformed URL
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;malformed-url xmlns='http://jabber.org/protocol/url-data'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the receiver fails to retrieve data from the URL, it responds with an "iq-error" with the &lt;transfer-failed/&gt; condition:</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Receiver does not understand/support URL</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='receiver@jabber.org/resource' to='sender@jabber.org/resource' id='offer2'&gt;
+  &lt;url-data xmlns='http://jabber.org/protocol/url-data'
+      sid='a0'
+      target='http://pass.jabber.org:8519/thefile.txt'/&gt;
+  &lt;error type='cancel' code='500'&gt;transfer failed
+    &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;transfer-failed xmlns='http://jabber.org/protocol/url-data'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>If the receiver refuses to accept the URL, it responds with an "iq-error" with the &lt;transfer-refused/&gt; condition:</p>
+    <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Receiver does not understand/support URL</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' from='receiver@jabber.org/resource' to='sender@jabber.org/resource' id='offer2'&gt;
+  &lt;url-data xmlns='http://jabber.org/protocol/url-data'
+      sid='a0'
+      target='http://pass.jabber.org:8519/thefile.txt'/&gt;
+  &lt;error type='cancel' code='500'&gt;transfer failed
+    &lt;undefined-condition xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;transfer-refused xmlns='http://jabber.org/protocol/url-data'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>4.
+       <a name="sect-idp1364224" id="sect-idp1364224">Implementation Notes</a></h2>
+  <div class="indent"><h3>4.1 <a name="sect-idp1365360" id="sect-idp1365360">Schemes</a></h3>
+    <p>The additional information provided by a particular scheme is OPTIONAL. The additional data is provided as XML in a dedicated namespace, and this namespace SHOULD be declared (with an appropriate prefix) within the &lt;url-data/&gt; element.</p>
+    <p>Entities receiving a &lt;url-data/&gt; element MAY incorporate this information into the use of the URL as necessary. An entity providing a &lt;url-data/&gt; with scheme-specific information SHOULD NOT assume the receiving entity understands it, even if the receiving entity is capable of processing a URL for that scheme.</p>
+  </div>
+<h2>5.
+       <a name="sect-idp1368272" id="sect-idp1368272">Formal Description</a></h2>
+  <div class="indent"><h3>5.1 <a name="sect-idp1368880" id="sect-idp1368880">&lt;url-data/&gt; Root Element</a></h3>
+    <p>The &lt;url-data/&gt; element provides the root structure for providing URL addresses. The element has attribute for the target URL and (optional) stream identifier. It contains content for the optional description, and any and all scheme-specific content.</p>
+    <p>The attribute "target" contains the URL. This attribute MUST be present, and MUST be a valid URL.</p>
+    <p>The attribute "sid" contains the stream identifier. While this attribute is optional, its usage is REQUIRED when used with Stream Initiation, and MUST contain the Stream Initiation identifier previously agreed to.</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="sect-idp1371568" id="sect-idp1371568">&lt;desc/&gt; Element</a></h3>
+    <p>In cases where textual descriptions cannot be provided, this element fullfills this need. It MAY include the "xml:lang" attribute for localization purposes, and its content is the text of the description. Multiple instances of &lt;desc/&gt; MAY be present, but each instance MUST have a different value for "xml:lang" attribute.</p>
+  </div>
+  <div class="indent"><h3>5.3 <a name="sect-idp1373056" id="sect-idp1373056">Error Conditions</a></h3>
+    <p>To simplify the discussion on error conditions, this document uses the following mapping between namespace URIs and namespace prefixes [<a href="#nt-idp1373840">6</a>].</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Namespace Mappings</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Prefix</th>
+        <th>URI</th>
+      </tr>
+      <tr class="body">
+        <td>xmpp</td>
+        <td>urn:ietf:params:xml:ns:xmpp-stanzas</td>
+      </tr>
+      <tr class="body">
+        <td>url</td>
+        <td>http://jabber.org/protocol/url-data</td>
+      </tr>
+    </table></div>
+    <p>Below are the errors that can result.</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Error Conditions/Codes</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Error Type</th>
+        <th>General Condition</th>
+        <th>Specific Condition</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>modify</td>
+        <td>&lt;xmpp:bad-request/&gt;</td>
+        <td>&lt;url:malformed-url/&gt;</td>
+        <td>The URL is not supported or understood.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:not-acceptable/&gt;</td>
+        <td>&lt;url:transfer-refused/&gt;</td>
+        <td>The URL transfer failed for some unspecified reason.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>&lt;xmpp:undefined-condition/&gt;</td>
+        <td>&lt;url:transfer-failed/&gt;</td>
+        <td>The URL transfer failed for some unspecified reason.</td>
+      </tr>
+    </table></div>
+  </div>
+  <div class="indent"><h3>5.4 <a name="sect-idp1387696" id="sect-idp1387696">XML Schema</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/url-data'
+    xmlns='http://jabber.org/protocol/url-data'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import namespace='http://www.w3.org/XML/1998/namespace'
+             schemaLocation='http://www.w3.org/2001/xml.xsd'/&gt;
+
+  &lt;xs:element name='url-data'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:any namespace='##other' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='desc' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='target' type='xs:anyURI' use='required'/&gt;
+      &lt;xs:attribute name='sid' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='desc' type='xs:string'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:attribute ref='xml:lang' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='malformed-url'/&gt;
+  &lt;xs:element name='transfer-failed'/&gt;
+  &lt;xs:element name='transfer-refused'/&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<h2>6.
+       <a name="sect-idp1388704" id="sect-idp1388704">Security Considerations</a></h2>
+  <p>This document does not yet have any security considerations.</p>
+<h2>7.
+       <a name="sect-idp1389792" id="sect-idp1389792">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1394368">7</a>].</p>
+<h2>8.
+       <a name="sect-idp1393120" id="sect-idp1393120">XMPP Registrar Considerations</a></h2>
+  <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1397904">8</a>] shall register the namespace "http://jabber.org/protocol/url-data" as a standard namespace.  Also, the XMPP Registrar shall register the <span class="ref"><a href="http://xmpp.org/extensions/xep-0020.html">Feature Negotiation (XEP-0020)</a></span>  [<a href="#nt-idp1405216">9</a>] option "url-data" for use with Stream Initiation.</p>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0103<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Deferred">Deferred</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.4<br />
+            Last Updated: 2004-01-20<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XEP-0095, RFC 3986<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: url-data<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0103.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0103.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0103.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Matthew Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br />
+        JabberID: 
+        <a href="xmpp:linuxwolf@outer-planes.net">linuxwolf@outer-planes.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp479440" id="nt-idp479440">1</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp497008" id="nt-idp497008">2</a>. XEP-0095: Stream Initiation &lt;<a href="http://xmpp.org/extensions/xep-0095.html">http://xmpp.org/extensions/xep-0095.html</a>&gt;.</p><p><a name="nt-idp486304" id="nt-idp486304">3</a>. XEP-0104: HTTP Scheme for URL Data &lt;<a href="http://xmpp.org/extensions/xep-0104.html">http://xmpp.org/extensions/xep-0104.html</a>&gt;.</p><p><a name="nt-idp495184" id="nt-idp495184">4</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp489408" id="nt-idp489408">5</a>. The error conditions for SI are fully-documented in that document, and are therefore not included here.</p><p><a name="nt-idp1373840" id="nt-idp1373840">6</a>. This mapping is for the purpose of simplifying this discussion, and is not intended to be used in the actual protocol.</p><p><a name="nt-idp1394368" id="nt-idp1394368">7</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1397904" id="nt-idp1397904">8</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1405216" id="nt-idp1405216">9</a>. XEP-0020: Feature Negotiation &lt;<a href="http://xmpp.org/extensions/xep-0020.html">http://xmpp.org/extensions/xep-0020.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.4 (2004-01-20)</h4><div class="indent">Reorganized for Editorial preferences; revised error conditions; added better localization for &lt;desc/&gt; (lw)
+    </div><h4>Version 0.4 (2003-09-30)</h4><div class="indent">Revised &lt;iq/&gt; usage to be "SI" usage (lw)
+    </div><h4>Version 0.3 (2003-09-19)</h4><div class="indent">More fixes to &lt;iq/&gt; usage; Specified additional error code/condition for refused transfers (lw)
+    </div><h4>Version 0.2 (2003-07-06)</h4><div class="indent">Fixed &lt;iq/&gt; usage; Specified error codes/conditions (lw)
+    </div><h4>Version 0.1 (2003-06-30)</h4><div class="indent">Initial version. (lw)
+    </div></div><hr /><p>END</p></body></html>

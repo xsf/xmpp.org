@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0171: Language Translation</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Language Translation" /><meta name="DC.Creator" content="Boyd Fletcher" /><meta name="DC.Creator" content="Daniel LaPrade" /><meta name="DC.Creator" content="Keith Lirette" /><meta name="DC.Creator" content="Brian Raymond" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for providing language translation facilities over XMPP. It supports human, machine, client-based, and server-based translations." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2011-06-15" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0171" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0171: Language Translation</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for providing language translation facilities over XMPP. It supports human, machine, client-based, and server-based translations.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Boyd Fletcher, Daniel LaPrade, Keith Lirette, Brian Raymond</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Draft</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2011-06-15</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Draft Standard</strong> of the XMPP Standards Foundation. Implementations are encouraged and the protocol is appropriate for deployment in production systems, but some changes to the protocol are possible before it becomes a Final Standard.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#glossary">Glossary</a><br />3.  <a href="#reqs">Requirements</a><br />4.  <a href="#usecases">Use Cases</a><br />   
+      4.1.  <a href="#delivery">Message Delivery</a><br />      
+      4.1.1.  <a href="#message-direct">Direct Translation</a><br />      
+      4.1.2.  <a href="#message-pivot">Translation With Pivot</a><br />      
+      4.1.3.  <a href="#message-pivot-details">Translation With Pivot Specifying Details</a><br />   
+      4.2.  <a href="#disco">Discovering Translation Providers</a><br />      
+      4.2.1.  <a href="#disco-items">Discovering Translation Providers On a Server</a><br />      
+      4.2.2.  <a href="#disco-identity">Discovering Identity of Providers</a><br />      
+      4.2.3.  <a href="#disco-lang">Discovering Language Support</a><br />   
+      4.3.  <a href="#request">Requesting a Translation from a Service</a><br />      
+      4.3.1.  <a href="#request-basic">Requesting a Basic Translation</a><br />      
+      4.3.2.  <a href="#request-multiple">Requesting a Translation With Multiple Destination Languages</a><br />      
+      4.3.3.  <a href="#request-dictionary">Requesting a Translation With a Specific Dictionary</a><br />5.  <a href="#impl">Implementation Notes</a><br />6.  <a href="#i18n">Internationalization Considerations</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      9.2.  <a href="#registrar-identity">Service Discovery Identities</a><br />10.  <a href="#schema">XML Schema</a><br />   
+      10.1.  <a href="#schema-langtrans">langtrans</a><br />   
+      10.2.  <a href="#schema-langtrans-items">langtrans:items</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>There currently exists no standard for describing language translations over a text chat protocol. While numerous products and services exist to provide translation of text, there exists no standardized protocol extension for requesting a translation and expressing the details of the translation over XMPP (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp623792">1</a>]). This document describes how to express a translation and its components in an XMPP message as well as a method to request translation.</p>
+  <p>Direct translation can be realized by either client-side translation before sending or transparent components translating messages on the fly. Discovering XMPP entities capable of translation allows for clients to request translation from them based on their capabilities. The remote XMPP entity could be either an automated translation service or a human providing translation.</p>
+<h2>2.
+       <a name="glossary" id="glossary">Glossary</a></h2>
+  <div class="indent"><dl>
+    <di><dt><strong>Original Text</strong></dt><dd>This is the message text that was originally created by the sender. This is the text that is translated.</dd></di>
+    <di><dt><strong>Translated Text</strong></dt><dd>This is the message text that has been translated by the language translation engines. This also called the destination text. For any given message there can be multiple destination text message bodies.</dd></di>
+    <di><dt><strong>Pivot Language</strong></dt><dd>Pivoting is the process of using one or more intermediate languages to translate from a given source language to a specific destination language.  For example, if you needed to translate from English to Russian but only had translators that went from English to French and French to Russian then you could use French as a pivot language.</dd></di>
+    <di><dt><strong>Pivot Text</strong></dt><dd>This is the translated text of the original message in a pivot language. For any given destination language, there can be zero or more pivot text bodies. The ordering of pivoting is required to be specified for the destination language.</dd></di>
+    <di><dt><strong>Language Translation Engine</strong></dt><dd>Since not all language translation engines are the same quality it is important to some classes of users that they know what translation engine was used. It is equally important to also be able to select a specific translation engine for a given language pairing if more than one engine is available.</dd></di>
+    <di><dt><strong>Language Translation Character Set</strong></dt><dd>Some language translation engines can only translate text between languages if certain character sets (or code pages) are used.</dd></di>
+    <di><dt><strong>Language Translation Dictionary</strong></dt><dd> In order to enhance the accuracy of translation engines most support the concept of mission specific dictionaries.</dd></di>
+  </dl></div>
+<h2>3.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>The protocol defined herein addresses the following requirements:</p>
+  <ol>
+    <li><p>Enable an XMPP entity to request a translation from a remote XMPP entity.</p></li>
+    <li>
+      <p>Enable an XMPP entity to express the following mandatory elements of a translation for any receiving entities.</p>
+      <ol style="list-style-type: lower-alpha">
+        <li>Identification of Original Text</li>
+        <li>Identification of Translated Text</li>
+        <li>Identification of any Pivot Language(s) and Text</li>
+        <li>Identification of the method and order of translation</li>
+      </ol>
+    </li>
+    <li>
+      <p>Enable an XMPP entity to express the following optional elements of a translation for any receiving entities.</p>
+      <ol style="list-style-type: lower-alpha">
+        <li>Identification of Language Translation Engines used.</li>
+        <li>Identification of Location of the translation.</li>
+        <li>Identification of Sender and Destination language of choice.</li>
+        <li>Discovery of Server support for translation including which language pair, dictionaries, and engines are available.</li>
+        <li>Identification of desire to text to be translated or not to be translated.</li>
+      </ol>
+    </li>
+  </ol>
+  <p>The following methods of translation are supported:</p>
+  <ol>
+    <li>Manual or Human</li>
+    <li>Machine or Automated</li>
+    <li>Machine with Human Review</li>
+  </ol>
+<h2>4.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <p>The following use cases illustrate simple scenarios for translation of expressions as well as requesting a translation from remote entities.</p>
+  <div class="indent"><h3>4.1 <a name="delivery" id="delivery">Message Delivery</a></h3>
+    <p>A message directly translated by the originating XMPP entity or a transparent XMPP entity delivered to a remote entity with only the required elements of source and destination language; this is the simplest case for a translation from one language to another. The source language is known because there is no &lt;translation/&gt; tag describing it. Three translation methods are supported by doing the following:</p>
+    <ol>
+      <li>If no 'engine' attribute is present, then manual (or human) translation was performed.</li>
+      <li>If an 'engine' attribute is present then machine (or automated) translation was performed, where the translation engine is identified by the value of the 'engine' attribute. If the 'engine' attribute is present its value is an empty string, then the name of the translation engine was not available.</li>
+      <li>If the 'engine' attribute and the 'reviewed' attribute are present, then machine translation was performed but the message text was reviewed and possibly modified by a human.</li>
+    </ol>
+    <div class="indent"><h3>4.1.1 <a name="message-direct" id="message-direct">Direct Translation</a></h3>
+      <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Entity sends a message translated from English to French</p><div class="indent"><pre class="prettyprint">
+&lt;message xml:lang='en' from='bard@shakespeare.lit/globe' to='playwright@marlowe.lit/theatre'&gt;
+  &lt;subject xml:lang='en'&gt;Hello&lt;/subject&gt;
+  &lt;subject xml:lang='fr'&gt;Bonjour&lt;/subject&gt;
+  &lt;body xml:lang='en'&gt;How are you?&lt;/body&gt;
+  &lt;body xml:lang='fr'&gt;comment allez-vous?&lt;/body&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;translation destination_lang='fr' source_lang='en'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.1.2 <a name="message-pivot" id="message-pivot">Translation With Pivot</a></h3>
+      <p>A message translated by the originating XMPP entity or a transparent XMPP entity delivered to a remote entity with the pivot languages used to accomplish the translation. The source language is known because there is no  translation tag describing it. When a translation is done via a pivot language, the pivot languages and their order of use MUST be specified.</p>
+      <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Entity sends a message translated from French to Russian via English using human translators</p><div class="indent"><pre class="prettyprint">
+&lt;message xml:lang='fr' from='bard@shakespeare.lit/globe' to='playwright@marlowe.lit/theatre'&gt;
+  &lt;subject xml:lang='fr'&gt;Bonjour&lt;/subject&gt;
+  &lt;subject xml:lang='en'&gt;Hello&lt;/subject&gt;
+  &lt;subject xml:lang='ru'&gt;x443;&amp;#x43B;&amp;#x442;&amp;#x435;&lt;/subject&gt;
+  &lt;body xml:lang='fr'&gt;comment allez-vous?&lt;/body&gt;
+  &lt;body xml:lang='en'&gt;How are you?&lt;/body&gt;
+  &lt;body xml:lang='ru'&gt;&amp;#x41A;&amp;#x430;&amp;#x43A; &amp;#x432;&amp;#x44B;?&lt;/body&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;translation destination_lang='en' source_lang='fr'/&gt;
+    &lt;translation destination_lang='ru' source_lang='en'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.1.3 <a name="message-pivot-details" id="message-pivot-details">Translation With Pivot Specifying Details</a></h3>
+      <p>A message translated by the originating XMPP entity or a transparent XMPP entity delivered to a remote entity using pivot languages and machine translation. The source language is known because there is no &lt;x/&gt; translation tag describing it.</p>
+      <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Entity sends a message translated from French to Russian via English using a machine translation engine.</p><div class="indent"><pre class="prettyprint">
+
+&lt;message xml:lang='fr' from='bard@shakespeare.lit/globe' to='playwright@marlowe.lit/theatre'&gt;
+  &lt;subject xml:lang='fr'&gt;Bonjour&lt;/subject&gt;
+  &lt;subject xml:lang='en'&gt;Hello&lt;/subject&gt;
+  &lt;subject xml:lang='ru'&gt;x443;&amp;#x43B;&amp;#x442;&amp;#x435;&lt;/subject&gt;
+  &lt;body xml:lang='fr'&gt;comment allez-vous?&lt;/body&gt;
+  &lt;body xml:lang='en'&gt;How are you?&lt;/body&gt;
+  &lt;body xml:lang='ru'&gt;&amp;#x41A;&amp;#x430;&amp;#x43A; &amp;#x432;&amp;#x44B;?&lt;/body&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;translation destination_lang='en' engine='SYSTRANS' source_lang='fr'/&gt;
+    &lt;translation destination_lang='ru' engine='SYSTRANS' source_lang='en'/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>4.2 <a name="disco" id="disco">Discovering Translation Providers</a></h3>
+    <div class="indent"><h3>4.2.1 <a name="disco-items" id="disco-items">Discovering Translation Providers On a Server</a></h3>
+      <p>When connected to a server, a XMPP entity can locate translation providers by asking a server which translation providers are attached to the server; this MUST be done using <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp552320">2</a>]. The server SHOULD return the availability of of translation providers and language pairings for which the user has rights to use.</p>
+      <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Entity sends discovery request to server</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' id='disco1' to='shakespeare.lit'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Server returns items, including translation providers</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='disco1' from='shakespeare.lit' to='bard@shakespeare.lit/globe'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#items'&gt;
+    ...
+    &lt;item jid='towerofbabel@shakespeare.lit'
+          name='Tower of Babel Translation Bot'/&gt;
+    &lt;item jid='translation.shakespeare.lit'
+          name='Translation Provider Service'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.2.2 <a name="disco-identity" id="disco-identity">Discovering Identity of Providers</a></h3>
+      <p>Service Discovery is used to determine if a JID provides translation services. The JID can also be a bot (e.g., &lt;towerofbabel@shakespeare.lit&gt;) or a server component (e.g., &lt;translation.shakespeare.lit&gt;).</p>
+      <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Entity queries service regarding identity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='translation.shakespeare.lit' from='bard@shakespeare.lit/globe'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Service reports identity</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='bard@shakespeare.lit/globe' from='translation.shakespeare.lit'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;identity category='automation' type='translation'/&gt;
+    &lt;feature var='urn:xmpp:langtrans'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.2.3 <a name="disco-lang" id="disco-lang">Discovering Language Support</a></h3>
+      <p>The supported languages and other details for the service must be known to use it. It is permissible for a translation service to provide multiple translation engines for the same language pairing -- if this is done, then a separate &lt;item/&gt; tag MUST be used for each pairing. A 'dictionary' attribute MAY be used to specify the dictionary for a specific &lt;item/&gt;. In order to specify more than one dictionary for a given language pairing then a separate &lt;item/&gt; tag MUST be used for each dictionary specification for that language pairing.</p>
+      <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Entity queries service for further information</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get' to='translation.shakespeare.lit' from='bard@shakespeare.lit/globe'&gt;
+  &lt;query xmlns='urn:xmpp:langtrans:items'/&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Service replies with language details</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' to='bard@shakespeare.lit/globe' from=' translation.shakespeare.lit'&gt;
+  &lt;query xmlns='urn:xmpp:langtrans:items'&gt;
+    &lt;item source_lang='en' jid='translation.shakespeare.lit' destination_lang='fr' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true'/&gt;
+    &lt;item source_lang='en' jid='translation.shakespeare.lit' destination_lang='ko' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true'/&gt;
+    &lt;item source_lang='en' jid='translation.shakespeare.lit' destination_lang='ru' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true'/&gt;
+    &lt;item source_lang='en' jid='translation.shakespeare.lit' destination_lang='ru' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true' dictionary='medical'/&gt;
+    &lt;item source_lang='fr' jid='translation.shakespeare.lit' destination_lang='en' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true' dictionary='standard'/&gt;
+    &lt;item source_lang='ru' jid='translation.shakespeare.lit' destination_lang='en' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true' dictionary='Medical 1.0'/&gt;
+    &lt;item source_lang='ko' jid='translation.shakespeare.lit' destination_lang='en' 
+          engine='SYSTRANS 2005 Release 2' pivotable='true'/&gt;
+  &lt;/query&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+  <div class="indent"><h3>4.3 <a name="request" id="request">Requesting a Translation from a Service</a></h3>
+    <div class="indent"><h3>4.3.1 <a name="request-basic" id="request-basic">Requesting a Basic Translation</a></h3>
+      <p>To request service from a translation provider you can send a message to a provider requesting translations. The lack of a 'source_lang' attribute in the &lt;translation/&gt; element indicates a request for a translation.</p>
+      <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Entity requests a translation from English to French</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bard@shakespeare.lt/globe' id='translationReq_2' to='translation.shakespeare.lit' type='get'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='fr'/&gt;
+  &lt;/x&gt;
+&lt;/iq&gt;
+      </pre></div>
+      
+      <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Translation is returned from translation provider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='translationReq_2' from='translation.shakespeare.lit' to='bard@shakespeare.lt/globe'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;hello, how are you?&lt;/source&gt;
+    &lt;translation destination_lang='fr' source_lang='en' engine='default'&gt;comment allez-vous?&lt;/translation&gt;
+  &lt;/x&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.3.2 <a name="request-multiple" id="request-multiple">Requesting a Translation With Multiple Destination Languages</a></h3>
+      <p class="caption"><a name="example-12" id="example-12"></a>Example 12. bard requests a translation from English to Italian and German</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bard@shakespeare.lt/globe' id='translationReq_4' to='translation.shakespeare.lit' type='get'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='it'/&gt;
+    &lt;translation destination_lang='de'/&gt;
+  &lt;/x&gt;
+&lt;/iq&gt; 
+      </pre></div>
+      <p class="caption"><a name="example-13" id="example-13"></a>Example 13. Translation is returned from translation provider</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='translationReq_4' from='translation.shakespeare.lit' to='bard@shakespeare.lt/globe'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='it' source_lang='en' engine='default'&gt;Come siete?&lt;/translation&gt;
+    &lt;translation destination_lang='de' source_lang='en' engine='default'&gt;Wie geht es Ihnen?&lt;/translation&gt;
+  &lt;/x&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+    <div class="indent"><h3>4.3.3 <a name="request-dictionary" id="request-dictionary">Requesting a Translation With a Specific Dictionary</a></h3>
+      <p>If a specific dictionary is required you MAY request a dictionary. This SHOULD have been returned when discoing the server although a dictionary MAY be requested which was not. The dictionaries are translation engine specific and are free form text.</p>
+      <p class="caption"><a name="example-14" id="example-14"></a>Example 14. Requests a translation from English to French using the 'medical' dictionary</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='bard@shakespeare.lt/globe' id='translationReq_6' to='translation.shakespeare.lit' type='get'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='fr' dictionary='medical'/&gt;
+  &lt;/x&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p class="caption"><a name="example-15" id="example-15"></a>Example 15. Translation provider returns translation with dictionary details</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result' id='translationReq_6' from='translation.shakespeare.lit' to='bard@shakespeare.lt/globe'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;hello, how are you?&lt;/source&gt;
+    &lt;translation 
+        destination_lang='fr' 
+        dictionary='medical' 
+        engine='default'
+        source_lang='en'&gt;comment allez-vous?&lt;/translation&gt;
+  &lt;/x&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If the translation service cannot complete the translation it SHOULD return a  error indicating some part of the translation request was problematic, unless doing so would violate the privacy and security considerations in XMPP Core and XMPP IM, or local security and privacy policies.</p>
+      <p class="caption"><a name="example-16" id="example-16"></a>Example 16. Translation could not be completed</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='translationReq_7' from='translation.shakespeare.lit' to='bard@shakespeare.lt/globe'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='dy'/&gt;
+  &lt;/x&gt;
+  &lt;error type='modify'&gt;
+    &lt;bad-request xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+      <p>If privacy or security considerations make returning an  error not feasible it SHOULD return a  error.</p>
+      <p class="caption"><a name="example-17" id="example-17"></a>Example 17. Service unavailable</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error' id='translationReq_7' from='translation.shakespeare.lit' to='bard@shakespeare.lt/globe'&gt;
+  &lt;x xmlns='urn:xmpp:langtrans'&gt;
+    &lt;source xml:lang='en'&gt;How are you?&lt;/source&gt;
+    &lt;translation destination_lang='dy'/&gt;
+  &lt;/x&gt;
+  &lt;error type='cancel'&gt;
+    &lt;service-unavailable xmlns='urn:ietf:xml:params:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+      </pre></div>
+    </div>
+  </div>
+<h2>5.
+       <a name="impl" id="impl">Implementation Notes</a></h2>
+  <p>In order to reduce user confusion and misunderstanding of a translated message body, it is RECOMMENDED that implementations of langtran implement the following user interface features.</p>
+  <ol>
+    <li>Translated messages should be clearly identified as being a translation.</li>
+    <li>The display of translated message should clearly show how (automated, manual, automated with human review) a messaged was translated.</li>
+    <li>The display of a message should clearly show if the translation is the destination, original or pivot language.</li>
+    <li>If pivoting is used, the destination message text should be marked in such a way as to indicate that it was translated on one or more pivot languages, what those language are, in what order they were used, and the actual pivot language text should be accessible to the user.</li>
+    <li>It is recommended that only one level of pivoting be used as quality of the destination translation degrades significantly after each pivot.</li>
+  </ol>
+  <p>Note: The 'reviewed' and 'pivotable' attributes are of type "boolean" and MUST be handled accordingly.  [<a href="#nt-idp1605488">3</a>]</p>
+<h2>6.
+       <a name="i18n" id="i18n">Internationalization Considerations</a></h2>
+  <p>In order to properly process multi-language messages, clients MUST implement support for multiple message bodies differentiated by the 'xml:lang' attribute as described in <span class="ref">RFC 6120</span>.</p>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Potential attacks may be easier against services that implement translation because of the potential disclosure of information regarding language pairings, engines, and dictionaries used however no specific vulnerabilities are introduced.</p>
+  <p>This possible weakness can be mitigated by not returning specifics to requesting entities and the responding entity MAY perform authorization checks in order to determine how to respond.</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1647408">4</a>].</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>9.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1656208">5</a>] includes 'urn:xmpp:langtrans' and 'urn:xmpp:langtrans:items' within its registry of protocol namespaces (see &lt;<a href="http://xmpp.org/registrar/namespaces.html">http://xmpp.org/registrar/namespaces.html</a>&gt;).</p>
+    <p class="box">Note: Before version 1.1 of this specification, the name of the items namespace was urn:xmpp:langtrans#items, however the '#' character is not recommended in URN syntax (see <span class="ref"><a href="http://tools.ietf.org/html/rfc2141">RFC 2141</a></span>  [<a href="#nt-idp1652480">6</a>]) so the name was changed to urn:xmpp:langtrans:items.</p>
+  </div>
+  <div class="indent"><h3>9.2 <a name="registrar-identity" id="registrar-identity">Service Discovery Identities</a></h3>
+    <p>The XMPP Registrar includes type of "translation" in the "automation" category within its registry of service discovery identities (see &lt;<a href="http://xmpp.org/registrar/disco-categories.html">http://xmpp.org/registrar/disco-categories.html</a>&gt;).</p>
+  </div>
+<h2>10.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <div class="indent"><h3>10.1 <a name="schema-langtrans" id="schema-langtrans">langtrans</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;xs:schema
+    xmlns='urn:xmpp:langtrans' 
+    xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    targetNamespace='urn:xmpp:langtrans' 
+    elementFormDefault='qualified'&gt;
+    
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0171: http://www.xmpp.org/extensions/xep-0171.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:element ref='source' use='required'/&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='translation' use='required' minOccurs='1'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='source'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='xs:string'&gt;
+          &lt;xs:attribute ref='xml:lang' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='translation'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='charset' type='xs:string' use='optional'/&gt;
+          &lt;xs:attribute name='source_lang' type='xs:language' use='optional' /&gt;
+          &lt;xs:attribute name='destination_lang' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='dictionary' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='engine' type='xs:string' use='optional' /&gt;
+          &lt;xs:attribute name='reviewed' type='xs:boolean' use='optional' default='false'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+        
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>10.2 <a name="schema-langtrans-items" id="schema-langtrans-items">langtrans:items</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;xs:schema
+    xmlns='urn:xmpp:langtrans:items' 
+    xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    targetNamespace='urn:xmpp:langtrans:items' 
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0171: http://www.xmpp.org/extensions/xep-0171.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='query'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='item' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='dictionary' type='xs:string'/&gt;
+          &lt;xs:attribute name='destination_lang' type='xs:language'/&gt;
+          &lt;xs:attribute name='engine' type='xs:string' use='optional'/&gt;
+          &lt;xs:attribute name='jid' type='xs:string' use='required'/&gt;
+          &lt;xs:attribute name='name' type='xs:string' use='optional'/&gt;
+          &lt;xs:attribute name='pivotable' type='xs:boolean' use='optional' default='false'/&gt;
+          &lt;xs:attribute name='source_lang' type='xs:language' use='required'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+        
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0171<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Draft">Draft</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 1.1<br />
+            Last Updated: 2011-06-15<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, XEP-0030<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: langtrans<br />
+        XML Schema for langtrans namespace: &lt;<a href="http://www.xmpp.org/schemas/langtrans.xsd">http://www.xmpp.org/schemas/langtrans.xsd</a>&gt;<br />
+        XML Schema for langtrans:items namespace: &lt;<a href="http://www.xmpp.org/schemas/langtrans-items.xsd">http://www.xmpp.org/schemas/langtrans-items.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0171.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0171.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0171.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Boyd Fletcher</h3><p class="indent">
+        Email:
+        <a href="mailto:boyd.fletcher@us.army.mil">boyd.fletcher@us.army.mil</a><br /></p><h3>Daniel LaPrade</h3><p class="indent">
+        Email:
+        <a href="mailto:dlaprade@echostorm.net">dlaprade@echostorm.net</a><br /></p><h3>Keith Lirette</h3><p class="indent">
+        Email:
+        <a href="mailto:keith.lirette@tridsys.com">keith.lirette@tridsys.com</a><br /></p><h3>Brian Raymond</h3><p class="indent">
+        Email:
+        <a href="mailto:braymond@echostorm.net">braymond@echostorm.net</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp623792" id="nt-idp623792">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp552320" id="nt-idp552320">2</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp1605488" id="nt-idp1605488">3</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp1647408" id="nt-idp1647408">4</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1656208" id="nt-idp1656208">5</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1652480" id="nt-idp1652480">6</a>. RFC 2141: URN Syntax &lt;<a href="http://tools.ietf.org/html/rfc2141">http://tools.ietf.org/html/rfc2141</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.1 (2011-06-15)</h4><div class="indent"><p>With author approval, the XMPP Registrar changed the items namespace from urn:xmpp:langtrans#items to urn:xmpp:langtrans:items because # is not recommended in URN syntax.</p> (psa)
+    </div><h4>Version 1.0 (2008-05-09)</h4><div class="indent"><p>Per a vote of the XMPP Council, advanced status to Draft.</p> (psa)
+    </div><h4>Version 0.3 (2008-02-01)</h4><div class="indent"><p>Modified semantics to use IQ stanzas for communication with servers; changed dst_lang to destination_lang and src_lang to source_lang; changed destination to destination_lang and derived_from to source_lang.</p> (kl/bf)
+    </div><h4>Version 0.2 (2006-04-24)</h4><div class="indent"><p>Added text about use of Thread IDs.</p> (psa)
+    </div><h4>Version 0.1 (2006-01-24)</h4><div class="indent"><p>Initial version.</p> (psa)
+    </div><h4>Version 0.0.4 (2006-01-17)</h4><div class="indent"><p>Converted to XML format, cleaned up text, modified examples, changed pivotable and reviewed attributes to xs:boolean, corrected schema.</p> (psa)
+    </div><h4>Version 0.0.3 (2006-01-16)</h4><div class="indent"><p>Changed xml:lang to destination, derived to derived_from; added service discovery identity.</p> (bf)
+    </div><h4>Version 0.0.2 (2005-12-28)</h4><div class="indent"><p>Miscellaneous edits.</p> (bf)
+    </div><h4>Version 0.0.1 (2005-12-21)</h4><div class="indent"><p>First draft.</p> (bf)
+    </div></div><hr /><p>END</p></body></html>

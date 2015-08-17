@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0081: Jabber MIME Type</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Jabber MIME Type" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document specifies a MIME type for launching a Jabber client as a helper application from most modern web browsers, and for completing basic use cases once the client is launched." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-07-19" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0081" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0081: Jabber MIME Type</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document specifies a MIME type for launching a Jabber client as a helper application from most modern web browsers, and for completing basic use cases once the client is launched.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.5</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-07-19</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#usecases">Use Cases</a><br />   
+      2.1.  <a href="#message">Sending a Message</a><br />   
+      2.2.  <a href="#chat">Starting a Chat</a><br />   
+      2.3.  <a href="#subscribe">Subscribing to Presence</a><br />   
+      2.4.  <a href="#groupchat">Joining a Groupchat Room</a><br />   
+      2.5.  <a href="#register">Registering with a Service</a><br />3.  <a href="#security">Security Considerations</a><br />4.  <a href="#iana">IANA Considerations</a><br />5.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      5.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      5.2.  <a href="#registrar-iana">IANA Interaction</a><br />6.  <a href="#schema">XML Schema</a><br />7.  <a href="#sect-idp1583584">Open Issues</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>The value of a URI scheme (see <span class="ref"><a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a></span>  [<a href="#nt-idp676160">1</a>]) for Jabber/XMPP communications has long been recognized within the Jabber community, and such a scheme has been formally defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc5122">RFC 5122</a></span>  [<a href="#nt-idp691184">2</a>] as a way of identifying entities that adhere to <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp678880">3</a>] or its antecedents. Unfortunately, URI schemes are slow to be accepted on the Internet, such that it might be years (if ever) before widely deployed software such as web browsers will support addresses of the form &lt;xmpp:user@domain&gt;.</p>
+  <p>Thankfully, it is not necessary for the large existing base of deployed software to support the xmpp: URI scheme in order to integrate Jabber/XMPP support. A well-accepted alternative approach 
+     [<a href="#nt-idp674160">4</a>]
+  is to define a MIME type (in accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc2045">RFC 2045</a></span>  [<a href="#nt-idp687504">5</a>]) and then reconfigure the relevant server and client software to correctly handle the new MIME type.</p>
+  <p>Therefore, this document defines a MIME type of "application/jabber+xml" (in particular, an XML media type in accordance with <span class="ref"><a href="http://tools.ietf.org/html/rfc3023">RFC 3023</a></span>  [<a href="#nt-idp682224">6</a>]). Files of this MIME type would commonly be accessed with a web browser via HTTP, although other access methods are possible (e.g., attachment of the MIME type to an email message). On opening a file of this type, a browser would (by configuration) invoke an appropriate "helper" application (i.e., an external Jabber client, plugin, or internal module) that would enable the user to interact with a Jabber/XMPP server. If the user is not currently connected to a server, the invoked program would be responsible for connecting the user with appropriate prompting for authentication credentials. The file passed to the helper application would define parameters needed to complete a certain use case, such as sending a message to another user.</p>
+  <p>Note: The "application/jabber+xml" MIME type defined herein is not to be confused with the "application/xmpp+xml" MIME type defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc3923">RFC 3923</a></span>  [<a href="#nt-idp1537728">7</a>]; the two MIME types address different requirements and do not overlap or conflict.</p>
+<h2>2.
+       <a name="usecases" id="usecases">Use Cases</a></h2>
+  <p>The solution MUST enable a user to complete the following use cases, support for which is REQUIRED:</p>
+  <ul>
+    <li>Send a single message to another user.</li>
+    <li>Initiate a one-to-one chat session with another user.</li>
+    <li>Subscribe to another user's presence.</li>
+  </ul>
+  <p>In addition, the solution SHOULD enable a user to complete the following use cases, support for which is RECOMMENDED:</p>
+  <ul>
+    <li>Join a groupchat room.</li>
+    <li>Register with a service.</li>
+    
+  </ul>
+  <p>These use cases are defined below.</p>
+  <div class="indent"><h3>2.1 <a name="message" id="message">Sending a Message</a></h3>
+    <p>In order to send a message to a contact, the user opens an XMPP file of the following form:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;jabber&gt;
+  &lt;message jid='stpeter@jabber.org'/&gt;
+&lt;/jabber&gt;
+    </pre></div>
+    <p>The browser passes this file to the helper application, which shall instantiate an appropriate interface for sending a single message to the JID defined in the file. If the user completes the interface, the helper application shall then send a message stanza of type='normal' as specified in <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp1547472">8</a>], first authenticating with the user's Jabber/XMPP server if necessary.</p>
+  </div>
+  <div class="indent"><h3>2.2 <a name="chat" id="chat">Starting a Chat</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;jabber&gt;
+  &lt;chat jid='stpeter@jabber.org'/&gt;
+&lt;/jabber&gt;
+    </pre></div>
+    <p>The browser passes this file to the helper application, which shall instantiate an appropriate interface for chatting with the JID defined in the file. If the user completes the interface, the helper application shall then send a message stanza of type='chat' as specified in <span class="ref">XMPP IM</span>, first authenticating with the user's Jabber/XMPP server if necessary.</p>
+  </div>
+  <div class="indent"><h3>2.3 <a name="subscribe" id="subscribe">Subscribing to Presence</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;jabber&gt;
+  &lt;subscribe jid='stpeter@jabber.org'/&gt;
+&lt;/jabber&gt;
+    </pre></div>
+    <p>The browser passes this file to the helper application, which shall instantiate an appropriate interface for sending a presence subscription request to the JID defined in the file (e.g., specifying a name and/or group for the contact).  If the user completes the interface, the helper application shall then send a presence stanza of type='subscribe' as specified in <span class="ref">XMPP IM</span>, first authenticating with the user's Jabber/XMPP server if necessary. The helper application SHOULD perform a "roster set" before sending the presence subscription request, as described in <span class="ref">XMPP IM</span>.</p>
+  </div>
+  <div class="indent"><h3>2.4 <a name="groupchat" id="groupchat">Joining a Groupchat Room</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;jabber&gt;
+  &lt;groupchat jid='jdev@conference.jabber.org'/&gt;
+&lt;/jabber&gt;
+    </pre></div>
+    <p>The browser passes this file to the helper application, which shall instantiate an appropriate interface for joining the conference room associated with the JID defined in the file. If the user completes the interface, the helper application shall then send a directed presence stanza to the JID (appending a room nickname to the JID as the resource identifier) as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1557552">9</a>], first authenticating with the user's Jabber/XMPP server if necessary.</p>
+  </div>
+  <div class="indent"><h3>2.5 <a name="register" id="register">Registering with a Service</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+&lt;jabber&gt;
+  &lt;register jid='headlines.shakespeare.lit'/&gt;
+&lt;/jabber&gt;
+    </pre></div>
+    <p>The browser passes this file to the helper application, which shall send an IQ stanza of type='get' to the service associated with the JID defined in the file in order to determine the registration requirements (first authenticating with the user's Jabber/XMPP server if necessary), as described in <span class="ref"><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration (XEP-0077)</a></span>  [<a href="#nt-idp1566384">10</a>]. The helper application shall then instantiate an appropriate interface for registering with the service. If the user completes the interface, the helper application shall then send an IQ stanza of type='set' to the JID as described in <span class="ref">XEP-0077</span>.</p>
+  </div>
+  
+<h2>3.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Detailed security considerations for instant messaging and presence protocols are given in <span class="ref"><a href="http://tools.ietf.org/html/rfc2779">RFC 2779</a></span>  [<a href="#nt-idp1569488">11</a>] (Sections 5.1 through 5.4), and for XMPP in particular are given in <span class="ref">RFC 3920</span> (Sections 12.1 through 12.6).  In addition, all of the security considerations specified in <span class="ref">RFC 3023</span> apply to the "application/jabber+xml" media type.</p>
+  <p>When a helper application has finished processing a file of type "application/jabber+xml", it SHOULD discard the file; this helps to prevent security-related problems that may result from HTTP caching.</p>
+<h2>4.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires registration of the "application/jabber+xml" content type with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1574336">12</a>]. The registration is as follows:</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+To: ietf-types@iana.org
+
+Subject: Registration of MIME media type application/jabber+xml
+
+MIME media type name: application
+MIME subtype name: jabber+xml
+Required parameters: (none)
+Optional parameters: (charset) Same as charset parameter of
+   application/xml as specified in RFC 3023; per Section 11.5
+   of RFC 3920, the charset must be UTF-8.
+Encoding considerations: Same as encoding considerations of
+   application/xml as specified in RFC 3023; per Section 11.5
+   of RFC 3920, the encoding must be UTF-8.
+Security considerations: All of the security considerations 
+   specified in RFC 3023 and RFC 3920 apply to this XML media 
+   type.  Refer to Section 11 of XSF XEP-0081.
+Interoperability considerations: (none)
+Specification: XSF XEP-0081
+Applications which use this media type: non-XMPP applications
+   (e.g., web browsers or email clients) that wish to invoke
+   XMPP-compliant applications for instant messaging and 
+   presence functionality.
+Additional information: This media type is not to be confused 
+   with the "application/xmpp+xml" media type, which is for 
+   use by native XMPP applications.
+Person and email address to contact for further information: 
+   XMPP Registrar, &lt;registrar@xmpp.org&gt;
+Intended usage: COMMON
+Author/Change controller: XSF, XMPP Registrar
+  </pre></div>
+<h2>5.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>5.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1580496">13</a>] shall include 'http://jabber.org/protocol/mimetype' in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>5.2 <a name="registrar-iana" id="registrar-iana">IANA Interaction</a></h3>
+    <p>The XMPP Registrar shall interact with the IANA in order to register the media type defined herein.</p>
+  </div>
+<h2>6.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/mimetype'
+    xmlns='http://jabber.org/protocol/mimetype'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='jabber'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice&gt;
+        &lt;xs:element name='chat' type='JabberAction'/&gt;
+        &lt;xs:element name='groupchat' type='JabberAction'/&gt;
+        &lt;xs:element name='message' type='JabberAction'/&gt;
+        &lt;xs:element name='register' type='JabberAction'/&gt;
+        &lt;xs:element name='subscribe' type='JabberAction'/&gt;
+      &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:complexType name='JabberAction'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+    &lt;xs:attribute name='jid' use='required'&gt;
+  &lt;/xs:complexType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>7.
+       <a name="sect-idp1583584" id="sect-idp1583584">Open Issues</a></h2>
+  <ol>
+    <li>Add implementation notes for server MIME type registration and HTTP Content-Type output.</li>
+    <li>Add implementation notes for client handling on various platforms (e.g., DDE messages in Windows).</li>
+  </ol>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0081<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.5<br />
+            Last Updated: 2005-07-19<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM, RFC 2045, RFC 3023, XEP-0045, XEP-0077<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: mimetype<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0081.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0081.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0081.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp676160" id="nt-idp676160">1</a>. RFC 3986: Uniform Resource Identifiers (URI): Generic Syntax &lt;<a href="http://tools.ietf.org/html/rfc3986">http://tools.ietf.org/html/rfc3986</a>&gt;.</p><p><a name="nt-idp691184" id="nt-idp691184">2</a>. RFC 5122: Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP) &lt;<a href="http://tools.ietf.org/html/rfc5122">http://tools.ietf.org/html/rfc5122</a>&gt;.</p><p><a name="nt-idp678880" id="nt-idp678880">3</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp674160" id="nt-idp674160">4</a>. See, for instance, &lt;<a href="http://www.mozilla.org/docs/web-developer/mimetypes.html">http://www.mozilla.org/docs/web-developer/mimetypes.html</a>&gt; for information about MIME support in the Mozilla family of web browsers.</p><p><a name="nt-idp687504" id="nt-idp687504">5</a>. RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies &lt;<a href="http://tools.ietf.org/html/rfc2045">http://tools.ietf.org/html/rfc2045</a>&gt;.</p><p><a name="nt-idp682224" id="nt-idp682224">6</a>. RFC 3023: XML Media Types &lt;<a href="http://tools.ietf.org/html/rfc3023">http://tools.ietf.org/html/rfc3023</a>&gt;.</p><p><a name="nt-idp1537728" id="nt-idp1537728">7</a>. RFC 3923: End-to-End Signing and Object Encryption for the Extensible Messaging and Presence Protocol (XMPP) &lt;<a href="http://tools.ietf.org/html/rfc3923">http://tools.ietf.org/html/rfc3923</a>&gt;.</p><p><a name="nt-idp1547472" id="nt-idp1547472">8</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp1557552" id="nt-idp1557552">9</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1566384" id="nt-idp1566384">10</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idp1569488" id="nt-idp1569488">11</a>. RFC 2779: A Model for Presence and Instant Messaging &lt;<a href="http://tools.ietf.org/html/rfc2779">http://tools.ietf.org/html/rfc2779</a>&gt;.</p><p><a name="nt-idp1574336" id="nt-idp1574336">12</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1580496" id="nt-idp1580496">13</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.5 (2005-07-19)</h4><div class="indent">Retracted the proposal (again) in favor of draft-saintandre-xmpp-iri. (psa)
+    </div><h4>Version 0.4 (2005-01-05)</h4><div class="indent">Reinstated the proposal since it fills a need not met by RFC 3923 and draft-saintandre-xmpp-uri; specified XML schema; specified IANA considerations, including content-type registration; further specified security considerations; removed use cases for service discovery, directory search, vCard lookup, and authentication; added more detailed descriptive text to remaining use cases. (psa)
+    </div><h4>Version 0.3 (2004-07-26)</h4><div class="indent">Formally retracted this proposal in favor of the relevant Internet-Drafts. (psa)
+    </div><h4>Version 0.2 (2003-08-18)</h4><div class="indent">Added authentication example. (psa)
+    </div><h4>Version 0.1 (2003-04-21)</h4><div class="indent">Initial version. (psa)
+    </div></div><hr /><p>END</p></body></html>

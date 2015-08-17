@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0111: A Transport for Initiating and Negotiating Sessions (TINS)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="A Transport for Initiating and Negotiating Sessions (TINS)" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document defined a SIP-compatible transport for initiating and negotiating sessions using SDP over XMPP." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2005-12-21" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0111" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0111: A Transport for Initiating and Negotiating Sessions (TINS)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defined a SIP-compatible transport for initiating and negotiating sessions using SDP over XMPP.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Joe Hildebrand, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.8</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2005-12-21</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#protocol">Protocol</a><br />4.  <a href="#discovery">Discovering Support</a><br />5.  <a href="#examples">Examples</a><br />   
+      5.1.  <a href="#examples-call">Negotiating a Voice Call</a><br />6.  <a href="#security">Security Considerations</a><br />7.  <a href="#iana">IANA Considerations</a><br />8.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      8.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />9.  <a href="#schema">XML Schemas</a><br />   
+      9.1.  <a href="#schema-tins">tins</a><br />   
+      9.2.  <a href="#schema-sdp">sdp</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="em">Note Well: This proposal has been retracted by the authors in favor of <span class="ref"><a href="http://xmpp.org/extensions/xep-0166.html">Jingle (XEP-0166)</a></span>  [<a href="#nt-idp739552">1</a>].</span></p>
+  <p>The Session Description Protocol (SDP; see <span class="ref"><a href="http://tools.ietf.org/html/rfc2327">RFC 2327</a></span>  [<a href="#nt-idp741664">2</a>]) provides a mechanism for describing multimedia sessions that are advertised and negotiated over the Internet. The "Transport for Initiating and Negotiating Sessions" (TINS) specified herein describes how to use SDP to build a framework for media stream/session initiation and negotiation between entities that natively support XMPP (see <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp756448">3</a>]).
+     [<a href="#nt-idp755232">4</a>] 
+  In particular, TINS provides an XMPP representation of standard session management semantics such as those provided by the Session Initiation Protocol (SIP; see <span class="ref"><a href="http://tools.ietf.org/html/rfc3261">RFC 3261</a></span>  [<a href="#nt-idp746656">6</a>]). As a result, native XMPP clients that support TINS can negotiate out-of-band multimedia sessions (e.g., use of the Real-Time Transport Protocol or RTP; see <span class="ref"><a href="http://tools.ietf.org/html/rfc3550">RFC 3550</a></span>  [<a href="#nt-idp748640">7</a>]) and XMPP services that support TINS can easily interoperate with SIP services through gateways.</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This document addresses the following requirements:</p>
+  <ol>
+    <li>Enable an XMPP entity to negotiate an out-of-band multimedia session with another XMPP entity.</li>
+    <li>Enable an XMPP entity to negotiate an out-of-band multimedia session with a non-XMPP entity through a gateway.</li>
+    <li>Maximize interoperability with existing gateways and devices by using standard Internet protocols.</li>
+  </ol>
+<h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>TINS exchanges are completed by sending &lt;message/&gt; stanzas containing a child &lt;tins/&gt; element qualified by the 'http://jabber.org/protocol/tins' namespace. 
+     [<a href="#nt-idp752848">8</a>]
+   In order to track the structure of the TINS "conversation", the &lt;thread/&gt; child of &lt;message/&gt; MAY also be included. The &lt;tins/&gt; element MUST possess a 'method' attribute, whose value SHOULD be either an IANA-registered value for a SIP method or "result", as described below. The following SIP methods will probably be used most frequently in TINS interactions:</p>
+  <ul>
+    <li><p>INVITE -- Used to invite the target user to an out-of-band session.  The content inside the &lt;tins/&gt; element MAY be SDP descriptions of the connection types offered.  If a session is already established for this transaction, the new INVITE serves as a renegotiation of session parameters.</p></li>
+    <li><p>ACK -- Used by the initiator to tell the invitee that an out-of-band session has been established.</p></li>
+    <li><p>BYE -- Used by either side of the conversation to terminate the transaction.  This message SHOULD cause all resources associated with this transaction to be freed, and any associated network connections to be terminated.</p></li>
+  </ul>
+  <p>The SDP data itself is included as the XML character data of an &lt;sdp/&gt; child of the &lt;tins/&gt; element, qualifed by the 'urn:ietf:rfc:2327' namespace (this is consistent with <span class="ref"><a href="http://tools.ietf.org/html/rfc2648">RFC 2648</a></span>  [<a href="#nt-idp630752">9</a>]). 
+     [<a href="#nt-idp628768">10</a>]
+  Any restricted XML characters in the SDP data (i.e., &amp; ' &lt; &gt; ") MUST be properly escaped when contained in the XML character data of the &lt;sdp/&gt; element (for example, the ' character MUST be escaped to &amp;apos;). It is the responsibility of the XMPP recipient or translating gateway to unescape these restricted characters for processing.</p>
+  <p>The request stanza MAY also include either or both of the following:</p>
+  <ul>
+    <li>Header information or Internet metadata (such as that defined by <span class="ref">RFC 3261</span>) in the format specified by <span class="ref"><a href="http://xmpp.org/extensions/xep-0131.html">Stanza Headers and Internet Metadata (XEP-0131)</a></span>  [<a href="#nt-idp635136">11</a>].</li>
+    <li>Multicast addresses as specified by <span class="ref"><a href="http://xmpp.org/extensions/xep-0033.html">Extended Stanza Addressing (XEP-0033)</a></span>  [<a href="#nt-idp637248">12</a>].</li>
+  </ul>
+  <p>In reply to a request, the receiver MUST send zero or more replies, with the value of the 'method' attribute set to a value of "result" and the value of the 'code' attribute set to one of the valid SIP response codes as specified in Section 21 of <span class="ref">RFC 3261</span>.</p>
+<h2>4.
+       <a name="discovery" id="discovery">Discovering Support</a></h2>
+  <p>Before initiating a TINS negotiation, an XMPP entity SHOULD determine that the target entity supports the 'http://jabber.org/protocol/tins' namespace. Such discovery SHOULD occur by means of <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp654032">13</a>], either directly by querying the target entity or indirectly by means of <span class="ref"><a href="http://xmpp.org/extensions/xep-0115.html">Entity Capabilities (XEP-0115)</a></span>  [<a href="#nt-idp651952">14</a>]. If the target entity is a non-XMPP entity that is contacted through a gateway, the gateway itself SHOULD reply to service discovery queries on behalf of the non-XMPP entity and SHOULD insert a client capabilities extension into the presence stanzas it generates on behalf of the non-XMPP entity.</p>
+  <p>If an XMPP entity receives, or a gateway handles, a &lt;message/&gt; stanza containing a &lt;tins/&gt; element qualified by the 'http://jabber.org/protocol/tins' namespace but it does not understand the TINS protocol, it SHOULD either silently ignore it or return a &lt;service-unavailable/&gt; error (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp641664">15</a>] for error syntax).</p>
+<h2>5.
+       <a name="examples" id="examples">Examples</a></h2>
+  <div class="indent"><h3>5.1 <a name="examples-call" id="examples-call">Negotiating a Voice Call</a></h3>
+    <p>The following XMPP stanzas could be used to initiate a voice call. The 'from' addresses will usually be added by the XMPP server or relevant gateway, but are shown here for the sake of clarity. Note the inclusion of SHIM headers and extended addresses.</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Step 1: A sends an invite to B</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='A@example.com/work' 
+    to='B@example.com/laptop' 
+    id='tins01'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='INVITE' xmlns='http://jabber.org/protocol/tins'&gt;
+    &lt;sdp xmlns='urn:ietf:rfc:2327'&gt;
+      v=0
+      o=A@example.com 98765432 IN IP4 192.168.1.1
+      s=TINS questions
+      i=Let&amp;apos;s talk about TINS
+      e=A@example.com
+      p=+1-303-555-1212
+      c=IN IP4 192.168.1.1/127
+      t=3288361865 0
+      a=recvonly
+      m=audio 7800 RTP/AVP 0
+    &lt;/sdp&gt;
+  &lt;/tins&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Step 2: B tells A that it is trying</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='B@example.com/laptop' 
+    to='A@example.com/work' 
+    id='tins01'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='result'
+        code='100'
+        xmlns='http://jabber.org/protocol/tins'/&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Step 3: B tells A that it is ringing</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='B@example.com/laptop' 
+    to='A@example.com/work' 
+    id='tins01'&gt;
+  &lt;tins method='result'
+        code='180'
+        xmlns='http://jabber.org/protocol/tins'/&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Step 4: B sends an updated description to A</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='B@example.com/laptop' 
+    to='A@example.com/work' 
+    id='tins02'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='result' 
+        code='200'
+        xmlns='http://jabber.org/protocol/tins'&gt;
+    &lt;sdp xmlns='urn:ietf:rfc:2327'&gt;
+      v=0
+      o=A@example.com 98765432 IN IP4 192.168.1.2
+      s=TINS questions
+      i=Let&amp;apos;s talk about TINS
+      e=A@example.com
+      p=+1-303-555-1212
+      c=IN IP4 192.168.1.2/127
+      t=3288361865 0
+      a=recvonly
+      m=audio 7800 RTP/AVP 0
+      a=recvonly
+      m=audio 9410 RTP/AVP 0
+    &lt;/sdp&gt;
+  &lt;/tins&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Step 5: A sends an acknowledgement to B</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='A@example.com/work' 
+    to='B@example.com/laptop' 
+    id='tins02'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='ACK' xmlns='http://jabber.org/protocol/tins'/&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Step 6: B hangs up</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='B@example.com/laptop' 
+    to='A@example.com/work' 
+    id='tins03'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='BYE' xmlns='http://jabber.org/protocol/tins'/&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Step 7: A acknowledges the hang up</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='A@example.com/work' 
+    to='B@example.com/laptop' 
+    id='tins03'&gt;
+  &lt;thread&gt;1234@hostA.example.com&lt;/thread&gt;
+  &lt;tins method='result'
+        code='200'
+        xmlns='http://jabber.org/protocol/tins'/&gt;
+  &lt;headers xmlns='http://jabber.org/protocol/shim'&gt;
+    &lt;header name='Via'&gt;SIP/2.0/UDP tins.example.com;branch=z9hG4bK776asdhds&lt;/header&gt;
+    &lt;header name='Call-ID'&gt;a84b4c76e66710@tins.example.com&lt;/header&gt;
+    &lt;header name='CSeq'&gt;314159 INVITE&lt;/header&gt;
+  &lt;/headers&gt;
+  &lt;addresses xmlns='http://jabber.org/protocol/address'&gt;
+    &lt;address type='bcc' jid='compliance.example.com'/&gt;
+  &lt;/addresses&gt;
+&lt;/message&gt;
+    </pre></div>
+  </div>
+  <p><span class="em">More examples to follow.</span></p>
+<h2>6.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>TINS is subject to the same security considerations as XMPP, particularly with regard to authentication and channel encryption; for details, refer to <span class="ref">RFC 6120</span>.</p>
+  <p>This document does not describe how the media protocols (e.g. RTP) traverse firewalls and NATs.</p>
+  <p>There is no general-purpose way to ensure that media protocol connections are associated with the in-band TINS conversation.</p>
+<h2>7.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1632496">16</a>].</p>
+<h2>8.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>8.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1636672">17</a>] shall include 'http://jabber.org/protocol/tins' in its registry of protocol namespaces.</p>
+  </div>
+<h2>9.
+       <a name="schema" id="schema">XML Schemas</a></h2>
+  <div class="indent"><h3>9.1 <a name="schema-tins" id="schema-tins">tins</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/tins'
+    xmlns='http://jabber.org/protocol/tins'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:import namespace='urn:ietf:rfc:2327'/&gt;
+
+  &lt;xs:element name='tins'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:choice xmlns:sdp='urn:ietf:rfc:2327'&gt;
+        &lt;xs:element ref='sdp:sdp'/&gt;
+        &lt;xs:any namespace='##other'/&gt;
+      &lt;/xs:choice&gt;
+      &lt;xs:attribute name='code' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='method' type='xs:string' use='required'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>9.2 <a name="schema-sdp" id="schema-sdp">sdp</a></h3>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='urn:ietf:rfc:2327'
+    xmlns='urn:ietf:rfc:2327'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:element name='sdp' type='xs:string'/&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0111<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.8<br />
+            Last Updated: 2005-12-21<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, RFC 2327, RFC 3261<br />
+                Supersedes: None<br />Superseded By: XEP-0166<br />
+            Short Name: tins<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0111.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0111.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0111.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Given that this XMPP Extension Protocol normatively references IETF technologies, discussion on the &lt;<a href="http://mail.jabber.org/mailman/listinfo/xsf-ietf">xsf-ietf@xmpp.org</a>&gt; list might also be appropriate.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp739552" id="nt-idp739552">1</a>. XEP-0166: Jingle &lt;<a href="http://xmpp.org/extensions/xep-0166.html">http://xmpp.org/extensions/xep-0166.html</a>&gt;.</p><p><a name="nt-idp741664" id="nt-idp741664">2</a>. RFC 2327: SDP: Session Description Protocol &lt;<a href="http://tools.ietf.org/html/rfc2327">http://tools.ietf.org/html/rfc2327</a>&gt;.</p><p><a name="nt-idp756448" id="nt-idp756448">3</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp755232" id="nt-idp755232">4</a>. The approach taken herein is to send pure SDP. While earlier versions of this document used <span class="ref"><a href="http://tools.ietf.org/html/draft-ietf-mmusic-sdpng">Session Description and Capability Negotiation (SDPng)</a></span>  [<a href="#nt-idp743648">5</a>] (an XML representation of SDP), SDPng is a more experimental technology; by contrast, SDP is a stable protocol and there is broad support for it by existing gateways and devices. The use of SDP rather than SDPng thus enables the Jabber/XMPP community to implement solutions that are deployable on the Internet today.</p><p><a name="nt-idp743648" id="nt-idp743648">5</a>. Session Description and Capability Negotiation (SDPng) &lt;<a href="http://tools.ietf.org/html/draft-ietf-mmusic-sdpng">http://tools.ietf.org/html/draft-ietf-mmusic-sdpng</a>&gt;. Work in progress.</p><p><a name="nt-idp746656" id="nt-idp746656">6</a>. RFC 3261: Session Initiation Protocol (SIP) &lt;<a href="http://tools.ietf.org/html/rfc3261">http://tools.ietf.org/html/rfc3261</a>&gt;.</p><p><a name="nt-idp748640" id="nt-idp748640">7</a>. RFC 3550: RTP: A Transport Protocol for Real-Time Applications &lt;<a href="http://tools.ietf.org/html/rfc3550">http://tools.ietf.org/html/rfc3550</a>&gt;.</p><p><a name="nt-idp752848" id="nt-idp752848">8</a>. While it may seem that the semantics of &lt;iq/&gt; stanzas are more appropriate, <span class="ref">RFC 3261</span> allows entities to send multiple results in response to a SIP request, which does not map to the syntax of the &lt;iq/&gt; stanza as defined in <span class="ref">RFC 6120</span>.</p><p><a name="nt-idp630752" id="nt-idp630752">9</a>. RFC 2648: A URN Namespace for IETF Documents &lt;<a href="http://tools.ietf.org/html/rfc2648">http://tools.ietf.org/html/rfc2648</a>&gt;.</p><p><a name="nt-idp628768" id="nt-idp628768">10</a>. The &lt;sdp/&gt; element is qualified by a separate namespace because it may be desirable for TINS to support other formats (such as SDPng) in the future; these can then be added without changing the XML schema for TINS.</p><p><a name="nt-idp635136" id="nt-idp635136">11</a>. XEP-0131: Stanza Headers and Internet Metadata &lt;<a href="http://xmpp.org/extensions/xep-0131.html">http://xmpp.org/extensions/xep-0131.html</a>&gt;.</p><p><a name="nt-idp637248" id="nt-idp637248">12</a>. XEP-0033: Extended Stanza Addressing &lt;<a href="http://xmpp.org/extensions/xep-0033.html">http://xmpp.org/extensions/xep-0033.html</a>&gt;.</p><p><a name="nt-idp654032" id="nt-idp654032">13</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp651952" id="nt-idp651952">14</a>. XEP-0115: Entity Capabilities &lt;<a href="http://xmpp.org/extensions/xep-0115.html">http://xmpp.org/extensions/xep-0115.html</a>&gt;.</p><p><a name="nt-idp641664" id="nt-idp641664">15</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1632496" id="nt-idp1632496">16</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1636672" id="nt-idp1636672">17</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.8 (2005-12-21)</h4><div class="indent">Retracted in favor of Jingle (XEP-0166). (psa/jjh)
+    </div><h4>Version 0.7 (2005-05-12)</h4><div class="indent">Corrected several errors in the text and schemas. (psa)
+    </div><h4>Version 0.6 (2004-10-26)</h4><div class="indent">Added extended addresses and SHIM headers to examples in order to illustrate the use of XEP-0033 and XEP-0121. (psa/jjh)
+    </div><h4>Version 0.5 (2004-04-05)</h4><div class="indent">Changed &lt;iq/&gt; to &lt;message/&gt; given probability of multiple SIP responses. (psa/jjh)
+    </div><h4>Version 0.4 (2004-03-16)</h4><div class="indent">Specified that the &lt;sdp/&gt; element is in a separate namespace and that the same mechanism could be used for other content schemes in the future. (psa/jjh)
+    </div><h4>Version 0.3 (2004-03-15)</h4><div class="indent">Replaced SDPng with SDP; added sections for Requirements, Protocol, and Discovering Support; added XML schema. (psa/jjh)
+    </div><h4>Version 0.2 (2003-07-29)</h4><div class="indent">Converted to XML format. (psa)
+    </div><h4>Version 0.1 (2003-02-21)</h4><div class="indent">Internet-Draft version published as draft-hildebrand-xmpp-sdpng-00. (jjh)
+    </div></div><hr /><p>END</p></body></html>

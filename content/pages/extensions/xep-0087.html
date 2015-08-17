@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0087: Stream Initiation</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Stream Initiation" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Description" content="A common method to initiate a stream with meta information" /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2003-05-22" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0087" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0087: Stream Initiation</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>A common method to initiate a stream with meta information</td></tr><tr valign="top"><td><strong>Author:</strong></td><td>Thomas Muldowney</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Retracted</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>0.1</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2003-05-22</td></tr></table><hr /><p style="color:red">WARNING: This document has been retracted by the author(s). Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp703056">Introduction</a><br />2.  <a href="#sect-idp704240">Requirements</a><br />   
+      2.1.  <a href="#sect-idp706288">Use Case</a><br />3.  <a href="#sect-idp711232">Basic Usage</a><br />4.  <a href="#sect-idp625280">Detailed Usage</a><br />   
+      4.1.  <a href="#sect-idp625664">Profiles</a><br />   
+      4.2.  <a href="#sect-idp631904">Stream Interaction</a><br />   
+      4.3.  <a href="#sect-idp636208">&lt;si&gt; Explanation</a><br />   
+      4.4.  <a href="#sect-idp641696">Error Codes</a><br />5.  <a href="#sect-idp1568848">Security Considerations</a><br />6.  <a href="#sect-idp1569888">IANA Considerations</a><br />7.  <a href="#sect-idp1570912">XMPP Registrar Considerations</a><br />8.  <a href="#sect-idp1571984">Formal Definition</a><br />   
+      8.1.  <a href="#sect-idp1572368">Schema</a><br />   
+      8.2.  <a href="#sect-idp1573376">DTD</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp703056" id="sect-idp703056">Introduction</a></h2>
+  <p>
+    As more people begin to make use of streams in Jabber, there becomes a need
+    for more descriptive negotiation of which stream to use.  This document provides
+    a method to negotiate a stream and provide some meta-information about the
+    streams usage.
+  </p>
+<h2>2.
+       <a name="sect-idp704240" id="sect-idp704240">Requirements</a></h2>
+  <ul>
+    <li>
+      The defined protocol will allow for negotiation of a common stream.
+    </li>
+    <li>
+      The defined protocol will allow for meta-information to be sent about the
+      stream usage.
+    </li>
+    <li>
+      The defined protocol will not be required for stream usage.
+    </li>
+  </ul>
+  <div class="indent"><h3>2.1 <a name="sect-idp706288" id="sect-idp706288">Use Case</a></h3>
+    <p>
+      Sender wishes to interact with another user, using a method that requires
+      streams.
+    </p>
+    <p>
+      Primary Flow:
+    </p>
+    <ol>
+      <li>
+        Sender discovers if Receiver implements the desired profile. [E1]
+      </li>
+      <li>
+        Sender offers a stream initiation. [E2]
+      </li>
+      <li>
+        Receiver accepts stream initiation.
+      </li>
+      <li>
+        Sender uses the negotiated stream and profile to send the information.
+      </li>
+    </ol>
+    <p>
+      Error Conditions:
+    </p>
+    <ol>
+      <li>
+        The Receiver does not support the desired profile, EUC
+      </li>
+      <li>
+        Receiver rejects the stream initiation, EUC
+      </li>
+    </ol>
+    
+  </div>
+<h2>3.
+       <a name="sect-idp711232" id="sect-idp711232">Basic Usage</a></h2>
+  <p>
+    Before a Stream Initiation is attempted the Sender should be sure that the
+    Receiver supports both Stream Initiation and the specific profile that they
+    wish to use.  This is discovered by using <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp613632">1</a>]:
+  </p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requesting Disco Information From Receiver</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq 
+      type='get' 
+      to='receiver@jabber.org/resource' 
+      from='sender@jabber.org/resource'
+      id='info1'&gt;
+      &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  <p>
+    The Receiver will advertise the "http://jabber.org/protocol/si" namespace as
+    a feature to represent they implement this document.  The specific profiles can
+    be found by looking for
+    "http://jabber.org/protocol/si/profile/profile-name".  Shown in the result
+    is a potential file transfer profile:
+  </p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Receiver Disco Information Result</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq
+      type='result'
+      to='sender@jabber.org/resource'
+      from='receiver@jabber.org/resource'
+      id='info1'&gt;
+      &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+        &lt;feature var='http://jabber.org/protocol/si'/&gt;
+        &lt;feature var='htpt://jabber.org/protocol/si/profile/filexfer'/&gt;
+      &lt;/query&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  <p>
+    Now that the Sender is sure that the Receiver support Stream Initiation they
+    send the offer:
+  </p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Offer Stream Initiation</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq type='set' id='offer1' to='receiver@jabber.org/resource'&gt;
+      &lt;si 
+        xmlns='http://jabber.org/protocol/si' 
+        id='a0'
+        mime-type='application/octet-stream'
+        profile='http://jabber.org/protocol/si/profile/profile-name'&gt;
+        &lt;header name='key'&gt;value&lt;/header&gt;
+        &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+          &lt;x xmlns='jabber:x:data'&gt;
+            &lt;field var='file-transfer-method' type='list-single'&gt;
+              &lt;option&gt;&lt;value&gt;s5b&lt;/value&gt;&lt;/option&gt;
+              &lt;option&gt;&lt;value&gt;jabber:iq:oob&lt;/value&gt;&lt;/option&gt;
+              &lt;option&gt;&lt;value&gt;ibb&lt;/value&gt;&lt;/option&gt;
+            &lt;/field&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/si&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  
+  
+  <p>
+    At this point the Receiver can view the headers and other information to
+    decide if they wish to accept the Stream Initiation.  If they accept they
+    MUST select one of the presented stream types to use.  If none of the stream
+    types are acceptable the Receiver MUST reply with an error:
+  </p>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Accept Stream Initiation</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq type='result' to='sender@jabber.org/resource' id='offer1'&gt;
+      &lt;si
+        xmlns='http://jabber.org/si'
+        id='a0'&gt;
+        &lt;feature xmlns='http://jabber.org/protocol/feature-neg'&gt;
+          &lt;x xmlns='jabber:x:data' type='submit'&gt;
+            &lt;field var='file-transfer-method'&gt;
+              &lt;value&gt;s5b&lt;/value&gt;
+            &lt;/field&gt;
+          &lt;/x&gt;
+        &lt;/feature&gt;
+      &lt;/si&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Rejecting Stream Initiation</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq type='error' to='sender@jabber.org/resource' id='offer1'&gt;
+      &lt;error code='403'&gt;Offer Declined&lt;/error&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. No Valid Streams</p><div class="indent"><pre class="prettyprint">
+    
+    &lt;iq type='error' to='sender@jabber.org/resource' id='offer1'&gt;
+      &lt;error code='406'&gt;No Valid Streams&lt;/error&gt;
+    &lt;/iq&gt;
+    
+  </pre></div>
+  <p>
+    If the Receiver has accepted the Stream Initiation the Sender may then used
+    the semantics defined by the selected stream and start the usage.
+  </p>
+  
+<h2>4.
+       <a name="sect-idp625280" id="sect-idp625280">Detailed Usage</a></h2>
+  <div class="indent"><h3>4.1 <a name="sect-idp625664" id="sect-idp625664">Profiles</a></h3>
+    <p>
+      While Stream Initiation itself is helpful, it makes much more sense when
+      what is being transported over the stream is known.  Knowing this
+      allows the Receiver to make a more educated choice about whether or not to
+      accept the stream.  This information is transported in Stream Initiation
+      through a <span class="em">profile</span>.  A profile is a series of required and
+      optional headers that describe the stream data or how the stream is to be
+      used.  Each Stream Initiation MUST have only one profile, so the stream 
+      usage is kept clear.
+    </p>
+    <p>
+      Creating a profile is fairly simple.  First, a name is chosen, the
+      complete name is formatted like:</p>
+      <p class="caption"></p><div class="indent"><pre class="prettyprint">
+        http://jabber.org/protocol/si/profile/profile-name
+      </pre></div>
+    <p>
+      The complete name is what is presented in information discovery requests
+      in order to show that the profile is supported.  It is also used for the
+      &lt;si&gt; profile attribute.  Next, the information for the headers is
+      decided upon.  Each piece of information will be transported in a
+      &lt;header&gt; tag.  The name attribute is a descriptive key that can be
+      looked up at the XMPP Registrar or XEP describing the profile.  The
+      actual data in the &lt;header&gt; is the fact related to the name 
+      attribute.  It must also be stated whether the header is required or 
+      optional.
+    </p>
+    <p>
+      This document does not define any profiles, nor does it place any restrictions
+      on what type of information a profile should detail.  This document also does
+      not place restrictions on what may be placed in a &lt;header&gt;.  Other
+      XEPs will define profiles to be used with Stream Initiation.
+    </p>
+  </div>
+  <div class="indent"><h3>4.2 <a name="sect-idp631904" id="sect-idp631904">Stream Interaction</a></h3>
+    <p>
+      While Stream Initiation is not directly required for stream usage, it does
+      provide many benefits.  In order to fully appreciate these benefits,
+      streams must link the Stream Initiation to the stream.  The id
+      attribute of the &lt;si&gt; node is intended to provide this link.  It is
+      out of scope of this document to define how streams will make use of this
+      facility, but it does suggest some methods:</p>
+      <ul>
+        <li>
+          Transport the Stream Initiation id with the stream negotitation as a
+          namespaced attribute, such as:
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+            
+            &lt;stream id='0' xmlns:si='http://jabber.org/protocol/si' si:id='si0'&gt;
+              &lt;start/&gt;
+            &lt;/stream&gt;
+            
+          </pre></div>
+        </li>
+        <li>
+          Transport the Stream Initiation id in a namespaced tag, such as:
+          <p class="caption"></p><div class="indent"><pre class="prettyprint">
+            
+            &lt;stream id='0'&gt;
+              &lt;start/&gt;
+              &lt;si xmlns='http://jabber.org/protocol/si' id='si0'/&gt;
+            &lt;/stream&gt;
+            
+          </pre></div>
+        </li>
+      </ul>
+  </div>
+  <div class="indent"><h3>4.3 <a name="sect-idp636208" id="sect-idp636208">&lt;si&gt; Explanation</a></h3>
+    <p>
+      The attributes and data of &lt;si&gt; are fairly simple:</p>
+      <ul>
+        <li>
+          <span class="em">id</span> - An opaque identifier generated by the Sender.
+        </li>
+        <li>
+          <span class="em">mime-type</span> - The mime-type of the data being negotiated,
+          selected by Sender.
+        </li>
+        <li>
+          <span class="em">profile</span> - The profile's fulle name, selected by Sender.
+        </li>
+      </ul>
+      <p>The data of the node is a mixture of a feature negotiation for the stream
+      and the profiles headers.
+    </p>
+    <p>
+      When the Sender is offering a Stream Initiation all of the attributes must
+      be present.  The data MUST contain the required profile headers and the
+      feature negotiation for the stream MUST be present with at least one
+      option.  The optional profile headers MAY also be in the node data.
+    </p>
+    <p>
+      When the Receiver accepts a Stream Initiation the id attribute MUST be
+      present, all other attributes MUST NOT be present.  The selected stream
+      MUST be in the feature negotiation for the stream.  There MUST only be one
+      selected stream.
+    </p>
+  </div>
+  <div class="indent"><h3>4.4 <a name="sect-idp641696" id="sect-idp641696">Error Codes</a></h3>
+    <p>
+      There are two error codes that are used.  Following are the conditions,
+      meanings and data:</p>
+      <ul>
+        <li>
+          <span class="em">Declining Transfer (403)</span>:  During the Stream Initiation 
+          the Receiver may decline the transfer by sending the 403 error.  The
+          &lt;error/&gt; CDATA MAY contain a descriptive reason why, but is not
+          necessary.
+        </li>
+        <li>
+          <span class="em">No Available Methods (406)</span>:  When the Sender presents the
+          available stream methods, and the Receiver can not use any of them,
+          they send a 406 error.  The &lt;error/&gt; CDATA is not important.
+        </li>
+      </ul>
+  </div>
+<h2>5.
+       <a name="sect-idp1568848" id="sect-idp1568848">Security Considerations</a></h2>
+  <p>
+    Data security concerns are left to the profiles to define.  Wire security
+    concerns are left to the stream definitions.
+  </p>
+<h2>6.
+       <a name="sect-idp1569888" id="sect-idp1569888">IANA Considerations</a></h2>
+  <p>
+    This document uses the MIME types as recorded by IANA, but no other direct 
+    interaction is necessary.
+  </p>
+<h2>7.
+       <a name="sect-idp1570912" id="sect-idp1570912">XMPP Registrar Considerations</a></h2>
+  <p>
+    The "http://jabber.org/protocol/si" namespace will be registered. 
+    The registrar will track header profiles for different stream initiation 
+    uses.
+  </p>
+<h2>8.
+       <a name="sect-idp1571984" id="sect-idp1571984">Formal Definition</a></h2>
+  <div class="indent"><h3>8.1 <a name="sect-idp1572368" id="sect-idp1572368">Schema</a></h3>
+    <p>To follow.</p>
+  </div>
+  <div class="indent"><h3>8.2 <a name="sect-idp1573376" id="sect-idp1573376">DTD</a></h3>
+    <p>To follow.</p>
+  </div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0087<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Retracted">Retracted</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 0.1<br />
+            Last Updated: 2003-05-22<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />
+                Dependencies: None<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: si<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0087.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0087.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0087.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@jabber.org">temas@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp613632" id="nt-idp613632">1</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 0.1 (2003-05-22)</h4><div class="indent">Initial version. (tjm)
+    </div></div><hr /><p>END</p></body></html>

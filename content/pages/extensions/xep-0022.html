@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0022: Message Events</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Message Events" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="DJ Adams" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This document defines an XMPP protocol extension used to request and respond to events relating to the delivery, display, and composition of messages. Note: This specification has been obsoleted in favor of XEP-0085 and XEP-0184." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2009-05-27" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0022" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0022: Message Events</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension used to request and respond to events relating to the delivery, display, and composition of messages. Note: This specification has been obsoleted in favor of XEP-0085 and XEP-0184.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Jeremie Miller, DJ Adams, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Obsolete</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Historical</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.4</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2009-05-27</td></tr></table><hr /><p style="color:red">WARNING: This document has been obsoleted by the XMPP Standards Foundation. Implementation of the protocol described herein is not recommended. Developers desiring similar functionality are advised to implement the protocol that supersedes this one (if any).</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#sect-idp622736">Introduction</a><br />2.  <a href="#sect-idp624944">The Events</a><br />   
+      2.1.  <a href="#sect-idp625712">Offline</a><br />   
+      2.2.  <a href="#sect-idp630496">Delivered</a><br />   
+      2.3.  <a href="#sect-idp631664">Displayed</a><br />   
+      2.4.  <a href="#sect-idp632864">Composing</a><br />3.  <a href="#sect-idp634208">Usage</a><br />   
+      3.1.  <a href="#sect-idp1550928">Requesting Event Notifications</a><br />   
+      3.2.  <a href="#sect-idp1555456">Raising Events</a><br />   
+      3.3.  <a href="#sect-idp1562688">The Composing Event</a><br />4.  <a href="#sect-idp1567680">Examples</a><br />5.  <a href="#sect-idp1577968">Implementation Notes</a><br />6.  <a href="#sect-idp1582128">Security Considerations</a><br />7.  <a href="#sect-idp1583024">IANA Considerations</a><br />8.  <a href="#sect-idp1584944">XMPP Registrar Considerations</a><br />9.  <a href="#sect-idp1587504">XML Schema</a><br />10.  <a href="#sect-idp1590336">Open Issues</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="sect-idp622736" id="sect-idp622736">Introduction</a></h2>
+  <p>The 'jabber:x:event' namespace defines extensions used to request and respond to events relating to the delivery, display, and composition of messages.</p>
+  <p>By attaching a jabber:x:event extension to a &lt;message/&gt; element, the sender can track stages in the delivery of that message to its recipient.</p>
+  <p><span class="em">Note: More modern protocol extensions for this functionality have been defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0085.html">Chat State Notifications (XEP-0085)</a></span>  [<a href="#nt-idp626928">1</a>] for the composing and offline events and in <span class="ref"><a href="http://xmpp.org/extensions/xep-0184.html">Message Delivery Receipts  (XEP-0184)</a></span>  [<a href="#nt-idp628912">2</a>] for the delivered and displayed events; those specifications supersede this one.</span></p>
+<h2>2.
+       <a name="sect-idp624944" id="sect-idp624944">The Events</a></h2>
+  <p>There are four message events currently defined in this namespace:</p>
+
+  <div class="indent"><h3>2.1 <a name="sect-idp625712" id="sect-idp625712">Offline</a></h3>
+    <p>Indicates that the message has been stored offline by the intended recipient's server. This event is triggered only if the intended recipient's server supports offline storage, has that support enabled, and the recipient is offline when the server receives the message for delivery.</p>
+  </div>
+
+  <div class="indent"><h3>2.2 <a name="sect-idp630496" id="sect-idp630496">Delivered</a></h3>
+    <p>Indicates that the message has been delivered to the recipient. This signifies that the message has reached the recipient's Jabber client, but does not necessarily mean that the message has been displayed. This event is to be raised by the Jabber client.</p>
+  </div>
+
+  <div class="indent"><h3>2.3 <a name="sect-idp631664" id="sect-idp631664">Displayed</a></h3>
+    <p>Once the message has been received by the recipient's Jabber client, it may be displayed to the user. This event indicates that the message has been displayed, and is to be raised by the Jabber client. Even if a message is displayed multiple times, this event should be raised only once.</p>
+  </div>
+
+  <div class="indent"><h3>2.4 <a name="sect-idp632864" id="sect-idp632864">Composing</a></h3>
+    <p>In threaded chat conversations, this indicates that the recipient is composing a reply to a message. The event is to be raised by the recipient's Jabber client. A Jabber client is allowed to raise this event multiple times in response to the same request, providing the original event is cancelled first.</p>
+  </div>
+<h2>3.
+       <a name="sect-idp634208" id="sect-idp634208">Usage</a></h2>
+
+  <p>Extensions qualified by the jabber:x:event namespace may be used only in the context of &lt;message/&gt; elements. That is, event information should be requested, and given in response, in relation to &lt;message/&gt; elements only, and not &lt;presence/&gt; or &lt;iq/&gt; elements.</p>
+  <p>Event information should only be sent in response to a request for that information. Unsolicited event information is illegal. In addition, a client should not request message event information from a correspondent if it is known (for example through the results of a previous browse request) that the correspondent does not support message events.</p>
+  <p>Any request for the offline event in a message that has been stored offline must be removed by the server before the message is forwarded to the Jabber client. This means that any &lt;offline/&gt; tag should be removed from the extension.</p>
+
+  <div class="indent"><h3>3.1 <a name="sect-idp1550928" id="sect-idp1550928">Requesting Event Notifications</a></h3>
+  <p>Event notifications are requested by attaching an extension qualified by the jabber:x:event namespace to a &lt;message/&gt; element. A tag representing each event type requested for that message should be placed within the extension. Only one jabber:x:event extension may be attached to a &lt;message/&gt; element, but multiple event types may be requested within that one extension. The tags representing each of the event types are &lt;offline/&gt;, &lt;delivered/&gt;, &lt;displayed/&gt;, and &lt;composing/&gt;.</p>
+  <p>An example of a &lt;message/&gt; element with a jabber:x:event extension is shown here.</p>
+  <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Requesting notification of offline storage and delivery for a message</p><div class="indent"><pre class="prettyprint">
+&lt;message to='romeo@montague.net' id='message22'&gt;
+  &lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;
+  &lt;x xmlns='jabber:x:event'&gt;
+    &lt;offline/&gt;
+    &lt;delivered/&gt;
+    &lt;composing/&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>Here we see the sender wants to be notified if the message is stored offline (by the server), notified when the message is delivered (to the client), and notified if the recipient begins replying to the message. In this case, the sender will potentially receive three events based on this request.  The first if the recipient is offline and the message is stored on the server, the second when the recipient becomes available and the message is delivered, and the third if the recipient begins composing a reply to the message.</p>
+  <p>Note that the &lt;message/&gt; element requesting event notification contains an 'id' attribute. While these attributes are optional in the Jabber protocol, messages that contain event notification requests MUST contain an 'id' attribute so that raised events may be matched up with their original requests.</p>
+  </div>
+
+  <div class="indent"><h3>3.2 <a name="sect-idp1555456" id="sect-idp1555456">Raising Events</a></h3>
+  <p>If the message is stored by the server, the server must raise the requested event (offline) by sending a message to the sender as shown in this example:</p>
+  <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Raising the offline event</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='romeo@montague.net'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;x xmlns='jabber:x:event'&gt;
+    &lt;offline/&gt;
+    &lt;id&gt;message22&lt;/id&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>When raising an event, the raiser must send a &lt;message/&gt; element constructed according to the following rules:</p>
+    <ul>
+      <li>The element must contain only a jabber:x:event extension. Standard message elements such as &lt;subject/&gt;, &lt;body/&gt;, MUST NOT be included.</li>
+      <li>The extension must contain one tag representing the event being raised.  For example, if the offline event is being raised, an &lt;offline/&gt; tag must be included. (The events are temporally exclusive, thus only one event tag should ever be included.)</li>
+      <li>The extension must also contain an &lt;id/&gt; tag. The contents of this tag MUST be the value of the 'id' <span class="em">attribute</span> of the original message to which this event notification pertains. (If no 'id' attribute was included in the original message, then the &lt;id/&gt; tag must still be included with no CDATA.)</li>
+      <li>The message's from attribute should be set to the recipient of the original message for which the event is being raised. (This is an issue more relevant for the server, in responding to the offline event, because clients should rely on the server to stamp the elements that they send out with a from attribute.)</li>
+      <li>The link between the original message for which the event is being raised, and the message containing that raised event, is the &lt;id/&gt; tag in the jabber:x:event extension of the message containing that raised event, that points to the id attribute of the original message.</li>
+    </ul>
+  </div>
+
+  <div class="indent"><h3>3.3 <a name="sect-idp1562688" id="sect-idp1562688">The Composing Event</a></h3>
+  <p>The composing event is slightly different from the other events in that it can be raised and cancelled multiple times. This is to allow the reflection of what actually is happening when a user replies to a message; he may start composing a reply, which would trigger the composing event, get halfway through, and stop (by some definition of "stop", which may be implementation-specific). At this stage the event is no longer valid, or at least doesn't make much sense. So the client may send a cancellation for the composing event just raised.</p>
+  <p>The cancellation is raised by sending another jabber:x:event; however, in contrast to how the events are usually raised, no &lt;composing/&gt; tag is sent, just an &lt;id/&gt; tag, like this:</p>
+  <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Romeo begins to compose a reply</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='romeo@montague.net'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;x xmlns='jabber:x:event'&gt;
+    &lt;composing/&gt;
+    &lt;id&gt;message22&lt;/id&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Romeo pauses to reflect before answering, thus cancelling the composing event</p><div class="indent"><pre class="prettyprint">
+&lt;message
+    from='romeo@montague.net'
+    to='juliet@capulet.com/balcony'&gt;
+  &lt;x xmlns='jabber:x:event'&gt;
+    &lt;id&gt;message22&lt;/id&gt;
+  &lt;/x&gt;
+&lt;/message&gt;
+  </pre></div>
+  <p>The lack of an &lt;composing/&gt; tag (and any other event tag) signifies that the composing event, indicated previously by the id value, has been cancelled. In this example, the composing event being cancelled is that event that was previously raised with the id of message22.  After cancelling a composing event, a new one may be raised, following the same rules as before, when the typing of the reply is resumed.</p>
+  </div>
+<h2>4.
+       <a name="sect-idp1567680" id="sect-idp1567680">Examples</a></h2>
+  <p>This section contains a number of examples to illustrate the full flow of messages, event notifications, and event cancellations for a fictional conversation.</p>
+  <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Juliet sends a message to Romeo and requests all event types</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;message to='romeo@montague.net' id='message22'&gt;
+      &lt;body&gt;Art thou not Romeo, and a Montague?&lt;/body&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;offline/&gt;
+        &lt;delivered/&gt;
+        &lt;displayed/&gt;
+        &lt;composing/&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo temporarily loses his wireless connection in the Capulet's orchard and therefore his message is stored offline by the montague.net server, which generates the offline event and sends that notification to Juliet.</p>
+  <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Receiving the offline event</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;offline/&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo reconnects and the message is delivered to his Jabber client, which generates a delivered event and sends it to Juliet's client.</p>
+  <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Juliet receives notification of message delivery</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net/orchard'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;delivered/&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo's Jabber client displays the message and sends a displayed event to Juliet's client.</p>
+  <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Juliet receives notification of message display</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net/orchard'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;displayed/&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo begins composing a reply to Juliet's heartfelt question, and his Jabber client notifies Juliet that he is composing a reply.</p>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Juliet receives notification of message composing</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net/orchard'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;composing/&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo realizes his reply is too rash and pauses to choose the right words; his Jabber client senses the delay and cancels the previous composing event.</p>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Juliet receives cancellation of message composing</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net/orchard'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo starts composing again, and his Jabber client sends a notification to Juliet's client.</p>
+  <p class="caption"><a name="example-11" id="example-11"></a>Example 11. Juliet receives a second notification of message composing</p><div class="indent"><pre class="prettyprint">
+RECV: &lt;message
+          from='romeo@montague.net/orchard'
+          to='juliet@capulet.com/balcony'&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;composing/&gt;
+        &lt;id&gt;message22&lt;/id&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+  <p>Romeo finally sends his reply, and requests composing events related to it.</p>
+  <p class="caption"><a name="example-12" id="example-12"></a>Example 12. Romeo replies</p><div class="indent"><pre class="prettyprint">
+SEND: &lt;message to='juliet@capulet.com' id='GabberMessage43'&gt;
+      &lt;body&gt;Neither, fair saint, if either thee dislike.&lt;/body&gt;
+      &lt;x xmlns='jabber:x:event'&gt;
+        &lt;composing/&gt;
+      &lt;/x&gt;
+    &lt;/message&gt;
+  </pre></div>
+<h2>5.
+       <a name="sect-idp1577968" id="sect-idp1577968">Implementation Notes</a></h2>
+  <p>Compliant implementations SHOULD observe the following business rules:</p>
+  <ol>
+    <li>Every outgoing message sent from a compliant client should contain a request for event notifications (if such notifications are desired). The request for notifications cannot be sent just once in a conversation, since it applies to every message sent.</li>
+    <li>When a client receives a request for events from another entity, it should cache the most recent ID.</li>
+    <li>When a user begins replying to a message received from a contact, the user's client should check to see whether events have been requested by the contact for that message and set the CDATA of the &lt;id/&gt; element to the cached ID value.</li>
+    <li>The CDATA of the &lt;id/&gt; element MUST be the same as the value of the 'id' attribute of the notification request.</li>
+  </ol>
+<h2>6.
+       <a name="sect-idp1582128" id="sect-idp1582128">Security Considerations</a></h2>
+  <p>There are no security features or concerns related to this proposal.</p>
+<h2>7.
+       <a name="sect-idp1583024" id="sect-idp1583024">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1585904">3</a>].</p>
+<h2>8.
+       <a name="sect-idp1584944" id="sect-idp1584944">XMPP Registrar Considerations</a></h2>
+  <p>No action on the part of the <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1588976">4</a>] is necessary as a result of this document, since 'jabber:x:event' is already a registered protocol namespace.</p>
+<h2>9.
+       <a name="sect-idp1587504" id="sect-idp1587504">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:x:event'
+    xmlns='jabber:x:event'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0022: http://www.xmpp.org/extensions/xep-0022.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='offline' minOccurs='0' type='empty'/&gt;
+        &lt;xs:element name='delivered' minOccurs='0' type='empty'/&gt;
+        &lt;xs:element name='displayed' minOccurs='0' type='empty'/&gt;
+        &lt;xs:element name='composing' minOccurs='0' type='empty'/&gt;
+        &lt;xs:element name='id' minOccurs='0' type='xs:NMTOKEN'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+    </pre></div>
+<h2>10.
+       <a name="sect-idp1590336" id="sect-idp1590336">Open Issues</a></h2>
+  <ol>
+    <li>In a Standards Track specification addressing event functionality, it would be desirable to have more cancellation methods for composing events than those defined in this Informational document. For instance, is someone still composing if they become unavailable? This example points to the fact that cancellation of a composing event can either be explicit (the default or desired scenario) or implicit (e.g., through a change in the availability state of a client or the existence of the session associated with the message composition).</li>
+  </ol>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0022<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Obsolete">Obsolete</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Historical">Historical</a><br />
+            Version: 1.4<br />
+            Last Updated: 2009-05-27<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />Superseded By: XEP-0085, XEP-0184<br />
+            Short Name: x-event<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/x-event.xsd">http://www.xmpp.org/schemas/x-event.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0022.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0022.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0022.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>DJ Adams</h3><p class="indent">
+        Email:
+        <a href="mailto:dj.adams@pobox.com">dj.adams@pobox.com</a><br />
+        JabberID: 
+        <a href="xmpp:dj@gnu.mine.nu">dj@gnu.mine.nu</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp626928" id="nt-idp626928">1</a>. XEP-0085: Chat State Notifications &lt;<a href="http://xmpp.org/extensions/xep-0085.html">http://xmpp.org/extensions/xep-0085.html</a>&gt;.</p><p><a name="nt-idp628912" id="nt-idp628912">2</a>. XEP-0184: Message Delivery Receipts &lt;<a href="http://xmpp.org/extensions/xep-0184.html">http://xmpp.org/extensions/xep-0184.html</a>&gt;.</p><p><a name="nt-idp1585904" id="nt-idp1585904">3</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1588976" id="nt-idp1588976">4</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.4 (2009-05-27)</h4><div class="indent">Per a vote of the XMPP Council, changed status to Obsolete. (psa)
+    </div><h4>Version 1.3 (2004-01-06)</h4><div class="indent">Added XML schema. (psa)
+    </div><h4>Version 1.2 (2003-02-11)</h4><div class="indent">Attempted to clarify usage and business rules. (psa)
+    </div><h4>Version 1.1 (2003-01-26)</h4><div class="indent">Added more detailed information and clarified a few points. (psa)
+    </div><h4>Version 1.0 (2002-05-08)</h4><div class="indent">Changed status to Active. (psa)
+    </div><h4>Version 0.2 (2002-03-13)</h4><div class="indent">Minor corrections and additions. (dja)
+    </div><h4>Version 0.1 (2002-03-05)</h4><div class="indent">Initial draft. (dja)
+    </div></div><hr /><p>END</p></body></html>

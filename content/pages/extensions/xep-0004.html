@@ -1,0 +1,689 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0004: Data Forms</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Data Forms" /><meta name="DC.Creator" content="Ryan Eatmon" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Creator" content="Jeremie Miller" /><meta name="DC.Creator" content="Thomas Muldowney" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Description" content="This specification defines an XMPP protocol extension for data forms that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol includes lightweight semantics for forms processing (such as request, response, submit, and cancel), defines several common field types (boolean, list options with single or multiple choice, text with single line or multiple lines, single or multiple JabberIDs, hidden fields, etc.), provides extensibility for future data types, and can be embedded in a wide range of applications. The protocol is not intended to provide complete forms-processing functionality as is provided in the W3C XForms technology, but instead provides a basic subset of such functionality for use by XMPP entities." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2007-08-13" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0004" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0004: Data Forms</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This specification defines an XMPP protocol extension for data forms that can be used in workflows such as service configuration as well as for application-specific data description and reporting. The protocol includes lightweight semantics for forms processing (such as request, response, submit, and cancel), defines several common field types (boolean, list options with single or multiple choice, text with single line or multiple lines, single or multiple JabberIDs, hidden fields, etc.), provides extensibility for future data types, and can be embedded in a wide range of applications. The protocol is not intended to provide complete forms-processing functionality as is provided in the W3C XForms technology, but instead provides a basic subset of such functionality for use by XMPP entities.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Ryan Eatmon, Joe Hildebrand, Jeremie Miller, Thomas Muldowney, Peter Saint-Andre</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Final</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Standards Track</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>2.9</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2007-08-13</td></tr></table><hr /><p style="color:green">NOTICE: The protocol defined herein is a <strong>Final Standard</strong> of the XMPP Standards Foundation and can be considered a stable technology for implementation and deployment.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#reqs">Requirements</a><br />3.  <a href="#protocol">Protocol</a><br />   
+      3.1.  <a href="#protocol-formtypes">Form Types</a><br />   
+      3.2.  <a href="#protocol-field">The Field Element</a><br />   
+      3.3.  <a href="#protocol-fieldtypes">Field Types</a><br />   
+      3.4.  <a href="#protocol-results">Multiple Items in Form Results</a><br />4.  <a href="#validation">Data Validation</a><br />5.  <a href="#examples">Examples</a><br />   
+      5.1.  <a href="#examples-config">Configuration</a><br />   
+      5.2.  <a href="#examples-search">Search</a><br />6.  <a href="#disco">Service Discovery</a><br />7.  <a href="#security">Security Considerations</a><br />8.  <a href="#iana">IANA Considerations</a><br />9.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      9.1.  <a href="#registrar-namespaces">Protocol Namespaces</a><br />   
+      9.2.  <a href="#registrar-parameters">Parameter Values</a><br />10.  <a href="#schema">XML Schema</a><br />11.  <a href="#final-changes">Changes in Final State</a><br />12.  <a href="#draft-changes">Changes in Draft State</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p>Several existing Jabber/XMPP protocols involve the exchange of structured data between users and applications for common tasks such as registration (<span class="ref"><a href="http://xmpp.org/extensions/xep-0077.html">In-Band Registration (XEP-0077)</a></span>  [<a href="#nt-idp1617280">1</a>]) and searching (<span class="ref"><a href="http://xmpp.org/extensions/xep-0055.html">Jabber Search (XEP-0055)</a></span>  [<a href="#nt-idp1620048">2</a>]). Unfortunately, these early protocols were "hard coded" and thus place significant restrictions on the range of information that can be exchanged. Furthermore, other protocols (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0045.html">Multi-User Chat (XEP-0045)</a></span>  [<a href="#nt-idp1622800">3</a>]) may need to exchange data for purposes such as configuration, but the configuration options may differ depending on the specific implementation or deployment. Finally, developers may want to extend other protocols (e.g., <span class="ref"><a href="http://xmpp.org/extensions/xep-0030.html">Service Discovery (XEP-0030)</a></span>  [<a href="#nt-idp1625264">4</a>]) in a flexible manner in order to provide information that is not defined in the base protocol. In all of these cases, it would be helpful to use a generic data description format that can be used for dynamic forms generation and data "modelling" in a variety of circumstances.</p>
+  <p>An example may be helpful. Let us imagine that when a user creates a multi-user chatroom on a text conferencing service, the service allows the user to configure the room in various ways. While most implementations will probably provide a somewhat common set of configurable features (discussion logging, maximum number of room occupants, etc.), there will be some divergence: perhaps one implementation will enable archiving of the room log in a variety of file types (XML, HTML, PDF, etc.) and for a variety of time periods (hourly, daily, weekly, etc.), whereas another implementation may present a boolean on/off choice of logging in only one format (e.g., daily logs saved in HTML). Obviously, the first implementation will have more configuration options than the second implementation. Rather than "hard-coding" every option via distinct XML elements (e.g., &lt;room_logging_period/&gt;), a better design would involve a more flexible format.</p>
+  <p>The 'jabber:x:data' protocol described herein defines such a flexible format for use by Jabber/XMPP entities, steering a middle course between the simplicity of "name-value" pairs and the complexity of <span class="ref"><a href="http://www.w3.org/TR/xforms">XForms 1.0</a></span>  [<a href="#nt-idp631920">5</a>] (on which development had just begun when this protocol was designed). In many ways, 'jabber:x:data' is similar to the Forms Module of <span class="ref"><a href="http://www.w3.org/TR/xhtml1">XHTML 1.0</a></span>  [<a href="#nt-idp628048">6</a>]; however, it provides several Jabber-specific data types, enables applications to require data fields, integrates more naturally into the "workflow" semantics of IQ stanzas, and can be included as an extension of existing Jabber/XMPP protocols in ways that the XHTML Forms Module could not when this protocol was developed (especially because <span class="ref"><a href="http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/">Modularization of XHTML</a></span>  [<a href="#nt-idp1643888">7</a>] did not exist at that time).</p>
+<h2>2.
+       <a name="reqs" id="reqs">Requirements</a></h2>
+  <p>This document addresses the following requirements:</p>
+  <ol>
+    <li><span class="strong">Data Gathering</span> -- the protocol should enable a form-processing entity (commonly a server, service, or bot) to gather data from a form-submitting entity (commonly a client controlled by a human user); this should be done via distinct data fields (e.g., items in a questionnaire or configuration form), each of which can be a different data "type" and enable free-form input or a choice between multiple options (as is familiar from HTML forms).</li>
+    <li><span class="strong">Data Reporting</span> -- the protocol should enable a form-processing entity to report data (e.g., search results) to a form-submitting entity, again via distinct data fields.</li>
+    <li><span class="strong">Portability</span> -- the protocol should as much as possible define generic data formats and basic datatypes only; hints may be provided regarding the user interface, but they should be hints only and not hard-and-fast requirements.</li>
+    <li><span class="strong">Simplicity</span> -- the protocol should be simple for clients to implement, and most of the complexity (e.g., data validation and processing) should be the responsibility of servers and components rather than clients.</li>
+    <li><span class="strong">Flexibility</span> -- the protocol should be flexible and extensible rather than "hard-coded".</li>
+    <li><span class="strong">Compatibility</span> -- the protocol should define an extension to existing Jabber/XMPP protocols and not break existing implementations unless absolutely necessary.</li>
+  </ol>
+<h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>The base syntax for the 'jabber:x:data' namespace is as follows (a formal description can be found in the <a href="#schema">XML Schema</a> section below):</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;x xmlns='jabber:x:data'
+   type='{form-type}'&gt;
+  &lt;title/&gt;
+  &lt;instructions/&gt;
+  &lt;field var='field-name'
+         type='{field-type}'
+         label='description'&gt;
+    &lt;desc/&gt;
+    &lt;required/&gt;
+    &lt;value&gt;field-value&lt;/value&gt;
+    &lt;option label='option-label'&gt;&lt;value&gt;option-value&lt;/value&gt;&lt;/option&gt;
+    &lt;option label='option-label'&gt;&lt;value&gt;option-value&lt;/value&gt;&lt;/option&gt;
+  &lt;/field&gt;
+&lt;/x&gt;
+  </pre></div>
+  <p>The &lt;x/&gt; element qualified by the 'jabber:x:data' namespace SHOULD be included either directly as a first-level child of a &lt;message/&gt; stanza or as a second-level child of an &lt;iq/&gt; stanza (where the first-level child is an element qualified by a "wrapper" namespace); see also the restrictions enumerated below.</p>
+  <p>The OPTIONAL &lt;title/&gt; and &lt;instructions/&gt; elements enable the form-processing entity to label the form as a whole and specify natural-language instructions to be followed by the form-submitting entity. The XML character data for these elements SHOULD NOT contain newlines (the \n and \r characters), and any handling of newlines (e.g., presentation in a user interface) is unspecified herein; however, multiple instances of the &lt;instructions/&gt; element MAY be included.</p>
+  <div class="indent"><h3>3.1 <a name="protocol-formtypes" id="protocol-formtypes">Form Types</a></h3>
+    <p>The data gathered or provided in a 'jabber:x:data' form can be situated in a number of different contexts. Examples include an empty form that needs to be filled out, a completed form, the results of a submission, a search result, or simply a set of data that is encapsulated using the 'jabber:x:data' namespace. The full context for the data is provided by three things:</p>
+    <ol>
+      <li>the "wrapper" protocol (i.e., the namespace whose root element is the direct child of the &lt;iq/&gt; stanza and the parent of the &lt;x/&gt; element qualified by the 'jabber:x:data' namespace)</li>
+      <li>the place of the form within a transaction (e.g., an IQ "set" or "result") or structured conversation (e.g., a message &lt;thread/&gt;)</li>
+      <li>the 'type' attribute on the form's root &lt;x/&gt; element</li>
+    </ol>
+    <p>The first two pieces of contextual information are provided by other protocols, whereas the form types are described in the following table.</p>
+    <div class="indent"><p class="caption"><a name="table-1" id="table-1"></a>Table 1: Form Types</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>form</td>
+        <td>The form-processing entity is asking the form-submitting entity to complete a form.</td>
+      </tr>
+      <tr class="body">
+        <td>submit</td>
+        <td>The form-submitting entity is submitting data to the form-processing entity. The submission MAY include fields that were not provided in the empty form, but the form-processing entity MUST ignore any fields that it does not understand.</td>
+      </tr>
+      <tr class="body">
+        <td>cancel</td>
+        <td>The form-submitting entity has cancelled submission of data to the form-processing entity.</td>
+      </tr>
+      <tr class="body">
+        <td>result</td>
+        <td>The form-processing entity is returning data (e.g., search results) to the form-submitting entity, or the data is a generic data set.</td>
+      </tr>
+    </table></div>
+    <p>In order to maintain the context of the data as captured in the form type, the following rules MUST be observed:</p>
+    <ul>
+      <li><p>For &lt;iq/&gt; stanzas, the root element qualified by the "wrapper" namespace in a form of type "form" or "submit" MUST be returned in a form of type "result". The &lt;x/&gt; element qualified by the 'jabber:x:data' namespace MUST be a child of the "wrapper" namespace's root element. As defined in <span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp1670784">8</a>], the 'id' attribute MUST be copied in the IQ result. For data forms of type "form" or "result", the &lt;iq/&gt; stanza SHOULD be of type "result".  For data forms of type "submit" or "cancel", the &lt;iq/&gt; stanza SHOULD be of type "set".</p></li>
+      <li><p>For &lt;message/&gt; stanzas, the &lt;thread/&gt; SHOULD be copied in the reply if provided. The &lt;x/&gt; element qualified by the 'jabber:x:data' namespace MUST be a child of the &lt;message/&gt; stanza.</p></li>
+    </ul>
+  </div>
+  <div class="indent"><h3>3.2 <a name="protocol-field" id="protocol-field">The Field Element</a></h3>
+    <p>A data form of type "form", "submit", or "result" SHOULD contain at least one &lt;field/&gt; element; a data form of type "cancel" SHOULD NOT contain any &lt;field/&gt; elements.</p>
+    <p>The &lt;field/&gt; element MAY contain any of the following child elements:</p>
+    <div class="indent"><dl>
+      <di><dt><strong>&lt;desc/&gt;</strong></dt><dd>The XML character data of this element provides a natural-language description of the field, intended for presentation in a user-agent (e.g., as a "tool-tip", help button, or explanatory text provided near the field). The &lt;desc/&gt; element SHOULD NOT contain newlines (the \n and \r characters), since layout is the responsibility of a user agent, and any handling of newlines (e.g., presentation in a user interface) is unspecified herein. (Note: To provide a description of a field, it is RECOMMENDED to use a &lt;desc/&gt; element rather than a separate &lt;field/&gt; element of type "fixed".)</dd></di>
+      <di><dt><strong>&lt;required/&gt;</strong></dt><dd>This element, which MUST be empty, flags the field as required in order for the form to be considered valid.</dd></di>
+      <di><dt><strong>&lt;value/&gt;</strong></dt><dd>The XML character data of this element defines the default value for the field (according to the form-processing entity) in a data form of type "form", the data provided by a form-submitting entity in a data form of type "submit", or a data result in a data form of type "result". In data forms of type "form", if the form-processing entity provides a default value via the &lt;value/&gt; element, then the form-submitting entity SHOULD NOT attempt to enforce a different default value (although it MAY do so to respect user preferences or anticipate expected user input). Fields of type list-multi, jid-multi, text-multi, and hidden MAY contain more than one &lt;value/&gt; element; all other field types MUST NOT contain more than one &lt;value/&gt; element.</dd></di>
+      <di><dt><strong>&lt;option/&gt;</strong></dt><dd>One of the options in a field of type "list-single" or "list-multi". The XML character of the &lt;value/&gt; child defines the option value, and the 'label' attribute defines a human-readable name for the option. The &lt;option/&gt; element MUST contain one and only one &lt;value/&gt; child. If the field is not of type "list-single" or "list-multi", it MUST NOT contain an &lt;option/&gt; element.</dd></di>
+    </dl></div>
+    <p>If the &lt;field/&gt; element type is anything other than "fixed" (see below), it MUST possess a 'var' attribute that uniquely identifies the field in the context of the form (if it is "fixed", it MAY possess a 'var' attribute). The &lt;field/&gt; element MAY possess a 'label' attribute that defines a human-readable name for the field. For data forms of type "form", each &lt;field/&gt; element SHOULD possess a 'type' attribute that defines the data "type" of the field data (if no 'type' is specified, the default is "text-single"); fields provided in the context of other forms types MAY possess a 'type' attribute as well. For data forms of type "submit", inclusion of the 'type' attribute is OPTIONAL, since the form-processing entity is assumed to understand the data types associated with forms that it processes.</p>
+    <p>If fields are presented in a user interface (e.g., as items in a questionnaire or form result), the order of the field elements in the XML SHOULD determine the order of items presented to the user.</p>
+  </div>
+  <div class="indent"><h3>3.3 <a name="protocol-fieldtypes" id="protocol-fieldtypes">Field Types</a></h3>
+    <p>The following field types represent data "types" that are commonly exchanged between Jabber/XMPP entities. These field types are not intended to be as comprehensive as the datatypes defined in, for example, <span class="ref"><a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Part 2</a></span>  [<a href="#nt-idp1687216">9</a>], nor do they define user interface elements.</p>
+    <div class="indent"><p class="caption"><a name="table-2" id="table-2"></a>Table 2: Field Types</p><table border="1" cellpadding="3" cellspacing="0">
+      <tr class="body">
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+      <tr class="body">
+        <td>boolean</td>
+        <td>The field enables an entity to gather or provide an either-or choice between two options. The default value is "false".  [<a href="#nt-idp1695520">10</a>]</td>
+      </tr>
+      <tr class="body">
+        <td>fixed</td>
+        <td>The field is intended for data description (e.g., human-readable text such as "section" headers) rather than data gathering or provision. The &lt;value/&gt; child SHOULD NOT contain newlines (the \n and \r characters); instead an application SHOULD generate multiple fixed fields, each with one &lt;value/&gt; child.</td>
+      </tr>
+      <tr class="body">
+        <td>hidden</td>
+        <td>The field is not shown to the form-submitting entity, but instead is returned with the form. The form-submitting entity SHOULD NOT modify the value of a hidden field, but MAY do so if such behavior is defined for the "using protocol".</td>
+      </tr>
+      <tr class="body">
+        <td>jid-multi</td>
+        <td>The field enables an entity to gather or provide multiple Jabber IDs. Each provided JID SHOULD be unique (as determined by comparison that includes application of the Nodeprep, Nameprep, and Resourceprep profiles of Stringprep as specified in <span class="ref">XMPP Core</span>), and duplicate JIDs MUST be ignored. *</td>
+      </tr>
+      <tr class="body">
+        <td>jid-single</td>
+        <td>The field enables an entity to gather or provide a single Jabber ID. *</td>
+      </tr>
+      <tr class="body">
+        <td>list-multi</td>
+        <td>The field enables an entity to gather or provide one or more options from among many. A form-submitting entity chooses one or more items from among the options presented by the form-processing entity and MUST NOT insert new options. The form-submitting entity MUST NOT modify the order of items as received from the form-processing entity, since the order of items MAY be significant.**</td>
+      </tr>
+      <tr class="body">
+        <td>list-single</td>
+        <td>The field enables an entity to gather or provide one option from among many. A form-submitting entity chooses one item from among the options presented by the form-processing entity and MUST NOT insert new options. **</td>
+      </tr>
+      <tr class="body">
+        <td>text-multi</td>
+        <td>The field enables an entity to gather or provide multiple lines of text. ***</td>
+      </tr>
+      <tr class="body">
+        <td>text-private</td>
+        <td>The field enables an entity to gather or provide a single line or word of text, which shall be obscured in an interface (e.g., with multiple instances of the asterisk character).</td>
+      </tr>
+      <tr class="body">
+        <td>text-single</td>
+        <td>The field enables an entity to gather or provide a single line or word of text, which may be shown in an interface. This field type is the default and MUST be assumed if a form-submitting entity receives a field type it does not understand.</td>
+      </tr>
+    </table></div>
+    <p>* Note: Data provided for fields of type "jid-single" or "jid-multi" MUST contain one or more valid Jabber IDs, where validity is determined by the addressing rules defined in <span class="ref">XMPP Core</span> (see the <a href="#validation">Data Validation</a> section below).</p>
+    <p>** Note: The &lt;option/&gt; elements in list-multi and list-single fields MUST be unique, where uniqueness is determined by the value of the 'label' attribute and the XML character data of the &lt;value/&gt; element (i.e., both must be unique).</p>
+    <p>*** Note: Data provided for fields of type "text-multi" SHOULD NOT contain any newlines (the \n and \r characters). Instead, the application SHOULD split the data into multiple strings (based on the newlines inserted by the platform), then specify each string as the XML character data of a distinct &lt;value/&gt; element. Similarly, an application that receives multiple &lt;value/&gt; elements for a field of type "text-multi" SHOULD merge the XML character data of the value elements into one text block for presentation to a user, with each string separated by a newline character as appropriate for that platform.</p>
+  </div>
+  <div class="indent"><h3>3.4 <a name="protocol-results" id="protocol-results">Multiple Items in Form Results</a></h3>
+    <p>In some contexts (e.g., the results of a search request), it may be necessary to communicate multiple items. Therefore, a data form of type "result" MAY contain two child elements not described in the basic syntax above:</p>
+    <ol>
+      <li>One and only &lt;reported/&gt; element, which can be understood as a "table header" describing the data to follow.</li>
+      <li>Zero or more &lt;item/&gt; elements, which can be understood as "table cells" containing data (if any) that matches the request.</li>
+    </ol>
+    <p>The syntax is as follows:</p>
+    <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;x xmlns='jabber:x:data'
+   type='result'&gt;
+  &lt;reported&gt;
+    &lt;field var='field-name' label='description' type='{field-type}'/&gt;
+  &lt;/reported&gt;
+  &lt;item&gt;
+    &lt;field var='field-name'&gt;
+      &lt;value&gt;field-value&lt;/value&gt;
+    &lt;/field&gt;
+  &lt;/item&gt;
+  &lt;item&gt;
+    &lt;field var='field-name'&gt;
+      &lt;value&gt;field-value&lt;/value&gt;
+    &lt;/field&gt;
+  &lt;/item&gt;
+  .
+  .
+  .
+&lt;/x&gt;
+    </pre></div>
+    <p>Each of these elements MUST contain one or more &lt;field/&gt; children. The &lt;reported/&gt; element defines the data format for the result items by specifying the fields to be expected for each item; for this reason, the &lt;field/&gt; elements SHOULD possess a 'type' attribute and 'label' attribute in addition to the 'var' attribute, and SHOULD NOT contain a &lt;value/&gt; element. Each &lt;item/&gt; element defines one item in the result set, and MUST contain each field specified in the &lt;reported/&gt; element (although the XML character data of the &lt;value/&gt; element MAY be null).</p>
+  </div>
+<h2>4.
+       <a name="validation" id="validation">Data Validation</a></h2>
+  <p>Data validation is the responsibility of the form-processing entity (commonly a server, service, or bot) rather than the form-submitting entity (commonly a client controlled by a human user). This helps to meet the requirement for keeping client implementations simple. If the form-processing entity determines that the data provided is not valid, it SHOULD return a "Not Acceptable" error, optionally providing a textual explanation in the XMPP &lt;text/&gt; element or an application-specific child element that identifies the problem (see <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp1720080">11</a>] for information about mappings and formats).</p>
+<h2>5.
+       <a name="examples" id="examples">Examples</a></h2>
+  <p>For the sake of the following examples, let us suppose that there exists a bot hosting service on the Jabber network, located at &lt;botster.shakespeare.lit&gt;. This service enables registered users to create and configure new bots, find and interact with existing bots, and so on. We will assume that these interactions occur using the <span class="ref"><a href="http://xmpp.org/extensions/xep-0050.html">Ad-Hoc Commands (XEP-0050)</a></span>  [<a href="#nt-idp1725328">12</a>] protocol, which is used as a "wrapper" protocol for data forms qualified by the 'jabber:x:data' namespace. The examples in the sections that follow show most of the features of the data forms protocol described above.</p>
+  <p>Note: Additional examples can be found in the specifications for various "using protocols", such as <span class="ref">XEP-0045: Multi-User Chat</span> and <span class="ref">XEP-0055: Jabber Search</span>.</p>
+  <div class="indent"><h3>5.1 <a name="examples-config" id="examples-config">Configuration</a></h3>
+    <p>The first step is for a user to create a new bot on the hosting service. We will assume that this is done by sending a "create" command to the desired bot:</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. User Requests Bot Creation</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/home'
+    to='joogle@botster.shakespeare.lit'
+    type='get'
+    xml:lang='en'
+    id='create1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' 
+           node='create'
+           action='execute'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The hosting service then returns a data form to the user:</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Service Returns Bot Creation Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='joogle@botster.shakespeare.lit'
+    to='romeo@montague.net/home'
+    type='result'
+    xml:lang='en'
+    id='create1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='create'
+           sessionid='create:20040408T0128Z'
+           status='executing'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Bot Configuration&lt;/title&gt;
+      &lt;instructions&gt;Fill out this form to configure your new bot!&lt;/instructions&gt;
+      &lt;field type='hidden'
+             var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:bot&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='fixed'&gt;&lt;value&gt;Section 1: Bot Info&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='text-single'
+             label='The name of your bot'
+             var='botname'/&gt;
+      &lt;field type='text-multi'
+             label='Helpful description of your bot'
+             var='description'/&gt;
+      &lt;field type='boolean'
+             label='Public bot?'
+             var='public'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private'
+             label='Password for special access'
+             var='password'/&gt;
+      &lt;field type='fixed'&gt;&lt;value&gt;Section 2: Features&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='list-multi'
+             label='What features will the bot support?'
+             var='features'&gt;
+        &lt;option label='Contests'&gt;&lt;value&gt;contests&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='News'&gt;&lt;value&gt;news&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Polls'&gt;&lt;value&gt;polls&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Reminders'&gt;&lt;value&gt;reminders&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='Search'&gt;&lt;value&gt;search&lt;/value&gt;&lt;/option&gt;
+        &lt;value&gt;news&lt;/value&gt;
+        &lt;value&gt;search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='fixed'&gt;&lt;value&gt;Section 3: Subscriber List&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='list-single'
+             label='Maximum number of subscribers'
+             var='maxsubs'&gt;
+        &lt;value&gt;20&lt;/value&gt;
+        &lt;option label='10'&gt;&lt;value&gt;10&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='20'&gt;&lt;value&gt;20&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='30'&gt;&lt;value&gt;30&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='50'&gt;&lt;value&gt;50&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='100'&gt;&lt;value&gt;100&lt;/value&gt;&lt;/option&gt;
+        &lt;option label='None'&gt;&lt;value&gt;none&lt;/value&gt;&lt;/option&gt;
+      &lt;/field&gt;
+      &lt;field type='fixed'&gt;&lt;value&gt;Section 4: Invitations&lt;/value&gt;&lt;/field&gt;
+      &lt;field type='jid-multi'
+             label='People to invite'
+             var='invitelist'&gt;
+        &lt;desc&gt;Tell all your friends about your new bot!&lt;/desc&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The user then submits the configuration form:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. User Submits Bot Creation Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='romeo@montague.net/home'
+    to='joogle@botster.shakespeare.lit'
+    type='set'
+    xml:lang='en'
+    id='create2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='create'
+           sessionid='create:20040408T0128Z'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:bot&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='botname'&gt;
+        &lt;value&gt;The Jabber Google Bot&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-multi' var='description'&gt;
+        &lt;value&gt;This bot enables you to send requests to&lt;/value&gt;
+        &lt;value&gt;Google and receive the search results right&lt;/value&gt;
+        &lt;value&gt;in your Jabber client. It&amp;apos; really cool!&lt;/value&gt;
+        &lt;value&gt;It even supports Google News!&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='boolean' var='public'&gt;
+        &lt;value&gt;0&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='password'&gt;
+        &lt;value&gt;v3r0na&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-multi' var='features'&gt;
+        &lt;value&gt;news&lt;/value&gt;
+        &lt;value&gt;search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='maxsubs'&gt;
+        &lt;value&gt;50&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='jid-multi' var='invitelist'&gt;
+        &lt;value&gt;juliet@capulet.com&lt;/value&gt;
+        &lt;value&gt;benvolio@montague.net&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The service then returns the results to the user:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Service Returns Bot Creation Result</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='joogle@botster.shakespeare.lit'
+    to='romeo@montague.net/home'
+    type='result'
+    xml:lang='en'
+    id='create2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands'
+           node='create'
+           sessionid='create:20040408T0128Z'
+           status='completed'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;field type='hidden' var='FORM_TYPE'&gt;
+        &lt;value&gt;jabber:bot&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-single' var='botname'&gt;
+        &lt;value&gt;The Jabber Google Bot&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='boolean' var='public'&gt;
+        &lt;value&gt;0&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='text-private' var='password'&gt;
+        &lt;value&gt;v3r0na&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-multi' var='features'&gt;
+        &lt;value&gt;news&lt;/value&gt;
+        &lt;value&gt;search&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='list-single' var='maxsubs'&gt;
+        &lt;value&gt;50&lt;/value&gt;
+      &lt;/field&gt;
+      &lt;field type='jid-multi' var='invitelist'&gt;
+        &lt;value&gt;juliet@capulet.com&lt;/value&gt;
+        &lt;value&gt;benvolio@montague.net&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>5.2 <a name="examples-search" id="examples-search">Search</a></h3>
+    <p>Now that the user has created this search bot, let us suppose that one of the friends he has invited decides to try it out by sending a search request:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. User Requests Search Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/chamber'
+    to='joogle@botster.shakespeare.lit'
+    type='get'
+    xml:lang='en'
+    id='search1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' 
+           node='search'
+           action='execute'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Service Returns Search Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='joogle@botster.shakespeare.lit'
+    to='juliet@capulet.com/chamber'
+    type='result'
+    xml:lang='en'
+    id='search1'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' 
+           node='search'
+           status='executing'&gt;
+    &lt;x xmlns='jabber:x:data' type='form'&gt;
+      &lt;title&gt;Joogle Search&lt;/title&gt;
+      &lt;instructions&gt;Fill out this form to search for information!&lt;/instructions&gt;
+      &lt;field type='text-single'
+             var='search_request'&gt;
+        &lt;required/&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. User Submits Search Form</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='juliet@capulet.com/chamber'
+    to='joogle@botster.shakespeare.lit'
+    type='get'
+    xml:lang='en'
+    id='search2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' 
+           node='search'&gt;
+    &lt;x xmlns='jabber:x:data' type='submit'&gt;
+      &lt;field type='text-single' var='search_request'&gt;
+        &lt;value&gt;verona&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Service Returns Search Results</p><div class="indent"><pre class="prettyprint">
+&lt;iq from='joogle@botster.shakespeare.lit'
+    to='juliet@capulet.com/chamber'
+    type='result'
+    xml:lang='en'
+    id='search2'&gt;
+  &lt;command xmlns='http://jabber.org/protocol/commands' 
+           node='search'
+           status='completed'&gt;
+    &lt;x xmlns='jabber:x:data' type='result'&gt;
+      &lt;title&gt;Joogle Search: verona&lt;/title&gt;
+      &lt;reported&gt;
+        &lt;field var='name'/&gt;
+        &lt;field var='url'/&gt;
+      &lt;/reported&gt;
+      &lt;item&gt;
+        &lt;field var='name'&gt;
+          &lt;value&gt;Comune di Verona - Benvenuti nel sito ufficiale&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='url'&gt;
+          &lt;value&gt;http://www.comune.verona.it/&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='name'&gt;
+          &lt;value&gt;benvenuto!&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='url'&gt;
+          &lt;value&gt;http://www.hellasverona.it/&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='name'&gt;
+          &lt;value&gt;Universita degli Studi di Verona - Home Page&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='url'&gt;
+          &lt;value&gt;http://www.univr.it/&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='name'&gt;
+          &lt;value&gt;Aeroporti del Garda&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='url'&gt;
+          &lt;value&gt;http://www.aeroportoverona.it/&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/item&gt;
+      &lt;item&gt;
+        &lt;field var='name'&gt;
+          &lt;value&gt;Veronafiere - fiera di Verona&lt;/value&gt;
+        &lt;/field&gt;
+        &lt;field var='url'&gt;
+          &lt;value&gt;http://www.veronafiere.it/&lt;/value&gt;
+        &lt;/field&gt;
+      &lt;/item&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+<h2>6.
+       <a name="disco" id="disco">Service Discovery</a></h2>
+  <p>If an entity supports inclusion of the &lt;x/&gt; element qualified by the 'jabber:x:data' namespace as a direct child of the &lt;message/&gt; stanza type, it MUST report support by including a service discovery feature of "jabber:x:data" (see <a href="#ns">Protocol Namespaces</a> regarding issuance of one or more permanent namespaces) in response to a Service Discovery information request:</p>
+  <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Service Discovery information request</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'/&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p class="caption"><a name="example-10" id="example-10"></a>Example 10. Service Discovery information response</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.com/balcony'
+    to='romeo@montague.net/orchard'
+    id='disco1'&gt;
+  &lt;query xmlns='http://jabber.org/protocol/disco#info'&gt;
+    ...
+    &lt;feature var='jabber:x:data'/&gt;
+    ...
+  &lt;/query&gt;
+&lt;/iq&gt;
+  </pre></div>
+  <p>If an entity supports data forms indirectly through inclusion of data forms in a wrapper namespace (rather than directly within a &lt;message/&gt; stanza), it MUST NOT advertise support for the 'jabber:x:data' namespace, since support is implicit in support for the wrapper protocol.</p>
+<h2>7.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>There are no security concerns related to this specification above and beyond those described in the relevant section of <span class="ref">XMPP Core</span>.</p>
+<h2>8.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1753120">13</a>].</p>
+<h2>9.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>9.1 <a name="registrar-namespaces" id="registrar-namespaces">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1760016">14</a>] includes the 'jabber:x:data' namespace in its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>9.2 <a name="registrar-parameters" id="registrar-parameters">Parameter Values</a></h3>
+    <p>The XMPP Registrar maintains a registry of parameter values related to the 'jabber:x:data' namespace, specifically as defined in <span class="ref"><a href="http://xmpp.org/extensions/xep-0068.html">Field Standardization for Data Forms (XEP-0068)</a></span>  [<a href="#nt-idp1763792">15</a>]; the registry is located at &lt;<a href="http://xmpp.org/registrar/formtypes.html">http://xmpp.org/registrar/formtypes.html</a>&gt;.</p>
+  </div>
+<h2>10.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p>This schema is descriptive, not normative.</p>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version='1.0' encoding='UTF-8'?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='jabber:x:data'
+    xmlns='jabber:x:data'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0004: http://www.xmpp.org/extensions/xep-0004.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='x'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='instructions' 
+                    minOccurs='0' 
+                    maxOccurs='unbounded' 
+                    type='xs:string'/&gt;
+        &lt;xs:element name='title' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element ref='field' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='reported' minOccurs='0' maxOccurs='1'/&gt;
+        &lt;xs:element ref='item' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='type' use='required'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='cancel'/&gt;
+            &lt;xs:enumeration value='form'/&gt;
+            &lt;xs:enumeration value='result'/&gt;
+            &lt;xs:enumeration value='submit'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='field'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name='desc' minOccurs='0' type='xs:string'/&gt;
+        &lt;xs:element name='required' minOccurs='0' type='empty'/&gt;
+        &lt;xs:element ref='value' minOccurs='0' maxOccurs='unbounded'/&gt;
+        &lt;xs:element ref='option' minOccurs='0' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='label' type='xs:string' use='optional'/&gt;
+      &lt;xs:attribute name='type' use='optional'&gt;
+        &lt;xs:simpleType&gt;
+          &lt;xs:restriction base='xs:NCName'&gt;
+            &lt;xs:enumeration value='boolean'/&gt;
+            &lt;xs:enumeration value='fixed'/&gt;
+            &lt;xs:enumeration value='hidden'/&gt;
+            &lt;xs:enumeration value='jid-multi'/&gt;
+            &lt;xs:enumeration value='jid-single'/&gt;
+            &lt;xs:enumeration value='list-multi'/&gt;
+            &lt;xs:enumeration value='list-single'/&gt;
+            &lt;xs:enumeration value='text-multi'/&gt;
+            &lt;xs:enumeration value='text-private'/&gt;
+            &lt;xs:enumeration value='text-single'/&gt;
+          &lt;/xs:restriction&gt;
+        &lt;/xs:simpleType&gt;
+      &lt;/xs:attribute&gt;
+      &lt;xs:attribute name='var' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='option'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='value'/&gt;
+      &lt;/xs:sequence&gt;
+      &lt;xs:attribute name='label' type='xs:string' use='optional'/&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='value' type='xs:string'/&gt;
+
+  &lt;xs:element name='reported'&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;
+        When contained in a "reported" element, the "field" element
+        SHOULD NOT contain a "value" child.
+      &lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='field' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:element name='item'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element ref='field' maxOccurs='unbounded'/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<h2>11.
+       <a name="final-changes" id="final-changes">Changes in Final State</a></h2>
+  <p>The following substantive protocol changes have been made while this specification has been in the Final state:</p>
+  <ul>
+    <li>Specified that the 'var' attribute is required for all field types except "fixed", for which the 'var' attribute is optional.</li>
+    <li>Specified when to advertise support via service discovery.</li>
+    <li>Removed references to &lt;presence/&gt; stanzas.</li>
+  </ul>
+<h2>12.
+       <a name="draft-changes" id="draft-changes">Changes in Draft State</a></h2>
+  <p>The following substantive protocol changes were made while this specification was in the Draft state:</p>
+  <ul>
+    <li>The &lt;x/&gt; element MAY be included directly in &lt;message/&gt; and &lt;presence/&gt; stanzas.</li>
+    <li>The &lt;x/&gt; element MAY contain a &lt;title/&gt; child for forms and results.</li>
+    <li>The &lt;x/&gt; element MUST possess a 'type' attribute.</li>
+    <li>A &lt;field/&gt; element MAY be of type='jid-single'.</li>
+    <li>Results MAY be reported back in &lt;item/&gt; tags.</li>
+    <li>Results MAY contain a &lt;reported/&gt; element with result set.</li>
+    <li>The &lt;reported/&gt; fields MAY possess a 'type' attribute to provide hints about how to interact with the data (type='jid-single' being the most useful).</li>
+  </ul>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0004<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Final">Final</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Standards Track">Standards Track</a><br />
+            Version: 2.9<br />
+            Last Updated: 2007-08-13<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: x-data<br />
+        Schema: &lt;<a href="http://www.xmpp.org/schemas/x-data.xsd">http://www.xmpp.org/schemas/x-data.xsd</a>&gt;<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0004.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0004.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0004.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Ryan Eatmon</h3><p class="indent">
+        Email:
+        <a href="mailto:reatmon@jabber.org">reatmon@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:reatmon@jabber.org">reatmon@jabber.org</a><br /></p><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p><h3>Jeremie Miller</h3><p class="indent">
+        Email:
+        <a href="mailto:jer@jabber.org">jer@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:jer@jabber.org">jer@jabber.org</a><br /></p><h3>Thomas Muldowney</h3><p class="indent">
+        Email:
+        <a href="mailto:temas@jabber.org">temas@jabber.org</a><br />
+        JabberID: 
+        <a href="xmpp:temas@jabber.org">temas@jabber.org</a><br /></p><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp1617280" id="nt-idp1617280">1</a>. XEP-0077: In-Band Registration &lt;<a href="http://xmpp.org/extensions/xep-0077.html">http://xmpp.org/extensions/xep-0077.html</a>&gt;.</p><p><a name="nt-idp1620048" id="nt-idp1620048">2</a>. XEP-0055: Jabber Search &lt;<a href="http://xmpp.org/extensions/xep-0055.html">http://xmpp.org/extensions/xep-0055.html</a>&gt;.</p><p><a name="nt-idp1622800" id="nt-idp1622800">3</a>. XEP-0045: Multi-User Chat &lt;<a href="http://xmpp.org/extensions/xep-0045.html">http://xmpp.org/extensions/xep-0045.html</a>&gt;.</p><p><a name="nt-idp1625264" id="nt-idp1625264">4</a>. XEP-0030: Service Discovery &lt;<a href="http://xmpp.org/extensions/xep-0030.html">http://xmpp.org/extensions/xep-0030.html</a>&gt;.</p><p><a name="nt-idp631920" id="nt-idp631920">5</a>. XForms 1.0 &lt;<a href="http://www.w3.org/TR/xforms">http://www.w3.org/TR/xforms</a>&gt;.</p><p><a name="nt-idp628048" id="nt-idp628048">6</a>. XHTML 1.0 &lt;<a href="http://www.w3.org/TR/xhtml1">http://www.w3.org/TR/xhtml1</a>&gt;.</p><p><a name="nt-idp1643888" id="nt-idp1643888">7</a>. Modularization of XHTML &lt;<a href="http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/">http://www.w3.org/TR/2004/WD-xhtml-modularization-20040218/</a>&gt;.</p><p><a name="nt-idp1670784" id="nt-idp1670784">8</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp1687216" id="nt-idp1687216">9</a>. XML Schema Part 2: Datatypes &lt;<a href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</a>&gt;.</p><p><a name="nt-idp1695520" id="nt-idp1695520">10</a>. In accordance with Section 3.2.2.1 of <span class="ref">XML Schema Part 2: Datatypes</span>, the allowable lexical representations for the xs:boolean datatype are the strings "0" and "false" for the concept 'false' and the strings "1" and "true" for the concept 'true'; implementations MUST support both styles of lexical representation.</p><p><a name="nt-idp1720080" id="nt-idp1720080">11</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp1725328" id="nt-idp1725328">12</a>. XEP-0050: Ad-Hoc Commands &lt;<a href="http://xmpp.org/extensions/xep-0050.html">http://xmpp.org/extensions/xep-0050.html</a>&gt;.</p><p><a name="nt-idp1753120" id="nt-idp1753120">13</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1760016" id="nt-idp1760016">14</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p><p><a name="nt-idp1763792" id="nt-idp1763792">15</a>. XEP-0068: Field Data Standardization for Data Forms &lt;<a href="http://xmpp.org/extensions/xep-0068.html">http://xmpp.org/extensions/xep-0068.html</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 2.9 (2007-08-13)</h4><div class="indent"><p>Clarified the definition and handling of the list-multi and list-single field types; specified that hidden field values should not be modified unless such behavior is defined for the using protocol; specified that a submission should include all fields provided in the empty form and may include additional fields, but that additional fields must be ignored if not understood by the form-processing entity.</p> (psa)
+    </div><h4>Version 2.8 (2007-05-21)</h4><div class="indent"><p>Removed mentions of presence stanzas; added section on discovering support; added section on substantive changes in Final state.</p> (psa)
+    </div><h4>Version 2.7 (2006-01-25)</h4><div class="indent"><p>Incorporated errata: (1) clarified rules regarding inclusion of option and value elements depending on field type; (2) clarified handling of default values; (3) added value elements to list-multi field in Example 2; (4) harmonized spelling of form-processing entity and form-submitting entity.</p> (psa)
+    </div><h4>Version 2.6 (2004-10-13)</h4><div class="indent"><p>Incorporated errata: (1) corrected syntax of &lt;reported/&gt; element (&lt;field/&gt; element should not contain a &lt;value/&gt; child); (2) corrected Example 8.</p> (psa)
+    </div><h4>Version 2.5 (2004-05-07)</h4><div class="indent"><p>Clarified terminology regarding form-processing entities and form-submitting entities; corrected several small errors in the schema.</p> (psa)
+    </div><h4>Version 2.4 (2004-05-04)</h4><div class="indent"><p>Per discussion by the authors and Jabber Council, specified that the 'var' attribute is required for all field types except "fixed", for which the 'var' attribute is optional.</p> (psa)
+    </div><h4>Version 2.3 (2004-03-31)</h4><div class="indent"><p>Formalization and further editorial revisions.</p> (psa)
+    </div><h4>Version 2.2 (2004-01-22)</h4><div class="indent"><p>Editorial revisions.</p> (psa)
+    </div><h4>Version 2.1 (2003-02-16)</h4><div class="indent"><p>Added schema.</p> (psa)
+    </div><h4>Version 2.0 (2002-12-09)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Final.</p> (psa)
+    </div><h4>Version 1.1 (2002-10-15)</h4><div class="indent"><p>Call for Experience changes (see <a href="#draft-changes">Changes in Draft State</a> section). This version voted to Final on 2002-12-09.</p> (rwe)
+    </div><h4>Version 1.0 (2002-04-24)</h4><div class="indent"><p>Per a vote of the Jabber Council, changed status to Draft.</p> (psa)
+    </div><h4>Version 0.6 (2002-03-15)</h4><div class="indent"><p>Protocol tweaks based on Standards list discussion.</p> (rwe)
+    </div><h4>Version 0.5 (2002-02-06)</h4><div class="indent"><p>Protocol tweaks based on implementation and discussion.</p> (rwe)
+    </div><h4>Version 0.4 (2001-11-16)</h4><div class="indent"><p>Major redesign to attempt to clarify the scope of this document and limit what it is trying to solve.</p> (rwe)
+    </div><h4>Version 0.3 (2001-07-23)</h4><div class="indent"><p>Protocol update</p> (rwe)
+    </div><h4>Version 0.2 (2001-06-29)</h4><div class="indent"><p>Protocol update and DocBook version</p> (rwe)
+    </div><h4>Version 0.1 (2001-01-25)</h4><div class="indent"><p>Initial release</p> (rwe)
+    </div></div><hr /><p>END</p></body></html>

@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>XEP-0132: Presence Obtained via Kinesthetic Excitation (POKE)</title><link rel="stylesheet" type="text/css" href="../xmpp.css" /><link href="../prettify.css" type="text/css" rel="stylesheet" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><script type="text/javascript" src="../prettify.js"></script><meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0" /><meta name="DC.Title" content="Presence Obtained via Kinesthetic Excitation (POKE)" /><meta name="DC.Creator" content="Peter Saint-Andre" /><meta name="DC.Creator" content="Joe Hildebrand" /><meta name="DC.Description" content="This document defines an XMPP protocol extension that enables probing for presence via physical rather than electronic means." /><meta name="DC.Publisher" content="XMPP Standards Foundation" /><meta name="DC.Contributor" content="XMPP Extensions Editor" /><meta name="DC.Date" content="2004-04-01" /><meta name="DC.Type" content="XMPP Extension Protocol" /><meta name="DC.Format" content="XHTML" /><meta name="DC.Identifier" content="XEP-0132" /><meta name="DC.Language" content="en" /><meta name="DC.Rights" content="This XMPP Extension Protocol is copyright &#xA9; 1999 - 2014 by the XMPP Standards Foundation (XSF)." /></head><body onload="prettyPrint()"><h1>XEP-0132: Presence Obtained via Kinesthetic Excitation (POKE)</h1><table><tr valign="top"><td><strong>Abstract:</strong></td><td>This document defines an XMPP protocol extension that enables probing for presence via physical rather than electronic means.</td></tr><tr valign="top"><td><strong>Authors:</strong></td><td>Peter Saint-Andre, Joe Hildebrand</td></tr><tr valign="top"><td><strong>Copyright:</strong></td><td>© 1999 - 2015 XMPP Standards Foundation. <a href="#appendix-legal">SEE LEGAL NOTICES</a>.</td></tr><tr valign="top"><td><strong>Status:</strong></td><td>Active</td></tr><tr valign="top"><td><strong>Type:</strong></td><td>Humorous</td></tr><tr valign="top"><td><strong>Version:</strong></td><td>1.0</td></tr><tr valign="top"><td><strong>Last Updated:</strong></td><td>2004-04-01</td></tr></table><hr /><p style="color:green">NOTICE: This document is Humorous. It MAY provide amusement but SHOULD NOT be taken seriously.</p><hr /><h2>Table of Contents</h2><div class="indent"><p><br />1.  <a href="#intro">Introduction</a><br />2.  <a href="#approach">Approach</a><br />3.  <a href="#protocol">Protocol</a><br />   
+      3.1.  <a href="#protocol-presence">Presence</a><br />   
+      3.2.  <a href="#protocol-iq">IQ</a><br />   
+      3.3.  <a href="#protocol-methods">Methods</a><br />4.  <a href="#privacy">Privacy Considerations</a><br />5.  <a href="#security">Security Considerations</a><br />6.  <a href="#iana">IANA Considerations</a><br />7.  <a href="#registrar">XMPP Registrar Considerations</a><br />   
+      7.1.  <a href="#registrar-ns">Protocol Namespaces</a><br />   
+      7.2.  <a href="#registrar-methods">Method Values</a><br />8.  <a href="#schema">XML Schema</a></p><p><a href="#appendices">Appendices</a><br />    <a href="#appendix-docinfo">A: Document Information</a><br />    <a href="#appendix-authorinfo">B: Author Information</a><br />    <a href="#appendix-legal">C: Legal Notices</a><br />    <a href="#appendix-xmpp">D: Relation to XMPP</a><br />    <a href="#appendix-discuss">E: Discussion Venue</a><br />    <a href="#appendix-conformance">F: Requirements Conformance</a><br />    <a href="#appendix-notes">G: Notes</a><br />    <a href="#appendix-revs">H: Revision History</a></p></div><hr /><h2>1.
+       <a name="intro" id="intro">Introduction</a></h2>
+  <p><span class="ref"><a href="http://tools.ietf.org/html/rfc6120">XMPP Core</a></span>  [<a href="#nt-idp604816">1</a>] and <span class="ref"><a href="http://tools.ietf.org/html/rfc6121">XMPP IM</a></span>  [<a href="#nt-idp607408">2</a>] define methods for exchanging information about a person's network availability via the XML &lt;presence/&gt; stanza. In general, such presence information is generated only when a person initiates interaction with a client, although it can be generated programmatically through features such as auto-away. However, sometimes a user is present in the vicinity of a client but is not actively engaged with the client interface. In such circumstances, it would be helpful to have a mechanism that is sometimes referred to as &lt;presence type='probe-irl'/&gt;: the ability to invoke a real-life means of determining the physical presence of the user. This document defines just such a mechanism.</p>
+<h2>2.
+       <a name="approach" id="approach">Approach</a></h2>
+  <p>Physical presence is best determined through direct interaction with an object. In this document, our approach is labelled "kinesthetic excitation": some form of physical contact is initiated with the object (in most cases a user), resulting in hard evidence of presence obtained by a sense modality such as sight, touch, or hearing. To ensure reliability, the physical contact MUST impinge upon the object or user to such an extent that it measurably reacts in the form of motion through space (e.g., moving in relation to a visual observation device), generation of an auditory event (e.g., vocalization), and the like. The exact means of excitation and perception are implementation-specific and therefore not specified fully in this document, although suggestions are provided in the <a href="#protocol-methods">Methods</a> section below.</p>
+<h2>3.
+       <a name="protocol" id="protocol">Protocol</a></h2>
+  <p>In the past, some members of the Jabber community have suggested the addition of a new presence type: "probe-irl". However, this has several drawbacks. First, the XMPP specifications (<span class="ref">XMPP Core</span> and <span class="ref">XMPP IM</span>) approved by the IETF do not allow any values for the 'type' attribute other than those defined in the XML schemas for the 'jabber:client' and 'jabber:server' namespaces. Second, presence probes are handled by a server on behalf of a user and therefore are not routed to clients (which presumably often have the best opportunity for discovering evidence of physical presence); an &lt;iq/&gt; stanza is more appropriate for client-to-client information exchange. Therefore, this document defines a general extension mechanism that can be used in both &lt;presence/&gt; and &lt;iq/&gt; stanzas.</p>
+  <p>The extension mechanism is encapsulated in a &lt;poke/&gt; element qualified by the 'http://jabber.org/protocol/poke' namespace; this element MAY be included as a direct child of a &lt;presence/&gt; stanza of type "probe" or an &lt;iq/&gt; stanza of type "get" (for a request), "result" (for a successful response), or "error" (for an unsuccessful response).</p>
+  <p>The requesting entity MAY specify a preferred method of excitation and observation; in general, these methods correspond to particular sense modalities such as sight, touch, and hearing (see the <a href="#protocol-methods">Methods</a> section below).</p>
+  <div class="indent"><h3>3.1 <a name="protocol-presence" id="protocol-presence">Presence</a></h3>
+    <p>As defined in <span class="ref">XMPP IM</span>, presence stanzas of type "probe" are handled on behalf of the target entity by the entity's server. While normally these presence stanzas are generated by the requesting entity's server (e.g., when the requesting entity sends initial presence), the requesting entity itself (or, more precisely, its client) is allowed to generate presence stanzas of type "probe". In this document we make use of this ability to query the target entity's server regarding the entity's physical presence.</p>
+    <p>In the following example, a star-crossed lover pokes the server of his beloved to determine her physical presence (notice that the value of 'to' address lacks a resource identifier and therefore is a bare JID, not a full JID).</p>
+    <p class="caption"><a name="example-1" id="example-1"></a>Example 1. Poking via the server</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    type='probe'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>If the user's server does not support the POKE protocol, it SHOULD ignore the extension and treat the presence stanza as a normal (non-IRL) presence probe. However, the user's server MAY return a "Service Unavailable" error to the requesting entity to inform the requesting entity that IRL probes are not supported (for details regarding error syntax, refer to <span class="ref"><a href="http://xmpp.org/extensions/xep-0086.html">Error Condition Mappings (XEP-0086)</a></span>  [<a href="#nt-idp618016">3</a>]):</p>
+    <p class="caption"><a name="example-2" id="example-2"></a>Example 2. Server returns service unavailable error</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    type='error'
+    from='juliet@capulet.com'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+  &lt;error code='503' type='cancel'&gt;
+    &lt;service-unavailable 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>If the user's server supports the POKE protocol, it MUST first perform appropriate access checks to determine if the requesting entity has permission to view the user's presence (e.g., by checking presence subscriptions and privacy lists). If the user's server determines that the requesting entity is not allowed to learn the user's physical presence information, it MUST return a "Forbidden" error:</p>
+    <p class="caption"><a name="example-3" id="example-3"></a>Example 3. Server returns forbidden error</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    type='error'
+    from='juliet@capulet.com'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+  &lt;error code='403' type='auth'&gt;
+    &lt;forbidden 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>If the requesting entity has permission to discover the user's physical presence, the server SHOULD attempt to determine if the user is physically present. Methods for doing so are implementation-specific and therefore out of scope for this document, but possible mechanisms might include:</p>
+    <ol>
+      <li>sending messages to contacts in the user's roster who would be likely to have knowledge of the user's whereabouts (perhaps derived from physical proximity information gleaned from <span class="ref"><a href="http://xmpp.org/extensions/xep-0054.html">vcard-temp (XEP-0054)</a></span>  [<a href="#nt-idp624928">4</a>] or <span class="ref"><a href="http://xmpp.org/extensions/xep-0080.html">User Geolocation (XEP-0080)</a></span>  [<a href="#nt-idp1476976">5</a>] data)</li>
+      <li>generating an IQ "get" in the 'poke' namespace to each of the user's connected resources</li>
+      <li>sending specialized commands to each of the user's connected resources using <span class="ref"><a href="http://xmpp.org/extensions/xep-0050.html">Ad-Hoc Commands (XEP-0050)</a></span>  [<a href="#nt-idp1480256">6</a>]</li>
+    </ol>
+    <p>If the server determines that the user is physically present in the vicinity of a client, it SHOULD return that information to the requesting entity, including the appropriate resource:</p>
+    <p class="caption"><a name="example-4" id="example-4"></a>Example 4. Server returns success</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    from='juliet@capulet.com/chamber'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>The server SHOULD NOT wait an inordinate amount of time before returning the presence information (e.g., usually not more than two minutes), but the timeout period SHOULD be configurable. If the request times out, the server SHOULD return a "Request Timeout" error to the requesting entity:</p>
+    <p class="caption"><a name="example-5" id="example-5"></a>Example 5. Server returns request timeout error</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    type='error'
+    from='juliet@capulet.com'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+  &lt;error code='408' type='wait'&gt;
+    &lt;remote-server-timeout 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/presence&gt;
+    </pre></div>
+    <p>The server SHOULD NOT return a "Not Found" error unless the user does not exist. If the server determines that the user has died, it MAY return a "Gone" error with appropriate descriptive text, although it SHOULD wait to do so pending notification of next-of-kin; note well that such notification is out of scope for this document (though this seems like a sensible application of the <span class="ref"><a href="http://xmpp.org/extensions/xep-0060.html">Publish-Subscribe (XEP-0060)</a></span>  [<a href="#nt-idp1486112">7</a>] protocol):</p>
+    <p class="caption"><a name="example-6" id="example-6"></a>Example 6. Server returns gone error</p><div class="indent"><pre class="prettyprint">
+&lt;presence 
+    type='error'
+    from='juliet@capulet.com'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+  &lt;error code='302' type='cancel'&gt;
+    &lt;gone xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+    &lt;text xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'&gt;
+      Please accept our condolences: the user you are 
+      trying to reach has died.
+    &lt;/text&gt;
+  &lt;/error&gt;
+&lt;/presence&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.2 <a name="protocol-iq" id="protocol-iq">IQ</a></h3>
+    <p>If the requesting entity knows at least one resource with which the user is currently connected, it MAY send an IQ to the user's full JID (&lt;user@host/resource&gt;) instead of sending a probe to the user's server.</p>
+    <p class="caption"><a name="example-7" id="example-7"></a>Example 7. Poking via the client</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='get'
+    from='romeo@montague.net/orchard'
+    to='juliet@capulet.com/balcony'
+    id='poke2'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'
+        method='taste'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>The same errors as shown above for presence stanzas SHOULD be used by clients responding to IQ stanzas containing POKE protocols (e.g., "Request Timeout" if the user cannot be found in some reasonable period of time), and therefore are not repeated here.</p>
+    <p>Note that the preceding example includes the optional 'method' attribute. If the target entity does not support the specified method, it MAY return a "Feature Not Implemented" error:</p>
+    <p class="caption"><a name="example-8" id="example-8"></a>Example 8. Client returns feature not implemented error</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='error'
+    from='juliet@capulet.com/balcony'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'/&gt;
+  &lt;error code='501' type='cancel'&gt;
+    &lt;feature-not-implemented 
+        xmlns='urn:ietf:params:xml:ns:xmpp-stanzas'/&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;
+    </pre></div>
+    <p>Alternatively, it MAY choose to use some other method that it does implement, in which case it SHOULD specify the method used in the IQ result (this is the recommended behavior).</p>
+    <p>If the client determines that the user is physically present, it SHOULD return presence to the requesting entity (subject to privacy lists and any other appropriate access controls):</p>
+    <p class="caption"><a name="example-9" id="example-9"></a>Example 9. Client returns success</p><div class="indent"><pre class="prettyprint">
+&lt;iq type='result'
+    from='juliet@capulet.com/balcony'
+    to='romeo@montague.net/orchard'
+    id='poke1'&gt;
+  &lt;poke xmlns='http://jabber.org/protocol/poke'
+        method='touch'/&gt;
+&lt;/iq&gt;
+    </pre></div>
+  </div>
+  <div class="indent"><h3>3.3 <a name="protocol-methods" id="protocol-methods">Methods</a></h3>
+    <p>The following values of the 'method' attribute are defined and SHOULD be supported by a compliant implementation:</p>
+    <div class="indent"><dl>
+      <di><dt><strong>dna</strong></dt><dd>The physical presence of the target entity shall be determined by means of DNA testing; for example, the user's client may take a hair or skin sample from the user (not recommended if the testing time is inordinately long).</dd></di>
+      <di><dt><strong>infrared</strong></dt><dd>The physical presence of the target entity shall be determined by means of infrared wavelengths; for example, the user's client may scan the area for the telltale heat signature of the user.</dd></di>
+      <di><dt><strong>sight</strong></dt><dd>The physical presence of the target entity shall be determined by means of sight; for example, the user's client may flash a strobe light that draws the user within the range of visual observation (note: this method is limited to visual wavelengths).</dd></di>
+      <di><dt><strong>smell</strong></dt><dd>The physical presence of the target entity shall be determined by means of olfaction; for example, the user's client may produce a stench known to make the user nervous and sweaty.</dd></di>
+      <di><dt><strong>sound</strong></dt><dd>The physical presence of the target entity shall be determined by means of sound; for example, the user's client may generate a sound so annoying that when the user hears it, he or she reacts vocally in the form of a yell, scream, or imprecation.</dd></di>
+      <di><dt><strong>taste</strong></dt><dd>The physical presence of the target entity shall be determined by means of taste; for example, the user's client may extend a device that licks the user's skin.</dd></di>
+      <di><dt><strong>touch</strong></dt><dd>The physical presence of the target entity shall be determined by means of bodily contact; for example, the user's client may extend a probe that comes into contact with the user's body.</dd></di>
+    </dl></div>
+  </div>
+<h2>4.
+       <a name="privacy" id="privacy">Privacy Considerations</a></h2>
+  <p>Determination of physical presence necessarily involves an invasion of the target entity's "personal space". The <span class="ref"><a href="http://xmpp.org/xsf/">XMPP Standards Foundation (XSF)</a></span>  [<a href="#nt-idp1506432">8</a>] shall not be held liable for any use of this protocol. Client implementations MUST enable the user to disable support for this protocol via configuration options.</p>
+<h2>5.
+       <a name="security" id="security">Security Considerations</a></h2>
+  <p>Responding entities (whether server or client) MUST NOT return physical presence information to requesting entities that are not entitled to discover such information.</p>
+<h2>6.
+       <a name="iana" id="iana">IANA Considerations</a></h2>
+  <p>This document requires no interaction with the <span class="ref"><a href="http://www.iana.org/">Internet Assigned Numbers Authority (IANA)</a></span>  [<a href="#nt-idp1516272">9</a>].</p>
+<h2>7.
+       <a name="registrar" id="registrar">XMPP Registrar Considerations</a></h2>
+  <div class="indent"><h3>7.1 <a name="registrar-ns" id="registrar-ns">Protocol Namespaces</a></h3>
+    <p>The <span class="ref"><a href="http://xmpp.org/registrar/">XMPP Registrar</a></span>  [<a href="#nt-idp1513680">10</a>] shall add the 'http://jabber.org/protocol/poke' namespace to its registry of protocol namespaces.</p>
+  </div>
+  <div class="indent"><h3>7.2 <a name="registrar-methods" id="registrar-methods">Method Values</a></h3>
+    <p>The XMPP Registrar shall maintain a registry of values for the 'method' attribute. The following values shall be added initially:</p>
+    <ul>
+      <li>dna</li>
+      <li>infrared</li>
+      <li>sight</li>
+      <li>smell</li>
+      <li>sound</li>
+      <li>taste</li>
+      <li>touch</li>
+    </ul>
+  </div>
+<h2>8.
+       <a name="schema" id="schema">XML Schema</a></h2>
+  <p class="caption"></p><div class="indent"><pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+
+&lt;xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://jabber.org/protocol/poke'
+    xmlns='http://jabber.org/protocol/poke'
+    elementFormDefault='qualified'&gt;
+
+  &lt;xs:annotation&gt;
+    &lt;xs:documentation&gt;
+      The protocol documented by this schema is defined in
+      XEP-0132: http://www.xmpp.org/extensions/xep-0132.html
+    &lt;/xs:documentation&gt;
+  &lt;/xs:annotation&gt;
+
+  &lt;xs:element name='poke'&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:simpleContent&gt;
+        &lt;xs:extension base='empty'&gt;
+          &lt;xs:attribute name='method' 
+                        use='optional' 
+                        type='xs:NCName'/&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+
+  &lt;xs:simpleType name='empty'&gt;
+    &lt;xs:restriction base='xs:string'&gt;
+      &lt;xs:enumeration value=''/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+
+&lt;/xs:schema&gt;
+  </pre></div>
+<hr /><a name="appendices" id="appendices"></a><h2>Appendices</h2><hr /><a name="appendix-docinfo" id="appendix-docinfo"></a><h3>Appendix A: Document Information</h3><p class="indent">
+            Series: <a href="http://xmpp.org/extensions/">XEP</a><br />
+            Number: 0132<br />
+            Publisher: <a href="/xsf/">XMPP Standards Foundation</a><br />
+            Status: 
+            <a href="http://xmpp.org/extensions/xep-0001.html#states-Active">Active</a><br />
+            Type:
+            <a href="http://xmpp.org/extensions/xep-0001.html#types-Humorous">Humorous</a><br />
+            Version: 1.0<br />
+            Last Updated: 2004-04-01<br />
+                Approving Body: <a href="http://xmpp.org/council/">XMPP Council</a><br />Dependencies: XMPP Core, XMPP IM<br />
+                Supersedes: None<br />
+                Superseded By: None<br />
+            Short Name: poke<br />
+              Source Control: 
+                <a class="standardsButton" href="https://github.com/xsf/xeps/blob/master/xep-0132.xml">HTML</a><br />
+            This document in other formats: 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0132.xml">XML</a> 
+                <a class="standardsButton" href="http://xmpp.org/extensions/xep-0132.pdf">PDF</a></p><hr /><a name="appendix-authorinfo" id="appendix-authorinfo"></a><h3>Appendix B: Author Information</h3><div class="indent"><h3>Peter Saint-Andre</h3><p class="indent">
+        Email:
+        <a href="mailto:peter@andyet.net">peter@andyet.net</a><br />
+        JabberID: 
+        <a href="xmpp:stpeter@stpeter.im">stpeter@stpeter.im</a><br />
+        URI: 
+        <a href="https://stpeter.im/">https://stpeter.im/</a><br /></p><h3>Joe Hildebrand</h3><p class="indent">
+        Email:
+        <a href="mailto:jhildebr@cisco.com">jhildebr@cisco.com</a><br />
+        JabberID: 
+        <a href="xmpp:hildjj@jabber.org">hildjj@jabber.org</a><br /></p></div><hr /><a name="appendix-legal" id="appendix-legal"></a><h3>Appendix C: Legal Notices</h3><div class="indent"><h4>Copyright</h4>This XMPP Extension Protocol is copyright © 1999 - 2014 by the <a href="http://xmpp.org/">XMPP Standards Foundation</a> (XSF).<h4>Permissions</h4>Permission is hereby granted, free of charge, to any person obtaining a copy of this specification (the "Specification"), to make use of the Specification without restriction, including without limitation the rights to implement the Specification in a software program, deploy the Specification in a network service, and copy, modify, merge, publish, translate, distribute, sublicense, or sell copies of the Specification, and to permit persons to whom the Specification is furnished to do so, subject to the condition that the foregoing copyright notice and this permission notice shall be included in all copies or substantial portions of the Specification. Unless separate permission is granted, modified works that are redistributed shall not contain misleading information regarding the authors, title, number, or publisher of the Specification, and shall not claim endorsement of the modified works by the authors, any organization or project to which the authors belong, or the XMPP Standards Foundation.<h4>Disclaimer of Warranty</h4><span style="font-weight: bold">## NOTE WELL: This Specification is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. ##</span><h4>Limitation of Liability</h4>In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall the XMPP Standards Foundation or any author of this Specification be liable for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising from, out of, or in connection with the Specification or the implementation, deployment, or other use of the Specification (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if the XMPP Standards Foundation or such author has been advised of the possibility of such damages.<h4>IPR Conformance</h4>This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at &lt;<a href="http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/">http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/</a>&gt; or obtained by writing to XMPP Standards Foundation, 1899 Wynkoop Street, Suite 600, Denver, CO 80202 USA).</div><hr /><a name="appendix-xmpp" id="appendix-xmpp"></a><h3>Appendix D: Relation to XMPP</h3><p class="indent">The Extensible Messaging and Presence Protocol (XMPP) is defined in the XMPP Core (RFC 6120) and XMPP IM (RFC 6121) specifications contributed by the XMPP Standards Foundation to the Internet Standards Process, which is managed by the Internet Engineering Task Force in accordance with RFC 2026. Any protocol defined in this document has been developed outside the Internet Standards Process and is to be understood as an extension to XMPP rather than as an evolution, development, or modification of XMPP itself.</p><hr /><a name="appendix-discuss" id="appendix-discuss"></a><h3>Appendix E: Discussion Venue</h3><p class="indent">The primary venue for discussion of XMPP Extension Protocols is the &lt;<a href="http://mail.jabber.org/mailman/listinfo/standards">standards@xmpp.org</a>&gt; discussion list.</p><p class="indent">Discussion on other xmpp.org discussion lists might also be appropriate; see &lt;<a href="http://xmpp.org/about/discuss.shtml">http://xmpp.org/about/discuss.shtml</a>&gt; for a complete list.</p><p class="indent">Errata can be sent to &lt;<a href="mailto:editor@xmpp.org">editor@xmpp.org</a>&gt;.</p><hr /><a name="appendix-conformance" id="appendix-conformance"></a><h3>Appendix F: Requirements Conformance</h3><p class="indent">The following requirements keywords as used in this document are to be interpreted as described in <a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>: "MUST", "SHALL", "REQUIRED"; "MUST NOT", "SHALL NOT"; "SHOULD", "RECOMMENDED"; "SHOULD NOT", "NOT RECOMMENDED"; "MAY", "OPTIONAL".</p><hr /><a name="appendix-notes" id="appendix-notes"></a><h3>Appendix G: Notes</h3><div class="indent"><p><a name="nt-idp604816" id="nt-idp604816">1</a>. RFC 6120: Extensible Messaging and Presence Protocol (XMPP): Core &lt;<a href="http://tools.ietf.org/html/rfc6120">http://tools.ietf.org/html/rfc6120</a>&gt;.</p><p><a name="nt-idp607408" id="nt-idp607408">2</a>. RFC 6121: Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence &lt;<a href="http://tools.ietf.org/html/rfc6121">http://tools.ietf.org/html/rfc6121</a>&gt;.</p><p><a name="nt-idp618016" id="nt-idp618016">3</a>. XEP-0086: Error Condition Mappings &lt;<a href="http://xmpp.org/extensions/xep-0086.html">http://xmpp.org/extensions/xep-0086.html</a>&gt;.</p><p><a name="nt-idp624928" id="nt-idp624928">4</a>. XEP-0054: vcard-temp &lt;<a href="http://xmpp.org/extensions/xep-0054.html">http://xmpp.org/extensions/xep-0054.html</a>&gt;.</p><p><a name="nt-idp1476976" id="nt-idp1476976">5</a>. XEP-0080: User Geolocation &lt;<a href="http://xmpp.org/extensions/xep-0080.html">http://xmpp.org/extensions/xep-0080.html</a>&gt;.</p><p><a name="nt-idp1480256" id="nt-idp1480256">6</a>. XEP-0050: Ad-Hoc Commands &lt;<a href="http://xmpp.org/extensions/xep-0050.html">http://xmpp.org/extensions/xep-0050.html</a>&gt;.</p><p><a name="nt-idp1486112" id="nt-idp1486112">7</a>. XEP-0060: Publish-Subscribe &lt;<a href="http://xmpp.org/extensions/xep-0060.html">http://xmpp.org/extensions/xep-0060.html</a>&gt;.</p><p><a name="nt-idp1506432" id="nt-idp1506432">8</a>. The XMPP Standards Foundation (XSF) is an independent, non-profit membership organization that develops open extensions to the IETF's Extensible Messaging and Presence Protocol (XMPP). For further information, see &lt;<a href="http://xmpp.org/xsf/">http://xmpp.org/xsf/</a>&gt;.</p><p><a name="nt-idp1516272" id="nt-idp1516272">9</a>. The Internet Assigned Numbers Authority (IANA) is the central coordinator for the assignment of unique parameter values for Internet protocols, such as port numbers and URI schemes. For further information, see &lt;<a href="http://www.iana.org/">http://www.iana.org/</a>&gt;.</p><p><a name="nt-idp1513680" id="nt-idp1513680">10</a>. The XMPP Registrar maintains a list of reserved protocol namespaces as well as registries of parameters used in the context of XMPP extension protocols approved by the XMPP Standards Foundation. For further information, see &lt;<a href="http://xmpp.org/registrar/">http://xmpp.org/registrar/</a>&gt;.</p></div><hr /><a name="appendix-revs" id="appendix-revs"></a><h3>Appendix H: Revision History</h3><p>Note: Older versions of this specification might be available at <a href="http://xmpp.org/extensions/attic/">http://xmpp.org/extensions/attic/</a></p><div class="indent"><h4>Version 1.0 (2004-04-01)</h4><div class="indent"><p>April Fools!</p> (psa)
+    </div></div><hr /><p>END</p></body></html>
