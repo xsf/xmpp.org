@@ -25,7 +25,7 @@ Sidebar_menu_elem_url_6: community/sponsorship
 Content_layout: multiple-columns
 ---
 
-## XMPP Summit
+## XMPP Summits
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
 
@@ -35,7 +35,7 @@ The last event (Summit 17) was the [European XMPP Summit](http://wiki.xmpp.org/w
 
 It is anticipated that Summit 19 will be held once again in Brussels in February 2016.
 
-## Attending events
+## Other events
 
 XSF members and other XMPP developers can be found at events regularly all over the world.
 
