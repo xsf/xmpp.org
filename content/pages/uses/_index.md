@@ -31,4 +31,11 @@ Sidebar_menu_elem_url_4: uses/webrtc
 Content_layout: multiple-columns
 ---
 
-This is the index page for the Uses of XMPP section.
+It's typical for people unfamiliar with the myriad uses of XMPP to pigeonhole it into being a protocol used for [instant messaging](/uses/instant-messaging). 
+
+While that's a huge portion of XMPP traffic on the Internet, XMPP has a variety of other uses, including:
+
+- [Internet of Things (IoT)](/uses/internet-of-things)
+- [WebRTC](/uses/webrtc)
+- [Social](/uses/social)
+- [Realtime Web](/uses/realtime-web)
