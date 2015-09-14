@@ -25,4 +25,18 @@ Sidebar_menu_elem_url_6: community/sponsorship
 Content_layout: multiple-columns
 ---
 
-This page is about events.
+## XMPP Summit
+
+The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
+
+The next event is the [US XMPP Summit](http://wiki.xmpp.org/web/Summit_18) in Richland, WA in October. 
+
+The last event (Summit 17) was the [European XMPP Summit](http://wiki.xmpp.org/web/Summit_17), held in coordination with [FOSDEM](http://fosdem.org) in Brussels.
+
+It is anticipated that Summit 19 will be held once again in Brussels in February 2016.
+
+## Attending events
+
+XSF members and other XMPP developers can be found at events regularly all over the world.
+
+If you're an XMPP dev attending or speaking at an upcoming event worth noting, please [submit a pull request](https://github.com/xsf/xmpp.org) to list your event here.
