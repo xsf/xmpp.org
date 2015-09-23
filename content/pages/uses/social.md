@@ -39,4 +39,8 @@ There are many people pairing WebRTC with XMPP.
 
 The [Buddycloud Core](http://buddycloud.com/core) messaging stack is a set of social services that include help developers build a complete social application and includes user-onboarding, content recommendation and media sharing features.
 
-[Movim](https://movim.eu/) is a PHP based distributed social networking platform. 
+[Jappix](https://jappix.org) a Javascript XMPP client with social features.
+
+[Movim](https://movim.eu/) is a PHP based distributed social networking platform.
+
+[Salut à Toi](http://salut-a-toi.org) a Python based multi-frontends XMPP client featuring (micro)blogging, file sharing, games, etc. [Libervia](https://libervia.org) is its web frontend.
