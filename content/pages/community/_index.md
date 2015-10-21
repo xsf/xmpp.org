@@ -43,7 +43,7 @@ The XMPP Community is one of the standard's greatest assets, full of many helpfu
 
 You can find us in a variety of places:
 
-- Community [chat rooms](/community-chat) (of course!)
+- Community [chat rooms](/community/chat) (of course!)
 - Our [mailing lists](/community/mailing-lists)
 - Attending and organizing [events](/community/events)
 
