@@ -21,7 +21,7 @@ Contributing new content and updates
 Communication forum
 -------------------
 
-Please use [members@muc.xmpp.org](xmpp:members@muc.xmpp.org?join) for discussions about the site, content, generation etc.
+Please use [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join) for discussions about the site, content, generation etc.
 
 Site generation
 ---------------
