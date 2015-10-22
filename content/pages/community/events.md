@@ -40,3 +40,19 @@ It is anticipated that Summit 19 will be held once again in Brussels in February
 XSF members and other XMPP developers can be found at events regularly all over the world.
 
 If you're an XMPP dev attending or speaking at an upcoming event worth noting, please [submit a pull request](https://github.com/xsf/xmpp.org) to list your event here.
+
+<!-- Add this where you want the output to appear -->
+<div class="lanyrd-target-guide">
+<a href="http://lanyrd.com/guides/xmpp/"
+class="lanyrd-guide"
+data-lanyrd-context="all"
+data-lanyrd-number="10"
+data-lanyrd-template="standard"
+data-lanyrd-iframe
+data-lanyrd-nolink>
+XMPP Events
+</a>
+</div>
+
+<!-- Add this to the end of body -->
+<script src="http://cdn.lanyrd.net/badges/embed-v1.min.js"></script>
