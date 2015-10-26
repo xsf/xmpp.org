@@ -31,7 +31,7 @@ This page contains information for and about elected members of the XMPP Standar
 List of members
 Mailing list archives
 Official meeting minutes
-Applications from prospective new members are accepted during the first two weeks of every quarter (i.e., the first two weeks of January, April, July, and October). New members are admitted based on a vote of the existing members, and existing members are required to re-apply every 12 months. Application periods are announced on the jdev discussion list and completed on the wiki.xmpp.org site at wiki.xmpp.org/web/Membership_Applications.
+Applications from prospective new members are accepted during the first two weeks of every quarter (i.e., the first two weeks of January, April, July, and October). New members are admitted based on a vote of the existing members, and existing members are required to re-apply every 12 months. Application periods are announced on the jdev discussion list and completed on the [wiki.xmpp.org](https://wiki.xmpp.org) site [here](wiki.xmpp.org/web/Membership_Applications).
 
 Responsibilities of Members
 
@@ -43,7 +43,8 @@ XSF Work Teams
 
 Once elected, XSF members are expected to continue contributing to the Jabber/XMPP community and the work of the XMPP Standards Foundation through participation on our [mailing lists](/community/mailing-lists) and [chat rooms](/community/chat) and in the XSF’s work teams. Currently three work teams are chartered and active:
 
-Editor Team
-Infrastructure Team
-UPnP Liaison Team
+* Editor Team
+* Infrastructure Team
+* UPnP Liaison Team
+
 In addition to the foregoing opportunities, members must participate in the ongoing governance of the XSF by voting in the quarterly and annual meetings of the membership. In accordance with Section 2.6 of the XSF Bylaws, any member who is inactive through three consecutive meetings forfeits their membership.
