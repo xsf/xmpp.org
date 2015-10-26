@@ -2,7 +2,7 @@ xmpp.org
 ========
 [![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
 
-This repo generates the xmpp.org site (temproarily visible on new.xmpp.org until the grand-switch-over).
+This repo generates the xmpp.org site (temporarily visible on new.xmpp.org until the grand-switch-over).
 
 The [xmpp.org website plan](https://trello.com/b/ml9e82sE/xmpp-org-website) describes the site direction and structure.
 
