@@ -27,7 +27,6 @@ Content_layout: multiple-columns
 
 This page shows the elected members of the XMPP Standards Foundation, along with their team affiliations and Board/Council memberships.
 
-- Lars Åkerskog
 - Thijs Alkemade
 - Kim Alvefur
 - David Banes
@@ -35,16 +34,14 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ludovic Bocquet
 - Davide Conzon
 - Dave Cridland (XSF Board)
-- Lisa Dusseault
 - Wayne Franklin
-- Laura Gill
+- Laura Crossley
 - Alexander Gnauck (infrastructure)
+- Christoph Hartmann
 - Philipp Hancke (XMPP Council)
 - Artur Hefczyc
-- Klaus Herberth
 - Martin Hewitt
 - Joe Hildebrand
-- Michael Holdmann
 - Waqas Hussain
 - Emil Ivov
 - Timothée Jaussoin
@@ -53,6 +50,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ben Langfeld
 - Steffen Larsen (editor)
 - Joachim Lindborg
+- Georg Lukas
 - Bartosz Malkowski
 - Tobias Markmann (XMPP Council, infrastructure)
 - Ralph Meijer (XSF Board)
@@ -68,21 +66,18 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ben Schumacher
 - Jonathan Siegle (infrastructure)
 - Kevin Smith (XMPP Council, infrastructure,
-- Yana Stamcheva
 - Lance Stout (XMPP Council)
 - Stefan Strigler (editor)
 - Mike Taylor (XSF Board)
 - Simon Tennant (XSF Board)
 - Winfried Tilanus (editor)
-- Remko Tronçon
-- Teemu Vaisanen
 - Peter Waher
 - Ashley Ward (editor)
 - Lloyd Watkin (editor)
-- Michael Weibel
+- Sam Whited
 - Matthew Wild (XMPP Council, infrastructure)
+- Daniel Wisnewski
 - Andrzej Wójcik
-- Kurt Zeilenga
 - Florian Zeitz
 
 In addition, the following individuals are emeritus members of the XMPP Standards Foundation:
