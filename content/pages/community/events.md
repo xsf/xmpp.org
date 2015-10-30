@@ -44,7 +44,7 @@ If you're speaking about XMPP at an upcoming event, please [add them](http://lan
 <div class="lanyrd-target-guide">
 <a href="http://lanyrd.com/guides/xmpp/"
 class="lanyrd-guide"
-data-lanyrd-context="all"
+data-lanyrd-context="future"
 data-lanyrd-number="6"
 data-lanyrd-template="standard"
 data-lanyrd-iframe
