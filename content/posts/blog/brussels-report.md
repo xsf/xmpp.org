@@ -2,7 +2,7 @@
 title: Brussels Report
 date: 2007-02-27 20:14
 author: stpeter
-blog_id: brussels-report
+blog_id: blog
 ---
 
 Over the weekend, members of the XMPP Standards Foundation and the Jabber developer community participated in [FOSDEM 2007](http://www.fosdem.org/) (one of the world's premier conferences for developers of free and open-source software) and also held a smaller "XMPP Summit" to discuss high-priority issues related to our technology.

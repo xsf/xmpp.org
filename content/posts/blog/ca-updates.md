@@ -2,7 +2,7 @@
 title: CA Updates
 date: 2009-09-08 14:35
 author: stpeter
-blog_id: ca-updates
+blog_id: blog
 ---
 
 Since 2006 the [XMPP Standards Foundation](http://xmpp.org/) has been [offering free digital certificates](http://blog.xmpp.org/index.php/2007/02/practical-network-security/) to administrators of XMPP servers as a way of encouraging encryption of point-to-point "hops" on the XMPP network. This program has been successful in several ways:

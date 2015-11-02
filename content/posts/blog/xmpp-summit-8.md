@@ -2,7 +2,7 @@
 title: XMPP Summit 8
 date: 2010-08-10 04:29
 author: admin
-blog_id: xmpp-summit-8
+blog_id: blog
 ---
 
 The eighth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation occured on February 5-8, 2010, in Brussels, Belgium (the same weekend as [FOSDEM 2010](http://www.fosdem.org/)).

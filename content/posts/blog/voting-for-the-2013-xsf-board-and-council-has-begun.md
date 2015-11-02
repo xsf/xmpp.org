@@ -2,7 +2,7 @@
 title: Voting for the 2013 XSF Board and Council has begun
 date: 2013-10-14 19:01
 author: bear
-blog_id: voting-for-the-2013-xsf-board-and-council-has-begun
+blog_id: blog
 ---
 
 Our most amazing XSF Secretary, Alexander Gnauck, has started the proxy voting process for this years Board and Council.

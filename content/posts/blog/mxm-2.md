@@ -2,7 +2,7 @@
 title: MXM #2
 date: 2009-04-14 15:38
 author: stpeter
-blog_id: mxm-2
+blog_id: blog
 ---
 
 *Reported by Peter Saint-Andre*

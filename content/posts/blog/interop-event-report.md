@@ -2,7 +2,7 @@
 title: Interop event report
 date: 2010-12-14 11:22
 author: ksmith
-blog_id: interop-event-report
+blog_id: blog
 ---
 
 From 6th-11th December 2010, the XSF ran its first remote interop event. All client and server projects were invited to attend, and we had a good turnout. The aim of the interop event was to test basic XMPP interoperability, particularly re correct TLS and certificate handling, for both clients and servers. We provided projects with a list of tests, together with a set of known-bad server configurations, and worked through these during the week. Several ancillary tests were also performed, which are listed after the scripted test results.

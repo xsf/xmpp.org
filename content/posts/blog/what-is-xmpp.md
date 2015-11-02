@@ -2,7 +2,7 @@
 title: What Is XMPP?
 date: 2007-10-31 10:53
 author: stpeter
-blog_id: what-is-xmpp
+blog_id: blog
 ---
 
 The Extensible Messaging and Presence Protocol (XMPP) is an open XML technology for real-time communication, which powers a wide range of applications including instant messaging, presence, media negotiation, whiteboarding, collaboration, lightweight middleware, content syndication, and generalized XML routing.

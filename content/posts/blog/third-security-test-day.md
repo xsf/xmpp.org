@@ -2,7 +2,7 @@
 title: Third Security Test Day
 date: 2014-03-21 11:56
 author: stpeter
-blog_id: third-security-test-day
+blog_id: blog
 ---
 
 Tomorrow sees the third security test day.

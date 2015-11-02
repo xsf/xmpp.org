@@ -2,7 +2,7 @@
 title: GSoC 2012 Student Application deadline approaching
 date: 2012-04-03 14:27
 author: florian
-blog_id: gsoc-2012-student-application-deadline-approaching
+blog_id: blog
 ---
 
 ![](http://code.google.com/images/GSoC2012_300x200.png "GSoC 2012")

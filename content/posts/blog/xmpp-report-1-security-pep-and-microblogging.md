@@ -2,7 +2,7 @@
 title: XMPP Roundup #1
 date: 2008-09-16 08:37
 author: admin
-blog_id: xmpp-report-1-security-pep-and-microblogging
+blog_id: blog
 ---
 
 Welcome to the first installment of what we hope will be a continuing series of reports on XMPP technologies and the XMPP community (you can think of this series is a replacement for the old [Jabber Journal](http://www.saint-andre.com/jabber/journal/)). This report is authored by [Peter Saint-Andre](http://stpeter.im/), [Florian Jensen](http://florianjensen.com/), and [Jack Moffitt](http://metajack.im/). Future reports might involve different authors just to keep things interesting; let us know if you'd like to help.

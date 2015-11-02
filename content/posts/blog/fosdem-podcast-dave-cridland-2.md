@@ -2,7 +2,7 @@
 title: FOSDEM podcast: Dave Cridland
 date: 2010-06-08 12:00
 author: Nyco
-blog_id: fosdem-podcast-dave-cridland-2
+blog_id: blog
 ---
 
 This is the second in a series of podcasts made at FOSDEM in Brussels, Belgium.

@@ -2,7 +2,7 @@
 title: XMPP and IoT event 14 November 2013
 date: 2013-11-13 18:55
 author: bear
-blog_id: xmpp-and-iot-event-14-november-2013
+blog_id: blog
 ---
 
 Joachim is in the US (San Francisco specifically) and would love to get together with anyone from the XMPP and/or IoT community!

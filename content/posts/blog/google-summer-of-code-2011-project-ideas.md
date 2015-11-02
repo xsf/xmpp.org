@@ -2,7 +2,7 @@
 title: Google Summer of Code 2011 - Project Ideas
 date: 2011-02-28 08:49
 author: bear
-blog_id: google-summer-of-code-2011-project-ideas
+blog_id: blog
 ---
 
 Today I will be applying to the Google's [Summer of Code 2011](http://code.google.com/soc/) on behalf of the [XSF](http://xmpp.org/) - woo! The one thing that always makes it easy for Google to pick an organization is a large list of projects and students interested in our projects.

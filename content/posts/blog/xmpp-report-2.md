@@ -2,7 +2,7 @@
 title: XMPP Roundup #3
 date: 2008-11-18 01:51
 author: willsheward
-blog_id: xmpp-report-2
+blog_id: blog
 ---
 
 In a relatively slow week for XMPP-related news:

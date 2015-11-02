@@ -2,7 +2,7 @@
 title: XSF Interop 2010 has started
 date: 2010-12-06 07:56
 author: bear
-blog_id: xsf-interop-2010-has-started
+blog_id: blog
 ---
 
 XSF is conducting an online interop event to allow testing of interoperability based on the latest core standards from Monday, December 6th all the way thru Saturday the 11th of December.

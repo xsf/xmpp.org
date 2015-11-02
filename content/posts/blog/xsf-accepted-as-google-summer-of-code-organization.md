@@ -2,7 +2,7 @@
 title: XSF Accepted as Google Summer of Code Organization
 date: 2010-03-29 06:43
 author: bear
-blog_id: xsf-accepted-as-google-summer-of-code-organization
+blog_id: blog
 ---
 
 Google has approved the XSF as a member organization for the 2010 Summer of Code!

@@ -2,7 +2,7 @@
 title: IETF Advancement
 date: 2007-06-11 12:59
 author: stpeter
-blog_id: ietf-advancement
+blog_id: blog
 ---
 
 As previously mentioned, we are working to update the core XMPP specifications by incorporating feedback based on the significant implementation and deployment experience with XMPP technologies we have gained since [RFC 3920](http://www.ietf.org/rfc/rfc3920.txt) and [RFC 3921](http://www.ietf.org/rfc/rfc3921.txt) were published in October, 2004. To date we have expected the revised versions to advance XMPP to a status of Draft Standard within the [Internet Standards Process](http://www.ietf.org/rfc/rfc2026.txt) managed by the IETF.

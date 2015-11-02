@@ -2,7 +2,7 @@
 title: Information Flow in XMPP Clients @ FOSDEM 09
 date: 2009-04-21 02:24
 author: willsheward
-blog_id: information-flow-in-xmpp-clients-fosdem-09
+blog_id: blog
 ---
 
 Those who attended FOSDEM would have seen [Dave Cridland](http://dave.cridland.net/) typing furiously during the day's other XMPP talks when everyone else was paying attention to the speakers. Some might have assumed that this was because Dave hadn't written his presentation until the day he was due to give it. Dave assures me however that he was 'rewriting' the presentation to take account of the lack of internet connectivity which crippled his plans for application demos.

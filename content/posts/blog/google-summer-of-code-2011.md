@@ -2,7 +2,7 @@
 title: Google Summer of Code 2011
 date: 2011-02-22 12:02
 author: bear
-blog_id: google-summer-of-code-2011
+blog_id: blog
 ---
 
 The [XSF](http://xmpp.org/) will be applying this year to participate in Google's [Summer of Code 2011](http://code.google.com/soc/) and we need the help of XMPP project members in getting a   list of summer project ideas together!

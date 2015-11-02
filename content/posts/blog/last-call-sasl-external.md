@@ -2,7 +2,7 @@
 title: Last Call: SASL EXTERNAL
 date: 2007-01-31 16:56
 author: stpeter
-blog_id: last-call-sasl-external
+blog_id: blog
 ---
 
 Today we [issued](http://mail.jabber.org/pipermail/standards/2007-January/013676.html) a Last Call regarding [XEP-0178: Best Practices for Use of SASL EXTERNAL](http://www.xmpp.org/extensions/xep-0178.html). This specification is part of our [continuing effort](http://blog.xmpp.org/?p=4) to advance the XMPP RFCs to Draft Standard within the IETF.

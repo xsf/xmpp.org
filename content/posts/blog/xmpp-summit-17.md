@@ -2,7 +2,7 @@
 title: XMPP Summit 17
 date: 2015-01-08 04:25
 author: joachim.lindborg
-blog_id: xmpp-summit-17
+blog_id: blog
 ---
 
 The 17th XSF Summit is approaching!
@@ -18,7 +18,7 @@ Our agenda is evolving but so far includes:
 -   Relation/Liaison to W3C interest group on the Web of Things: [charter](http://www.w3.org/2014/12/wot-ig-charter.html)
 -   XEP-0322 EXI: Update on/upstreaming of implementation, comments
 
-To keep up to date with Summit plans, please visit the [wiki page for Summit 17](http://wiki.xmpp.org/web/Summit_17) . 
+To keep up to date with Summit plans, please visit the [wiki page for Summit 17](http://wiki.xmpp.org/web/Summit_17) .
 
 If you intend to come along to the Summit, please join the [summit@xmpp.org discussion list](http://mail.jabber.org/mailman/listinfo/summit) and post with your participation request.
  

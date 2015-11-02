@@ -2,7 +2,7 @@
 title: It’s all about choices and control
 date: 2015-01-26 07:59
 author: laura
-blog_id: its-all-about-choices-and-control
+blog_id: blog
 ---
 
 "Why should I use XMPP?” is a question we get asked a lot. Our answer is often technically-focussed, as there are plenty of reasons XMPP might be the right choice, or we might explain about the benefits of a federated approach - where everyone can run their own server and control their own data. Either way, the fact it is an ‘open standard’ never ceases to be mentioned.

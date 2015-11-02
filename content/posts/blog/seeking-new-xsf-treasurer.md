@@ -2,7 +2,7 @@
 title: Seeking new XSF Treasurer
 date: 2015-07-06 11:05
 author: Simon
-blog_id: seeking-new-xsf-treasurer
+blog_id: blog
 ---
 
 Until now, St Peter has been handling the XSF Treasurer role. He's stepping down from the role and the XSF Board is looking for someone new.
