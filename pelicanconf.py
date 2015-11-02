@@ -27,7 +27,7 @@ ARTICLE_SAVE_AS = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 INDEX_SAVE_AS = 'posts/blog/index.html'
 
 USE_FOLDER_AS_CATEGORY = False
-DEFAULT_PAGINATION = 2
+DEFAULT_PAGINATION = 10
 
 YEAR_ARCHIVE_SAVE_AS = 'posts/blog/{date:%Y}/index.html'
 
