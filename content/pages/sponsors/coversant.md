@@ -11,7 +11,7 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)
+![](/images/logos/coversant.png)
 
 ### Industry Leading Performance
 

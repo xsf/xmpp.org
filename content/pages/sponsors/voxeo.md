@@ -11,7 +11,7 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)
+![](/images/logos/voxeo.gif)
 
 Voxeo helps enterprises improve service and lower costs by automating and connecting their most common phone calls with our Interactive Voice Response (IVR) or Voice over IP (VoIP) solutions. Our hosting and premise platform solutions, and developer services – powered by VoiceXML and CCXML – are used by over 200,000 customers and developers to create and deploy any telephone application they desire.
 
@@ -22,4 +22,3 @@ Voxeo has invested over $50 million in infrastructure, technology, and programs 
 Voxeo’s customers range from the Fortune 50 to 50 of the most innovative small businesses around.   We focus diligently on their success.   When surveyed, our customers give us extremely high marks for technical versatility and customer service excellence.   These are the primary reasons enterprises choose Voxeo.
 
 While we welcome the opportunity to work with any enterprise or channel partner, we prefer to continue our investment in the technical and service qualities our customers value most.   As a result, Voxeo does not serve long distance carriers, cellular providers, or other companies who are strictly focused on obtaining the lowest tier of pricing available in the IVR or VoIP platform markets.
-

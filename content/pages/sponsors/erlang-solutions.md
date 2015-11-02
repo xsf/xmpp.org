@@ -11,9 +11,9 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)
+![](/images/logos/erlang-solutions.png)
 
-Erlang Solutions specialises in providing businesses with truly scalable solutions through the creation, integration, delivery and lifetime support of products and services based on the Erlang and Elixir programming languages. We work with customers from small developers to Fortune 500 corporations. 
+Erlang Solutions specialises in providing businesses with truly scalable solutions through the creation, integration, delivery and lifetime support of products and services based on the Erlang and Elixir programming languages. We work with customers from small developers to Fortune 500 corporations.
 
 We offer industry-leading research, development, training and worldwide support, helping our customers benefit from the speed to market, low lifetime cost, extreme reliability and scalability offered by Erlang and Elixir.
 
