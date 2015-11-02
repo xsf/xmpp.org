@@ -2,7 +2,7 @@
 title: Strophe library has a new site
 date: 2011-06-08 12:36
 author: bear
-blog_id: strophe-library-has-a-new-site
+blog_id: blog
 ---
 
 FYI, if you're a fan of [Strophe.js and/or libstrophe](http://strophe.im/) then you need to make sure to update your bookmarks as the site has moved. You can now find all of the Strophe goodness at [strophe.im](http://strophe.im/).

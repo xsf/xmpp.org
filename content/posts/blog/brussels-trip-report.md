@@ -2,7 +2,7 @@
 title: Brussels Trip Report
 date: 2011-02-18 16:38
 author: stpeter
-blog_id: brussels-trip-report
+blog_id: blog
 ---
 
 Once again the XMPP community came together recently in Brussels to discuss XMPP technologies at the [XMPP Summit](http://xmpp.org/participate/the-xmpp-summit/xmpp-summit-10/) and to evangelize at the [Free and Open Source Software Developers' European Meeting](http://fosdem.org/) (FOSDEM). Here is a brief "trip report" from yours truly, XSF executive director Peter Saint-Andre.

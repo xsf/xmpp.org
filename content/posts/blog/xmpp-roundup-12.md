@@ -2,7 +2,7 @@
 title: XMPP Roundup 12
 date: 2009-09-16 10:04
 author: Nyco
-blog_id: xmpp-roundup-12
+blog_id: blog
 ---
 
 [Reporter: Nicolas Vérité, assisted by Peter Saint-Andre]

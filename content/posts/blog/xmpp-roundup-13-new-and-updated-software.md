@@ -2,7 +2,7 @@
 title: XMPP Roundup 13: new and updated software
 date: 2010-01-29 08:35
 author: Nyco
-blog_id: xmpp-roundup-13-new-and-updated-software
+blog_id: blog
 ---
 
 Welcome to the XMPP software Roundup 13. As announced in the [latest Roundup](http://blog.xmpp.org/index.php/2010/01/xmpp-roundup-13-articles-talks-and-events/), we have split it into different parts. The first part covered articles, talks and events. This post covers new and updated software, the next one will cover XMPP services.

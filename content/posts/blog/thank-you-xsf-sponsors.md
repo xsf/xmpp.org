@@ -2,7 +2,7 @@
 title: Thank you to new and returning XSF sponsors
 date: 2015-02-16 11:41
 author: willsheward
-blog_id: thank-you-xsf-sponsors
+blog_id: blog
 ---
 
 We'd like to say a big "thank you" to two companies who have recently signed up as sponsors of the XMPP Standards Foundation.

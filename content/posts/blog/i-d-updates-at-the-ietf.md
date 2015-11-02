@@ -2,7 +2,7 @@
 title: I-D Updates at the IETF
 date: 2007-04-11 11:22
 author: stpeter
-blog_id: i-d-updates-at-the-ietf
+blog_id: blog
 ---
 
 Although the XMPP Standards Foundation runs its own [standards process](http://www.xmpp.org/extensions/xep-0001.html) and publishes a dedicated [specification series](http://www.xmpp.org/extensions/) for XMPP extensions, we continue to work within the [Internet Engineering Task Force](http://www.ietf.org/) on relevant specifications, which we [mirror](http://www.xmpp.org/internet-drafts/) at xmpp.org for convenient access.

@@ -2,7 +2,7 @@
 title: 2013 Annual Meeting and Voting Results
 date: 2013-11-07 16:01
 author: bear
-blog_id: 2013-annual-meeting-and-voting-results
+blog_id: blog
 ---
 
 Every year the members of the XSF get together to vote on the current quarter's new and renewing members and to also elect who will become members of the Technical Council and who will server on the Board of Directors.

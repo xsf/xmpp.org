@@ -2,7 +2,7 @@
 title: Membership Application period ending soon!
 date: 2010-11-22 13:57
 author: bear
-blog_id: membership-application-period-ending-soon
+blog_id: blog
 ---
 
 The XMPP Standards Foundation is currently accepting applications for new members.

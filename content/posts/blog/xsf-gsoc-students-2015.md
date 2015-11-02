@@ -2,7 +2,7 @@
 title: XSF GSoC Students 2015
 date: 2015-04-28 09:43
 author: ksmith
-blog_id: xsf-gsoc-students-2015
+blog_id: blog
 ---
 
 This year, we've been lucky enough to have had many great applications to take part in Google Summer of Code under the XSF. We've selected the following six students/projects and are looking forward to working with them over an exciting summer:

@@ -2,7 +2,7 @@
 title: XMPP Roundup 13: services
 date: 2010-02-05 08:11
 author: Nyco
-blog_id: xmpp-roundup-13-services
+blog_id: blog
 ---
 
 Live from the XMPP Hackfest in Brussels, Belgium, here is the XMPP Roundup 13, dedicated this time to new and updated services. As announced before, the XMPP Roundup has been split into separate parts with "articles, talks and events" and "new and updated software" already published.

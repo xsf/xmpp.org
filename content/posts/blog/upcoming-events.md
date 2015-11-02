@@ -2,7 +2,7 @@
 title: Upcoming events
 date: 2014-05-30 03:23
 author: laura
-blog_id: upcoming-events
+blog_id: blog
 ---
 
 Until our new website launches with a dedicated 'whats on' section, I wanted to share some events coming up that might be of interest to our community.

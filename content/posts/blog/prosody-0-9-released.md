@@ -2,7 +2,7 @@
 title: Prosody 0.9 released
 date: 2013-08-21 16:22
 author: bear
-blog_id: prosody-0-9-released
+blog_id: blog
 ---
 
 The Prosody dev team has been quite busy - here is the details from their mailing list announcement:

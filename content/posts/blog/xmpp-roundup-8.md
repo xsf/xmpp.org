@@ -2,7 +2,7 @@
 title: XMPP Roundup #8
 date: 2009-04-21 04:43
 author: Nyco
-blog_id: xmpp-roundup-8
+blog_id: blog
 ---
 
 [Reporters: Nicolas Vérité and Peter Saint-Andre]

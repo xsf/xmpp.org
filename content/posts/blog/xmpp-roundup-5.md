@@ -2,7 +2,7 @@
 title: XMPP Roundup #6
 date: 2009-02-16 10:07
 author: Nyco
-blog_id: xmpp-roundup-5
+blog_id: blog
 ---
 
 **Foreword**

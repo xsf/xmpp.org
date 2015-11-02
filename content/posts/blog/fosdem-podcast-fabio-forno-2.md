@@ -2,7 +2,7 @@
 title: FOSDEM podcast: Fabio Forno
 date: 2010-06-07 12:00
 author: Nyco
-blog_id: fosdem-podcast-fabio-forno-2
+blog_id: blog
 ---
 
 This is the first in a series of podcasts made at FOSDEM in Brussels, Belgium.

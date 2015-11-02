@@ -2,7 +2,7 @@
 title: FOSDEM Day 1
 date: 2009-02-08 01:42
 author: willsheward
-blog_id: fosdem-day-1
+blog_id: blog
 ---
 
 A quick report from day 1 of FOSDEM. The Dev room was packed for virtually every session (standing room only as you can see from a selection of pictures below) and every talk, despite problems with the FOSDEM wi-fi, was well received.

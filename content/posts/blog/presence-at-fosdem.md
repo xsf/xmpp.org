@@ -2,7 +2,7 @@
 title: Presence at FOSDEM
 date: 2007-02-01 09:01
 author: ralphm
-blog_id: presence-at-fosdem
+blog_id: blog
 ---
 
 [FOSDEM](http://www.fosdem.org/ "Free and Open source Software Developers' Europe Meeting"), the Free and Open source Software Developers' Europe Meeting, is an annual two-day conference held in Brussels, Belgium. This year the event will take place on 24 and 25 February. It is a large event with 22 main track talks, 25 lightning talks, 20 booths, and 14 developers' rooms. Developers' rooms are centered around a particular project or interest group and can be used for giving presentations and tutorials, discussion, etc., resulting in an additional 146 slots in 2006. While there is no entrance fee, FOSDEM is funded by the generous donations of its 2000+ visitors and several sponsors.

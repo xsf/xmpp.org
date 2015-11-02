@@ -2,7 +2,7 @@
 title: XMPP Summit - Day One Summary
 date: 2010-07-20 16:31
 author: bear
-blog_id: xmpp-summit-day-one-summary
+blog_id: blog
 ---
 
 We started with Bear and Joe giving a brief welcome and then we went around the room and allowed the attendees to introduce themselves. After the introductions we worked out the Agenda using the barcamp style of posting topics to the white-board and haggling over which order to work thru them.

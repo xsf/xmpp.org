@@ -2,7 +2,7 @@
 title: XMPP Monthly Developer Meeting
 date: 2009-03-10 08:54
 author: willsheward
-blog_id: xmpp-monthly-developer-meeting
+blog_id: blog
 ---
 
 As posted on the blog of  Peter St.Andre, the XMPP Standards Foundation's Executive Director, the first of what will hopefully turn out to be a series of monthly XMPP developer groupchats will take place **this Thursday @ 20:00 UTC**.

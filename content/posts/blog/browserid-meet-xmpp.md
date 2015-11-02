@@ -2,7 +2,7 @@
 title: BrowserID, meet XMPP.
 date: 2012-05-04 13:41
 author: florian
-blog_id: browserid-meet-xmpp
+blog_id: blog
 ---
 
 Identity and Privacy are a growing concern on the Internet nowadays, and there have been different attempts to solve this.

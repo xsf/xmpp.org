@@ -2,7 +2,7 @@
 title: Happy Encrypted Network!
 date: 2014-05-19 12:16
 author: stpeter
-blog_id: happy-encrypted-network
+blog_id: blog
 ---
 
 Today, a large number of services on the public XMPP network permanently turned on mandatory encryption for client-to-server and server-to-server connections (there's a fine summary [here](http://blog.prosody.im/mandatory-encryption-on-xmpp-starts-today/)).

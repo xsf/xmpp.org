@@ -2,7 +2,7 @@
 title: More Freedom
 date: 2008-01-31 13:26
 author: stpeter
-blog_id: more-freedom
+blog_id: blog
 ---
 
 Several months ago a developer in the Jabber/XMPP community let us know that the XSF's intellectual property rights policy prevented him from including text, examples, and schemas from our [XEP](http://www.xmpp.org/extensions/) specifications in his code. In particular, the [Creative Commons Attribution License](http://creativecommons.org/licenses/by/2.5/) (which we were using to cover XEPs) is not consistent with the [Debian Free Software Guidelines](http://www.debian.org/social_contract#guidelines).

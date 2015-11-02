@@ -2,7 +2,7 @@
 title: XMPP Summit 15
 date: 2014-01-10 04:23
 author: bear
-blog_id: xmpp-summit-15
+blog_id: blog
 ---
 
 The 15th Summit is fast approaching!

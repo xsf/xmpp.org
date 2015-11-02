@@ -2,7 +2,7 @@
 title: 2nd Annual SeaBeyond event at ProcessOne
 date: 2011-01-12 14:58
 author: bear
-blog_id: 2nd-annual-seabeyond-event-at-processone
+blog_id: blog
 ---
 
 ProcessOne, for the second time, will be hosting the SeaBeyond event.

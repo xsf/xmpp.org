@@ -2,7 +2,7 @@
 title: XSF Membership
 date: 2007-07-02 13:52
 author: stpeter
-blog_id: xsf-membership
+blog_id: blog
 ---
 
 Over the weekend, [Alexander Gnauck](http://www.xmpp.org/xsf/people/agnauck.shtml) ([Secretary](http://www.xmpp.org/xsf/secretary.shtml) of the XSF) posted a [notice](http://mail.jabber.org/pipermail/jdev/2007-July/025504.html) about the Q3 membership application period. So this seems like a good occasion to explain a bit about how the [XMPP Standards Foundation](http://www.xmpp.org/) works.

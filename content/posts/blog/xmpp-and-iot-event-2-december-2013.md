@@ -2,7 +2,7 @@
 title: XMPP and IoT Event in London 2 December 2013
 date: 2013-11-24 01:26
 author: bear
-blog_id: xmpp-and-iot-event-2-december-2013
+blog_id: blog
 ---
 
 The third XMPP/Realtime UK Meetup will be happening on the 2nd of December, 2013.

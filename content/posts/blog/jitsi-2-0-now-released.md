@@ -2,7 +2,7 @@
 title: Jitsi 2.0 Now Released!
 date: 2013-03-07 13:28
 author: Neustradamus
-blog_id: jitsi-2-0-now-released
+blog_id: blog
 ---
 
 With support for audio and video calls, Jitsi has long had one of the richest Jingle implementations. Now the project has added even more on top of that: Multiparty Video Conferencing.

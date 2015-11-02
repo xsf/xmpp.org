@@ -2,7 +2,7 @@
 title: Practicing What We Preach
 date: 2007-02-15 22:23
 author: stpeter
-blog_id: practicing-what-we-preach
+blog_id: blog
 ---
 
 Because the XSF is a standards development organization, we strive to honor standards developed by other organizations. To that end, we recently updated the web pages at [www.xmpp.org](http://www.xmpp.org/) (including our [specification series](http://www.xmpp.org/extensions/)) to comply with [XHTML 1.0](http://www.w3.org/TR/xhtml1/).

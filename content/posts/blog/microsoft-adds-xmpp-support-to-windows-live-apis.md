@@ -2,7 +2,7 @@
 title: Microsoft Adds XMPP Support to Windows Live APIs
 date: 2011-09-14 12:47
 author: stpeter
-blog_id: microsoft-adds-xmpp-support-to-windows-live-apis
+blog_id: blog
 ---
 
 Microsoft has announced that it is adding support for XMPP to its Windows Live APIs, enabling any application or IM network to interoperate with Windows Live Messenger.

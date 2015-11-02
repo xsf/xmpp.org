@@ -2,7 +2,7 @@
 title: Annual Meeting Summary
 date: 2010-11-03 09:40
 author: bear
-blog_id: annual-meeting-summary
+blog_id: blog
 ---
 
 XSF Member Jehan posted this summary to the members mailing list:

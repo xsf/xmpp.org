@@ -2,7 +2,7 @@
 title: Developers Challenge (with prizes!!)
 date: 2010-01-21 04:37
 author: admin
-blog_id: developers-challenge-with-prizes
+blog_id: blog
 ---
 
 Hey everyone!

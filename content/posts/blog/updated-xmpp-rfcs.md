@@ -2,7 +2,7 @@
 title: Updated XMPP RFCs
 date: 2011-03-30 18:24
 author: bear
-blog_id: updated-xmpp-rfcs
+blog_id: blog
 ---
 
 The [RFC Editor](http://www.rfc-editor.org/) has announced that [RFC 6120](http://www.rfc-editor.org/rfc/rfc6120.txt) (Extensible Messaging and Presence Protocol (XMPP): Core), [RFC 6121](http://www.rfc-editor.org/rfc/rfc6121.txt) (Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence) and [RFC 6122](http://www.rfc-editor.org/rfc/rfc6122.txt) (Extensible Messaging and Presence Protocol (XMPP): Address Format) are now official RFC documents produced by the [IETF](https://www.ietf.org)!

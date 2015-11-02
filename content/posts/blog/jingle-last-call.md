@@ -2,7 +2,7 @@
 title: Jingle Last Call
 date: 2007-11-21 13:52
 author: stpeter
-blog_id: jingle-last-call
+blog_id: blog
 ---
 
 Today the [XMPP Council](http://www.xmpp.org/council/) issued a last call for comments on the various Jingle specifications for multimedia negotiation over XMPP. Comments should be provided by December 14, so read the following specifications and send your feedback to the [standards@xmpp.org](http://mail.jabber.org/mailman/listinfo/standards/) list:

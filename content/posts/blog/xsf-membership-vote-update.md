@@ -2,7 +2,7 @@
 title: XSF Membership Vote Update
 date: 2010-12-08 06:16
 author: bear
-blog_id: xsf-membership-vote-update
+blog_id: blog
 ---
 
 We still need folks who haven't voted to do so as Alexander has reported that our current voting tally does not fulfill the required quorum.

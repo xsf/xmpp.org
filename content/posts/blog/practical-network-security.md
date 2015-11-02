@@ -2,7 +2,7 @@
 title: Practical Network Security
 date: 2007-02-07 12:29
 author: stpeter
-blog_id: practical-network-security
+blog_id: blog
 ---
 
 Two months ago we launched the XMPP Intermediate Certification Authority at [xmpp.net](https://www.xmpp.net/). It was a bit of an unusual step for a standards development organization to take -- after all, you don't see the [IETF](http://www.ietf.org/), [W3C](http://www.w3.org/), and [IMC](http://www.imc.org/) offering free digital certificates to hostmasters, webmasters, and postmasters. But we decided that we needed provide some practical leadership regarding the security of the Jabber/XMPP network, and [StartCom](http://cert.startcom.org/) (our root CA) has made that task much easier than we could have hoped.

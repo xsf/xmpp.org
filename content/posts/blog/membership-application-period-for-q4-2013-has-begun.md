@@ -2,7 +2,7 @@
 title: Membership Application Period for Q4 2013 has begun
 date: 2013-12-24 12:36
 author: bear
-blog_id: membership-application-period-for-q4-2013-has-begun
+blog_id: blog
 ---
 
 Alex has started the membership application process for Q4 2013.

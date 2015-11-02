@@ -2,7 +2,7 @@
 title: Roundup of client software
 date: 2010-12-03 12:16
 author: Nyco
-blog_id: roundup-of-client-software
+blog_id: blog
 ---
 
 This software Roundup has been brought to you by Neustradamus and Nyco, with the help of Mike and Will.

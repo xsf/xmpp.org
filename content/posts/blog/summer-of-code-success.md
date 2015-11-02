@@ -2,7 +2,7 @@
 title: Summer of Code Success
 date: 2007-10-02 15:40
 author: stpeter
-blog_id: summer-of-code-success
+blog_id: blog
 ---
 
 Although the [Google Summer of Code](http://blog.xmpp.org/?p=20) ended weeks ago, we neglected to post a final summary. 
