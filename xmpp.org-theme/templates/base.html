@@ -37,30 +37,27 @@
     </div>
   {% else %}
     {% if content_layout != "wide" %}
-    <div class="page-content row">
-    {% endif %}
-    {% if content_layout == "multiple-columns" %}
-      <div class="sidebar large-3 columns">
-        {% block related_content %}
-        {% endblock %}
-      </div>
-      <div class="large-8 columns">
-        <article>
-    {% endif %}
-    {% if content_layout == "single-column" %}
-      <div class="large-8 large-centered columns">
-        <article>
-    {% endif %}
-      {% block content %}
-      {% endblock %}
-    {% if content_layout != "wide" %}
-        </article>
-      </div>
-      {% if content_layout == "multiple-columns" %}
-      <div class="large-1 columns">
-      </div>
+      <div class="page-content row">
+        {% if content_layout == "multiple-columns" %}
+          <div class="large-8 large-push-1 medium-8 medium-push-1 columns">
+        {% endif %}
+        {% if content_layout == "single-column" %}
+          <div class="large-8 large-push-1 medium-8 medium-push-1 large-centered columns">
+        {% endif %}
+            <article>
       {% endif %}
-    </div>
+              {% block content %}
+              {% endblock %}
+      {% if content_layout !="wide" %}
+            </article>
+          </div>
+        {% if content_layout == "multiple-columns" %}
+          <div class="sidebar large-3 medium-3 columns">
+            {% block related_content %}
+            {% endblock %}
+          </div>
+        {% endif %}
+      </div>
     {% endif %}
   {% endif %}
 
