@@ -11,7 +11,7 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)]
+![](/images/logos/eyeball-networks.png)]
 
 Eyeball Networks pioneered the STUN/TURN/ICE device-to-device connection technologies adopted by communications standards including SIP, XMPP, IMS, PacketCable, IBM Sametime, Microsoft Lync, and now WebRTC.
 

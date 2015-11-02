@@ -11,7 +11,7 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)
+![](/images/logos/kolon-benit.png)
 
 Founded in 1954, KOLON industries, one of the biggest corporations in South Korea, has built an extensive global network through 27 affiliated domestic companies and 17 overseas subsidiaries. One of these affiliates is KOLON BENIT CO., LTD, which provides IT Services, IT outsourcing, and IT compliance solutions.
 

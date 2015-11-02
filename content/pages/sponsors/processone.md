@@ -11,7 +11,7 @@ Sidebar_menu_show: false
 Content_layout: single-column
 ---
 
-![](/images/logos/)
+![](/images/logos/process-one.png)
 
 ProcessOne is a leading provider in messaging platforms made for scale and robustness.
 
