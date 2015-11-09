@@ -47,39 +47,65 @@ Content_layout: multiple-columns
 
 ## 2003
 - XMPP Working Group essentially completes work on formalising the base Jabber protocols for adaptation, as IETF-approved instant messaging and presence protocols; later revisions made to the base protocols focus on improving security and internationalisation.
-- Jabber submits an IPR Notice to the IETF regarding the JABBER trademark.
+- Jabber Inc. submits an IPR Notice to the IETF regarding the JABBER trademark.
 
 ## 2004
-- Upon publication of the XMPP RFCs, the IETF announces the conclusion of the XMPP Working Group. However, development of further XMPP extensions continues.
+- __October:__ The IETF publishes RFCs 3920 and 3921 defining the core functionality of XMPP as Proposed Standards.
+- Upon publication of the XMPP RFCs, the IETF announces the conclusion of the XMPP Working Group. However, development of further XMPP extensions continues at the XSF.
 
 ## 2005
+- __June-August:__ The JSF participates in the Google Summer of Code.
 - __August:__ Implementation and deployment of large-scale XMPP-based services continues, highlighted by the launch of Google Talk.
 
 ## 2006
+- __June-August:__ The JSF participates in the Google Summer of Code.
 - __July:__ The first XMPP Summit was held in Portland, Oregon, USA.
-- __October:__ JSF renames “Jabber Enhancement Proposals” (JEPs) to “XMPP Extension Protocols” (XEPs) and moves them to the xmpp.org website.
-- __December:__ JSF enters into a partnership with StartCom, to offer free digital certificates to administrators of Jabber/XMPP servers through the XMPP Intermediate Certification Authority.
+- __October:__ The JSF renames “Jabber Enhancement Proposals” (JEPs) to “XMPP Extension Protocols” (XEPs) and moves them to the xmpp.org website.
+- __December:__ The JSF enters into a partnership with StartCom, to offer free digital certificates to administrators of Jabber/XMPP servers through the XMPP Intermediate Certification Authority.
 
 ## 2007
 - __January:__ Jabber Software Foundation renames itself to XMPP Standards Foundation to more accurately describe its focus on developing open protocol extensions to the IETF’s base XMPP specifications, rather than open-source software.
-- __February:__ XSF hold the second XMPP Summit in Brussels, Belgium.
-- __July:__ XSF hold the third XMPP Summit in Portland, Oregon, USA.
+- __February:__ The XSF holds the second XMPP Summit in Brussels, Belgium.
+- __June-August:__ The XSF participates in the Google Summer of Code.
+- __July:__ The XSF holds the third XMPP Summit in Portland, Oregon, USA.
 
 ## 2008
-- __February:__ XSF hold the fourth XMPP Summit in Brussels, Belgium.
-- __July:__ XSF hold the fifth XMPP Summit in Portland, Oregon, USA.
+- __February:__ The XSF holds the fourth XMPP Summit in Brussels, Belgium.
+- __June-August:__ The XSF participates in the Google Summer of Code.
+- __July:__ The XSF holds the fifth XMPP Summit in Portland, Oregon, USA.
 
 ## 2009
-- __February:__ XSF hold the sixth XMPP Summit in Brussels, Belgium.
-- __July:__ XSF held the seventh XMPP Summit in San Jose, California, USA.
+- __February:__ The XSF holds the sixth XMPP Summit in Brussels, Belgium.
+- __July:__ The XSF holds the seventh XMPP Summit in San Jose, California, USA.
 
 ## 2010
-- __February:__ XSF hold the eighth XMPP Summit in Brussels, Belgium.
-- __July:__ XSF hold the ninth XMPP Summit in Portland, Oregon, USA.
+- __February:__ The XSF holds the eighth XMPP Summit in Brussels, Belgium.
+- __July:__ The XSF holds the ninth XMPP Summit in Portland, Oregon, USA.
 
 ## 2011
-- __February:__ XSF hold the tenth XMPP Summit in Brussels, co-located with an interim meeting of the IETF’s XMPP Working Group, with a special focus on internationalization.
+- __February:__ The XSF holds the tenth XMPP Summit in Brussels, co-located with an interim meeting of the IETF’s XMPP Working Group, with a special focus on internationalization.
+- __March:__ The IETF publishes RFCs 6120 and 6122 updating the core definition of XMPP.
+- __June-August:__ The XSF participates in the Google Summer of Code.
 
 ## 2012
-- __February:__ XSF hold the eleventh XMPP Summit in Brussels, Belgium.
-- __February:__ XSF complete significant revisions to the XMPP multi-user chat extension.
+- __February:__ The XSF holds the eleventh XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF completes significant revisions to the XMPP multi-user chat extension (XEP-0045).
+- __June-August:__ The XSF participates in the Google Summer of Code.
+- __October:__ The XSF holds the twelfth XMPP Summit in Portland, Oregon, USA.
+
+## 2013
+- __January:__ The XSF holds the thirteenth XMPP Summit in Brussels, Belgium.
+- __October:__ The XSF holds the fourteenth XMPP Summit in Portland, Oregon, USA.
+
+## 2014
+- __January:__ The XSF holds the fifteenth XMPP Summit in Brussels, Belgium.
+- __May:__ Operators of servers on the public XMPP network permanently upgrade to encrypted communications. 
+- __September:__ The XSF holds the sixteenth XMPP Summit in Berlin, Germany.
+- __October:__ The IETF publishes RFC 7395 defining XMPP over WebSocket.
+
+## 2015
+- __February:__ The XSF holds the seventeenth XMPP Summit in Brussels, Belgium.
+- __June-August:__ The XSF participates in the Google Summer of Code.
+- __September:__ The IETF publishes RFC 7622 updating the definition of XMPP addresses.
+- __October:__ The XSF holds the eighteenth XMPP Summit in Richland, Washington, USA.
+
