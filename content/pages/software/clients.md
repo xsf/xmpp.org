@@ -106,7 +106,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | Quiet Internet Pager (QIP)     | Windows                                                             | forum.qip.ru                    |
 | qutIM                          | Linux / OSX / Windows                                               | qutim.org                       |
 | saje                           | Linux / OSX / Windows                                               | code.google.com                 |
-| Salut Ã Toi                    | Linux / Console / Text-Mode / Browser                               | goffi.org                       |
+| Salut à Toi                    | Linux / Console / Text-Mode / Browser                               | goffi.org                       |
 | SamePlace                      | Browser                                                             | sameplace.cc                    |
 | Sim-IM                         | Linux                                                               | sim-im.org                      |
 | Slimster                       | Browser                                                             | slimster.org                    |
