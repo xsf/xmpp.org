@@ -69,7 +69,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | Loudmouth                    | Ruby                                |                  | Website                  |                |
 | MatriX                       | C# / .NET / Mono                    | Commercial       | ag-software.net          | 2014-01-22     |
 | Net::XMPP                    | Perl                                |                  | Website                  |                |
-| node-xmpp                    | JavaScript                          |                  | github.com               |                |
+| node-xmpp                    | JavaScript                          |                  | http://node-xmpp.org               |                |
 | oajabber                     | C++                                 |                  | Website                  |                |
 | Pontarius XMPP               | Haskell                             | BSD              | github.com               |                |
 | pyxmpp                       | Python                              |                  | Website                  |                |
@@ -95,5 +95,5 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | xmppframework                | Objective C                         |                  | github.com               |                |
 | xmpphp                       | PHP                                 |                  | code.google.com          |                |
 | xmppy                        | Python                              |                  | Website                  |                |
-| XMPP-FTW                     | JavaScript                          |                  | github.com               |                |
+| XMPP-FTW                     | JavaScript                          |                  | https://github.com/xmpp-ftw               |                |
 | Z-XMPP                       | JavaScript                          |                  | ivan.vucica.net          |                |
