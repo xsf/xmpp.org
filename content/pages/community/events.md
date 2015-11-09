@@ -29,17 +29,17 @@ Content_layout: multiple-columns
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
 
-The next event is the [US XMPP Summit](http://wiki.xmpp.org/web/Summit_18) in Richland, WA in October. 
+Summit 19 will be held once again in Brussels in February 2016, in tandem with FOSDEM.
 
-The last event (Summit 17) was the [European XMPP Summit](http://wiki.xmpp.org/web/Summit_17), held in coordination with [FOSDEM](http://fosdem.org) in Brussels.
-
-It is anticipated that Summit 19 will be held once again in Brussels in February 2016.
+The last event was the [US XMPP Summit](http://wiki.xmpp.org/web/Summit_18) in Richland, WA in October. Prior to that, Summit 17 was the [European XMPP Summit](http://wiki.xmpp.org/web/Summit_17), held in coordination with [FOSDEM](http://fosdem.org) in Brussels.
 
 ## Other events
 
 XSF members and other XMPP developers can be found at events regularly all over the world.
 
-If you're speaking about XMPP at an upcoming event, please [add them](http://lanyrd.com/guides/xmpp/) to the list.
+If you're speaking about XMPP at an upcoming event, please [add them](http://lanyrd.com/guides/xmpp/) to the list and submit it to [Lanyrd](http://lanyrd.com).
+
+#### XMPP events on Lanyrd:
 
 <div class="lanyrd-target-guide">
 <a href="http://lanyrd.com/guides/xmpp/"

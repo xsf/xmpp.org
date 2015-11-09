@@ -9,19 +9,23 @@ Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: About the XSF
-Sidebar_menu_size: 6
-Sidebar_menu_elem_name_1: The XSF
-Sidebar_menu_elem_url_1: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_2: Members
-Sidebar_menu_elem_url_2: about/xsf/members
-Sidebar_menu_elem_name_3: Editor Team
-Sidebar_menu_elem_url_3: about/xsf/editor-team
-Sidebar_menu_elem_name_4: Infrastructure Team
-Sidebar_menu_elem_url_4: about/xsf/infrastructure-team
-Sidebar_menu_elem_name_5: UPnP Liaison Team
-Sidebar_menu_elem_url_5: about/xsf/upnp-liaison-team
-Sidebar_menu_elem_name_6: Standards Process
-Sidebar_menu_elem_url_6: about/standards-process
+Sidebar_menu_size: 8
+Sidebar_menu_elem_name_1: Features and benefits
+Sidebar_menu_elem_url_1: about/features-and-benefits
+Sidebar_menu_elem_name_2: History
+Sidebar_menu_elem_url_2: about/history
+Sidebar_menu_elem_name_3: Overview
+Sidebar_menu_elem_url_3: about/overview
+Sidebar_menu_elem_name_4: Who uses XMPP
+Sidebar_menu_elem_url_4: about/who-uses-xmpp
+Sidebar_menu_elem_name_5: Standards Process
+Sidebar_menu_elem_url_5: about/standards-process
+Sidebar_menu_elem_name_6: The XSF
+Sidebar_menu_elem_url_6: about/xmpp-standards-foundation
+Sidebar_menu_elem_name_7: Extensions
+Sidebar_menu_elem_url_7: extensions
+Sidebar_menu_elem_name_8: FAQ
+Sidebar_menu_elem_url_8: about/faq
 Content_layout: multiple-columns
 ---
 
@@ -29,7 +33,7 @@ The XMPP Standards Foundation (also known as the XSF and formerly the Jabber Sof
 
 The XSF also provides information and infrastructure to the worldwide community of Jabber/XMPP developers, service providers and end users.
 
-At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). 
+At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership).
 
 If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
@@ -45,7 +49,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 
 ## The Council:
 
-The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures. 
+The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures.
 
 The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post).
 
