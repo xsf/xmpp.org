@@ -9,19 +9,23 @@ Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: About XMPP
-Sidebar_menu_size: 6
+Sidebar_menu_size: 8
 Sidebar_menu_elem_name_1: Features and benefits
 Sidebar_menu_elem_url_1: about/features-and-benefits
 Sidebar_menu_elem_name_2: History
 Sidebar_menu_elem_url_2: about/history
-Sidebar_menu_elem_name_3: Who uses XMPP
-Sidebar_menu_elem_url_3: about/who-uses-xmpp
-Sidebar_menu_elem_name_4: Standards Process
-Sidebar_menu_elem_url_4: about/standards-process
-Sidebar_menu_elem_name_5: The XSF
-Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_6: FAQ
-Sidebar_menu_elem_url_6: about/faq
+Sidebar_menu_elem_name_3: Overview
+Sidebar_menu_elem_url_3: about/overview
+Sidebar_menu_elem_name_4: Who uses XMPP
+Sidebar_menu_elem_url_4: about/who-uses-xmpp
+Sidebar_menu_elem_name_5: Standards Process
+Sidebar_menu_elem_url_5: about/standards-process
+Sidebar_menu_elem_name_6: The XSF
+Sidebar_menu_elem_url_6: about/xmpp-standards-foundation
+Sidebar_menu_elem_name_7: Extensions
+Sidebar_menu_elem_url_7: extensions
+Sidebar_menu_elem_name_8: FAQ
+Sidebar_menu_elem_url_8: about/faq
 Content_layout: multiple-columns
 ---
 
@@ -31,18 +35,18 @@ Content_layout: multiple-columns
 
 ## 2000
 - __February:__ The IETF publish work done by the Instant Messaging and Presence Protocol (IMPP) Working Group; in short, a model and set of requirements for instant messaging and presence systems.
-- __May:__ Version 1.0 of the jabberd server is released and the base Jabber protocols (XML streaming, messaging, presence, contact lists, etc.) are stabilised. 
+- __May:__ Version 1.0 of the jabberd server is released and the base Jabber protocols (XML streaming, messaging, presence, contact lists, etc.) are stabilised.
 - __October:__ jabberd 1.2 is released and the server dialback protocol introduced to prevent address spoofing on the rapidly growing network of Jabber servers.
 
 ## 2001
 - __August:__ The Jabber Software Foundation (JSF) is formed to coordinate the growing number of open source projects and commercial entities building/using the Jabber technologies. The key focus of the JSF is to manage the protocols used within the Jabber/XMPP community, by documenting existing protocols and developing protocol extensions through an open standards process.
 
 ## 2002
-- __October:__ Formation of the XMPP Working Group is approved by the Internet Engineering Steering Group (IESG). As a result, JSF formally contributes the base Jabber protocols to the Internet Standards Process and assigns change control over those protocols to the IETF, under the name Extensible Messaging and Presence Protocol (XMPP). 
+- __October:__ Formation of the XMPP Working Group is approved by the Internet Engineering Steering Group (IESG). As a result, JSF formally contributes the base Jabber protocols to the Internet Standards Process and assigns change control over those protocols to the IETF, under the name Extensible Messaging and Presence Protocol (XMPP).
 - __November:__ First meeting of the XMPP Working Group is held at IETF 55 and includes presentations by Jeremie Miller, Joe Hildebrand, and Peter Saint-Andre.
 
 ## 2003
-- XMPP Working Group essentially completes work on formalising the base Jabber protocols for adaptation, as IETF-approved instant messaging and presence protocols; later revisions made to the base protocols focus on improving security and internationalisation. 
+- XMPP Working Group essentially completes work on formalising the base Jabber protocols for adaptation, as IETF-approved instant messaging and presence protocols; later revisions made to the base protocols focus on improving security and internationalisation.
 - Jabber submits an IPR Notice to the IETF regarding the JABBER trademark.
 
 ## 2004
