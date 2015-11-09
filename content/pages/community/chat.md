@@ -27,13 +27,13 @@ Content_layout: multiple-columns
 
 The XSF hosts a variety of chat rooms and all archives are available online.
 
-### Jabber support chatroom
-Chat about using Jabber/XMPP technologies ([join](xmpp:jabber@conference.jabber.org?join) | [logs](http://logs.jabber.org/jabber@conference.jabber.org/))
+### Developer chatroom
+Chat about build software with XMPP ([join](xmpp:jdev@conference.jabber.org?join) | [logs](http://logs.jabber.org/jdev@conference.jabber.org/))
 
 ### Operators chatroom
-Chat about the Jabber/XMPP network ([join](xmpp:operators@conference.jabber.org?join) | [logs](http://logs.jabber.org/operators@conference.jabber.org/))
+Chat about running XMPP services ([join](xmpp:operators@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/operators/))
 
-### Developer chatroom
-Chat about software and protocols ([join](xmpp:jdev@conference.jabber.org?join) | [logs](http://logs.jabber.org/jdev@conference.jabber.org/))
+### XSF chatroom
+Chat about the XMPP standards process ([join](xmpp:xsf@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/xsf/))
 
 All of these venues are completely free and open to any interested individual.

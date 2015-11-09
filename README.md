@@ -84,3 +84,13 @@ View at `http://localhost:8000`
 To just generate a new version (without starting up a local webserver) just do:
 
 `make html`
+
+
+Theme development
+-----------------
+
+You can modify the theme (layout and styling) in the [xmpp.org-theme](https://github.com/xsf/xmpp.org/tree/master/xmpp.org-theme/sass) directory.
+
+Make changes to Sass files, *not* compiled CSS.
+
+`npm i` then run `grunt` to compile Sass.
