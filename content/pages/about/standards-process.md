@@ -29,13 +29,13 @@ Sidebar_menu_elem_url_8: about/faq
 Content_layout: multiple-columns
 ---
 
-If the XMPP Standards Foundation did just one thing, it would be the XEPs.
+The XSF develops extensions to XMPP through a lightweight standards process centered around XMPP Extension Protocols (XEPs).
 
-The XMPP Extension Protocols are a set of around 350 specifications, covering everything outside of the core of XMPP (that's worked on within the IETF). Developers and other standards experts from around the world collaborate on these, developing new specifications for emerging practises, and refining existing ways of doing things. Proposed by anyone, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in XEP-0001, which contains the formal and canonical definitions for the types, states, and processes. This post will only look at XEPs aiming to become a Final Standard, which is what most people would want.
+The XEP series contains around 350 specifications, covering everything outside of the core of XMPP (which is worked on within the IETF). These specifications are liberally licensed under the XSF's [IPR Policy](/about/xsf/xsf-ipr-policy/) for wide implementation. Developers and other standards experts from around the world collaborate on these, developing new specifications for emerging practises, and refining existing ways of doing things. Proposed by anyone, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](http://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. This page will only look at XEPs aiming to become a Final Standard, which is what most people would want.
 
-So if you've an idea for a new extension in XMPP, what do you do?
+So if you have an idea for a new extension in XMPP, what do you do?
 
-Importantly, you don't need to be an XSF member to propose new XEPs, or work on existing ones.
+Importantly, you don't need to be an XSF member to propose new XEPs or work on existing ones, because discussion occurs on the open [standards@xmpp.org discussion list](http://mail.jabber.org/mailman/listinfo/standards).
 
 #### Write your proposed extension
 
