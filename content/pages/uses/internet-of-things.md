@@ -75,7 +75,7 @@ For proprietary applications in IoT, the **iq** stanza might be sufficient. But 
 
 To facilitate the creation of an *open* and [loosely coupled](#loosely-coupled-architectures) architecture that enable [interoperability](#interoperability) between things and applications, [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) was created. It defines a Request/Response mechanism where sensor data can be read from devices asynchronously. Apart from the normal request/response mechanism provided by the **iq** stanza, it allows for slow responders and defines a data format that can be used to encapsulate sensor data in an interoperable manner. It is designed to allow new types of devices to be added to networks without the need to upgrading software to perform basic tasks, such as sensor data readout, machine processing of data and presentation of data to human users. It also allows devices from different manufacturers and applications from different developers to exchange data seemlessly.
 
-![IoT Request/Response](iotimg/reqresp.png) 
+![IoT Request/Response](iotimg/reqresp.png)  
 *Example of normal Request/Response flow in [XEP-0323](http://xmpp.org/extensions/xep-0323.html)*
 
 #### Asynchronous Messaging
