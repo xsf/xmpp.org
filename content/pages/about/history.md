@@ -50,7 +50,7 @@ Content_layout: multiple-columns
 - Jabber Inc. submits an IPR Notice to the IETF regarding the JABBER trademark.
 
 ## 2004
-- __October:__ The IETF publishes RFCs 3920 and 3921 defining the core functionality of XMPP as Proposed Standards.
+- __October:__ The IETF publishes [RFC 3920](https://datatracker.ietf.org/doc/rfc3920/) and [RFC 3921](https://datatracker.ietf.org/doc/rfc3921/) defining the core functionality of XMPP as Proposed Standards.
 - Upon publication of the XMPP RFCs, the IETF announces the conclusion of the XMPP Working Group. However, development of further XMPP extensions continues at the XSF.
 
 ## 2005
@@ -84,7 +84,7 @@ Content_layout: multiple-columns
 
 ## 2011
 - __February:__ The XSF holds the tenth XMPP Summit in Brussels, co-located with an interim meeting of the IETF’s XMPP Working Group, with a special focus on internationalization.
-- __March:__ The IETF publishes RFCs 6120 and 6122 updating the core definition of XMPP.
+- __March:__ The IETF publishes [RFC 6120](https://datatracker.ietf.org/doc/rfc6120/) and [RFC 6121](https://datatracker.ietf.org/doc/rfc6121/) updating the core definition of XMPP.
 - __June-August:__ The XSF participates in the Google Summer of Code.
 
 ## 2012
@@ -101,11 +101,12 @@ Content_layout: multiple-columns
 - __January:__ The XSF holds the fifteenth XMPP Summit in Brussels, Belgium.
 - __May:__ Operators of servers on the public XMPP network permanently upgrade to encrypted communications. 
 - __September:__ The XSF holds the sixteenth XMPP Summit in Berlin, Germany.
-- __October:__ The IETF publishes RFC 7395 defining XMPP over WebSocket.
+- __October:__ The IETF publishes [RFC 7395](https://datatracker.ietf.org/doc/rfc7395/) defining XMPP over WebSocket.
 
 ## 2015
 - __February:__ The XSF holds the seventeenth XMPP Summit in Brussels, Belgium.
+- __June:__ The IETF publishes [RFC 7590](https://datatracker.ietf.org/doc/rfc7590/) updating the use of Transport Layer Security (TLS) in XMPP.
 - __June-August:__ The XSF participates in the Google Summer of Code.
-- __September:__ The IETF publishes RFC 7622 updating the definition of XMPP addresses.
+- __September:__ The IETF publishes [RFC 7622](https://datatracker.ietf.org/doc/rfc7622/) modernizing the definition of XMPP addresses.
 - __October:__ The XSF holds the eighteenth XMPP Summit in Richland, Washington, USA.
 
