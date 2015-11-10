@@ -25,9 +25,9 @@ Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
 ---
 
-### Executive Director: Peter Saint Andre
+### Executive Director
 
-Peter Saint-Andre is CTO at &yet and has served as executive director of the XMPP Standards Foundation since 2002. He has been contributing to the Jabber/XMPP developer community since late 1999, where he has focused on documentation and standardization as author of the XMPP RFCs, numerous XMPP extension protocols, and XMPP: The Definitive Guide (O’Reilly, 2009).
+Peter Saint-Andre has served as executive director of the XMPP Standards Foundation since 2002. He has been contributing to the Jabber/XMPP developer community since late 1999, where he has focused on documentation and standardization as author of the XMPP RFCs, numerous XMPP extension protocols, and XMPP: The Definitive Guide (O’Reilly, 2009).
 
 Peter’s weblog is published at stpeter.im and syndicated at Planet Jabber. His contact information is available at https://stpeter.im/contact.html.
 
