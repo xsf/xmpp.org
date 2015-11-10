@@ -55,21 +55,27 @@ This binding mechanism allows things to connect to the network using a normal bi
 
 #### BOSH - Bidirectional streams over Synchronous HTTP
 
-This binding mechanism allows clients that can only access the Internet using the HTTP protocol series (such as Javascript clients) to connect to the XMPP network. **BOSH** is described in [XEP-0206](http://xmpp.org/extensions/xep-0206.html).
+This binding mechanism allows clients that can only access the Internet using the HTTP protocol series (such as Javascript clients) to connect to the XMPP network. **BOSH** is described in [XEP-0206: XMPP Over BOSH](http://xmpp.org/extensions/xep-0206.html).
 
 #### EXI - Efficient XML Interchange
 
-For small devices in resource constrained networks, XMPP can seem to verbose. Often network packets have to be small to not be fragmented, such as is the case if using 6LowPan IPv6 radio networks. To allow such devices to use the powers of XMPP, an **EXI** binding is available. EXI, or Efficiant XML Interchange, is an exceptionally efficient way of compressing XML, using knowledge derived from the XML schemas, and allows XML fragments to be compressed to sizes suitable for resource contrained networks. **EXI** binding is described in [XEP-0322](http://xmpp.org/extensions/xep-0322.html). 
+For small devices in resource constrained networks, XMPP can seem to verbose. Often network packets have to be small to not be fragmented, such as is the case if using 6LowPan IPv6 radio networks. To allow such devices to use the powers of XMPP, an **EXI** binding is available. EXI, or Efficiant XML Interchange, is an exceptionally efficient way of compressing XML, using knowledge derived from the XML schemas, and allows XML fragments to be compressed to sizes suitable for resource contrained networks. **EXI** binding is described in [XEP-0322: Efficient XML Interchange (EXI) Format](http://xmpp.org/extensions/xep-0322.html). 
 
 ## Communication Patterns
 
+*Communication patterns* are architectorial concepts describing how messages are transported in the network to accomplish certain tasks. Knowledge of these patterns are important to be able to correctly design and implement applications and scale networks of things accordingly, so that functional requirements are met.
+
 #### Request/Response
+
+
 
 #### Asynchronous Messaging
 
 #### Publish/Subscribe
 
 #### Event subscription (Observe)
+
+#### Delayed delivery
 
 ### Quality of Service
 
