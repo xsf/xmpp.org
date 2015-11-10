@@ -146,6 +146,7 @@ __Servers__ - the following XMPP servers include built-in support for MUC:
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Prosody](http://prosody.im/)
 - [Tigase](http://www.tigase.org/)
+- [MongooseIM](https://github.com/esl/MongooseIM)
 
 __External Components__ - the following standalone components can be used with a wide variety of XMPP servers:
 
