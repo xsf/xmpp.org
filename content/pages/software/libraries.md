@@ -62,7 +62,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | JAXL                         | PHP                                 |                  | code.google.com          |                |
 | jQuery-XMPP-plugin           | JavaScript                          |                  | github.com               |                |
 | Jreen                        | C++/Qt                              |                  | qutim.org                |                |
-| JSJaC                        | JavaScript                          |                  | jwchat.org               |                |
+| JSJaC                        | JavaScript                          |                  | github.com               |                |
 | libstrophe                   | C                                   |                  | strophe.im               |                |
 | Lightr                       | PHP                                 |                  | code.google.com          |                |
 | Loudmouth                    | C                                   |                  | Website                  |                |
