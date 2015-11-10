@@ -37,17 +37,47 @@ This definition has some direct consequences that open up into different areas o
 * **Connection** relates to the study of *communication protocols*.
 * **Things** relates to the study of *sensors*, *actuators*, *controllers* and other types of devices.
 * **Not operated by humans** relates to *provisioning* and *automatic decision making*.
-* **Internet** relates to *security*, including identities, authentication and authorization, but also to *interoperability*.
+* **Internet** relates to *scalability* and *security*, including identities, authentication and authorization, but also to *interoperability*.
 
 As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*.
 
-## Connection
+## Communication Protocols
 
-### Bindings
+One important aspect of **IoT** is how things connect to the Internet and how they can communicate with the outside world, and how the outside world in turn can communicate with the things. XMPP provides a stable and well tested extensible protocol that gives exceptional possibilities both to things and any applications wanting to communicate with them. The following subsections will outline why that is.
 
-### Compression
+### Connection Bindings
 
-### Communication Patterns
+When things and applications connect to the Internet using **XMPP**, they need to connect to the XMPP network using a **binding**. There are various options available, depending on the capabilities of the broker used to connect to the network.
+
+#### Standard XMPP binding
+
+This binding mechanism allows things to connect to the network using a normal bi-directional socket connection to the server. XML fragments are later sent both ways over this socket connection as part of the communication. This method is clearly outlined in the XMPP RFCs.
+
+#### BOSH - Bidirectional streams over Synchronous HTTP
+
+This binding mechanism allows clients that can only access the Internet using the HTTP protocol series (such as Javascript clients) to connect to the XMPP network. **BOSH** is described in [XEP-0206](http://xmpp.org/extensions/xep-0206.html).
+
+#### EXI - Efficient XML Interchange
+
+For small devices in resource constrained networks, XMPP can seem to verbose. Often network packets have to be small to not be fragmented, such as is the case if using 6LowPan IPv6 radio networks. To allow such devices to use the powers of XMPP, an **EXI** binding is available. EXI, or Efficiant XML Interchange, is an exceptionally efficient way of compressing XML, using knowledge derived from the XML schemas, and allows XML fragments to be compressed to sizes suitable for resource contrained networks. **EXI** binding is described in [XEP-0322](http://xmpp.org/extensions/xep-0322.html). 
+
+## Communication Patterns
+
+#### Request/Response
+
+#### Asynchronous Messaging
+
+#### Publish/Subscribe
+
+#### Event subscription (Observe)
+
+### Quality of Service
+
+## Scalability
+
+### Federation
+
+### Global identity
 
 ## Things
 
@@ -63,6 +93,8 @@ As you will see, **XMPP** provides a lot of support into all these areas, making
 
 ### Delegation of Trust
 
+### Discovery
+
 ## Security
 
 ### Identity
@@ -71,11 +103,15 @@ As you will see, **XMPP** provides a lot of support into all these areas, making
 
 ### Authorization
 
+### Encryption
+
+### End-to-end encryption
+
 ## Interoperability
 
 ### Loosely coupled architectures
 
-### Discovery
+### Standard interfaces
 
 ## Work in progress
 
