@@ -31,9 +31,9 @@ Content_layout: multiple-columns
 
 The XMPP Standards Foundation (also known as the XSF and formerly the Jabber Software Foundation) is an independent, nonprofit standards development organisation whose primary mission is to define open protocols for presence, instant messaging, and real-time communication and collaboration on top of the IETF’s Extensible Messaging and Presence Protocol (XMPP).
 
-The XSF also provides information and infrastructure to the worldwide community of Jabber/XMPP developers, service providers and end users.
+The XSF also provides information and infrastructure to the worldwide community of Jabber/XMPP developers, service providers, and end users. In addition, the XSF administers the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark).
 
-At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership).
+At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). The Board also appoints various work teams (such as the [editor team](/about/xsf/editor-team) and [infrastructure team](/about/xsf/infrastructure-team)) as well as the [Executive Director, Treasurer, and Secretary](about/xsf/people).
 
 If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
@@ -47,7 +47,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Will Sheward__
 - __Adam Brault__ is the founder of [&yet](http://andyet.com), a consultancy focused on realtime communication (XMPP, WebRTC) and security. You can find Adam on [Twitter](http://twitter.com/adambrault) and chat with him on [XMPP](xmpp:adam@brault.io). (Sometimes.)
 
-## The Council:
+## The Council
 
 The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures.
 
@@ -60,3 +60,4 @@ The Council (2014-2015) consists of the following individuals:
 - __Lance Stout__ has worked on several XMPP client/component libraries since 2010, including [SleekXMPP](https://github.com/fritzy/SleekXMPP). Lance works at [&yet](http://andyet.com) where he has been focusing on improving the experience of developing with XMPP in the browser, which has resulted in the new [stanza.io](http://stanza.io) library. With the recent introduction of WebRTC, he has been working with Philipp to create interoperable implementations of Jingle using WebRTC.
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](http://xmpp.org/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
 - __Dave Cridland__
+
