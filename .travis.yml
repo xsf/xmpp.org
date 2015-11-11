@@ -8,8 +8,10 @@ addons:
   apt:
     packages:
     - xsltproc
+before_install:
+  - wget http://mirror.pnl.gov/macports/distfiles/texml/texml-2.0.2.tar.gz && tar xfzv texml-2.0.2.tar.gz && cd texml-2.0.2 && sudo python setup.py install
 install:
-- pip install pelican ghp-import markdown
+- pip install pelican ghp-import markdown texml
 script:
 - make github
 env:
