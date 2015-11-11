@@ -11,7 +11,7 @@ addons:
 before_install:
   - wget http://mirror.pnl.gov/macports/distfiles/texml/texml-2.0.2.tar.gz && tar xfzv texml-2.0.2.tar.gz && cd texml-2.0.2 && sudo python setup.py install && ln -s /usr/local/bin/texml /usr/bin/texml
 install:
-- pip install pelican ghp-import markdown texml
+- pip install pelican ghp-import markdown
 script:
 - make github
 env:
