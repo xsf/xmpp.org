@@ -4,6 +4,8 @@ branches:
   - master
 notifications:
   email: false
+before_install:
+  - "sudo apt-get install xsltproc"
 install:
 - pip install pelican ghp-import markdown
 script:
