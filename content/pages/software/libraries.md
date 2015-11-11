@@ -23,77 +23,76 @@ Content_layout: multiple-columns
 
 Code libraries are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.
 
-> Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
+> Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards.com)pliance, usability, reliability, or performance.
 
-__See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org)
+__See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com)/xsf/xmpp.org))
 
+| Name                                          | Language(s)                         | License          |
+|-------------------------------------------------------|-------------------------------------|------------------|
+| [agsXMPP SDK](http://ag-software.net)           | C# / .net / Mono                    | GPL /Comercial |
+| [AnyEvent::XMPP](http://ta-sa.org)                 | Perl                                | Artistic         |
+| [as3xmpp](http://code.google.com)           | Flash / ActionScript                | GPLv2            |
+| [AXMPP](http://orge.ada-ru.org)          | Ada                                 | BSD              |
+| [Babbler](http://babbler-xmpp.blogspot.de)  | Java                                | MIT              |
+| [Babylon](http://github.com)                | Ruby                                | MIT              |
+| [Blather](http://adhearsion.com)            | Ruby                                | MIT              |
+| [cl-xmpp](http://common-lisp.net)           | Lisp                                | MIT              |
+| [Coversant SoapBox SDK Studio](http://coversant.com)             | C# / .net / Mono / C++              |Commercial |
+| [dojox.xmpp](http://Website)                   | JavaScript                          |                  |
+| [dxmpp](http://Website)                   | C++                                 | Boost            |
+| [Echomine Feridian](http://Website)                   | Java                                |                  |
+| [Eiffel](http://Website)                   | PHP                                 |                  |
+| [emite](http://github.com)                | Java                                |                  |
+| [exmpp](http://exmpp.org)                 | Erlang                              |                  |
+| [frabjous](http://github.com)                | JavaScript                          |                  |
+| [gloox](http://camaya.net)                | C++                                 |                  |
+| [goexmpp](http://code.google.com)           | Go                                  |                  |
+| [headstock](http://Website)                   | Python                              |                  |
+| [hsxmpp](http://חנוך.se)                   | Haskell                             |                  |
+| [hxmpp](http://hxmpp.disktree.net)        | haXe                                |                  |
+| [iksemel](http://code.google.com)           | C                                   |                  |
+| [IP*Works Internet Toolkit](https://www.nsoftware.com/ipworks/)                             | ActiveX, C++, C#,                   |                  |
+| [Iris](https://github.com/psi-im/iris)                   | C++                                 |                  |
+| [jabber.net)](http://code.google.com)           | C# / .net) / Mono                    |                  |
+| [jabber.py](http://Website)                   | Python                              |                  |
+| [JabberLib](http://coccinella.im)             | Tcl                                 |                  |
+| [Jabber Stream Objects (JSO)](http://Website)                   | Java                                |                  |
+| [JAXL](http://code.google.com)           | PHP                                 |                  |
+| [jQuery-XMPP-plugin](http://github.com)                | JavaScript                          |                  |
+| [Jreen](http://qutim.org)                 | C++/Qt                              |                  |
+| [JSJaC](http://github.com)                | JavaScript                          |                  |
+| [libstrophe](http://strophe.im)                | C                                   |                  |
+| [Lightr](http://code.google.com)           | PHP                                 |                  |
+| [Loudmouth](http://Website)                   | C                                   |                  |
+| [Loudmouth](http://Website)                   | Ruby                                |                  |
+| [MatriX](http://ag-software.net)           | C# / .net) / Mono                    |       |
+| [net::XMPP](http://Website)                   | Perl                                |                  |
+| [node-xmpp](http://http://node-xmpp.org)      | JavaScript                          |                  |        
+| [oajabber](http://Website)                   | C++                                 |                  |
+| [Pontarius XMPP](http://github.com)                | Haskell                             | BSD              |
+| [pyxmpp](http://Website)                   | Python                              |                  |
+| [QXmpp](http://code.google.com)           | C++                                 |                  |
+| [seesmic-as3-xmpp](http://code.google.com)           | Flash / ActionScript                |                  |
+| [SleekXMPP](http://github.com)                | Python                              |                  |
+| [Smack](http://igniterealtime.org)        | Java (Java SE 7 and Android)        | Apache 2.0       |
+| [stanza.io](http://github.com)                | JavaScript                          |                  |
+| [strophe.js](http://Website)                   | JavaScript                          |                  |
+| [StropheCappuccino](http://github.com)                | Objective-J                         |                  |
+| [Swiften](http://swift.im)                  | C++                                 |                  |
+| [Tinder](http://igniterealtime.org)        | Java                                |                  |
+| [txmpp](http://github.com)                | C++                                 |                  |
+| [Twisted Words](http://twistedmatrix.com)         | Python                              |                  |
+| [Ubeity](http://github.com)                | C#                                  |                  |
+| [Verse](http://Website)                   | Lua                                 |                  |
+| [XIFF](http://igniterealtime.org)        | Flash / ActionScript                |                  |
+| [xmpp-psn](http://code.google.com)           | Python                              |                  |
+| [jaxmpp2](http://Website)                   | Java / Android / Google Web Toolkit |                  |
+| [xmpp4js](http://Website)                   | JavaScript                          |                  |
+| [XMPP4R](http://Website)                   | Ruby                                |                  |
+| [xmpp4r-simple](http://code.google.com)           | Ruby                                |                  |
+| [xmppframework](http://github.com)                | Objective C                         |                  |
+| [xmpphp](http://code.google.com)           | PHP                                 |                  |
+| [xmppy](http://Website)                   | Python                              |                  |
+| [XMPP-FTW](https://github.com/xmpp-ftw) | JavaScript                          |                  | 
+| [Z-XMPP](http://ivan.vucica.net)           | JavaScript                          |                  |
 
-| Name                         | Language(s)                         | License          | Details                  | Latest Release |
-|------------------------------|-------------------------------------|------------------|--------------------------|----------------|
-| agsXMPP SDK                  | C# / .NET / Mono                    | GPL / commercial | ag-software.net          |                |
-| AnyEvent::XMPP               | Perl                                | Artistic         | ta-sa.org                | 2012-06-14     |
-| as3xmpp                      | Flash / ActionScript                | GPLv2            | code.google.com          | 2909-08-25     |
-| AXMPP                        | Ada                                 | BSD              | forge.ada-ru.org         | 2011-03-07     |
-| Babbler                      | Java                                | MIT              | babbler-xmpp.blogspot.de |                |
-| Babylon                      | Ruby                                | MIT              | github.com               | 2009-03-31     |
-| Blather                      | Ruby                                | MIT              | adhearsion.com           | 2013-08-26     |
-| cl-xmpp                      | Lisp                                | MIT              | common-lisp.net          | 2008-07-12     |
-| Coversant SoapBox SDK Studio | C# / .NET / Mono / C++              | Commercial       | coversant.com            | unknown        |
-| dojox.xmpp                   | JavaScript                          |                  | Website                  |                |
-| dxmpp                        | C++                                 | Boost            | Website                  |                |
-| Echomine Feridian            | Java                                |                  | Website                  |                |
-| Eiffel                       | PHP                                 |                  | Website                  |                |
-| emite                        | Java                                |                  | github.com               |                |
-| exmpp                        | Erlang                              |                  | exmpp.org                |                |
-| frabjous                     | JavaScript                          |                  | github.com               |                |
-| gloox                        | C++                                 |                  | camaya.net               |                |
-| goexmpp                      | Go                                  |                  | code.google.com          |                |
-| headstock                    | Python                              |                  | Website                  |                |
-| hsxmpp                       | Haskell                             |                  | חנוך.se                  |                |
-| hxmpp                        | haXe                                |                  | hxmpp.disktree.net       |                |
-| iksemel                      | C                                   |                  | code.google.com          |                |
-| IP*Works Internet Toolkit    | ActiveX, C++, C#,                   |                  |                          |                |
-| .NET, Mono, Delphi, Java     |                                     | Website          |                          |                |
-| Iris                         | C++                                 |                  | Website                  |                |
-| jabber-net                   | C# / .NET / Mono                    |                  | code.google.com          |                |
-| jabber.py                    | Python                              |                  | Website                  |                |
-| JabberLib                    | Tcl                                 |                  | coccinella.im            |                |
-| Jabber Stream Objects (JSO)  | Java                                |                  | Website                  |                |
-| JAXL                         | PHP                                 |                  | code.google.com          |                |
-| jQuery-XMPP-plugin           | JavaScript                          |                  | github.com               |                |
-| Jreen                        | C++/Qt                              |                  | qutim.org                |                |
-| JSJaC                        | JavaScript                          |                  | github.com               |                |
-| libstrophe                   | C                                   |                  | strophe.im               |                |
-| Lightr                       | PHP                                 |                  | code.google.com          |                |
-| Loudmouth                    | C                                   |                  | Website                  |                |
-| Loudmouth                    | Ruby                                |                  | Website                  |                |
-| MatriX                       | C# / .NET / Mono                    | Commercial       | ag-software.net          | 2014-01-22     |
-| Net::XMPP                    | Perl                                |                  | Website                  |                |
-| node-xmpp                    | JavaScript                          |                  | http://node-xmpp.org               |                |
-| oajabber                     | C++                                 |                  | Website                  |                |
-| Pontarius XMPP               | Haskell                             | BSD              | github.com               |                |
-| pyxmpp                       | Python                              |                  | Website                  |                |
-| QXmpp                        | C++                                 |                  | code.google.com          |                |
-| seesmic-as3-xmpp             | Flash / ActionScript                |                  | code.google.com          |                |
-| SleekXMPP                    | Python                              |                  | github.com               |                |
-| Smack                        | Java (Java SE 7 and Android)        | Apache 2.0       | igniterealtime.org       | 2015-07-15     |
-| stanza.io                    | JavaScript                          |                  | github.com               |                |
-| strophe.js                   | JavaScript                          |                  | Website                  |                |
-| StropheCappuccino            | Objective-J                         |                  | github.com               |                |
-| Swiften                      | C++                                 |                  | swift.im                 |                |
-| Tinder                       | Java                                |                  | igniterealtime.org       |                |
-| txmpp                        | C++                                 |                  | github.com               |                |
-| Twisted Words                | Python                              |                  | twistedmatrix.com        |                |
-| Ubeity                       | C#                                  |                  | github.com               |                |
-| Verse                        | Lua                                 |                  | Website                  |                |
-| XIFF                         | Flash / ActionScript                |                  | igniterealtime.org       |                |
-| xmpp-psn                     | Python                              |                  | code.google.com          |                |
-| jaxmpp2                      | Java / Android / Google Web Toolkit |                  | Website                  |                |
-| xmpp4js                      | JavaScript                          |                  | Website                  |                |
-| XMPP4R                       | Ruby                                |                  | Website                  |                |
-| xmpp4r-simple                | Ruby                                |                  | code.google.com          |                |
-| xmppframework                | Objective C                         |                  | github.com               |                |
-| xmpphp                       | PHP                                 |                  | code.google.com          |                |
-| xmppy                        | Python                              |                  | Website                  |                |
-| XMPP-FTW                     | JavaScript                          |                  | https://github.com/xmpp-ftw               |                |
-| Z-XMPP                       | JavaScript                          |                  | ivan.vucica.net          |                |
