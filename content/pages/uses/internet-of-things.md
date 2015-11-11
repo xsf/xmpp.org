@@ -69,7 +69,7 @@ For small devices in resource constrained networks, XMPP can seem to verbose. Of
 
 The **Request/Response** communication pattern is one of the most basic communication patterns. It allows a *client* to request information from a *server* in *real-time*. The words "client" and "server" are here used purely to illustrate the roles of the participants in the pattern, not to describe the hierarchy in the network. Most commonly, they are peers in the network.
 
-XMPP provides an intrinsic method to implement a generic Request/Response mechanism, by use of the **iq** stanza built into XMPP. This allows one client to request information from another. What information is defined by the contents of the **iq** stanza.
+XMPP provides an intrinsic method to implement a generic Request/Response mechanism, by use of the **iq** stanza built into XMPP. This allows one client to request information from another. What information is defined by the contents of the **iq** stanza. The receiver of the request is informed of whom originated the request, and the client is also informed from whence the response came.
 
 For proprietary applications in IoT, the **iq** stanza might be sufficient. But there are instances where it is not. One such instance is if the response is slow to be collected, and partial results have to be returned to show progress. This might be the case when communicating with devices behind gateways, behind which very slow communication protocols are used. Another important instance, is if [interoperable](#interoperability) solutions are desired. In such cases, proprietary solutions create walled gardens that are difficult to integrate in larger contexts.
 
@@ -80,7 +80,39 @@ To facilitate the creation of an *open* and [loosely coupled](#loosely-coupled-a
 
 #### Asynchronous Messaging
 
+The **Asynchronous Messaging** communication pattern allows peers in the network to asynchronously send messages in *real-time* between each other when they decide to, not when requested. This is done by encapsulating the content of the message into a **message** stanza, which is built into XMPP. The receiver of a message is always informed who sent the message.
+
+To facilitate the interchange of IoT-data in asynchronous messages between things from different manufacturers, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
+
 #### Publish/Subscribe
+
+The **Publish/Subscribe** pattern allows for mass distribution of information to interested parties in an efficient manner. It reduces network traffic by up to half, by allowing the publisher of information to send its information only once to a publish/subscribe server, who then retransmits it to subscribers. The *Publish/Subscribe* pattern is more efficient than other patterns, such as *Request/Response* or *Asynchronous Messaging* if the following conditions are met:
+
+* Information does not have to be updated in *real-time* for continous values (non-discrete values).
+* Information does not have to be updated on *demand*.
+* Published information is actually used.
+
+If, on the other hand, *real-time* access to information of continous values (non-discrete values), or access to information on-demand, or if only small portions of generated data is to be used, other communication patterns are more efficient.
+
+Example of IoT use cases where data is more efficiently distributed using Publish/Subscribe than using other patterns:
+
+* Public sensors with massive base of uniform users.
+* Sensor data where storage of historical values using well-defined intervals is important.
+* Sensor data is uniform without need to be adapted to use case or user.
+* Sensor data is not confidential.
+
+Examples of IoT use cases where data might be better distributed using other patterns:
+
+* Individual control actions
+* Monitoring sensors in real-time
+* User base have completely different requirements on the data, intervals and content.
+* Data is tailored to the receiver, for instance using provisioning capabilities.
+* Data is confidential.
+
+To facilitate the interchange of IoT-data using the publish/subscribe pattern to mass distribute information, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
+
+![IoT Publish/Subscribe](iotimg/pubsub.png)  
+*Example of Publish/Subscribe flow*
 
 #### Event subscription (Observe)
 
