@@ -28,105 +28,107 @@ An XMPP client is any software or application that enables you to connect to an 
 
 __See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org)
 
-| Name                           | Platform(s)                                                         | Details                         |
-|--------------------------------|---------------------------------------------------------------------|---------------------------------|
-| Adium                          | OSX                                                                 | adium.im                        |
-| Agile Messenger                | Mobile                                                              | agilemobile.com                 |
-| AQQ                            | Windows                                                             | aqq.eu                          |
-| AstraChat                      | Mobile (Android, iOS)                                               | astrachat.com                   |
-| Ayttm                          | Linux                                                               | ayttm.sourceforge.net           |
-| beejive                        | Mobile (Android, BlackBerry, iOS)                                   | beejive.com                     |
-| Beem                           | Mobile (Android)                                                    | beem-project.com                |
-| BitlBee                        | Linux                                                               | bitlbee.org                     |
-| BlueJabb                       | Mobile (Android, Blackberry (BBOS), Nokia Symbian S40/S60 and Asha) | bluejabb.com                    |
-| Bombus                         | Mobile (J2ME)                                                       | bombus-im.org                   |
-| Boogie Chat                    | Mobile (iOS)                                                        | boogiesoftware.com              |
-| Candy                          | Browser                                                             | github.com                      |
-| Chatopus                       | Mobile (Palm OS)                                                    | chatopus.com                    |
-| Citron                         | Windows                                                             | citron-im.com                   |
-| Claros Chat                    | Browser                                                             | claros.org                      |
-| Cleartext EIM                  | Linux / OSX / Windows                                               | cleartext.com                   |
-| climm                          | Console / Text-Mode                                                 | climm.org                       |
-| Coccinella                     | Linux / OSX / Windows                                               | coccinella.im                   |
-| Conversations                  | Mobile (Android)                                                    | github.com/siacs/Conversations  |
-| Converse.js                    | Browser                                                             | conversejs.org                  |
-| Coversant SoapBox Communicator | Windows                                                             | coversant.com                   |
-| Crosstalk                      | Mobile (iOS)                                                        | portablek.com                   |
-| Digsby                         | Windows                                                             | digsby.com                      |
-| eM Client                      | Windows                                                             | emclient.com                    |
-| emesene                        | Linux / OSX / Windows                                               | emesene.org                     |
-| emite                          | Browser                                                             | code.google.com                 |
-| Empathy                        | Linux                                                               | live.gnome.org                  |
-| Exodus                         | Windows                                                             | code.google.com                 |
-| Finch                          | Console / Text-Mode                                                 | developer.pidgin.im             |
-| Gajim                          | Linux / Windows                                                     | gajim.org                       |
-| Galaxium                       | Linux                                                               | code.google.com                 |
-| ChatSecure                     | Mobile (Android)                                                    | guardianproject.info            |
-| GNU Freetalk                   | Console / Text-Mode                                                 | gnu.org                         |
-| Gossip                         | Linux                                                               | launchpad.net                   |
-| GreenJab                       | IBM i                                                               | bvstools.com                    |
-| iChat                          | OSX                                                                 | apple.com                       |
-| iJab                           | Browser                                                             | code.google.com                 |
-| IM+                            | Mobile                                                              | shapeservices.com               |
-| imov Messenger                 | Mobile (Android)                                                    | movsoftware.com                 |
-| Instantbird                    | Linux / OSX / Windows                                               | instantbird.com                 |
-| irssi-xmpp                     | Console / Text-Mode                                                 | cybione.org                     |
-| Jabbear                        | Windows / Browser                                                   | jabbear.com                     |
-| Jabber Mix Client              | Mobile (J2ME)                                                       | jabbermixclient.sourceforge.net |
-| jabber.el                      | Linux                                                               | emacs-jabber.sourceforge.net    |
-| Jabbim                         | Linux / OSX / Windows                                               | jabbim.com                      |
-| Jabiru                         | Mobile (Android)                                                    | jabiru.info                     |
-| JAJC                           | Windows                                                             | jajc.jrudevels.org              |
-| Jappix                         | Browser                                                             | jappix.org                      |
-| JBuddy Messenger               | Linux / OSX / Windows                                               | zionsoftware.com                |
-| Jeti                           | Linux / OSX / Windows                                               | jeti-im.org                     |
-| Jitsi (SIP Communicator)       | Linux / OSX / Windows                                               | jitsi.org                       |
-| JSXC                           | Browser                                                             | jsxc.org                        |
-| JWChat                         | Browser                                                             | stefan-strigler.de/jwchat       |
-| Kadu                           | Linux / OSX / Windows                                               | kadu.net                        |
-| Kopete                         | Linux                                                               | kopete.kde.org                  |
-| Lampiro                        | Mobile (J2ME)                                                       | lampiro.bluendo.com             |
-| m-im                           | Mobile (J2ME)                                                       | code.google.com                 |
-| mcabber                        | Console / Text-Mode                                                 | mcabber.com                     |
-| mChat                          | Mobile                                                              | smape.com                       |
-| Miranda IM                     | Windows                                                             | miranda-im.org                  |
-| Miranda NG                     | Windows                                                             | miranda-ng.org                  |
-| Monal IM                       | Mobile (iOS)                                                        | monal.im                        |
-| Mozilla Thunderbird            | Linux / OSX / Windows                                               | mozilla.org/thunderbird         |
-| OctroTalk                      | Mobile                                                              | octro.com                       |
-| OneTeam                        | Linux / OSX / Windows                                               | oneteam.im                      |
-| OneTeam for iPhone             | Mobile (iOS)                                                        | oneteam.im                      |
-| Pandion                        | Windows                                                             | pandion.im                      |
-| Poezio                         | Console / Text-Mode                                                 | poezio.eu                       |
-| Pidgin                         | Linux / OSX / Windows                                               | pidgin.im                       |
-| Prodromus                      | Browser                                                             | forge.webpresso.net             |
-| Profanity                      | Console / Text-Mode                                                 | profanity.im                    |
-| Psi                            | Linux / OSX / Windows                                               | psi-im.org                      |
-| Psi+                           | Linux / OSX / Windows                                               | psi-plus.com                    |
-| Quiet Internet Pager (QIP)     | Windows                                                             | forum.qip.ru                    |
-| qutIM                          | Linux / OSX / Windows                                               | qutim.org                       |
-| saje                           | Linux / OSX / Windows                                               | code.google.com                 |
-| Salut à Toi                    | Linux / Console / Text-Mode / Browser                               | goffi.org                       |
-| SamePlace                      | Browser                                                             | sameplace.cc                    |
-| Sim-IM                         | Linux                                                               | sim-im.org                      |
-| Slimster                       | Browser                                                             | slimster.org                    |
-| Spark                          | Linux / OSX / Windows                                               | igniterealtime.org              |
-| SparkWeb                       | Browser                                                             | igniterealtime.org              |
-| Swift                          | Linux / OSX / Windows                                               | swift.im                        |
-| Synapse                        | Linux                                                               | synapse.im                      |
-| Talkonaut                      | Mobile                                                              | talkonaut.com                   |
-| Tigase Messenger               | Browser                                                             | tigase.org                      |
-| Tigase Minichat                | Browser                                                             | tigase.org                      |
-| Tkabber                        | Linux / OSX / Windows                                               | tkabber.jabber.ru               |
-| Tlen                           | Linux / OSX / Windows                                               | tlen.pl                         |
-| Trillian                       | Windows/ OSX / Mobile / Browser                                     | trillian.im                     |
-| TrophyIM                       | Browser                                                             | code.google.com                 |
-| V&V Messenger                  | Windows                                                             | altertech.net                   |
-| Vacuum-IM                      | Linux / OSX / Windows                                               | vacuum-im.org                   |
-| Vayusphere                     | Mobile (BlackBerry)                                                 | vayusphere.com                  |
-| VSTalk                         | Windows                                                             | codeplex.com                    |
-| WTW                            | Windows                                                             | k2t.eu                          |
-| Xabber                         | Mobile (Android)                                                    | xabber.com                      |
-| xmppchat                       | Browser                                                             | babelmonkeys.de                 |
-| XMPPWebChat                    | Browser                                                             | code.google.com                 |
-| yaxim                          | Mobile (Android)                                                    | yaxim.org                       |
+| [Name                           | Platform(s)                                          |
+|--------------------------------|-------------------------------------------------------|
+| [Adium](http://adium.org)                          | OSX                                                |
+| [Agile Messenger](http://agilemobile.com)                | Mobile                                             |
+| [AQQ](http://aqq.eu)                            | Windows                                            |
+| [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS)                              |
+| [Ayttm](http://ayttm.sourceforge.net)                          | Linux                                        |
+| [beejive](http://beejive.com)                        | Mobile (Android, BlackBerry, iOS)                  |
+| [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
+| [BitlBee](http://bitlbee.org)                        | Linux                                              |
+| [BlueJabb](http://bluejabb.com)                       | Mobile (Android, Blackberry (BBOS), Nokia Symbian S40/S60 and Asha)      |
+| [Bombus](http://bombus-im.org)                         | Mobile (J2ME)                                          |
+| [Boogie Chat](http://bombus-im.org)                    | Mobile (iOS)                                           |
+| [Buddycloud](http://buddycloud.com)                  | Mobile / Web / Console                                    |
+| [Candy](http://github.com)                          | Browser                                                |
+| [Chatopus](https://github.com/candy-chat)                       | Mobile (Palm OS)                                       |
+| [Citron](http://citron-im.com)                         | Windows                                                |
+| [Claros Chat](http://claros.org)                    | Browser                                                |
+| [Cleartext EIM](http://cleartext.com)                  | Linux / OSX / Windows                                  |
+| [climm](http://climm.org)                          | Console / Text-Mode                                    |
+| [Coccinella](http://coccinella.im)                     | Linux / OSX / Windows                                  |
+| [Conversations](https://github.com/siacs/Conversations)                  | Mobile (Android)              |
+| [Converse.js](http://conversejs.org)                    | Browser                                                |
+| [Coversant SoapBox Communicator](http://coversant.com) | Windows                                                |
+| [Crosstalk](http://portablek.com)                      | Mobile (iOS)                                           |
+| [Digsby](http://digsby.com)                         | Windows                                                |
+| [eM Client](http://emclient.com)                      | Windows                                                |
+| [emesene](http://emesene.org)                        | Linux / OSX / Windows                                  |
+| [emite](https://github.com/EmiteGWT/emite)                          | Browser                                          |
+| [Empathy](http://live.gnome.org)                        | Linux                                                  |
+| [Exodus](http://https://code.google.com/p/exodus/)                         | Windows                                   |
+| [Finch](http://developer.pidgin.im)                          | Console / Text-Mode                                 |
+| [Gajim](http://gajim.org)                          | Linux / Windows                                        |
+| [Galaxium](http://code.google.com)                       | Linux                                                  |
+| [ChatSecure](http://guardianproject.info)                     | Mobile (Android)                                  |
+| [GNU Freetalk](http://gnu.org)                   | Console / Text-Mode                                    |
+| [Gossip](http://https://wiki.gnome.org/Apps/Attic/Gossip)                         | Linux                                |
+| [GreenJab](http://bvstools.com)                       | IBM i                                                  |
+| [iChat](http://apple.com)                          | OSX                                                    |
+| [iJab](http://)                           | Browser                                                    
+| [IM+](http://shapeservices.com)                            | Mobile                                                 |
+| [imov Messenger](http://movsoftware.com)                 | Mobile (Android)                                       |
+| [Instantbird](http://instantbird.com)                    | Linux / OSX / Windows                                  |
+| [irssi-xmpp](http://cybione.org)                     | Console / Text-Mode                                    |
+| [Jabbear](http://jabbear.com)                        | Windows / Browser                                      |
+| [Jabber Mix Client](http://jabbermixclient.sourceforge.net)              | Mobile (J2ME)                |
+| [jabber.el](http://emacs-jabber.sourceforge.net)                      | Linux                             |
+| [Jabbim](http://jabbim.com)                         | Linux / OSX / Windows                                  |
+| [Jabiru](http://jabiru.info)                         | Mobile (Android)                                       |
+| [JAJC](http://jajc.jrudevels.org)                           | Windows                                                |
+| [Jappix](http://jappix.org)                         | Browser                                                |
+| [JBuddy Messenger](http://zionsoftware.com)               | Linux / OSX / Windows                                  |
+| [Jeti](http://jeti-im.org)                           | Linux / OSX / Windows                                  |
+| [Jitsi](http://jitsi.org)       | Linux / OSX / Windows                                               |
+| [JSXC](http://jsxc.org)                           | Browser                                                |
+| [JWChat](http://stefan-strigler.de/jwchat)                         | Browser                                 |
+| [Kadu](http://kadu.net)                           | Linux / OSX / Windows                                  |
+| [Kopete](http://kopete.kde.org)                         | Linux                                                  |
+| [Lampiro](http://lampiro.bluendo.com)                        | Mobile (J2ME)                                       |
+| [m-im](http://code.google.com)                           | Mobile (J2ME)                                          |
+| [mcabber](http://mcabber.com)                        | Console / Text-Mode                                    |
+| [mChat](http://smape.com)                          | Mobile                                                 |
+| [Miranda IM](http://miranda-im.org)                     | Windows                                                |
+| [Miranda NG](http://miranda-ng.org)                     | Windows                                                |
+| [Monal IM](http://monal.im)                       | Mobile (iOS)                                           |
+| [Mozilla Thunderbird](http://mozilla.org/thunderbird)            | Linux / OSX / Windows                       |
+| [OctroTalk](http://octro.com)                      | Mobile                                                 |
+| [OneTeam](http://oneteam.im)                        | Linux / OSX / Windows                                  |
+| [OneTeam for iPhone](http://oneteam.im)             | Mobile (iOS)                                           |
+| [Pandion](http://pandion.im)                        | Windows                                                |
+| [Poezio](http://poezio.eu)                         | Console / Text-Mode                                    |
+| [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
+| [Prodromus](http://forge.webpresso.net)                      | Browser                                             |
+| [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
+| [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
+| [Psi+](http://psi-plus.im)                           | Linux / OSX / Windows                                  |
+| [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
+| [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
+| [saje](http://code.google.com)                           | Linux / OSX / Windows                                  |
+| [Salut à Toi](http://goffi.org)                    | Linux / Console / Text-Mode / Browser                  |
+| [SamePlace](http://sameplace.cc)                      | Browser                                                |
+| [Sim-IM](http://sim-im.org)                         | Linux                                                  |
+| [Slimster](http://slimster.org)                       | Browser                                                |
+| [Spark](http://igniterealtime.org)                          | Linux / OSX / Windows                                  |
+| [SparkWeb](http://igniterealtime.org)                       | Browser                                                |
+| [Swift](http://swift.im)                          | Linux / OSX / Windows                                  |
+| [Synapse](http://synapse.im)                        | Linux                                                  |
+| [Talkonaut](http://talkonaut.com)                      | Mobile                                                 |
+| [Tigase Messenger](http://tigase.org)               | Browser                                                |
+| [Tigase Minichat](http://tigase.org)                | Browser                                                |
+| [Tkabber](http://tkabber.jabber.ru)                        | Linux / OSX / Windows                                  |
+| [Tlen](http://tlen.pl)                           | Linux / OSX / Windows                                  |
+| [Trillian](http://trillian.im)                       | Windows/ OSX / Mobile / Browser                        |
+| [TrophyIM](http://code.google.com)                       | Browser                                                |
+| [V&V Messenger](http://altertech.net)                  | Windows                                                |
+| [Vacuum-IM](http://vacuum-im.org)                      | Linux / OSX / Windows                                  |
+| [Vayusphere](http://vayusphere.com)                     | Mobile (BlackBerry)                                    |
+| [VSTalk](http://codeplex.com)                         | Windows                                                |
+| [WTW](http://k2t.eu)                            | Windows                                                |
+| [Xabber](http://xabber.com)                         | Mobile (Android)                                       |
+| [xmppchat](http://babelmonkeys.de)                       | Browser                                                |
+| [XMPPWebChat](http://code.google.com)                    | Browser                                                |
+| [yaxim](http://yaxim.org)                          | Mobile (Android)                                       |
+
