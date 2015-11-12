@@ -34,19 +34,19 @@ While early pioneers into the field later named *Internet of Things*, or **IoT**
 
 This definition has some direct consequences that open up into different areas of study:
 
-* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings.md) to the network. XMPP provides various choices, such as [socket connections](iot/bidings.md#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings.md#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](#iot/bindings.md#exi---efficient-xml-interchange).
+* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings.md) to the network. XMPP provides various choices, such as [socket connections](iot/bindings.md#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings.md#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](iot/bindings.md#exi---efficient-xml-interchange).
 
 	**Connection** also relates to [communication patterns](iot/patterns.md). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](iot/patterns.md#requestresponse), [Asynchronous Messaging](iot/patterns.md#asynchronous-messaging), [Publish/Subscribe](iot/patterns.md#publishsubscribe), [Event subscription (Observe)](iot/patterns.md#event-subscription-observe) and [Delayed delivery](iot/patterns.md#delayed-delivery). XMPP also has support for different [Quality of Service levels](iot/patterns.md#quality-of-service) for messaging.
 
 * **Things** relates to the study of all kinds of [things](iot/things.md) that can be connected, such as [sensors](iot/things.md#sensors), [actuators](iot/things.md#actuators), [controllers](iot/things.md#controllers) and other types of devices.
 
-* **Not operated by humans** relates to [provisioning](iot/provisioning.md), [delegation of trust](iot/provisioning.md#delegation-of-trust), [automatic decision making](iot/provisioning.md#automatic-decision-making.md), but also [discovery](iot/provisioning.md#discovery).
+* **Not operated by humans** relates to [provisioning](iot/provisioning.md), [delegation of trust](iot/provisioning.md#delegation-of-trust), [automatic decision making](iot/provisioning.md#automatic-decision-making), but also [discovery](iot/provisioning.md#discovery).
 
 * **Internet** relates to [scalability](iot/scalability.md), including topics such as [federation](iot/scalability.md#federation) and [global identity](iot/scalability.md#global-identity).
 
 	**Internet** also relates very much to all kinds of [security](iot/security.md) related topics, such as [identities](iot/security.md#identity), [authentication](iot/security.md#authentication), [authorization](iot/security.md#authorization) and [encryption](iot/security.md#encryption) including [end-to-end encryption](iot/security.md#end-to-end-encryption).
 
- but also to *interoperability*.
+	Another important aspect of the **Internet** is [interoperability](iot/interoperability.md). This includes topics such as [loosely coupled architectures](iot/interoperability.md#loosely-coupled-architectures) and [standardized interfaces](iot/interoperability.md#standard-interfaces).
 
 As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](iot/work-in-progress.md) page. There is also a page containing [testimonials](iot/testimonials.md).
 
