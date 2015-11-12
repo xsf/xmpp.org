@@ -21,7 +21,7 @@ Sidebar_menu_elem_url_4: uses/webrtc
 Content_layout: multiple-columns
 ---
 
-**XMPP** is an excellent protocol for use within *Internet of Things*. The aim of this page, is to give a brief introduction to how XMPP can help build solid, secure and interoperable devices, services and applications for the *Internet of Things*.
+**XMPP** is an excellent protocol for use within *Internet of Things*. The aim of this page, is to give a brief introduction to how XMPP can help build solid, secure and interoperable devices, services and applications for the *Internet of Things*. It is meant as a simple portal for people interested in IoT, providing links to more detailed information on each subject.
 
 
 ## A definition for the Internet of Things
@@ -34,136 +34,27 @@ While early pioneers into the field later named *Internet of Things*, or **IoT**
 
 This definition has some direct consequences that open up into different areas of study:
 
-* **Connection** relates to the study of *communication protocols*.
-* **Things** relates to the study of *sensors*, *actuators*, *controllers* and other types of devices.
-* **Not operated by humans** relates to *provisioning* and *automatic decision making*.
-* **Internet** relates to *scalability* and *security*, including identities, authentication and authorization, but also to *interoperability*.
+* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings.md) to the network. XMPP provides various choices, such as [socket connections](iot/bidings.md#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings.md#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](#iot/bindings.md#exi---efficient-xml-interchange).
 
-As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*.
+	**Connection** also relates to [communication patterns](iot/patterns.md). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](iot/patterns.md#requestresponse), [Asynchronous Messaging](iot/patterns.md#asynchronous-messaging), [Publish/Subscribe](iot/patterns.md#publishsubscribe), [Event subscription (Observe)](iot/patterns.md#event-subscription-observe) and [Delayed delivery](iot/patterns.md#delayed-delivery). XMPP also has support for different [Quality of Service levels](iot/patterns.md#quality-of-service) for messaging.
 
-## Communication Protocols
+* **Things** relates to the study of all kinds of [things](iot/things.md) that can be connected, such as [sensors](iot/things.md#sensors), [actuators](iot/things.md#actuators), [controllers](iot/things.md#controllers) and other types of devices.
 
-One important aspect of **IoT** is how things connect to the Internet and how they can communicate with the outside world, and how the outside world in turn can communicate with the things. XMPP provides a stable and well tested extensible protocol that gives exceptional possibilities both to things and any applications wanting to communicate with them. The following subsections will outline why that is.
+* **Not operated by humans** relates to [provisioning](iot/provisioning.md), [delegation of trust](iot/provisioning.md#delegation-of-trust), [automatic decision making](iot/provisioning.md#automatic-decision-making.md), but also [discovery](iot/provisioning.md#discovery).
 
-### Connection Bindings
+* **Internet** relates to [scalability](iot/scalability.md), including topics such as [federation](iot/scalability.md#federation) and [global identity](iot/scalability.md#global-identity).
 
-When things and applications connect to the Internet using **XMPP**, they need to connect to the XMPP network using a **binding**. There are various options available, depending on the capabilities of the broker used to connect to the network.
+	**Internet** also relates very much to all kinds of [security](iot/security.md) related topics, such as [identities](iot/security.md#identity), [authentication](iot/security.md#authentication), [authorization](iot/security.md#authorization) and [encryption](iot/security.md#encryption) including [end-to-end encryption](iot/security.md#end-to-end-encryption).
 
-#### Standard XMPP binding
+ but also to *interoperability*.
 
-This binding mechanism allows things to connect to the network using a normal bi-directional socket connection to the server. XML fragments are later sent both ways over this socket connection as part of the communication. This method is clearly outlined in the XMPP RFCs [RFC 6120](https://tools.ietf.org/html/rfc6120), [RFC 6121](https://tools.ietf.org/html/rfc6121) and [RFC 6122](https://tools.ietf.org/html/rfc6122).
-
-#### BOSH - Bidirectional streams over Synchronous HTTP
-
-This binding mechanism allows clients that can only access the Internet using the HTTP protocol series (such as Javascript clients) to connect to the XMPP network. **BOSH** is described in [XEP-0206: XMPP Over BOSH](http://xmpp.org/extensions/xep-0206.html).
-
-#### EXI - Efficient XML Interchange
-
-For small devices in resource constrained networks, XMPP can seem to verbose. Often network packets have to be small to not be fragmented, such as is the case if using 6LowPan IPv6 radio networks. To allow such devices to use the powers of XMPP, an **EXI** binding is available. EXI, or Efficiant XML Interchange, is an exceptionally efficient way of compressing XML, using knowledge derived from the XML schemas, and allows XML fragments to be compressed to sizes suitable for resource contrained networks. **EXI** binding is described in [XEP-0322: Efficient XML Interchange (EXI) Format](http://xmpp.org/extensions/xep-0322.html). 
-
-## Communication Patterns
-
-*Communication patterns* are architectorial concepts describing how messages are transported in the network to accomplish certain tasks. Knowledge of these patterns are important to be able to correctly design and implement applications and scale networks of things accordingly, so that functional and performance requirements are met.
-
-#### Request/Response
-
-The **Request/Response** communication pattern is one of the most basic communication patterns. It allows a *client* to request information from a *server* in *real-time*. The words "client" and "server" are here used purely to illustrate the roles of the participants in the pattern, not to describe the hierarchy in the network. Most commonly, they are peers in the network.
-
-XMPP provides an intrinsic method to implement a generic Request/Response mechanism, by use of the **iq** stanza built into XMPP. This allows one client to request information from another. What information is defined by the contents of the **iq** stanza. The receiver of the request is informed of whom originated the request, and the client is also informed from whence the response came.
-
-For proprietary applications in IoT, the **iq** stanza might be sufficient. But there are instances where it is not. One such instance is if the response is slow to be collected, and partial results have to be returned to show progress. This might be the case when communicating with devices behind gateways, behind which very slow communication protocols are used. Another important instance, is if [interoperable](#interoperability) solutions are desired. In such cases, proprietary solutions create walled gardens that are difficult to integrate in larger contexts.
-
-To facilitate the creation of an *open* and [loosely coupled](#loosely-coupled-architectures) architecture that enable [interoperability](#interoperability) between things and applications, [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) was created. It defines a Request/Response mechanism where sensor data can be read from devices asynchronously. Apart from the normal request/response mechanism provided by the **iq** stanza, it allows for slow responders and defines a data format that can be used to encapsulate sensor data in an interoperable manner. It is designed to allow new types of devices to be added to networks without the need to upgrading software to perform basic tasks, such as sensor data readout, machine processing of data and presentation of data to human users. It also allows devices from different manufacturers and applications from different developers to exchange data seemlessly.
-
-![IoT Request/Response](iotimg/reqresp.png)  
-*Example of asynchronous Request/Response flow in [XEP-0323](http://xmpp.org/extensions/xep-0323.html)*
-
-#### Asynchronous Messaging
-
-The **Asynchronous Messaging** communication pattern allows peers in the network to asynchronously send messages in *real-time* between each other when they decide to, not when requested. This is done by encapsulating the content of the message into a **message** stanza, which is built into XMPP. The receiver of a message is always informed who sent the message.
-
-To facilitate the interchange of IoT-data in asynchronous messages between things from different manufacturers, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
-
-#### Publish/Subscribe
-
-The **Publish/Subscribe** pattern allows for mass distribution of information to interested parties in an efficient manner. It reduces network traffic by up to half, by allowing the publisher of information to send its information only once to a publish/subscribe server, who then retransmits it to subscribers. The *Publish/Subscribe* pattern is more efficient than other patterns, such as *Request/Response* or *Asynchronous Messaging* if the following conditions are met:
-
-* Information does not have to be updated in *real-time* for continous values (non-discrete values).
-* Information does not have to be updated on *demand*.
-* Published information is actually used.
-
-If, on the other hand, *real-time* access to information of continous values (non-discrete values), or access to information on-demand, or if only small portions of generated data is to be used, other communication patterns are more efficient.
-
-Example of IoT use cases where data is more efficiently distributed using Publish/Subscribe than using other patterns:
-
-* Public sensors with massive base of uniform users.
-* Sensor data where storage of historical values using well-defined intervals is important.
-* Sensor data is uniform without need to be adapted to use case or user.
-* Sensor data is not confidential.
-
-Examples of IoT use cases where data might be better distributed using other patterns:
-
-* Individual control actions
-* Monitoring sensors in real-time
-* User base have completely different requirements on the data, intervals and content.
-* Data is tailored to the receiver, for instance using provisioning capabilities.
-* Data is confidential.
-
-The Publish/Subscribe pattern is defined in [XEP-0060: Publish-Subscribe](http://xmpp.org/extensions/xep-0060.html). To facilitate the interchange of IoT-data using the publish/subscribe pattern to mass distribute information, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
-
-![IoT Publish/Subscribe](iotimg/pubsub.png)  
-*Example of Publish/Subscribe flow*
-
-| Calculation Example |
-|---------------------|
-| Consider a temperature sensor measuring outside temperature. People who wants to use it to see outside temperature will want to have sufficiently recent information in order for it to be of interest. In order to use Publish/Subscribe pattern to distribute this temperature, a relatively short time-interval is therefore of interest. Let's assume a 15-minute interval is sufficient. This implies *N=96* values are published per day. If *n&middot;E* is the expected or average number of values that are actually being used by users per day, where *n* is the number of users and *E* is the expected number of values that each user uses per day (they might actually only view the application once a day), we see that the number of messages distributed in the network, if only one broker is involved, is *2&middot;N+n&middot;N*, if notification with payload is used, or *2&middot;N+n&middot;(N+2&middot;E)*, if notification without payload is used. However, if Request/Response is used instead, *4&middot;n&middot;E* messages are sent (counting messages to and from broker separately). The break-even point between Publish/Subscribe and Request/Response in these examples is therefore (if notification with payload is used) *N&le;4&middot;n&middot;E/(2+n)&rarr;4&middot;E* as *n&rarr;&infin;*. In our example, we would need users to use at least *E=N/4=96/4=24* temperature values before the Publish/Subscribe pattern is more efficient than the Request/Response pattern. Such is normally the case only if all historical values are used on the receiving end.<br/><br/>![IoT Publish/Subscribe](iotimg/pubsubreqrespbreakeven.png) |
-
-#### Event subscription (Observe)
-
-#### Delayed delivery
-
-### Quality of Service
-
-## Scalability
-
-### Federation
-
-### Global identity
-
-## Things
-
-### Sensors
-
-### Actuators
-
-### Controllers
-
-### Concentrators
-
-## Provisioning
-
-### Delegation of Trust
-
-### Discovery
-
-## Security
-
-### Identity
-
-### Authentication
-
-### Authorization
-
-### Encryption
-
-### End-to-end encryption
-
-## Interoperability
-
-### Loosely coupled architectures
-
-### Standard interfaces
-
-## Work in progress
+As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](iot/work-in-progress.md) page. There is also a page containing [testimonials](iot/testimonials.md).
 
 ## For more information
+
+For more information regarding XMPP and IoT, check the following resources:
+
+* [XMPP Internet of Things](http://www.xmpp-iot.org/) web site.
+* [IoT on the XMPP Wiki](http://wiki.xmpp.org/web/Tech_pages/IoT_systems)
+* [Learning Internet of Things](http://www.amazon.com/Learning-Internet-Things-Peter-Waher/dp/1783553537) book on Amazon, covering XMPP and above topics.
+* [thingk.me](https://www.thingk.me/Provisioning/Api.xml) provisioning server for IoT.
