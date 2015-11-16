@@ -104,7 +104,12 @@ cf_upload: publish
 github: publish
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 	ghp-import -n $(OUTPUTDIR)
-	git clone https://github.com/xsf/xeps && cd xeps && OUTDIR=/home/travis/build/xsf/xmpp.org/output/extensions make html
+	mkdir /tmp/xep-images
+	curl -o /tmp/xep-images/xmpp-text.pdf  http://xmpp.org/images/xmpp-text.pdf
+	curl -o /tmp/xep-images/xmpp.pdf       http://xmpp.org/images/xmpp.pdf
+	git clone https://github.com/xsf/xeps /tmp/xeps
+	git clone https://github.com/xsf/xsf-tools /tmp/xsf-tools
+	/tmp/xsf-tools/build.py -x /tmp/xeps -o /home/travis/build/xsf/xmpp.org/output/extensions --imagespath /tmp/xep-images
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 endif
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
