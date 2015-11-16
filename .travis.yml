@@ -1,4 +1,5 @@
 language: python
+cache: apt
 branches:
   only:
   - master
