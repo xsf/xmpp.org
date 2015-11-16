@@ -23,7 +23,8 @@ before_install:
 install:
 - pip install pelican ghp-import markdown
 script:
-- make github
+  - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages
+  - make github
 env:
   global:
     secure: cbcSKjgyE15JRufgwi+UYO7OCa70SZr9zN3tw9dzzdlCfoYpwEqV3tyQSF2voqZUL8qd0JV7EBPQa7SEpqBgvtSJUPewfm0n8yLJJ5mPDyS3UCRhLJHeVnsQtDGAuLg/Pl1skCUKZxU8CuKPXBij/zvwMEL5aS/wWI+RVrtXMGM=     
