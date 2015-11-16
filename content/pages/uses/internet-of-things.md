@@ -34,21 +34,21 @@ While early pioneers into the field later named *Internet of Things*, or **IoT**
 
 This definition has some direct consequences that open up into different areas of study:
 
-* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings.md) to the network. XMPP provides various choices, such as [socket connections](iot/bindings.md#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings.md#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](iot/bindings.md#exi---efficient-xml-interchange).
+* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings) to the network. XMPP provides various choices, such as [socket connections](iot/bindings#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](iot/bindings#exi---efficient-xml-interchange).
 
-	**Connection** also relates to [communication patterns](iot/patterns.md). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](iot/patterns.md#requestresponse), [Asynchronous Messaging](iot/patterns.md#asynchronous-messaging), [Publish/Subscribe](iot/patterns.md#publishsubscribe), [Event subscription (Observe)](iot/patterns.md#event-subscription-observe) and [Delayed delivery](iot/patterns.md#delayed-delivery). XMPP also has support for different [Quality of Service levels](iot/patterns.md#quality-of-service) for messaging.
+	**Connection** also relates to [communication patterns](iot/patterns). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](iot/patterns#requestresponse), [Asynchronous Messaging](iot/patterns#asynchronous-messaging), [Publish/Subscribe](iot/patterns#publishsubscribe), [Event subscription (Observe)](iot/patterns#event-subscription-observe) and [Delayed delivery](iot/patterns#delayed-delivery). XMPP also has support for different [Quality of Service levels](iot/patterns#quality-of-service) for messaging.
 
-* **Things** relates to the study of all kinds of [things](iot/things.md) that can be connected, such as [sensors](iot/things.md#sensors), [actuators](iot/things.md#actuators), [controllers](iot/things.md#controllers) and other types of devices.
+* **Things** relates to the study of all kinds of [things](iot/things) that can be connected, such as [sensors](iot/things#sensors), [actuators](iot/things#actuators), [controllers](iot/things#controllers) and other types of devices.
 
-* **Not operated by humans** relates to [provisioning](iot/provisioning.md), [delegation of trust](iot/provisioning.md#delegation-of-trust), [automatic decision making](iot/provisioning.md#automatic-decision-making), but also [discovery](iot/provisioning.md#discovery).
+* **Not operated by humans** relates to [provisioning](iot/provisioning), [delegation of trust](iot/provisioning#delegation-of-trust), [automatic decision making](iot/provisioning#automatic-decision-making), but also [discovery](iot/provisioning#discovery).
 
-* **Internet** relates to [scalability](iot/scalability.md), including topics such as [federation](iot/scalability.md#federation) and [global identity](iot/scalability.md#global-identity).
+* **Internet** relates to [scalability](iot/scalability), including topics such as [federation](iot/scalability#federation) and [global identity](iot/scalability#global-identity).
 
-	**Internet** also relates very much to all kinds of [security](iot/security.md) related topics, such as [identities](iot/security.md#identity), [authentication](iot/security.md#authentication), [authorization](iot/security.md#authorization) and [encryption](iot/security.md#encryption) including [end-to-end encryption](iot/security.md#end-to-end-encryption).
+	**Internet** also relates very much to all kinds of [security](iot/security) related topics, such as [identities](iot/security#identity), [authentication](iot/security#authentication), [authorization](iot/security#authorization) and [encryption](iot/security#encryption) including [end-to-end encryption](iot/security#end-to-end-encryption).
 
-	Another important aspect of the **Internet** is [interoperability](iot/interoperability.md). This includes topics such as [loosely coupled architectures](iot/interoperability.md#loosely-coupled-architectures) and [standardized interfaces](iot/interoperability.md#standard-interfaces).
+	Another important aspect of the **Internet** is [interoperability](iot/interoperability). This includes topics such as [loosely coupled architectures](iot/interoperability#loosely-coupled-architectures) and [standardized interfaces](iot/interoperability#standard-interfaces).
 
-As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](iot/work-in-progress.md) page. There is also a page containing [testimonials](iot/testimonials.md).
+As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](iot/work-in-progress) page. There is also a page containing [testimonials](iot/testimonials).
 
 ## For more information
 
@@ -56,5 +56,5 @@ For more information regarding XMPP and IoT, check the following resources:
 
 * [XMPP Internet of Things](http://www.xmpp-iot.org/) web site.
 * [IoT on the XMPP Wiki](http://wiki.xmpp.org/web/Tech_pages/IoT_systems)
-* [Learning Internet of Things](http://www.amazon.com/Learning-Internet-Things-Peter-Waher/dp/1783553537) book on Amazon, covering XMPP and above topics.
+* [Learning Internet of Things](http://www.amazon.com/Learning-Internet-Things-Peter-Waher/dp/1783553537) book on Amazon, covering XMPP and IoT.
 * [thingk.me](https://www.thingk.me/Provisioning/Api.xml) provisioning server for IoT.
