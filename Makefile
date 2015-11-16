@@ -110,7 +110,7 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 	git clone https://github.com/xsf/xeps /tmp/xeps
 	git clone https://github.com/xsf/xsf-tools /tmp/xsf-tools
 	export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/
-	/tmp/xsf-tools/build.py -x /tmp/xeps -o /home/travis/build/xsf/xmpp.org/output/extensions --imagespath /tmp/xep-images
+	/tmp/xsf-tools/build.py -d -x /tmp/xeps -o /home/travis/build/xsf/xmpp.org/output/extensions --imagespath /tmp/xep-images
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 endif
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
