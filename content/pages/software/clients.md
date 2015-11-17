@@ -92,6 +92,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [mChat](http://smape.com)                          | Mobile                                                 |
 | [Miranda IM](http://miranda-im.org)                     | Windows                                                |
 | [Miranda NG](http://miranda-ng.org)                     | Windows                                                |
+| [Movim](https://movim.eu)                         | Browser                                                |
 | [Monal IM](http://monal.im)                       | Mobile (iOS)                                           |
 | [Mozilla Thunderbird](http://mozilla.org/thunderbird)            | Linux / OSX / Windows                       |
 | [OctroTalk](http://octro.com)                      | Mobile                                                 |
