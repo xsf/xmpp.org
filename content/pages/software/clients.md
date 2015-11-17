@@ -28,7 +28,7 @@ An XMPP client is any software or application that enables you to connect to an 
 
 __See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org)
 
-| [Name                           | Platform(s)                                          |
+| Name                           | Platform(s)                                           |
 |--------------------------------|-------------------------------------------------------|
 | [Adium](http://adium.org)                          | OSX                                                |
 | [Agile Messenger](http://agilemobile.com)                | Mobile                                             |
