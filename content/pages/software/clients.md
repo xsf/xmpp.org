@@ -33,46 +33,33 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Adium](http://adium.org)                          | OSX                                                |
 | [AQQ](http://aqq.eu)                            | Windows                                            |
 | [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS)                              |
-| [Ayttm](http://ayttm.sourceforge.net)                          | Linux                                        |
 | [beejive](http://beejive.com)                        | Mobile (Android, BlackBerry, iOS)                  |
 | [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
 | [BitlBee](http://bitlbee.org)                        | Linux                                              |
 | [BlueJabb](http://bluejabb.com)                       | Mobile (Android, Blackberry (BBOS), Nokia Symbian S40/S60 and Asha)      |
 | [Buddycloud](http://buddycloud.com)                  | Mobile / Web / Console                                    |
 | [Candy](https://candy-chat.github.io/candy/)                          | Browser                                                |
-| [climm](http://climm.org)                          | Console / Text-Mode                                    |
 | [Coccinella](http://coccinella.im)                     | Linux / OSX / Windows                                  |
 | [Conversations](https://github.com/siacs/Conversations)                  | Mobile (Android)              |
 | [Converse.js](http://conversejs.org)                    | Browser                                                |
 | [Coversant SoapBox Communicator](http://coversant.com) | Windows                                                |
 | [Crosstalk](http://portablek.com)                      | Mobile (iOS)                                           |
-| [Digsby](http://digsby.com)                         | Windows                                                |
 | [eM Client](http://emclient.com)                      | Windows                                                |
-| [emesene](http://emesene.org)                        | Linux / OSX / Windows                                  |
-| [emite](https://github.com/EmiteGWT/emite)                          | Browser                                          |
 | [Empathy](http://live.gnome.org)                        | Linux                                                  |
-| [Exodus](http://https://code.google.com/p/exodus/)                         | Windows                                   |
 | [Finch](http://developer.pidgin.im)                          | Console / Text-Mode                                 |
 | [Gajim](http://gajim.org)                          | Linux / Windows                                        |
-| [Galaxium](https://code.google.com/p/galaxium/)                       | Linux                                                  |
 | [ChatSecure](http://guardianproject.info)                     | Mobile (Android)                                  |
 | [GNU Freetalk](https://gnufreetalk.github.io/)                   | Console / Text-Mode                                    |
-| [Gossip](http://https://wiki.gnome.org/Apps/Attic/Gossip)                         | Linux                                |
 | [GreenJab](http://bvstools.com)                       | IBM i                                                  |
 | [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX / iOS                                                   |
-| [iJab](http://)                           | Browser                                                    
 | [IM+](http://shapeservices.com)                            | Mobile                                                 |
-| [imov Messenger](http://movsoftware.com)                 | Mobile (Android)                                       |
 | [Instantbird](http://instantbird.com)                    | Linux / OSX / Windows                                  |
 | [irssi-xmpp](http://cybione.org)                     | Console / Text-Mode                                    |
-| [Jabber Mix Client](http://jabbermixclient.sourceforge.net)              | Mobile (J2ME)                |
 | [jabber.el](http://emacs-jabber.sourceforge.net)                      | Linux                             |
 | [Jabbim](http://jabbim.com)                         | Linux / OSX / Windows                                  |
 | [Jabiru](http://jabiru.info)                         | Mobile (Android)                                       |
 | [JAJC](http://jajc.jrudevels.org)                           | Windows                                                |
 | [Jappix](http://jappix.org)                         | Browser                                                |
-| [JBuddy Messenger](http://zionsoftware.com)               | Linux / OSX / Windows                                  |
-| [Jeti](http://jeti-im.org)                           | Linux / OSX / Windows                                  |
 | [Jitsi](http://jitsi.org)       | Linux / OSX / Windows                                               |
 | [JSXC](http://jsxc.org)                           | Browser                                                |
 | [JWChat](http://stefan-strigler.de/jwchat)                         | Browser                                 |
@@ -88,13 +75,11 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [OneTeam for iPhone](http://oneteam.im)             | Mobile (iOS)                                           |
 | [Poezio](http://poezio.eu)                         | Console / Text-Mode                                    |
 | [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
-| [Prodromus](http://forge.webpresso.net)                      | Browser                                             |
 | [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
 | [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
 | [Psi+](http://psi-plus.im)                           | Linux / OSX / Windows                                  |
 | [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
 | [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
-| [saje](http://code.google.com)                           | Linux / OSX / Windows                                  |
 | [Salut à Toi](http://goffi.org)                    | Linux / Console / Text-Mode / Browser                  |
 | [Sim-IM](http://sim-im.org)                         | Linux                                                  |
 | [Spark](http://igniterealtime.org)                          | Linux / OSX / Windows                                  |
@@ -105,7 +90,6 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Tigase Minichat](http://tigase.org)                | Browser                                                |
 | [Tkabber](http://tkabber.jabber.ru)                        | Linux / OSX / Windows                                  |
 | [Trillian](http://trillian.im)                       | Windows/ OSX / Mobile / Browser                        |
-| [TrophyIM](http://code.google.com)                       | Browser                                                |
 | [V&V Messenger](http://altertech.net)                  | Windows                                                |
 | [Vacuum-IM](http://vacuum-im.org)                      | Linux / OSX / Windows                                  |
 | [Vayusphere](http://vayusphere.com)                     | Mobile (BlackBerry)                                    |
