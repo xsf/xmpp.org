@@ -10,6 +10,6 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITE_URL = "http://new.xmpp.org"
+# SITE_URL = "http://new.xmpp.org"
 RELATIVE_URLS = True
 DELETE_OUTPUT_DIRECTORY = True
