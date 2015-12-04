@@ -62,6 +62,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Jreen](http://qutim.org)                 | C++/Qt                              |                  |
 | [JSJaC](http://github.com)                | JavaScript                          |                  |
 | [libstrophe](http://strophe.im)                | C                                   |                  |
+| [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple)                | C/C++                                   | GPL              |
 | [Lightr](http://code.google.com)           | PHP                                 |                  |
 | [Loudmouth](http://Website)                   | C                                   |                  |
 | [Loudmouth](http://Website)                   | Ruby                                |                  |
