@@ -1,5 +1,5 @@
 ---
-Title: Jabber Trademark Licensing Program
+Title: How the Jabber Trademark Licensing Program Works
 Url: about/xsf/jabber-trademark/how-the-license-works
 Save_as: about/xsf/jabber-trademark/how-the-license-works.html
 Parent_id: about
