@@ -1,7 +1,7 @@
 ---
 title: XMPP in Google Summer of Code 2015
 date: 2015-03-03 06:20
-author: ksmith
+author: kev
 blog_id: blog
 ---
 

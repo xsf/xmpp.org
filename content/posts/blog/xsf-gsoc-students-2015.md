@@ -1,7 +1,7 @@
 ---
 title: XSF GSoC Students 2015
 date: 2015-04-28 09:43
-author: ksmith
+author: kev
 blog_id: blog
 ---
 

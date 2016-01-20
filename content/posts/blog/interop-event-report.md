@@ -1,7 +1,7 @@
 ---
 title: Interop event report
 date: 2010-12-14 11:22
-author: ksmith
+author: kev
 blog_id: blog
 ---
 
