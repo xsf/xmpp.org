@@ -6,23 +6,21 @@ Menu_name: About
 Top_menu_show: true
 Top_menu_order: 1
 Dropdown_menu_show: true
-Dropdown_menu_size: 8
-Dropdown_menu_elem_name_1: Features and benefits
-Dropdown_menu_elem_url_1: features-and-benefits
-Dropdown_menu_elem_name_2: History
-Dropdown_menu_elem_url_2: history
-Dropdown_menu_elem_name_3: Overview
-Dropdown_menu_elem_url_3: overview
-Dropdown_menu_elem_name_4: Who uses XMPP
-Dropdown_menu_elem_url_4: who-uses-xmpp
-Dropdown_menu_elem_name_5: Standards Process
-Dropdown_menu_elem_url_5: standards-process
-Dropdown_menu_elem_name_6: The XSF
-Dropdown_menu_elem_url_6: xmpp-standards-foundation
-Dropdown_menu_elem_name_7: Extensions
-Dropdown_menu_elem_url_7: ../extensions
-Dropdown_menu_elem_name_8: FAQ
-Dropdown_menu_elem_url_8: faq
+Dropdown_menu_size: 7
+Dropdown_menu_elem_name_1: History
+Dropdown_menu_elem_url_1: history
+Dropdown_menu_elem_name_2: Overview
+Dropdown_menu_elem_url_2: technology-overview
+Dropdown_menu_elem_name_3: Who uses XMPP
+Dropdown_menu_elem_url_3: who-uses-xmpp
+Dropdown_menu_elem_name_4: Standards Process
+Dropdown_menu_elem_url_4: standards-process
+Dropdown_menu_elem_name_5: The XSF
+Dropdown_menu_elem_url_5: xmpp-standards-foundation
+Dropdown_menu_elem_name_6: Extensions
+Dropdown_menu_elem_url_6: ../extensions
+Dropdown_menu_elem_name_7: FAQ
+Dropdown_menu_elem_url_7: faq
 Sidebar_menu_show: true
 Sidebar_menu_title: About XMPP
 Sidebar_menu_size: 7
