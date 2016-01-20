@@ -21,8 +21,8 @@ DEFAULT_METADATA = [
 STATIC_PATHS = [ 'CNAME', 'images', 'extensions' ]
 
 ARTICLE_PATHS = [ 'posts/blog', 'posts/learn' ]
-ARTICLE_URL = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}'
-ARTICLE_SAVE_AS = 'posts/{blog_id}/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
+ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}'
+ARTICLE_SAVE_AS = 'posts/{blog_id}/{date:%Y}/{date:%m}/{slug}.html'
 
 INDEX_SAVE_AS = 'posts/blog/index.html'
 
