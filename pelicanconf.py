@@ -19,17 +19,17 @@ DEFAULT_METADATA = [
 ]
 
 STATIC_PATHS = [ 'CNAME', 'images', 'extensions' ]
-
+DIRECT_TEMPLATES = [ 'index', 'categories', 'archives' ]
 ARTICLE_PATHS = [ 'posts/blog', 'posts/learn' ]
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}'
-ARTICLE_SAVE_AS = 'posts/{blog_id}/{date:%Y}/{date:%m}/{slug}.html'
+ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
 
-INDEX_SAVE_AS = 'posts/blog/index.html'
+INDEX_SAVE_AS = 'blog.html'
 
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_PAGINATION = 10
 
-YEAR_ARCHIVE_SAVE_AS = 'posts/blog/{date:%Y}/index.html'
+YEAR_ARCHIVE_SAVE_AS = '{date:%Y}/index.html'
 
 THEME = "xmpp.org-theme"
 

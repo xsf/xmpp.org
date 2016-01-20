@@ -33,7 +33,7 @@
           <li>
             {% set E_URL = page|attr('dropdown_menu_elem_url_'~(i|string)) %}
             {% set E_NAME = page|attr('dropdown_menu_elem_name_'~(i|string)) %}
-            <a href="{{ SITE_URL }}/{{ page.url }}/{{ E_URL }}">
+            <a href="{{ SITE_URL }}/{{ page.url }}/{{ E_URL }}.html">
               {{ E_NAME }}
             </a>
           </li>
@@ -48,7 +48,7 @@
         class="active"
         {% endif %}
        >
-        <a href="{{ SITE_URL }}/posts/blog/index.html">
+        <a href="{{ SITE_URL }}/blog.html">
           XMPP Blog
         </a>
       </li>
