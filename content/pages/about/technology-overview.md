@@ -1,7 +1,7 @@
 ---
 Title: An Overview of XMPP
-Url: about/overview
-Save_as: about/overview.html
+Url: about/technology-overview
+Save_as: about/technology-overview.html
 Parent_id: about
 Top_menu_show: false
 Top_Menu_order: -1
