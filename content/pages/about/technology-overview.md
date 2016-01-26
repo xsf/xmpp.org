@@ -21,7 +21,7 @@ Sidebar_menu_elem_url_4: about/standards-process
 Sidebar_menu_elem_name_5: The XSF
 Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
 Sidebar_menu_elem_name_6: Extensions
-Sidebar_menu_elem_url_6: extensions
+Sidebar_menu_elem_url_6: extensions/
 Sidebar_menu_elem_name_7: FAQ
 Sidebar_menu_elem_url_7: about/faq
 Content_layout: multiple-columns
