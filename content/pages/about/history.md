@@ -15,7 +15,7 @@ Sidebar_menu_elem_url_1: about/features-and-benefits
 Sidebar_menu_elem_name_2: History
 Sidebar_menu_elem_url_2: about/history
 Sidebar_menu_elem_name_3: Overview
-Sidebar_menu_elem_url_3: about/overview
+Sidebar_menu_elem_url_3: about/technology-overview
 Sidebar_menu_elem_name_4: Who uses XMPP
 Sidebar_menu_elem_url_4: about/who-uses-xmpp
 Sidebar_menu_elem_name_5: Standards Process
@@ -99,7 +99,7 @@ Content_layout: multiple-columns
 
 ## 2014
 - __January:__ The XSF holds the fifteenth XMPP Summit in Brussels, Belgium.
-- __May:__ Operators of servers on the public XMPP network permanently upgrade to encrypted communications. 
+- __May:__ Operators of servers on the public XMPP network permanently upgrade to encrypted communications.
 - __September:__ The XSF holds the sixteenth XMPP Summit in Berlin, Germany.
 - __October:__ The IETF publishes [RFC 7395](https://datatracker.ietf.org/doc/rfc7395/) defining XMPP over WebSocket.
 
