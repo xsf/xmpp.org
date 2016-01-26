@@ -35,7 +35,7 @@ At the core of the XSF is its elected Membership who, in turn, elect a Council (
 
 If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
-## The Board
+## <a name="board" href="#board">The Board</a>
 
 The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2014-2015 consists of the following individuals:
 
@@ -45,7 +45,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Will Sheward__
 - __Adam Brault__ is the founder of [&yet](http://andyet.com), a consultancy focused on realtime communication (XMPP, WebRTC) and security. You can find Adam on [Twitter](http://twitter.com/adambrault) and chat with him on [XMPP](xmpp:adam@brault.io). (Sometimes.)
 
-## The Council
+## <a name="council" href="#council">The Council</a>
 
 The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures.
 
