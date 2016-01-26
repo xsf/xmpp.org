@@ -34,21 +34,21 @@ While early pioneers into the field later named *Internet of Things*, or **IoT**
 
 This definition has some direct consequences that open up into different areas of study:
 
-* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](iot/bindings) to the network. XMPP provides various choices, such as [socket connections](iot/bindings#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](iot/bindings#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](iot/bindings#exi---efficient-xml-interchange).
+* **Connection** relates to the study of *communication protocols*, and in particular, how to [connect or bind](uses/iot/bindings) to the network. XMPP provides various choices, such as [socket connections](uses/iot/bindings#standard-xmpp-binding), [BOSH - Bidirectional streams over Synchronous HTTP](uses/iot/bindings#bosh---bidirectional-streams-over-synchronous-http) and [EXI - Efficient XML Interchange](uses/iot/bindings#exi---efficient-xml-interchange).
 
-	**Connection** also relates to [communication patterns](iot/patterns). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](iot/patterns#requestresponse), [Asynchronous Messaging](iot/patterns#asynchronous-messaging), [Publish/Subscribe](iot/patterns#publishsubscribe), [Event subscription (Observe)](iot/patterns#event-subscription-observe) and [Delayed delivery](iot/patterns#delayed-delivery). XMPP also has support for different [Quality of Service levels](iot/patterns#quality-of-service) for messaging.
+	**Connection** also relates to [communication patterns](uses/iot/patterns). XMPP is particularly rich when it comes to supporting different communication patterns, such as [Request/Response](uses/iot/patterns#requestresponse), [Asynchronous Messaging](uses/iot/patterns#asynchronous-messaging), [Publish/Subscribe](uses/iot/patterns#publishsubscribe), [Event subscription (Observe)](uses/iot/patterns#event-subscription-observe) and [Delayed delivery](uses/iot/patterns#delayed-delivery). XMPP also has support for different [Quality of Service levels](uses/iot/patterns#quality-of-service) for messaging.
 
-* **Things** relates to the study of all kinds of [things](iot/things) that can be connected, such as [sensors](iot/things#sensors), [actuators](iot/things#actuators), [controllers](iot/things#controllers) and other types of devices.
+* **Things** relates to the study of all kinds of [things](uses/iot/things) that can be connected, such as [sensors](uses/iot/things#sensors), [actuators](uses/iot/things#actuators), [controllers](uses/iot/things#controllers) and other types of devices.
 
-* **Not operated by humans** relates to [provisioning](iot/provisioning), [delegation of trust](iot/provisioning#delegation-of-trust), [automatic decision making](iot/provisioning#automatic-decision-making), but also [discovery](iot/provisioning#discovery).
+* **Not operated by humans** relates to [provisioning](uses/iot/provisioning), [delegation of trust](uses/iot/provisioning#delegation-of-trust), [automatic decision making](uses/iot/provisioning#automatic-decision-making), but also [discovery](uses/iot/provisioning#discovery).
 
-* **Internet** relates to [scalability](iot/scalability), including topics such as [federation](iot/scalability#federation) and [global identity](iot/scalability#global-identity).
+* **Internet** relates to [scalability](uses/iot/scalability), including topics such as [federation](uses/iot/scalability#federation) and [global identity](uses/iot/scalability#global-identity).
 
-	**Internet** also relates very much to all kinds of [security](iot/security) related topics, such as [identities](iot/security#identity), [authentication](iot/security#authentication), [authorization](iot/security#authorization) and [encryption](iot/security#encryption) including [end-to-end encryption](iot/security#end-to-end-encryption).
+	**Internet** also relates very much to all kinds of [security](uses/iot/security) related topics, such as [identities](uses/iot/security#identity), [authentication](uses/iot/security#authentication), [authorization](uses/iot/security#authorization) and [encryption](uses/iot/security#encryption) including [end-to-end encryption](uses/iot/security#end-to-end-encryption).
 
-	Another important aspect of the **Internet** is [interoperability](iot/interoperability). This includes topics such as [loosely coupled architectures](iot/interoperability#loosely-coupled-architectures) and [standardized interfaces](iot/interoperability#standard-interfaces).
+	Another important aspect of the **Internet** is [interoperability](uses/iot/interoperability). This includes topics such as [loosely coupled architectures](uses/iot/interoperability#loosely-coupled-architectures) and [standardized interfaces](uses/iot/interoperability#standard-interfaces).
 
-As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](iot/work-in-progress) page. There is also a page containing [testimonials](iot/testimonials).
+As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](uses/iot/work-in-progress) page. There is also a page containing [testimonials](uses/iot/testimonials).
 
 ## For more information
 

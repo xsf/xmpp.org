@@ -31,7 +31,7 @@ Sidebar_menu_elem_url_4: uses/webrtc
 Content_layout: multiple-columns
 ---
 
-It's typical for people unfamiliar with the myriad uses of XMPP to pigeonhole it into being a protocol used for [instant messaging](/uses/instant-messaging). 
+It's typical for people unfamiliar with the myriad uses of XMPP to pigeonhole it into being a protocol used for [instant messaging](/uses/instant-messaging).
 
 While that's a huge portion of XMPP traffic on the Internet, XMPP has a variety of other uses, including:
 
