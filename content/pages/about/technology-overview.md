@@ -70,6 +70,7 @@ At its core, XMPP is a technology for streaming XML over a network. The protocol
 - Presence-enabled contact lists (“rosters”)
 
 #### Specifications
+
 The core XMPP technologies are defined in two RFCs published by the IETF:
 
 - [RFC 6120: XMPP Core](http://xmpp.org/rfcs/rfc6120.html)
@@ -89,7 +90,11 @@ There are many implementations of the core XMPP specifications. See the followin
 
 ## <a name="jingle" href="#jingle">Jingle</a>
 
-In essence, Jingle provides a way for Jabber clients to set up, manage, and tear down multimedia sessions. Such sessions can support a wide range of application types (such as voice chat, video chat, and file transfer) and use a wide range of media transport methods (such as TCP, UDP, RTP, or even in-band XMPP itself). The signalling to establish a Jingle session is sent over XMPP, and typically the media is sent directly peer-to-peer or through a media relay. Jingle provides a pluggable framework for both application types and media transports; in the case of voice and video chat, a Jingle negotiation usually results in use of the Real-time Transport Protocol (RTP) as the media transport and thus is compatible with existing multimedia technologies such as the Session Initiation Protocol (SIP). Furthermore, the semantics of Jingle signalling was designed to be consistent with both SIP and the Session Description Protocol (SDP), thus making it straightforward to provide signalling gateways between XMPP networks and SIP networks.  2. Specifications Jingle is defined in a number of specifications:
+In essence, Jingle provides a way for Jabber clients to set up, manage, and tear down multimedia sessions. Such sessions can support a wide range of application types (such as voice chat, video chat, and file transfer) and use a wide range of media transport methods (such as TCP, UDP, RTP, or even in-band XMPP itself). The signalling to establish a Jingle session is sent over XMPP, and typically the media is sent directly peer-to-peer or through a media relay. Jingle provides a pluggable framework for both application types and media transports; in the case of voice and video chat, a Jingle negotiation usually results in use of the Real-time Transport Protocol (RTP) as the media transport and thus is compatible with existing multimedia technologies such as the Session Initiation Protocol (SIP). Furthermore, the semantics of Jingle signalling was designed to be consistent with both SIP and the Session Description Protocol (SDP), thus making it straightforward to provide signalling gateways between XMPP networks and SIP networks.
+
+#### Specifications
+
+Jingle is defined in a number of specifications:
 
 - [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html)
 - [XEP-0167: Jingle RTP Sessions](http://xmpp.org/extensions/xep-0167.html)
@@ -128,7 +133,11 @@ __Call Managers / VoIP Servers__
 
 ## <a name="muc" href="#muc">Multi-User-Chat (MUC)</a>
 
-MUC is an XMPP extension for multi-party information exchange similar to Internet Relay Chat (IRC), whereby multiple XMPP users can exchange messages in the context of a room or channel. In addition to standard chatroom features such as room topics and invitations, the protocol defines a strong room control model, including the ability to kick and ban users, to name room moderators and administrators, to require membership or passwords in order to join the room, etc. Because MUC rooms are based on XMPP, they can be used to exchange not only plaintext message bodies but a wide variety of XML payloads.  2. Specifications MUC is defined in one primary specification (XEP-0045) and several ancillary specifications:
+MUC is an XMPP extension for multi-party information exchange similar to Internet Relay Chat (IRC), whereby multiple XMPP users can exchange messages in the context of a room or channel. In addition to standard chatroom features such as room topics and invitations, the protocol defines a strong room control model, including the ability to kick and ban users, to name room moderators and administrators, to require membership or passwords in order to join the room, etc. Because MUC rooms are based on XMPP, they can be used to exchange not only plaintext message bodies but a wide variety of XML payloads.
+
+#### Specifications
+
+MUC is defined in one primary specification (XEP-0045) and several ancillary specifications:
 
 - [XEP-0045: Multi-User Chat](http://www.xmpp.org/extensions/xep-0045.html)
 - [XEP-0249: Direct MUC Invitations](http://www.xmpp.org/extensions/xep-0249.html)
@@ -171,7 +180,11 @@ __Libraries__
 
 ## <a name="pubsub" href="#pubsub">PubSub</a>
 
-PubSub is a protocol extension for generic publish-subscribe functionality, specified in XEP-0060. The protocol enables XMPP entities to create nodes (topics) at a pubsub service and publish information at those nodes; an event notification (with or without payload) is then broadcasted to all entities that have subscribed to the node. Pubsub therefore adheres to the classic Observer design pattern and can serve as the foundation for a wide variety of applications, including news feeds, content syndication, rich presence, geolocation, workflow systems, network management systems, and any other application that requires event notifications. The personal eventing protocol (PEP), specified in XEP-0163, provides a presence-aware profile of PubSub that enables every user’s JabberID to function as a virtual pubsub service for rich presence, microblogging, social networking, and real-time interactions.  2. Specifications PubSub is defined in several specifications:
+PubSub is a protocol extension for generic publish-subscribe functionality, specified in XEP-0060. The protocol enables XMPP entities to create nodes (topics) at a pubsub service and publish information at those nodes; an event notification (with or without payload) is then broadcasted to all entities that have subscribed to the node. Pubsub therefore adheres to the classic Observer design pattern and can serve as the foundation for a wide variety of applications, including news feeds, content syndication, rich presence, geolocation, workflow systems, network management systems, and any other application that requires event notifications. The personal eventing protocol (PEP), specified in XEP-0163, provides a presence-aware profile of PubSub that enables every user’s JabberID to function as a virtual pubsub service for rich presence, microblogging, social networking, and real-time interactions.
+
+#### Specifications
+
+PubSub is defined in several specifications:
 
 - [XEP-0060: Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
 - [XEP-0163: Personal Eventing Protocol](http://www.xmpp.org/extensions/xep-0163.html)
@@ -197,6 +210,7 @@ __Servers__ - the following XMPP servers include built-in support for PubSub or 
 
 - [ejabberd](http://www.ejabberd.im/)
 - [Jabber XCP](http://www.jabber.com/)
+- [M-Link](http://www.isode.com/products/m-link.html)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Tigase](http://www.tigase.org/)
 
@@ -216,7 +230,9 @@ __3.4 Libraries__
 
 ## <a name="bosh" href="#bosh">BOSH</a>
 
-BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-way communication over the Hypertext Transfer Protocol (HTTP). BOSH emulates many of the transport primitives that are familiar from the Transmission Control Protocol (TCP). For applications that require both “push” and “pull” communications, BOSH is significantly more bandwidth-efficient and responsive than most other bidirectional HTTP-based transport protocols and the techniques known as AJAX. BOSH achieves this efficiency and low latency by avoiding HTTP polling, yet it does so without resorting to chunked HTTP responses as is done in the technique known as Comet. To date, BOSH has been used mainly as a transport for traffic exchanged between Jabber/XMPP clients and servers (e.g., to facilitate connections from web clients and from mobile clients on intermittent networks). However, BOSH is not tied solely to XMPP and can be used for other kinds of traffic, as well.  2. Specifications BOSH is defined in two specifications:
+BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-way communication over the Hypertext Transfer Protocol (HTTP). BOSH emulates many of the transport primitives that are familiar from the Transmission Control Protocol (TCP). For applications that require both “push” and “pull” communications, BOSH is significantly more bandwidth-efficient and responsive than most other bidirectional HTTP-based transport protocols and the techniques known as AJAX. BOSH achieves this efficiency and low latency by avoiding HTTP polling, yet it does so without resorting to chunked HTTP responses as is done in the technique known as Comet. To date, BOSH has been used mainly as a transport for traffic exchanged between Jabber/XMPP clients and servers (e.g., to facilitate connections from web clients and from mobile clients on intermittent networks). However, BOSH is not tied solely to XMPP and can be used for other kinds of traffic, as well.
+
+#### Specifications BOSH is defined in two specifications:
 
 - [XEP-0124: Bidirectional-streams Over Synchronous HTTP](http://www.xmpp.org/extensions/xep-0124.html)
 - [XEP-0206: XMPP Over BOSH](http://www.xmpp.org/extensions/xep-0206.html)
