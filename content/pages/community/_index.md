@@ -15,10 +15,12 @@ Dropdown_menu_elem_name_3: Membership
 Dropdown_menu_elem_url_3: membership
 Dropdown_menu_elem_name_4: Events
 Dropdown_menu_elem_url_4: events
-Dropdown_menu_elem_name_5: Sponsors
-Dropdown_menu_elem_url_5: sponsors
-Dropdown_menu_elem_name_6: Sponsorship
-Dropdown_menu_elem_url_6: sponsorship
+Dropdown_menu_elem_name_5: Security Notices
+Dropdown_menu_elem_url_5: security-notices/
+Dropdown_menu_elem_name_6: Sponsors
+Dropdown_menu_elem_url_6: sponsors
+Dropdown_menu_elem_name_7: Sponsorship
+Dropdown_menu_elem_url_7: sponsorship
 Footer_show: left
 Footer_order: 5
 Sidebar_menu_show: true
@@ -32,10 +34,12 @@ Sidebar_menu_elem_name_3: Membership
 Sidebar_menu_elem_url_3: community/membership
 Sidebar_menu_elem_name_4: Events
 Sidebar_menu_elem_url_4: community/events
-Sidebar_menu_elem_name_5: Sponsors
-Sidebar_menu_elem_url_5: community/sponsors
-Sidebar_menu_elem_name_6: Sponsorship
-Sidebar_menu_elem_url_6: community/sponsorship
+Sidebar_menu_elem_name_5: Security Notices
+Sidebar_menu_elem_url_5: community/security-notices/
+Sidebar_menu_elem_name_6: Sponsors
+Sidebar_menu_elem_url_6: community/sponsors
+Sidebar_menu_elem_name_7: Sponsorship
+Sidebar_menu_elem_url_7: community/sponsorship
 Content_layout: multiple-columns
 ---
 
@@ -50,3 +54,4 @@ You can find us in a variety of places:
 The XSF, XMPP's standards body, accepts members by application process. (See [more information on XSF membership here](/community/membership).)
 
 The XSF wouldn't be possible without the support of our [sponsors](/community/sponsors). If your company is interested in [sponsoring the XSF](/community/sponsorship), we'd love to talk.
+
