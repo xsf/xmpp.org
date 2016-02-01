@@ -31,7 +31,7 @@ The XMPP Standards Foundation (also known as the XSF and formerly the Jabber Sof
 
 The XSF also provides information and infrastructure to the worldwide community of Jabber/XMPP developers, service providers, and end users. In addition, the XSF administers the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark).
 
-At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). The Board also appoints various work teams (such as the [editor team](/about/xsf/editor-team) and [infrastructure team](/about/xsf/infrastructure-team)) as well as the [Executive Director, Treasurer, and Secretary](about/xsf/people).
+At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). The Board also appoints various work teams (such as the [editor team](/about/xsf/editor-team) and [infrastructure team](/about/xsf/infrastructure-team)) as well as the [Executive Director, Treasurer, and Secretary](/about/xsf/people).
 
 If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
@@ -57,5 +57,5 @@ The Council (2015-2016) consists of the following individuals:
 - __Dave Cridland__
 - __Tobias Markmann__
 - __Peter Saint-Andre__
-- __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](http://xmpp.org/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
+- __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
 

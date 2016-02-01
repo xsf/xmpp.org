@@ -57,7 +57,7 @@ Status: published
     <p>
     The XSF has 53 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
-    Bylaws](http://xmpp.org/about-xmpp/xsf/xsf-bylaws/).
+    Bylaws](/about-xmpp/xsf/xsf-bylaws/).
 
 2.  **Items Subject to a Vote**
     1.  New and Returning membersVote yes or no for the Q2 2012
