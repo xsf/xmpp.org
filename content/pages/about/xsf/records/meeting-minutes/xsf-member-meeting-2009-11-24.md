@@ -75,7 +75,7 @@ Status: published
 4.  **Vote on board size via memberbot**
 
     The membership proposed to set the size of the current  
-    [XSF board](http://xmpp.org/xsf/board/) to four.
+    [XSF board](/xsf/board/) to four.
 
 5.  **Announcement of Voting Results**
 

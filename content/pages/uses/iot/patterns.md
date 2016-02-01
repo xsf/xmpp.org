@@ -33,16 +33,16 @@ XMPP provides an intrinsic method to implement a generic Request/Response mechan
 
 For proprietary applications in IoT, the **iq** stanza might be sufficient. But there are instances where it is not. One such instance is if the response is slow to be collected, and partial results have to be returned to show progress. This might be the case when communicating with devices behind gateways, behind which very slow communication protocols are used. Another important instance, is if [interoperable](#interoperability) solutions are desired. In such cases, proprietary solutions create walled gardens that are difficult to integrate in larger contexts.
 
-To facilitate the creation of an *open* and [loosely coupled](#loosely-coupled-architectures) architecture that enable [interoperability](#interoperability) between things and applications, [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) was created. It defines a Request/Response mechanism where sensor data can be read from devices asynchronously. Apart from the normal request/response mechanism provided by the **iq** stanza, it allows for slow responders and defines a data format that can be used to encapsulate sensor data in an interoperable manner. It is designed to allow new types of devices to be added to networks without the need to upgrading software to perform basic tasks, such as sensor data readout, machine processing of data and presentation of data to human users. It also allows devices from different manufacturers and applications from different developers to exchange data seemlessly.
+To facilitate the creation of an *open* and [loosely coupled](#loosely-coupled-architectures) architecture that enable [interoperability](#interoperability) between things and applications, [XEP-0323: Internet of Things - Sensor Data](/extensions/xep-0323.html) was created. It defines a Request/Response mechanism where sensor data can be read from devices asynchronously. Apart from the normal request/response mechanism provided by the **iq** stanza, it allows for slow responders and defines a data format that can be used to encapsulate sensor data in an interoperable manner. It is designed to allow new types of devices to be added to networks without the need to upgrading software to perform basic tasks, such as sensor data readout, machine processing of data and presentation of data to human users. It also allows devices from different manufacturers and applications from different developers to exchange data seemlessly.
 
 ![IoT Request/Response](/images/iot/reqresp.png)  
-*Example of asynchronous Request/Response flow in [XEP-0323](http://xmpp.org/extensions/xep-0323.html)*
+*Example of asynchronous Request/Response flow in [XEP-0323](/extensions/xep-0323.html)*
 
 #### Asynchronous Messaging
 
 The **Asynchronous Messaging** communication pattern allows peers in the network to asynchronously send messages in *real-time* between each other when they decide to, not when requested. This is done by encapsulating the content of the message into a **message** stanza, which is built into XMPP. The receiver of a message is always informed who sent the message.
 
-To facilitate the interchange of IoT-data in asynchronous messages between things from different manufacturers, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
+To facilitate the interchange of IoT-data in asynchronous messages between things from different manufacturers, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](/extensions/xep-0325.html).
 
 #### Publish/Subscribe
 
@@ -69,7 +69,7 @@ Examples of IoT use cases where data might be better distributed using other pat
 * Data is tailored to the receiver, for instance using provisioning capabilities.
 * Data is confidential.
 
-The Publish/Subscribe pattern is defined in [XEP-0060: Publish-Subscribe](http://xmpp.org/extensions/xep-0060.html). To facilitate the interchange of IoT-data using the publish/subscribe pattern to mass distribute information, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](http://xmpp.org/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](http://xmpp.org/extensions/xep-0325.html).
+The Publish/Subscribe pattern is defined in [XEP-0060: Publish-Subscribe](/extensions/xep-0060.html). To facilitate the interchange of IoT-data using the publish/subscribe pattern to mass distribute information, IoT data can be encapsulated using the sensor data format defined in [XEP-0323: Internet of Things - Sensor Data](/extensions/xep-0323.html) or control format defined in [XEP-0325: Internet of Things - Control](/extensions/xep-0325.html).
 
 ![IoT Publish/Subscribe](/images/iot/pubsub.png)  
 *Example of Publish/Subscribe flow*

@@ -33,15 +33,15 @@ XMPP was originally developed in the Jabber open-source community to provide an 
 
 - ** Open** — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form clients, servers, server components, and code libraries.
 
-- **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](http://xmpp.org/rfcs/rfc3920.html) and [RFC 3921](http://xmpp.org/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](http://xmpp.org/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](http://xmpp.org/rfcs/rfc6120.html), [RFC 6121](http://xmpp.org/rfcs/rfc6121.html), and [RFC 6122](http://xmpp.org/rfcs/rfc6122.html)).
+- **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 6122](/rfcs/rfc6122.html)).
 
 - **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](http://talk.google.com/) and XMPP deployments at organizations worldwide.
 
 - **Decentralized** — the architecture of the XMPP network is similar to email; as a result, anyone can run their own XMPP server, enabling individuals and organizations to take control of their communications experience.
 
-- **Secure** — any XMPP server may be isolated from the public network (e.g., on a company intranet) and robust security using SASL and TLS has been built into the core [XMPP specifications](http://xmpp.org/xmpp-protocols/rfcs/). In addition, the XMPP developer community is actively working on end-to-end encryption to raise the security bar even further.
+- **Secure** — any XMPP server may be isolated from the public network (e.g., on a company intranet) and robust security using SASL and TLS has been built into the core [XMPP specifications](/xmpp-protocols/rfcs/). In addition, the XMPP developer community is actively working on end-to-end encryption to raise the security bar even further.
 
-- **Extensible** — using the power of XML, anyone can build custom functionality on top of the core protocols; to maintain interoperability, common extensions are published in the [XEP series](http://xmpp.org/rfcs/), but such publication is not required and organizations can maintain their own private extensions if so desired.
+- **Extensible** — using the power of XML, anyone can build custom functionality on top of the core protocols; to maintain interoperability, common extensions are published in the [XEP series](/rfcs/), but such publication is not required and organizations can maintain their own private extensions if so desired.
 
 - **Flexible** — XMPP applications beyond IM include network management, content syndication, collaboration tools, file sharing, gaming, remote systems monitoring, web services, lightweight middleware, cloud computing, and much more.
 
@@ -73,11 +73,11 @@ At its core, XMPP is a technology for streaming XML over a network. The protocol
 
 The core XMPP technologies are defined in two RFCs published by the IETF:
 
-- [RFC 6120: XMPP Core](http://xmpp.org/rfcs/rfc6120.html)
-- [RFC 6121: XMPP IM](http://xmpp.org/rfcs/rfc6121.html)
-- [RFC 6122: XMPP Address Format](http://xmpp.org/rfcs/rfc6122.html)
+- [RFC 6120: XMPP Core](/rfcs/rfc6120.html)
+- [RFC 6121: XMPP IM](/rfcs/rfc6121.html)
+- [RFC 6122: XMPP Address Format](/rfcs/rfc6122.html)
 
-The first XMPP RFCs ([RFC 3920](http://xmpp.org/rfcs/rfc3920.html) and  [RFC 3921](http://xmpp.org/rfcs/rfc3921.html)) were produced by the IETF’s XMPP Working Group in October 2004. In 2011 they were revised, resulting in the current specifications.
+The first XMPP RFCs ([RFC 3920](/rfcs/rfc3920.html) and  [RFC 3921](/rfcs/rfc3921.html)) were produced by the IETF’s XMPP Working Group in October 2004. In 2011 they were revised, resulting in the current specifications.
 
 #### Implementations
 
@@ -96,12 +96,12 @@ In essence, Jingle provides a way for Jabber clients to set up, manage, and tear
 
 Jingle is defined in a number of specifications:
 
-- [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html)
-- [XEP-0167: Jingle RTP Sessions](http://xmpp.org/extensions/xep-0167.html)
-- [XEP-0176: Jingle ICE-UDP Transport Method](http://xmpp.org/extensions/xep-0176.html)
-- [XEP-0177: Jingle Raw UDP Transport Method](http://xmpp.org/extensions/xep-0177.html)
-- [XEP-0181: Jingle DTMF](http://xmpp.org/extensions/xep-0181.html)
-- [XEP-0234: Jingle File Transfer](http://xmpp.org/extensions/xep-0234.html)
+- [XEP-0166: Jingle](/extensions/xep-0166.html)
+- [XEP-0167: Jingle RTP Sessions](/extensions/xep-0167.html)
+- [XEP-0176: Jingle ICE-UDP Transport Method](/extensions/xep-0176.html)
+- [XEP-0177: Jingle Raw UDP Transport Method](/extensions/xep-0177.html)
+- [XEP-0181: Jingle DTMF](/extensions/xep-0181.html)
+- [XEP-0234: Jingle File Transfer](/extensions/xep-0234.html)
 
 #### Implementations
 _Note: Many of the following implementations support the older Google Talk protocol and are being upgraded to support Jingle as it is defined in the specifications; contact the project developers for details._
@@ -193,16 +193,16 @@ PubSub is defined in several specifications:
 #### Payloads
 PubSub and PEP are “payload-agnostic” — you can use them as neutral transports for a wide variety of data formats. Some of the more popular payloads are listed below, especially for rich presence related to IM users:
 
-- [Activities](http://xmpp.org/extensions/xep-0108.html)
-- [Atom / RSS Notifications](http://xmpp.org/internet-drafts/draft-saintandre-atompub-notify-07.html)
-- [Avatars](http://xmpp.org/extensions/xep-0084.html)
-- [Chatroom Visits](http://xmpp.org/extensions/xep-0194.html)
-- [Gaming Activities](http://xmpp.org/extensions/xep-0196.html)
-- [Geolocation](http://xmpp.org/extensions/xep-0080.html)
-- [Moods](http://xmpp.org/extensions/xep-0107.html)
-- [Music Tunes](http://xmpp.org/extensions/xep-0118.html)
-- [TV/Video Activities](http://xmpp.org/extensions/xep-0197.html)
-- [Website Visits](http://xmpp.org/extensions/xep-0195.html)
+- [Activities](/extensions/xep-0108.html)
+- [Atom / RSS Notifications](/internet-drafts/draft-saintandre-atompub-notify-07.html)
+- [Avatars](/extensions/xep-0084.html)
+- [Chatroom Visits](/extensions/xep-0194.html)
+- [Gaming Activities](/extensions/xep-0196.html)
+- [Geolocation](/extensions/xep-0080.html)
+- [Moods](/extensions/xep-0107.html)
+- [Music Tunes](/extensions/xep-0118.html)
+- [TV/Video Activities](/extensions/xep-0197.html)
+- [Website Visits](/extensions/xep-0195.html)
 
 #### Implementations
 
