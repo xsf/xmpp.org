@@ -67,7 +67,7 @@ Status: published
     in accordance  
     with Section 3.8 of the  
     [XSF
-    Bylaws](../../../../Visual%20Studio%202008/Projects/Matrix/doc/html%20guide/xsf/docs/bylaws.shtml).
+    Bylaws](/about/xsf/bylaws.html).
 
 2.  **Items Subject to a Vote**
 

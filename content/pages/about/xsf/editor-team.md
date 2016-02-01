@@ -25,7 +25,7 @@ Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
 ---
 
-The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](http://xmpp.org/extensions/xep-README.html) and the [XMPP Registrar](http://xmpp.org/extensions/xep-0053.html). The current members of the team are:
+The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](/extensions/xep-README.html) and the [XMPP Registrar](/extensions/xep-0053.html). The current members of the team are:
 
 - Steffen Larsen
 - Matthew Miller

@@ -51,7 +51,7 @@ The following special-purpose mailing lists provide low-volume, high-quality dis
 
 __IOT@xmpp.org email list__ — for discussion about the use of XMPP in the Internet of Things ([subscribe](http://mail.jabber.org/mailman/listinfo/iot) | [archives](http://mail.jabber.org/pipermail/iot/))
 
-__Jingle@xmpp.org email list__ — for discussion about the use of XMPP as a signalling channel for multimedia session negotiation (voice, video, file sharing, etc.) as defined in [XEP-0166](http://xmpp.org/extensions/xep-0166.html) and related extensions ([subscribe](http://mail.jabber.org/mailman/listinfo/jingle) | [archives](http://mail.jabber.org/pipermail/jingle/))
+__Jingle@xmpp.org email list__ — for discussion about the use of XMPP as a signalling channel for multimedia session negotiation (voice, video, file sharing, etc.) as defined in [XEP-0166](/extensions/xep-0166.html) and related extensions ([subscribe](http://mail.jabber.org/mailman/listinfo/jingle) | [archives](http://mail.jabber.org/pipermail/jingle/))
 
 __Security@xmpp.org email list__ — for discussion about security issues related to XMPP, including encryption, authentication, and spam ([subscribe](http://mail.jabber.org/mailman/listinfo/security) | [archives](http://mail.jabber.org/pipermail/security/))
 

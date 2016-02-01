@@ -59,6 +59,6 @@ During 2002 and 2003, the XMPP Standards Foundation (XSF), then the Jabber Softw
 
 [Letter of Intent](/docs/Trademark_Letter_Of_Intent.pdf) (2002-12-16)
 [Trademark License Agreement](/docs/Trademark_License_Agreement.pdf) (2003-03-07)
-[Trademark Enforcement Agreement](docs/Trademark_Enforcement_Agreement.pdf) (2003-05-02)
+[Trademark Enforcement Agreement](/docs/Trademark_Enforcement_Agreement.pdf) (2003-05-02)
 
 These governing agreements continue to be in force, with the responsibilities of Jabber, Inc. having been assumed by Cisco Systems, Inc. upon its acquisition of Jabber, Inc. in 2008.

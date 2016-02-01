@@ -34,7 +34,7 @@ Because WebRTC is a peer-to-peer protocol, multi-user experiences become exponen
 
 There are many people pairing WebRTC with XMPP. 
 
-The [Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) uses the [COLIBRI XEP](http://xmpp.org/extensions/xep-0340.html) to manage connections and conference mixing. 
+The [Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) uses the [COLIBRI XEP](/extensions/xep-0340.html) to manage connections and conference mixing. 
 
 [Jitsi Meet](https://jitsi.org/Projects/JitsiMeet) is an open source instant videoconferencing web application, which uses XMPP.
 
