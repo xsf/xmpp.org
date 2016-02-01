@@ -10,19 +10,36 @@
 {% endblock %}
 
 {% block related_content %}
-  {% if page.sidebar_menu_show|default("false") == "true" %}
-  <h4>{{ page.sidebar_menu_title }}</h4>
-  <ul>
-    {% set size = page.sidebar_menu_size|int %}
-    {% for i in range(1, size + 1) %}
-    <li>
-      {% set E_URL = page|attr('sidebar_menu_elem_url_'~(i|string)) %}
-      {% set E_NAME = page|attr('sidebar_menu_elem_name_'~(i|string)) %}
-      <a href="{{ SITE_URL }}/{{ E_URL }}.html">
-        {{ E_NAME }}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% if page.sidebar_menu_show|default(boolean=True) %}
+  {%   set links = [] %}
+  {%   set menu_title = [] %}
+  {%   if page.sidebar_menu_title and menu_title.append(page.sidebar_menu_title) %}{% endif %}
+  {%   set parts = page.url.split("/") %}
+  {%   set depth = parts|length if page.inherit_sidebar|default(boolean=True) else 1 %}
+  {%   for i in range(0, depth) %}
+  {%      set P_URL = parts|join("/") %}
+  {%      for parent in PAGES|selectattr("url", "equalto", P_URL) %}
+  {%         if parent.sidebar_menu_size|default(false) %}
+  {%            if menu_title.append(parent.sidebar_menu_title) %}{% endif %}
+  {%            set size = parent.sidebar_menu_size|int %}
+  {%            for i in range(1, size + 1) %}
+  {%               set E_URL = parent|attr('sidebar_menu_elem_url_'~(i|string)) %}
+  {%               set E_NAME = parent|attr('sidebar_menu_elem_name_'~(i|string)) %}
+  {%               if E_URL[-1] != '/' %}
+  {%                  set E_URL = E_URL + ".html" %}
+  {%               endif %}
+  {%               if links.append(( SITE_URL + "/" + E_URL, E_NAME )) %}{% endif %}
+  {%            endfor %}
+  {%         endif %}
+  {%      endfor %}
+  {%      set parts = parts[:-1] %}
+  {%   endfor %}
+  {%   set menu_title = menu_title[0] %}
+       <h4>{{ menu_title }}</h4>
+       <ul>
+       {% for item in links %}
+          <li><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+       {% endfor %}
+       </ul>
   {% endif %}
 {% endblock %}
