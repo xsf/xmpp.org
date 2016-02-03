@@ -3,27 +3,8 @@ Title: XMPP Standards Foundation (XSF)
 Url: about/xmpp-standards-foundation
 Save_as: about/xmpp-standards-foundation.html
 Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_title: About the XSF
-Sidebar_menu_size: 7
-Sidebar_menu_elem_name_1: History
-Sidebar_menu_elem_url_1: about/history
-Sidebar_menu_elem_name_2: Overview
-Sidebar_menu_elem_url_2: about/technology-overview
-Sidebar_menu_elem_name_3: Who uses XMPP
-Sidebar_menu_elem_url_3: about/who-uses-xmpp
-Sidebar_menu_elem_name_4: Standards Process
-Sidebar_menu_elem_url_4: about/standards-process
-Sidebar_menu_elem_name_5: The XSF
-Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_6: Extensions
-Sidebar_menu_elem_url_6: extensions/index
-Sidebar_menu_elem_name_7: FAQ
-Sidebar_menu_elem_url_7: about/faq
+Inherit_sidebar: true
 Content_layout: multiple-columns
 ---
 
@@ -47,7 +28,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 
 ## <a name="council" href="#council">The Council</a>
 
-The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various policies and procedures.
+The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various [policies and procedures](/about/xsf/council-policies-and-procedures).
 
 The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post).
 
