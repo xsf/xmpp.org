@@ -18,3 +18,5 @@ Erlang Solutions specialises in providing businesses with truly scalable solutio
 We offer industry-leading research, development, training and worldwide support, helping our customers benefit from the speed to market, low lifetime cost, extreme reliability and scalability offered by Erlang and Elixir.
 
 Erlang Solutions has offices in London, Stockholm, Krakow, Budapest, Copenhagen, Amsterdam and Seattle.
+
+You can find out more about Erlang Solutions by visiting [erlang-solutions.com](http://www.erlang-solutions.com/).

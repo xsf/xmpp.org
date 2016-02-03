@@ -22,3 +22,5 @@ Voxeo has invested over $50 million in infrastructure, technology, and programs 
 Voxeo’s customers range from the Fortune 50 to 50 of the most innovative small businesses around.   We focus diligently on their success.   When surveyed, our customers give us extremely high marks for technical versatility and customer service excellence.   These are the primary reasons enterprises choose Voxeo.
 
 While we welcome the opportunity to work with any enterprise or channel partner, we prefer to continue our investment in the technical and service qualities our customers value most.   As a result, Voxeo does not serve long distance carriers, cellular providers, or other companies who are strictly focused on obtaining the lowest tier of pricing available in the IVR or VoIP platform markets.
+
+You can find out more about Voxeo by visiting [voxeo.com](http://www.voxeo.com/).

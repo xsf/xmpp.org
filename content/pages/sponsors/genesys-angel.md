@@ -15,4 +15,4 @@ Content_layout: single-column
 
 Genesys | Angel is a leading provider of cloud-based Customer Experience Management (CEM) solutions for Interactive Voice Response (IVR) and Contact Centers. These solutions enable enterprises of all sizes to quickly deploy voice, SMS, chat, mobile, and Business Intelligence (BI) applications that all put the Customer Experience (CX) First. Genesys | Angel’s solutions are built on an on-demand, software-as-a-service (SaaS) platform and require no investment in hardware, software, or human resources.
 
-Genesys | Angel serves more than 800 customers worldwide, including many Fortune 500 companies, and has provided over 10,000 telephony solutions. For more information, visit www.angel.com
+Genesys | Angel serves more than 800 customers worldwide, including many Fortune 500 companies, and has provided over 10,000 telephony solutions. For more information, visit [angel.com](http://www.angel.com/).
