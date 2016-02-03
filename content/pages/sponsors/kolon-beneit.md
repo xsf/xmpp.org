@@ -17,4 +17,4 @@ Founded in 1954, KOLON industries, one of the biggest corporations in South Kore
 
 Among KOLON BENIT’s offerings is BENIT UC, an XMPP-based Instant Messaging and Presence service that also provides features such as email, IP telephony, video conferencing, and SMS. BENIT UC has been deployed within numerous large corporations and government agencies in Korea.
 
-For more information, visit eng.kolonbenit.com.
+You can find out more about KOLON BENIT by visiting [kolonbenit.com/eng](http://www.kolonbenit.com/eng/).

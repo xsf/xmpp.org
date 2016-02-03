@@ -28,3 +28,5 @@ Other advantages include our support for in-process server extensions that enabl
 ### Experience
 
 Coversant has 10 years of experience in integrated messaging. The 2012 SoapBox Platform is the 7th Version of our software and nearly all of Coversant’s customers have integrated messaging solutions built on top of the SoapBox Platform. They are not merely instant messaging solutions but high value added commercial solutions.
+
+You can find out more about Conversant by visiting [coversant.com](http://www.coversant.com/).

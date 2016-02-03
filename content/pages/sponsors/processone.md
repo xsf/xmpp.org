@@ -27,4 +27,4 @@ Beyond XMPP we expanded our reach to push notification and websockets, making ou
 
 Scalability, robustness and mobile optimizations make our platform the safest choice today for reaching the largest and more demanding user bases.
 
-For more information please visit: https://www.process-one.net/
+You can find out more about ProcessOne by visiting [process-one.net](https://www.process-one.net/).

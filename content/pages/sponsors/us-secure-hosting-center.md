@@ -26,3 +26,5 @@ Our partners and customers are the new industry leaders in business continuity, 
 ### USSHC Owned
 
 USSHC owns the data center. Unlike many secure internet colocation data centers, USSHC owns the building, the land above, below, and around it, the campus, and all infrastructure improvements. This ensures that both USSHC and their colocation customers have maximum flexibility and long-term security.
+
+You can find out more about USSHC by visiting [usshc.com](http://www.usshc.com/).
