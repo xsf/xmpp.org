@@ -3,35 +3,14 @@ Title: History of XMPP
 Url: about/history
 Save_as: about/history.html
 Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_title: About XMPP
-Sidebar_menu_size: 8
-Sidebar_menu_elem_name_1: Features and benefits
-Sidebar_menu_elem_url_1: about/features-and-benefits
-Sidebar_menu_elem_name_2: History
-Sidebar_menu_elem_url_2: about/history
-Sidebar_menu_elem_name_3: Overview
-Sidebar_menu_elem_url_3: about/technology-overview
-Sidebar_menu_elem_name_4: Who uses XMPP
-Sidebar_menu_elem_url_4: about/who-uses-xmpp
-Sidebar_menu_elem_name_5: Standards Process
-Sidebar_menu_elem_url_5: about/standards-process
-Sidebar_menu_elem_name_6: The XSF
-Sidebar_menu_elem_url_6: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_7: Extensions
-Sidebar_menu_elem_url_7: extensions/index
-Sidebar_menu_elem_name_8: FAQ
-Sidebar_menu_elem_url_8: about/faq
+Inherit_sidebar: true
 Content_layout: multiple-columns
 ---
 
 ## 1999
 - __January:__ Jeremie Miller announces the existence of Jabber; an open technology for instant messaging and presence. Throughout the year development moves quickly on an open source server (jabberd), several open-source clients and code libraries, and open wire protocols for real-time XML streaming; as well as basic instant messaging and presence extensions. These same base protocols (with various improvements and extensions) are still in use today.
-- __August:__ Jeremie submits a statement pledging the Jabber community’s support for the IETF standards process. This statement is consistent with the founding mission of the Jabber project: to foster freedom of conversation and support open standards and interoperability in real-time communications.
+- __August:__ Jeremie submits a [statement](/about/the-jabber-project) pledging the Jabber community’s support for the IETF standards process. This statement is consistent with the founding mission of the Jabber project: to foster freedom of conversation and support open standards and interoperability in real-time communications.
 
 ## 2000
 - __February:__ The IETF publish work done by the Instant Messaging and Presence Protocol (IMPP) Working Group; in short, a model and set of requirements for instant messaging and presence systems.
