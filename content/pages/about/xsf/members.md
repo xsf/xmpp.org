@@ -36,7 +36,9 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Dave Cridland (XSF Board)
 - Wayne Franklin
 - Laura Crossley
+- Xander Dumaine
 - Alexander Gnauck (infrastructure)
+- Daniel Gultsch
 - Christoph Hartmann
 - Philipp Hancke (XMPP Council)
 - Artur Hefczyc
