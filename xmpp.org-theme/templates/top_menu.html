@@ -13,15 +13,14 @@
     <ul class="right">
       <li class="divider"></li>
       {% for page in PAGES|sort(attribute='top_menu_order') if page.top_menu_show|default("false") == "true" %}
-      <li
-        {% if active_page == page.url|replace(" ", "") and page.dropdown_menu_show|default("false") == "true" %}
-        class="active has-dropdown"
-        {% elif active_page == page.url|replace(" ", "") %}
-        class="active"
-        {% elif page.dropdown_menu_show|default("false") == "true" %}
-        class="has-dropdown"
-        {% endif %}
-       >
+      {% set classes = [] %}
+      {% if active_page.split("/")[0]|replace(" ", "") == page.url|replace(" ", "") %}
+      {%     set classes = classes + ["active",] %}
+      {% endif %}
+      {% if page.dropdown_menu_show|default("false") == "true" %}
+      {%     set classes = classes + ["has-dropdown",] %}
+      {% endif %}
+      <li {% if classes|length() > 0 %}class="{{ classes|join(" ") }}"{% endif %}>
         <a href="{{ SITE_URL }}/{{ page.url }}">
           {{ page.menu_name|default(page.title) }}
         </a>
@@ -33,7 +32,10 @@
           <li>
             {% set E_URL = page|attr('dropdown_menu_elem_url_'~(i|string)) %}
             {% set E_NAME = page|attr('dropdown_menu_elem_name_'~(i|string)) %}
-            <a href="{{ SITE_URL }}/{{ page.url }}/{{ E_URL }}.html">
+            {% if E_URL[-1] != '/' %}
+            {%     set E_URL = E_URL + ".html" %}
+            {% endif %}
+	    <a href="{{ SITE_URL }}/{{ page.url }}/{{ E_URL }}">
               {{ E_NAME }}
             </a>
           </li>
