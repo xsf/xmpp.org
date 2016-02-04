@@ -32,7 +32,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 |--------------------------------|-------------------------------------------------------|
 | [Adium](http://adium.org)                          | OSX                                                |
 | [AQQ](http://aqq.eu)                            | Windows                                            |
-| [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS)                              |
+| [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS), Linux, Windows, Mac                            |
 | [beejive](http://beejive.com)                        | Mobile (Android, BlackBerry, iOS)                  |
 | [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
 | [BitlBee](http://bitlbee.org)                        | Linux                                              |
