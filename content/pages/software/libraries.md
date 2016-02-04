@@ -68,7 +68,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Loudmouth](http://Website)                   | Ruby                                |                  |
 | [MatriX](http://ag-software.net)           | C# / .net) / Mono                    |       |
 | [net::XMPP](http://Website)                   | Perl                                |                  |
-| [node-xmpp](http://http://node-xmpp.org)      | JavaScript                          |                  |        
+| [node-xmpp](http://node-xmpp.org)      | JavaScript                          |                  |        
 | [oajabber](http://Website)                   | C++                                 |                  |
 | [Pontarius XMPP](http://github.com)                | Haskell                             | BSD              |
 | [pyxmpp](http://Website)                   | Python                              |                  |
