@@ -13,10 +13,8 @@ Content_layout: single-column
 
 ![](/images/logos/erlang-solutions.png)
 
-Erlang Solutions specialises in providing businesses with truly scalable solutions through the creation, integration, delivery and lifetime support of products and services based on the Erlang and Elixir programming languages. We work with customers from small developers to Fortune 500 corporations.
+We develop and build trusted, fault-tolerant systems that can scale massively. We’re passionate about Erlang/OTP & Elixir and we specialise in a wide range of products, on-site/remote consulting, support and mobile development to architecture/code reviews and training. We develop MongooseIM, the XMPP-based messaging platform that caters to millions of online users in high-growth sectors such as social media, gaming and telecommunications.
 
-We offer industry-leading research, development, training and worldwide support, helping our customers benefit from the speed to market, low lifetime cost, extreme reliability and scalability offered by Erlang and Elixir.
-
-Erlang Solutions has offices in London, Stockholm, Krakow, Budapest, Copenhagen, Amsterdam and Seattle.
+From startups to Fortune 100 companies, there are over 300 clients in our portfolio. Our team - over 100 specialists, works out of London, Stockholm, Krakow, Budapest, Berlin, San Francisco, Seattle and Buenos Aires
 
 You can find out more about Erlang Solutions by visiting [erlang-solutions.com](http://www.erlang-solutions.com/).
