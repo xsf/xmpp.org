@@ -7,19 +7,19 @@ blog_id: blog
 
 ##19th XMPP Summit
 
-In late January 2016, from the 28th to the 29th, the XSF held its XMPP Summit in Brussels, Belgium. It was the 19th meeting by XMPP standards writers, implementers, and ethusiasts since the first XMPP Summit in July 2006.
-Among the topic we discussed were MIX, efficient reconnections and, as always, end-to-end security.
+In late January 2016, from the 28th to the 29th, the XSF held its XMPP Summit in Brussels, Belgium. It was the 19th meeting by XMPP standards writers, implementers, and enthusiasts since the first XMPP Summit in July 2006.
+Among the topics we discussed were MIX, efficient reconnections and, as always, end-to-end security.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/XMPP2016?src=hash">#XMPP2016</a> XSF at work at XMPP Summit <a href="https://t.co/ZNEsilzJ2z">pic.twitter.com/ZNEsilzJ2z</a></p>&mdash; Nicolas Vérité, Nÿco (@nyconyco) <a href="https://twitter.com/nyconyco/status/692734779809251329">January 28, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-MIX, defined in [XEP-0369: Mediated Information Exchange](//xmpp.org/extensions/xep-0369.html), is a replacement for the current multi-user chat standard ([XEP-0045](//xmpp.org/extensions/xep-0369.html)). Classic MUC has first been standardized 14 years ago. While it has received some updates and fixes over the years, it still has severe issues considering modern usage scenarios like mobile devices without a permanent connection and on low bandwith, or rich-media applications with images, movies and voice/video conversations.
+MIX, defined in [XEP-0369: Mediated Information Exchange](//xmpp.org/extensions/xep-0369.html), is a replacement for the current multi-user chat standard ([XEP-0045](//xmpp.org/extensions/xep-0369.html)). Classic MUC was first standardized 14 years ago. While it has received some updates and fixes over the years, it still has severe issues considering modern usage scenarios: like mobile devices without a permanent connection and on low bandwith, or rich-media applications with images, movies and voice/video conversations.
 
 MIX is a new protocol aiming to solve these issues and provide a clean solution, based on [Publish-Subscribe](//xmpp.org/extensions/xep-0060.html) allowing independent distribution of messages, configuration, presence and more, and [Message Archive Management](//xmpp.org/extensions/xep-0313.html) for chat history. 
 
-MIX related topics like mentioning others in a chat room, conversation threading and bookmarks have also been discussed and to some extend already already standarized shortly after the summit. MIX will enable the implementation of modern group-chat applications with a good user experience in an easier fashion compared to classic MUC.
+MIX related topics like mentioning others in a chat room, conversation threading and bookmarks have also been discussed and to some extent already standarized shortly after the summit. MIX will enable the implementation of modern group-chat applications with a good user experience in an easier fashion compared to classic MUC.
 
-Simple and efficient reconnection was another large topic discussed at the XMPP Summit. The protocol for a full connection of modern XMPP clients has become more complex and extensive over the years as features have been added. This includes stuff like TLS negotiation, synchronization of contact list, feature discovery and more.
+Simple and efficient reconnection was another large topic discussed at the XMPP Summit. The protocol for a full connection of modern XMPP clients has become more complex and extensive over the years as features have been added. This includes stuff like TLS negotiation, synchronization of contact lists, feature discovery and more.
 
 We collectively analyzed the protocol a modern feature-full XMPP client uses to login, and highlighted opportunities to reduce traffic, round trips and latency. An efficient reconnection is becoming more important as more and more chat applications run on a mobile device and reconnect quite often. A writeup of our findings and directions to possible optimizations will soon follow in the form of an informational XEP.
 
@@ -31,7 +31,7 @@ On the evening of the 28th, we also had our traditional XSF Dinner with interest
 <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://twitter.com/hashtag/XMPP2016?src=hash">#XMPP2016</a> <a href="https://t.co/oWNO1LopMN">https://t.co/oWNO1LopMN</a> <a href="https://t.co/fbYza3VO1C">pic.twitter.com/fbYza3VO1C</a></p>&mdash; Sergey Dobrov (@JBinary) <a href="https://twitter.com/JBinary/status/693001521382973440">January 29, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-We would like to thank our sponsors, [AG-Software](http://www.ag-software.net/), [Cisco](http://www.cisco.com/) and [Surevine](http://www.surevine.com), for enabling this great meetup and the XSF Dinner.
+We would like to thank the summit's sponsors, [AG-Software](http://www.ag-software.net/), [Cisco](http://www.cisco.com/) and [Surevine](http://www.surevine.com), for enabling this great meetup and the XSF Dinner.
 
 ##FOSDEM 2016
 
@@ -39,11 +39,11 @@ In the [Real Time devroom](https://fosdem.org/2016/schedule/track/real_time/), t
 
 Panagiotis Stathopoulos presented ["Sharp.Xmpp, a multiplatform .NET XMPP client library and Android"](https://fosdem.org/2016/schedule/event/sharpxmpp/) with some real world return of experience around battery and bandwidth efficiency.
 
-Nicolas (Nÿco) Vérité presented ["The state of XMPP and instant messaging, The awakening"](https://fosdem.org/2016/schedule/event/state_of_xmpp/) introducing the 3 generations of Instant Messaging, and the trough of disillusionment, and consequently the necessary cleanup yet to accomplish.
+Nicolas (Nÿco) Vérité presented ["The state of XMPP and instant messaging, The awakening"](https://fosdem.org/2016/schedule/event/state_of_xmpp/) introducing the 3 generations of Instant Messaging, the trough of disillusionment, and consequently the necessary cleanup yet to be accomplished.
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The state of XMPP and instant messaging at <a href="https://twitter.com/hashtag/FOSDEM2016?src=hash">#FOSDEM2016</a> thx <a href="https://twitter.com/michalwski">@michalwski</a> for the pic <a href="https://twitter.com/hashtag/XMPP2016?src=hash">#XMPP2016</a> it was fun, thx to all! <a href="https://t.co/9CNqIYSwQz">pic.twitter.com/9CNqIYSwQz</a></p>&mdash; Nicolas Vérité, Nÿco (@nyconyco) <a href="https://twitter.com/nyconyco/status/693449757155577856">January 30, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Dave Cridland talked about ["Reigniting Openfire: A tale of birth, death, zombies, and resurrection"](https://fosdem.org/2016/schedule/event/openfire/) (with a lie about zombies), showing the history of the most popular XMPP server.
+Dave Cridland talked about ["Reigniting Openfire: A tale of birth, death, zombies, and resurrection"](https://fosdem.org/2016/schedule/event/openfire/) (with a lie about zombies), showing the history of the [Openfire](http://www.igniterealtime.org/projects/openfire/) XMPP server.
 
 Matthew Wild talked about ["XMPP: Beyond standards, Exploring the non-technical requirements of open communication"](https://fosdem.org/2016/schedule/event/xmpp_beyond_standards/) which echoes the need to focus less on lower layers, but more in the user space.
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Matthew Wild presenting <a href="https://twitter.com/hashtag/XMPP2016?src=hash">#XMPP2016</a> <a href="https://twitter.com/hashtag/prosody?src=hash">#prosody</a> <a href="https://twitter.com/hashtag/FOSDEM?src=hash">#FOSDEM</a> <a href="https://t.co/YS8zxjI33t">pic.twitter.com/YS8zxjI33t</a></p>&mdash; Steffen Larsen (@zooldk) <a href="https://twitter.com/zooldk/status/693456193189232641">January 30, 2016</a></blockquote>
@@ -59,5 +59,5 @@ In the Main Track, beyond the scope of only Real Time Communications, Daniel Poc
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Daniel Pocock introducing humourously &quot;Free comms with free software&quot; <a href="https://twitter.com/hashtag/FOSDEM2016?src=hash">#FOSDEM2016</a> <a href="https://twitter.com/hashtag/xmpp2016?src=hash">#xmpp2016</a> <a href="https://t.co/uYzSL9VPiw">pic.twitter.com/uYzSL9VPiw</a></p>&mdash; Nicolas Vérité, Nÿco (@nyconyco) <a href="https://twitter.com/nyconyco/status/693721422523437056">January 31, 2016</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Overall, the participants were [all](https://twitter.com/michalwski/status/695155070246215681) [quite](https://twitter.com/winfriedtilanus/status/693890533442392064) [satisfied](https://twitter.com/iNPUTmice/status/693822618735108096) of what they achieved and we are looking forward to our next XMPP Summit.
+Overall, the participants were [all](https://twitter.com/michalwski/status/695155070246215681) [quite](https://twitter.com/winfriedtilanus/status/693890533442392064) [satisfied](https://twitter.com/iNPUTmice/status/693822618735108096) with what they achieved and we are looking forward to our next XMPP Summit.
 
