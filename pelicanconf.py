@@ -34,3 +34,11 @@ YEAR_ARCHIVE_SAVE_AS = '{date:%Y}/index.html'
 THEME = "xmpp.org-theme"
 
 MD_EXTENSIONS = [ 'codehilite(css_class=highlight)', 'extra' ]
+
+FEED_MAX_ITEMS = 20
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+CATEGORY_FEED_ATOM = None
+CATEGORY_FEED_RSS = None
+TAG_FEED_ATOM = None
+TAG_FEED_RSS = None
