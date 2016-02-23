@@ -96,6 +96,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [VSTalk](http://codeplex.com)                         | Windows                                                |
 | [WTW](http://k2t.eu)                            | Windows                                                |
 | [Xabber](http://xabber.com)                         | Mobile (Android)                                       |
+| [xmpp-client](https://github.com/agl/xmpp-client) | Linux / OSX |
 | [xmppchat](http://babelmonkeys.de)                       | Browser                                                |
 | [XMPPWebChat](http://code.google.com)                    | Browser                                                |
 | [yaxim](http://yaxim.org)                          | Mobile (Android)                                       |
