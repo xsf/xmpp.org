@@ -73,6 +73,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [pyxmpp](http://pyxmpp.jajcus.net/pyxmpp.html)                            | Python                              |                  |
 | [pyxmpp2](https://github.com/Jajcus/pyxmpp2)                              | Python                              |                  |
 | [QXmpp](www.qxmpp.org)                                                    | C++                                 |                  |
+| [Sharp.Xmpp](https://github.com/pgstath/Sharp.Xmpp)                       | C#               |                  | MIT
 | [seesmic-as3-xmpp](https://code.google.com/archive/p/seesmic-as3-xmpp)    | Flash / ActionScript                |                  |
 | [Skates](https://github.com/julien51/skates)                              | Ruby                                | MIT              |
 | [SleekXMPP](https://github.com/fritzy/SleekXMPP)                          | Python                              |                  |
