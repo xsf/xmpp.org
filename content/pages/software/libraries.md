@@ -42,6 +42,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Echomine Feridian](https://github.com/jdevelop/feridian)                 | Java                                |                  |
 | [Eiffel](https://www.eiffel.org/resources/libraries/eiffel-xmpp)          | PHP                                 |                  |
 | [emite](https://github.com/EmiteGWT/emite)                                | Java                                |                  |
+| [Escalus](https://github.com/esl/escalus)                                 | Erlang                              | Apache 2.0       |
 | [exmpp](http://exmpp.org)                                                 | Erlang                              |                  |
 | [frabjous](https://github.com/theozaurus/frabjous)                        | JavaScript                          |                  |
 | [gloox](http://camaya.net)                                                | C++                                 |                  |
@@ -82,7 +83,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [strophe.js](http://strophe.im/strophejs)                                 | JavaScript                          |                  |
 | [StropheCappuccino](https://github.com/ArchipelProject/StropheCappuccino) | Objective-J                         |                  |
 | [Swiften](http://swift.im)                                                | C++                                 |                  |
-| [Tinder](http://www.igniterealtime.org/projects/tinder)                   | Java                                | Aoache 2.0       |
+| [Tinder](http://www.igniterealtime.org/projects/tinder)                   | Java                                | Apache 2.0       |
 | [txmpp](https://github.com/rpavlik/txmpp)                                 | C++                                 |                  |
 | [Twisted Words](http://twistedmatrix.com)                                 | Python                              |                  |
 | [Ubeity](https://github.com/ubiety/xmpp)                                  | C#                                  |                  |
