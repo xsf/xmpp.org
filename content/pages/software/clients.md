@@ -51,7 +51,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [ChatSecure](http://guardianproject.info)                     | Mobile (Android)                                  |
 | [GNU Freetalk](https://gnufreetalk.github.io/)                   | Console / Text-Mode                                    |
 | [GreenJab](http://bvstools.com)                       | IBM i                                                  |
-| [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX / iOS                                                   |
+| [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX                                                   |
 | [IM+](http://shapeservices.com)                            | Mobile                                                 |
 | [Instantbird](http://instantbird.com)                    | Linux / OSX / Windows                                  |
 | [irssi-xmpp](http://cybione.org)                     | Console / Text-Mode                                    |
@@ -100,4 +100,3 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [xmppchat](http://babelmonkeys.de)                       | Browser                                                |
 | [XMPPWebChat](http://code.google.com)                    | Browser                                                |
 | [yaxim](http://yaxim.org)                          | Mobile (Android)                                       |
-
