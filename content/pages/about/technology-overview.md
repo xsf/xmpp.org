@@ -253,7 +253,6 @@ Servers The following XMPP servers include built-in support for BOSH:
 
 The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:
 
-- [Araneo](http://blog.bluendo.com/ff/bosh-connection-manager-update)
 - [JabberHTTPBind](http://blog.jwchat.org/jhb/)
 - [Punjab](http://code.stanziq.com/punjab)
 - [node-xmpp-bosh](https://github.com/dhruvbird/node-xmpp-bosh)
