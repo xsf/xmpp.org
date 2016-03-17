@@ -20,8 +20,8 @@ If you have an interest in XMPP standards, it is straightforward to [become a Me
 
 The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2015-2016 consists of the following individuals:
 
-- __Dave Cridland (Chair)__
-- __Laura Crossley__
+- __Laura Crossley (Chair)__
+- __Dave Cridland__
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council since 2004 and is a software developer for Rackspace. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP]()
 - __Arc Riley__
 - __Mike Taylor__
