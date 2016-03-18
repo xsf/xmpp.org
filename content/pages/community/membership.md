@@ -33,7 +33,7 @@ This page contains information for and about elected members of the XMPP Standar
 
 ## <a name="application" href="#application">Become a Member</a>
 
-Applications from prospective new members are accepted during the first two weeks of every quarter (i.e., the first two weeks of January, April, July, and October). New members are admitted based on a vote of the existing members, and existing members are required to re-apply every 12 months. Application periods are announced on the jdev discussion list and completed on the [wiki.xmpp.org](https://wiki.xmpp.org) site [here](wiki.xmpp.org/web/Membership_Applications).
+Applications from prospective new members are accepted during the first two weeks of every quarter (i.e., the first two weeks of January, April, July, and October). New members are admitted based on a vote of the existing members, and existing members are required to re-apply every 12 months. Application periods are announced on the jdev discussion list and completed on the [wiki.xmpp.org](https://wiki.xmpp.org) site [here](https://wiki.xmpp.org/web/Membership_Applications).
 
 ## <a name="responsibilities" href="#responsibilities">Responsibilities of Members</a>
 
