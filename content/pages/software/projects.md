@@ -31,3 +31,4 @@ And don't forget to also submit a pull request to add your organization as an [X
 | ~800 million | [WhatsApp](http://whatsapp.com) |  Chat | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service | 
 | ~500 million | [Apple](http://apple.com)  | Push Notifications | Apple uses [XMPP to deliver push notifications](https://www.quora.com/What-technology-does-the-iOS-Apple-Push-Notification-Service-APNS-use-to-maintain-a-persistent-connection-with-each-device-to-receive-such-fast-push-notifications) to client devices. 
 | ~200 million | [Nimbuzz](http://nimbuzz.com)  | Instant Messaging | Nimbuzz is an XMPP-based instant messaging community.
+| N/A | [Catapush](http://catapush.com) | Push Notifications | Reliable and traceable Push Notification service on dedicated XMPP channel for Android/iOS/Windows.
