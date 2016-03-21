@@ -38,4 +38,6 @@ The [Jitsi Videobridge](https://jitsi.org/Projects/JitsiVideobridge) uses the [C
 
 [Jitsi Meet](https://jitsi.org/Projects/JitsiMeet) is an open source instant videoconferencing web application, which uses XMPP.
 
+Combining Jitsi videobridge and Jitsi Meet into a single package, [Openfire Meetings](https://github.com/igniterealtime/community-plugins/tree/master/ofmeet) makes WebRTC video conferences simple to deploy and use.
+
 [Otalk](http://otalk.org) is an open-source platform for building realtime applications using XMPP. [Talky](http://talky.io) is an example of an application built using these libraries.
