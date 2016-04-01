@@ -2,10 +2,6 @@ xmpp.org
 ========
 [![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
 
-This repo generates the xmpp.org site (temporarily visible on new.xmpp.org until the grand-switch-over).
-
-The [xmpp.org website plan](https://trello.com/b/ml9e82sE/xmpp-org-website) describes the site direction and structure.
-
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
 Any editorial questions: [Laura Gill](xmpp:laura.gill@surevine.com) or [Simon Tennant](xmpp:simon@buddycloud.com) can help
