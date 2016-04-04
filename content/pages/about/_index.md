@@ -17,7 +17,7 @@ Dropdown_menu_elem_name_4: Standards Process
 Dropdown_menu_elem_url_4: standards-process
 Dropdown_menu_elem_name_5: The XSF
 Dropdown_menu_elem_url_5: xmpp-standards-foundation
-Dropdown_menu_elem_name_6: Extensions
+Dropdown_menu_elem_name_6: Specifications
 Dropdown_menu_elem_url_6: ../extensions
 Dropdown_menu_elem_name_7: FAQ
 Dropdown_menu_elem_url_7: faq
@@ -34,7 +34,7 @@ Sidebar_menu_elem_name_4: Standards Process
 Sidebar_menu_elem_url_4: about/standards-process
 Sidebar_menu_elem_name_5: The XSF
 Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_6: Extensions
+Sidebar_menu_elem_name_6: Specifications
 Sidebar_menu_elem_url_6: extensions
 Sidebar_menu_elem_name_7: FAQ
 Sidebar_menu_elem_url_7: about/faq
