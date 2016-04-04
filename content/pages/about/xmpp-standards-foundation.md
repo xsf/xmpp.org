@@ -22,7 +22,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 
 - __Laura Crossley (Chair)__
 - __Dave Cridland__
-- __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council since 2004 and is a software developer for Rackspace. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP]()
+- __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
 - __Arc Riley__
 - __Mike Taylor__
 
