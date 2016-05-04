@@ -57,8 +57,8 @@ The Jabber trademark covers the use of the word “Jabber,” when applied to th
 
 During 2002 and 2003, the XMPP Standards Foundation (XSF), then the Jabber Software Foundation, entered into agreements with Jabber, Inc. (the trademark holder) that authorize the XSF to sub-license use of the JABBER mark. These agreements are as follows:
 
-[Letter of Intent](/docs/Trademark_Letter_Of_Intent.pdf) (2002-12-16)
-[Trademark License Agreement](/docs/Trademark_License_Agreement.pdf) (2003-03-07)
-[Trademark Enforcement Agreement](/docs/Trademark_Enforcement_Agreement.pdf) (2003-05-02)
+[Letter of Intent](/xsf/docs/Trademark_Letter_Of_Intent.pdf) (2002-12-16)
+[Trademark License Agreement](/xsf/docs/Trademark_License_Agreement.pdf) (2003-03-07)
+[Trademark Enforcement Agreement](/xsf/docs/Trademark_Enforcement_Agreement.pdf) (2003-05-02)
 
 These governing agreements continue to be in force, with the responsibilities of Jabber, Inc. having been assumed by Cisco Systems, Inc. upon its acquisition of Jabber, Inc. in 2008.
