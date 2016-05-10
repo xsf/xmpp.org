@@ -34,9 +34,10 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ludovic Bocquet
 - Davide Conzon
 - Dave Cridland (XSF Board)
-- Wayne Franklin
 - Laura Crossley
+- Guus der Kinderen
 - Xander Dumaine
+- Emmanuel Gil Peyrot
 - Alexander Gnauck (infrastructure)
 - Daniel Gultsch
 - Christoph Hartmann
@@ -49,7 +50,6 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Timothée Jaussoin
 - Wojciech Kapcia
 - Dariel Kremov
-- Ben Langfeld
 - Steffen Larsen (editor)
 - Joachim Lindborg
 - Georg Lukas
@@ -72,7 +72,9 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Stefan Strigler (editor)
 - Mike Taylor (XSF Board)
 - Simon Tennant (XSF Board)
+- Marcelo Terres
 - Winfried Tilanus (editor)
+- Nicolas Vérité
 - Peter Waher
 - Ashley Ward (editor)
 - Lloyd Watkin (editor)
