@@ -2,7 +2,7 @@
 Title: About XMPP
 Url: about
 Save_as: about/index.html
-Menu_name: About
+Menu_name: About XMPP
 Top_menu_show: true
 Top_menu_order: 1
 Dropdown_menu_show: true
