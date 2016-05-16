@@ -16,8 +16,6 @@ Sidebar_menu_elem_name_2: Servers
 Sidebar_menu_elem_url_2: software/servers
 Sidebar_menu_elem_name_3: Libraries
 Sidebar_menu_elem_url_3: software/libraries
-Sidebar_menu_elem_name_4: Projects
-Sidebar_menu_elem_url_4: software/projects
 Content_layout: multiple-columns
 ---
 

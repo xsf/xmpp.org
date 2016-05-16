@@ -13,8 +13,6 @@ Dropdown_menu_elem_name_2: Servers
 Dropdown_menu_elem_url_2: servers
 Dropdown_menu_elem_name_3: Libraries
 Dropdown_menu_elem_url_3: libraries
-Dropdown_menu_elem_name_4: Projects
-Dropdown_menu_elem_url_4: projects
 Footer_show: left
 Footer_order: 3
 Sidebar_menu_show: true
@@ -26,8 +24,6 @@ Sidebar_menu_elem_name_2: Servers
 Sidebar_menu_elem_url_2: software/servers
 Sidebar_menu_elem_name_3: Libraries
 Sidebar_menu_elem_url_3: software/libraries
-Sidebar_menu_elem_name_4: Projects
-Sidebar_menu_elem_url_4: software/projects
 Content_layout: multiple-columns
 ---
 
@@ -38,6 +34,5 @@ Please note that the software we list on these pages was not developed by the XM
 - [XMPP Servers](/software/servers)
 - [XMPP Clients](/software/clients)
 - [XMPP Libraries](/software/libraries)
-- [XMPP Projects](/software/projects)
 
 We are keen to keep these pages up to date so, if you know of something we’ve missed, then please [submit a pull request](https://github.com/xsf/xmpp.org).
