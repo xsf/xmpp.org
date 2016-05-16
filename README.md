@@ -34,7 +34,7 @@ Site generation
 
 ## Gentle introduction to Pelican
 
-Pelican's [QUICKSTART](http://docs.getpelican.com/en/latest/quickstart.html/) page is a good place to learn about the basics of Pelican (installation, project skeleton, development cycle, etc.).
+Pelican's [QUICKSTART](http://docs.getpelican.com/en/latest/quickstart.html) page is a good place to learn about the basics of Pelican (installation, project skeleton, development cycle, etc.).
 
 ### Installation instructions
 ```bash
