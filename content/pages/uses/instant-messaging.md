@@ -29,8 +29,9 @@ Because user expectations for messaging apps continue to change over time, the X
 
 ## Projects using XMPP-based Instant Messaging
 
-There are many projects that have created an XMPP-based Instant Messaging network
+There are many projects that have created an XMPP-based Instant Messaging network.
 
-[Nimbuzz](http://nimbuzz.com) is an XMPP-based instant messaging community with roughly 200 million users.
-
-WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service.
+| Users        | Company                         | Description                            |
+|--------------|---------------------------------|----------------------------------------|
+| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service | 
+| ~200 million | [Nimbuzz](http://nimbuzz.com)   | Nimbuzz is an XMPP-based instant messaging community. |
