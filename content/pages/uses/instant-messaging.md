@@ -27,3 +27,10 @@ All of the existing XMPP servers, clients, and programming libraries support the
 
 Because user expectations for messaging apps continue to change over time, the XMPP community always works to define and implement XMPP extensions for new features. Whereas five or ten years ago such features included [chat state notifications](/extensions/xep-0085.html) and [HTML messages](/extensions/xep-0071.html), now they include things like [push notifications](/extensions/xep-0357.html), [message archives](/extensions/xep-0313.html), and [improved multi-device support](/extensions/xep-0280.html).
 
+## Projects using XMPP-based Instant Messaging
+
+There are many projects that have created an XMPP-based Instant Messaging network
+
+[Nimbuzz](http://nimbuzz.com) is an XMPP-based instant messaging community with roughly 200 million users.
+
+WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service.

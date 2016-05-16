@@ -35,9 +35,15 @@ Finally XMPP's publish-subscribe constructs make a great foundation for building
 
 ## Projects using XMPP Social
 
-There are many people pairing WebRTC with XMPP. 
+All of these projects make use of XMPP to enhance their social networking functionality.
+
+Apple uses [XMPP to deliver push notifications](https://www.quora.com/What-technology-does-the-iOS-Apple-Push-Notification-Service-APNS-use-to-maintain-a-persistent-connection-with-each-device-to-receive-such-fast-push-notifications) to client devices.
 
 The [Buddycloud Core](http://buddycloud.com/core) messaging stack is a set of social services that include help developers build a complete social application and includes user-onboarding, content recommendation and media sharing features.
+
+[Catapush](http://catapush.com) provides a reliable and traceable Push Notification service on a dedicated XMPP channel for Android, iOS and Windows.
+
+Google provides an [XMPP Interface](https://developers.google.com/cloud-messaging/server) to their push notification service. It's also been rumoured that push notifications are delivered to the device via a propriatary binary XMPP protocol.
 
 [Jappix](https://jappix.org) a Javascript XMPP client with social features.
 
