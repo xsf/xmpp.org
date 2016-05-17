@@ -6,7 +6,7 @@ Menu_name: Software
 Top_menu_show: true
 Top_menu_order: 3
 Dropdown_menu_show: true
-Dropdown_menu_size: 4
+Dropdown_menu_size: 3
 Dropdown_menu_elem_name_1: Clients
 Dropdown_menu_elem_url_1: clients
 Dropdown_menu_elem_name_2: Servers
@@ -16,7 +16,7 @@ Dropdown_menu_elem_url_3: libraries
 Footer_show: left
 Footer_order: 3
 Sidebar_menu_show: true
-Sidebar_menu_size: 4
+Sidebar_menu_size: 3
 Sidebar_menu_title: XMPP Software
 Sidebar_menu_elem_name_1: Clients
 Sidebar_menu_elem_url_1: software/clients
