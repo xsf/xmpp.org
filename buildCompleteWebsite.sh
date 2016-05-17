@@ -20,6 +20,12 @@ OUTPUTDIR=$BASEDIR/output
 CONFFILE=$BASEDIR/pelicanconf.py
 PUBLISHCONF=$BASEDIR/publishconf.py
 
+function error_handler {
+  rm -rf "$OUTPUTDIR"
+  exit 1;
+}
+trap error_handler EXIT
+
 # create build directory
 # this will contain xeps, xsf-tools and texml
 mkdir -p build
