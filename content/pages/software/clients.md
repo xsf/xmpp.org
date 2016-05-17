@@ -8,7 +8,7 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_size: 4
+Sidebar_menu_size: 3
 Sidebar_menu_title: XMPP Software
 Sidebar_menu_elem_name_1: Clients
 Sidebar_menu_elem_url_1: software/clients
