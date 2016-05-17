@@ -1,31 +1,9 @@
 language: python
 cache: apt
-branches:
-  only:
-  - master
 notifications:
   email: false
-addons:
-  apt:
-    packages:
-    - xsltproc
-    - texlive-xetex
-    - texlive-base
-    - texlive-xetex
-    - texlive-fonts-extra
-    - texlive-fonts-recommended
-    - texlive-latex-base
-    - texlive-latex-extra
-    - texlive-latex-recommended
-    - tipa
-before_install:
-  - sudo apt-get install tipa
-  - wget http://mirror.pnl.gov/macports/distfiles/texml/texml-2.0.2.tar.gz && tar xfzv texml-2.0.2.tar.gz && cd texml-2.0.2 && sudo python setup.py install && sudo ln -s /usr/local/bin/texml /usr/bin/texml && cd ..
 install:
 - pip install pelican ghp-import markdown
 script:
   - export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages
-  - make github
-env:
-  global:
-    secure: cbcSKjgyE15JRufgwi+UYO7OCa70SZr9zN3tw9dzzdlCfoYpwEqV3tyQSF2voqZUL8qd0JV7EBPQa7SEpqBgvtSJUPewfm0n8yLJJ5mPDyS3UCRhLJHeVnsQtDGAuLg/Pl1skCUKZxU8CuKPXBij/zvwMEL5aS/wWI+RVrtXMGM=     
+  - make html
