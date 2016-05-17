@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | The XMPP Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="blog" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+        class="active"
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/index.html">
+        The XMPP Blog
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 medium-8 large-centered medium-centered columns">
+          <article>
+
+  <h1>XMPP Roundup 13: Specifications</h1>
+  <p>Welcome to the Specification part of the XMPP Roundup #13, your irregular news from the XMPP community. It has been a long time since we have reported on specifications changes. Here is a short summary of what happened since September.</p>
+<p>This edition has been brought to you by Johann, Kevin, Will, Guillaume, Peter, and Nicolas.</p>
+<p><strong>Publishing Tools</strong></p>
+<p>XSF member <a href="http://ayena.de">Tobias Markmann</a> has been doing great work on our publishing tools. In addition to improving the <a href="http://xmpp.org/extensions/">primary XEP page</a> by enabling you to filter based on XEP type and status, he has developed a way for us to generate our specs in PDF format, with syntax highlighting for example stanzas. You can now download each one of them, read them while offline, and distribute them to your customers, partners, and best friends. You can also get the full pack as a tarball: <a href="http://xmpp.org/extensions/xepbundle.tar.bz2">xepbundle.tar.bz2</a>.
+<a href="http://ayena.de">Tobias</a> and Waqas Hussain have also been working on a <a href="http://xmpp.org/extensions/diff">tool to compare XEP versions</a> that recently went live. Thank you very much Tobias and Waqas!</p>
+<p><strong>Technical Review Team at work: Multi-User Chat</strong></p>
+<p>The newly-created <a href="http://xmpp.org/xsf/teams/techreview/">Technical Review Team</a> is currently working to complete a thorough review of the venerable <a href="http://xmpp.org/extensions/xep-0045.html">XEP-0045: Multi-User Chat</a>. The team is also taking on more responsibility for maintenance of existing specs and publishing of new ones. We'll have a full report on those efforts in the near future.</p>
+<p><strong>XEP Submissions</strong></p>
+<p>Because use of XMPP continues to grow, the XSF receives new XEP proposals on a regular basis. The latest submissions are:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/inbox/jingle-nodes.html">Jingle Relay Nodes</a></li>
+<li><a href="http://xmpp.org/extensions/inbox/sic.html">Server IP Check</a></li>
+</ul>
+<p><strong>New XEPs</strong></p>
+<p>These are the new XEPs have been accepted as 'Experimental' by the <a href="http://xmpp.org/council/">XMPP Council</a>:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0275.html">XEP-0275: Entity Reputation</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0276.html">XEP-0276: Temporary Presence Sharing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0277.html">XEP-0277: Microblogging over XMPP</a></li>
+</ul>
+<p><strong>Last Call</strong></p>
+<p>As XEPs move through the XSF's standards process, they are proposed for advance from 'Experimental' to 'Draft' (or 'Active' for informational specs). The following XEPs are in last call before moving ahead:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0226.html">XEP-0226: Message Stanza Profiles</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0227.html">XEP-0227: Portable Import/Export Format for XMPP-IM Servers</a></li>
+</ul>
+<p><strong>Moving to Draft</strong></p>
+<p>Since our last roundup, one XEP has been advanced to 'Draft':</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0270.html">XEP-0270: XMPP Compliance Suites 2010</a></li>
+</ul>
+<p><strong>Updated Specs</strong></p>
+<p>The XSF's specifications are living documents that are updated regularly as we receive bug reports, feature requests, implementation feedback, and discussion in our chatrooms and email lists. Since the last roundup updates have been committed to the following XEPs:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0189.html">XEP-0189: Public Key Publishing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0166.html">XEP-0166: Jingle</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0167.html">XEP-0167: Jingle RTP Sessions</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0177.html">XEP-0177: Jingle Raw UDP Transport Method</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0249.html">XEP-0249: Direct MUC Invitations</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0215.html">XEP-0215: External Service Discovery</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0273.html">XEP-0273: Stanza Interception and Filtering Technology</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0260.html">XEP-0260: Jingle SOCKS5 Bytestreams Transport Method</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0261.html">XEP-0261: Jingle In-Band Bytestreams Transport Method</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0253.html">XEP-0253: PubSub Chaining</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0268.html">XEP-0268: Incident Reporting</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0124.html">XEP-0124: Bidirectional-streams Over Synchronous HTTP (BOSH)</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0227.html">XEP-0227: Portable Import/Export Format for XMPP-IM Servers</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0251.html">XEP-0251: Jingle Session Transfer</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0181.html">XEP-0181: Jingle DTMF</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0175.html">XEP-0175: Best Practices for Use of SASL ANONYMOUS</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0136.html">XEP-0136: Message Archiving</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0085.html">XEP-0085: Chat State Notifications</a></li>
+</ul>
+<p><strong>Deferred Specs</strong></p>
+<p>At any one time, many XEPs are under consideration in the 'Experimental' state. If any given XEP is not updated in 12 months, its status is changed to 'Deferred'. There is no shame in being deferred, since that happens quite often. Since our last roundup the following XEPs have been deferred:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0152.html">XEP-0152: Reachability Addresses</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0225.html">XEP-0225: Component Connections</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0186.html">XEP-0186: Invisible Command</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0214.html">XEP-0214: File Repository and Sharing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0254.html">XEP-0254: PubSub Queueing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0252.html">XEP-0252: BOSH Script Syntax</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0168.html">XEP-0168: Resource Application Priority</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0197.html">XEP-0197: User Viewing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0196.html">XEP-0196: User Gaming</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0195.html">XEP-0195: User Browsing</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0194.html">XEP-0194: User Chatting</a></li>
+</ul>
+<p>That's it for this roundup. In the future we plan to post shorter but more frequent entries about the XSF's specs activity, so stay tuned for updates. And of course if you are especially interested in XEPs, you can join the <a href="http://mail.jabber.org/mailman/listinfo/standards">Standards mailing-list</a> or just read the <a href="http://mail.jabber.org/pipermail/standards/">archives</a>.</p>
+  <h6>
+    Posted by
+    <a href="/author/nyco.html">Nyco</a>    on
+    <a href="#">February, 22, 2010</a>
+    - filed under
+    <a href="/category/misc.html">misc</a>
+  </h6>
+
+          </article>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

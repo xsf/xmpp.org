@@ -1,0 +1,11 @@
+Es:=[1,5,10,20];
+Colors:=["Red","Blue","Green","Cyan"];
+G:=canvas(500,300)+sum(series(foreach k in 1..Es.Length do
+(
+n:=0..100;
+E:=Es[k-1];
+Nb:=4*n*E./(2+n);
+plot2d(n,Nb,Colors[k-1],"Users (n)","N break-even")
+)));
+L:=Canvas(200,150)+legend(Colors,"E="+Es);
+G+(L+500+100*i)

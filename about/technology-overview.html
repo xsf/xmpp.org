@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | An Overview of XMPP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="about" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="active has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/about/technology-overview">
+        An Overview of XMPP
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 large-push-1 medium-8 medium-push-1 columns">
+          <article>
+
+  <p>XMPP is the Extensible Messaging and Presence Protocol, a set of open technologies for instant messaging, presence, multi-party chat, voice and video calls, collaboration, lightweight middleware, content syndication, and generalized routing of XML data.</p>
+<p>XMPP was originally developed in the Jabber open-source community to provide an open, decentralized alternative to the closed instant messaging services at that time. XMPP offers several key advantages over such services:</p>
+<ul>
+<li>
+<p><strong> Open</strong> — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form clients, servers, server components, and code libraries.</p>
+</li>
+<li>
+<p><strong>Standard</strong> — the <a href="http://www.ietf.org/">Internet Engineering Task Force (IETF)</a> has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as <a href="/rfcs/rfc3920.html">RFC 3920</a> and <a href="/rfcs/rfc3921.html">RFC 3921</a> in 2004, and the XMPP Standards Foundation continues to publish many <a href="/extensions/">XMPP Extension Protocols</a>. In 2011 the core RFCs were revised, resulting in the most up-to-date specifications (<a href="/rfcs/rfc6120.html">RFC 6120</a>, <a href="/rfcs/rfc6121.html">RFC 6121</a>, and <a href="/rfcs/rfc6122.html">RFC 6122</a>).</p>
+</li>
+<li>
+<p><strong>Proven</strong> — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as <a href="http://talk.google.com/">Google Talk</a> and XMPP deployments at organizations worldwide.</p>
+</li>
+<li>
+<p><strong>Decentralized</strong> — the architecture of the XMPP network is similar to email; as a result, anyone can run their own XMPP server, enabling individuals and organizations to take control of their communications experience.</p>
+</li>
+<li>
+<p><strong>Secure</strong> — any XMPP server may be isolated from the public network (e.g., on a company intranet) and robust security using SASL and TLS has been built into the core <a href="/xmpp-protocols/rfcs/">XMPP specifications</a>. In addition, the XMPP developer community is actively working on end-to-end encryption to raise the security bar even further.</p>
+</li>
+<li>
+<p><strong>Extensible</strong> — using the power of XML, anyone can build custom functionality on top of the core protocols; to maintain interoperability, common extensions are published in the <a href="/rfcs/">XEP series</a>, but such publication is not required and organizations can maintain their own private extensions if so desired.</p>
+</li>
+<li>
+<p><strong>Flexible</strong> — XMPP applications beyond IM include network management, content syndication, collaboration tools, file sharing, gaming, remote systems monitoring, web services, lightweight middleware, cloud computing, and much more.</p>
+</li>
+<li>
+<p><strong>Diverse</strong> — a wide range of companies and open-source projects use XMPP to build and deploy real-time applications and services; you will never get “locked in” when you use XMPP technologies.</p>
+</li>
+</ul>
+<p>This page provides an introduction to various XMPP technologies, including links to specifications, implementations, tutorials, and special-purpose discussion venues.</p>
+<p>Key XMPP technologies:</p>
+<ul>
+<li><a href="#core">Core</a> — information about the core XMPP technologies for XML streaming</li>
+<li><a href="#jingle">Jingle</a> — SIP-compatible multimedia signalling for voice, video, file transfer, and other applications</li>
+<li><a href="#muc">Multi-User Chat</a> — flexible, multi-party communication</li>
+<li><a href="#pubsub">PubSub</a> — alerts and notifications for data syndication, rich presence, and more</li>
+<li><a href="#bosh">BOSH</a> — an HTTP binding for XMPP (and other) traffic</li>
+</ul>
+<h2><a name="core" href="#core">Core</a></h2>
+<p>At its core, XMPP is a technology for streaming XML over a network. The protocol, which emerged from the Jabber open-source community in 1999, was originally designed to provide an open, secure, decentralized alternative to consumer-oriented instant messaging (IM) services like ICQ, AIM, and MSN. The core technologies were formalized under the name Extensible Messaging and Presence Protocol (XMPP) at the <a href="http://www.ietf.org/">IETF</a> in 2004. These core technologies include:</p>
+<ul>
+<li>The base XML streaming layer</li>
+<li>Channel encryption using Transport Layer Security (TLS)</li>
+<li>Strong authentication using the Simple Authentication and Security Layer (SASL)</li>
+<li>Use of UTF-8 for complete Unicode support, including fully internationalized addresses</li>
+<li>Built-in information about network availability (“presence”)</li>
+<li>Presence subscriptions for two-way authorization</li>
+<li>Presence-enabled contact lists (“rosters”)</li>
+</ul>
+<h4>Specifications</h4>
+<p>The core XMPP technologies are defined in two RFCs published by the IETF:</p>
+<ul>
+<li><a href="/rfcs/rfc6120.html">RFC 6120: XMPP Core</a></li>
+<li><a href="/rfcs/rfc6121.html">RFC 6121: XMPP IM</a></li>
+<li><a href="/rfcs/rfc6122.html">RFC 6122: XMPP Address Format</a></li>
+</ul>
+<p>The first XMPP RFCs (<a href="/rfcs/rfc3920.html">RFC 3920</a> and  <a href="/rfcs/rfc3921.html">RFC 3921</a>) were produced by the IETF’s XMPP Working Group in October 2004. In 2011 they were revised, resulting in the current specifications.</p>
+<h4>Implementations</h4>
+<p>There are many implementations of the core XMPP specifications. See the following pages for details:</p>
+<ul>
+<li><a href="/software/clients">Clients</a></li>
+<li><a href="/software/servers">Servers</a></li>
+<li><a href="/software/libraries">Code Libraries</a></li>
+</ul>
+<h2><a name="jingle" href="#jingle">Jingle</a></h2>
+<p>In essence, Jingle provides a way for Jabber clients to set up, manage, and tear down multimedia sessions. Such sessions can support a wide range of application types (such as voice chat, video chat, and file transfer) and use a wide range of media transport methods (such as TCP, UDP, RTP, or even in-band XMPP itself). The signalling to establish a Jingle session is sent over XMPP, and typically the media is sent directly peer-to-peer or through a media relay. Jingle provides a pluggable framework for both application types and media transports; in the case of voice and video chat, a Jingle negotiation usually results in use of the Real-time Transport Protocol (RTP) as the media transport and thus is compatible with existing multimedia technologies such as the Session Initiation Protocol (SIP). Furthermore, the semantics of Jingle signalling was designed to be consistent with both SIP and the Session Description Protocol (SDP), thus making it straightforward to provide signalling gateways between XMPP networks and SIP networks.</p>
+<h4>Specifications</h4>
+<p>Jingle is defined in a number of specifications:</p>
+<ul>
+<li><a href="/extensions/xep-0166.html">XEP-0166: Jingle</a></li>
+<li><a href="/extensions/xep-0167.html">XEP-0167: Jingle RTP Sessions</a></li>
+<li><a href="/extensions/xep-0176.html">XEP-0176: Jingle ICE-UDP Transport Method</a></li>
+<li><a href="/extensions/xep-0177.html">XEP-0177: Jingle Raw UDP Transport Method</a></li>
+<li><a href="/extensions/xep-0181.html">XEP-0181: Jingle DTMF</a></li>
+<li><a href="/extensions/xep-0234.html">XEP-0234: Jingle File Transfer</a></li>
+</ul>
+<h4>Implementations</h4>
+<p><em>Note: Many of the following implementations support the older Google Talk protocol and are being upgraded to support Jingle as it is defined in the specifications; contact the project developers for details.</em></p>
+<p><strong>Clients</strong></p>
+<ul>
+<li><a href="http://coccinella.im/">Coccinella</a></li>
+<li><a href="http://www.gajim.org/">Gajim</a></li>
+<li><a href="http://jitsi.org/">Jitsi (formerly named SIP Communicator)</a></li>
+<li><a href="http://pandion.im/">Pandion</a></li>
+<li><a href="http://pidgin.im/">Pidgin (formerly named Gaim)</a></li>
+<li><a href="http://psi-im.org/">Psi</a></li>
+<li><a href="http://telepathy.freedesktop.org/">Telepathy</a></li>
+<li><a href="http://yate.null.ro/">Yate</a></li>
+</ul>
+<p><strong>Libraries</strong></p>
+<ul>
+<li><a href="http://code.google.com/apis/talk/">libjingle</a> (C/C++)</li>
+<li><a href="http://www.igniterealtime.org/projects/smack/">Smack</a> (Java)</li>
+<li><a href="http://telepathy.freedesktop.org/">Telepathy Gabble</a> (C)</li>
+<li><a href="http://yate.null.ro/">yjingle</a> (C++)</li>
+</ul>
+<p><strong>Call Managers / VoIP Servers</strong></p>
+<ul>
+<li><a href="http://www.asterisk.org/">Asterisk</a></li>
+<li><a href="http://freeswitch.org/">FreeSWITCH</a></li>
+<li><a href="http://yate.null.ro/">Yate</a></li>
+</ul>
+<h2><a name="muc" href="#muc">Multi-User-Chat (MUC)</a></h2>
+<p>MUC is an XMPP extension for multi-party information exchange similar to Internet Relay Chat (IRC), whereby multiple XMPP users can exchange messages in the context of a room or channel. In addition to standard chatroom features such as room topics and invitations, the protocol defines a strong room control model, including the ability to kick and ban users, to name room moderators and administrators, to require membership or passwords in order to join the room, etc. Because MUC rooms are based on XMPP, they can be used to exchange not only plaintext message bodies but a wide variety of XML payloads.</p>
+<h4>Specifications</h4>
+<p>MUC is defined in one primary specification (XEP-0045) and several ancillary specifications:</p>
+<ul>
+<li><a href="http://www.xmpp.org/extensions/xep-0045.html">XEP-0045: Multi-User Chat</a></li>
+<li><a href="http://www.xmpp.org/extensions/xep-0249.html">XEP-0249: Direct MUC Invitations</a></li>
+<li><a href="http://www.xmpp.org/extensions/xep-0272.html">XEP-0272: Multiparty Jingle</a></li>
+</ul>
+<h4>Implementations</h4>
+<p><strong>Servers</strong> - the following XMPP servers include built-in support for MUC:</p>
+<ul>
+<li><a href="http://www.ejabberd.im/">ejabberd</a></li>
+<li><a href="http://www.jabber.com/">Jabber XCP</a></li>
+<li><a href="http://www.isode.com/products/m-link.html">M-Link</a></li>
+<li><a href="https://github.com/esl/MongooseIM">MongooseIM</a></li>
+<li><a href="http://www.igniterealtime.org/projects/openfire/index.jsp">Openfire</a></li>
+<li><a href="http://prosody.im/">Prosody</a></li>
+<li><a href="http://www.tigase.org/">Tigase</a></li>
+</ul>
+<p><strong>External Components</strong> - the following standalone components can be used with a wide variety of XMPP servers:</p>
+<ul>
+<li><a href="https://gna.org/projects/mu-conference/">mu-conference</a></li>
+<li><a href="http://code.stanziq.com/palaver">palaver</a></li>
+</ul>
+<p><strong>Clients</strong></p>
+<ul>
+<li><a href="http://adiumx.com/">Adium</a></li>
+<li><a href="http://gajim.org/">Gajim</a></li>
+<li><a href="http://blog.jwchat.org/jwchat/">JWChat</a></li>
+<li><a href="http://mcabber.com/">mcabber</a></li>
+<li><a href="http://pidgin.im/">Pidgin</a></li>
+<li><a href="http://www.psi-im.org/">Psi</a></li>
+</ul>
+<p><strong>Libraries</strong></p>
+<ul>
+<li><a href="http://www.ta-sa.org/projects/anyevent_xmpp.html">AnyEvent:XMPP</a> (Perl)</li>
+<li><a href="http://camaya.net/gloox">gloox</a> (C++)</li>
+<li><a href="http://code.google.com/p/jabber-net/">jabber-net</a> (.Net)</li>
+<li><a href="http://developer.pidgin.im/wiki/WhatIsLibpurple">libpurple</a> (C)</li>
+<li><a href="http://www.igniterealtime.org/projects/smack/index.jsp">Smack</a> (Java)</li>
+<li><a href="http://home.gna.org/xmpp4r/">XMPP4R</a> (Ruby)</li>
+</ul>
+<h2><a name="pubsub" href="#pubsub">PubSub</a></h2>
+<p>PubSub is a protocol extension for generic publish-subscribe functionality, specified in XEP-0060. The protocol enables XMPP entities to create nodes (topics) at a pubsub service and publish information at those nodes; an event notification (with or without payload) is then broadcasted to all entities that have subscribed to the node. Pubsub therefore adheres to the classic Observer design pattern and can serve as the foundation for a wide variety of applications, including news feeds, content syndication, rich presence, geolocation, workflow systems, network management systems, and any other application that requires event notifications. The personal eventing protocol (PEP), specified in XEP-0163, provides a presence-aware profile of PubSub that enables every user’s JabberID to function as a virtual pubsub service for rich presence, microblogging, social networking, and real-time interactions.</p>
+<h4>Specifications</h4>
+<p>PubSub is defined in several specifications:</p>
+<ul>
+<li><a href="http://www.xmpp.org/extensions/xep-0060.html">XEP-0060: Publish-Subscribe</a></li>
+<li><a href="http://www.xmpp.org/extensions/xep-0163.html">XEP-0163: Personal Eventing Protocol</a></li>
+<li><a href="http://www.xmpp.org/extensions/xep-0248.html">XEP-0248: PubSub Collection Nodes</a></li>
+</ul>
+<h4>Payloads</h4>
+<p>PubSub and PEP are “payload-agnostic” — you can use them as neutral transports for a wide variety of data formats. Some of the more popular payloads are listed below, especially for rich presence related to IM users:</p>
+<ul>
+<li><a href="/extensions/xep-0108.html">Activities</a></li>
+<li><a href="/internet-drafts/draft-saintandre-atompub-notify-07.html">Atom / RSS Notifications</a></li>
+<li><a href="/extensions/xep-0084.html">Avatars</a></li>
+<li><a href="/extensions/xep-0194.html">Chatroom Visits</a></li>
+<li><a href="/extensions/xep-0196.html">Gaming Activities</a></li>
+<li><a href="/extensions/xep-0080.html">Geolocation</a></li>
+<li><a href="/extensions/xep-0107.html">Moods</a></li>
+<li><a href="/extensions/xep-0118.html">Music Tunes</a></li>
+<li><a href="/extensions/xep-0197.html">TV/Video Activities</a></li>
+<li><a href="/extensions/xep-0195.html">Website Visits</a></li>
+</ul>
+<h4>Implementations</h4>
+<p><strong>Servers</strong> - the following XMPP servers include built-in support for PubSub or PEP:</p>
+<ul>
+<li><a href="http://www.ejabberd.im/">ejabberd</a></li>
+<li><a href="http://www.jabber.com/">Jabber XCP</a></li>
+<li><a href="http://www.isode.com/products/m-link.html">M-Link</a></li>
+<li><a href="http://www.igniterealtime.org/projects/openfire/index.jsp">Openfire</a></li>
+<li><a href="http://www.tigase.org/">Tigase</a></li>
+</ul>
+<p><strong>Server Components</strong></p>
+<ul>
+<li><a href="http://idavoll.ik.nu/">Idavoll</a></li>
+</ul>
+<p><strong>Clients</strong></p>
+<ul>
+<li><a href="http://gajim.org/">Gajim</a></li>
+<li><a href="http://psi-im.org/">Psi</a></li>
+</ul>
+<p><strong>3.4 Libraries</strong></p>
+<ul>
+<li><a href="http://code.stanziq.com/strophe/">strophe</a> (C or JavaScript)</li>
+<li><a href="http://home.gna.org/xmpp4r/">XMPP4R</a> (Ruby)</li>
+</ul>
+<h2><a name="bosh" href="#bosh">BOSH</a></h2>
+<p>BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-way communication over the Hypertext Transfer Protocol (HTTP). BOSH emulates many of the transport primitives that are familiar from the Transmission Control Protocol (TCP). For applications that require both “push” and “pull” communications, BOSH is significantly more bandwidth-efficient and responsive than most other bidirectional HTTP-based transport protocols and the techniques known as AJAX. BOSH achieves this efficiency and low latency by avoiding HTTP polling, yet it does so without resorting to chunked HTTP responses as is done in the technique known as Comet. To date, BOSH has been used mainly as a transport for traffic exchanged between Jabber/XMPP clients and servers (e.g., to facilitate connections from web clients and from mobile clients on intermittent networks). However, BOSH is not tied solely to XMPP and can be used for other kinds of traffic, as well.</p>
+<h4>Specifications BOSH is defined in two specifications:</h4>
+<ul>
+<li><a href="http://www.xmpp.org/extensions/xep-0124.html">XEP-0124: Bidirectional-streams Over Synchronous HTTP</a></li>
+<li><a href="http://www.xmpp.org/extensions/xep-0206.html">XEP-0206: XMPP Over BOSH</a></li>
+</ul>
+<h4>Implementations</h4>
+<p>Servers The following XMPP servers include built-in support for BOSH:</p>
+<ul>
+<li><a href="http://www.ejabberd.im/">ejabberd</a></li>
+<li><a href="http://www.jabber.com/">Jabber XCP</a></li>
+<li><a href="http://www.isode.com/products/m-link.html">M-Link</a></li>
+<li><a href="https://github.com/esl/MongooseIM">MongooseIM</a></li>
+<li><a href="http://www.igniterealtime.org/projects/openfire/index.jsp">Openfire</a></li>
+<li><a href="http://prosody.im/">Prosody</a></li>
+<li><a href="http://www.tigase.org/">Tigase</a></li>
+</ul>
+<h4>Connection Managers</h4>
+<p>The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:</p>
+<ul>
+<li><a href="http://blog.jwchat.org/jhb/">JabberHTTPBind</a></li>
+<li><a href="http://code.stanziq.com/punjab">Punjab</a></li>
+<li><a href="https://github.com/dhruvbird/node-xmpp-bosh">node-xmpp-bosh</a></li>
+<li><a href="http://rubyforge.org/projects/rhb/">rhb</a></li>
+</ul>
+<h4>Clients</h4>
+<ul>
+<li><a href="http://adium.im/">Adium</a></li>
+<li><a href="http://gajim.org/">Gajim</a></li>
+<li><a href="http://blog.jwchat.org/jwchat/">JWChat</a></li>
+<li><a href="http://pidgin.im/">Pidgin</a></li>
+<li><a href="http://www.soashable.com/">Soashable</a></li>
+<li><a href="http://www.igniterealtime.org/projects/sparkweb/">SparkWeb</a></li>
+<li><a href="http://swift.im/swift/">Swift</a></li>
+<li><a href="http://www.tigase.org/project/messenger">Tigase Messenger</a></li>
+<li><a href="http://www.tigase.org/project/minichat">Tigase Minichat</a></li>
+</ul>
+<h4>Libraries</h4>
+<ul>
+<li><a href="http://code.google.com/p/emite/">emite</a> (gwt)</li>
+<li><a href="http://camaya.net/gloox">gloox</a> (C++)</li>
+<li><a href="http://blog.jwchat.org/jsjac/">JSJaC</a> (JavaScript)</li>
+<li><a href="http://code.stanziq.com/strophe/">strophe</a> (C or JavaScript)</li>
+<li><a href="http://swift.im/swiften/">Swiften</a> (C++)</li>
+<li><a href="http://www.igniterealtime.org/projects/xiff/">XIFF</a> (Flash)</li>
+<li><a href="http://www.tigase.org/project/xmpp4gwt">XMPP4GWT</a> (gwt)</li>
+<li><a href="http://xmpp4js.sourceforge.net/index.html">xmpp4js</a> (JavaScript)</li>
+<li><a href="http://home.gna.org/xmpp4r/">XMPP4R</a> (Ruby)</li>
+</ul>
+
+          </article>
+        </div>
+        <div class="sidebar large-3 medium-3 columns">
+       <h4>About XMPP</h4>
+       <ul>
+          <li><a href="/about/history.html">History</a></li>
+          <li><a href="/about/technology-overview.html">Overview</a></li>
+          <li><a href="/about/who-uses-xmpp.html">Who uses XMPP</a></li>
+          <li><a href="/about/standards-process.html">Standards Process</a></li>
+          <li><a href="/about/xmpp-standards-foundation.html">The XSF</a></li>
+          <li><a href="/extensions/index.html">Specifications</a></li>
+          <li><a href="/about/faq.html">FAQ</a></li>
+       </ul>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

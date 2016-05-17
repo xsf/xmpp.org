@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | The XMPP Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="blog" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+        class="active"
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/index.html">
+        The XMPP Blog
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 medium-8 large-centered medium-centered columns">
+          <article>
+
+  <h1>XMPP Roundup #5 "New Year edition"</h1>
+  <p>Welcome to the fifth <a href="http://blog.xmpp.org/?cat=12">roundup</a> of XMPP activity worldwide. This report is authored by <a href="http://nyco.wordpress.com/">Nicolas Vérité</a>, <a href="http://ubikod.com/otmf/">Laurent Lathieyre</a> and <a href="http://metajack.im/">Jack Moffitt</a>. This is a very long article since we had a lot of activity these weeks.</p>
+<p>Your contributions are welcome for future roundups.</p>
+<p><strong>Software Releases</strong></p>
+<p>In this edition of the XMPP Roundup, we have a lot of software releases: clients, servers, and tools.</p>
+<p><strong><em>Gajim 0.12</em></strong></p>
+<p>Astérix aka Yann Leboulanger has <a href="http://blog.lagaule.org/?p=11">announced on his blog</a> the release of Gajim 0.12. The full <a href="http://trac.gajim.org/browser/trunk/ChangeLog">changelog</a> since 0.11.4 is loaded with new features: mood, activity, nickname and tunes, encrypted sessions, Kerberos, file transfer over multi-user chat, lots of UI improvements (chat and preference windows, drag'n drop, single window mode, etc.), LaTeX support, and many more.</p>
+<p><strong><em>Tigase Server 4.1</em></strong></p>
+<p><a href="http://www.tigase.org/en/content/tigase-xmppjabber-server-410-b1315">Tigase Server version 4.1</a> has been released.  New features include virtual hosting, server monitoring, and virtual components.</p>
+<p><strong><em>BuddyMob</em></strong></p>
+<p><a href="http://ubikod.com/otmf/">Laurent Lathieyre</a> of <a href="http://ubikod.com/">Ubikod</a>, pointed to <a href="http://www.buddymob.com/">BuddyMob</a>, an <a href="http://www.android.com/">Android</a> application in private beta now, designed and developed by <a href="http://ubikod.com">Ubikod</a> for <a href="http://www.kiboo.net/">Kiboo.net</a>, a Belgian company. BuddyMob is offering IM, social networking, feeds and geolocation... and it is all based on XMPP.</p>
+<p><strong>Ya Online Mobile</strong></p>
+<p><a href="http://www.yandex.ru/">Yandex</a>, the giant Russian search engine and web portal, has launched the <a href="http://mobile.yandex.ru/online/">mobile version</a> (Symbian S60) of its Ya Online client, based on its Jabber/XMPP service.</p>
+<p><strong><em>Buddycloud</em></strong></p>
+<p><a href="http://www.buddycloud.com/">Buddycloud</a> is a mobile application for Symbian S60, built on XMPP, offering status and location tracking services as well as chat.</p>
+<p><strong><em>Lampiro</em></strong></p>
+<p><a href="http://code.google.com/p/lampiro/">Lampiro</a>, is a mobile open source (GPL licensed) XMPP client developed by <a href="http://www.bluendo.com/">Bluendo</a>. It is written in J2ME, and supports <a href="http://blog.bluendo.com/ff/hooray">compression, TLS, group chats, gateways, data forms and touch screens</a>.</p>
+<p><strong><em>Prosody</em></strong></p>
+<p><a href="http://mail.jabber.org/pipermail/jdev/2008-December/028640.html">Matthew Wild announced</a> on JDev mailing-list <a href="http://prosody.im/">Prosody 0.1.0</a> (and <a href="http://mail.jabber.org/pipermail/jdev/2008-December/028715.html">0.2.0</a> followed in less than a month), a new XMPP server, written in Lua, under the GPL license. It aims to be simple, light, and flexible.</p>
+<p><strong><em>Sleek Migrate</em></strong></p>
+<p><a href="http://github.com/Kev/sleekmigrate/tree/master">Sleek Migrate</a> is a server migration tool <a href="http://www.kismith.co.uk/wordpress/index.php/2008/11/30/sleek-migrate/">announced</a> by <a href="http://www.kismith.co.uk/">Kevin Smith</a>, released under GPL license, based on the <a href="http://code.google.com/p/sleekxmpp/">SleekXMPP</a> library written in Python by <a href="http://nathan.fritzclan.com/">Nathan Fritz</a>.</p>
+<p><strong><em>Web-Based JavaScript XMPP Clients</em></strong></p>
+<p>We have a bunch of Web-based JavaScript XMPP clients:</p>
+<ul>
+<li><a href="http://nounours.txzone.net/trac/">Nounours</a> is based on <a href="http://extjs.com">ExtJS</a> and <a href="http://blog.jwchat.org/jsjac/">JSJaC</a> using <a href="http://www.xmpp.org/extensions/xep-0124.html">BOSH</a>, released under the GPL license</li>
+<li><a href="http://code.google.com/p/ijab/">iJab</a> is using <a href="http://code.google.com/webtoolkit/">GWT</a> and JSJaC, released under
+    the GPL license</li>
+<li><a href="http://code.google.com/p/trophyim/">TrophyIM</a> is based on the <a href="http://code.stanziq.com/strophe">Strophe</a> library, released under the MIT license</li>
+</ul>
+<p><strong><em>Lime Wire 5.0 alpha</em></strong></p>
+<p><a href="http://www.limewire.com/">Lime Wire</a>, the open source P2P software based on the Gnutella network, <a href="http://blog.limewire.org/?p=309">integrates Jabber</a> in its <a href="http://www.limewire.com/download/alphaversion.php">5.0 alpha version</a>.</p>
+<p><strong>Web-based Services</strong></p>
+<p><strong><em>Fire Eagle</em></strong></p>
+<p>Seth Fitzsimmons <a href="http://mail.jabber.org/pipermail/pubsub/2008-December/000067.html">announced</a> an XMPP pubsub interface to <a href="http://fireeagle.yahoo.net/">Yahoo's FireEagle</a>.</p>
+<p><strong><em>Remindr</em></strong></p>
+<p><a href="http://remindr.info/">Remindr</a> sends you reminders via mail, phone or Jabber.</p>
+<p><strong><em>Chatterous</em></strong></p>
+<p><a href="http://www.chatterous.com/">Chatterous</a> lets you join multi user chats via your web browser, IM client, phone, or e-mail.</p>
+<p><strong>Other News</strong></p>
+<p>Outside of the software releases scope, we have other news:</p>
+<p><strong>Tigase Server virtual hosting</strong></p>
+<p>Above we mentioned the new <a href="http://www.tigase.org/en/content/virtual-hosts-tigase-server">virtual hosting</a> support in <a href="http://www.tigase.org/en/project/tigase-server">Tigase Server</a>. Artur has also made it configurable <a href="http://www.tigase.org/en/content/managing-virtual-domains-using-psi-client">though the Psi XMPP client, with the help of ad-hoc commands</a>.</p>
+<p><strong>Psi</strong></p>
+<p>With 1,500 downloads per day and 2.4 million downloads overall, the open source Psi XMPP client has <a href="http://halr9000.com/article/657">made a long road since its beginning</a>.</p>
+<p><strong>SAPO Codebits</strong></p>
+<p><a href="http://metajack.im/">Jack Moffitt</a>'s talk (51 minutes) at SAPO Codebits is online, both <a href="http://codebits.sapo.pt/intra/s/speaker/11">the video and the slides</a>.</p>
+<p><strong>FLOSS Weekly</strong></p>
+<p><a href="https://stpeter.im/">Peter Saint-Andre</a> gave <a href="http://twit.tv/floss49">an interview to FLOSS Weekly</a>:, the audio is available or as an <a href="http://www.podtrac.com/pts/redirect.mp3/twit.cachefly.net/FLOSS-049.mp3">mp3</a> for download (33 MB, 1h12).</p>
+<p><strong>On the Specifications Front</strong></p>
+<p>The Jingle XEPs for multimedia sessions like voice and video, have entered a LAST CALL:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0166.html">XEP-0166: Jingle</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0167.html">XEP-0167: Jingle RTP Sessions</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0176.html">XEP-0176: Jingle ICE-UDP Transport Method</a></li>
+<li><a href="http://xmpp.org/extensions/xep-0177.html">XEP-0177: Jingle Raw UDP Transport Method</a></li>
+</ul>
+<p>As with all Last Calls, please consider the following questions and send your feedback to the <a href="mailto:standards@xmpp.org">standards@xmpp.org</a> discussion list:</p>
+<ol>
+<li>Is this specification needed to fill gaps in the XMPP protocol stack or to clarify an existing protocol?</li>
+<li>Does the specification solve the problem stated in the introduction and requirements?</li>
+<li>Do you plan to implement this specification in your code? If not, why not?</li>
+<li>Do you have any security concerns related to this specification?</li>
+<li>Is the specification accurate and clearly written?</li>
+</ol>
+<p>Your feedback is appreciated!</p>
+<p>Some extensions aka ProtoXEPs have come in:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/inbox/mine.html">Message Mine-ing</a>: In servers that deliver messages sent to the bare JID to all resources, the resource that claims a conversation notifies all of the user's other resources of that claim.</li>
+</ul>
+<p>A few XEPs have entered Final status:</p>
+<ul>
+<li><a href="http://xmpp.org/extensions/xep-0174.html">XEP-0174: Serverless Messaging:</a> Communicate over local or wide-area networks using the principles of zero-configuration networking and without the need for servers.</li>
+<li><a href="http://xmpp.org/extensions/xep-0085.html">XEP-0085: Chat State Notifications</a>: Communicate the status of a user in a chat session - enaged, composing, gone, etc.</li>
+<li><a href="http://xmpp.org/extensions/xep-0012.html">XEP-0012: Last Activity</a>: Communicate information about the last activity of someone.</li>
+</ul>
+<p><strong>XMPP: The Definitive Guide - Rough Cuts edition</strong></p>
+<p><a href="https://stpeter.im/?p=2378">Peter Saint-Andre</a>, <a href="http://el-tramo.be/blog/xmppbook-roughcuts">Remko Tronçon</a> and <a href="http://www.kismith.co.uk/wordpress/index.php/2008/12/19/xmpptdg-roughcut/">Kevin Smith</a> are writing a book on XMPP, for <a href="http://www.oreilly.com">O'Reilly</a>. <a href="http://oreilly.com/catalog/9780596157197/">The rough cuts are available online</a>.</p>
+<p><strong>Conclusion</strong></p>
+<p>The XSF and XMPP community have been quite busy during the final weeks of 2008.  We wish to thank everyone for their efforts, advice, and participation in 2008, and we wish all a happy 2009 filled with similar successes.</p>
+  <h6>
+    Posted by
+    <a href="/author/nyco.html">Nyco</a>    on
+    <a href="#">January, 04, 2009</a>
+    - filed under
+    <a href="/category/misc.html">misc</a>
+  </h6>
+
+          </article>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

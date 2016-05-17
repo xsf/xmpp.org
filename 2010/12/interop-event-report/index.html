@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | The XMPP Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="blog" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+        class="active"
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/index.html">
+        The XMPP Blog
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 medium-8 large-centered medium-centered columns">
+          <article>
+
+  <h1>Interop event report</h1>
+  <p>From 6th-11th December 2010, the XSF ran its first remote interop event. All client and server projects were invited to attend, and we had a good turnout. The aim of the interop event was to test basic XMPP interoperability, particularly re correct TLS and certificate handling, for both clients and servers. We provided projects with a list of tests, together with a set of known-bad server configurations, and worked through these during the week. Several ancillary tests were also performed, which are listed after the scripted test results.</p>
+<p>Server to server testing:</p>
+<p>Five server projects provided test servers for the event:</p>
+<ul>
+<li><a href="http://www.isode.com/products/m-link.html">Isode</a> provided servers running M-Link's development trunk for the upcoming R15.0, and the current R14.6 release.</li>
+<li><a href="http://prosody.im/">Prosody</a> provided a sever running the trunk for their upcoming 0.8 release.</li>
+<li><a href="http://www.process-one.net/">ProcessOne</a> provided a server running the <a href="http://www.ejabberd.im/">ejabberd</a> 2.1.x branch.</li>
+<li><a href="http://www.psyced.org/">psyced</a> provided several configurations of their server to server support, covering different test cases.</li>
+<li><a href="http://www.tigase.org">Tigase</a> supplied a server running the development trunk.</li>
+</ul>
+<p>Initial tests occurred on Wednesday, with no requirements on TLS, SASL, or cert checking - only testing that the servers were able to interoperate by passing an 'iq' query stanza and receiving a reply (indicating two-way communication). All projects were demonstrated to interoperate at this level.</p>
+<p>The scripted server tests for Thursday required that all server to server connections were encrypted with TLS, but not that the certificates were verified. M-Link's trunk, ejabberd, Prosody and psyced were able to demonstrate interoperability; M-Link's release didn't participate as it cannot be configured to require TLS, although the aforementioned servers interoperated with it; Tigase does not support TLS for server to server communication, so didn't participate.</p>
+<p>The last server tests were conducted on Friday; these required servers to require all communication with other servers to occur over TLS, with full certificate trust and validity checking. M-Link's trunk, Prosody and psyced were able to demonstrate this through correct interoperability with the test servers and failed interoperability with provided servers with different mis-configurations covering: no TLS, expired certificates, revoked certificates, untrusted certificates and certificates not matching the service. ejabberd passed all tests except for the test of revocation list checking. M-Link R14.6 and Tigase did not participate.</p>
+<p>Client results:</p>
+<ul>
+<li><a href="http://swift.im">Swift</a> was the only client to participate in the scripted tests, with the development trunk.</li>
+</ul>
+<p>Swift was able to demonstrate interoperability with all servers (excluding psyced, which wasn't configured for client connections) with and without the servers requiring TLS. When testing against servers with invalid certificates, Swift correctly rejected the expired and untrusted certs, and the one for the wrong service. Swift did not support certificate revocation checks.</p>
+<p>Other results:</p>
+<p>In addition to the formal tests above, several projects performed additional testing, the highlights of which are below.</p>
+<ul>
+<li>The Gajim, OneTeam and N900 clients reported success with Jingle interoperability for voice calls with acceptable voice quality on standard connections. Connections over mobile (3G) connection with the N900 were less encouraging.</li>
+<li>Interoperability was reported between the Telepathy framework and M-Link for the 'google:queue' extension for reducing battery cost for mobile clients. It is expected that standardization will follow.</li>
+<li>Interoperability was demonstrated between Swift and M-Link over IPv6.</li>
+<li>Servers were reported not to use or negotiate the SSLv2 protocol, complying to the requirements given in <a href="http://tools.ietf.org/html/draft-ietf-tls-ssl2-must-not-03">draft-ietf-tls-ssl2-must-not</a>.</li>
+<li>XEP-0198 support was demonstrated between Swift and M-Link, M-Link and Prosody, and Prosody and Swift, demonstrating the possibility of a more reliable XMPP network as this technology gets deployed.</li>
+<li>M-Link and psyced demonstrated bi-directional server communication support, using XEP-0288.</li>
+<li>Interoperability of SCRAM-SHA1-PLUS (channel binding) was demonstrated between Isode's implementation and the GNU SASL implementation, and Swift was able to connect to M-Link also using SCRAM-SHA1-PLUS.</li>
+</ul>
+<p>From the XSF's point of view, the week was an outstanding success, demonstrating general stability of server to server communications between a number of projects, and all projects taking part in the scripted tests reported that they had found and corrected issues during the course of the week as a consequence of the testing, making it a valuable event for all involved.</p>
+  <h6>
+    Posted by
+    <a href="/author/kev.html">kev</a>    on
+    <a href="#">December, 14, 2010</a>
+    - filed under
+    <a href="/category/misc.html">misc</a>
+  </h6>
+
+          </article>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

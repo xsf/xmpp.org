@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | Strengthening Trust in Jabber Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="about" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="active has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/about/xsf/records/proposals/strengthening-trust-in-jabber-technologies">
+        Strengthening Trust in Jabber Technologies
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 large-push-1 medium-8 medium-push-1 columns">
+          <article>
+
+  <p>Author: Peter Saint-Andre
+Version:    1.0
+Date:   2007-01-19
+Status: Approved</p>
+<h3>1.0 Background</h3>
+<p>Jabber technologies, as formalized in the Extensible Messaging and Presence Protocol (XMPP), are a set of decentralized, open technologies for near-real-time messaging, presence, and streaming XML (now being extended to address multimedia signalling and other advanced use cases). In order to understand how to improve the security and trust characteristics of Jabber technologies, one needs to understand some of their key characteristics:</p>
+<p>Jabber/XMPP is not a typical open-source project; because the Jabber community is centered on a wire protocol rather than a particular codebase, it consists of many open-source projects, freeware and shareware developers, and commercial software companies. The role of the XMPP Standards Foundation (XSF) is to define protocols through open debate and discussion, then encourage the implementation of those protocols by the many decentralized projects and companies in the Jabber community.
+Jabber/XMPP technologies are also deployed in a highly decentralized fashion, typically in a client-server architecture that is quite similar to email (but also sometimes in a local mesh or peer-to-peer architecture through the use of zero-configuration networking). As a result, there is a large network of Jabber servers on the Internet, plus many servers operating behind firewalls on organizational intranets. However, few Jabber/XMPP servers are deployed in a high-security fashion (e.g., with non-self-signed certificiates).
+The core Jabber/XMPP protocols underwent rigorous cross-area and security review within the Internet Engineering Task Force (IETF) in 2002-2004, resulting in a strong security profile through the use of Transport Layer Security (TLS) for channel encryption and Simple Authentication and Security Layer (SASL) for authentication. However, work remains to be done in extending XMPP to include end-to-end encryption, strong identity, server and endpoint reputation, and per-hop reliability.</p>
+<h3>2.0 Mission</h3>
+<p>The mission of the XMPP Standards Foundation (XSF) is to build an open, standardized, secure, feature-rich, widely-deployed, decentralized infrastructure for real-time communication and collaboration over the Internet.</p>
+<p>For information about specific initiatives the XSF has identified to achieve those goals, refer to the XSF Roadmap.</p>
+<h3>3.0 Proposal</h3>
+<p>This proposal concentrates on ways to strengthen the security and trust characteristics of Jabber technologies, the open network of Jabber servers, and communication among Jabber clients. While future proposals may define ways to extend those achievements, baseline security is a higher priority and therefore is the focus of this proposal.</p>
+<p>In particular, two projects are described herein:</p>
+<p>Strengthening server trust by stimulating implementation and deployment of existing Jabber/XMPP protocols for encryption and strong authentication of client-to-server and server-to-server connections.
+Strengthening endpoint trust by completing development, iteratively improving, and encouraging deployment of strong, easy-to-use end-to-end encryption technologies over the Jabber network.
+These projects are described more fully below.</p>
+<h5>3.1 Channel Encryption and Server Authentication</h5>
+<p>Objective:</p>
+<p>Stimulate implementation and deployment of existing Jabber/XMPP protocols for encryption and strong authentication of client-to-server and server-to-server connections.</p>
+<p>Background:</p>
+<p>The core Jabber protocols as formalized within the IETF contain support for Transport Layer Security (TLS) and subsequent use of the Simple Authentication and Security Layer (SASL) EXTERNAL mechanism. Several open-source and commercial server implementations conform to RFC 3920 in this regard, but not all server codebases support TLS and SASL. Furthermore, very few server deployments use proper (i.e., non-self-signed) certificates because of the expense of obtaining certificates from traditional certification authorities (for this reason, we have been actively involved in the CAcert project and in Q4 2006 deployed an intermediate certification authority under the auspices of StartCom). These implementation and deployment gaps need to be closed in order to build a more secure Jabber network.</p>
+<p>Furthermore, this work will support our efforts to advance XMPP within the Internet Standards Process, since we must demonstrate multiple interoperable implementations in order for our specifications to move forward to Draft Standard. Since TLS and SASL interoperability was not fully demonstrated at the test event in July 2006, more testing is required. However, in-person testing is inconvenient (although productive), which is why the XSF is working to set up a private network for Internet-based interoperability testing. This infrastructure will enable the Jabber/XMPP community to rapidly complete future testing efforts (and eventually also offer compliance certification).</p>
+<p>Proposal:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Description</th>
+<th>Timing</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interop testing</td>
+<td>Complete full interoperability testing of TLS and SASL between major client and server implementations via the emerging xmpp.org private testing network and at the second XMPP interop event in February 2007 (co-located with FOSDEM 2007), including testing of a wide range of server certificates (e.g., those issued by CAcert and StartCom)</td>
+<td>February through April 2007</td>
+<td>$1,000</td>
+</tr>
+<tr>
+<td>Server implementations</td>
+<td>Encourage complete implementation and release of TLS+SASL in major XMPP server implementations, mainly through incentives such as bounties and prizes</td>
+<td>February through April 2007</td>
+<td>$3,000</td>
+</tr>
+<tr>
+<td>Client implementations</td>
+<td>Define best practices for client handling of server certificates and encourage implementation of those best practices in major XMPP client implementations, mainly through incentives such as bounties and prizes</td>
+<td>February through April 2007</td>
+<td>$4,000</td>
+</tr>
+<tr>
+<td>Library implementations</td>
+<td>Encourage complete implementation and release of TLS+SASL in major XMPP library implementations (preferably at least one library in each popular language), mainly through incentives such as bounties and prizes</td>
+<td>February through April 2007</td>
+<td>$3,000</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>$11,000</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5>3.2 End-to-End Encryption</h5>
+<p>Objective:</p>
+<p>Finish development, iteratively improve, and stimulate implementation and deployment of strong, easy-to-use end-to-end encryption technologies over the Jabber network.</p>
+<p>Background:</p>
+<p>The protocols developed in the early Jabber open-source community included a PGP-based extension for end-to-end encryption (XEP-0027), which contains some security holes and in any case was not widely deployed since few normal users have OpenPGP keys. When the IETF formalized the core Jabber protocols, the IETF’s security reviewers requested definition of an end-to-end object encryption method based on S/MIME (RFC 3923). Unfortunately, this S/MIME technology is deeply unpopular among XMPP developers since it is not very “Jabberish” (it is the only XMPP protocol that uses MIME and it also requires a CPIM parser, none of which exist) and in fact has not been implemented in any Jabber client. Both the OpenPGP and S/MIME approaches require key or certificate management (which is difficult for end users), are based on an assumption of object encryption (which is appropriate for email but which does not take advantage of the real-time nature of XMPP), and do not ensure perfect forward secrecy (as does, for example, Off-the-Record Messaging or “OTR”).</p>
+<p>In order to move all of the XMPP RFCs forward, we need to demonstrate a widely implemented and interoperable method of end-to-end encryption. To ensure the security of XMPP communications, we need an end-to-end encryption technology that is actually deployable and preferably easy to use, so that an end user can simply click a button and have it set up between the clients with no end user interaction. This means using client-generated RSA keys and opportunistic in-stream negotiation (à la SSH), as is done in OTR. Unfortunately, OTR as defined and deployed in Gaim and Adium encrypts only the plaintext message body and does not enable encryption of full XMPP stanzas, which is essential for full end-to-end encryption of, say, Jingle signalling traffic. The Encrypted Sessions protocol (XEP-0116 and related specifications) appears to be the approach most likely to succeed, but we will not know unless we implement it, test it, and have it reviewed by a knowledgeable security expert. Therefore, finalization, security review, implementation, testing, and deployment of the Encrypted Sessions technology will be a high priority for the XMPP Standards Foundation over the next 12 months.</p>
+<p>Proposal:</p>
+<table>
+<thead>
+<tr>
+<th>Item    Description Timing  Cost</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol development    Complete initial stable version of Encrypted Sessions specifications    January through February 2007   $2</td>
+<td>000</td>
+<td></td>
+</tr>
+<tr>
+<td>Security review Sponsor an independent security review of Encryption Sessions specifications    February through March 2007 $8</td>
+<td>000</td>
+<td></td>
+</tr>
+<tr>
+<td>Client implementations  Encourage implementation of initial stable protocol version in major XMPP client implementations</td>
+<td>mainly through incentives such as bounties and prizes February through through June 2007  $8</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Library implementations Encourage implementation of initial stable protocol version in major XMPP library implementations</td>
+<td>mainly through incentives such as bounties and prizes    February through June 2007  $6</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Initial interop testing Complete initial interoperability testing of encrypted sessions between major client implementations via online testing June through August 2007    $2</td>
+<td>000</td>
+<td></td>
+</tr>
+<tr>
+<td>Iterations  Based on results of interop testing and security review</td>
+<td>iteratively improve speficiations and sponsor modifications to implementations August through September 2007   $3</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Final interop testing   Complete final interoperability testing of encrypted sessions between major client implementations  October 2007    $2</td>
+<td>000</td>
+<td></td>
+</tr>
+<tr>
+<td>Total   $31</td>
+<td>000</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>4.0 Oversight and Reporting</p>
+<p>The XMPP Standards Foundation (XSF) shall report its progress on a monthly basis and shall maintain a public status page for each project. Overall project management shall be directed by Peter Saint-Andre (Executive Director of the XSF) and shall be run under the oversight of the XSF’s Board of Directors, which currently consists of Alexander Gnauck, Mickaël Rémond, and Matt Tucker (Chair).</p>
+<p>5.0 Cost Summary</p>
+<table>
+<thead>
+<tr>
+<th>Item    Cost</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost of projects    $42</td>
+<td>000</td>
+</tr>
+<tr>
+<td>XSF administration/oversight (10%)  $4</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Total   $46</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<h3>6.0 Major Open-Source Implementations</h3>
+<h5>Appendix A: Server Implementations</h5>
+<p>For purposes of this document, “major open-source server implementations” are stipulated to be the following:</p>
+<ul>
+<li>ejabberd</li>
+<li>jabberd 1.4</li>
+<li>Wildfire</li>
+</ul>
+<p>Additional server implementations may be added to the foregoing list, and unlisted projects still may be eligible for incentives.</p>
+<h5>Appendix B: Client Implementations</h5>
+<p>For purposes of this document, “major open-source client implementations” are stipulated to be the following:</p>
+<ul>
+<li>Adium</li>
+<li>Coccinella</li>
+<li>Exodus</li>
+<li>Gaim</li>
+<li>Gajim</li>
+<li>Gossip</li>
+<li>Kopete</li>
+<li>Psi</li>
+</ul>
+<p>Additional client implementations may be added to the foregoing list, and unlisted projects still may be eligible for incentives.</p>
+<h5>Appendix C: Library Implementations</h5>
+<p>For purposes of this document, “major open-source library implementations” are stipulated to be the following:</p>
+<ul>
+<li>gloox (C++)</li>
+<li>iksemel (C)</li>
+<li>Jabber-Net (C#)</li>
+<li>JSO (Java)</li>
+<li>libstrophe (C)</li>
+<li>Loudmouth (C)</li>
+<li>Net::XMPP (Perl)</li>
+<li>PyXMPP (Python)</li>
+<li>Smack (Java)</li>
+<li>Twisted Words (Python)</li>
+<li>xmpppy (Python)</li>
+</ul>
+<p>Additional library implementations may be added to the foregoing list, and unlisted projects still may be eligible for incentives.</p>
+<p>END</p>
+
+          </article>
+        </div>
+        <div class="sidebar large-3 medium-3 columns">
+       <h4>About the XSF</h4>
+       <ul>
+          <li><a href="/about/xmpp-standards-foundation.html">The XSF</a></li>
+          <li><a href="/about/xsf/members.html">Members</a></li>
+          <li><a href="/about/xsf/editor-team.html">Editor Team</a></li>
+          <li><a href="/about/xsf/infrastructure-team.html">Infrastructure Team</a></li>
+          <li><a href="/about/xsf/upnp-liaison-team.html">UPnP Liaison Team</a></li>
+          <li><a href="/about/standards-process.html">Standards Process</a></li>
+       </ul>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>

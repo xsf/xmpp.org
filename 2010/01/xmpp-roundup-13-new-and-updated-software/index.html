@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>XMPP | The XMPP Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/theme/images/xmpp-logo.png" />
+  <link rel="stylesheet" href="/theme/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
+</head>
+<body class="blog" style="overflow-y: scroll;">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/"><img src="/theme/images/xmpp-logo.svg" style="display: inline-block; margin: -3px 5px 0 0; width: 30px; "/>XMPP</a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+      <a href="#"><span></span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/about">
+          About XMPP
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/about/history.html">
+              History
+            </a>
+          </li>
+          <li>
+	    <a href="/about/technology-overview.html">
+              Overview
+            </a>
+          </li>
+          <li>
+	    <a href="/about/who-uses-xmpp.html">
+              Who uses XMPP
+            </a>
+          </li>
+          <li>
+	    <a href="/about/standards-process.html">
+              Standards Process
+            </a>
+          </li>
+          <li>
+	    <a href="/about/xmpp-standards-foundation.html">
+              The XSF
+            </a>
+          </li>
+          <li>
+	    <a href="/about/../extensions.html">
+              Specifications
+            </a>
+          </li>
+          <li>
+	    <a href="/about/faq.html">
+              FAQ
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/uses">
+          Uses
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/uses/instant-messaging.html">
+              Instant Messaging
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/internet-of-things.html">
+              Internet of Things
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/social.html">
+              Social
+            </a>
+          </li>
+          <li>
+	    <a href="/uses/webrtc.html">
+              WebRTC
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/software">
+          Software
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/software/clients.html">
+              Clients
+            </a>
+          </li>
+          <li>
+	    <a href="/software/servers.html">
+              Servers
+            </a>
+          </li>
+          <li>
+	    <a href="/software/libraries.html">
+              Libraries
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="/community">
+          Community
+        </a>
+
+        <ul class="dropdown">
+          <li>
+	    <a href="/community/chat.html">
+              Chat / logs
+            </a>
+          </li>
+          <li>
+	    <a href="/community/mailing-lists.html">
+              Mailing lists
+            </a>
+          </li>
+          <li>
+	    <a href="/community/membership.html">
+              Membership
+            </a>
+          </li>
+          <li>
+	    <a href="/community/events.html">
+              Events
+            </a>
+          </li>
+          <li>
+	    <a href="/community/security-notices/">
+              Security Notices
+            </a>
+          </li>
+          <li>
+	    <a href="/community/sponsors.html">
+              Sponsors
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li
+        class="active"
+       >
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+  <header class="header-internal">
+    <h1>
+      <a href="/index.html">
+        The XMPP Blog
+      </a>
+    </h1>
+  </header>
+      <div class="page-content row">
+        <div class="large-8 medium-8 large-centered medium-centered columns">
+          <article>
+
+  <h1>XMPP Roundup 13: new and updated software</h1>
+  <p>Welcome to the XMPP software Roundup 13. As announced in the <a href="http://blog.xmpp.org/index.php/2010/01/xmpp-roundup-13-articles-talks-and-events/">latest Roundup</a>, we have split it into different parts. The first part covered articles, talks and events. This post covers new and updated software, the next one will cover XMPP services.</p>
+<p>Special thanks to Will, Waqas, Jack, Guillaume, Nicolas, who have actively contributed to this report.</p>
+<p>Due to the high number of new items (yes, the XMPP community is super-active), we have sectionned these into the classical division clients, servers, and libraries, and... a last section you should check carefully.</p>
+<p><strong>Clients</strong></p>
+<p><em>Jabbim for Android</em></p>
+<p>The Jabbim team has released an early version of <a href="http://www.jabbim.com/android/" title="http://www.jabbim.com/android/">Jabbim for Android</a>, the Linux-based OS platform for mobile phones and devices from Google.</p>
+<p><em>joom</em></p>
+<p>Released under the Artistic and GPL licenses, <a href="http://code.google.com/p/joom/">joom</a> is a collaborative brainstorming tool, similar to a group chat plus topics creation. First originality, the UI combines the personal roster, as well as the room roster. The other originality, is that the UI shows different views of the conversations: the regular stream of messages, and the active and inactive topic views, which filter out messages with certain hashtags. Thus it is possible to hold mulitple conversations in one room.</p>
+<p><em>Gajim 0.13</em></p>
+<p>Yann Le Boulanger, aka Asterix, has announced the <a href="http://www.gajim.org/">release 0.13 of the Gajim XMPP client</a>, bringing BOSH, roster versionning, XHTML-IM sending, and many bug fixes.</p>
+<p><em>Coccinella 0.96.16 Released</em></p>
+<p>Sander Devrieze has <a href="http://coccinella.im/coccinella-0.96.16">announced Coccinella 0.96.16</a>, bringing a lot of bug fixes, as well as a tenth birthday.</p>
+<p><em>Psi 0.14 is out</em></p>
+<p>This time we've made sure Psi is not missed in the Roundup: Justin Karneges has <a href="http://lists.affinix.com/pipermail/psi-devel-affinix.com/2009-December/008928.html">announced the version 0.14 of the Psi XMPP client</a>. It brings color options to the chat window, reason for kick/ban in groupchat, improved User Info window, support for Enchant as an alternative to Aspell, commandline interface now supports choosing profile and setting status, D-BUS interface now supports setting status and indicating sleep/wake, fixed voice calling compatibility bugs with Pidgin and Empathy, and of course various other minor improvements and bugfixes.</p>
+<p><em>Haskell: XMPP and matsuri</em></p>
+<p><a href="http://kagami.touhou.ru/projects/show/matsuri">matsuri</a> is a ncurses XMPP client written on Haskell, published under the GPLv3 license by Kagami.</p>
+<p><em>Yaxim</em></p>
+<p><a href="http://github.com/pfleidi/yaxim">Yaxim</a> is new XMPP client for the Android platform.</p>
+<p><em>Juick for Android</em></p>
+<p>Juick, the real-time blogging and social network platform based on XMPP, has a <a href="http://code.google.com/p/juick-android/">specific client</a> on the Android platform.</p>
+<p><em>Vacuum-IM</em></p>
+<p><a href="http://code.google.com/p/vacuum-im/">Vacuum-IM</a> is a new multi-account, multi-platform XMPP client. It uses the Qt library, and is released under the GPLv3 license, as a version number 1.0.</p>
+<p><strong>Servers</strong></p>
+<p><em>Openfire under the Apache license</em></p>
+<p>The Openfire server is undergoing <a href="http://www.igniterealtime.org/community/message/196063">a change of license</a>, from the GPL to the Apache 2.0 license. The next version with the updated license will be released in the near future.</p>
+<p><em>Legacy IM Connections via M-Link</em></p>
+<p>Isode has <a href="http://isode.com/company/wordpress/?p=6">announced</a> that they are partnering with Zion Software to deploy the <a href="http://www.zionsoftware.com/products/xmpp-gateway/">JBuddy XMPP Gateway</a> for connectivity between Isode's M-Link server software and legacy IM networks.</p>
+<p><em>Tigase Server 4.3</em></p>
+<p>Artur Hefczyc has released <a href="http://www.tigase.org/en/content/tigase-xmpp-server-431-b1858">version 4.3 of the Tigase Server</a>. It contains a lot of performance improvements, as well as new features, like monitoring, scripting, or roster versionning, and much more.</p>
+<p><em>Spectrum</em></p>
+<p><a href="http://spectrum.im/">Spectrum</a> is an XMPP gateway, released under the GPL license, using the libpurple and gloox libraries, coming from a Google Summer of Code project. It supports ICQ, XMPP (Jabber, GTalk), AIM, MSN, Facebook, Twitter, Gadu-Gadu, IRC and SIMPLE.</p>
+<p><em>python-xmpp-server</em></p>
+<p><a href="http://github.com/thisismedium/python-xmpp-server">python-xmpp-server</a> speaks for itself, it has been developed by <a href="http://en.wikipedia.org/wiki/Medium_%28company%29">Medium</a>.</p>
+<p><em>Clustering plugin for Openfire is now open source</em></p>
+<p><a href="http://www.igniterealtime.org/">Ignite Realtime</a> has <a href="http://www.igniterealtime.org/community/blogs/ignite/2009/11/10/clustering-plugin-for-openfire-is-now-open-source">announced</a> the release of the <a href="http://www.igniterealtime.org/projects/openfire/plugins/clustering/readme.html">clustering plugin</a> for Openfire as opensource, under the Apache 2.0 license.</p>
+<p><em>Prosody 0.6 and 1 year old</em></p>
+<p>Prosody, which is <a href="http://blog.prosody.im/one-year-ago-today/">one year old</a>, has been <a href="http://blog.prosody.im/prosody-0-6-0-released/">published in version 0.6</a>, bringing a telnet console, multi-sessions in MUC, stream compression, S2S encryption, per-host certificates, an importer for ejabberd MySQL dumps, and compatibility with ejabberd's vcard behaviour.</p>
+<p><strong>Libraries</strong></p>
+<p><em>Strophe.js 1.0</em></p>
+<p><a href="http://metajack.im/" title="http://metajack.im/">Jack Moffit</a> has announced the <a href="http://metajack.im/2010/01/01/celebrate-2010-with-strophejs-10/">release of version 1.0</a> of the <a href="http://code.stanziq.com/strophe/">Strophe.js</a> library.</p>
+<p><em>MatriX Mobile and MatriX for .NET released</em></p>
+<p>Alexander Gnauck has released <a href="http://blog.ag-software.de/?p=87">MatriX Mobile</a> for the .NET Compact Framework, as well as <a href="http://blog.ag-software.de/?p=79">MatriX for .NET</a>.</p>
+<p><em>asmack</em></p>
+<p>The <a href="http://code.google.com/p/asmack/">asmack</a> library has been released. Basically, it a the smack library, adding SASL and DNS SRV for the Android platform.</p>
+<p><em>Libjingle in Chromium</em></p>
+<p>Libjingle, the Google's opensource library for Jingle, <a href="http://git.chromium.org/viewvc/chrome/trunk/src/third_party/libjingle/">has been committed in Chromium</a>, the opensource base of the Chrome browser.</p>
+<p><em>GWT bindings for the Strophe XMPP library</em></p>
+<p><a href="http://jprieur.wordpress.com/2009/10/07/gwt-bindings-for-the-strophe-xmpp-library/">Johann Prieur</a> has announced on his blog the availability through Bazaar of <a href="https://launchpad.net/gwt-strophe">gwt-strophe</a>, under the MIT/X/Expat License, a binding for Strophe, the XMPP library. It is now in its early stage, and need testing and bug reports.</p>
+<p><em>Emite</em></p>
+<p><a href="http://code.google.com/p/emite/">Emite</a> 0.5.0 has been released, now with support for GWT 2.0. Emite is a GWT XMPP library (Google Web Toolkit) under the LGPL v3 license.</p>
+<p><em>gloox 1.0</em></p>
+<p>The famous <a href="http://camaya.net/gloox/">gloox</a> library, for clients and components, has been <a href="http://camaya.net/api/gloox/">released in version 1.0</a>, under the GPL license. This should not be confused with the <a href="http://camaya.net/glooxd/">glooxd libray</a>, made for servers.</p>
+<p><em>retepXMPP Server, Client &amp; Library</em></p>
+<p><a href="http://kenai.com/projects/retepxmpp/">retepXMPP</a> is a suite of libraries for writing applications using the XMPP protocol, with which it is possible to create components, clients or even embedded servers.</p>
+<p><strong>Unclassifiable (aka "Others")</strong></p>
+<p>Although the title of this section might sound a bit demeaning, this is the place you should focus, because it is sometimes the place where most interesting (weird?) innovations appears...</p>
+<p><em>Jorge</em></p>
+<p>Zbyszek Zólkiewski has written <a href="http://dev.jabbim.cz/jorge/">Jorge</a>, a free PHP-based front-end for the <a href="http://www.ejabberd.im/mod_logdb">mod_logdb</a> message archiving system for ejabberd written by Oleg Palij.</p>
+<p><em>xeerkat</em></p>
+<p><a href="http://code.google.com/p/xeerkat/">xeerkat</a> is a P2P computing framework over XMPP. xeerkat is not a new project, but original and not previously covered by the XMPP Roundup.</p>
+<p><em>XMPP Framework</em></p>
+<p><a href="http://drupal.org/project/xmppframework">XMPP Framework</a>, using XMPPHP, brings XMPP features to Drupal: XMPP-Drupal users correlation and relationship, XWChat web chat client (based on JSJaC), MUC, and notifications. This module has been contributed by Darren Ferguson of OpenBand.</p>
+<p><em>XMPPKit</em></p>
+<p>The <a href="http://etoileos.com/etoile/">Étoilé</a> user environment for the <a href="http://www.gnustep.org/">GNUstep</a> project is building in support for sending what they call "CoreObjects" over XMPP using their emerging <a href="http://etoileos.com/news/archive/2009/09/15/1659/">XMPPKit</a>; as a result they hope to enable collaborative editing, whiteboarding, and other interactive applications.</p>
+<p><em>RDFbus</em></p>
+<p>The Ruby software <a href="http://github.com/bendiken/rdfbus">RDFbus</a>, published under a BSD-like license, is a middleware for enabling RDF publish/subscribe payloads over XMPP and Stomp.</p>
+<p><em>Device state and MWI via PubSub in Asterisk</em></p>
+<p><a href="http://www.asterisk.org/">Asterisk</a>, the well-known opensource telephony platform, integrates a feature (at the time of writing, waiting for testing) enabling to <a href="https://issues.asterisk.org/view.php?id=15757">broadcast the device states and the MWI</a> (Message Waiting Indicator), using the XMPP's <a href="http://xmpp.org/extensions/xep-0060.html">publish-and-subscribe mechanism</a>.</p>
+<p><em>Telepaatti</em></p>
+<p><a href="http://23.fi/telepaatti/">Telepaatti</a> is IRC to Jabber/XMPP gateway compatible with MUC-protocol (Multi user chat). It allows you to join MUC-rooms and communicate with Jabber/XMPP users via your IRC client. Telepaatti acts as Jabber/XMPP client imitating IRC-server.</p>
+<p><em>mod_ircd for Prosody</em></p>
+<p><a href="http://www.matthewwild.co.uk/">Matthew Wild</a> has written <a href="http://code.google.com/p/prosody-modules/wiki/mod_ircd">mod_ircd</a>, an IRC to MUC gateway for <a href="http://prosody.im/">Prosody</a>, which allows joining Jabber chatrooms using an IRC client.</p>
+<p><em>Streaming Apple Events over XMPP</em></p>
+<p>Dan Brickley has released a Ruby script that <a href="http://danbri.org/words/2009/10/19/483">re-routes the Mac OS X Apple Remote event stream to XMPP</a>.</p>
+<p><em>Confbot: a Google Talk conference bot</em></p>
+<p>Perry Lorier has written and released <a href="http://coders.meta.net.nz/%7Eperry/jabber/confbot.php">Confbot</a> under the GPL license. It is a python bot that enables group chats to Gtalk (and XMPP) users. It has been written in the early days of Gtalk, back in 2005.</p>
+<p><em>ejabberd_testing: automated testing for ejabberd modules</em></p>
+<p>Eric Cestari has posted a <a href="http://cestari.wordpress.com/2009/10/27/ejabberd_testing-automated-testing-for-ejabberd-modules/">short article</a> on his blog, pointing to <a href="http://github.com/cstar/ejabberd_testing">ejabberd_testing</a>. The goal is is to be able to test ejabberd modules. It is released under the BSD license.</p>
+<p><em>jctalk</em></p>
+<p>Jongmyung Choi is coding the Smack-based <a href="http://sourceforge.net/projects/jctalk/">jctalk instant messaging</a> system that is able to monitor and control home appliances.</p>
+<p><em>oai-pmh and xmpp</em></p>
+<p>Interesting read, Ed Summers experiments with <a href="http://inkdroid.org/journal/2009/09/23/oai-pmh-and-xmpp/">oai-pmh over XMPP</a>, where he takes advantage of XMPP to push updates, instead of constantly polling them. For the record, oai-pmh stands for <a href="http://www.openarchives.org/OAI/openarchivesprotocol.html">The Open Archives Initiative Protocol for Metadata Harvesting</a>.</p>
+<p><em>Oslo Protocol</em></p>
+<p>The <a href="http://code.google.com/p/oslo-protocol/">Oslo protocol</a>, released under a BSD license, describes a federated location sharing and proximity detection system, based on XMPP.</p>
+<p><em>ejabberd webpresence plugin for jQuery</em></p>
+<p><a href="http://www.martini.nu/">Mahlon E. Smith</a> has released a <a href="http://plugins.jquery.com/project/ejabberd_presence">jQuery plugin</a> that shows a dynamic XMPP status badge, reflecting current presence information for a given XMPP account. Requires ejabberd's <a href="http://www.ejabberd.im/mod_webpresence">mod_webpresence</a>.</p>
+<p><em>Musubi</em></p>
+<p>Teruaki Gemmahas has developped <a href="http://musubi.im/">Musubi</a>, a Firefox extension using xmpp4moz, that lets you create <a href="http://musubi.im/mediawiki/">online games and real-time apps</a> in web pages.</p>
+<p><em>OneWeb</em></p>
+<p>ProcessOne has released OneWeb, an alpha Firefox extension (<a href="http://www.process-one.net/en/blogs/article/oneweb_demonstrates_the_power_of_xmpp_inside_the_browser/">desktop</a> and <a href="http://www.process-one.net/en/blogs/article/oneweb_works_on_firefox_mobile/">mobile</a>), that lets you manage and share bookmarks between browsers, with interoperation with regular XMPP chat clients.</p>
+<p><em>Jabber Feed 0.5</em></p>
+<p>Jehan has <a href="http://jehan.zemarmot.net/blog/lang/all/2010/01/24/jabber-feed-0-5jabber-feed-0-5-released/">announced Jabber Feed 0.5</a> WordPress plugin, that lets articles and comments be posted on PubSub.</p>
+<p>This is it, this software Roundup is over. We hope you enjoyed discovering new software, or just being informed of new releases and features. You are encouraged to talk about this Roundup and/or the software mentionned here you care about in your blogs and microblogs, in order to promote XMPP technologies further.</p>
+  <h6>
+    Posted by
+    <a href="/author/nyco.html">Nyco</a>    on
+    <a href="#">January, 29, 2010</a>
+    - filed under
+    <a href="/category/misc.html">misc</a>
+  </h6>
+
+          </article>
+        </div>
+      </div>
+
+<div class="footer-sponsors">
+  <h4>The <a href="/about/xmpp-standards-foundation.html">XSF</a> is generously sponsored by:</h4>
+  <ul>
+    <li><a href="/sponsors/coversant"><img src="/images/logos/coversant.png" alt="Coversant"></a></li>
+    <li><a href="/sponsors/erlang-solutions"><img src="/images/logos/erlang-solutions.png" alt="Erlang Solutions"></a></li>
+    <li><a href="/sponsors/eyeball-networks"><img src="/images/logos/eyeball-networks.png" alt="Eyeball Networks"></a></li>
+    <li><a href="/sponsors/genesys-angel"><img src="/images/logos/genesys-angel.jpg" alt="Genesys | Angel"></a></li>
+    <li><a href="/sponsors/kolon-benit"><img src="/images/logos/kolon-benit.png" alt="Kolon Benit"></a></li>
+    <li><a href="/sponsors/processone"><img src="/images/logos/process-one.png" alt="ProcessOne"></a></li>
+    <li><a href="/sponsors/us-secure-hosting-center"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
+    <li><a href="/sponsors/voxeo"><img src="/images/logos/voxeo.gif" alt="Voxeo"></a></li>
+  </ul>
+</div>
+<div class="footer-github">
+  <p><a href="//github.com/xsf/xmpp.org"><img src="/theme/images/github.svg"></a>This site is organized in the open on GitHub. <a href="//github.com/xsf/xmpp.org">Suggest changes</a>.</p>
+</div>
+<footer class="top-bar">
+  <section class="top-bar-section">
+    <ul class="left">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/about">
+          About XMPP
+        </a>
+      </li>
+      <li>
+        <a href="/extensions">
+          Specifications
+        </a>
+      </li>
+      <li>
+        <a href="/uses">
+          Uses
+        </a>
+      </li>
+      <li>
+        <a href="/software">
+          Software
+        </a>
+      </li>
+      <li>
+        <a href="/community">
+          Community
+        </a>
+      </li>
+    </ul>
+    <ul class="right">
+      <li>
+        <a href="/blog.html">
+          XMPP Blog
+        </a>
+      </li>
+      <li>
+        <a href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </section>
+</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/theme/js/foundation.js"></script>
+  <script src="/theme/js/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+</html>
