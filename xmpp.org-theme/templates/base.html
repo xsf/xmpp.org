@@ -7,7 +7,6 @@
   <link rel="shortcut icon" href="{{ SITE_URL }}/theme/images/xmpp-logo.png" />
   <link rel="stylesheet" href="{{ SITE_URL }}/theme/css/app.css" type="text/css" />
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Exo+2:700,400|Merriweather:300italic,300,700" type="text/css" />
-  {% if active_page_is_blog|default("false") == "true" %}<link rel="alternate" href="/feeds/all.atom.xml" type="application/atom+xml" name="Blog feed" />{% endif %}
 
   <link href="/favicon.ico" rel="icon" />
   <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
@@ -27,6 +26,9 @@
   <meta name="msapplication-TileColor" content="#ffffff" />
   <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
   <meta name="theme-color" content="#ffffff" />
+  {% if active_page_is_blog|default("false") == "true" %}<link rel="alternate" href="/feeds/all.atom.xml" type="application/atom+xml" name="Blog feed" />{% endif %}
+  {% block head %}
+  {% endblock %}
 </head>
 <body class="{{ active_page }}" style="overflow-y: scroll;">
   {% include 'top_menu.html' %}
