@@ -26,75 +26,79 @@ An XMPP client is any software or application that enables you to connect to an 
 
 __See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org)
 
-| Name                           | Platform(s)                                           |
-|--------------------------------|-------------------------------------------------------|
-| [Adium](http://adium.im)                          | OSX                                                |
-| [AQQ](http://aqq.eu)                            | Windows                                            |
-| [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS) / Linux / OSX / Windows                            |
-| [beejive](http://beejive.com)                        | Mobile (Android, BlackBerry, iOS)                  |
-| [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
-| [BitlBee](http://bitlbee.org)                        | Linux                                              |
-| [BlueJabb](http://bluejabb.com)                       | Mobile (Android, Blackberry (BBOS), Nokia Symbian S40/S60 and Asha)      |
-| [Buddycloud](http://buddycloud.com)                  | Mobile / Web / Console                                    |
-| [Candy](https://candy-chat.github.io/candy/)                          | Browser                                                |
-| [Coccinella](http://coccinella.im)                     | Linux / OSX / Windows                                  |
-| [Conversations](https://github.com/siacs/Conversations)                  | Mobile (Android)              |
-| [Converse.js](http://conversejs.org)                    | Browser                                                |
-| [Coversant SoapBox Communicator](http://coversant.com) | Windows                                                |
-| [Crosstalk](http://portablek.com)                      | Mobile (iOS)                                           |
-| [eM Client](http://emclient.com)                      | Windows                                                |
-| [Empathy](http://live.gnome.org)                        | Linux                                                  |
-| [Finch](http://developer.pidgin.im)                          | Console / Text-Mode                                 |
-| [Gajim](http://gajim.org)                          | Linux / Windows                                        |
-| [ChatSecure](http://guardianproject.info)                     | Mobile (Android)                                  |
-| [GNU Freetalk](https://gnufreetalk.github.io/)                   | Console / Text-Mode                                    |
-| [GreenJab](http://bvstools.com)                       | IBM i                                                  |
-| [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX                                                   |
-| [IM+](http://shapeservices.com)                            | Mobile                                                 |
-| [Instantbird](http://instantbird.com)                    | Linux / OSX / Windows                                  |
-| [irssi-xmpp](http://cybione.org)                     | Console / Text-Mode                                    |
-| [jabber.el](http://emacs-jabber.sourceforge.net)                      | Linux                             |
-| [Jabbim](http://jabbim.com)                         | Linux / OSX / Windows                                  |
-| [Jabiru](http://jabiru.info)                         | Mobile (Android)                                       |
-| [JAJC](http://jajc.jrudevels.org)                           | Windows                                                |
-| [Jappix](http://jappix.org)                         | Browser                                                |
-| [Jitsi](http://jitsi.org)       | Linux / OSX / Windows                                               |
-| [JSXC](http://jsxc.org)                           | Browser                                                |
-| [JWChat](http://stefan-strigler.de/jwchat)                         | Browser                                 |
-| [Kadu](http://kadu.net)                           | Linux / OSX / Windows                                  |
-| [Kopete](http://kopete.kde.org)                         | Linux                                                  |
-| [mcabber](http://mcabber.com)                        | Console / Text-Mode                                    |
-| [Miranda IM](http://miranda-im.org)                     | Windows                                                |
-| [Miranda NG](http://miranda-ng.org)                     | Windows                                                |
-| [Movim](https://movim.eu)                         | Browser                                                |
-| [Monal IM](http://monal.im)                       | Mobile (iOS)                                           |
-| [Mozilla Thunderbird](http://mozilla.org/thunderbird)            | Linux / OSX / Windows                       |
-| [OneTeam](http://oneteam.im)                        | Linux / OSX / Windows                                  |
-| [OneTeam for iPhone](http://oneteam.im)             | Mobile (iOS)                                           |
-| [Poezio](http://poezio.eu)                         | Console / Text-Mode                                    |
-| [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
-| [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
-| [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
-| [Psi+](http://psi-plus.im)                           | Linux / OSX / Windows                                  |
-| [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
-| [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
-| [Salut à Toi](http://goffi.org)                    | Linux / Console / Text-Mode / Browser                  |
-| [Sim-IM](http://sim-im.org)                         | Linux                                                  |
-| [Spark](http://igniterealtime.org)                          | Linux / OSX / Windows                                  |
-| [SparkWeb](http://igniterealtime.org)                       | Browser                                                |
-| [Swift](http://swift.im)                          | Linux / OSX / Windows                                  |
-| [Talkonaut](http://talkonaut.com)                      | Mobile                                                 |
-| [Tigase Messenger](http://tigase.org)               | Browser                                                |
-| [Tigase Minichat](http://tigase.org)                | Browser                                                |
-| [Tkabber](http://tkabber.jabber.ru)                        | Linux / OSX / Windows                                  |
-| [Trillian](http://trillian.im)                       | Windows/ OSX / Mobile / Browser                        |
-| [V&V Messenger](http://altertech.net)                  | Windows                                                |
-| [Vacuum-IM](http://vacuum-im.org)                      | Linux / OSX / Windows                                  |
-| [Vayusphere](http://vayusphere.com)                     | Mobile (BlackBerry)                                    |
-| [VSTalk](http://codeplex.com)                         | Windows                                                |
-| [WTW](http://k2t.eu)                            | Windows                                                |
-| [Xabber](http://xabber.com)                         | Mobile (Android)                                       |
-| [xmpp-client](https://github.com/agl/xmpp-client) | Linux / OSX |
-| [xmppchat](http://babelmonkeys.de)                       | Browser                                                |
-| [XMPPWebChat](http://code.google.com)                    | Browser                                                |
-| [yaxim](http://yaxim.org)                          | Mobile (Android)                                       |
+##Desktop clients
+
+| Windows                           | Mac (OSx)                                         |Linux  |
+|-----------------------------------|--------------------------------------------------|--------------------------------------------------|
+|[AQQ](http://aqq.eu)|	[Adium](http://adium.im)|	[AstraChat](http://astrachat.com)|
+|[AstraChat](http://astrachat.com)|[AstraChat](http://astrachat.com)|	[BitlBee](http://bitlbee.org)|
+|[Coccinella](http://coccinella.im)	|[Coccinella](http://coccinella.im)|	[Coccinella](http://coccinella.im)|
+|[Coversant SoapBox Communicator](http://coversant.com) |[Apple Messages](http://www.apple.com/ios/messages/)|	[Empathy](http://live.gnome.org)|
+|[eM Client](http://emclient.com)	|[Instantbird](http://instantbird.com)|	[Gajim](http://gajim.org)|
+|[Gajim](http://gajim.org)|	[Jabbim](http://jabbim.com)|	[Instantbird](http://instantbird.com)|
+|[Instantbird](http://instantbird.com)	|[Jitsi](http://jitsi.org)	|[jabber.el](http://emacs-jabber.sourceforge.net)|
+|[Jabbim](http://jabbim.com)|	[Kadu](http://kadu.net)	|[Jabbim](http://jabbim.com)|
+|[JAJC](http://jajc.jrudevels.org)	|[Mozilla Thunderbird](http://mozilla.org/thunderbird) |	[Jitsi](http://jitsi.org)|
+|[Jitsi](http://jitsi.org)	|[OneTeam](http://oneteam.im)|	[Kadu](http://kadu.net)|
+|[Kadu](http://kadu.net)	|[Pidgin](http://pidgin.im)	|[Kopete](http://kopete.kde.org)|
+|[Miranda IM](http://miranda-im.org)|	[Psi](http://psi-im.org)|	[Mozilla Thunderbird](http://mozilla.org/thunderbird) |
+|[Miranda NG](http://miranda-ng.org)|	[Psi+](http://psi-plus.im)	|[OneTeam](http://oneteam.im)|
+|[Mozilla Thunderbird](http://mozilla.org/thunderbird) |	[qutIM](http://qutim.org)|	[Pidgin](http://pidgin.im)|
+|[OneTeam](http://oneteam.im)	|[Spark](http://igniterealtime.org)	|[Psi](http://psi-im.org)|
+|[Pidgin](http://pidgin.im)	|[Swift](http://swift.im)	|[Psi+](http://psi-plus.im)|
+|[Psi](http://psi-im.org)	|[Tkabber](http://tkabber.jabber.ru)	|[qutIM](http://qutim.org)|
+|[Psi+](http://psi-plus.im)	|[Trillian](http://trillian.im)|	[Salut à Toi](http://goffi.org)|
+|[Quiet Internet Pager](http://forum.qip.ru)|	[Vacuum-IM](http://vacuum-im.org)	|[Sim-IM](http://sim-im.org)|
+|[qutIM](http://qutim.org)|	[xmpp-client](https://github.com/agl/xmpp-client)|	[Spark](http://igniterealtime.org)|
+|[Spark](http://igniterealtime.org)	|	[Swift](http://swift.im)| |
+|[Swift](http://swift.im)	|	[Tkabber](http://tkabber.jabber.ru)| |
+|[Tkabber](http://tkabber.jabber.ru)	|	[Trillian](http://trillian.im)| |
+|[Trillian](http://trillian.im)	|	[Vacuum-IM](http://vacuum-im.org)| |
+|[V&V Messenger](http://altertech.net)	|	[xmpp-client](https://github.com/agl/xmpp-client)| |
+|[Vacuum-IM](http://vacuum-im.org)	| |	
+|[VSTalk](http://codeplex.com)		| |
+|[WTW](http://k2t.eu)		| |
+
+## Mobile clients
+
+| Android                           | iPhone / iPad (iOS)             |Blackberry  |
+|--------------------|--------------------------|---------------------------------------|
+|[AstraChat](http://astrachat.com)|[Apple Messages](http://www.apple.com/ios/messages/)|	[beejive](http://beejive.com)|
+|[beejive](http://beejive.com)	|[AstraChat](http://astrachat.com)|	[BlueJabb](http://bluejabb.com)|
+|[Beem](http://beem-project.com)	|[beejive](http://beejive.com)|	[Vayusphere](http://vayusphere.com)|
+|[BlueJabb](http://bluejabb.com)	|	[Crosstalk](http://portablek.com)| |
+|[Conversations](https://github.com/siacs/Conversations)|	[Monal IM](http://monal.im)| |
+|[ChatSecure](http://guardianproject.info)	|[OneTeam](http://oneteam.im)	| |
+|[Jabiru](http://jabiru.info)		 | [Talkonaut](http://talkonaut.com)|  | 
+|[Talkonaut](http://talkonaut.com)	 | |  | 
+|[Trillian](http://trillian.im)	 | |  | 
+|[Xabber](http://xabber.com)	 | |	 | 
+|[yaxim](http://yaxim.org) | | | 
+
+
+## Browser clients
+
+* [Candy](https://candy-chat.github.io/candy/)
+* [Converse.js](http://conversejs.org/)
+* [Jappix](http://jappix.org/)
+* [JSXC](http://jsxc.org/)
+* [JWChat](http://stefan-strigler.de/jwchat)
+* [Movim](https://movim.eu/)
+* [Salut à Toi](http://goffi.org/)
+* [SparkWeb](http://igniterealtime.org/)
+* [Tigase Messenger](http://tigase.org/)
+* [Tigase Minichat](http://tigase.org/)
+* [Trillian](http://trillian.im/)
+* [xmppchat](http://babelmonkeys.de/)
+* [XMPPWebChat](http://code.google.com/)
+
+
+## Other platforms
+
+| Client                           | Platform  |
+|--------------------|--------------------------------------|
+|[BlueJabb](http://bluejabb.com/) 	|	Nokia Symbian S40/S60 and Asha|
+|[Buddycloud](http://buddycloud.com/) 	|	Mobile / Web / Console|
+|[GreenJab](http://bvstools.com/)	|	IBM i|
+|[IM+](http://shapeservices.com/) 	|	Mobile|
+
