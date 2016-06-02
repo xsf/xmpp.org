@@ -75,7 +75,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
 | [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
 | [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
-| [Psi+](http://psi-plus.im)                           | Linux / OSX / Windows                                  |
+| [Psi+](http://psi-plus.com)                           | Linux / OSX / Windows                                  |
 | [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
 | [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
 | [Salut à Toi](http://goffi.org)                    | Linux / Console / Text-Mode / Browser                  |
