@@ -41,7 +41,7 @@ The Czech community is still very active, [Jabbim Dev Team](http://www.jabbim.cz
 
 *poezio 0.6.2*
 
-[Florent Le Coz](http://poezio.eu/ "http://poezio.eu/") (aka Louiz) has released a new version of poezio, the small console client.
+[Florent Le Coz](http://poez.io/ "http://poez.io/") (aka Louiz) has released a new version of poezio, the small console client.
 
 *Jappix 0.2*
 

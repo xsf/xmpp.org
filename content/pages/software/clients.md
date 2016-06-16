@@ -71,7 +71,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Mozilla Thunderbird](http://mozilla.org/thunderbird)            | Linux / OSX / Windows                       |
 | [OneTeam](http://oneteam.im)                        | Linux / OSX / Windows                                  |
 | [OneTeam for iPhone](http://oneteam.im)             | Mobile (iOS)                                           |
-| [Poezio](http://poezio.eu)                         | Console / Text-Mode                                    |
+| [Poezio](http://poez.io)                           | Console / Text-Mode                                    |
 | [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
 | [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
 | [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
