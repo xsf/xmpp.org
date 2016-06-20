@@ -78,7 +78,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Psi+](http://psi-plus.com)                           | Linux / OSX / Windows                                  |
 | [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
 | [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
-| [Salut à Toi](http://goffi.org)                    | Linux / Console / Text-Mode / Browser                  |
+| [Salut à Toi](https://salut-a-toi.org/)             | Linux / Console / Text-Mode / Browser                  |
 | [Sim-IM](http://sim-im.org)                         | Linux                                                  |
 | [Spark](http://igniterealtime.org)                          | Linux / OSX / Windows                                  |
 | [SparkWeb](http://igniterealtime.org)                       | Browser                                                |
