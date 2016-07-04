@@ -28,6 +28,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | Name                                                                      | Language(s)                         | License          |
 |---------------------------------------------------------------------------|-------------------------------------|------------------|
 | [agsXMPP SDK](http://ag-software.net)                                     | C# / .net / Mono                    | GPL /Comercial   |
+| [aioxmpp](https://github.com/horazont/aioxmpp)                            | Python                              | GPLv3         |
 | [AnyEvent::XMPP](http://ta-sa.org)                                        | Perl                                | Artistic         |
 | [as3xmpp](https://github.com/lyokato/as3xmppclient)                       | Flash / ActionScript                | GPLv2            |
 | [AXMPP](http://orge.ada-ru.org)                                           | Ada                                 | BSD              |
