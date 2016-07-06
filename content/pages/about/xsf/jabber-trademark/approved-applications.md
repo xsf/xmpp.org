@@ -39,7 +39,7 @@ This page lists licensed uses of the [Jabber trademark](/about/xsf/jabber-tradem
 
 | Mark                                  | Licensee                    | Type                        | Date Approved |
 |---------------------------------------|-----------------------------|-----------------------------|---------------|
-| Bruno the Jabber Bear                 | Georg Lukas                 | Open-Source Project         | TBD           |
+| Bruno the Jabber Bear                 | Georg Lukas                 | Open-Source Project         | 2016-07-06    |
 | ejabberd                              | ProcessOne SARL             | Open-Source Project         | 2004-06-24    |
 | Jabber Africa Foundation              | Jabber Africa Foundation    | Non-Profit Organization     | 2004-03-09    |
 | Jabber GG Transport                   | Jacek Konieczny             | Open-Source Project         | 2006-01-13    |
