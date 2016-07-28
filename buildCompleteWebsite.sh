@@ -48,6 +48,13 @@ if [ ! -d "texml-2.0.2" ]; then
 	python setup.py build
 	cd ..
 fi
+if [ -d "registrar" ]; then
+	cd registrar
+	git pull
+	cd ..
+else
+	git clone https://github.com/xsf/registrar
+fi
 cd ..
 
 export PYTHONPATH="$PWD/build/texml-2.0.2/build/lib.linux-x86_64-2.7:$PYTHONPATH"
@@ -55,5 +62,12 @@ $PWD/build/xsf-tools/build.py -d -x $PWD/build/xeps -o $PWD/content/extensions -
 cp $PWD/build/xeps/prettify.css $PWD/content/extensions
 cp $PWD/build/xeps/prettify.js $PWD/content/extensions
 cp $PWD/build/xeps/xmpp.css $PWD/content/extensions
+
+# Build registry and put it into content/registrar so Pelican can process it
+cd $PWD/build/registrar
+mkdir -p $BASEDIR/content/registrar
+./all.sh $BASEDIR/content/registrar
+cd $BASEDIR
+
 $PELICAN $INPUTDIR -o $OUTPUTDIR -s $PUBLISHCONF $PELICANOPTS
 sed -e '/<!--REPLACE_XEPLIST_TABLE_HERE-->/ {' -e 'r content/extensions/xeplist.txt' -e 'd' -e '}' -i output/extensions/index.html

@@ -18,7 +18,8 @@ DEFAULT_METADATA = [
   ('is_blog', 'false')
 ]
 
-STATIC_PATHS = [ 'CNAME', 'images', 'scripts', 'extensions', 'icons', 'icons/favicon.ico', 'robots.txt' ]
+STATIC_PATHS = [ 'CNAME', 'images', 'scripts', 'extensions', 'icons', 'icons/favicon.ico', 'robots.txt', 'registrar']
+PAGE_PATHS = ['registrar']
 EXTRA_PATH_METADATA = {
   'icons/favicon.ico': { 'path': 'favicon.ico' }
 }
