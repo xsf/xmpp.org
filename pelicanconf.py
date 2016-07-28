@@ -19,7 +19,7 @@ DEFAULT_METADATA = [
 ]
 
 STATIC_PATHS = [ 'CNAME', 'images', 'scripts', 'extensions', 'icons', 'icons/favicon.ico', 'robots.txt', 'registrar']
-PAGE_PATHS = ['registrar']
+PAGE_PATHS = ['pages', 'registrar']
 EXTRA_PATH_METADATA = {
   'icons/favicon.ico': { 'path': 'favicon.ico' }
 }
