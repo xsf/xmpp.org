@@ -29,7 +29,7 @@ Three features make XMPP a great choice for powering social projects:
 
 Firstly, because each user connects with their username (in XMPP-speak, their `JID`), a social service can always be sure that only the right user is getting the right information. This baked-in security means XMPP is particularly a great fit for building secure group sharing applications.  
 
-Secondly, XMPP's realtime nature means users of a social service will receive immediate updates when another user does somethign that involves them (for example: `you were @mentioned in tybalts-party@capulet.lit`).
+Secondly, XMPP's realtime nature means users of a social service will receive immediate updates when another user does something that involves them (for example: `you were @mentioned in tybalts-party@capulet.lit`).
 
 Finally XMPP's publish-subscribe constructs make a great foundation for building activity-feed type applications. Users can post to their feed, and XMPP will take care of propogating the updates to that user's subscribers in a secure way.
 
