@@ -25,31 +25,31 @@ An XMPP server provides basic messaging, presence, and XML routing features. Thi
 
 __See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If you spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org)
 
-| Name                                              | Platform(s)                          | License                    |
-|---------------------------------------------------|--------------------------------------|----------------------------|
-| [Apache Vysper](http://mina.apache.org)          | Windows / Linux                      | Apache License Version 2.0  |
-| [Citadel](http://citadel.org)              | Linux                                | GPL3                        |
-| [CommuniGate Pro](http://communigate.com)          | Linux / Mac OS X / Windows           | Commercial                  |
-| [Coversant SoapBox Server](http://coversant.com)            | Windows                              | Commercial                  |
-| [djabberd](http://danga.com)                | Linux                                | GPL3                        |
-| [ejabberd](http://process-one.net)          | Linux / Mac OS X / Solaris / Windows | GPL2                        |
-| [IceWarp](http://icewarp.com)              | Linux / Windows                      | Commercial                  |
-| [iChat Server](http://apple.com)                | Mac OS X                             | Commercial                  |
-| [in.jabberd](http://inetdxtra.sourceforge.net)| Linux                                | GPL2                        |
-| [Isode M-Link](http://isode.com)                | Linux / Solaris / Windows            | Commercial                  |
-| [Jabber XCP](http://cisco.com)                | Linux / Solaris / Windows            | Commercial                  |
-| [jabberd 1.x](http://jabberd.org)              | Linux                                | GPL2                        |
-| [jabberd 2.x](http://jabberd2.org)             | Linux / *BSD / Solaris / Windows     | GPL2                        |
-| [Jerry Messenger](http://j-livesupport.com)        | Linux / Windows                      | Commercial                  |
-| [Kwickserver](http://kwickserver.info)         | Windows                              | GPL                         |
-| [Metronome IM](http://lightwitch.org/metronome) | Linux / Mac OS X                     | ISC/MIT                     |
-| [MongooseIM](http://erlang-solutions.com)     | Linux / Mac OS X                     | GPL2                        |
-| [Openfire](http://igniterealtime.org)       | Linux / Mac OS X / Solaris / Windows | Apache                      |
-| [Oracle Communications IM Server](http://oracle.com)               | Linux / Solaris / Windows            | Commercial                  |
-| [Prosody IM](http://prosody.im)               | Linux / Mac OS X / Windows           | MIT/X11                     |
-| [psyced](http://psyced.org)               | Linux / Mac OS X / Windows           | GPL2                        |
-| [Siemens OpenScape](http://siemens-enterprise.com)   | Linux                                | Commercial                  |
-| [Tigase](http://tigase.org)               | Linux / Solaris / Mac OS X / Windows | AGPL                        |
-| [Vines](http://getvines.com)             | Linux / Mac OS X                     | MIT                         |
-| [Wokkel](http://wokkel.ik.nu)             | Linux / Solaris / Mac OS X           | MIT                         |
+| Name                                                 | Platform(s)                          |
+|------------------------------------------------------|--------------------------------------|
+| [Apache Vysper](http://mina.apache.org)              | Windows / Linux                      |
+| [Citadel](http://citadel.org)                        | Linux                                |
+| [CommuniGate Pro](http://communigate.com)            | Linux / Mac OS X / Windows           |
+| [Coversant SoapBox Server](http://coversant.com)     | Windows                              |
+| [djabberd](http://danga.com)                         | Linux                                |
+| [ejabberd](http://process-one.net)                   | Linux / Mac OS X / Solaris / Windows |
+| [IceWarp](http://icewarp.com)                        | Linux / Windows                      |
+| [iChat Server](http://apple.com)                     | Mac OS X                             |
+| [in.jabberd](http://inetdxtra.sourceforge.net)       | Linux                                |
+| [Isode M-Link](http://isode.com)                     | Linux / Solaris / Windows            |
+| [Jabber XCP](http://cisco.com)                       | Linux / Solaris / Windows            |
+| [jabberd 1.x](http://jabberd.org)                    | Linux                                |
+| [jabberd 2.x](http://jabberd2.org)                   | Linux / *BSD / Solaris / Windows     |
+| [Jerry Messenger](http://j-livesupport.com)          | Linux / Windows                      |
+| [Kwickserver](http://kwickserver.info)               | Windows                              |
+| [Metronome IM](http://lightwitch.org/metronome)      | Linux / Mac OS X                     |
+| [MongooseIM](http://erlang-solutions.com)            | Linux / Mac OS X                     |
+| [Openfire](http://igniterealtime.org)                | Linux / Mac OS X / Solaris / Windows |
+| [Oracle Communications IM Server](http://oracle.com) | Linux / Solaris / Windows            |
+| [Prosody IM](http://prosody.im)                      | Linux / Mac OS X / Windows           |
+| [psyced](http://psyced.org)                          | Linux / Mac OS X / Windows           |
+| [Siemens OpenScape](http://siemens-enterprise.com)   | Linux                                |
+| [Tigase](http://tigase.org)                          | Linux / Solaris / Mac OS X / Windows |
+| [Vines](http://getvines.com)                         | Linux / Mac OS X                     |
+| [Wokkel](http://wokkel.ik.nu)                        | Linux / Solaris / Mac OS X           |
 
