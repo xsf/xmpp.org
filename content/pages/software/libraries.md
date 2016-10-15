@@ -77,6 +77,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Sharp.Xmpp](https://github.com/pgstath/Sharp.Xmpp)                       | C# / .net / Mono                    |
 | [Skates](https://github.com/julien51/skates)                              | Ruby                                |
 | [SleekXMPP](https://github.com/fritzy/SleekXMPP)                          | Python                              |
+| [Slixmpp](https://dev.louiz.org/projects/slixmpp)                         | Python                              |
 | [Smack](http://www.igniterealtime.org/projects/smack)                     | Java (Java SE 7 and Android)        |
 | [stanza.io](https://github.com/otalk/stanza.io)                           | JavaScript                          |
 | [strophe.js](http://strophe.im/strophejs)                                 | JavaScript                          |
