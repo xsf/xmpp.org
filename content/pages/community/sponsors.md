@@ -69,8 +69,15 @@ Founded in 1954, KOLON industries, one of the biggest corporations in South Kore
 
 [![](/images/logos/process-one.png)](/sponsors/processone)
 
-ProcessOne is a leading provider in messaging platforms made for scale and robustness. ProcessOne is the company that has developed ejabberd, an ubiquitous XMPP server that has been deployed to power some of the largest messaging platform in the world.
+ProcessOne is a leading provider in messaging platforms made for scale and robustness. ProcessOne is the company that has developed ejabberd, a ubiquitous XMPP server that has been deployed to power some of the largest messaging platform in the world.
 ([more about ProcessOne](/sponsors/processone))
+
+
+### Tigase
+
+[![](/images/logos/tigase.png)](/sponsors/tigase)
+
+Tigase, Inc. is a leading provider of customized implementations of XMPP-based software. Written in Java, Tigase XMPP Server can run on any hardware supporting the Java Development Kit, and can easily scale from small single machine installations to millions of users on a clustered network ([more about Tigase](/sponsors/tigase))
 
 
 ### US Secure Hosting Center
