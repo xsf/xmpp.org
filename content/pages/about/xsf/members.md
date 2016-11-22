@@ -34,18 +34,18 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ludovic Bocquet
 - Travis Burtrum 
 - Davide Conzon
-- Dave Cridland (XSF Board)
+- Dave Cridland (XSF Council)
 - Laura Crossley
 - Guus der Kinderen
 - Sergey Dobrov
 - Xander Dumaine
-- Emmanuel Gil Peyrot
+- Emmanuel Gil Peyrot (XSF Council)
 - Alexander Gnauck (infrastructure)
 - Marcin Gondek 
-- Daniel Gultsch
-- Philipp Hancke (XMPP Council)
+- Daniel Gultsch (XSF Council)
+- Philipp Hancke
 - Artur Hefczyc
-- Martin Hewitt
+- Martin Hewitt (XSF Board)
 - Waqas Hussain
 - Emil Ivov
 - Timothée Jaussoin
@@ -55,33 +55,33 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Joachim Lindborg
 - Georg Lukas
 - Bartosz Malkowski
-- Tobias Markmann (XMPP Council, infrastructure)
+- Tobias Markmann (XSF Council, infrastructure)
 - Ralph Meijer (XSF Board)
-- Matthew Miller (editor)
+- Matthew Miller (XSF Board, editor)
 - Jack Moffitt (infrastructure)
 - Edwin Mons (infrastructure)
 - Sonny Piers
 - Jérôme Poisson
 - Mickaël Rémond
-- Arc Riley
-- Peter Saint-Andre (Executive Director, XEP Editor,XMPP Registrar, infrastructure)
+- Arc Riley (XSF Board)
+- Peter Saint-Andre (Executive Director, XEP Editor, XMPP Registrar, infrastructure)
 - Jonathan Schleifer
 - Florian Schmaus
 - Jonathan Siegle (infrastructure)
-- Kevin Smith (XMPP Council, infrastructure,
-- Lance Stout (XMPP Council)
+- Kevin Smith (infrastructure)
+- Lance Stout
 - Rikard Strid
 - Stefan Strigler (editor)
-- Mike Taylor (XSF Board)
-- Simon Tennant (XSF Board)
+- Mike Taylor
+- Simon Tennant
 - Marcelo Terres
 - Winfried Tilanus (editor)
-- Nicolas Vérité
+- Nicolas Vérité (XSF Board)
 - Peter Waher
 - Ashley Ward (editor)
 - Lloyd Watkin (editor)
-- Sam Whited
-- Matthew Wild (XMPP Council, infrastructure)
+- Sam Whited (XSF Council)
+- Matthew Wild (infrastructure)
 - Daniel Wisnewski
 - Andrzej Wójcik
 - Florian Zeitz
