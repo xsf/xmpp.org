@@ -27,15 +27,12 @@ Content_layout: multiple-columns
 
 The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](/extensions/xep-README.html) and the [XMPP Registrar](/extensions/xep-0053.html). The current members of the team are:
 
-- Steffen Larsen
-- Matthew Miller
 - Peter Saint-Andre
-- Stefan Strigler
-- Winfried Tilanus
-- Ashley Ward
-- Lloyd Watkin
+- Florian Schmaus
+- Kevin Smith
+- Sam Whited
 
-NOTE: In order to send email to the team (via editor@xmpp.org), you MUST include the string “XEP” in the subject line!
+NOTE: In order to send email to the team (via [editor@xmpp.org](mailto:editor@xmpp.org)), you MUST include the string “XEP” in the subject line!
 
 Additional resources can be found at the [wiki page](http://wiki.xmpp.org/web/Editor_team).
 
@@ -46,7 +43,7 @@ The charter of the team is as follows:
 > functioned as the responsible party for the XMPP Registrar (see [3]
 > and [4]). In order to manage these processes in a sustainable way,
 > this charter defines an XSF Work Team with the following goals:
-> 
+>
 > 1. Refine and continually improve team work processes for management of
 > the XEP Editor and XMPP Registrar functions, consistent with XEP-0001
 > and XEP-0053.
