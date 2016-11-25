@@ -51,36 +51,36 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Timothée Jaussoin
 - Wojciech Kapcia
 - Dariel Kremov
-- Steffen Larsen (editor)
+- Steffen Larsen
 - Joachim Lindborg
 - Georg Lukas
 - Bartosz Malkowski
 - Tobias Markmann (XMPP Council, infrastructure)
 - Ralph Meijer (XSF Board)
-- Matthew Miller (XSF Board, editor)
+- Matthew Miller (XSF Board)
 - Jack Moffitt (infrastructure)
 - Edwin Mons (infrastructure)
 - Sonny Piers
 - Jérôme Poisson
 - Mickaël Rémond
 - Arc Riley (XSF Board)
-- Peter Saint-Andre (Executive Director, XEP Editor, XMPP Registrar, infrastructure)
+- Peter Saint-Andre (Executive Director, XMPP Registrar, editor, infrastructure)
 - Jonathan Schleifer
-- Florian Schmaus
+- Florian Schmaus (editor)
 - Jonathan Siegle (infrastructure)
-- Kevin Smith (infrastructure)
+- Kevin Smith (editor, infrastructure)
 - Lance Stout
 - Rikard Strid
-- Stefan Strigler (editor)
+- Stefan Strigler
 - Mike Taylor
 - Simon Tennant
 - Marcelo Terres
-- Winfried Tilanus (editor)
+- Winfried Tilanus
 - Nicolas Vérité (XSF Board)
 - Peter Waher
-- Ashley Ward (editor)
-- Lloyd Watkin (editor)
-- Sam Whited (XMPP Council)
+- Ashley Ward
+- Lloyd Watkin
+- Sam Whited (XMPP Council, editor)
 - Matthew Wild (infrastructure)
 - Daniel Wisnewski
 - Andrzej Wójcik
