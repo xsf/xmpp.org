@@ -35,7 +35,7 @@ The Council is elected by the members of the XMPP Standards Foundation. In the i
 The Council (2016-2017) consists of the following individuals:
 
 - __Sam Whited__ has authored and co-authored a number of XEPs and is an occasional contributor to various XMPP clients and servers. He also serves on the [Editor Team](/about/xsf/editor-team) and can most easily be reached via [XMPP](xmpp:sam@samwhited.com).
-- __Tobias Markmann__
+- __Tobias Markmann__ currently works on the [Swift](https://swift.im) chat client and related projects at Isode Ltd., has authored a couple XEPs, and has previously been serving the XMPP Council from 2012-2014 and in 2016.
 - __Dave Cridland__
 - __Daniel Gultsch__
 - __Emmanuel Gil Peyrot__
