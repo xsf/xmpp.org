@@ -93,4 +93,4 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [xmpp-client](https://github.com/agl/xmpp-client) | Linux / OSX |
 | [xmppchat](http://babelmonkeys.de)                       | Browser                                                |
 | [XMPPWebChat](https://github.com/udayg/xmppwebchat)                    | Browser                                                |
-| [yaxim](http://yaxim.org)                          | Mobile (Android)                                       |
+| [yaxim](https://yaxim.org)                          | Mobile (Android)                                       |
