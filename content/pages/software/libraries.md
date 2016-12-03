@@ -62,8 +62,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [libstrophe](http://strophe.im)                                           | C                                   |
 | [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple)             | C/C++                               |
 | [Lightr](https://github.com/myYearbook/lightr)                            | PHP                                 |
-| Loudmouth                                                                 | C                                   |
-| Loudmouth                                                                 | Ruby                                |
+| [Loudmouth](https://github.com/mcabber/loudmouth)                         | C                                   |
 | [MatriX](http://ag-software.net)                                          | C# / .net) / Mono                   |
 | net::XMPP                                                                 | Perl                                |
 | [node-xmpp](http://node-xmpp.org)                                         | JavaScript                          |
