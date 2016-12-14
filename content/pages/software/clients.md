@@ -34,6 +34,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
 | [BitlBee](http://bitlbee.org)                        | Linux                                              |
 | [BlueJabb](http://bluejabb.com)                       | Mobile (Android, Blackberry (BBOS), Nokia Symbian S40/S60 and Asha)      |
+| [Boogie Chat](https://itunes.apple.com/app/boogie-chat/id779423907?mt=8) | Mobile (iOS)  | 
 | [Buddycloud](http://buddycloud.com)                  | Mobile / Web / Console                                    |
 | [Candy](https://candy-chat.github.io/candy/)                          | Browser                                                |
 | [Coccinella](http://coccinella.im)                     | Linux / OSX / Windows                                  |
