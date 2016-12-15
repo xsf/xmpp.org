@@ -29,6 +29,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | Name                           | Platform(s)                                           |
 |--------------------------------|-------------------------------------------------------|
 | [Adium](http://adium.im)                          | OSX                                                |
+| [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX                                                   |
 | [AQQ](http://aqq.eu)                            | Windows                                            |
 | [AstraChat](http://astrachat.com)                      | Mobile (Android, iOS) / Linux / OSX / Windows                            |
 | [Beem](http://beem-project.com)                           | Mobile (Android)                                   |
@@ -37,6 +38,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Boogie Chat](https://itunes.apple.com/app/boogie-chat/id779423907?mt=8) | Mobile (iOS)  | 
 | [Buddycloud](http://buddycloud.com)                  | Mobile / Web / Console                                    |
 | [Candy](https://candy-chat.github.io/candy/)                          | Browser                                                |
+| [ChatSecure](https://chatsecure.org/)                     | Mobile (Android, iOS)                                  |
 | [Coccinella](http://coccinella.im)                     | Linux / OSX / Windows                                  |
 | [Conversations](https://github.com/siacs/Conversations)                  | Mobile (Android)              |
 | [Converse.js](http://conversejs.org)                    | Browser                                                |
@@ -45,10 +47,8 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Empathy](https://wiki.gnome.org/Apps/Empathy)                        | Linux                                                  |
 | [Finch](http://developer.pidgin.im)                          | Console / Text-Mode                                 |
 | [Gajim](http://gajim.org)                          | Linux / Windows                                        |
-| [ChatSecure](http://guardianproject.info)                     | Mobile (Android)                                  |
 | [GNU Freetalk](https://gnufreetalk.github.io/)                   | Console / Text-Mode                                    |
 | [GreenJab](http://bvstools.com)                       | IBM i                                                  |
-| [Apple Messages](http://www.apple.com/ios/messages/)                          | OSX                                                   |
 | [IM+](http://shapeservices.com)                            | Mobile                                                 |
 | [Instantbird](http://instantbird.com)                    | Linux / OSX / Windows                                  |
 | [irssi-xmpp](http://cybione.org)                     | Console / Text-Mode                                    |
@@ -64,16 +64,16 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [mcabber](http://mcabber.com)                        | Console / Text-Mode                                    |
 | [Miranda IM](http://miranda-im.org)                     | Windows                                                |
 | [Miranda NG](http://miranda-ng.org)                     | Windows                                                |
-| [Movim](https://movim.eu)                         | Browser                                                |
 | [Monal IM](http://monal.im)                       | Mobile (iOS)                                           |
+| [Movim](https://movim.eu)                         | Browser                                                |
 | [Mozilla Thunderbird](http://mozilla.org/thunderbird)            | Linux / OSX / Windows                       |
-| [OneTeam](http://oneteam.im)                        | Linux / OSX / Windows                                  |
 | [OneTeam for iPhone](http://oneteam.im)             | Mobile (iOS)                                           |
-| [Poezio](https://poez.io)                           | Console / Text-Mode                                    |
+| [OneTeam](http://oneteam.im)                        | Linux / OSX / Windows                                  |
 | [Pidgin](http://pidgin.im)                         | Linux / OSX / Windows                                  |
+| [Poezio](https://poez.io)                           | Console / Text-Mode                                    |
 | [Profanity](http://profanity.im)                      | Console / Text-Mode                                    |
-| [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
 | [Psi+](http://psi-plus.com)                           | Linux / OSX / Windows                                  |
+| [Psi](http://psi-im.org)                            | Linux / OSX / Windows                                  |
 | [Quiet Internet Pager](http://forum.qip.ru)     | Windows                                                |
 | [qutIM](http://qutim.org)                          | Linux / OSX / Windows                                  |
 | [Salut à Toi](https://salut-a-toi.org/)             | Linux / Console / Text-Mode / Browser                  |
