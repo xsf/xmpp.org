@@ -51,7 +51,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [iksemel](http://code.google.com/p/iksemel)                               | C                                   |
 | [IP*Works Internet Toolkit](https://www.nsoftware.com/ipworks/)           | ActiveX, C++, C#,                   |
 | [Iris](https://github.com/psi-im/iris)                                    | C++                                 |
-| [jabber.net)](https://code.google.com/archive/p/jabber-net/)              | C# / .net) / Mono                   |
+| [jabber.net](https://code.google.com/archive/p/jabber-net/)               | C# / .net / Mono                    |
 | [jabber.py](http://jabberpy.sourceforge.net/)                             | Python                              |
 | [JabberLib](http://coccinella.im)                                         | Tcl                                 |
 | [Jabber Stream Objects (JSO)](https://java.net/projects/jso)              | Java                                |
@@ -63,7 +63,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple)             | C/C++                               |
 | [Lightr](https://github.com/myYearbook/lightr)                            | PHP                                 |
 | [Loudmouth](https://github.com/mcabber/loudmouth)                         | C                                   |
-| [MatriX](http://ag-software.net)                                          | C# / .net) / Mono                   |
+| [MatriX](http://ag-software.net)                                          | C# / .net / Mono                    |
 | net::XMPP                                                                 | Perl                                |
 | [node-xmpp](http://node-xmpp.org)                                         | JavaScript                          |
 | oajabber                                                                  | C++                                 |
