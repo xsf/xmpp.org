@@ -38,4 +38,4 @@ The Council (2016-2017) consists of the following individuals:
 - __Tobias Markmann__ currently works on the [Swift](https://swift.im) chat client and related projects at Isode Ltd., has authored a couple XEPs, and has previously been serving the XMPP Council from 2012-2014 and in 2016.
 - __Dave Cridland__ works on [Metre](https://github.com/dwd/metre) and [Openfire](https://igniterealtime.org) and nebulous things at [Surevine](https://surevine.com/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
 - __Daniel Gultsch__
-- __Emmanuel Gil Peyrot__
+- __Emmanuel Gil Peyrot__ is a maintainer of the [poezio](https://poez.io) client, the [slixmpp](https://dev.louiz.org/projects/slixmpp) Python library, system administrator for [JabberFR](https://jabberfr.org) and XMPP enthousiast; you can contact him for anything via [XMPP](xmpp:linkmauve@linkmauve.fr).
