@@ -60,6 +60,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [JSXC](http://jsxc.org)                           | Browser                                                |
 | [JWChat](http://stefan-strigler.de/jwchat)                         | Browser                                 |
 | [Kadu](http://kadu.net)                           | Linux / OSX / Windows                                  |
+| [Kaiwa](http://getkaiwa.com/)                           | Browser                                  |
 | [Kopete](http://kopete.kde.org)                         | Linux                                                  |
 | [mcabber](http://mcabber.com)                        | Console / Text-Mode                                    |
 | [Miranda IM](http://miranda-im.org)                     | Windows                                                |
