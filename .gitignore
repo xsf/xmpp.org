@@ -11,6 +11,7 @@
 .DS_Store
 .project
 .sass-cache/
+.vagrant/
 output/
 bower_components
 node_modules
