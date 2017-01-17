@@ -24,10 +24,10 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 As with e-mail, you'll need an account with a service provider. Again, there are [plenty of choices](https://xmpp.net/directory.php), from which these are only a couple of the more popular ones:
 
+* [xmpp.jp](https://www.xmpp.jp/signup)
+* [jabber.ru](https://jabber.ru/user/register)
 * [Lorem ipsum](http://example.org)
 * [Dolor sit amet](http://example.org)
-* [Something like four](http://example.org)
-* [choices would do](http://example.org)
 
 # 3. Log in! That's it!
 
