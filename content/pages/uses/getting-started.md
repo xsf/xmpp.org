@@ -17,8 +17,9 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 * [Conversations](https://play.google.com/store/apps/details?id=eu.siacs.conversations&referrer=utm_source%3Dxmpp.org) (Android)
 * [Swift.IM](http://swift.im/swift.html) (OS X, Windows & Linux)
-* [Lorem ipsum](http://example.org)
-* [Dolor sit amet](http://example.org)
+* [Gajim](https://gajim.org/) (Windows & Linux)
+* [Adium](https://adium.im/) (OS X)
+* [Pidgin](http://pidgin.im/) (OS X, Windows & Linux)
 
 # 2. Create an account
 
@@ -26,8 +27,8 @@ As with e-mail, you'll need an account with a service provider. Again, there are
 
 * [xmpp.jp](https://www.xmpp.jp/signup)
 * [jabber.ru](https://jabber.ru/user/register)
-* [Lorem ipsum](http://example.org)
-* [Dolor sit amet](http://example.org)
+* [JWChat](https://accounts.jwchat.org/)
+* [jabber.at](https://jabber.at/account/register/)
 
 # 3. Log in! That's it!
 
