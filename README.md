@@ -28,23 +28,30 @@ Site generation
 * New content is deployed to [gh-pages branch](https://github.com/xsf/xmpp.org/tree/gh-pages)
 * and visible on http://new.xmpp.org
 
-## Gentle introduction to Pelican
-
-Pelican's [QUICKSTART](http://docs.getpelican.com/en/latest/quickstart.html) page is a good place to learn about the basics of Pelican (installation, project skeleton, development cycle, etc.).
-
-### Installation instructions
-```bash
-git clone ssh://git@github.com/xsf/xmpp.org.git
-# install Pelican and dependencies
-cd xmpp.org
-```
-### Requirements
+## Software Requirements
 
 * Pelican 3.3
 * ghp-import
 * Markdown 2.3.1
 
-### Runing the server in development mode
+## Gentle introduction to Pelican
+
+Pelican's [QUICKSTART](http://docs.getpelican.com/en/latest/quickstart.html) page is a good place to learn about the basics of Pelican (installation, project skeleton, development cycle, etc.).
+
+## Installation instructions 
+
+Two types of installations are documented: a regular one, and one that creates a virtual environment via Vagrant.
+
+### Regular installation
+To run a development server on your local computer, follow these basic steps:
+
+```bash
+git clone ssh://git@github.com/xsf/xmpp.org.git
+# install Pelican and dependencies
+cd xmpp.org
+```
+
+Running the server in development mode:
 
 ```bash
 make serve
@@ -55,9 +62,25 @@ If you want the server to autoreload whenever a file change, you can instead do:
 ```bash
 make devserver
 ```
+
 View at `http://localhost:8000`
 
-### Configuration
+### Vagrant-based installation
+For your convenience, this repository ships with a basic Vagrantfile, which allows you to create virtual machine with all the dependencies required for local development.
+
+Assuming your computer has [Vagrant](https://www.vagrantup.com/) installed, the following will get you a running server:
+```bash
+git clone ssh://git@github.com/xsf/xmpp.org.git
+cd xmpp.org
+vagrant up
+vagrant ssh
+cd /vagrant/
+make devserver
+```
+
+Now, the wesite should be available at `http://localhost:8000`
+
+## Configuration
 
 ```
 <repo>
@@ -76,7 +99,7 @@ View at `http://localhost:8000`
     <website theme>
 ```
 
-### Site generation
+## Site generation
 
 To just generate a new version (without starting up a local webserver) just do:
 
