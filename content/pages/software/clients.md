@@ -58,7 +58,6 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [Jappix](http://jappix.org)                         | Browser                                                |
 | [Jitsi](http://jitsi.org)       | Linux / OSX / Windows                                               |
 | [JSXC](http://jsxc.org)                           | Browser                                                |
-| [JWChat](http://stefan-strigler.de/jwchat)                         | Browser                                 |
 | [Kadu](http://kadu.net)                           | Linux / OSX / Windows                                  |
 | [Kaiwa](http://getkaiwa.com/)                           | Browser                                  |
 | [Kopete](http://kopete.kde.org)                         | Linux                                                  |
