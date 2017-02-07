@@ -3,6 +3,7 @@ title: Google Summer of Code 2017
 date: 2017-02-05 18:47
 author: Guus
 blog_id: blog
+category: Google Summer of Code
 ---
 
 As before, the [XSF](http://xmpp.org/) will apply to this years [Google Summer of Code](https://summerofcode.withgoogle.com/). 
