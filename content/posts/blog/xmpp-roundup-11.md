@@ -3,6 +3,7 @@ title: XMPP Roundup 11
 date: 2009-07-29 11:16
 author: Nyco
 blog_id: blog
+category: XMPP Roundup
 ---
 
 [Reporters: Nicolas Vérité and Peter Saint-Andre]

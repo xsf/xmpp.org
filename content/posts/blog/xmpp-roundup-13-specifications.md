@@ -3,6 +3,7 @@ title: XMPP Roundup 13: Specifications
 date: 2010-02-22 11:50
 author: Nyco
 blog_id: blog
+category: XMPP Roundup
 ---
 
 Welcome to the Specification part of the XMPP Roundup \#13, your irregular news from the XMPP community. It has been a long time since we have reported on specifications changes. Here is a short summary of what happened since September.

@@ -3,6 +3,7 @@ title: FOSDEM podcast: Florian Jensen
 date: 2010-06-09 12:00
 author: Nyco
 blog_id: blog
+category: FOSDEM
 ---
 
 This is the third in a series of podcasts made at FOSDEM in Brussels, Belgium.

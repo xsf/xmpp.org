@@ -3,6 +3,7 @@ title: Elections
 date: 2007-08-15 15:50
 author: stpeter
 blog_id: blog
+category: XSF Organisational
 ---
 
 Every year is an election for the [XMPP Standards Foundation](http://www.xmpp.org/), because since 2001 we have elected a new [XMPP Council](http://www.xmpp.org/council) (our technical leadership team) and a new [Board of Directors](http://www.xmpp.org/xsf/board/) (our business leadership team) in late August or September.

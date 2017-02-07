@@ -3,6 +3,7 @@ title: GSoC Update 11 Apr 2010
 date: 2010-04-12 02:20
 author: bear
 blog_id: blog
+category: Google Summer of Code
 ---
 
 The deadline for Student Proposals has come and gone and the XSF has received quite a few proposals covering a wide range of topics, clients and servers!

@@ -3,6 +3,7 @@ title: FOSDEM 2012 Report
 date: 2012-03-14 12:30
 author: stpeter
 blog_id: blog
+category: FOSDEM
 ---
 
 On February 3-6, the XSF and members of the XMPP community participated in both XMPP Summit 11 and FOSDEM 2012 in Brussels, Belgium. This is a late report about the activities there, based on the notes made at the time about the [Summit](http://mail.jabber.org/pipermail/summit/2012-February/001084.html) and [FOSDEM](http://mail.jabber.org/pipermail/members/2012-February/006679.html) in general.

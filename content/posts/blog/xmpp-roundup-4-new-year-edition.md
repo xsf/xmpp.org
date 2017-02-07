@@ -3,6 +3,7 @@ title: XMPP Roundup #5 "New Year edition"
 date: 2009-01-04 03:57
 author: Nyco
 blog_id: blog
+category: XMPP Roundup
 ---
 
 Welcome to the fifth [roundup](http://blog.xmpp.org/?cat=12) of XMPP activity worldwide. This report is authored by [Nicolas Vérité](http://nyco.wordpress.com/), [Laurent Lathieyre](http://ubikod.com/otmf/) and [Jack Moffitt](http://metajack.im/). This is a very long article since we had a lot of activity these weeks.

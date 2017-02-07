@@ -3,6 +3,7 @@ title: XSF Membership Voting has started
 date: 2010-11-30 11:22
 author: bear
 blog_id: blog
+category: XSF Organisational
 ---
 
 Part of the membership process for the XSF is that new and renewing members post to our wiki their "application" and current members vote to approve the application - this proxy voting has now started and will continue until the close of business on December 14th. On December 15th we will have one of the few required "all hands" meetings to formally approve the voting results.

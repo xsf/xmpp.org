@@ -3,6 +3,7 @@ title: Google Summer of Code 2011 - we are in!
 date: 2011-03-18 14:52
 author: bear
 blog_id: blog
+category: Google Summer of Code
 ---
 
 The [XSF](http://xmpp.org/) has been invited to participate in Google's [Summer of Code 2011](http://code.google.com/soc/)! Great job by everyone in making our application something the Goog couldn't resist ;)

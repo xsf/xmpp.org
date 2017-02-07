@@ -3,6 +3,7 @@ title: XMPP Roundup 13: Articles, talks and events
 date: 2010-01-04 16:05
 author: Nyco
 blog_id: blog
+category: XMPP Roundup
 ---
 
 As the XMPP Roundup posts are growing longer each time we send one out, we've decided to split them into smaller posts, each covering a different aspect of XMPP news:

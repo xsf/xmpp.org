@@ -3,6 +3,7 @@ title: 2013 XSF Board and Tech Council
 date: 2012-12-07 02:57
 author: bear
 blog_id: blog
+category: XSF Organisational
 ---
 
 At the last annual meeting (and yes, we are rather late reporting this) the results of the vote as gathered and tabulated:

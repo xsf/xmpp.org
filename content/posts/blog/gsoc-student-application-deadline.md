@@ -3,6 +3,7 @@ title: GSoC Student Application Deadline
 date: 2010-04-02 13:17
 author: bear
 blog_id: blog
+category: Google Summer of Code
 ---
 
 Just a reminder to folks (aka Students) that the deadline for Student Proposals is April 9th.

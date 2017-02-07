@@ -3,6 +3,7 @@ title: XMPP Summit 5
 date: 2010-08-10 04:36
 author: admin
 blog_id: blog
+category: XMPP Summit
 ---
 
 The XMPP Standards Foundation will hold its fifth "XMPP Summit" meeting on July 21 and 22, 2008, in Portland, Oregon, USA (the same week as [OSCON 2008](http://conferences.oreilly.com/oscon/)).
