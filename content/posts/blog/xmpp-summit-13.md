@@ -3,6 +3,7 @@ title: XMPP Summit 13
 date: 2013-07-30 12:52
 author: joachim.lindborg
 blog_id: blog
+category: XMPP Summit
 ---
 
 XSF held its 13th XMPP Summit in Brussels, Belgium on January 31 and February 1, 2013. The Thursday and Friday before FOSDEM 2013.

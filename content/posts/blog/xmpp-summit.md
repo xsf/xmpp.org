@@ -3,6 +3,7 @@ title: XMPP Summit
 date: 2012-06-15 12:05
 author: stpeter
 blog_id: blog
+category: XMPP Summit
 ---
 
 We've decided to hold the next XMPP Summit in Portland, Oregon at the end of October. Mark your calendars for October 25th, which is the day after the [Keeping it Realtime conference](http://2012.krtconf.com/). Co-locating the XMPP Summit with krtconf makes a lot of sense, since both events are focused on building real-time applications.

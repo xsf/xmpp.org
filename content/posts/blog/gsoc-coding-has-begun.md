@@ -3,6 +3,7 @@ title: GSoC Coding Has Begun
 date: 2012-06-08 11:45
 author: stpeter
 blog_id: blog
+category: Google Summer of Code
 ---
 
 Our [Google Summer of Code students](/2012/04/and-our-gsoc-students-are/) are merrily coding away now.

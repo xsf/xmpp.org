@@ -3,6 +3,7 @@ title: XMPP Roundup #7: Brussels Report
 date: 2009-02-25 21:44
 author: stpeter
 blog_id: blog
+category: XMPP Roundup
 ---
 
 [Reporter: Peter Saint-Andre]

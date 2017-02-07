@@ -3,6 +3,7 @@ title: Google Summer of Code 2014
 date: 2014-02-28 12:25
 author: laura
 blog_id: blog
+category: Google Summer of Code
 ---
 
 While the XSF may not be mentoring a project in this years [Google's Summer of Code 2014](http://code.google.com/soc/) -  we sure can celebrate and shout about the fact that some of the projects include XMPP as part of their project ideas!

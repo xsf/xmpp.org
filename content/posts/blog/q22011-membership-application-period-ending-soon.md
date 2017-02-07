@@ -3,6 +3,7 @@ title: Q2/2011 Membership Application Period ending soon!
 date: 2011-05-06 00:58
 author: bear
 blog_id: blog
+category: XSF Organisational
 ---
 
 Members who are in the list below have until the 10th of May to do reapply. You should already have a wiki account, so please visit the wiki and create your page.

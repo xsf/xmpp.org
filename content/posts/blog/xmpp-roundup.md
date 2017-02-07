@@ -3,6 +3,7 @@ title: XMPP Roundup #2
 date: 2008-11-10 15:19
 author: willsheward
 blog_id: blog
+category: XMPP Roundup
 ---
 
 This is the second in what we hope will be a regular (perhaps even weekly) roundup of blog posts, announcements, and news stories relating to and featuring XMPP.

@@ -3,6 +3,7 @@ title: XMPP Summit coming soon to a FOSDEM near you!
 date: 2012-01-06 17:27
 author: dwd
 blog_id: blog
+category: XMPP Summit
 ---
 
 As you'll be aware if you've been following the XSF's mailing lists and chatrooms, [FOSDEM 2012](http://fosdem.org/2012/ "FOSDEM 2012") is coming, and that means it's also time for the [XMPP Summit 11](http://wiki.xmpp.org/web/Summit_11 "XMPP Summit 11").

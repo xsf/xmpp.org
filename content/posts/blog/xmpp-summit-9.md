@@ -3,6 +3,7 @@ title: XMPP Summit 9
 date: 2010-12-01 10:57
 author: willsheward
 blog_id: blog
+category: XMPP Summit
 ---
 
 The ninth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation was held at [OSCON 2010](http://www.oscon.com/oscon2010) in Portland, Oregon (USA) on Monday July 19 and Tuesday July 20, 2010.

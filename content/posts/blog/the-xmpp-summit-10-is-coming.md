@@ -3,6 +3,7 @@ title: The XMPP Summit 10 is coming!
 date: 2010-12-10 07:08
 author: florian
 blog_id: blog
+category: XMPP Summit
 ---
 
 Hey, the 10th XMPP Summit is coming up quickly, so we're preparing the participant lists so that we know for how many people we need to book venues etc.

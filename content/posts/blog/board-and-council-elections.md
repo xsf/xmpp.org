@@ -3,6 +3,7 @@ title: Board and Council Elections
 date: 2009-09-01 11:58
 author: stpeter
 blog_id: blog
+category: XSF Organisational
 ---
 
 Once a year, the XMPP Standards Foundation holds elections for its [Board of Directors](http://xmpp.org/xsf/board/) and for the [XMPP Council](http://xmpp.org/council/). That time is now, so the XSF is actively soliciting people to stand for election. Here is the division of responsibilities between the two groups:

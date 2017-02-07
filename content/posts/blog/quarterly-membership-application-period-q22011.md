@@ -3,6 +3,7 @@ title: Quarterly Membership Application Period Q2/2011
 date: 2011-04-21 09:57
 author: bear
 blog_id: blog
+category: XSF Organisational
 ---
 
 The XSF is currently holding its quarterly membership application period Q2/2011

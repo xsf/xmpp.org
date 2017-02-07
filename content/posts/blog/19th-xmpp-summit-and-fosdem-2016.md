@@ -3,6 +3,7 @@ title: The 19th XMPP Summit and FOSDEM 2016
 date: 2016-02-08 22:25
 authors: Tobi; Nyco
 blog_id: blog
+category: XMPP Summit
 ---
 
 ##19th XMPP Summit

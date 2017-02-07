@@ -3,6 +3,7 @@ title: Google Summer of Code Update
 date: 2010-07-16 08:39
 author: bear
 blog_id: blog
+category: Google Summer of Code
 ---
 
 The Mentor's and Students have all been working hard with their projects and they have reached an important milestone: the mid-term evaluations!  As of a couple hours ago all of our evaluations have been submitted and they are ready to continue on towards the last half of the project.

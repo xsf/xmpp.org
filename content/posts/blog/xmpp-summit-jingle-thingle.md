@@ -3,6 +3,7 @@ title: XMPP Summit - Jingle Thingle
 date: 2009-02-06 05:33
 author: willsheward
 blog_id: blog
+category: XMPP Summit
 ---
 
 Underway...

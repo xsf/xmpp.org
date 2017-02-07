@@ -3,6 +3,7 @@ title: XMPP Roundup on new and updated software
 date: 2010-04-23 08:37
 author: Nyco
 blog_id: blog
+category: XMPP Roundup
 ---
 
 Welcome to the 14th Roundup of the XMPP community, part dedicated to new and updated software.

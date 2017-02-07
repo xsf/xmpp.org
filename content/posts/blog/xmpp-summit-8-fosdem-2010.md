@@ -3,6 +3,7 @@ title: XMPP Summit 8 / FOSDEM 2010
 date: 2009-12-23 11:28
 author: willsheward
 blog_id: blog
+category: XMPP Summit
 ---
 
 Once again the XSF will be combining one of our Summit meetings with attendance at [FOSDEM](http://fosdem.org/) in Brussels on the weekend of 6/7 February 2010.

@@ -3,6 +3,7 @@ title: XMPP Summit 13 is complete
 date: 2013-03-07 12:57
 author: bear
 blog_id: blog
+category: XMPP Summit
 ---
 
 The [XSF](http://xmpp.org "XSF") recently held the [XMPP Summit 13](http://wiki.xmpp.org/web/Summit_13 "XMPP Summit 13") in Brussels this past week, specifically January 31 and February 1, 2013 -- and truth be told we are all exhausted and amazed at how much discussion and planning can happen in two days when you get a bunch of bright, smart folks in the same room.
