@@ -32,6 +32,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - David Banes
 - Mario Behling
 - Ludovic Bocquet
+- Jac-Carel Brand
 - Travis Burtrum 
 - Davide Conzon
 - Dave Cridland (XMPP Council)
@@ -47,7 +48,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Artur Hefczyc
 - Martin Hewitt (XSF Board)
 - Waqas Hussain
-- Emil Ivov
+- Philipp Hörist
 - Timothée Jaussoin
 - Wojciech Kapcia
 - Dariel Kremov
@@ -58,9 +59,14 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Tobias Markmann (XMPP Council, infrastructure)
 - Ralph Meijer (XSF Board)
 - Matthew Miller (XSF Board)
-- Jack Moffitt (infrastructure)
 - Edwin Mons (infrastructure)
+- Piotr Nosek
+- Jonathan Pan
+- Joshua Pan
+- Mathieu Pasquet
 - Sonny Piers
+- Michal Piotrowski
+- Daniel Pocock
 - Jérôme Poisson
 - Mickaël Rémond
 - Arc Riley (XSF Board)
@@ -68,12 +74,13 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Jonathan Schleifer
 - Florian Schmaus (editor)
 - Jonathan Siegle (infrastructure)
+- Michal Slaski
 - Kevin Smith (editor, infrastructure)
 - Lance Stout
 - Rikard Strid
 - Stefan Strigler
+- Radoslaw Szymczyszyn
 - Mike Taylor
-- Simon Tennant
 - Marcelo Terres
 - Winfried Tilanus
 - Nicolas Vérité (XSF Board)
@@ -81,6 +88,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ashley Ward
 - Lloyd Watkin
 - Sam Whited (XMPP Council, editor)
+- Jonas Wielicki
 - Matthew Wild (infrastructure)
 - Daniel Wisnewski
 - Andrzej Wójcik
