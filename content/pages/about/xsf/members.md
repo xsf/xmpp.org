@@ -32,7 +32,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - David Banes
 - Mario Behling
 - Ludovic Bocquet
-- Jac-Carel Brand
+- Jan-Carel Brand
 - Travis Burtrum 
 - Davide Conzon
 - Dave Cridland (XMPP Council)
