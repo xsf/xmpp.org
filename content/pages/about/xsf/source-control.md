@@ -27,10 +27,4 @@ Content_layout: multiple-columns
 
 All specifications, XML schemas, and registries produced by the XMPP Standards Foundation are kept under source control using the open-source git system. 
 
-Anonymous checkout of these files can be completed via at the URL __https://github.com/xsf/xeps.git__
-
-The repository can be viewed and tracked on the Github mirror, [github.com/xsf/xeps](https://github.com/xsf/xeps).
-
-If you are a XEP author, please send your RSA/DSA key to the XEP Editor Team for secure check-in privileges; instead of what is shown above you will use the following command for checkout:
-
-> git clone git@perseus.jabber.org:xmpp.git
+The repository can be viewed, tracked and cloned on/from Github, [github.com/xsf/xeps](https://github.com/xsf/xeps).
