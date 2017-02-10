@@ -33,9 +33,11 @@ XMPP seems to have some interesting myths, too. As typical with myths, many of t
 
 ## XMPP is XML, so it's too slow.
 
-The hypothesis: XML is inarguably slower than JSON and other similar syntaxes, and XMPP will subsequently suffer in terms of performance.
+The hypothesis:
+> XML is inarguably slower than JSON and other similar syntaxes, and XMPP will subsequently suffer in terms of performance.
 
-The fact: XML is just as fast as JSON, and therefore XMPP pays no penalty.
+The fact:
+> XML is just as fast as JSON, and therefore XMPP pays no penalty.
 
 JSON, in particular, is often heralded as being better in all possible ways than XML. In reality, while JSON can be constructed in slightly fewer bytes, that's really its only advantage. You may think this is a key advantage for mobile, in which case hold on there for Myth Three.
 
@@ -45,9 +47,11 @@ But even ignoring the high performance, specialist end, XML still holds its own.
 
 ## The baseline is minimal, therefore XMPP is useless.
 
-The hypothesis: The core of XMPP is so small is has no practical use, and features that are essential for my use case have been bolted on as an afterthought.
+The hypothesis:
+> The core of XMPP is so small is has no practical use, and features that are essential for my use case have been bolted on as an afterthought.
 
-The fact: XMPP is designed to be extensible, and many extensions have very broad deployment.
+The fact:
+> XMPP is designed to be extensible, and many extensions have very broad deployment.
 
 "It's a feature, not a bug" is the obvious thing to say here. XMPP's core, [RFC 6120](https://datatracker.ietf.org/doc/rfc6120/), doesn't even include the "classic" IM features, really; those are present in its companion specification, [RFC 6121](https://datatracker.ietf.org/doc/rfc6121/). As a protocol that's [nearly fifteen years old](/about/history.html), had the core been constantly redesigned to add new capabilities as new mandatory, baked-in features, lots of existing servers would have been redeclared as broken.
 
@@ -59,9 +63,11 @@ Over at XMPP Research, they examined what extensions were most popular in the ac
 
 ## It's too bandwidth-inefficient for mobile.
 
-The hypothesis: XMPP stanzas are just too verbose to work on mobile.
+The hypothesis:
+> XMPP stanzas are just too verbose to work on mobile.
 
-The fact: XMPP has been successfully deployed over SATCOM and HF.
+The fact:
+> XMPP has been successfully deployed over SATCOM and HF.
 
 You might think that, because XML is known to be relatively verbose compared to other serialization formats, that this would be a problem in low bandwidth. However, XMPP's use of XML is actually quite concise - it's really nothing like the uses you see in, say, SOAP - and XMPP has been used (and is still used) over some ridiculously slow links.
 
@@ -79,9 +85,11 @@ XMPP has been used over mobile for years, and while [XEP-0357 &quot;Push Notific
 
 ## XMPP is unreliable without a bunch of extensions.
 
-The hypothesis: XMPP stanzas can be lost, therefore the system is unreliable.
+The hypothesis:
+> XMPP stanzas can be lost, therefore the system is unreliable.
 
-The fact: XMPP typically uses reliable stream transports, so even without extensions it's pretty reliable.
+The fact:
+> XMPP typically uses reliable stream transports, so even without extensions it's pretty reliable.
 
 There's a classic problem in computer communications called the [Two generals problem](https://en.wikipedia.org/wiki/Two_Generals%27_Problem)
 
@@ -107,9 +115,11 @@ XMPP is, however, as reliable as a protocol can practically be.
 
 ## XMPP is unsuited to the web.
 
-The hypothesis: XMPP is unsuited to the web because angle brackets and stuff.
+The hypothesis:
+> XMPP is unsuited to the web because angle brackets and stuff.
 
-The fact: XMPP has been successfully deployed to thousands of websites and has had pure Javascript libraries since its early days.
+The fact:
+> XMPP has been successfully deployed to thousands of websites and has had pure Javascript libraries since its early days.
 
 OK, I admit, I'm not a web guy, and I really don't understand the idea that because XMPP, like HTTP, isn't based around JSON, and because it instead uses angle brackets, like HTML, it should never be used on the web. Really, this bewilders me. XML is a web technology, after all, albeit it's not nearly as popular as it once was. Bindings like BOSH have been used for literally years to provide solid XMPP over HTTP, and libraries like Strophe.js handled a full XMPP stack in the browser sandbox amazingly well, due to the native (and fast - see Myth One) support for XML in the browser.
 
