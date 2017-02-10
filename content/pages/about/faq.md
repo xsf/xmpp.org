@@ -10,12 +10,12 @@ Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: About XMPP
 Sidebar_menu_size: 8
-Sidebar_menu_elem_name_1: Features and benefits
-Sidebar_menu_elem_url_1: about/features-and-benefits
-Sidebar_menu_elem_name_2: History
-Sidebar_menu_elem_url_2: about/history
-Sidebar_menu_elem_name_3: Overview
-Sidebar_menu_elem_url_3: about/overview
+Sidebar_menu_elem_name_1: History
+Sidebar_menu_elem_url_1: about/history
+Sidebar_menu_elem_name_2: Overview
+Sidebar_menu_elem_url_2: about/technology-overview
+Sidebar_menu_elem_name_3: Myths & Legends
+Sidebar_menu_elem_url_3: about/myths
 Sidebar_menu_elem_name_4: Who uses XMPP
 Sidebar_menu_elem_url_4: about/who-uses-xmpp
 Sidebar_menu_elem_name_5: Standards Process
