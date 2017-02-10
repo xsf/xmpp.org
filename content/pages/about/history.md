@@ -89,3 +89,10 @@ Content_layout: multiple-columns
 - __September:__ The IETF publishes [RFC 7622](https://datatracker.ietf.org/doc/rfc7622/) modernizing the definition of XMPP addresses.
 - __October:__ The XSF holds the eighteenth XMPP Summit in Richland, Washington, USA.
 
+## 2016
+- __February:__ The XSF holds the nineteenth XMPP Summit in Brussels, Belgium.
+- __May:__ The XSF holds the twentieth XMPP Summit in Austin, Texas, USA, and host a booth at PyCon 2016 in Portland, Oregon, USA.
+- __November:__ The XSF accepted a Special Interest Group on IoT.
+
+## 2017
+- __February:__ The XSF holds the twenty first XMPP Summit in Brussels, Belgium.
