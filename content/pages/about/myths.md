@@ -67,7 +67,7 @@ You might think that, because XML is known to be relatively verbose compared to 
 
 SATCOM links tend to run at around 9600 - that's the same speed as a GSM data call, which won't help you because you'll have never made one. The latency is around 30s. HF, on the other hand, runs considerably lower, and is half-duplex to boot - it'll run down to around 9 bits/s, and with radio turnaround times at the 2 minute mark every time you need to switch direction, that's almost glacial.
 
-Yet XMPP still works - at least as well as anything else. Isode have an excellent whitepaper on this: (M-Link Support for XMPP over Constrained Networks)[http://www.isode.com/whitepapers/xmpp-constrained-bandwidth.html], but the majority of XMPP running over SATCOM are ordinary open source servers such as Openfire.
+Yet XMPP still works - at least as well as anything else. Isode have an excellent whitepaper on this: [M-Link Support for XMPP over Constrained Networks(http://www.isode.com/whitepapers/xmpp-constrained-bandwidth.html), but the majority of XMPP running over SATCOM are ordinary open source servers such as Openfire.
 
 On mobile, the most concerning cost is the stream startup time - because it uses a sequence of round trips - but extensions such as [XEP-0198](/extensions/xep-0198.html) can help reduce this substantially.
 
