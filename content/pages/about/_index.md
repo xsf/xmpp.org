@@ -12,7 +12,7 @@ Dropdown_menu_elem_url_1: history
 Dropdown_menu_elem_name_2: Overview
 Dropdown_menu_elem_url_2: technology-overview
 Dropdown_menu_elem_name_3: Myths & Legends
-Dropdown_menu_elem_url_3: about/myths
+Dropdown_menu_elem_url_3: myths
 Dropdown_menu_elem_name_4: Who uses XMPP
 Dropdown_menu_elem_url_4: who-uses-xmpp
 Dropdown_menu_elem_name_5: Standards Process
