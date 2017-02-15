@@ -1,6 +1,6 @@
 ---
 title: XMPP Summit 21
-date: 2017-02-27 18:50
+date: 2017-01-27 18:50
 author: Guus
 blog_id: blog
 ---
