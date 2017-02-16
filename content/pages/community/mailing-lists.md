@@ -39,7 +39,7 @@ __Operators@xmpp.org email list__ — for discussion about day-to-day operation 
 
 __JDev@jabber.org email list__ — for discussion about software development using Jabber/XMPP technologies ([subscribe](http://mail.jabber.org/mailman/listinfo/jdev) | [archives](http://mail.jabber.org/pipermail/jdev/))
 
-__Standards@xmpp.org email list__ — for general discussion about XMPP protocols ([subscribe]() | [archives](http://mail.jabber.org/pipermail/standards/))
+__Standards@xmpp.org email list__ — for general discussion about XMPP protocols ([subscribe](http://mail.jabber.org/mailman/listinfo/standards) | [archives](http://mail.jabber.org/pipermail/standards/))
 
 __xmpp@ietf.org email list__ — official list for [XMPP Working Group](http://tools.ietf.org/wg/xmpp/) discussions at the [IETF](http://www.ietf.org/) ([subscribe](https://www.ietf.org/mailman/listinfo/xmpp) | [archives](http://www.ietf.org/mail-archive/web/xmpp/current/maillist.html))
 
