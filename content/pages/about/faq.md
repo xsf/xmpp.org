@@ -16,16 +16,14 @@ Sidebar_menu_elem_name_2: Overview
 Sidebar_menu_elem_url_2: about/technology-overview
 Sidebar_menu_elem_name_3: Myths & Legends
 Sidebar_menu_elem_url_3: about/myths
-Sidebar_menu_elem_name_4: Who uses XMPP
-Sidebar_menu_elem_url_4: about/who-uses-xmpp
-Sidebar_menu_elem_name_5: Standards Process
-Sidebar_menu_elem_url_5: about/standards-process
-Sidebar_menu_elem_name_6: The XSF
-Sidebar_menu_elem_url_6: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_7: Specifications
-Sidebar_menu_elem_url_7: extensions/index
-Sidebar_menu_elem_name_8: FAQ
-Sidebar_menu_elem_url_8: about/faq
+Sidebar_menu_elem_name_4: Standards Process
+Sidebar_menu_elem_url_4: about/standards-process
+Sidebar_menu_elem_name_5: The XSF
+Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
+Sidebar_menu_elem_name_6: Specifications
+Sidebar_menu_elem_url_6: extensions/index
+Sidebar_menu_elem_name_7: FAQ
+Sidebar_menu_elem_url_7: about/faq
 Content_layout: multiple-columns
 ---
 
