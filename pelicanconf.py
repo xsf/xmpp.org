@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from datetime import datetime, timedelta
+import logging
+import json
 
 SITENAME = "XMPP"
 SITE_URL = ""
@@ -46,3 +49,66 @@ CATEGORY_FEED_ATOM = None
 CATEGORY_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
+
+SWLISTS = {}
+
+ENTRY_LIFETIME = timedelta(days=365)
+
+# entires without renewal will be hidden after this point in time
+STRICT_RENEWAL_DEADLINE = datetime(2017, 6, 1, 0, 0, 0)
+
+
+def load_software_list(now, filename):
+    """
+    Load, preprocess and filter a software list from JSON.
+
+    :param now: Used to determine whether software is still shown.
+    :param filename: Filename in the ``data`` subdirectory to load.
+    :return: List of dicts containing software information.
+
+    * Software whose ``last_renewal`` is not null and older than
+      :data:`ENTRY_LIFETIME` is omitted from the result.
+
+    * Software whose ``last_renewal`` is none is removed after
+      :data:`STRICT_RENEWAL_DEADLINE`.
+
+    """
+
+    with open("data/{}".format(filename), "r") as f:
+        rows = json.load(f)
+
+    result = []
+    for row in rows:
+        renewed = row.get("last_renewed")
+
+        # has the software ever been renewed under the new system?
+        if renewed is not None:
+            try:
+                renewed = datetime.strptime(renewed, "%Y-%m-%dT%H:%M:%S")
+            except ValueError:
+                logging.error(
+                    "failed to parse timestamp; omitting entry %r",
+                    row,
+                )
+                # parse error -> omit
+                continue
+
+            if now - renewed > ENTRY_LIFETIME:
+                # renewal expired -> omit
+                continue
+
+        elif now > STRICT_RENEWAL_DEADLINE:
+            # not renewed ever, also over deadline -> omit
+            continue
+
+        # set parsed timestamp
+        row["last_renewed"] = renewed
+
+        # put into result list
+        result.append(row)
+
+    return result
+
+
+NOW = datetime.utcnow()
+SWLISTS["libraries"] = load_software_list(NOW, "libraries.json")
