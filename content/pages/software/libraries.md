@@ -85,7 +85,7 @@ __See something missing?__ Any list of XMPP servers, clients or libraries will, 
 | [txmpp](https://github.com/rpavlik/txmpp)                                 | C++                                 |
 | [Twisted Words](http://twistedmatrix.com)                                 | Python                              |
 | [Ubeity](https://github.com/ubiety/xmpp)                                  | C#                                  |
-| [Verse](http://matthewwild.co.uk/projects/verse/verse_doc.xml)            | Lua                                 |
+| [Verse](http://www.matthewwild.co.uk/projects/verse/home)                 | Lua                                 |
 | [XIFF](http://igniterealtime.org)                                         | Flash / ActionScript                |
 | [xmpp-psn](http://code.google.com)                                        | Python                              |
 | [jaxmpp2](https://projects.tigase.org/projects/jaxmpp2)                   | Java / Android / Google Web Toolkit |
