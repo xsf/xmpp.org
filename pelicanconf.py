@@ -112,3 +112,4 @@ def load_software_list(now, filename):
 
 NOW = datetime.utcnow()
 SWLISTS["libraries"] = load_software_list(NOW, "libraries.json")
+SWLISTS["clients"] = load_software_list(NOW, "clients.json")
