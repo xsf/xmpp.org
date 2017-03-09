@@ -9,7 +9,7 @@ Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: About XMPP
-Sidebar_menu_size: 8
+Sidebar_menu_size: 7
 Sidebar_menu_elem_name_1: History
 Sidebar_menu_elem_url_1: about/history
 Sidebar_menu_elem_name_2: Overview
