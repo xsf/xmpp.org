@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     locale-gen en_US.UTF-8
     apt-get update
     apt-get install -y python-pip
-    pip install pelican markdown ghp-import
+    pip install pelican==3.3 markdown ghp-import
   SHELL
 end
 

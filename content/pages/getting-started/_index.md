@@ -1,7 +1,8 @@
 ---
 Title: Getting Started
-Url: uses/getting-started
-Save_as: uses/getting-started.html
+Url: getting-started
+Save_as: getting-started/index.html
+Menu_name: Getting Started
 Top_menu_show: true
 Top_Menu_order: 6
 Dropdown_menu_show: false
