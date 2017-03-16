@@ -19,6 +19,8 @@ def main():
     )
     parser.add_argument(
         "name",
+        nargs="?",
+        default=None,
         metavar="NAME",
         help="Current name of the project",
     )
@@ -55,11 +57,11 @@ def main():
     )
 
     parser.add_argument(
-        "--ask",
+        "--no-ask",
         dest="ask",
-        action="store_true",
-        help="Ask for confirmation before applying changes. "
-        "Set this to true if you are unsure on how to use this tool."
+        default=True,
+        action="store_false",
+        help="Do not ask for confirmation before applying changes. "
     )
 
     args = parser.parse_args()
@@ -73,8 +75,9 @@ def main():
     try:
         item = name_map[args.name]
     except KeyError:
-        print("Error: no such project: {!r}".format(args.name),
-              file=sys.stderr)
+        if args.name is not None:
+            print("Error: no such project: {!r}".format(args.name),
+                  file=sys.stderr)
         print("Hint: the following projects exist:")
         print(
             "    ", "\n    ".join(sorted(name_map.keys())),
