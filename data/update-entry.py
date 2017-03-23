@@ -1,10 +1,22 @@
 #!/usr/bin/env python3
 import argparse
+import difflib
 import copy
 import json
 import sys
 
 from datetime import datetime
+
+
+def json_as_lines(data):
+    return [
+        line+"\n"
+        for line in json.dumps(
+                data,
+                indent=4,
+                sort_keys=True
+        ).split("\n")
+    ]
 
 
 def main():
@@ -122,13 +134,19 @@ def main():
         ).isoformat()
 
     if args.ask:
-        print("old entry:")
-        json.dump(orig, sys.stdout, indent=4, sort_keys=True)
-        print()
-        print()
-        print("new entry:")
-        json.dump(item, sys.stdout, indent=4, sort_keys=True)
-        print()
+        old_entry = json_as_lines(orig)
+        new_entry = json_as_lines(item)
+        print("difference between old and new:")
+        sys.stdout.writelines(
+            difflib.unified_diff(
+                old_entry,
+                new_entry,
+                fromfile="before",
+                tofile="after",
+                n=1000,
+            )
+        )
+
         prompt = "is this okay? [y/n]"
         try:
             chosen = input(prompt)
