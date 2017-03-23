@@ -1,5 +1,5 @@
 ---
-title: First Paris XMPP/Jabber meetup, March 28th
+title: First Paris XMPP meetup
 date: 2017-03-23 23:59
 author: Nÿco
 blog_id: blog
