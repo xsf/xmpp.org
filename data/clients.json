@@ -382,10 +382,11 @@
     },
     {
         "info": [
-            "Console",
-            "Text-Mode"
+            "Windows (Cygwin)",
+            "OSX",
+            "Linux"
         ],
-        "last_renewed": null,
+        "last_renewed": "2017-03-23T20:16:42",
         "name": "Profanity",
         "url": "http://profanity.im"
     },
