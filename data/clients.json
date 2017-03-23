@@ -1,7 +1,7 @@
 [
     {
         "info": [
-            "OSX"
+            "macOS"
         ],
         "last_renewed": null,
         "name": "Adium",
@@ -9,7 +9,7 @@
     },
     {
         "info": [
-            "OSX"
+            "macOS"
         ],
         "last_renewed": null,
         "name": "Apple Messages",
@@ -25,9 +25,10 @@
     },
     {
         "info": [
-            "Mobile (Android, iOS)",
+            "Android",
+            "iOS",
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -36,7 +37,7 @@
     },
     {
         "info": [
-            "Mobile (Android)"
+            "Android"
         ],
         "last_renewed": null,
         "name": "Beem",
@@ -52,8 +53,9 @@
     },
     {
         "info": [
-            "Mobile (Android, Blackberry (BBOS), Nokia Symbian S40",
-            "S60 and Asha)"
+            "Android",
+            "Blackberry",
+            "Nokia Symbian"
         ],
         "last_renewed": null,
         "name": "BlueJabb",
@@ -61,7 +63,7 @@
     },
     {
         "info": [
-            "Mobile (iOS)"
+            "iOS"
         ],
         "last_renewed": null,
         "name": "Boogie Chat",
@@ -87,7 +89,8 @@
     },
     {
         "info": [
-            "Mobile (Android, iOS)"
+            "Android",
+            "iOS"
         ],
         "last_renewed": null,
         "name": "ChatSecure",
@@ -96,7 +99,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -105,7 +108,7 @@
     },
     {
         "info": [
-            "Mobile (Android)"
+            "Android"
         ],
         "last_renewed": null,
         "name": "Conversations",
@@ -145,8 +148,7 @@
     },
     {
         "info": [
-            "Console",
-            "Text-Mode"
+            "Linux"
         ],
         "last_renewed": null,
         "name": "Finch",
@@ -163,8 +165,7 @@
     },
     {
         "info": [
-            "Console",
-            "Text-Mode"
+            "Linux"
         ],
         "last_renewed": null,
         "name": "GNU Freetalk",
@@ -189,7 +190,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -216,7 +217,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -242,7 +243,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -260,7 +261,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -310,7 +311,7 @@
     },
     {
         "info": [
-            "Mobile (iOS)"
+            "iOS"
         ],
         "last_renewed": null,
         "name": "Monal IM",
@@ -327,7 +328,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -337,7 +338,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -346,7 +347,7 @@
     },
     {
         "info": [
-            "Mobile (iOS)"
+            "iOS"
         ],
         "last_renewed": null,
         "name": "OneTeam for iPhone",
@@ -355,7 +356,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -383,7 +384,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -393,7 +394,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -411,7 +412,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -440,7 +441,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -450,7 +451,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -468,7 +469,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -502,7 +503,7 @@
     {
         "info": [
             "Linux",
-            "OSX",
+            "macOS",
             "Windows"
         ],
         "last_renewed": null,
@@ -512,7 +513,7 @@
     {
         "info": [
             "Windows",
-            "OSX",
+            "macOS",
             "Mobile",
             "Browser"
         ],
@@ -530,7 +531,7 @@
     },
     {
         "info": [
-            "Mobile (BlackBerry)"
+            "BlackBerry"
         ],
         "last_renewed": null,
         "name": "Vayusphere",
@@ -554,7 +555,7 @@
     },
     {
         "info": [
-            "Mobile (Android)"
+            "Android"
         ],
         "last_renewed": null,
         "name": "Xabber",
@@ -563,7 +564,7 @@
     {
         "info": [
             "Linux",
-            "OSX"
+            "macOS"
         ],
         "last_renewed": null,
         "name": "xmpp-client",
@@ -587,7 +588,7 @@
     },
     {
         "info": [
-            "Mobile (Android)"
+            "Android"
         ],
         "last_renewed": "2017-03-23T13:40:52",
         "name": "yaxim",
