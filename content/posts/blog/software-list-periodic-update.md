@@ -1,5 +1,5 @@
 ---
-title: XMPP Software List: Periodic Re-Application
+title: New XMPP Software Listing Rules
 date: 2017-03-23 13:00
 author: ge0rg
 blog_id: blog
@@ -9,7 +9,6 @@ Dear XMPP software authors,
 The XSF provides a [public list of XMPP implementations][0] on its
 website. For this list to be useful, it should contain up-to-date
 information about up-to-date software.
-
 To achieve this, the XSF Board has decided that all implementations have
 to reapply once per year, to ensure that they are still actively
 maintained and that the listed info is accurate. This is a purely formal
