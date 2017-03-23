@@ -88,6 +88,16 @@ def check_entries(entries, allowed_platforms=None):
                 )
                 violations += 1
 
+        sorted_platforms = sorted(platforms, key=lambda x: x.casefold())
+        if sorted_platforms != platforms:
+            emit_violation(
+                entry["name"],
+                "platform order must be: {}".format(
+                    ", ".join(map(repr, sorted_platforms))
+                )
+            )
+            violations += 1
+
         previous_key, previous_name = key, entry["name"]
 
     return violations

@@ -19,6 +19,10 @@ def json_as_lines(data):
     ]
 
 
+def sortkey(x):
+    return x.casefold()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Renew a software entry in the software list."
@@ -127,6 +131,8 @@ def main():
     if args.new_platforms is not None:
         item["platforms"] = [platform.strip()
                              for platform in args.new_platforms]
+
+    item["platforms"].sort(key=lambda x: x.casefold())
 
     if args.renew:
         item["last_renewed"] = datetime.utcnow().replace(

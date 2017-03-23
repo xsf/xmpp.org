@@ -81,9 +81,9 @@
         "last_renewed": null,
         "name": "Buddycloud",
         "platforms": [
+            "Console",
             "Mobile",
-            "Web",
-            "Console"
+            "Web"
         ],
         "url": "http://buddycloud.com"
     },
@@ -432,10 +432,10 @@
         "last_renewed": null,
         "name": "Salut \u00e0 Toi",
         "platforms": [
-            "Linux",
+            "Browser",
             "Console",
-            "Text-Mode",
-            "Browser"
+            "Linux",
+            "Text-Mode"
         ],
         "url": "https://salut-a-toi.org/"
     },
@@ -523,10 +523,10 @@
         "last_renewed": null,
         "name": "Trillian",
         "platforms": [
-            "Windows",
+            "Browser",
             "macOS",
             "Mobile",
-            "Browser"
+            "Windows"
         ],
         "url": "http://trillian.im"
     },
