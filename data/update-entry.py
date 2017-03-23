@@ -42,9 +42,9 @@ def main():
     )
 
     parser.add_argument(
-        "--set-info",
-        dest="new_info",
-        metavar="INFO",
+        "--set-platforms",
+        dest="new_platforms",
+        metavar="PLATFORM",
         default=None,
         nargs="+",
         help="Change the contents of the last column",
@@ -112,9 +112,9 @@ def main():
     if args.new_url is not None:
         item["url"] = args.new_url or None
 
-    if args.new_info is not None:
-        item["info"] = [info_item.strip()
-                        for info_item in args.new_info]
+    if args.new_platforms is not None:
+        item["platforms"] = [platform.strip()
+                             for platform in args.new_platforms]
 
     if args.renew:
         item["last_renewed"] = datetime.utcnow().replace(

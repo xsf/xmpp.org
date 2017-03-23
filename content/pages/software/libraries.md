@@ -19,7 +19,7 @@ Sidebar_menu_elem_url_3: software/libraries
 Content_layout: multiple-columns
 Template: software_list
 Swlist_Source: libraries
-Swlist_Info_Column_Head: Languages
+Swlist_Platforms_Column_Head: Languages
 ---
 
 Code libraries are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.

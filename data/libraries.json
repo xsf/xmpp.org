@@ -1,580 +1,580 @@
 [
     {
-        "info": [
+        "last_renewed": null,
+        "name": "agsXMPP SDK",
+        "platforms": [
             "C#",
             ".net",
             "Mono"
         ],
-        "last_renewed": null,
-        "name": "agsXMPP SDK",
         "url": "http://ag-software.net"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": "2017-03-16T07:33:04",
         "name": "aioxmpp",
+        "platforms": [
+            "Python"
+        ],
         "url": "https://github.com/horazont/aioxmpp"
     },
     {
-        "info": [
-            "Perl"
-        ],
         "last_renewed": null,
         "name": "AnyEvent::XMPP",
+        "platforms": [
+            "Perl"
+        ],
         "url": "http://ta-sa.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "as3xmpp",
+        "platforms": [
             "Flash",
             "ActionScript"
         ],
-        "last_renewed": null,
-        "name": "as3xmpp",
         "url": "https://github.com/lyokato/as3xmppclient"
     },
     {
-        "info": [
-            "Ada"
-        ],
         "last_renewed": null,
         "name": "AXMPP",
+        "platforms": [
+            "Ada"
+        ],
         "url": "http://orge.ada-ru.org"
     },
     {
-        "info": [
-            "Java"
-        ],
         "last_renewed": "2017-03-23T18:50:00",
         "name": "Babbler",
+        "platforms": [
+            "Java"
+        ],
         "url": "http://xmpp.rocks"
     },
     {
-        "info": [
-            "Ruby"
-        ],
         "last_renewed": null,
         "name": "Blather",
+        "platforms": [
+            "Ruby"
+        ],
         "url": "http://adhearsion.com"
     },
     {
-        "info": [
-            "Lisp"
-        ],
         "last_renewed": null,
         "name": "cl-xmpp",
+        "platforms": [
+            "Lisp"
+        ],
         "url": "http://common-lisp.net"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Coversant SoapBox SDK Studio",
+        "platforms": [
             "C#",
             ".net",
             "Mono",
             "C++"
         ],
-        "last_renewed": null,
-        "name": "Coversant SoapBox SDK Studio",
         "url": "http://coversant.com"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "dojox.xmpp",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/dojo/dojox"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "dxmpp",
+        "platforms": [
+            "C++"
+        ],
         "url": "https://github.com/stefandxm/dxmpp"
     },
     {
-        "info": [
-            "Java"
-        ],
         "last_renewed": null,
         "name": "Echomine Feridian",
+        "platforms": [
+            "Java"
+        ],
         "url": "https://github.com/jdevelop/feridian"
     },
     {
-        "info": [
-            "PHP"
-        ],
         "last_renewed": null,
         "name": "Eiffel",
+        "platforms": [
+            "PHP"
+        ],
         "url": "https://www.eiffel.org/resources/libraries/eiffel-xmpp"
     },
     {
-        "info": [
-            "Java"
-        ],
         "last_renewed": null,
         "name": "emite",
+        "platforms": [
+            "Java"
+        ],
         "url": "https://github.com/EmiteGWT/emite"
     },
     {
-        "info": [
-            "Erlang"
-        ],
         "last_renewed": null,
         "name": "Escalus",
+        "platforms": [
+            "Erlang"
+        ],
         "url": "https://github.com/esl/escalus"
     },
     {
-        "info": [
-            "Erlang"
-        ],
         "last_renewed": null,
         "name": "exmpp",
+        "platforms": [
+            "Erlang"
+        ],
         "url": "http://exmpp.org"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "frabjous",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/theozaurus/frabjous"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "gloox",
+        "platforms": [
+            "C++"
+        ],
         "url": "http://camaya.net"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "headstock",
+        "platforms": [
+            "Python"
+        ],
         "url": "https://github.com/Lawouach/headstock"
     },
     {
-        "info": [
-            "Haskell"
-        ],
         "last_renewed": null,
         "name": "hsxmpp",
+        "platforms": [
+            "Haskell"
+        ],
         "url": "http://\u05d7\u05e0\u05d5\u05da.se"
     },
     {
-        "info": [
-            "haXe"
-        ],
         "last_renewed": null,
         "name": "hxmpp",
+        "platforms": [
+            "haXe"
+        ],
         "url": "http://hxmpp.disktree.net"
     },
     {
-        "info": [
-            "C"
-        ],
         "last_renewed": null,
         "name": "iksemel",
+        "platforms": [
+            "C"
+        ],
         "url": "http://code.google.com/p/iksemel"
     },
     {
-        "info": [
-            "ActiveX, C++, C#,"
-        ],
         "last_renewed": null,
         "name": "IP*Works Internet Toolkit",
+        "platforms": [
+            "ActiveX, C++, C#,"
+        ],
         "url": "https://www.nsoftware.com/ipworks/"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "Iris",
+        "platforms": [
+            "C++"
+        ],
         "url": "https://github.com/psi-im/iris"
     },
     {
-        "info": [
-            "Java"
-        ],
         "last_renewed": null,
         "name": "Jabber Stream Objects (JSO)",
+        "platforms": [
+            "Java"
+        ],
         "url": "https://java.net/projects/jso"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "jabber.net",
+        "platforms": [
             "C#",
             ".net",
             "Mono"
         ],
-        "last_renewed": null,
-        "name": "jabber.net",
         "url": "https://code.google.com/archive/p/jabber-net/"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "jabber.py",
+        "platforms": [
+            "Python"
+        ],
         "url": "http://jabberpy.sourceforge.net/"
     },
     {
-        "info": [
-            "Tcl"
-        ],
         "last_renewed": null,
         "name": "JabberLib",
+        "platforms": [
+            "Tcl"
+        ],
         "url": "http://coccinella.im"
     },
     {
-        "info": [
-            "PHP"
-        ],
         "last_renewed": null,
         "name": "JAXL",
+        "platforms": [
+            "PHP"
+        ],
         "url": "https://github.com/jaxl/JAXL"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "jaxmpp2",
+        "platforms": [
             "Java",
             "Android",
             "Google Web Toolkit"
         ],
-        "last_renewed": null,
-        "name": "jaxmpp2",
         "url": "https://projects.tigase.org/projects/jaxmpp2"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "jQuery-XMPP-plugin",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/maxpowel/jQuery-XMPP-plugin"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Jreen",
+        "platforms": [
             "C++",
             "Qt"
         ],
-        "last_renewed": null,
-        "name": "Jreen",
         "url": "http://qutim.org"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "JSJaC",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/sstrigler/JSJaC"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "libpurple",
+        "platforms": [
             "C",
             "C++"
         ],
-        "last_renewed": null,
-        "name": "libpurple",
         "url": "https://developer.pidgin.im/wiki/WhatIsLibpurple"
     },
     {
-        "info": [
-            "C"
-        ],
         "last_renewed": null,
         "name": "libstrophe",
+        "platforms": [
+            "C"
+        ],
         "url": "http://strophe.im"
     },
     {
-        "info": [
-            "PHP"
-        ],
         "last_renewed": null,
         "name": "Lightr",
+        "platforms": [
+            "PHP"
+        ],
         "url": "https://github.com/myYearbook/lightr"
     },
     {
-        "info": [
-            "C"
-        ],
         "last_renewed": null,
         "name": "Loudmouth",
+        "platforms": [
+            "C"
+        ],
         "url": "https://github.com/mcabber/loudmouth"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "MatriX",
+        "platforms": [
             "C#",
             ".net",
             "Mono"
         ],
-        "last_renewed": null,
-        "name": "MatriX",
         "url": "http://ag-software.net"
     },
     {
-        "info": [
-            "Perl"
-        ],
         "last_renewed": null,
         "name": "net::XMPP",
+        "platforms": [
+            "Perl"
+        ],
         "url": null
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "node-xmpp",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "http://node-xmpp.org"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "oajabber",
+        "platforms": [
+            "C++"
+        ],
         "url": null
     },
     {
-        "info": [
-            "Haskell"
-        ],
         "last_renewed": null,
         "name": "Pontarius XMPP",
+        "platforms": [
+            "Haskell"
+        ],
         "url": "https://github.com/pontarius/pontarius-xmpp/"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "pyxmpp",
+        "platforms": [
+            "Python"
+        ],
         "url": "http://pyxmpp.jajcus.net/pyxmpp.html"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "pyxmpp2",
+        "platforms": [
+            "Python"
+        ],
         "url": "https://github.com/Jajcus/pyxmpp2"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "QXmpp",
+        "platforms": [
+            "C++"
+        ],
         "url": "www.qxmpp.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "seesmic-as3-xmpp",
+        "platforms": [
             "Flash",
             "ActionScript"
         ],
-        "last_renewed": null,
-        "name": "seesmic-as3-xmpp",
         "url": "https://code.google.com/archive/p/seesmic-as3-xmpp"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Sharp.Xmpp",
+        "platforms": [
             "C#",
             ".net",
             "Mono"
         ],
-        "last_renewed": null,
-        "name": "Sharp.Xmpp",
         "url": "https://github.com/pgstath/Sharp.Xmpp"
     },
     {
-        "info": [
-            "Ruby"
-        ],
         "last_renewed": null,
         "name": "Skates",
+        "platforms": [
+            "Ruby"
+        ],
         "url": "https://github.com/julien51/skates"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "SleekXMPP",
+        "platforms": [
+            "Python"
+        ],
         "url": "https://github.com/fritzy/SleekXMPP"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "Slixmpp",
+        "platforms": [
+            "Python"
+        ],
         "url": "https://dev.louiz.org/projects/slixmpp"
     },
     {
-        "info": [
-            "Java (Java SE and Android)"
-        ],
         "last_renewed": "2017-03-22T00:00:00",
         "name": "Smack",
+        "platforms": [
+            "Java (Java SE and Android)"
+        ],
         "url": "https://www.igniterealtime.org/projects/smack"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "stanza.io",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/otalk/stanza.io"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "strophe.js",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "http://strophe.im/strophejs"
     },
     {
-        "info": [
-            "Objective-J"
-        ],
         "last_renewed": null,
         "name": "StropheCappuccino",
+        "platforms": [
+            "Objective-J"
+        ],
         "url": "https://github.com/ArchipelProject/StropheCappuccino"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "Swiften",
+        "platforms": [
+            "C++"
+        ],
         "url": "http://swift.im"
     },
     {
-        "info": [
-            "Java"
-        ],
         "last_renewed": null,
         "name": "Tinder",
+        "platforms": [
+            "Java"
+        ],
         "url": "http://www.igniterealtime.org/projects/tinder"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "Twisted Words",
+        "platforms": [
+            "Python"
+        ],
         "url": "http://twistedmatrix.com"
     },
     {
-        "info": [
-            "C++"
-        ],
         "last_renewed": null,
         "name": "txmpp",
+        "platforms": [
+            "C++"
+        ],
         "url": "https://github.com/rpavlik/txmpp"
     },
     {
-        "info": [
-            "C#"
-        ],
         "last_renewed": null,
         "name": "Ubeity",
+        "platforms": [
+            "C#"
+        ],
         "url": "https://github.com/ubiety/xmpp"
     },
     {
-        "info": [
-            "Lua"
-        ],
         "last_renewed": null,
         "name": "Verse",
+        "platforms": [
+            "Lua"
+        ],
         "url": "http://www.matthewwild.co.uk/projects/verse/home"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "XIFF",
+        "platforms": [
             "Flash",
             "ActionScript"
         ],
-        "last_renewed": null,
-        "name": "XIFF",
         "url": "http://igniterealtime.org"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": "2017-03-24T00:00:00",
         "name": "XMPP-FTW",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "https://github.com/xmpp-ftw"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "xmpp-psn",
+        "platforms": [
+            "Python"
+        ],
         "url": "http://code.google.com"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "xmpp4js",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "http://xmpp4js.sourceforge.net/"
     },
     {
-        "info": [
-            "Ruby"
-        ],
         "last_renewed": null,
         "name": "XMPP4R",
+        "platforms": [
+            "Ruby"
+        ],
         "url": "https://xmpp4r.github.io/"
     },
     {
-        "info": [
-            "Ruby"
-        ],
         "last_renewed": null,
         "name": "xmpp4r-simple",
+        "platforms": [
+            "Ruby"
+        ],
         "url": "http://code.google.com"
     },
     {
-        "info": [
-            "Objective C"
-        ],
         "last_renewed": null,
         "name": "xmppframework",
+        "platforms": [
+            "Objective C"
+        ],
         "url": "http://github.com"
     },
     {
-        "info": [
-            "PHP"
-        ],
         "last_renewed": null,
         "name": "xmpphp",
+        "platforms": [
+            "PHP"
+        ],
         "url": "http://code.google.com"
     },
     {
-        "info": [
-            "Python"
-        ],
         "last_renewed": null,
         "name": "xmpppy",
+        "platforms": [
+            "Python"
+        ],
         "url": "http://xmpppy.sourceforge.net"
     },
     {
-        "info": [
-            "JavaScript"
-        ],
         "last_renewed": null,
         "name": "Z-XMPP",
+        "platforms": [
+            "JavaScript"
+        ],
         "url": "http://ivan.vucica.net"
     }
 ]
