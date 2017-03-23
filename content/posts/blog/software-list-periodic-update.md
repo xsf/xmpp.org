@@ -4,8 +4,6 @@ date: 2017-03-23 13:00
 author: ge0rg
 blog_id: blog
 ---
-Dear XMPP software authors,
-
 The XSF provides a [public list of XMPP implementations][0] on its
 website. For this list to be useful, it should contain up-to-date
 information about up-to-date software.
@@ -22,10 +20,6 @@ that date will be automatically removed from the listing. Alternatively, you
 can ask in the [jdev MUC][3] for a manual update of your listing.
 
 Please also ensure that you repeat this step in the following years.
-Thank you for observing all safety precautions.
-
-
-Georg Lukas, on behalf of the XSF Board
 
 [0]:https://xmpp.org/software
 [1]:https://github.com/xsf/xmpp.org/blob/master/data/README.rst
