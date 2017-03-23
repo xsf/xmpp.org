@@ -37,7 +37,8 @@ def check_entries(entries,
         if previous_key is not None and previous_key > key:
             emit_violation(
                 entry["name"],
-                "should be placed behind {!r}".format(
+                "should be placed behind {!r} (all entries must be "
+                "ordered alphabetically by case-folded name)".format(
                     previous_name
                 )
             )
@@ -59,7 +60,8 @@ def check_entries(entries,
         if missing:
             emit_violation(
                 entry["name"],
-                "misses required information: {}".format(
+                "misses the following required properties: {} "
+                "(see other entries for a reference)".format(
                     ", ".join(map(repr, missing))
                 )
             )
@@ -72,7 +74,8 @@ def check_entries(entries,
             except ValueError:
                 emit_violation(
                     entry["name"],
-                    "malformed renewal timestamp: {!r}".format(
+                    "malformed renewal timestamp: {!r} "
+                    "(format is YYYY-MM-DDThh:mm:ss)".format(
                         entry["last_renewed"],
                     )
                 )
@@ -86,7 +89,10 @@ def check_entries(entries,
             if unknown and (is_severe or show_warnings):
                 emit_violation(
                     entry["name"],
-                    "undefined platforms: {}".format(
+                    "undefined platforms: {} "
+                    "(the allowed platforms are listed in platforms.json. If"
+                    " you think a platform is missing add it and mention it "
+                    "in your Pull Request)".format(
                         ", ".join(map(repr, unknown)),
                     ),
                     warning=not is_severe
@@ -97,7 +103,8 @@ def check_entries(entries,
         if sorted_platforms != platforms:
             emit_violation(
                 entry["name"],
-                "platform order must be: {}".format(
+                "platform order must be: {} "
+                "(platforms must be ordered alphabetically)".format(
                     ", ".join(map(repr, sorted_platforms))
                 )
             )
