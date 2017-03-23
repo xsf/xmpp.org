@@ -121,7 +121,7 @@ if __name__ == "__main__":
     with open(input_file, "r") as f:
         data = json.load(f)
 
-    if args.which in ["clients.json"]:
+    if args.which in ["clients.json", "servers.json"]:
         with open(platforms_file, "r") as f:
             platforms = set(json.load(f))
     else:

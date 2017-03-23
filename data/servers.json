@@ -3,8 +3,8 @@
         "last_renewed": null,
         "name": "Apache Vysper",
         "platforms": [
-            "Windows",
-            "Linux"
+            "Linux",
+            "Windows"
         ],
         "url": "https://mina.apache.org/vysper-project"
     },
@@ -21,7 +21,7 @@
         "name": "CommuniGate Pro",
         "platforms": [
             "Linux",
-            "Mac OS X",
+            "macOS",
             "Windows"
         ],
         "url": "http://communigate.com"
@@ -47,7 +47,7 @@
         "name": "ejabberd",
         "platforms": [
             "Linux",
-            "Mac OS X",
+            "macOS",
             "Solaris",
             "Windows"
         ],
@@ -66,7 +66,7 @@
         "last_renewed": null,
         "name": "iChat Server",
         "platforms": [
-            "Mac OS X"
+            "macOS"
         ],
         "url": "http://apple.com"
     },
@@ -110,8 +110,8 @@
         "last_renewed": null,
         "name": "jabberd 2.x",
         "platforms": [
+            "BSD",
             "Linux",
-            "*BSD",
             "Solaris",
             "Windows"
         ],
@@ -139,7 +139,7 @@
         "name": "Metronome IM",
         "platforms": [
             "Linux",
-            "Mac OS X"
+            "macOS"
         ],
         "url": "http://lightwitch.org/metronome"
     },
@@ -148,7 +148,7 @@
         "name": "MongooseIM",
         "platforms": [
             "Linux",
-            "Mac OS X"
+            "macOS"
         ],
         "url": "https://www.erlang-solutions.com/products/mongooseim.html"
     },
@@ -157,7 +157,7 @@
         "name": "Openfire",
         "platforms": [
             "Linux",
-            "Mac OS X",
+            "macOS",
             "Solaris",
             "Windows"
         ],
@@ -178,7 +178,7 @@
         "name": "Prosody IM",
         "platforms": [
             "Linux",
-            "Mac OS X",
+            "macOS",
             "Windows"
         ],
         "url": "http://prosody.im"
@@ -188,7 +188,7 @@
         "name": "psyced",
         "platforms": [
             "Linux",
-            "Mac OS X",
+            "macOS",
             "Windows"
         ],
         "url": "http://psyced.org"
@@ -206,8 +206,8 @@
         "name": "Tigase",
         "platforms": [
             "Linux",
+            "macOS",
             "Solaris",
-            "Mac OS X",
             "Windows"
         ],
         "url": "http://tigase.org"
@@ -217,7 +217,7 @@
         "name": "Vines",
         "platforms": [
             "Linux",
-            "Mac OS X"
+            "macOS"
         ],
         "url": "http://getvines.com"
     },
@@ -226,8 +226,8 @@
         "name": "Wokkel",
         "platforms": [
             "Linux",
-            "Solaris",
-            "Mac OS X"
+            "macOS",
+            "Solaris"
         ],
         "url": "http://wokkel.ik.nu"
     }
