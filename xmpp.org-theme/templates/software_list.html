@@ -6,7 +6,7 @@
     <table>
       <thead>
         <th>Project Name</th>
-        <th>{{ page.swlist_info_column_head | default("Platforms") }}</th>
+        <th>{{ page.swlist_platforms_column_head | default("Platforms") }}</th>
       </thead>
       <tbody>
         {% for item in data | sort(attribute='name') %}
@@ -14,7 +14,7 @@
             <td>{% if item.url %}
               <a href="{{ item.url }}">{{ item.name }}</a>
             {% else %}{{ item.name }}{% endif %}</td>
-            <td>{{ item.info | join(" / ") }}</td>
+            <td>{{ item.platforms | join(" / ") }}</td>
           </tr>
         {% endfor %}
       </tbody>

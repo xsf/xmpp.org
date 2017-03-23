@@ -1,606 +1,606 @@
 [
     {
-        "info": [
-            "macOS"
-        ],
         "last_renewed": null,
         "name": "Adium",
+        "platforms": [
+            "macOS"
+        ],
         "url": "http://adium.im"
     },
     {
-        "info": [
-            "macOS"
-        ],
         "last_renewed": null,
         "name": "Apple Messages",
+        "platforms": [
+            "macOS"
+        ],
         "url": "http://www.apple.com/ios/messages/"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "AQQ",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://aqq.eu"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "AstraChat",
+        "platforms": [
             "Android",
             "iOS",
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "AstraChat",
         "url": "http://astrachat.com"
     },
     {
-        "info": [
-            "Android"
-        ],
         "last_renewed": null,
         "name": "Beem",
+        "platforms": [
+            "Android"
+        ],
         "url": "http://beem-project.com"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "BitlBee",
+        "platforms": [
+            "Linux"
+        ],
         "url": "http://bitlbee.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "BlueJabb",
+        "platforms": [
             "Android",
             "Blackberry",
             "Nokia Symbian"
         ],
-        "last_renewed": null,
-        "name": "BlueJabb",
         "url": "http://bluejabb.com"
     },
     {
-        "info": [
-            "iOS"
-        ],
         "last_renewed": null,
         "name": "Boogie Chat",
+        "platforms": [
+            "iOS"
+        ],
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
     },
     {
-        "info": [
-            "Mobile (Android)"
-        ],
         "last_renewed": "2017-03-23T14:02:52",
         "name": "Bruno the Jabber Bear",
+        "platforms": [
+            "Mobile (Android)"
+        ],
         "url": "https://yaxim.org/bruno/"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Buddycloud",
+        "platforms": [
             "Mobile",
             "Web",
             "Console"
         ],
-        "last_renewed": null,
-        "name": "Buddycloud",
         "url": "http://buddycloud.com"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Candy",
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://candy-chat.github.io/candy/"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "ChatSecure",
+        "platforms": [
             "Android",
             "iOS"
         ],
-        "last_renewed": null,
-        "name": "ChatSecure",
         "url": "https://chatsecure.org/"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Coccinella",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Coccinella",
         "url": "http://coccinella.im"
     },
     {
-        "info": [
-            "Android"
-        ],
         "last_renewed": null,
         "name": "Conversations",
+        "platforms": [
+            "Android"
+        ],
         "url": "https://github.com/siacs/Conversations"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Converse.js",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://conversejs.org"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "Coversant SoapBox Communicator",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://coversant.com"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "eM Client",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://emclient.com"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "Empathy",
+        "platforms": [
+            "Linux"
+        ],
         "url": "https://wiki.gnome.org/Apps/Empathy"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "Finch",
+        "platforms": [
+            "Linux"
+        ],
         "url": "http://developer.pidgin.im"
     },
     {
-        "info": [
+        "last_renewed": "2017-03-23T17:00:00",
+        "name": "Gajim",
+        "platforms": [
             "Linux",
             "Windows"
         ],
-        "last_renewed": "2017-03-23T17:00:00",
-        "name": "Gajim",
         "url": "https://gajim.org"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "GNU Freetalk",
+        "platforms": [
+            "Linux"
+        ],
         "url": "https://gnufreetalk.github.io/"
     },
     {
-        "info": [
-            "IBM i"
-        ],
         "last_renewed": null,
         "name": "GreenJab",
+        "platforms": [
+            "IBM i"
+        ],
         "url": "http://bvstools.com"
     },
     {
-        "info": [
-            "Mobile"
-        ],
         "last_renewed": null,
         "name": "IM+",
+        "platforms": [
+            "Mobile"
+        ],
         "url": "http://shapeservices.com"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Instantbird",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Instantbird",
         "url": "http://instantbird.com"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "irssi-xmpp",
+        "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "last_renewed": null,
-        "name": "irssi-xmpp",
         "url": "http://cybione.org"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "jabber.el",
+        "platforms": [
+            "Linux"
+        ],
         "url": "http://emacs-jabber.sourceforge.net"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Jabbim",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Jabbim",
         "url": "http://jabbim.com"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "JAJC",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://jajc.jrudevels.org"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Jappix",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://jappix.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Jitsi",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Jitsi",
         "url": "http://jitsi.org"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": "2017-03-23T13:44:04",
         "name": "JSXC",
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://www.jsxc.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Kadu",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Kadu",
         "url": "http://kadu.net"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Kaiwa",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://getkaiwa.com/"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "Kopete",
+        "platforms": [
+            "Linux"
+        ],
         "url": "http://kopete.kde.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "mcabber",
+        "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "last_renewed": null,
-        "name": "mcabber",
         "url": "http://mcabber.com"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "Miranda IM",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://miranda-im.org"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "Miranda NG",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://miranda-ng.org"
     },
     {
-        "info": [
-            "iOS"
-        ],
         "last_renewed": null,
         "name": "Monal IM",
+        "platforms": [
+            "iOS"
+        ],
         "url": "http://monal.im"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Movim",
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://movim.eu"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Mozilla Thunderbird",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Mozilla Thunderbird",
         "url": "http://mozilla.org/thunderbird"
     },
     {
-        "info": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "OneTeam",
-        "url": "http://oneteam.im"
-    },
-    {
-        "info": [
-            "iOS"
-        ],
-        "last_renewed": null,
-        "name": "OneTeam for iPhone",
-        "url": "http://oneteam.im"
-    },
-    {
-        "info": [
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
+        "url": "http://oneteam.im"
+    },
+    {
+        "last_renewed": null,
+        "name": "OneTeam for iPhone",
+        "platforms": [
+            "iOS"
+        ],
+        "url": "http://oneteam.im"
+    },
+    {
         "last_renewed": null,
         "name": "Pidgin",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
         "url": "http://pidgin.im"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Poezio",
+        "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "last_renewed": null,
-        "name": "Poezio",
         "url": "https://poez.io"
     },
     {
-        "info": [
-            "Windows (Cygwin)",
-            "OSX",
-            "Linux"
-        ],
         "last_renewed": "2017-03-23T20:16:42",
         "name": "Profanity",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
         "url": "http://profanity.im"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Psi",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Psi",
         "url": "http://psi-im.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Psi+",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Psi+",
         "url": "http://psi-plus.com"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "Quiet Internet Pager",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://forum.qip.ru"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "qutIM",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "qutIM",
         "url": "http://qutim.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Salut \u00e0 Toi",
+        "platforms": [
             "Linux",
             "Console",
             "Text-Mode",
             "Browser"
         ],
-        "last_renewed": null,
-        "name": "Salut \u00e0 Toi",
         "url": "https://salut-a-toi.org/"
     },
     {
-        "info": [
-            "Linux"
-        ],
         "last_renewed": null,
         "name": "Sim-IM",
+        "platforms": [
+            "Linux"
+        ],
         "url": "http://sim-im.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Smuxi",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Smuxi",
         "url": "https://smuxi.im/"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Spark",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Spark",
         "url": "https://igniterealtime.org/projects/spark/index.jsp"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "SparkWeb",
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Swift",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Swift",
         "url": "http://swift.im"
     },
     {
-        "info": [
-            "Mobile"
-        ],
         "last_renewed": null,
         "name": "Talkonaut",
+        "platforms": [
+            "Mobile"
+        ],
         "url": "http://talkonaut.com"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Tigase Messenger",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://www.tigase.net/content/tigase-messenger-android"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "Tigase Minichat",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://tigase.org"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Tkabber",
+        "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "last_renewed": null,
-        "name": "Tkabber",
         "url": "http://tkabber.jabber.ru"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "Trillian",
+        "platforms": [
             "Windows",
             "macOS",
             "Mobile",
             "Browser"
         ],
-        "last_renewed": null,
-        "name": "Trillian",
         "url": "http://trillian.im"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "V&V Messenger",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://www.altertech.com/products/vv/"
     },
     {
-        "info": [
-            "BlackBerry"
-        ],
         "last_renewed": null,
         "name": "Vayusphere",
+        "platforms": [
+            "BlackBerry"
+        ],
         "url": "http://vayusphere.com"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "VSTalk",
+        "platforms": [
+            "Windows"
+        ],
         "url": "https://vstalk.codeplex.com/"
     },
     {
-        "info": [
-            "Windows"
-        ],
         "last_renewed": null,
         "name": "WTW",
+        "platforms": [
+            "Windows"
+        ],
         "url": "http://wtw.im/"
     },
     {
-        "info": [
-            "Android"
-        ],
         "last_renewed": null,
         "name": "Xabber",
+        "platforms": [
+            "Android"
+        ],
         "url": "http://xabber.com"
     },
     {
-        "info": [
+        "last_renewed": null,
+        "name": "xmpp-client",
+        "platforms": [
             "Linux",
             "macOS"
         ],
-        "last_renewed": null,
-        "name": "xmpp-client",
         "url": "https://github.com/agl/xmpp-client"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "xmppchat",
+        "platforms": [
+            "Browser"
+        ],
         "url": "http://babelmonkeys.de"
     },
     {
-        "info": [
-            "Browser"
-        ],
         "last_renewed": null,
         "name": "XMPPWebChat",
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "info": [
-            "Android"
-        ],
         "last_renewed": "2017-03-23T13:40:52",
         "name": "yaxim",
+        "platforms": [
+            "Android"
+        ],
         "url": "https://yaxim.org"
     }
 ]
