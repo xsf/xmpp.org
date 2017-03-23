@@ -14,9 +14,11 @@ VALID_ENTRY_KEYS = {
 }
 
 
-def emit_violation(entry_name, message):
+def emit_violation(entry_name, message, *, warning=False):
+    prefix = "WARN" if warning else "ERROR"
     print(
-        "ERROR: entry {!r}: {}".format(
+        "{}: entry {!r}: {}".format(
+            prefix,
             entry_name,
             message,
         ),
@@ -24,7 +26,9 @@ def emit_violation(entry_name, message):
     )
 
 
-def check_entries(entries, allowed_platforms=None):
+def check_entries(entries,
+                  allowed_platforms=None,
+                  show_warnings=False):
     violations = 0
     previous_name = None
     previous_key = None
@@ -76,17 +80,18 @@ def check_entries(entries, allowed_platforms=None):
 
         platforms = entry.get("platforms", [])
 
-        if (allowed_platforms is not None and
-                entry.get("last_renewed") is not None):
+        if allowed_platforms is not None:
+            is_severe = entry.get("last_renewed") is not None
             unknown = set(platforms) - allowed_platforms
-            if unknown:
+            if unknown and (is_severe or show_warnings):
                 emit_violation(
                     entry["name"],
                     "undefined platforms: {}".format(
                         ", ".join(map(repr, unknown)),
                     ),
+                    warning=not is_severe
                 )
-                violations += 1
+                violations += is_severe
 
         sorted_platforms = sorted(platforms, key=lambda x: x.casefold())
         if sorted_platforms != platforms:
@@ -111,6 +116,13 @@ if __name__ == "__main__":
         "which",
         choices=("clients.json", "servers.json", "libraries.json"),
     )
+    parser.add_argument(
+        "-W",
+        default=False,
+        dest="warnings",
+        action="store_true",
+        help="Show warnings in addition to errors",
+    )
 
     args = parser.parse_args()
 
@@ -127,7 +139,11 @@ if __name__ == "__main__":
     else:
         platforms = None
 
-    violations = check_entries(data, allowed_platforms=platforms)
+    violations = check_entries(
+        data,
+        allowed_platforms=platforms,
+        show_warnings=args.warnings,
+    )
     if violations:
         print("Found {} severe violations. "
               "Please fix them.".format(violations),
