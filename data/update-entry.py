@@ -142,6 +142,8 @@ def main():
             print("aborting per user request")
             sys.exit(3)
 
+    data.sort(key=lambda x: x["name"].casefold())
+
     with open(filename, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)
 
