@@ -40,7 +40,3 @@ PyCon 2017, Portland, Oregon, USA
 * [London](https://www.meetup.com/XMPP-UK-Meetup/)
 * [Paris](https://news.jabberfr.org/2017/03/rencontre-xmpp-le-mardi-28-mars-2017-a-paris/)
 * Krakow (soon)
-
-## Other events
-
-XSF members and other XMPP developers can be found at events regularly all over the world.
