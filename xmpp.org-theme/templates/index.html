@@ -9,7 +9,7 @@
 {% endblock %}
 {% for article in articles_page.object_list %}
   <article>
-    <h1>{{ article.title }}</h1>
+    <h1><a href="{{ SITE_URL}}/{{ article.url }}">{{ article.title }}</a></h1>
     {{ article.summary }}
     <p>
       <a href="{{ SITE_URL }}/{{ article.url }}">Continue reading &raquo;</a>
