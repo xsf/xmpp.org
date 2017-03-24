@@ -3,7 +3,7 @@ import json
 import os.path
 import sys
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 VALID_ENTRY_KEYS = {
@@ -69,8 +69,8 @@ def check_entries(entries,
 
         if entry.get("last_renewed") is not None:
             try:
-                datetime.strptime(entry["last_renewed"],
-                                  "%Y-%m-%dT%H:%M:%S")
+                dt = datetime.strptime(entry["last_renewed"],
+                                       "%Y-%m-%dT%H:%M:%S")
             except ValueError:
                 emit_violation(
                     entry["name"],
@@ -80,6 +80,16 @@ def check_entries(entries,
                     )
                 )
                 violations += 1
+            else:
+                now = datetime.utcnow()
+                # some slack, we don’t know how accurate travis
+                # clock is and also timezone stuff
+                if dt - now > timedelta(hours=24):
+                    emit_violation(
+                        entry["name"],
+                        "renewal date must not be in the future",
+                    )
+                    violations += 1
 
         platforms = entry.get("platforms", [])
 
