@@ -33,7 +33,7 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Conferences
 
-PyCon 2017, Portland, Oregon, USA
+[PyCon 2017, Portland, Oregon, USA](https://us.pycon.org/2017/)
 
 ## Meetups
 
