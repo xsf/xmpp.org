@@ -3,7 +3,7 @@ title: First Paris XMPP meetup
 date: 2017-03-23 23:59
 author: Nÿco
 blog_id: blog
-category: Summits, Conferences, And Meetups
+category: Events
 ---
 
 After Berlin, Stockholm, and London, here is Paris. The trend of new XMPP meetups in major cities in Europe is confirmed.
