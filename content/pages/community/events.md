@@ -25,7 +25,7 @@ Sidebar_menu_elem_url_6: community/sponsorship
 Content_layout: multiple-columns
 ---
 
-__See something missing?__ Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Plaese, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
+__See something missing?__ Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ## XMPP Summits
 
