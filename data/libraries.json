@@ -433,6 +433,14 @@
         "url": "https://github.com/otalk/stanza.io"
     },
     {
+        "last_renewed": "2017-03-27T12:54:19",
+        "name": "Stroke",
+        "platforms": [
+            "Java"
+        ],
+        "url": "https://swift.im/swiften.html"
+    },
+    {
         "last_renewed": null,
         "name": "strophe.js",
         "platforms": [
@@ -449,12 +457,12 @@
         "url": "https://github.com/ArchipelProject/StropheCappuccino"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-03-27T12:44:53",
         "name": "Swiften",
         "platforms": [
             "C++"
         ],
-        "url": "http://swift.im"
+        "url": "https://swift.im/swiften.html"
     },
     {
         "last_renewed": "2017-03-23T20:32:00",
