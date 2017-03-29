@@ -38,7 +38,7 @@ An explanation of the benefits, together with sponsorships costs, can be found b
 | Benefit                            | Silver | Gold | Platinum | Titanium |
 |------------------------------------|--------|------|----------|----------|
 | Logo in XSF presentations          | Yes    | Yes  | Yes      | Yes      |
-| Logo in Site Sidebar               | Yes    | Yes  | Yes      | Yes      |
+| Logo on Every Page                 | Yes    | Yes  | Yes      | Yes      |
 | Logo on Sponsor Page               | Yes    | Yes  | Yes      | Yes      |
 | Logo + Paragraph on Sponsor page   |        | Yes  | Yes      | Yes      |
 | Page on the XSF Site               |        |      | Yes      | Yes      |
@@ -50,8 +50,8 @@ An explanation of the benefits, together with sponsorships costs, can be found b
 
 ### Benefits in detail
 
-- __Logo in SF Presentations__: Your company logo will feature in XSF presentations given by XSF Council and XSF Board members.
-- __Logo Site Home Page__: Your logo will form part of the pool of sponsor logos that appear on the home page of the site.
+- __Logo in XSF Presentations__: Your company logo will feature in XSF presentations given by XSF Council and XSF Board members.
+- __Logo on Every Page__: Your logo will form part of the pool of sponsor logos that appear on the home page of the site.
 - __Logo on Sponsor Page__: Your logo will appear on the XSF Sponsor Page, linked to a designated page on your website.
 - __Logo + Paragraph on Sponsor Page__: Your logo, together with a pragraph describing your company, will appear on the XSF Sponsor Page, linked to a designated page of your choice.
 - __Your own page on the XSF site__: You’ll get your own page on the XSF site, which will be listed in the site’s main menu.
