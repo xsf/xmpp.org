@@ -158,9 +158,9 @@
         "last_renewed": "2017-04-01T10:28:44",
         "name": "eyeCU",
         "platforms": [
-            "Windows",
+            "Linux",
             "OS/2",
-            "Linux"
+            "Windows"
         ],
         "url": "http://eyecu.ru"
     },    
@@ -406,8 +406,8 @@
         "platforms": [
             "Linux",
             "macOS",
-            "Windows",
-            "OS/2"
+            "OS/2",
+            "Windows"
         ],
         "url": "http://psi-im.org"
     },
