@@ -406,7 +406,8 @@
         "platforms": [
             "Linux",
             "macOS",
-            "Windows"
+            "Windows",
+            "OS/2"
         ],
         "url": "http://psi-im.org"
     },
@@ -453,7 +454,8 @@
         "last_renewed": null,
         "name": "Sim-IM",
         "platforms": [
-            "Linux"
+            "Linux",
+            "OS/2"
         ],
         "url": "http://sim-im.org"
     },
