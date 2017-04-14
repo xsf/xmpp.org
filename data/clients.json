@@ -161,10 +161,9 @@
             "Linux",
             "Other",
             "Windows"
-
         ],
         "url": "http://eyecu.ru"
-    },    
+    },
     {
         "last_renewed": null,
         "name": "Finch",
@@ -355,20 +354,12 @@
         "url": "http://mozilla.org/thunderbird"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-04-14T12:37:30",
         "name": "OneTeam",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
-        ],
-        "url": "http://oneteam.im"
-    },
-    {
-        "last_renewed": null,
-        "name": "OneTeam for iPhone",
-        "platforms": [
-            "iOS"
         ],
         "url": "http://oneteam.im"
     },
