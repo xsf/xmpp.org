@@ -43,15 +43,14 @@
         "url": "http://danga.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-04-14T12:38:21",
         "name": "ejabberd",
         "platforms": [
             "Linux",
             "macOS",
-            "Solaris",
             "Windows"
         ],
-        "url": "http://process-one.net"
+        "url": "https://www.process-one.net/en/ejabberd"
     },
     {
         "last_renewed": null,
