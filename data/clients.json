@@ -140,6 +140,14 @@
     },
     {
         "last_renewed": null,
+        "name": "Dino",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://github.com/dino/dino"
+    },
+    {
+        "last_renewed": null,
         "name": "eM Client",
         "platforms": [
             "Windows"
