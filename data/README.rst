@@ -99,7 +99,11 @@ There is no tooling for that. Add the following template to the respective ``jso
           "url": "https://myfancyclient.example"
       }
 
-Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a renewal (this will sort the list correctly to minimize future diffs) and create a PR.
+Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a renewal (this will sort the list correctly to minimize future diffs).
+
+**If you do not use the tool**, make sure that you set the ``last_renewed`` key manually to the current date (as seen in other entries) in UTC and adhere to the sorting requirements of the JSON file. You can use the ``lint-list.py`` tool to verify that everything is in order. If ``lint-list.py`` complains, the Travis  CI will reject your Pull Request.
+
+Finally, create a Pull Request.
 
 
 Remove an existing entry
