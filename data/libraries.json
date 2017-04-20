@@ -593,5 +593,14 @@
             "JavaScript"
         ],
         "url": "http://ivan.vucica.net"
+    },
+    {
+        "last_renewed": "2017-04-20T19:36:12",
+        "name": "matrix-js",
+        "platforms": [
+            "JavaScript",
+            "TypeScript",
+        ],
+        "url": "https://github.com/agnauck/matrix-js"
     }
 ]
