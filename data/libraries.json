@@ -315,7 +315,7 @@
             "C"
         ],
         "url": "https://github.com/mcabber/loudmouth"
-    },
+    },   
     {
         "last_renewed": "2017-03-29T00:33:45",
         "name": "MatriX",
@@ -325,6 +325,15 @@
             "Mono"
         ],
         "url": "https://www.ag-software.net/matrix-xmpp-sdk/"
+    },
+    {
+        "last_renewed": "2017-04-20T19:36:12",
+        "name": "MatriX JS",
+        "platforms": [
+            "JavaScript",
+            "TypeScript"
+        ],
+        "url": "https://github.com/agnauck/matrix-js"
     },
     {
         "last_renewed": null,
