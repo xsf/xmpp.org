@@ -26,7 +26,7 @@ Site generation
 * Commits to the master branch generate a new build.
 * Builds are visible at https://travis-ci.org/xsf/xmpp.org/builds
 * New content is deployed to [gh-pages branch](https://github.com/xsf/xmpp.org/tree/gh-pages)
-* and visible on http://new.xmpp.org
+* and will be visible on http://xmpp.org after the next update
 
 ## Software Requirements
 
