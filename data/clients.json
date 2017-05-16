@@ -382,11 +382,11 @@
         "url": "http://pidgin.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-05-15T21:35:03",
         "name": "Poezio",
         "platforms": [
-            "Console",
-            "Text-Mode"
+            "Linux",
+            "macOS"
         ],
         "url": "https://poez.io"
     },
