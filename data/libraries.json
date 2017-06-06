@@ -41,7 +41,7 @@
             "Ada"
         ],
         "url": "http://orge.ada-ru.org"
-    },
+    }
     {
         "last_renewed": "2017-03-23T18:50:00",
         "name": "Babbler",
@@ -105,7 +105,7 @@
         "last_renewed": null,
         "name": "Eiffel",
         "platforms": [
-            "PHP"
+            "Eiffel"
         ],
         "url": "https://www.eiffel.org/resources/libraries/eiffel-xmpp"
     },
@@ -585,7 +585,7 @@
         "platforms": [
             "PHP"
         ],
-        "url": "http://code.google.com"
+        "url": "https://github.com/BirknerAlex/XMPPHP"
     },
     {
         "last_renewed": null,
