@@ -68,17 +68,6 @@
     },
     {
         "last_renewed": null,
-        "name": "Coversant SoapBox SDK Studio",
-        "platforms": [
-            ".net",
-            "C#",
-            "C++",
-            "Mono"
-        ],
-        "url": "http://coversant.com"
-    },
-    {
-        "last_renewed": null,
         "name": "dojox.xmpp",
         "platforms": [
             "JavaScript"
@@ -105,7 +94,7 @@
         "last_renewed": null,
         "name": "Eiffel",
         "platforms": [
-            "PHP"
+            "Eiffel"
         ],
         "url": "https://www.eiffel.org/resources/libraries/eiffel-xmpp"
     },
@@ -585,7 +574,7 @@
         "platforms": [
             "PHP"
         ],
-        "url": "http://code.google.com"
+        "url": "https://github.com/BirknerAlex/XMPPHP"
     },
     {
         "last_renewed": null,
