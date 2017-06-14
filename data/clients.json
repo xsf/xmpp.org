@@ -167,7 +167,7 @@
         "name": "eyeCU",
         "platforms": [
             "Linux",
-            "Other",
+            "OS/2",
             "Windows"
         ],
         "url": "http://eyecu.ru"
@@ -406,6 +406,7 @@
         "platforms": [
             "Linux",
             "macOS",
+            "OS/2",
             "Windows"
         ],
         "url": "http://psi-im.org"
