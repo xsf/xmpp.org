@@ -16,7 +16,7 @@ builder:
 	docker build -t xmpp-org-build/latest build
 
 site: builder
-	docker run --env COMMIT_HASH=${COMMIT_HASH} --volume $(CURDIR)/xmpp.org:/var/tmp/src/xmpp.org --volume $(CURDIR)/deploy/output:/var/tmp/output -t -i xmpp-org-build/latest
+	docker run --env COMMIT_HASH=${COMMIT_HASH} --volume $(CURDIR):/var/tmp/src/xmpp.org --volume $(CURDIR)/deploy/output:/var/tmp/output -t -i xmpp-org-build/latest
 
 serve:
 	docker run -p 8080:80 -t -i xmpp-org/latest
