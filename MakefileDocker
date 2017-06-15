@@ -1,0 +1,23 @@
+#
+# Build a docker image to build the website,
+# then build a docker image to serve it.
+#
+# The website source must be checked out
+# locally as ./xmpp.org (which'll happen
+# automatically with git submodules).
+#
+
+all: deployer
+
+deployer: site
+	docker build -t xmpp-org/latest deploy
+
+builder:
+	docker build -t xmpp-org-build/latest build
+
+site: builder
+	docker run --env COMMIT_HASH=${COMMIT_HASH} --volume $(CURDIR)/xmpp.org:/var/tmp/src/xmpp.org --volume $(CURDIR)/deploy/output:/var/tmp/output -t -i xmpp-org-build/latest
+
+serve:
+	docker run -p 8080:80 -t -i xmpp-org/latest
+
