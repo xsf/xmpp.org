@@ -1,4 +1,4 @@
-In May of 2017 a meetup was organized in Krakow, Poland. We announced it on the [XSF blog](https://xmpp.org/2017/04/first-krakow-xmpp-meetup/), and [on meetup.com](htpps://www.meetup.com/fr-FR/XMPP-Jabber-Messaging-Krakow/events/239508291/) (also a few social networks).  The reponse from the XMPP/Jabber community was very positive, as we were fresh off the heels of FOSDEM and many members had just recently met at the XMPP Summit.
+In May of 2017 a meetup was organized in Krakow, Poland. We announced it on the [XSF blog](https://xmpp.org/2017/04/first-krakow-xmpp-meetup/), and [on meetup.com](htpps://www.meetup.com/XMPP-Jabber-Messaging-Krakow/events/239508291/) (also a few social networks).  The reponse from the XMPP/Jabber community was very positive, as we were fresh off the heels of FOSDEM and many members had just recently met at the XMPP Summit.
 
 ## Philosophy & goals
 
@@ -20,4 +20,4 @@ Nice feedback from all attendees, all were happy to attend. There were some inte
 
 After the meetup, we all went in an underground bar to share some stories and beverages, near the old market square in the city center of Krakow.  It is hoped that this post-meetup tradition can be continued for the next session.  Ideally we’d like to host another in the autumn, please suggest topics and times and share your thoughts with us!
 
-Follow us on https://www.meetup.com/fr-FR/XMPP-Jabber-Messaging-Krakow/
+Follow us on https://www.meetup.com/XMPP-Jabber-Messaging-Krakow/
