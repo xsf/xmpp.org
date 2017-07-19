@@ -2,7 +2,7 @@ In May of 2017 a meetup was organized in Krakow, Poland. We announced it on the 
 
 ## Philosophy & goals
 
-Firstly, it was a cooperation between Tigase and MongooseIM. Both organizations provide open source XMPP server software and bring professional expertise to the protocol and its ecosystem.  However, we wanted it to be a humble and rapidly organized meetup, rather than a meticulously planned event. We have been calling to mind the addage "done is better than perfect".  The ultimate goal of the meetup was to meet colleagues of the XMPP and Jabber community, brainstorm, and overall improve communication between users and developers of the protocol.  An additional benefit from the meeting so soon after the Summit was to strengthen the trend and popularity of XMPP meetups in the European Union.
+Firstly, it was a cooperation between Tigase and MongooseIM. Both organizations provide open source XMPP server software and bring professional expertise to the protocol and its ecosystem.  However, we wanted it to be a humble and rapidly organized meetup, rather than a meticulously planned event. The meeting was planned with the adage 'done is better than perfect' in mind. The ultimate goal of the meetup was to meet colleagues of the XMPP and Jabber community, brainstorm, and overall improve communication between users and developers of the protocol.  An additional benefit from the meeting so soon after the Summit was to strengthen the trend and popularity of XMPP meetups in the European Union.
 
 ## Speakers and presentations
 
