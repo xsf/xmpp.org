@@ -1,3 +1,11 @@
++---
+ +title: Return of experience on XMPP meetup in Krakow
+ +date: 2017-07-26 11:29
+ +author: Nÿco
+ +blog_id: blog
+ +category: Events
+ +---
+
 In May of 2017 a meetup was organized in Krakow, Poland. We announced it on the [XSF blog](https://xmpp.org/2017/04/first-krakow-xmpp-meetup/), and [on meetup.com](htpps://www.meetup.com/XMPP-Jabber-Messaging-Krakow/events/239508291/) (also a few social networks).  The reponse from the XMPP/Jabber community was very positive, as we were fresh off the heels of FOSDEM and many members had just recently met at the XMPP Summit.
 
 ## Philosophy & goals
