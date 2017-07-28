@@ -24,7 +24,7 @@ Szymon Mentel from Erlang Solutions, exposed the "ICE, STUN, and TURN" open stan
 
 ![Szymon Mentel from Erlang Solutions](./Szymon_Mentel_MongooseIM.jpg)
 
-Piotr Nosek from Erlang Solutions, interacted with the audience around "Fantastic XMPP use-cases", showing the near-complete feature coverage of the open standards protocol and exploring what's missing or could be improved.  We hope that this discussion let to participant brainstorming and even more use cases for the protocol.
+Piotr Nosek from Erlang Solutions, interacted with the audience around "Fantastic XMPP use-cases", showing the near-complete feature coverage of the open standards protocol and exploring what's missing or could be improved.  We hope that this discussion led to participant brainstorming and even more use cases for the protocol.
 
 ![Piotr Nosek from Erlang Solutions](./Piotr_Nosek_MongooseIM.jpg)
 
