@@ -51,7 +51,6 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Philipp Hörist
 - Timothée Jaussoin
 - Wojciech Kapcia
-- Dariel Kremov
 - Steffen Larsen
 - Joachim Lindborg
 - Georg Lukas
