@@ -42,6 +42,7 @@ The team is limited to elected members of the XSF and invited others at the disc
 
 The current team consists of:
 
+- Guus der Kinderen
 - Tobias Markmann
 - Edwin Mons
 - Jerry Pasker (USSHC)
