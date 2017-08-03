@@ -5,9 +5,9 @@ The Software Directory needs yearly renewal for software to not disappear from t
 
 The listing is split in three categories:
 
-* **Servers** are found in the ``servers.json``,
-* **Clients** are found in the ``clients.json``, and
-* **Libraries** are found in the ``libraries.json``.
+* **Servers** are found in the ``servers.json`` (`edit servers directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/servers.json>`_),
+* **Clients** are found in the ``clients.json`` (`edit clients directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/clients.json>`_), and
+* **Libraries** are found in the ``libraries.json`` (`edit libraries directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/libraries.json>`_).
 
 The tooling is the same for all three categories. What differs is what ``platforms`` means. For clients and servers, this is the list of platforms a project runs on. For libraries, this is the list of languages they support.
 
