@@ -8,7 +8,7 @@ category: XSF Organisational
 
 XSF Member Jehan posted this summary to the members mailing list:
 
-Thus the XSF [Board](http://xmpp.org/about-xmpp/xsf/the-xsf-board-of-directors/) and [Council](http://xmpp.org/about-xmpp/xsf/the-xsf-council/) members for 2010/2011 [shall be elected](http://xmpp.org/2010/09/board-and-council-elections-2010/) this 25th of October 2010. And so they were.
+Thus the XSF [Board](http://xmpp.org/about/xsf/the-xsf-board-of-directors/) and [Council](http://xmpp.org/about/xsf/the-xsf-council/) members for 2010/2011 [shall be elected](http://xmpp.org/2010/09/board-and-council-elections-2010/) this 25th of October 2010. And so they were.
 
 As a reminder, the Board is the entity representing externally the **XMPP Standards Foundation**, in particular in business relations. As for the Council, its members approve the *XMPP Extension Protocols*, after having been carefully discussed on the various [discussion lists](http://xmpp.org/participate/discuss-xmpp/) and listened to the opinions of our technical readers, whereas they may be XSF members or not, renowned experts or students, or even you, behind your screen.
 

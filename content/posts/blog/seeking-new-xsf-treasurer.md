@@ -22,4 +22,4 @@ The role of Treasurer includes overall responsibility for the financial affai
 
 So we're looking for someone new. If you or someone you know would be interested in serving as the treasurer (they don't necessarily even have to be an XSF member), please get in touch with the board or me directly. It would be great to have this post filled!
 
-If you are interested, please get in touch with a member of the [XSF Board](http://xmpp.org/about-xmpp/xsf/the-xsf-board-of-directors/).
+If you are interested, please get in touch with a member of the [XSF Board](http://xmpp.org/about/xsf/the-xsf-board-of-directors/).

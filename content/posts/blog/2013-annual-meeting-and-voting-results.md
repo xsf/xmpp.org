@@ -8,7 +8,7 @@ category: XSF Organisational
 
 Every year the members of the XSF get together to vote on the current quarter's new and renewing members and to also elect who will become members of the Technical Council and who will server on the Board of Directors.
 
-This year that meeting was held on the 29th of October, 2013 and Alexander has recorded the details in a on the [XSF site](http://xmpp.org/about-xmpp/xsf/meeting-minutes/xsf-member-meeting-2013-10-29).
+This year that meeting was held on the 29th of October, 2013 and Alexander has recorded the details in a on the [XSF site](http://xmpp.org/about/xsf/meeting-minutes/xsf-member-meeting-2013-10-29).
 
 The 13th XSF Technical Council for the 2013/2014 term are:
 

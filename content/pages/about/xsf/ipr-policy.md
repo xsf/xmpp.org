@@ -101,7 +101,7 @@ All XMPP Extension Protocol (XEP) specifications shall contain the following Leg
 > 
 > ### IPR Conformance
 > 
-> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [xmpp.org/about-xmpp/xsf/xsf-ipr-policy/](http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
+> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [xmpp.org/about/xsf/xsf-ipr-policy/](http://xmpp.org/about/xsf/xsf-ipr-policy/) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
 
 ## Notes
 

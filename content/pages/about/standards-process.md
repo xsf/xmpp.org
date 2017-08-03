@@ -49,7 +49,7 @@ Here's how to submit a proposal to the XMPP Standards Foundation for considerati
 2. Make sure you read, understand, and agree to the XSF’s [IPR Policy](/about/ipr-policy) before you submit your proposal!
 3. Email the XML file (or a URL for the file) to the [Editor Team](mailto:editor@xmpp.org) with a subject line of "ProtoXEP: [your title here]".
 
-Note: It is the author’s responsibility to provide a properly-formatted source file (see the [template](/extensions/xep-template.xml) file maintained under [source control](/about-xmpp/xsf/xsf-source-control/)). Proposals submitted in HTML, TXT, MS Word, Open Document Format, etc. will be returned to the proposal author for proper formatting.
+Note: It is the author’s responsibility to provide a properly-formatted source file (see the [template](/extensions/xep-template.xml) file maintained under [source control](/about/xsf/xsf-source-control/)). Proposals submitted in HTML, TXT, MS Word, Open Document Format, etc. will be returned to the proposal author for proper formatting.
 
 #### Editor creates a ProtoXEP
 
