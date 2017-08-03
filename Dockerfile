@@ -1,4 +1,4 @@
-# Dockerfile to build a XSF website devenv
+# Dockerfile to build a docker image from XSF/xmpp.org Master
 #
 # Dave Cridland <dave.cridland@surevine.com>
 # Copyright 2017 Surevine Ltd
@@ -10,7 +10,7 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-FROM debian:7.10
+FROM debian
 MAINTAINER Dave Cridland <dave.cridland@surevine.com>
 
 # Set environment variables
@@ -20,9 +20,14 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y python-pip git && pip install pelican==3.3 markdown ghp-import
+RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown ghp-import
 
-VOLUME /var/tmp/output
-VOLUME /var/tmp/src/xmpp.org
+# Build and copy in place.
+WORKDIR /var/tmp/src/xmpp.org
+COPY . /var/tmp/src/xmpp.org
+RUN cd /var/tmp/src/xmpp.org && make publish && make html && cp -prv output/* /var/www/html/
+COPY deploy/xsf.conf /etc/nginx/sites-available/default
 
-CMD cd /var/tmp/src/xmpp.org && make publish && make html && cp -prv output/* /var/tmp/output/
+EXPOSE 80
+
+CMD /usr/sbin/nginx -g 'daemon off;'
