@@ -37,7 +37,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Davide Conzon
 - Dave Cridland (XMPP Council)
 - Laura Crossley
-- Guus der Kinderen
+- Guus der Kinderen (infrastructure)
 - Sergey Dobrov
 - Xander Dumaine
 - Emmanuel Gil Peyrot (XMPP Council)
