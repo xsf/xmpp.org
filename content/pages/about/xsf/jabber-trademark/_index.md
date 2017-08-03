@@ -42,14 +42,14 @@ The express purpose of these web pages is to provide a simple, self-supporting T
 For further information, visit any of the following pages:
 
 - [Background information](/about/xsf/jabber-trademark/background)
-- [Usage guidelines](/about/xsf/jabber-trademark/guidelines)
+- [Usage guidelines](/about/xsf/jabber-trademark/usage-guidelines)
 - [Who needs a License](/about/xsf/jabber-trademark/who-needs-a-license)
 - [How the License works](/about/xsf/jabber-trademark/how-the-license-works)
 - [What’s required](/about/xsf/jabber-trademark/whats-required)
 - [License terms](/about/xsf/jabber-trademark/license-terms)
 - [Unlicensed users](/about/xsf/jabber-trademark/unlicensed-users)
 - [Licensing decision process & application](/about/xsf/jabber-trademark/license-decision-process)
-- [Dispute resolution](/about/xsf/jabber-trademark/dispute-resolutions)
+- [Dispute resolution](/about/xsf/jabber-trademark/dispute-resolution)
 - [Trademark License Agreement](/about/xsf/jabber-trademark/trademark-license-agreement)
 - [Pending applications](/about/xsf/jabber-trademark/pending-applications)
 - [Approved applications](/about/xsf/jabber-trademark/approved-applications)
