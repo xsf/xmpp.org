@@ -165,7 +165,7 @@ Open discussion
 
 -   What problems are we facing?
 -   What new application spaces are of interest?
--   What do we need to focus on going forward? (see [XSF Roadmap](/about-xmpp/xsf/xsf-roadmap/))
+-   What do we need to focus on going forward? (see [XSF Roadmap](/about/xsf/xsf-roadmap/))
 -   Etc.
 
 ##### 2:00 - 2:30
