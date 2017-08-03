@@ -504,15 +504,23 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": null,
-        "name": "Tigase Messenger",
+        "last_renewed": "2017-08-03T12:29:00",
+        "name": "Tigase Messenger for Android",
         "platforms": [
-            "Browser"
+            "Android",
         ],
         "url": "http://www.tigase.net/content/tigase-messenger-android"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-08-03T12:29:00",
+        "name": "Tigase Messenger for iOS",
+        "platforms:L [
+            "iOS",
+        ],
+        "url": "http://www.tigase.net/content/tigase-messenger-ios"
+    },
+    {
+        "last_renewed": "2017-08-03T12:29:00",
         "name": "Tigase Minichat",
         "platforms": [
             "Browser"
