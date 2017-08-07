@@ -31,11 +31,11 @@ Version 1.4
 
 ## 1\. <a name="intro"></a>Introduction
 
-This document defines the official policy of the XMPP Standards Foundation (XSF) regarding intellectual property rights (IPR) as they pertain to extensions to XMPP in the form of XMPP Extension Protocol specifications (XEPs). [[1](http://xmpp.org/extensions/ipr-policy.shtml#note1)]
+This document defines the official policy of the XMPP Standards Foundation (XSF) regarding intellectual property rights (IPR) as they pertain to extensions to XMPP in the form of XMPP Extension Protocol specifications (XEPs). [[1](#note1)]
 
 ### 1.1 <a name="intro-history"></a>History
 
-The Jabber/XMPP protocols have been under development since 1998 and have been discussed and documented in public forums since January 1999 in the open-source projects that were a precursor to the XSF. Through force of history and activity since its founding in the summmer of 2001, the XSF has assumed responsibility for managing the evolution of the Jabber/XMPP protocols in two ways: (1) through working with the IETF to standardize the core protocols under the name Extensible Messaging and Presence Protocol (XMPP); and (2) through the definition of extensions to the core protocol in the XSF's XMPP Extension Protocol (XEP) specification series. Through this work, the XSF has in effect "homesteaded" the domain of XMPP Extensions and has acted as a trusted third party or "intellectual property conservancy" [[2](http://xmpp.org/extensions/ipr-policy.shtml#note2)] to which new and established participants in the Jabber/XMPP developer community have entrusted their XMPP Extensions.
+The Jabber/XMPP protocols have been under development since 1998 and have been discussed and documented in public forums since January 1999 in the open-source projects that were a precursor to the XSF. Through force of history and activity since its founding in the summmer of 2001, the XSF has assumed responsibility for managing the evolution of the Jabber/XMPP protocols in two ways: (1) through working with the IETF to standardize the core protocols under the name Extensible Messaging and Presence Protocol (XMPP); and (2) through the definition of extensions to the core protocol in the XSF's XMPP Extension Protocol (XEP) specification series. Through this work, the XSF has in effect "homesteaded" the domain of XMPP Extensions and has acted as a trusted third party or "intellectual property conservancy" [[2](#note2)] to which new and established participants in the Jabber/XMPP developer community have entrusted their XMPP Extensions.
 
 ### 1.2 <a name="intro-role"></a>Purpose
 
@@ -101,12 +101,12 @@ All XMPP Extension Protocol (XEP) specifications shall contain the following Leg
 > 
 > ### IPR Conformance
 > 
-> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [xmpp.org/about-xmpp/xsf/xsf-ipr-policy/](http://xmpp.org/about-xmpp/xsf/xsf-ipr-policy/) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
+> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [http://xmpp.org/about/xsf/ipr-policy](http://xmpp.org/about/xsf/ipr-policy) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
 
 ## Notes
 
-1.  For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](http://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](http://xmpp.org/extensions/xep-0001.html).
-2.  For information about intellectual property conservancies, see as well as M. van Houweling, "Cultivating Open Information Platforms: A Land Trust Model." Journal of Telecommunications & High Technology Law 1, no. 1 (2002): 309-23.
+1.  <a name="note1"></a> For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](http://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](http://xmpp.org/extensions/xep-0001.html).
+2.  <a name="note2"></a>For information about intellectual property conservancies, see as well as M. van Houweling, "Cultivating Open Information Platforms: A Land Trust Model." Journal of Telecommunications & High Technology Law 1, no. 1 (2002): 309-23.
 
 ## Acknowledgements
 
