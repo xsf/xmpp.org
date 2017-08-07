@@ -1,5 +1,5 @@
 ---
-Title: XMPP Standards Foundation (XSF)
+Title: XSF Council Policies and Procedures
 Url: about/xsf/council-policies-and-procedures
 Save_as: about/xsf/council-policies-and-procedures.html
 Parent_id: about
