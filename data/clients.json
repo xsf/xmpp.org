@@ -505,27 +505,13 @@
     },
     {
         "last_renewed": "2017-08-03T12:29:00",
-        "name": "Tigase Messenger for Android",
+        "name": "Tigase Messenger",
         "platforms": [
-            "Android"
-        ],
-        "url": "http://www.tigase.net/content/tigase-messenger-android"
-    },
-    {
-        "last_renewed": "2017-08-03T12:29:00",
-        "name": "Tigase Messenger for iOS",
-        "platforms": [
+            "Android",
+            "Browser",
             "iOS"
         ],
-        "url": "http://www.tigase.net/content/tigase-messenger-ios"
-    },
-    {
-        "last_renewed": "2017-08-03T12:29:00",
-        "name": "Tigase Minichat",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "http://tigase.org"
+        "url": "http://tigase.net/article/client-side-software"
     },
     {
         "last_renewed": null,
