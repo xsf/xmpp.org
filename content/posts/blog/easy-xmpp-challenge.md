@@ -77,6 +77,7 @@ help to accomplish these tasks:
 * install a modern client
 * create an account
 * add their friend
+* automatically find all their other friends
 * find other users and chat rooms
 
 Projects like [Easy XMPP Invitations](https://github.com/ge0rg/easy-xmpp-invitation),
@@ -88,8 +89,8 @@ streamline the whole process.
 
 ### Easy Group Chats
 
-There are two typical IM use cases for group chats: chat with multiple friends
-at the same time (ad-hoc), or participate in a public chat room (typically for
+There are two typical IM use cases for group chats: chat with friends or
+family (private groups), or participate in a public chat room (typically for
 support purposes, pioneered by
 [Internet Relay Chat](https://en.wikipedia.org/wiki/Internet_Relay_Chat)).
 
@@ -108,9 +109,8 @@ easy pattern matching rules, and the inevitable arms race will move to the
 next round.
 
 The community needs to prepare for that, by improving
-[reporting](https://xmpp.org/extensions/xep-0161.html) between server
-operators, adding [anti-spam
-features](https://xmpp.org/extensions/xep-0377.html) into clients and
+[reporting between server operators](https://xmpp.org/extensions/xep-0161.html),
+adding [anti-spam features into clients](https://xmpp.org/extensions/xep-0377.html) and
 providing better whitelisting mechanisms to users.
 
 ## Call for Action
