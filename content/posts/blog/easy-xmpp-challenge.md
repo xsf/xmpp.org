@@ -38,13 +38,13 @@ federated, user identifiers are *user@domain* and it is possible (albeit less
 common) to run your own server (or to get your own domain hosted with a
 commercial provider).
 
-We can leverage users' knowledge about how email works, learn from over forty
-years of email evolution, and apply ideas from modern UX design on top, to
-make XMPP easier to use today.
+By leveraging users' knowledge about how email works, learning from over forty
+years of email evolution, and applying ideas from modern UX design on top, it
+is possible to make XMPP easier to use today.
 
 ## Our Challenges
 
-There are several areas where we as a community need to improve. This post
+There are several areas where our community needs to improve. This post
 provides an overview of the challenges we are currently facing in different
 areas. Subsequent posts will dive deeper into the individual topics and
 work out possible solutions.
@@ -69,10 +69,10 @@ implementations.
 
 ### First-time User Experience
 
-We need to streamline the first-time user experience for IM users. The users
+The first-time user experience for IM users needs to be streamlined. The users
 who need the most assistance are newcomers to the ecosystem who got invited by
-a friend, and start out with nothing but their friend's Jabber ID. We need to
-help those users:
+a friend, and start out with nothing but their friend's Jabber ID. They need
+help to accomplish these tasks:
 
 * install a modern client
 * create an account
