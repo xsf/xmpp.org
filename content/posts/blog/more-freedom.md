@@ -13,6 +13,6 @@ After some research as well as discussion by the XSF Board of Directors, the XSF
 
 This license gives folks even more freedom to implement, deploy, copy, modify, merge, publish, translate, distribute, sublicense, even sell copies of our specifications. And since Jabber technologies have always been focused on freedom, it's only appropriate that the XSF's specifications should be as free as possible.
 
-The updated license is here:[http://www.xmpp.org/extensions/ipr-policy.shtml](http://www.xmpp.org/extensions/ipr-policy.shtml)
+The updated license is here:[https://xmpp.org/about/xsf/ipr-policy](https://xmpp.org/about/xsf/ipr-policy)
 
 Enjoy!
