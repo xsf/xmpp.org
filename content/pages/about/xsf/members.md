@@ -32,7 +32,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - David Banes
 - Mario Behling
 - Ludovic Bocquet
-- Jan-Carel Brand
+- Jan-Carel Brand (editor)
 - Travis Burtrum 
 - Davide Conzon
 - Dave Cridland (XMPP Council)
@@ -87,7 +87,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Ashley Ward
 - Lloyd Watkin
 - Sam Whited (XMPP Council, editor)
-- Jonas Wielicki
+- Jonas Wielicki (editor)
 - Matthew Wild (infrastructure)
 - Daniel Wisnewski
 - Andrzej Wójcik
