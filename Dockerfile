@@ -9,25 +9,29 @@
 
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
+FROM gliderlabs/alpine:3.3
 
-FROM debian
 MAINTAINER Dave Cridland <dave.cridland@surevine.com>
 
-# Set environment variables
-ENV DEBIAN_FRONTEND noninteractive
+RUN apk --no-cache add \
+    py-pip \
+    nginx \
+    build-base \
+  && pip install pelican==3.3 markdown ghp-import \
+  && adduser -D -u 1000 -g 'www' www \
+  && mkdir -p /var/www/html \
+  && chown -R www:www /var/lib/nginx \
+  && chown -R www:www /var/www/html 
 
-# Update system
-RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
-
-# Install dependencies.
-RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown ghp-import
-
-# Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
 COPY . /var/tmp/src/xmpp.org
-RUN cd /var/tmp/src/xmpp.org && make publish && make html && cp -prv output/* /var/www/html/
-COPY deploy/xsf.conf /etc/nginx/sites-available/default
+RUN cd /var/tmp/src/xmpp.org \
+  && make publish \
+  && make html \
+  && cp -prv output/* /var/www/html \
+  && rm -rf /var/tmp/
+COPY deploy/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
-CMD /usr/sbin/nginx -g 'daemon off;'
+CMD ["nginx", "-g", "daemon off;"]
