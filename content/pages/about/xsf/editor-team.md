@@ -27,10 +27,12 @@ Content_layout: multiple-columns
 
 The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](/extensions/xep-README.html) and the [XMPP Registrar](/extensions/xep-0053.html). The current members of the team are:
 
+- Jan-Carel Brand
 - Peter Saint-Andre
 - Florian Schmaus
 - Kevin Smith
 - Sam Whited
+- Jonas Wielicki
 
 NOTE: In order to send email to the team (via [editor@xmpp.org](mailto:editor@xmpp.org)), you MUST include the string “XEP” in the subject line!
 
