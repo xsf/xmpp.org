@@ -57,7 +57,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Bartosz Malkowski
 - Tobias Markmann (XMPP Council, infrastructure)
 - Ralph Meijer (XSF Board)
-- Matthew Miller (XSF Board)
+- Matthew Miller
 - Edwin Mons (infrastructure)
 - Piotr Nosek
 - Jonathan Pan
@@ -88,7 +88,7 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Lloyd Watkin
 - Sam Whited (XMPP Council, editor)
 - Jonas Wielicki (editor)
-- Matthew Wild (infrastructure)
+- Matthew Wild (XSF Board, infrastructure)
 - Daniel Wisnewski
 - Andrzej Wójcik
 - Florian Zeitz
