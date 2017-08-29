@@ -1,6 +1,6 @@
 ---
 title: Return of experience on XMPP meetup in Krakow
-date: 2017-07-26 11:29
+date: 2017-09-05 11:29
 author: Nÿco
 blog_id: blog
 category: Events
