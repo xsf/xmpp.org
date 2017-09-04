@@ -334,14 +334,6 @@
     },
     {
         "last_renewed": null,
-        "name": "node-xmpp",
-        "platforms": [
-            "JavaScript"
-        ],
-        "url": "http://node-xmpp.org"
-    },
-    {
-        "last_renewed": null,
         "name": "oajabber",
         "platforms": [
             "C++"
@@ -535,6 +527,14 @@
             "Python"
         ],
         "url": "http://code.google.com"
+    },
+    {
+        "last_renewed": "2017-09-04T09:23:44",
+        "name": "xmpp.js",
+        "platforms": [
+            "JavaScript"
+        ],
+        "url": "http://xmppjs.org"
     },
     {
         "last_renewed": null,
