@@ -183,12 +183,12 @@
         "url": "http://oracle.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-09-05T23:12:51",
         "name": "Prosody IM",
         "platforms": [
+            "BSD",
             "Linux",
-            "macOS",
-            "Windows"
+            "macOS"
         ],
         "url": "http://prosody.im"
     },
