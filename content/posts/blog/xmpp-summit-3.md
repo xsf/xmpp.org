@@ -24,7 +24,7 @@ Potential topics include:
 -   Jingle for voice and beyond
 -   Preventing the emergence of spim on the Jabber network
 -   Encouraging deployment of TLS on the Jabber network via use of the XMPP ICA
--   Improvement of the [interop testing network](http://www.xmpp.org/interop/)
+-   Improvement of the [interop testing network](https://xmpp.org/interop/)
 -   Final clarifications to rfc3920bis and rfc3921bis
 
 ### Logistics

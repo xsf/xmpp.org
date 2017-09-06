@@ -6,7 +6,7 @@ blog_id: blog
 category: Google Summer of Code
 ---
 
-As before, the [XSF](http://xmpp.org/) has applied to this year's [Google Summer of Code](https://summerofcode.withgoogle.com/). 
+As before, the [XSF](https://xmpp.org/) has applied to this year's [Google Summer of Code](https://summerofcode.withgoogle.com/). 
 
 The XSF is intending to act as an umbrella organisation for any XMPP-related project that wishes to join the GSoC. If you are a member of such a project and would like your project to be involved, get in touch!
 

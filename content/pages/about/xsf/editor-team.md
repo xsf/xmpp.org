@@ -72,4 +72,4 @@ The charter of the team is as follows:
 
 > [3] XEP-0053: XMPP Registrar Function
 
-> [4] http://xmpp.org/resources/registrar/
+> [4] https://xmpp.org/resources/registrar/

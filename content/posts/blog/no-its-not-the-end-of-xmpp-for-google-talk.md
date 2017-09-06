@@ -23,6 +23,6 @@ Note that you can still continue to use the Google Talk Service with a third par
 
 > Service choice is something you have with email and, for the most > part, with your regular phone service today. This means that > regardless of whom you choose as your email service provider (Gmail, > Hotmail, Yahoo! Mail, your school or ISP, etc), you can email anyone > who is using another service provider. The same applies to phone > service. You can call someone even if they do not use the same phone > company as you do. This allows you to choose your service provider > based on other more important factors, such as features, quality of > service, and price, while still being able to talk to anyone you want.
 
-However, since the Google Talk Service does not support server-to-server encryption via TLS (something that was required by RFC 3920 in 2004), a number of servers (including jabber.org) refuse to establish a connection [since May 2014](http://xmpp.org/2014/05/happy-encrypted-network/).
+However, since the Google Talk Service does not support server-to-server encryption via TLS (something that was required by RFC 3920 in 2004), a number of servers (including jabber.org) refuse to establish a connection [since May 2014](https://xmpp.org/2014/05/happy-encrypted-network/).
 
 We'd love to see Google embrace secure messaging for federated messaging. But aside from this long-standing issue, XMPP is alive and kicking at Google.

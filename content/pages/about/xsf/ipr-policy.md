@@ -49,7 +49,7 @@ The core XML streaming, instant messaging, and presence protocols developed by t
 
 ### 2.2 <a name="extension"></a>XMPP Extension
 
-For the purposes of this IPR policy, an XMPP Extension is any specification approved by, or submitted for approval or consideration by, the XSF or its constituent committees (most particularly the [XMPP Council](http://xmpp.org/council/)). Such a specification must exist in the form of a standards-track XMPP Extension Protocol (XEP) specification in order to be considered an official submission. (Also referred to as an Extension.)
+For the purposes of this IPR policy, an XMPP Extension is any specification approved by, or submitted for approval or consideration by, the XSF or its constituent committees (most particularly the [XMPP Council](https://xmpp.org/council/)). Such a specification must exist in the form of a standards-track XMPP Extension Protocol (XEP) specification in order to be considered an official submission. (Also referred to as an Extension.)
 
 ### 2.3 <a name="implementation"></a>Implementation
 
@@ -101,11 +101,11 @@ All XMPP Extension Protocol (XEP) specifications shall contain the following Leg
 > 
 > ### IPR Conformance
 > 
-> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [xmpp.org/about/xsf/ipr-policy](http://xmpp.org/about/xsf/ipr-policy) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
+> This XMPP Extension Protocol has been contributed in full conformance with the XSF's Intellectual Property Rights Policy (a copy of which can be found at [xmpp.org/about/xsf/ipr-policy](https://xmpp.org/about/xsf/ipr-policy) or obtained by writing to XSF, P.O. Box 1641, Denver, CO 80201 USA).
 
 ## Notes
 
-1. <a name="note1"></a> For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](http://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](http://xmpp.org/extensions/xep-0001.html).
+1. <a name="note1"></a> For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](https://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](https://xmpp.org/extensions/xep-0001.html).
 2. <a name="note2"></a> For information about intellectual property conservancies, see as well as M. van Houweling, "Cultivating Open Information Platforms: A Land Trust Model." Journal of Telecommunications & High Technology Law 1, no. 1 (2002): 309-23.
 
 ## Acknowledgements
