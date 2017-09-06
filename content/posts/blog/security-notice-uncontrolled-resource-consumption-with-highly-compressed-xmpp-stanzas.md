@@ -5,4 +5,4 @@ author: stpeter
 blog_id: blog
 ---
 
-The XMPP Standards Foundation has published a security notice describing an uncontrolled resource consumption vulnerability in several XMPP server implementations that support application-layer compression. Details can be found at [http://xmpp.org/resources/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas/](http://xmpp.org/resources/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas/).
+The XMPP Standards Foundation has published a security notice describing an uncontrolled resource consumption vulnerability in several XMPP server implementations that support application-layer compression. Details can be found at [https://xmpp.org/resources/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas/](https://xmpp.org/resources/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas/).

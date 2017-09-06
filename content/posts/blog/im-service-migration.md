@@ -5,7 +5,7 @@ author: stpeter
 blog_id: blog
 ---
 
-Here at the [XMPP Standards Foundation](http://www.xmpp.org/), we're not just a bunch of protocol geeks. As firm believers in the old IETF mantra of "rough consensus and running code", we run one of the most central nodes on the XMPP network: the jabber.org IM service.
+Here at the [XMPP Standards Foundation](https://xmpp.org/), we're not just a bunch of protocol geeks. As firm believers in the old IETF mantra of "rough consensus and running code", we run one of the most central nodes on the XMPP network: the jabber.org IM service.
 
 A lot of care and attention goes into running this service: hardware, hosting, software, and precious time donated by a dedicated group of volunteers. All of those factors were in evidence during our just-completed migration of the service to a new machine. Special thanks are due to the following companies and individuals:
 

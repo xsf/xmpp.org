@@ -71,7 +71,7 @@ Status: published
 
         </p>
         Vote yes or no on the  
-        [proposal](http://www.xmpp.org/xsf/proposals/purpose-proposal.shtml).
+        [proposal](https://xmpp.org/xsf/proposals/purpose-proposal.shtml).
 
 3.  **Opportunity for XSF Members to Vote in the Meeting**
 

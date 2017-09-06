@@ -6,7 +6,7 @@ blog_id: blog
 category: Google Summer of Code
 ---
 
-The [XSF](http://xmpp.org/) will be applying this year to participate in Google's [Summer of Code 2011](http://code.google.com/soc/) and we need the help of XMPP project members in getting a   list of summer project ideas together!
+The [XSF](https://xmpp.org/) will be applying this year to participate in Google's [Summer of Code 2011](http://code.google.com/soc/) and we need the help of XMPP project members in getting a   list of summer project ideas together!
 
 So, if you're an XMPP project and would like to participate in GSoC under the XSF's umbrella, please visit the [Summer of Code 2011](http://wiki.xmpp.org/web/Summer_of_Code_2011) wiki page and start adding ideas of projects you would like to mentor.
 

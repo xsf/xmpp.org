@@ -8,7 +8,7 @@ category: XMPP Summit
 
 The tenth [XMPP Summit](/participate/the-xmpp-summit/) held by the XMPP Standards Foundation happened on February 4-7, 2011, in Brussels, Belgium (the same weekend as [FOSDEM 2011](http://www.fosdem.org/)).
 
-[A Trip Report can be found on the XSF Blog](http://xmpp.org/2011/02/brussels-trip-report/).
+[A Trip Report can be found on the XSF Blog](https://xmpp.org/2011/02/brussels-trip-report/).
 
 -   [Friday, February 4](#friday)
 -   [Saturday, February 5](#saturday)

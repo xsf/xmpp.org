@@ -60,7 +60,7 @@ The following people have indicated that they are likely to participate. If you 
 12. Pushpendra Mohta ([Vayusphere](http://www.vayusphere.com/))
 13. Michael Ossareh ([Heysan](http://www.heysan.com/) / [Good     Technology](http://www.good.com/))
 14. Mickaël Rémond ([ProcessOne](http://www.process-one.net/))
-15. Peter Saint-Andre ([XSF](http://xmpp.org/)     / [Cisco](http://www.cisco.com/))
+15. Peter Saint-Andre ([XSF](https://xmpp.org/)     / [Cisco](http://www.cisco.com/))
 16. Mick Thompson ([Flarify](http://www.flarify.com/))
 17. Kurt Zeilenga ([Isode](http://www.isode.com/))
 18. Christopher Zorn ([Collecta](http://www.collecta.com/))

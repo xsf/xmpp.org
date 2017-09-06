@@ -5,7 +5,7 @@ author: stpeter
 blog_id: blog
 ---
 
-Several months ago a developer in the Jabber/XMPP community let us know that the XSF's intellectual property rights policy prevented him from including text, examples, and schemas from our [XEP](http://www.xmpp.org/extensions/) specifications in his code. In particular, the [Creative Commons Attribution License](http://creativecommons.org/licenses/by/2.5/) (which we were using to cover XEPs) is not consistent with the [Debian Free Software Guidelines](http://www.debian.org/social_contract#guidelines).
+Several months ago a developer in the Jabber/XMPP community let us know that the XSF's intellectual property rights policy prevented him from including text, examples, and schemas from our [XEP](https://xmpp.org/extensions/) specifications in his code. In particular, the [Creative Commons Attribution License](http://creativecommons.org/licenses/by/2.5/) (which we were using to cover XEPs) is not consistent with the [Debian Free Software Guidelines](http://www.debian.org/social_contract#guidelines).
 
 Since we are big fans of Debian GNU/Linux around here (we use it to run all the jabber.org/xmpp.org infrastructure), we decided to investigate the matter.
 

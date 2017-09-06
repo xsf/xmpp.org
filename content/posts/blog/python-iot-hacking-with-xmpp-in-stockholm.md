@@ -5,7 +5,7 @@ author: joachim.lindborg
 blog_id: blog
 ---
 
-On the 21rst November we will meet and use Python to build on [raspberry developer kits](http://iea.sust.se/2013/09/01/preparation-of-devkits/ "devkits") and connect things through the [XMPP IoT extensions](http://xmpp.org/xmpp-protocols/xmpp-extensions/ "XMPP extensions").
+On the 21rst November we will meet and use Python to build on [raspberry developer kits](http://iea.sust.se/2013/09/01/preparation-of-devkits/ "devkits") and connect things through the [XMPP IoT extensions](https://xmpp.org/xmpp-protocols/xmpp-extensions/ "XMPP extensions").
 
 [At the meetup event](http://www.meetup.com/pysthlm/events/145659642/ "Meetup") we will have sensors and actuators connected to raspberries and create interoperable interchange of data with the help of XMPP.
 
