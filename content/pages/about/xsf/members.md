@@ -38,13 +38,14 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Dave Cridland (XMPP Council)
 - Laura Crossley
 - Guus der Kinderen (infrastructure)
-- Sergey Dobrov
 - Xander Dumaine
+- Severino Ferrer de la Peñita
 - Emmanuel Gil Peyrot (XMPP Council)
 - Alexander Gnauck (infrastructure)
 - Marcin Gondek 
 - Daniel Gultsch (XMPP Council)
 - Philipp Hancke
+- Stefan Haun
 - Artur Hefczyc
 - Martin Hewitt (XSF Board)
 - Waqas Hussain
@@ -76,12 +77,12 @@ This page shows the elected members of the XMPP Standards Foundation, along with
 - Michal Slaski
 - Kevin Smith (editor, infrastructure)
 - Lance Stout
-- Rikard Strid
 - Stefan Strigler
 - Radoslaw Szymczyszyn
 - Mike Taylor
 - Marcelo Terres
 - Winfried Tilanus
+- Remko Tronçon
 - Nicolas Vérité (XSF Board)
 - Peter Waher
 - Ashley Ward
