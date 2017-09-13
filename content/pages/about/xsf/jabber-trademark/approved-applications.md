@@ -45,7 +45,7 @@ This page lists licensed uses of the [Jabber trademark](/about/xsf/jabber-tradem
 | Jabber GG Transport                   | Jacek Konieczny             | Open-Source Project         | 2006-01-13    |
 | Jabber Mail Component                 | David Rousselie             | Open-Source Project         | 2006-01-13    |
 | Jabber Registration Tool              | Rene Bartosh                | Open-Source Project         | 2006-01-13    |
-| JabberCat                             | Jonas Wielicki              | Open-Source Project         | TBD           |
+| JabberCat                             | Jonas Wielicki              | Open-Source Project         | 2017-09-13    |
 | jabberd                               | Rob Norris                  | Open-Source Project         | 2004-03-09    |
 | JabberNuke                            | maketheweb.com              | For-Profit Company          | 2006-01-13    |
 | JabberStudio                          | Thomas Muldowney            | Open-Source Project         | 2004-06-24    |
