@@ -48,6 +48,7 @@ Once elected, XSF members are expected to continue contributing to the Jabber/XM
 * [Communication Team](/about/xsf/communications-policy)
 * [Editor Team](about/xsf/editor-team)
 * [Infrastructure Team](/about/xsf/infrastructure-team)
+* [Summits, Conferences & Meetups Team](/about/xsf/scam-team)
 * Technical Review Team
 * [UPnP Liaison Team](/about/xsf/upnp-liaison-team)
 
