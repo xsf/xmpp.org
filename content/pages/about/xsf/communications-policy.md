@@ -9,7 +9,7 @@ Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
 Sidebar_menu_title: About the XSF
-Sidebar_menu_size: 9
+Sidebar_menu_size: 8
 Sidebar_menu_elem_name_1: The XSF
 Sidebar_menu_elem_url_1: about/xmpp-standards-foundation
 Sidebar_menu_elem_name_2: Members
@@ -24,10 +24,8 @@ Sidebar_menu_elem_name_6: Summits, Conferences & Meetups Team
 Sidebar_menu_elem_url_6: about/xsf/scam-team
 Sidebar_menu_elem_name_7: Technical Review Team
 Sidebar_menu_elem_url_7: about/xsf/technical-review-team
-Sidebar_menu_elem_name_8: UPnP Liaison Team
-Sidebar_menu_elem_url_8: about/xsf/upnp-liaison-team
-Sidebar_menu_elem_name_9: Standards Process
-Sidebar_menu_elem_url_9: about/standards-process
+Sidebar_menu_elem_name_8: Standards Process
+Sidebar_menu_elem_url_8: about/standards-process
 
 
 Content_layout: multiple-columns
