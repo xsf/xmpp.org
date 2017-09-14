@@ -49,6 +49,5 @@ Once elected, XSF members are expected to continue contributing to the Jabber/XM
 * [Editor Team](about/xsf/editor-team)
 * [Infrastructure Team](/about/xsf/infrastructure-team)
 * [Summits, Conferences & Meetups Team](/about/xsf/scam-team)
-* [Technical Review Team](/about/xsf/technical-review-team)
 
 In addition to the foregoing opportunities, members must participate in the ongoing governance of the XSF by voting in the quarterly and annual meetings of the membership. In accordance with Section 2.6 of the XSF Bylaws, any member who is inactive through three consecutive meetings forfeits their membership.
