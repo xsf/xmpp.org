@@ -1,9 +1,20 @@
 {% extends "page.html" %}
+{% macro memberrole(role_name, caller=None) -%}
+{%- set role = MEMBERLIST["teams"][role_name] -%}
+{%- set page = role.page | default(False) -%}
+{%- if page -%}
+<a href="{{ SITEURL }}{{ page }}">
+{%- endif -%}
+{{ role.list_name }}
+{%- if page -%}
+</a>
+{%- endif -%}
+{%- endmacro %}
 {% macro memberitems(members, caller=None) %}
 {% for member in members %}
 <li>{{ member.name }}{% if member.roles | default(False) %} ({% for role in member.roles %}
   {%- if not loop.first %}, {% endif -%}
-  {{ MEMBERLIST.teams[role] }}
+  {%- call memberrole(role) %}{% endcall -%}
   {%- endfor %}){% endif %}</li>
   {% endfor %}
 {% endmacro %}

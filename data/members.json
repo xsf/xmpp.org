@@ -1,12 +1,32 @@
 {
     "teams": {
-        "editor": "editor",
-        "infrastructure": "infrastructure",
-        "council": "XMPP Council",
-        "board": "XSF Board",
-        "registrar": "XMPP Registrar",
-        "ed": "Executive Director",
-        "scam": "SCAM"
+        "editor": {
+            "list_name": "editor",
+            "page": "/about/xsf/editor-team.html"
+        },
+        "infrastructure": {
+            "list_name": "infrastructure",
+            "page": "/about/xsf/infrastructure-team.html"
+        },
+        "council": {
+            "list_name": "XMPP Council",
+            "page": "/about/xmpp-standards-foundation.html#council"
+        },
+        "board": {
+            "list_name": "XSF Board",
+            "page": "/about/xmpp-standards-foundation.html#board"
+        },
+        "registrar": {
+            "list_name": "XMPP Registrar"
+        },
+        "ed": {
+            "list_name": "Executive Director",
+            "page": "/about/xsf/people.html"
+        },
+        "scam": {
+            "list_name": "SCAM",
+            "page": "/about/xsf/scam-team.html"
+        }
     },
 
     "members": [
