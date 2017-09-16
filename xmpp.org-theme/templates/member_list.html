@@ -1,0 +1,19 @@
+{% extends "page.html" %}
+{% macro memberitems(members, caller=None) %}
+{% for member in members %}
+<li>{{ member.name }}{% if member.roles | default(False) %} ({% for role in member.roles %}
+  {%- if not loop.first %}, {% endif -%}
+  {{ MEMBERLIST.teams[role] }}
+  {%- endfor %}){% endif %}</li>
+  {% endfor %}
+{% endmacro %}
+{% block content %}
+{{ super() }}
+<ul>
+  {% call memberitems(MEMBERLIST["members"]) %}{% endcall %}
+</ul>
+<p>In addition, the following individuals are emeritus members of the XMPP Standards Foundation:</p>
+<ul>
+  {% call memberitems(MEMBERLIST["emeriti"]) %}{% endcall %}
+</ul>
+{% endblock %}

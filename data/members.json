@@ -1,0 +1,319 @@
+{
+    "teams": {
+        "editor": "editor",
+        "infrastructure": "infrastructure",
+        "council": "XMPP Council",
+        "board": "XSF Board",
+        "registrar": "XMPP Registrar",
+        "ed": "Executive Director",
+        "scam": "SCAM"
+    },
+
+    "members": [
+        {
+            "name": "Thijs Alkemade"
+        },
+
+        {
+            "name": "Kim Alvefur"
+        },
+
+        {
+            "name": "David Banes"
+        },
+
+        {
+            "name": "Mario Behling"
+        },
+
+        {
+            "name": "Ludovic Bocquet"
+        },
+
+        {
+            "name": "Jan-Carel Brand",
+            "roles": ["editor"]
+        },
+
+        {
+            "name": "Travis Burtrum"
+        },
+
+        {
+            "name": "Davide Conzon"
+        },
+
+        {
+            "name": "Dave Cridland",
+            "roles": ["council"]
+        },
+
+        {
+            "name": "Laura Crossley"
+        },
+
+        {
+            "name": "Guus der Kinderen",
+            "roles": ["infrastructure", "scam"]
+        },
+
+        {
+            "name": "Xander Dumaine"
+        },
+
+        {
+            "name": "Severino Ferrer de la Peñita"
+        },
+
+        {
+            "name": "Emmanuel Gil Peyrot",
+            "roles": ["council"]
+        },
+
+        {
+            "name": "Alexander Gnauck",
+            "roles": ["infrastructure"]
+        },
+
+        {
+            "name": "Marcin Gondek"
+        },
+
+        {
+            "name": "Daniel Gultsch",
+            "roles": ["council", "scam"]
+        },
+
+        {
+            "name": "Philipp Hancke"
+        },
+
+        {
+            "name": "Stefan Haun"
+        },
+
+        {
+            "name": "Artur Hefczyc"
+        },
+
+        {
+            "name": "Martin Hewitt",
+            "roles": ["board"]
+        },
+
+        {
+            "name": "Waqas Hussain"
+        },
+
+        {
+            "name": "Philipp Hörist"
+        },
+
+        {
+            "name": "Timothée Jaussoin"
+        },
+
+        {
+            "name": "Wojciech Kapcia"
+        },
+
+        {
+            "name": "Steffen Larsen"
+        },
+
+        {
+            "name": "Joachim Lindborg"
+        },
+
+        {
+            "name": "Georg Lukas"
+        },
+
+        {
+            "name": "Bartosz Malkowski"
+        },
+
+        {
+            "name": "Tobias Markmann",
+            "roles": ["council", "infrastructure"]
+        },
+
+        {
+            "name": "Ralph Meijer",
+            "roles": ["board"]
+        },
+
+        {
+            "name": "Matthew Miller"
+        },
+
+        {
+            "name": "Edwin Mons",
+            "roles": ["infrastructure"]
+        },
+
+        {
+            "name": "Piotr Nosek"
+        },
+
+        {
+            "name": "Jonathan Pan"
+        },
+
+        {
+            "name": "Joshua Pan"
+        },
+
+        {
+            "name": "Mathieu Pasquet"
+        },
+
+        {
+            "name": "Sonny Piers"
+        },
+
+        {
+            "name": "Michal Piotrowski"
+        },
+
+        {
+            "name": "Daniel Pocock"
+        },
+
+        {
+            "name": "Jérôme Poisson"
+        },
+
+        {
+            "name": "Mickaël Rémond"
+        },
+
+        {
+            "name": "Arc Riley",
+            "roles": ["board"]
+        },
+
+        {
+            "name": "Peter Saint-Andre",
+            "roles": ["ed", "registrar", "editor", "infrastructure"]
+        },
+
+        {
+            "name": "Jonathan Schleifer"
+        },
+
+        {
+            "name": "Florian Schmaus",
+            "roles": ["editor"]
+        },
+
+        {
+            "name": "Jonathan Siegle",
+            "roles": ["infrastructure"]
+        },
+
+        {
+            "name": "Michal Slaski"
+        },
+
+        {
+            "name": "Kevin Smith",
+            "roles": ["editor", "infrastructure"]
+        },
+
+        {
+            "name": "Lance Stout"
+        },
+
+        {
+            "name": "Stefan Strigler"
+        },
+
+        {
+            "name": "Radoslaw Szymczyszyn"
+        },
+
+        {
+            "name": "Mike Taylor"
+        },
+
+        {
+            "name": "Marcelo Terres"
+        },
+
+        {
+            "name": "Winfried Tilanus"
+        },
+
+        {
+            "name": "Remko Tronçon"
+        },
+
+        {
+            "name": "Nicolas Vérité",
+            "roles": ["board", "scam"]
+        },
+
+        {
+            "name": "Peter Waher"
+        },
+
+        {
+            "name": "Ashley Ward"
+        },
+
+        {
+            "name": "Lloyd Watkin"
+        },
+
+        {
+            "name": "Sam Whited",
+            "roles": ["council", "editor"]
+        },
+
+        {
+            "name": "Jonas Wielicki",
+            "roles": ["editor"]
+        },
+
+        {
+            "name": "Matthew Wild",
+            "roles": ["board", "infrastructure"]
+        },
+
+        {
+            "name": "Daniel Wisnewski"
+        },
+
+        {
+            "name": "Andrzej Wójcik"
+        },
+
+        {
+            "name": "Florian Zeitz"
+        }
+    ],
+
+    "emeriti": [
+        {
+            "name": "Ryan Eatmon"
+        },
+
+        {
+            "name": "Jeremie Miller",
+            "roles": ["infrastructure"]
+        },
+
+        {
+            "name": "Julian Missig"
+        },
+
+        {
+            "name": "Thomas Muldowney"
+        },
+
+        {
+            "name": "Dave Smith"
+        }
+    ]
+}
