@@ -23,6 +23,8 @@ Sidebar_menu_elem_url_5: about/xsf/scam-team
 Sidebar_menu_elem_name_6: Standards Process
 Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
+Template: team_page
+Team_Role: infrastructure
 ---
 
 The XSF’s Infrastructure Team is responsible for maintaining and improving the machines, software, and other tools used by the XSF to deliver its websites, discussion lists, chatrooms, and other services. Its particular areas of responsibility include:
@@ -42,14 +44,6 @@ The team is limited to elected members of the XSF and invited others at the disc
 
 The current team consists of:
 
-- Guus der Kinderen
-- Alexander Gnauck
-- Tobias Markmann
-- Edwin Mons
-- Jerry Pasker (USSHC)
-- Peter Saint-Andre
-- Jonathan Siegle
-- Kevin Smith
-- Matthew Wild
+$MEMBER_LIST$
 
 The team has a private email list and chatroom, and uses a [wiki page](http://wiki.xmpp.org/web/XSF_Infrastructure) for coordination.
