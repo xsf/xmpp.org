@@ -23,14 +23,14 @@ Sidebar_menu_elem_url_5: about/xsf/scam-team
 Sidebar_menu_elem_name_6: Standards Process
 Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
+Template: team_page
+Team_Role: scam
 ---
 
 The Summits Conferences & Meetups (SCAM) Team was chartered by the XSF Board of Directors in 2017 and currenlty of the
 following volunteers:
 
-- Daniel Gultsch
-- Guus der Kinderen
-- Nicolas Vérité
+$MEMBERS_LIST$
 
 The charter of the Work Team is defined as:
 
