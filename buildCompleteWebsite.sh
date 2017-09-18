@@ -61,7 +61,6 @@ export PYTHONPATH="$PWD/build/texml-2.0.2/build/lib.linux-x86_64-2.7:$PYTHONPATH
 $PWD/build/xsf-tools/build.py -d -x $PWD/build/xeps -o $PWD/content/extensions --imagespath $PWD/build/xeps/resources
 cp $PWD/build/xeps/prettify.css $PWD/content/extensions
 cp $PWD/build/xeps/prettify.js $PWD/content/extensions
-cp $PWD/build/xeps/xmpp.css $PWD/content/extensions
 
 # Build registry and put it into content/registrar so Pelican can process it
 cd $PWD/build/registrar
