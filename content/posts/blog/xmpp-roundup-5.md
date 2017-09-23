@@ -118,7 +118,7 @@ Jehan [has announcedJabber Feed 0.4](http://jehan.zemarmot.net/blog/2009/01/16/j
 
 *Prosody 0.3.0*
 
-Matthew Wild has [announced Prosody 0.3.0](http://mail.jabber.org/pipermail/jdev/2009-February/028783.html), the most notable change being its license, from GPL to MIT/X11.
+Matthew Wild has [announced Prosody 0.3.0](https://mail.jabber.org/pipermail/jdev/2009-February/028783.html), the most notable change being its license, from GPL to MIT/X11.
 
 *Apple'siCal Server using XMPP's PubSub for push-notifications*
 

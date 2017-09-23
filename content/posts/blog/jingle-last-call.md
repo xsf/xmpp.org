@@ -5,7 +5,7 @@ author: stpeter
 blog_id: blog
 ---
 
-Today the [XMPP Council](https://xmpp.org/council/) issued a last call for comments on the various Jingle specifications for multimedia negotiation over XMPP. Comments should be provided by December 14, so read the following specifications and send your feedback to the [standards@xmpp.org](http://mail.jabber.org/mailman/listinfo/standards/) list:
+Today the [XMPP Council](https://xmpp.org/council/) issued a last call for comments on the various Jingle specifications for multimedia negotiation over XMPP. Comments should be provided by December 14, so read the following specifications and send your feedback to the [standards@xmpp.org](https://mail.jabber.org/mailman/listinfo/standards/) list:
 
 -   [Jingle](https://xmpp.org/extensions/xep-0166.html)
 -   [Jingle Audio via RTP](https://xmpp.org/extensions/xep-0167.html)

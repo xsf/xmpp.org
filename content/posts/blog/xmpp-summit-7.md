@@ -44,7 +44,7 @@ We will devote Tuesday to high-bandwidth discussions about gaps in the XMPP prot
 
 <a name="participants"></a>
 ### Participants
-The following people have indicated that they are likely to participate. If you would like to attend, please post a message to the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) discussion list and tell us whether you want to join us for dinner on Monday evening, including your dietary restrictions (if any).
+The following people have indicated that they are likely to participate. If you would like to attend, please post a message to the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) discussion list and tell us whether you want to join us for dinner on Monday evening, including your dietary restrictions (if any).
 
 1.  Diana Cionoiu ([Yate](http://yate.null.ro/))
 2.  Dave Cridland ([Isode](http://www.isode.com/))
@@ -77,4 +77,4 @@ The XMPP Summit is free. However, we reserve the right to ask for donations to h
 
 <a name="contact"></a>
 ### Contact
-Join the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/index.php/contact/).
+Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/index.php/contact/).

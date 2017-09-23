@@ -21,7 +21,7 @@ Q: But what if things break?   A: This is a just a test. The changes will be rol
 
 Q: Can't you test this all before and then switch?   A: In theory everything should work. In reality it's better to test, rollback, fix, re-test.
 
-Q: Where do I discuss this?   A: Join the operators mailing list: [http://mail.jabber.org/mailman/listinfo/operators](http://mail.jabber.org/mailman/listinfo/operators)
+Q: Where do I discuss this?   A: Join the operators mailing list: [https://mail.jabber.org/mailman/listinfo/operators](https://mail.jabber.org/mailman/listinfo/operators)
 
 Q: I heard there is a manifesto?   A: Indeed - if you are a server operator and want to publicly show your support for secure user communications, sign up (with a pull request) at [https://github.com/stpeter/manifesto](https://github.com/stpeter/manifesto)
 

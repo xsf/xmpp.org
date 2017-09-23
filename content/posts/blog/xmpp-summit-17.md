@@ -21,5 +21,5 @@ Our agenda is evolving but so far includes:
 
 To keep up to date with Summit plans, please visit the [wiki page for Summit 17](http://wiki.xmpp.org/web/Summit_17) .
 
-If you intend to come along to the Summit, please join the [summit@xmpp.org discussion list](http://mail.jabber.org/mailman/listinfo/summit) and post with your participation request.
+If you intend to come along to the Summit, please join the [summit@xmpp.org discussion list](https://mail.jabber.org/mailman/listinfo/summit) and post with your participation request.
  

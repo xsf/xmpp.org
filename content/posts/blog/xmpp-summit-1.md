@@ -49,7 +49,7 @@ The confirmed attendees as of 2006-07-17 are:
 -   Matt Tucker (Jive Software)
 
 ### Communication
-A [dedicated mailing list](http://mail.jabber.org/mailman/listinfo/interop) is available for attendees and interested others (e.g., those who would like to discuss test case development). The list is [publicly archived](http://mail.jabber.org/pipermail/interop/).
+A [dedicated mailing list](https://mail.jabber.org/mailman/listinfo/interop) is available for attendees and interested others (e.g., those who would like to discuss test case development). The list is [publicly archived](https://mail.jabber.org/pipermail/interop/).
 
 ### Interop Activities
 All work and no play makes XMPP a sad protocol. On Monday at 6:30 we'll gather for dinner at [Henry's](http://portland.citysearch.com/profile/40854242), which is a short walk from the interop venue. The cost of dinner is included with the interop event fees. On Tuesday at 5:00 (or when the interop event wraps up), all are invited to the Jive Software office (also a short walk) for an Oregon beer and wine tasting.

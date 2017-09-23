@@ -40,7 +40,7 @@ Here is the rate:
 
 Breakfast and taxes included.
 
-Room sharing is encouraged. Join the [FOSDEM discussion list](http://mail.jabber.org/mailman/listinfo/fosdem) to discuss room sharing and logistics information with other participants.
+Room sharing is encouraged. Join the [FOSDEM discussion list](https://mail.jabber.org/mailman/listinfo/fosdem) to discuss room sharing and logistics information with other participants.
 
 The XSF will also hold an informal dinner on Sunday evening for all participants.
 

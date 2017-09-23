@@ -21,5 +21,5 @@ To join the growing number of sites that are enabling strong encryption:
 ​
 1. Sign the [manifesto](https://github.com/stpeter/manifesto) as an XMPP server admin or software developer.   
 2. Setup your site's encryption and check it at [XMPP.net](https://xmpp.net/).   
-3. Run with TLS encryption required on the 22nd of March and report issues in the [operators chatroom](xmpp:operators@muc.xmpp.org?join) or on the [operators discussion list](http://mail.jabber.org/mailman/listinfo/operators).   
+3. Run with TLS encryption required on the 22nd of March and report issues in the [operators chatroom](xmpp:operators@muc.xmpp.org?join) or on the [operators discussion list](https://mail.jabber.org/mailman/listinfo/operators).   
 4. Spread the word about building secure federated communication!

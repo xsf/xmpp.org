@@ -47,7 +47,7 @@ Jabbim community has released a [new URL shortening service](http://dev.jabbim.c
 
 **Community**
 
-Members of the XMPP community have started work on two new initiatives: an open framework for XMPP protocol testing and a website for information about the XMPP network. To participate, join the [interop@xmpp.org](http://mail.jabber.org/mailman/listinfo/interop) discussion list or the [operators@xmpp.org](http://mail.jabber.org/mailman/listinfo/operators) discussion list, respectively. Expect to see more work on these projects in the coming months!
+Members of the XMPP community have started work on two new initiatives: an open framework for XMPP protocol testing and a website for information about the XMPP network. To participate, join the [interop@xmpp.org](https://mail.jabber.org/mailman/listinfo/interop) discussion list or the [operators@xmpp.org](https://mail.jabber.org/mailman/listinfo/operators) discussion list, respectively. Expect to see more work on these projects in the coming months!
 
 **Protocols**
 

@@ -5,7 +5,7 @@ author: bear
 blog_id: blog
 ---
 
-Simon posted on the [jdev mailing list](http://mail.jabber.org/pipermail/jdev/2013-November/089772.html) a great reminder about the upcoming test day quoted below:
+Simon posted on the [jdev mailing list](https://mail.jabber.org/pipermail/jdev/2013-November/089772.html) a great reminder about the upcoming test day quoted below:
 
 "We owe it to our user's to provide secure communications" - St Peter.
 
