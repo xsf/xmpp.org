@@ -30,7 +30,7 @@ Potential topics include:
 ### Logistics
 Thanks to gracious assistance from [O'Reilly Conferences](http://www.oreilly.com/), the devcon will held in room E142 at the [Oregon Convention Center](http://www.oregoncc.org/) on Monday July 23 and Tuesday July 24.
 
-Join the [devcon list](http://mail.jabber.org/mailman/listinfo/devcon) to discuss further details.
+Join the [devcon list](https://mail.jabber.org/mailman/listinfo/devcon) to discuss further details.
 
 Participants
 

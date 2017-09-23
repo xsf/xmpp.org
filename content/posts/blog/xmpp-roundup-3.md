@@ -22,7 +22,7 @@ Another XSF Member, [Nicolas Vérité, alerts us to a piece of XMPP groupware ne
 
 Sjoerd Simons has announced on the Jingle ML a new spec called Mingle, describing Multi-User Jingle Voice sessions :
 
--   [http://mail.jabber.org/pipermail/jingle/2008-December/000285.html](http://mail.jabber.org/pipermail/jingle/2008-December/000285.html)
+-   [https://mail.jabber.org/pipermail/jingle/2008-December/000285.html](https://mail.jabber.org/pipermail/jingle/2008-December/000285.html)
 -   [http://telepathy.freedesktop.org/mingle/mingle.html](http://telepathy.freedesktop.org/mingle/mingle.html)
 -   [http://telepathy.freedesktop.org/wiki/Mingle](http://telepathy.freedesktop.org/wiki/Mingle)
 

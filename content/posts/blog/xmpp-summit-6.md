@@ -20,7 +20,7 @@ The sixth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP 
 ### Friday, February 6: Jingle Thingle
 A hackfest and brainstorming session for [Jingle](https://xmpp.org/tech/jingle.shtml) developers who want to code and test their implementations (primarily voice and video, but we will also discuss file transfer, end-to-end encryption, and other use cases). The tentative schedule is 9:30 to 4:30 but it may run later (but not too late because we don't want to miss the [FOSDEM Beer Event](http://www.fosdem.org/2009/beerevent)!). Location: [Hotel Bedford](http://www.hotelbedford.be/).
 
-If you would like to participate in the Jingle Thingle (thanks to [Dave Cridland](http://blog.dave.cridland.net/) for the name!), please say so on the [jingle@xmpp.org](http://mail.jabber.org/mailman/listinfo/jingle) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968).
+If you would like to participate in the Jingle Thingle (thanks to [Dave Cridland](http://blog.dave.cridland.net/) for the name!), please say so on the [jingle@xmpp.org](https://mail.jabber.org/mailman/listinfo/jingle) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968).
 
 The following people are likely to participate:
 
@@ -178,7 +178,7 @@ Participants:
 ### Monday, February 9: XMPP Summit
 The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack. The main topics will probably be mobile optimizations, file transfer, and end-to-end encryption as [recently prioritized](http://logs.jabber.org/council@conference.jabber.org/2008-12-03.html#14:54:38) by the [XMPP Council](/about/xsf/the-xsf-council/).
 
-The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968). The tentative schedule is 9:30 to 4:30. Location: [Hotel Bedford](http://www.hotelbedford.be/).
+The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968). The tentative schedule is 9:30 to 4:30. Location: [Hotel Bedford](http://www.hotelbedford.be/).
 
 The following people are likely to participate:
 
@@ -235,4 +235,4 @@ The FOSDEM activities (Saturday and Sunday) will take place at ULB Campus Solbos
 
 <a name="contact"></a>
 ### Contact
-Join the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).
+Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).

@@ -70,7 +70,7 @@ The web-based file swapping service [drop.io](http://drop.io/) has [added MUC ch
 
 *More web services with IO-DATA*
 
-Developer Tuomas Koski has been experimenting with more uses of IO-DATA for web services at his site [lobstermonster.org](http://www.lobstermonster.org/). The folks on the [WS-XMPP](http://mail.jabber.org/mailman/listinfo/ws-xmpp) discussion list were quite impressed with some of his applications, described [here](http://www.lobstermonster.org/post/io-data-example-based-on-xep-0244) and [here](http://www.lobstermonster.org/post/how-most-stuff-on-lobstermonster.org-done).
+Developer Tuomas Koski has been experimenting with more uses of IO-DATA for web services at his site [lobstermonster.org](http://www.lobstermonster.org/). The folks on the [WS-XMPP](https://mail.jabber.org/mailman/listinfo/ws-xmpp) discussion list were quite impressed with some of his applications, described [here](http://www.lobstermonster.org/post/io-data-example-based-on-xep-0244) and [here](http://www.lobstermonster.org/post/how-most-stuff-on-lobstermonster.org-done).
 
 *Personalised Track Notifications over XMPP*
 

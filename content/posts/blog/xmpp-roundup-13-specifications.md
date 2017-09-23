@@ -87,4 +87,4 @@ At any one time, many XEPs are under consideration in the 'Experimental' state. 
 -   [XEP-0195: User Browsing](https://xmpp.org/extensions/xep-0195.html)
 -   [XEP-0194: User Chatting](https://xmpp.org/extensions/xep-0194.html)
 
-That's it for this roundup. In the future we plan to post shorter but more frequent entries about the XSF's specs activity, so stay tuned for updates. And of course if you are especially interested in XEPs, you can join the [Standards mailing-list](http://mail.jabber.org/mailman/listinfo/standards) or just read the [archives](http://mail.jabber.org/pipermail/standards/).
+That's it for this roundup. In the future we plan to post shorter but more frequent entries about the XSF's specs activity, so stay tuned for updates. And of course if you are especially interested in XEPs, you can join the [Standards mailing-list](https://mail.jabber.org/mailman/listinfo/standards) or just read the [archives](https://mail.jabber.org/pipermail/standards/).

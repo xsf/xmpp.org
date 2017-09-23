@@ -18,7 +18,7 @@ Read on for details.
 ### Participants
 Participation is open to all developers, service operators, and other interested individuals. Please note that this is a hard-code technical get-together with plenty of coding sprints, hackfests, interop testing, brainstorming sessions, geeky lightning talks, etc. This meeting is not intended for marketing presentations and other fluff!
 
-If you would like to participate, please join the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) mailing list and introduce yourself.
+If you would like to participate, please join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list and introduce yourself.
 
 The following individuals have indicated that they will attend:
 
@@ -154,8 +154,8 @@ T2: Mobile optimizations
 [https://xmpp.org/extensions/xep-0237.html](https://xmpp.org/extensions/xep-0237.html)
 [https://xmpp.org/extensions/xep-0124.html](https://xmpp.org/extensions/xep-0124.html)
 [https://xmpp.org/extensions/xep-0206.html](https://xmpp.org/extensions/xep-0206.html)
-[http://mail.jabber.org/pipermail/standards/2008-February/017911.html](http://mail.jabber.org/pipermail/standards/2008-February/017911.html)
-[http://mail.jabber.org/pipermail/standards/2008-February/018036.html](http://mail.jabber.org/pipermail/standards/2008-February/018036.html)
+[https://mail.jabber.org/pipermail/standards/2008-February/017911.html](https://mail.jabber.org/pipermail/standards/2008-February/017911.html)
+[https://mail.jabber.org/pipermail/standards/2008-February/018036.html](https://mail.jabber.org/pipermail/standards/2008-February/018036.html)
 
 ##### 12:00 - 1:00
 Semi-working lunch.
@@ -181,7 +181,7 @@ You *do not* need to register for OSCON in order to participate in the XMPP Sum
 
 For transportation, use Portland's [MAX](http://trimet.org/max/) (light rail) service. The Convention Center stop is your friend. :)
 
-As at XMPP Summit 4, the XMPP Standards Foundation will again pay hotel costs for any elected XSF member who attends the Summit. To take advantage of this offer, please make arrangements to stay at the [Marriott City Center](http://www.marriott.com/hotels/travel/pdxct-portland-marriott-city-center/) (see [this message](http://mail.jabber.org/pipermail/summit/2008-June/000039.html)!) and contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968) so he knows to pay for your room and can help arrange room sharing.
+As at XMPP Summit 4, the XMPP Standards Foundation will again pay hotel costs for any elected XSF member who attends the Summit. To take advantage of this offer, please make arrangements to stay at the [Marriott City Center](http://www.marriott.com/hotels/travel/pdxct-portland-marriott-city-center/) (see [this message](https://mail.jabber.org/pipermail/summit/2008-June/000039.html)!) and contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968) so he knows to pay for your room and can help arrange room sharing.
 
 During the summit itself, we will use the [summit@conference.jabber.org](xmpp:summit@conference.jabber.org?join) chatroom as a backchannel for discussion, information sharing, complaints, questions, etc.
 
@@ -189,4 +189,4 @@ During the summit itself, we will use the [summit@conference.jabber.org](xmpp:s
 ### Events
 As always, the XSF will host one social event (dinner or somesuch) and we will also have many opportunities to meet in the evenings for some good Portland beer. :)
 
-Dinner will be held on Monday night (July 21) at 7:00 PM, the location is [Kells Irish Restaurant and Pub](http://www.kellsirish.com/portland/index.html) -- details [here](http://mail.jabber.org/pipermail/summit/2008-July/000158.html).
+Dinner will be held on Monday night (July 21) at 7:00 PM, the location is [Kells Irish Restaurant and Pub](http://www.kellsirish.com/portland/index.html) -- details [here](https://mail.jabber.org/pipermail/summit/2008-July/000158.html).

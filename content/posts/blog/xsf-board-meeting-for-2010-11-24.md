@@ -6,7 +6,7 @@ blog_id: blog
 category: XSF Organisational
 ---
 
-The minutes for the most recent XSF Board Meeting on 2010-11-24 can be found as a post to the XSF Members mailing list.  You can view the [chat log](http://xmpp.org:5290/muc_log/muc.xmpp.org/xsf/101124/) or read the [summary post](http://mail.jabber.org/pipermail/members/2010-November/006085.html).
+The minutes for the most recent XSF Board Meeting on 2010-11-24 can be found as a post to the XSF Members mailing list.  You can view the [chat log](http://xmpp.org:5290/muc_log/muc.xmpp.org/xsf/101124/) or read the [summary post](https://mail.jabber.org/pipermail/members/2010-November/006085.html).
 
 The board meets every two weeks - lurkers welcome!
 

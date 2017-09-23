@@ -33,7 +33,7 @@ The XEP series contains around 350 specifications, covering everything outside o
 
 So if you have an idea for a new extension in XMPP, what do you do?
 
-Importantly, you don't need to be an XSF member to propose new XEPs or work on existing ones, because discussion occurs on the open [standards@xmpp.org discussion list](http://mail.jabber.org/mailman/listinfo/standards).
+Importantly, you don't need to be an XSF member to propose new XEPs or work on existing ones, because discussion occurs on the open [standards@xmpp.org discussion list](https://mail.jabber.org/mailman/listinfo/standards).
 
 #### Write your proposed extension
 

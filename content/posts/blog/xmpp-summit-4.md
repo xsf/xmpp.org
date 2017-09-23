@@ -17,7 +17,7 @@ Here is the plan for the Jabber/XMPP community...
 
 We don't have a FOSDEM "devroom" this year so we will focus on a booth at FOSDEM on Saturday. Jabberites will also be encouraged to attend various FOSDEM talks on Saturday.
 
-On Sunday and Monday we will hold a "devcon" at the Atlas Hotel in Brussels. Join the [devcon list](http://mail.jabber.org/mailman/listinfo/devcon) to discuss.
+On Sunday and Monday we will hold a "devcon" at the Atlas Hotel in Brussels. Join the [devcon list](https://mail.jabber.org/mailman/listinfo/devcon) to discuss.
 
 If you want to help out with the booth or attend the devcon, leave your name below. If you do not have an account at this wiki, contact [Alexander Gnauck](xmpp:gnauck@jabber.org) and he will create an account for you.
 
@@ -98,7 +98,7 @@ On the evening of Friday February 22 we will join the world-famous FOSDEM Beer E
 We will also hold a dinner on Sunday, February 24 for devcon participants.
 
 ### Communications
-Join the [devcon-discuss list](http://mail.jabber.org/mailman/listinfo/devcon) for more frequent updates.
+Join the [devcon-discuss list](https://mail.jabber.org/mailman/listinfo/devcon) for more frequent updates.
 
 ### Accommodation
 We will stay at the [Atlas Hotel](http://www.atlas-hotel.be/). It's located at Rue du Vieux Marché aux Grains 30 (or 'Oude Graanmarkt 30' for the Dutch-speaking part of the country) in Brussels close to the city center. TomTom doesn't seem to know the hotel by name, so you're better off using the street address for it. A map of the area around the hotel can be seen at [http://www.openstreetmap.org/?lat=50.85006&lon=4.34652&zoom=17&layers=B0FT](http://www.openstreetmap.org/?lat=50.85006&lon=4.34652&zoom=17&layers=B0FT). The beer event is held at the Delirium Bar. A map of the area can be seen at[http://www.openstreetmap.org/?lat=50.848541&lon=4.354157&zoom=18&layers=B0FT](http://www.openstreetmap.org/?lat=50.848541&lon=4.354157&zoom=18&layers=B0FT). It isn't named on the map, but it's the dead-end street smack in the middle of the map.

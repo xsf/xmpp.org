@@ -71,7 +71,7 @@ From 13:00 until 19:00 we will have a devroom where we can host tutorials, prese
 
 If you would like to be a speaker, please contact [Peter Saint-Andre](https://xmpp.org/xsf/people/stpeter.shtml). We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
 
-The schedule is as follows (slots for lightning talks are still available, post to the [summit@xmpp.org list](http://mail.jabber.org/mailman/listinfo/summit) if you are interested!).
+The schedule is as follows (slots for lightning talks are still available, post to the [summit@xmpp.org list](https://mail.jabber.org/mailman/listinfo/summit) if you are interested!).
 
 <table border="1" cellspacing="0" cellpadding="3">
     <tbody>
@@ -205,7 +205,7 @@ Participants:
 ### Monday, February 8: XMPP Summit
 The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack.
 
-The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) mailing list. The tentative schedule is 9:30 to 4:30. 
+The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list. The tentative schedule is 9:30 to 4:30. 
 
 Location: Conference Room at the [Hotel](https://xmpp.org/summit/summit8.shtml#hotel).
 
@@ -286,4 +286,4 @@ The FOSDEM activities (Saturday and Sunday) will take place at ULB Campus Solbos
 
 <a name="contact"></a>
 ### Contact
-Join the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).   For queries about the Hotel or Dinner, please contact Florian Jensen ([XMPP](xmpp:admin@im.flosoft.biz) / [E-mail](mailto:florian@florianjensen.com)).
+Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).   For queries about the Hotel or Dinner, please contact Florian Jensen ([XMPP](xmpp:admin@im.flosoft.biz) / [E-mail](mailto:florian@florianjensen.com)).

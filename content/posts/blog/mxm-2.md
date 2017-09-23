@@ -18,7 +18,7 @@ Here are some of the topics we discussed...
     -   Will this make [entity capability](https://xmpp.org/extensions/xep-0115.html) caches less useful because they will be too large to search easily?
     -   Does it make more sense to publish this information via the [Personal Eventing Protocol](https://xmpp.org/extensions/xep-0163.html) using the old [software version](https://xmpp.org/extensions/xep-0092.html) format?
 
-    The [XMPP Council](https://xmpp.org/council/) will vote on XEP-0232 at its next meeting (April 22). More feedback is welcome before then on the [standards@xmpp.org](http://mail.jabber.org/mailman/listinfo/standards) mailing list.
+    The [XMPP Council](https://xmpp.org/council/) will vote on XEP-0232 at its next meeting (April 22). More feedback is welcome before then on the [standards@xmpp.org](https://mail.jabber.org/mailman/listinfo/standards) mailing list.
 
 2.  Last Call for [XEP-0237: Roster Versioning](https://xmpp.org/extensions/xep-0237.html)
 

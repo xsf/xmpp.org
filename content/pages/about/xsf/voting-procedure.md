@@ -29,7 +29,7 @@ The XMPP Standards Foundation holds official votes at least 5 times a year: 4 ti
 
 ### Meeting Announcements
 
-The regularly scheduled meetings of the XSF are called by the [Secretary](/about/xsf/people) of the XSF and officially announced on the [members@xmpp.org](http://mail.jabber.org/mailman/listinfo/members) mailing list. The meeting must be announced at least 10 days before the meeting date. For details, see the XSF Bylaws.
+The regularly scheduled meetings of the XSF are called by the [Secretary](/about/xsf/people) of the XSF and officially announced on the [members@xmpp.org](https://mail.jabber.org/mailman/listinfo/members) mailing list. The meeting must be announced at least 10 days before the meeting date. For details, see the XSF Bylaws.
 
 In addition to the regularly scheduled meetings, the members may call for a special meeting at any time through discussion on the members@xmpp.org list. These meetings too are subject to the 10-day rule.
 

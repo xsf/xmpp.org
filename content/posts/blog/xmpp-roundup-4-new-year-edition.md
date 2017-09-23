@@ -40,7 +40,7 @@ Astérix aka Yann Leboulanger has [announced on his blog](http://blog.lagaule.or
 
 ***Prosody***
 
-[Matthew Wild announced](http://mail.jabber.org/pipermail/jdev/2008-December/028640.html) on JDev mailing-list [Prosody 0.1.0](http://prosody.im/) (and [0.2.0](http://mail.jabber.org/pipermail/jdev/2008-December/028715.html) followed in less than a month), a new XMPP server, written in Lua, under the GPL license. It aims to be simple, light, and flexible.
+[Matthew Wild announced](https://mail.jabber.org/pipermail/jdev/2008-December/028640.html) on JDev mailing-list [Prosody 0.1.0](http://prosody.im/) (and [0.2.0](https://mail.jabber.org/pipermail/jdev/2008-December/028715.html) followed in less than a month), a new XMPP server, written in Lua, under the GPL license. It aims to be simple, light, and flexible.
 
 ***Sleek Migrate***
 
@@ -63,7 +63,7 @@ We have a bunch of Web-based JavaScript XMPP clients:
 
 ***Fire Eagle***
 
-Seth Fitzsimmons [announced](http://mail.jabber.org/pipermail/pubsub/2008-December/000067.html) an XMPP pubsub interface to [Yahoo's FireEagle](http://fireeagle.yahoo.net/).
+Seth Fitzsimmons [announced](https://mail.jabber.org/pipermail/pubsub/2008-December/000067.html) an XMPP pubsub interface to [Yahoo's FireEagle](http://fireeagle.yahoo.net/).
 
 ***Remindr***
 

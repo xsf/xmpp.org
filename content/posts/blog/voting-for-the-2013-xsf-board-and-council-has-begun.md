@@ -12,4 +12,4 @@ Details on how is running can be found on the [Board And Council Elections 2013]
 
 Proxy voting will continue until close of business on October 28th and we will hold a meeting on October 29th to formally approve the voting results.
 
-All of the details can be found in Alexander's [Members Post](http://mail.jabber.org/pipermail/members/2013-October/007261.html "Members Post").
+All of the details can be found in Alexander's [Members Post](https://mail.jabber.org/pipermail/members/2013-October/007261.html "Members Post").
