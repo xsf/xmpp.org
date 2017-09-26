@@ -33,9 +33,9 @@ XMPP was originally developed in the Jabber open-source community to provide an 
 
 - ** Open** — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form clients, servers, server components, and code libraries.
 
-- **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 7622](/rfcs/rfc7622.html)).
+- **Standard** — the [Internet Engineering Task Force (IETF)](https://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 7622](/rfcs/rfc7622.html)).
 
-- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](http://talk.google.com/) and XMPP deployments at organizations worldwide.
+- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](https://talk.google.com/) and XMPP deployments at organizations worldwide.
 
 - **Decentralized** — the architecture of the XMPP network is similar to email; as a result, anyone can run their own XMPP server, enabling individuals and organizations to take control of their communications experience.
 
@@ -59,7 +59,7 @@ Key XMPP technologies:
 
 ## <a name="core" href="#core">Core</a>
 
-At its core, XMPP is a technology for streaming XML over a network. The protocol, which emerged from the Jabber open-source community in 1999, was originally designed to provide an open, secure, decentralized alternative to consumer-oriented instant messaging (IM) services like ICQ, AIM, and MSN. The core technologies were formalized under the name Extensible Messaging and Presence Protocol (XMPP) at the [IETF](http://www.ietf.org/) in 2004. These core technologies include:
+At its core, XMPP is a technology for streaming XML over a network. The protocol, which emerged from the Jabber open-source community in 1999, was originally designed to provide an open, secure, decentralized alternative to consumer-oriented instant messaging (IM) services like ICQ, AIM, and MSN. The core technologies were formalized under the name Extensible Messaging and Presence Protocol (XMPP) at the [IETF](https://www.ietf.org/) in 2004. These core technologies include:
 
 - The base XML streaming layer
 - Channel encryption using Transport Layer Security (TLS)
@@ -108,26 +108,26 @@ _Note: Many of the following implementations support the older Google Talk proto
 
 __Clients__
 
-- [Coccinella](http://coccinella.im/)
-- [Gajim](http://www.gajim.org/)
-- [Jitsi (formerly named SIP Communicator)](http://jitsi.org/)
+- [Coccinella](https://coccinella.im/)
+- [Gajim](https://www.gajim.org/)
+- [Jitsi (formerly named SIP Communicator)](https://jitsi.org/)
 - [Pandion](http://pandion.im/)
-- [Pidgin (formerly named Gaim)](http://pidgin.im/)
+- [Pidgin (formerly named Gaim)](https://pidgin.im/)
 - [Psi](http://psi-im.org/)
-- [Telepathy](http://telepathy.freedesktop.org/)
+- [Telepathy](https://telepathy.freedesktop.org/)
 - [Yate](http://yate.null.ro/)
 
 __Libraries__
 
-- [libjingle](http://code.google.com/apis/talk/) (C/C++)
-- [Smack](http://www.igniterealtime.org/projects/smack/) (Java)
-- [Telepathy Gabble](http://telepathy.freedesktop.org/) (C)
+- [libjingle](https://code.google.com/apis/talk/) (C/C++)
+- [Smack](https://www.igniterealtime.org/projects/smack/) (Java)
+- [Telepathy Gabble](https://telepathy.freedesktop.org/) (C)
 - [yjingle](http://yate.null.ro/) (C++)
 
 __Call Managers / VoIP Servers__
 
 - [Asterisk](http://www.asterisk.org/)
-- [FreeSWITCH](http://freeswitch.org/)
+- [FreeSWITCH](https://freeswitch.org/)
 - [Yate](http://yate.null.ro/)
 
 
@@ -147,12 +147,12 @@ MUC is defined in one primary specification (XEP-0045) and several ancillary spe
 
 __Servers__ - the following XMPP servers include built-in support for MUC:
 
-- [ejabberd](http://www.ejabberd.im/)
+- [ejabberd](https://www.ejabberd.im/)
 - [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [M-Link](https://www.isode.com/products/m-link.html)
 - [MongooseIM](https://github.com/esl/MongooseIM)
-- [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Prosody](http://prosody.im/)
+- [Openfire](https://www.igniterealtime.org/projects/openfire/index.jsp)
+- [Prosody](https://prosody.im/)
 - [Tigase](http://www.tigase.org/)
 
 __External Components__ - the following standalone components can be used with a wide variety of XMPP servers:
@@ -162,20 +162,20 @@ __External Components__ - the following standalone components can be used with a
 
 __Clients__
 
-- [Adium](http://adiumx.com/)
-- [Gajim](http://gajim.org/)
+- [Adium](https://adiumx.com/)
+- [Gajim](https://gajim.org/)
 - [JWChat](http://blog.jwchat.org/jwchat/)
-- [mcabber](http://mcabber.com/)
-- [Pidgin](http://pidgin.im/)
+- [mcabber](https://mcabber.com/)
+- [Pidgin](https://pidgin.im/)
 - [Psi](http://www.psi-im.org/)
 
 __Libraries__
 
 - [AnyEvent:XMPP](http://www.ta-sa.org/projects/anyevent_xmpp.html) (Perl)
-- [gloox](http://camaya.net/gloox) (C++)
-- [jabber-net](http://code.google.com/p/jabber-net/) (.Net)
-- [libpurple](http://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
-- [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
+- [gloox](https://camaya.net/gloox) (C++)
+- [jabber-net](https://code.google.com/p/jabber-net/) (.Net)
+- [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
+- [Smack](https://www.igniterealtime.org/projects/smack/index.jsp) (Java)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
 
 ## <a name="pubsub" href="#pubsub">PubSub</a>
@@ -210,7 +210,7 @@ __Servers__ - the following XMPP servers include built-in support for PubSub or 
 
 - [ejabberd](http://www.ejabberd.im/)
 - [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [M-Link](https://www.isode.com/products/m-link.html)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Tigase](http://www.tigase.org/)
 
@@ -220,12 +220,12 @@ __Server Components__
 
 __Clients__
 
-- [Gajim](http://gajim.org/)
+- [Gajim](https://gajim.org/)
 - [Psi](http://psi-im.org/)
 
 __3.4 Libraries__
 
-- [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
+- [strophe](https://code.stanziq.com/strophe/) (C or JavaScript)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
 
 ## <a name="bosh" href="#bosh">BOSH</a>
@@ -243,10 +243,10 @@ Servers The following XMPP servers include built-in support for BOSH:
 
 - [ejabberd](http://www.ejabberd.im/)
 - [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [M-Link](https://www.isode.com/products/m-link.html)
 - [MongooseIM](https://github.com/esl/MongooseIM)
-- [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Prosody](http://prosody.im/)
+- [Openfire](https://www.igniterealtime.org/projects/openfire/index.jsp)
+- [Prosody](https://prosody.im/)
 - [Tigase](http://www.tigase.org/)
 
 #### Connection Managers
@@ -254,30 +254,30 @@ Servers The following XMPP servers include built-in support for BOSH:
 The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:
 
 - [JabberHTTPBind](http://blog.jwchat.org/jhb/)
-- [Punjab](http://code.stanziq.com/punjab)
+- [Punjab](https://code.stanziq.com/punjab)
 - [node-xmpp-bosh](https://github.com/dhruvbird/node-xmpp-bosh)
 - [rhb](http://rubyforge.org/projects/rhb/)
 
 #### Clients
 
-- [Adium](http://adium.im/)
-- [Gajim](http://gajim.org/)
+- [Adium](https://adium.im/)
+- [Gajim](https://gajim.org/)
 - [JWChat](http://blog.jwchat.org/jwchat/)
-- [Pidgin](http://pidgin.im/)
+- [Pidgin](https://pidgin.im/)
 - [Soashable](http://www.soashable.com/)
-- [SparkWeb](http://www.igniterealtime.org/projects/sparkweb/)
-- [Swift](http://swift.im/swift/)
+- [SparkWeb](https://www.igniterealtime.org/projects/sparkweb/)
+- [Swift](https://swift.im/swift/)
 - [Tigase Messenger](http://www.tigase.org/project/messenger)
 - [Tigase Minichat](http://www.tigase.org/project/minichat)
 
 #### Libraries
 
-- [emite](http://code.google.com/p/emite/) (gwt)
-- [gloox](http://camaya.net/gloox) (C++)
+- [emite](https://code.google.com/p/emite/) (gwt)
+- [gloox](https://camaya.net/gloox) (C++)
 - [JSJaC](http://blog.jwchat.org/jsjac/) (JavaScript)
 - [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
-- [Swiften](http://swift.im/swiften/) (C++)
-- [XIFF](http://www.igniterealtime.org/projects/xiff/) (Flash)
+- [Swiften](https://swift.im/swiften/) (C++)
+- [XIFF](https://www.igniterealtime.org/projects/xiff/) (Flash)
 - [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
 - [xmpp4js](http://xmpp4js.sourceforge.net/index.html) (JavaScript)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)

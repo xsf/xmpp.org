@@ -6,9 +6,9 @@ Static version of xmpp.org home page
 
 You'll need to have the following items installed before working on this repo.
 
-  * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
-  * [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
-  * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
+  * [Node.js](https://nodejs.org): Use the installer provided on the NodeJS website.
+  * [Grunt](https://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
+  * [Bower](https://bower.io): Run `[sudo] npm install -g bower`
 
 ## Quickstart
 
