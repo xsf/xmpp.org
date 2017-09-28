@@ -591,5 +591,13 @@
             "JavaScript"
         ],
         "url": "http://ivan.vucica.net"
-    }
+    },
+	{
+		"last_renewed": null,
+		"name": "go-xmpp",
+		"platforms": [
+			"Go"
+		],
+		"url": "https://github.com/mattn/go-xmpp"
+	}
 ]
