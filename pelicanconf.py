@@ -117,3 +117,5 @@ SWLISTS["servers"] = load_software_list(NOW, "servers.json")
 
 with open("data/members.json", "r") as f:
     MEMBERLIST = json.load(f)
+
+XEPS = []
