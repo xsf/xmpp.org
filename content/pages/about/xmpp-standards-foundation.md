@@ -22,9 +22,9 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
-- __Arc Riley__
+- __Arc Riley__ has been contributing to the free software community for over two decades, and maintains a large number of freely licensed XMPP packages. He lead for Python XML-SIG, mentor students working on XMPP-related projects and frequenly presents on XMPP (lightning talks, poster sessions, workshops, etc).
 - __Nicolas V&eacute;rit&eacute;__ is a Product Owner for [MongooseIM](https://github.com/esl/MongooseIM) and Mangosta clients for iOS and Android. In the past, he has worked with the [JabberFr](https://jabberfr.org/) community and [ProcessOne](https://process-one.net) on [ejabberd](https://github.com/processone/ejabberd).
-- __Martin Hewitt__
+- __Martin Hewitt__ is employed by [Surevine](https://www.surevine.com/). His primary XMPP interest is in using federation to make systems that fit an organisation, not the other way around.
 
 ## <a name="council" href="#council">The Council</a>
 
