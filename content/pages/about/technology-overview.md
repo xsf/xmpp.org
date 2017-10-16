@@ -35,7 +35,7 @@ XMPP was originally developed in the Jabber open-source community to provide an 
 
 - **Standard** — the [Internet Engineering Task Force (IETF)](https://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 7622](/rfcs/rfc7622.html)).
 
-- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](https://talk.google.com/) and XMPP deployments at organizations worldwide.
+- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services and XMPP deployments at organizations worldwide.
 
 - **Decentralized** — the architecture of the XMPP network is similar to email; as a result, anyone can run their own XMPP server, enabling individuals and organizations to take control of their communications experience.
 
@@ -119,7 +119,7 @@ __Clients__
 
 __Libraries__
 
-- [libjingle](https://code.google.com/apis/talk/) (C/C++)
+- [libjingle](https://developers.google.com/talk/libjingle/developer_guide) (C/C++)
 - [Smack](https://www.igniterealtime.org/projects/smack/) (Java)
 - [Telepathy Gabble](https://telepathy.freedesktop.org/) (C)
 - [yjingle](http://yate.null.ro/) (C++)
@@ -162,7 +162,7 @@ __External Components__ - the following standalone components can be used with a
 
 __Clients__
 
-- [Adium](https://adiumx.com/)
+- [Adium](https://adium.im/)
 - [Gajim](https://gajim.org/)
 - [JWChat](http://blog.jwchat.org/jwchat/)
 - [mcabber](https://mcabber.com/)
@@ -173,7 +173,7 @@ __Libraries__
 
 - [AnyEvent:XMPP](http://www.ta-sa.org/projects/anyevent_xmpp.html) (Perl)
 - [gloox](https://camaya.net/gloox) (C++)
-- [jabber-net](https://code.google.com/p/jabber-net/) (.Net)
+- [jabber-net](https://github.com/ForNeVeR/jabber-net) (.Net)
 - [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
 - [Smack](https://www.igniterealtime.org/projects/smack/index.jsp) (Java)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
@@ -254,7 +254,6 @@ Servers The following XMPP servers include built-in support for BOSH:
 The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:
 
 - [JabberHTTPBind](http://blog.jwchat.org/jhb/)
-- [Punjab](https://code.stanziq.com/punjab)
 - [node-xmpp-bosh](https://github.com/dhruvbird/node-xmpp-bosh)
 - [rhb](http://rubyforge.org/projects/rhb/)
 
@@ -272,7 +271,7 @@ The following standalone XMPP connection managers can be used with a wide variet
 
 #### Libraries
 
-- [emite](https://code.google.com/p/emite/) (gwt)
+- [emite](https://github.com/EmiteGWT/emite) (gwt)
 - [gloox](https://camaya.net/gloox) (C++)
 - [JSJaC](http://blog.jwchat.org/jsjac/) (JavaScript)
 - [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
