@@ -139,6 +139,16 @@
         "url": "http://coversant.com"
     },
     {
+        "last_renewed": 2017-10-18T12:57:00,
+        "name": "CoyIM",
+ +        "platforms": [
+ +            "Linux",
+ +            "macOS",
+ +            "Windows"
+ +        ],
+ +        "url": "https://coy.im"
+    },
+    {
         "last_renewed": "2017-04-19T14:37:00",
         "name": "Dino",
         "platforms": [
@@ -616,14 +626,4 @@
         ],
         "url": "https://zom.im/"
     }
-    {
-        "last_renewed": "null",
-        "name": "CoyIM",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://coy.im"
-    },
 ]
