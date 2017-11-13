@@ -325,6 +325,16 @@
         "url": "https://github.com/agnauck/matrix-js"
     },
     {
+        "last_renewed": "2017-11-13T11:42:13",
+        "name": "MatriX vNext",
+        "platforms": [
+            ".NET Core",
+            ".NET Standard",
+            "C#"
+        ],
+        "url": "https://www.ag-software.net/matrix-vnext/"
+    },    
+    {
         "last_renewed": null,
         "name": "net::XMPP",
         "platforms": [
