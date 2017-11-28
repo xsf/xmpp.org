@@ -74,7 +74,7 @@
 
         {
             "name": "Guus der Kinderen",
-            "roles": ["infrastructure", "scam"]
+            "roles": ["board", "infrastructure", "scam"]
         },
 
         {
@@ -86,8 +86,7 @@
         },
 
         {
-            "name": "Emmanuel Gil Peyrot",
-            "roles": ["council"]
+            "name": "Emmanuel Gil Peyrot"
         },
 
         {
@@ -146,7 +145,8 @@
         },
 
         {
-            "name": "Georg Lukas"
+            "name": "Georg Lukas",
+            "roles": ["council"]
         },
 
         {
@@ -155,7 +155,7 @@
 
         {
             "name": "Tobias Markmann",
-            "roles": ["council", "infrastructure"]
+            "roles": ["infrastructure"]
         },
 
         {
@@ -209,8 +209,7 @@
         },
 
         {
-            "name": "Arc Riley",
-            "roles": ["board"]
+            "name": "Arc Riley"
         },
 
         {
@@ -238,7 +237,7 @@
 
         {
             "name": "Kevin Smith",
-            "roles": ["editor", "infrastructure"]
+            "roles": ["council", "editor", "infrastructure"]
         },
 
         {
