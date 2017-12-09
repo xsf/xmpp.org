@@ -67,11 +67,7 @@
             "name": "Dave Cridland",
             "roles": ["council"]
         },
-
-        {
-            "name": "Laura Crossley"
-        },
-
+      
         {
             "name": "Guus der Kinderen",
             "roles": ["board", "infrastructure", "scam"]
@@ -118,11 +114,7 @@
         {
             "name": "Martin Hewitt",
             "roles": ["board"]
-        },
-
-        {
-            "name": "Waqas Hussain"
-        },
+        },       
 
         {
             "name": "Philipp Hörist"
@@ -134,11 +126,7 @@
 
         {
             "name": "Wojciech Kapcia"
-        },
-
-        {
-            "name": "Steffen Larsen"
-        },
+        },        
 
         {
             "name": "Joachim Lindborg"
@@ -253,10 +241,6 @@
         },
 
         {
-            "name": "Mike Taylor"
-        },
-
-        {
             "name": "Marcelo Terres"
         },
 
@@ -310,7 +294,11 @@
 
         {
             "name": "Florian Zeitz"
-        }
+        },
+        
+        {
+            "name": "Maxime Buquet"
+        }        
     ],
 
     "emeriti": [
