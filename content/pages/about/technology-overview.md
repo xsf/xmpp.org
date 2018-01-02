@@ -225,7 +225,7 @@ __Clients__
 
 __3.4 Libraries__
 
-- [strophe](https://code.stanziq.com/strophe/) (C or JavaScript)
+- [strophe](http://strophe.im/) (C or JavaScript)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
 
 ## <a name="bosh" href="#bosh">BOSH</a>
@@ -274,7 +274,7 @@ The following standalone XMPP connection managers can be used with a wide variet
 - [emite](https://github.com/EmiteGWT/emite) (gwt)
 - [gloox](https://camaya.net/gloox) (C++)
 - [JSJaC](http://blog.jwchat.org/jsjac/) (JavaScript)
-- [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
+- [strophe](http://strophe.im/) (C or JavaScript)
 - [Swiften](https://swift.im/swiften/) (C++)
 - [XIFF](https://www.igniterealtime.org/projects/xiff/) (Flash)
 - [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
