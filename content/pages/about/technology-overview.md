@@ -153,7 +153,7 @@ __Servers__ - the following XMPP servers include built-in support for MUC:
 - [MongooseIM](https://github.com/esl/MongooseIM)
 - [Openfire](https://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Prosody](https://prosody.im/)
-- [Tigase](http://www.tigase.org/)
+- [Tigase](https://tigase.net/)
 
 __External Components__ - the following standalone components can be used with a wide variety of XMPP servers:
 
@@ -212,7 +212,7 @@ __Servers__ - the following XMPP servers include built-in support for PubSub or 
 - [Jabber XCP](http://www.jabber.com/)
 - [M-Link](https://www.isode.com/products/m-link.html)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Tigase](http://www.tigase.org/)
+- [Tigase](https://tigase.net/)
 
 __Server Components__
 
@@ -247,7 +247,7 @@ Servers The following XMPP servers include built-in support for BOSH:
 - [MongooseIM](https://github.com/esl/MongooseIM)
 - [Openfire](https://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Prosody](https://prosody.im/)
-- [Tigase](http://www.tigase.org/)
+- [Tigase](https://tigase.net/)
 
 #### Connection Managers
 
