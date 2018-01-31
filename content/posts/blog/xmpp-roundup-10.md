@@ -47,23 +47,23 @@ Jabbim community has released a [new URL shortening service](http://dev.jabbim.c
 
 **Community**
 
-Members of the XMPP community have started work on two new initiatives: an open framework for XMPP protocol testing and a website for information about the XMPP network. To participate, join the [interop@xmpp.org](http://mail.jabber.org/mailman/listinfo/interop) discussion list or the [operators@xmpp.org](http://mail.jabber.org/mailman/listinfo/operators) discussion list, respectively. Expect to see more work on these projects in the coming months!
+Members of the XMPP community have started work on two new initiatives: an open framework for XMPP protocol testing and a website for information about the XMPP network. To participate, join the [interop@xmpp.org](https://mail.jabber.org/mailman/listinfo/interop) discussion list or the [operators@xmpp.org](https://mail.jabber.org/mailman/listinfo/operators) discussion list, respectively. Expect to see more work on these projects in the coming months!
 
 **Protocols**
 
 The big news here is that the core Jingle specifications have finally advanced from Experimental to Draft status (version 1.0)! We'll post more about this in the near future. The specs that have moved forward are:
 
--   [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html)
--   [XEP-0167: Jingle RTP Sessions](http://xmpp.org/extensions/xep-0167.html)
--   [XEP-0176: Jingle ICE-UDP Transport Method](http://xmpp.org/extensions/xep-0176.html)
--   [XEP-0177: Jingle Raw UDP Transport Method](http://xmpp.org/extensions/xep-0177.html)
+-   [XEP-0166: Jingle](https://xmpp.org/extensions/xep-0166.html)
+-   [XEP-0167: Jingle RTP Sessions](https://xmpp.org/extensions/xep-0167.html)
+-   [XEP-0176: Jingle ICE-UDP Transport Method](https://xmpp.org/extensions/xep-0176.html)
+-   [XEP-0177: Jingle Raw UDP Transport Method](https://xmpp.org/extensions/xep-0177.html)
 
-Another important specification to advance from Experimental to Draft is [Roster Versioning](http://xmpp.org/extensions/xep-0237.html). This technology will make it much more efficient for IM clients to log into XMPP servers, since the server can inform the client if the user's contact list has not changed since the client last logged in (or send a small diff if it has changed). This is especially important in mobile applications such as cell phones and PDAs. The roster versioning technology is one of the mobile optimizations we are working on, and will be incorporated into the revisions to RFC 3921 within the IETF's newly re-formed [XMPP Working Group](http://tools.ietf.org/wg/xmpp/).
+Another important specification to advance from Experimental to Draft is [Roster Versioning](https://xmpp.org/extensions/xep-0237.html). This technology will make it much more efficient for IM clients to log into XMPP servers, since the server can inform the client if the user's contact list has not changed since the client last logged in (or send a small diff if it has changed). This is especially important in mobile applications such as cell phones and PDAs. The roster versioning technology is one of the mobile optimizations we are working on, and will be incorporated into the revisions to RFC 3921 within the IETF's newly re-formed [XMPP Working Group](http://tools.ietf.org/wg/xmpp/).
 
-In addition, the [XMPP Council](http://xmpp.org/council/) has been working to advance more XEPs from Draft to Final. The latest specification to be so honored are:
+In addition, the [XMPP Council](https://xmpp.org/council/) has been working to advance more XEPs from Draft to Final. The latest specification to be so honored are:
 
--   [XEP-0138: Stream Compression](http://xmpp.org/extensions/xep-0138.html)
--   [XEP-0199: XMPP Ping](http://xmpp.org/extensions/xep-0199.html)
+-   [XEP-0138: Stream Compression](https://xmpp.org/extensions/xep-0138.html)
+-   [XEP-0199: XMPP Ping](https://xmpp.org/extensions/xep-0199.html)
 
 Finally, the Council has also been performing some "spring cleaning" by officially obsoleting XEP-0003: Proxy Accept Socket Service, XEP-0011: Jabber Browsing, XEP-0022: Message Events, XEP-0023: Message Expiration, XEP-0025: Jabber HTTP Polling, XEP-0090: Legacy Entity Time, and XEP-0091: Legacy Delayed Delivery.
 

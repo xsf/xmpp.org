@@ -40,7 +40,7 @@ Astérix aka Yann Leboulanger has [announced on his blog](http://blog.lagaule.or
 
 ***Prosody***
 
-[Matthew Wild announced](http://mail.jabber.org/pipermail/jdev/2008-December/028640.html) on JDev mailing-list [Prosody 0.1.0](http://prosody.im/) (and [0.2.0](http://mail.jabber.org/pipermail/jdev/2008-December/028715.html) followed in less than a month), a new XMPP server, written in Lua, under the GPL license. It aims to be simple, light, and flexible.
+[Matthew Wild announced](https://mail.jabber.org/pipermail/jdev/2008-December/028640.html) on JDev mailing-list [Prosody 0.1.0](http://prosody.im/) (and [0.2.0](https://mail.jabber.org/pipermail/jdev/2008-December/028715.html) followed in less than a month), a new XMPP server, written in Lua, under the GPL license. It aims to be simple, light, and flexible.
 
 ***Sleek Migrate***
 
@@ -50,7 +50,7 @@ Astérix aka Yann Leboulanger has [announced on his blog](http://blog.lagaule.or
 
 We have a bunch of Web-based JavaScript XMPP clients:
 
--   [Nounours](http://nounours.txzone.net/trac/) is based on [ExtJS](http://extjs.com) and [JSJaC](http://blog.jwchat.org/jsjac/) using [BOSH](http://www.xmpp.org/extensions/xep-0124.html), released under the GPL license
+-   [Nounours](http://nounours.txzone.net/trac/) is based on [ExtJS](http://extjs.com) and [JSJaC](http://blog.jwchat.org/jsjac/) using [BOSH](https://xmpp.org/extensions/xep-0124.html), released under the GPL license
 -   [iJab](http://code.google.com/p/ijab/) is using [GWT](http://code.google.com/webtoolkit/) and JSJaC, released under
     the GPL license
 -   [TrophyIM](http://code.google.com/p/trophyim/) is based on the [Strophe](http://code.stanziq.com/strophe) library, released under the MIT license
@@ -63,7 +63,7 @@ We have a bunch of Web-based JavaScript XMPP clients:
 
 ***Fire Eagle***
 
-Seth Fitzsimmons [announced](http://mail.jabber.org/pipermail/pubsub/2008-December/000067.html) an XMPP pubsub interface to [Yahoo's FireEagle](http://fireeagle.yahoo.net/).
+Seth Fitzsimmons [announced](https://mail.jabber.org/pipermail/pubsub/2008-December/000067.html) an XMPP pubsub interface to [Yahoo's FireEagle](http://fireeagle.yahoo.net/).
 
 ***Remindr***
 
@@ -97,10 +97,10 @@ With 1,500 downloads per day and 2.4 million downloads overall, the open source 
 
 The Jingle XEPs for multimedia sessions like voice and video, have entered a LAST CALL:
 
--   [XEP-0166: Jingle](http://xmpp.org/extensions/xep-0166.html)
--   [XEP-0167: Jingle RTP Sessions](http://xmpp.org/extensions/xep-0167.html)
--   [XEP-0176: Jingle ICE-UDP Transport Method](http://xmpp.org/extensions/xep-0176.html)
--   [XEP-0177: Jingle Raw UDP Transport Method](http://xmpp.org/extensions/xep-0177.html)
+-   [XEP-0166: Jingle](https://xmpp.org/extensions/xep-0166.html)
+-   [XEP-0167: Jingle RTP Sessions](https://xmpp.org/extensions/xep-0167.html)
+-   [XEP-0176: Jingle ICE-UDP Transport Method](https://xmpp.org/extensions/xep-0176.html)
+-   [XEP-0177: Jingle Raw UDP Transport Method](https://xmpp.org/extensions/xep-0177.html)
 
 As with all Last Calls, please consider the following questions and send your feedback to the [standards@xmpp.org](mailto:standards@xmpp.org) discussion list:
 
@@ -114,13 +114,13 @@ Your feedback is appreciated!
 
 Some extensions aka ProtoXEPs have come in:
 
--   [Message Mine-ing](http://xmpp.org/extensions/inbox/mine.html): In servers that deliver messages sent to the bare JID to all resources, the resource that claims a conversation notifies all of the user's other resources of that claim.
+-   [Message Mine-ing](https://xmpp.org/extensions/inbox/mine.html): In servers that deliver messages sent to the bare JID to all resources, the resource that claims a conversation notifies all of the user's other resources of that claim.
 
 A few XEPs have entered Final status:
 
--   [XEP-0174: Serverless Messaging:](http://xmpp.org/extensions/xep-0174.html) Communicate over local or wide-area networks using the principles of zero-configuration networking and without the need for servers.
--   [XEP-0085: Chat State Notifications](http://xmpp.org/extensions/xep-0085.html): Communicate the status of a user in a chat session - enaged, composing, gone, etc.
--   [XEP-0012: Last Activity](http://xmpp.org/extensions/xep-0012.html): Communicate information about the last activity of someone.
+-   [XEP-0174: Serverless Messaging:](https://xmpp.org/extensions/xep-0174.html) Communicate over local or wide-area networks using the principles of zero-configuration networking and without the need for servers.
+-   [XEP-0085: Chat State Notifications](https://xmpp.org/extensions/xep-0085.html): Communicate the status of a user in a chat session - enaged, composing, gone, etc.
+-   [XEP-0012: Last Activity](https://xmpp.org/extensions/xep-0012.html): Communicate information about the last activity of someone.
 
 **XMPP: The Definitive Guide - Rough Cuts edition**
 

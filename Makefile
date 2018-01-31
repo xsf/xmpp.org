@@ -105,8 +105,8 @@ github: publish
 ifeq ($(TRAVIS_PULL_REQUEST), false)
 	ghp-import -n $(OUTPUTDIR)
 	mkdir /tmp/xep-images
-	curl -o /tmp/xep-images/xmpp-text.pdf  http://xmpp.org/images/xmpp-text.pdf
-	curl -o /tmp/xep-images/xmpp.pdf       http://xmpp.org/images/xmpp.pdf
+	curl -o /tmp/xep-images/xmpp-text.pdf  https://xmpp.org/images/xmpp-text.pdf
+	curl -o /tmp/xep-images/xmpp.pdf       https://xmpp.org/images/xmpp.pdf
 	git clone https://github.com/xsf/xeps /tmp/xeps
 	git clone https://github.com/xsf/xsf-tools /tmp/xsf-tools
 	export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/

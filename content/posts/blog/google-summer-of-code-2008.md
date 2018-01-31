@@ -6,7 +6,7 @@ blog_id: blog
 category: Google Summer of Code
 ---
 
-For the fourth year in a row, the [XMPP Standards Foundation](http://www.xmpp.org/xsf/) is [participating](http://code.google.com/soc/2008/xmpp/about.html) in the [Google Summer of Code](http://code.google.com/soc/2008/). Our projects for 2008 are as follows:
+For the fourth year in a row, the [XMPP Standards Foundation](https://xmpp.org/xsf/) is [participating](http://code.google.com/soc/2008/xmpp/about.html) in the [Google Summer of Code](http://code.google.com/soc/2008/). Our projects for 2008 are as follows:
 
 -   Mateusz Biliński ([vArDo](http://blog.bilinski.it/)) -- [Plug-in system for Gajim](http://code.google.com/soc/2008/xmpp/appinfo.html?csaid=4DBB14A9D1CA8C7C) (Mentor: Yann LeBoulanger)
 -   Adam Czachorowski ([gislan](http://gislan.utumno.pl/)) -- [Metacontacts support and various roster improvements for Psi](http://code.google.com/soc/2008/xmpp/appinfo.html?csaid=CC0FB57C68942C8C) (Mentor: Remko Tronçon)

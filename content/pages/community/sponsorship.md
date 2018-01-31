@@ -53,7 +53,7 @@ An explanation of the benefits, together with sponsorships costs, can be found b
 - __Logo in XSF Presentations__: Your company logo will feature in XSF presentations given by XSF Council and XSF Board members.
 - __Logo on Every Page__: Your logo will form part of the pool of sponsor logos that appear on the home page of the site.
 - __Logo on Sponsor Page__: Your logo will appear on the XSF Sponsor Page, linked to a designated page on your website.
-- __Logo + Paragraph on Sponsor Page__: Your logo, together with a pragraph describing your company, will appear on the XSF Sponsor Page, linked to a designated page of your choice.
+- __Logo + Paragraph on Sponsor Page__: Your logo, together with a paragraph describing your company, will appear on the XSF Sponsor Page, linked to a designated page of your choice.
 - __Your own page on the XSF site__: You’ll get your own page on the XSF site, which will be listed in the site’s main menu.
 - __Namecheck during XSF Presentations__: Your company will be verbally namechecked and thanked during XSF presentations given by XSF Council and XSF Board members.
 - __Automatic XSF Sponsorship__: You will automatically be counted as a sponsor of official XSF Events (including FOSDEM and OSCON)

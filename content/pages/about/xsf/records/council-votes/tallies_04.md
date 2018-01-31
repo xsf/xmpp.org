@@ -79,7 +79,7 @@ This page provides detailed voting status information for each [XMPP Extension P
 
   [XMPP Extension Protocols]: /extensions/
   [XMPP Council]: /council/
-  [mailing list archives]: http://mail.jabber.org/pipermail/council/
+  [mailing list archives]: https://mail.jabber.org/pipermail/council/
   [chatroom logs]: http://logs.jabber.org/council@conference.jabber.org/
   [XMPP Extensions Editor]: /extensions/editor.shtml
   [0122]: /extensions/xep-0122.html

@@ -24,7 +24,7 @@
         "url": "http://aqq.eu"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-08-18T17:01:49",
         "name": "AstraChat",
         "platforms": [
             "Android",
@@ -70,8 +70,8 @@
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
     },
     {
-        "last_renewed": "2017-03-23T14:02:52",
-        "name": "Bruno the Jabber Bear",
+        "last_renewed": "2018-01-30T14:02:52",
+        "name": "Bruno the Jabber™ Bear",
         "platforms": [
             "Android"
         ],
@@ -96,10 +96,9 @@
         "url": "https://candy-chat.github.io/candy/"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-04-19T14:37:00",
         "name": "ChatSecure",
         "platforms": [
-            "Android",
             "iOS"
         ],
         "url": "https://chatsecure.org/"
@@ -115,7 +114,7 @@
         "url": "http://coccinella.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-04-19T14:37:00",
         "name": "Conversations",
         "platforms": [
             "Android"
@@ -123,12 +122,12 @@
         "url": "https://github.com/siacs/Conversations"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-04-19T14:37:00",
         "name": "Converse.js",
         "platforms": [
             "Browser"
         ],
-        "url": "http://conversejs.org"
+        "url": "https://conversejs.org/"
     },
     {
         "last_renewed": null,
@@ -137,6 +136,14 @@
             "Windows"
         ],
         "url": "http://coversant.com"
+    },
+    {
+        "last_renewed": "2017-04-19T14:37:00",
+        "name": "Dino",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://github.com/dino/dino"
     },
     {
         "last_renewed": null,
@@ -331,7 +338,8 @@
         "last_renewed": null,
         "name": "Monal IM",
         "platforms": [
-            "iOS"
+            "iOS",
+            "macOS"
         ],
         "url": "http://monal.im"
     },
@@ -374,11 +382,11 @@
         "url": "http://pidgin.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-05-15T21:35:03",
         "name": "Poezio",
         "platforms": [
-            "Console",
-            "Text-Mode"
+            "Linux",
+            "macOS"
         ],
         "url": "https://poez.io"
     },
@@ -393,24 +401,24 @@
         "url": "http://profanity.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://psi-im.org"
+        "url": "https://psi-im.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi+",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://psi-plus.com"
+        "url": "https://psi-plus.com"
     },
     {
         "last_renewed": null,
@@ -431,13 +439,13 @@
         "url": "http://qutim.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-08-11T16:41:05",
         "name": "Salut \u00e0 Toi",
         "platforms": [
+            "Android",
             "Browser",
-            "Console",
             "Linux",
-            "Text-Mode"
+            "Other"
         ],
         "url": "https://salut-a-toi.org/"
     },
@@ -460,7 +468,7 @@
         "url": "https://smuxi.im/"
     },
     {
-        "last_renewed": "2017-03-23T20:32:00",
+        "last_renewed": "2017-12-29T10:20:00",
         "name": "Spark",
         "platforms": [
             "Linux",
@@ -478,7 +486,7 @@
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
-        "last_renewed": "2017-03-27T12:45:00",
+        "last_renewed": "2017-10-04T06:20:11",
         "name": "Swift",
         "platforms": [
             "Linux",
@@ -496,20 +504,14 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-08-03T12:29:00",
         "name": "Tigase Messenger",
         "platforms": [
-            "Browser"
+            "Android",
+            "Browser",
+            "iOS"
         ],
-        "url": "http://www.tigase.net/content/tigase-messenger-android"
-    },
-    {
-        "last_renewed": null,
-        "name": "Tigase Minichat",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "http://tigase.org"
+        "url": "http://tigase.net/article/client-side-software"
     },
     {
         "last_renewed": null,
@@ -598,11 +600,20 @@
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "last_renewed": "2017-03-23T13:40:52",
+        "last_renewed": "2018-01-30T13:40:52",
         "name": "yaxim",
         "platforms": [
             "Android"
         ],
         "url": "https://yaxim.org"
+    },
+    {
+        "last_renewed": "2017-04-21T14:01:57",
+        "name": "Zom",
+        "platforms": [
+            "Android",
+            "iOS"
+        ],
+        "url": "https://zom.im/"
     }
 ]

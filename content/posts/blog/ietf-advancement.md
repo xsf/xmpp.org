@@ -27,6 +27,6 @@ Unfortunately, the XMPP specs have many downrefs, including the following:
 
 Given the serious number of significant downrefs, I think it's unrealistic for us to expect advancement of XMPP to Draft Standard anytime soon. It appears that the best we can do is update the XMPP specs as we have been doing, resulting in revised specifications that reflect our community's implementation and deployment experience but that are still at the Proposed Standard level.
 
-And speaking of updated specs, expect revised versions of [rfc3920bis](http://www.xmpp.org/internet-drafts/draft-saintandre-rfc3920bis-02.html) and [rfc3920bis](http://www.xmpp.org/internet-drafts/draft-saintandre-rfc3921bis-02.html) soon.
+And speaking of updated specs, expect revised versions of [rfc3920bis](https://xmpp.org/internet-drafts/draft-saintandre-rfc3920bis-02.html) and [rfc3920bis](https://xmpp.org/internet-drafts/draft-saintandre-rfc3921bis-02.html) soon.
 
 UPDATE: As [Joe Hildebrand](http://arch.jabber.com/2007/06/11/ietf-process/) mentions (see also [my reply](http://stpeter.im/?p=1920)), things are probably not quite so dire. Check for further updates as we work with folks at the IETF on this topic...

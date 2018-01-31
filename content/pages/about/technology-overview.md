@@ -21,7 +21,7 @@ Sidebar_menu_elem_url_4: about/standards-process
 Sidebar_menu_elem_name_5: The XSF
 Sidebar_menu_elem_url_5: about/xmpp-standards-foundation
 Sidebar_menu_elem_name_6: Specifications
-Sidebar_menu_elem_url_6: extensions/index
+Sidebar_menu_elem_url_6: ../extensions/
 Sidebar_menu_elem_name_7: FAQ
 Sidebar_menu_elem_url_7: about/faq
 Content_layout: multiple-columns
@@ -139,9 +139,9 @@ MUC is an XMPP extension for multi-party information exchange similar to Interne
 
 MUC is defined in one primary specification (XEP-0045) and several ancillary specifications:
 
-- [XEP-0045: Multi-User Chat](http://www.xmpp.org/extensions/xep-0045.html)
-- [XEP-0249: Direct MUC Invitations](http://www.xmpp.org/extensions/xep-0249.html)
-- [XEP-0272: Multiparty Jingle](http://www.xmpp.org/extensions/xep-0272.html)
+- [XEP-0045: Multi-User Chat](https://xmpp.org/extensions/xep-0045.html)
+- [XEP-0249: Direct MUC Invitations](https://xmpp.org/extensions/xep-0249.html)
+- [XEP-0272: Multiparty Jingle](https://xmpp.org/extensions/xep-0272.html)
 
 #### Implementations
 
@@ -186,9 +186,9 @@ PubSub is a protocol extension for generic publish-subscribe functionality, spec
 
 PubSub is defined in several specifications:
 
-- [XEP-0060: Publish-Subscribe](http://www.xmpp.org/extensions/xep-0060.html)
-- [XEP-0163: Personal Eventing Protocol](http://www.xmpp.org/extensions/xep-0163.html)
-- [XEP-0248: PubSub Collection Nodes](http://www.xmpp.org/extensions/xep-0248.html)
+- [XEP-0060: Publish-Subscribe](https://xmpp.org/extensions/xep-0060.html)
+- [XEP-0163: Personal Eventing Protocol](https://xmpp.org/extensions/xep-0163.html)
+- [XEP-0248: PubSub Collection Nodes](https://xmpp.org/extensions/xep-0248.html)
 
 #### Payloads
 PubSub and PEP are “payload-agnostic” — you can use them as neutral transports for a wide variety of data formats. Some of the more popular payloads are listed below, especially for rich presence related to IM users:
@@ -234,8 +234,8 @@ BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-
 
 #### Specifications BOSH is defined in two specifications:
 
-- [XEP-0124: Bidirectional-streams Over Synchronous HTTP](http://www.xmpp.org/extensions/xep-0124.html)
-- [XEP-0206: XMPP Over BOSH](http://www.xmpp.org/extensions/xep-0206.html)
+- [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html)
+- [XEP-0206: XMPP Over BOSH](https://xmpp.org/extensions/xep-0206.html)
 
 #### Implementations
 

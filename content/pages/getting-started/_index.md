@@ -24,7 +24,7 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 # 2. Create an account
 
-As with e-mail, you'll need an account with a service provider. Again, there are [plenty of choices](https://xmpp.net/directory.php), from which these are only a couple of the more popular ones:
+As with e-mail, you'll need an account with a service provider. Again, there are [plenty of choices](https://list.jabber.at/), from which these are only a couple of the more popular ones:
 
 * [xmpp.jp](https://www.xmpp.jp/signup)
 * [jabber.ru](https://jabber.ru/user/register)

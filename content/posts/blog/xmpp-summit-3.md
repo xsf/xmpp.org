@@ -24,13 +24,13 @@ Potential topics include:
 -   Jingle for voice and beyond
 -   Preventing the emergence of spim on the Jabber network
 -   Encouraging deployment of TLS on the Jabber network via use of the XMPP ICA
--   Improvement of the [interop testing network](http://www.xmpp.org/interop/)
+-   Improvement of the [interop testing network](https://xmpp.org/interop/)
 -   Final clarifications to rfc3920bis and rfc3921bis
 
 ### Logistics
 Thanks to gracious assistance from [O'Reilly Conferences](http://www.oreilly.com/), the devcon will held in room E142 at the [Oregon Convention Center](http://www.oregoncc.org/) on Monday July 23 and Tuesday July 24.
 
-Join the [devcon list](http://mail.jabber.org/mailman/listinfo/devcon) to discuss further details.
+Join the [devcon list](https://mail.jabber.org/mailman/listinfo/devcon) to discuss further details.
 
 Participants
 

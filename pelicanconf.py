@@ -21,7 +21,7 @@ DEFAULT_METADATA = [
   ('is_blog', 'false')
 ]
 
-STATIC_PATHS = [ 'CNAME', 'images', 'scripts', 'extensions', 'icons', 'icons/favicon.ico', 'robots.txt', 'registrar']
+STATIC_PATHS = [ 'CNAME', 'images', 'scripts', 'extensions', 'icons', 'icons/favicon.ico', 'robots.txt', 'registrar', 'docs']
 PAGE_PATHS = ['pages', 'registrar']
 EXTRA_PATH_METADATA = {
   'icons/favicon.ico': { 'path': 'favicon.ico' }
@@ -114,3 +114,8 @@ NOW = datetime.utcnow()
 SWLISTS["libraries"] = load_software_list(NOW, "libraries.json")
 SWLISTS["clients"] = load_software_list(NOW, "clients.json")
 SWLISTS["servers"] = load_software_list(NOW, "servers.json")
+
+with open("data/members.json", "r") as f:
+    MEMBERLIST = json.load(f)
+
+XEPS = []

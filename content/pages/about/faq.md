@@ -63,7 +63,7 @@ Anyone can put together their own XMPP service and easily federate with other or
 
 XMPP is the name for the streaming XML protocol that emerged from the Jabber open source community in 1999. When that community submitted the protocol to the Internet Engineering Task Force (IETF) in 2002, it chose to use the name “XMPP” instead of “Jabber” to eliminate the possibility of confusion with the open source community and the commercial Jabber.com company (since acquired by Cisco Systems, Inc.)
 
-You can read more about the history of XMPP [here](/about/history).
+You can read more about the history of XMPP [here](/about/history.html).
 
 ## How secure is XMPP?
 
@@ -90,6 +90,6 @@ With both an open protocol and a distributed network, that’s almost an impossi
 
 ## What’s the XSF?
 
-[The XMPP Standards Foundation](/about/xmpp-standards-foundation) is a non-profit organization which acts as a central point for the maintenance of the existing specifications, and the creation of new ones. It’s a membership organization, made of volunteers who help run the standards process.
+[The XMPP Standards Foundation](/about/xmpp-standards-foundation.html) is a non-profit organization which acts as a central point for the maintenance of the existing specifications, and the creation of new ones. It’s a membership organization, made of volunteers who help run the standards process.
 
 There’s no need to join to work on the specifications, nor to develop with XMPP, but volunteers willing to help work on how standards are made are always welcome.

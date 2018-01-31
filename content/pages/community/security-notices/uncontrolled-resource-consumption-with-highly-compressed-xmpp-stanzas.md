@@ -136,4 +136,4 @@ The vulnerability was reported by Giancarlo Pellegrino. This report was written 
 
 ## Feedback
 
-If you have feedback, comments, or additional information about this vulnerability, please send email to the [security@xmpp.org discussion list](http://mail.jabber.org/mailman/listinfo/security).
+If you have feedback, comments, or additional information about this vulnerability, please send email to the [security@xmpp.org discussion list](https://mail.jabber.org/mailman/listinfo/security).

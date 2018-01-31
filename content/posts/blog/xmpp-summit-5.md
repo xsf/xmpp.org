@@ -18,7 +18,7 @@ Read on for details.
 ### Participants
 Participation is open to all developers, service operators, and other interested individuals. Please note that this is a hard-code technical get-together with plenty of coding sprints, hackfests, interop testing, brainstorming sessions, geeky lightning talks, etc. This meeting is not intended for marketing presentations and other fluff!
 
-If you would like to participate, please join the [summit@xmpp.org](http://mail.jabber.org/mailman/listinfo/summit) mailing list and introduce yourself.
+If you would like to participate, please join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list and introduce yourself.
 
 The following individuals have indicated that they will attend:
 
@@ -58,7 +58,7 @@ The following individuals have indicated that they will attend:
 35. Adam Pisoni, [Geni](http://www.geni.com/) 
 36. Evan Prodromou, [Identi.ca](http://identi.ca/) 
 37. Mickaël Rémond, [Process-One](http://www.process-one.net/) 
-38. Peter Saint-Andre, [XSF](http://www.xmpp.org/) 
+38. Peter Saint-Andre, [XSF](https://xmpp.org/) 
 39. Krishna Sankar, [Cisco](http://www.cisco.com/) 
 40. Jérôme Sautret, [Process-One](http://www.process-one.net/) 
 41. Sean Smith 
@@ -107,21 +107,21 @@ Semi-working lunch of sorts. Wander off, stick around, hack code, check email, p
 ##### 1:00 - 2:00
 *Note: we will use these threads as partial input to the HTTP+XMPP "hybrid" discussion at 2:00.*
 T1: Microblogging
-[http://www.xmpp.org/extensions/inbox/microblogging.html](http://www.xmpp.org/extensions/inbox/microblogging.html)
+[https://xmpp.org/extensions/inbox/microblogging.html](https://xmpp.org/extensions/inbox/microblogging.html)
 [http://blog.dave.cridland.net/?p=61](http://blog.dave.cridland.net/?p=61)   [https://stpeter.im/?p=2224](https://stpeter.im/?p=2224)   [http://openmicroblogging.org/](http://openmicroblogging.org/)
 
 T2: Server/component interactions
-[http://www.xmpp.org/extensions/xep-0114.html](http://www.xmpp.org/extensions/xep-0114.html)
-[http://www.xmpp.org/extensions/xep-0225.html](http://www.xmpp.org/extensions/xep-0225.html)   how to implement protocols like pubsub, pep, and MUC as external components?   how can components access information like rosters and presence?   how to access or share component services in a federated manner? authorization of components or remote users
+[https://xmpp.org/extensions/xep-0114.html](https://xmpp.org/extensions/xep-0114.html)
+[https://xmpp.org/extensions/xep-0225.html](https://xmpp.org/extensions/xep-0225.html)   how to implement protocols like pubsub, pep, and MUC as external components?   how can components access information like rosters and presence?   how to access or share component services in a federated manner? authorization of components or remote users
 
 ##### 2:00 - 3:00
 Full-group session on hybrid technologies. No, that's not gas and electric, it's HTTP + XMPP. Sub-topics include:
 
 -   When to use HTTP, when to use XMPP?
--   [OAuth](http://oauth.net/) (see [XEP-0235](http://www.xmpp.org/extensions/xep-0235.html))
+-   [OAuth](http://oauth.net/) (see [XEP-0235](https://xmpp.org/extensions/xep-0235.html))
 -   REST and XMPP (see [here](http://en.oreilly.com/oscon2008/public/schedule/detail/4359), [here](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), [here](http://arch.jabber.com/archives/2003/12/000062.html) and
     [here](https://stpeter.im/?p=1791))
--   Shared rosters / [communities](http://www.xmpp.org/extensions/inbox/communities.html)
+-   Shared rosters / [communities](https://xmpp.org/extensions/inbox/communities.html)
 
 ##### 3:00 - 4:00
 T1: Jingle I (identify open issues for push to Draft)
@@ -140,22 +140,22 @@ T2: PubSub II (discuss uses in hybrid technologies, federation of information ex
 
 ##### 11:00 - 12:00
 T1: Security, spam, etc.
-topics: server to server federation, TLS+dialback, TLS+SASL, abuse prevention, end-to-end encryption   [http://xmpp.org/ca/](http://xmpp.org/ca/)
-[http://www.xmpp.org/extensions/xep-0158.html](http://www.xmpp.org/extensions/xep-0158.html)
-[http://www.xmpp.org/extensions/xep-0159.html](http://www.xmpp.org/extensions/xep-0159.html)
-[http://www.xmpp.org/extensions/xep-0161.html](http://www.xmpp.org/extensions/xep-0161.html)
-[http://www.xmpp.org/extensions/xep-0165.html](http://www.xmpp.org/extensions/xep-0165.html)
-[http://www.xmpp.org/extensions/xep-0205.html](http://www.xmpp.org/extensions/xep-0205.html)
-[http://www.xmpp.org/extensions/xep-0116.html](http://www.xmpp.org/extensions/xep-0116.html)
-[http://www.xmpp.org/extensions/xep-0246.html](http://www.xmpp.org/extensions/xep-0246.html)
-[http://www.xmpp.org/extensions/xep-0247.html](http://www.xmpp.org/extensions/xep-0247.html)
+topics: server to server federation, TLS+dialback, TLS+SASL, abuse prevention, end-to-end encryption   [https://xmpp.org/ca/](https://xmpp.org/ca/)
+[https://xmpp.org/extensions/xep-0158.html](https://xmpp.org/extensions/xep-0158.html)
+[https://xmpp.org/extensions/xep-0159.html](https://xmpp.org/extensions/xep-0159.html)
+[https://xmpp.org/extensions/xep-0161.html](https://xmpp.org/extensions/xep-0161.html)
+[https://xmpp.org/extensions/xep-0165.html](https://xmpp.org/extensions/xep-0165.html)
+[https://xmpp.org/extensions/xep-0205.html](https://xmpp.org/extensions/xep-0205.html)
+[https://xmpp.org/extensions/xep-0116.html](https://xmpp.org/extensions/xep-0116.html)
+[https://xmpp.org/extensions/xep-0246.html](https://xmpp.org/extensions/xep-0246.html)
+[https://xmpp.org/extensions/xep-0247.html](https://xmpp.org/extensions/xep-0247.html)
 
 T2: Mobile optimizations
-[http://www.xmpp.org/extensions/xep-0237.html](http://www.xmpp.org/extensions/xep-0237.html)
-[http://www.xmpp.org/extensions/xep-0124.html](http://www.xmpp.org/extensions/xep-0124.html)
-[http://www.xmpp.org/extensions/xep-0206.html](http://www.xmpp.org/extensions/xep-0206.html)
-[http://mail.jabber.org/pipermail/standards/2008-February/017911.html](http://mail.jabber.org/pipermail/standards/2008-February/017911.html)
-[http://mail.jabber.org/pipermail/standards/2008-February/018036.html](http://mail.jabber.org/pipermail/standards/2008-February/018036.html)
+[https://xmpp.org/extensions/xep-0237.html](https://xmpp.org/extensions/xep-0237.html)
+[https://xmpp.org/extensions/xep-0124.html](https://xmpp.org/extensions/xep-0124.html)
+[https://xmpp.org/extensions/xep-0206.html](https://xmpp.org/extensions/xep-0206.html)
+[https://mail.jabber.org/pipermail/standards/2008-February/017911.html](https://mail.jabber.org/pipermail/standards/2008-February/017911.html)
+[https://mail.jabber.org/pipermail/standards/2008-February/018036.html](https://mail.jabber.org/pipermail/standards/2008-February/018036.html)
 
 ##### 12:00 - 1:00
 Semi-working lunch.
@@ -165,7 +165,7 @@ Open discussion
 
 -   What problems are we facing?
 -   What new application spaces are of interest?
--   What do we need to focus on going forward? (see [XSF Roadmap](/about-xmpp/xsf/xsf-roadmap/))
+-   What do we need to focus on going forward? (see [XSF Roadmap](/about/xsf/xsf-roadmap/))
 -   Etc.
 
 ##### 2:00 - 2:30
@@ -181,7 +181,7 @@ You *do not* need to register for OSCON in order to participate in the XMPP Sum
 
 For transportation, use Portland's [MAX](http://trimet.org/max/) (light rail) service. The Convention Center stop is your friend. :)
 
-As at XMPP Summit 4, the XMPP Standards Foundation will again pay hotel costs for any elected XSF member who attends the Summit. To take advantage of this offer, please make arrangements to stay at the [Marriott City Center](http://www.marriott.com/hotels/travel/pdxct-portland-marriott-city-center/) (see [this message](http://mail.jabber.org/pipermail/summit/2008-June/000039.html)!) and contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968) so he knows to pay for your room and can help arrange room sharing.
+As at XMPP Summit 4, the XMPP Standards Foundation will again pay hotel costs for any elected XSF member who attends the Summit. To take advantage of this offer, please make arrangements to stay at the [Marriott City Center](http://www.marriott.com/hotels/travel/pdxct-portland-marriott-city-center/) (see [this message](https://mail.jabber.org/pipermail/summit/2008-June/000039.html)!) and contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968) so he knows to pay for your room and can help arrange room sharing.
 
 During the summit itself, we will use the [summit@conference.jabber.org](xmpp:summit@conference.jabber.org?join) chatroom as a backchannel for discussion, information sharing, complaints, questions, etc.
 
@@ -189,4 +189,4 @@ During the summit itself, we will use the [summit@conference.jabber.org](xmpp:s
 ### Events
 As always, the XSF will host one social event (dinner or somesuch) and we will also have many opportunities to meet in the evenings for some good Portland beer. :)
 
-Dinner will be held on Monday night (July 21) at 7:00 PM, the location is [Kells Irish Restaurant and Pub](http://www.kellsirish.com/portland/index.html) -- details [here](http://mail.jabber.org/pipermail/summit/2008-July/000158.html).
+Dinner will be held on Monday night (July 21) at 7:00 PM, the location is [Kells Irish Restaurant and Pub](http://www.kellsirish.com/portland/index.html) -- details [here](https://mail.jabber.org/pipermail/summit/2008-July/000158.html).

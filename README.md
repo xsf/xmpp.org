@@ -1,6 +1,7 @@
 xmpp.org
 ========
 [![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
+[![Docker Build Status](https://img.shields.io/docker/build/xmppxsf/xmpp.org.svg)](https://hub.docker.com/r/xmppxsf/xmpp.org/)
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
@@ -25,8 +26,7 @@ Site generation
 
 * Commits to the master branch generate a new build.
 * Builds are visible at https://travis-ci.org/xsf/xmpp.org/builds
-* New content is deployed to [gh-pages branch](https://github.com/xsf/xmpp.org/tree/gh-pages)
-* and visible on http://new.xmpp.org
+* Changes will be visible on http://xmpp.org after the next update
 
 ## Software Requirements
 
@@ -64,6 +64,22 @@ make devserver
 ```
 
 View at `http://localhost:8000`
+
+### Docker-based installation
+
+The Makefile will build the website completely just by `make`. It'll do
+the following:
+
+* Create a build Docker image (`make builder`) which is a development
+environment with a complete set of dependencies ready.
+
+* Run this docker image on the xmpp.org directory locally. This directory
+is presumed to contain a checked out repository for the website. (`make site`)
+
+* From the newly created static files in `deploy/output`, it will then create
+a minimalist docker image to actually serve the website. (`make deployer`)
+
+For development convenience, you can run the website on port 8080 by `make serve`
 
 ### Vagrant-based installation
 For your convenience, this repository ships with a basic Vagrantfile, which allows you to create virtual machine with all the dependencies required for local development.

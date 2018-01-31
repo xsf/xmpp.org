@@ -1,0 +1,10 @@
+#
+# Build a docker image to build the website
+#
+
+all:
+	docker build -t xmpp-org/latest .
+
+serve:
+	docker run -p 8080:80 -t -i xmpp-org/latest
+

@@ -41,7 +41,7 @@ Ralph Meijer has announced [Wokkel 0.6.0](http://wokkel.ik.nu/), a set of XMPP t
 
 *xBookmarks addon for Firefox*
 
-[xBookmarks](https://addons.mozilla.org/en-US/firefox/addon/9970) stands for "XMPP bookmarks", it is a Firefox extension that implements [XEP-0048](http://xmpp.org/extensions/xep-0048.html) so that a user having an XMPP account can store all of his bookmarks in one place and can retrieve them from anywhere. xBookmarks needs [xmpp4moz](https://addons.mozilla.org/en-US/firefox/addon/3632).
+[xBookmarks](https://addons.mozilla.org/en-US/firefox/addon/9970) stands for "XMPP bookmarks", it is a Firefox extension that implements [XEP-0048](https://xmpp.org/extensions/xep-0048.html) so that a user having an XMPP account can store all of his bookmarks in one place and can retrieve them from anywhere. xBookmarks needs [xmpp4moz](https://addons.mozilla.org/en-US/firefox/addon/3632).
 
 *Babylon*
 
@@ -77,13 +77,13 @@ Kathryn Barrett from O'Reilly, [has written a lengthy article](http://fyi.oreill
 
 Since the last XMPP Roundup, several specifications published by the XMPP Standards Foundation have evolved:
 
--   [XEP-0256: Last Activity in Presence](http://xmpp.org/extensions/xep-0256.html) has advanced from Experimental to Draft
--   [XEP-0237: Roster Versioning](http://xmpp.org/extensions/xep-0237.html) has been updated to reflect feedback receiving during Last Call, and a second Last Call has been issued before advancing it from Experimental to
+-   [XEP-0256: Last Activity in Presence](https://xmpp.org/extensions/xep-0256.html) has advanced from Experimental to Draft
+-   [XEP-0237: Roster Versioning](https://xmpp.org/extensions/xep-0237.html) has been updated to reflect feedback receiving during Last Call, and a second Last Call has been issued before advancing it from Experimental to
     Draft
--   [XEP-0124: Bidirectional-streams Over Synchronous HTTP](http://xmpp.org/extensions/xep-0124.html) (BOSH) was updated to correct the XML schema and incorporate technical discussions held at [XMPP Summit 6](http://xmpp.org/summit/summit6.shtml) in February
--   [XEP-0267: Server Rosters](http://xmpp.org/extensions/xep-0267.html) and [XEP-0268: Incident Reporting](http://xmpp.org/extensions/xep-0268.html) were published, also as a result of discussions held at [XMPP Summit 6](http://xmpp.org/summit/summit6.shtml) in February
--   [XEP-0266: Codecs for Jingle RTP Sessions](http://xmpp.org/extensions/xep-0266.html) was updated with information about the [Dirac codec](http://diracvideo.org/) for video
--   [XEP-0238: XMPP Protocol Flows for Inter-Domain Federation](http://xmpp.org/extensions/xep-0238.html) and [XEP-0154: User Profile](http://xmpp.org/extensions/xep-0154.html) have been deferred because of inactivity
+-   [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html) (BOSH) was updated to correct the XML schema and incorporate technical discussions held at [XMPP Summit 6](https://xmpp.org/summit/summit6.shtml) in February
+-   [XEP-0267: Server Rosters](https://xmpp.org/extensions/xep-0267.html) and [XEP-0268: Incident Reporting](https://xmpp.org/extensions/xep-0268.html) were published, also as a result of discussions held at [XMPP Summit 6](https://xmpp.org/summit/summit6.shtml) in February
+-   [XEP-0266: Codecs for Jingle RTP Sessions](https://xmpp.org/extensions/xep-0266.html) was updated with information about the [Dirac codec](http://diracvideo.org/) for video
+-   [XEP-0238: XMPP Protocol Flows for Inter-Domain Federation](https://xmpp.org/extensions/xep-0238.html) and [XEP-0154: User Profile](https://xmpp.org/extensions/xep-0154.html) have been deferred because of inactivity
 
 **A final word**
 

@@ -6,7 +6,7 @@ blog_id: blog
 category: FOSDEM
 ---
 
-On February 3-6, the XSF and members of the XMPP community participated in both XMPP Summit 11 and FOSDEM 2012 in Brussels, Belgium. This is a late report about the activities there, based on the notes made at the time about the [Summit](http://mail.jabber.org/pipermail/summit/2012-February/001084.html) and [FOSDEM](http://mail.jabber.org/pipermail/members/2012-February/006679.html) in general.
+On February 3-6, the XSF and members of the XMPP community participated in both XMPP Summit 11 and FOSDEM 2012 in Brussels, Belgium. This is a late report about the activities there, based on the notes made at the time about the [Summit](https://mail.jabber.org/pipermail/summit/2012-February/001084.html) and [FOSDEM](https://mail.jabber.org/pipermail/members/2012-February/006679.html) in general.
 
 With regard to community outreach, we had a very successful presence at FOSDEM. In addition to the devroom, where we brought together a full afternoon of talks about XMPP and related topics, we also hosted a "real-time lounge" in one of the buildings on the ULB campus.
 

@@ -18,6 +18,6 @@ To join the team running the manifesto and thus help to secure the communication
 -   test your server at the [IM Observatory](https://xmpp.net/)
 -   sign the manifesto at [https://github.com/stpeter/manifesto](https://github.com/stpeter/manifesto)
 -   chat with other XMPP operators in the [operators@muc.xmpp.org chatroom](xmpp:operators@muc.xmpp.org?join)
--   join the conversation on the [operators@xmpp.org email list](http://mail.jabber.org/mailman/listinfo/operators)
+-   join the conversation on the [operators@xmpp.org email list](https://mail.jabber.org/mailman/listinfo/operators)
 
 It's that easy!

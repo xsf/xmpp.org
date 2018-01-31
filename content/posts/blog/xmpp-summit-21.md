@@ -14,7 +14,7 @@ This year, the [XMPP Standards Foundation](https://xmpp.org/) again gathered in 
 The attending members, skillfully herded by Kev, addressed an impressive number of topics, including:
 
 * BIND2, improving the data exchange that occurs when an XMPP entity initially connects to a server.
-* [MIX](http://xmpp.org/extensions/xep-0369.html), the XEP that intends to be a replacement for the existing MUC protocol, bringing an up-to-date feature set and better extensibility.
+* [MIX](https://xmpp.org/extensions/xep-0369.html), the XEP that intends to be a replacement for the existing MUC protocol, bringing an up-to-date feature set and better extensibility.
 * Addressing the annoyance of instant-messaging-based spam.
 * The application of existing, or to be developed XMPP standards, to facilitate the growing world of [Internet-of-Things](https://wiki.xmpp.org/web/IoT_SIG).
 * The XSF intention to take part in this years [Google Summer of Code](https://summerofcode.withgoogle.com/).

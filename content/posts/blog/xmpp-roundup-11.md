@@ -94,13 +94,13 @@ ProcessOne has posted a blog article detailing [how to configure ejabberd for th
 
 **New and updated XMPP specifications**
 
-The XMPP Standards Foundation has advanced both [XEP-0198: Stream Management](http://xmpp.org/extensions/xep-0198.html) and [XEP-0249: Direct MUC Invitations](http://xmpp.org/extensions/xep-0249.html) from Experimental to Draft in its standards process. In addition, the following specifications have been recently updated:
+The XMPP Standards Foundation has advanced both [XEP-0198: Stream Management](https://xmpp.org/extensions/xep-0198.html) and [XEP-0249: Direct MUC Invitations](https://xmpp.org/extensions/xep-0249.html) from Experimental to Draft in its standards process. In addition, the following specifications have been recently updated:
 
--   [XEP-0051: Connection Transfer](http://xmpp.org/extensions/xep-0051.html): version 0.2
--   [XEP-0220: Server Dialback](http://xmpp.org/extensions/xep-0220.html): version 0.4
--   [XEP-0258: Security Labels in XMPP](http://xmpp.org/extensions/xep-0258.html): version 0.4
--   [XEP-0260: Jingle SOCKS5 Bytestreams Transport Method](http://xmpp.org/extensions/xep-0260.html): version 0.3
--   [XEP-0271: XMPP Nodes](http://xmpp.org/extensions/xep-0271.html): version 0.1
+-   [XEP-0051: Connection Transfer](https://xmpp.org/extensions/xep-0051.html): version 0.2
+-   [XEP-0220: Server Dialback](https://xmpp.org/extensions/xep-0220.html): version 0.4
+-   [XEP-0258: Security Labels in XMPP](https://xmpp.org/extensions/xep-0258.html): version 0.4
+-   [XEP-0260: Jingle SOCKS5 Bytestreams Transport Method](https://xmpp.org/extensions/xep-0260.html): version 0.3
+-   [XEP-0271: XMPP Nodes](https://xmpp.org/extensions/xep-0271.html): version 0.1
 
 **Conclusion**
 

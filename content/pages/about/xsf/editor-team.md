@@ -18,19 +18,18 @@ Sidebar_menu_elem_name_3: Editor Team
 Sidebar_menu_elem_url_3: about/xsf/editor-team
 Sidebar_menu_elem_name_4: Infrastructure Team
 Sidebar_menu_elem_url_4: about/xsf/infrastructure-team
-Sidebar_menu_elem_name_5: UPnP Liaison Team
-Sidebar_menu_elem_url_5: about/xsf/upnp-liaison-team
+Sidebar_menu_elem_name_5: Summits, Conferences & Meetups Team
+Sidebar_menu_elem_url_5: about/xsf/scam-team
 Sidebar_menu_elem_name_6: Standards Process
 Sidebar_menu_elem_url_6: about/standards-process
 Content_layout: multiple-columns
+Template: team_page
+Team_Role: editor
 ---
 
 The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](/extensions/xep-README.html) and the [XMPP Registrar](/extensions/xep-0053.html). The current members of the team are:
 
-- Peter Saint-Andre
-- Florian Schmaus
-- Kevin Smith
-- Sam Whited
+$MEMBER_LIST$
 
 NOTE: In order to send email to the team (via [editor@xmpp.org](mailto:editor@xmpp.org)), you MUST include the string “XEP” in the subject line!
 
@@ -70,4 +69,4 @@ The charter of the team is as follows:
 
 > [3] XEP-0053: XMPP Registrar Function
 
-> [4] http://xmpp.org/resources/registrar/
+> [4] https://xmpp.org/resources/registrar/

@@ -118,7 +118,7 @@ Jehan [has announcedJabber Feed 0.4](http://jehan.zemarmot.net/blog/2009/01/16/j
 
 *Prosody 0.3.0*
 
-Matthew Wild has [announced Prosody 0.3.0](http://mail.jabber.org/pipermail/jdev/2009-February/028783.html), the most notable change being its license, from GPL to MIT/X11.
+Matthew Wild has [announced Prosody 0.3.0](https://mail.jabber.org/pipermail/jdev/2009-February/028783.html), the most notable change being its license, from GPL to MIT/X11.
 
 *Apple'siCal Server using XMPP's PubSub for push-notifications*
 
@@ -130,28 +130,28 @@ Many specifications have advanced their state since last roundup:
 
 *Last call*
 
--   [XEP-0232: Software Information](http://xmpp.org/extensions/xep-0232.html) This document specifies an extended data format whereby XMPP service discovery responses can include detailed information about the software application that powers a given XMPP entity for including detailed data about the in service discovery responses.
+-   [XEP-0232: Software Information](https://xmpp.org/extensions/xep-0232.html) This document specifies an extended data format whereby XMPP service discovery responses can include detailed information about the software application that powers a given XMPP entity for including detailed data about the in service discovery responses.
 
 *1.0 / Active*
 
--   [XEP-0205: Best Practices to Discourage Denial of Service Attacks](http://xmpp.org/extensions/xep-0205.html)This document recommends a number of practices that can help discourage denial of service attacks on XMPP-based networks.
--   [XEP-0245: The /me Command](http://xmpp.org/extensions/xep-0245.html)This specification defines recommended handling of the /me command in XMPP instant messaging clients.
+-   [XEP-0205: Best Practices to Discourage Denial of Service Attacks](https://xmpp.org/extensions/xep-0205.html)This document recommends a number of practices that can help discourage denial of service attacks on XMPP-based networks.
+-   [XEP-0245: The /me Command](https://xmpp.org/extensions/xep-0245.html)This specification defines recommended handling of the /me command in XMPP instant messaging clients.
 
 *Retracted*
 
--   [XEP-0208: Bootstrapping Implementation of Jingle](http://xmpp.org/extensions/xep-0208.html)This document provides guidelines to XMPP client developers for bootstrapping implementation of Jingle technologies.
+-   [XEP-0208: Bootstrapping Implementation of Jingle](https://xmpp.org/extensions/xep-0208.html)This document provides guidelines to XMPP client developers for bootstrapping implementation of Jingle technologies.
 
 *Initial*
 
--   [XEP-0258: Security Labels in XMPP](http://xmpp.org/extensions/xep-0258.html) This document describes the use of security labels in XMPP. The document specifies how security label metadata is carried in XMPP, when this metadata should or should not be provided, and how the metadata is to be processed.
--   [XEP-0257: Client Certificate Management for SASL EXTERNAL](http://xmpp.org/extensions/xep-0257.html)This specification defines a method to manage client certificates that can be used with SASL External to allow clients to log in without a password.
--   [XEP-0259: Message Mine-ing](http://xmpp.org/extensions/xep-0259.html) In servers that deliver messages intended for the bare JID to all resources, the resource that claims a conversation notifies all of the other resources of that claim.
+-   [XEP-0258: Security Labels in XMPP](https://xmpp.org/extensions/xep-0258.html) This document describes the use of security labels in XMPP. The document specifies how security label metadata is carried in XMPP, when this metadata should or should not be provided, and how the metadata is to be processed.
+-   [XEP-0257: Client Certificate Management for SASL EXTERNAL](https://xmpp.org/extensions/xep-0257.html)This specification defines a method to manage client certificates that can be used with SASL External to allow clients to log in without a password.
+-   [XEP-0259: Message Mine-ing](https://xmpp.org/extensions/xep-0259.html) In servers that deliver messages intended for the bare JID to all resources, the resource that claims a conversation notifies all of the other resources of that claim.
 
 *Deffered*
 
--   [XEP-0209: Metacontacts](http://xmpp.org/extensions/xep-0209.html) This document specifies an XMPP protocol extension for defining metacontacts and grouping member JIDs.
--   [XEP-0165: Best Practices to Discourage JID Mimicking](http://xmpp.org/extensions/xep-0165.html) This document recommends best practices to discourage mimicking of Jabber IDs.
--   [XEP-0227: Portable Import/Export Format for XMPP-IM Servers](http://xmpp.org/extensions/xep-0227.html) This document specifies a file format for importing and exporting user data to and from XMPP-IM servers.
+-   [XEP-0209: Metacontacts](https://xmpp.org/extensions/xep-0209.html) This document specifies an XMPP protocol extension for defining metacontacts and grouping member JIDs.
+-   [XEP-0165: Best Practices to Discourage JID Mimicking](https://xmpp.org/extensions/xep-0165.html) This document recommends best practices to discourage mimicking of Jabber IDs.
+-   [XEP-0227: Portable Import/Export Format for XMPP-IM Servers](https://xmpp.org/extensions/xep-0227.html) This document specifies a file format for importing and exporting user data to and from XMPP-IM servers.
 
 **Afterword**
 

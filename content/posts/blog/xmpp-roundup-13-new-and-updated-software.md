@@ -140,7 +140,7 @@ The Ruby software [RDFbus](http://github.com/bendiken/rdfbus), published under a
 
 *Device state and MWI via PubSub in Asterisk*
 
-[Asterisk](http://www.asterisk.org/), the well-known opensource telephony platform, integrates a feature (at the time of writing, waiting for testing) enabling to [broadcast the device states and the MWI](https://issues.asterisk.org/view.php?id=15757) (Message Waiting Indicator), using the XMPP's [publish-and-subscribe mechanism](http://xmpp.org/extensions/xep-0060.html).
+[Asterisk](http://www.asterisk.org/), the well-known opensource telephony platform, integrates a feature (at the time of writing, waiting for testing) enabling to [broadcast the device states and the MWI](https://issues.asterisk.org/view.php?id=15757) (Message Waiting Indicator), using the XMPP's [publish-and-subscribe mechanism](https://xmpp.org/extensions/xep-0060.html).
 
 *Telepaatti*
 
