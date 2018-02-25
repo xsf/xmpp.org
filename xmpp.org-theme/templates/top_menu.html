@@ -45,6 +45,12 @@
       </li>
       <li class="divider"></li>
       {% endfor %}
+      <li {% if active_page == "newsletter" %} class="active" {% endif %} >
+        <a href="{{ SITE_URL }}/newsletter.html">
+          Newsletter
+        </a>
+      </li>
+      <li class="divider"></li>
       <li
         {% if active_page == "blog" %}
         class="active"
