@@ -10,6 +10,8 @@ SITE_URL = ""
 TIMEZONE = "Europe/Paris"  #Unused (Pelican complains if you don't provide it)
 DEFAULT_LANG = "en"
 
+WITH_FUTURE_DATES = False
+
 DEFAULT_METADATA = [
   ('top_menu_show', 'false'),
   ('top_menu_order', '-1'),
