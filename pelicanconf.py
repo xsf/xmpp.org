@@ -10,6 +10,8 @@ SITE_URL = ""
 TIMEZONE = "Europe/Paris"  #Unused (Pelican complains if you don't provide it)
 DEFAULT_LANG = "en"
 
+WITH_FUTURE_DATES = False
+
 DEFAULT_METADATA = [
   ('top_menu_show', 'false'),
   ('top_menu_order', '-1'),
@@ -27,7 +29,7 @@ EXTRA_PATH_METADATA = {
   'icons/favicon.ico': { 'path': 'favicon.ico' }
 }
 DIRECT_TEMPLATES = [ 'index', 'categories', 'archives' ]
-ARTICLE_PATHS = [ 'posts/blog', 'posts/learn' ]
+ARTICLE_PATHS = [ 'posts/blog', 'posts/learn', 'posts/newsletter' ]
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
 
