@@ -1,6 +1,6 @@
 xmpp.org
 ========
-[![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
+[![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://hub.docker.com/r/xmppxsf/xmpp.org/builds/)
 [![Docker Build Status](https://img.shields.io/docker/build/xmppxsf/xmpp.org.svg)](https://hub.docker.com/r/xmppxsf/xmpp.org/)
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
