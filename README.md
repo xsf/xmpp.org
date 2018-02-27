@@ -67,7 +67,7 @@ View at `http://localhost:8000`
 
 ### Docker-based installation
 
-The Makefile will build the website completely just by `make`. It'll do
+The Makefile will build the website completely by running `make -f MakefileDocker`. It'll do
 the following:
 
 * Create a build Docker image (`make builder`) which is a development
