@@ -1,6 +1,6 @@
 ---
 Title: The XMPP Newsletter
-Url: newsletter
+Url: newsletter.html
 Save_as: newsletter.html
 Menu_name: Newsletter
 Top_menu_show: true 
