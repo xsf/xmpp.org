@@ -26,4 +26,4 @@ To receive the newsletter in your email inbox, please sign up using the form bel
 <input type="submit" style="padding: 10px; border-radius: 5%" value="Subscribe" />
 </form>
           
-<!-- Past editions of the newsletter can be [read online here](/category/newsletter.html). -->
+Past editions of the newsletter can be [read online here](/category/newsletter.html).
