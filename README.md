@@ -1,7 +1,7 @@
 xmpp.org
 ========
 [![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
-[![Docker Build Status](https://img.shields.io/docker/build/xmppxsf/xmpp.org.svg)](https://hub.docker.com/r/xmppxsf/xmpp.org/)
+[![Docker Build Status](https://img.shields.io/docker/build/xmppxsf/xmpp.org.svg)](https://hub.docker.com/r/xmppxsf/xmpp.org/builds/)
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
@@ -67,7 +67,7 @@ View at `http://localhost:8000`
 
 ### Docker-based installation
 
-The Makefile will build the website completely just by `make`. It'll do
+The Makefile will build the website completely by running `make -f MakefileDocker`. It'll do
 the following:
 
 * Create a build Docker image (`make builder`) which is a development
