@@ -35,5 +35,6 @@ There are many projects that have created an XMPP-based Instant Messaging networ
 |--------------|---------------------------------|----------------------------------------|
 | ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service | 
 | ~200 million | [Nimbuzz](http://nimbuzz.com)   | Nimbuzz is an XMPP-based instant messaging community. |
+|    ~27 million | [League of Legends](https://leagueoflegends.com) | One of the largest online video games [using XMPP](http://highscalability.com/blog/2014/10/13/how-league-of-legends-scaled-chat-to-70-million-players-it-t.html) as their chat system. |
 |    ~100k      | [ChatMe](https://chatme.im)    | First Italian XMPP service with hosting function. |
 |    ~10k      | [Kontalk](http://kontalk.org)   | A very user-friendly XMPP service that uses your phone number as the user ID. Both server and client are FLOSS. |
