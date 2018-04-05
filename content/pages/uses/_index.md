@@ -38,4 +38,3 @@ While that's a huge portion of XMPP traffic on the Internet, XMPP has a variety 
 - [Internet of Things (IoT)](/uses/internet-of-things)
 - [WebRTC](/uses/webrtc)
 - [Social](/uses/social)
-- [Realtime Web](/uses/realtime-web)
