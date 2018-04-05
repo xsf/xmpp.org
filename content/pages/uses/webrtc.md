@@ -14,10 +14,12 @@ Sidebar_menu_elem_name_1: Instant Messaging
 Sidebar_menu_elem_url_1: uses/instant-messaging
 Sidebar_menu_elem_name_2: Internet of Things
 Sidebar_menu_elem_url_2: uses/internet-of-things
-Sidebar_menu_elem_name_3: Social
-Sidebar_menu_elem_url_3: uses/social
-Sidebar_menu_elem_name_4: WebRTC
-Sidebar_menu_elem_url_4: uses/webrtc
+Sidebar_menu_elem_name_3: Online Gaming
+Sidebar_menu_elem_url_3: gaming
+Sidebar_menu_elem_name_4: Social
+Sidebar_menu_elem_url_4: social
+Sidebar_menu_elem_name_5: WebRTC
+Sidebar_menu_elem_url_5: webrtc
 Content_layout: multiple-columns
 ---
 
