@@ -30,6 +30,7 @@ There is a growing number of games adopting XMPP for real-time signaling and cha
 
 | Users        | Game / Community                | Description                            | Since |
 |--------------|---------------------------------|----------------------------------------|-------|
+|  ~40 million | [Origin](https://www.origin.com/) by Electronic Arts | Origin is an online gaming and game distribution platform. [XMPP is used internally](https://blog.joelj.org/connect-to-ea-origin-chat-using-xmpp-jabber-and-pidgin/) for the buddy and chat system. | 2011 |
 |  ~27 million | [League of Legends](https://leagueoflegends.com) by Riot Gammes | One of the largest online video games [using XMPP](http://highscalability.com/blog/2014/10/13/how-league-of-legends-scaled-chat-to-70-million-players-it-t.html) for chat and game invitations. | 2009 |
 |  ~16 million | [Neverwinter](http://crypticstudios.com/neverwinter) | Neverwinter is a free-to-play, action MMORPG based on the acclaimed Dungeons & Dragons fantasy roleplaying game using XMPP for chat, presence, group chat | 2013 |
 |  ~10 million | [Fortnite](https://www.epicgames.com/fortnite/) by Epic Games | A cooperative survival game [using XMPP](https://www.epicgames.com/fortnite/en-US/news/postmortem-of-service-outage-at-3-4m-ccu) for presence, push, whispers and group chat | 2017 |
