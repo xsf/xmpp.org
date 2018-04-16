@@ -105,6 +105,8 @@ Insert it into the top-level JSON Array as last element by adding a comma after 
 
 Finally, create a Pull Request.
 
+**Note**: The JSON file must be saved using UTF-8 character encoding, without a Byte Order Mark (BOM). Using other character encodings, or including a BOM
+may result in the failure of the validation procedure, which will cause the pull request to be rejected.
 
 Remove an existing entry
 ========================
