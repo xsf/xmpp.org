@@ -487,6 +487,14 @@
         "url": "https://github.com/ubiety/xmpp"
     },
     {
+        "last_renewed": null,
+        "name": "Verse",
+        "platforms": [
+            "Lua"
+        ],
+        "url": "http://www.matthewwild.co.uk/projects/verse/home"
+    },
+    {
         "last_renewed": "2018-04-16T20:31:00",
         "name": "Waher Networking",
         "platforms": [
@@ -496,14 +504,6 @@
         ],
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
     },    
-    {
-        "last_renewed": null,
-        "name": "Verse",
-        "platforms": [
-            "Lua"
-        ],
-        "url": "http://www.matthewwild.co.uk/projects/verse/home"
-    },
     {
         "last_renewed": null,
         "name": "XIFF",
