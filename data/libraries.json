@@ -487,6 +487,16 @@
         "url": "https://github.com/ubiety/xmpp"
     },
     {
+        "last_renewed": "2018-04-16T20:31:00",
+        "name": "Waher Networking",
+        "platforms": [
+            ".NET Core",
+            ".NET Standard",
+            "C#"
+        ],
+        "url": "https://waher.se/IoTGateway/Libraries.md#networking"
+    },    
+    {
         "last_renewed": null,
         "name": "Verse",
         "platforms": [
