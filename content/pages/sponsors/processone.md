@@ -13,18 +13,16 @@ Content_layout: single-column
 
 ![](/images/logos/process-one.png)
 
-ProcessOne is a leading provider in messaging platforms made for scale and robustness.
+ProcessOne is a leading provider of rich Messaging, IoT and Push solutions optimized for building world-class realtime software.
 
-ProcessOne is the company that have developed ejabberd, an ubiquitous XMPP server that has been deployed to power some of the largest messaging platform in the world.
+ProcessOne is the company that have developed [ejabberd](https://ejabberd.im), an ubiquitous XMPP server that has been deployed to power some of the largest messaging platforms in the world.
 
-Used for chat, social network, gaming, machine to machine, the platform is versatile, feature complete and highly customizable.
+Used for chat, social network, gaming, IoT, the platform is versatile, feature complete and highly customizable.
 
-Developed and supported by a team of experts with 15 years of experience in messaging and highly robust and scalable system, ProcessOne platform is available as a Service, as the most reliable way and cost effective solution to deploy a XMPP based service.
+Developed and supported by a team of experts with 15 years of experience in messaging and highly robust and scalable system, ProcessOne platform is available as a service through [ejabberd SaaS](https://ejabberd-saas.com), as the most reliable way and cost effective solution to deploy a XMPP based service.
 
-ProcessOne has developed in-house expertise on iOS and Android since 2008 to be able to produce platforms and services optimize for mobile usages.
+Apart from XMPP, ProcessOne has developed in-house expertise in [Go](https://www.process-one.net/en/solutions/go_golang_software_development) and MQTT. We specialize in ejabberd, Kafka and Kubernetes deployments to offer a [complete realtime stack](https://www.process-one.net/en/solutions/fluux).
 
-Beyond XMPP we expanded our reach to push notification and websockets, making our platform usable for a very broad scope in the field of realtime in-app messaging.
-
-Scalability, robustness and mobile optimizations make our platform the safest choice today for reaching the largest and more demanding user bases.
+Scalability, robustness and mobile optimizations make our platform the safest choice today for reaching the largest and more demanding customers.
 
 You can find out more about ProcessOne by visiting [process-one.net](https://www.process-one.net/).
