@@ -136,6 +136,15 @@
     },
     {
         "last_renewed": null,
+        "name": "jackal",
+        "platforms": [
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://github.com/ortuman/jackal"
+    },
+    {
+        "last_renewed": null,
         "name": "Jerry Messenger",
         "platforms": [
             "Linux",
