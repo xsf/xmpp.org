@@ -48,7 +48,7 @@ This definition has some direct consequences that open up into different areas o
 
 	Another important aspect of the **Internet** is [interoperability](/uses/iot/interoperability). This includes topics such as [loosely coupled architectures](/uses/iot/interoperability#loosely-coupled-architectures) and [standardized interfaces](/uses/iot/interoperability#standard-interfaces).
 
-As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](/uses/iot/work-in-progress) page. There is also a page containing [testimonials](/uses/iot/testimonials).
+As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use within the area of *Internet of Things*. To check current developments within XMPP and IoT, check the [Work in progress](/uses/iot/work-in-progress) page. There is also a page containing [testimonials](/uses/iot/testimonials).
 
 ## For more information
 
