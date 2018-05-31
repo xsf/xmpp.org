@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% set active_page = "blog" %}
 {% set active_page_url = "index.html" %}
+{% if page_name == "category/newsletter" %}
+    {% set active_page_title = "The XMPP Newsletter" %}
+{% else %}
 {% set active_page_title = "The XMPP Blog" %}
+{% endif %}
 {% set active_page_is_blog = "true" %}
 
 {% block blog_entries %}
