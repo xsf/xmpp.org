@@ -1,4 +1,3 @@
-|  ~900k       | [Star Trek Online](http://crypticstudios.com/startrek) | A sci-fi game based on Star Trek using XMPP for chat, presence, group chat | 2010 |
 ---
 Title: Online Gaming
 Url: uses/gaming
