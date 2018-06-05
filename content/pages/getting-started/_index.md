@@ -17,10 +17,10 @@ Do you want to start chatting with XMPP? This page helps you get up and running 
 There are [many, many XMPP clients](/software/clients) for you to choose from. To get you started, here are some of the more popular ones:
 
 * [Conversations](https://play.google.com/store/apps/details?id=eu.siacs.conversations&referrer=utm_source%3Dxmpp.org) (Android)
-* [Swift.IM](http://swift.im/swift.html) (OS X, Windows & Linux)
+* [Swift.IM](https://swift.im/swift.html) (OS X, Windows & Linux)
 * [Gajim](https://gajim.org/) (Windows & Linux)
 * [Adium](https://adium.im/) (OS X)
-* [Pidgin](http://pidgin.im/) (OS X, Windows & Linux)
+* [Pidgin](https://pidgin.im/) (OS X, Windows & Linux)
 
 # 2. Create an account
 
