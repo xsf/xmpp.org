@@ -19,6 +19,8 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 * [Conversations](https://play.google.com/store/apps/details?id=eu.siacs.conversations&referrer=utm_source%3Dxmpp.org) (Android)
 * [Swift.IM](https://swift.im/swift.html) (OS X, Windows & Linux)
 * [Gajim](https://gajim.org/) (Windows & Linux)
+* [Monal IM](https://monal.im/) (macOS & iOS)
+* [Converse.js](https://conversejs.org/) (Browser)
 
 # 2. Create an account
 
