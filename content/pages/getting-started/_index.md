@@ -30,6 +30,7 @@ As with e-mail, you'll need an account with a service provider. Again, there are
 * [jabber.ru](https://jabber.ru/user/register)
 * [JWChat](https://accounts.jwchat.org/)
 * [jabber.at](https://jabber.at/account/register/)
+* [yax.im](https://yaxim.org/yax.im/)
 
 # 3. Log in! That's it!
 
