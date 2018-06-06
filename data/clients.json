@@ -294,6 +294,15 @@
         "url": "http://kadu.net"
     },
     {
+        "last_renewed": "2018-06-06T20:15:00",
+        "name": "Kaidan",
+        "platforms": [
+            "Linux",
+            "Android"
+        ],
+        "url": "https://git.kaidan.im/kaidan/kaidan"
+    },
+    {
         "last_renewed": null,
         "name": "Kaiwa",
         "platforms": [
