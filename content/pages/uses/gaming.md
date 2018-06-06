@@ -8,16 +8,18 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_size: 4
+Sidebar_menu_size: 5
 Sidebar_menu_title: Uses of XMPP
 Sidebar_menu_elem_name_1: Instant Messaging
 Sidebar_menu_elem_url_1: uses/instant-messaging
 Sidebar_menu_elem_name_2: Internet of Things
 Sidebar_menu_elem_url_2: uses/internet-of-things
-Sidebar_menu_elem_name_3: Social
-Sidebar_menu_elem_url_3: uses/social
-Sidebar_menu_elem_name_4: WebRTC
-Sidebar_menu_elem_url_4: uses/webrtc
+Sidebar_menu_elem_name_3: Online Gaming
+Sidebar_menu_elem_url_3: uses/gaming
+Sidebar_menu_elem_name_4: Social
+Sidebar_menu_elem_url_4: uses/social
+Sidebar_menu_elem_name_5: WebRTC
+Sidebar_menu_elem_url_5: uses/webrtc
 Content_layout: multiple-columns
 ---
 
