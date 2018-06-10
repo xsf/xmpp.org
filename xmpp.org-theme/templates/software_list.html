@@ -8,10 +8,10 @@
   {% if data %}
     <table>
       <thead>
-        <th>Project Name</th>
-        <th>{{ page.swlist_platforms_column_head | default("Platforms") }}</th>
+        <th class="bottom">Project Name</th>
+        <th class="bottom">{{ page.swlist_platforms_column_head | default("Platforms") }}</th>
         {% for feature in features | sort(attribute='order') %}
-        <th class="rotated"><a href="{{ feature.url }}">{{ feature.id }}</a>:<br>{{ feature.name }}</th>
+        <th class="bottom rotated"><a href="{{ feature.url }}">{{ feature.id }}</a>:<br>{{ feature.name }}</th>
         {% endfor %}
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
             {% for feature in features | sort(attribute='order') %}
                 {% if item.features != None %}
                     {% if feature.id in item.features %}
-                    <td><span class="icon checked"{% if feature.id in item.comments %} title="{{ item.comments.get(feature.id) }}"><sup><a href="footnote{{ footnotes_comment.get(item.comments.get(feature.id)) }}">[{{ footnotes_comment.get(item.comments.get(feature.id)) }}]</a></sup>{% else %}>{% endif %}</span></td>
+                    <td><span class="icon checked{% if feature.id in item.comments %} footnotes" title="{{ item.comments.get(feature.id) }}"><sup><a href="footnote{{ footnotes_comment.get(item.comments.get(feature.id)) }}">[{{ footnotes_comment.get(item.comments.get(feature.id)) }}]</a></sup>{% else %}">{% endif %}</span></td>
                     {% else %}
                     <td><span class="icon unchecked"></span></td>
                     {% endif %}
