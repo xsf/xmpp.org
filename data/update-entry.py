@@ -8,6 +8,8 @@ import sys
 
 from datetime import datetime
 
+SEPARATOR = ":"
+
 
 def json_as_lines(data):
     return [
@@ -22,6 +24,32 @@ def json_as_lines(data):
 
 def sortkey(x):
     return x.casefold()
+
+
+def verify_items(items, valid_items):
+    if valid_items is None:
+        return
+    unknown = set(items) - valid_items
+    if unknown:
+        print(
+            "Error: The value(s) {} is/are not defined".format(
+                ", ".join(map(repr, unknown))
+            ),
+            file = sys.stderr,
+        )
+        print(
+            "Hint: The following values are allowed:",
+            file = sys.stderr,
+        )
+        for value in sorted(valid_items, key = sortkey):
+            print("   ", value, file = sys.stderr)
+        print(
+            "Hint: This is ignored by the linting tool for non-renewed",
+            "      software, but will be enforced once the software is",
+            "      renewed.",
+            sep = "\n"
+        )
+        sys.exit(2)
 
 
 def main():
@@ -64,7 +92,16 @@ def main():
         metavar="PLATFORM",
         default=None,
         nargs="+",
-        help="Change the contents of the last column",
+        help="Change the platform list",
+    )
+
+    parser.add_argument(
+        "--set-features",
+        dest="new_features",
+        metavar="FEATURE[:COMMENT]",
+        default=None,
+        nargs="+",
+        help="Change the feature list, optionally a comment may be given for each feature",
     )
 
     parser.add_argument(
@@ -92,8 +129,13 @@ def main():
                 os.path.dirname(filename),
                 "platforms.json")) as f:
             valid_platforms = set(json.load(f))
+        with open(os.path.join(
+                os.path.dirname(filename),
+                "features.json")) as f:
+            valid_features = set(feature["id"] for feature in json.load(f))
     else:
         valid_platforms = None
+        valid_features = None
 
     name_map = {item["name"]: item for item in data}
 
@@ -142,31 +184,25 @@ def main():
             platform.strip()
             for platform in args.new_platforms
         ))
-
-    if valid_platforms is not None:
-        unknown = set(item["platforms"]) - valid_platforms
-        if unknown:
-            print(
-                "Error: the platform(s) {} is/are not defined".format(
-                    ", ".join(map(repr, unknown))
-                ),
-                file=sys.stderr,
-            )
-            print(
-                "Hint: the following platforms are allowed:",
-                file=sys.stderr,
-            )
-            for platform in sorted(valid_platforms, key=sortkey):
-                print("   ", platform, file=sys.stderr)
-            print(
-                "Hint: This is ignored by the linting tool for non-renewed",
-                "      software, but will be enforced once the software is",
-                "      renewed.",
-                sep="\n",
-            )
-            sys.exit(2)
-
+    verify_items(item["platforms"], valid_platforms)
     item["platforms"].sort(key=lambda x: x.casefold())
+
+    if args.new_features is not None:
+        item["features"] = list(set(
+            feature.strip().split(SEPARATOR)[0]
+            for feature in args.new_features
+        ))
+        item["comments"] = {
+            k: v
+            for k, v in (
+                feature.strip().split(SEPARATOR)
+                for feature in args.new_features
+                if SEPARATOR in feature
+            )
+        }
+    if item.get("features"):
+        verify_items(item["features"], valid_features)
+        item["features"].sort(key=lambda x: x.casefold())
 
     if args.renew:
         item["last_renewed"] = datetime.utcnow().replace(
