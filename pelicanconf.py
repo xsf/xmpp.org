@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from datetime import datetime, timedelta
 import logging
 import json
+import os
 
 SITENAME = "XMPP"
 SITE_URL = ""
