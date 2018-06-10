@@ -11,6 +11,8 @@ VALID_ENTRY_KEYS = {
     "name",
     "last_renewed",
     "url",
+    "features",
+    "comments"
 }
 
 
