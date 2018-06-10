@@ -5,7 +5,8 @@
         "platforms": [
             "macOS"
         ],
-        "url": "http://adium.im"
+        "url": "http://adium.im",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -13,7 +14,8 @@
         "platforms": [
             "macOS"
         ],
-        "url": "http://www.apple.com/ios/messages/"
+        "url": "http://www.apple.com/ios/messages/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -21,7 +23,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://aqq.eu"
+        "url": "http://aqq.eu",
+        "features": null
     },
     {
         "last_renewed": "2017-08-18T17:01:49",
@@ -33,7 +36,27 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://astrachat.com"
+        "url": "http://astrachat.com",
+        "features": [
+            "RFC-3920",
+            "RFC-3921",
+            "XEP-0012",
+            "XEP-0016",
+            "XEP-0054",
+            "XEP-0085",
+            "XEP-0153",
+            "XEP-0172",
+            "XEP-0184",
+            "XEP-0191",
+            "XEP-0198",
+            "XEP-0199",
+            "XEP-0176",
+            "XEP-0136",
+            "XEP-0045"
+        ],
+        "comments": {
+            "XEP-0176": "mobile only"
+        }
     },
     {
         "last_renewed": null,
@@ -41,7 +64,8 @@
         "platforms": [
             "Android"
         ],
-        "url": "http://beem-project.com"
+        "url": "http://beem-project.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -49,7 +73,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://bitlbee.org"
+        "url": "http://bitlbee.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -59,7 +84,8 @@
             "Blackberry",
             "Nokia Symbian"
         ],
-        "url": "http://bluejabb.com"
+        "url": "http://bluejabb.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -67,7 +93,8 @@
         "platforms": [
             "iOS"
         ],
-        "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
+        "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8",
+        "features": null
     },
     {
         "last_renewed": "2018-01-30T14:02:52",
@@ -75,7 +102,15 @@
         "platforms": [
             "Android"
         ],
-        "url": "https://yaxim.org/bruno/"
+        "url": "https://yaxim.org/bruno/",
+        "features": [
+            "XEP-0198",
+            "XEP-0199",
+            "XEP-0280",
+            "XEP-0313",
+            "XEP-0352",
+            "XEP-0357"
+        ]
     },
     {
         "last_renewed": null,
@@ -85,7 +120,8 @@
             "Mobile",
             "Web"
         ],
-        "url": "http://buddycloud.com"
+        "url": "http://buddycloud.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -93,7 +129,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://candy-chat.github.io/candy/"
+        "url": "https://candy-chat.github.io/candy/",
+        "features": null
     },
     {
         "last_renewed": "2017-04-19T14:37:00",
@@ -101,7 +138,8 @@
         "platforms": [
             "iOS"
         ],
-        "url": "https://chatsecure.org/"
+        "url": "https://chatsecure.org/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -111,7 +149,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://coccinella.im"
+        "url": "http://coccinella.im",
+        "features": null
     },
     {
         "last_renewed": "2017-04-19T14:37:00",
@@ -119,7 +158,8 @@
         "platforms": [
             "Android"
         ],
-        "url": "https://github.com/siacs/Conversations"
+        "url": "https://github.com/siacs/Conversations",
+        "features": null
     },
     {
         "last_renewed": "2017-04-19T14:37:00",
@@ -127,7 +167,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://conversejs.org/"
+        "url": "https://conversejs.org/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -135,7 +176,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://coversant.com"
+        "url": "http://coversant.com",
+        "features": null
     },
     {
         "last_renewed": "2018-03-23T23:15:52",
@@ -143,7 +185,37 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://dino.im"
+        "url": "https://dino.im",
+        "features": [
+            "XEP-0004",
+            "XEP-0027",
+            "XEP-0030",
+            "XEP-0045",
+            "XEP-0048",
+            "XEP-0049",
+            "XEP-0054",
+            "XEP-0060",
+            "XEP-0082",
+            "XEP-0084",
+            "XEP-0085",
+            "XEP-0115",
+            "XEP-0163",
+            "XEP-0184",
+            "XEP-0198",
+            "XEP-0199",
+            "XEP-0203",
+            "XEP-0280",
+            "XEP-0313",
+            "XEP-0333",
+            "XEP-0363",
+            "XEP-0368",
+            "XEP-0384"
+        ],
+        "comments": {
+            "XEP-0054": "only avatars",
+            "XEP-0060": "partial support",
+            "XEP-0384": "partial support"
+        }
     },
     {
         "last_renewed": null,
@@ -151,7 +223,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://emclient.com"
+        "url": "http://emclient.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -159,7 +232,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://wiki.gnome.org/Apps/Empathy"
+        "url": "https://wiki.gnome.org/Apps/Empathy",
+        "features": null
     },
     {
         "last_renewed": "2017-04-01T10:28:44",
@@ -169,7 +243,8 @@
             "Other",
             "Windows"
         ],
-        "url": "http://eyecu.ru"
+        "url": "http://eyecu.ru",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -177,7 +252,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://developer.pidgin.im"
+        "url": "http://developer.pidgin.im",
+        "features": null
     },
     {
         "last_renewed": "2018-04-06T20:55:29",
@@ -186,7 +262,87 @@
             "Linux",
             "Windows"
         ],
-        "url": "https://gajim.org"
+        "url": "https://gajim.org",
+        "features": [
+            "XEP-0004",
+            "XEP-0012",
+            "XEP-0016",
+            "XEP-0027",
+            "XEP-0030",
+            "XEP-0033",
+            "XEP-0045",
+            "XEP-0047",
+            "XEP-0048",
+            "XEP-0049",
+            "XEP-0050",
+            "XEP-0054",
+            "XEP-0055",
+            "XEP-0059",
+            "XEP-0060",
+            "XEP-0065",
+            "XEP-0066",
+            "XEP-0070",
+            "XEP-0071",
+            "XEP-0085",
+            "XEP-0092",
+            "XEP-0095",
+            "XEP-0096",
+            "XEP-0107",
+            "XEP-0108",
+            "XEP-0115",
+            "XEP-0116",
+            "XEP-0118",
+            "XEP-0136",
+            "XEP-0144",
+            "XEP-0145",
+            "XEP-0146",
+            "XEP-0147",
+            "XEP-0153",
+            "XEP-0156",
+            "XEP-0158",
+            "XEP-0162",
+            "XEP-0163",
+            "XEP-0172",
+            "XEP-0174",
+            "XEP-0175",
+            "XEP-0178",
+            "XEP-0184",
+            "XEP-0191",
+            "XEP-0198",
+            "XEP-0199",
+            "XEP-0200",
+            "XEP-0202",
+            "XEP-0203",
+            "XEP-0209",
+            "XEP-0221",
+            "XEP-0231",
+            "XEP-0234",
+            "XEP-0237",
+            "XEP-0249",
+            "XEP-0258",
+            "XEP-0280",
+            "XEP-0284",
+            "XEP-0297",
+            "XEP-0300",
+            "XEP-0306",
+            "XEP-0308",
+            "XEP-0313",
+            "XEP-0319",
+            "XEP-0363",
+            "XEP-0368",
+            "XEP-0380",
+            "XEP-0384"
+        ],
+        "comments": {
+            "XEP-0012": "partial support",
+            "XEP-0033": "partial support",
+            "XEP-0060": "partial support",
+            "XEP-0066": "partial support",
+            "XEP-0158": "partial support",
+            "XEP-0221": "partial support",
+            "XEP-0231": "partial support",
+            "XEP-0384": "using Plugin"
+        }
     },
     {
         "last_renewed": null,
@@ -194,7 +350,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://gnufreetalk.github.io/"
+        "url": "https://gnufreetalk.github.io/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -202,7 +359,8 @@
         "platforms": [
             "IBM i"
         ],
-        "url": "http://bvstools.com"
+        "url": "http://bvstools.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -210,7 +368,8 @@
         "platforms": [
             "Mobile"
         ],
-        "url": "http://shapeservices.com"
+        "url": "http://shapeservices.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -220,7 +379,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://instantbird.com"
+        "url": "http://instantbird.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -229,7 +389,8 @@
             "Console",
             "Text-Mode"
         ],
-        "url": "http://cybione.org"
+        "url": "http://cybione.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -237,7 +398,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://emacs-jabber.sourceforge.net"
+        "url": "http://emacs-jabber.sourceforge.net",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -247,7 +409,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://jabbim.com"
+        "url": "http://jabbim.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -255,7 +418,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://jajc.jrudevels.org"
+        "url": "http://jajc.jrudevels.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -263,7 +427,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://jappix.org"
+        "url": "http://jappix.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -273,7 +438,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://jitsi.org"
+        "url": "http://jitsi.org",
+        "features": null
     },
     {
         "last_renewed": "2017-03-23T13:44:04",
@@ -281,7 +447,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://www.jsxc.org"
+        "url": "https://www.jsxc.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -291,7 +458,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://kadu.net"
+        "url": "http://kadu.net",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -299,7 +467,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://getkaiwa.com/"
+        "url": "http://getkaiwa.com/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -307,7 +476,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://kopete.kde.org"
+        "url": "http://kopete.kde.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -316,7 +486,8 @@
             "Console",
             "Text-Mode"
         ],
-        "url": "http://mcabber.com"
+        "url": "http://mcabber.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -324,7 +495,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-im.org"
+        "url": "http://miranda-im.org",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -332,7 +504,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-ng.org"
+        "url": "http://miranda-ng.org",
+        "features": null
     },
     {
         "last_renewed": "2018-06-05T13:12:35",
@@ -341,7 +514,8 @@
             "iOS",
             "macOS"
         ],
-        "url": "https://monal.im"
+        "url": "https://monal.im",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -349,7 +523,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://movim.eu"
+        "url": "https://movim.eu",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -359,7 +534,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://mozilla.org/thunderbird"
+        "url": "http://mozilla.org/thunderbird",
+        "features": null
     },
     {
         "last_renewed": "2018-03-30T10:27:25",
@@ -369,7 +545,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://oneteam.im"
+        "url": "http://oneteam.im",
+        "features": null
     },
     {
         "last_renewed": "2018-03-31T06:00:00",
@@ -379,7 +556,63 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://pidgin.im"
+        "url": "http://pidgin.im",
+        "features": [
+            "XEP-0004",
+            "XEP-0012",
+            "XEP-0020",
+            "XEP-0022",
+            "XEP-0030",
+            "XEP-0038",
+            "XEP-0045",
+            "XEP-0047",
+            "XEP-0050",
+            "XEP-0054",
+            "XEP-0055",
+            "XEP-0060",
+            "XEP-0065",
+            "XEP-0066",
+            "XEP-0071",
+            "XEP-0077",
+            "XEP-0084",
+            "XEP-0085",
+            "XEP-0091",
+            "XEP-0092",
+            "XEP-0095",
+            "XEP-0096",
+            "XEP-0100",
+            "XEP-0107",
+            "XEP-0115",
+            "XEP-0118",
+            "XEP-0124",
+            "XEP-0146",
+            "XEP-0153",
+            "XEP-0156",
+            "XEP-0163",
+            "XEP-0166",
+            "XEP-0167",
+            "XEP-0172",
+            "XEP-0174",
+            "XEP-0176",
+            "XEP-0177",
+            "XEP-0191",
+            "XEP-0199",
+            "XEP-0202",
+            "XEP-0203",
+            "XEP-0206",
+            "XEP-0224",
+            "XEP-0231",
+            "XEP-0232",
+            "XEP-0237",
+            "XEP-0245",
+            "XEP-0249",
+            "XEP-0256"
+        ],
+        "comments": {
+            "XEP-0060": "partial support",
+            "XEP-0100": "minimal support",
+            "XEP-0156": "partial support"
+        }
     },
     {
         "last_renewed": "2018-05-25T11:00:00",
@@ -388,7 +621,8 @@
             "Linux",
             "macOS"
         ],
-        "url": "https://poez.io"
+        "url": "https://poez.io",
+        "features": null
     },
     {
         "last_renewed": "2017-03-23T20:16:42",
@@ -398,7 +632,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://profanity.im"
+        "url": "http://profanity.im",
+        "features": null
     },
     {
         "last_renewed": "2018-01-30T09:21:32",
@@ -408,7 +643,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://psi-im.org"
+        "url": "https://psi-im.org",
+        "features": null
     },
     {
         "last_renewed": "2018-01-30T09:21:32",
@@ -418,7 +654,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://psi-plus.com"
+        "url": "https://psi-plus.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -426,7 +663,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://forum.qip.ru"
+        "url": "http://forum.qip.ru",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -436,7 +674,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://qutim.org"
+        "url": "http://qutim.org",
+        "features": null
     },
     {
         "last_renewed": "2017-08-11T16:41:05",
@@ -447,7 +686,8 @@
             "Linux",
             "Other"
         ],
-        "url": "https://salut-a-toi.org/"
+        "url": "https://salut-a-toi.org/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -455,7 +695,8 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://sim-im.org"
+        "url": "http://sim-im.org",
+        "features": null
     },
     {
         "last_renewed": "2018-04-14T12:32:00",
@@ -463,7 +704,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
+        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -473,7 +715,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://smuxi.im/"
+        "url": "https://smuxi.im/",
+        "features": null
     },
     {
         "last_renewed": "2017-12-29T10:20:00",
@@ -483,7 +726,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://igniterealtime.org/projects/spark/"
+        "url": "https://igniterealtime.org/projects/spark/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -491,7 +735,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
+        "url": "https://igniterealtime.org/projects/sparkweb/index.jsp",
+        "features": null
     },
     {
         "last_renewed": "2018-04-09T10:03:04",
@@ -501,7 +746,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://swift.im"
+        "url": "https://swift.im",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -509,7 +755,8 @@
         "platforms": [
             "Mobile"
         ],
-        "url": "http://talkonaut.com"
+        "url": "http://talkonaut.com",
+        "features": null
     },
     {
         "last_renewed": "2017-08-03T12:29:00",
@@ -519,7 +766,8 @@
             "Browser",
             "iOS"
         ],
-        "url": "http://tigase.net/article/client-side-software"
+        "url": "http://tigase.net/article/client-side-software",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -529,7 +777,8 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://tkabber.jabber.ru"
+        "url": "http://tkabber.jabber.ru",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -540,7 +789,8 @@
             "Mobile",
             "Windows"
         ],
-        "url": "http://trillian.im"
+        "url": "http://trillian.im",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -548,7 +798,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://www.altertech.com/products/vv/"
+        "url": "http://www.altertech.com/products/vv/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -556,7 +807,8 @@
         "platforms": [
             "BlackBerry"
         ],
-        "url": "http://vayusphere.com"
+        "url": "http://vayusphere.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -564,7 +816,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "https://vstalk.codeplex.com/"
+        "url": "https://vstalk.codeplex.com/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -572,7 +825,8 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://wtw.im/"
+        "url": "http://wtw.im/",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -580,7 +834,8 @@
         "platforms": [
             "Android"
         ],
-        "url": "http://xabber.com"
+        "url": "http://xabber.com",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -589,7 +844,8 @@
             "Linux",
             "macOS"
         ],
-        "url": "https://github.com/agl/xmpp-client"
+        "url": "https://github.com/agl/xmpp-client",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -597,7 +853,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://babelmonkeys.de"
+        "url": "http://babelmonkeys.de",
+        "features": null
     },
     {
         "last_renewed": null,
@@ -605,7 +862,8 @@
         "platforms": [
             "Browser"
         ],
-        "url": "https://github.com/udayg/xmppwebchat"
+        "url": "https://github.com/udayg/xmppwebchat",
+        "features": null
     },
     {
         "last_renewed": "2018-01-30T13:40:52",
@@ -613,7 +871,15 @@
         "platforms": [
             "Android"
         ],
-        "url": "https://yaxim.org"
+        "url": "https://yaxim.org",
+        "features": [
+            "XEP-0198",
+            "XEP-0199",
+            "XEP-0280",
+            "XEP-0313",
+            "XEP-0352",
+            "XEP-0357"
+        ]
     },
     {
         "last_renewed": "2017-04-21T14:01:57",
@@ -622,6 +888,7 @@
             "Android",
             "iOS"
         ],
-        "url": "https://zom.im/"
+        "url": "https://zom.im/",
+        "features": null
     }
 ]
