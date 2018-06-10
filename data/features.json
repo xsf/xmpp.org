@@ -1,0 +1,980 @@
+[
+    {
+        "id": "RFC-3920",
+        "name": "XMPP Core",
+        "url": "https://www.ietf.org/rfc/rfc3920.txt",
+        "order": 0
+    },
+    {
+        "id": "RFC-3921",
+        "name": "XMPP IM",
+        "url": "https://www.ietf.org/rfc/rfc3921.txt",
+        "order": 0
+    },
+    {
+        "id": "XEP-0004",
+        "name": "Data Forms",
+        "url": "https://xmpp.org/extensions/xep-0004.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0009",
+        "name": "Jabber-RPC",
+        "url": "https://xmpp.org/extensions/xep-0009.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0012",
+        "name": "Last Activity",
+        "url": "https://xmpp.org/extensions/xep-0012.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0013",
+        "name": "Flexible Offline Message Retrieval",
+        "url": "https://xmpp.org/extensions/xep-0013.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0016",
+        "name": "Privacy Lists",
+        "url": "https://xmpp.org/extensions/xep-0016.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0020",
+        "name": "Feature Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0020.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0022",
+        "name": "Message Events",
+        "url": "https://xmpp.org/extensions/xep-0022.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0027",
+        "name": "Current Jabber OpenPGP Usage",
+        "url": "https://xmpp.org/extensions/xep-0027.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0030",
+        "name": "Service Discovery",
+        "url": "https://xmpp.org/extensions/xep-0030.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0033",
+        "name": "Extended Stanza Addressing",
+        "url": "https://xmpp.org/extensions/xep-0033.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0038",
+        "name": "Icon Styles",
+        "url": "https://xmpp.org/extensions/xep-0038.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0045",
+        "name": "Multi-User Chat",
+        "url": "https://xmpp.org/extensions/xep-0045.html",
+        "order": 1
+    },
+    {
+        "id": "XEP-0047",
+        "name": "In-Band Bytestreams",
+        "url": "https://xmpp.org/extensions/xep-0047.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0048",
+        "name": "Bookmarks",
+        "url": "https://xmpp.org/extensions/xep-0048.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0049",
+        "name": "Private XML Storage",
+        "url": "https://xmpp.org/extensions/xep-0049.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0050",
+        "name": "Ad-Hoc Commands",
+        "url": "https://xmpp.org/extensions/xep-0050.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0054",
+        "name": "vcard-temp",
+        "url": "https://xmpp.org/extensions/xep-0054.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0055",
+        "name": "Jabber Search",
+        "url": "https://xmpp.org/extensions/xep-0055.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0059",
+        "name": "Result Set Management",
+        "url": "https://xmpp.org/extensions/xep-0059.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0060",
+        "name": "Publish-Subscribe",
+        "url": "https://xmpp.org/extensions/xep-0060.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0065",
+        "name": "SOCKS5 Bytestreams",
+        "url": "https://xmpp.org/extensions/xep-0065.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0066",
+        "name": "Out of Band Data",
+        "url": "https://xmpp.org/extensions/xep-0066.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0068",
+        "name": "Field Standardization for Data Forms",
+        "url": "https://xmpp.org/extensions/xep-0068.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0070",
+        "name": "Verifying HTTP Requests via XMPP",
+        "url": "https://xmpp.org/extensions/xep-0070.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0071",
+        "name": "XHTML-IM",
+        "url": "https://xmpp.org/extensions/xep-0071.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0072",
+        "name": "SOAP Over XMPP",
+        "url": "https://xmpp.org/extensions/xep-0072.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0077",
+        "name": "In-Band Registration",
+        "url": "https://xmpp.org/extensions/xep-0077.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0079",
+        "name": "Advanced Message Processing",
+        "url": "https://xmpp.org/extensions/xep-0079.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0080",
+        "name": "User Location",
+        "url": "https://xmpp.org/extensions/xep-0080.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0082",
+        "name": "XMPP Date and Time Profiles",
+        "url": "https://xmpp.org/extensions/xep-0082.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0083",
+        "name": "Nested Roster Groups",
+        "url": "https://xmpp.org/extensions/xep-0083.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0084",
+        "name": "User Avatar",
+        "url": "https://xmpp.org/extensions/xep-0084.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0085",
+        "name": "Chat State Notifications",
+        "url": "https://xmpp.org/extensions/xep-0085.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0091",
+        "name": "Legacy Delayed Delivery",
+        "url": "https://xmpp.org/extensions/xep-0091.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0092",
+        "name": "Software Version",
+        "url": "https://xmpp.org/extensions/xep-0092.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0095",
+        "name": "Stream Initiation",
+        "url": "https://xmpp.org/extensions/xep-0095.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0096",
+        "name": "SI File Transfer",
+        "url": "https://xmpp.org/extensions/xep-0096.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0100",
+        "name": "Gateway Interaction",
+        "url": "https://xmpp.org/extensions/xep-0100.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0106",
+        "name": "JID Escaping",
+        "url": "https://xmpp.org/extensions/xep-0106.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0107",
+        "name": "User Mood",
+        "url": "https://xmpp.org/extensions/xep-0107.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0108",
+        "name": "User Activity",
+        "url": "https://xmpp.org/extensions/xep-0108.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0114",
+        "name": "Jabber Component Protocol",
+        "url": "https://xmpp.org/extensions/xep-0114.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0115",
+        "name": "Entity Capabilities",
+        "url": "https://xmpp.org/extensions/xep-0115.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0116",
+        "name": "Encrypted Session Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0116.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0118",
+        "name": "User Tune",
+        "url": "https://xmpp.org/extensions/xep-0118.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0122",
+        "name": "Data Forms Validation",
+        "url": "https://xmpp.org/extensions/xep-0122.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0124",
+        "name": "Bidirectional-streams Over Synchronous HTTP (BOSH)",
+        "url": "https://xmpp.org/extensions/xep-0124.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0127",
+        "name": "Common Alerting Protocol (CAP) Over XMPP",
+        "url": "https://xmpp.org/extensions/xep-0127.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0128",
+        "name": "Service Discovery Extensions",
+        "url": "https://xmpp.org/extensions/xep-0128.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0131",
+        "name": "Stanza Headers and Internet Metadata",
+        "url": "https://xmpp.org/extensions/xep-0131.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0133",
+        "name": "Service Administration",
+        "url": "https://xmpp.org/extensions/xep-0133.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0134",
+        "name": "XMPP Design Guidelines",
+        "url": "https://xmpp.org/extensions/xep-0134.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0136",
+        "name": "Message Archiving",
+        "url": "https://xmpp.org/extensions/xep-0136.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0138",
+        "name": "Stream Compression",
+        "url": "https://xmpp.org/extensions/xep-0138.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0141",
+        "name": "Data Forms Layout",
+        "url": "https://xmpp.org/extensions/xep-0141.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0144",
+        "name": "Roster Item Exchange",
+        "url": "https://xmpp.org/extensions/xep-0144.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0145",
+        "name": "Annotations",
+        "url": "https://xmpp.org/extensions/xep-0145.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0146",
+        "name": "Remote Controlling Clients",
+        "url": "https://xmpp.org/extensions/xep-0146.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0147",
+        "name": "XMPP URI Scheme Query Components",
+        "url": "https://xmpp.org/extensions/xep-0147.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0149",
+        "name": "Time Periods",
+        "url": "https://xmpp.org/extensions/xep-0149.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0152",
+        "name": "Reachability Addresses",
+        "url": "https://xmpp.org/extensions/xep-0152.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0153",
+        "name": "vCard-Based Avatars",
+        "url": "https://xmpp.org/extensions/xep-0153.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0155",
+        "name": "Stanza Session Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0155.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0156",
+        "name": "Discovering Alternative XMPP Connection Methods",
+        "url": "https://xmpp.org/extensions/xep-0156.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0157",
+        "name": "Contact Addresses for XMPP Services",
+        "url": "https://xmpp.org/extensions/xep-0157.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0158",
+        "name": "CAPTCHA Forms",
+        "url": "https://xmpp.org/extensions/xep-0158.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0160",
+        "name": "Best Practices for Handling Offline Messages",
+        "url": "https://xmpp.org/extensions/xep-0160.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0162",
+        "name": "Best Practices for Roster and Subscription Management",
+        "url": "https://xmpp.org/extensions/xep-0162.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0163",
+        "name": "Personal Eventing Protocol",
+        "url": "https://xmpp.org/extensions/xep-0163.html",
+        "order": 2
+    },
+    {
+        "id": "XEP-0166",
+        "name": "Jingle",
+        "url": "https://xmpp.org/extensions/xep-0166.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0167",
+        "name": "Jingle RTP Sessions",
+        "url": "https://xmpp.org/extensions/xep-0167.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0170",
+        "name": "Recommended Order of Stream Feature Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0170.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0171",
+        "name": "Language Translation",
+        "url": "https://xmpp.org/extensions/xep-0171.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0172",
+        "name": "User Nickname",
+        "url": "https://xmpp.org/extensions/xep-0172.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0174",
+        "name": "Serverless Messaging",
+        "url": "https://xmpp.org/extensions/xep-0174.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0175",
+        "name": "Best Practices for Use of SASL ANONYMOUS",
+        "url": "https://xmpp.org/extensions/xep-0175.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0176",
+        "name": "Jingle ICE-UDP Transport Method",
+        "url": "https://xmpp.org/extensions/xep-0176.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0177",
+        "name": "Jingle Raw UDP Transport Method",
+        "url": "https://xmpp.org/extensions/xep-0177.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0178",
+        "name": "Best Practices for Use of SASL EXTERNAL with Certificates",
+        "url": "https://xmpp.org/extensions/xep-0178.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0184",
+        "name": "Message Delivery Receipts",
+        "url": "https://xmpp.org/extensions/xep-0184.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0185",
+        "name": "Dialback Key Generation and Validation",
+        "url": "https://xmpp.org/extensions/xep-0185.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0186",
+        "name": "Invisible Command",
+        "url": "https://xmpp.org/extensions/xep-0186.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0191",
+        "name": "Blocking Command",
+        "url": "https://xmpp.org/extensions/xep-0191.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0198",
+        "name": "Stream Management",
+        "url": "https://xmpp.org/extensions/xep-0198.html",
+        "order": 3
+    },
+    {
+        "id": "XEP-0199",
+        "name": "XMPP Ping",
+        "url": "https://xmpp.org/extensions/xep-0199.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0200",
+        "name": "Stanza Encryption",
+        "url": "https://xmpp.org/extensions/xep-0200.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0201",
+        "name": "Best Practices for Message Threads",
+        "url": "https://xmpp.org/extensions/xep-0201.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0202",
+        "name": "Entity Time",
+        "url": "https://xmpp.org/extensions/xep-0202.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0203",
+        "name": "Delayed Delivery",
+        "url": "https://xmpp.org/extensions/xep-0203.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0205",
+        "name": "Best Practices to Discourage Denial of Service Attacks",
+        "url": "https://xmpp.org/extensions/xep-0205.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0206",
+        "name": "XMPP Over BOSH",
+        "url": "https://xmpp.org/extensions/xep-0206.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0209",
+        "name": "Metacontacts",
+        "url": "https://xmpp.org/extensions/xep-0209.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0220",
+        "name": "Server Dialback",
+        "url": "https://xmpp.org/extensions/xep-0220.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0221",
+        "name": "Data Forms Media Element",
+        "url": "https://xmpp.org/extensions/xep-0221.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0222",
+        "name": "Persistent Storage of Public Data via PubSub",
+        "url": "https://xmpp.org/extensions/xep-0222.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0223",
+        "name": "Persistent Storage of Private Data via PubSub",
+        "url": "https://xmpp.org/extensions/xep-0223.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0224",
+        "name": "Attention",
+        "url": "https://xmpp.org/extensions/xep-0224.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0227",
+        "name": "Portable Import/Export Format for XMPP-IM Servers",
+        "url": "https://xmpp.org/extensions/xep-0227.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0229",
+        "name": "Stream Compression with LZW",
+        "url": "https://xmpp.org/extensions/xep-0229.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0231",
+        "name": "Bits of Binary",
+        "url": "https://xmpp.org/extensions/xep-0231.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0232",
+        "name": "Software Information",
+        "url": "https://xmpp.org/extensions/xep-0232.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0233",
+        "name": "XMPP Server Registration for use with Kerberos V5",
+        "url": "https://xmpp.org/extensions/xep-0233.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0234",
+        "name": "Jingle File Transfer",
+        "url": "https://xmpp.org/extensions/xep-0234.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0237",
+        "name": "Roster Versioning",
+        "url": "https://xmpp.org/extensions/xep-0237.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0245",
+        "name": "The /me Command",
+        "url": "https://xmpp.org/extensions/xep-0245.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0249",
+        "name": "Direct MUC Invitations",
+        "url": "https://xmpp.org/extensions/xep-0249.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0256",
+        "name": "Last Activity in Presence",
+        "url": "https://xmpp.org/extensions/xep-0256.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0258",
+        "name": "Security Labels in XMPP",
+        "url": "https://xmpp.org/extensions/xep-0258.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0260",
+        "name": "Jingle SOCKS5 Bytestreams Transport Method",
+        "url": "https://xmpp.org/extensions/xep-0260.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0261",
+        "name": "Jingle In-Band Bytestreams Transport Method",
+        "url": "https://xmpp.org/extensions/xep-0261.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0262",
+        "name": "Use of ZRTP in Jingle RTP Sessions",
+        "url": "https://xmpp.org/extensions/xep-0262.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0266",
+        "name": "Codecs for Jingle Audio",
+        "url": "https://xmpp.org/extensions/xep-0266.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0278",
+        "name": "Jingle Relay Nodes",
+        "url": "https://xmpp.org/extensions/xep-0278.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0280",
+        "name": "Message Carbons",
+        "url": "https://xmpp.org/extensions/xep-0280.html",
+        "order": 4
+    },
+    {
+        "id": "XEP-0284",
+        "name": "Shared XML Editing",
+        "url": "https://xmpp.org/extensions/xep-0284.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0286",
+        "name": "Mobile Considerations on LTE Networks",
+        "url": "https://xmpp.org/extensions/xep-0286.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0288",
+        "name": "Bidirectional Server-to-Server Connections",
+        "url": "https://xmpp.org/extensions/xep-0288.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0293",
+        "name": "Jingle RTP Feedback Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0293.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0294",
+        "name": "Jingle RTP Header Extensions Negotiation",
+        "url": "https://xmpp.org/extensions/xep-0294.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0297",
+        "name": "Stanza Forwarding",
+        "url": "https://xmpp.org/extensions/xep-0297.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0300",
+        "name": "Use of Cryptographic Hash Functions in XMPP",
+        "url": "https://xmpp.org/extensions/xep-0300.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0301",
+        "name": "In-Band Real Time Text",
+        "url": "https://xmpp.org/extensions/xep-0301.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0306",
+        "name": "Extensible Status Conditions for Multi-User Chat",
+        "url": "https://xmpp.org/extensions/xep-0306.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0308",
+        "name": "Last Message Correction",
+        "url": "https://xmpp.org/extensions/xep-0308.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0313",
+        "name": "Message Archive Management",
+        "url": "https://xmpp.org/extensions/xep-0313.html",
+        "order": 6
+    },
+    {
+        "id": "XEP-0319",
+        "name": "Last User Interaction in Presence",
+        "url": "https://xmpp.org/extensions/xep-0319.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0333",
+        "name": "Chat Markers",
+        "url": "https://xmpp.org/extensions/xep-0333.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0352",
+        "name": "Client State Indication",
+        "url": "https://xmpp.org/extensions/xep-0352.html",
+        "order": 7
+    },
+    {
+        "id": "XEP-0357",
+        "name": "Push Notifications",
+        "url": "https://xmpp.org/extensions/xep-0357.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0359",
+        "name": "Unique and Stable Stanza IDs",
+        "url": "https://xmpp.org/extensions/xep-0359.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0363",
+        "name": "HTTP File Upload",
+        "url": "https://xmpp.org/extensions/xep-0363.html",
+        "order": 8
+    },
+    {
+        "id": "XEP-0368",
+        "name": "SRV records for XMPP over TLS",
+        "url": "https://xmpp.org/extensions/xep-0368.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0369",
+        "name": "Mediated Information eXchange (MIX)",
+        "url": "https://xmpp.org/extensions/xep-0369.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0373",
+        "name": "OpenPGP for XMPP",
+        "url": "https://xmpp.org/extensions/xep-0373.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0379",
+        "name": "Pre-Authenticated Roster Subscription",
+        "url": "https://xmpp.org/extensions/xep-0379.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0380",
+        "name": "Explicit Message Encryption",
+        "url": "https://xmpp.org/extensions/xep-0380.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0384",
+        "name": "OMEMO Encryption",
+        "url": "https://xmpp.org/extensions/xep-0384.html",
+        "order": 9
+    },
+    {
+        "id": "XEP-0385",
+        "name": "Stateless Inline Media Sharing (SIMS)",
+        "url": "https://xmpp.org/extensions/xep-0385.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0387",
+        "name": "XMPP Compliance Suites 2018",
+        "url": "https://xmpp.org/extensions/xep-0387.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0388",
+        "name": "Extensible SASL Profile",
+        "url": "https://xmpp.org/extensions/xep-0388.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0389",
+        "name": "Extensible In-Band Registration",
+        "url": "https://xmpp.org/extensions/xep-0389.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0390",
+        "name": "Entity Capabilities 2.0",
+        "url": "https://xmpp.org/extensions/xep-0390.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0391",
+        "name": "Jingle Encrypted Transports",
+        "url": "https://xmpp.org/extensions/xep-0391.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0392",
+        "name": "Consistent Color Generation",
+        "url": "https://xmpp.org/extensions/xep-0392.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0393",
+        "name": "Message Styling",
+        "url": "https://xmpp.org/extensions/xep-0393.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0394",
+        "name": "Message Markup",
+        "url": "https://xmpp.org/extensions/xep-0394.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0395",
+        "name": "Atomically Compare-And-Publish PubSub Items",
+        "url": "https://xmpp.org/extensions/xep-0395.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0396",
+        "name": "Jingle Encrypted Transports - OMEMO",
+        "url": "https://xmpp.org/extensions/xep-0396.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0397",
+        "name": "Instant Stream Resumption",
+        "url": "https://xmpp.org/extensions/xep-0397.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0398",
+        "name": "User Avatar to vCard-Based Avatars Conversion",
+        "url": "https://xmpp.org/extensions/xep-0398.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0399",
+        "name": "Client Key Support",
+        "url": "https://xmpp.org/extensions/xep-0399.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0400",
+        "name": "Multi-Factor Authentication with TOTP",
+        "url": "https://xmpp.org/extensions/xep-0400.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0401",
+        "name": "Easy User Onboarding",
+        "url": "https://xmpp.org/extensions/xep-0401.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0402",
+        "name": "Bookmarks 2 (This Time it's Serious)",
+        "url": "https://xmpp.org/extensions/xep-0402.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0403",
+        "name": "Mediated Information eXchange (MIX): Presence Support.",
+        "url": "https://xmpp.org/extensions/xep-0403.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0404",
+        "name": "Mediated Information eXchange (MIX): JID Hidden Channels.",
+        "url": "https://xmpp.org/extensions/xep-0404.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0405",
+        "name": "Mediated Information eXchange (MIX): Participant Server Requirements",
+        "url": "https://xmpp.org/extensions/xep-0405.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0406",
+        "name": "Mediated Information eXchange (MIX): MIX Administration",
+        "url": "https://xmpp.org/extensions/xep-0406.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0407",
+        "name": "Mediated Information eXchange (MIX): Miscellaneous Capabilities",
+        "url": "https://xmpp.org/extensions/xep-0407.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0408",
+        "name": "Mediated Information eXchange (MIX): Co-existence with MUC",
+        "url": "https://xmpp.org/extensions/xep-0408.html",
+        "order": 0
+    },
+    {
+        "id": "XEP-0409",
+        "name": "IM Routing-NG",
+        "url": "https://xmpp.org/extensions/xep-0409.html",
+        "order": 0
+    }
+]
