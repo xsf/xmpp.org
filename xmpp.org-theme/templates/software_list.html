@@ -1,12 +1,18 @@
 {% extends "page.html" %}
 {% block content %}
   {{ super() }}
+  {% set features = FEATURES %}
+  {% set footnotes = FOOTNOTES[page.swlist_source] %}
+  {% set footnotes_comment = FOOTNOTES_COMMENT[page.swlist_source] %}
   {% set data = SWLISTS[page.swlist_source] %}
   {% if data %}
     <table>
       <thead>
         <th>Project Name</th>
         <th>{{ page.swlist_platforms_column_head | default("Platforms") }}</th>
+        {% for feature in features | sort(attribute='order') %}
+        <th class="rotated"><a href="{{ feature.url }}">{{ feature.id }}</a>:<br>{{ feature.name }}</th>
+        {% endfor %}
       </thead>
       <tbody>
         {% for item in data | sort(attribute='name') %}
@@ -15,10 +21,28 @@
               <a href="{{ item.url }}">{{ item.name }}</a>
             {% else %}{{ item.name }}{% endif %}</td>
             <td>{{ item.platforms | join(" / ") }}</td>
+            {% for feature in features | sort(attribute='order') %}
+                {% if item.features != None %}
+                    {% if feature.id in item.features %}
+                    <td><span class="icon checked"{% if feature.id in item.comments %} title="{{ item.comments.get(feature.id) }}"><sup><a href="footnote{{ footnotes_comment.get(item.comments.get(feature.id)) }}">[{{ footnotes_comment.get(item.comments.get(feature.id)) }}]</a></sup>{% else %}>{% endif %}</span></td>
+                    {% else %}
+                    <td><span class="icon unchecked"></span></td>
+                    {% endif %}
+                {% else %}
+                <td><span class="icon unknown"></span></td>
+                {% endif %}
+            {% endfor %}
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    {% if footnotes %}
+    <ol class="footnotes">
+        {% for footnote, comment in footnotes | dictsort %}
+        <li id="footnote{{ footnote }}">{{ comment }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
   {% else %}
     <p><strong>Ooops!</strong> Nothing to list here! This is most likely a bug!</p>
   {% endif %}
