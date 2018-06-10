@@ -52,6 +52,8 @@ CATEGORY_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
 
+FOOTNOTES = {}  # key = footnote number, value = comment text
+FOOTNOTES_COMMENT = {}  # key = comment text, value = footnote number
 SWLISTS = {}
 
 ENTRY_LIFETIME = timedelta(days=365)
@@ -111,11 +113,53 @@ def load_software_list(now, filename):
 
     return result
 
+def load_feature_list(filename):
+    """
+    Load, preprocess and filter a feature list from JSON.
+
+    :param filename: Filename in the ``data`` subdirectory to load.
+    :return: List of dicts containing feature information.
+
+    * Features whose ``order`` is 0 are omitted from the result.
+    """
+    pathname = os.path.join("data", filename)
+    with open(pathname, "r") as f:
+        rows = json.load(f)
+    result =  [ feature for feature in rows if feature.get("order") ]
+    return result
+
+def load_footnotes_dict(data, featurelist):
+    """
+    Create dict containing all relevant comments for footnotes.
+    Relevant comments are comments which belong to a feature in
+    ``featurelist``.
+
+    :param data: Dict containing items which have comments.
+    :return: Dict with key = footnote, value = comment text
+             and reverse dict as second parameter.
+    """
+    result_footnote = {}  # key = footnote number, value = comment text
+    result_comment = {}  # key = comment text, value = footnote number
+    num = 0
+    for item in data:
+        if item.get("comments"):
+            for feature, comment in item["comments"].items():
+                if not feature in featurelist:
+                    continue  # ignore irrelevant comments
+                if not comment in result_comment:
+                    # Store new footnote
+                    num += 1
+                    result_footnote[num] = comment
+                    result_comment[comment] = num
+    return result_footnote, result_comment
 
 NOW = datetime.utcnow()
+FEATURES = load_feature_list("features.json")
 SWLISTS["libraries"] = load_software_list(NOW, "libraries.json")
 SWLISTS["clients"] = load_software_list(NOW, "clients.json")
 SWLISTS["servers"] = load_software_list(NOW, "servers.json")
+featurelist = [ f["id"] for f in FEATURES ]
+FOOTNOTES["clients"], FOOTNOTES_COMMENT["clients"] = load_footnotes_dict(SWLISTS["clients"], featurelist)
 
 with open("data/members.json", "r") as f:
     MEMBERLIST = json.load(f)
