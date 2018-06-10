@@ -1,45 +1,38 @@
 [
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Adium",
         "platforms": [
             "macOS"
         ],
-        "url": "http://adium.im",
-        "features": null,
-        "comments": null
+        "url": "http://adium.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Apple Messages",
         "platforms": [
             "macOS"
         ],
-        "url": "http://www.apple.com/ios/messages/",
-        "features": null,
-        "comments": null
+        "url": "http://www.apple.com/ios/messages/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "AQQ",
         "platforms": [
             "Windows"
         ],
-        "url": "http://aqq.eu",
-        "features": null,
-        "comments": null
+        "url": "http://aqq.eu"
     },
     {
-        "last_renewed": "2017-08-18T17:01:49",
-        "name": "AstraChat",
-        "platforms": [
-            "Android",
-            "iOS",
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "http://astrachat.com",
+        "comments": {
+            "XEP-0176": "mobile only"
+        },
         "features": [
             "RFC-3920",
             "RFC-3921",
@@ -57,31 +50,40 @@
             "XEP-0136",
             "XEP-0045"
         ],
-        "comments": {
-            "XEP-0176": "mobile only"
-        }
+        "last_renewed": "2017-08-18T17:01:49",
+        "name": "AstraChat",
+        "platforms": [
+            "Android",
+            "iOS",
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "http://astrachat.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Beem",
         "platforms": [
             "Android"
         ],
-        "url": "http://beem-project.com",
-        "features": null,
-        "comments": null
+        "url": "http://beem-project.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "BitlBee",
         "platforms": [
             "Linux"
         ],
-        "url": "http://bitlbee.org",
-        "features": null,
-        "comments": null
+        "url": "http://bitlbee.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "BlueJabb",
         "platforms": [
@@ -89,27 +91,20 @@
             "Blackberry",
             "Nokia Symbian"
         ],
-        "url": "http://bluejabb.com",
-        "features": null,
-        "comments": null
+        "url": "http://bluejabb.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Boogie Chat",
         "platforms": [
             "iOS"
         ],
-        "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8",
-        "features": null,
-        "comments": null
+        "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
     },
     {
-        "last_renewed": "2018-01-30T14:02:52",
-        "name": "Bruno the Jabber™ Bear",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://yaxim.org/bruno/",
+        "comments": null,
         "features": [
             "XEP-0198",
             "XEP-0199",
@@ -118,9 +113,16 @@
             "XEP-0352",
             "XEP-0357"
         ],
-        "comments": null
+        "last_renewed": "2018-01-30T14:02:52",
+        "name": "Bruno the Jabber™ Bear",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://yaxim.org/bruno/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Buddycloud",
         "platforms": [
@@ -128,31 +130,31 @@
             "Mobile",
             "Web"
         ],
-        "url": "http://buddycloud.com",
-        "features": null,
-        "comments": null
+        "url": "http://buddycloud.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Candy",
         "platforms": [
             "Browser"
         ],
-        "url": "https://candy-chat.github.io/candy/",
-        "features": null,
-        "comments": null
+        "url": "https://candy-chat.github.io/candy/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-04-19T14:37:00",
         "name": "ChatSecure",
         "platforms": [
             "iOS"
         ],
-        "url": "https://chatsecure.org/",
-        "features": null,
-        "comments": null
+        "url": "https://chatsecure.org/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Coccinella",
         "platforms": [
@@ -160,47 +162,44 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://coccinella.im",
-        "features": null,
-        "comments": null
+        "url": "http://coccinella.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-04-19T14:37:00",
         "name": "Conversations",
         "platforms": [
             "Android"
         ],
-        "url": "https://github.com/siacs/Conversations",
-        "features": null,
-        "comments": null
+        "url": "https://github.com/siacs/Conversations"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-04-19T14:37:00",
         "name": "Converse.js",
         "platforms": [
             "Browser"
         ],
-        "url": "https://conversejs.org/",
-        "features": null,
-        "comments": null
+        "url": "https://conversejs.org/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Coversant SoapBox Communicator",
         "platforms": [
             "Windows"
         ],
-        "url": "http://coversant.com",
-        "features": null,
-        "comments": null
+        "url": "http://coversant.com"
     },
     {
-        "last_renewed": "2018-03-23T23:15:52",
-        "name": "Dino",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://dino.im",
+        "comments": {
+            "XEP-0054": "only avatars",
+            "XEP-0060": "partial support",
+            "XEP-0384": "partial support"
+        },
         "features": [
             "XEP-0004",
             "XEP-0027",
@@ -226,33 +225,36 @@
             "XEP-0368",
             "XEP-0384"
         ],
-        "comments": {
-            "XEP-0054": "only avatars",
-            "XEP-0060": "partial support",
-            "XEP-0384": "partial support"
-        }
+        "last_renewed": "2018-03-23T23:15:52",
+        "name": "Dino",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://dino.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "eM Client",
         "platforms": [
             "Windows"
         ],
-        "url": "http://emclient.com",
-        "features": null,
-        "comments": null
+        "url": "http://emclient.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Empathy",
         "platforms": [
             "Linux"
         ],
-        "url": "https://wiki.gnome.org/Apps/Empathy",
-        "features": null,
-        "comments": null
+        "url": "https://wiki.gnome.org/Apps/Empathy"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-04-01T10:28:44",
         "name": "eyeCU",
         "platforms": [
@@ -260,28 +262,29 @@
             "Other",
             "Windows"
         ],
-        "url": "http://eyecu.ru",
-        "features": null,
-        "comments": null
+        "url": "http://eyecu.ru"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Finch",
         "platforms": [
             "Linux"
         ],
-        "url": "http://developer.pidgin.im",
-        "features": null,
-        "comments": null
+        "url": "http://developer.pidgin.im"
     },
     {
-        "last_renewed": "2018-04-06T20:55:29",
-        "name": "Gajim",
-        "platforms": [
-            "Linux",
-            "Windows"
-        ],
-        "url": "https://gajim.org",
+        "comments": {
+            "XEP-0012": "partial support",
+            "XEP-0033": "partial support",
+            "XEP-0060": "partial support",
+            "XEP-0066": "partial support",
+            "XEP-0158": "partial support",
+            "XEP-0221": "partial support",
+            "XEP-0231": "partial support",
+            "XEP-0384": "using Plugin"
+        },
         "features": [
             "XEP-0004",
             "XEP-0012",
@@ -352,48 +355,47 @@
             "XEP-0380",
             "XEP-0384"
         ],
-        "comments": {
-            "XEP-0012": "partial support",
-            "XEP-0033": "partial support",
-            "XEP-0060": "partial support",
-            "XEP-0066": "partial support",
-            "XEP-0158": "partial support",
-            "XEP-0221": "partial support",
-            "XEP-0231": "partial support",
-            "XEP-0384": "using Plugin"
-        }
+        "last_renewed": "2018-04-06T20:55:29",
+        "name": "Gajim",
+        "platforms": [
+            "Linux",
+            "Windows"
+        ],
+        "url": "https://gajim.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "GNU Freetalk",
         "platforms": [
             "Linux"
         ],
-        "url": "https://gnufreetalk.github.io/",
-        "features": null,
-        "comments": null
+        "url": "https://gnufreetalk.github.io/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "GreenJab",
         "platforms": [
             "IBM i"
         ],
-        "url": "http://bvstools.com",
-        "features": null,
-        "comments": null
+        "url": "http://bvstools.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "IM+",
         "platforms": [
             "Mobile"
         ],
-        "url": "http://shapeservices.com",
-        "features": null,
-        "comments": null
+        "url": "http://shapeservices.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Instantbird",
         "platforms": [
@@ -401,32 +403,32 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://instantbird.com",
-        "features": null,
-        "comments": null
+        "url": "http://instantbird.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "irssi-xmpp",
         "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "url": "http://cybione.org",
-        "features": null,
-        "comments": null
+        "url": "http://cybione.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "jabber.el",
         "platforms": [
             "Linux"
         ],
-        "url": "http://emacs-jabber.sourceforge.net",
-        "features": null,
-        "comments": null
+        "url": "http://emacs-jabber.sourceforge.net"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Jabbim",
         "platforms": [
@@ -434,31 +436,31 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://jabbim.com",
-        "features": null,
-        "comments": null
+        "url": "http://jabbim.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "JAJC",
         "platforms": [
             "Windows"
         ],
-        "url": "http://jajc.jrudevels.org",
-        "features": null,
-        "comments": null
+        "url": "http://jajc.jrudevels.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Jappix",
         "platforms": [
             "Browser"
         ],
-        "url": "http://jappix.org",
-        "features": null,
-        "comments": null
+        "url": "http://jappix.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Jitsi",
         "platforms": [
@@ -466,21 +468,21 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://jitsi.org",
-        "features": null,
-        "comments": null
+        "url": "http://jitsi.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-03-23T13:44:04",
         "name": "JSXC",
         "platforms": [
             "Browser"
         ],
-        "url": "https://www.jsxc.org",
-        "features": null,
-        "comments": null
+        "url": "https://www.jsxc.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Kadu",
         "platforms": [
@@ -488,83 +490,83 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://kadu.net",
-        "features": null,
-        "comments": null
+        "url": "http://kadu.net"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Kaiwa",
         "platforms": [
             "Browser"
         ],
-        "url": "http://getkaiwa.com/",
-        "features": null,
-        "comments": null
+        "url": "http://getkaiwa.com/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Kopete",
         "platforms": [
             "Linux"
         ],
-        "url": "http://kopete.kde.org",
-        "features": null,
-        "comments": null
+        "url": "http://kopete.kde.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "mcabber",
         "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "url": "http://mcabber.com",
-        "features": null,
-        "comments": null
+        "url": "http://mcabber.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Miranda IM",
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-im.org",
-        "features": null,
-        "comments": null
+        "url": "http://miranda-im.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Miranda NG",
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-ng.org",
-        "features": null,
-        "comments": null
+        "url": "http://miranda-ng.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-06-05T13:12:35",
         "name": "Monal IM",
         "platforms": [
             "iOS",
             "macOS"
         ],
-        "url": "https://monal.im",
-        "features": null,
-        "comments": null
+        "url": "https://monal.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Movim",
         "platforms": [
             "Browser"
         ],
-        "url": "https://movim.eu",
-        "features": null,
-        "comments": null
+        "url": "https://movim.eu"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Mozilla Thunderbird",
         "platforms": [
@@ -572,11 +574,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://mozilla.org/thunderbird",
-        "features": null,
-        "comments": null
+        "url": "http://mozilla.org/thunderbird"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-03-30T10:27:25",
         "name": "OneTeam",
         "platforms": [
@@ -584,19 +586,14 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://oneteam.im",
-        "features": null,
-        "comments": null
+        "url": "http://oneteam.im"
     },
     {
-        "last_renewed": "2018-03-31T06:00:00",
-        "name": "Pidgin",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "http://pidgin.im",
+        "comments": {
+            "XEP-0060": "partial support",
+            "XEP-0100": "minimal support",
+            "XEP-0156": "partial support"
+        },
         "features": [
             "XEP-0004",
             "XEP-0012",
@@ -648,24 +645,29 @@
             "XEP-0249",
             "XEP-0256"
         ],
-        "comments": {
-            "XEP-0060": "partial support",
-            "XEP-0100": "minimal support",
-            "XEP-0156": "partial support"
-        }
+        "last_renewed": "2018-03-31T06:00:00",
+        "name": "Pidgin",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "http://pidgin.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-05-25T11:00:00",
         "name": "Poezio",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://poez.io",
-        "features": null,
-        "comments": null
+        "url": "https://poez.io"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-03-23T20:16:42",
         "name": "Profanity",
         "platforms": [
@@ -673,11 +675,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://profanity.im",
-        "features": null,
-        "comments": null
+        "url": "http://profanity.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi",
         "platforms": [
@@ -685,11 +687,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://psi-im.org",
-        "features": null,
-        "comments": null
+        "url": "https://psi-im.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi+",
         "platforms": [
@@ -697,21 +699,21 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://psi-plus.com",
-        "features": null,
-        "comments": null
+        "url": "https://psi-plus.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Quiet Internet Pager",
         "platforms": [
             "Windows"
         ],
-        "url": "http://forum.qip.ru",
-        "features": null,
-        "comments": null
+        "url": "http://forum.qip.ru"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "qutIM",
         "platforms": [
@@ -719,11 +721,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://qutim.org",
-        "features": null,
-        "comments": null
+        "url": "http://qutim.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-08-11T16:41:05",
         "name": "Salut \u00e0 Toi",
         "platforms": [
@@ -732,31 +734,31 @@
             "Linux",
             "Other"
         ],
-        "url": "https://salut-a-toi.org/",
-        "features": null,
-        "comments": null
+        "url": "https://salut-a-toi.org/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Sim-IM",
         "platforms": [
             "Linux"
         ],
-        "url": "http://sim-im.org",
-        "features": null,
-        "comments": null
+        "url": "http://sim-im.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-04-14T12:32:00",
         "name": "Simple IoT Client",
         "platforms": [
             "Windows"
         ],
-        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md",
-        "features": null,
-        "comments": null
+        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Smuxi",
         "platforms": [
@@ -764,11 +766,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://smuxi.im/",
-        "features": null,
-        "comments": null
+        "url": "https://smuxi.im/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-12-29T10:20:00",
         "name": "Spark",
         "platforms": [
@@ -776,21 +778,21 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://igniterealtime.org/projects/spark/",
-        "features": null,
-        "comments": null
+        "url": "https://igniterealtime.org/projects/spark/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "SparkWeb",
         "platforms": [
             "Browser"
         ],
-        "url": "https://igniterealtime.org/projects/sparkweb/index.jsp",
-        "features": null,
-        "comments": null
+        "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2018-04-09T10:03:04",
         "name": "Swift",
         "platforms": [
@@ -798,21 +800,21 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://swift.im",
-        "features": null,
-        "comments": null
+        "url": "https://swift.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Talkonaut",
         "platforms": [
             "Mobile"
         ],
-        "url": "http://talkonaut.com",
-        "features": null,
-        "comments": null
+        "url": "http://talkonaut.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-08-03T12:29:00",
         "name": "Tigase Messenger",
         "platforms": [
@@ -820,11 +822,11 @@
             "Browser",
             "iOS"
         ],
-        "url": "http://tigase.net/article/client-side-software",
-        "features": null,
-        "comments": null
+        "url": "http://tigase.net/article/client-side-software"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Tkabber",
         "platforms": [
@@ -832,11 +834,11 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://tkabber.jabber.ru",
-        "features": null,
-        "comments": null
+        "url": "http://tkabber.jabber.ru"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Trillian",
         "platforms": [
@@ -845,98 +847,91 @@
             "Mobile",
             "Windows"
         ],
-        "url": "http://trillian.im",
-        "features": null,
-        "comments": null
+        "url": "http://trillian.im"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "V&V Messenger",
         "platforms": [
             "Windows"
         ],
-        "url": "http://www.altertech.com/products/vv/",
-        "features": null,
-        "comments": null
+        "url": "http://www.altertech.com/products/vv/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Vayusphere",
         "platforms": [
             "BlackBerry"
         ],
-        "url": "http://vayusphere.com",
-        "features": null,
-        "comments": null
+        "url": "http://vayusphere.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "VSTalk",
         "platforms": [
             "Windows"
         ],
-        "url": "https://vstalk.codeplex.com/",
-        "features": null,
-        "comments": null
+        "url": "https://vstalk.codeplex.com/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "WTW",
         "platforms": [
             "Windows"
         ],
-        "url": "http://wtw.im/",
-        "features": null,
-        "comments": null
+        "url": "http://wtw.im/"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "Xabber",
         "platforms": [
             "Android"
         ],
-        "url": "http://xabber.com",
-        "features": null,
-        "comments": null
+        "url": "http://xabber.com"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "xmpp-client",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://github.com/agl/xmpp-client",
-        "features": null,
-        "comments": null
+        "url": "https://github.com/agl/xmpp-client"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "xmppchat",
         "platforms": [
             "Browser"
         ],
-        "url": "http://babelmonkeys.de",
-        "features": null,
-        "comments": null
+        "url": "http://babelmonkeys.de"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": null,
         "name": "XMPPWebChat",
         "platforms": [
             "Browser"
         ],
-        "url": "https://github.com/udayg/xmppwebchat",
-        "features": null,
-        "comments": null
+        "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "last_renewed": "2018-01-30T13:40:52",
-        "name": "yaxim",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://yaxim.org",
+        "comments": null,
         "features": [
             "XEP-0198",
             "XEP-0199",
@@ -945,17 +940,22 @@
             "XEP-0352",
             "XEP-0357"
         ],
-        "comments": null
+        "last_renewed": "2018-01-30T13:40:52",
+        "name": "yaxim",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://yaxim.org"
     },
     {
+        "comments": null,
+        "features": null,
         "last_renewed": "2017-04-21T14:01:57",
         "name": "Zom",
         "platforms": [
             "Android",
             "iOS"
         ],
-        "url": "https://zom.im/",
-        "features": null,
-        "comments": null
+        "url": "https://zom.im/"
     }
 ]
