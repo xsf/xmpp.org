@@ -31,6 +31,7 @@ As with e-mail, you'll need an account with a service provider. Again, there are
 * [JWChat](https://accounts.jwchat.org/)
 * [jabber.at](https://jabber.at/account/register/)
 * [yax.im](https://yaxim.org/yax.im/)
+* [404.city](https://404.city/)
 
 # 3. Log in! That's it!
 
