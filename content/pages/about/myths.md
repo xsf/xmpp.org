@@ -46,7 +46,7 @@ But even ignoring the high performance, specialist end, XML still holds its own.
 ## The baseline is minimal, therefore XMPP is useless.
 
 The hypothesis:
-> The core of XMPP is so small is has no practical use, and features that are essential for my use case have been bolted on as an afterthought.
+> The core of XMPP is so small it has no practical use, and features that are essential for my use case have been bolted on as an afterthought.
 
 The fact:
 > XMPP is designed to be extensible, and many extensions have very broad deployment.

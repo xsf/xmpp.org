@@ -33,7 +33,8 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Conferences
 
-[PyCon 2017, Portland, Oregon, USA](https://us.pycon.org/2017/)
+[XMPP Summit 22, Brussels, Belgium](https://wiki.xmpp.org/web/Summit_22)
+[FOSDEM 2018, Brussels, Belgium](https://wiki.xmpp.org/web/FOSDEM_2018)
 
 ## Meetups
 

@@ -70,8 +70,8 @@
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
     },
     {
-        "last_renewed": "2017-03-23T14:02:52",
-        "name": "Bruno the Jabber Bear",
+        "last_renewed": "2018-01-30T14:02:52",
+        "name": "Bruno the Jabber™ Bear",
         "platforms": [
             "Android"
         ],
@@ -99,7 +99,6 @@
         "last_renewed": "2017-04-19T14:37:00",
         "name": "ChatSecure",
         "platforms": [
-            "Android",
             "iOS"
         ],
         "url": "https://chatsecure.org/"
@@ -115,7 +114,7 @@
         "url": "https://coccinella.im"
     },
     {
-        "last_renewed": "2017-04-19T14:37:00",
+        "last_renewed": "2017-06-21T23:42:05",
         "name": "Conversations",
         "platforms": [
             "Android"
@@ -139,12 +138,12 @@
         "url": "http://coversant.com"
     },
     {
-        "last_renewed": "2017-04-19T14:37:00",
+        "last_renewed": "2018-03-23T23:15:52",
         "name": "Dino",
         "platforms": [
             "Linux"
         ],
-        "url": "https://github.com/dino/dino"
+        "url": "https://dino.im"
     },
     {
         "last_renewed": null,
@@ -181,7 +180,7 @@
         "url": "https://developer.pidgin.im"
     },
     {
-        "last_renewed": "2017-03-29T11:46:45",
+        "last_renewed": "2018-04-06T20:55:29",
         "name": "Gajim",
         "platforms": [
             "Linux",
@@ -295,6 +294,15 @@
         "url": "http://kadu.net"
     },
     {
+        "last_renewed": "2018-06-06T20:15:00",
+        "name": "Kaidan",
+        "platforms": [
+            "Android",
+            "Linux"
+        ],
+        "url": "https://git.kaidan.im/kaidan/kaidan"
+    },
+    {
         "last_renewed": null,
         "name": "Kaiwa",
         "platforms": [
@@ -336,15 +344,16 @@
         "url": "https://miranda-ng.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-06-05T13:12:35",
         "name": "Monal IM",
         "platforms": [
-            "iOS"
+            "iOS",
+            "macOS"
         ],
-        "url": "http://monal.im"
+        "url": "https://monal.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-06-30T10:09:39",
         "name": "Movim",
         "platforms": [
             "Browser"
@@ -362,7 +371,7 @@
         "url": "https://mozilla.org/thunderbird"
     },
     {
-        "last_renewed": "2017-04-14T12:37:30",
+        "last_renewed": "2018-03-30T10:27:25",
         "name": "OneTeam",
         "platforms": [
             "Linux",
@@ -372,7 +381,7 @@
         "url": "http://oneteam.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-03-31T06:00:00",
         "name": "Pidgin",
         "platforms": [
             "Linux",
@@ -382,7 +391,7 @@
         "url": "https://pidgin.im"
     },
     {
-        "last_renewed": "2017-05-15T21:35:03",
+        "last_renewed": "2018-05-25T11:00:00",
         "name": "Poezio",
         "platforms": [
             "Linux",
@@ -401,24 +410,24 @@
         "url": "http://profanity.im"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://psi-im.org"
+        "url": "https://psi-im.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-01-30T09:21:32",
         "name": "Psi+",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://psi-plus.com"
+        "url": "https://psi-plus.com"
     },
     {
         "last_renewed": null,
@@ -458,6 +467,14 @@
         "url": "http://sim-im.org"
     },
     {
+        "last_renewed": "2018-04-14T12:32:00",
+        "name": "Simple IoT Client",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
+    },
+    {
         "last_renewed": null,
         "name": "Smuxi",
         "platforms": [
@@ -468,7 +485,7 @@
         "url": "https://smuxi.im/"
     },
     {
-        "last_renewed": "2017-03-23T20:32:00",
+        "last_renewed": "2017-12-29T10:20:00",
         "name": "Spark",
         "platforms": [
             "Linux",
@@ -486,7 +503,7 @@
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
-        "last_renewed": "2017-03-27T12:45:00",
+        "last_renewed": "2018-04-09T10:03:04",
         "name": "Swift",
         "platforms": [
             "Linux",
@@ -600,7 +617,7 @@
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "last_renewed": "2017-03-23T13:40:52",
+        "last_renewed": "2018-01-30T13:40:52",
         "name": "yaxim",
         "platforms": [
             "Android"

@@ -54,7 +54,7 @@
         "url": "https://danga.com"
     },
     {
-        "last_renewed": "2017-04-14T12:38:21",
+        "last_renewed": "2018-03-30T10:26:16",
         "name": "ejabberd",
         "platforms": [
             "Linux",
@@ -89,7 +89,15 @@
         "url": "http://inetdxtra.sourceforge.net"
     },
     {
-        "last_renewed": "2017-03-27T12:44:43",
+        "last_renewed": "2018-04-16T20:25:00",
+        "name": "IoT Broker",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "https://waher.se/Broker.md"
+    },
+    {
+        "last_renewed": "2018-04-09T10:02:42",
         "name": "Isode M-Link",
         "platforms": [
             "Linux",
@@ -128,6 +136,15 @@
     },
     {
         "last_renewed": null,
+        "name": "jackal",
+        "platforms": [
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://github.com/ortuman/jackal"
+    },
+    {
+        "last_renewed": null,
         "name": "Jerry Messenger",
         "platforms": [
             "Linux",
@@ -144,16 +161,16 @@
         "url": "http://kwickserver.info"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-01-30T07:27:16",
         "name": "Metronome IM",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://lightwitch.org/metronome"
+        "url": "https://metronome.im"
     },
     {
-        "last_renewed": "2017-03-23T19:39:28",
+        "last_renewed": "2018-06-27T14:30:28",
         "name": "MongooseIM",
         "platforms": [
             "Linux",
@@ -162,7 +179,7 @@
         "url": "https://www.erlang-solutions.com/products/mongooseim.html"
     },
     {
-        "last_renewed": "2017-03-23T20:30:00",
+        "last_renewed": "2017-12-29T10:20:00",
         "name": "Openfire",
         "platforms": [
             "Linux",

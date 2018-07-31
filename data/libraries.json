@@ -1,16 +1,6 @@
 [
     {
-        "last_renewed": "2017-03-29T00:32:11",
-        "name": "agsXMPP SDK",
-        "platforms": [
-            ".net",
-            "C#",
-            "Mono"
-        ],
-        "url": "https://www.ag-software.net/agsxmpp-sdk/"
-    },
-    {
-        "last_renewed": "2017-03-16T07:33:04",
+        "last_renewed": "2018-04-13T14:53:43",
         "name": "aioxmpp",
         "platforms": [
             "Python"
@@ -43,7 +33,7 @@
         "url": "http://orge.ada-ru.org"
     },
     {
-        "last_renewed": "2017-03-23T18:50:00",
+        "last_renewed": "2018-04-24T18:50:00",
         "name": "Babbler",
         "platforms": [
             "Java"
@@ -107,7 +97,7 @@
         "url": "https://github.com/EmiteGWT/emite"
     },
     {
-        "last_renewed": "2017-04-14T12:42:04",
+        "last_renewed": "2018-03-30T10:27:02",
         "name": "Erlang/Elixir XMPP",
         "platforms": [
             "Elixir",
@@ -306,7 +296,7 @@
         "url": "https://github.com/mcabber/loudmouth"
     },
     {
-        "last_renewed": "2017-03-29T00:33:45",
+        "last_renewed": "2018-03-11T00:33:45",
         "name": "MatriX",
         "platforms": [
             ".net",
@@ -316,14 +306,15 @@
         "url": "https://www.ag-software.net/matrix-xmpp-sdk/"
     },
     {
-        "last_renewed": "2017-04-20T19:36:12",
-        "name": "MatriX JS",
+        "last_renewed": "2017-11-13T11:42:13",
+        "name": "MatriX vNext",
         "platforms": [
-            "JavaScript",
-            "TypeScript"
+            ".NET Core",
+            ".NET Standard",
+            "C#"
         ],
-        "url": "https://github.com/agnauck/matrix-js"
-    },
+        "url": "https://www.ag-software.net/matrix-vnext/"
+    },    
     {
         "last_renewed": null,
         "name": "net::XMPP",
@@ -400,7 +391,7 @@
         "url": "https://github.com/julien51/skates"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-10-13T16:36:55",
         "name": "SleekXMPP",
         "platforms": [
             "Python"
@@ -408,7 +399,7 @@
         "url": "https://github.com/fritzy/SleekXMPP"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2017-10-13T16:36:55",
         "name": "Slixmpp",
         "platforms": [
             "Python"
@@ -416,7 +407,7 @@
         "url": "https://dev.louiz.org/projects/slixmpp"
     },
     {
-        "last_renewed": "2017-03-22T00:00:00",
+        "last_renewed": "2017-12-29T10:20:00",
         "name": "Smack",
         "platforms": [
             "Java (Java SE and Android)"
@@ -432,7 +423,7 @@
         "url": "https://github.com/otalk/stanza.io"
     },
     {
-        "last_renewed": "2017-03-27T12:54:19",
+        "last_renewed": "2018-04-09T10:03:23",
         "name": "Stroke",
         "platforms": [
             "Java"
@@ -456,7 +447,7 @@
         "url": "https://github.com/ArchipelProject/StropheCappuccino"
     },
     {
-        "last_renewed": "2017-03-27T12:44:53",
+        "last_renewed": "2018-04-09T10:03:14",
         "name": "Swiften",
         "platforms": [
             "C++"
@@ -464,7 +455,7 @@
         "url": "https://swift.im/swiften.html"
     },
     {
-        "last_renewed": "2017-03-23T20:32:00",
+        "last_renewed": "2017-12-29T10:20:00",
         "name": "Tinder",
         "platforms": [
             "Java"
@@ -503,6 +494,16 @@
         ],
         "url": "https://www.matthewwild.co.uk/projects/verse/home"
     },
+    {
+        "last_renewed": "2018-04-16T20:31:00",
+        "name": "Waher Networking",
+        "platforms": [
+            ".NET Core",
+            ".NET Standard",
+            "C#"
+        ],
+        "url": "https://waher.se/IoTGateway/Libraries.md#networking"
+    },    
     {
         "last_renewed": null,
         "name": "XIFF",

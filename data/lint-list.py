@@ -37,7 +37,7 @@ def check_entries(entries,
         if previous_key is not None and previous_key > key:
             emit_violation(
                 entry["name"],
-                "should be placed behind {!r} (all entries must be "
+                "should be placed in front of {!r} (all entries must be "
                 "ordered alphabetically by case-folded name)".format(
                     previous_name
                 )

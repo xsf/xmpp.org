@@ -8,16 +8,18 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_size: 4
+Sidebar_menu_size: 5
 Sidebar_menu_title: Uses of XMPP
 Sidebar_menu_elem_name_1: Instant Messaging
 Sidebar_menu_elem_url_1: uses/instant-messaging
 Sidebar_menu_elem_name_2: Internet of Things
 Sidebar_menu_elem_url_2: uses/internet-of-things
-Sidebar_menu_elem_name_3: Social
-Sidebar_menu_elem_url_3: uses/social
-Sidebar_menu_elem_name_4: WebRTC
-Sidebar_menu_elem_url_4: uses/webrtc
+Sidebar_menu_elem_name_3: Online Gaming
+Sidebar_menu_elem_url_3: uses/gaming
+Sidebar_menu_elem_name_4: Social
+Sidebar_menu_elem_url_4: uses/social
+Sidebar_menu_elem_name_5: WebRTC
+Sidebar_menu_elem_url_5: uses/webrtc
 Content_layout: multiple-columns
 ---
 
@@ -39,7 +41,7 @@ All of these projects make use of XMPP to enhance their social networking functi
 
 | Users        | Company                                      | Use                | Description                            |
 |--------------|----------------------------------------------|--------------------|----------------------------------------|
-| ~1.5 billion | [Google](https://google.com)                 | Push Notifications | Google provides an [XMPP Interface](https://developers.google.com/cloud-messaging/server) to their push notification service. It's also been rumoured that push notifications are delivered to the device via a propriatary binary XMPP protocol. | 
+| ~1.5 billion | [Google](https://google.com)                 | Push Notifications | Google provides an [XMPP Interface](https://developers.google.com/cloud-messaging/server) to their push notification service. It's also been rumoured that push notifications are delivered to the device via a proprietary binary XMPP protocol. | 
 | ~500 million | [Apple](http://apple.com)                    | Push Notifications | Apple uses [XMPP to deliver push notifications](https://www.quora.com/What-technology-does-the-iOS-Apple-Push-Notification-Service-APNS-use-to-maintain-a-persistent-connection-with-each-device-to-receive-such-fast-push-notifications) to client devices. |
 |              | [Catapush](http://catapush.com)              | Push Notifications | Reliable and traceable Push Notification service on dedicated XMPP channel for Android/iOS/Windows. |
 |              | [Buddycloud Core](http://buddycloud.com/core)|                    | The [Buddycloud Core](http://buddycloud.com/core) messaging stack is a set of social services that include help developers build a complete social application and includes user-onboarding, content recommendation and media sharing features. |

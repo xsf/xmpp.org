@@ -36,11 +36,7 @@
 
         {
             "name": "Kim Alvefur"
-        },
-
-        {
-            "name": "David Banes"
-        },
+        },        
 
         {
             "name": "Mario Behling"
@@ -53,6 +49,10 @@
         {
             "name": "Jan-Carel Brand",
             "roles": ["editor"]
+        },
+        
+        {
+            "name": "Maxime Buquet"
         },
 
         {
@@ -67,29 +67,16 @@
             "name": "Dave Cridland",
             "roles": ["council"]
         },
-
-        {
-            "name": "Laura Crossley"
-        },
-
+      
         {
             "name": "Guus der Kinderen",
-            "roles": ["infrastructure", "scam"]
-        },
-
-        {
-            "name": "Xander Dumaine"
+            "roles": ["board", "infrastructure", "scam"]
         },
 
         {
             "name": "Severino Ferrer de la Peñita"
         },
-
-        {
-            "name": "Emmanuel Gil Peyrot",
-            "roles": ["council"]
-        },
-
+        
         {
             "name": "Alexander Gnauck",
             "roles": ["infrastructure"]
@@ -100,12 +87,12 @@
         },
 
         {
-            "name": "Daniel Gultsch",
-            "roles": ["council", "scam"]
-        },
+            "name": "Bartlomiej Gorny"
+        },        
 
         {
-            "name": "Philipp Hancke"
+            "name": "Daniel Gultsch",
+            "roles": ["council", "scam"]
         },
 
         {
@@ -115,38 +102,22 @@
         {
             "name": "Artur Hefczyc"
         },
-
-        {
-            "name": "Martin Hewitt",
-            "roles": ["board"]
-        },
-
-        {
-            "name": "Waqas Hussain"
-        },
-
-        {
-            "name": "Philipp Hörist"
-        },
-
+        
         {
             "name": "Timothée Jaussoin"
         },
 
         {
             "name": "Wojciech Kapcia"
-        },
-
-        {
-            "name": "Steffen Larsen"
-        },
+        },        
 
         {
             "name": "Joachim Lindborg"
         },
 
         {
-            "name": "Georg Lukas"
+            "name": "Georg Lukas",
+            "roles": ["council"]
         },
 
         {
@@ -155,7 +126,7 @@
 
         {
             "name": "Tobias Markmann",
-            "roles": ["council", "infrastructure"]
+            "roles": ["infrastructure"]
         },
 
         {
@@ -173,18 +144,6 @@
         },
 
         {
-            "name": "Piotr Nosek"
-        },
-
-        {
-            "name": "Jonathan Pan"
-        },
-
-        {
-            "name": "Joshua Pan"
-        },
-
-        {
             "name": "Mathieu Pasquet"
         },
 
@@ -199,6 +158,10 @@
         {
             "name": "Daniel Pocock"
         },
+        
+        {
+            "name": "Anu Pokharel"
+        },
 
         {
             "name": "Jérôme Poisson"
@@ -209,8 +172,7 @@
         },
 
         {
-            "name": "Arc Riley",
-            "roles": ["board"]
+            "name": "Arc Riley"
         },
 
         {
@@ -233,34 +195,14 @@
         },
 
         {
-            "name": "Michal Slaski"
-        },
-
-        {
             "name": "Kevin Smith",
-            "roles": ["editor", "infrastructure"]
+            "roles": ["council", "editor", "infrastructure"]
         },
 
         {
             "name": "Lance Stout"
         },
-
-        {
-            "name": "Stefan Strigler"
-        },
-
-        {
-            "name": "Radoslaw Szymczyszyn"
-        },
-
-        {
-            "name": "Mike Taylor"
-        },
-
-        {
-            "name": "Marcelo Terres"
-        },
-
+       
         {
             "name": "Winfried Tilanus"
         },
@@ -280,10 +222,6 @@
 
         {
             "name": "Ashley Ward"
-        },
-
-        {
-            "name": "Lloyd Watkin"
         },
 
         {

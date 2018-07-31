@@ -111,6 +111,7 @@ __Clients__
 - [Coccinella](https://coccinella.im/)
 - [Gajim](https://www.gajim.org/)
 - [Jitsi (formerly named SIP Communicator)](https://jitsi.org/)
+- [Movim](https://movim.eu)
 - [Pandion](http://pandion.im/)
 - [Pidgin (formerly named Gaim)](https://pidgin.im/)
 - [Psi](http://psi-im.org/)
@@ -167,6 +168,7 @@ __Clients__
 - [JWChat](http://blog.jwchat.org/jwchat/)
 - [mcabber](https://mcabber.com/)
 - [Pidgin](https://pidgin.im/)
+- [Pidgin](http://pidgin.im/)
 - [Psi](http://www.psi-im.org/)
 
 __Libraries__
@@ -221,6 +223,7 @@ __Server Components__
 __Clients__
 
 - [Gajim](https://gajim.org/)
+- [Movim](https://movim.eu)
 - [Psi](http://psi-im.org/)
 
 __3.4 Libraries__

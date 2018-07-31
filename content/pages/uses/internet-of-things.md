@@ -8,16 +8,18 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_size: 4
+Sidebar_menu_size: 5
 Sidebar_menu_title: Uses of XMPP
 Sidebar_menu_elem_name_1: Instant Messaging
 Sidebar_menu_elem_url_1: uses/instant-messaging
 Sidebar_menu_elem_name_2: Internet of Things
 Sidebar_menu_elem_url_2: uses/internet-of-things
-Sidebar_menu_elem_name_3: Social
-Sidebar_menu_elem_url_3: uses/social
-Sidebar_menu_elem_name_4: WebRTC
-Sidebar_menu_elem_url_4: uses/webrtc
+Sidebar_menu_elem_name_3: Online Gaming
+Sidebar_menu_elem_url_3: uses/gaming
+Sidebar_menu_elem_name_4: Social
+Sidebar_menu_elem_url_4: uses/social
+Sidebar_menu_elem_name_5: WebRTC
+Sidebar_menu_elem_url_5: uses/webrtc
 Content_layout: multiple-columns
 ---
 
@@ -48,7 +50,7 @@ This definition has some direct consequences that open up into different areas o
 
 	Another important aspect of the **Internet** is [interoperability](/uses/iot/interoperability). This includes topics such as [loosely coupled architectures](/uses/iot/interoperability#loosely-coupled-architectures) and [standardized interfaces](/uses/iot/interoperability#standard-interfaces).
 
-As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use withing the area of *Internet of Things*. To check current developments withing XMPP and IoT, check the [Work in progress](/uses/iot/work-in-progress) page. There is also a page containing [testimonials](/uses/iot/testimonials).
+As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use within the area of *Internet of Things*. To check current developments within XMPP and IoT, check the [Work in progress](/uses/iot/work-in-progress) page. There is also a page containing [testimonials](/uses/iot/testimonials).
 
 ## For more information
 
