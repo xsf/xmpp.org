@@ -122,8 +122,8 @@
         "url": "https://github.com/siacs/Conversations"
     },
     {
-        "last_renewed": "2017-04-19T14:37:00",
-        "name": "Converse.js",
+        "last_renewed": "2018-08-29T15:00:00",
+        "name": "Converse",
         "platforms": [
             "Browser"
         ],
@@ -266,14 +266,14 @@
         "url": "http://jappix.org"
     },
     {
-        "last_renewed": null,
-        "name": "Jitsi",
+        "last_renewed": "2018-08-29T15:00:00",
+        "name": "Jitsi Desktop",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://jitsi.org"
+        "url": "http://desktop.jitsi.org"
     },
     {
         "last_renewed": "2017-03-23T13:44:04",
@@ -336,7 +336,7 @@
         "url": "http://miranda-im.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-08-29T15:00:00",
         "name": "Miranda NG",
         "platforms": [
             "Windows"
@@ -361,7 +361,7 @@
         "url": "https://movim.eu"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2018-08-29T15:00:00",
         "name": "Mozilla Thunderbird",
         "platforms": [
             "Linux",
@@ -485,7 +485,7 @@
         "url": "https://smuxi.im/"
     },
     {
-        "last_renewed": "2017-12-29T10:20:00",
+        "last_renewed": "2018-08-29T15:00:00",
         "name": "Spark",
         "platforms": [
             "Linux",
