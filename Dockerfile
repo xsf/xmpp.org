@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown ghp-import
+RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown==2.6.11 ghp-import
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
