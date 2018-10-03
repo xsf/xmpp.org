@@ -41,7 +41,7 @@ JSON, in particular, is often heralded as being better in all possible ways than
 
 In "typical" parsers, XML and JSON perform more or less identically in practice. It's worth noting that there are a number of high-performance XML parsers, but comparatively few high-performance JSON parsers, too.
 
-But even ignoring the high performance, specialist end, XML still holds its own. Consider [these findings](http://balisage.net/Proceedings/vol10/html/Lee01/BalisageVol10-Lee01.html), for example.
+But even ignoring the high performance, specialist end, XML still holds its own. Consider [these findings](https://www.balisage.net/Proceedings/vol10/html/Lee01/BalisageVol10-Lee01.html), for example.
 
 ## The baseline is minimal, therefore XMPP is useless.
 
