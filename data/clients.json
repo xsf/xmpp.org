@@ -592,6 +592,14 @@
         "url": "http://xabber.com"
     },
     {
+        "last_renewed": "2018-10-24T07:00:00",
+        "name": "Xabber-web",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://github.com/redsolution/xabber-web"
+    },
+    {
         "last_renewed": null,
         "name": "xmpp-client",
         "platforms": [
