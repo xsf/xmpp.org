@@ -27,3 +27,10 @@ To receive the newsletter in your email inbox, please sign up using the form bel
 </form>
           
 Past editions of the newsletter can be [read online here](/category/newsletter.html).
+
+The XMPP Newsletter is also available in other languages. If you would like to
+translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam).
+
+### Available Languages
+
+* [Français](https://news.jabberfr.org/category/newsletter/)
