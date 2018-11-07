@@ -31,6 +31,6 @@ Past editions of the newsletter can be [read online here](/category/newsletter.h
 The XMPP Newsletter is also available in other languages. If you would like to
 translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam).
 
-### Available Languages
+### Available Translations
 
 * [Français](https://news.jabberfr.org/category/newsletter/)
