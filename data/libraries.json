@@ -228,16 +228,6 @@
         "url": "https://github.com/jaxl/JAXL"
     },
     {
-        "last_renewed": "2017-08-03T19:00:00",
-        "name": "jaxmpp2",
-        "platforms": [
-            "Android",
-            "Google Web Toolkit",
-            "Java"
-        ],
-        "url": "https://projects.tigase.org/projects/jaxmpp2"
-    },
-    {
         "last_renewed": null,
         "name": "jQuery-XMPP-plugin",
         "platforms": [
@@ -314,7 +304,7 @@
             "C#"
         ],
         "url": "https://www.ag-software.net/matrix-vnext/"
-    },    
+    },
     {
         "last_renewed": null,
         "name": "net::XMPP",
@@ -455,6 +445,16 @@
         "url": "https://swift.im/swiften.html"
     },
     {
+        "last_renewed": "2018-11-08T13:46:06",
+        "name": "Tigase JaXMPP",
+        "platforms": [
+            "Android",
+            "Google Web Toolkit",
+            "Java"
+        ],
+        "url": "https://tigase.net/content/jaxmpp-library"
+    },
+    {
         "last_renewed": "2017-12-29T10:20:00",
         "name": "Tinder",
         "platforms": [
@@ -503,7 +503,7 @@
             "C#"
         ],
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
-    },    
+    },
     {
         "last_renewed": null,
         "name": "XIFF",
