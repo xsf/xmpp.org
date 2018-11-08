@@ -227,15 +227,15 @@
         "url": "http://siemens-enterprise.com"
     },
     {
-        "last_renewed": "2018-11-07T12:26:00",
-        "name": "Tigase",
+        "last_renewed": "2018-11-08T13:47:12",
+        "name": "Tigase XMPP Server",
         "platforms": [
             "Linux",
             "macOS",
             "Solaris",
             "Windows"
         ],
-        "url": "http://tigase.org"
+        "url": "https://tigase.net/content/tigase-xmpp-server"
     },
     {
         "last_renewed": null,
