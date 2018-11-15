@@ -10,7 +10,7 @@ The XMPP Standards Foundation (XSF) will hold its 23th XMPP Summit in Brussels, 
 
 The XSF invites you all to attend, and discuss all things XMPP!
 
-If you're interested in attending, please make yourself known by filling out your details on the [wiki page for Summit 23](https://wiki.xmpp.org/web/Summit_23) (to edit the page, you'll need a wiki account, which we'll happily provide for you. Find us either in the [jdev@conference.jabber.org](xmpp://jdev@conference.jabber.org) chatroom, or via the [Summit mailling list](https://mail.jabber.org/mailman/listinfo/summit)).
+If you're interested in attending, please make yourself known by filling out your details on the [wiki page for Summit 23](https://wiki.xmpp.org/web/Summit_23) (to edit the page, you'll need a wiki account, which we'll happily provide for you. Find us either in the [jdev@conference.jabber.org](xmpp:jdev@conference.jabber.org?join) chatroom, or via the [Summit mailling list](https://mail.jabber.org/mailman/listinfo/summit)).
 
 Please note that, although we welcome everyone to join, you must announce your attendance beforehand, as the venue is not publicly accessible (and we need badges printed for you).
 
