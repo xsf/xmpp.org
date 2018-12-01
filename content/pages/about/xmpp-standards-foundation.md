@@ -24,7 +24,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
 - __Guus der Kinderen__ is a freelance software engineer and a lead developer of the [Openfire XMPP Server](https://www.igniterealtime.org/projects/openfire/). He currently serves as chair in the board of directors of the [Ignite Realtime Foundation](https://www.igniterealtime.org), an organization to promote, support and advance development of software in the Ignite Realtime Open Source community.
 - __Nicolas V&eacute;rit&eacute;__ is a Product Owner for [MongooseIM](https://github.com/esl/MongooseIM) and Mangosta clients for iOS and Android. In the past, he has worked with the [JabberFr](https://jabberfr.org/) community and [ProcessOne](https://process-one.net) on [ejabberd](https://github.com/processone/ejabberd).
-- __Martin Hewitt__ is employed by [Surevine](https://www.surevine.com/). His primary XMPP interest is in using federation to make systems that fit an organisation, not the other way around.
+- __Severino Ferrer__ is a software developer and XSF member. He co-authored [XEP-0382](https://xmpp.org/extensions/xep-0382.html) and serves at the [XSF Communication Team](https://wiki.xmpp.org/web/CommTeam).
 
 ## <a name="council" href="#council">The Council</a>
 
