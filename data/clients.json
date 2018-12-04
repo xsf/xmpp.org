@@ -294,13 +294,17 @@
         "url": "http://kadu.net"
     },
     {
-        "last_renewed": "2018-06-06T20:15:00",
+        "last_renewed": "2018-12-04T15:00:00",
         "name": "Kaidan",
         "platforms": [
             "Android",
-            "Linux"
+            "iOS",
+            "Linux",
+            "macOS",
+            "Other",
+            "Windows"
         ],
-        "url": "https://git.kaidan.im/kaidan/kaidan"
+        "url": "https://kaidan.im"
     },
     {
         "last_renewed": null,
