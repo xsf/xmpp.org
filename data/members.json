@@ -69,7 +69,8 @@
         },
 
         {
-            "name": "Emmanuel Gil Peyrot"
+            "name": "Emmanuel Gil Peyrot",
+            "roles": ["council"]
         },
       
         {
@@ -92,7 +93,7 @@
 
         {
             "name": "Daniel Gultsch",
-            "roles": ["council", "scam"]
+            "roles": ["scam"]
         },
 
         {
@@ -214,12 +215,12 @@
 
         {
             "name": "Sam Whited",
-            "roles": ["council", "editor"]
+            "roles": ["editor"]
         },
 
         {
             "name": "Jonas Schäfer",
-            "roles": ["editor"]
+            "roles": ["council", "editor"]
         },
 
         {
