@@ -26,6 +26,10 @@
         "scam": {
             "list_name": "SCAM",
             "page": "/about/xsf/scam-team.html"
+        },
+        "commteam": {
+            "list_name": "Communication Team",
+            "page": "/about/xsf/comm-team.html"
         }
     },
 
@@ -48,7 +52,7 @@
 
         {
             "name": "Jan-Carel Brand",
-            "roles": ["editor"]
+            "roles": ["editor", "commteam"]
         },
 
         {
@@ -79,7 +83,8 @@
         },
 
         {
-            "name": "Severino Ferrer de la Peñita"
+            "name": "Severino Ferrer de la Peñita",
+            "roles": ["board", "commteam"]
         },
 
         {
@@ -207,7 +212,7 @@
 
         {
             "name": "Nicolas Vérité",
-            "roles": ["board", "scam"]
+            "roles": ["board", "scam", "commteam"]
         },
 
         {
@@ -233,7 +238,8 @@
         },
 
         {
-            "name": "Daniel Wisnewski"
+            "name": "Daniel Wisnewski",
+            "roles": ["commteam"]
         },
 
         {
