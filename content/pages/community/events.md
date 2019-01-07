@@ -43,3 +43,22 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 * [London](https://www.meetup.com/XMPP-UK-Meetup/)
 * [Paris](https://news.jabberfr.org/2017/03/rencontre-xmpp-le-mardi-28-mars-2017-a-paris/)
 * Krakow (soon)
+
+## Sprints
+
+Sprints are contributor events that are being organized by members of the
+community, to improve the ecosystem.
+
+You can find more detailed information about sprints on the [wiki
+page](https://wiki.xmpp.org/web/Sprints).
+
+
+### Past Events
+
+* [Cambridge](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
+* [Dusseldorf](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
+
+### Upcoming Events
+
+* [Brussels](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels)
+* [Berlin](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
