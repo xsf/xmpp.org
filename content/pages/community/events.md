@@ -33,7 +33,7 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Conferences
 
-[XMPP Summit 22, Brussels, Belgium](https://wiki.xmpp.org/web/Summit_22)
+[XMPP Summit 23, Brussels, Belgium](https://wiki.xmpp.org/web/Summit_23)
 [FOSDEM 2018, Brussels, Belgium](https://wiki.xmpp.org/web/FOSDEM_2018)
 
 ## Meetups
