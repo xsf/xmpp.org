@@ -53,12 +53,12 @@ You can find more detailed information about sprints on the [wiki
 page](https://wiki.xmpp.org/web/Sprints).
 
 
-### Past Events
-
-* [Cambridge](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
-* [Dusseldorf](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
-
 ### Upcoming Events
 
-* [Brussels](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels)
-* [Berlin](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
+* [Brussels, January 30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels) (around FOSDEM)
+* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
+
+### Past Events
+
+* [Dusseldorf, November 17-18th, 2018](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
+* [Cambridge, August 18-19th, 2018](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
