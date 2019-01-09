@@ -79,7 +79,7 @@ is presumed to contain a checked out repository for the website. (`make site`)
 * From the newly created static files in `deploy/output`, it will then create
 a minimalist docker image to actually serve the website. (`make deployer`)
 
-For development convenience, you can run the website on port 8080 by `make serve`
+For development convenience, you can run the website on port 8080 by `make -f MakefileDocker serve`
 
 ### Vagrant-based installation
 For your convenience, this repository ships with a basic Vagrantfile, which allows you to create virtual machine with all the dependencies required for local development.
