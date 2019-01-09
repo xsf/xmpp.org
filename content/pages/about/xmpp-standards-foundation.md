@@ -30,12 +30,12 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 
 The XMPP Council is the technical steering group that approves XMPP Extension Protocols. The Council is governed by the XSF Bylaws and XEP-0001, as augmented by various [policies and procedures](/about/xsf/council-policies-and-procedures).
 
-The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post).
+The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post). The Council meets once a week in a chatroom - anyone can join in, comments from the floor are welcome.
 
-The Council (2017-2018) consists of the following individuals:
+The Council (2018-2019) consists of the following individuals:
 
-- __Sam Whited__ has authored and co-authored a number of XEPs and is an occasional contributor to various XMPP clients and servers. He also serves on the [Editor Team](/about/xsf/editor-team) and can most easily be reached via [XMPP](xmpp:sam@samwhited.com).
+- __Emmanuel Gil Peyrot__
 - __Georg Lukas__ is a full-time [IT security consultant](https://rt-solutions.de/en/home-2/), a vocal advocate of [Easy XMPP](https://wiki.xmpp.org/web/Category:Easy_XMPP), the project janitor of [yaxim](https://yaxim.org) and the operator of the [public yax.im server](https://yaxim.org/yax.im/).
-- __Dave Cridland__ works on [Metre](https://github.com/dwd/metre) and [Openfire](https://igniterealtime.org) and nebulous things at [Surevine](https://surevine.com/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
-- __Daniel Gultsch__ is the maintainer of the Android client [Conversations](https://conversations.im) and operates an [XMPP domain hosting service](https://account.conversations.im/domain). He has also (co-) created several XEPs. Contact information can be found on [his website](https://gultsch.de).
+- __Dave Cridland__ works on [Metre](https://github.com/dwd/metre), and has worked on a number of different servers. He currently works on messaging solutions at [Threads Styling](https://threadsstyling.com/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
+- __Jonas Schäfer__
 - __Kevin Smith__ works at [Isode](https://isode.com) where he’s responsible for the [M-Link server](https://www.isode.com/products/m-link.html), other XMPP projects and work on the open-source [Swift](https://swift.im/) XMPP client. He was formerly the project leader on [Psi](http://psi-im.org/). Kevin is also the author of several [XMPP extensions](/extensions) and co-authored [XMPP: The Definitive Guide](http://shop.oreilly.com/product/9780596521271.do).
