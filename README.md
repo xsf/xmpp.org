@@ -5,8 +5,6 @@ xmpp.org
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
-Any editorial questions: [Laura Gill](xmpp:laura.gill@surevine.com) or [Simon Tennant](xmpp:simon@buddycloud.com) can help
-
 Contributing new content and updates
 ------------------------------------
  
