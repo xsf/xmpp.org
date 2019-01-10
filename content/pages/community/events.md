@@ -31,7 +31,7 @@ __See something missing?__ Events come and go at a speed that is sometimes hard 
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
 
-* [XMPP Summit 23, Brussels, Belgium](/community/events/summit23)
+* [XMPP Summit 23, Brussels, Belgium]({filename}pages/community/events/summit23)
 
 ## Conferences
 
