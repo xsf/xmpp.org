@@ -4,6 +4,7 @@ Url: about/xsf/ipr-policy
 Save_as: about/xsf/ipr-policy.html
 Parent_id: about
 Sidebar_menu_show: true
+Inherit_sidebar: about/xmpp-standards-foundation
 ---
 This document defines the official policy of the XMPP Standards Foundation regarding intellectual property rights (IPR) pertaining to XMPP Extension Protocol specifications (XEPs).
 
