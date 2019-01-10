@@ -4,7 +4,7 @@ Url: about/the-jabber-project
 Save_as: about/the-jabber-project.html
 Parent_id: about
 Sidebar_menu_show: true
-Inherit_sidebar: true
+Inherit_sidebar: about
 Content_layout: multiple-columns
 ---
 _Note: This is the original statement provided by Jeremie Miller, inventor of Jabber/XMPP technologies, regarding the early Jabber project’s involvement with and support for the IETF’s standardization efforts with respect to instant messaging and presence._

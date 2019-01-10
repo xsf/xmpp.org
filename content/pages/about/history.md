@@ -4,7 +4,7 @@ Url: about/history
 Save_as: about/history.html
 Parent_id: about
 Sidebar_menu_show: true
-Inherit_sidebar: true
+Inherit_sidebar: about
 Content_layout: multiple-columns
 ---
 

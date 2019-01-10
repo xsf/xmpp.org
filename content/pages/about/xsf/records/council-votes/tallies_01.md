@@ -3,26 +3,7 @@ Url: about/xsf/records/council-votes/tallies_2001-2002
 Save_as: about/xsf/records/council-votes/tallies_2001-2002.html
 Parent_id: about/xsf/records/council-votes
 Sidebar_menu_show: true
-Sidebar_menu_title: Voting history
-Sidebar_menu_size: 9
-Sidebar_menu_elem_name_1: 2001-2002
-Sidebar_menu_elem_url_1: about/xsf/records/council-votes/tallies_2001-2002
-Sidebar_menu_elem_name_2: 2002-2003
-Sidebar_menu_elem_url_2: about/xsf/records/council-votes/tallies_2002-2003
-Sidebar_menu_elem_name_3: 2003-2004
-Sidebar_menu_elem_url_3: about/xsf/records/council-votes/tallies_2003-2004
-Sidebar_menu_elem_name_4: 2004-2005
-Sidebar_menu_elem_url_4: about/xsf/records/council-votes/tallies_2004-2005
-Sidebar_menu_elem_name_5: 2005-2006
-Sidebar_menu_elem_url_5: about/xsf/records/council-votes/tallies_2005-2006
-Sidebar_menu_elem_name_6: 2006-2007
-Sidebar_menu_elem_url_6: about/xsf/records/council-votes/tallies_2006-2007
-Sidebar_menu_elem_name_7: 2007-2008
-Sidebar_menu_elem_url_7: about/xsf/records/council-votes/tallies_2007-2008
-Sidebar_menu_elem_name_8: 2008-2009
-Sidebar_menu_elem_url_8: about/xsf/records/council-votes/tallies_2008-2009
-Sidebar_menu_elem_name_9: 2009-2010
-Sidebar_menu_elem_url_9: about/xsf/records/council-votes/tallies_2009-2010
+Inherit_sidebar: about/xsf/records/council-votes
 Content_layout: multiple-columns
 
 This page provides detailed voting status information for each [XMPP Extension Protocol] that was presented to the First [XMPP Council] in 2001-2002. For further information, refer to the [mailing list archives] or contact the [XMPP Extensions Editor].

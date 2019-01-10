@@ -4,7 +4,7 @@ Url: about/xsf/council-policies-and-procedures
 Save_as: about/xsf/council-policies-and-procedures.html
 Parent_id: about
 Sidebar_menu_show: true
-Inherit_sidebar: true
+Inherit_sidebar: about/xmpp-standards-foundation
 Content_layout: multiple-columns
 ---
 

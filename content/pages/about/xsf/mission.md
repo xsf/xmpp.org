@@ -4,7 +4,7 @@ Url: about/xsf/mission
 Save_as: about/xsf/mission.html
 Parent_id: about
 Sidebar_menu_show: true
-Inherit_sidebar: true
+Inherit_sidebar: about/xmpp-standards-foundation
 Content_layout: multiple-columns
 ---
 
