@@ -14,16 +14,14 @@
   {%   set links = [] %}
   {%   set menu_title = [] %}
   {%   if page.sidebar_menu_title and menu_title.append(page.sidebar_menu_title) %}{% endif %}
-  {%   set parts = page.url.split("/") %}
-  {%   set depth = parts|length-1 if page.inherit_sidebar|default(boolean=True) else parts|length %}
-  {%   set P_URL = parts[:depth]|join("/") %}
-  {%   for parent in PAGES|selectattr("url", "equalto", P_URL) %}
-  {%      if parent.sidebar_menu_size|default(false) %}
-  {%         if menu_title.append(parent.sidebar_menu_title) %}{% endif %}
-  {%         set size = parent.sidebar_menu_size|int %}
+  {%   set P_URL = page.inherit_sidebar|default(page.url) %}
+  {%   for sidebar_source in PAGES|selectattr("url", "equalto", P_URL) %}
+  {%      if sidebar_source.sidebar_menu_size|default(false) %}
+  {%         if menu_title.append(sidebar_source.sidebar_menu_title) %}{% endif %}
+  {%         set size = sidebar_source.sidebar_menu_size|int %}
   {%         for i in range(1, size + 1) %}
-  {%            set E_URL = parent|attr('sidebar_menu_elem_url_'~(i|string)) %}
-  {%            set E_NAME = parent|attr('sidebar_menu_elem_name_'~(i|string)) %}
+  {%            set E_URL = sidebar_source|attr('sidebar_menu_elem_url_'~(i|string)) %}
+  {%            set E_NAME = sidebar_source|attr('sidebar_menu_elem_name_'~(i|string)) %}
   {%            if E_URL[-1] != '/' %}
   {%               set E_URL = E_URL + ".html" %}
   {%            endif %}
