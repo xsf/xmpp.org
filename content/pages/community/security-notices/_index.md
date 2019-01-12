@@ -2,10 +2,10 @@
 Title: Security Notices
 Url: community/security-notices
 Save_as: community/security-notices/index.html
-Parent_id: community/
-Content_layout: multiple-columns
-Inherit_sidebar: true
+Parent_id: community
 Sidebar_menu_show: true
+Inherit_sidebar: community
+Content_layout: multiple-columns
 ---
 
 We have posted one security notice about XMPP protocols and implementations:
