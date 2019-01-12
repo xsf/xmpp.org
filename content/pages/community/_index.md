@@ -25,7 +25,7 @@ Footer_show: left
 Footer_order: 5
 Sidebar_menu_show: true
 Sidebar_menu_title: Community
-Sidebar_menu_size: 6
+Sidebar_menu_size: 7
 Sidebar_menu_elem_name_1: Chat / logs
 Sidebar_menu_elem_url_1: community/chat
 Sidebar_menu_elem_name_2: Mailing lists
