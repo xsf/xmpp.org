@@ -8,14 +8,7 @@ Top_Menu_order: -1
 Dropdown_menu_show: false
 Footer_show: false
 Sidebar_menu_show: true
-Sidebar_menu_size: 3
-Sidebar_menu_title: XMPP Software
-Sidebar_menu_elem_name_1: Clients
-Sidebar_menu_elem_url_1: software/clients
-Sidebar_menu_elem_name_2: Servers
-Sidebar_menu_elem_url_2: software/servers
-Sidebar_menu_elem_name_3: Libraries
-Sidebar_menu_elem_url_3: software/libraries
+Inherit_sidebar: software
 Content_layout: multiple-columns
 Template: software_list
 Swlist_Source: libraries
