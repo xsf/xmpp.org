@@ -525,14 +525,21 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": "2018-11-08T13:42:40",
+        "last_renewed": "2019-01-01T13:42:40",
+        "name": "BeagleIM",
+        "platforms": [
+            "macOS"
+        ],
+        "url": "https://beagle.im"
+    },
+    {
+        "last_renewed": "2019-01-01T13:42:40",
         "name": "Tigase Messenger",
         "platforms": [
             "Android",
-            "Browser",
             "iOS"
         ],
-        "url": "http://tigase.net/article/client-side-software"
+        "url": "https://tigase.net/article/client-side-software"
     },
     {
         "last_renewed": null,
