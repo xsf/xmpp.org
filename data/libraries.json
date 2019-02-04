@@ -446,14 +446,6 @@
     },
     {
         "last_renewed": "2019-01-08T13:46:06",
-        "name": "Tigase Swift",
-        "platforms": [
-            "Swift"
-        ],
-        "url": "https://tigase.tech/projects/tigase-swift"
-    },
-    {
-        "last_renewed": "2019-01-08T13:46:06",
         "name": "Tigase JaXMPP",
         "platforms": [
             "Android",
@@ -461,6 +453,14 @@
             "Java"
         ],
         "url": "https://tigase.net/content/jaxmpp-library"
+    },
+    {
+        "last_renewed": "2019-01-08T13:46:06",
+        "name": "Tigase Swift",
+        "platforms": [
+            "Swift"
+        ],
+        "url": "https://tigase.tech/projects/tigase-swift"
     },
     {
         "last_renewed": "2017-12-29T10:20:00",
