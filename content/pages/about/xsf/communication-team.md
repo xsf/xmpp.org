@@ -1,7 +1,7 @@
 ---
-Title: Summits Conferences & Meetups Team
-Url: about/xsf/scam-team
-Save_as: about/xsf/scam-team.html
+Title: Communication Team
+Url: about/xsf/comm-team
+Save_as: about/xsf/comm-team.html
 Parent_id: about
 Top_menu_show: false
 Top_Menu_order: -1
@@ -26,15 +26,14 @@ Sidebar_menu_elem_name_7: Standards Process
 Sidebar_menu_elem_url_7: about/standards-process
 Content_layout: multiple-columns
 Template: team_page
-Team_Role: scam
+Team_Role: commteam
 ---
 
-The Summits Conferences & Meetups (SCAM) Team was chartered by the XSF Board of Directors in 2017 and currenlty of the
-following volunteers:
+The Communication Team's mission is to inform the XMPP community and interested parties on news and recent developments within XMPP ecosystem.
+
+The team consists of the following members:
 
 $MEMBER_LIST$
 
-The charter of the Work Team is defined as:
 
-> The Summits, Conferences And Meetups work team is responsible for supporting XMPP-related summits, conference
-> activity, and meetups. Team members shall be approved by the Board.
+Current projects and status of the team can be checked at the team's [wiki page](https://wiki.xmpp.org/web/CommTeam)

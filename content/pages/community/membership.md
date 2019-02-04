@@ -45,7 +45,7 @@ Membership in the XMPP Standards Foundation is a privilege that is granted by ex
 
 Once elected, XSF members are expected to continue contributing to the Jabber/XMPP community and the work of the XMPP Standards Foundation through participation on our [mailing lists](/community/mailing-lists) and [chat rooms](/community/chat) and in the XSF’s work teams. Currently four work teams are chartered and active:
 
-* [Communication Team](/about/xsf/communications-policy)
+* [Communication Team](/about/xsf/comm-team)
 * [Editor Team](about/xsf/editor-team)
 * [Infrastructure Team](/about/xsf/infrastructure-team)
 * [Summits, Conferences & Meetups Team](/about/xsf/scam-team)

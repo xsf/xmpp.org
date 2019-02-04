@@ -26,6 +26,10 @@
         "scam": {
             "list_name": "SCAM",
             "page": "/about/xsf/scam-team.html"
+        },
+        "commteam": {
+            "list_name": "Communication Team",
+            "page": "/about/xsf/comm-team.html"
         }
     },
 
@@ -36,7 +40,7 @@
 
         {
             "name": "Kim Alvefur"
-        },        
+        },
 
         {
             "name": "Mario Behling"
@@ -48,9 +52,9 @@
 
         {
             "name": "Jan-Carel Brand",
-            "roles": ["editor"]
+            "roles": ["editor", "commteam"]
         },
-        
+
         {
             "name": "Maxime Buquet"
         },
@@ -69,18 +73,20 @@
         },
 
         {
-            "name": "Emmanuel Gil Peyrot"
+            "name": "Emmanuel Gil Peyrot",
+            "roles": ["council"]
         },
-      
+
         {
             "name": "Guus der Kinderen",
             "roles": ["board", "infrastructure", "scam"]
         },
 
         {
-            "name": "Severino Ferrer de la Peñita"
+            "name": "Severino Ferrer de la Peñita",
+            "roles": ["board", "commteam"]
         },
-        
+
         {
             "name": "Alexander Gnauck",
             "roles": ["infrastructure"]
@@ -88,24 +94,24 @@
 
         {
             "name": "Bartlomiej Gorny"
-        },        
+        },
 
         {
             "name": "Daniel Gultsch",
-            "roles": ["council", "scam"]
+            "roles": ["scam"]
         },
 
         {
             "name": "Artur Hefczyc"
         },
-        
+
         {
             "name": "Timothée Jaussoin"
         },
 
         {
             "name": "Wojciech Kapcia"
-        },        
+        },
 
         {
             "name": "Joachim Lindborg"
@@ -146,7 +152,7 @@
         {
             "name": "Daniel Pocock"
         },
-        
+
         {
             "name": "Anu Pokharel"
         },
@@ -166,6 +172,11 @@
         {
             "name": "Peter Saint-Andre",
             "roles": ["ed", "registrar", "editor", "infrastructure"]
+        },
+
+        {
+            "name": "Jonas Schäfer",
+            "roles": ["council", "editor"]
         },
 
         {
@@ -190,7 +201,7 @@
         {
             "name": "Lance Stout"
         },
-       
+
         {
             "name": "Winfried Tilanus"
         },
@@ -201,7 +212,7 @@
 
         {
             "name": "Nicolas Vérité",
-            "roles": ["board", "scam"]
+            "roles": ["board", "scam", "commteam"]
         },
 
         {
@@ -211,17 +222,7 @@
         {
             "name": "Ashley Ward"
         },
-
-        {
-            "name": "Sam Whited",
-            "roles": ["council", "editor"]
-        },
-
-        {
-            "name": "Jonas Schäfer",
-            "roles": ["editor"]
-        },
-
+        
         {
             "name": "Kozlov Konstantin Syergyeyevich"
         },
@@ -229,10 +230,6 @@
         {
             "name": "Matthew Wild",
             "roles": ["board", "infrastructure"]
-        },
-
-        {
-            "name": "Daniel Wisnewski"
         },
 
         {
