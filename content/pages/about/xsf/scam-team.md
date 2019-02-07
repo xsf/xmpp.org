@@ -14,7 +14,7 @@ Template: team_page
 Team_Role: scam
 ---
 
-The Summits Conferences & Meetups (SCAM) Team was chartered by the XSF Board of Directors in 2017 and currenlty of the
+The Summits Conferences & Meetups (SCAM) Team was chartered by the XSF Board of Directors in 2017 and currently of the
 following volunteers:
 
 $MEMBER_LIST$
