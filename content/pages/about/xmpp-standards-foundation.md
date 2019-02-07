@@ -31,7 +31,7 @@ If you have an interest in XMPP standards, it is straightforward to [become a Me
 
 ## <a name="board" href="#board">The Board</a>
 
-The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2017-2018 consists of the following individuals:
+The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2018-2019 consists of the following individuals:
 
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
