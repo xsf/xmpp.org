@@ -39,6 +39,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 ### Upcoming
 
 * [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
+* [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
