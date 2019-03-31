@@ -38,11 +38,11 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
+* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
 * [Brussels, January 30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels) (around FOSDEM)
 * [Dusseldorf, November 17-18th, 2018](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
 * [Cambridge, August 18-19th, 2018](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
