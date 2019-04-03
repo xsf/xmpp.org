@@ -37,7 +37,7 @@
     },
     {
         "last_renewed": "2019-01-01T13:42:40",
-        "name": "BeagleIM",
+        "name": "BeagleIM by Tigase, Inc.",
         "platforms": [
             "macOS"
         ],
@@ -477,6 +477,14 @@
         "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
+        "last_renewed": "2019-04-01T15:15:00",
+        "name": "Siskin IM by Tigase, Inc.",
+        "platforms": [
+            "iOS"
+        ],
+        "url": "https://siskin.im"
+    },
+    {
         "last_renewed": null,
         "name": "Smuxi",
         "platforms": [
@@ -523,13 +531,12 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": "2019-01-01T13:42:40",
-        "name": "Tigase Messenger",
+        "last_renewed": "2019-04-03T15:13:40",
+        "name": "Tigase Messenger for Android",
         "platforms": [
-            "Android",
-            "iOS"
+            "Android"
         ],
-        "url": "https://tigase.net/article/client-side-software"
+        "url": "https://tigase.net/content/tigase-messenger-android"
     },
     {
         "last_renewed": null,
