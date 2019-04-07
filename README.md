@@ -1,7 +1,14 @@
 xmpp.org
 ========
-[![Build Status](https://travis-ci.org/xsf/xmpp.org.png?branch=master)](https://travis-ci.org/xsf/xmpp.org)
+[![Build Status](https://travis-ci.org/xsf/xmpp.org.svg?branch=master)](https://travis-ci.org/xsf/xmpp.org)
 [![Docker Build Status](https://img.shields.io/docker/build/xmppxsf/xmpp.org.svg)](https://hub.docker.com/r/xmppxsf/xmpp.org/builds/)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://subgit.com/files/subgit-3.3.5.zip?template=https://github.com/rauchg/slackin/tree/0.7.3) [![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
+​[![Code Coverage Status](https://img.shields.io/pypi/v/sphinx.svg)](https://pypi.org/project/Sphinx/) [![CircleCI Build Status](https://circleci.com/gh/electron/electron/tree/master.svg?style=shield)](https://circleci.com/gh/electron/electron/tree/master) [![AppVeyor Build Status](https://windows-ci.electronjs.org/api/projects/status/nilyf07hcef14dvj/branch/master?svg=true)](https://windows-ci.electronjs.org/project/AppVeyor/electron/branch/master) [![Code Coverage Status](https://codecov.io/gh/sphinx-doc/sphinx/branch/master/graph/badge.svg)](https://codecov.io/gh/sphinx-doc/sphinx)
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+https://subgit.com/files/subgit-3.3.5.zip
+[![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14)
+
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
