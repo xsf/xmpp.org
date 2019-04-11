@@ -24,13 +24,10 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 # 2. Create an account
 
-As with e-mail, you'll need an account with a service provider. Again, there are plenty of choices on a [xmpp-servers.404.city](https://xmpp-servers.404.city)  or [list.jabber.at](https://list.jabber.at/), from which these are only a couple of the more popular ones:
+As with e-mail, you'll need an account with a service provider. Again, there are plenty of choices. The following links each give you lists of publicly available providers.
 
-* [xmpp.jp](https://www.xmpp.jp/signup)
-* [jabber.ru](https://jabber.ru/user/register)
-* [JWChat](https://accounts.jwchat.org/)
-* [jabber.at](https://jabber.at/account/register/)
-* [yax.im](https://yaxim.org/yax.im/)
+* [xmpp-servers.404.city](https://xmpp-servers.404.city)
+* [list.jabber.at](https://list.jabber.at/)
 
 # 3. Log in! That's it!
 
