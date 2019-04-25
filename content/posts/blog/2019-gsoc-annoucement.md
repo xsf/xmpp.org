@@ -8,9 +8,7 @@ category: GSoC
 
 We are happy to announce that the XMPP Standards Foundation (XSF) is applying as Google Summer of Code (GSoC) organization.
 
-Open source projects are now able to add their XMPP-related project ideas to
-
-https://wiki.xmpp.org/web/GSoC/2019/Project_Ideas
+Open source projects are now able to add their XMPP-related project ideas to [the XMPP GSoC Project Ideas wiki page](https://wiki.xmpp.org/web/GSoC/2019/Project_Ideas)
 
 Interested parties are also invited to join us at [gsoc@muc.xmpp.org](xmpp:gsoc@muc.xmpp.org?join). Feel free to stop by, ask questions and to discuss your project idea. We welcome everyone, not only those new to GSoC and consider participating.
 
