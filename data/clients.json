@@ -9,14 +9,6 @@
     },
     {
         "last_renewed": null,
-        "name": "Apple Messages",
-        "platforms": [
-            "macOS"
-        ],
-        "url": "http://www.apple.com/ios/messages/"
-    },
-    {
-        "last_renewed": null,
         "name": "AQQ",
         "platforms": [
             "Windows"
@@ -306,10 +298,7 @@
         "name": "Kaidan",
         "platforms": [
             "Android",
-            "iOS",
             "Linux",
-            "macOS",
-            "Other",
             "Windows"
         ],
         "url": "https://kaidan.im"
@@ -592,7 +581,7 @@
         "url": "http://wtw.im/"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-03-27T07:00:00",
         "name": "Xabber",
         "platforms": [
             "Android"

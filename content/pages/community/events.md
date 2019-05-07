@@ -37,6 +37,7 @@ You can find more detailed information about sprints on the [wiki
 page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
+
 * [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
