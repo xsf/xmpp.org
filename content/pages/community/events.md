@@ -43,7 +43,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Past
 
-* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
+* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin) (at GPN19)
 * [Brussels, January 30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels) (around FOSDEM)
 * [Dusseldorf, November 17-18th, 2018](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
 * [Cambridge, August 18-19th, 2018](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
