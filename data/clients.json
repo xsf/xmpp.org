@@ -382,14 +382,6 @@
         "url": "http://pidgin.im"
     },
     {
-        "last_renewed": "2019-04-07T06:00:00",
-        "name": "Pàdé",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://www.igniterealtime.org/projects/pade/"
-    },
-    {
         "last_renewed": "2018-05-25T11:00:00",
         "name": "Poezio",
         "platforms": [
@@ -427,6 +419,14 @@
             "Windows"
         ],
         "url": "https://psi-plus.com"
+    },
+    {
+        "last_renewed": "2019-04-07T06:00:00",
+        "name": "Pàdé",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://www.igniterealtime.org/projects/pade/"
     },
     {
         "last_renewed": null,
