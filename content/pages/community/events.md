@@ -26,7 +26,7 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Meetups
 
-* [Berlin](https://www.meetup.com/Berlin-XMPP-Meetup/)
+* [Berlin](https://xmpp-meetup.in-berlin.de/)
 
 ## Sprints
 
