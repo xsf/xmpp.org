@@ -38,6 +38,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
+* [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
