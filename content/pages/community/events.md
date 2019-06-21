@@ -27,6 +27,7 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 ## Meetups
 
 * [Berlin](https://xmpp-meetup.in-berlin.de/)
+* [Dresden](https://wiki.xmpp.org/web/Meetups/Dresden)
 
 ## Sprints
 
@@ -44,8 +45,8 @@ page](https://wiki.xmpp.org/web/Sprints).
 ### Past
 
 * [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
-* [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe) (at GPN19)
-* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
+* [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe)
+* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin) (at GPN19)
 * [Brussels, January 30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels) (around FOSDEM)
 * [Dusseldorf, November 17-18th, 2018](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
 * [Cambridge, August 18-19th, 2018](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
