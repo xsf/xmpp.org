@@ -22,7 +22,8 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Conferences
 
-* [FOSDEM 2019, Brussels, Belgium](https://wiki.xmpp.org/web/FOSDEM_2019)
+* [FrosCon 2019, August 10-11th, Bonn, Germany](https://froscon.de)
+* [CCCamp2019, August 21-25th, Mildenberg, Germany](https://wiki.xmpp.org/web/Camp2019)
 
 ## Meetups
 
