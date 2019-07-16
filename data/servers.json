@@ -9,7 +9,7 @@
         "url": "https://mina.apache.org/vysper-project"
     },
     {
-        "last_renewed": "2018-09-10T07:30:17",
+        "last_renewed": "2019-07-16T21:01:54",
         "name": "AstraChat",
         "platforms": [
             "Linux",
@@ -17,7 +17,7 @@
             "Solaris",
             "Windows"
         ],
-        "url": "http://www.astrachat.com/HostedForBusiness.aspx"
+        "url": "https://www.astrachat.com/"
     },
     {
         "last_renewed": null,
@@ -25,7 +25,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://citadel.org"
+        "url": "http://citadel.org/doku.php"
     },
     {
         "last_renewed": null,
@@ -35,7 +35,7 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://communigate.com"
+        "url": "https://www.communigate.com"
     },
     {
         "last_renewed": null,
@@ -51,17 +51,17 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://danga.com"
+        "url": "https://danga.com"
     },
     {
-        "last_renewed": "2019-04-05T08:15:40",
+        "last_renewed": "2019-07-16T21:04:30",
         "name": "ejabberd",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "https://www.process-one.net/en/ejabberd"
+        "url": "https://www.ejabberd.im"
     },
     {
         "last_renewed": null,
@@ -70,7 +70,7 @@
             "Linux",
             "Windows"
         ],
-        "url": "http://icewarp.com"
+        "url": "https://www.icewarp.com"
     },
     {
         "last_renewed": null,
@@ -78,7 +78,7 @@
         "platforms": [
             "macOS"
         ],
-        "url": "http://apple.com"
+        "url": "https://www.apple.com"
     },
     {
         "last_renewed": null,
@@ -86,7 +86,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://inetdxtra.sourceforge.net"
+        "url": "https://rawsontetley.org/proj_inetdxtra.html"
     },
     {
         "last_renewed": "2019-02-28T13:14:00",
@@ -113,7 +113,7 @@
             "Solaris",
             "Windows"
         ],
-        "url": "http://cisco.com"
+        "url": "https://www.cisco.com"
     },
     {
         "last_renewed": null,
@@ -132,10 +132,10 @@
             "Solaris",
             "Windows"
         ],
-        "url": "http://jabberd2.org"
+        "url": "https://jabberd2.org"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T21:09:58",
         "name": "jackal",
         "platforms": [
             "Linux",
@@ -158,10 +158,10 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://kwickserver.info"
+        "url": "http://www.kwickserver.info/cms/"
     },
     {
-        "last_renewed": "2018-01-30T07:27:16",
+        "last_renewed": "2019-07-16T21:11:09",
         "name": "Metronome IM",
         "platforms": [
             "Linux"
@@ -169,7 +169,7 @@
         "url": "https://metronome.im"
     },
     {
-        "last_renewed": "2018-06-27T14:30:28",
+        "last_renewed": "2019-07-16T21:11:59",
         "name": "MongooseIM",
         "platforms": [
             "Linux",
@@ -178,7 +178,7 @@
         "url": "https://www.erlang-solutions.com/products/mongooseim.html"
     },
     {
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": "2019-07-16T21:12:19",
         "name": "Openfire",
         "platforms": [
             "Linux",
@@ -196,10 +196,10 @@
             "Solaris",
             "Windows"
         ],
-        "url": "http://oracle.com"
+        "url": "https://www.oracle.com/index.html"
     },
     {
-        "last_renewed": "2018-09-21T07:35:39",
+        "last_renewed": "2019-07-16T21:13:16",
         "name": "Prosody IM",
         "platforms": [
             "BSD",
@@ -227,7 +227,7 @@
         "url": "http://siemens-enterprise.com"
     },
     {
-        "last_renewed": "2018-11-08T13:47:12",
+        "last_renewed": "2019-07-16T21:13:51",
         "name": "Tigase XMPP Server",
         "platforms": [
             "Linux",
@@ -244,16 +244,16 @@
             "Linux",
             "macOS"
         ],
-        "url": "http://getvines.com"
+        "url": "https://www.getvines.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T21:15:09",
         "name": "Wokkel",
         "platforms": [
             "Linux",
             "macOS",
             "Solaris"
         ],
-        "url": "http://wokkel.ik.nu"
+        "url": "https://wokkel.ik.nu"
     }
 ]
