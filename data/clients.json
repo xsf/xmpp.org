@@ -5,7 +5,7 @@
         "platforms": [
             "macOS"
         ],
-        "url": "http://adium.im"
+        "url": "https://adium.im"
     },
     {
         "last_renewed": null,
@@ -25,10 +25,10 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://astrachat.com"
+        "url": "https://astrachat.com"
     },
     {
-        "last_renewed": "2019-01-01T13:42:40",
+        "last_renewed": "2019-07-16T19:49:12",
         "name": "BeagleIM by Tigase, Inc.",
         "platforms": [
             "macOS"
@@ -41,7 +41,7 @@
         "platforms": [
             "Android"
         ],
-        "url": "http://beem-project.com"
+        "url": "https://beem-project.com"
     },
     {
         "last_renewed": null,
@@ -49,7 +49,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://bitlbee.org"
+        "url": "https://www.bitlbee.org"
     },
     {
         "last_renewed": null,
@@ -59,7 +59,7 @@
             "Blackberry",
             "Nokia Symbian"
         ],
-        "url": "http://bluejabb.com"
+        "url": "http://www.bluejabb.com"
     },
     {
         "last_renewed": null,
@@ -67,11 +67,11 @@
         "platforms": [
             "iOS"
         ],
-        "url": "https://itunes.apple.com/app/boogie-chat/id779423907?mt=8"
+        "url": "https://itunes.apple.com/app/boogie-chat/id779423907"
     },
     {
         "last_renewed": "2019-02-12T17:02:29",
-        "name": "Bruno the Jabber™ Bear",
+        "name": "Bruno the Jabber\u2122 Bear",
         "platforms": [
             "Android"
         ],
@@ -96,7 +96,7 @@
         "url": "https://candy-chat.github.io/candy/"
     },
     {
-        "last_renewed": "2017-04-19T14:37:00",
+        "last_renewed": "2019-07-16T19:46:58",
         "name": "ChatSecure",
         "platforms": [
             "iOS"
@@ -111,10 +111,10 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://coccinella.im"
+        "url": "https://coccinella.im"
     },
     {
-        "last_renewed": "2018-09-21T07:35:39",
+        "last_renewed": "2019-07-16T19:53:36",
         "name": "Conversations",
         "platforms": [
             "Android"
@@ -122,7 +122,7 @@
         "url": "https://github.com/siacs/Conversations"
     },
     {
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": "2019-07-16T19:54:10",
         "name": "Converse",
         "platforms": [
             "Browser"
@@ -138,7 +138,7 @@
         "url": "http://coversant.com"
     },
     {
-        "last_renewed": "2019-03-16T23:29:51",
+        "last_renewed": "2019-07-16T19:54:55",
         "name": "Dino",
         "platforms": [
             "Linux"
@@ -151,10 +151,10 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://emclient.com"
+        "url": "https://www.emclient.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T19:55:24",
         "name": "Empathy",
         "platforms": [
             "Linux"
@@ -162,14 +162,14 @@
         "url": "https://wiki.gnome.org/Apps/Empathy"
     },
     {
-        "last_renewed": "2017-04-01T10:28:44",
+        "last_renewed": "2019-07-16T19:56:32",
         "name": "eyeCU",
         "platforms": [
             "Linux",
             "Other",
             "Windows"
         ],
-        "url": "http://eyecu.ru"
+        "url": "https://eyecu.opiums.eu"
     },
     {
         "last_renewed": null,
@@ -177,10 +177,10 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://developer.pidgin.im"
+        "url": "https://developer.pidgin.im"
     },
     {
-        "last_renewed": "2019-04-03T08:32:00",
+        "last_renewed": "2019-07-16T20:01:17",
         "name": "Gajim",
         "platforms": [
             "Linux",
@@ -202,15 +202,16 @@
         "platforms": [
             "IBM i"
         ],
-        "url": "http://bvstools.com"
+        "url": "https://www.bvstools.com"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T20:02:35",
         "name": "IM+",
         "platforms": [
-            "Mobile"
+            "iOS",
+            "macOS"
         ],
-        "url": "http://shapeservices.com"
+        "url": "https://www.shape.ag/en/"
     },
     {
         "last_renewed": null,
@@ -229,7 +230,7 @@
             "Console",
             "Text-Mode"
         ],
-        "url": "http://cybione.org"
+        "url": "https://cybione.org"
     },
     {
         "last_renewed": null,
@@ -247,7 +248,7 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://jabbim.com"
+        "url": "https://www.jabbim.com"
     },
     {
         "last_renewed": null,
@@ -273,10 +274,10 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://desktop.jitsi.org"
+        "url": "https://desktop.jitsi.org"
     },
     {
-        "last_renewed": "2018-08-25T07:16:00",
+        "last_renewed": "2019-07-16T20:15:31",
         "name": "JSXC",
         "platforms": [
             "Browser"
@@ -294,7 +295,7 @@
         "url": "http://kadu.net"
     },
     {
-        "last_renewed": "2018-12-04T15:00:00",
+        "last_renewed": "2019-07-16T20:16:10",
         "name": "Kaidan",
         "platforms": [
             "Android",
@@ -312,21 +313,20 @@
         "url": "http://getkaiwa.com/"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T20:18:31",
         "name": "Kopete",
         "platforms": [
             "Linux"
         ],
-        "url": "http://kopete.kde.org"
+        "url": "https://userbase.kde.org/Kopete"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T20:20:38",
         "name": "mcabber",
         "platforms": [
-            "Console",
-            "Text-Mode"
+            "Other"
         ],
-        "url": "http://mcabber.com"
+        "url": "https://mcabber.com"
     },
     {
         "last_renewed": null,
@@ -337,12 +337,12 @@
         "url": "http://miranda-im.org"
     },
     {
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": "2019-07-16T20:22:03",
         "name": "Miranda NG",
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-ng.org"
+        "url": "https://www.miranda-ng.org/en/"
     },
     {
         "last_renewed": "2018-06-05T13:12:35",
@@ -354,32 +354,36 @@
         "url": "https://monal.im"
     },
     {
-        "last_renewed": "2018-06-30T10:09:39",
+        "last_renewed": "2019-07-16T20:24:08",
         "name": "Movim",
         "platforms": [
-            "Browser"
+            "Android",
+            "Browser",
+            "Linux",
+            "macOS",
+            "Windows"
         ],
         "url": "https://movim.eu"
     },
     {
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": "2019-07-16T20:25:03",
         "name": "Mozilla Thunderbird",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://mozilla.org/thunderbird"
+        "url": "https://www.thunderbird.net/en-US/"
     },
     {
-        "last_renewed": "2018-03-31T06:00:00",
+        "last_renewed": "2019-07-16T20:26:34",
         "name": "Pidgin",
         "platforms": [
             "Linux",
             "macOS",
             "Windows"
         ],
-        "url": "http://pidgin.im"
+        "url": "https://pidgin.im"
     },
     {
         "last_renewed": "2018-05-25T11:00:00",
@@ -388,10 +392,10 @@
             "Linux",
             "macOS"
         ],
-        "url": "https://poez.io"
+        "url": "https://poez.io/en/"
     },
     {
-        "last_renewed": "2019-02-21T08:07:45",
+        "last_renewed": "2019-07-16T20:28:37",
         "name": "Profanity",
         "platforms": [
             "Linux",
@@ -401,7 +405,7 @@
         "url": "http://profanity.im"
     },
     {
-        "last_renewed": "2019-02-21T08:02:06",
+        "last_renewed": "2019-07-16T20:29:28",
         "name": "Psi",
         "platforms": [
             "Linux",
@@ -411,7 +415,7 @@
         "url": "https://psi-im.org"
     },
     {
-        "last_renewed": "2019-02-21T08:02:15",
+        "last_renewed": "2019-07-16T20:30:04",
         "name": "Psi+",
         "platforms": [
             "Linux",
@@ -421,8 +425,8 @@
         "url": "https://psi-plus.com"
     },
     {
-        "last_renewed": "2019-04-07T06:00:00",
-        "name": "Pàdé",
+        "last_renewed": "2019-07-16T20:31:01",
+        "name": "P\u00e0d\u00e9",
         "platforms": [
             "Browser"
         ],
@@ -444,10 +448,10 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://qutim.org"
+        "url": "https://qutim.org"
     },
     {
-        "last_renewed": "2019-01-03T11:53:00",
+        "last_renewed": "2019-07-16T20:34:09",
         "name": "Salut \u00e0 Toi",
         "platforms": [
             "Android",
@@ -461,12 +465,14 @@
         "last_renewed": null,
         "name": "Sim-IM",
         "platforms": [
-            "Linux"
+            "FreeBSD",
+            "Linux",
+            "Windows"
         ],
-        "url": "http://sim-im.org"
+        "url": "http://www.sim-im.org/index.php?title=Main_Page"
     },
     {
-        "last_renewed": "2019-02-28T13:11:00",
+        "last_renewed": "2019-07-16T20:36:15",
         "name": "Simple IoT Client",
         "platforms": [
             "Windows"
@@ -474,7 +480,7 @@
         "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
-        "last_renewed": "2019-04-01T15:15:00",
+        "last_renewed": "2019-07-16T20:37:46",
         "name": "Siskin IM by Tigase, Inc.",
         "platforms": [
             "iOS"
@@ -492,7 +498,7 @@
         "url": "https://smuxi.im/"
     },
     {
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": null,
         "name": "Spark",
         "platforms": [
             "Linux",
@@ -510,7 +516,7 @@
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
-        "last_renewed": "2019-01-31T09:20:35",
+        "last_renewed": "2019-07-16T20:44:17",
         "name": "Swift",
         "platforms": [
             "Linux",
@@ -528,7 +534,7 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": "2019-04-03T15:13:40",
+        "last_renewed": "2019-07-16T20:41:42",
         "name": "Tigase Messenger for Android",
         "platforms": [
             "Android"
@@ -546,15 +552,17 @@
         "url": "http://tkabber.jabber.ru"
     },
     {
-        "last_renewed": null,
+        "last_renewed": "2019-07-16T20:46:05",
         "name": "Trillian",
         "platforms": [
+            "Android",
             "Browser",
+            "iOS",
+            "Linux",
             "macOS",
-            "Mobile",
             "Windows"
         ],
-        "url": "http://trillian.im"
+        "url": "https://trillian.im"
     },
     {
         "last_renewed": null,
@@ -562,7 +570,7 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://www.altertech.com/products/vv/"
+        "url": "https://www.altertech.com/products/vv/"
     },
     {
         "last_renewed": null,
@@ -570,7 +578,7 @@
         "platforms": [
             "BlackBerry"
         ],
-        "url": "http://vayusphere.com"
+        "url": "https://www.vayusphere.com"
     },
     {
         "last_renewed": null,
@@ -578,7 +586,7 @@
         "platforms": [
             "Windows"
         ],
-        "url": "https://vstalk.codeplex.com/"
+        "url": "https://archive.codeplex.com/?p=vstalk"
     },
     {
         "last_renewed": null,
@@ -586,23 +594,17 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://wtw.im/"
+        "url": "https://wtw.im/"
     },
     {
-        "last_renewed": "2019-03-27T07:00:00",
+        "last_renewed": "2019-07-16T20:51:22",
         "name": "Xabber",
         "platforms": [
-            "Android"
+            "Android",
+            "Browser",
+            "iOS"
         ],
-        "url": "http://xabber.com"
-    },
-    {
-        "last_renewed": "2018-10-24T07:00:00",
-        "name": "Xabber-web",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://github.com/redsolution/xabber-web"
+        "url": "https://www.xabber.com"
     },
     {
         "last_renewed": null,
@@ -619,7 +621,7 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://babelmonkeys.de"
+        "url": "https://babelmonkeys.de"
     },
     {
         "last_renewed": null,
@@ -630,7 +632,7 @@
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "last_renewed": "2019-02-12T17:02:29",
+        "last_renewed": "2019-07-16T20:53:00",
         "name": "yaxim",
         "platforms": [
             "Android"
@@ -638,7 +640,7 @@
         "url": "https://yaxim.org"
     },
     {
-        "last_renewed": "2017-04-21T14:01:57",
+        "last_renewed": "2019-07-16T20:55:15",
         "name": "Zom",
         "platforms": [
             "Android",
