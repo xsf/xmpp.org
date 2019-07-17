@@ -40,11 +40,12 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
+* [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
+* [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
 * [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
 * [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe) (at GPN19)
 * [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
