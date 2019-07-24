@@ -19,7 +19,7 @@ ProcessOne is the company that have developed [ejabberd](https://ejabberd.im), a
 
 Used for chat, social network, gaming, IoT, the platform is versatile, feature complete and highly customizable.	
 
-Developed and supported by a team of experts with 15 years of experience in messaging and highly robust and scalable system, ProcessOne platform is available as a service through [ejabberd SaaS](https://ejabberd-saas.com), as the most reliable way and cost effective solution to deploy a XMPP based service.	
+Developed and supported by a team of experts with 15 years of experience in messaging and highly robust and scalable system, ProcessOne platform is available as a service through [Fluux](https://fluux.io), as the most reliable way and cost effective solution to deploy a XMPP based service.	
 
 Apart from XMPP, ProcessOne has developed in-house expertise in [Go](https://www.process-one.net/en/solutions/go_golang_software_development) and MQTT. We specialize in ejabberd, Kafka and Kubernetes deployments to offer a [complete realtime stack](https://www.process-one.net/en/solutions/fluux).	
 
