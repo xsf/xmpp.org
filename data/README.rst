@@ -96,6 +96,7 @@ There is no tooling for that. Add the following template to the respective ``jso
           "platforms": ["GNU Hurd", "Plan9"],
           "last_renewed": null,
           "name": "My Fancy New Client",
+          "doap": "https://myfancyclient.example/doap.rdf",
           "url": "https://myfancyclient.example"
       }
 

@@ -5,6 +5,7 @@
         "platforms": [
             "macOS"
         ],
+        "doap": null,
         "url": "https://adium.im"
     },
     {
@@ -13,6 +14,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "http://aqq.eu"
     },
     {
@@ -25,6 +27,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://astrachat.com"
     },
     {
@@ -33,6 +36,7 @@
         "platforms": [
             "macOS"
         ],
+        "doap": null,
         "url": "https://beagle.im"
     },
     {
@@ -41,6 +45,7 @@
         "platforms": [
             "Android"
         ],
+        "doap": null,
         "url": "https://beem-project.com"
     },
     {
@@ -49,6 +54,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "https://www.bitlbee.org"
     },
     {
@@ -59,6 +65,7 @@
             "Blackberry",
             "Nokia Symbian"
         ],
+        "doap": null,
         "url": "http://www.bluejabb.com"
     },
     {
@@ -67,6 +74,7 @@
         "platforms": [
             "iOS"
         ],
+        "doap": null,
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907"
     },
     {
@@ -75,6 +83,7 @@
         "platforms": [
             "Android"
         ],
+        "doap": null,
         "url": "https://yaxim.org/bruno/"
     },
     {
@@ -85,6 +94,7 @@
             "Mobile",
             "Web"
         ],
+        "doap": null,
         "url": "http://buddycloud.com"
     },
     {
@@ -93,6 +103,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://candy-chat.github.io/candy/"
     },
     {
@@ -101,6 +112,7 @@
         "platforms": [
             "iOS"
         ],
+        "doap": null,
         "url": "https://chatsecure.org/"
     },
     {
@@ -111,6 +123,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://coccinella.im"
     },
     {
@@ -119,6 +132,7 @@
         "platforms": [
             "Android"
         ],
+        "doap": null,
         "url": "https://github.com/siacs/Conversations"
     },
     {
@@ -127,6 +141,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://conversejs.org/"
     },
     {
@@ -135,6 +150,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "http://coversant.com"
     },
     {
@@ -143,6 +159,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": "https://raw.githubusercontent.com/dino/dino/master/dino.doap",
         "url": "https://dino.im"
     },
     {
@@ -151,6 +168,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://www.emclient.com"
     },
     {
@@ -159,6 +177,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "https://wiki.gnome.org/Apps/Empathy"
     },
     {
@@ -169,6 +188,7 @@
             "Other",
             "Windows"
         ],
+        "doap": null,
         "url": "https://eyecu.opiums.eu"
     },
     {
@@ -177,6 +197,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "https://developer.pidgin.im"
     },
     {
@@ -186,6 +207,7 @@
             "Linux",
             "Windows"
         ],
+        "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
         "url": "https://gajim.org"
     },
     {
@@ -194,6 +216,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "https://gnufreetalk.github.io/"
     },
     {
@@ -202,6 +225,7 @@
         "platforms": [
             "IBM i"
         ],
+        "doap": null,
         "url": "https://www.bvstools.com"
     },
     {
@@ -211,6 +235,7 @@
             "iOS",
             "macOS"
         ],
+        "doap": null,
         "url": "https://www.shape.ag/en/"
     },
     {
@@ -221,6 +246,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "http://instantbird.com"
     },
     {
@@ -230,6 +256,7 @@
             "Console",
             "Text-Mode"
         ],
+        "doap": null,
         "url": "https://cybione.org"
     },
     {
@@ -238,6 +265,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "http://emacs-jabber.sourceforge.net"
     },
     {
@@ -248,6 +276,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://www.jabbim.com"
     },
     {
@@ -256,6 +285,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "http://jajc.jrudevels.org"
     },
     {
@@ -264,6 +294,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "http://jappix.org"
     },
     {
@@ -274,6 +305,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://desktop.jitsi.org"
     },
     {
@@ -282,6 +314,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://www.jsxc.org"
     },
     {
@@ -292,6 +325,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "http://kadu.net"
     },
     {
@@ -304,6 +338,7 @@
             "Other",
             "Windows"
         ],
+        "doap": null,
         "url": "https://kaidan.im"
     },
     {
@@ -312,6 +347,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "http://getkaiwa.com/"
     },
     {
@@ -320,6 +356,7 @@
         "platforms": [
             "Linux"
         ],
+        "doap": null,
         "url": "https://userbase.kde.org/Kopete"
     },
     {
@@ -328,6 +365,7 @@
         "platforms": [
             "Other"
         ],
+        "doap": null,
         "url": "https://mcabber.com"
     },
     {
@@ -336,6 +374,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "http://miranda-im.org"
     },
     {
@@ -344,6 +383,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://www.miranda-ng.org/en/"
     },
     {
@@ -353,6 +393,7 @@
             "iOS",
             "macOS"
         ],
+        "doap": null,
         "url": "https://monal.im"
     },
     {
@@ -365,6 +406,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
         "url": "https://movim.eu"
     },
     {
@@ -375,6 +417,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://www.thunderbird.net/en-US/"
     },
     {
@@ -385,6 +428,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://pidgin.im"
     },
     {
@@ -394,6 +438,7 @@
             "Linux",
             "macOS"
         ],
+        "doap": "https://lab.louiz.org/poezio/poezio/raw/master/data/doap.xml",
         "url": "https://poez.io/en/"
     },
     {
@@ -404,6 +449,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://profanity-im.github.io/"
     },
     {
@@ -414,6 +460,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://psi-im.org"
     },
     {
@@ -424,6 +471,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://psi-plus.com"
     },
     {
@@ -432,6 +480,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://www.igniterealtime.org/projects/pade/"
     },
     {
@@ -440,6 +489,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "http://forum.qip.ru"
     },
     {
@@ -450,6 +500,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://qutim.org"
     },
     {
@@ -461,6 +512,7 @@
             "Linux",
             "Other"
         ],
+        "doap": null,
         "url": "https://salut-a-toi.org/"
     },
     {
@@ -471,6 +523,7 @@
             "Linux",
             "Windows"
         ],
+        "doap": null,
         "url": "http://www.sim-im.org/index.php?title=Main_Page"
     },
     {
@@ -479,6 +532,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
@@ -487,6 +541,7 @@
         "platforms": [
             "iOS"
         ],
+        "doap": null,
         "url": "https://siskin.im"
     },
     {
@@ -497,6 +552,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://smuxi.im/"
     },
     {
@@ -507,6 +563,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://igniterealtime.org/projects/spark/"
     },
     {
@@ -515,6 +572,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
@@ -525,6 +583,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://swift.im"
     },
     {
@@ -533,6 +592,7 @@
         "platforms": [
             "Mobile"
         ],
+        "doap": null,
         "url": "http://talkonaut.com"
     },
     {
@@ -541,6 +601,7 @@
         "platforms": [
             "Android"
         ],
+        "doap": null,
         "url": "https://tigase.net/content/tigase-messenger-android"
     },
     {
@@ -551,6 +612,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "http://tkabber.jabber.ru"
     },
     {
@@ -564,6 +626,7 @@
             "macOS",
             "Windows"
         ],
+        "doap": null,
         "url": "https://trillian.im"
     },
     {
@@ -572,6 +635,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://uwpx.org"
     },
     {
@@ -580,6 +644,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://www.altertech.com/products/vv/"
     },
     {
@@ -588,6 +653,7 @@
         "platforms": [
             "BlackBerry"
         ],
+        "doap": null,
         "url": "https://www.vayusphere.com"
     },
     {
@@ -596,6 +662,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://archive.codeplex.com/?p=vstalk"
     },
     {
@@ -604,6 +671,7 @@
         "platforms": [
             "Windows"
         ],
+        "doap": null,
         "url": "https://wtw.im/"
     },
     {
@@ -614,6 +682,7 @@
             "Browser",
             "iOS"
         ],
+        "doap": null,
         "url": "https://www.xabber.com"
     },
     {
@@ -623,6 +692,7 @@
             "Linux",
             "macOS"
         ],
+        "doap": null,
         "url": "https://github.com/agl/xmpp-client"
     },
     {
@@ -631,6 +701,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://babelmonkeys.de"
     },
     {
@@ -639,6 +710,7 @@
         "platforms": [
             "Browser"
         ],
+        "doap": null,
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
@@ -647,6 +719,7 @@
         "platforms": [
             "Android"
         ],
+        "doap": null,
         "url": "https://yaxim.org"
     },
     {
@@ -656,6 +729,7 @@
             "Android",
             "iOS"
         ],
+        "doap": null,
         "url": "https://zom.im/"
     }
 ]
