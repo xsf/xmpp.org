@@ -29,7 +29,7 @@ EXTRA_PATH_METADATA = {
   'icons/favicon.ico': { 'path': 'favicon.ico' }
 }
 DIRECT_TEMPLATES = [ 'index', 'categories', 'archives' ]
-ARTICLE_PATHS = [ 'posts/blog', 'posts/learn', 'posts/newsletter' ]
+ARTICLE_PATHS = [ 'posts/blog', 'posts/learn', 'posts/newsletter', 'posts/jobs' ]
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
 

@@ -1,0 +1,7 @@
+<h4>Tags</h4>
+<ul>
+{% for tag, articles in tags %}
+  <li><a href="{{ SITE_URL }}/{{ tag.url }}">{{ tag.name }}</a></li>
+{% endfor %}
+</ul>
+ 

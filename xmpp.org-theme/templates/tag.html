@@ -1,20 +1,10 @@
 {% extends "base.html" %}
-{% set active_page = "blog" %}
-{% set active_page_url = "index.html" %}
-{% if page_name == "category/newsletter" %}
-    {% set active_page_title = "The XMPP Newsletter" %}
-{% elif page_name == "category/jobs" %}
-    {% set active_page_title = "The XMPP Job Board" %}
-{% else %}
-{% set active_page_title = "The XMPP Blog" %}
-{% endif %}
+{% set active_page = "jobs" %}
+{% set active_page_title = ['XMPP ❤️', tag.name]|join(' ') %}
 {% set active_page_is_blog = "true" %}
 
 {% block blog_entries %}
-{% block content_title %}
-{% endblock %}
-{% for article in articles_page.object_list %}
-    {% if article.category.name != "Jobs" %}
+    {% for article in articles %}
         <article>
             <h1><a href="{{ SITE_URL}}/{{ article.url }}">{{ article.title }}</a></h1>
             {{ article.summary }}
@@ -36,19 +26,9 @@
             <a href="{{ SITE_URL }}/{{ article.category.url }}">{{ article.category }}</a>
             </h6>
         </article>
-    {% endif %}
-{% endfor %}
-{% include 'pagination.html' %}
-{% endblock %}
-
-{% block blog_feeds %}
-  {% include "feeds.html" %}
-{% endblock %}
-
-{% block blog_categories %}
-  {% include "categories.html" %}
+    {% endfor %}
 {% endblock %}
 
 {% block blog_archives %}
-  {% include "period_archives.html" %}
-{% endblock %}
+    {% include "tag_list.html" %}
+{% endblock %} 

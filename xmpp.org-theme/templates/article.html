@@ -3,6 +3,8 @@
 {% set active_page_url = "index.html" %}
 {% if article.blog_id == "newsletter" %}
     {% set active_page_title = "The XMPP Newsletter" %}
+{% elif article.blog_id == "jobs" %}
+    {% set active_page_title = "The XMPP Job Board" %}
 {% else %}
     {% set active_page_title = "The XMPP Blog" %}
 {% endif %}
