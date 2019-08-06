@@ -4,10 +4,10 @@ Url: newsletter.html
 Save_as: newsletter.html
 Menu_name: Newsletter
 Top_menu_show: true 
-Top_menu_order: 7
+Top_menu_order: 8
 Dropdown_menu_show: false
 Footer_show: right
-Footer_order: 2
+Footer_order: 3
 Content_layout: single-column
 ---
 
