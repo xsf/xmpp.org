@@ -15,7 +15,7 @@ Content_layout: multiple-columns
 The XSF hosts a variety of chat rooms and all archives are available online.
 
 ### Developer chatroom
-Chat about build software with XMPP ([join](xmpp:jdev@conference.jabber.org?join) | [logs](http://logs.jabber.org/jdev@conference.jabber.org/))
+Chat about build software with XMPP ([join](xmpp:jdev@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/jdev/) | [webchat](/chat?jdev))
 
 ### Operators chatroom
 Chat about running XMPP services ([join](xmpp:operators@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/operators/) | [webchat](/chat?operators))
