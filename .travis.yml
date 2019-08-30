@@ -2,11 +2,17 @@ language: python
 cache: apt
 notifications:
   email: false
-python:
-  - 2.7
-  - 3.7
+
+jobs:
+  include:
+  - python: 2.7
+    name: "Website Build"
+  - python: 3.7
+    name: "Data Linting"
+
 install:
 - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install pelican==3.3 ghp-import markdown; fi
+
 script:
 - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages; fi
 - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then make html; fi
