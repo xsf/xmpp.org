@@ -92,7 +92,7 @@ XEP-0198 extends TCP's reliability across multiple sessions, and also extends it
 
 This mitigates the Two Generals to the point that only the last few messages sent within a session are subject to it, and only then if resuming the session was somehow impossible.
 
-So wait, doesn't this mean that XMPP, even with all these extensions, is still unreliable in some cases? Isn't the hypothesis - that XMPP stanzas can be lost sometimes - still true? Sure it is. The Two Generals problem is provably insoluble - anyone claiming that their communications system is 100% reliable is making the network communications equivalent of saying they have a perpetual motion machine, and I'm not *that* much of an idiot.
+So wait, doesn't this mean that XMPP, even with all these extensions, is still unreliable in some cases? Isn't the hypothesis - that XMPP stanzas can be lost sometimes - still true? Sure it is. The Two Generals problem is probably insoluble - anyone claiming that their communications system is 100% reliable is making the network communications equivalent of saying they have a perpetual motion machine, and I'm not *that* much of an idiot.
 
 XMPP is, however, as reliable as a protocol can practically be.
 
