@@ -38,7 +38,7 @@ The tool will ask for confirmation::
    }
   is this okay? [y/n]
 
-After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint-tool.py`` on the respective JSON file and then make a Pull Request on GitHub.
+After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Updating information
@@ -82,7 +82,7 @@ Do not set ``--no-ask`` and always be sure to review that your changes do what y
 
 If you do not know how to spell your project correctly, leave out the ``NAME`` argument; the tool will list the project it knows.
 
-Do not forget to **validate** that your entry is correct using the ``./lint-tool.py`` on the respective JSON file and then make a Pull Request on GitHub.
+Do not forget to **validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Add a new entry
