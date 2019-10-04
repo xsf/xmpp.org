@@ -26,6 +26,7 @@ RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown
 WORKDIR /var/tmp/src/xmpp.org
 COPY . /var/tmp/src/xmpp.org
 RUN cd /var/tmp/src/xmpp.org && make publish && cp -prv output/* /var/www/html/
+RUN chmod -R +r /var/www/html/
 COPY deploy/xsf.conf /etc/nginx/sites-available/default
 
 EXPOSE 80
