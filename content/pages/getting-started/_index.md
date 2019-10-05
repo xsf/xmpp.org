@@ -31,4 +31,4 @@ As with e-mail, you'll need an account with a service provider. Again, there are
 
 # 3. Log in! That's it!
 
-Using your client, log in and start adding your friends, or visit one of the many chatrooms!
+Using your client, log in and start adding your friends, or [visit one of the many chatrooms](https://search.jabber.network/)!
