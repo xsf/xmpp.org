@@ -18,12 +18,11 @@ __See something missing?__ Events come and go at a speed that is sometimes hard 
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
 
-* [XMPP Summit 23, Brussels, Belgium](/community/events/summit23)
+* [XMPP Summit 24, Brussels, Belgium](https://wiki.xmpp.org/web/Summit_24)
 
 ## Conferences
 
-* [FrosCon 2019, August 10-11th, Bonn, Germany](https://froscon.de)
-* [CCCamp2019, August 21-25th, Mildenberg, Germany](https://wiki.xmpp.org/web/Camp2019)
+* [36C3, December 27-30th, Leipzig, Germany](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
 
 ## Meetups
 
@@ -40,11 +39,13 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
+* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
+* [Berlin, March 26-29th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Berlin)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
+* [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
 * [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
 * [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
 * [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe) (at GPN19)
