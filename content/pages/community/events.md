@@ -22,6 +22,7 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 ## Conferences
 
+* [Capitole du Libre, November 16-17th, Toulouse, France](https://wiki.xmpp.org/web/Conferences/CapitoleDuLibre_2019)
 * [36C3, December 27-30th, Leipzig, Germany](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
 
 ## Meetups
