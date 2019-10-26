@@ -295,11 +295,13 @@
         "url": "http://kadu.net"
     },
     {
-        "last_renewed": "2019-07-16T20:16:10",
+        "last_renewed": "2019-10-26T17:40:23",
         "name": "Kaidan",
         "platforms": [
             "Android",
             "Linux",
+            "macOS",
+            "Other",
             "Windows"
         ],
         "url": "https://kaidan.im"
