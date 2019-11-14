@@ -99,3 +99,9 @@ Content_layout: multiple-columns
 
 ## 2018
 - __February:__ The XSF holds the twenty second XMPP Summit in Brussels, Belgium.
+
+## 2019
+- __February:__ The XSF holds the twenty third XMPP Summit in Brussels, Belgium.
+
+## 2020
+- __February:__ The XSF holds the twenty fourth XMPP Summit in Brussels, Belgium.
