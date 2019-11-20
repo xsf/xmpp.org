@@ -9,6 +9,14 @@
     },
     {
         "last_renewed": null,
+        "name": "ArTalk",
+        "platforms": [
+            "C#"
+            ],
+        "url": "https://github.com/araditc/Artalk.Xmpp"
+    },
+    {
+        "last_renewed": null,
         "name": "AnyEvent::XMPP",
         "platforms": [
             "Perl"
