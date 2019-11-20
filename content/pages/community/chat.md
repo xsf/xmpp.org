@@ -23,4 +23,7 @@ Chat about running XMPP services ([join](xmpp:operators@muc.xmpp.org?join) | [lo
 ### XSF chatroom
 Chat about the XMPP standards process ([join](xmpp:xsf@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/xsf/) | [webchat](/chat?xsf))
 
+### XSF CommTeam chatroom
+Chat about the XMPP communication ([join](xmpp:commteam@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/commteam/) | [webchat](/chat?commteam))
+
 All of these venues are completely free and open to any interested individual.
