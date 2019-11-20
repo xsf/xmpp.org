@@ -26,4 +26,7 @@ Chat about the XMPP standards process ([join](xmpp:xsf@muc.xmpp.org?join) | [log
 ### XSF CommTeam chatroom
 Chat about the XMPP communication ([join](xmpp:commteam@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/commteam/) | [webchat](/chat?commteam))
 
+### XSF SCAM chatroom
+Chat about the XMPP "Summits, Conferences, And Meetups" ([join](xmpp:scam@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/scam/) | [webchat](/chat?scam))
+
 All of these venues are completely free and open to any interested individual.
