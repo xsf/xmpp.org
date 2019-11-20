@@ -1,5 +1,15 @@
 [
     {
+        "last_renewed": "2019-11-20T16:00:00",
+        "name": "ArTalk",
+        "platforms":  [
+            ".NET Core",
+            ".NET Standard",
+            "C#"
+        ],
+        "url": "https://github.com/araditc/Artalk.Xmpp"
+    },
+    {
         "last_renewed": "2019-09-12T15:22:41",
         "name": "aioxmpp",
         "platforms": [
