@@ -616,5 +616,13 @@
             "JavaScript"
         ],
         "url": "http://ivan.vucica.net"
+    },
+    {
+        "last_renewed": null,
+        "name": "artalk-xmpp",
+        "platforms": [
+            "C#"
+        ],
+        "url": "https://github.com/araditc/Artalk.Xmpp"
     }
 ]
