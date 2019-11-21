@@ -39,7 +39,8 @@
         },
 
         {
-            "name": "Kim Alvefur"
+            "name": "Kim Alvefur",
+            "roles": ["council"]
         },
 
         {
@@ -74,8 +75,7 @@
         },
 
         {
-            "name": "Emmanuel Gil Peyrot",
-            "roles": ["council"]
+            "name": "Emmanuel Gil Peyrot"
         },
 
         {
@@ -111,7 +111,7 @@
 
         {
             "name": "Daniel Gultsch",
-            "roles": ["scam"]
+            "roles": ["council", "scam"]
         },
 
         {
@@ -221,7 +221,7 @@
 
         {
             "name": "Kevin Smith",
-            "roles": ["council", "editor", "infrastructure"]
+            "roles": ["editor", "infrastructure"]
         },
 
         {
