@@ -25,6 +25,14 @@
     },
     {
         "last_renewed": null,
+        "name": "artalk-xmpp",
+        "platforms": [
+            "C#"
+        ],
+        "url": "https://github.com/araditc/Artalk.Xmpp"
+    },
+    {
+        "last_renewed": null,
         "name": "as3xmpp",
         "platforms": [
             "ActionScript",
