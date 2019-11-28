@@ -47,7 +47,7 @@ The Council is elected by the members of the XMPP Standards Foundation. In the i
 
 The Council (2019-2020) consists of the following individuals:
 
-- __Kim Alvefur__
+- __Kim Alvefur__ is a consultant mostly working on the [Prosody XMPP server](http://prosody.im/) project and other related projects.
 - __Georg Lukas__ is a full-time [IT security consultant](https://rt-solutions.de/en/home-2/), a vocal advocate of [Easy XMPP](https://wiki.xmpp.org/web/Category:Easy_XMPP), the project janitor of [yaxim](https://yaxim.org) and the operator of the [public yax.im server](https://yaxim.org/yax.im/).
 - __Dave Cridland__ works on [Metre](https://github.com/dwd/metre), and has worked on a number of different servers. He currently works on messaging at [Forward Health](https://forwardhealth.co/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
 - __Jonas Schäfer__ works on the [aioxmpp](https://github.com/horazont/aioxmpp) client library for Python, has a [FLOSS Qt based client in the making](https://github.com/jabbercat/jabbercat) and is in the [Editor Team](/about/xsf/editor-team). He also created and operates the [search.jabber.network MUC search service](https://search.jabber.network/).
