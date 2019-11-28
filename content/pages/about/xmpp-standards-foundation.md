@@ -38,6 +38,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Guus der Kinderen__ is a freelance software engineer and a lead developer of the [Openfire XMPP Server](https://www.igniterealtime.org/projects/openfire/). He currently serves as chair in the board of directors of the [Ignite Realtime Foundation](https://www.igniterealtime.org), an organization to promote, support and advance development of software in the Ignite Realtime Open Source community.
 - __Nicolas V&eacute;rit&eacute;__ is the founder of [Nayego](https://www.nayego.net) team chat. In the past, he has worked as Product Owner for [MongooseIM](https://github.com/esl/MongooseIM) and Mangosta clients for iOS and Android, as a Product Owner for [Libon](https://www.libon.com/) chat, as a contributor the [JabberFr](https://jabberfr.org/) community and as a project manager for [ProcessOne](https://process-one.net) on [ejabberd](https://github.com/processone/ejabberd).
 - __Severino Ferrer__ is a software developer and XSF member. He co-authored [XEP-0382](https://xmpp.org/extensions/xep-0382.html) and serves at the [XSF Communication Team](https://wiki.xmpp.org/web/CommTeam).
+- __Maxime Buquet__ is a software developer. He maintains [xmpp-rs](https://gitlab.com/xmpp-rs/xmpp-rs), [poezio and slixmpp](https://lab.louiz.org/poezio), and various other free software projects. He is actively driving collaboration in the community by organizing and encouraging events as part of the [SCAM team](/about/xsf/scam-team).
 
 ## <a name="council" href="#council">The Council</a>
 
