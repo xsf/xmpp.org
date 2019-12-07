@@ -221,8 +221,8 @@
         "url": "https://www.oracle.com/index.html"
     },
     {
-        "doap": null,
-        "last_renewed": "2019-07-16T21:13:16",
+        "doap": "https://hg.prosody.im/trunk/raw-file/tip/doc/doap.xml",
+        "last_renewed": "2019-12-07T13:43:30",
         "name": "Prosody IM",
         "platforms": [
             "BSD",
