@@ -46,7 +46,7 @@ Updating information
 
 When asking the tool for ``--help``, you will notice that it supports a few other options too::
 
-  usage: update-entry.py [-h] [--rename NAME] [--set-url URL]
+  usage: update-entry.py [-h] [--rename NAME] [--set-url URL] [--set-doap URL]
                          [--set-platforms PLATFORM [PLATFORM ...]]
                          [--no-renewal] [--no-ask]
                          JSONFILE [NAME]
@@ -61,6 +61,7 @@ When asking the tool for ``--help``, you will notice that it supports a few othe
     -h, --help            show this help message and exit
     --rename NAME         Rename the project
     --set-url URL         Change the URL of the project
+    --set-doap URL        Change the URL of the project DOAP file
     --set-platforms PLATFORM [PLATFORM ...]
                           Change the contents of the last column
     --no-renewal
