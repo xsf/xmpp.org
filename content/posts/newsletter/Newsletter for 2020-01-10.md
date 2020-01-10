@@ -16,7 +16,7 @@ Contribute to the community effort, which [process is fully documented](https://
 
 ## Articles 
 
-[Whatsapp, Matrix or XMPP](https://www.golem.de/news/whatsapp-matrix-oder-xmpp-bmi-sucht-einen-messenger-fuer-bundesbehoerden-1912-145326.html) (german) - The German Federal Ministry of the Interior is looking for a messenger for the federal authorities while the German Federal Police is experimenting with XMPP. They are using an [Open Source Messenger "MOKA" based on the Conversations](https://dipbt.bundestag.de/dip21/btd/19/152/1915218.pdf) (german).
+[Whatsapp, Matrix or XMPP](https://www.golem.de/news/whatsapp-matrix-oder-xmpp-bmi-sucht-einen-messenger-fuer-bundesbehoerden-1912-145326.html) (german) - The German Federal Ministry of the Interior is looking for a messenger for the federal authorities while the German Federal Police is experimenting with XMPP. They are using an [Open Source Messenger "MOKA" based on Conversations](https://dipbt.bundestag.de/dip21/btd/19/152/1915218.pdf) (german).
 
 Fabian Sauter known as COM8 (and developer of [UWPX](https://uwpx.org/)) has finalised his Bachelor Thesis on "[Smart Building Control with XMPP for IoT](https://home.in.tum.de/~sauterf/html-data/Thesis_Smart_Building_Control_with_XMPP_for_IoT.pdf)". Congratulations! The development will be continued with the goal of an official XEP.
 
