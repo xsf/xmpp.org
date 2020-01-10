@@ -16,7 +16,7 @@ Contribute to the community effort, which [process is fully documented](https://
 
 ## Articles 
 
-[Whatsapp, Matrix or XMPP](https://www.golem.de/news/whatsapp-matrix-oder-xmpp-bmi-sucht-einen-messenger-fuer-bundesbehoerden-1912-145326.html) (german) - The German Federal Ministry of the Interior is looking for a messenger for the federal authorities while the German Federal Police is experimenting with XMPP. They are using an [Open Source Messenger "MOKA" based on XMPP](https://dipbt.bundestag.de/dip21/btd/19/152/1915218.pdf) (german).
+[Whatsapp, Matrix or XMPP](https://www.golem.de/news/whatsapp-matrix-oder-xmpp-bmi-sucht-einen-messenger-fuer-bundesbehoerden-1912-145326.html) (german) - The German Federal Ministry of the Interior is looking for a messenger for the federal authorities while the German Federal Police is experimenting with XMPP. They are using an [Open Source Messenger "MOKA" based on the Conversations](https://dipbt.bundestag.de/dip21/btd/19/152/1915218.pdf) (german).
 
 Fabian Sauter known as COM8 (and developer of [UWPX](https://uwpx.org/)) has finalised his Bachelor Thesis on "[Smart Building Control with XMPP for IoT](https://home.in.tum.de/~sauterf/html-data/Thesis_Smart_Building_Control_with_XMPP_for_IoT.pdf)". Congratulations! The development will be continued with the goal of an official XEP.
 
@@ -30,7 +30,7 @@ Paul Schaub has written two pieces:
 
 Alex Gnauck wrote about  [Simpler code in handlers using pattern matching](https://www.ag-software.net/2019/12/30/simpler-code-in-handlers-using-pattern-matching/) in MatriX.
 
-During the 36C3 a bunch of people finalized the idea to form a [SIG dedicated to end-to-end encryption](https://mail.jabber.org/pipermail/standards/2019-December/036769.html).
+During the 36C3 in December 2019, a bunch of people finalized the idea to form a [SIG dedicated to end-to-end encryption](https://mail.jabber.org/pipermail/standards/2019-December/036769.html).
 
 ### Newsletter translations 
 
@@ -49,7 +49,7 @@ The Ignite Realtime community has released:
 
 ### Clients and applications
 
-Anu Pokharel the developer of Monal has made significant changes to its [MUC implemenation](https://monal.im/blog/group-chat-improvements/) which improves the situation for iOS ([4.1 and 4.2](https://monal.im/blog/ios-4-1-and-4-2/) and [4.2 final beta](https://monal.im/blog/ios-4-2-final-beta/)) and macOS ([2.5 beta 1](https://monal.im/blog/mac-2-5-beta-1/) [2.5 beta 2](https://monal.im/blog/mac-2-5-beta-2/)) users. Furthermore there has been many [bug fixes](https://monal.im/blog/cve-fixes/), including [HTTP upload](https://monal.im/blog/http-upload/), and [the end of iOS9 support](https://monal.im/blog/the-end-of-ios-9-support/).
+Anu Pokharel the developer of Monal has made significant changes to its [MUC implementation](https://monal.im/blog/group-chat-improvements/) which improves the situation for iOS ([4.1 and 4.2](https://monal.im/blog/ios-4-1-and-4-2/) and [4.2 final beta](https://monal.im/blog/ios-4-2-final-beta/)) and macOS ([2.5 beta 1](https://monal.im/blog/mac-2-5-beta-1/) [2.5 beta 2](https://monal.im/blog/mac-2-5-beta-2/)) users. Furthermore there has been many [bug fixes](https://monal.im/blog/cve-fixes/), including [HTTP upload](https://monal.im/blog/http-upload/), and [the end of iOS9 support](https://monal.im/blog/the-end-of-ios-9-support/).
 
 ![Monal iOS](https://framapic.org/ZyopsYd66GsN/aOp2n1IrXfIy.png)
 
