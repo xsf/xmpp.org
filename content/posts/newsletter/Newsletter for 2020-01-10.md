@@ -1,8 +1,8 @@
 ---
-title: Happy new XMPP year! 10 Jan 2020
-save_as: 2020/01/newsletter-10-january/index.html
-url: 2020/01/newsletter-10-january/
-date: 2020-01-10 15:00
+title: Happy new XMPP year! 14 Jan 2020
+save_as: 2020/01/newsletter-14-january/index.html
+url: 2020/01/newsletter-14-january/
+date: 2020-01-14 16:00
 author: nyco
 blog_id: newsletter
 category: Newsletter
@@ -10,7 +10,7 @@ category: Newsletter
 
 Happy new XMPP year!
 
-Welcome to the XMPP newsletter covering the month of December 2019.
+Welcome to the XMPP newsletter covering the month of December 2019. Sorry, we are late...
 
 Contribute to the community effort, which [process is fully documented](https://wiki.xmpp.org/web/News_and_Articles_for_the_next_XMPP_Newsletter).
 
