@@ -59,7 +59,7 @@ Tigase has released [BeagleIM 3.4 and Siskin IM 5.4](https://tigase.net/beagleim
 
 [Movim 0.16.1](https://nl.movim.eu/?node/pubsub.movim.eu/Movim/cdfc0a4c-3459-4d3b-8c15-08994810d54e) has been released: you can now share posts to your connected chatrooms, communities layout was redesigned, all the messages that you sent in the one to one discussions can now be edited, the videoconferencing feature was heavily refactored, and bugs fixed.
 
-[Profanity 0.8.0](https://twitter.com/ProfanityIM/status/1207735919488438273) has been released with consistent color generated nicks (XEP-0392) and a trackbar so you see where you left off reading!
+Development versions of [Profanity 0.8.0](https://twitter.com/ProfanityIM/status/1207735919488438273) have been released with consistent color generated nicks (XEP-0392) and a trackbar so you see where you left off reading!
 
 Goffi has published the [SàT progress note 2019-W51](https://www.goffi.org/b/JLPTTHfRnqhxNozHjRz553/progress-note): infinite scroll is now implemented in Cagou, Kivy community extensions used by SàT are now installable like any other Python dependency, e2e encryption with OMEMO, and more.
 
