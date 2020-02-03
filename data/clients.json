@@ -78,8 +78,8 @@
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907"
     },
     {
-        "doap": null,
-        "last_renewed": "2019-02-12T17:02:29",
+        "doap": "https://yaxim.org/doap/bruno.rdf.xml",
+        "last_renewed": "2020-02-03T11:49:08",
         "name": "Bruno the Jabber\u2122 Bear",
         "platforms": [
             "Android"
@@ -714,8 +714,8 @@
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "doap": null,
-        "last_renewed": "2019-07-16T20:53:00",
+        "doap": "https://yaxim.org/doap/yaxim.rdf.xml",
+        "last_renewed": "2020-02-03T11:49:21",
         "name": "yaxim",
         "platforms": [
             "Android"
