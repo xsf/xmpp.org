@@ -41,12 +41,14 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
+* [Duesseldorf, March 7-8th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Duesseldorf)
 * [Berlin, March 26-29th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Berlin)
+* [Toulouse, April 18-19th, 2020](https://wiki.xmpp.org/web/Sprints/2020_April_Toulouse)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
+* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
 * [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
 * [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
 * [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
