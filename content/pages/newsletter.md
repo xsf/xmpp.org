@@ -34,3 +34,5 @@ translate it into other languages, please get in touch with the [Communication T
 ### Available Translations
 
 * [Français](https://news.jabberfr.org/category/newsletter/)
+* [Deutsch](https://www.jabber.de/)
+* [Español](https://www.jabber.de/) (Hey, seguimos buscando un editor español decente para estas traducciones. Por favor contacta al XSF!)
