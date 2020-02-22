@@ -18,13 +18,13 @@ __See something missing?__ Events come and go at a speed that is sometimes hard 
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
 
-* [XMPP Summit 24, Brussels, Belgium](https://wiki.xmpp.org/web/Summit_24)
+You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
+The next Summit will happen next year.
 
 ## Conferences
 
-* [Redecentralize Conference, October 25th, London, UK](https://wiki.xmpp.org/web/Conferences/Redecentralize_Conference_2019)
-* [Capitole du Libre, November 16-17th, Toulouse, France](https://wiki.xmpp.org/web/Conferences/CapitoleDuLibre_2019)
-* [36C3, December 27-30th, Leipzig, Germany](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
+No conference at the moment. You can get a list of past conferences [on the
+wiki](https://wiki.xmpp.org/web/Category:Events).
 
 ## Meetups
 
@@ -41,12 +41,14 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
+* [Duesseldorf, March 7-8th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Duesseldorf)
 * [Berlin, March 26-29th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Berlin)
+* [Toulouse, April 18-19th, 2020](https://wiki.xmpp.org/web/Sprints/2020_April_Toulouse)
 * [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
+* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
 * [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
 * [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
 * [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
