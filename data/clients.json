@@ -1,5 +1,6 @@
 [
     {
+        "doap": null,
         "last_renewed": "2019-10-20T00:00:00",
         "name": "Adium",
         "platforms": [
@@ -8,6 +9,7 @@
         "url": "https://adium.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "AQQ",
         "platforms": [
@@ -16,6 +18,7 @@
         "url": "http://aqq.eu"
     },
     {
+        "doap": null,
         "last_renewed": "2019-10-29T00:00:00",
         "name": "AstraChat",
         "platforms": [
@@ -28,7 +31,8 @@
         "url": "https://astrachat.com"
     },
     {
-        "last_renewed": "2019-07-16T19:49:12",
+        "doap": null,
+        "last_renewed": "2020-01-23T14:14:51",
         "name": "BeagleIM by Tigase, Inc.",
         "platforms": [
             "macOS"
@@ -36,6 +40,7 @@
         "url": "https://beagle.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Beem",
         "platforms": [
@@ -44,6 +49,7 @@
         "url": "https://beem-project.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "BitlBee",
         "platforms": [
@@ -52,6 +58,7 @@
         "url": "https://www.bitlbee.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "BlueJabb",
         "platforms": [
@@ -62,6 +69,7 @@
         "url": "http://www.bluejabb.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Boogie Chat",
         "platforms": [
@@ -70,7 +78,8 @@
         "url": "https://itunes.apple.com/app/boogie-chat/id779423907"
     },
     {
-        "last_renewed": "2019-02-12T17:02:29",
+        "doap": "https://yaxim.org/doap/bruno.rdf.xml",
+        "last_renewed": "2020-02-03T11:49:08",
         "name": "Bruno the Jabber\u2122 Bear",
         "platforms": [
             "Android"
@@ -78,6 +87,7 @@
         "url": "https://yaxim.org/bruno/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Buddycloud",
         "platforms": [
@@ -88,6 +98,7 @@
         "url": "http://buddycloud.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Candy",
         "platforms": [
@@ -96,6 +107,7 @@
         "url": "https://candy-chat.github.io/candy/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T19:46:58",
         "name": "ChatSecure",
         "platforms": [
@@ -104,6 +116,7 @@
         "url": "https://chatsecure.org/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Coccinella",
         "platforms": [
@@ -114,6 +127,7 @@
         "url": "https://coccinella.im"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T19:53:36",
         "name": "Conversations",
         "platforms": [
@@ -122,6 +136,7 @@
         "url": "https://github.com/siacs/Conversations"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T19:54:10",
         "name": "Converse",
         "platforms": [
@@ -130,6 +145,7 @@
         "url": "https://conversejs.org/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Coversant SoapBox Communicator",
         "platforms": [
@@ -138,6 +154,7 @@
         "url": "http://coversant.com"
     },
     {
+        "doap": "https://raw.githubusercontent.com/dino/dino/master/dino.doap",
         "last_renewed": "2019-07-16T19:54:55",
         "name": "Dino",
         "platforms": [
@@ -146,6 +163,7 @@
         "url": "https://dino.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "eM Client",
         "platforms": [
@@ -154,6 +172,17 @@
         "url": "https://www.emclient.com"
     },
     {
+        "doap": null,
+        "last_renewed": "2019-07-16T19:55:24",
+        "name": "Empathy",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://wiki.gnome.org/Apps/Empathy"
+    },
+    {
+        "doap": null,
+
         "last_renewed": "2019-07-16T19:56:32",
         "name": "eyeCU",
         "platforms": [
@@ -164,6 +193,7 @@
         "url": "https://eyecu.opiums.eu"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Finch",
         "platforms": [
@@ -172,6 +202,7 @@
         "url": "https://developer.pidgin.im"
     },
     {
+        "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
         "last_renewed": "2019-07-16T20:01:17",
         "name": "Gajim",
         "platforms": [
@@ -181,6 +212,7 @@
         "url": "https://gajim.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "GNU Freetalk",
         "platforms": [
@@ -189,6 +221,7 @@
         "url": "https://gnufreetalk.github.io/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "GreenJab",
         "platforms": [
@@ -197,6 +230,7 @@
         "url": "https://www.bvstools.com"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:02:35",
         "name": "IM+",
         "platforms": [
@@ -206,6 +240,7 @@
         "url": "https://www.shape.ag/en/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Instantbird",
         "platforms": [
@@ -216,6 +251,7 @@
         "url": "http://instantbird.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "irssi-xmpp",
         "platforms": [
@@ -225,6 +261,7 @@
         "url": "https://cybione.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "jabber.el",
         "platforms": [
@@ -233,6 +270,7 @@
         "url": "http://emacs-jabber.sourceforge.net"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Jabbim",
         "platforms": [
@@ -243,6 +281,7 @@
         "url": "https://www.jabbim.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "JAJC",
         "platforms": [
@@ -251,6 +290,7 @@
         "url": "http://jajc.jrudevels.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Jappix",
         "platforms": [
@@ -259,6 +299,7 @@
         "url": "http://jappix.org"
     },
     {
+        "doap": null,
         "last_renewed": "2018-08-29T15:00:00",
         "name": "Jitsi Desktop",
         "platforms": [
@@ -269,6 +310,7 @@
         "url": "https://desktop.jitsi.org"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:15:31",
         "name": "JSXC",
         "platforms": [
@@ -277,6 +319,7 @@
         "url": "https://www.jsxc.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Kadu",
         "platforms": [
@@ -287,6 +330,7 @@
         "url": "http://kadu.net"
     },
     {
+        "doap": null,
         "last_renewed": "2019-10-26T17:40:23",
         "name": "Kaidan",
         "platforms": [
@@ -299,6 +343,7 @@
         "url": "https://kaidan.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Kaiwa",
         "platforms": [
@@ -307,6 +352,7 @@
         "url": "http://getkaiwa.com/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:18:31",
         "name": "Kopete",
         "platforms": [
@@ -315,6 +361,7 @@
         "url": "https://userbase.kde.org/Kopete"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:20:38",
         "name": "mcabber",
         "platforms": [
@@ -323,6 +370,7 @@
         "url": "https://mcabber.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Miranda IM",
         "platforms": [
@@ -331,6 +379,7 @@
         "url": "http://miranda-im.org"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:22:03",
         "name": "Miranda NG",
         "platforms": [
@@ -339,7 +388,8 @@
         "url": "https://www.miranda-ng.org/en/"
     },
     {
-        "last_renewed": "2018-06-05T13:12:35",
+        "doap": null,
+        "last_renewed": "2020-02-20T19:05:00",
         "name": "Monal IM",
         "platforms": [
             "iOS",
@@ -348,6 +398,7 @@
         "url": "https://monal.im"
     },
     {
+        "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
         "last_renewed": "2019-07-16T20:24:08",
         "name": "Movim",
         "platforms": [
@@ -360,6 +411,7 @@
         "url": "https://movim.eu"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:25:03",
         "name": "Mozilla Thunderbird",
         "platforms": [
@@ -370,6 +422,7 @@
         "url": "https://www.thunderbird.net/en-US/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:26:34",
         "name": "Pidgin",
         "platforms": [
@@ -380,6 +433,7 @@
         "url": "https://pidgin.im"
     },
     {
+        "doap": "https://lab.louiz.org/poezio/poezio/raw/master/data/doap.xml",
         "last_renewed": "2019-07-17T10:00:00",
         "name": "Poezio",
         "platforms": [
@@ -389,6 +443,7 @@
         "url": "https://poez.io/en/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:28:37",
         "name": "Profanity",
         "platforms": [
@@ -399,6 +454,7 @@
         "url": "https://profanity-im.github.io/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:29:28",
         "name": "Psi",
         "platforms": [
@@ -409,6 +465,7 @@
         "url": "https://psi-im.org"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:30:04",
         "name": "Psi+",
         "platforms": [
@@ -419,6 +476,7 @@
         "url": "https://psi-plus.com"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:31:01",
         "name": "P\u00e0d\u00e9",
         "platforms": [
@@ -427,6 +485,7 @@
         "url": "https://www.igniterealtime.org/projects/pade/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Quiet Internet Pager",
         "platforms": [
@@ -435,6 +494,7 @@
         "url": "http://forum.qip.ru"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "qutIM",
         "platforms": [
@@ -445,6 +505,7 @@
         "url": "https://qutim.org"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:34:09",
         "name": "Salut \u00e0 Toi",
         "platforms": [
@@ -456,6 +517,7 @@
         "url": "https://salut-a-toi.org/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Sim-IM",
         "platforms": [
@@ -466,7 +528,8 @@
         "url": "http://www.sim-im.org/index.php?title=Main_Page"
     },
     {
-        "last_renewed": "2019-07-16T20:36:15",
+        "doap": null,
+        "last_renewed": "2020-02-04T14:01:00",
         "name": "Simple IoT Client",
         "platforms": [
             "Windows"
@@ -474,14 +537,16 @@
         "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
-        "last_renewed": "2019-07-16T20:37:46",
-        "name": "Siskin IM by Tigase, Inc.",
+        "doap": null,
+        "last_renewed": "2020-01-23T14:14:51",
+        "name": "SiskinIM by Tigase, Inc.",
         "platforms": [
             "iOS"
         ],
         "url": "https://siskin.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Smuxi",
         "platforms": [
@@ -492,6 +557,7 @@
         "url": "https://smuxi.im/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Spark",
         "platforms": [
@@ -502,6 +568,7 @@
         "url": "https://igniterealtime.org/projects/spark/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "SparkWeb",
         "platforms": [
@@ -510,7 +577,17 @@
         "url": "https://igniterealtime.org/projects/sparkweb/index.jsp"
     },
     {
-        "last_renewed": "2019-07-16T20:44:17",
+        "doap": null,
+        "last_renewed": "2020-01-23T14:14:51",
+        "name": "StorkIM by Tigase, Inc. (Tigase Messenger for Android)",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://stork.im"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2019-12-03T14:24:12",
         "name": "Swift",
         "platforms": [
             "Linux",
@@ -520,6 +597,7 @@
         "url": "https://swift.im"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Talkonaut",
         "platforms": [
@@ -528,14 +606,7 @@
         "url": "http://talkonaut.com"
     },
     {
-        "last_renewed": "2019-07-16T20:41:42",
-        "name": "Tigase Messenger for Android",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://tigase.net/content/tigase-messenger-android"
-    },
-    {
+        "doap": null,
         "last_renewed": null,
         "name": "Tkabber",
         "platforms": [
@@ -546,6 +617,7 @@
         "url": "http://tkabber.jabber.ru"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:46:05",
         "name": "Trillian",
         "platforms": [
@@ -559,6 +631,7 @@
         "url": "https://trillian.im"
     },
     {
+        "doap": null,
         "last_renewed": "2019-06-11T01:10:47",
         "name": "UWPX",
         "platforms": [
@@ -567,6 +640,7 @@
         "url": "https://uwpx.org"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "V&V Messenger",
         "platforms": [
@@ -575,6 +649,7 @@
         "url": "https://www.altertech.com/products/vv/"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "Vayusphere",
         "platforms": [
@@ -583,6 +658,7 @@
         "url": "https://www.vayusphere.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "VSTalk",
         "platforms": [
@@ -591,6 +667,7 @@
         "url": "https://archive.codeplex.com/?p=vstalk"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "WTW",
         "platforms": [
@@ -599,6 +676,7 @@
         "url": "https://wtw.im/"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:51:22",
         "name": "Xabber",
         "platforms": [
@@ -609,6 +687,7 @@
         "url": "https://www.xabber.com"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "xmpp-client",
         "platforms": [
@@ -618,6 +697,7 @@
         "url": "https://github.com/agl/xmpp-client"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "xmppchat",
         "platforms": [
@@ -626,6 +706,7 @@
         "url": "https://babelmonkeys.de"
     },
     {
+        "doap": null,
         "last_renewed": null,
         "name": "XMPPWebChat",
         "platforms": [
@@ -634,7 +715,8 @@
         "url": "https://github.com/udayg/xmppwebchat"
     },
     {
-        "last_renewed": "2019-07-16T20:53:00",
+        "doap": "https://yaxim.org/doap/yaxim.rdf.xml",
+        "last_renewed": "2020-02-03T11:49:21",
         "name": "yaxim",
         "platforms": [
             "Android"
@@ -642,6 +724,7 @@
         "url": "https://yaxim.org"
     },
     {
+        "doap": null,
         "last_renewed": "2019-07-16T20:55:15",
         "name": "Zom",
         "platforms": [
