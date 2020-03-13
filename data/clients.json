@@ -164,9 +164,10 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2020-03-13T12:00:00",
         "name": "eM Client",
         "platforms": [
+            "macOS",
             "Windows"
         ],
         "url": "https://www.emclient.com"
