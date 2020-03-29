@@ -371,6 +371,15 @@
     },
     {
         "doap": null,
+        "last_renewed": "2020-03-29T00:00:00",
+        "name": "Mellium",
+        "platforms": [
+            "Go"
+        ],
+        "url": "https://mellium.im/code"
+    },
+    {
+        "doap": null,
         "last_renewed": null,
         "name": "net::XMPP",
         "platforms": [
