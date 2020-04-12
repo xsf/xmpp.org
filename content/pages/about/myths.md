@@ -42,8 +42,6 @@ Instead, what we have is a [pretty large number of extensions](/extensions/index
 
 While you can still connect a client that supports no extensions at all to a server and have it work, nearly every client supports a wide range of extensions suited to its purpose, and every server supports several.
 
-Over at XMPP Research, they examined what extensions were most popular in the academic research papers discussing XMPP, take a look: [XEPs used in XMPP research](http://www.xmppresearch.org/posts/xeps-used-in-xmpp-research/)
-
 ## It's too bandwidth-inefficient for mobile.
 
 The hypothesis:
