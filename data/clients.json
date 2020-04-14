@@ -118,6 +118,15 @@
     {
         "doap": null,
         "last_renewed": null,
+        "name": "Chatty",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://source.puri.sm/Librem5/chatty"
+    },
+    {
+        "doap": null,
+        "last_renewed": null,
         "name": "Coccinella",
         "platforms": [
             "Linux",
