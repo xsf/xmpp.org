@@ -24,7 +24,7 @@ There are many projects that have created an XMPP-based Instant Messaging networ
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
-| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses an [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
+| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
 | ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
 | ~4 million   | [Grindr](https://grindr.com)    | Grindr is a geosocial networking and online dating application that [uses XMPP for its chat application](https://www.meetup.com/Los-Angeles-Android-Developers-Mobile-Developers-Meetup/events/221112018/). |
 |    ~10k      | [Kontalk](http://kontalk.org)   | A very user-friendly XMPP service that uses your phone number as the user ID. Both server and client are FLOSS. |
