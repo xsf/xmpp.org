@@ -509,6 +509,15 @@
     },
     {
         "doap": null,
+        "last_renewed": null,
+        "name": "stravaganza",
+        "platforms": [
+            "Go"
+        ],
+        "url": "https://github.com/jackal-xmpp/stravaganza"
+    },
+    {
+        "doap": null,
         "last_renewed": "2019-12-03T14:24:07",
         "name": "Stroke",
         "platforms": [
