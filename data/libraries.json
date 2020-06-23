@@ -407,6 +407,15 @@
     },
     {
         "doap": null,
+        "last_renewed": "2020-06-23T19:45:05",
+        "name": "python-nbxmpp",
+        "platforms": [
+            "Python"
+        ],
+        "url": "https://dev.gajim.org/gajim/python-nbxmpp"
+    },
+    {
+        "doap": null,
         "last_renewed": null,
         "name": "pyxmpp",
         "platforms": [
