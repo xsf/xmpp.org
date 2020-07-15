@@ -41,6 +41,17 @@ This definition has some direct consequences that open up into different areas o
 
 As you will see, **XMPP** provides a lot of support into all these areas, making it well suited for use within the area of *Internet of Things*. To check current developments within XMPP and IoT, check the [Work in progress](/uses/iot/work-in-progress) page. There is also a page containing [testimonials](/uses/iot/testimonials).
 
+## Realized example projects
+
+Projects listed which are adopting XMPP for Internet of Things:
+
+| Users         | Game / Community                | Description                            | Since |
+|---------------|---------------------------------|----------------------------------------|-------|
+|  in the range of millions  | [Google Cloud Print](https://www.google.com/intl/en/cloudprint/learn/) | A cloud solution by Google to process documents to [printers](https://www.google.com/cloudprint/learn/printers/) without the need to install drivers. | 2010 |
+|  in the range of billions | [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) | Cross-plattform notification and message service (formerly Google Cloud Messaging) | 2014 |
+|  in the range of millions | [Logitech Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) | System for [home automation and media remote control](https://www.theverge.com/2018/12/21/18152037/logitech-will-restore-third-party-harmony-home-automation) | 2004 |
+
+
 ## For more information
 
 For more information regarding XMPP and IoT, check the following resources:
