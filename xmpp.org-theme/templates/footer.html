@@ -18,7 +18,7 @@
           Home
         </a>
       </li>
-      {% for page in PAGES|sort(attribute='footer_order') if page.footer_show|default("false") == "left" %}
+      {% for page in pages|sort(attribute='footer_order') if page.footer_show|default("false") == "left" %}
       <li>
         <a href="{{ SITE_URL }}/{{ page.url }}">
           {{ page.menu_name|default(page.title) }}
@@ -32,7 +32,7 @@
           XMPP Blog
         </a>
       </li>
-      {% for page in PAGES|sort(attribute='footer_order') if page.footer_show|default("false") == "right" %}
+      {% for page in pages|sort(attribute='footer_order') if page.footer_show|default("false") == "right" %}
       <li>
         <a href="{{ SITE_URL }}/{{ page.url }}">
           {{ page.menu_name|default(page.title) }}

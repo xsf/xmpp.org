@@ -12,7 +12,7 @@
   <section class="top-bar-section">
     <ul class="right">
       <li class="divider"></li>
-      {% for page in PAGES|sort(attribute='top_menu_order') if page.top_menu_show|default("false") == "true" %}
+      {% for page in pages|sort(attribute='top_menu_order') if page.top_menu_show|default("false") == "true" %}
       {% set classes = [] %}
       {% if active_page.split("/")[0]|replace(" ", "") == page.url|replace(" ", "") %}
       {%     set classes = classes + ["active",] %}
