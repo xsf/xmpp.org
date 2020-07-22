@@ -45,7 +45,7 @@ As you will see, **XMPP** provides a lot of support into all these areas, making
 
 Projects listed which are adopting XMPP for Internet of Things:
 
-| Users         | Game / Community                | Description                            | Since |
+| Users         | System / Application            | Description                            | Since |
 |---------------|---------------------------------|----------------------------------------|-------|
 |  in the range of millions  | [Google Cloud Print](https://www.google.com/intl/en/cloudprint/learn/) | A cloud solution by Google to process documents to [printers](https://www.google.com/cloudprint/learn/printers/) without the need to install drivers. | 2010 |
 |  in the range of billions | [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) | Cross-plattform notification and message service (formerly Google Cloud Messaging) | 2014 |
