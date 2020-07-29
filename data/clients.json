@@ -108,10 +108,11 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T19:46:58",
+        "last_renewed": "2020-05-13T19:46:58",
         "name": "ChatSecure",
         "platforms": [
-            "iOS"
+            "iOS",
+            "macOS"
         ],
         "url": "https://chatsecure.org/"
     },
