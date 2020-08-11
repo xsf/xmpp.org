@@ -399,6 +399,15 @@
     {
         "doap": null,
         "last_renewed": null,
+        "name": "ObjXMPP",
+        "platforms": [
+            "Objective-C"
+        ],
+        "url": "https://github.com/ObjFW/ObjXMPP"
+    },
+    {
+        "doap": null,
+        "last_renewed": null,
         "name": "Pontarius XMPP",
         "platforms": [
             "Haskell"
