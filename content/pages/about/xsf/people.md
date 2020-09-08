@@ -12,9 +12,17 @@ Inherit_sidebar: about/xmpp-standards-foundation
 Content_layout: multiple-columns
 ---
 
+### XSF Chair
+
+Chairman of the XSF is Ralph Meijer. Ralph is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
+
 ### Executive Director
 
-Peter Saint-Andre has served as executive director of the XMPP Standards Foundation since 2002. He has been contributing to the Jabber/XMPP developer community since late 1999, where he has focused on documentation and standardization as author of the XMPP RFCs, numerous XMPP extension protocols, and XMPP: The Definitive Guide (O’Reilly, 2009).
+This position is vacant currrently.
+
+### XSF Treasurer
+
+The treasurer of the XSF is Peter Saint-Andre. Peter has served as executive director of the XMPP Standards Foundation for 15 years, from 2002-2017. He has been contributing to the Jabber/XMPP developer community since late 1999, where he has focused on documentation and standardization as author of the XMPP RFCs, numerous XMPP extension protocols, and XMPP: The Definitive Guide (O’Reilly, 2009).
 
 Peter’s weblog is published at [stpeter.im](https://stpeter.im) and syndicated at [Planet Jabber](https://planet.jabber.org). His contact information is available at [https://stpeter.im/contact.html](https://stpeter.im/contact.html).
 

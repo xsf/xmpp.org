@@ -19,8 +19,20 @@
         "registrar": {
             "list_name": "XMPP Registrar"
         },
+        "chair": {
+            "list_name": "XSF Chair",
+            "page": "/about/xsf/people.html"
+        },
         "ed": {
             "list_name": "Executive Director",
+            "page": "/about/xsf/people.html"
+        },        
+        "secretary": {
+            "list_name": "XSF Secretary",
+            "page": "/about/xsf/people.html"
+        },
+        "treasurer": {
+            "list_name": "XSF Treasurer",
             "page": "/about/xsf/people.html"
         },
         "scam": {
@@ -102,7 +114,7 @@
 
         {
             "name": "Alexander Gnauck",
-            "roles": ["infrastructure"]
+            "roles": ["secretary", "infrastructure"]
         },
 
         {
@@ -151,7 +163,7 @@
 
         {
             "name": "Ralph Meijer",
-            "roles": ["board"]
+            "roles": ["chair", "board"]
         },
 
         {
@@ -185,7 +197,7 @@
 
         {
             "name": "Peter Saint-Andre",
-            "roles": ["ed", "registrar", "editor", "infrastructure"]
+            "roles": ["treasurer", "registrar", "editor", "infrastructure"]
         },
 
         {
