@@ -109,7 +109,7 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 	curl -o /tmp/xep-images/xmpp.pdf       https://xmpp.org/images/xmpp.pdf
 	git clone https://github.com/xsf/xeps /tmp/xeps
 	git clone https://github.com/xsf/xsf-tools /tmp/xsf-tools
-	export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/
+	export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/dist-packages/
 	/tmp/xsf-tools/build.py -d -x /tmp/xeps -o /home/travis/build/xsf/xmpp.org/output/extensions --imagespath /tmp/xep-images
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 endif
