@@ -6,7 +6,7 @@ import logging
 import json
 
 SITENAME = "XMPP"
-SITE_URL = ""
+SITEURL = "https://xmpp.org"
 TIMEZONE = "Europe/Paris"  #Unused (Pelican complains if you don't provide it)
 DEFAULT_LANG = "en"
 
