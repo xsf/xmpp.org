@@ -30,3 +30,14 @@
 		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC6.ttf */
 		url('Exo_2_400.ttf') format('truetype');
 }
+@font-face {
+	font-family: 'Merriweather';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		url('merriweather-v22-latin-regular.woff2') format('woff2'),
+		url('merriweather-v22-latin-regular.woff') format('woff'),
+		url('merriweather-v22-latin-regular.eot') format('embedded-opentype'),
+		url('merriweather-v22-latin-regular.svg#Merriweather') format('svg'),
+		url('merriweather-v22-latin-regular.ttf') format('truetype');
+}
