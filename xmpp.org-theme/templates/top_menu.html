@@ -40,19 +40,20 @@
             </a>
           </li>
           {% endfor %}
+          {% if page.menu_name == "Community" %}
+          <li> <a href="https://xmpp.work/all-listings" target="_blank" rel="noopener"> Service Providers </a> </li>
+          {% endif %}
         </ul>
         {% endif %}
       </li>
       <li class="divider"></li>
       {% endfor %}
-      <li
-        {% if active_page == "blog" %}
-        class="active"
-        {% endif %}
-       >
-        <a href="{{ SITE_URL }}/blog.html">
-          XMPP Blog
-        </a>
+      <li {% if active_page == "blog" %} class="active" {% endif %} >
+        <a href="{{ SITE_URL }}/blog.html">Blog</a>
+      </li>
+      <li class="divider"></li>
+			<li>
+        <a href="https://xmpp.work" target="_blank" rel="noopener">Jobs</a>
       </li>
       <li class="divider"></li>
     </ul>

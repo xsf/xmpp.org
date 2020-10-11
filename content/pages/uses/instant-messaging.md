@@ -24,7 +24,8 @@ There are many projects that have created an XMPP-based Instant Messaging networ
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
-| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service | 
-| ~200 million | [Nimbuzz](http://nimbuzz.com)   | Nimbuzz is an XMPP-based instant messaging community. |
-|    ~100k      | [ChatMe](https://chatme.im)    | First Italian XMPP service with hosting function. |
-|    ~10k      | [Kontalk](http://kontalk.org)   | A very user-friendly XMPP service that uses your phone number as the user ID. Both server and client are FLOSS. |
+| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
+| ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
+| ~4 million   | [Grindr](https://grindr.com)    | Grindr is a geosocial networking and online dating application that [uses XMPP for its chat application](https://www.meetup.com/Los-Angeles-Android-Developers-Mobile-Developers-Meetup/events/221112018/). |
+|    ~10k      | [Kontalk](http://kontalk.org)   | A free and open source XMPP service that uses your phone number as the user ID. |
+|   Unknown    | [Jitsi](https://jitsi.org)      | Jitsi is a free and open source project that enables video-conferences. It uses XMPP for its chat functionality. |

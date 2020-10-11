@@ -72,7 +72,7 @@ The XSF recognizes the possibility that the creator of an XMPP Extension may mak
 
 By submitting an XMPP Extension for consideration by the XSF, the author of the Extension shall assign any ownership rights or other Claims asserted over the Extension to the XSF. This does not apply to Claims regarding any Implementations or Deployments of the Extension, but rather to the Extension itself as represented in a protocol or data format. Any documentation of the Extension (in the form of a XEP specification) shall be copyrighted by the XSF. Once an author assigns ownership to the XSF, the XSF shall in turn make the Extension available to all entities so that they may create, use, sell, distribute, or dispose of Implementations or Deployments of XMPP and all XMPP Extensions in perpetuity and without payment or hindrance.
 
-### 3.3 <a name="contrib-approval"></a>Approval of Extensions
+### 3.2 <a name="contrib-approval"></a>Approval of Extensions
 
 No Extension shall be approved by the XSF or its constituent committees if there are Claims to the Extension itself, or any Claims that would prevent perpetual, unrestricted, royalty-free use of the Extension in a compliant Implementation or Deployment by any interested party. If Claims preventing such use are discovered, the XSF shall immediately seek to replace the Extension with unencumbered protocols that may be implemented without condition by any entity.
 

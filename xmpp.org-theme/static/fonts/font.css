@@ -1,0 +1,43 @@
+@font-face {
+	font-family: 'Exo 2';
+	font-style: normal;
+	font-weight: 700;
+	src:
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jWfWsOdC_.woff2 */
+		url('Exo_2_700.woff2') format('woff2'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jWfWsOdC5.woff */
+		url('Exo_2_700.woff') format('woff'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jWfWsOdC7.eot */
+		url('Exo_2_700.eot?#iefix') format('embedded-opentype'),
+		/* from https://fonts.gstatic.com/l/font?kit=7cH1v4okm5zmbvwkAx_sfcEuiD8jWfWsOdC4&skey=1b9a3dc5c6de9cce&v=v8#Exo2 */
+		url('Exo_2_700.svg#Exo2') format('svg'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jWfWsOdC6.ttf */
+		url('Exo_2_700.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Exo 2';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC_.woff2 */
+		url('Exo_2_400.woff2') format('woff2'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC5.woff */
+		url('Exo_2_400.woff') format('woff'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC7.eot */
+		url('Exo_2_400.eot?#iefix') format('embedded-opentype'),
+		/* from https://fonts.gstatic.com/l/font?kit=7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC4&skey=1b9a3dc5c6de9cce&v=v8#Exo2 */
+		url('Exo_2_400.svg#Exo2') format('svg'),
+		/* from https://fonts.gstatic.com/s/exo2/v8/7cH1v4okm5zmbvwkAx_sfcEuiD8jvvKsOdC6.ttf */
+		url('Exo_2_400.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Merriweather';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		url('merriweather-v22-latin-regular.woff2') format('woff2'),
+		url('merriweather-v22-latin-regular.woff') format('woff'),
+		url('merriweather-v22-latin-regular.eot') format('embedded-opentype'),
+		url('merriweather-v22-latin-regular.svg#Merriweather') format('svg'),
+		url('merriweather-v22-latin-regular.ttf') format('truetype');
+}

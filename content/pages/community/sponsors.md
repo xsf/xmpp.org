@@ -17,6 +17,12 @@ The XSF is generously supported by the sponsors below, please visit their xmpp.o
 If your organization would like to become an XSF sponsor, then [please read about the benefits you’ll enjoy](/community/sponsorship).
 
 
+### ProcessOne
+
+[![](/images/logos/process-one.png)](/sponsors/processone)
+
+ProcessOne helps its customers build large scale realtime messaging platforms, using standard-based protocols. The company develops ejabberd, one of the most popular XMPP server. ejabberd is highly customizable and powers some of the largest messaging services & IoT platforms. Easy to deploy for small community servers, it scales massively and supports clustering, with the ability to support hundreds of millions users in a single domain ([more about ProcessOne](/sponsors/processone))
+
 ### Tigase
 
 [![](/images/logos/tigase.png)](/sponsors/tigase)

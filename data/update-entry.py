@@ -59,6 +59,14 @@ def main():
     )
 
     parser.add_argument(
+        "--set-doap",
+        dest="new_doap",
+        metavar="URL",
+        default=None,
+        help="Change the URL of the project DOAP file",
+    )
+
+    parser.add_argument(
         "--set-platforms",
         dest="new_platforms",
         metavar="PLATFORM",
@@ -137,6 +145,9 @@ def main():
     if args.new_url is not None:
         item["url"] = args.new_url or None
 
+    if args.new_doap is not None:
+        item["doap"] = args.new_doap or None
+
     if args.new_platforms is not None:
         item["platforms"] = list(set(
             platform.strip()
@@ -204,6 +215,7 @@ def main():
 
     with open(filename, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)
+        f.write("\n")
 
 
 if __name__ == "__main__":

@@ -10,6 +10,7 @@ VALID_ENTRY_KEYS = {
     "platforms",
     "name",
     "last_renewed",
+    "doap",
     "url",
 }
 

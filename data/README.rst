@@ -38,7 +38,7 @@ The tool will ask for confirmation::
    }
   is this okay? [y/n]
 
-After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint-tool.py`` on the respective JSON file and then make a Pull Request on GitHub.
+After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Updating information
@@ -46,7 +46,7 @@ Updating information
 
 When asking the tool for ``--help``, you will notice that it supports a few other options too::
 
-  usage: update-entry.py [-h] [--rename NAME] [--set-url URL]
+  usage: update-entry.py [-h] [--rename NAME] [--set-url URL] [--set-doap URL]
                          [--set-platforms PLATFORM [PLATFORM ...]]
                          [--no-renewal] [--no-ask]
                          JSONFILE [NAME]
@@ -61,6 +61,7 @@ When asking the tool for ``--help``, you will notice that it supports a few othe
     -h, --help            show this help message and exit
     --rename NAME         Rename the project
     --set-url URL         Change the URL of the project
+    --set-doap URL        Change the URL of the project DOAP file
     --set-platforms PLATFORM [PLATFORM ...]
                           Change the contents of the last column
     --no-renewal
@@ -82,7 +83,7 @@ Do not set ``--no-ask`` and always be sure to review that your changes do what y
 
 If you do not know how to spell your project correctly, leave out the ``NAME`` argument; the tool will list the project it knows.
 
-Do not forget to **validate** that your entry is correct using the ``./lint-tool.py`` on the respective JSON file and then make a Pull Request on GitHub.
+Do not forget to **validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Add a new entry
@@ -96,6 +97,7 @@ There is no tooling for that. Add the following template to the respective ``jso
           "platforms": ["GNU Hurd", "Plan9"],
           "last_renewed": null,
           "name": "My Fancy New Client",
+          "doap": "https://myfancyclient.example/doap.rdf",
           "url": "https://myfancyclient.example"
       }
 

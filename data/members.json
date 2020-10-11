@@ -19,8 +19,20 @@
         "registrar": {
             "list_name": "XMPP Registrar"
         },
+        "chair": {
+            "list_name": "XSF Chair",
+            "page": "/about/xsf/people.html"
+        },
         "ed": {
             "list_name": "Executive Director",
+            "page": "/about/xsf/people.html"
+        },        
+        "secretary": {
+            "list_name": "XSF Secretary",
+            "page": "/about/xsf/people.html"
+        },
+        "treasurer": {
+            "list_name": "XSF Treasurer",
             "page": "/about/xsf/people.html"
         },
         "scam": {
@@ -39,7 +51,8 @@
         },
 
         {
-            "name": "Kim Alvefur"
+            "name": "Kim Alvefur",
+            "roles": ["council"]
         },
 
         {
@@ -57,7 +70,7 @@
 
         {
             "name": "Maxime Buquet",
-            "roles": ["scam"]
+            "roles": ["board", "editor", "scam"]
         },
 
         {
@@ -74,8 +87,11 @@
         },
 
         {
-            "name": "Emmanuel Gil Peyrot",
-            "roles": ["council"]
+            "name": "Martin Dosch"
+        },
+
+        {
+            "name": "Emmanuel Gil Peyrot"
         },
 
         {
@@ -83,7 +99,7 @@
         },
 
         {
-            "name": "Damien Jeske"
+            "name": "Waqas Hussain"
         },
 
         {
@@ -98,12 +114,12 @@
 
         {
             "name": "Alexander Gnauck",
-            "roles": ["infrastructure"]
+            "roles": ["secretary", "infrastructure"]
         },
 
         {
             "name": "Daniel Gultsch",
-            "roles": ["scam"]
+            "roles": ["council", "scam"]
         },
 
         {
@@ -137,8 +153,17 @@
         },
 
         {
+            "name": "Edward Maurer",
+            "roles": ["commteam"]
+        },
+
+        {
+            "name": "Yvo Meeres"
+        },
+
+        {
             "name": "Ralph Meijer",
-            "roles": ["board"]
+            "roles": ["chair", "board"]
         },
 
         {
@@ -172,7 +197,11 @@
 
         {
             "name": "Peter Saint-Andre",
-            "roles": ["ed", "registrar", "editor", "infrastructure"]
+            "roles": ["treasurer", "registrar", "editor", "infrastructure"]
+        },
+
+        {
+            "name": "Fabian Sauter"
         },
 
         {
@@ -181,7 +210,7 @@
         },
 
         {
-            "name": "Jonathan Schleifer"
+            "name": "Paul Schaub"
         },
 
         {
@@ -196,7 +225,7 @@
 
         {
             "name": "Kevin Smith",
-            "roles": ["council", "editor", "infrastructure"]
+            "roles": ["editor", "infrastructure"]
         },
 
         {
@@ -208,16 +237,28 @@
         },
 
         {
-            "name": "Remko Tronçon"
-        },
-
-        {
             "name": "Nicolas Vérité",
-            "roles": ["board", "scam", "commteam"]
+            "roles": ["scam", "commteam"]
         },
 
         {
             "name": "Peter Waher"
+        },
+
+        {
+            "name": "Holger Weiß"
+        },
+
+        {
+            "name": "Sam Whited"
+        },
+
+        {
+            "name": "Natalie Wirth"
+        },
+
+        {
+            "name": "Marvin Wissfeld"
         },
 
         {
@@ -231,10 +272,6 @@
 
         {
             "name": "Andrzej Wójcik"
-        },
-
-        {
-            "name": "Florian Zeitz"
         }
     ],
 
