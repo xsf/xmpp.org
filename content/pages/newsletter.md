@@ -28,11 +28,14 @@ To receive the newsletter in your email inbox, please sign up using the form bel
           
 Past editions of the newsletter can be [read online here](/category/newsletter.html).
 
-The XMPP Newsletter is also available in other languages. If you would like to
-translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam).
+### Help us to build the newsletter
 
-### Available Translations
+We started drafting every new issue in the [XSF Github repository](https://github.com/xsf/xmpp.org/pulls) and we are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort.
+
+### Translations
+
+The XMPP Newsletter is also available in other languages. If you would like to translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam).
 
 * [Français](https://news.jabberfr.org/category/newsletter/)
-* [Deutsch](https://www.jabber.de/)
+* [Deutsch](https://www.jabber.de/) (Wenn du daran interessiert bist regelmäßig eine eine deutsche Übersetzung zu veröffentlichen, melde dich doch bitte bei der XSF!)
 * [Español](https://www.jabber.de/) (Hey, seguimos buscando un editor español decente para estas traducciones. Por favor contacta al XSF!)
