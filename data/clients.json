@@ -633,6 +633,15 @@
     },
     {
         "doap": null,
+        "last_renewed": null,
+        "name": "txmmp",
+        "platforms": [
+            "Unix",
+        ],
+        "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"
+    },
+    {
+        "doap": null,
         "last_renewed": "2020-05-10T16:00:55",
         "name": "UWPX",
         "platforms": [
