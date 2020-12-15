@@ -56,6 +56,10 @@
         },
 
         {
+            "name": "Aditya Borikar"
+        },        
+
+        {
             "name": "Mario Behling"
         },
 
@@ -69,11 +73,6 @@
         },
 
         {
-            "name": "Maxime Buquet",
-            "roles": ["board", "editor", "scam"]
-        },
-
-        {
             "name": "Travis Burtrum"
         },
 
@@ -83,7 +82,7 @@
 
         {
             "name": "Dave Cridland",
-            "roles": ["council"]
+            "roles": ["board", "council"]
         },
 
         {
@@ -105,7 +104,7 @@
 
         {
             "name": "Guus der Kinderen",
-            "roles": ["board", "infrastructure", "scam"]
+            "roles": ["infrastructure", "scam"]
         },
 
         {
@@ -193,7 +192,8 @@
         },
 
         {
-            "name": "Arc Riley"
+            "name": "Arc Riley",
+            "roles": ["board"]
         },
 
         {
