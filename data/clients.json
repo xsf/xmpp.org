@@ -636,7 +636,7 @@
         "last_renewed": "2020-12-10T19:00:55",
         "name": "txmmp",
         "platforms": [
-            "Unix"
+            "Linux"
         ],
         "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"
     },
