@@ -28,9 +28,11 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-11-21T00:00:00",
-        "name": "artalk-xmpp",
+        "last_renewed": "2020-12-19T00:00:00",
+        "name": "Artalk.XMPP",
         "platforms": [
+            ".NET Core",
+            ".NET Standard",
             "C#"
         ],
         "url": "https://github.com/araditc/Artalk.Xmpp"
