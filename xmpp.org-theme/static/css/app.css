@@ -6,3 +6,28 @@
 li p {
     margin-bottom: 0;
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #161616;
+		color: #ccc;
+	}
+
+	label {
+		color: #aaa;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #aaa;
+	}
+
+	table {
+		background-color: #333;
+		border: 1px solid #444;
+	}
+
+	table > tbody > tr > td, table > thead > tr > th {
+		background-color: #282828;
+		color: #ccc;
+	}
+}
