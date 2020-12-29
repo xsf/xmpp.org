@@ -33,11 +33,11 @@ If you have an interest in XMPP standards, it is straightforward to [become a Me
 
 ## <a name="board" href="#board">The Board</a>
 
-The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2018-2019 consists of the following individuals:
+The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2020-2021 consists of the following individuals:
 
-- __Guus der Kinderen__ is a freelance software engineer and a lead developer of the [Openfire XMPP Server](https://www.igniterealtime.org/projects/openfire/). He currently serves as chair in the board of directors of the [Ignite Realtime Foundation](https://www.igniterealtime.org), an organization to promote, support and advance development of software in the Ignite Realtime Open Source community.
+- __Arc Riley__ has been contributing to the free software community for over two decades, and maintains a large number of freely licensed XMPP packages. He lead for Python XML-SIG, mentor students working on XMPP-related projects and frequenly presents on XMPP (lightning talks, poster sessions, workshops, etc).
+- __Dave Cridland__ works on [Metre](https://github.com/dwd/metre), and has worked on a number of different servers. He currently works on messaging at [Forward Health](https://forwardhealth.co/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
-- __Maxime Buquet__ is a software developer. He maintains [xmpp-rs](https://gitlab.com/xmpp-rs/xmpp-rs), [poezio and slixmpp](https://lab.louiz.org/poezio), and various other free software projects. He is actively driving collaboration in the community by organizing and encouraging events as part of the [SCAM team](/about/xsf/scam-team).
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
 - __Severino Ferrer__ is a software developer and XSF member. He co-authored [XEP-0382](https://xmpp.org/extensions/xep-0382.html) and serves at the [XSF Communication Team](https://wiki.xmpp.org/web/CommTeam).
 
