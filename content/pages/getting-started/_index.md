@@ -22,13 +22,16 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
   * [Dino](https://dino.im/) (Linux)
   * [Gajim](https://gajim.org/) (Linux, Windows)
   * [Monal](https://monal.im/) (macOS)
+  * [Beagle IM](https://beagle.im/)
   * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
   * [UWXP](https://uwpx.org/) (Windows)
   
 ### Android
 
-  * [Beagle IM](https://beagle.im/)
+  * [blabber.im](https://blabber.im./)
   * [Conversations](https://conversations.im/)
+  * [Quicksy](https://quicksy.im/)
+  * [Yaxim](https://yax.im.)
   
 ### iOS
 
