@@ -22,4 +22,4 @@ For developers, Compliance Suites provide guidance on which specifications they 
 For users, Compliance Suites provide an easy way to compare implementations based on their respective advertised compliance levels and year.
 
 ## <a name="current" href="#current">Current Compliance Suites</a>
-The 2020 specification for Compliance Suites can be found at [XEP-0423: XMPP Compliance Suites 2020](https://xmpp.org/extensions/xep-0423.html)
+The 2021 specification for Compliance Suites can be found at [XEP-0443: XMPP Compliance Suites 2021](https://xmpp.org/extensions/xep-0443.html)
