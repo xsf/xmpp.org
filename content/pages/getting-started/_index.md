@@ -18,11 +18,11 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 ### Desktop
 
+  * [Beagle IM](https://beagle.im/) (Mac)
   * [Converse.js](https://conversejs.org/) (Browser)
   * [Dino](https://dino.im/) (Linux)
   * [Gajim](https://gajim.org/) (Linux, Windows)
   * [Monal](https://monal.im/) (macOS)
-  * [Beagle IM](https://beagle.im/)
   * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
   * [UWXP](https://uwpx.org/) (Windows)
   
@@ -40,7 +40,7 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 # 2. Create an account
 
-As with e-mail, you will need an account with a service provider. Again, there are plenty of choices. The following links each give you lists of publicly available providers.
+As with e-mail, you will need an account with a service provider. Again, there are plenty of choices. The following links provide lists of publicly available providers.
 
 * [list.jabber.at](https://list.jabber.at/)
 * [xmpp-servers.404.city](https://xmpp-servers.404.city)
