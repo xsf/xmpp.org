@@ -24,7 +24,7 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
   * [Gajim](https://gajim.org/) (Linux, Windows)
   * [Monal](https://monal.im/) (macOS)
   * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
-  * [UWXP](https://uwpx.org/) (Windows)
+  * [UWPX](https://uwpx.org/) (Windows)
   
 ### Android
 
@@ -45,7 +45,7 @@ As with e-mail, you will need an account with a service provider. Again, there a
 * [list.jabber.at](https://list.jabber.at/)
 * [xmpp-servers.404.city](https://xmpp-servers.404.city)
 
-There is also a [XMPP Compliance Tester](https://compliance.conversations.im/old/)
+There is also an [XMPP Compliance Tester](https://compliance.conversations.im/old/)
 
 
 # 3. Log in! That's it!
