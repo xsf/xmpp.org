@@ -47,7 +47,7 @@ Dacă sunteți interesați să faceți o alegere pentru următorul deceniu, perm
 - [Noțiuni de bază](https://xmpp.org/getting-started/), XMPP Standards Foundation
 - Articol pe blogul XSF: [It’s all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) scris in 2015 de către Laura
 - [Modern XMPP](https://docs.modernxmpp.org/), site web care susține dezvoltatorii și noii veniți să înceapă cu XMPP
-- Comentarii din comunitatea XMPP (nu toate în limba engleză):
+- Comentarii din comunitatea XMPP (în limba engleză sau în alte limbi):
     - [Eine Chance für XMPP?](https://www.jabber.de/eine-chance-fuer-xmpp/), jabber.de
     - [Cum să vă asigurați că soluția dvs. de mesagerie instant oferă utilizatorilor confidențialitate și securitate](https://www.erlang-solutions.com/blog/how-to-ensure-your-instant-messaging-solution-offers-users-privacy-and-security.html), Erlang Solutions
     - [Postare Mastodon](https://pouet.april.org/@aprilorg/105520799332659637), Association April
