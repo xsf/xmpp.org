@@ -6,8 +6,6 @@ blog_id: blog
 category: misc
 ---
 
-## Mesagerie instantanee: Nu este vorba despre aplicație
-
 Mai multe persoane m-au contactat recent întrebându-mă ce fel de aplicație de mesagerie ar trebui să folosească acum - au spus că de fapt nu înțeleg despre ce ar trebui să fie preocupați și dacă ar trebui să treacă de la una dintre cele cunoscute la alta.
 M-am gândit cum să răspund. Evident, aș fi putut pleda pur și simplu pentru XMPP (Extensible Messaging and Presence = Protocolul Extensibil de Mesagerie și Prezență), dar apoi m-am gândit că acest lucru ar putea să nu fie un răspuns util în sine. Adesea, oamenii iau o decizie rapidă cu privire la programele lor de comunicare și de obicei aceasta nu este o alegere întemeiată; și astfel vor ajunge să treacă la o altă mesagerie mai târziu.
 
