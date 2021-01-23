@@ -6,6 +6,9 @@ blog_id: blog
 category: misc
 ---
 
+_This is the Romanian translation of the original blog post._  
+_Aceasta este traducerea în limba română a postării originale de pe blog._  
+    
 Mai multe persoane m-au contactat recent întrebându-mă ce fel de aplicație de mesagerie ar trebui să folosească acum - au spus că de fapt nu înțeleg despre ce ar trebui să fie preocupați și dacă ar trebui să treacă de la una dintre cele cunoscute la alta.
 M-am gândit cum să răspund. Evident, aș fi putut pleda pur și simplu pentru XMPP (Extensible Messaging and Presence = Protocolul Extensibil de Mesagerie și Prezență), dar apoi m-am gândit că acest lucru ar putea să nu fie un răspuns util în sine. Adesea, oamenii iau o decizie rapidă cu privire la programele lor de comunicare și de obicei aceasta nu este o alegere întemeiată; și astfel vor ajunge să treacă la o altă mesagerie mai târziu.
 
@@ -45,7 +48,7 @@ Dacă sunteți interesați să faceți o alegere pentru următorul deceniu, perm
 - [Noțiuni de bază](https://xmpp.org/getting-started/), XMPP Standards Foundation
 - Articol pe blogul XSF: [It’s all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) scris in 2015 de către Laura
 - [Modern XMPP](https://docs.modernxmpp.org/), site web care susține dezvoltatorii și noii veniți să înceapă cu XMPP
-- Comentarii din comunitatea XMPP (în limba engleză sau în alte limbi):
+- Comentarii din comunitatea XMPP (nu toate în limba română):
     - [Eine Chance für XMPP?](https://www.jabber.de/eine-chance-fuer-xmpp/), jabber.de
     - [Cum să vă asigurați că soluția dvs. de mesagerie instant oferă utilizatorilor confidențialitate și securitate](https://www.erlang-solutions.com/blog/how-to-ensure-your-instant-messaging-solution-offers-users-privacy-and-security.html), Erlang Solutions
     - [Postare Mastodon](https://pouet.april.org/@aprilorg/105520799332659637), Association April
