@@ -16,18 +16,37 @@ Do you want to start chatting with XMPP? This page helps you get up and running 
 
 There are [many, many XMPP clients](/software/clients) for you to choose from. To get you started, here are some of the more popular ones:
 
-* [Conversations](https://play.google.com/store/apps/details?id=eu.siacs.conversations&referrer=utm_source%3Dxmpp.org) (Android)
-* [Swift.IM](https://swift.im/swift.html) (OS X, Windows & Linux)
-* [Gajim](https://gajim.org/) (Windows & Linux)
-* [Monal IM](https://monal.im/) (macOS & iOS)
-* [Converse.js](https://conversejs.org/) (Browser)
+### Desktop
+
+  * [Beagle IM](https://beagle.im/) (OS X)
+  * [Converse.js](https://conversejs.org/) (Browser)
+  * [Dino](https://dino.im/) (Linux)
+  * [Gajim](https://gajim.org/) (Linux, Windows)
+  * [Monal](https://monal.im/) (OS X)
+  * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
+  * [UWPX](https://uwpx.org/) (Windows)
+  
+### Android
+
+  * [blabber.im](https://blabber.im./)
+  * [Conversations](https://conversations.im/)
+  * [Quicksy](https://quicksy.im/)
+  * [Yaxim](https://yax.im.)
+  
+### iOS
+
+  * [Monal](https://monal.im/)
+  * [Siskin IM](https://siskin.im/)
 
 # 2. Create an account
 
-As with e-mail, you'll need an account with a service provider. Again, there are plenty of choices. The following links each give you lists of publicly available providers.
+As with e-mail, you will need an account with a service provider. Again, there are plenty of choices. The following links provide lists of publicly available providers.
 
-* [xmpp-servers.404.city](https://xmpp-servers.404.city)
 * [list.jabber.at](https://list.jabber.at/)
+* [xmpp-servers.404.city](https://xmpp-servers.404.city)
+
+There is also an [XMPP Compliance Tester](https://compliance.conversations.im/old/)
+
 
 # 3. Log in! That's it!
 
