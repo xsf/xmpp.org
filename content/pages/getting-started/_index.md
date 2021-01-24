@@ -18,11 +18,11 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 ### Desktop
 
-  * [Beagle IM](https://beagle.im/) (Mac)
+  * [Beagle IM](https://beagle.im/) (OS X)
   * [Converse.js](https://conversejs.org/) (Browser)
   * [Dino](https://dino.im/) (Linux)
   * [Gajim](https://gajim.org/) (Linux, Windows)
-  * [Monal](https://monal.im/) (macOS)
+  * [Monal](https://monal.im/) (OS X)
   * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
   * [UWPX](https://uwpx.org/) (Windows)
   
@@ -35,8 +35,8 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
   
 ### iOS
 
-  * [Monal](https://monal.im/) (iOS)
-  * [Siskin IM](https://siskin.im/)  (iOS)
+  * [Monal](https://monal.im/)
+  * [Siskin IM](https://siskin.im/)
 
 # 2. Create an account
 
