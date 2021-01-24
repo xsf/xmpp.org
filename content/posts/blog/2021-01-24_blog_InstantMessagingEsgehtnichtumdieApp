@@ -8,20 +8,20 @@ category: misc
 
 ## Instant Messaging: Es geht nicht um die App
 
-_This is the German translation of the original blog post._
-_Dies ist die deutsche Übersetzung dieses ursprünglichen Blogeintrag._
+_This is the German translation of the [original blog post](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
+_Dies ist die deutsche Übersetzung des [ursprünglichen Blogeintrags](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
 
 Kürzlich haben sich mehrere Leute bei mir gemeldet und gefragt, welche Art von Messenger sie jetzt verwenden sollten - sie sagten, dass sie eigentlich nicht verstehen, worauf sie achten sollten und ob sie von einem der allgemein bekannten Messenger zu einem anderen wechseln sollten. 
 Ich fragte mich, wie ich dies beantworten sollte. Natürlich hätte ich einfach für XMPP (Extensible Messaging and Presence Protocol) plädieren können, aber dann dachte ich, dass dies allein vielleicht keine hilfreiche Antwort ist. Oftmals treffen die Leute nur eine schnelle Entscheidung über ihre Kommunikationssoftware, und diese ist in der Regel keine fundierte Wahl; und so werden sie später zu einem anderen Messenger wechseln.
 
-Viele fügen sogar einen weiteren Messenger zu ihrer immer größer werdenden Sammlung von Messengern hinzu, was wahrscheinlich eher frustrierend als hilfreich ist. Das bringt mich zurück zur ursprünglichen Frage: Welche Frage oder welches Problem will man hier lösen? Was sind die Absichten? Kann man eine Lösung mit einer besseren technologischen Basis finden, 
+Viele fügen sogar einen weiteren Messenger zu ihrer immer größer werdenden Sammlung von Messengern hinzu, was wahrscheinlich eher frustrierend als hilfreich ist. Das bringt mich zurück zur ursprünglichen Fragestellung: Welches Problem will man hier lösen? Was sind die Absichten? Kann man eine Lösung mit einer besseren technologischen Basis finden, 
 die den Hype vermeidet und bei der man nicht mehrere Messenger-Apps installieren muss?
 
-Unterschiedliche Menschen haben unterschiedliche Überlegungen zur Beantwortung dieser Frage - manche benötigen einen effektiven Datenschutz, oder Datenhoheit, oder einfach die Möglichkeit, alle ihre Kontakte von einem Ort aus zu erreichen. Der Wechsel von einem Messaging-System zu einem anderen bedeutet jedoch oft, einige Kontakte zurückzulassen. Viele Messaging-Systeme erfordern außerdem eine Telefonnummer, was für den Datenschutz nicht gerade förderlich ist.
+Verschiedene Menschen haben verschiedene Überlegungen zur Beantwortung dieser Frage - manche benötigen einen effektiven Datenschutz, oder Datenhoheit, oder einfach die Möglichkeit, alle ihre Kontakte von einem Ort aus zu erreichen. Der Wechsel von einem Messaging-System zu einem anderen bedeutet jedoch oft, einige Kontakte zurückzulassen. Viele Messaging-Systeme erfordern außerdem eine Telefonnummer, was für den Datenschutz nicht gerade förderlich ist.
 
 ### Souveränität der Kommunikation
 
-Wie Sie vielleicht schon vermutet haben, werde ich für XMPP plädieren. Ich denke, die erste Wahl, die man treffen sollte, ist nicht, welchen Messenger man verwendet, sondern welche zugrundeliegende Software-Technologie. Betrachten Sie zuerst die Wahl der Technologie, bevor Sie von einer Empfehlung zur nächsten springen.
+Wie Sie vielleicht schon vermutet haben, werde ich für XMPP plädieren. Ich denke, die erste zu treffende Entscheidung sollte nicht sein, welchen Messenger man verwendet, sondern welche zugrundeliegende Software-Technologie. Betrachten Sie zuerst die Wahl der Technologie, bevor Sie von einer Empfehlung zur nächsten springen.
 
 > XMPP ist ein offenes Protokoll, so wie HTTP für das Web ist. Es spielt keine Rolle, wie Ihre Website aussieht, jeder kann mit ihr interagieren. Dieses Prinzip ist die Idee hinter XMPP, allerdings für Instant Messaging.
 
@@ -35,13 +35,13 @@ Bei der XMPP Standards Foundation und bei vielen anderen, die an dieser offenen 
 
 > XMPP stellt definierte Informationen zur Verfügung, wie die Kommunikation in einem Netzwerk abgewickelt werden soll. Der Anwender entscheidet, welche Messaging-Software passt oder wo die Daten gespeichert werden sollen.
 
-Im Gegensatz zur aktuellen Situation, in der andere Ihnen ihren bevorzugten Messenger vorschlagen, haben Sie im XMPP-Universum die freie Wahl unter vielen Messengern - suchen Sie sich den aus, der Ihnen gefällt, nicht den, den andere mögen 
+Im Gegensatz zur aktuellen Situation, in der andere Ihnen ihren bevorzugten Messenger vorschlagen, haben Sie im XMPP-Universum die freie Wahl aus vielen Messengern - suchen Sie sich den aus, der Ihnen gefällt, nicht den, den andere mögen 
 bis zur nächsten Internet-Modeerscheinung. Der Unterschied ist, dass Sie unabhängig davon, welche Messaging-App Sie verwenden oder welche App Ihre Freunde benutzen, immer noch den Komfort haben, mit all Ihren Kontakten im selben Netzwerk zu sein, unabhängig von Ihrer heutigen Wahl. Ich denke, das ist eine echte Lösung.
 
 ## Es geht nicht um die App, sondern um die Technologie
 
 Überlegen Sie sich, welche Technologie Sie einsetzen wollen, und entscheiden Sie dann, welcher Messenger zu Ihnen oder Ihrer Umgebung passt. XMPP und seine Community haben eine Vielzahl von Erfahrungen gesammelt, die erfolgreich 
-in einer großen Anzahl von Software eingesetzt wird. Wir denken, dass dies eine gute Lösung für die meisten Menschen und Organisationen da draußen und das Internet als Ganzes ist - und es ist offen für uns alle, um Innovationen für die Zukunft zu machen.
+in einer Vielzahl von Anwendungen eingesetzt wird. Wir sind der Meinung, dass dies eine gute Lösung für die meisten Menschen und Organisationen da draußen sowie das Internet als Ganzes sein kann - und es ist offen für uns alle, um Innovationen für die Zukunft zu machen.
 
 > XMPP hat nicht nur eine breite Palette an Messaging-Software, es gibt auch verschiedene Server-Software und Werkzeuge (Bibliotheken), um die Infrastruktur selbst aufzubauen.
 
