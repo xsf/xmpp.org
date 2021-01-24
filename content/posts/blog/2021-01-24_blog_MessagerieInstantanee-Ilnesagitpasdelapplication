@@ -6,22 +6,22 @@ blog_id: blog
 category: misc
 ---
 
-_This is the French translation of the original blog post._
-_C'est la traduction française de l'article original du blog._
+_This is the French translation of the [original blog post](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
+_C'est la traduction française de [l'article original du blog](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
 
 Plusieurs personnes m'ont récemment contacté pour me demander quel type de messagerie ils devraient utiliser maintenant - ils ont dit qu'ils ne comprenaient pas vraiment ce dont ils devraient s'inquiéter et s'ils devraient passer d'un des messagers connus à un autre. 
-Je me suis demandé comment répondre à cette question. Évidemment, j'aurais pu simplement plaider en faveur de XMPP (Extensible Messaging and Presence Protocol), mais j'ai ensuite pensé que cette réponse ne serait pas utile en soi. Souvent, les gens prennent une décision rapide concernant leur logiciel de communication et ce n'est généralement pas un choix fondé ; et ils finiront donc par passer à un autre messager plus tard.
+Je me suis demandé comment répondre à cette question. Évidemment, j'aurais pu simplement plaider en faveur d'XMPP (Extensible Messaging and Presence Protocol), mais j'ai ensuite pensé que cette réponse ne serait pas utile en soi. Souvent, les gens prennent une décision rapide concernant leur logiciel de communication et ce n'est généralement pas un choix fondé; et ils finiront donc par passer à un autre messagerie plus tard.
 
-Beaucoup ajouteront en fait un autre messager à leur collection toujours croissante de messagers, ce qui est probablement plus frustrant qu'utile. Cela me ramène à la question initiale : Quelle question ou quel problème veut-on résoudre ici ? Quelles sont les motivations ? Peut-on trouver une solution avec une meilleure base technologique qui évite 
-le battage médiatique et n'implique pas l'installation de multiples applications de messagerie ?
+Beaucoup ajouteront en fait un autre messagerie à leur collection toujours croissante de messagers, ce qui est probablement plus frustrant qu'utile. Cela me ramène à la question initiale: Quelle question ou quel problème veut-on résoudre ici? Quelles sont les motivations? Peut-on trouver une solution avec une meilleure base technologique qui évite 
+le battage médiatique et n'implique pas l'installation de multiples applications de messagerie?
 
-Différentes personnes ont des considérations différentes pour répondre à cette question - certaines exigent une protection efficace des données, ou la souveraineté des données, ou simplement la possibilité d'atteindre tous leurs contacts à partir d'un seul endroit. Cependant, passer d'un système de messagerie à un autre signifie souvent laisser certains contacts derrière soi. De nombreux systèmes de messagerie exigent également un numéro de téléphone, ce qui n'est pas très bon pour la protection de la vie privée.
+Chacun a sa façon de répondre à cette question, selon ses préoccupations - certaines exigent une protection efficace des données, ou la souveraineté des données, ou simplement la possibilité d'atteindre tous leurs contacts à partir d'un seul endroit. Cependant, passer d'un système de messagerie à un autre signifie souvent laisser certains contacts derrière soi. De nombreux systèmes de messagerie exigent également un numéro de téléphone, ce qui n'est pas très bon pour la protection de la vie privée.
 
 ### Souveraineté de la communication
 
-Comme vous vous en doutez, je vais plaider en faveur de l'XMPP. Je pense que le premier choix à faire n'est pas de savoir quel messager utiliser, mais quelle technologie logicielle sous-jacente. Il faut d'abord réfléchir au choix de la technologie, avant de passer d'une recommandation à l'autre.
+Comme vous vous en doutez, je vais plaider en faveur d'XMPP. Je pense que le premier choix à faire n'est pas de savoir quel messagerie utiliser, mais quelle technologie logicielle sous-jacente. Il faut d'abord réfléchir au choix de la technologie, avant de passer d'une recommandation à l'autre.
 
-> XMPP est un protocole ouvert, comme HTTP l'est pour le web. XMPP est un protocole ouvert, comme HTTP l'est pour le web. Peu importe à quoi ressemble votre site web, tout le monde peut interagir avec lui. Ce principe est l'idée qui sous-tend XMPP, mais pour la messagerie instantanée.
+> XMPP est un protocole ouvert, comme HTTP l'est pour le web. Peu importe à quoi ressemble votre site web, tout le monde peut interagir avec lui. Ce principe est l'idée qui sous-tend XMPP, mais pour la messagerie instantanée.
 
 À la Fondation des normes XMPP, et avec de nombreux autres acteurs impliqués dans cette technologie ouverte, nous pensons que XMPP est un excellent choix en tant que technologie de communication, et pas seulement en ce qui concerne la confidentialité des données. XMPP existe depuis plus de vingt ans, et une grande expérience pratique a été acquise au cours de cette période. Elle comprend de nombreux indicateurs clés pour le choix de la technologie et la souveraineté habilitante de la communication, comme elle le soutient :
 
@@ -29,23 +29,23 @@ Comme vous vous en doutez, je vais plaider en faveur de l'XMPP. Je pense que le 
 - Normalisation et extensibilité de la technologie
 - Interopérabilité
 - L'innovation et l'utilisation du développement ouvert
-- Respect de la vie privée et contrôle, notamment par l'utilisation d'un cryptage de bout en bout
+- Respect de la vie privée et contrôle, notamment par l'utilisation du chiffrement de bout en bout
 
 > XMPP fournit des informations définies sur la manière de gérer la communication dans un réseau. L'utilisateur décide quel logiciel de messagerie convient ou où les données doivent être stockées.
 
-Contrairement à la situation actuelle où d'autres personnes vous suggèrent d'utiliser leur messager préféré, dans l'univers XMPP vous avez le libre choix de nombreux messagers - choisissez celui que vous aimez, pas celui que les autres aiment 
+Contrairement à la situation actuelle où d'autres personnes vous suggèrent d'utiliser leur messagerie préféré, dans l'univers XMPP vous avez le libre choix de nombreux messageries - choisissez celui que vous aimez, pas celui que les autres aiment 
 jusqu'au prochain engouement pour l'internet. La différence est que, quelle que soit votre application de messagerie ou celle qu'utilisent vos amis, vous avez toujours le confort d'être sur le même réseau avec tous vos contacts, indépendamment de votre choix aujourd'hui. Je pense que c'est une vraie solution.
 
 ### Il ne s'agit pas de l'application, mais de la technologie
 
-Réfléchissez à la technologie que vous comptez utiliser, puis décidez quel messager vous convient ou convient à votre environnement. XMPP et sa communauté ont accumulé une expérience variée, qui a été 
-utilisé dans de nombreux logiciels. Nous pensons que c'est une bonne solution pour la plupart des gens et des organisations, et pour l'Internet dans son ensemble - et il est ouvert à tous pour faire des innovations pour l'avenir.
+Réfléchissez à la technologie que vous comptez utiliser, puis décidez quel messagerie vous convient ou convient à votre environnement. XMPP et sa communauté ont accumulé une expérience variée, qui a été 
+utilisée dans de nombreux logiciels. Nous pensons que c'est une bonne solution pour la plupart des gens et des organisations, et pour l'Internet dans son ensemble - et il reste ouvert à des innovations futures.
 
 > XMPP n'a pas seulement une large gamme de logiciels de messagerie; il y a aussi divers logiciels de serveur et les outils (bibliothèques) pour construire soi-même une infrastructure.
 
-Il n'y a pas une seule façon de concevoir des applications de communication. Prenez une décision durable pour une technologie standardisée - à cette fin, et pour bien d'autres, nous recommandons l'utilisation de XMPP !
+Il n'y a pas une seule façon de concevoir des applications de communication. Prenez une décision durable pour une technologie standardisée - à cette fin, et pour bien d'autres, nous recommandons l'utilisation d'XMPP!
 
-Si vous souhaitez faire un choix pour la prochaine décennie, laissez-moi vous indiquer quelques lectures supplémentaires :
+Si vous souhaitez faire un choix pour la prochaine décennie, laissez-moi vous indiquer quelques lectures supplémentaires:
 
 - [Getting started](https://xmpp.org/getting-started/), XMPP Standards Foundation
 - Article du Blog XSF: [It’s all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) de Laura, écrit en 2015
