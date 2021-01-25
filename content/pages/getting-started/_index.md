@@ -42,8 +42,8 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 As with e-mail, you will need an account with a service provider. Again, there are plenty of choices. The following links provide lists of publicly available providers.
 
-* [Public XMPP servers, list.jabber.at](https://list.jabber.at/)
-* [Open list of public XMPP servers, xmpp-servers.404.city](https://xmpp-servers.404.city)
+* [Public XMPP servers](https://list.jabber.at/), list.jabber.at
+* [Open list of public XMPP servers](https://xmpp-servers.404.city), xmpp-servers.404.city
 * You can also review the list of the [IM Observatory](https://xmpp.net/list.php) _(Service is eventually acting unexpected currently)_
 
 There is also the [XMPP Compliance Tester](https://compliance.conversations.im/old/)
