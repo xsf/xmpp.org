@@ -1,13 +1,13 @@
 ---
 title: Mesagerie instantanee: Nu este vorba despre aplicație
-date: 2021-01-20 06:30
+date: 2021-01-28 22:40
 author: Edward Maurer
 blog_id: blog
 category: misc
 ---
 
-_This is the Romanian translation of the original blog post._  
-_Aceasta este traducerea în limba română a postării originale de pe blog._  
+_This is the Romanian translation of the [original blog post](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
+_Aceasta este traducerea în limba română a postării [originale de pe blog](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._  
 _Thanks for reviewing Licaon_Kter!_
     
 Mai multe persoane m-au contactat recent întrebându-mă ce fel de aplicație de mesagerie ar trebui să folosească acum - au spus că de fapt nu înțeleg despre ce ar trebui să fie preocupați și dacă ar trebui să treacă de la una dintre cele cunoscute la alta.
@@ -54,3 +54,4 @@ Dacă sunteți interesați să faceți o alegere pentru următorul deceniu, perm
     - [Postare Mastodon](https://pouet.april.org/@aprilorg/105520799332659637), Association April
     - [Postare Twitter](https://twitter.com/MovimNetwork/status/1351138046029279239), Movim Network
    
+Această postare pe blog este publicată sub licența CC BY-SA 4.0.
