@@ -1,26 +1,25 @@
 ------
 title: Mensajería instantánea: No se trata de la aplicación
-date: 2021-01-28 19:00
+date: 2021-01-28 22:00
 author: Edward Maurer
 blog_id: blog
 category: misc
 ------
 
 _This is the Spanish translation of the [original blog post](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
-_Esta es la traducción al alemán de [la entrada original del blog](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
-_Thanks to for XX their review!_
+_Esta es la traducción al español de [la entrada original del blog](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
+_Muchas gracias a Alejandra Pulido por la corrección._
 
-Recientemente, varias personas se han puesto en contacto conmigo para preguntarme qué tipo de mensajero deberían utilizar ahora; me han dicho que, en realidad, no entienden de qué deberían preocuparse y si deberían cambiar de uno de los mensajeros comúnmente conocidos a otro. 
-Me pregunté cómo responder a esto. Obviamente, podría haber defendido simplemente el XMPP (Extensible Messaging and Presence Protocol), pero entonces pensé que esto podría no ser una respuesta útil por sí misma. A menudo, la gente toma una decisión rápida sobre su software de comunicación y ésta no suele ser una elección bien fundamentada, por lo que acabará cambiando a otro mensajero más adelante.
+Recientemente, varias personas se han puesto en contacto conmigo para preguntarme qué tipo de mensajería instantánea deberían utilizar ahora; me han dicho que, en realidad, no entienden de qué deberían preocuparse y si deberían cambiar de uno de los proveedores de mensajería instantánea comúnmente conocidos a otro. 
+Me pregunté cómo responder a esto. Obviamente, podría haber defendido simplemente el XMPP (Extensible Messaging and Presence Protocol), pero entonces pensé que esto podría no ser una respuesta útil por sí misma. A menudo, la gente toma una decisión rápida sobre su software de comunicación y ésta no suele ser una elección bien fundamentada, por lo que acabará cambiando a otro proveedor más adelante.
 
-De hecho, muchos añadirán otro mensajero a su creciente colección de mensajeros, lo que probablemente sea más frustrante que útil. Esto me lleva de nuevo a la pregunta original: ¿Qué cuestión o qué problema se quiere resolver aquí? ¿Cuáles son los incentivos? ¿Se puede encontrar una solución con una mejor base tecnológica que evite 
-que evite el bombardeo y no implique la instalación de múltiples aplicaciones de mensajería?
+De hecho, muchos añadirán otra aplicación de mensajería instantánea a su creciente colección de aplicaciones, lo que probablemente sea más frustrante que útil. Esto me lleva de nuevo a la pregunta original: ¿Qué pregunta o qué problema se quiere resolver aquí? ¿Cuáles son los incentivos? ¿Se puede encontrar una solución con una mejor base tecnológica que evite el bombardeo y no implique la instalación de múltiples aplicaciones de mensajería?
 
-Cada persona tiene sus propias consideraciones para responder a esta pregunta: algunos requieren una privacidad efectiva de los datos, o la soberanía de los mismos, o simplemente la posibilidad de llegar a todos sus contactos desde un solo lugar. Sin embargo, pasar de un sistema de mensajería a otro suele significar dejar atrás algunos contactos. Muchos sistemas de mensajería también requieren un número de teléfono, lo que no es bueno para la privacidad.
+Cada persona tiene sus propias consideraciones para responder a esta pregunta: algunos requieren una privacidad efectiva de los datos, o la soberanía de los mismos, o simplemente la posibilidad de llegar a todos sus contactos desde un solo lugar. Sin embargo, pasar de un sistema de mensajería a otro suele significar dejar atrás algunos contactos. Muchos sistemas de mensajería instantánea también requieren un número de teléfono, lo que no es bueno para la privacidad.
 
 ### Soberanía de la comunicación
 
-Como habrás sospechado, abogaré por el XMPP. Creo que la primera elección que hay que hacer no es qué mensajero utilizar, sino qué tecnología de software subyacente. Considera primero la elección de la tecnología, antes de saltar de una recomendación a otra.
+Como habrás sospechado, abogaré por el XMPP. Creo que la primera elección que hay que hacer no es la aplicación de mensajería a utilizar, sino qué tecnología de software subyacente. Considera primero la elección de la tecnología, antes de saltar de una recomendación a otra.
 
 > XMPP es un protocolo abierto, como HTTP lo es para la web. No importa el aspecto de su sitio web, todo el mundo puede interactuar con él. Este principio es la idea detrás de XMPP, pero para la mensajería instantánea.
 
@@ -34,19 +33,17 @@ En la Fundación de Estándares XMPP, y con muchos otros implicados en esta tecn
 
 > XMPP proporciona información definida sobre cómo manejar la comunicación en una red. El usuario decide qué software de mensajería le conviene o dónde deben almacenarse los datos.
 
-A diferencia de la situación actual, en la que los demás te sugieren que utilices su mensajero preferido, en el universo XMPP puedes elegir libremente entre muchos mensajeros: escoge el que te guste a ti, no el que les guste a los demás 
-hasta la próxima moda de Internet. La diferencia es que, independientemente de la aplicación de mensajería que utilices o de la que usen tus amigos, sigues teniendo la comodidad de estar en la misma red con todos tus contactos, independientemente de tu elección actual. Creo que esta es una solución real.
+A diferencia de la situación actual, en la que los demás te sugieren que utilices su aplicación preferida, en el universo XMPP tu puedes elegir libremente entre muchas aplicaciones de mensajería instantánea: escoge el que más te guste, no el que le guste a los demás hasta la próxima moda de Internet. La diferencia es que, independientemente de la aplicación de mensajería que utilices o de la que usen tus amigos, sigues teniendo la comodidad de estar en la misma red con todos tus contactos, independientemente de tu elección actual. Creo que esta es una solución real.
 
 ### No se trata de la aplicación sino de la tecnología
 
-Considere la posibilidad de tomar una decisión sobre la tecnología que pretende utilizar y, a continuación, decida qué mensajero le conviene a usted o a su entorno. XMPP y su comunidad han acumulado una gran experiencia, que ha sido utilizada con éxito 
-utilizado con éxito en una gran cantidad de software. Creemos que es una buena solución para la mayoría de las personas y organizaciones que existen, así como para Internet en su conjunto, y está abierto a que todos hagamos innovaciones para el futuro.
+Considera la posibilidad de tomar una decisión sobre la tecnología que pretendes utilizar y, a continuación, decide qué aplicación de mensajería instantánea te conviene a ti o a tu entorno. XMPP y su comunidad han acumulado una gran experiencia, que ha sido utilizada con éxito en una gran cantidad de software. Creemos que es una buena solución para la mayoría de las personas y organizaciones que existen, así como para Internet en general, y está abierto a que todos hagamos innovaciones para el futuro.
 
-> XMPP no sólo cuenta con una amplia gama de software de mensajería; también hay varios software de servidor y las herramientas (bibliotecas) para construir la infraestructura por ti mismo.
+> XMPP no sólo cuenta con una amplia gama de software de mensajería instantánea; también hay varios software de servidor y las herramientas (bibliotecas) para construir la infraestructura por ti mismo.
 
 No hay una única manera de diseñar aplicaciones de comunicación. Decídete de forma sostenible por una tecnología estandarizada - para ese propósito, y muchos más, ¡recomendamos el uso de XMPP!
 
-Si está interesado en tomar una decisión para la próxima década, permítame indicarle algunas lecturas adicionales:
+Si estás interesado en tomar una decisión para la próxima década, permíteme indicarte algunas lecturas adicionales:
 
 - [Getting started](https://xmpp.org/getting-started/), XMPP Standards Foundation
 - Artículo del blog de XSF: [It’s all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) de Laura, escrito en 2015
