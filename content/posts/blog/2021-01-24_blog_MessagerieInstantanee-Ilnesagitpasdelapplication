@@ -1,6 +1,6 @@
 ---
 title: Messagerie instantanée : Il ne s'agit pas de l'application
-date: 2021-01-24 06:30
+date: 2021-01-28 22:00
 author: Edward Maurer
 blog_id: blog
 category: misc
@@ -20,9 +20,9 @@ un choix bien réfléchi, ce qui, plus tard, les amènera inexorablement à pass
 Beaucoup ne feront en fait qu’ajouter une autre messagerie instantanée à leur collection toujours croissante de messageries, ce qui
 est probablement plus frustrant qu’utile. Cela me ramène à la question initiale : quel enjeu et quel problème veut-on résoudre ici ?
 Quelles sont leurs motivations ? Peut-on trouver une solution avec un meilleur fondement technologique qui évite l’effet de mode et
-n’implique pas l’installation de plusieurs applications de messagerie?
+n’implique pas l’installation de plusieurs applications de messagerie ?
 
-Il y a autant de réponses que de personnes qui posent ces questions: quand certains ont besoin d’une réelle protection de leurs 
+Il y a autant de réponses que de personnes qui posent ces questions : quand certains ont besoin d’une réelle protection de leurs 
 données personnelles, les autres demandent un contrôle complet sur celles-ci, ou s’attendent simplement à pouvoir joindre tous leurs
 contacts à partir du même appareil. Quelles que soient ces attentes, migrer d’un système de messagerie à un autre implique souvent de
 laisser certains contacts derrière soi. De nombreux systèmes de messagerie ont en plus fait le choix de réclamer un numéro de téléphone,
@@ -40,13 +40,13 @@ L’idée derrière XMPP, c’est d’appliquer le même principe à la messager
 La XSF, ainsi que beaucoup de personnes impliquées dans cette technologie libre, pense que XMPP est un excellent choix d’un point de vue
 technique, et pas seulement en ce qui concerne la protection des données personnelles. XMPP existe depuis plus de 20 ans, ce qui a permis
 d’accumuler beaucoup d’expérience de terrain. Cela inclut de nombreux indicateurs clés pour le choix d’une technologie de communication
-maitrisée, puisqu’il prend en charge:
+maitrisée, puisqu’il prend en charge :
 
-* la décentralisation des services de communication (fédération)
-* la standardisation et l’extensibilité de la technologie
-* l’interopérabilité
-* l’innovation par la mise en place d’un développement ouvert
-* la protection et le contrôle des données personnelles, incluant le chiffrement de bout en bout
+* la décentralisation des services de communication (fédération) ;
+* la standardisation et l’extensibilité de la technologie ;
+* l’interopérabilité ;
+* l’innovation par la mise en place d’un développement ouvert ;
+* la protection et le contrôle des données personnelles, incluant le chiffrement de bout en bout.
 
 > XMPP fournit les éléments d’information permettant de gérer la communication dans un réseau. Mais chaque personne décide du logiciel
 client qui lui convient, et sur quel serveur ses données doivent être stockées.
@@ -67,21 +67,21 @@ d’Internet comme un tout, sans compter qu’elle reste ouverte à de futures i
 vos propres infrastructures.
 
 Il n’y a pas qu’une seule manière de concevoir des applications de communication. Faites le choix d’une technologie standardisée qui restera
-valable à long terme: pour cette raison, et pour beaucoup d’autres, nous recommandons l’utilisation d’XMPP!
+valable à long terme : pour cette raison, et pour beaucoup d’autres, nous recommandons l’utilisation d’XMPP!
 
-Si vous avez l’intention de choisir une solution pour la prochaine décennie, laissez-moi vous orienter vers plus de documentations:
+Si vous avez l’intention de choisir une solution pour la prochaine décennie, laissez-moi vous orienter vers plus de documentations :
 
-* Pour commencer, mettez le pied à l’étrier avec [le site de XSF](https://xmpp.org/getting-started/) [en anglais]
+* Pour commencer, mettez le pied à l’étrier avec [le site de XSF](https://xmpp.org/getting-started/) [en anglais] ;
 * Un article du blog de la XSF: [It's all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) (C’est une question de choix et de contrôle) [en anglais] par Laura, écrit et 2015 ;
-* [Modern XMPP](https://docs.modernxmpp.org/), un site web en anglais utile aux développeurs comme aux nouveaux arrivants pour se lancer dans XMPP
+* [Modern XMPP](https://docs.modernxmpp.org/), un site web en anglais utile aux développeurs comme aux nouveaux arrivants pour se lancer dans XMPP ;
 * Commentaires de la communauté XMPP:
-    * [Eine Chance für XMPP](https://www.jabber.de/eine-chance-fuer-xmpp/) (Une chance pour XMPP) [en allemand], jabber.de
-    * [How to ensure your Instant Messaging solution offers users privacy and security.](https://www.erlang-solutions.com/blog/how-to-ensure-your-instant-messaging-solution-offers-users-privacy-and-security.html) (Comment s’assurer que votre solution de messagerie instantanée offre à vos utilisateurs une protection de leurs données personnelles et la sécurité) [en anglais], Erlang Solutions
-    * [message sur Mastodon](https://pouet.april.org/@aprilorg/105520799332659637) de l’Association April
-    * [message sur Twitter](https://twitter.com/MovimNetwork/status/1351138046029279239) du réseau Movim
+    * [Eine Chance für XMPP](https://www.jabber.de/eine-chance-fuer-xmpp/) (Une chance pour XMPP) [en allemand], jabber.de ;
+    * [How to ensure your Instant Messaging solution offers users privacy and security.](https://www.erlang-solutions.com/blog/how-to-ensure-your-instant-messaging-solution-offers-users-privacy-and-security.html) (Comment s’assurer que votre solution de messagerie instantanée offre à vos utilisateurs une protection de leurs données personnelles et la sécurité) [en anglais], Erlang Solutions ;
+    * [message sur Mastodon](https://pouet.april.org/@aprilorg/105520799332659637) de l’Association April ;
+    * [message sur Twitter](https://twitter.com/MovimNetwork/status/1351138046029279239) du réseau Movim ;
 * [Ajout des Traducteurs français]:
-    * [XMPP en 2021](https://linuxfr.org/users/mathieui/journaux/xmpp-en-2021)
-    * Salon de la [communauté jabberfr.org](https://chat.jabberfr.org/converse.js/jabberfr@chat.jabberfr.org)
-    * Salon [linuxfr](https://chat.jabberfr.org/converse.js/linuxfr@chat.jabberfr.org)
+    * [XMPP en 2021](https://linuxfr.org/users/mathieui/journaux/xmpp-en-2021) ;
+    * Salon de la [communauté jabberfr.org](https://chat.jabberfr.org/converse.js/jabberfr@chat.jabberfr.org) ;
+    * Salon [linuxfr](https://chat.jabberfr.org/converse.js/linuxfr@chat.jabberfr.org).
 
 Cet article de blog est publié sous licence CC BY-SA 4.0.
