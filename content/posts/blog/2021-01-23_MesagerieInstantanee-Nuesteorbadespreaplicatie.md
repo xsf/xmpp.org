@@ -1,0 +1,57 @@
+---
+title: Mesagerie instantanee: Nu este vorba despre aplicație
+date: 2021-01-28 22:40
+author: Edward Maurer
+blog_id: blog
+category: misc
+---
+
+_This is the Romanian translation of the [original blog post](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._
+_Aceasta este traducerea în limba română a postării [originale de pe blog](https://xmpp.org/2021/01/instant-messaging-its-not-about-the-app/)._  
+_Thanks for reviewing Licaon_Kter!_
+    
+Mai multe persoane m-au contactat recent întrebându-mă ce fel de aplicație de mesagerie ar trebui să folosească acum - au spus că de fapt nu înțeleg despre ce ar trebui să fie preocupați și dacă ar trebui să treacă de la una dintre cele cunoscute la alta.
+M-am gândit cum să răspund. Evident, aș fi putut pleda pur și simplu pentru XMPP (Extensible Messaging and Presence = Protocolul Extensibil de Mesagerie și Prezență), dar apoi m-am gândit că acest lucru ar putea să nu fie un răspuns util în sine. Adesea, oamenii iau o decizie rapidă cu privire la programele lor de comunicare și de obicei aceasta nu este o alegere întemeiată; și astfel vor ajunge să treacă la o altă mesagerie mai târziu.
+
+Mulți vor adăuga de fapt o altă aplicație de mesagerie la colecția lor tot mai mare, ceea ce este probabil mai mult frustrant decât util. Acest lucru mă aduce înapoi la întrebarea inițială: Ce problemă se dorește a se rezolva? Care sunt stimulentele? Se poate găsi o soluție cu o bază tehnologică mai bună care să evite exacerbările mediatice și nu implică instalarea mai multor sisteme de mesagerie?
+
+Diferite persoane au considerații diferite pentru a răspunde la această întrebare - unele necesită confidențialitatea efectivă a datelor sau suveranitatea datelor sau pur și simplu abilitatea de a avea acces la toate contactele lor dintr-un singur loc. Cu toate acestea, trecerea de la un sistem de mesagerie la altul va însemna adesea lăsarea în urmă a unor contacte. Multe sisteme de mesagerie necesită, de asemenea, un număr de telefon, ceea ce nu este ceva grozav pentru intimitate.
+
+### Suveranitatea comunicării
+
+După cum ați suspectat deja, voi pleda pentru XMPP. Cred că prima alegere pe care ar trebui să o facem nu este ce aplicație de mesagerie să folosim, ci ce tehnologie e la baza ei. Luați în considerare mai întâi alegerea tehnologiei, înainte de a trece de la o recomandare la alta.
+
+> XMPP este un protocol deschis, la fel ca HTTP pentru Internet. Nu contează cum arată site-ul dumneavoastră, toată lumea poate interacționa cu acesta. Acest principiu este ideea din spatele XMPP, dar pentru mesagerie instantanee.
+
+La XMPP Standards Foundation și împreună cu mulți alții implicați în această tehnologie deschisă, credem că XMPP este o alegere excelentă ca tehnologie de comunicare, nu doar în ceea ce privește confidențialitatea datelor. XMPP există de peste douăzeci de ani și multă experiență practică a fost adunată în tot acest timp. Aceasta include mulți indicatori cheie pentru alegerea tehnologiei și care permite suveranitatea comunicării, deoarece susține:
+
+- Descentralizarea serviciilor de comunicații (federație)
+- Standardizarea și extensibilitatea tehnologiei
+- Interoperabilitate
+- Inovația și utilizarea dezvoltării deschise
+- Confidențialitatea și controlul, de asemenea, prin utilizarea criptării de la un capăt la altul
+
+> XMPP oferă informații bine definite despre cum să fie gestionată comunicarea într-o rețea. Utilizatorul decide ce program de mesagerie i se potrivește sau unde ar trebui stocate datele.
+
+Spre deosebire de situația actuală în care alte persoane vă sugerează să utilizați aplicația sistemului lor preferat, în universul XMPP aveți libertatea de a vă alege aplicația de mesagerie dintre multe opțiuni - alegeți-o pe cea care vă place, nu cea aleasă de ceilalți ca moftul zilei citit pe Internet. Diferența este că, indiferent de aplicația dumneavoastră de mesagerie sau de cea a prietenilor voștrii, aveți în continuare confortul de a vă afla în aceeași rețea cu toate contactele voastre, indiferent de alegerea de astăzi. Cred că aceasta este o soluție reală.
+
+### Nu este vorba despre aplicație, ci despre tehnologie
+
+În decizie luați în considerare tehnologia pe care intenționați să o utilizați, și apoi decideți ce aplicație de mesagerie vi se potrivește dumneavoastră sau mediului vostru. XMPP și comunitatea sa au acumulat o experiență variată, care a fost cu succes utilizată într-o mulțime de programe. Credem că aceasta este o soluție bună pentru majoritatea oamenilor și a organizațiilor de pretutindeni și pentru Internet în ansamblu - și este accesibilă pentru noi toți ca să inovăm în viitor.
+
+> XMPP are nu doar o gamă largă de aplicații de mesagerie; există, de asemenea, diverse programe pentru server și instrumentele (bibliotecile) pentru a vă construi singuri infrastructura.
+
+Nu există un singur mod în care aplicațiile de comunicare trebuie să fie proiectate. Luați o decizie durabilă pentru o tehnologie standardizată - în acest scop, și multe altele, vă recomandăm utilizarea XMPP!
+
+Dacă sunteți interesați să faceți o alegere pentru următorul deceniu, permiteți-mi să vă îndrum spre lectură suplimentară:
+
+- [Getting started](https://xmpp.org/getting-started/), XMPP Standards Foundation
+- Articol pe blogul XSF: [It’s all about choices and control](https://xmpp.org/2015/01/its-all-about-choices-and-control/) scris in 2015 de către Laura
+- [Modern XMPP](https://docs.modernxmpp.org/), site web care susține dezvoltatorii și noii veniți să înceapă cu XMPP
+- Comentarii din comunitatea XMPP (nu toate în limba română):
+    - [Eine Chance für XMPP?](https://www.jabber.de/eine-chance-fuer-xmpp/), jabber.de
+    - [How to ensure your Instant Messaging solution offers users privacy and security](https://www.erlang-solutions.com/blog/how-to-ensure-your-instant-messaging-solution-offers-users-privacy-and-security.html), Erlang Solutions
+    - [Postare Mastodon](https://pouet.april.org/@aprilorg/105520799332659637), Association April
+    - [Postare Twitter](https://twitter.com/MovimNetwork/status/1351138046029279239), Movim Network
+   
+Această postare pe blog este publicată sub licența CC BY-SA 4.0.
