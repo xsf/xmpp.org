@@ -20,14 +20,14 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y python-pip git nginx && pip install pelican==3.3 markdown==2.6.11 ghp-import
+RUN apt-get install -y python-pip git && pip install pelican==3.3 markdown==2.6.11 ghp-import
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
 COPY . /var/tmp/src/xmpp.org
-RUN cd /var/tmp/src/xmpp.org && make publish && cp -prv output/* /var/www/html/
-COPY deploy/xsf.conf /etc/nginx/sites-available/default
+RUN cd /var/tmp/src/xmpp.org && make publish
 
-EXPOSE 80
+FROM nginx
+COPY deploy/xsf.conf /etc/nginx/conf.d/default.conf
+COPY --from=0 /var/tmp/src/xmpp.org/output/ /var/www/html/
 
-CMD /usr/sbin/nginx -g 'daemon off;'
