@@ -1,5 +1,5 @@
 ---
-Title: XMPP Libraries
+Title: XMPP Libraries & Tools
 Url: software/libraries
 Save_as: software/libraries.html
 Parent_id: software
@@ -15,7 +15,7 @@ Swlist_Source: libraries
 Swlist_Platforms_Column_Head: Languages
 ---
 
-Code libraries are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.
+Code libraries and tools are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.
 
 > Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
 
