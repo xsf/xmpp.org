@@ -18,12 +18,12 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 ### Desktop
 
-  * [Beagle IM](https://beagle.im/) (OS X)
+  * [Beagle IM](https://beagle.im/) (macOS)
   * [Converse.js](https://conversejs.org/) (Browser)
   * [Dino](https://dino.im/) (Linux)
   * [Gajim](https://gajim.org/) (Linux, Windows)
-  * [Monal](https://monal.im/) (OS X)
-  * [Swift.IM](https://swift.im/swift.html) (Linux, OS X, Windows)
+  * [Monal](https://monal.im/) (macOS)
+  * [Swift.IM](https://swift.im/swift.html) (Linux, macOS, Windows)
   * [UWPX](https://uwpx.org/) (Windows)
   
 ### Android
