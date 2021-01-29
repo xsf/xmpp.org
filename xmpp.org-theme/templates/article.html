@@ -1,4 +1,16 @@
 {% extends "base.html" %}
+{% block head %}
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@xmpp" />
+  <meta name="twitter:description" content="{{ article.summary[:200] | striptags }}" />
+  <meta name="twitter:title" content="{{ article.title }}" />
+  <meta name="twitter:image" content="https://xmpp.org/theme/images/xmpp-logo.png" />
+
+  <meta name="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+  <meta name="og:title" content="{{ article.title }}" />
+  <meta name="og:image" content="https://xmpp.org/theme/images/xmpp-logo.png" />
+  <meta name="og:description" content="{{ article.summary[:200] | striptags }}" />
+{% endblock %}
 {% set active_page = "blog" %}
 {% set active_page_url = "index.html" %}
 {% if article.blog_id == "newsletter" %}
