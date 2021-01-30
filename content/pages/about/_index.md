@@ -7,22 +7,24 @@ Top_menu_show: true
 Top_menu_order: 1
 Dropdown_menu_show: true
 Dropdown_menu_size: 8
-Dropdown_menu_elem_name_1: History
-Dropdown_menu_elem_url_1: history
+Dropdown_menu_elem_name_1: The XSF
+Dropdown_menu_elem_url_1: xmpp-standards-foundation
 Dropdown_menu_elem_name_2: Overview
 Dropdown_menu_elem_url_2: technology-overview
-Dropdown_menu_elem_name_3: Myths & Legends
-Dropdown_menu_elem_url_3: myths
+Dropdown_menu_elem_name_3: History
+Dropdown_menu_elem_url_3: history
 Dropdown_menu_elem_name_4: Standards Process
 Dropdown_menu_elem_url_4: standards-process
-Dropdown_menu_elem_name_5: The XSF
-Dropdown_menu_elem_url_5: xmpp-standards-foundation
-Dropdown_menu_elem_name_6: Specifications
-Dropdown_menu_elem_url_6: ../extensions/
+Dropdown_menu_elem_name_5: Specifications
+Dropdown_menu_elem_url_5: ../extensions/
+Dropdown_menu_elem_name_6: Myths & Legends
+Dropdown_menu_elem_url_6: myths
 Dropdown_menu_elem_name_7: Compliance Suites
 Dropdown_menu_elem_url_7: compliance-suites
 Dropdown_menu_elem_name_8: FAQ
 Dropdown_menu_elem_url_8: faq
+Dropdown_menu_elem_name_9: Roadmap
+Dropdown_menu_elem_url_9: roadmap
 Sidebar_menu_show: true
 Sidebar_menu_title: About XMPP
 Sidebar_menu_size: 8
