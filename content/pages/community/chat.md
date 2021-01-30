@@ -14,6 +14,9 @@ Content_layout: multiple-columns
 
 The XSF hosts a variety of chat rooms and all archives are available online.
 
+### Overview of logs
+Overview of the logs of XSF chatrooms ([logs](https://logs.xmpp.org/))
+
 ### Developer chatroom
 Chat about build software with XMPP ([join](xmpp:jdev@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/jdev/) | [webchat](/chat?jdev))
 
