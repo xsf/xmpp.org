@@ -6,7 +6,7 @@ Menu_name: About XMPP
 Top_menu_show: true
 Top_menu_order: 1
 Dropdown_menu_show: true
-Dropdown_menu_size: 8
+Dropdown_menu_size: 9
 Dropdown_menu_elem_name_1: The XSF
 Dropdown_menu_elem_url_1: xmpp-standards-foundation
 Dropdown_menu_elem_name_2: Overview
