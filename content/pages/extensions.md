@@ -26,7 +26,7 @@ The core specifications for XMPP are developed at the Internet Engineering Task 
 
 The XMPP Standards Foundation develops extensions to XMPP in its XEP series. This page lists Draft and Final XEPs as well as experimental proposals that are currently under consideration.
 
-Good places for developers to start are the [compliance suites](https://xmpp.org/extensions/xep-0423.html), as well as the [technology overview pages](https://xmpp.org/about-xmpp/technology-overview/).
+Good places for developers to start are the [compliance suites](https://xmpp.org/extensions/xep-0443.html), as well as the [technology overview pages](https://xmpp.org/about-xmpp/technology-overview/).
 
 <p class="jsSupport"><em>Note: The following table is sortable, just click on the headers (click twice to reverse the sort order).</em></p>
 
