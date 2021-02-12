@@ -30,7 +30,12 @@ Past editions of the newsletter can be [read online here](/category/newsletter.h
 
 ### Help us to build the newsletter
 
-We started drafting every new issue in the [XSF Github repository](https://github.com/xsf/xmpp.org/pulls) and we are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort.
+We started drafting every new issue in the current [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3) and we are always happy to welcome contributors. Do not hesitate to join the discussion in our [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort.
+
+To add your article, news or event you have three ways to contribute. For each of them we are asking you to place a formulation of your information
+- in the [online pad](https://yopad.eu/p/xmpp-newsletter-365days)
+- in the [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join)
+- in the current [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3)
 
 ### Translations
 
