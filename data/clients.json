@@ -10,6 +10,17 @@
     },
     {
         "doap": null,
+        "last_renewed": "2021-02-19T09:06:23",
+        "name": "Aparté",
+        "platforms": [
+            "BSD",
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://github.com/paulfariello/aparte/"
+    },
+    {
+        "doap": null,
         "last_renewed": null,
         "name": "AQQ",
         "platforms": [
