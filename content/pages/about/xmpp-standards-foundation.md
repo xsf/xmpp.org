@@ -5,21 +5,23 @@ Save_as: about/xmpp-standards-foundation.html
 Parent_id: about
 Sidebar_menu_show: true
 Sidebar_menu_title: About the XSF
-Sidebar_menu_size: 7
+Sidebar_menu_size: 8
 Sidebar_menu_elem_name_1: The XSF
 Sidebar_menu_elem_url_1: about/xmpp-standards-foundation
-Sidebar_menu_elem_name_2: Mission Statement
-Sidebar_menu_elem_url_2: about/xsf/mission
-Sidebar_menu_elem_name_3: Members
-Sidebar_menu_elem_url_3: about/xsf/members
-Sidebar_menu_elem_name_4: Editor Team
-Sidebar_menu_elem_url_4: about/xsf/editor-team
-Sidebar_menu_elem_name_5: Infrastructure Team
-Sidebar_menu_elem_url_5: about/xsf/infrastructure-team
-Sidebar_menu_elem_name_6: Summits, Conferences & Meetups Team
-Sidebar_menu_elem_url_6: about/xsf/scam-team
-Sidebar_menu_elem_name_7: Communication Team
-Sidebar_menu_elem_url_7: about/xsf/comm-team
+Sidebar_menu_elem_name_2: Bylaws
+Sidebar_menu_elem_url_2: about/xsf/bylaws
+Sidebar_menu_elem_name_3: Mission Statement
+Sidebar_menu_elem_url_3: about/xsf/mission
+Sidebar_menu_elem_name_4: Members
+Sidebar_menu_elem_url_4: about/xsf/members
+Sidebar_menu_elem_name_5: Editor Team
+Sidebar_menu_elem_url_5: about/xsf/editor-team
+Sidebar_menu_elem_name_6: Infrastructure Team
+Sidebar_menu_elem_url_6: about/xsf/infrastructure-team
+Sidebar_menu_elem_name_7: Summits, Conferences & Meetups Team
+Sidebar_menu_elem_url_7: about/xsf/scam-team
+Sidebar_menu_elem_name_8: Communication Team
+Sidebar_menu_elem_url_8: about/xsf/comm-team
 Content_layout: multiple-columns
 ---
 
