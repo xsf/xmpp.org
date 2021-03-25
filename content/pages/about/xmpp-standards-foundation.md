@@ -5,7 +5,7 @@ Save_as: about/xmpp-standards-foundation.html
 Parent_id: about
 Sidebar_menu_show: true
 Sidebar_menu_title: About the XSF
-Sidebar_menu_size: 6
+Sidebar_menu_size: 7
 Sidebar_menu_elem_name_1: The XSF
 Sidebar_menu_elem_url_1: about/xmpp-standards-foundation
 Sidebar_menu_elem_name_2: Mission Statement
