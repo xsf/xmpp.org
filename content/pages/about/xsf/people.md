@@ -18,7 +18,7 @@ Chairman of the XSF is Ralph Meijer. Ralph is the lead developer of several Jabb
 
 ### Executive Director
 
-This position is vacant currrently.
+The current Executive Director of the XSF is Matthew Wild. Matthew has served as a director since 2016, and prior to that on the XMPP Council 2009-2016. As well as contributions to the protocol, Matthew founded, and continues to develop, XMPP-related software projects such as [Prosody](https://prosody.im/) and [Snikket](https://snikket.org/). You can contact Matthew via [XMPP](xmpp:me@matthewwild.co.uk) or [email](mailto:me@matthewwild.co.uk).
 
 ### XSF Treasurer
 
