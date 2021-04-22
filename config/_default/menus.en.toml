@@ -134,6 +134,11 @@
     parent = "community"
     weight = 7
 [[main]]
+    name = "Fiscal Hosting"
+    url = "community/fiscalhost"
+    parent = "community"
+    weight = 8
+[[main]]
     name = "Getting Started"
     url = "/getting-started"
     weight = 5
