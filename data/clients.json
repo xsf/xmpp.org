@@ -409,7 +409,7 @@
         "url": "https://www.miranda-ng.org/en/"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/monal-im/Monal/develop/monal.doap",
         "last_renewed": "2021-04-28T07:30:00",
         "name": "Monal IM",
         "platforms": [
