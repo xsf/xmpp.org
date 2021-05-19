@@ -90,6 +90,17 @@
     },
     {
         "doap": null,
+        "last_renewed": "2021-05-19T00:00:00",
+        "name": "BombusMod",
+        "platforms": [
+            "Android",
+            "iOS",
+            "J2ME"
+        ],
+        "url": "https://github.com/BombusMod/BombusMod"
+    },
+    {
+        "doap": null,
         "last_renewed": null,
         "name": "Boogie Chat",
         "platforms": [
@@ -318,6 +329,15 @@
             "Browser"
         ],
         "url": "http://jappix.org"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2021-05-20T00:00:00",
+        "name": "Jimm Multi",
+        "platforms": [
+            "J2ME"
+        ],
+        "url": "https://github.com/kryukov/jimm-multi"
     },
     {
         "doap": null,
