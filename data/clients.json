@@ -1,7 +1,7 @@
 [
     {
         "doap": null,
-        "last_renewed": "2019-10-20T00:00:00",
+        "last_renewed": "2021-03-13T16:14:00",
         "name": "Adium",
         "platforms": [
             "macOS"
@@ -61,7 +61,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2021-04-11T14:14:00",
         "name": "BitlBee",
         "platforms": [
             "Linux"
@@ -70,7 +70,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-11-28T00:00:00",
+        "last_renewed": "2021-04-19T00:00:00",
         "name": "blabber.im",
         "platforms": [
             "Android"
@@ -128,7 +128,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-05-13T19:46:58",
+        "last_renewed": "2021-01-18T17:43:00",
         "name": "ChatSecure",
         "platforms": [
             "iOS",
@@ -138,7 +138,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2021-05-21T14:24:00",
         "name": "Chatty",
         "platforms": [
             "Linux"
@@ -147,7 +147,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2013-04-25T00:00:00",
         "name": "Coccinella",
         "platforms": [
             "Linux",
@@ -208,14 +208,14 @@
         "name": "eyeCU",
         "platforms": [
             "Linux",
-            "Other",
+            "OS/2",
             "Windows"
         ],
         "url": "https://eyecu.opiums.eu"
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2021-03-03T05:30:05",
         "name": "Finch",
         "platforms": [
             "Linux"
@@ -234,7 +234,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2018-05-10T09:18:00",
         "name": "GNU Freetalk",
         "platforms": [
             "Linux"
@@ -252,13 +252,15 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:02:35",
+        "last_renewed": "2021-01-12T00:00:00",
         "name": "IM+",
         "platforms": [
+            "Android",
             "iOS",
-            "macOS"
+            "macOS",
+            "Windows"
         ],
-        "url": "https://www.shape.ag/en/"
+        "url": "https://www.plus.im"
     },
     {
         "doap": null,
@@ -303,7 +305,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2017-04-06T00:00:00",
         "name": "JAJC",
         "platforms": [
             "Windows"
@@ -321,7 +323,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2018-08-29T15:00:00",
+        "last_renewed": "2021-05-20T18:25:00",
         "name": "Jitsi Desktop",
         "platforms": [
             "Linux",
@@ -332,7 +334,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:15:31",
+        "last_renewed": "2021-05-16T16:01:00",
         "name": "JSXC",
         "platforms": [
             "Browser"
@@ -352,7 +354,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-10-26T17:40:23",
+        "last_renewed": "2021-05-21T00:00:00",
         "name": "Kaidan",
         "platforms": [
             "Android",
@@ -365,7 +367,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2017-03-28T12:07:00",
         "name": "Kaiwa",
         "platforms": [
             "Browser"
@@ -374,7 +376,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:18:31",
+        "last_renewed": "2021-05-21T00:00:00",
         "name": "Kopete",
         "platforms": [
             "Linux"
@@ -383,10 +385,13 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:20:38",
+        "last_renewed": "2021-01-25T00:00:00",
         "name": "mcabber",
         "platforms": [
-            "Other"
+            "BSD",
+            "Linux",
+            "macOS",
+            "Windows"
         ],
         "url": "https://mcabber.com"
     },
@@ -401,7 +406,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:22:03",
+        "last_renewed": "2021-05-21T08:43:00",
         "name": "Miranda NG",
         "platforms": [
             "Windows"
@@ -444,7 +449,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:26:34",
+        "last_renewed": "2021-05-18T07:08:18",
         "name": "Pidgin",
         "platforms": [
             "Linux",
@@ -507,16 +512,16 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2018-03-26T09:39:11",
         "name": "Quiet Internet Pager",
         "platforms": [
             "Windows"
         ],
-        "url": "http://forum.qip.ru"
+        "url": "http://welcome.qip.ru/im"
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2017-01-07T14:53:00",
         "name": "qutIM",
         "platforms": [
             "Linux",
@@ -568,7 +573,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2021-02-12T16:16:00",
         "name": "Smuxi",
         "platforms": [
             "Linux",
@@ -619,7 +624,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2015-10-05T16:54:00",
         "name": "Tkabber",
         "platforms": [
             "Linux",
@@ -630,7 +635,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:46:05",
+        "last_renewed": "2021-02-11T00:00:00",
         "name": "Trillian",
         "platforms": [
             "Android",
@@ -644,7 +649,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-05-10T16:00:55",
+        "last_renewed": "2021-04-05T07:47:00",
         "name": "UWPX",
         "platforms": [
             "Windows"
@@ -680,7 +685,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2018-05-21T00:00:00",
         "name": "WTW",
         "platforms": [
             "Windows"
@@ -689,7 +694,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:51:22",
+        "last_renewed": "2019-11-01T15:27:00",
         "name": "Xabber",
         "platforms": [
             "Android",
@@ -700,7 +705,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2017-05-24T22:05:00",
         "name": "xmpp-client",
         "platforms": [
             "Linux",
@@ -710,7 +715,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2012-11-12T00:00:00",
         "name": "xmppchat",
         "platforms": [
             "Browser"
@@ -719,7 +724,7 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
+        "last_renewed": "2015-11-05T19:21:00",
         "name": "XMPPWebChat",
         "platforms": [
             "Browser"
@@ -737,7 +742,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:55:15",
+        "last_renewed": "2021-02-09T00:00:00",
         "name": "Zom",
         "platforms": [
             "Android",
