@@ -33,14 +33,14 @@ Past editions of the newsletter can be [read online here](/category/newsletter.h
 We are drafting every month’s newsletter issue in a corresponding pull request in the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3) and we are always happy to welcome contributors. Do not hesitate to join the discussion in our [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort.
 
 To add your article, news or event you have three ways to contribute. For each of them we are asking you to write a short summary of the content you would like to contribute and post it to
-- the [online pad](https://yopad.eu/p/xmpp-newsletter-365days)
-- the [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join)
-- the current [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3)
+* the [online pad](https://yopad.eu/p/xmpp-newsletter-365days)
+* the [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join)
+* the current [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3)
 
 ### Translations
 
-The XMPP Newsletter is also available in other languages. If you would like to translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam).
+The XMPP Newsletter is also available in other languages. If you would like to translate it into other languages, please get in touch with the [Communication Team](https://wiki.xmpp.org/web/CommTeam). Currently the translations are published by these communities:
 
 * [Français](https://news.jabberfr.org/category/newsletter/)
-* [Deutsch](https://www.jabber.de/) (Wenn du daran interessiert bist regelmäßig eine eine deutsche Übersetzung zu veröffentlichen, melde dich doch bitte bei der XSF!)
-* [Español](https://www.jabber.de/) (Hey, seguimos buscando un editor español decente para estas traducciones. Por favor contacta al XSF!)
+* [Deutsch](https://anoxinon.de/blog/)
+* [Italian](https://www.nicfab.it/)
