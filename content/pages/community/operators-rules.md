@@ -45,21 +45,19 @@ Some topics sometimes fit in the scope. If unsure, you can ask the moderators pr
 
   Here, it is important to strike the balance between advertisment and useful announcement. In general, security advisories related to such services or tools are always on-topic. If the service is paid for and the announcements aims at acquiring more customers, it may easily be off-topic. This is not an advertisment or business development channel.
 
-### Off-Topic
+### On-Topic induced Off-Topic
 
-Since some of the on-topic cases can quickly derail into off-topic when debates become too political or ad-hominem, here are some examples where the line toward off-topic has been crossed to make things clearer.
+Since some of the on-topic cases can quickly derail into off-topic when debates become too political or ad-hominem. When debating controversial topics, the difference between an insult or judgement and a discussion is in the rationale.
 
-* Judgement (as opposed to rational discussion) about server policies. The line between judgement and discussion is in the rationale. To help you finding the line, here’s an on-topic example:
+To help you finding the line, here’s an on-topic example:
 
-  > You should not block messages from non-contacts on the admin account, because other admins may have to reach you to notify you about a problem with your service.
+> You should not block messages from non-contacts on the admin account, because other admins may have to reach you to notify you about a problem with your service.
 
-  > I think other operators trying to reach me via XMPP should send a presence subscription first, so blocking messages from non-contacts is not an issue.
+> I think other operators trying to reach me via XMPP should send a presence subscription first, so blocking messages from non-contacts is not an issue.
 
-  > Keeping debug logs for 14 days is not a good idea because there is a lot of personal information in there which is at risk of exposure.
+> Keeping debug logs for 14 days is not a good idea because there is a lot of personal information in there which is at risk of exposure.
 
-#### Examples of off-topic discussions
-
-Some examples of off-topic messages.
+On the other hand, the following variants are are off-topic:
 
 This is combined with something which is easily read as a personal attack:
 
@@ -72,6 +70,8 @@ This *is* a personal attack:
 This lacks a rationale and is easily based on wrong assumptions; it can also be taken as an offense, because it does not acknowledge any countermeasures or trade-offs which might have been taken into account.
 
 > You are irresponsible for keeping debug logs for 14 days.
+
+If you find yourself unable to find a rationale which is technical and XMPP related, that is probably a good point to stop the interaction.
 
 ## Enforcement
 
