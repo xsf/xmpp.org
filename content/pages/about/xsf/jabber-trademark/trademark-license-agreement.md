@@ -1,6 +1,6 @@
 ---
 Title: Jabber Trademark License Agreement
-Url: about/xsf/jabber-trademark/trademark-license-agreement
+Url: about/xsf/jabber-trademark/trademark-license-agreement.html
 Save_as: about/xsf/jabber-trademark/trademark-license-agreement.html
 Parent_id: about
 Top_menu_show: false
