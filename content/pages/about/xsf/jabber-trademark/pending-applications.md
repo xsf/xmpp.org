@@ -12,4 +12,8 @@ Inherit_sidebar: about/xsf/jabber-trademark
 Content_layout: multiple-columns
 ---
 
-Pending applications are now tracked at [http://tracker.xmpp.org/browse/TRADEMARKS](http://tracker.xmpp.org/browse/TRADEMARKS)
+This page lists pending appliations for a license to make use of the [Jabber trademark](/about/xsf/jabber-trademark).
+
+| Mark                                  | Licensee                    | Type                        |
+|---------------------------------------|-----------------------------|-----------------------------|
+|                                       |                             |                             |
