@@ -15,7 +15,7 @@
   {%   set menu_title = [] %}
   {%   if page.sidebar_menu_title and menu_title.append(page.sidebar_menu_title) %}{% endif %}
   {%   set P_URL = page.inherit_sidebar|default(page.url) %}
-  {%   for sidebar_source in PAGES|selectattr("url", "equalto", P_URL) %}
+  {%   for sidebar_source in pages|selectattr("url", "equalto", P_URL) %}
   {%      if sidebar_source.sidebar_menu_size|default(false) %}
   {%         if menu_title.append(sidebar_source.sidebar_menu_title) %}{% endif %}
   {%         set size = sidebar_source.sidebar_menu_size|int %}
