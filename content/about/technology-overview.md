@@ -11,7 +11,7 @@ XMPP was originally developed in the Jabber open-source community to provide an 
 
 - **Open** — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form clients, servers, server components, and code libraries.
 
-- **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 7622](/rfcs/rfc7622.html)).
+- **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs/rfc3920.html) and [RFC 3921](/rfcs/rfc3921.html) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs/rfc6120.html), [RFC 6121](/rfcs/rfc6121.html), and [RFC 7622](https://datatracker.ietf.org/doc/html/rfc7622)).
 
 - **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](http://talk.google.com/) and XMPP deployments at organizations worldwide.
 
@@ -53,7 +53,7 @@ The core XMPP technologies are defined in two RFCs published by the IETF:
 
 - [RFC 6120: XMPP Core](/rfcs/rfc6120.html)
 - [RFC 6121: XMPP IM](/rfcs/rfc6121.html)
-- [RFC 7622: XMPP Address Format](/rfcs/rfc7622.html)
+- [RFC 7622: XMPP Address Format](https://datatracker.ietf.org/doc/html/rfc7622)
 
 The first XMPP RFCs ([RFC 3920](/rfcs/rfc3920.html) and  [RFC 3921](/rfcs/rfc3921.html)) were produced by the IETF’s XMPP Working Group in October 2004. In 2011 they were revised, resulting in the current specifications.
 
