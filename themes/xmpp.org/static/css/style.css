@@ -1,0 +1,361 @@
+h1 {
+    font-weight: 700 !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.nav-link {
+    font-family: "Exo 2", sans-serif;
+    font-weight: 400;
+}
+p,
+li,
+blockquote {
+    font-family: "Merriweather", serif !important;
+}
+a {
+    color: #008cba;
+    line-height: inherit;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #0078a0;
+}
+a img {
+    border: none;
+}
+p {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    text-rendering: optimizeLegibility;
+}
+li p {
+    margin-bottom: 0;
+}
+img {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+article {
+    margin-bottom: 80px;
+}
+article h1 {
+    margin-bottom: 20px;
+    color: #002b5c;
+}
+article h6 {
+    padding: 10px 0;
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+article p,
+article li {
+    font-size: 16px;
+    line-height: 1.8;
+}
+article h2,
+article h3 {
+    color: #002b5c;
+}
+table {
+    background: #fff;
+    border: solid 1px #ddd;
+    margin-bottom: 1.25rem;
+    table-layout: auto;
+}
+table caption {
+    background: transparent;
+    color: #222;
+    font-size: 1rem;
+    font-weight: bold;
+}
+table thead {
+    background: #f5f5f5;
+}
+table thead tr th,
+table thead tr td {
+    color: #222 !important;
+    font-size: 0.875rem !important;
+    font-weight: bold;
+    padding: 0.5rem 0.625rem 0.625rem !important;
+}
+table tfoot {
+    background: #f5f5f5;
+}
+table tfoot tr th,
+table tfoot tr td {
+    color: #222;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding: 0.5rem 0.625rem 0.625rem;
+}
+table tr th,
+table tr td {
+    color: #222 !important;
+    font-size: 0.875rem !important;
+    padding: 0.5625rem 0.625rem !important;
+    text-align: left;
+}
+table tr.even,
+table tr.alt,
+table tr:nth-of-type(even) {
+    background: #f9f9f9;
+}
+table thead tr th,
+table tfoot tr th,
+table tfoot tr td,
+table tbody tr th,
+table tbody tr td,
+table tr td {
+    display: table-cell;
+    line-height: 1.125rem;
+}
+
+.navbar-logo {
+    display: inline-block;
+    margin: -3px 5px 0 0;
+    width: 30px;
+}
+.dropdown-item {
+    font-family: "Exo 2", sans-serif;
+}
+.dropdown-item:active {
+    background-color:rgb(35, 67, 90);
+}
+
+.sidebar {
+    padding-top: 130px;
+}
+.sidebar li {
+    font-size: smaller;
+}
+.sidebar h4 {
+    text-transform: capitalize;
+}
+.header-home {
+    background-image: url(/images/london.jpg);
+    width: 100%;
+    background-size: cover;
+    height: 60vh;
+    background-position: center center;
+    position: relative;
+}
+.header-home .hero {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px;
+    width: 100%;
+}
+.header-home h1 {
+    color: #fff;
+    text-align: center;
+}
+.header-home h3 {
+    color: rgb(214, 214, 214);
+    text-align: center;
+    padding-bottom: 6px;
+}
+.feature-home p {
+    font-family: "Exo 2", sans-serif !important;
+    font-size: large;
+    line-height: inherit;
+}
+
+.header-internal {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.header-internal h1,
+.header-internal h1 a {
+    color: #002b5c;
+}
+.page-content {
+    padding: 40px 0;
+    min-height: 600px;
+}
+
+/* Sharing */
+.share-box {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+ul.share {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+   ul.share li {
+    display: inline-flex;
+    margin-right: 5px;
+}
+   ul.share li:last-of-type {
+    margin-right: 0;
+}
+   ul.share li .fab {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 150ms ease-in-out;
+    color: #fff;
+}
+   ul.share li a {
+    background-color: #b0b0b0;
+    display: block;
+    border-radius: 50%;
+    text-decoration: none !important;
+    margin: 0;
+}
+   ul.share li:hover .fab {
+    transform: scale(1.2)
+}
+
+/* Software list */
+.logo-software {
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline-block;
+    margin: 0 10px 10px 10px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.7;
+    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
+    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
+    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
+}
+.software-list h2 {
+    margin-bottom: 40px;
+}
+.software-list h5 {
+    color: #777;
+}
+.software-list:hover .logo-software {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    opacity: 1;
+    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
+    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
+    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, -moz-filter 1.5s;
+}
+
+/* Footer: Sponsors, Github link */
+.footer-sponsors {
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+    max-width: 800px;
+}
+.footer-sponsors ul {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.7;
+    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
+    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
+    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
+}
+.footer-sponsors li {
+    list-style: none;
+    display: inline-block;
+    margin: 10px;
+}
+.footer-sponsors:hover ul {
+    opacity: 1;
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
+    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
+    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
+}
+.footer-sponsors img {
+    height: 50px;
+}
+.footer-github {
+    border-top: 1px solid #eee;
+    padding: 12px;
+    text-align: center;
+}
+.footer-github p {
+    margin-bottom: 0;
+    font-family: "Exo 2", sans-serif;
+}
+.footer-github img {
+    height: 25px;
+    display: inline;
+    margin-right: 10px;
+    position: relative;
+    top: -3px;
+}
+.footer a {
+    color:#ccc;
+    font-family: "Exo 2", sans-serif;
+}
+
+.xeplist label {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: small;
+    margin-right: 12px;
+}
+.xeplist input {
+    margin-right: 4px;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #161616;
+		color: #ccc;
+	}
+
+	label {
+		color: #aaa;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		color: #aaa;
+	}
+    .header-internal h1, .header-internal h1 a {
+        color: #288cb3;
+    }
+    article h1,
+    article h2,
+    article h3 {
+        color: #b0b0b0;
+    }
+	table {
+		background-color: #333;
+		border: 1px solid #444;
+	}
+
+	table > tbody > tr > td,
+    table > thead > tr > th {
+		background-color: #2c2c2c;
+        color: #b3b3b3 !important;
+		color: #ccc;
+	}
+    .footer-sponsors {
+        background-color: #5a5a5a;
+    }
+    .software-list {
+        background-color: #5d5d5d;
+    }
+}

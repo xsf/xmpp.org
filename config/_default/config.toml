@@ -1,0 +1,26 @@
+baseURL = "/"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+title = "XMPP"
+canonifyurls = true
+disableHugoGeneratorInject = true
+Paginate = 10
+
+defaultContentLanguage = "en"
+theme = "xmpp.org"
+enableEmoji = true
+
+[Params]
+  subtitle = "The universal messaging standard"
+  hideAuthor = false
+  dateFormat = "January 2, 2006"
+  readingTime = true
+  socialShare = true
+
+[privacy]
+[privacy.youtube]
+  privacyEnhanced = true
+
+[permalinks]
+  blog = "/:year/:month/:title/"

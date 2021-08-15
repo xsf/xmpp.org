@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ if .Site.Data.announcement.enabled }}
+<div class="alert alert-info mb-0 text-center" role="alert">
+  <a href="{{ .Site.Data.announcement.url }}" target="blank_" class="alert-link">
+    Announcement: {{ .Site.Data.announcement.text }} More »
+  </a>
+</div>
+{{ end }}
+<div class="header-home py-5 text-center">
+    <div class="hero">
+      <h1>The universal messaging standard</h1>
+      <h3>Tried and tested. Independent. Privacy-focused.</h3>
+      <a type="button" class="btn btn-secondary btn-lg px-4" href="/getting-started">Get Started</a>
+    </div>
+</div>
+<div class="container px-4 py-5">
+    <h2 class="text-center fw-bold">XMPP is the open standard for messaging and presence</h2>
+    <div class="row gx-4 py-5 row-cols-1 row-cols-md-2 row-cols-lg-4">
+      <div class="col text-center feature-home">
+        <p>XMPP powers emerging technologies like <a href="/uses/internet-of-things">IoT</a>, <a href="/uses/webrtc">WebRTC</a>, and <a href="/uses/social">social</a>.</p>
+      </div>
+      <div class="col text-center feature-home">
+        <p>No one owns XMPP. It's free and open for everyone <a href="/about/history">since 1999</a>.</p>
+      </div>
+      <div class="col text-center feature-home">
+        <p>It's a <a href="/about/standards-process">living standard</a>. Engineers actively extend and improve it.</p>
+      </div>
+      <div class="col text-center feature-home">
+        <p>Millions use <a href="/software/xmpp-software">XMPP software</a> daily to connect to people and services.</p>
+      </div>
+    </div>
+</div>
+
+<div class="software-list row p-4 pb-0 pe-lg-0 pt-lg-5 mx-5 align-items-center rounded-3 border shadow-sm">
+    <h2 class="text-center">
+      Software for every platform<br> and libraries for every language
+    </h2>
+    <div class="logo-software-list large-12 columns text-center">
+      <img class="logo-software" src="/images/logos/erlang.svg" alt="Erlang">
+      <img class="logo-software" src="/images/logos/ruby.svg" alt="Ruby">
+      <img class="logo-software" src="/images/logos/python.svg" alt="Python">
+      <img class="logo-software" src="/images/logos/java.svg" alt="Java">
+      <img class="logo-software" src="/images/logos/javascript.svg" alt="JavaScript">
+      <img class="logo-software" src="/images/logos/cpp.svg" alt="C++">
+      <img class="logo-software" src="/images/logos/lua.svg" alt="Luaa">
+      <img class="logo-software" src="/images/logos/apple.svg" alt="Apple">
+      <img class="logo-software" src="/images/logos/windows.svg" alt="Windows">
+      <img class="logo-software" src="/images/logos/linux.svg" alt="Linux">
+      <img class="logo-software" src="/images/logos/android.svg" alt="Android">
+    </div>
+    <h5 class="text-center">
+      <a href="/software/">Find the tools you need »</a>
+    </h5>
+ </div>
+{{ end }}

@@ -1,0 +1,5 @@
+*.css   diff=css
+*.html  diff=html
+*.xhtml diff=html
+*.py    diff=python
+*.md    diff=markdown

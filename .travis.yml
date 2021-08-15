@@ -1,21 +1,27 @@
-language: python
+dist: focal
 cache: apt
+language: python
+python:
+- "3.9"
+
 notifications:
   email: false
 
-jobs:
-  include:
-  - python: 2.7
-    name: "Website Build"
-  - python: 3.7
-    name: "Data Linting"
+env:
+- HUGO_VERSION="0.80.0"
 
 install:
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install pelican==3.3 ghp-import markdown; fi
+- wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+- tar xf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
+- mv hugo ~/bin/
+- hugo version
+- pip3 install requests
 
-script:
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then make html; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then ./data/lint-list.py clients.json; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then ./data/lint-list.py servers.json; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then ./data/lint-list.py libraries.json; fi
+jobs:
+  include:
+    - stage: Prepare XEP list
+      script: python3 ./tools/prepare_xep_list.py
+    - stage: Software list linting
+      script: python3 ./tools/lint-list.py clients.json && python3 ./tools/lint-list.py servers.json && python3 ./tools/lint-list.py libraries.json
+    - stage: Generate pages
+      script: hugo
