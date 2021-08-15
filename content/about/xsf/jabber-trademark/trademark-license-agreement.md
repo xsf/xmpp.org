@@ -1,15 +1,9 @@
 ---
 Title: Jabber Trademark License Agreement
 Url: about/xsf/jabber-trademark/trademark-license-agreement
-Save_as: about/xsf/jabber-trademark/trademark-license-agreement.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/jabber-trademark
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/jabber-trademark/trademark-license-agreement.html"
+layout: single_jabber
 ---
 
 THIS SUBLICENSE (the “License”) is between the XMPP Standards Foundation, a Delaware not-for-profit corporation, located in Denver, Colorado (the “XSF”) and LICENSEE, as listed at the signature line with its address and other contact information.

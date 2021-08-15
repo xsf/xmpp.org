@@ -1,8 +1,8 @@
 ---
 title: Developers Challenge (with prizes!!)
-date: 2010-01-21 04:37
+date: 2010-01-21
 author: admin
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Hey everyone!

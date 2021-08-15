@@ -1,15 +1,9 @@
 ---
 Title: XSF Voting Procedure
 Url: about/xsf/voting-procedure
-Save_as: about/xsf/voting-procedure.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/voting-procedure.html"
+layout: single_xsf
 ---
 
 The XMPP Standards Foundation holds official votes at least 5 times a year: 4 times (January, April, July, October) to vote on accepting new and renewing members, once (in September) to elect the XSF Board of Directors and the XMPP Council, and optionally at special meetings called by the members.

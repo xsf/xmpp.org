@@ -1,8 +1,8 @@
 ---
 title: Integrating XMPP into Web Technologies @ FOSDEM 2009
-date: 2009-03-11 02:46
+date: 2009-03-11
 author: willsheward
-blog_id: blog
+categories: ["FOSDEM"]
 ---
 
 Jack Moffitt, CEO of [Chesspark](http://www.chesspark.com), gave a talk at FOSDEM 2009 on**Integrating XMPP into Web Technologies**. Jack has kindly made the [slides available in PDF format](http://stage.xmpp.org/?attachment_id=313),  together with a [simple application example (.zip)](http://stage.xmpp.org/?attachment_id=314).

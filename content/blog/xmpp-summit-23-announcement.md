@@ -1,9 +1,10 @@
 ---
 title: XMPP Summit 23
-date: 2018-11-15 22:14
+date: 2018-11-15
 author: Guus
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
+aliases:
+    - "/2018/11/xmpp-summit-23"
 ---
 
 The XMPP Standards Foundation (XSF) will hold its 23th XMPP Summit in Brussels, Belgium, on Thursday January 31st and Friday February 1st 2019. These are the two days preceding FOSDEM 2019.

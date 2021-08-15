@@ -1,15 +1,9 @@
 ---
 Title: License decision process and application
 Url: about/xsf/jabber-trademark/license-decision-process
-Save_as: about/xsf/jabber-trademark/license-decision-process.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/jabber-trademark
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/jabber-trademark/license-decision-process.html"
+layout: single_jabber
 ---
 
 Applications can be initiated by using one of the addresses listed at the [contact page](/contact). Please provide the following information:

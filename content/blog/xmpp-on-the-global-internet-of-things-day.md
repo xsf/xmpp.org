@@ -1,8 +1,8 @@
 ---
 title: XMPP on the Global Internet of Things Day
-date: 2014-04-07 17:10
+date: 2014-04-07
 author: joachim.lindborg
-blog_id: blog
+categories: ["Events"]
 ---
 
 The 9th of april is the Global IoT day  (*Internet of Things day*)  on the site  [iotday.org](http://iotday.org/) and on [iotlive.org](http://iotlive.org) events and meetups around the world are celebrating and connecting live devices.

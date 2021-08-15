@@ -1,9 +1,8 @@
 ---
 title: Membership voting for Q2 2013 has started
-date: 2013-08-14 02:26
+date: 2013-08-14
 author: bear
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 Alex has started the membership voting process for Q2 2013 applications and would love it if all the current members chat with the [memberbot](%20xmpp:memberbot@xmpp.org) and vote on the [2013 Q2 membership applications](http://wiki.xmpp.org/web/Membership_Applications_Q2_2013).

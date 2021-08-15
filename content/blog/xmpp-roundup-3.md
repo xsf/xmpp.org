@@ -1,9 +1,10 @@
 ---
 title: XMPP Roundup #4
-date: 2008-12-02 14:52
+date: 2008-12-02
 author: willsheward
-blog_id: blog
-category: XMPP Roundup
+categories: ["XMPP Roundup"]
+aliases:
+    - "/2008/12/xmpp-roundup-4"
 ---
 
 **Is There a New Successor to SIP?**

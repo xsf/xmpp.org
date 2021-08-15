@@ -1,9 +1,8 @@
 ---
 title: Q1 Membership Drive
-date: 2010-01-25 10:36
+date: 2010-01-25
 author: willsheward
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 The [XMPP Standards Foundation](https://xmpp.org/xsf/) is currently accepting applications for new members. This application period will run until the end of January.

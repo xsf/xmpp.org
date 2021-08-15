@@ -1,9 +1,8 @@
 ---
 title: First Kraków XMPP meetup
-date: 2017-04-28 12:59
+date: 2017-04-28
 author: Nÿco
-blog_id: blog
-category: Events
+categories: ["Events"]
 ---
 
 Following and reinforcing the trend of XMPP meetups across Europe (Berlin, Stockholm, London, and Paris), here is Kraków!

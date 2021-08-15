@@ -1,9 +1,8 @@
 ---
 title: XSF Board and Council 2019-2020 Elections
-date: 2019-10-24 10:54
+date: 2019-10-24
 author: guus
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 The XMPP Standards Foundation will elect the 2019-2020 XSF Board and Council soon. Each year the members of the XSF choose new people to provide technical leadership on the [XMPP Council](https://xmpp.org/about/xmpp-standards-foundation.html#council) and business leadership on the [XSF Board of Directors](https://xmpp.org/about/xmpp-standards-foundation.html#board).

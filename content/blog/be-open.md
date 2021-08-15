@@ -1,8 +1,8 @@
 ---
 title: Be Open
-date: 2007-02-09 21:22
+date: 2007-02-09
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 We sometimes receive questions about whether there are restrictions on who may submit and comment on [proposals](https://xmpp.org/extensions/) to extend XMPP, join the various XMPP-related [discussion venues](https://xmpp.org/about/discuss.shtml), or participate in events such as our upcoming [DevCon](http://wiki.jabber.org/index.php/DevCon).

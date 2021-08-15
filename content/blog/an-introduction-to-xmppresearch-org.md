@@ -1,8 +1,8 @@
 ---
 title: An introduction to xmppresearch.org
-date: 2015-03-03 08:15
+date: 2015-03-03
 author: willsheward
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 At the recent Summit 17, we were very happy to welcome Dominik Renzel and István Koren from the recently launched site [xmppresearch.org](http://www.xmppresearch.org/). The declared mission of the project is to:

@@ -1,8 +1,8 @@
 ---
 title: Hackfest in Berlin on July 27
-date: 2013-06-11 17:43
+date: 2013-06-11
 author: stpeter
-blog_id: blog
+categories: ["Events"]
 ---
 
 The XSF will hold a developer hackfest on July 27, 2013 in Berlin, Germany. This is the Saturday before [IETF 87](https://www.ietf.org/meeting/87/index.html).

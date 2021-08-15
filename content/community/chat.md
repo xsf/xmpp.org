@@ -1,15 +1,8 @@
 ---
 Title: Chat / chat logs
 Url: community/chat
-Save_as: community/chat.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+aliases:
+    - "/community/chat.html"
 ---
 
 The XSF hosts a variety of chat rooms and all archives are available online.

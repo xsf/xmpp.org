@@ -1,8 +1,8 @@
 ---
 title: DevCon #4
-date: 2008-01-10 11:46
+date: 2008-01-10
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 [FOSDEM](http://www.fosdem.org/2008/) is coming up soon (Brussels, February 23-24) and the XSF will once again hold a [devcon](https://xmpp.org/devcon/devcon4.shtml) (on February 24 and 25).

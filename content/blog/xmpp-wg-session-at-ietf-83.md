@@ -1,8 +1,8 @@
 ---
 title: XMPP WG Session at IETF 83
-date: 2012-03-26 18:57
+date: 2012-03-26
 author: stpeter
-blog_id: blog
+categories: ["Events"]
 ---
 
 The IETF's XMPP Working Group will hold an in-person meeting this week at IETF 83 in Paris. The topics will include end-to-end encryption, server-to-server federation, and internationalization.

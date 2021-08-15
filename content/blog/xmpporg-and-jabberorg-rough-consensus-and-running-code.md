@@ -1,8 +1,8 @@
 ---
-title: XMPP.org and Jabber.org: Rough Consensus and Running Code
-date: 2009-04-30 09:43
+title: "XMPP.org and Jabber.org: Rough Consensus and Running Code"
+date: 2009-04-30
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 It's well-known that XMPP technologies emerged from the open-source server project first released by Jeremie Miller in 1999, as well as the combined software/operator community that grew up around the server.

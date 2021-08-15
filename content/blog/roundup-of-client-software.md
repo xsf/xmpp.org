@@ -1,8 +1,8 @@
 ---
 title: Roundup of client software
-date: 2010-12-03 12:16
+date: 2010-12-03
 author: Nyco
-blog_id: blog
+categories: ["XMPP Roundup"]
 ---
 
 This software Roundup has been brought to you by Neustradamus and Nyco, with the help of Mike and Will.

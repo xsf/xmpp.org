@@ -1,17 +1,9 @@
 ---
 Title: XSF Infrastructure Team
 Url: about/xsf/infrastructure-team
-Save_as: about/xsf/infrastructure-team.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
-Template: team_page
-Team_Role: infrastructure
+aliases:
+    - "/about/xsf/infrastructure-team.html"
+layout: single_xsf
 ---
 
 The XSF’s Infrastructure Team is responsible for maintaining and improving the machines, software, and other tools used by the XSF to deliver its websites, discussion lists, chatrooms, and other services. Its particular areas of responsibility include:
@@ -31,6 +23,6 @@ The team is limited to elected members of the XSF and invited others at the disc
 
 The current team consists of:
 
-$MEMBER_LIST$
+{{< teams team_name="infrastructure">}}
 
 The team has a private email list and chatroom, and uses a [wiki page](http://wiki.xmpp.org/web/XSF_Infrastructure) for coordination.

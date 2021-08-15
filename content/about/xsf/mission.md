@@ -1,11 +1,9 @@
 ---
 Title: XSF Mission
 Url: about/xsf/mission
-Save_as: about/xsf/mission.html
-Parent_id: about
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/mission.html"
+layout: single_xsf
 ---
 
 The mission of the XMPP Standards Foundation (XSF) is to build an open, secure, feature-rich, decentralized infrastructure for real-time communication and collaboration over the Internet.

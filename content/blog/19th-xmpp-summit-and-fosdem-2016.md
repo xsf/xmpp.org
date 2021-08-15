@@ -1,9 +1,10 @@
 ---
 title: The 19th XMPP Summit and FOSDEM 2016
-date: 2016-02-08 22:25
+date: 2016-02-08
 authors: Tobi; Nyco
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit", "XMPP Summit"]
+aliases:
+    - "/2016/02/the-19th-xmpp-summit-and-fosdem-2016/"
 ---
 
 ##19th XMPP Summit

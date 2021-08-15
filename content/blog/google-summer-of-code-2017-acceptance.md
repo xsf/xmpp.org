@@ -1,9 +1,10 @@
 ---
 title: XMPP and the GSoC 2017
-date: 2017-03-02 09:44
+date: 2017-03-02
 author: Kev
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
+aliases:
+    - "/2017/03/xmpp-and-the-gsoc-2017/"
 ---
 
 We're delighted to have been accepted in the [Google Summer of Code](https://developers.google.com/open-source/gsoc/) yet again. The XSF has participated in GSoC many times in the past, and it's always great to have the opportunity to work with the enthusiastic and capable students we see and to bring new views and abilities into the community.

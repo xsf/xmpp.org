@@ -1,8 +1,8 @@
 ---
 title: Personal Media Networks @ FOSDEM 2009
-date: 2009-03-19 05:01
+date: 2009-03-19
 author: willsheward
-blog_id: blog
+categories: ["FOSDEM"]
 ---
 
 XMPP isn't just about instant messaging - in his talk at FOSDEM, Dirk Meyer explored how XMPP can form the basis of a powerful, yet secure, Personal Media Network - allowing access to your music collection from wherever you are, playing your videos on your friend's TV, and seemlessly integrating your personal collection with global media.

@@ -1,15 +1,9 @@
 ---
 Title: XSF Roadmap
 Url: about/xsf/roadmap
-Save_as: about/xsf/roadmap.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/roadmap.html"
+layout: single_xsf
 ---
 
 The [mission](/about/xsf/mission) of the XMPP Standards Foundation (XSF) is to build an open, secure, feature-rich, decentralized infrastructure for real-time communication and collaboration over the Internet.

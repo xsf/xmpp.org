@@ -1,9 +1,10 @@
 ---
 title: XMPP Summit 10 update
-date: 2011-01-29 16:31
+date: 2011-01-29
 author: bear
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
+aliases:
+    - "/2011/01/xmpp-summit-10-update"
 ---
 
 Six days (!) until the tenth [XMPP Summit](https://xmpp.org/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation will happen.

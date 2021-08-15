@@ -1,9 +1,8 @@
 ---
 title: Board and Council Elections 2010
-date: 2010-09-28 08:43
+date: 2010-09-28
 author: willsheward
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 In accordance with the [XSF Bylaws](/about/xsf/bylaws), once a year the XMPP Standards Foundation holds elections for its [Board of Directors](/about/xmpp-standards-foundation.html#board) and for the [XMPP Council](/about/xmpp-standards-foundation.html#council). Elections for the 2010-2011 Board and Council will be held on October 25, 2010 (with proxy voting 1 Oct. - 24 Oct.).

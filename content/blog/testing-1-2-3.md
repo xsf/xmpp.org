@@ -1,8 +1,8 @@
 ---
 title: Testing 1-2-3
-date: 2007-05-04 13:46
+date: 2007-05-04
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 One of the [roadmap](https://xmpp.org/xsf/roadmap.shtml) items we discussed at the [XMPP Summit](http://blog.xmpp.org/?p=12) in late February was the need to certify that XMPP clients and servers comply with our protocol specifications. 

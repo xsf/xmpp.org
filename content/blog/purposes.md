@@ -1,8 +1,8 @@
 ---
 title: Purposes
-date: 2007-02-12 20:39
+date: 2007-02-12
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 In preparing an application for the XSF to officially achieve tax-exempt status with the U.S. Internal Revenue Service, we discovered today that the original certificate of incorporation defined the organization as a "business league" under Section 501(c)(6) of the Internal Revenue Code, rather than as an "educational, charitable and scientific organization" under Section 501(c)(3).

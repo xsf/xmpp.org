@@ -1,15 +1,8 @@
 ---
 Title: Sponsors
 Url: community/sponsors
-Save_as: community/sponsors.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+aliases:
+    - "/community/sponsors.html"
 ---
 
 The XSF is generously supported by the sponsors below, please visit their xmpp.org pages (linked below) and sites to say thank you.

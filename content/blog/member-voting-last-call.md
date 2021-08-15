@@ -1,9 +1,8 @@
 ---
 title: Member Voting - last call!
-date: 2010-12-13 11:59
+date: 2010-12-13
 author: bear
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 The proxy voting still has not reached a quorom, so unless you plan on voting at the meeting you have until the close of business on December 14th. On December 15th we will have one of the few required "all hands" meetings to formally approve the voting results.

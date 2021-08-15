@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 1
-date: 2010-08-10 04:46
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The first developer conference held by the XMPP Standards Foundation occurred on July 24 and 25, 2006, in Portland, Oregon, USA (the same week as [OSCON 2006](http://conferences.oreillynet.com/os2006/)).

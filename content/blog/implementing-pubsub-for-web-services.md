@@ -1,8 +1,8 @@
 ---
 title: Implementing Pubsub for Web Services.
-date: 2009-02-25 05:47
+date: 2009-02-25
 author: willsheward
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 The first event from the San Francisco XMPP and Jabber Technologies Meetup group took place on February 18th on "***Implementing Pubsub for Web Services***", organised by [Julien Genestoux](http://identi.ca/julien) of [Notifixious](http://notifixio.us/).

@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit #9 - Preview
-date: 2010-07-20 16:25
+date: 2010-07-20
 author: bear
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 (**editor's note**: apologies for this appearing now, it got stuck in the publish queue and I did not notice it until I went to publish the Day One Summary that follows. d'oh!)

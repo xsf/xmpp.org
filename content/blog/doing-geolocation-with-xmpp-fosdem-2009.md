@@ -1,8 +1,8 @@
 ---
 title: Doing Geolocation with XMPP @ FOSDEM 2009
-date: 2009-03-16 02:49
+date: 2009-03-16
 author: willsheward
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Simon Tennant, CEO of Buddycloud, gave a talk at FOSDEM 2009 on Geolocation with XMPP. Buddycloud is an application for your mobile phone that lets your friends know what you are doing and where you are. [You can find out more about Buddycloud here](http://www.buddycloud.com).

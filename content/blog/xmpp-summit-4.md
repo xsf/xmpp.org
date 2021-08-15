@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 4
-date: 2010-08-10 04:38
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The fourth developer conference held by the XMPP Standards Foundation occurred on February 24 and 25, 2008, in Brussels, Belgium (the same week as [FOSDEM 2008](http://www.fosdem.org/)).

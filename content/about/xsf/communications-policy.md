@@ -1,15 +1,9 @@
 ---
 Title: XSF Communications Policy
 Url: about/xsf/communications-policy
-Save_as: about/xsf/communications-policy.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/communications-policy.html"
+layout: single_xsf
 ---
 
 ### Purpose

@@ -1,9 +1,10 @@
 ---
 title: XMPP Summit 22
-date: 2017-12-28 16:15
+date: 2017-12-28
 author: Guus
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
+aliases:
+    - "/2017/12/xmpp-summit-22"
 ---
 
 The XMPP Standards Foundation (XSF) will hold its 22th XMPP Summit in Brussels, Belgium, on Thursday February 1st & Friday 2nd (the two days preceding FOSDEM 2018).

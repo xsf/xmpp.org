@@ -1,9 +1,8 @@
 ---
 title: Google Summer of Code 2008
-date: 2008-04-21 12:39
+date: 2008-04-21
 author: stpeter
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 For the fourth year in a row, the [XMPP Standards Foundation](https://xmpp.org/xsf/) is [participating](http://code.google.com/soc/2008/xmpp/about.html) in the [Google Summer of Code](http://code.google.com/soc/2008/). Our projects for 2008 are as follows:

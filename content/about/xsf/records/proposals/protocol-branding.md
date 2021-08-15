@@ -1,15 +1,6 @@
 ---
 Title: Jabber/XMPP Protocol Branding Proposal
 Url: about/xsf/records/proposals/protocol-branding
-Save_as: about/xsf/records/proposals/protocol-branding.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/records/proposals
-Content_layout: multiple-columns
 ---
 
 Author: Peter Saint-Andre

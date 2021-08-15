@@ -1,8 +1,8 @@
 ---
 title: Security Test Day is tomorrow 4 Jan 2014
-date: 2014-01-03 15:59
+date: 2014-01-03
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 Tomorrow many of the folks who run public (and some that run private) facing XMPP servers will be doing a ubiquitous security test of the XMPP network.

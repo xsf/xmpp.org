@@ -1,8 +1,8 @@
 ---
 title: Welcome, Facebook!
-date: 2010-02-10 13:28
+date: 2010-02-10
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Earlier today a member of the XMPP developer community noticed that he could log into Facebook chat [using a standard XMPP client](http://www.deepdarc.com/2010/02/10/facebook-turns-on-xmpp-support/). The news has since been [confirmed by Facebook](http://blog.facebook.com/blog.php?post=297991732130). This is great news for XMPP, and great news for open standards in general.

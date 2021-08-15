@@ -1,8 +1,8 @@
 ---
 title: XMPP at PyCon 2013
-date: 2013-03-17 12:31
+date: 2013-03-17
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 Arc, Lance and Ralph are all at PyCon 2013 and today they were showing off XMPP and Python at one of the "poster sessions". Nicely done!

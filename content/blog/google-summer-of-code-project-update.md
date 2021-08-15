@@ -1,9 +1,8 @@
 ---
 title: Google Summer of Code - Project Update
-date: 2010-04-29 02:30
+date: 2010-04-29
 author: bear
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 As of 1900 UTC Monday, Google has published the list of accepted project for the Google Summer of Code and I'm very happy to report that four of the proposals to the XSF were accepted!

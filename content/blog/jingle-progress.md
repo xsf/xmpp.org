@@ -1,8 +1,8 @@
 ---
 title: Jingle Progress
-date: 2007-04-17 18:52
+date: 2007-04-17
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 One of the high-priority items on our [roadmap](https://xmpp.org/xsf/roadmap.shtml) for 2007 is completing work on [Jingle](https://xmpp.org/extensions/xep-0166.html), the set of XMPP extensions for voice and video that we first published in late 2005. Although it's taken us about 16 months, we are getting [quite close](https://mail.jabber.org/pipermail/standards/2007-April/014927.html) to advancing the Jingle specifications to Draft status within our standards process. Jingle, originally based on the technology defined by [Google Talk](http://www.google.com/talk/) team, is now widely used in the [One Laptop Per Child](http://www.laptop.org/) project as well as in the Nokia 770 and the Nokia 800.

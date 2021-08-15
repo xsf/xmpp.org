@@ -1,8 +1,8 @@
 ---
 title: Presence Scalability
-date: 2007-04-11 15:27
+date: 2007-04-11
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Members of the IETF's SIMPLE Working Group recently [analyzed](http://www.ietf.org/internet-drafts/draft-ietf-simple-interdomain-scaling-analysis-00.txt) the scalability of SIP/SIMPLE technologies with respect to sharing presence between domains. Because their work provides a helpful baseline for comparing presence technologies, we decided to perform a [similar analysis](https://xmpp.org/internet-drafts/draft-saintandre-xmpp-presence-analysis-00.html) for XMPP. The results should be of interest to any large enterprise, ISP, or carrier that is contemplating deployment of presence-based services.

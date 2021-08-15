@@ -1,14 +1,9 @@
 ---
 Title: Website credits
 Url: about/xsf/website-credits
-Save_as: about/xsf/website-credits.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: false
-Content_layout: single-column
+aliases:
+    - "/about/xsf/website-credits.html"
+layout: single_xsf
 ---
 
 The XSF thanks the following contributors to the xmpp.org website.

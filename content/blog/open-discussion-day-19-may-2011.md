@@ -1,8 +1,8 @@
 ---
 title: Open Discussion Day - 19 May 2011
-date: 2011-05-07 08:22
+date: 2011-05-07
 author: bear
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 A reminder from Ludovic Bocquet that May 19th, 2011 is [*Open Discussion Day*](http://opendiscussionday.org/). From their wiki page:

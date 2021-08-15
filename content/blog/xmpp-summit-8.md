@@ -1,22 +1,21 @@
 ---
 title: XMPP Summit 8
-date: 2010-08-10 04:29
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The eighth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation occured on February 5-8, 2010, in Brussels, Belgium (the same weekend as [FOSDEM 2010](http://www.fosdem.org/)).
 
--   [Friday, February 5](#friday)
--   [Saturday, February 6](#saturday)
--   [Sunday, February 7](#sunday)
--   [Sunday, February 7 - Official XSF Dinner](#dinner)
--   [Monday, February 8](#monday)
--   [Mobile Dev Challenge and SIMs](#mobile)
--   [Hotel](#hotel)
--   [Logistics](#logistics)
--   [Contact](#contact)
+- [Friday, February 5: XMPP Hackfest](#friday-february-5-xmpp-hackfest)
+- [Saturday, February 6: Devroom @ FOSDEM](#saturday-february-6-devroom--fosdem)
+- [Sunday, February 7: FOSDEM](#sunday-february-7-fosdem)
+- [Sunday, February 7: Official XSF Dinner](#sunday-february-7-official-xsf-dinner)
+- [Monday, February 8: XMPP Summit](#monday-february-8-xmpp-summit)
+- [Mobile Dev Challenge and SIM Cards](#mobile-dev-challenge-and-sim-cards)
+- [Hotel](#hotel)
+- [Logistics](#logistics)
+- [Contact](#contact)
 
 <a name="friday"></a>
 ### Friday, February 5: XMPP Hackfest

@@ -1,9 +1,8 @@
 ---
 title: Membership Application Period for Q4 2013 has begun
-date: 2013-12-24 12:36
+date: 2013-12-24
 author: bear
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 Alex has started the membership application process for Q4 2013.

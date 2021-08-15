@@ -1,10 +1,7 @@
+---
 Title: XSF Council Voting History – 2005-2006
 Url: about/xsf/records/council-votes/tallies_2005-2006
-Save_as: about/xsf/records/council-votes/tallies_2005-2006.html
-Parent_id: about/xsf/records/council-votes
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/records/council-votes
-Content_layout: multiple-columns
+---
 
 This page provides detailed voting status information for each [XMPP Extension Protocol] proposed to the Fifth [XMPP Council](2005-2006). For further information, refer to the [mailing list archives] and [chatroom logs], or contact the [XMPP Extensions Editor].
 

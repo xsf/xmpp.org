@@ -1,8 +1,8 @@
 ---
 title: Security Test Day - it's fast approaching
-date: 2013-11-30 04:34
+date: 2013-11-30
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 In just 34 days the first full test run of ubiquitous security on the XMPP network will be attempted by many service operators.

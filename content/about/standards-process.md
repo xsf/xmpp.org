@@ -1,15 +1,8 @@
 ---
 Title: Standards Process
 Url: about/standards-process
-Save_as: about/standards-process.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about
-Content_layout: multiple-columns
+aliases:
+    - "/about/standards-process.html"
 ---
 
 The XSF develops extensions to XMPP through a lightweight standards process centered around XMPP Extension Protocols (XEPs).

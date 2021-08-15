@@ -1,9 +1,10 @@
 ---
 title: XMPP Roundup #6
-date: 2009-02-16 10:07
+date: 2009-02-16
 author: Nyco
-blog_id: blog
-category: XMPP Roundup
+categories: ["XMPP Roundup"]
+aliases:
+    - "/2009/02/xmpp-roundup-6"
 ---
 
 **Foreword**

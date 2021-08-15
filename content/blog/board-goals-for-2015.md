@@ -1,9 +1,8 @@
 ---
 title: Board goals for 2015
-date: 2015-03-23 04:51
+date: 2015-03-23
 author: laura
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 When our newest Board of Directors were elected, they decided that they wanted to set some goals against which their achievements as Board members could be measured.

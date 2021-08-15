@@ -1,8 +1,8 @@
 ---
 title: Draft Privacy and Security Policy
-date: 2008-10-20 19:52
+date: 2008-10-20
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Among other things, the XSF runs the jabber.org IM service, which is one of the largest nodes on the open XMPP network (yes, we really do believe in running code!). However, we've never had a privacy and security policy for this service. 

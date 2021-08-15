@@ -1,9 +1,8 @@
 ---
 title: XMPP at the end of the Google Summer of Code 2015
-date: 2015-12-18 13:41
+date: 2015-12-18
 author: Kev
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 This year we had six students working on disparate projects for GSoC, and we're delighted that all of them were successful! Here we link to a wrapup blog post from each of the students, and a description of their work from their mentors.

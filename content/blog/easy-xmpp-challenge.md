@@ -1,9 +1,10 @@
 ---
-title: Easy XMPP: The Challenges
+title: "Easy XMPP: The Challenges"
 date: 2017-08-14
 author: ge0rg
-blog_id: blog
-category: Easy XMPP
+categories: ["Easy XMPP"]
+aliases:
+  - "/2017/08/easy-xmpp-the-challenges/"
 ---
 
 Over the last years, the XMPP community has had a hard time competing with

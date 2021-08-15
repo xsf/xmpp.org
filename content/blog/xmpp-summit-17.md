@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 17
-date: 2015-01-08 04:25
+date: 2015-01-08
 author: joachim.lindborg
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The 17th XSF Summit is approaching!

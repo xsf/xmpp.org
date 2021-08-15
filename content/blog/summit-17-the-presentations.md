@@ -1,9 +1,8 @@
 ---
 title: Summit 17 - the presentations
-date: 2015-03-20 05:23
+date: 2015-03-20
 author: laura
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 A slightly tardy share, but we have the presentations from Summit 17 in Brussels starting to trickle in! As more come in, this post will get longer (and hopefully have a more permanent home on the new site) but here we go:

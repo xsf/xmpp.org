@@ -1,8 +1,8 @@
 ---
-title: Last Call: Link-Local Messaging
-date: 2007-03-01 19:53
+title: "Last Call: Link-Local Messaging"
+date: 2007-03-01
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 At the XMPP Summit on Monday we held a rare in-person meeting of the [XMPP Council](https://xmpp.org/council/), since we had four of the five Council members in attendance. Among other things the Council issued a [Last Call](https://mail.jabber.org/pipermail/standards/2007-February/014012.html) for comments on [XEP-0174: Link-Local Messaging](https://xmpp.org/extensions/xep-0174.html).

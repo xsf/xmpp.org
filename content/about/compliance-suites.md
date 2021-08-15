@@ -1,15 +1,8 @@
 ---
 Title: Compliance Suites
 Url: about/compliance-suites
-Save_as: about/compliance-suites.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about
-Content_layout: multiple-columns
+aliases:
+    - "/about/compliance-suites.html"
 ---
 
 ## <a name="about" href="#about">About</a>

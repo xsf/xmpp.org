@@ -1,8 +1,8 @@
 ---
 title: MXM #2
-date: 2009-04-14 15:38
+date: 2009-04-14
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 *Reported by Peter Saint-Andre*

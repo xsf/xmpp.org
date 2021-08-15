@@ -1,9 +1,10 @@
 ---
 title: And our GSoC students are...
-date: 2012-04-29 11:17
+date: 2012-04-29
 author: florian
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
+aliases:
+    "/2012/04/and-our-gsoc-students-are/"
 ---
 
 It's with great pleasure that we would like to share with you the list of students that have been selected to participate in the Google Summer of Code 2012 for the XMPP Standards Foundation.

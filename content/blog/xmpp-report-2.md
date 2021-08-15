@@ -1,8 +1,10 @@
 ---
 title: XMPP Roundup #3
-date: 2008-11-18 01:51
+date: 2008-11-18
 author: willsheward
-blog_id: blog
+categories: ["XMPP Roundup"]
+aliases:
+    - "/2008/11/xmpp-roundup-3"
 ---
 
 In a relatively slow week for XMPP-related news:

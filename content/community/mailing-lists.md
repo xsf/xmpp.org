@@ -1,15 +1,8 @@
 ---
-Title: Mailing lists
-Url: community/mailling-lists
-Save_as: community/mailing-lists.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+title: Mailing lists
+url: community/mailing-lists
+aliases:
+    - "/community/mailing-lists.html"
 ---
 
 There are many active discussion venues for Jabber/XMPP developers, system administrators, and end users. These lists are all easily searchable at [jabber.markmail.org](http://jabber.markmail.org/).

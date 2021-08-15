@@ -1,15 +1,8 @@
 ---
 Title: Myths & Legends
 Url: about/myths
-Save_as: about/myths.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about
-Content_layout: multiple-columns
+aliases:
+    - "/about/myths.html"
 ---
 
 XMPP seems to have some interesting myths, too. As typical with myths, many of these are made up. Here's some of our (least) favourite:

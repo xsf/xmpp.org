@@ -1,8 +1,8 @@
 ---
 title: Ubiquitous XMPP Encryption - test day 01
-date: 2013-11-20 13:59
+date: 2013-11-20
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 Simon posted on the [jdev mailing list](https://mail.jabber.org/pipermail/jdev/2013-November/089772.html) a great reminder about the upcoming test day quoted below:

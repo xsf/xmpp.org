@@ -1,22 +1,14 @@
 ---
 Title: XSF Editor Team
 Url: about/xsf/editor-team
-Save_as: about/xsf/editor-team.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
-Template: team_page
-Team_Role: editor
+aliases:
+    - "/about/xsf/editor-team.html"
+layout: single_xsf
 ---
 
 The XSF’s Editor Team, formed in early 2014, is responsible for performing the duties of the [XMPP Extensions Editor](/extensions/xep-README.html) and the [XMPP Registrar](/extensions/xep-0053.html). The current members of the team are:
 
-$MEMBER_LIST$
+{{< teams team_name="editor">}}
 
 NOTE: In order to send email to the team (via [editor@xmpp.org](mailto:editor@xmpp.org)), you MUST include the string “XEP” in the subject line!
 

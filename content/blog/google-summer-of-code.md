@@ -1,9 +1,8 @@
 ---
 title: Google Summer of Code
-date: 2009-02-26 20:33
+date: 2009-02-26
 author: stpeter
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 At its meeting yesterday, the [XMPP Council](https://xmpp.org/council/) decided not to participate in the [Google Summer of Code](http://code.google.com/soc/) (GSoC) for 2009. There are several reasons for this decision:

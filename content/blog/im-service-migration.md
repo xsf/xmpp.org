@@ -1,8 +1,8 @@
 ---
 title: IM Service Migration
-date: 2008-05-22 15:51
+date: 2008-05-22
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Here at the [XMPP Standards Foundation](https://xmpp.org/), we're not just a bunch of protocol geeks. As firm believers in the old IETF mantra of "rough consensus and running code", we run one of the most central nodes on the XMPP network: the jabber.org IM service.

@@ -1,9 +1,8 @@
 ---
 title: GSoC '09, with XMPP
-date: 2009-04-29 09:55
+date: 2009-04-29
 author: Nyco
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 The XMPP Standards Foundation has helped support a number of open-source projects through Google's Summer of Code program over the years. Although the XSF is [not participating](http://blog.xmpp.org/index.php/2009/02/google-summer-of-code/) in the [Google Summer of Code](http://code.google.com/soc/) this year, a number of XMPP-related projects have been accepted by other mentoring organizations...

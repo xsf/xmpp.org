@@ -1,20 +1,19 @@
 ---
 title: XMPP Summit 6
-date: 2010-08-10 04:33
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The sixth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation will occur on February 6-9, 2009, in Brussels, Belgium (the same weekend as [FOSDEM 2009](http://www.fosdem.org/)).
 
--   [Friday, February 6](#friday)
--   [Saturday, February 7](#saturday)
--   [Sunday, February 8](#sunday)
--   [Sunday, February 8 - Birthday Dinner](#dinner)
--   [Monday, February 9](#monday)
--   [Logistics](#logistics)
--   [Contact](#contact)
+- [Friday, February 6: Jingle Thingle](#friday-february-6-jingle-thingle)
+- [Saturday, February 7: Devroom @ FOSDEM](#saturday-february-7-devroom--fosdem)
+- [Sunday, February 8: FOSDEM](#sunday-february-8-fosdem)
+- [Sunday, February 8: Birthday Dinner](#sunday-february-8-birthday-dinner)
+- [Monday, February 9: XMPP Summit](#monday-february-9-xmpp-summit)
+- [Logistics](#logistics)
+- [Contact](#contact)
 
 <a name="friday"></a>
 ### Friday, February 6: Jingle Thingle

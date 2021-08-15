@@ -1,15 +1,9 @@
 ---
 Title: Jabber Trademark Background
 Url: about/xsf/jabber-trademark/background
-Save_as: about/xsf/jabber-trademark/background.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/jabber-trademark
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/jabber-trademark/background.html"
+layout: single_jabber
 ---
 
 ### 1. History of the Trademark

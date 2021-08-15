@@ -1,8 +1,8 @@
 ---
 title: Freedom
-date: 2007-03-06 13:06
+date: 2007-03-06
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Freedom is one of our core values in the Jabber/XMPP community. The focus on freedom goes back to [Jeremie Miller](https://xmpp.org/xsf/people/jer.shtml), who invented the base of our technologies in 1998 as a way for people to connect over the Internet without the silos and restrictions enforced by consumer IM services.

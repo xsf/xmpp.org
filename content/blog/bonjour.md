@@ -1,8 +1,8 @@
 ---
 title: Bonjour!
-date: 2007-06-12 12:58
+date: 2007-06-12
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Today we advanced [XEP-0174: Link-Local Messaging](https://xmpp.org/extensions/xep-0174.html) to Draft in our standards process. This specification defines how to send XMPP messages in a serverless mode via zero-configuration networking (a technology created by Apple Computer, originally called Rendezvous and now called Bonjour). 

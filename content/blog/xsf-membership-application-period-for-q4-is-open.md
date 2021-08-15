@@ -1,9 +1,8 @@
 ---
 title: XSF Membership Application Period for Q4 is open
-date: 2010-11-08 14:08
+date: 2010-11-08
 author: bear
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 The XMPP Standards Foundation is currently accepting applications for new members.

@@ -1,8 +1,8 @@
 ---
 title: Second Security Test Day
-date: 2014-02-18 11:56
+date: 2014-02-18
 author: stpeter
-blog_id: blog
+categories: ["Events"]
 ---
 
 This Saturday (February 22, 2014), XMPP site operators are again flipping the "encrypt all traffic" switch.

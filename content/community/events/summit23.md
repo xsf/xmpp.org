@@ -1,14 +1,6 @@
 ---
 Title: Summit 23
 Url: community/events/summit23
-Save_as: community/events/summit23.html
-Parent_id: community/events
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: false
-Content_layout: multiple-columns
 ---
 
 The 23rd XMPP Summit will happen right before FOSDEM in Brussels, on January 31st and February 1st, 2019!

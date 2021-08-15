@@ -1,8 +1,8 @@
 ---
 title: XMPP Ubiquitous Encryption - a manifesto
-date: 2013-11-07 16:27
+date: 2013-11-07
 author: bear
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Peter Saint-Andre has created a Manifest for others to join, debate and discuss about a plan for upgrading the XMPP network to always-on, mandatory, ubiquitous encryption.

@@ -1,15 +1,8 @@
 ---
 Title: Internet of Things (IoT)
 Url: uses/internet-of-things
-Save_as: uses/internet-of-things.html
-Parent_id: uses
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: uses
-Content_layout: multiple-columns
+aliases:
+    - "/uses/internet-of-things.html"
 ---
 
 **XMPP** is an excellent protocol for use within *Internet of Things*. The aim of this page, is to give a brief introduction to how XMPP can help build solid, secure and interoperable devices, services and applications for the *Internet of Things*. It is meant as a simple portal for people interested in IoT, providing links to more detailed information on each subject.

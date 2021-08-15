@@ -1,9 +1,10 @@
 ---
-title: FOSDEM podcast: Simon Tennant
-date: 2010-06-11 12:00
+title: "FOSDEM podcast: Simon Tennant"
+date: 2010-06-11
 author: Nyco
-blog_id: blog
-category: FOSDEM
+categories: ["FOSDEM"]
+aliases:
+    - "/2010/06/fosdem-podcast-simon-tennant"
 ---
 
 This is the fourth and last in a series of podcasts made at FOSDEM in Brussels, Belgium.

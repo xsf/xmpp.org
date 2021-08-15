@@ -1,8 +1,8 @@
 ---
 title: Large Scale XMPP Deployments @ FOSDEM 09
-date: 2009-04-17 06:28
+date: 2009-04-17
 author: willsheward
-blog_id: blog
+categories: ["FOSDEM"]
 ---
 
 In his talk at FOSDEM this year Florian Jensen, CTO and co-founder of [Flosoft](http://flosoft.biz/), talked about the challenges involved in setting up and administering a large scale XMPP deployment. [Forian's slides are available in PDF format here](http://stage.xmpp.org/?attachment_id=387)

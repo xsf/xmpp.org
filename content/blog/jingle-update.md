@@ -1,8 +1,8 @@
 ---
 title: Jingle Update
-date: 2008-01-28 10:51
+date: 2008-01-28
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 We [issued a Last Call](http://blog.xmpp.org/?p=32) on the [Jingle](https://xmpp.org/extensions/xep-0166.html) specifications on November 21st. So why have they not yet advanced to a status of [Draft](https://xmpp.org/extensions/xep-0001.html#states-Draft) within the XSF's [standards process](https://xmpp.org/extensions/xep-0001.html)?

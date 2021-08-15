@@ -1,9 +1,8 @@
 ---
 title: XMPP 101 @ FOSDEM 2009
-date: 2009-03-05 12:37
+date: 2009-03-05
 author: willsheward
-blog_id: blog
-category: FOSDEM
+categories: ["FOSDEM"]
 ---
 
 This is a (almost) cross-post from Remko Tronçon’s blog at [http://el-tramo.be/](http://el-tramo.be/)

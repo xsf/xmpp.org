@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 21
-date: 2017-01-27 18:50
+date: 2017-01-27
 author: Guus
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 This year, the [XMPP Standards Foundation](https://xmpp.org/) again gathered in force to attend the summit, that traditionally precedes the [FOSDEM event](https://fosdem.org/2017/) in Brussels, Belgium. Barely fitting in the (rather sizable) room that was made available to us by Cisco, the XSF members had a fruitful two-day meeting. 

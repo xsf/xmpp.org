@@ -1,10 +1,7 @@
+---
 Title: XSF Council Voting History – 2002-2003
 Url: about/xsf/records/council-votes/tallies_2002-2003
-Save_as: about/xsf/records/council-votes/tallies_2002-2003.html
-Parent_id: about/xsf/records/council-votes
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/records/council-votes
-Content_layout: multiple-columns
+---
 
 This page provides detailed voting status information for each [XMPP Extension Protocol] that was presented to the Second [XMPP Council] in 2002-2003. For further information, refer to the [mailing list archives] or contact the [XMPP Extensions Editor].
 

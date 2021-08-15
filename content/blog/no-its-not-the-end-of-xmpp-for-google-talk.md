@@ -1,8 +1,8 @@
 ---
 title: No, it's not the end of XMPP for Google Talk
-date: 2015-03-02 12:40
+date: 2015-03-02
 author: fippo
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 There's some recent discussion about the sky falling for XMPP at Google. See [this blog post by Dan York](http://www.disruptivetelephony.com/2015/02/google-finally-kills-off-googletalk-and-xmpp-jabber-integration.html) for example.

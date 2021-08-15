@@ -1,8 +1,8 @@
 ---
 title: Python IoT Hacking with XMPP in Stockholm
-date: 2013-11-20 20:03
+date: 2013-11-20
 author: joachim.lindborg
-blog_id: blog
+categories: ["Events"]
 ---
 
 On the 21rst November we will meet and use Python to build on [raspberry developer kits](http://iea.sust.se/2013/09/01/preparation-of-devkits/ "devkits") and connect things through the [XMPP IoT extensions](https://xmpp.org/xmpp-protocols/xmpp-extensions/ "XMPP extensions").

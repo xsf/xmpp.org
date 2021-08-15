@@ -1,15 +1,8 @@
 ---
 Title: XSF Membership
 Url: community/membership
-Save_as: community/membership.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+aliases:
+    - "/community/membership.html"
 ---
 
 This page contains information for and about elected members of the XMPP Standards Foundation. Membership is individual (not corporate) and is based on technical merit (not financial contribution, since membership is free). New members apply for membership and typically are elected by the existing members if they are active participants in the XMPP developer community through authoring or commenting on XMPP protocols, implementing XMPP-based software, offering XMPP-based services, and the like.

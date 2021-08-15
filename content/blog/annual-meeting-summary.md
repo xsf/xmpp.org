@@ -1,9 +1,8 @@
 ---
 title: Annual Meeting Summary
-date: 2010-11-03 09:40
+date: 2010-11-03
 author: bear
-blog_id: blog
-category: XSF Organisational
+categories: ["XSF Organisational"]
 ---
 
 XSF Member Jehan posted this summary to the members mailing list:

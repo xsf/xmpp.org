@@ -1,11 +1,7 @@
 ---
-Title: Uncontrolled Resource Consumption with Highly Compressed XMPP Stanzas
-Url: community/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas
-Save_as: community/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas.html
-Parent_id: community/security-notices
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+title: Uncontrolled Resource Consumption with Highly Compressed XMPP Stanzas
+aliases:
+    - "/community/security-notices/uncontrolled-resource-consumption-with-highly-compressed-xmpp-stanzas.html"
 ---
 
 _Original Release Date: 2014-04-04_

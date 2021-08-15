@@ -1,20 +1,20 @@
 ---
 title: XMPP Summit 7
-date: 2010-08-10 04:32
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The XMPP Standards Foundation will hold its seventh "XMPP Summit" meeting on July 20 and 21, 2009, in San Jose, California, USA. Thanks to the generosity of [O'Reilly](http://oreilly.com/), the Summit will be held on the premises of [OSCON 2009](http://en.oreilly.com/oscon2009).
 
--   [Monday, July 20: Interop & Hackfest](#monday)
--   [Monday Evening: Developer Dinner](#dinner)
--   [Tuesday, July 21: Technology Brainstorming](#tuesday)
--   [Participants](#participants)
--   [Logistics](#logistics)
--   [Cost](#cost)
--   [Contact](#contact)
+- [Monday, July 20: Interop & Hackfest](#monday-july-20-interop--hackfest)
+- [Monday Evening: Developer Dinner](#monday-evening-developer-dinner)
+  - [Donations](#donations)
+- [Tuesday, July 21: Technology Brainstorming](#tuesday-july-21-technology-brainstorming)
+- [Participants](#participants)
+- [Logistics](#logistics)
+- [Cost](#cost)
+- [Contact](#contact)
 
 <a name="monday"></a>
 ### Monday, July 20: Interop & Hackfest

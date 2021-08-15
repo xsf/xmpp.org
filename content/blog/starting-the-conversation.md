@@ -1,8 +1,8 @@
 ---
 title: Starting the Conversation
-date: 2007-01-23 11:41
+date: 2007-01-23
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Welcome to Extended Conversation, the official weblog of the [XMPP Standards Foundation](https://xmpp.org/xsf/) (XSF).

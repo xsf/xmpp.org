@@ -1,8 +1,8 @@
 ---
 title: Eyeball Networks become an XSF Sponsor
-date: 2015-05-26 08:29
+date: 2015-05-26
 author: willsheward
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 We're happy to announce that Eyeball Networks are the latest organisation to become an XSF Sponsor.

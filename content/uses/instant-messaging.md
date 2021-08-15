@@ -1,15 +1,8 @@
 ---
 Title: Instant Messaging
 Url: uses/instant-messaging
-Save_as: uses/instant-messaging.html
-Parent_id: uses
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: uses
-Content_layout: multiple-columns
+aliases:
+    - "/uses/instant-messaging.html"
 ---
 
 When Jeremie Miller invented Jabber/XMPP technologies in 1998, he did so in large measure to provide a free and open alternative to the proprietary instant messaging services of the day, such as AOL Instant Messenger and ICQ. Although the names of such services have changed, today XMPP still represents a free and open standard for building and deploying instant messaging systems and related applications.

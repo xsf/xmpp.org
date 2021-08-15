@@ -1,9 +1,10 @@
 ---
 title: Google Summer of Code 2019
-date: 2019-01-20 22:00
+date: 2019-01-20
 author: Flow
-blog_id: blog
-category: GSoC
+categories: ["Google Summer of Code"]
+aliases:
+    - "/2019/01/google-summer-of-code-2019/"
 ---
 
 We are happy to announce that the XMPP Standards Foundation (XSF) is applying as Google Summer of Code (GSoC) organization.

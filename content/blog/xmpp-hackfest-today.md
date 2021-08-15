@@ -1,8 +1,8 @@
 ---
 title: XMPP Hackfest today!
-date: 2011-02-04 03:44
+date: 2011-02-04
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 The first day of the tenth [XMPP Summit](https://xmpp.org/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation is starting! The first event is the Hackfest where the XMPP devs and geeks will swarm the gracious Cisco meeting rooms.

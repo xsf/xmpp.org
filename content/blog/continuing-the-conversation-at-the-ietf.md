@@ -1,8 +1,8 @@
 ---
 title: Continuing the Conversation at the IETF
-date: 2007-01-26 19:43
+date: 2007-01-26
 author: stpeter
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 Today we sent to the [IETF](http://www.ietf.org/) updated versions of our proposed revisions to [RFC 3920](http://www.ietf.org/rfc/rfc3920.txt) ("XMPP Core") and [RFC 3921](http://www.ietf.org/rfc/rfc3921.txt) ("XMPP IM"). For reasons that are obscure to people outside the IETF, such revised documents are called "bis" drafts, so the documents in question are called [rfc3920bis](https://xmpp.org/internet-drafts/draft-saintandre-rfc3920bis-01.html) and [rfc3921bis](https://xmpp.org/internet-drafts/draft-saintandre-rfc3921bis-01.html). These Internet-Drafts incorporate corrections, errata, updates to technologies we use (such as Transport Layer Security), feedback from implementors, interoperability testing results, and general lessons learned since the XMPP RFCs were published in October 2004.

@@ -1,8 +1,8 @@
 ---
 title: Thank You to the Internet Society
-date: 2014-02-12 13:43
+date: 2014-02-12
 author: bear
-blog_id: blog
+categories: ["Miscellaneous"]
 ---
 
 On December 20th 2013 the XSF received some very exciting news, to end what had already been a great year - [ISOC](http://www.internetsociety.org/blog) were awarding the XMPP community an incredibly generous gift to help support the work we are doing in improving privacy and security.

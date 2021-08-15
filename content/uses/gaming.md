@@ -1,15 +1,8 @@
 ---
 Title: Online Gaming
 Url: uses/gaming
-Save_as: uses/gaming.html
-Parent_id: uses
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: uses
-Content_layout: multiple-columns
+aliases:
+    - "/uses/gaming.html"
 ---
 
 XMPP provides a scalable platform for real-time signaling, chat and online status (presence). This is used by an increasing number of online games for [matchmaking](https://en.wikipedia.org/wiki/Matchmaking_(video_games)), in-game chat and other activities.

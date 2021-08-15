@@ -1,9 +1,8 @@
 ---
 title: Summer of Code Projects
-date: 2007-04-12 09:33
+date: 2007-04-12
 author: stpeter
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 Google has announced the 2007 [Summer of Code](http://code.google.com/soc/) projects, and the [XSF projects](http://code.google.com/soc/xmpp/about.html) are as follows:

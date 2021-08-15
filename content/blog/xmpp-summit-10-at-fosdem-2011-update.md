@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 10 at FOSDEM 2011 - update
-date: 2011-01-20 11:12
+date: 2011-01-20
 author: bear
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 In a bit more than two weeks (!) the tenth [XMPP Summit](https://xmpp.org/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation will happen. February 4-7, 2011, in Brussels, Belgium (the same weekend as [FOSDEM 2011](http://www.fosdem.org/)).

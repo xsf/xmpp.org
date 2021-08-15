@@ -1,8 +1,10 @@
 ---
-title: Google: "The Future is Jingle"
-date: 2011-06-23 07:36
+title: "Google: 'The Future is Jingle'"
+date: 2011-06-23
 author: admin
-blog_id: blog
+categories: ["Miscellaneous"]
+aliases:
+    - "/2011/06/google-the-future-is-jingle/"
 ---
 
 Jingle (XEP-0166 and XEP-0167) is the voice and media signalling protocol developed by Google, Collabora, Yate, Tandberg and Jabber Inc (the latter two now part of Cisco), and standardized within the XSF.

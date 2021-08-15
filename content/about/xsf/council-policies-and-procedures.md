@@ -1,11 +1,9 @@
 ---
 Title: XSF Council Policies and Procedures
 Url: about/xsf/council-policies-and-procedures
-Save_as: about/xsf/council-policies-and-procedures.html
-Parent_id: about
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/council-policies-and-procedures.html"
+layout: single_xsf
 ---
 
 The [XMPP Council](/about/xmpp-standards-foundation#council) adheres to the following policies and procedures (in addition to those defined in the [XSF Bylaws](/about/xsf/bylaws) and [XEP-0001](/extensions/xep-0001.html)):

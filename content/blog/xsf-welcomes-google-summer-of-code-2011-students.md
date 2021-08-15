@@ -1,9 +1,8 @@
 ---
 title: XSF Welcomes Google Summer of Code 2011 Students
-date: 2011-04-26 04:40
+date: 2011-04-26
 author: bear
-blog_id: blog
-category: Google Summer of Code
+categories: ["Google Summer of Code"]
 ---
 
 With the selection process over, we now know that the [XSF](http://xmpp.org) will be working with five students for the [2011 Google Summer of Code](http://www.google-melange.com/gsoc/org/google/gsoc2011/xsf)!

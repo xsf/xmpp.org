@@ -1,15 +1,8 @@
 ---
 Title: Events
 Url: community/events
-Save_as: community/events.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+aliases:
+    - "/community/events.html"
 ---
 
 __See something missing?__ Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)

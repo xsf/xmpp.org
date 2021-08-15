@@ -1,15 +1,9 @@
 ---
 Title: What's required
 Url: about/xsf/jabber-trademark/whats-required
-Save_as: about/xsf/jabber-trademark/whats-required.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/jabber-trademark
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/jabber-trademark/whats-required.html"
+layout: single_jabber
 ---
 
 The [actual license language](/about/xsf/jabber-trademark/trademark-license-agreement/) speaks for itself. In essence the only things necessary to obtain a license are to fill out the online application form, complete all of the questions, provide all of the information requested, and submit the application through this website, accompanied or followed by a check in the appropriate amount for the license if required. There is no fee required for software and other products licensed under an [OSI](http://www.opensource.org/) approved open source license.   Otherwise, the fee is $250.00 for use of the mark in connection with Jabber accessories or any use other than software or computer hardware, and a $500.00 one-time fee for use in connection with software or computer hardware or any other type of computer or Internet use of the Jabber mark. We have divided the fee into two classes in recognition that most of the accessory uses involve much smaller revenues than the computer software or hardware. The fees are standard and are not negotiable.

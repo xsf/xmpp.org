@@ -1,15 +1,8 @@
 ---
 Title: Sponsorship
 Url: community/sponsorship
-Save_as: community/sponsorship.html
-Parent_id: community
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: community
-Content_layout: multiple-columns
+aliases:
+    - "/community/sponsorship.html"
 ---
 
 As an organization the XSF relies on the enthusiasm of its members and the generosity of its sponsors to continue its work.

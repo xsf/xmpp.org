@@ -1,15 +1,9 @@
 ---
 Title: XSF Organizational Documents
 Url: about/xsf/organizational-documents
-Save_as: about/xsf/organizational-documents.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/organizational-documents.html"
+layout: single_xsf
 ---
 
 The Jabber Software Foundation (JSF) was incorporated in August 2001 and renamed to the XMPP Standards Foundation (XSF) in January 2007. Scanned copies of the following documents are provided online for complete documentation of the legal status of the XSF:

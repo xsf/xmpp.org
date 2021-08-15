@@ -1,23 +1,15 @@
 ---
 Title: Summits Conferences & Meetups Team
 Url: about/xsf/scam-team
-Save_as: about/xsf/scam-team.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xmpp-standards-foundation
-Content_layout: multiple-columns
-Template: team_page
-Team_Role: scam
+aliases:
+    - "/about/xsf/scam-team.html"
+layout: single_xsf
 ---
 
 The Summits Conferences & Meetups (SCAM) Team was chartered by the XSF Board of Directors in 2017 and currently of the
 following volunteers:
 
-$MEMBER_LIST$
+{{< teams team_name="scam">}}
 
 The charter of the Work Team is defined as:
 

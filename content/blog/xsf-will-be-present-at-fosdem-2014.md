@@ -1,8 +1,8 @@
 ---
 title: XSF will be present at FOSDEM 2014
-date: 2013-12-18 01:04
+date: 2013-12-18
 author: bear
-blog_id: blog
+categories: ["FOSDEM"]
 ---
 
 The [XSF](http://xmpp.org) will once again be attending [FOSDEM 2014](https://fosdem.org/2014/) and we will showcase the latest developments in bringing XMPP into the browser as a first class citizen and demonstrating how XMPP can be used in today's world.

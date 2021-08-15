@@ -1,15 +1,6 @@
 ---
 Title: Intermediate Certificate Authority
 Url: about/xsf/records/proposals/intermediate-certificate-authority
-Save_as: about/xsf/records/proposals/intermediate-certificate-authority.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/records/proposals
-Content_layout: multiple-columns
 ---
 
 Author: Peter Saint-Andre

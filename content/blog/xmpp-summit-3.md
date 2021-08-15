@@ -1,9 +1,8 @@
 ---
 title: XMPP Summit 3
-date: 2010-08-10 04:40
+date: 2010-08-10
 author: admin
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The XMPP Standards Foundation held its third developer conference on July 23 and 24, 2007, in Portland, Oregon, USA (the same week as [OSCON 2007](http://conferences.oreillynet.com/os2007/)).

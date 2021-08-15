@@ -1,9 +1,12 @@
 ---
 title: New XMPP Software Listing Rules
-date: 2017-03-23 13:00
+date: 2017-03-23
 author: ge0rg
-blog_id: blog
+categories: ["Miscellaneous"]
+aliases:
+    - "/2017/03/new-xmpp-software-listing-rules/"
 ---
+
 The XSF provides a [public list of XMPP implementations][0] on its
 website. For this list to be useful, it should contain up-to-date
 information about up-to-date software.
@@ -25,5 +28,3 @@ Please also ensure that you repeat this step in the following years.
 [1]:https://github.com/xsf/xmpp.org/blob/master/data/README.rst
 [2]:https://github.com/xsf/xmpp.org/commit/8724430ff702bab98865ef2338cd392c277a71ee
 [3]:xmpp:jdev@conference.jabber.org?join
-
-

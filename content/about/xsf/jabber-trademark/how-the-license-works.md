@@ -1,15 +1,9 @@
 ---
 Title: How the Jabber Trademark Licensing Program Works
 Url: about/xsf/jabber-trademark/how-the-license-works
-Save_as: about/xsf/jabber-trademark/how-the-license-works.html
-Parent_id: about
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: about/xsf/jabber-trademark
-Content_layout: multiple-columns
+aliases:
+    - "/about/xsf/jabber-trademark/how-the-license-works.html"
+layout: single_jabber
 ---
 
 If you or someone you represent wish to use and/or register as a trademark some variation of a mark or trade name including the word Jabber, you are required to submit the required information to one of the addresses on the [contact page](/contact.html). The information you provide will be reviewed, processed, and returned to you within a several week period, indicating the approval or disapproval of the organization of your proposed use and granting the license. The XSF reserves the right to disapprove known conflicting uses and uses deemed inimical to the Jabber community as a whole.

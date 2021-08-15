@@ -1,9 +1,10 @@
 ---
 title: XSF's Google Summer of Code 2019 Projects
-date: 2019-06-17 22:00
+date: 2019-06-17
 author: Flow
-blog_id: blog
-category: GSoC
+categories: ["Google Summer of Code"]
+aliases:
+    - "/2019/06/xsfs-google-summer-of-code-2019-projects/"
 ---
 
 The XMPP Standards Foundation is happy to act as umbrella organization for Google Summer of Code (GSoC) 2019. This year we are glad to mentor and support the following three GSoC projects.

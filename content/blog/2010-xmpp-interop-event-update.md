@@ -1,8 +1,8 @@
 ---
 title: 2010 XMPP Interop Event Update
-date: 2010-12-08 10:33
+date: 2010-12-08
 author: bear
-blog_id: blog
+categories: ["Events"]
 ---
 
 Monday saw the 2010 XMPP Interop start right up with many of the participants working with Kev (who was wearing his XSF ITeam hat) to establish the base line DNS entries and with MattJ for any CA Certificate items needed. Details can be found on the [Interop wiki page](http://wiki.xmpp.org/web/Interop "2010 XMPP Interop") and discussions are happening in the [chat room](xmpp://interop@muc.xmpp.org "interop@muc.xmpp.org") which is [logged](%20http://logs.xmpp.org/interop/).  A full report will be generated after the event is over and a summary will be posted here.

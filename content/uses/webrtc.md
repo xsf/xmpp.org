@@ -1,15 +1,8 @@
 ---
 Title: WebRTC
 Url: uses/webrtc
-Save_as: uses/webrtc.html
-Parent_id: uses
-Top_menu_show: false
-Top_Menu_order: -1
-Dropdown_menu_show: false
-Footer_show: false
-Sidebar_menu_show: true
-Inherit_sidebar: uses
-Content_layout: multiple-columns
+aliases:
+    - "/uses/webrtc.html"
 ---
 
 ## WebRTC + XMPP = <3

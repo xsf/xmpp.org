@@ -1,11 +1,8 @@
 ---
 Title: History of XMPP
 Url: about/history
-Save_as: about/history.html
-Parent_id: about
-Sidebar_menu_show: true
-Inherit_sidebar: about
-Content_layout: multiple-columns
+aliases:
+    - "/about/history.html"
 ---
 
 ## 1999
@@ -21,7 +18,7 @@ Content_layout: multiple-columns
 - __August:__ The Jabber Software Foundation (JSF) is formed to coordinate the growing number of open source projects and commercial entities building/using the Jabber technologies. The key focus of the JSF is to manage the protocols used within the Jabber/XMPP community, by documenting existing protocols and developing protocol extensions through an open standards process.
 
 ## 2002
-- __ February:__ The Jabber Software Foundation submits an [Internet-Draft documenting the Jabber protocols](https://datatracker.ietf.org/doc/html/draft-miller-jabber-00) to the Internet Engineering Task Force (IETF).
+- __February:__ The Jabber Software Foundation submits an [Internet-Draft documenting the Jabber protocols](https://datatracker.ietf.org/doc/html/draft-miller-jabber-00) to the Internet Engineering Task Force (IETF).
 - __October:__ Formation of the XMPP Working Group is approved by the Internet Engineering Steering Group (IESG). As a result, JSF formally contributes the base Jabber protocols to the Internet Standards Process and assigns change control over those protocols to the IETF, under the name Extensible Messaging and Presence Protocol (XMPP).
 - __November:__ First meeting of the XMPP Working Group is held at IETF 55 and includes presentations by Jeremie Miller, Joe Hildebrand, and Peter Saint-Andre.
 

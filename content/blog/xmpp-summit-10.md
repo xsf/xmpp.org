@@ -1,21 +1,20 @@
 ---
 title: XMPP Summit 10
-date: 2010-12-07 09:53
+date: 2010-12-07
 author: florian
-blog_id: blog
-category: XMPP Summit
+categories: ["XMPP Summit"]
 ---
 
 The tenth [XMPP Summit](/participate/the-xmpp-summit/) held by the XMPP Standards Foundation happened on February 4-7, 2011, in Brussels, Belgium (the same weekend as [FOSDEM 2011](http://www.fosdem.org/)).
 
 [A Trip Report can be found on the XSF Blog](https://xmpp.org/2011/02/brussels-trip-report/).
 
--   [Friday, February 4](#friday)
--   [Saturday, February 5](#saturday)
--   [Sunday, February 6](#sunday)
--   [Sunday, February 6 - Official XSF Dinner](#dinner)
--   [Monday, February 7](#monday)
--   [Dev Challenge](#challenge)
+- [Friday, February 4: XMPP Hackfest](#friday-february-4-xmpp-hackfest)
+- [Saturday, February 5: Devroom @ FOSDEM](#saturday-february-5-devroom--fosdem)
+- [Sunday, February 6: FOSDEM](#sunday-february-6-fosdem)
+- [Sunday, February 6: Official XSF Dinner](#sunday-february-6-official-xsf-dinner)
+- [Monday, February 7: XMPP Summit](#monday-february-7-xmpp-summit)
+- [Dev Challenge](#dev-challenge)
 
  
 ### Friday, February 4: XMPP Hackfest

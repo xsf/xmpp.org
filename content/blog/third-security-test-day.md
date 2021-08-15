@@ -1,8 +1,8 @@
 ---
 title: Third Security Test Day
-date: 2014-03-21 11:56
+date: 2014-03-21
 author: stpeter
-blog_id: blog
+categories: ["Events"]
 ---
 
 Tomorrow sees the third security test day.
