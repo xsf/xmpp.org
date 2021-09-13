@@ -22,13 +22,18 @@ try:
 except Exception:
     quit('Error while parsing xeplist.xml')
 
+def fix_status(status):
+    if status == 'Draft':
+        return 'Stable'
+    return status
+
 xeps = []
 for xep in root.findall("xep"):
     if xep.get("accepted") == "true":
         xeps.append(
             {
                 "title": xep.find("title").text,
-                "status": xep.find("status").text,
+                "status": fix_status(xep.find("status").text),
                 "number": int(xep.find("number").text),
                 "last_updated": xep.find("last-revision").find("date").text,
                 "type": xep.find("type").text,
