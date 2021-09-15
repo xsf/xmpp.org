@@ -12,14 +12,14 @@
       &nbsp;|&nbsp;
       {{ range $category := .Params.categories }}
         <span class="blog-tags">
-        <a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a></span>
+        <a href="/categories/{{ . | urlize }}/">{{ . }}</a></span>
       {{ end }}
     {{ end }}
     {{ if .Params.tags }}
       &nbsp;|&nbsp;
       {{ range $tag := .Params.tags }}
         <span class="blog-tags">
-        <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a></span>
+        <a href="/tags/{{ . | urlize }}/">{{ . }}</a></span>
       {{ end }}
     {{ end }}
     {{ if .Site.Params.wordCount }}
