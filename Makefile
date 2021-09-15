@@ -1,12 +1,10 @@
-PY=python
-PELICAN=pelican
-PELICANOPTS=
+PY=python3
+HUGO=hugo
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
-OUTPUTDIR=$(BASEDIR)/output
-CONFFILE=$(BASEDIR)/pelicanconf.py
-PUBLISHCONF=$(BASEDIR)/publishconf.py
+OUTPUTDIR=$(BASEDIR)/public
+TOOLSDIR=$(BASEDIR)/tools
 
 FTP_HOST=localhost
 FTP_USER=anonymous
@@ -25,22 +23,14 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 
 DROPBOX_DIR=~/Dropbox/Public/
 
-DEBUG ?= 0
-ifeq ($(DEBUG), 1)
-	PELICANOPTS += -D
-endif
-
 help:
-	@echo 'Makefile for a pelican Web site                                        '
+	@echo 'Makefile for a hugo web site                                           '
 	@echo '                                                                       '
 	@echo 'Usage:                                                                 '
 	@echo '   make html                        (re)generate the web site          '
 	@echo '   make clean                       remove the generated files         '
-	@echo '   make regenerate                  regenerate files upon modification '
 	@echo '   make publish                     generate using production settings '
-	@echo '   make serve [PORT=8000]           serve site at http://localhost:8000'
-	@echo '   make devserver [PORT=8000]       start/restart develop_server.sh    '
-	@echo '   make stopserver                  stop local server                  '
+	@echo '   make serve                       serve site at http://localhost:1313'
 	@echo '   make ssh_upload                  upload the web site via SSH        '
 	@echo '   make rsync_upload                upload the web site via rsync+ssh  '
 	@echo '   make dropbox_upload              upload the web site via Dropbox    '
@@ -49,39 +39,25 @@ help:
 	@echo '   make cf_upload                   upload the web site via Cloud Files'
 	@echo '   make github                      upload the web site via gh-pages   '
 	@echo '                                                                       '
-	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html'
-	@echo '                                                                       '
 
 html:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	$(HUGO)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
-regenerate:
-	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
-
 serve:
-ifdef PORT
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server $(PORT)
-else
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server
-endif
-
-devserver:
-ifdef PORT
-	$(BASEDIR)/develop_server.sh restart $(PORT)
-else
-	$(BASEDIR)/develop_server.sh restart
-endif
-
-stopserver:
-	kill -9 `cat pelican.pid`
-	kill -9 `cat srv.pid`
-	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
+	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(HUGO) version
+	$(HUGO) server --bind=0.0.0.0
 
 publish:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(PY) $(TOOLSDIR)/lint-list.py clients.json
+	$(PY) $(TOOLSDIR)/lint-list.py servers.json
+	$(PY) $(TOOLSDIR)/lint-list.py libraries.json
+	$(HUGO) version
+	$(HUGO)
 
 ssh_upload: publish
 	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
@@ -113,4 +89,4 @@ ifeq ($(TRAVIS_PULL_REQUEST), false)
 	/tmp/xsf-tools/build.py -d -x /tmp/xeps -o /home/travis/build/xsf/xmpp.org/output/extensions --imagespath /tmp/xep-images
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 endif
-.PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
+.PHONY: html help clean serve publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github

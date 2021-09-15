@@ -3,7 +3,7 @@ import fabric.contrib.project as project
 import os
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
+env.deploy_path = 'public'
 DEPLOY_PATH = env.deploy_path
 
 # Remote server configuration
@@ -21,25 +21,32 @@ def clean():
         local('rm -rf {deploy_path}'.format(**env))
         local('mkdir {deploy_path}'.format(**env))
 
+
 def build():
-    local('pelican -s pelicanconf.py')
+    local('python ./tools/prepare_xep_list.py')
+    local('python ./tools/lint-list.py clients.json')
+    local('python ./tools/lint-list.py servers.json')
+    local('python ./tools/lint-list.py libraries.json')
+    local('hugo')
+
 
 def rebuild():
     clean()
     build()
 
-def regenerate():
-    local('pelican -r -s pelicanconf.py')
 
 def serve():
     local('cd {deploy_path} && python -m SimpleHTTPServer'.format(**env))
+
 
 def reserve():
     build()
     serve()
 
+
 def preview():
-    local('pelican -s publishconf.py')
+    local('hugo server')
+
 
 def cf_upload():
     rebuild()
@@ -49,9 +56,10 @@ def cf_upload():
           '-K {cloudfiles_api_key} '
           'upload -c {cloudfiles_container} .'.format(**env))
 
+
 @hosts(production)
 def publish():
-    local('pelican -s publishconf.py')
+    rebuild()
     project.rsync_project(
         remote_dir=dest_path,
         exclude=".DS_Store",

@@ -1,0 +1,36 @@
+<span class="post-meta">
+    {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
+    {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
+    <i class="fas fa-calendar"></i>&nbsp;Posted on {{ $datestr }}
+    {{ if ne $datestr $lastmodstr }}
+      &nbsp;{{ $lastmodstr }}
+    {{ end }}
+    {{ if .Site.Params.readingTime }}
+      &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
+    {{ end }}
+    {{ if .Params.categories }}
+      &nbsp;|&nbsp;
+      {{ range $category := .Params.categories }}
+        <span class="blog-tags">
+        <a href="{{ $.Site.LanguagePrefix | absURL }}/categories/{{ . | urlize }}/">{{ . }}</a></span>
+      {{ end }}
+    {{ end }}
+    {{ if .Params.tags }}
+      &nbsp;|&nbsp;
+      {{ range $tag := .Params.tags }}
+        <span class="blog-tags">
+        <a href="{{ $.Site.LanguagePrefix | absURL }}/tags/{{ . | urlize }}/">{{ . }}</a></span>
+      {{ end }}
+    {{ end }}
+    {{ if .Site.Params.wordCount }}
+      &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
+    {{ end }}
+    {{ if not .Site.Params.hideAuthor }}
+      {{ if .Params.author }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+      {{ else }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
+      {{ end }}
+    {{ end }}
+  </span>
+  

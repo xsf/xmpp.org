@@ -10,7 +10,7 @@
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-FROM debian
+FROM debian:bullseye
 MAINTAINER Dave Cridland <dave.cridland@surevine.com>
 
 # Set environment variables
@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y python-pip git && pip install pelican==3.3 markdown==2.6.11 ghp-import
+RUN apt-get install -y hugo python3 python3-pip && pip3 install requests
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
@@ -29,5 +29,4 @@ RUN cd /var/tmp/src/xmpp.org && make publish
 
 FROM nginx
 COPY deploy/xsf.conf /etc/nginx/conf.d/default.conf
-COPY --from=0 /var/tmp/src/xmpp.org/output/ /var/www/html/
-
+COPY --from=0 /var/tmp/src/xmpp.org/public/ /var/www/html/

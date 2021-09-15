@@ -1,9 +1,0 @@
-<!-- <h4>
-  <a href="{{ SITE_URL }}/resources">Resources &raquo;</a>
-</h4> -->
-<h4>Categories</h4>
-<ul>
-{% for category, articles in categories %}
-  <li><a href="{{ SITE_URL }}/{{ category.url }}">{{ category }}</a></li>
-{% endfor %}
-</ul>
