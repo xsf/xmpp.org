@@ -295,7 +295,7 @@ ul.share {
 }
 .footer-github p {
     margin-bottom: 0;
-    font-family: "Exo 2", sans-serif;
+    font-family: "Exo 2", sans-serif !important;
 }
 .footer-github img {
     height: 25px;
@@ -341,6 +341,9 @@ ul.share {
     article h3 {
         color: #b0b0b0;
     }
+    ul.share li a {
+        background-color: #505050;
+    }
 	table {
 		background-color: #333;
 		border: 1px solid #444;
@@ -353,9 +356,10 @@ ul.share {
 		color: #ccc;
 	}
     .footer-sponsors {
-        background-color: #5a5a5a;
+        background-color: #474747;
+        border: 1px solid #838383;
     }
     .software-list {
-        background-color: #5d5d5d;
+        background-color: #2e2e2e;
     }
 }

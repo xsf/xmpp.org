@@ -1,5 +1,5 @@
 ---
-title: XMPP Roundup #4
+title: XMPP Roundup 4
 date: 2008-12-02
 author: willsheward
 categories: ["XMPP Roundup"]

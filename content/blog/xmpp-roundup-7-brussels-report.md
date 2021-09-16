@@ -1,5 +1,5 @@
 ---
-title: "XMPP Roundup #7: Brussels Report"
+title: "XMPP Roundup 7: Brussels Report"
 date: 2009-02-25
 author: stpeter
 categories: ["XMPP Roundup"]

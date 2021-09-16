@@ -1,5 +1,5 @@
 ---
-title: XMPP Roundup #1
+title: XMPP Roundup 1
 date: 2008-09-16
 author: admin
 categories: ["XMPP Roundup"]
