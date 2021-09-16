@@ -1,5 +1,5 @@
 ---
-title: XMPP Roundup #8
+title: XMPP Roundup 8
 date: 2009-04-21
 author: Nyco
 categories: ["XMPP Roundup"]
