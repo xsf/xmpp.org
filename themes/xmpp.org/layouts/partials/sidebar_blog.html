@@ -8,7 +8,7 @@
     <h3>Categories</h3>
     <ul>
     {{ range .Site.Taxonomies.categories.ByCount }}
-    <li><a href="/categories/{{ .Name | urlize }}">{{ .Name }}</a> ({{ .Count }})</li>
+    <li><a href="/categories/{{ .Name | urlize }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
     {{ end }}
     </ul>
 </aside>
