@@ -36,9 +36,9 @@ Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a 
 
 Multiple types of installations are documented:
 
-* Local (regular)
-* Docker container
-* Vagrant virtual machine
+* [Local (regular)](#regular-installation)
+* [Docker container](#docker-based-installation)
+* [Vagrant virtual machine](#vagrant-based-installation)
 
 ### Regular installation
 
