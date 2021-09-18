@@ -29,7 +29,7 @@ Identichat is a Jabber/XMPP MUC interface to Identi.ca/Laconica microblogging pl
 
 *MatriX*
 
-[MatriX](%20http://www.ag-software.de/index.php?page=matrix) is a proprietary XMPP SDK written in C\# by AG Software for the .NET/Mono platforms. Demos require Silverlight 2.0.
+[MatriX](http://www.ag-software.de/index.php?page=matrix) is a proprietary XMPP SDK written in C\# by AG Software for the .NET/Mono platforms. Demos require Silverlight 2.0.
 
 *Galaxium multiprotocol IM client*
 
@@ -77,7 +77,7 @@ BBC Radio Labs has released the bot [xmpp:radio1@hug.hellomatty.com](xmpp:radio1
 
 *Jabiru: XMPP client for Android*
 
-[Jabiru](%20http://jabiru.mzet.net/) is free jabber client for Google Android platform, released in version 1.0 in March, and constantly updated since.
+[Jabiru](http://jabiru.mzet.net/) is free jabber client for Google Android platform, released in version 1.0 in March, and constantly updated since.
 
 *Concordance: Python 3 framework*
 
@@ -133,7 +133,7 @@ The Orkut social networking service [recently added XMPP support](http://googlet
 
 **Specifications**
 
-The XMPP Standards Foundation has been busy finalizing a number of items on its [roadmap](https://xmpp.org/xsf/roadmap.shtml). Here is a brief summary:
+The XMPP Standards Foundation has been busy finalizing a number of items on its [roadmap](/about/xsf/roadmap). Here is a brief summary:
 
 The core specifications underlying the XMPP [Jingle technology](https://xmpp.org/tech/jingle.shtml) are very close to being done, and are currently in "Last Call" within the XSF's standards process. The specifications in question are [Jingle](https://xmpp.org/extensions/xep-0166.html), [Jingle RTP Sessions](https://xmpp.org/extensions/xep-0167.html), [Jingle ICE-UDP Transport Method](https://xmpp.org/extensions/xep-0176.html), and [Jingle Raw UDP Transport Method](https://xmpp.org/extensions/xep-0177.html). Once these specifications advance to Draft, expect to see more Jingle implementations as well as further progress on other Jingle-related technologies (e.g., [file transfer](https://xmpp.org/extensions/xep-0234.html)).
 

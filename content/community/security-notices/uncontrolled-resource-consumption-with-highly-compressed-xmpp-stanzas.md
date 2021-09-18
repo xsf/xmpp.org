@@ -14,7 +14,7 @@ Several XMPP server implementations that support application-layer compression (
 
 ## Description
 
-XMPP stream compression is a desirable feature that reduces the amount of data transferred between the protocol principals. In XMPP, compression can be negotiated at the TLS layer (as described in [RFC 6120](/rfcs/rfc6120.html)) or at the application layer (as described in [XEP-0138](/extensions/xep-0138.html)). The vulnerability that has been discovered applies specifically to application-layer compression; such compression is negotiated between an XMPP client and server (or two servers) as follows:
+XMPP stream compression is a desirable feature that reduces the amount of data transferred between the protocol principals. In XMPP, compression can be negotiated at the TLS layer (as described in [RFC 6120](https://datatracker.ietf.org/doc/html/rfc6120)) or at the application layer (as described in [XEP-0138](/extensions/xep-0138.html)). The vulnerability that has been discovered applies specifically to application-layer compression; such compression is negotiated between an XMPP client and server (or two servers) as follows:
 
 1. An XMPP server supporting application-layer compression advertises it in the stream feature message:
 

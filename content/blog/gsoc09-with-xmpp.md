@@ -1,5 +1,5 @@
 ---
-title: GSoC '09, with XMPP
+title: "GSoC '09, with XMPP"
 date: 2009-04-29
 author: Nyco
 categories: ["Google Summer of Code"]

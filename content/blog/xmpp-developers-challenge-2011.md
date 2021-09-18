@@ -1,5 +1,5 @@
 ---
-title: XMPP Developer's Challenge 2011
+title: "XMPP Developer's Challenge 2011"
 date: 2011-01-31
 author: florian
 categories: ["Events"]

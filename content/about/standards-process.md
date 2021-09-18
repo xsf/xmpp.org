@@ -19,15 +19,15 @@ The first thing to do is to write up your idea. XEPs are written in an XML forma
 
 The XMPP Editor isn't actually one person, but a team of amazingly hard working XSF members led by Matthew Miller. To send them a proposed new XEP, just send it in an email to them - but because that's a list, and would be drowned in spam, you'll need to get the subject line right.
 
-#### <a name="submitting-a-xep" href="#submitting-a-xep">Submit your extension</a>
+#### <a name="submitting-a-xep" href="#submitting-a-xep">Submit your extension</a>{#submitting-a-xep}
 
-Here's how to submit a proposal to the XMPP Standards Foundation for consideration as an [XMPP Extension Protocol](/xmpp-protocols/xmpp-extensions/):
+Here's how to submit a proposal to the XMPP Standards Foundation for consideration as an [XMPP Extension Protocol](/extensions):
 
 1. Write your proposal following the guidelines described in [XEP-0143: Guidelines for Authors of XMPP Extension Protocols](/extensions/xep-0143.html).
 2. Make sure you read, understand, and agree to the XSF’s [IPR Policy](/about/xsf/ipr-policy) before you submit your proposal!
 3. Email the XML file (or a URL for the file) to the [Editor Team](mailto:editor@xmpp.org) with a subject line of "ProtoXEP: [your title here]".
 
-Note: It is the author’s responsibility to provide a properly-formatted source file (see the [template](https://raw.githubusercontent.com/xsf/xeps/master/xep-template.xml) file maintained under [source control](/about/xsf/source-control.html)). Proposals submitted in HTML, TXT, MS Word, Open Document Format, etc. will be returned to the proposal author for proper formatting.
+Note: It is the author’s responsibility to provide a properly-formatted source file (see the [template](https://raw.githubusercontent.com/xsf/xeps/master/xep-template.xml) file maintained under [source control](/about/xsf/source-control)). Proposals submitted in HTML, TXT, MS Word, Open Document Format, etc. will be returned to the proposal author for proper formatting.
 
 #### Editor creates a ProtoXEP
 

@@ -1,5 +1,5 @@
 ---
-title: No, it's not the end of XMPP for Google Talk
+title: "No, it's not the end of XMPP for Google Talk"
 date: 2015-03-02
 author: fippo
 categories: ["Miscellaneous"]

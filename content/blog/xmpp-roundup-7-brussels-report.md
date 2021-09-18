@@ -7,7 +7,7 @@ categories: ["XMPP Roundup"]
 
 [Reporter: Peter Saint-Andre]
 
-Before the memories of [XMPP Summit 6](https://xmpp.org/summit/summit6.shtml) fade away, I wanted to provide a brief report on the latest and greatest of our "IRL" (in real life) meetings.
+Before the memories of [XMPP Summit 6](/2010/08/xmpp-summit-6) fade away, I wanted to provide a brief report on the latest and greatest of our "IRL" (in real life) meetings.
 
 We held the first XMPP Summit in the summer of 2005 to perform server interop testing and discuss topics of interest. Thirteen developers showed up and we made good progress on a number of issues, including the pubsub simplifications now known as [Personal Eventing Protocol](https://xmpp.org/extensions/xep-0163.html).
 

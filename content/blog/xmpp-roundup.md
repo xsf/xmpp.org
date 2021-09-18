@@ -9,7 +9,7 @@ aliases:
 
 This is the second in what we hope will be a regular (perhaps even weekly) roundup of blog posts, announcements, and news stories relating to and featuring XMPP.
 
-The roundup is compiled by trawling through Google News Alerts for occurrences of 'XMPP' and is most definitely not comprehensive. If you are aware of items this roundup of the past week's news has missed or wish to submit posts of your own, then please contact any [member of the Board](https://xmpp.org/xsf/board/).
+The roundup is compiled by trawling through Google News Alerts for occurrences of 'XMPP' and is most definitely not comprehensive. If you are aware of items this roundup of the past week's news has missed or wish to submit posts of your own, then please contact any [member of the Board](/about/xmpp-standards-foundation#board).
 
 **Enjit**
 

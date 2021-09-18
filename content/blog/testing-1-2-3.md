@@ -5,7 +5,7 @@ author: stpeter
 categories: ["Miscellaneous"]
 ---
 
-One of the [roadmap](https://xmpp.org/xsf/roadmap.shtml) items we discussed at the [XMPP Summit](http://blog.xmpp.org/?p=12) in late February was the need to certify that XMPP clients and servers comply with our protocol specifications. 
+One of the [roadmap](/about/xsf/roadmap) items we discussed at the [XMPP Summit](/2007/02/brussels-report) in late February was the need to certify that XMPP clients and servers comply with our protocol specifications. 
 
 While eventually we would like to have a formal certification program, we recently have taken two steps toward that goal:
 

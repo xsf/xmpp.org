@@ -6,21 +6,21 @@ aliases:
 layout: single_xsf
 ---
 
-### XSF Chair
+### XSF Chair{#chair}
 
 Chairman of the XSF is Ralph Meijer. Ralph is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
 
-### Executive Director
+### Executive Director{#executive-director}
 
 The current Executive Director of the XSF is Matthew Wild. Matthew has served as a director since 2016, and prior to that on the XMPP Council 2009-2016. As well as contributions to the protocol, Matthew founded, and continues to develop, XMPP-related software projects such as [Prosody](https://prosody.im/) and [Snikket](https://snikket.org/). You can contact Matthew via [XMPP](xmpp:me@matthewwild.co.uk) or [email](mailto:me@matthewwild.co.uk).
 
-### XSF Treasurer
+### XSF Treasurer{#treasurer}
 
 The treasurer of the XSF is Peter Saint-Andre. Peter has served as executive director of the XMPP Standards Foundation for 15 years, from 2002-2017. He has been contributing to the Jabber/XMPP developer community since late 1999, where he has focused on documentation and standardization as author of the XMPP RFCs, numerous XMPP extension protocols, and XMPP: The Definitive Guide (O’Reilly, 2009).
 
 Peter’s weblog is published at [stpeter.im](https://stpeter.im) and syndicated at [Planet Jabber](https://planet.jabber.org). His contact information is available at [https://stpeter.im/contact.html](https://stpeter.im/contact.html).
 
-### XSF Secretary
+### XSF Secretary{#secretary}
 
 The Secretary of the XSF is Alexander Gnauck. Alex is a software engineer born in 1973 in Germany. He lives in Heilbronn, which is a city in south-central Germany near Stuttgart. As the founder of AG-Software he offers software development and consulting in XMPP communication technologies. He has also worked for ALF, a company developing financial consulting software for bankers. Alexander served as Chair of the XSF Board of Directors for 2007-2008 and as a Board member for 2006-2007 and 2008-2009.
 

@@ -5,7 +5,7 @@ author: stpeter
 categories: ["XMPP Summit"]
 ---
 
-The XSF held another successful [XMPP Summit](https://xmpp.org/summit/summit8.shtml) over the weekend at [FOSDEM 2010](http://fosdem.org/2010/) in Brussels, Belgium. Many thanks to the companies who sponsored this event: [Nokia](http://www.nokia.com/), [Vodafone](http://www.vodafone.com), [Collabora](http://collabora.co.uk/), [Isode](http://www.isode.com/), [TANDBERG](http://www.tandberg.com/), [Buddycloud](http://www.buddycloud.com/), [Collecta](http://collecta.com/), and [Ooros](http://www.ooros.com/). Special thanks to Nokia for temporarily donating some N900 devices for the Developer Challenge, and to [Mobile Vikings](http://mobilevikings.com/) for the SIM cards that enabled a number of XMPP developers to experiment with building mobile applications at the conference. And extra special thanks to XSF Board member Florian Jensen for his hard work on local coordination (as well as the photos in this blog post).
+The XSF held another successful [XMPP Summit](/2010/08/xmpp-summit-8) over the weekend at [FOSDEM 2010](http://fosdem.org/2010/) in Brussels, Belgium. Many thanks to the companies who sponsored this event: [Nokia](http://www.nokia.com/), [Vodafone](http://www.vodafone.com), [Collabora](http://collabora.co.uk/), [Isode](http://www.isode.com/), [TANDBERG](http://www.tandberg.com/), [Buddycloud](http://www.buddycloud.com/), [Collecta](http://collecta.com/), and [Ooros](http://www.ooros.com/). Special thanks to Nokia for temporarily donating some N900 devices for the Developer Challenge, and to [Mobile Vikings](http://mobilevikings.com/) for the SIM cards that enabled a number of XMPP developers to experiment with building mobile applications at the conference. And extra special thanks to XSF Board member Florian Jensen for his hard work on local coordination (as well as the photos in this blog post).
 
 The weekend events started with a "hackfest" on Friday where developers could work together on code projects, perform interoperability testing, and give informal talks on technical topics.
 
@@ -13,7 +13,7 @@ On Saturday we had a "devroom" at FOSDEM 2010, which was packed the entire after
 
 ![](/images/summit8-devroom.jpg)
 
-One of the most popular sessions was "Stump the XMPP Experts" with XMPP book authors and the current [XMPP Council](https://xmpp.org/council/) (left to right, the experts were Kevin Smith, Ralph Meijer, Remko Tronçon, Matthew Wild, Jack Moffitt, Dave Cridland, and Peter Saint-Andre).
+One of the most popular sessions was "Stump the XMPP Experts" with XMPP book authors and the current [XMPP Council](/about/xmpp-standards-foundation#council) (left to right, the experts were Kevin Smith, Ralph Meijer, Remko Tronçon, Matthew Wild, Jack Moffitt, Dave Cridland, and Peter Saint-Andre).
 
 ![](/images/summit8-stump.jpg)
 

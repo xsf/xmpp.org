@@ -11,7 +11,7 @@ To receive the newsletter in your email inbox, please sign up using the form bel
 
 {{< newsletter-subscribe >}}
 
-Past editions of the newsletter can be [read online here](/category/newsletter.html).
+Past editions of the newsletter can be [read online here](/categories/newsletter).
 
 ### Help us to build the newsletter
 

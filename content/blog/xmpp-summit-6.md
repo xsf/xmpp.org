@@ -51,7 +51,7 @@ The following people are likely to participate:
 ### Saturday, February 7: Devroom @ FOSDEM
 From 13:00 until 19:00 we will have a devroom where we can host tutorials, presentations, demos, and lightning talks at [FOSDEM 2009](http://www.fosdem.org/2009/). Location: ULB Solbosh Campus (see [logistics](#logistics)), Building AW, Room 1.120.
 
-If you would like to be a speaker, please contact [Peter Saint-Andre](https://xmpp.org/xsf/people/stpeter.shtml). We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
+If you would like to be a speaker, please contact Peter Saint-Andre. We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
 
 The proposed schedule is as follows.
 
@@ -175,7 +175,7 @@ Participants:
 
 <a name="monday"></a>
 ### Monday, February 9: XMPP Summit
-The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack. The main topics will probably be mobile optimizations, file transfer, and end-to-end encryption as [recently prioritized](http://logs.jabber.org/council@conference.jabber.org/2008-12-03.html#14:54:38) by the [XMPP Council](/about/xsf/the-xsf-council/).
+The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack. The main topics will probably be mobile optimizations, file transfer, and end-to-end encryption as [recently prioritized](http://logs.jabber.org/council@conference.jabber.org/2008-12-03.html#14:54:38) by the [XMPP Council](/about/xmpp-standards-foundation).
 
 The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968). The tentative schedule is 9:30 to 4:30. Location: [Hotel Bedford](http://www.hotelbedford.be/).
 
