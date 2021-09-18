@@ -5,7 +5,7 @@ author: stpeter
 categories: ["Google Summer of Code"]
 ---
 
-Although the [Google Summer of Code](http://blog.xmpp.org/?p=20) ended weeks ago, we neglected to post a final summary. 
+Although the [Google Summer of Code](/2007/04/summer-of-code-projects) ended weeks ago, we neglected to post a final summary. 
 
 All of the XMPP-related projects ended successfully and all of our students continue to contribute to the community. You can download their code [here](http://code.google.com/p/google-summer-of-code-2007-xmpp/downloads/list) and you can view final project reports from our students at the following links:
 

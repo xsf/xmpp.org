@@ -12,7 +12,7 @@ If you want to enquire about sponsorship opportuntities please email sponsors (a
 
 If you’d prefer not to talk to an anonymous email address, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) can be contacted using the details in their profiles.
 
-Finally you can join in the many [XMPP Discussions](/participate/discuss-xmpp/) occurring on the mailing lists.
+Finally you can join in the many [XMPP Discussions](/community/chat) occurring on the mailing lists.
 
 The Foundation’s postal address is:
 

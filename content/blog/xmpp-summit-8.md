@@ -66,9 +66,9 @@ The following people are likely to participate:
 
 <a name="saturday"></a>
 ### Saturday, February 6: Devroom @ FOSDEM
-From 13:00 until 19:00 we will have a devroom where we can host tutorials, presentations, demos, and lightning talks at [FOSDEM 2010](http://www.fosdem.org/2010/). Location: ULB Solbosh Campus (see [logistic](https://xmpp.org/summit/summit8.shtml#logistics)), the Building and Room will be announced soon.
+From 13:00 until 19:00 we will have a devroom where we can host tutorials, presentations, demos, and lightning talks at [FOSDEM 2010](http://www.fosdem.org/2010/). Location: ULB Solbosh Campus (see [logistic](/2010/08/xmpp-summit-8#logistics)), the Building and Room will be announced soon.
 
-If you would like to be a speaker, please contact [Peter Saint-Andre](https://xmpp.org/xsf/people/stpeter.shtml). We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
+If you would like to be a speaker, please contact Peter Saint-Andre. We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
 
 The schedule is as follows (slots for lightning talks are still available, post to the [summit@xmpp.org list](https://mail.jabber.org/mailman/listinfo/summit) if you are interested!).
 
@@ -130,7 +130,7 @@ Developers are free to attend the second day of the FOSDEM conference. We'll nee
 ### Sunday, February 7: Official XSF Dinner
 *Note: We have reached our dinner limit of 48 people!*
 
-Depending on the amount of sponsorships / donations we receive, the price of the dinner will vary. Please be at the Hotel reception at **18:15** so that you don't miss the coach to the Restaurant. Contact [Florian](https://xmpp.org/summit/summit8.shtml#contact) if you would like to donate!
+Depending on the amount of sponsorships / donations we receive, the price of the dinner will vary. Please be at the Hotel reception at **18:15** so that you don't miss the coach to the Restaurant. Contact [Florian](/2010/08/xmpp-summit-8#contact) if you would like to donate!
 
 Sponsors / Donations:
 
@@ -206,7 +206,7 @@ The official "XMPP Summit" itself: Intensive discussions among core XMPP develop
 
 The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list. The tentative schedule is 9:30 to 4:30. 
 
-Location: Conference Room at the [Hotel](https://xmpp.org/summit/summit8.shtml#hotel).
+Location: Conference Room at the [Hotel](/2010/08/xmpp-summit-8#hotel).
 
 The following people will participate:
 
@@ -271,13 +271,13 @@ The following people will participate:
 All information about the XMPP Developer Challenge can be found [here](http://bit.ly/7135Iu).
 [MobileVikings](http://mobilevikings.com/) has generously given us 20 SIM cards with mobile internet access for demonstration purposes for the XMPP Stand, Devroom and Summit.
 
-If you are interested in getting a SIM card for the 4 days, please contact [Florian](https://xmpp.org/summit/summit8.shtml#contact).
+If you are interested in getting a SIM card for the 4 days, please contact [Florian](/2010/08/xmpp-summit-8#contact).
 
 <a name="hotel"></a>
 ### Hotel
 The XMPP Summit will be held at the [Best Western Premier - Carrefour de L'Europe](http://carrefourhotel.be/) Hotel in the heart of Brussels. It's conveniently located next to the Brussels Central station and the Grand Place.
 
-The XSF has a deal for a Business Room for 109€ per night for a single or a double / twin room. The rooms are on lock until the 15th of January. For the booking and information, please contact [Florian Jensen](https://xmpp.org/summit/summit8.shtml#contact).
+The XSF has a deal for a Business Room for 109€ per night for a single or a double / twin room. The rooms are on lock until the 15th of January. For the booking and information, please contact [Florian Jensen](/2010/08/xmpp-summit-8#contact).
 
 <a name="logistics"></a>
 ### Logistics

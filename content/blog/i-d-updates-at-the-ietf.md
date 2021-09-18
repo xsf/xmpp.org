@@ -10,7 +10,7 @@ Although the XMPP Standards Foundation runs its own [standards process](https://
 Lately we have updated several of the RFCs and Internet-Drafts we are working on within the IETF:
 
 -   [draft-saintandre-rfc4622bis](https://xmpp.org/internet-drafts/draft-saintandre-rfc4622bis-00.html)
-    - this document corrects several errors in [RFC 4622](https://xmpp.org/rfcs/rfc4622.html), which defines the
+    - this document corrects several errors in [RFC 4622](https://datatracker.ietf.org/doc/html/rfc4622), which defines the
     xmpp: URI scheme (a handy diff from RFC 4622 is [here](http://tools.ietf.org/rfcdiff?url1=http%3A%2F%2Ftools.ietf.org%2Frfc%2Frfc4622.txt&url2=http%3A%2F%2Fwww.xmpp.org%2Finternet-drafts%2Fdraft-saintandre-rfc4622bis-00.txt&difftype=--hwdiff))
 -   [draft-saintandre-jabberid](http: www.xmpp.org internet-drafts draft-saintandre-jabberid-05.html)
     - this document defines the [Jabber-ID email header](http://wiki.jabber.org/index.php/Jabber_Email_Header), which enables you to specify your XMPP address in the email messages you send

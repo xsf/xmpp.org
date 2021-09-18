@@ -17,7 +17,7 @@ Applications from prospective new members are accepted during the first two week
 
 ## <a name="responsibilities" href="#responsibilities">Responsibilities of Members</a>
 
-Because the XSF is a membership organization, our members provide the legal basis for our activities. In particular, once every twelve months the members of the XSF elect the XMPP Council and the XSF Board of Directors. The members also retain ultimate responsibility for the policies of the XSF as reflected in the XSF [Bylaws](about/xsf/bylaws).
+Because the XSF is a membership organization, our members provide the legal basis for our activities. In particular, once every twelve months the members of the XSF elect the XMPP Council and the XSF Board of Directors. The members also retain ultimate responsibility for the policies of the XSF as reflected in the XSF [Bylaws](/about/xsf/bylaws).
 
 Membership in the XMPP Standards Foundation is a privilege that is granted by existing members to active participants in the Jabber/XMPP community. Prospective members are expected to have made valuable contributions through writing code, deploying Jabber/XMPP services, creating documentation, authoring XMPP Extension Protocols, and so on. The best way to increase one’s chances of election are to actively and visibly contribute to the Jabber/XMPP community.
 
@@ -26,7 +26,7 @@ Membership in the XMPP Standards Foundation is a privilege that is granted by ex
 Once elected, XSF members are expected to continue contributing to the Jabber/XMPP community and the work of the XMPP Standards Foundation through participation on our [mailing lists](/community/mailing-lists) and [chat rooms](/community/chat) and in the XSF’s work teams. Currently four work teams are chartered and active:
 
 * [Communication Team](/about/xsf/comm-team)
-* [Editor Team](about/xsf/editor-team)
+* [Editor Team](/about/xsf/editor-team)
 * [Infrastructure Team](/about/xsf/infrastructure-team)
 * [Summits, Conferences & Meetups Team](/about/xsf/scam-team)
 

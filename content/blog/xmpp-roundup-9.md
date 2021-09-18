@@ -79,8 +79,8 @@ Since the last XMPP Roundup, several specifications published by the XMPP Standa
 -   [XEP-0256: Last Activity in Presence](https://xmpp.org/extensions/xep-0256.html) has advanced from Experimental to Draft
 -   [XEP-0237: Roster Versioning](https://xmpp.org/extensions/xep-0237.html) has been updated to reflect feedback receiving during Last Call, and a second Last Call has been issued before advancing it from Experimental to
     Draft
--   [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html) (BOSH) was updated to correct the XML schema and incorporate technical discussions held at [XMPP Summit 6](https://xmpp.org/summit/summit6.shtml) in February
--   [XEP-0267: Server Rosters](https://xmpp.org/extensions/xep-0267.html) and [XEP-0268: Incident Reporting](https://xmpp.org/extensions/xep-0268.html) were published, also as a result of discussions held at [XMPP Summit 6](https://xmpp.org/summit/summit6.shtml) in February
+-   [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html) (BOSH) was updated to correct the XML schema and incorporate technical discussions held at [XMPP Summit 6](/2010/08/xmpp-summit-6) in February
+-   [XEP-0267: Server Rosters](https://xmpp.org/extensions/xep-0267.html) and [XEP-0268: Incident Reporting](https://xmpp.org/extensions/xep-0268.html) were published, also as a result of discussions held at [XMPP Summit 6](/2010/08/xmpp-summit-6) in February
 -   [XEP-0266: Codecs for Jingle RTP Sessions](https://xmpp.org/extensions/xep-0266.html) was updated with information about the [Dirac codec](http://diracvideo.org/) for video
 -   [XEP-0238: XMPP Protocol Flows for Inter-Domain Federation](https://xmpp.org/extensions/xep-0238.html) and [XEP-0154: User Profile](https://xmpp.org/extensions/xep-0154.html) have been deferred because of inactivity
 

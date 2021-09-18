@@ -1,5 +1,5 @@
 ---
-title: DevCon #4
+title: "DevCon #4"
 date: 2008-01-10
 author: stpeter
 categories: ["Miscellaneous"]

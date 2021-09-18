@@ -6,7 +6,7 @@ categories: ["XMPP Roundup"]
 ---
 
 [Reporters: Nicolas Vérité and Peter Saint-Andre]
-For those who love round numbers, welcome to the tenth edition of the XMPP Roundup, our semi-regular review of news and events in the XMPP community. Since our [last roundup](/index.php/2009/05/xmpp-roundup-9/) on May 11, here's what's been happening...
+For those who love round numbers, welcome to the tenth edition of the XMPP Roundup, our semi-regular review of news and events in the XMPP community. Since our [last roundup](/2009/05/xmpp-roundup-9/) on May 11, here's what's been happening...
 
 **Software**
 

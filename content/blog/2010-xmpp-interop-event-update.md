@@ -5,7 +5,7 @@ author: bear
 categories: ["Events"]
 ---
 
-Monday saw the 2010 XMPP Interop start right up with many of the participants working with Kev (who was wearing his XSF ITeam hat) to establish the base line DNS entries and with MattJ for any CA Certificate items needed. Details can be found on the [Interop wiki page](http://wiki.xmpp.org/web/Interop "2010 XMPP Interop") and discussions are happening in the [chat room](xmpp://interop@muc.xmpp.org "interop@muc.xmpp.org") which is [logged](%20http://logs.xmpp.org/interop/).  A full report will be generated after the event is over and a summary will be posted here.
+Monday saw the 2010 XMPP Interop start right up with many of the participants working with Kev (who was wearing his XSF ITeam hat) to establish the base line DNS entries and with MattJ for any CA Certificate items needed. Details can be found on the [Interop wiki page](http://wiki.xmpp.org/web/Interop "2010 XMPP Interop") and discussions are happening in the [chat room](xmpp://interop@muc.xmpp.org "interop@muc.xmpp.org") which is [logged](http://logs.xmpp.org/interop/).  A full report will be generated after the event is over and a summary will be posted here.
 
 Each server was represented by one or more developers (or active XSF members) and after installing and configuring the software a number of test accounts were created so that testing could start.
 
@@ -22,7 +22,7 @@ We also had quite a few client software teams who participated:
 -   [SAFEchat](http://www.boldonjames.com/)
 -   [Swift](http://swift.im/)
 -   [Gajim](http://gajim.org/)
--   [Telepathy-Gabble](http://)
+-   [Telepathy-Gabble](https://telepathy.freedesktop.org/components/telepathy-gabble/)
 -   [OneTeam](https://oneteam.im/)
 -   [OneTeam for iPhone](https://oneteam.im/)
 

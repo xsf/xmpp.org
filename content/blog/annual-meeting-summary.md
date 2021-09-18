@@ -7,9 +7,9 @@ categories: ["XSF Organisational"]
 
 XSF Member Jehan posted this summary to the members mailing list:
 
-Thus the XSF [Board](https://xmpp.org/about/xsf/the-xsf-board-of-directors/) and [Council](https://xmpp.org/about/xsf/the-xsf-council/) members for 2010/2011 [shall be elected](https://xmpp.org/2010/09/board-and-council-elections-2010/) this 25th of October 2010. And so they were.
+Thus the XSF [Board](/about/xmpp-standards-foundation.html#board) and [Council](/about/xmpp-standards-foundation.html#council) members for 2010/2011 [shall be elected](/2010/09/board-and-council-elections-2010/) this 25th of October 2010. And so they were.
 
-As a reminder, the Board is the entity representing externally the **XMPP Standards Foundation**, in particular in business relations. As for the Council, its members approve the *XMPP Extension Protocols*, after having been carefully discussed on the various [discussion lists](https://xmpp.org/participate/discuss-xmpp/) and listened to the opinions of our technical readers, whereas they may be XSF members or not, renowned experts or students, or even you, behind your screen.
+As a reminder, the Board is the entity representing externally the **XMPP Standards Foundation**, in particular in business relations. As for the Council, its members approve the *XMPP Extension Protocols*, after having been carefully discussed on the various [discussion lists](/community/chat) and listened to the opinions of our technical readers, whereas they may be XSF members or not, renowned experts or students, or even you, behind your screen.
 
 So who are our brand new representatives? Hey, not that new actually, as the XSF Board keeps all the same four individuals as the previous year — Jack Moffit, Florian Jensen, Will Sheward and Nicolas Vérité — and welcomes additionally Mike Taylor for his first time ever on this role.
 

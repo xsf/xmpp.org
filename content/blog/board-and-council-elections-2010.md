@@ -9,4 +9,4 @@ In accordance with the [XSF Bylaws](/about/xsf/bylaws), once a year the XMPP S
 
 If you are interested in running for Board or Council, please add a wiki page about your candidacy to the relevant sections of [this page on the XMPP Wiki](http://wiki.xmpp.org/web/Board_and_Council_Elections_2010) by the close of business on September 30, 2010.
 
-*Note*: XMPP Council members must be *[elected members](/about/xsfmembers.html)* of the XSF; however, there is no such restriction for the Board of Directors.
+*Note*: XMPP Council members must be *[elected members](/about/xsf/members)* of the XSF; however, there is no such restriction for the Board of Directors.
