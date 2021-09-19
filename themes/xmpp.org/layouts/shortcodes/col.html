@@ -1,0 +1,10 @@
+<div class="col align-items-start">
+{{ if .Get "header" }}
+<h2>{{ .Get "header" }}</h2>
+{{ end }}
+{{ if eq ( .Get "content") "shortcode" }}
+		{{ .Inner }}
+{{ else }}
+		{{ .Inner | markdownify }}
+{{ end }}
+</div>

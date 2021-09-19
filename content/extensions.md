@@ -6,7 +6,8 @@ aliases:
     - "/protocols/xmpp-extensions/"
 ---
 
-## IETF specifications
+{{< row >}}
+{{< col header="IETF specifications" >}}
 
 -   [RFC 6120](https://datatracker.ietf.org/doc/rfc6120/) XMPP Core
 -   [RFC 6121](https://datatracker.ietf.org/doc/rfc6121/) XMPP IM
@@ -14,13 +15,16 @@ aliases:
 -   [RFC 7590](https://datatracker.ietf.org/doc/rfc7590/) Use of TLS in XMPP
 -   [RFC 7395](https://datatracker.ietf.org/doc/rfc7395/) XMPP over WebSockets
 
-## New XEPs
+{{< /col >}}
 
+{{< col header="New XEPs" content="shortcode" >}}
 {{< new-xeps >}}
+{{< /col >}}
 
-## Recently updated
-
+{{< col header="Recently updated" content="shortcode" >}}
 {{< updated-xeps >}}
+{{< /col >}}
+{{< /row >}}
 
 ## The whole list
 
