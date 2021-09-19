@@ -318,6 +318,9 @@ ul.share {
 .xeplist input {
     margin-right: 4px;
 }
+table#xeplist {
+	width: 100%;
+}
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
