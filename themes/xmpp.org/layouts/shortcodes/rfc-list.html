@@ -1,0 +1,59 @@
+<h3>Basic XMPP RFCs</h3>
+<ul>
+{{ range sort .Site.Data.rfc_list ".number" }}
+    {{ if .basic }}
+        <li><a href="#{{ .number }}">RFC {{ .number }}:</a> {{ .title }}</li>
+    {{ end }}
+{{ end }}
+</ul>
+
+<h3>Further XMPP RFCs</h3>
+<ul>
+{{ range sort .Site.Data.rfc_list ".number" }}
+    {{ if and (not .basic) (not .obsoleted_by) }}
+        <li><a href="#{{ .number }}">RFC {{ .number }}:</a> {{ .title }}</li>
+    {{ end }}
+{{ end }}
+</ul>
+
+<h3>Obsoleted</h3>
+<ul>
+{{ range sort .Site.Data.rfc_list ".number" }}
+    {{ if .obsoleted_by }}
+        <li><a href="#{{ .number }}">RFC {{ .number }}:</a> {{ .title }}</li>
+    {{ end }}
+{{ end }}
+</ul>
+
+<h3>All XMPP RFCs</h3>
+{{ range sort .Site.Data.rfc_list ".number" }}
+<div class="card">
+    <div class="card-header">
+        <a id="{{ .number }}"><h5 class="card-title">RFC {{ .number }}: {{ .title }}</h5></a>
+        <p class="card-subtitle text-muted"><small>{{ .authors }} ({{ .date }})</small></p>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ .abstract }}</p>
+        {{ if .obsoletes }}
+            <p><small>This RFC obsoletes <a href="#{{ .obsoletes }}">RFC {{ .obsoletes }}.</a></small></p>
+        {{ end }}
+        {{ if .obsoleted_by }}
+            <p><small>This RFC is obsoleted by <a href="#{{ .obsoleted_by }}">RFC {{ .obsoleted_by }}.</a></small></p>
+        {{ end }}
+        {{ if .selfhosted }}
+            <div>
+                <a class="btn btn-outline-secondary btn-sm mb-1" role="button" href="https://datatracker.ietf.org/doc/rfc{{ .number}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank"><i class="fas fa-external-link-alt"></i> RFC {{ .number }}</a>
+                <p class="mb-1"><small>The XSF hosts this document:</small></p>
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="/rfcs/rfc{{ .number }}.html" title="RFC {{ .number }} - HTML" target="_blank"><i class="far fa-file-alt"></i> HTML</a>
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="/rfcs/rfc{{ .number }}.txt" title="RFC {{ .number }} - TXT file" target="_blank"><i class="far fa-file"></i> TXT File</a>
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="/rfcs/rfc{{ .number }}.xml" title="RFC {{ .number }} - XML source" target="_blank"><i class="far fa-file-code"> XML Source</i></a>
+            </div>
+        {{ else }}
+            <div>
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="https://datatracker.ietf.org/doc/rfc{{ .number}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank"><i class="fas fa-external-link-alt"></i> RFC {{ .number }}</a>
+            </div>
+        {{ end }}
+    </div>
+</div>
+<br>
+{{ end }}
