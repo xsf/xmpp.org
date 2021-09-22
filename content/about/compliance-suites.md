@@ -16,3 +16,16 @@ For users, Compliance Suites provide an easy way to compare implementations base
 
 ## <a name="current" href="#current">Current Compliance Suites</a>
 The 2021 specification for Compliance Suites can be found at [XEP-0443: XMPP Compliance Suites 2021](https://xmpp.org/extensions/xep-0443.html)
+
+The planned 2022 specification for Compliance Suites can be found at [XEP-0459: XMPP Compliance Suites 2022](https://xmpp.org/extensions/xep-0459.html)
+
+## <a name="historical" href="#historical">Historical Compliance Suites</a>
+
+ - [XEP-0423: XMPP Compliance Suites 2020](https://xmpp.org/extensions/xep-0423.html)
+ - [XEP-0412: XMPP Compliance Suites 2019](https://xmpp.org/extensions/xep-0412.html)
+ - [XEP-0387: XMPP Compliance Suites 2018](https://xmpp.org/extensions/xep-0387.html)
+ - [XEP-0375: XMPP Compliance Suites 2016](https://xmpp.org/extensions/xep-0375.html)
+ - [XEP-0270: XMPP Compliance Suites 2010](https://xmpp.org/extensions/xep-0270.html)
+ - 2009: [XEP-0242: Client Compliance](https://xmpp.org/extensions/xep-0242.html), [XEP-0243: Server Compliance](https://xmpp.org/extensions/xep-0243.html)
+ - 2008: [XEP-0211: Basic Client](https://xmpp.org/extensions/xep-0211.html), [XEP-0213: Intermediate IM Client](https://xmpp.org/extensions/xep-0213.html),
+   [XEP-0212: Basic Server](https://xmpp.org/extensions/xep-0212.html), [XEP-0216: Intermediate IM Server](https://xmpp.org/extensions/xep-0216.html)
