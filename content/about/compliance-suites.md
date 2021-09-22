@@ -25,6 +25,7 @@ The planned 2022 specification for Compliance Suites can be found at [XEP-0459: 
  - [XEP-0412: XMPP Compliance Suites 2019](https://xmpp.org/extensions/xep-0412.html)
  - [XEP-0387: XMPP Compliance Suites 2018](https://xmpp.org/extensions/xep-0387.html)
  - [XEP-0375: XMPP Compliance Suites 2016](https://xmpp.org/extensions/xep-0375.html)
+ - [XEP-0302: XMPP Compliance Suites 2012](https://xmpp.org/extensions/xep-0302.html)
  - [XEP-0270: XMPP Compliance Suites 2010](https://xmpp.org/extensions/xep-0270.html)
  - 2009: [XEP-0242: Client Compliance](https://xmpp.org/extensions/xep-0242.html), [XEP-0243: Server Compliance](https://xmpp.org/extensions/xep-0243.html)
  - 2008: [XEP-0211: Basic Client](https://xmpp.org/extensions/xep-0211.html), [XEP-0213: Intermediate IM Client](https://xmpp.org/extensions/xep-0213.html),
