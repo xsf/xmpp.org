@@ -49,16 +49,19 @@ clean:
 
 serve:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/"
 
 prepare_docker:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(HUGO) version
 	$(HUGO) --baseURL="http://localhost/"
 
 publish:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(PY) $(TOOLSDIR)/lint-list.py clients.json
 	$(PY) $(TOOLSDIR)/lint-list.py servers.json
 	$(PY) $(TOOLSDIR)/lint-list.py libraries.json
