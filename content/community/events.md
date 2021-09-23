@@ -9,7 +9,7 @@ __See something missing?__ Events come and go at a speed that is sometimes hard 
 
 ## XMPP Summits
 
-The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face.
+The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face. Attending a summit for the first time or considering to do so? This may be helpful: [XMPP summits for dummies](https://wiki.xmpp.org/web/XMPP_summits_for_dummies).
 
 You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
 The next Summit will happen next year.
