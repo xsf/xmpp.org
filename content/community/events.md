@@ -34,7 +34,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
+* [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md)
 
 ### Past
 
