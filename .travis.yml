@@ -21,6 +21,8 @@ jobs:
   include:
     - stage: Prepare XEP list
       script: python3 ./tools/prepare_xep_list.py
+    - stage: Prepare RFC list
+      script: python3 ./tools/prepare_rfc_list.py
     - stage: Software list linting
       script: python3 ./tools/lint-list.py clients.json && python3 ./tools/lint-list.py servers.json && python3 ./tools/lint-list.py libraries.json
     - stage: Generate pages
