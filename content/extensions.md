@@ -6,7 +6,7 @@ aliases:
     - "/protocols/xmpp-extensions/"
 ---
 
-{{< row >}}
+{{< row cols=3 >}}
 {{< col header="IETF specifications" >}}
 
 -   [RFC 6120](https://datatracker.ietf.org/doc/rfc6120/) XMPP Core

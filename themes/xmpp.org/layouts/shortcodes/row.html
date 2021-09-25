@@ -1,6 +1,16 @@
 <div class="container">
-<div class="row">
-{{ .Inner }}
-</div>
+    {{ with $cols := .Get "cols" }}
+        {{ if eq $cols 4 }}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4">
+        {{ else if eq $cols 3 }}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+        {{ else if eq $cols 2 }}
+        <div class="row row-cols-1 row-cols-md-2">
+        {{ end }}
+    {{ else }}
+    <div class="row">
+    {{ end }}
+    {{ .Inner }}
+    </div>
 </div>
 
