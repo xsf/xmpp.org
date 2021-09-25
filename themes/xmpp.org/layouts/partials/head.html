@@ -6,7 +6,11 @@
     <link rel="stylesheet" type="text/css" href="{{ "fonts/font.css" | absURL }}">
     <link rel="stylesheet" type="text/css" href="{{ "fontawesome/css/all.min.css" | absURL }}">
     <link rel="me" href="https://fosstodon.org/@xmpp">
-    {{ $title := print .Site.Title " | " .Title }}
-    {{ if .IsHome }}{{ $title = print .Site.Title " | The universal messaging standard" }}{{ end }}
-    <title>{{ $title }}</title>
+    <title>
+      {{- if .IsHome }}
+      {{- printf "%s | %s" .Site.Title (.Param "subtitle") }}
+      {{- else }}
+      {{- printf "%s | %s" .Site.Title .Title }}
+      {{- end }}
+    </title>
 </head>
