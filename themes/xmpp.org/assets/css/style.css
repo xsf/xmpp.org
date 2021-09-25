@@ -309,6 +309,9 @@ ul.share {
     font-family: "Exo 2", sans-serif;
 }
 
+.xeplist table {
+    width: 100%;
+}
 .xeplist label {
     display: inline-block;
     vertical-align: middle;
