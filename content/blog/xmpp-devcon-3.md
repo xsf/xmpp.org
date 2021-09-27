@@ -1,5 +1,5 @@
 ---
-title: XMPP DevCon #3
+title: XMPP DevCon 3
 date: 2007-05-08
 author: stpeter
 categories: ["Events"]

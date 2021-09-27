@@ -1,5 +1,5 @@
 ---
-title: "XMPP Summit #9 - Preview"
+title: XMPP Summit 9 - Preview
 date: 2010-07-20
 author: bear
 categories: ["XMPP Summit"]

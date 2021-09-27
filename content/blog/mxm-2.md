@@ -1,5 +1,5 @@
 ---
-title: "MXM #2"
+title: MXM 2
 date: 2009-04-14
 author: stpeter
 categories: ["Miscellaneous"]
