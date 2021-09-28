@@ -3,6 +3,8 @@ title: XMPP Summit 2
 date: 2010-08-10
 author: admin
 categories: ["XMPP Summit"]
+aliases:
+    - "/participate/the-xmpp-summit/xmpp-summit-2"
 ---
 
 The second developer conference held by the XMPP Standards Foundation occurred on February 26, 2007, in Brussels, Belgium (the same week as [FOSDEM 2007](http://www.fosdem.org/)).

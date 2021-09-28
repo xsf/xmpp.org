@@ -3,6 +3,8 @@ title: XMPP Summit 7
 date: 2010-08-10
 author: admin
 categories: ["XMPP Summit"]
+aliases:
+    - "/participate/the-xmpp-summit/xmpp-summit-7"
 ---
 
 The XMPP Standards Foundation will hold its seventh "XMPP Summit" meeting on July 20 and 21, 2009, in San Jose, California, USA. Thanks to the generosity of [O'Reilly](http://oreilly.com/), the Summit will be held on the premises of [OSCON 2009](http://en.oreilly.com/oscon2009).

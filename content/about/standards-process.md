@@ -3,6 +3,7 @@ Title: Standards Process
 Url: about/standards-process
 aliases:
     - "/about/standards-process.html"
+    - "/xmpp-protocols/xmpp-extensions/submitting-a-xep"
 ---
 
 The XSF develops extensions to XMPP through a lightweight standards process centered around XMPP Extension Protocols (XEPs).

@@ -2,7 +2,9 @@
 Title: XSF IPR Policy
 Url: about/xsf/ipr-policy
 aliases:
+    - "/about/ipr-policy"
     - "/about/xsf/ipr-policy.html"
+    - "/about/xsf/xsf-ipr-policy"
 layout: single_xsf
 ---
 

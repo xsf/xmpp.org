@@ -1,9 +1,10 @@
 ---
 Title: XSF Source Control
 Url: about/xsf/source-control
+layout: single_xsf
 aliases:
     - "/about/xsf/source-control.html"
-layout: single_xsf
+    - "/about/xsf/xsf-source-control"
 ---
 
 All specifications, XML schemas, and registries produced by the XMPP Standards Foundation are kept under source control using the open-source git system. 

@@ -3,6 +3,8 @@ title: XMPP Summit 6
 date: 2010-08-10
 author: admin
 categories: ["XMPP Summit"]
+aliases:
+    - "/participate/the-xmpp-summit/xmpp-summit-6"
 ---
 
 The sixth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation will occur on February 6-9, 2009, in Brussels, Belgium (the same weekend as [FOSDEM 2009](http://www.fosdem.org/)).

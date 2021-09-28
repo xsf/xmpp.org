@@ -3,6 +3,7 @@ Title: XSF Editor Team
 Url: about/xsf/editor-team
 aliases:
     - "/about/xsf/editor-team.html"
+    - "/participate/become-a-member/editor-team"
 layout: single_xsf
 ---
 

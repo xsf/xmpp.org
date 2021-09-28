@@ -3,7 +3,9 @@ title: Specifications
 layout: "extensions"
 aliases:
     - "/extensions/index.html"
-    - "/protocols/xmpp-extensions/"
+    - "/protocols/xmpp-extensions"
+    - "/xmpp-protocols"
+    - "/xmpp-protocols/xmpp-core"
 ---
 
 {{< row cols=3 >}}

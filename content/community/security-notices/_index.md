@@ -1,6 +1,8 @@
 ---
 title: Security Notices
 layout: single
+aliases:
+    - "/resources/security-notices"
 ---
 
 We have posted one security notice about XMPP protocols and implementations:
