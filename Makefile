@@ -31,6 +31,7 @@ help:
 	@echo '   make clean                       remove the generated files         '
 	@echo '   make publish                     generate using production settings '
 	@echo '   make serve                       serve site at http://localhost:1313'
+	@echo '   make prepare_docker              prepare site for serving via docker'
 	@echo '   make ssh_upload                  upload the web site via SSH        '
 	@echo '   make rsync_upload                upload the web site via rsync+ssh  '
 	@echo '   make dropbox_upload              upload the web site via Dropbox    '
@@ -49,7 +50,12 @@ clean:
 serve:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(HUGO) version
-	$(HUGO) server --bind=0.0.0.0
+	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/"
+
+prepare_docker:
+	$(PY) $(TOOLSDIR)/prepare_xep_list.py
+	$(HUGO) version
+	$(HUGO) --baseURL="http://localhost/"
 
 publish:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
