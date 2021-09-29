@@ -2,6 +2,7 @@
 title: "The XSF as a Fiscal Host"
 author: "Sam Whited"
 date: 2021-09-26T00:00:00Z
+categories: ["Miscellaneous"]
 ---
 
 Managing funds is easy when you're a large project owned by an incorporated
