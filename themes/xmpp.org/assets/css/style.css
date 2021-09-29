@@ -227,6 +227,9 @@ ul.share {
    ul.share li:hover .fab {
     transform: scale(1.2)
 }
+.post-meta {
+    color: #787878;
+}
 
 /* Software list */
 .logo-software {
