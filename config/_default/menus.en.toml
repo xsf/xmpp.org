@@ -4,13 +4,13 @@
     identifier = "about"
     weight = 1
 [[main]]
-    name = "History"
-    url = "about/history"
+    name = "Overview"
+    url = "about/technology-overview"
     parent = "about"
     weight = 1
 [[main]]
-    name = "Overview"
-    url = "about/technology-overview"
+    name = "History"
+    url = "about/history"
     parent = "about"
     weight = 2
 [[main]]
@@ -19,13 +19,13 @@
     parent = "about"
     weight = 3
 [[main]]
-    name = "Standards Process"
-    url = "about/standards-process"
+    name = "The XSF"
+    url = "about/xmpp-standards-foundation"
     parent = "about"
     weight = 4
 [[main]]
-    name = "The XSF"
-    url = "about/xmpp-standards-foundation"
+    name = "Standards Process"
+    url = "about/standards-process"
     parent = "about"
     weight = 5
 [[main]]
