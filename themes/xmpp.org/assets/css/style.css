@@ -235,9 +235,8 @@ ul.share {
     text-align: center;
     display: inline-block;
     margin: 0 10px 10px 10px;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.7;
+    -webkit-filter: grayscale(80%);
+    filter: grayscale(80%);
     -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
     -moz-transition: opacity 1.5s, -moz-filter 1.5s;
     transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
@@ -251,7 +250,6 @@ ul.share {
 .software-list:hover .logo-software {
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
-    opacity: 1;
     -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
     -moz-transition: opacity 1.5s, -moz-filter 1.5s;
     transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, -moz-filter 1.5s;
@@ -265,9 +263,8 @@ ul.share {
     max-width: 800px;
 }
 .footer-sponsors ul {
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    opacity: 0.7;
+    -webkit-filter: grayscale(80%);
+    filter: grayscale(80%);
     -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
     -moz-transition: opacity 1.5s, -moz-filter 1.5s;
     transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
@@ -278,7 +275,6 @@ ul.share {
     margin: 10px;
 }
 .footer-sponsors:hover ul {
-    opacity: 1;
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
     -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
