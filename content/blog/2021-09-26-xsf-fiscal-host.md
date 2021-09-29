@@ -37,7 +37,7 @@ We can't wait to see what small XMPP projects are able to do once they are given
 the tools they need to raise money under the umbrella of a 501(c)(3) non-profit
 organization like the XSF!
 
-[![Screenshot of the XSF Open Collective page showing an Actions mnenu with "Apply" visible at the bottom.](/images/fiscalhost_step_one.png)][Open Collective]
+[![Screenshot of the XSF Open Collective page showing an Actions mnenu with "Apply" visible at the bottom.](/images/blog/fiscalhost_step_one.png)][Open Collective]
 
 The new terms of fiscal sponsorship can be found [on the website][tos], and you
 can apply for sponsorship by creating a collective for your project on Open
@@ -45,7 +45,7 @@ Collective, then navigating to the [XMPP organization][Open Collective] and
 clicking "[Apply]".
 This will present you with a form where you can enter the required information:
 
-[![Screenshot of the application form that allows you to select an account to apply from as well as enter information about the project applying.](/images/fiscalhost_step_two.png)][Apply]
+[![Screenshot of the application form that allows you to select an account to apply from as well as enter information about the project applying.](/images/blog/fiscalhost_step_two.png)][Apply]
 
 For more information about fiscal hosts, see the Open Collective [Fiscal Hosts
 FAQ].
