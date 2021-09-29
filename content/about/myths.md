@@ -29,7 +29,7 @@ The hypothesis:
 The fact:
 > XMPP is designed to be extensible, and many extensions have very broad deployment.
 
-"It's a feature, not a bug" is the obvious thing to say here. XMPP's core, [RFC 6120](https://datatracker.ietf.org/doc/rfc6120/), doesn't even include the "classic" IM features, really; those are present in its companion specification, [RFC 6121](https://datatracker.ietf.org/doc/rfc6121/). As a protocol that's [nearly fifteen years old](/about/history.html), had the core been constantly redesigned to add new capabilities as new mandatory, baked-in features, lots of existing servers would have been redeclared as broken.
+"It's a feature, not a bug" is the obvious thing to say here. XMPP's core, [RFC 6120](/rfcs#6120), doesn't even include the "classic" IM features, really; those are present in its companion specification, [RFC 6121](/rfcs#6121). As a protocol that's [nearly fifteen years old](/about/history.html), had the core been constantly redesigned to add new capabilities as new mandatory, baked-in features, lots of existing servers would have been redeclared as broken.
 
 Instead, what we have is a [pretty large number of extensions](/extensions/index.html) to a clean core. This core defines, amongst other things, how to extend the core properties of the connection - but in fact the community designed an end-to-end extension system early on.
 
