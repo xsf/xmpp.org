@@ -68,11 +68,9 @@ make -f MakefileDocker
 
 It'll do the following:
 
-* Create a build Docker image (`make builder`) which is a development environment with a complete set of dependencies ready.
+* Create a Docker image based on `DockerfileDev` which is a development environment with a complete set of dependencies ready.
 
-* Run this docker image on the xmpp.org directory locally. This directory is presumed to contain a checked out repository for the website. (`make site`)
-
-* From the newly created static files in `deploy/output`, it will then create a minimalist docker image to actually serve the website. (`make deployer`)
+* Build the website from the locally checked out xmpp.org repository (`make prepare_docker`). This includes `deploy/xsf.conf`.
 
 For development convenience, you can run the website on port 80:
 
