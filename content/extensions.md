@@ -14,6 +14,7 @@ aliases:
 -   [RFC 7622](https://datatracker.ietf.org/doc/rfc7622/) XMPP Address Format
 -   [RFC 7590](https://datatracker.ietf.org/doc/rfc7590/) Use of TLS in XMPP
 -   [RFC 7395](https://datatracker.ietf.org/doc/rfc7395/) XMPP over WebSockets
+-   [View all XMPP RFCs](/rfcs)
 
 {{< /col >}}
 
