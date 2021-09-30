@@ -35,6 +35,9 @@ jobs:
       - name: Prepare RFC list
         run: python tools/prepare_rfc_list.py
 
+      - name: Prepare software list
+        run: python tools/prepare_software_list.py
+
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:

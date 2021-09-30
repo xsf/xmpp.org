@@ -12,7 +12,10 @@
 .hugo_build.lock
 .project
 .vagrant/
-resources/
-public/
+data/clients_list_doap.json
 data/rfc_list.json
 data/xeplist.json
+downloads/
+public/
+resources/
+static/images/clients/
