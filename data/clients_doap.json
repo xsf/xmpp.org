@@ -1,0 +1,479 @@
+{
+  "Android": [
+    {
+      "name": "Bruno the Jabber™ Bear",
+      "url": "https://yaxim.org/bruno/",
+      "logo": "/images/clients/bruno.png",
+      "screenshot": "/xmpp-doap/screenshots/Bruno.png",
+      "description": "Bruno the Jabber™ Bear",
+      "badges": {
+        "core": "core",
+        "mobile": "advanced"
+      }
+    },
+    {
+      "name": "Conversations",
+      "url": "https://github.com/inputmice/Conversations",
+      "logo": "/images/clients/conversations.svg",
+      "screenshot": "/xmpp-doap/screenshots/Conversations.png",
+      "description": "Android XMPP Client",
+      "badges": {
+        "core": "advanced",
+        "im": "advanced",
+        "mobile": "advanced",
+        "av": "advanced"
+      }
+    },
+    {
+      "name": "Movim",
+      "url": "https://movim.eu",
+      "logo": "/images/clients/movim.svg",
+      "screenshot": null,
+      "description": "Decentralized social platform",
+      "badges": {
+        "core": "advanced"
+      }
+    },
+    {
+      "name": "yaxim",
+      "url": "https://yaxim.org",
+      "logo": "/images/clients/yaxim.svg",
+      "screenshot": "/xmpp-doap/screenshots/yaxim.png",
+      "description": "yet another XMPP instant messenger",
+      "badges": {
+        "core": "core",
+        "mobile": "advanced"
+      }
+    },
+    {
+      "name": "AstraChat",
+      "url": "https://astrachat.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "blabber.im",
+      "url": "https://blabber.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Kaidan",
+      "url": "https://kaidan.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Salut à Toi",
+      "url": "https://salut-a-toi.org/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "StorkIM by Tigase, Inc. (Tigase Messenger for Android)",
+      "url": "https://stork.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "Browser": [
+    {
+      "name": "Movim",
+      "url": "https://movim.eu",
+      "logo": "/images/clients/movim.svg",
+      "screenshot": null,
+      "description": "Decentralized social platform",
+      "badges": {
+        "core": "advanced"
+      }
+    },
+    {
+      "name": "Converse",
+      "url": "https://conversejs.org/",
+      "logo": "/images/clients/conversejs.svg",
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Pàdé",
+      "url": "https://www.igniterealtime.org/projects/pade/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Salut à Toi",
+      "url": "https://salut-a-toi.org/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "Linux": [
+    {
+      "name": "Dino",
+      "url": "https://dino.im",
+      "logo": "/images/clients/dino.svg",
+      "screenshot": "/xmpp-doap/screenshots/Dino.png",
+      "description": "Modern XMPP Chat Client",
+      "badges": {
+        "core": "advanced",
+        "im": "core",
+        "av": "core"
+      }
+    },
+    {
+      "name": "Gajim",
+      "url": "https://gajim.org",
+      "logo": "/images/clients/gajim.svg",
+      "screenshot": "/xmpp-doap/screenshots/Gajim.png",
+      "description": "A fully-featured XMPP chat client",
+      "badges": {
+        "core": "advanced",
+        "im": "core"
+      }
+    },
+    {
+      "name": "Movim",
+      "url": "https://movim.eu",
+      "logo": "/images/clients/movim.svg",
+      "screenshot": null,
+      "description": "Decentralized social platform",
+      "badges": {
+        "core": "advanced"
+      }
+    },
+    {
+      "name": "Poezio",
+      "url": "https://poez.io/en/",
+      "logo": "/images/clients/poezio.svg",
+      "screenshot": "/xmpp-doap/screenshots/poezio.png",
+      "description": "Free console XMPP client",
+      "badges": {
+        "core": "core",
+        "im": "core",
+        "mobile": "core"
+      }
+    },
+    {
+      "name": "Aparté",
+      "url": "https://github.com/paulfariello/aparte/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "AstraChat",
+      "url": "https://astrachat.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Kaidan",
+      "url": "https://kaidan.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Profanity",
+      "url": "https://profanity-im.github.io/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi",
+      "url": "https://psi-im.org",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi+",
+      "url": "https://psi-plus.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Salut à Toi",
+      "url": "https://salut-a-toi.org/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Spark",
+      "url": "https://igniterealtime.org/projects/spark/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Swift",
+      "url": "https://swift.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "Other": [
+    {
+      "name": "Kaidan",
+      "url": "https://kaidan.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Salut à Toi",
+      "url": "https://salut-a-toi.org/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "Windows": [
+    {
+      "name": "Gajim",
+      "url": "https://gajim.org",
+      "logo": "/images/clients/gajim.svg",
+      "screenshot": "/xmpp-doap/screenshots/Gajim.png",
+      "description": "A fully-featured XMPP chat client",
+      "badges": {
+        "core": "advanced",
+        "im": "core"
+      }
+    },
+    {
+      "name": "Movim",
+      "url": "https://movim.eu",
+      "logo": "/images/clients/movim.svg",
+      "screenshot": null,
+      "description": "Decentralized social platform",
+      "badges": {
+        "core": "advanced"
+      }
+    },
+    {
+      "name": "AstraChat",
+      "url": "https://astrachat.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Kaidan",
+      "url": "https://kaidan.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Profanity",
+      "url": "https://profanity-im.github.io/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi",
+      "url": "https://psi-im.org",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi+",
+      "url": "https://psi-plus.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Spark",
+      "url": "https://igniterealtime.org/projects/spark/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Swift",
+      "url": "https://swift.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "UWPX",
+      "url": "https://uwpx.org",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "iOS": [
+    {
+      "name": "Monal IM",
+      "url": "https://monal.im",
+      "logo": "/images/clients/monal.svg",
+      "screenshot": null,
+      "description": "iOS and MacOS XMPP chat client",
+      "badges": null
+    },
+    {
+      "name": "AstraChat",
+      "url": "https://astrachat.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "SiskinIM by Tigase, Inc.",
+      "url": "https://siskin.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ],
+  "macOS": [
+    {
+      "name": "Monal IM",
+      "url": "https://monal.im",
+      "logo": "/images/clients/monal.svg",
+      "screenshot": null,
+      "description": "iOS and MacOS XMPP chat client",
+      "badges": null
+    },
+    {
+      "name": "Movim",
+      "url": "https://movim.eu",
+      "logo": "/images/clients/movim.svg",
+      "screenshot": null,
+      "description": "Decentralized social platform",
+      "badges": {
+        "core": "advanced"
+      }
+    },
+    {
+      "name": "Poezio",
+      "url": "https://poez.io/en/",
+      "logo": "/images/clients/poezio.svg",
+      "screenshot": "/xmpp-doap/screenshots/poezio.png",
+      "description": "Free console XMPP client",
+      "badges": {
+        "core": "core",
+        "im": "core",
+        "mobile": "core"
+      }
+    },
+    {
+      "name": "Aparté",
+      "url": "https://github.com/paulfariello/aparte/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "AstraChat",
+      "url": "https://astrachat.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "BeagleIM by Tigase, Inc.",
+      "url": "https://beagle.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Kaidan",
+      "url": "https://kaidan.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Profanity",
+      "url": "https://profanity-im.github.io/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi",
+      "url": "https://psi-im.org",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Psi+",
+      "url": "https://psi-plus.com",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Spark",
+      "url": "https://igniterealtime.org/projects/spark/",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    },
+    {
+      "name": "Swift",
+      "url": "https://swift.im",
+      "logo": null,
+      "screenshot": null,
+      "description": null,
+      "badges": null
+    }
+  ]
+}

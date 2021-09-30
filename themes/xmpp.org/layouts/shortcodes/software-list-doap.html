@@ -1,0 +1,57 @@
+<h2 class="text-center pb-1">Platforms</h2>
+<div id="software-clients">
+    <div class="d-flex flex-wrap justify-content-center pb-3">
+        {{ range $platform, $clients := .Site.Data.clients_doap }}
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse"
+            data-bs-target="#collapse-{{ $platform }}" role="button" aria-controls="collapse-{{ $platform }}"
+            aria-expanded={{ if eq $platform "Android" }}"true"{{ else }}"false"{{ end }}>
+            {{ if eq $platform "Android"}}
+            <i class="fab fa-android"></i>
+            {{ else if eq $platform "Browser" }}
+            <i class="fas fa-window-maximize"></i>
+            {{ else if eq $platform "Linux" }}
+            <i class="fab fa-linux"></i>
+            {{ else if eq $platform "Other" }}
+            <i class="fas fa-desktop"></i>
+            {{ else if eq $platform "Windows" }}
+            <i class="fab fa-windows"></i>
+            {{ else if eq $platform "iOS" }}
+            <i class="fab fa-app-store-ios"></i>
+            {{ else if eq $platform "macOS" }}
+            <i class="fab fa-apple"></i>
+            {{ end }}
+            {{ $platform }}
+        </button>
+        {{ end }}
+    </div>
+    {{ range $platform, $clients := .Site.Data.clients_doap }}
+    <div class="collapse {{ if eq $platform "Android" }}show{{ end }}" id="collapse-{{ $platform }}"
+        data-bs-parent="#software-clients" style="transition: none;">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {{ range $clients }}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-3 text-center py-3">
+                            {{ if .logo }}
+                            <img src="{{ .logo }}" class="py-1 ps-3" style="max-width:150px;width:100%">
+                            {{ else }}
+                            <i class="fas fa-3x fa-cube py-1" style="color:lightgray;"></i>
+                            {{ end }}
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <a href="{{ .url }}" target="_blank">
+                                    <h4 class="card-title">{{ .name }}</h4>
+                                </a>
+                                <p class="card-text small">{{ .description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+</div>
