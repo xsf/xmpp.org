@@ -1,4 +1,5 @@
 PY=python3
+PIP=pip3
 HUGO=hugo
 
 BASEDIR=$(CURDIR)
@@ -48,23 +49,29 @@ clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
 serve:
+	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
+	$(PY) $(TOOLSDIR)/prepare_clients_list.py
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 prepare_docker:
+	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
+	$(PY) $(TOOLSDIR)/prepare_clients_list.py
 	$(HUGO) version
 	$(HUGO) --baseURL="http://localhost/" --buildFuture
 
 publish:
+	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(PY) $(TOOLSDIR)/lint_list.py clients.json
 	$(PY) $(TOOLSDIR)/lint_list.py servers.json
 	$(PY) $(TOOLSDIR)/lint_list.py libraries.json
+	$(PY) $(TOOLSDIR)/prepare_clients_list.py
 	$(HUGO) version
 	$(HUGO)
 

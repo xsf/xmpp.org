@@ -1,0 +1,82 @@
+{{ $platforms := slice "Android" "Linux" "Other" "Windows" "iOS" "macOS"}}
+
+<div id="software-clients">
+    <div class="d-flex flex-wrap justify-content-center pb-3">
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-android" role="button" aria-controls="collapse-android" aria-expanded="true">
+            <i class="fab fa-android"></i>
+            Android
+        </button>
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-ios" role="button" aria-controls="collapse-ios" aria-expanded="false">
+            <i class="fab fa-app-store-ios"></i>
+            iOS
+        </button>
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-windows" role="button" aria-controls="collapse-windows" aria-expanded="false">
+            <i class="fab fa-windows"></i>
+            Windows
+        </button>
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-macos" role="button" aria-controls="collapse-macos" aria-expanded="false">
+            <i class="fab fa-apple"></i>
+            macOS
+        </button>
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-linux" role="button" aria-controls="collapse-linux" aria-expanded="false">
+            <i class="fab fa-linux"></i>
+            Linux
+        </button>
+        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-other" role="button" aria-controls="collapse-other" aria-expanded="false">
+            <i class="fas fa-box"></i>
+            Other
+        </button>
+    </div>
+    {{ $clients_list := .Site.Data.clients_list_doap}}
+    {{ range $platforms }}
+        {{ $platform := . }}
+        <div class="collapse {{ if eq (lower .) "android" }}show{{ end }}" id="collapse-{{ . | urlize }}" data-bs-parent="#software-clients" style="transition: none;">
+            <h2 class="text-center pb-1">{{ $platform }}</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {{ range $supported_platform, $clients := $clients_list }}
+                    {{ if in (lower $supported_platform) (lower $platform) }}
+                        {{ range $clients }}
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="row g-0">
+                                        <div class="col-md-3 text-center py-3">
+                                            {{ if .logo }}
+                                                <img src="{{ .logo }}" class="py-1 ps-3" style="max-width:150px;width:100%">
+                                            {{ else }}
+                                                <i class="fas fa-3x fa-cube py-1" style="filter:opacity(0.3);"></i>
+                                            {{ end }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="card-body">
+                                                <a href="{{ .url }}" target="_blank">
+                                                    <h4 class="card-title">{{ .name }}</h4>
+                                                </a>
+                                                <p class="card-text small">{{ .shortdesc }}</p>
+                                                {{ if eq $platform "Other" }}
+                                                    <p class="card-text small mb-0">
+                                                        Platforms:
+                                                        <ul>
+                                                            {{ range .os }}
+                                                                <li class="small">
+                                                                    {{ . }}
+                                                                </li>
+                                                            {{ end }}
+                                                        </ul>
+                                                    </p>
+                                                {{ else }}
+                                                    {{ if ne (lower $platform) (lower .os) }}
+                                                        <p class="small">Platform: {{ .os }}</p>
+                                                    {{ end }}
+                                                {{ end }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    {{ end }}
+</div>
