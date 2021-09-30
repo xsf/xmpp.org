@@ -1,0 +1,58 @@
+[
+    {
+        "title": "Practical XMPP",
+        "authors": "Lloyd Watkin, David Koelle",
+        "year": 2016,
+        "cover": "/publications/2016-practical-xmpp.jpg",
+        "url": "https://www.packtpub.com/product/practical-xmpp/9781785287985",
+        "abstract": "XMPP (eXtensible Messaging and Presence Protocol) is a messaging protocol that enables communication between two or more devices via the Internet.\n\nWith this book, developers will learn about the fundamentals of XMPP, be able to work with the core functionality both server-side and in the browser, as well as starting to explore several of the protocol extensions. You will not only have a solid grasp of XMPP and how it works, but will also be able to use the protocol to build real-world applications that utilize the power of XMPP. By the end of this book, you will know more about networking applications in general, and have a good understanding of how to extend XMPP, as well as using it in sample applications."
+    },
+    {
+        "title": "Professional XMPP Programming with JavaScript and jQuery",
+        "authors": "Jack Moffitt",
+        "year": 2010,
+        "cover": "/publications/2010-professional-xmpp-programming.jpg",
+        "url": "http://professionalxmpp.com/",
+        "abstract": "Professional XMPP Programming with JavaScript and jQuery is a book about developing web applications using the XMPP protocol, written by Jack Moffitt and published by Wrox.\n\nThe book explains the XMPP protocol and its many uses as well as what types of problems it solves best. Nine applications are developed in increasing complexity, starting with an XMPP-based “Hello, World” example and ending with a real-time, multi-user gaming system for Tic-Tac-Toe."
+    },
+    {
+        "title": "XMPP: The Definitive Guide",
+        "authors": "Peter Saint-Andre, Kevin Smith, Remko Tronçon",
+        "year": "2009",
+        "cover": "/publications/2009-xmpp-the-definitive-guide.jpg",
+        "url": "https://www.oreilly.com/library/view/xmpp-the-definitive/9780596157524/",
+        "abstract": "This practical book provides everything you need to know about the Extensible Messaging and Presence Protocol (XMPP). This open technology for real-time communication is used in many diverse applications such as instant messaging, Voice over IP, real-time collaboration, social networking, microblogging, lightweight middleware, cloud computing, and more.\n\nXMPP: The Definitive Guide walks you through the thought processes and design decisions involved in building a complete XMPP-enabled application, and adding real-time interfaces to existing applications. You'll not only learn simple yet powerful XMPP tools, but you'll also discover, through real-world developer stories, how common XMPP \"building blocks\" can help solve particular classes of problems."
+    },
+    {
+        "title": "Jabber Developer's Handbook",
+        "authors": "William Wright, Dana Moore",
+        "year": 2003,
+        "cover": "/publications/2003-jabber-developers-handbook.jpg",
+        "url": "https://www.amazon.com/Jabber-Developers-Handbook-William-Wright/dp/0672325365",
+        "abstract": "Through examples and clear explanations, Jabber Developer's Handbook demonstrates how Jabber, currently the world's most important open source messaging protocol, can be used to go beyond interactive chat and file sharing to build flexible, reliable, and powerful distributed software systems. Peer-to-peer applications using the Jabber open source toolkit, and leverage its use with other readily available and open source software and middleware. It explains how to use Jabber peer-to-peer technologies to solve troublesome reliability and interoperability issues with distributed systems."
+    },
+    {
+        "title": "Instant Messaging in Java: The Jabber Protocols",
+        "authors": "Iain Shigeoka",
+        "year": 2002,
+        "cover": "/publications/2002-instant-messaging-in-java.jpg",
+        "url": "https://www.manning.com/books/instant-messaging-in-java",
+        "abstract": "Written as a mid-level programming guide, this book provides Java programmers with the information and tools needed to create their own Instant Messenger client and server software. This software can then be used to create personalized IM systems or integrate IM features into existing software. Focus is given to the open source Jabber XML-based IM protocols to create Java IM software. These open protocols allow IM software to seamlessly communicate with the larger number of other Jabber clients and servers available including commercial Jabber systems such as Disney's go.com IM."
+    },
+    {
+        "title": "Jabber Programming",
+        "authors": "Stephen Lee, Terence Smelser",
+        "year": 2002,
+        "cover": "/publications/2002-jabber-programming.jpg",
+        "url": "https://www.amazon.com/Jabber-Programming-Stephen-Lee/dp/0764549340/",
+        "abstract": "With Jabber, the open source movement has produced an XML-based platform that you can use for a wide range of instant messaging applications. As one of the first books on this hot emerging technology, this handy reference gives you expert guidance for building Jabber-based messaging systems quickly and easily. Detailed examples help you install and run a Jabber server, enable group conferencing, and create your own instant messaging client for use with AIM, MSN, ICQ, and other popular IM clients."
+    },
+    {
+        "title": "Programming Jabber",
+        "authors": "DJ Adams",
+        "year": 2002,
+        "cover": "/publications/2002-programming-jabber.jpg",
+        "url": "https://www.oreilly.com/library/view/programming-jabber/0596002025/",
+        "abstract": "Programming Jabber offers developers a chance to learn and understand the Jabber technology and protocol from an implementer's point of view. Detailed information of each part of the Jabber protocol is introduced, explained, and discussed in the form of mini-projects, or simple and extended examples. Programming Jabber is divided into two parts. The first part serves as an introduction to Jabber; you'll learn about its features, why it's more than an IM system, and how to install and configure a Jabber server of your own. The second part provides detailed information about the Jabber protocol, and a series of practical examples, which can be used to solve everyday problems. The examples, in Perl, Python, and Java, use various Jabber features as a way of illustrating parts of the protocol. Programming Jabber provides the foundation and framework for developers to hit the ground running, and is the essential book on Jabber."
+    }
+]

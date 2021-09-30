@@ -1,0 +1,16 @@
+{{ $books := .Site.Data.books }}
+
+{{ range $books }}
+    <div class="row pb-5">
+        <div class="col-12 col-md-4">
+            <a href="{{ .url }}" target="_blank">
+                <img class="img-thumbnail mb-4" src="{{ .cover }}" alt="Cover: {{ .cover }}">
+            </a>
+        </div>
+        <div class="col-12 col-md-8">
+            <h2 >{{ .title }}</h2>
+            <p><small class="text-muted">By: <em>{{ .authors }}</em> ({{ .year }})</small></p>
+            <p>{{ (replace .abstract "\n" "<br/>") | safeHTML }}</p>
+        </div>
+    </div>
+{{ end }}

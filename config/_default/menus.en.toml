@@ -19,30 +19,35 @@
     parent = "about"
     weight = 3
 [[main]]
+    name = "Publications"
+    url = "about/publications"
+    parent = "about"
+    weight = 4
+[[main]]
     name = "The XSF"
     url = "about/xmpp-standards-foundation"
     parent = "about"
-    weight = 4
+    weight = 5
 [[main]]
     name = "Standards Process"
     url = "about/standards-process"
     parent = "about"
-    weight = 5
+    weight = 6
 [[main]]
     name = "Specifications"
     url = "extensions"
     parent = "about"
-    weight = 6
+    weight = 7
 [[main]]
     name = "Compliance Suites"
     url = "about/compliance-suites"
     parent = "about"
-    weight = 7
+    weight = 8
 [[main]]
     name = "FAQ"
     url = "about/faq"
     parent = "about"
-    weight = 8
+    weight = 9
 [[main]]
     name = "Uses"
     url = "/uses"
