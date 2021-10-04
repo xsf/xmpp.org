@@ -99,7 +99,7 @@ Now, the website should be available at `http://localhost:1313`
 
 ```
 <repo>
-  Dockerfile
+  Dockerfile / DockerfileDev
   fabfile.py
   MakefileDocker
   Makefile
@@ -124,4 +124,11 @@ Pages will be available in the /public folder.
 
 ## Theme development
 
-You can directly modify the theme (layout and styling) in the [themes/xmpp.org](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org/static/css/) directory.
+xmpp.org's theme makes use of:
+
+* [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+* [FontAwesome 5](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)
+
+Styles can be customized at `./assets/css/style.css`.
+
+You can directly modify the theme (layout and styling) in the [./themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
