@@ -51,13 +51,13 @@ serve:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(HUGO) version
-	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/"
+	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 prepare_docker:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(HUGO) version
-	$(HUGO) --baseURL="http://localhost/"
+	$(HUGO) --baseURL="http://localhost/" --buildFuture
 
 publish:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
