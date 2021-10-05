@@ -9,7 +9,7 @@ XMPP is the Extensible Messaging and Presence Protocol, a set of open technologi
 
 XMPP was originally developed in the Jabber open-source community to provide an open, decentralized alternative to the closed instant messaging services at that time. XMPP offers several key advantages over such services:
 
-- **Open** — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form clients, servers, server components, and code libraries.
+- **Open** — the XMPP protocols are free, open, public, and easily understandable; in addition, multiple implementations exist in the form of clients, servers, server components, and code libraries.
 
 - **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs#3920) and [RFC 3921](/rfcs#3921) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs#6120), [RFC 6121](/rfcs#6121), and [RFC 7622](/rfcs#7622)).
 
