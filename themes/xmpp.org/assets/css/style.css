@@ -308,17 +308,10 @@ ul.share {
     font-family: "Exo 2", sans-serif;
 }
 
-.xeplist table {
-    width: 100%;
-}
-.xeplist label {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: small;
-    margin-right: 12px;
-}
-.xeplist input {
-    margin-right: 4px;
+/* Add sorting icons to extensions table */
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE";
+    color: grey;
 }
 
 /* Dark theme */

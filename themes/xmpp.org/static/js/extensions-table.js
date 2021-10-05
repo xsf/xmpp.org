@@ -1,7 +1,7 @@
 'use strict';
 
 window.addEventListener("load", function() {
-  const checkboxes = document.querySelectorAll("#status-selector > input");
+  const checkboxes = document.querySelectorAll("#status-selector input");
   const show_hide = function(checkbox) {
     const xep_status = checkbox.getAttribute("name");
     const relevant_xeps = document.querySelectorAll(".XEP-" + xep_status);
