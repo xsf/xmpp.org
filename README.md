@@ -129,6 +129,6 @@ xmpp.org's theme makes use of:
 * [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 * [FontAwesome 5](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)
 
-Styles can be customized at `./assets/css/style.css`.
+The theme (layout and styling) can be customized in the [/themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
 
-You can directly modify the theme (layout and styling) in the [./themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
+You can directly modify styles in [themes/xmpp.org/assets/css/style.css](https://github.com/xsf/xmpp.org/blob/master/themes/xmpp.org/assets/css/style.css).
