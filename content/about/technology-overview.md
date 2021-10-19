@@ -35,6 +35,8 @@ Key XMPP technologies:
 - [PubSub](#pubsub) — alerts and notifications for data syndication, rich presence, and more
 - [BOSH](#bosh) — an HTTP binding for XMPP (and other) traffic
 
+Furthermore, we would like to suggest the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
+
 ## <a name="core" href="#core">Core</a>{#core}
 
 At its core, XMPP is a technology for streaming XML over a network. The protocol, which emerged from the Jabber open-source community in 1999, was originally designed to provide an open, secure, decentralized alternative to consumer-oriented instant messaging (IM) services like ICQ, AIM, and MSN. The core technologies were formalized under the name Extensible Messaging and Presence Protocol (XMPP) at the [IETF](http://www.ietf.org/) in 2004. These core technologies include:
