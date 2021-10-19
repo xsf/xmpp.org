@@ -35,7 +35,7 @@ Key XMPP technologies:
 - [PubSub](#pubsub) — alerts and notifications for data syndication, rich presence, and more
 - [BOSH](#bosh) — an HTTP binding for XMPP (and other) traffic
 
-Furthermore, we would like to reference to the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
+Furthermore, we would like to suggest the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
 
 ## <a name="core" href="#core">Core</a>{#core}
 
