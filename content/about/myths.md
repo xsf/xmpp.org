@@ -35,6 +35,21 @@ Instead, what we have is a [pretty large number of extensions](/extensions/index
 
 While you can still connect a client that supports no extensions at all to a server and have it work, nearly every client supports a wide range of extensions suited to its purpose, and every server supports several.
 
+## Everybody implements different, incompatible extensions
+
+The hypothesis:
+> There are so many different XMPP extensions, sometimes for the same task, that everybody implements a different subset of them and no implementation is compatible with another one.
+
+The fact:
+> The [Compliance Suites](/about/compliance-suites) outline which extensions are needed to implement typical tasks like *IM*, *Mobile* or *Web*, both for servers and for clients.
+
+The XSF is keeping an up-to-date list of the extensions that are recommended to fulfill typical tasks with the Compliance Suites.
+They define XMPP application **Categories** based on typical use cases (*Core*, *Web*, *IM*, *Mobile*) and **Levels** (*Core*, *Advanced*) based on functionality in the respective category. For each combination of those, the required XEPs are referenced. As the protocol landscape changes over time, Compliance Suites are updated roughly once a year.
+
+For developers, Compliance Suites provide guidance on which specifications they need to consider when implementing an application of a certain kind. By completing a compliance test or performing a self-assessment, they can advertise their implementation as compliant with a given **Category** and **Level**.
+
+For users, Compliance Suites provide an easy way to compare implementations based on their respective advertised compliance levels and year.
+
 ## It's too bandwidth-inefficient for mobile.
 
 The hypothesis:
