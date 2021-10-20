@@ -347,6 +347,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     ul.share li a {
         background-color: #505050;
     }
+    blockquote {
+        background: #313131;
+        border-left: 10px solid #575757;
+    }
 	table {
 		background-color: #333;
 		border: 1px solid #444;
