@@ -16,6 +16,14 @@ li,
 blockquote {
     font-family: "Merriweather", serif !important;
 }
+blockquote {
+    background: #f5f5f5;
+    border-left: 10px solid #ccc;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+/* remove margin from last paragraph in blockquote */
+blockquote > :last-child { margin-bottom: 0 !important; }
 a {
     color: #008cba;
     line-height: inherit;
