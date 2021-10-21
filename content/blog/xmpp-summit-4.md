@@ -108,21 +108,21 @@ The XMPP Standards Foundation will pay the hotel costs of any XSF member who par
 
 **Room shares and room reservations for XSF members.**
 
-| XSF member | date arrival | date departure | nights |
-| --- | --- | --- | --- |
-| Edwin Mons | Feb 22nd | Feb 26th | 4 |
-| Ralph Meijer | Feb 22nd | Feb 26th | 4 |
-| Christ van Willegen (cvwillegen AT gmail.com) | Feb 22nd | Feb 24th | 2 |
-| Solarius | Feb 22nd | Feb 24th | 2 |
-| Philippe Sultan | Feb 24th | Feb 25th | 1 |
-| Adam Nemeth | Feb 22nd | Feb 26th | 4 |
-| Jakob Schröter | Feb 22nd | Feb 26th | 4 |
-| Peter Saint-Andre | Feb 22nd | Feb 26th | 4 |
-| Jérôme Sautret | Feb 22nd | Feb 25th | 3 |
-| Grégoire Menuel | Feb 22nd | Feb 26th | 4 |
-| Pedro Melo | Feb 22nd | Feb 25th | 3 |
-| Yann Biancheri | Feb 23rd | Feb 25th | 2 |
-| Pavel Šimerda | Feb 22nd | Feb 26th | 4 |
+| room | XSF member | date arrival | date departure | nights |
+| --- | --- | --- | --- | --- |
+| 1 | Edwin Mons | Feb 22nd | Feb 26th | 4 |
+| 1 | Ralph Meijer | Feb 22nd | Feb 26th | 4 |
+| 2 | Christ van Willegen (cvwillegen AT gmail.com) | Feb 22nd | Feb 24th | 2 |
+| 2 | Solarius | Feb 22th | Feb 24th | 2 |
+| 3 | Philippe Sultan | Feb 24th | Feb 25th | 1 |
+| 3 | Adam Nemeth | Feb 22nd | Feb 26th | 4 |
+| 4 | Jakob Schröter | Feb 22nd | Feb 26th | 4 |
+| 4 | Peter Saint-Andre | Feb 22nd | Feb 26th | 4 |
+| 5 | Jérôme Sautret | Feb 22nd | Feb 25th | 3 |
+| 5 | Grégoire Menuel | Feb 22nd | Feb 26th | 4 |
+| 6 | Pedro Melo | Feb 22nd | Feb 25nd | 3 |
+| 6 | Yann Biancheri | Feb 23rd | Feb 25th | 2 |
+| 7 | Pavel Šimerda | Feb 22nd | Feb 26th | 4 |
 
 **For non XSF members the room rates are:**
 
