@@ -5,8 +5,8 @@ author: bear
 categories: ["XSF Organisational"]
 ---
 
-At the last annual meeting (and yes, we are rather late reporting this) the results of the vote as gathered and tabulated:
-[https://xmpp.org/about-xmpp/<wbr>xsf/meeting-minutes/xsf-<wbr>member-meeting-2012-10-30/</wbr></wbr>](https://xmpp.org/about/xsf/meeting-minutes/xsf-member-meeting-2012-10-30/)
+At the last annual meeting (and yes, we are rather late reporting this) the results of the vote as [gathered and tabulated]
+(https://xmpp.org/about/xsf/meeting-minutes/xsf-member-meeting-2012-10-30/)
 
 **Technical Council**
 
