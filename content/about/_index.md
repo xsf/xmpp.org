@@ -3,7 +3,7 @@ title: About
 layout: single
 ---
 
-E<strong>x</strong>tensible <strong>M</strong>essaging and <strong>P</strong>resence <strong>P</strong>rotocol (XMPP) is an open XML technology for real-time communication, which powers a wide range of applications including instant messaging, presence and collaboration.
+E**x**tensible **M**essaging and **P**resence **P**rotocol (XMPP) is an open XML technology for real-time communication, which powers a wide range of applications including instant messaging, presence and collaboration.
 
 To understand what this really means, let’s go on a journey from P back to X…
 
