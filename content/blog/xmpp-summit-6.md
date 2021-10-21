@@ -58,54 +58,18 @@ If you would like to be a speaker, please contact Peter Saint-Andre. We especia
 
 The proposed schedule is as follows.
 
-<table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-        <tr><th>Time</th>
-            <th> Speaker(s)</th>
-            <th> Topic</th>
-        </tr>
-        <tr><td> 13:00 - 14:00</td>
-            <td> Peter Saint-Andre ([XSF](https://xmpp.org/)) and Remko Tronçon ([Psi](http://psi-im.org/))</td>
-            <td> XMPP 101: A Fast-Paced Introduction to XMPP Technologies</td>
-        </tr>
-        <tr><td> 14:00 - 14:30</td>
-            <td> Nathan Fritz ([Seesmic](http://seesmic.com/))</td>
-            <td> [PubSub](/about-xmpp/technology-overview/pubsub/) and the Web</td>
-        </tr>
-        <tr><td> 14:30 - 15:00</td>
-            <td> Jack Moffitt ([StanzIQ](http://stanziq.com/) / [ChessPark](http://chesspark.com/))</td>
-            <td> Integrating XMPP into Web Technologies</td>
-        </tr>
-        <tr><td> 15:00 - 15:30</td>
-            <td> Simon Tennant ([BuddyCloud](http://www.buddycloud.com/))</td>
-            <td> Geolocation</td>
-        </tr>
-        <tr><td> 15:30 - 16:00</td>
-            <td> Diana Cionoiu ([Yate](http://yate.null.ro/))</td>
-            <td> Deploying [Jingle](/about-xmpp/technology-overview/jingle/)</td>
-        </tr>
-        <tr><td> 16:00 - 16:30</td>
-            <td> Dirk Meyer ([TZI](http://www.tzi.de/))</td>
-            <td> Personal Media Networks</td>
-        </tr>
-        <tr><td> 16:30 - 17:00</td>
-            <td> Florian Jensen ([Flosoft](http://flosoft.biz/))</td>
-            <td> Large-Scale XMPP Deployments</td>
-        </tr>
-        <tr><td> 17:00 - 17:30</td>
-            <td> Mickaël Rémond ([ProcessOne](http://www.process-one.net/))</td>
-            <td> XMPP in Real Life (Attacks, Bad Behaviors, and How to Cope with Them)</td>
-        </tr>
-        <tr><td> 17:30 - 18:00</td>
-            <td> Dave Cridland ([Isode](http://www.isode.com/))</td>
-            <td> Presenting Information Flow in Deployed XMPP Clients</td>
-        </tr>
-        <tr><td> 18:00 - 19:00</td>
-            <td> Miscellaneous</td>
-            <td> Lightning Talks!</td>
-        </tr>
-    </tbody>
-</table>
+| Time | Speaker(s) | Topic |
+| --- | --- | --- |
+| 13:00 - 14:00 | Peter Saint-Andre ([XSF](https://xmpp.org/)) and Remko Tronçon ([Psi](http://psi-im.org/)) | XMPP 101: A Fast-Paced Introduction to XMPP Technologies |
+| 14:00 - 14:30 | Nathan Fritz ([Seesmic](http://seesmic.com/)) | [PubSub](/about-xmpp/technology-overview/pubsub/) and the Web |
+| 14:30 - 15:00 | Jack Moffitt ([StanzIQ](http://stanziq.com/) / [ChessPark](http://chesspark.com/)) | Integrating XMPP into Web Technologies |
+| 15:00 - 15:30 | Simon Tennant ([BuddyCloud](http://www.buddycloud.com/)) | Geolocation |
+| 15:30 - 16:00 | Diana Cionoiu ([Yate](http://yate.null.ro/)) | Deploying [Jingle](/about-xmpp/technology-overview/jingle/) |
+| 16:00 - 16:30 | Dirk Meyer ([TZI](http://www.tzi.de/)) | Personal Media Networks |
+| 16:30 - 17:00 | Florian Jensen ([Flosoft](http://flosoft.biz/)) | Large-Scale XMPP Deployments |
+| 17:00 - 17:30 | Mickaël Rémond ([ProcessOne](http://www.process-one.net/)) | XMPP in Real Life (Attacks, Bad Behaviors, and How to Cope with Them) |
+| 17:30 - 18:00 | Dave Cridland ([Isode](http://www.isode.com/)) | Presenting Information Flow in Deployed XMPP Clients |
+| 18:00 - 19:00 | Miscellaneous | Lightning Talks! |
 
 ### Sunday, February 8: FOSDEM{#sunday}
 

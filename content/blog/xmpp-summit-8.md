@@ -74,53 +74,21 @@ If you would like to be a speaker, please contact Peter Saint-Andre. We especia
 
 The schedule is as follows (slots for lightning talks are still available, post to the [summit@xmpp.org list](https://mail.jabber.org/mailman/listinfo/summit) if you are interested!).
 
-<table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-        <tr> <th> Time</th>
-             <th> Topic</th>
-             <th> Speaker(s)</th>
-         </tr> <tr> <td> 13:00-13:15
-</td> <td> Intro / Logistics
-</td> <td> Peter Saint-Andre
-</td> </tr> <tr> <td> 13:15-14:00
-</td> <td> The Extraordinary, Magical Powers and Possibilities of XMPP
-</td> <td> Remko Tronçon
-</td> </tr> <tr> <td> 14:00-14:30
-</td> <td> Stump the XMPP Experts! Open Q&A
-</td> <td> XMPP Council and book authors
-</td> </tr> <tr> <td> 14:30-15:00
-</td> <td> Building Federated Social Networks on XMPP
-</td> <td> Simon Tennant & Tuomas Koski
-</td> </tr> <tr> <td> 15:00-15:30
-</td> <td> XMPP and the Social Web
-</td> <td> Laurent Eschenauer & Alard Weisscher
-</td> </tr> <tr> <td> 15:30-16:00
-</td> <td> PubSub Gone Wild: Info Sharing at Mediamatic
-</td> <td> Ralph Meijer
-</td> </tr> <tr> <td> 16:00-16:30
-</td> <td> Mirabeau: Creating Personal Media Networks and Bridging UPnP Devices over the Internet with XMPP
-</td> <td> Frank Scholz & Philippe Normand
-</td> </tr> <tr> <td> 16:30-17:00
-</td> <td> You Got Your XMPP in My Website: Using Strophe.js for Fun and Profit
-</td> <td> Jack Moffitt
-</td> </tr> <tr> <td> 17:00-17:30
-</td> <td> Lightning Talks
-</td> <td> various speakers
-</td> </tr> <tr> <td> 17:30-17:50
-</td> <td> Jingle Nodes: An Open Alternative to Skype
-</td> <td> Thiago Camargo
-</td> </tr> <tr> <td> 17:50-18:10
-</td> <td> Jingle in the Enterprise
-</td> <td> Diana Cionoiu
-</td> </tr> <tr> <td> 18:10-18:30
-</td> <td> Multi-User Jingle: Voice and Video Conferencing with XMPP
-</td> <td> Sjoerd Simons & Robert McQueen
-</td> </tr> <tr> <td> 18:30-19:00
-</td> <td> More Lightning Talks
-</td> <td> various speakers
-</td> </tr>
-</tbody>
-</table>
+| Time | Topic | Speaker(s) |
+| --- | --- | --- |
+| 13:00-13:15 | Intro / Logistics | Peter Saint-Andre |
+| 13:15-14:00 | The Extraordinary, Magical Powers and Possibilities of XMPP | Remko Tronçon |
+| 14:00-14:30 | Stump the XMPP Experts! Open Q&A | XMPP Council and book authors |
+| 14:30-15:00 | Building Federated Social Networks on XMPP | Simon Tennant & Tuomas Koski |
+| 15:00-15:30 | XMPP and the Social Web | Laurent Eschenauer & Alard Weisscher |
+| 15:30-16:00 | PubSub Gone Wild: Info Sharing at Mediamatic | Ralph Meijer |
+| 16:00-16:30 | Mirabeau: Creating Personal Media Networks and Bridging UPnP Devices over the Internet with XMPP | Frank Scholz & Philippe Normand |
+| 16:30-17:00 | You Got Your XMPP in My Website: Using Strophe.js for Fun and Profit | Jack Moffitt |
+| 17:00-17:30 | Lightning Talks | various speakers |
+| 17:30-17:50 | Jingle Nodes: An Open Alternative to Skype | Thiago Camargo |
+| 17:50-18:10 | Jingle in the Enterprise | Diana Cionoiu |
+| 18:10-18:30 | Multi-User Jingle: Voice and Video Conferencing with XMPP | Sjoerd Simons & Robert McQueen |
+| 18:30-19:00 | More Lightning Talks | various speakers |
 
 We will also have a XMPP Stand (10am-6pm) where you'll be able to talk to great people of the XMPP community. It'll be the place to start off all your interesting "hallway" discussions.
 

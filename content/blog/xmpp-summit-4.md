@@ -108,83 +108,28 @@ The XMPP Standards Foundation will pay the hotel costs of any XSF member who par
 
 **Room shares and room reservations for XSF members.**
 
-<table border="1"> <tbody> <tr> <th> room
-</th> <th> XSF member
-</th> <th> date arrival
-</th> <th> date departure
-</th> <th> nights
-</th> </tr> <tr> <th rowspan="2"> 1
-</th> <td> Edwin Mons
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <td> Ralph Meijer
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <th rowspan="2"> 2
-</th> <td> Christ van Willegen (cvwillegen AT gmail.com)
-</td> <td> Feb 22nd
-</td> <td> Feb 24th
-</td> <td> 2
-</td> </tr> <tr> <td> Solarius
-</td> <td> Feb 22th
-</td> <td> Feb 24th
-</td> <td> 2
-</td> </tr> <tr> <th rowspan="2"> 3
-</th> <td> Philippe Sultan
-</td> <td> Feb 24th
-</td> <td> Feb 25th
-</td> <td> 1
-</td> </tr> <tr> <td> Adam Nemeth
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <th rowspan="2"> 4
-</th> <td> Jakob Schröter
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <td> Peter Saint-Andre
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <th rowspan="2"> 5
-</th> <td> Jérôme Sautret
-</td> <td> Feb 22nd
-</td> <td> Feb 25th
-</td> <td> 3
-</td> </tr> <tr> <td> Grégoire Menuel
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <th rowspan="2"> 6
-</th> <td> Pedro Melo
-</td> <td> Feb 22nd
-</td> <td> Feb 25nd
-</td> <td> 3
-</td> </tr> <tr> <td> Yann Biancheri
-</td> <td> Feb 23rd
-</td> <td> Feb 25th
-</td> <td> 2
-</td> </tr> <tr> <th rowspan="2"> 7
-</th> <td> Pavel Šimerda
-</td> <td> Feb 22nd
-</td> <td> Feb 26th
-</td> <td> 4
-</td> </tr> <tr> <td> </td> <td> </td> <td> </td> <td> </td> </tr> </tbody> </table>
+| XSF member | date arrival | date departure | nights |
+| --- | --- | --- | --- |
+| Edwin Mons | Feb 22nd | Feb 26th | 4 |
+| Ralph Meijer | Feb 22nd | Feb 26th | 4 |
+| Christ van Willegen (cvwillegen AT gmail.com) | Feb 22nd | Feb 24th | 2 |
+| Solarius | Feb 22nd | Feb 24th | 2 |
+| Philippe Sultan | Feb 24th | Feb 25th | 1 |
+| Adam Nemeth | Feb 22nd | Feb 26th | 4 |
+| Jakob Schröter | Feb 22nd | Feb 26th | 4 |
+| Peter Saint-Andre | Feb 22nd | Feb 26th | 4 |
+| Jérôme Sautret | Feb 22nd | Feb 25th | 3 |
+| Grégoire Menuel | Feb 22nd | Feb 26th | 4 |
+| Pedro Melo | Feb 22nd | Feb 25th | 3 |
+| Yann Biancheri | Feb 23rd | Feb 25th | 2 |
+| Pavel Šimerda | Feb 22nd | Feb 26th | 4 |
 
 **For non XSF members the room rates are:**
 
-<table border="1"> <tbody> <tr> <th> </th> <th> single room
-</th> <th> double room
-</th> </tr> <tr> <td> Midweek Monday to Thursday
-</td> <td> 115,- €
-</td> <td> 130,- €
-</td> </tr> <tr> <td> Weekend rate (all Fridays Saturdays Sundays)
-</td> <td> 75,- €
-</td> <td> 85,- €
-</td> </tr> </tbody> </table>
+|  | single room | double room |
+| --- | --- | --- |
+| Midweek Monday to Thursday | 115,- € | 130,- € |
+| Weekend rate (all Fridays Saturdays Sundays) | 75,- € | 85,- € |
 
 *Breakfast and taxes included.*  
 *Free wireless Internet.*
