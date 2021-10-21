@@ -18,28 +18,29 @@ XMPP stream compression is a desirable feature that reduces the amount of data t
 
 1. An XMPP server supporting application-layer compression advertises it in the stream feature message:
 
-		:::xml
-		<stream:features>
-		  <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
-		  <compression xmlns='http://jabber.org/features/compress'>
-		    <method>zlib</method>
-		    <method>lzw</method>
-		  </compression>
-		</stream:features>
-
-
+```xml
+<stream:features>
+  <starttls xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>
+  <compression xmlns='http://jabber.org/features/compress'>
+    <method>zlib</method>
+    <method>lzw</method>
+  </compression>
+</stream:features>
+```
 
 2.  The client selects one of the advertised compression algorithms:
 
-		:::xml
-		<compress xmlns='http://jabber.org/protocol/compress'>
-		  <method>zlib</method>
-		</compress>
+```xml
+<compress xmlns='http://jabber.org/protocol/compress'>
+  <method>zlib</method>
+</compress>
+```
 
 3.  If no errors occur, the server agrees on the choice with the following message:
 
-		:::xml
-		<compressed xmlns='http://jabber.org/protocol/compress'/>
+```xml
+<compressed xmlns='http://jabber.org/protocol/compress'/>
+```
 
 After a successful negotiation, all the subsequent protocol messages are compressed.
 
@@ -54,12 +55,13 @@ An "xmppbomb" is a valid XML element sent over an XML stream but containing a
 huge number of white spaces. See for example the following element sent during
 stream negotiation (e.g., on a stream restart after TLS negotiation):
 
-	:::xml
-	<?xml version='1.0' ?>
-	<stream:stream $SPACES to='$SERVER'
-		xmlns='jabber:client'
-		xmlns:stream='http://etherx.jabber.org/streams'
-		version='1.0'>
+```xml
+<?xml version='1.0' ?>
+<stream:stream $SPACES to='$SERVER'
+	xmlns='jabber:client'
+	xmlns:stream='http://etherx.jabber.org/streams'
+	version='1.0'>
+```
 
 where $SPACES is a 4GB long string of spaces and $SERVER is the server domain
 name. By using the zlib compression algorithm, it is possible to compress the
