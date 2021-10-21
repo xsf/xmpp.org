@@ -20,7 +20,7 @@ The first thing to do is to write up your idea. XEPs are written in an XML forma
 
 The XMPP Editor isn't actually one person, but a team of amazingly hard working XSF members led by Matthew Miller. To send them a proposed new XEP, just send it in an email to them - but because that's a list, and would be drowned in spam, you'll need to get the subject line right.
 
-#### <a name="submitting-a-xep" href="#submitting-a-xep">Submit your extension</a>{#submitting-a-xep}
+#### Submit your extension{#submitting-a-xep}
 
 Here's how to submit a proposal to the XMPP Standards Foundation for consideration as an [XMPP Extension Protocol](/extensions):
 

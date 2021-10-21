@@ -9,16 +9,17 @@ aliases:
 
 The sixth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation will occur on February 6-9, 2009, in Brussels, Belgium (the same weekend as [FOSDEM 2009](http://www.fosdem.org/)).
 
-- [Friday, February 6: Jingle Thingle](#friday-february-6-jingle-thingle)
-- [Saturday, February 7: Devroom @ FOSDEM](#saturday-february-7-devroom--fosdem)
-- [Sunday, February 8: FOSDEM](#sunday-february-8-fosdem)
-- [Sunday, February 8: Birthday Dinner](#sunday-february-8-birthday-dinner)
-- [Monday, February 9: XMPP Summit](#monday-february-9-xmpp-summit)
+- [Friday, February 6: Jingle Thingle](#friday)
+- [Saturday, February 7: Devroom @ FOSDEM](#saturday)
+- [Sunday, February 8: FOSDEM](#sunday)
+- [Sunday, February 8: Birthday Dinner](#sunday)
+- [Monday, February 9: XMPP Summit](#monday)
 - [Logistics](#logistics)
 - [Contact](#contact)
 
-<a name="friday"></a>
-### Friday, February 6: Jingle Thingle
+
+### Friday, February 6: Jingle Thingle{#friday}
+
 A hackfest and brainstorming session for [Jingle](https://xmpp.org/tech/jingle.shtml) developers who want to code and test their implementations (primarily voice and video, but we will also discuss file transfer, end-to-end encryption, and other use cases). The tentative schedule is 9:30 to 4:30 but it may run later (but not too late because we don't want to miss the [FOSDEM Beer Event](http://www.fosdem.org/2009/beerevent)!). Location: [Hotel Bedford](http://www.hotelbedford.be/).
 
 If you would like to participate in the Jingle Thingle (thanks to [Dave Cridland](http://blog.dave.cridland.net/) for the name!), please say so on the [jingle@xmpp.org](https://mail.jabber.org/mailman/listinfo/jingle) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968).
@@ -49,8 +50,8 @@ The following people are likely to participate:
 22. Remko Tronçon ([Psi Project](http://psi-im.org/)) 
 23. Paul Witty ([Codian](http://www.codian.com/)     / [TANDBERG](http://www.tandberg.com/))
 
-<a name="saturday"></a>
-### Saturday, February 7: Devroom @ FOSDEM
+### Saturday, February 7: Devroom @ FOSDEM{#saturday}
+
 From 13:00 until 19:00 we will have a devroom where we can host tutorials, presentations, demos, and lightning talks at [FOSDEM 2009](http://www.fosdem.org/2009/). Location: ULB Solbosh Campus (see [logistics](#logistics)), Building AW, Room 1.120.
 
 If you would like to be a speaker, please contact Peter Saint-Andre. We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
@@ -106,12 +107,12 @@ The proposed schedule is as follows.
     </tbody>
 </table>
 
-<a name="sunday"></a>
-### Sunday, February 8: FOSDEM
+### Sunday, February 8: FOSDEM{#sunday}
+
 Developers are free to attend the second day of the FOSDEM conference. We'll need help manning the booth and attending talks to spread the word about XMPP. Also expect many interesting "hallway" discussions and continued hacking in the background.
 
-<a id="dinner" name="dinner"></a>
-### Sunday, February 8: Birthday Dinner
+### Sunday, February 8: Birthday Dinner{#dinner}
+
 The XSF will hold its bi-annual dinner this year in a small, authentic Belgian restaurant just outside of Brussels. It's the 10th Birthday of Jabber/XMPP technologies this year so help us celebrate! The restaurant easily reachable from the ULB and the city centre. If you aren't attending FOSDEM on Sunday, we can give you easy directions from anywhere in Brussels. This year's dinner is a bit different, as it's not paid by the XSF but by several sponsors. The event will be held at [Auberge Bretonne](http://www.aubergebretonne.be/) starting at 19:00. If you would like to participate in the dinner, please send a mail to the summit mailinglist or ping [Florian Jensen](xmpp:admin@im.flosoft.biz).
 
 Depending on the amount of sponsorships / donations we receive, the price will vary. It shouldn't be more than 25€ per person.
@@ -175,8 +176,8 @@ Participants:
 42. Christopher Zorn 
 43. Nathan Zorn
 
-<a name="monday"></a>
-### Monday, February 9: XMPP Summit
+### Monday, February 9: XMPP Summit{#monday}
+
 The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack. The main topics will probably be mobile optimizations, file transfer, and end-to-end encryption as [recently prioritized](http://logs.jabber.org/council@conference.jabber.org/2008-12-03.html#14:54:38) by the [XMPP Council](/about/xmpp-standards-foundation).
 
 The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list or contact [Peter Saint-Andre](https://stpeter.im/?page_id=1968). The tentative schedule is 9:30 to 4:30. Location: [Hotel Bedford](http://www.hotelbedford.be/).
@@ -228,12 +229,12 @@ The following people are likely to participate:
 43. Christopher Zorn ([StanzIQ](http://stanziq.com/)) 
 44. Nathan Zorn ([StanzIQ](http://stanziq.com/))
 
-<a name="logistics"></a>
-### Logistics
+### Logistics{#logistics}
+
 The Jingle Thingle (Friday) and XMPP Summit (Monday) will take place at the [Hotel Bedford](http://www.hotelbedford.be/), 135-137 rue du Midi, 1000 Brussels (tel +32 2 507 00 00, email info@hotelbedford.be) -- the booking.com URL is here: [Friday to Tuesday](http://www.booking.com/hotel/be/bedford.html?checkin=2009-02-06;checkout=2009-02-10;show_room=RD2006904_297285_0) / [Thursday to Tuesday](http://www.booking.com/hotel/be/bedford.html?checkin=2009-02-05;checkout=2009-02-10;show_room=RD2006904_297285_0).
 
 The FOSDEM activities (Saturday and Sunday) will take place at ULB Campus Solbosh, 50 Avenue Franklin D. Roosevelt, 1050 Brussels (detals[here](http://www.fosdem.org/2009/practical/transportation)).
 
-<a name="contact"></a>
-### Contact
+### Contact{#contact}
+
 Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).

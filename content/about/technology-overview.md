@@ -37,7 +37,7 @@ Key XMPP technologies:
 
 Furthermore, we would like to suggest the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
 
-## <a name="core" href="#core">Core</a>{#core}
+## Core{#core}
 
 At its core, XMPP is a technology for streaming XML over a network. The protocol, which emerged from the Jabber open-source community in 1999, was originally designed to provide an open, secure, decentralized alternative to consumer-oriented instant messaging (IM) services like ICQ, AIM, and MSN. The core technologies were formalized under the name Extensible Messaging and Presence Protocol (XMPP) at the [IETF](http://www.ietf.org/) in 2004. These core technologies include:
 
@@ -68,7 +68,7 @@ There are many implementations of the core XMPP specifications. See the followin
 - [Code Libraries](/software/libraries)
 
 
-## <a name="jingle" href="#jingle">Jingle</a>{#jingle}
+## Jingle{#jingle}
 
 In essence, Jingle provides a way for Jabber clients to set up, manage, and tear down multimedia sessions. Such sessions can support a wide range of application types (such as voice chat, video chat, and file transfer) and use a wide range of media transport methods (such as TCP, UDP, RTP, or even in-band XMPP itself). The signalling to establish a Jingle session is sent over XMPP, and typically the media is sent directly peer-to-peer or through a media relay. Jingle provides a pluggable framework for both application types and media transports; in the case of voice and video chat, a Jingle negotiation usually results in use of the Real-time Transport Protocol (RTP) as the media transport and thus is compatible with existing multimedia technologies such as the Session Initiation Protocol (SIP). Furthermore, the semantics of Jingle signalling was designed to be consistent with both SIP and the Session Description Protocol (SDP), thus making it straightforward to provide signalling gateways between XMPP networks and SIP networks.
 
@@ -112,7 +112,7 @@ __Call Managers / VoIP Servers__
 - [Yate](http://yate.null.ro/)
 
 
-## <a name="muc" href="#muc">Multi-User-Chat (MUC)</a>{#muc}
+## Multi-User-Chat (MUC){#muc}
 
 MUC is an XMPP extension for multi-party information exchange similar to Internet Relay Chat (IRC), whereby multiple XMPP users can exchange messages in the context of a room or channel. In addition to standard chatroom features such as room topics and invitations, the protocol defines a strong room control model, including the ability to kick and ban users, to name room moderators and administrators, to require membership or passwords in order to join the room, etc. Because MUC rooms are based on XMPP, they can be used to exchange not only plaintext message bodies but a wide variety of XML payloads.
 
@@ -160,7 +160,7 @@ __Libraries__
 - [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
 
-## <a name="pubsub" href="#pubsub">PubSub</a>{#pubsub}
+## PubSub{#pubsub}
 
 PubSub is a protocol extension for generic publish-subscribe functionality, specified in XEP-0060. The protocol enables XMPP entities to create nodes (topics) at a pubsub service and publish information at those nodes; an event notification (with or without payload) is then broadcasted to all entities that have subscribed to the node. Pubsub therefore adheres to the classic Observer design pattern and can serve as the foundation for a wide variety of applications, including news feeds, content syndication, rich presence, geolocation, workflow systems, network management systems, and any other application that requires event notifications. The personal eventing protocol (PEP), specified in XEP-0163, provides a presence-aware profile of PubSub that enables every user’s JabberID to function as a virtual pubsub service for rich presence, microblogging, social networking, and real-time interactions.
 
@@ -211,7 +211,7 @@ __3.4 Libraries__
 - [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
 
-## <a name="bosh" href="#bosh">BOSH</a>{#bosh}
+## BOSH{#bosh}
 
 BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-way communication over the Hypertext Transfer Protocol (HTTP). BOSH emulates many of the transport primitives that are familiar from the Transmission Control Protocol (TCP). For applications that require both “push” and “pull” communications, BOSH is significantly more bandwidth-efficient and responsive than most other bidirectional HTTP-based transport protocols and the techniques known as AJAX. BOSH achieves this efficiency and low latency by avoiding HTTP polling, yet it does so without resorting to chunked HTTP responses as is done in the technique known as Comet. To date, BOSH has been used mainly as a transport for traffic exchanged between Jabber/XMPP clients and servers (e.g., to facilitate connections from web clients and from mobile clients on intermittent networks). However, BOSH is not tied solely to XMPP and can be used for other kinds of traffic, as well.
 

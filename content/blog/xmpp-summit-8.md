@@ -9,18 +9,18 @@ aliases:
 
 The eighth [XMPP Summit](/participate/the-xmpp-summit/) to be held by the XMPP Standards Foundation occured on February 5-8, 2010, in Brussels, Belgium (the same weekend as [FOSDEM 2010](http://www.fosdem.org/)).
 
-- [Friday, February 5: XMPP Hackfest](#friday-february-5-xmpp-hackfest)
-- [Saturday, February 6: Devroom @ FOSDEM](#saturday-february-6-devroom--fosdem)
-- [Sunday, February 7: FOSDEM](#sunday-february-7-fosdem)
-- [Sunday, February 7: Official XSF Dinner](#sunday-february-7-official-xsf-dinner)
-- [Monday, February 8: XMPP Summit](#monday-february-8-xmpp-summit)
+- [Friday, February 5: XMPP Hackfest](#friday)
+- [Saturday, February 6: Devroom @ FOSDEM](#saturday)
+- [Sunday, February 7: FOSDEM](#sunday)
+- [Sunday, February 7: Official XSF Dinner](#sunday)
+- [Monday, February 8: XMPP Summit](#monday)
 - [Mobile Dev Challenge and SIM Cards](#mobile-dev-challenge-and-sim-cards)
 - [Hotel](#hotel)
 - [Logistics](#logistics)
 - [Contact](#contact)
 
-<a name="friday"></a>
-### Friday, February 5: XMPP Hackfest
+### Friday, February 5: XMPP Hackfest{#friday}
+
 The official XMPP Hackfest is there for people to code on XMPP, test interoperability and build or extend applications. The XMPP Hackfest will be happening at the [Hotel](#hotel).
 
 The following people are likely to participate:
@@ -66,8 +66,8 @@ The following people are likely to participate:
 39. Kurt Zeilenga ([Isode](http://isode.com/products/m-link.html)) 
 40. Christopher Zorn ([Collecta](http://collecta.com/))
 
-<a name="saturday"></a>
-### Saturday, February 6: Devroom @ FOSDEM
+### Saturday, February 6: Devroom @ FOSDEM{#saturday}
+
 From 13:00 until 19:00 we will have a devroom where we can host tutorials, presentations, demos, and lightning talks at [FOSDEM 2010](http://www.fosdem.org/2010/). Location: ULB Solbosh Campus (see [logistic](/2010/08/xmpp-summit-8#logistics)), the Building and Room will be announced soon.
 
 If you would like to be a speaker, please contact Peter Saint-Andre. We especially want technical talks of interest to open-source geeks. No marketing fluff, please! The typical talk will be 15 minutes with 15 minutes for discussion.
@@ -124,12 +124,12 @@ The schedule is as follows (slots for lightning talks are still available, post 
 
 We will also have a XMPP Stand (10am-6pm) where you'll be able to talk to great people of the XMPP community. It'll be the place to start off all your interesting "hallway" discussions.
 
-<a name="sunday"></a>
-### Sunday, February 7: FOSDEM
+### Sunday, February 7: FOSDEM{#sunday}
+
 Developers are free to attend the second day of the FOSDEM conference. We'll need help manning the booth (10am-5pm) and attending talks to spread the word about XMPP. Also expect many interesting "hallway" discussions and continued hacking in the background.
 
-<a name="dinner"></a>
-### Sunday, February 7: Official XSF Dinner
+### Sunday, February 7: Official XSF Dinner{#dinner}
+
 *Note: We have reached our dinner limit of 48 people!*
 
 Depending on the amount of sponsorships / donations we receive, the price of the dinner will vary. Please be at the Hotel reception at **18:15** so that you don't miss the coach to the Restaurant. Contact [Florian](/2010/08/xmpp-summit-8#contact) if you would like to donate!
@@ -202,8 +202,8 @@ Participants:
 53. Kurt Zeilenga ([Isode](http://isode.com/products/m-link.html)) (M) 
 54. Christopher Zorn ([Collecta](http://collecta.com/)) (M)
 
-<a name="monday"></a>
-### Monday, February 8: XMPP Summit
+### Monday, February 8: XMPP Summit{#monday}
+
 The official "XMPP Summit" itself: Intensive discussions among core XMPP developers to solve pressing problems in the XMPP protocol stack.
 
 The Summit is not intended for people who are just interested in learning about XMPP (see the Saturday schedule), but instead for active technical contributors in the XMPP community. If you would like to participate, please say so on the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list. The tentative schedule is 9:30 to 4:30. 
@@ -268,23 +268,23 @@ The following people will participate:
 54. Kurt Zeilenga ([Isode](http://isode.com/products/m-link.html)) 
 55. Christopher Zorn ([Collecta](http://collecta.com/))
 
-<a name="mobile"></a>
-### Mobile Dev Challenge and SIM Cards
+### Mobile Dev Challenge and SIM Cards{#mobile}
+
 All information about the XMPP Developer Challenge can be found [here](http://bit.ly/7135Iu).
 [MobileVikings](http://mobilevikings.com/) has generously given us 20 SIM cards with mobile internet access for demonstration purposes for the XMPP Stand, Devroom and Summit.
 
 If you are interested in getting a SIM card for the 4 days, please contact [Florian](/2010/08/xmpp-summit-8#contact).
 
-<a name="hotel"></a>
-### Hotel
+### Hotel{#hotel}
+
 The XMPP Summit will be held at the [Best Western Premier - Carrefour de L'Europe](http://carrefourhotel.be/) Hotel in the heart of Brussels. It's conveniently located next to the Brussels Central station and the Grand Place.
 
 The XSF has a deal for a Business Room for 109€ per night for a single or a double / twin room. The rooms are on lock until the 15th of January. For the booking and information, please contact [Florian Jensen](/2010/08/xmpp-summit-8#contact).
 
-<a name="logistics"></a>
-### Logistics
+### Logistics{#logistics}
+
 The FOSDEM activities (Saturday and Sunday) will take place at ULB Campus Solbosh, 50 Avenue Franklin D. Roosevelt, 1050 Brussels (detals[here](http://fosdem.org/2010/transportation)).
 
-<a name="contact"></a>
-### Contact
+### Contact{#contact}
+
 Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/?page_id=1968).   For queries about the Hotel or Dinner, please contact Florian Jensen ([XMPP](xmpp:admin@im.flosoft.biz) / [E-mail](mailto:florian@florianjensen.com)).

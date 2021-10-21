@@ -16,73 +16,73 @@ Version 1.4
 
 ## Table of Contents
 
-1. <a href="#intro">Introduction</a>  
-1.1. <a href="#intro-history">History</a>  
-1.2. <a href="l#intro-role">Purpose</a>  
-2. <a href="#terms">Terms</a>  
-2.1. <a href="#xmpp">XMPP</a>  
-2.2. <a href="#extension">XMPP Extension Protocol</a>  
-2.3. <a href="#implementation">Implementation</a>  
-2.4. <a href="#claim">Intellectual Property Claim</a>
-3. <a href="#contributing">Terms of Contributing to XMPP Extensions</a>  
-3.1. <a href="#contrib-ownership">Ownership</a>  
-3.2. <a href="#contrib-approval">Approval of XMPP Extensions</a>  
-3.3. <a href="#contrib-private">A Note about Private Extensions</a>
-4. <a href="#legal">Legal Notice</a>
+1. [Introduction](#intro)  
+1.1. [History](#intro-history)  
+1.2. [Purpose](#intro-role)  
+2. [Terms](#terms)  
+2.1. [XMPP](#xmpp)  
+2.2. [XMPP Extension Protocol](#extension)  
+2.3. [Implementation](#implementation)  
+2.4. [Intellectual Property Claim](#claim)
+3. [Terms of Contributing to XMPP Extensions](#contributing)  
+3.1. [Ownership](#contrib-ownership)  
+3.2. [Approval of XMPP Extensions](#contrib-approval)  
+3.3. [A Note about Private Extensions](#contrib-private)
+4. [Legal Notice](#legal)
 
 ----------
 
-## 1\. <a name="intro"></a>Introduction
+## 1\. Introduction{#intro}
 
 This document defines the official policy of the XMPP Standards Foundation (XSF) regarding intellectual property rights (IPR) as they pertain to extensions to XMPP in the form of XMPP Extension Protocol specifications (XEPs). [[1](#note1)]
 
-### 1.1 <a name="intro-history"></a>History
+### 1.1 History{#intro-history}
 
 The Jabber/XMPP protocols have been under development since 1998 and have been discussed and documented in public forums since January 1999 in the open-source projects that were a precursor to the XSF. Through force of history and activity since its founding in the summmer of 2001, the XSF has assumed responsibility for managing the evolution of the Jabber/XMPP protocols in two ways: (1) through working with the IETF to standardize the core protocols under the name Extensible Messaging and Presence Protocol (XMPP); and (2) through the definition of extensions to the core protocol in the XSF's XMPP Extension Protocol (XEP) specification series. Through this work, the XSF has in effect "homesteaded" the domain of XMPP Extensions and has acted as a trusted third party or "intellectual property conservancy" [[2](#note2)] to which new and established participants in the Jabber/XMPP developer community have entrusted their XMPP Extensions.
 
-### 1.2 <a name="intro-role"></a>Purpose
+### 1.2 Purpose{#intro-role}
 
 The XSF does not seek to disparage the legitimate rights of any individual or organization to assert ownership over an Implementation or Deployment of XMPP or of any XMPP Extension. However, the XSF must ensure that XMPP Extensions do not pollute the free and open nature of the protocols. Preventing such pollution means that in perpetuity any entity may independently, and without payment or hindrance, create, use, sell, distribute, or dispose of implementations of XMPP and of any XMPP Extension. Such is the intent of this policy.
 
-## 2\. <a name="terms"></a>Terminology
+## 2\. Terminology{#terms}
 
-### 2.1 <a name="xmpp"></a>XMPP
+### 2.1 XMPP{#xmpp}
 
 The core XML streaming, instant messaging, and presence protocols developed by the Jabber/XMPP developer community have been contributed by the XSF to the Internet Engineering Task Force (IETF) under the name Extensible Messaging and Presence Protocol (XMPP). XMPP is all and only these core protocols, as currently defined in [RFC 6120](http://www.ietf.org/rfc/rfc6120.txt) and [RFC 6121](http://www.ietf.org/rfc/rfc6121.txt).
 
-### 2.2 <a name="extension"></a>XMPP Extension
+### 2.2 XMPP Extension{#extensions}
 
 For the purposes of this IPR policy, an XMPP Extension is any specification approved by, or submitted for approval or consideration by, the XSF or its constituent committees (most particularly the [XMPP Council](https://xmpp.org/council/)). Such a specification must exist in the form of a standards-track XMPP Extension Protocol (XEP) specification in order to be considered an official submission. (Also referred to as an Extension.)
 
-### 2.3 <a name="implementation"></a>Implementation
+### 2.3 Implementation{#implementation}
 
 Any software program that implements the functionality defined in the core XMPP specifications or in XMPP Extension Protocols for the purpose of providing the functionality defined by the relevant specification(s).
 
-### 2.4 <a name="deployment"></a>Deployment
+### 2.4 Deployment{#deployment}
 
 Any service deployed over a network that offers the capabilities defined in the core XMPP specifications or in XMPP Extension Protocols.
 
-### 2.5 <a name="claim"></a>Intellectual Property Claim
+### 2.5 Intellectual Property Claim{#claim}
 
 Any patent, copyright, or other proprietary claim or claims made by an entity regarding an XMPP Extension. (Also referred to as a Claim.)
 
-## 3\. <a name="contributing"></a>Terms of Contributing an XMPP Extension
+## 3\. Terms of Contributing an XMPP Extension{#contributing}
 
 The XSF recognizes the possibility that the creator of an XMPP Extension may make an Intellectual Property Claim regarding an XMPP Extension. Therefore, the XSF takes the following positions:
 
-### 3.1 <a name="contrib-ownership"></a>Ownership
+### 3.1 Ownership{#contrib-ownership}
 
 By submitting an XMPP Extension for consideration by the XSF, the author of the Extension shall assign any ownership rights or other Claims asserted over the Extension to the XSF. This does not apply to Claims regarding any Implementations or Deployments of the Extension, but rather to the Extension itself as represented in a protocol or data format. Any documentation of the Extension (in the form of a XEP specification) shall be copyrighted by the XSF. Once an author assigns ownership to the XSF, the XSF shall in turn make the Extension available to all entities so that they may create, use, sell, distribute, or dispose of Implementations or Deployments of XMPP and all XMPP Extensions in perpetuity and without payment or hindrance.
 
-### 3.2 <a name="contrib-approval"></a>Approval of Extensions
+### 3.2 Approval of Extensions{#contrib-approval}
 
 No Extension shall be approved by the XSF or its constituent committees if there are Claims to the Extension itself, or any Claims that would prevent perpetual, unrestricted, royalty-free use of the Extension in a compliant Implementation or Deployment by any interested party. If Claims preventing such use are discovered, the XSF shall immediately seek to replace the Extension with unencumbered protocols that may be implemented without condition by any entity.
 
-### 3.3 <a name="contrib-private"></a>A Note about Private Extensions
+### 3.3 A Note about Private Extensions{#contrib-private}
 
 By its nature as XML, XMPP enables implementers to create their own private extensions to XMPP by means of custom XML namespaces. Such extensions may be kept private, and there is no compulsion for implementers to contribute such extensions to the Jabber/XMPP developer community. It is only when an implementer seeks to have an extension standardized through the XSF's public standards process that ownership over such an extension must be transferred to the XSF. If an implementer wishes to keep its extensions private, it may simply refrain from submitting them to the XSF. However, private extensions exist outside the boundaries of XMPP and approved XMPP Extensions and must not be considered or described as part of XMPP or XSF-approved XMPP Extensions.
 
-## 4\. <a name="legal"></a>Legal Notices
+## 4\. Legal Notices{#legal}
 
 All XMPP Extension Protocol (XEP) specifications shall contain the following Legal Notices:
 
@@ -108,8 +108,13 @@ All XMPP Extension Protocol (XEP) specifications shall contain the following Leg
 
 ## Notes
 
-1. <a name="note1"></a> For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](https://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](https://xmpp.org/extensions/xep-0001.html).
-2. <a name="note2"></a> For information about intellectual property conservancies, see as well as M. van Houweling, "Cultivating Open Information Platforms: A Land Trust Model." Journal of Telecommunications & High Technology Law 1, no. 1 (2002): 309-23.
+### Note 1{#note1}
+
+For information about XMPP Extension Protocols, see ([xmpp.org/protocols/xmpp-extensions/](https://xmpp.org/xmpp-protocols/xmpp-extensions/)) and [XEP-0001](https://xmpp.org/extensions/xep-0001.html).
+
+### Note 2{#note2}
+
+For information about intellectual property conservancies, see as well as M. van Houweling, "Cultivating Open Information Platforms: A Land Trust Model." Journal of Telecommunications & High Technology Law 1, no. 1 (2002): 309-23.
 
 ## Acknowledgements
 

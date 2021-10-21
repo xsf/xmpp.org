@@ -10,13 +10,13 @@ aliases:
 The XMPP Standards Foundation will hold its fifth "XMPP Summit" meeting on July 21 and 22, 2008, in Portland, Oregon, USA (the same week as [OSCON 2008](http://conferences.oreilly.com/oscon/)).
 Read on for details.
 
-1.  [Participants](#participants) 
-2.  [Agenda](#agenda) 
-3.  [Logistics](#logistics) 
-4.  [Events](#events)
+1. [Participants](#participants)
+2. [Agenda](#agenda)
+3. [Logistics](#logistics)
+4. [Events](#events)
 
-<a name="participants"></a>
-### Participants
+### Participants{#participants}
+
 Participation is open to all developers, service operators, and other interested individuals. Please note that this is a hard-code technical get-together with plenty of coding sprints, hackfests, interop testing, brainstorming sessions, geeky lightning talks, etc. This meeting is not intended for marketing presentations and other fluff!
 
 If you would like to participate, please join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) mailing list and introduce yourself.
@@ -70,8 +70,9 @@ The following individuals have indicated that they will attend:
 46. Jud Valeski, [Gnip](http://www.gnipcentral.com/) 
 47. Ezra Zygmuntowicz, [EngineYard](http://engineyard.com/)
 
-<a name="agenda"></a>
-### Agenda
+
+### Agenda{#agenda}
+
 As posted by Peter Saint-Andre on the summit@xmpp.org list, 2008-07-16 (with further tweaking).
 This is a rough agenda. As always, agenda bashing is welcome. As much as possible, I'd like to keep the spirit of an [unconference](http://en.wikipedia.org/wiki/Unconference).
 
@@ -172,8 +173,8 @@ Open discussion
 ##### 2:00 - 2:30
 Summary, action items, prep for hacking sessions, etc.
 
-<a name="logistics"></a>
-### Logistics
+### Logistics{#logistics}
+
 Thanks to gracious assistance from [O'Reilly Conferences](http://www.oreilly.com/), the XMPP Summit will be held at the [Oregon Convention Center](http://www.oregoncc.org/) on Monday July 21 and Tuesday July 22, 2008.
 
 The room number is E142.
@@ -186,8 +187,8 @@ As at XMPP Summit 4, the XMPP Standards Foundation will again pay hotel costs f
 
 During the summit itself, we will use the [summit@conference.jabber.org](xmpp:summit@conference.jabber.org?join) chatroom as a backchannel for discussion, information sharing, complaints, questions, etc.
 
-<a name="events"></a>
-### Events
+### Events{#events}
+
 As always, the XSF will host one social event (dinner or somesuch) and we will also have many opportunities to meet in the evenings for some good Portland beer. :)
 
 Dinner will be held on Monday night (July 21) at 7:00 PM, the location is [Kells Irish Restaurant and Pub](http://www.kellsirish.com/portland/index.html) -- details [here](https://mail.jabber.org/pipermail/summit/2008-July/000158.html).

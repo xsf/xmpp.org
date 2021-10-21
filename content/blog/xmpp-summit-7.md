@@ -9,21 +9,21 @@ aliases:
 
 The XMPP Standards Foundation will hold its seventh "XMPP Summit" meeting on July 20 and 21, 2009, in San Jose, California, USA. Thanks to the generosity of [O'Reilly](http://oreilly.com/), the Summit will be held on the premises of [OSCON 2009](http://en.oreilly.com/oscon2009).
 
-- [Monday, July 20: Interop & Hackfest](#monday-july-20-interop--hackfest)
-- [Monday Evening: Developer Dinner](#monday-evening-developer-dinner)
+- [Monday, July 20: Interop & Hackfest](#monday)
+- [Monday Evening: Developer Dinner](#monday)
   - [Donations](#donations)
-- [Tuesday, July 21: Technology Brainstorming](#tuesday-july-21-technology-brainstorming)
+- [Tuesday, July 21: Technology Brainstorming](#tuesday)
 - [Participants](#participants)
 - [Logistics](#logistics)
 - [Cost](#cost)
 - [Contact](#contact)
 
-<a name="monday"></a>
-### Monday, July 20: Interop & Hackfest
+### Monday, July 20: Interop & Hackfest{#monday}
+
 Here we will focus on interoperability testing and software hacking, including work on automated testing tools. Bring your laptop and your code! Some impromptu technology discussions are likely, as well.
 
-<a name="dinner"></a>
-### Monday Evening: Developer Dinner
+### Monday Evening: Developer Dinner{#dinner}
+
 On the evening of Monday the 20th we will hold our traditional "developer dinner" so that people can get to each other in a more casual atmosphere. Location yet to be determined.
 
 As at Summit \#6, we are looking for donations to help fund the festivities. Depending on how many people donate, the cost per person might be quite minimal. The following companies and individuals have volunteered to donate to the cause:
@@ -40,12 +40,12 @@ As at Summit \#6, we are looking for donations to help fund the festivities. De
 
 Unless you tell us otherwise, we will assume that you want to join us for dinner if you are participating in the Summit.
 
-<a name="tuesday"></a>
-### Tuesday, July 21: Technology Brainstorming
+### Tuesday, July 21: Technology Brainstorming{#tuesday}
+
 We will devote Tuesday to high-bandwidth discussions about gaps in the XMPP protocol stack, operational challenges, and other hot topics. However, software hacking will probably continue in the background.
 
-<a name="participants"></a>
-### Participants
+### Participants{#participants}
+
 The following people have indicated that they are likely to participate. If you would like to attend, please post a message to the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) discussion list and tell us whether you want to join us for dinner on Monday evening, including your dietary restrictions (if any).
 
 1.  Diana Cionoiu ([Yate](http://yate.null.ro/))
@@ -67,16 +67,16 @@ The following people have indicated that they are likely to participate. If you 
 17. Kurt Zeilenga ([Isode](http://www.isode.com/))
 18. Christopher Zorn ([Collecta](http://www.collecta.com/))
 
-<a name="logistics"></a>
-### Logistics
+### Logistics{#logistics}
+
 The XMPP Summit will take place in room B3 at the [San Jose McEnery Convention Center](http://www.sanjose.org/meetings/facilities/convention.php), 150 West San Carlos Street, San Jose, California. We typically begin the day at 10:00 and finish around 17:00. Hotel information can be found on the [OSCON site](http://en.oreilly.com/oscon2009/public/content/hotel).
 
 You *do not* need to register for OSCON in order to participate in the XMPP Summit. OSCON is a great conference and we encourage you to attend! However, if you want to participate only in the XMPP Summit, you MUST sign in for a free "floor pass" with O'Reilly when you arrive at the convention center.
 
-<a name="cost"></a>
-### Cost
+### Cost{#cost}
+
 The XMPP Summit is free. However, we reserve the right to ask for donations to help pay for food. You do want to eat, don't you?
 
-<a name="contact"></a>
-### Contact
+### Contact{#contact}
+
 Join the [summit@xmpp.org](https://mail.jabber.org/mailman/listinfo/summit) list to discuss. If you have any questions, ping [Peter Saint-Andre](https://stpeter.im/index.php/contact/).
