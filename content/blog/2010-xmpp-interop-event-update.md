@@ -30,6 +30,4 @@ The first day was filled with all of the minutia of setting up each server, gett
 
 Thanks to everyone participating and making this a great start to the Interop event.  I am reading the logs from the first two days to try and tease out details to report, but for sure the wiki will be the authoritative record of activity and results.
 
-<address>
-    *editors* *note*: thanks to Dave and Waqas for edits and suggestions
-</address>
+Thanks to Dave and Waqas for edits and suggestions
