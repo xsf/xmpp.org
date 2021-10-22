@@ -144,6 +144,11 @@
     parent = "community"
     weight = 8
 [[main]]
+    name = "Office Hours"
+    url = "community/officehours"
+    parent = "community"
+    weight = 9
+[[main]]
     name = "Getting Started"
     url = "/getting-started"
     weight = 5
