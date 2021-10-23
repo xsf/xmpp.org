@@ -5,7 +5,7 @@ Url: community/channels/operators
 
 ## About the XMPP Operators Channel
 
-The XMPP Operators Channel is located at [operators@muc.xmpp.org](xmpp:operators@muc.xmpp.org?join). It is a place primarily for operators of federated XMPP services, to have civil and low-bar discourse and resolution of interoperability issues. In addition to that primary purpose, it is also a place for the wider XMPP community (including end-users and operators of non-federated servers) to get in touch with operators to resolve issues, report abuse or any other service related topic.
+The XMPP Operators Channel is located at [operators@muc.xmpp.org](xmpp:operators@muc.xmpp.org?join). It is a place primarily for operators of federated XMPP services, to have civil and low-bar discourse and resolution of interoperability issues. In addition to that primary purpose, it is also a place for the wider XMPP community (including end-users and operators of non-federated servers) to get in touch with operators to resolve issues, report abuse (see below for important notes on that!) or any other service related topic.
 
 ## Code of Conduct
 
@@ -24,6 +24,9 @@ The channel started out as a place for operators to work together to improve the
 In order to keep the signal-to-noise ratio useful for people listening in on the channel passively, it is helpful to keep off-topic discussions to a minimum. To give you an idea about what people expect from the channel, here is a non-exhaustive list of topics which fit into the scope of the channel:
 
 * Announcements and raising awareness about problematic actors in the ecosystem affecting end-users or services negatively, preferably with corresponding evidence so that everyone is able to form their own opinion.
+
+  **Note:** When reporting abuse, make sure to not link to the abusive material right away. Do not post triggering text or images directly in the public channel.
+
 * Discussion about tools for server operators (e.g. TLS/DNS checkers, configuration linters, configuration management systems (to some extent)).
 * Announcements of security advisories which concern XMPP server or client software (so that operators can pass this on to their users) or tools very commonly used with XMPP server deployments (e.g. anything you’d find in a typical linux server installation; no hard lines here).
 * Asking for contact information for a specific XMPP service in order to discuss an issue "off-list" (in private).
