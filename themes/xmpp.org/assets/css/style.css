@@ -362,6 +362,12 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
         color: #b3b3b3 !important;
 		color: #ccc;
 	}
+    .header-home {
+        background-image: url(/images/london-dark.jpg);
+    }
+    .header-home .hero {
+        background-color: rgba(0,0,0,.7);
+    }
     .footer-sponsors {
         background-color: #474747;
         border: 1px solid #838383;
