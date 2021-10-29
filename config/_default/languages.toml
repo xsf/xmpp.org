@@ -1,0 +1,19 @@
+[en]
+  weight = 1
+  languageName = "English"
+
+[de]
+  languageName = "Deutsch"
+  dateFormat = "2. January 2006"
+
+[fr]
+  languageName = "Français"
+  dateFormat = "2 january 2006"
+
+[es]
+  languageName = "Español"
+  dateFormat = "2 de january de 2006"
+
+[ro]
+  languageName = "Romanian"
+  dateFormat = "2 january 2006"

@@ -2,24 +2,24 @@
 - id: dateFormat
   translation: "January 2, 2006"
 - id: shortdateFormat
-  translation: "Jan 2, 2006 15:04:05"
+  translation: "2 Jan, 2006 15:04:05"
 - id: postedOnDate
-  translation: "Posted on {{ . }}"
+  translation: "Posté le {{ . }}"
 - id: translationsLabel
-  translation: "Other languages"
+  translation: "Autres langues : "
 - id: translationsSeparator
   translation: ", "
 - id: readMore
-  translation: "Read More"
+  translation: "Voir plus"
 - id: olderPosts
-  translation: "Older Posts"
+  translation: "Anciens posts"
 - id: newerPosts
-  translation: "Newer Posts"
+  translation: "Nouveaux posts"
 - id: previousPost
-  translation: "Previous Post"
+  translation: "Post précédent"
 - id: nextPost
-  translation: "Next Post"
+  translation: "Post suivant"
 - id: readTime
   translation: "minutes"
 - id: words
-  translation: "words"
+  translation: "mots"

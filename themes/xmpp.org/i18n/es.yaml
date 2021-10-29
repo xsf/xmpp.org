@@ -1,0 +1,25 @@
+# Content
+- id: dateFormat
+  translation: "2 de enero, 2006"
+- id: shortdateFormat
+  translation: "2 Jan, 2006 15:04:05"
+- id: postedOnDate
+  translation: "Publicado el {{ . }}"
+- id: translationsLabel
+  translation: "Otros idiomas: "
+- id: translationsSeparator
+  translation: ", "
+- id: readMore
+  translation: "Leer más"
+- id: olderPosts
+  translation: "Artículos anteriores"
+- id: newerPosts
+  translation: "Artículos siguientes"
+- id: previousPost
+  translation: "Artículo anterior"
+- id: nextPost
+  translation: "Artículo siguiente"
+- id: readTime
+  translation: "minutos"
+- id: words
+  translation: "palabras"
