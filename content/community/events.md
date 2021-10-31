@@ -5,8 +5,6 @@ aliases:
     - "/community/events.html"
 ---
 
-__See something missing?__ Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
-
 ## XMPP Summits
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face. Attending a summit for the first time or considering to do so? This may be helpful: [XMPP summits for dummies](https://wiki.xmpp.org/web/XMPP_summits_for_dummies).
@@ -14,10 +12,12 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
 The next Summit will happen next year.
 
-## Conferences
+## Conferences and Talks
 
 No conference at the moment. You can get a list of past conferences [on the
 wiki](https://wiki.xmpp.org/web/Category:Events).
+
+[XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offerd on a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)!
 
 ## Meetups
 
@@ -34,7 +34,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-* [Your event here!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md)
+Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
 
 ### Past
 
