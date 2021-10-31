@@ -34,7 +34,7 @@ page](https://wiki.xmpp.org/web/Sprints).
 
 ### Upcoming
 
-Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/pages/community/events.md)
+Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md)
 
 ### Past
 
