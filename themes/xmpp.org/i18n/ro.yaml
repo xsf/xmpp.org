@@ -1,0 +1,27 @@
+# Content
+- id: dateFormat
+  translation: "2 January 2006"
+- id: shortdateFormat
+  translation: "2 Jan 2006 15:04:05"
+- id: postedOnDate
+  translation: "Postat pe {{ . }}"
+- id: translationsLabel
+  translation: "Alte limbi"
+- id: translationsSeparator
+  translation: ", "
+- id: readMore
+  translation: "Citește tot"
+- id: olderPosts
+  translation: "Postari mai vechi"
+- id: newerPosts
+  translation: "Postari mai noi"
+- id: previousPost
+  translation: "Postarea anterioară"
+- id: nextPost
+  translation: "Postarea următoare"
+- id: readTime
+  translation: "Minute"
+- id: words
+  translation: "Cuvinte"
+- id: translationHint
+  translation: "Traducerile sunt oferite de către voluntari și s-ar putea câteodată să nu reflecte versiunea originală din limba engleză."
