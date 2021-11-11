@@ -166,8 +166,8 @@
         "url": "https://github.com/inputmice/Conversations"
     },
     {
-        "doap": null,
-        "last_renewed": "2020-09-10T10:20:00",
+        "doap": "https://raw.githubusercontent.com/conversejs/converse.js/master/conversejs.doap",
+        "last_renewed": "2021-11-11T17:00:00",
         "name": "Converse",
         "platforms": [
             "Browser"
