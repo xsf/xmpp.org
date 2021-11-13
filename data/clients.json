@@ -744,5 +744,15 @@
             "iOS"
         ],
         "url": "https://zom.im/"
-    }
+    },
+    {
+        "doap": null,
+        "last_renewed": null,
+        "name": "Shmoose",
+        "platforms": [
+            "Sailfish OS",
+            "Linux"
+        ],
+        "url": "https://github.com/geobra/harbour-shmoose"
+    }    
 ]
