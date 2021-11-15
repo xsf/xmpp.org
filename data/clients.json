@@ -540,6 +540,16 @@
     {
         "doap": null,
         "last_renewed": null,
+        "name": "Shmoose",
+        "platforms": [
+            "Sailfish OS",
+            "Linux"
+        ],
+        "url": "https://github.com/geobra/harbour-shmoose"
+    },
+    {
+        "doap": null,
+        "last_renewed": null,
         "name": "Sim-IM",
         "platforms": [
             "FreeBSD",
@@ -744,15 +754,5 @@
             "iOS"
         ],
         "url": "https://zom.im/"
-    },
-    {
-        "doap": null,
-        "last_renewed": null,
-        "name": "Shmoose",
-        "platforms": [
-            "Sailfish OS",
-            "Linux"
-        ],
-        "url": "https://github.com/geobra/harbour-shmoose"
-    }    
+    }   
 ]
