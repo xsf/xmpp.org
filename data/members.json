@@ -48,210 +48,257 @@
     "members": [
         {
             "name": "Kim Alvefur",
+            "jids": ["zash@zash.se"],
             "roles": ["council"]
         },
 
         {
-            "name": "Aditya Borikar"
+            "name": "Aditya Borikar",
+            "jids": ["adiaholic@xabber.org"]
         },
 
         {
-            "name": "Ludovic Bocquet"
+            "name": "Ludovic Bocquet",
+            "jids": ["lbocquet@jabber.org"]
         },
 
         {
             "name": "Daniel Brötzmann",
+            "jids": ["daniel@spacecloud.one"],
             "roles": ["commteam"]
         },
 
         {
             "name": "Jan-Carel Brand",
+            "jids": ["jc@opkode.com"],
             "roles": ["editor", "commteam"]
         },
 
         {
-            "name": "Travis Burtrum"
+            "name": "Travis Burtrum",
+            "jids": ["travis@burtrum.org"]
         },
 
         {
-            "name": "Davide Conzon"
+            "name": "Davide Conzon",
+            "jids": ["co_davde@xmpp.jp", "codavide@xabber.org"]
         },
 
         {
             "name": "Dave Cridland",
+            "jids": ["dwd@dave.cridland.net"],
             "roles": ["board", "council"]
         },
 
         {
             "name": "Martin Dosch",
+            "jids": ["martin@mdosch.de"],
             "roles": ["editor"]
         },
 
         {
-            "name": "Emmanuel Gil Peyrot"
+            "name": "Emmanuel Gil Peyrot",
+            "jids": ["linkmauve@linkmauve.fr"]
         },
 
         {
-            "name": "Tim Henkes"
+            "name": "Tim Henkes",
+            "jids": ["tim@mailbox.bz"]
         },
 
         {
-            "name": "Waqas Hussain"
+            "name": "Waqas Hussain",
+            "jids": ["waqas@prosody.im"]
         },
 
         {
             "name": "Guus der Kinderen",
+            "jids": ["guus.der.kinderen@igniterealtime.org"],
             "roles": ["infrastructure", "scam"]
         },
 
         {
             "name": "Severino Ferrer de la Peñita",
+            "jids": ["soul@blastersklan.com"],
             "roles": ["board", "commteam"]
         },
 
         {
             "name": "Alexander Gnauck",
-            "roles": ["secretary", "infrastructure"]
+            "jids": ["gnauck@conversations.im", "gnauck@jabber.org"],
+            "roles": ["secretary"]
         },
 
         {
             "name": "Daniel Gultsch",
+            "jids": ["daniel@gultsch.de"],
             "roles": ["council", "scam"]
         },
 
         {
-            "name": "Artur Hefczyc"
+            "name": "Artur Hefczyc",
+            "jids": ["kobit@tigase.org"]
         },
 
         {
-            "name": "Timothée Jaussoin"
+            "name": "Timothée Jaussoin",
+            "jids": ["edhelas@movim.eu"]
         },
 
         {
-            "name": "Wojciech Kapcia"
+            "name": "Wojciech Kapcia",
+            "jids": ["wojtek@tigase.org"]
         },
 
         {
-            "name": "Joachim Lindborg"
+            "name": "Joachim Lindborg",
+            "jids": ["jabberjocke@jabber.org"]
         },
 
         {
             "name": "Georg Lukas",
+            "jids": ["georg@yax.im"],
             "roles": ["council"]
         },
 
         {
-            "name": "Bartosz Malkowski"
+            "name": "Bartosz Malkowski",
+            "jids": ["bmalkow@malkowscy.net"]
         },
 
         {
             "name": "Tobias Markmann",
+            "jids": ["tm@ayena.de"],
             "roles": ["infrastructure"]
         },
 
         {
             "name": "Edward Maurer",
+            "jids": ["emus@jabbers.one"],
             "roles": ["commteam"]
         },
 
         {
-            "name": "Yvo Meeres"
+            "name": "Yvo Meeres",
+            "jids": ["eevvoor@jabber.fr"]
         },
 
         {
             "name": "Ralph Meijer",
+            "jids": ["ralphm@ik.nu"],
             "roles": ["chair", "board"]
         },
 
         {
             "name": "Edwin Mons",
+            "jids": ["intosi@ik.nu"],
             "roles": ["infrastructure"]
         },
 
         {
-            "name": "Mathieu Pasquet"
+            "name": "Mathieu Pasquet",
+            "jids": ["mathieui@mathieui.net"]
         },
 
         {
-            "name": "Daniel Pocock"
+            "name": "Daniel Pocock",
+            "jids": ["daniel@pocock.pro"]
         },
 
         {
-            "name": "Jérôme Poisson"
+            "name": "Jérôme Poisson",
+            "jids": ["goffi@jabber.fr"]
         },
 
         {
-            "name": "Mickaël Rémond"
+            "name": "Mickaël Rémond",
+            "jids": ["mremond@process-one.net"]
         },
 
         {
             "name": "Arc Riley",
+            "jids": ["arc@concordance.io"],
             "roles": ["board"]
         },
 
         {
             "name": "Peter Saint-Andre",
+            "jids": ["stpeter@jabber.org"],
             "roles": ["treasurer", "registrar", "editor", "infrastructure"]
         },
 
         {
-            "name": "Fabian Sauter"
+            "name": "Fabian Sauter",
+            "jids": ["com8@xmpp.uwpx.org"]
         },
 
         {
             "name": "Jonas Schäfer",
+            "jids": ["jonas@wielicki.name"],
             "roles": ["council", "editor"]
         },
 
         {
-            "name": "Paul Schaub"
+            "name": "Paul Schaub",
+            "jids": ["vanitasvitae@mercury-im.org"]
         },
 
         {
             "name": "Florian Schmaus",
+            "jids": ["flo@geekplace.eu"],
             "roles": ["editor"]
         },
 
         {
             "name": "Kevin Smith",
+            "jids": ["kevin.smith@isode.com"],
             "roles": ["editor", "infrastructure"]
         },
 
         {
-            "name": "Winfried Tilanus"
+            "name": "Winfried Tilanus",
+            "jids": ["winfried@tilanus.com"]
         },
 
         {
-            "name": "Peter Waher"
+            "name": "Peter Waher",
+            "jids": ["peter@waher.se"]
         },
 
         {
-            "name": "Holger Weiß"
+            "name": "Holger Weiß",
+            "jids": ["holger@jabber.fu-berlin.de"]
         },
 
         {
-            "name": "Natalie Wirth"
+            "name": "Natalie Wirth",
+            "jids": ["natalie@jabber.fr"]
         },
 
         {
-            "name": "Marvin Wissfeld"
+            "name": "Marvin Wissfeld",
+            "jids": ["jabber@larma.de"]
         },
 
         {
-            "name": "Heiner Wolf"
+            "name": "Heiner Wolf",
+            "jids": ["wolfspelz@jabber.de"]
         },
 
         {
-            "name": "Kozlov Konstantin Syergyeyevich"
+            "name": "Kozlov Konstantin Syergyeyevich",
+            "jids": ["yagiza@isgeek.info"]
         },
 
         {
             "name": "Matthew Wild",
+            "jids": ["me@matthewwild.co.uk"],
             "roles": ["board", "infrastructure"]
         },
 
         {
-            "name": "Andrzej Wójcik"
+            "name": "Andrzej Wójcik",
+            "jids": ["andrzej.wojcik@tigase.org"]
         }
     ],
 
