@@ -48,8 +48,7 @@
     "members": [
         {
             "name": "Kim Alvefur",
-            "jids": ["zash@zash.se"],
-            "roles": ["council"]
+            "jids": ["zash@zash.se"]
         },
 
         {
@@ -71,12 +70,13 @@
         {
             "name": "Jan-Carel Brand",
             "jids": ["jc@opkode.com"],
-            "roles": ["editor", "commteam"]
+            "roles": ["board", "editor", "commteam"]
         },
 
         {
             "name": "Travis Burtrum",
-            "jids": ["travis@burtrum.org"]
+            "jids": ["travis@burtrum.org"],
+            "roles": ["council"]
         },
 
         {
@@ -86,8 +86,7 @@
 
         {
             "name": "Dave Cridland",
-            "jids": ["dwd@dave.cridland.net"],
-            "roles": ["board", "council"]
+            "jids": ["dwd@dave.cridland.net"]
         },
 
         {
@@ -120,7 +119,7 @@
         {
             "name": "Severino Ferrer de la Peñita",
             "jids": ["soul@blastersklan.com"],
-            "roles": ["board", "commteam"]
+            "roles": ["commteam"]
         },
 
         {
@@ -277,7 +276,8 @@
 
         {
             "name": "Marvin Wissfeld",
-            "jids": ["jabber@larma.de"]
+            "jids": ["jabber@larma.de"],
+            "roles": ["council"]
         },
 
         {
