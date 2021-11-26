@@ -24,17 +24,16 @@ But even ignoring the high performance, specialist end, XML still holds its own.
 ## XMPP is not secure.
 
 The hypothesis:
-> XMPP is not secure and does not implement modern technology.
+> XMPP is not secure.
 
 The fact:
 > XMPP offers state-of-the-art end-to-end encryption, and a relatively high-degree of pseudonymity
 
-However, we do not ever claim that XMPP is secure. "Secure" is not an absolute. In order to decide whether XMPP is secure, you need to decide what you want to be secure against. No system that relies on servers is secure against for example a rogue administrator (end-to-end encryption can protect your message contents even against a rogue admin, but only if you verify keys appropriately). Instead, our specifications consistently remind developers of the risks of various choices. Plenty of XMPP extensions will certainly 
-increase the risk for both for the users and for the administrator - including allowing registration and password changing via the protocol.
+"Secure" is not an absolute. In order to decide whether XMPP is secure, you need to decide what you want to be secure against. No system that relies on servers is secure against for example a rogue administrator (end-to-end encryption can protect your message contents even against a rogue admin, but only if you verify keys appropriately). Instead, our specifications consistently remind developers of the risks of various choices. Plenty of XMPP extensions will certainly increase the risk for both for the users and for the administrator - including allowing registration and password changing via the protocol.
 
 Different deployment patterns radically alter the security, too. XMPP is designed by its nature to be highly flexible. This is why it is used by everything from computer games to military and nation states, and from telephone switchboards to the video game handhelds. Security that suits the military will rarely suit the average internet user, and vice-versa - XMPP strives to handle all of these, and it's certainly possible to configure a server to provide much worse security - or much better. That said, basic security is both encouraged and provided for; and this is most effective when using a server you trust. One way of trusting your server administrator is, of course, to be your own server administrator. This may sound obvious, but XMPP has from its outset ensured that this is always an option; even on low-budget.
 
-Some messaging systems will expose less metadata. Some will ensure and enforce end to end encryption. Some will allow for federation, which inevitably increases the metadata involved. Others will sacrifice server-side message handling entirely, trading user-experience for reduced exposure. But the majority of the issues raised will affect any messaging system to some degree - sometimes better, and sometimes worse.
+Some messaging systems will expose less metadata. Some will ensure and enforce end to end encryption. Some will allow for federation, which inevitably increases the metadata involved. Others will sacrifice server-side message handling entirely, trading user-experience for reduced exposure. The system-specific issues raised will affect any messaging system to some degree - sometimes better, and sometimes worse.
 
 The community vision remains as it always has - that users are enabled to make their own choices about their client software, server software, and the people involved in both. We think XMPP enables exactly this.
 
@@ -42,7 +41,7 @@ The community vision remains as it always has - that users are enabled to make t
 
 The hypothesis:
 
-> XMPP is not privacy-friendly and exposes their users.
+> XMPP is not privacy-friendly.
 
 The fact:
 
