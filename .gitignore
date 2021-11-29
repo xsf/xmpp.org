@@ -9,6 +9,7 @@
 *.~
 *.pid
 .DS_Store
+.hugo_build.lock
 .project
 .vagrant/
 resources/
