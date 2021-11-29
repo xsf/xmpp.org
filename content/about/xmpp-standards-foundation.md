@@ -22,6 +22,7 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Dave Cridland__ works on [Metre](https://github.com/dwd/metre), and has worked on a number of different servers. He currently works on messaging at [Forward Health](https://forwardhealth.co/); you're welcome to chat via [XMPP](xmpp:dwd@dave.cridland.net).
 - __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
+- __JC Brand__ is the creator of [Converse.js XMPP Messenger](https://conversejs.org) and has worked as an XMPP consultant and developer since 2013. You can find him on the [Fediverse](https://mastodon.xyz/jcbrand) and chat with him on [XMPP](xmpp:jc@opkode.com).
 
 Elected, but resigned from current term:
 
