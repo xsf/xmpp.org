@@ -4,6 +4,7 @@ Url: about/standards-process
 aliases:
     - "/about/standards-process.html"
     - "/xmpp-protocols/xmpp-extensions/submitting-a-xep"
+mermaid: true
 ---
 
 The XSF develops extensions to XMPP through a lightweight standards process centered around XMPP Extension Protocols (XEPs).
@@ -37,6 +38,39 @@ The Editor then takes the document, corrects any minor formatting errors, puts i
 #### ProtoXEP added to XMPP Council agenda
 
 Once announced on the Standards List, the Editor also places it on the agenda for the XMPP Council. The XMPP Council is a group of XSF members elected by the membership to act as a technical committee. They meet (usually once a week) in order to make various decisions based around the XEP process, as well as have more detailed technical conversations about more general issues. Their meetings are open to all, and if you've proposed a new XEP, it's really advisable to join in - the meetings are held over XMPP, in the council@muc.xmpp.org chatroom.
+
+#### A XEP’s Lifecycle
+
+{{< mermaid >}}
+flowchart LR
+  start(( ))
+  exp[Experimental]
+  prp[Proposed]
+  stb[Stable]
+  fin[Final]
+  def([Deferred])
+  dep(Deprecated)
+  obs([Obsolete])
+  rej([Rejected])
+  rtd([Retracted])
+
+  subgraph XEP Lifecycle
+  start-->exp
+  exp-->prp
+  prp-->exp
+  prp-->stb
+  stb-->fin
+  end
+
+  def-..->exp
+  def-.->prp
+  exp-.->def
+  exp-.->rtd
+  prp-.->rej
+  stb-.->dep
+  fin-.->dep
+  dep-.->obs
+{{< /mermaid >}}
 
 #### Experimental XEP
 
