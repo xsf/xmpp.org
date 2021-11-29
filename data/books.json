@@ -1,5 +1,12 @@
 [
     {
+        "title": "IEC 61850 communication and XMPP based design of Virtual Power Plant",
+        "authors": "Mohd Asim Aftab, S.M. Suhail Hussain, Taha Selim Ustun, Akhtar Kalam",
+        "year": 2021,
+        "url": "https://ieeexplore.ieee.org/abstract/document/9597719",
+        "abstract": "Virtual power plant (VPP) is an aggregated cluster of distributed energy resources (DER), controllable loads and distributed storage devices (DESD) in order to appear them as a single larger power plant. Solitarily operating DER units do not have sufficient technical and cost-effective feasibility to participate in system management and market-based activities. However, with the vision of VPP model, power flows can be coordinated among the widely distributed DERs, controllable loads and DESDs optimally through effective energy management (EMS) system. For realizing the vision of VPP model, communication plays a key role since the DERs, DESDs and loads are geographically distantly placed. Having an interoperable and objected oriented communication for VPP, reliability, security and standardization can be ensured. This paper develops eXtensible Message Presence Protocol (XMPP)-based IEC 61850 communication design for VPP. The deployment of XMPP infrastructure in VPP communication environment will be the paradigm shift in power utility communication scenario."
+    },
+    {
         "title": "Practical XMPP",
         "authors": "Lloyd Watkin, David Koelle",
         "year": 2016,
