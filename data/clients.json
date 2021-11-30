@@ -351,8 +351,8 @@
         "url": "http://kadu.net"
     },
     {
-        "doap": null,
-        "last_renewed": "2021-05-22T12:00:00",
+        "doap": "https://invent.kde.org/network/kaidan/-/raw/master/misc/kaidan.doap",
+        "last_renewed": "2021-11-30T12:00:00",
         "name": "Kaidan",
         "platforms": [
             "Android",
