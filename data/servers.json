@@ -222,14 +222,14 @@
     },
     {
         "doap": "https://hg.prosody.im/trunk/raw-file/tip/doc/doap.xml",
-        "last_renewed": "2020-12-03T22:14:55",
+        "last_renewed": "2021-11-30T22:18:45",
         "name": "Prosody IM",
         "platforms": [
             "BSD",
             "Linux",
             "macOS"
         ],
-        "url": "http://prosody.im"
+        "url": "https://prosody.im/"
     },
     {
         "doap": null,
