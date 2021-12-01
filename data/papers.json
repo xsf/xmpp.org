@@ -8,5 +8,15 @@
         "doi": "10.1109/AUPEC52110.2021.9597719.",
         "url": "https://ieeexplore.ieee.org/abstract/document/9597719",
         "abstract": "Virtual power plant (VPP) is an aggregated cluster of distributed energy resources (DER), controllable loads and distributed storage devices (DESD) in order to appear them as a single larger power plant. Solitarily operating DER units do not have sufficient technical and cost-effective feasibility to participate in system management and market-based activities. However, with the vision of VPP model, power flows can be coordinated among the widely distributed DERs, controllable loads and DESDs optimally through effective energy management (EMS) system. For realizing the vision of VPP model, communication plays a key role since the DERs, DESDs and loads are geographically distantly placed. Having an interoperable and objected oriented communication for VPP, reliability, security and standardization can be ensured. This paper develops eXtensible Message Presence Protocol (XMPP)-based IEC 61850 communication design for VPP. The deployment of XMPP infrastructure in VPP communication environment will be the paradigm shift in power utility communication scenario."
+    },
+    {
+        "title": "Using open source software and open standards for operating robotic telescopes",
+        "authors": "T.-O. Husser and F. V. Hessman",
+        "year": 2019,
+        "published_in": "RMxAA (Serie de Conferencias), 51",
+        "pages": "15-23",
+        "doi": "10.22201/ia.14052059p.2019.51.04",
+        "url": "http://www.astroscu.unam.mx/rmaa/RMxAC..51/PDF/RMxAC..51_articulo06.pdf",
+        "abstract": "The University of Göttingen, the McDonald Observatory of the University of Texas at Austin, and the South African Astronomical Observatory (SAAO) operate two robotic telescopes called MONET at McDonald Observatory in Fort Davis, Texas (MONET/North), and at the SAAO in Sutherland, South Africa (MONET/South). After problems with our original observation control system and some difficulties with another one, we decided to build our own system, initially providing only the minimally required functionality, but allowing for easy extensibility. A decision was made to build on open standards and open source software only, so that we can use existing and well-tested technologies. In this paper we will describe our efforts to implement such an open observation control system using HTTP and XMPP. Furthermore, we will discuss possibilities for connecting multiple telescopes via VOEvents and RTML."
     }
 ]
