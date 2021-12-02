@@ -18,5 +18,15 @@
         "doi": "10.22201/ia.14052059p.2019.51.04",
         "url": "http://www.astroscu.unam.mx/rmaa/RMxAC..51/PDF/RMxAC..51_articulo06.pdf",
         "abstract": "The University of Göttingen, the McDonald Observatory of the University of Texas at Austin, and the South African Astronomical Observatory (SAAO) operate two robotic telescopes called MONET at McDonald Observatory in Fort Davis, Texas (MONET/North), and at the SAAO in Sutherland, South Africa (MONET/South). After problems with our original observation control system and some difficulties with another one, we decided to build our own system, initially providing only the minimally required functionality, but allowing for easy extensibility. A decision was made to build on open standards and open source software only, so that we can use existing and well-tested technologies. In this paper we will describe our efforts to implement such an open observation control system using HTTP and XMPP. Furthermore, we will discuss possibilities for connecting multiple telescopes via VOEvents and RTML."
+    },
+    {
+        "title": "IEC 61850 and XMPP Communication Based Energy Management in Microgrids Considering Electric Vehicles",
+        "authors": "M. A. Aftab, S. M. S. Hussain, I. Ali and T. S. Ustun",
+        "year": 2018,
+        "published_in": "IEEE Access, vol. 6",
+        "pages": "35657-35668",
+        "doi": "10.1109/ACCESS.2018.2848591",
+        "url": "https://ieeexplore.ieee.org/document/8394998",
+        "abstract": "Electric vehicles (EVs) can act as flexible resources in grid due to their bidirectional power transfer capabilities. In microgrids, the bidirectional power transfer capability of EVs through proper scheduling can be utilized to improve reliability, security, and quality of supply. Optimal scheduling of EVs is generally managed and controlled through the energy management system of microgrid. Since microgrid energy management (EM)-based scheduling of EVs is data driven, an effective communication between different actors of EM is required. This paper presents a IEC 61850 communication-based EM in microgrids with integrated EVs. Furthermore, augmentation of existing IEC 61850-90-8 logical nodes of EV and its related equipment with new data objects to include information exchanges for discharging operation of EVs have been proposed. Finally, in this paper, XMPP-based communication approach and its mapping to the service models for EM problem has been demonstrated."
     }
 ]
