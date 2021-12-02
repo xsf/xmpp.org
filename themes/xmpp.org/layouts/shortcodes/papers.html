@@ -1,5 +1,5 @@
 {{ range .Site.Data.papers }}
-    <div class="row pb-3">
+    <div class="row pb-1">
         <div class="col-12 shadow-sm p-3 mb-5 bg-body rounded">
             <h5><a href="{{ .url }}" target="_blank">{{ .title }} ({{ .year }})</a></h5>
             <p class="mb-0"><small>{{ .authors }}</small>
@@ -13,5 +13,5 @@
             <p class="mb-0"><small><b>Abstract:</b> {{ (replace .abstract "\n" "<br/>") | safeHTML | truncate 300}}</small></p>
         </div>
     </div>
-    <hr>
 {{ end }}
+<hr>
