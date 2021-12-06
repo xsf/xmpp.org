@@ -419,6 +419,15 @@
         "url": "https://monal.im"
     },
     {
+        "doap": null,
+        "last_renewed": "2021-12-04T00:00:00",
+        "name": "monocles chat",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://monocles.de/more"
+    },
+    {
         "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
         "last_renewed": "2020-08-31T20:00:00",
         "name": "Movim",
