@@ -419,7 +419,7 @@
         "url": "https://monal.im"
     },
     {
-        "doap": null,
+        "doap": "https://codeberg.org/Arne/monocles_chat/src/branch/master/monocles_chat.doap",
         "last_renewed": "2021-12-04T00:00:00",
         "name": "monocles chat",
         "platforms": [
