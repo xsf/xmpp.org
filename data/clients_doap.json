@@ -25,6 +25,19 @@
       }
     },
     {
+      "name": "monocles chat",
+      "url": "https://monocles.de/more/",
+      "logo": "https://codeberg.org/Arne/monocles_chat/raw/branch/master/src/main/ic_launcher-playstore.png",
+      "screenshot": "https://codeberg.org/Arne/monocles_chat/raw/branch/master/fastlane/metadata/android/en-US/phoneScreenshots/04.png",
+      "description": "Userfriendly XMPP Client for Android",
+      "badges": {
+        "core": "advanced",
+        "im": "advanced",
+        "mobile": "advanced",
+        "av": "advanced"
+      }
+    },
+    {
       "name": "Movim",
       "url": "https://movim.eu",
       "logo": "/images/clients/movim.svg",
