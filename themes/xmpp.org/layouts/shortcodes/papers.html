@@ -1,6 +1,6 @@
 {{ range .Site.Data.papers }}
     <div class="row pb-1">
-        <div class="col-12 shadow-sm p-3 mb-5 bg-body rounded">
+        <div class="col-12 shadow-sm p-3 mb-5 rounded">
             <h5><a href="{{ .url }}" target="_blank">{{ .title }} ({{ .year }})</a></h5>
             <p class="mb-0"><small>{{ .authors }}</small>
             {{ if .published_in }}
