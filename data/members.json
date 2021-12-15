@@ -80,6 +80,11 @@
         },
 
         {
+            "name": "Dan Caseley",
+            "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"]
+        },        
+
+        {
             "name": "Davide Conzon",
             "jids": ["co_davde@xmpp.jp", "codavide@xabber.org"]
         },
@@ -249,6 +254,12 @@
         },
 
         {
+            "name": "Jonathan Siegle",
+            "jids": ["siegle@jabber.org"],
+            "roles": ["infrastructure"]
+        },
+
+        {
             "name": "Kevin Smith",
             "jids": ["kevin.smith@isode.com"],
             "roles": ["editor", "infrastructure"]
@@ -267,6 +278,11 @@
         {
             "name": "Holger Weiß",
             "jids": ["holger@jabber.fu-berlin.de"]
+        },
+
+        {
+            "name": "Sam Whited",
+            "jids": ["sam@samwhited.com"]
         },
 
         {
