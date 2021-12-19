@@ -125,7 +125,7 @@ This XMPP Newsletter is produced collaboratively by the XMPP community.
 
 Therefore many thanks to xdelatour, wurstsalat3000, seveso, palm123, Nicola Fabiano, mdosch, MattJ, Licaon_Kter, Goffi, erszcz, emus, Benoît Sibaud, Anoxinon e.V., Adrien Bourmault (neox) for their support and help in creation, review and translation!
 
-Many thanks to all contributors this year and their continuous support!
+Many thanks to all contributors and their continuous support!
 
 ## Spread the news!
 
