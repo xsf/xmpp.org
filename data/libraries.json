@@ -672,6 +672,14 @@
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
     },
     {
+        "last_renewed": "2022-01-08T21:17:47",
+        "name": "XMPP account exporter",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://migrate.modernxmpp.org/"
+    },
+    {
         "doap": null,
         "last_renewed": "2017-03-24T00:00:00",
         "name": "XMPP-FTW",
