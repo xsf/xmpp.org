@@ -67,6 +67,12 @@
         "url": "http://xmpp.rocks"
     },
     {
+        "last_renewed": "2022-01-08T21:16:43",
+        "name": "Bad XMPP",
+        "platforms": [],
+        "url": "https://badxmpp.eu/"
+    },
+    {
         "doap": null,
         "last_renewed": null,
         "name": "Blather",
@@ -417,6 +423,12 @@
         "url": "https://github.com/ObjFW/ObjXMPP"
     },
     {
+        "last_renewed": "2022-01-08T21:20:53",
+        "name": "observe.jabber.network",
+        "platforms": [],
+        "url": "https://observe.jabber.network/"
+    },
+    {
         "doap": null,
         "last_renewed": null,
         "name": "Pontarius XMPP",
@@ -468,6 +480,14 @@
             "Linux"
         ],
         "url": "https://matthewwild.co.uk/projects/scansion/"
+    },
+    {
+        "last_renewed": "2022-01-08T21:22:20",
+        "name": "search.jabber.network",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://search.jabber.network/"
     },
     {
         "doap": null,
@@ -664,6 +684,14 @@
             "C#"
         ],
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
+    },
+    {
+        "last_renewed": "2022-01-08T21:17:47",
+        "name": "XMPP account exporter",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://migrate.modernxmpp.org/"
     },
     {
         "doap": null,
