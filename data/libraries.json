@@ -221,6 +221,14 @@
         "url": "http://code.google.com/p/iksemel"
     },
     {
+        "last_renewed": "2022-01-08T15:44:47",
+        "name": "IM Observatory",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://xmpp.net/"
+    },
+    {
         "doap": null,
         "last_renewed": null,
         "name": "IP*Works Internet Toolkit",
@@ -609,7 +617,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"  
+        "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"
     },
     {
         "doap": null,
