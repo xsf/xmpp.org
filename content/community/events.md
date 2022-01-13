@@ -17,7 +17,7 @@ The next Summit will happen next year.
 No conference at the moment. You can get a list of past conferences [on the
 wiki](https://wiki.xmpp.org/web/Category:Events).
 
-[XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offerd on a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)!
+[XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offered on a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)!
 
 ## Meetups
 
