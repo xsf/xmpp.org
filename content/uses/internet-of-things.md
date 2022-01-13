@@ -41,7 +41,7 @@ Projects listed which are adopting XMPP for Internet of Things:
 | Users         | System / Application            | Description                            | Since |
 |---------------|---------------------------------|----------------------------------------|-------|
 |  in the range of millions  | [Google Cloud Print](https://www.google.com/intl/en/cloudprint/learn/) | A cloud solution by Google to process documents to [printers](https://www.google.com/cloudprint/learn/printers/) without the need to install drivers. | 2010 |
-|  in the range of billions | [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) | Cross-plattform notification and message service (formerly Google Cloud Messaging) | 2014 |
+|  in the range of billions | [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) | Cross-platform notification and message service (formerly Google Cloud Messaging) | 2014 |
 |  in the range of millions | [Logitech Harmony Hub](https://www.logitech.com/en-us/product/harmony-hub) | System for [home automation and media remote control](https://www.theverge.com/2018/12/21/18152037/logitech-will-restore-third-party-harmony-home-automation) | 2004 |
 | -        | [GitHub](https://github.com/COM8/esp32-xmpp-iot) repository | IoT reference implementation for [ESP32](https://www.espressif.com/en/products/socs/esp32/overview) microcontroller ([B.Sc. Thesis](https://home.in.tum.de/~sauterf/html-data/Thesis_Smart_Building_Control_with_XMPP_for_IoT.pdf)). | 2019 |
 
