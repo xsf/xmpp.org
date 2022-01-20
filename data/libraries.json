@@ -602,7 +602,7 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-01-23T14:14:51",
+        "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase JaXMPP",
         "platforms": [
             "Android",
@@ -613,8 +613,20 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-01-23T14:14:51",
-        "name": "Tigase Martin",
+        "last_renewed": "2022-01-20T13:14:51",
+        "name": "Tigase Halcyon",
+        "platforms": [
+            "Android",
+            "Google Web Toolkit",
+            "Java",
+            "Kotlin"
+        ],
+        "url": "https://tigase.net/xmpp-libraries"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2022-01-20T13:14:51",
+        "name": "Tigase Swift XMPP client library",
         "platforms": [
             "Swift"
         ],
