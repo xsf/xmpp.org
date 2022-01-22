@@ -67,6 +67,7 @@
         "url": "http://xmpp.rocks"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T21:16:43",
         "name": "Bad XMPP",
         "platforms": [],
@@ -227,6 +228,7 @@
         "url": "http://code.google.com/p/iksemel"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T15:44:47",
         "name": "IM Observatory",
         "platforms": [
@@ -423,6 +425,7 @@
         "url": "https://github.com/ObjFW/ObjXMPP"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T21:20:53",
         "name": "observe.jabber.network",
         "platforms": [],
@@ -474,6 +477,7 @@
         "url": "https://github.com/qxmpp-project/qxmpp"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T17:11:54",
         "name": "Scansion",
         "platforms": [
@@ -482,6 +486,7 @@
         "url": "https://matthewwild.co.uk/projects/scansion/"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T21:22:20",
         "name": "search.jabber.network",
         "platforms": [
@@ -603,23 +608,23 @@
     {
         "doap": null,
         "last_renewed": "2022-01-20T13:14:51",
-        "name": "Tigase JaXMPP",
-        "platforms": [
-            "Android",
-            "Google Web Toolkit",
-            "Java"
-        ],
-        "url": "https://tigase.net/xmpp-libraries"
-    },
-    {
-        "doap": null,
-        "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase Halcyon",
         "platforms": [
             "Android",
             "Google Web Toolkit",
             "Java",
             "Kotlin"
+        ],
+        "url": "https://tigase.net/xmpp-libraries"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2022-01-20T13:14:51",
+        "name": "Tigase JaXMPP",
+        "platforms": [
+            "Android",
+            "Google Web Toolkit",
+            "Java"
         ],
         "url": "https://tigase.net/xmpp-libraries"
     },
@@ -698,6 +703,7 @@
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
     },
     {
+        "doap": null,
         "last_renewed": "2022-01-08T21:17:47",
         "name": "XMPP account exporter",
         "platforms": [
