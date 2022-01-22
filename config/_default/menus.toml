@@ -149,6 +149,11 @@
     parent = "community"
     weight = 9
 [[main]]
+    name = "Google Summer of Code 2022"
+    url = "community/gsoc2022"
+    parent = "community"
+    weight = 10
+[[main]]
     name = "Getting Started"
     url = "/getting-started"
     weight = 5
