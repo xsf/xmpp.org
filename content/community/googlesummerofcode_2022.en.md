@@ -1,0 +1,39 @@
+---
+Title: XSF and Google Summer of Code 2022
+Url: community/gsoc2022
+aliases:
+    - "/community/gsoc2022.html"
+---
+
+[![](/images/logos/usshc.png)](/sponsors/us-secure-hosting-center)
+
+The XMPP Standards Foundation (XSF) is planning to participate as a hosting organisation at the [Google Summer of Code 2022](https://summerofcode.withgoogle.com/).
+If you are interested to participate as student (or simply new-commer to open-source), mentor or XMPP projects this is the page to start with!
+ 
+If you can imagine to work full or part time in the summer on an open-source software project, then consider to join an XMPP real-time communication technology project and participate in the Google Summer of Code 2022!
+
+### XMPP - the Extensible Messaging and Presence Protocol
+
+XMPP is the Extensible Messaging and Presence Protocol, a set of open technologies for instant messaging, presence, multi-party chat, voice and video calls, collaboration, lightweight middle-ware, content syndication, and generalized routing of XML data. XMPP was originally developed in the Jabber open-source community to provide an open, decentralized alternative to the closed instant messaging services at that time.
+
+### Google Summer of Code 2022
+
+The Google Summer of Code is an international annual program in which Google awards stipends to contributors who successfully complete a free and open-source software coding project during the summer. Project ideas are listed by host organizations involved in open-source software development, though students can also propose their own project ideas. 
+
+
+### First steps
+
+If you want to participate we recommoned the following preparations:
+
+- Read the resources at [Google's website](https://summerofcode.withgoogle.com/help) and review if this is something suitable to you and your plans this year.
+- Not yet complete, but take a first look at the XMPP project details in our [XSF Wiki](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022).
+- You can simply reach us [via web chat](https://xmpp.org/chat#converse/room?jid=gsoc@muc.xmpp.org) or review your ["Getting started with XMPP"](https://xmpp.org/getting-started/) page and reach us via our [public chat](xmpp:gsoc@muc.xmpp.org?join gsoc@muc.xmpp.org).
+
+Checkout our media channels!
+
+- Twitter
+- Fosstodon
+- Youtube
+
+Looking forward and stay tuned!
+ –The XSF Organisation Admin!
