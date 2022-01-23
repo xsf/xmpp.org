@@ -481,25 +481,27 @@
     },
     {
         "doap": null,
-        "last_renewed": "2021-01-21T14:41:28",
+        "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi",
         "platforms": [
             "Linux",
             "macOS",
+            "Other",
             "Windows"
         ],
-        "url": "https://psi-im.org"
+        "url": "https://psi-im.org/"
     },
     {
         "doap": null,
-        "last_renewed": "2021-01-21T14:41:28",
+        "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi+",
         "platforms": [
             "Linux",
             "macOS",
+            "Other",
             "Windows"
         ],
-        "url": "https://psi-plus.com"
+        "url": "https://psi-plus.com/"
     },
     {
         "doap": null,
