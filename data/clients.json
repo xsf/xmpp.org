@@ -429,14 +429,10 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
-        "last_renewed": "2020-08-31T20:00:00",
+        "last_renewed": "2022-01-24T00:00:00",
         "name": "Movim",
         "platforms": [
-            "Android",
-            "Browser",
-            "Linux",
-            "macOS",
-            "Windows"
+            "Browser"
         ],
         "url": "https://movim.eu"
     },
