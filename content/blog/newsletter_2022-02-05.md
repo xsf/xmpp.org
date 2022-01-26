@@ -75,7 +75,17 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   No XEPs proposed this month.
+-   [Compatibility Fallbacks](https://xmpp.org/extensions/inbox/compatibility-fallback.html)
+    -   This document defines a way to indicate that a specific part of the body only serves as fallback and which specification the fallback is for.
+
+-   [Call Invites](https://xmpp.org/extensions/inbox/call-invites.html)
+    -   This document defines how to invite someone to a call and how to respond to the invite.
+
+-   [PubSub Namespaces](https://xmpp.org/extensions/inbox/pubsub-ns.html)
+    -   This extension defines a new PubSub node attribute to specify the type of payload.
+
+-   [Message Replies](https://xmpp.org/extensions/inbox/replies.html)
+    -   This document defines a way to indicate that a message is a reply to a previous message.
 
 ### New
 
@@ -89,29 +99,45 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 0.2.0 of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
-    -   Rename Advanced Server and Advanced Client to Server and Client
-    -   Add XEP-0455 to Future Development section (sp)
+-   Version 1.1.0 of [XEP-0363](https://xmpp.org/extensions/xep-0363.html) (HTTP File Upload)
+    -   Filename size in bytes.
+    -   Headers MUST be included in the PUT request.
+    -   Headers considered opaque.
+    -   Servers may want to sign headers, in security implications.
+    -   Allow header case insensitivity, multiple times the same header, and preserve the order in the HTTP request. (egp, mb)
+    
+-   Version 0.4.0 of [XEP-0353](https://xmpp.org/extensions/xep-0353.html) (Jingle Message Initiation)
+    -   Rework whole spec, namespace bump
+    -   Add new <finish/> message
+    -   Add dependency on ,  and
+    -   Add <reason/> to some messages (tm)
+
+-   Version 1.1.0 of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
+    -   Replace deprecated XEP-0411 with XEP-0402 in Advanced Group Chat (egp)
+
+-   Version 0.4.0 of [XEP-0380](https://xmpp.org/extensions/xep-0380.html) (Explicit Message Encryption)
+    -   Add new OMEMO namespaces: 'urn:xmpp:omemo:1' for OMEMO versions since 0.4.0, and 'urn:xmpp:omemo:2' for OMEMO versions since 0.8.0 (melvo)
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call help improving the XEP before returning it to the Council for advancement to Draft.
 
--   No Last Call this month.
+-   Last Call for comments on [XEP-0424](https://xmpp.org/extensions/xep-0424.html) (Message Retraction)
+-   Last Call for comments on [XEP-0425](https://xmpp.org/extensions/xep-0425.html) (Message Moderation)
 
 ### Stable (formerly known as Draft)
 
 Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it here.](https://github.com/xsf/xeps/pull/1100)
 
--   Version 1.0.0 of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
-    -   Advance to Draft as per Council Vote from 2021-11-03. (XEP Editor (jsc))
-
--   Version 1.0.0 of [XEP-0313](https://xmpp.org/extensions/xep-0313.html) (Message Archive Management)
-    -   Advance to Stable as per Council Vote from 2021-10-27. (XEP Editor (jsc))
+-   No XEPs advanced to Stable this month.
 
 ### Deprecated
 
--   No XEP deprecated this month.
+-   [XEP-0256](https://xmpp.org/extensions/xep-0256.html) (Last Activity in Presence)
+
+### Obsoleted
+
+-   [XEP-0443](https://xmpp.org/extensions/xep-0443.html) (XMPP Compliance Suites 2021)
 
 ### Call for Experience
 
