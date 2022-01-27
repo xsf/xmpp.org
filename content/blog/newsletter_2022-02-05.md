@@ -53,6 +53,8 @@ Guest talk at Berlin XMPP Meetup: [Diving deep into Briar at the XMPP Meetup Ber
 
 _Please be so kind and write some sentences for the news you place instead of just dropping bare HTTP links - that will help us a lot! <3_
 
+JMP.chat released two blog posts.  [The first](https://blog.jmp.chat/b/2022-jabber-xmpp-from-sms) details a feature of the Soprani.ca project's Cheogram system that allows SMS users to contact (or call!) any XMPP address.  [Their Newsletter](https://blog.jmp.chat/b/january-newsletter-2022) also announces a partnership with Snikket for hosting, as well as a preview of worldwide calling rates as they prepare to launch that feature soon.
+
 ## Software news
 
 ### Clients and applications
