@@ -7,6 +7,8 @@ categories: ['Newsletter']
 
 Welcome to the XMPP Newsletter covering the month of December 2021 and January 2021!
 
+We hope you had a great shift into the new year by now as well as are happy to have you reading the new release! We guess that this episode has caught some weight over the new year's holidays :-)
+
 Many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, especially throughout the current situation, please consider to say thanks or help these projects!
 
 [Read this Newsletter via our RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
@@ -22,20 +24,22 @@ Translations of the XMPP Newsletter will be released here (with some delay):
 - The French translation appears at [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - The German translation appears at [anoxinon.de](https://anoxinon.de/blog/)
 - The Italian translation appears at [NicFab.it](https://www.nicfab.it/)
+- The Spanish translation appears at TBA
 
 Many thanks to the translators and their work! This is a great help to spread the news! Please join them in their work or start over with any another language!
 
 ## XSF Announcements
 
-- The XSF members have to elected their new [XSF Board and XSF Council](https://xmpp.org/about/xmpp-standards-foundation/#council)! Congratulations to everyone!
-
-- The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects now! Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/).
-
-    - Moreover, the XSF has accepted its first project to the fiscal hosting program! A big welcome to the [MAM Plugin for XMPP.js](https://gitlab.com/deblounge/xmppjs-mam-plugin) (note that this is unaffiliated with the upstream [xmpp.js](https://github.com/xmppjs/xmpp.js) project)! They will be working on adding MAM support to xmpp.js with the eventual goal of adding it to the Matrix Bifrost bridge, allowing XMPP users to fetch history from their favorite Matrix channels. You can [donate to the effort here](https://opencollective.com/bifrost-mam).
-
-- The XSF is planning to participate the Google Summer of Code 2022 (GSoC). If you are interested in participating as a student, mentor or as project in general please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022)!
+- The XSF is planning to participate the [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/). If you are interested in participating as a student, mentor or as project in general please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022)!
 
 - Blog and newsletter pages at [xmpp.org/blog](https://xmpp.org/blog) now support multiple languages. We are happy for volunteers to support translating!
+
+## XSF fiscal hosting projects
+
+The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects now! Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/).
+
+- [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
+- [Mellium Co-op](https://opencollective.com/mellium)
 
 ## Events
 
@@ -45,29 +49,69 @@ Many thanks to the translators and their work! This is a great help to spread th
 
 ## Videos
 
-Sam Whited gave a [talk for the XMPP Office Hours](https://www.youtube.com/watch?v=lprIwxyPY2E) about the XSF's new fiscal hosting service!
+Thilo Molitor (developer of Monal) [held a talk](https://xmpp-meetup.in-berlin.de/talks/monal.mp4) (DE) about Monal's development.
 
-Guest talk at Berlin XMPP Meetup: [Diving deep into Briar at the XMPP Meetup Berlin](https://nico.dorfbrunnen.eu/posts/2021/diving-at-xmpp/)
+XMPP Office Hours: Fabian Sauter presented his [adventures in developing an XMPP Client](https://www.youtube.com/watch?v=Bceu6E7c7GM) for Windows (Universal Windows Platform (UWP)) in December.
+
+XMPP has been mentioned in a [German public TV](https://youtu.be/DdIwus87eLM?t=844) [DE] show in the context of data protection.
 
 ## Articles
 
-_Please be so kind and write some sentences for the news you place instead of just dropping bare HTTP links - that will help us a lot! <3_
+JMP.chat released two blog posts. [The first](https://blog.jmp.chat/b/2022-jabber-xmpp-from-sms) details a feature of the Soprani.ca project's Cheogram system that allows SMS users to contact (or call!) any XMPP address. [Their Newsletter](https://blog.jmp.chat/b/january-newsletter-2022) also announces a partnership with Snikket for hosting, as well as a preview of worldwide calling rates as they prepare to launch that feature soon.
 
-JMP.chat released two blog posts.  [The first](https://blog.jmp.chat/b/2022-jabber-xmpp-from-sms) details a feature of the Soprani.ca project's Cheogram system that allows SMS users to contact (or call!) any XMPP address.  [Their Newsletter](https://blog.jmp.chat/b/january-newsletter-2022) also announces a partnership with Snikket for hosting, as well as a preview of worldwide calling rates as they prepare to launch that feature soon.
+There are several articles to the topic  "messenger" at the German site from "[Freie Messenger](https://www.freie-messenger.de/#neuigkeiten-letzte-änderungen)" with focus on alternatives to WhatsApp, E2EE, interoperability, security/pseudosecurity. You may help translating them to your native language.
+
+[OMEMO was finally integrated in Movim](https://mov.im/?post/pubsub.movim.eu/Movim/end-to-end-encryption-in-movim-omemo-is-finally-there-yudZPP) after 6 long years of discussions. In this article we are explaining what is the general OMEMO architecture what were the difficulties encountered when doing the integration in Movim and how we overcame them.
+
+As the [previously announced](https://snikket.org/blog/simply-secure-collaboration/) collaboration between Snikket and Simply Secure ended its first project, they interviewed the project's founder, Matthew Wild, about Snikket's origins and his experience managing open-source projects. Read the interview: [On Getting Things Done: A Conversation with Matthew Wild from Snikket](https://simplysecure.org/blog/on-getting-things-done-a-conversation-with-matthew-wild-from-snikket/).
+
+Mellium Co-op has published their [Year in Review for 2021](https://opencollective.com/mellium/updates/mellium-year-in-review-2021) and the [Dev Communiqué for December 2021](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
+
+MongooseIM writes about [Dynamic XMPP Domains in their solutions](https://www.erlang-solutions.com/blog/dynamic-xmpp-domains-in-mongooseim/)
+
+XMPP passes in a [congested network](https://blog.lewman.com/internet-messaging-versus-congested-network.html).
+
+A short introduction to the [Quicksy Android client](https://ravidwivedi.in/posts/quicksy-app/index.html)
+
+The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and nearby other messenger, reviewed the [Gajim desktop client](https://gajim.org/).
+
+A critic on [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface
+) by Bishop Fox.
+
 
 ## Software news
 
 ### Clients and applications
 
-_Please be so kind and write some sentences for the news you place instead of just dropping bare HTTP links - that will help us a lot! <3_
+[Gajim development news](https://gajim.org/post/2022-01-22-development-news-december-january/): Work on Gajim 1.4 is making big steps forward! After nine months of developing Gajim’s new main window, the code was finally ready to be merged into the master branch. This enables automatic builds of nightly versions for Linux and Windows.
+
+[monocles chat](https://f-droid.org/de/packages/de.monocles.chat/) (a fork of Conversations and Blabber.im) will get OTR in the next release. The client also only allows connections to XMPP servers with up to date SSL configurations and does not offer fallback SSL connections to avoid data leaks. Nevertheless it is compatible with every current XMPP account.
+
+A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (not just the person hosting the component, but anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages.
+
+Webhook payloads are processed by middleware and the XMPP notifications are template-based and written in [EJS](https://ejs.co/ "Embedded JavaScript templating"). It currently comes with GitLab and plain Git (yes, plain Git) integrations as well as a crude and untested Slack middleware, but it also understands plain text and PNG, JPEG and PDF content, which is sent to subscribers as attachments via [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html).
+
+The code is far from production quality but the developer would welcome any and all comments and suggestions to inform further development. The main repository is hosted at https://gitlab.com/navlost.eu/xmpp/components/webhooks and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
+
+[Libervia 0.8 « La Cecília »](https://www.goffi.org/b/libervia-v0-8-la-cecilia-BdQ4) (formerly known as « Salut à Toi ») has been released with a complete OMEMO encrytion finalization for group chats, a new default theme, an easy to use invitation system, a non-standard (XMPP) list feature, photo albums and many technical changes.
+
+A new stable release of [SiskinIM 7.0.1 has been published](https://github.com/tigase/siskin-im/releases/tag/7.0.1) which includes sending unencrypted messages in single chats with default encryption for OMEMO and presenting automatic file download size limit.
 
 ## Servers
 
-_Please be so kind and write some sentences for the news you place instead of just dropping bare HTTP links - that will help us a lot! <3_
+[Openfire 4.7.0](https://discourse.igniterealtime.org/t/openfire-4-7-0-has-been-released/91268) has been released. This release is the first non-patch release in more than a year, which brings a healthy amount of new features, as well as bug fixes. Highlights of this release include extensively improved clustering support, particularly around Multi-User Chat functionality, which should benefit high-volume environments. Previously also [Openfire 4.5.5](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139), [Openfire 4.6.5](https://discourse.igniterealtime.org/t/openfire-4-6-5-released/91108) and [Openfire 4.6.6](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139) have been released.
+
+[Prosody 0.11.13](https://blog.prosody.im/prosody-0.11.13-released/) has been released. Since december, the new prosody releases brought some fixes to PEP to control memory usage, a security fix that addresses a denial-of-service vulnerability in Prosody’s mod_websocket, and a fix for a memory leak. Previously [Prosody 0.11.11](https://blog.prosody.im/prosody-0.11.11-released/] and [Prosody 0.11.12](https://blog.prosody.im/prosody-0.11.12-released/) were released, too.
+
+[ejabberd 21.12](https://www.process-one.net/blog/ejabberd-21-12/) has been released. The new ejabberd 21.12 release comes after five months of work, contains more than one hundred changes, many of them are major improvements or features, and several bug fixes: PubSub improvements, new mod_conversejs, and support for MUC Hats ([XEP-0317](https://xmpp.org/extensions/xep-0317.html)).
+
+[Jackal](https://github.com/ortuman/jackal), an XMPP server written in Go, had [version 0.56.0](https://github.com/ortuman/jackal/releases) released.
+
+New beta builds for the Snikket server](https://github.com/snikket-im/snikket-server/tags) have been published this month.
 
 ## Libraries
 
-_Please be so kind and write some sentences for the news you place instead of just dropping bare HTTP links - that will help us a lot! <3_
+The [Mellium Dev Communiqué for January 2022](https://opencollective.com/mellium/updates/dev-communique-for-january-2022) has been released. Major updates this month include support for in-band bytestreams and integration testing against aioxmpp. Last month Mellium took a bit of a break, but a short update was released nevertheless. The December update can be found [here](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
 
 ## Extensions and specifications
 
@@ -151,7 +195,7 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 
 This XMPP Newsletter is produced collaboratively by the XMPP community.
 
-Therefore many thanks to xdelatour, wurstsalat3000, seveso, palm123, Nicola Fabiano, mdosch, MattJ, Licaon_Kter, Goffi, erszcz, emus, Benoît Sibaud, Anoxinon e.V., Adrien Bourmault (neox) for their support and help in creation, review and translation!
+Therefore many thanks to arne, xdelatour, wurstsalat3000, seveso, Sam Whited, palm123, Nicola Fabiano, mdosch, MattJ, Licaon_Kter, Goffi, erszcz, emus, Benoît Sibaud, Anoxinon e.V., Adrien Bourmault (neox) for their support and help in creation, review and translation!
 
 Many thanks to all contributors and their continuous support!
 
