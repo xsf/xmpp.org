@@ -85,7 +85,7 @@ An analysis of the dangers of misconfigured XMPP servers in this piece about [XM
 
 [Gajim development news](https://gajim.org/post/2022-01-22-development-news-december-january/): Work on Gajim 1.4 is making big steps forward! After nine months of developing Gajim’s new main window, the code was finally ready to be merged into the master branch. This enables automatic builds of nightly versions for Linux and Windows.
 
-[monocles chat](https://f-droid.org/de/packages/de.monocles.chat/) (a fork of Conversations and Blabber.im) will get OTR in the next release. The client also only allows connections to XMPP servers with up to date SSL configurations and does not offer fallback SSL connections to avoid data leaks. Nevertheless it is compatible with every current XMPP account.
+[monocles chat](https://f-droid.org/de/packages/de.monocles.chat/) (a fork of Conversations and Blabber.im) will get OTR support in the next release. The client also only allows connections to XMPP servers with up to date SSL configurations and does not offer fallback SSL connections to avoid data leaks. Nevertheless it is compatible with every current XMPP account.
 
 A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (not just the person hosting the component, but anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages.
 
