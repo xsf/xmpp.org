@@ -71,7 +71,7 @@ MongooseIM writes about [Dynamic XMPP Domains in their solutions](https://www.er
 
 Andrew Lewman trials various messaging protocols over a congested network, and makes a [discovery about XMPP performance](https://blog.lewman.com/internet-messaging-versus-congested-network.html) in such situations.
 
-A short introduction to the [Quicksy Android client](https://ravidwivedi.in/posts/quicksy-app/index.html)
+Ravi Dwivedi demonstrates that "freedom and privacy can be convenient too" in their short introduction to the [Quicksy Android client](https://ravidwivedi.in/posts/quicksy-app/index.html)
 
 The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and nearby other messenger, reviewed the [Gajim desktop client](https://gajim.org/).
 
