@@ -61,7 +61,7 @@ JMP.chat released two blog posts. [The first](https://blog.jmp.chat/b/2022-jabbe
 
 There are several articles to the topic  "messenger" at the German site from "[Freie Messenger](https://www.freie-messenger.de/#neuigkeiten-letzte-änderungen)" with focus on alternatives to WhatsApp, E2EE, interoperability, security/pseudosecurity. You may help translating them to your native language.
 
-[OMEMO was finally integrated in Movim](https://mov.im/?post/pubsub.movim.eu/Movim/end-to-end-encryption-in-movim-omemo-is-finally-there-yudZPP) after 6 long years of discussions. In this article we are explaining what is the general OMEMO architecture what were the difficulties encountered when doing the integration in Movim and how we overcame them.
+[OMEMO was finally integrated in Movim](https://mov.im/?post/pubsub.movim.eu/Movim/end-to-end-encryption-in-movim-omemo-is-finally-there-yudZPP) after 6 long years of discussions. In this article Timothée, Movim developer, explains the general OMEMO architecture, the difficulties encountered while working on the integration in Movim and how they overcame them.
 
 As the [previously announced](https://snikket.org/blog/simply-secure-collaboration/) collaboration between Snikket and Simply Secure ended its first project, they interviewed the project's founder, Matthew Wild, about Snikket's origins and his experience managing open-source projects. Read the interview: [On Getting Things Done: A Conversation with Matthew Wild from Snikket](https://simplysecure.org/blog/on-getting-things-done-a-conversation-with-matthew-wild-from-snikket/).
 
