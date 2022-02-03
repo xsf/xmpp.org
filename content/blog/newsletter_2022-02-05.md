@@ -107,7 +107,7 @@ A new stable release of [SiskinIM 7.0.1 has been published](https://github.com/t
 
 [Jackal](https://github.com/ortuman/jackal), an XMPP server written in Go, had [version 0.56.0](https://github.com/ortuman/jackal/releases) released.
 
-New beta builds for the Snikket server](https://github.com/snikket-im/snikket-server/tags) have been published this month.
+Snikket announced their [January 2022 server release](https://snikket.org/blog/jan-2022-server-release/), this includes a [security fix](https://snikket.org/blog/snikket-jan-2021-security-release/) announced earlier in January. The primary new feature in this release is account import/export functionality, the final part of the [XMPP account portability project](https://docs.modernxmpp.org/projects/portability/) funded by NGI DAPSI.
 
 ## Libraries
 
