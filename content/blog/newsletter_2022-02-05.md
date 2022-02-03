@@ -65,7 +65,7 @@ There are several articles to the topic  "messenger" at the German site from "[F
 
 As the [previously announced](https://snikket.org/blog/simply-secure-collaboration/) collaboration between Snikket and Simply Secure ended its first project, they interviewed the project's founder, Matthew Wild, about Snikket's origins and his experience managing open-source projects. Read the interview: [On Getting Things Done: A Conversation with Matthew Wild from Snikket](https://simplysecure.org/blog/on-getting-things-done-a-conversation-with-matthew-wild-from-snikket/).
 
-Mellium Co-op has published their [Year in Review for 2021](https://opencollective.com/mellium/updates/mellium-year-in-review-2021) and the [Dev Communiqué for December 2021](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
+Mellium Co-op has published their [Year in Review for 2021 and January 2022](https://opencollective.com/mellium/updates/mellium-year-in-review-2021) and the [Dev Communiqué for December 2021](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
 
 MongooseIM writes about [Dynamic XMPP Domains in their solutions](https://www.erlang-solutions.com/blog/dynamic-xmpp-domains-in-mongooseim/)
 
@@ -99,7 +99,7 @@ A new stable release of [SiskinIM 7.0.1 has been published](https://github.com/t
 
 ## Servers
 
-[Openfire 4.7.0](https://discourse.igniterealtime.org/t/openfire-4-7-0-has-been-released/91268) has been released. This release is the first non-patch release in more than a year, which brings a healthy amount of new features, as well as bug fixes. Highlights of this release include extensively improved clustering support, particularly around Multi-User Chat functionality, which should benefit high-volume environments. Previously also [Openfire 4.5.5](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139), [Openfire 4.6.5](https://discourse.igniterealtime.org/t/openfire-4-6-5-released/91108) and [Openfire 4.6.6](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139) have been released.
+[Openfire 4.7.0](https://discourse.igniterealtime.org/t/openfire-4-7-0-has-been-released/91268) has been released (having their [Beta released](https://discourse.igniterealtime.org/t/openfire-4-7-0-beta-hazelcast-plugin-2-6-0-releases/91087) before). This release is the first non-patch release in more than a year, which brings a healthy amount of new features, as well as bug fixes. Highlights of this release include extensively improved clustering support, particularly around Multi-User Chat functionality, which should benefit high-volume environments. Previously also [Openfire 4.5.5](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139), [Openfire 4.6.5](https://discourse.igniterealtime.org/t/openfire-4-6-5-released/91108) and [Openfire 4.6.6](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139) have been released.
 
 [Prosody 0.11.13](https://blog.prosody.im/prosody-0.11.13-released/) has been released. Since december, the new prosody releases brought some fixes to PEP to control memory usage, a security fix that addresses a denial-of-service vulnerability in Prosody’s mod_websocket, and a fix for a memory leak. Previously [Prosody 0.11.11](https://blog.prosody.im/prosody-0.11.11-released/] and [Prosody 0.11.12](https://blog.prosody.im/prosody-0.11.12-released/) were released, too.
 
@@ -111,7 +111,7 @@ New beta builds for the Snikket server](https://github.com/snikket-im/snikket-se
 
 ## Libraries
 
-The [Mellium Dev Communiqué for January 2022](https://opencollective.com/mellium/updates/dev-communique-for-january-2022) has been released. Major updates this month include support for in-band bytestreams and integration testing against aioxmpp. Last month Mellium took a bit of a break, but a short update was released nevertheless. The December update can be found [here](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
+No news has reached us :-(
 
 ## Extensions and specifications
 
