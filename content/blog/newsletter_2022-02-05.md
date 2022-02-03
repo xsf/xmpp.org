@@ -69,7 +69,7 @@ Mellium Co-op has published their [Year in Review for 2021 and January 2022](htt
 
 MongooseIM writes about [Dynamic XMPP Domains in their solutions](https://www.erlang-solutions.com/blog/dynamic-xmpp-domains-in-mongooseim/)
 
-XMPP passes in a [congested network](https://blog.lewman.com/internet-messaging-versus-congested-network.html).
+Andrew Lewman trials various messaging protocols over a congested network, and makes a [discovery about XMPP performance](https://blog.lewman.com/internet-messaging-versus-congested-network.html) in such situations.
 
 A short introduction to the [Quicksy Android client](https://ravidwivedi.in/posts/quicksy-app/index.html)
 
