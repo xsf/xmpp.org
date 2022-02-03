@@ -75,7 +75,7 @@ Ravi Dwivedi demonstrates that "freedom and privacy can be convenient too" in th
 
 The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and alongside other messengers, reviewed the [Gajim desktop client](https://gajim.org/).
 
-A critic on [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface
+An analysis of the dangers of misconfigured XMPP servers in this piece about [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface
 ) by Bishop Fox.
 
 
