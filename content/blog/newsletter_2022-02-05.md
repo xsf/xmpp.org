@@ -65,7 +65,7 @@ There are several articles to the topic  "messenger" at the German site from "[F
 
 As the [previously announced](https://snikket.org/blog/simply-secure-collaboration/) collaboration between Snikket and Simply Secure ended its first project, they interviewed the project's founder, Matthew Wild, about Snikket's origins and his experience managing open-source projects. Read the interview: [On Getting Things Done: A Conversation with Matthew Wild from Snikket](https://simplysecure.org/blog/on-getting-things-done-a-conversation-with-matthew-wild-from-snikket/).
 
-Mellium Co-op has published their [Year in Review for 2021 and January 2022](https://opencollective.com/mellium/updates/mellium-year-in-review-2021) and the [Dev Communiqué for December 2021](https://opencollective.com/mellium/updates/dev-communique-for-december-2021).
+Mellium Co-op has published their [Year in Review for 2021](https://opencollective.com/mellium/updates/mellium-year-in-review-2021) and the [Dev Communiqué for December 2021](https://opencollective.com/mellium/updates/dev-communique-for-december-2021) and [January 2022](https://opencollective.com/mellium/updates/dev-communique-for-january-2022).
 
 MongooseIM writes about [Dynamic XMPP Domains in their solutions](https://www.erlang-solutions.com/blog/dynamic-xmpp-domains-in-mongooseim/)
 
