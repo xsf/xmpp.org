@@ -1,5 +1,5 @@
 ---
-title: The XMPP Newsletter December 2021 & January 2021
+title: The XMPP Newsletter December 2021 & January 2022
 author: emus
 date: 2022-02-05
 categories: ['Newsletter']
