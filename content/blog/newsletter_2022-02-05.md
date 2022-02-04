@@ -109,10 +109,6 @@ A new stable release of [SiskinIM 7.0.1 has been published](https://github.com/t
 
 Snikket announced their [January 2022 server release](https://snikket.org/blog/jan-2022-server-release/), this includes a [security fix](https://snikket.org/blog/snikket-jan-2021-security-release/) announced earlier in January. The primary new feature in this release is account import/export functionality, the final part of the [XMPP account portability project](https://docs.modernxmpp.org/projects/portability/) funded by NGI DAPSI.
 
-## Libraries
-
-No news has reached us :-(
-
 ## Extensions and specifications
 
 Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
