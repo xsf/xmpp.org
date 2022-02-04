@@ -32,6 +32,8 @@ Many thanks to the translators and their work! This is a great help to spread th
 
 - The XSF is planning to participate in the [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/). If you are interested in participating as a student, mentor or as a project in general, please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022)!
 
+![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
+
 - Blog and newsletter pages at [xmpp.org/blog](https://xmpp.org/blog) now support multiple languages. We are happy for volunteers to support translating!
 
 ## XSF fiscal hosting projects
@@ -59,9 +61,13 @@ XMPP has been mentioned in a [German public TV](https://youtu.be/DdIwus87eLM?t=8
 
 JMP.chat released two blog posts. [The first](https://blog.jmp.chat/b/2022-jabber-xmpp-from-sms) details a feature of the Soprani.ca project's Cheogram system that allows SMS users to contact (or call!) any XMPP address. [Their Newsletter](https://blog.jmp.chat/b/january-newsletter-2022) also announces a partnership with Snikket for hosting, as well as a preview of worldwide calling rates as they prepare to launch that feature soon.
 
+![JMP.chat](/images/newsletter/january2022/smstoxmpp.png "JMP.chat")
+
 There are several articles to the topic  "messenger" at the German site from "[Freie Messenger](https://www.freie-messenger.de/#neuigkeiten-letzte-änderungen)" with a focus on alternatives to WhatsApp, E2EE, interoperability, security/pseudosecurity. Help is welcome, translating the articles to your native language.
 
 [OMEMO was finally integrated in Movim](https://mov.im/?post/pubsub.movim.eu/Movim/end-to-end-encryption-in-movim-omemo-is-finally-there-yudZPP) after 6 long years of discussions. In this article Timothée, Movim developer, explains the general OMEMO architecture, the difficulties encountered while working on the integration in Movim and how they overcame them.
+
+![Movim with OMEMO encryption](/images/newsletter/january2022/movim_omemo.png "Movim with OMEMO encryption")
 
 As the [previously announced](https://snikket.org/blog/simply-secure-collaboration/) collaboration between Snikket and Simply Secure ended its first project, they interviewed the project's founder, Matthew Wild, about Snikket's origins and his experience managing open-source projects. Read the interview: [On Getting Things Done: A Conversation with Matthew Wild from Snikket](https://simplysecure.org/blog/on-getting-things-done-a-conversation-with-matthew-wild-from-snikket/).
 
@@ -77,13 +83,13 @@ The German Linux Magazin has been [testing free instant messaging clients](https
 
 An analysis of the dangers of misconfigured XMPP servers in this piece about [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface) by Bishop Fox.
 
-vanitasvitae published an [article](https://blog.jabberhead.tk/2021/12/30/pgpainless-1-0-0-released/) celebrating the 1.0.0 release of [PGPainless](https://pgpainless.org/). PGPainless is a Java library that aims to make using OpenPGP as easy as possible. The project was started in 2018 as a by-product of a Google Summer of Code project of the XMPP Standards Foundation!
+vanitasvitae published an [article](https://blog.jabberhead.tk/2021/12/30/pgpainless-1-0-0-released/) celebrating the `1.0.0` release of [PGPainless](https://pgpainless.org/). PGPainless is a Java library that aims to make using OpenPGP as easy as possible. The project was started in 2018 as a by-product of a Google Summer of Code project of the XMPP Standards Foundation!
 
 ## Software news
 
 ### Clients and applications
 
-[Gajim development news](https://gajim.org/post/2022-01-22-development-news-december-january/): Work on Gajim 1.4 is making big steps forward! After nine months of developing Gajim’s new main window, the code was finally ready to be merged into the master branch. This enables automatic builds of nightly versions for Linux and Windows.
+[Gajim development news](https://gajim.org/post/2022-01-22-development-news-december-january/): Work on Gajim `1.4` is making big steps forward! After nine months of developing Gajim’s new main window, the code was finally ready to be merged into the master branch. This enables automatic builds of nightly versions for Linux and Windows.
 
 [monocles chat](https://f-droid.org/de/packages/de.monocles.chat/) (a fork of Conversations and Blabber.im) will get OTR support in the next release. The client also only allows connections to XMPP servers with up to date SSL configurations and does not offer fallback SSL connections to avoid data leaks. Nevertheless it is compatible with every current XMPP account.
 
@@ -93,21 +99,23 @@ Webhook payloads are processed by middleware and the XMPP notifications are temp
 
 The code is far from production quality but the developer would welcome any and all comments and suggestions to inform further development. The main repository is hosted at https://gitlab.com/navlost.eu/xmpp/components/webhooks and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
 
-[Libervia 0.8 « La Cecília »](https://www.goffi.org/b/libervia-v0-8-la-cecilia-BdQ4) (formerly known as « Salut à Toi ») has been released with a complete OMEMO encrytion finalization for group chats, a new default theme, an easy to use invitation system, a non-standard (XMPP) list feature, photo albums and many technical changes.
+[Libervia `0.8` "La Cecília"](https://www.goffi.org/b/libervia-v0-8-la-cecilia-BdQ4) (formerly known as "Salut à Toi") has been released with a complete OMEMO encrytion finalization for group chats, a new default theme, an easy to use invitation system, a non-standard (XMPP) list feature, photo albums and many technical changes.
 
-A new stable release of [SiskinIM 7.0.1 has been published](https://github.com/tigase/siskin-im/releases/tag/7.0.1) which includes sending unencrypted messages in single chats with default encryption for OMEMO and presenting automatic file download size limit.
+A new stable release of [SiskinIM `7.0.1` has been published](https://github.com/tigase/siskin-im/releases/tag/7.0.1) which includes sending unencrypted messages in single chats with default encryption for OMEMO and presenting automatic file download size limit.
 
 ## Servers
 
-[Openfire 4.7.0](https://discourse.igniterealtime.org/t/openfire-4-7-0-has-been-released/91268) has been released (having their [Beta released](https://discourse.igniterealtime.org/t/openfire-4-7-0-beta-hazelcast-plugin-2-6-0-releases/91087) before). This release is the first non-patch release in more than a year, which brings a healthy amount of new features, as well as bug fixes. Highlights of this release include extensively improved clustering support, particularly around Multi-User Chat functionality, which should benefit high-volume environments. Previously also [Openfire 4.5.5](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139), [Openfire 4.6.5](https://discourse.igniterealtime.org/t/openfire-4-6-5-released/91108) and [Openfire 4.6.6](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139) have been released.
+[Openfire `4.7.0`](https://discourse.igniterealtime.org/t/openfire-4-7-0-has-been-released/91268) has been released (having their [Beta released](https://discourse.igniterealtime.org/t/openfire-4-7-0-beta-hazelcast-plugin-2-6-0-releases/91087) before). This release is the first non-patch release in more than a year, which brings a healthy amount of new features, as well as bug fixes. Highlights of this release include extensively improved clustering support, particularly around Multi-User Chat functionality, which should benefit high-volume environments. Previously also [Openfire `4.5.5`](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139), [Openfire `4.6.5`](https://discourse.igniterealtime.org/t/openfire-4-6-5-released/91108) and [Openfire `4.6.6`](https://discourse.igniterealtime.org/t/openfire-4-6-6-and-4-5-5-releases-log4j-only-changes/91139) have been released.
 
-[Prosody 0.11.13](https://blog.prosody.im/prosody-0.11.13-released/) has been released. Since December, new Prosody releases brought some fixes to PEP to control memory usage, a security fix that addresses a denial-of-service vulnerability in Prosody’s mod_websocket, and a fix for a memory leak. Previously [Prosody 0.11.11](https://blog.prosody.im/prosody-0.11.11-released/) and [Prosody 0.11.12](https://blog.prosody.im/prosody-0.11.12-released/) were released, too.
+[Prosody `0.11.13`](https://blog.prosody.im/prosody-0.11.13-released/) has been released. Since December, new Prosody releases brought some fixes to PEP to control memory usage, a security fix that addresses a denial-of-service vulnerability in Prosody’s mod_websocket, and a fix for a memory leak. Previously [Prosody `0.11.11`](https://blog.prosody.im/prosody-0.11.11-released/) and [Prosody `0.11.12`](https://blog.prosody.im/prosody-0.11.12-released/) were released, too.
 
-[ejabberd 21.12](https://www.process-one.net/blog/ejabberd-21-12/) has been released. The new ejabberd 21.12 release comes after five months of work, contains more than one hundred changes, many of them are major improvements or features, and several bug fixes: PubSub improvements, new mod_conversejs, and support for MUC Hats ([XEP-0317](https://xmpp.org/extensions/xep-0317.html)).
+[ejabberd `21.12`](https://www.process-one.net/blog/ejabberd-21-12/) has been released. The new ejabberd 21.12 release comes after five months of work, contains more than one hundred changes, many of them are major improvements or features, and several bug fixes: PubSub improvements, new mod_conversejs, and support for MUC Hats ([XEP-0317](https://xmpp.org/extensions/xep-0317.html)).
 
-[Jackal](https://github.com/ortuman/jackal), an XMPP server written in Go, had [version 0.56.0](https://github.com/ortuman/jackal/releases) released.
+[Jackal](https://github.com/ortuman/jackal), an XMPP server written in Go, had [version `0.56.0`](https://github.com/ortuman/jackal/releases) released.
 
 Snikket announced their [January 2022 server release](https://snikket.org/blog/jan-2022-server-release/), this includes a [security fix](https://snikket.org/blog/snikket-jan-2021-security-release/) announced earlier in January. The primary new feature in this release is account import/export functionality, the final part of the [XMPP account portability project](https://docs.modernxmpp.org/projects/portability/) funded by NGI DAPSI.
+
+![XMPP account portability project](/images/newsletter/snikket-account-import-export.png "XMPP account portability project")
 
 ## Extensions and specifications
 
@@ -141,24 +149,24 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 1.1.0 of [XEP-0363](https://xmpp.org/extensions/xep-0363.html) (HTTP File Upload)
+-   Version `1.1.0` of [XEP-0363](https://xmpp.org/extensions/xep-0363.html) (HTTP File Upload)
     -   Filename size in bytes.
     -   Headers MUST be included in the PUT request.
     -   Headers considered opaque.
     -   Servers may want to sign headers, in security implications.
     -   Allow header case insensitivity, multiple times the same header, and preserve the order in the HTTP request. (egp, mb)
     
--   Version 0.4.0 of [XEP-0353](https://xmpp.org/extensions/xep-0353.html) (Jingle Message Initiation)
+-   Version `0.4.0` of [XEP-0353](https://xmpp.org/extensions/xep-0353.html) (Jingle Message Initiation)
     -   Rework whole spec, namespace bump
     -   Add new <finish/> message
     -   Add dependency on XEP-0280, XEP-0313 and XEP-0334
     -   Add <reason/> to some messages (tm)
 
--   Version 1.1.0 of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
+-   Version `1.1.0` of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
     -   Replace deprecated XEP-0411 with XEP-0402 in Advanced Group Chat (egp)
 
--   Version 0.4.0 of [XEP-0380](https://xmpp.org/extensions/xep-0380.html) (Explicit Message Encryption)
-    -   Add new OMEMO namespaces: 'urn:xmpp:omemo:1' for OMEMO versions since 0.4.0, and 'urn:xmpp:omemo:2' for OMEMO versions since 0.8.0 (melvo)
+-   Version `0.4.0` of [XEP-0380](https://xmpp.org/extensions/xep-0380.html) (Explicit Message Encryption)
+    -   Add new OMEMO namespaces: 'urn:xmpp:omemo:1' for OMEMO versions since `0.4.0`, and 'urn:xmpp:omemo:2' for OMEMO versions since `0.8.0` (melvo)
 
 ### Last Call
 
@@ -191,7 +199,7 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 
 This XMPP Newsletter is produced collaboratively by the XMPP community.
 
-Therefore many thanks to arne, xdelatour, wurstsalat3000, seveso, Sam Whited, palm123, Nicola Fabiano, mdosch, MattJ, Licaon_Kter, Goffi, erszcz, emus, Benoît Sibaud, Anoxinon e.V., Adrien Bourmault (neox) for their support and help in creation, review and translation!
+Therefore many thanks to Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, Sam Whited, vanitasvitae, wurstsalat3000 for their support and help in creation, review and translation!
 
 Many thanks to all contributors and their continuous support!
 
@@ -205,7 +213,7 @@ Please share the news via other networks:
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
-Find and place job offers in the [XMPP job board](https://xmpp.work/).
+Find and place job offers and professional consultants in the [XMPP job board](https://xmpp.work/).
 
 {{< newsletter-subscribe >}}
 
