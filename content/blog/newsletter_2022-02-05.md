@@ -9,7 +9,7 @@ Welcome to the XMPP Newsletter covering the month of December 2021 and January 2
 
 We hope you had a great shift into the new year by now as well as are happy to have you reading the new release! We guess that this episode has caught some weight over the new year's holidays :-)
 
-Many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, especially throughout the current situation, please consider to say thanks or help these projects!
+Many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, especially throughout the current situation, please consider saying thanks or help these projects!
 
 [Read this Newsletter via our RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
