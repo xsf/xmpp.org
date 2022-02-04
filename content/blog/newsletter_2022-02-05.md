@@ -59,7 +59,7 @@ XMPP has been mentioned in a [German public TV](https://youtu.be/DdIwus87eLM?t=8
 
 JMP.chat released two blog posts. [The first](https://blog.jmp.chat/b/2022-jabber-xmpp-from-sms) details a feature of the Soprani.ca project's Cheogram system that allows SMS users to contact (or call!) any XMPP address. [Their Newsletter](https://blog.jmp.chat/b/january-newsletter-2022) also announces a partnership with Snikket for hosting, as well as a preview of worldwide calling rates as they prepare to launch that feature soon.
 
-There are several articles to the topic  "messenger" at the German site from "[Freie Messenger](https://www.freie-messenger.de/#neuigkeiten-letzte-änderungen)" with focus on alternatives to WhatsApp, E2EE, interoperability, security/pseudosecurity. You may help translating them to your native language.
+There are several articles to the topic  "messenger" at the German site from "[Freie Messenger](https://www.freie-messenger.de/#neuigkeiten-letzte-änderungen)" with a focus on alternatives to WhatsApp, E2EE, interoperability, security/pseudosecurity. Help is welcome, translating the articles to your native language.
 
 [OMEMO was finally integrated in Movim](https://mov.im/?post/pubsub.movim.eu/Movim/end-to-end-encryption-in-movim-omemo-is-finally-there-yudZPP) after 6 long years of discussions. In this article Timothée, Movim developer, explains the general OMEMO architecture, the difficulties encountered while working on the integration in Movim and how they overcame them.
 
