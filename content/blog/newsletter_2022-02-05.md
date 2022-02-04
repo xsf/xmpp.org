@@ -73,7 +73,7 @@ Andrew Lewman trials various messaging protocols over a congested network, and m
 
 Ravi Dwivedi demonstrates that "freedom and privacy can be convenient too" in their short introduction to the [Quicksy Android client](https://ravidwivedi.in/posts/quicksy-app/index.html)
 
-The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and alongside other messengers, reviewed the [Gajim desktop client](https://gajim.org/).
+The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and, alongside other messengers, reviewed the [Gajim desktop client](https://gajim.org/).
 
 An analysis of the dangers of misconfigured XMPP servers in this piece about [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface) by Bishop Fox.
 
