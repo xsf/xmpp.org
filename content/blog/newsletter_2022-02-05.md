@@ -5,7 +5,7 @@ date: 2022-02-05
 categories: ['Newsletter']
 ---
 
-Welcome to the XMPP Newsletter covering the month of December 2021 and January 2021!
+Welcome to the XMPP Newsletter covering the month of December 2021 and January 2022!
 
 We hope you had a great shift into the new year by now as well as are happy to have you reading the new release! We guess that this episode has caught some weight over the new year's holidays :-)
 
