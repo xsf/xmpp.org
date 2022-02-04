@@ -75,8 +75,7 @@ Ravi Dwivedi demonstrates that "freedom and privacy can be convenient too" in th
 
 The German Linux Magazin has been [testing free instant messaging clients](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) for Linux in their latest printout and alongside other messengers, reviewed the [Gajim desktop client](https://gajim.org/).
 
-An analysis of the dangers of misconfigured XMPP servers in this piece about [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface
-) by Bishop Fox.
+An analysis of the dangers of misconfigured XMPP servers in this piece about [XMPP server security](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface) by Bishop Fox.
 
 vanitasvitae published an [article](https://blog.jabberhead.tk/2021/12/30/pgpainless-1-0-0-released/) celebrating the 1.0.0 release of [PGPainless](https://pgpainless.org/). PGPainless is a Java library that aims to make using OpenPGP as easy as possible. The project was started in 2018 as a by-product of a Google Summer of Code project of the XMPP Standards Foundation!
 
