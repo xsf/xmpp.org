@@ -197,7 +197,7 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 
 This XMPP Newsletter is produced collaboratively by the XMPP community.
 
-Therefore many thanks to Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 for their support and help in creation, review and translation!
+Therefore many thanks to Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, NicFab, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 for their support and help in creation, review and translation!
 
 Many thanks to all contributors and their continuous support!
 
