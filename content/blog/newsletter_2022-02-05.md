@@ -109,7 +109,7 @@ A new stable release of [SiskinIM `7.0.1` has been published](https://github.com
 
 Snikket announced their [January 2022 server release](https://snikket.org/blog/jan-2022-server-release/), this includes a [security fix](https://snikket.org/blog/snikket-jan-2021-security-release/) announced earlier in January. The primary new feature in this release is account import/export functionality, the final part of the [XMPP account portability project](https://docs.modernxmpp.org/projects/portability/) funded by NGI DAPSI.
 
-![XMPP account portability project](/images/newsletter/snikket-account-import-export.png "XMPP account portability project")
+![XMPP account portability project](/images/newsletter/january2022/snikket-account-import-export.png "XMPP account portability project")
 
 ## Libraries
 
