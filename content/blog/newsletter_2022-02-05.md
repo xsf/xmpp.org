@@ -93,12 +93,6 @@ vanitasvitae published an [article](https://blog.jabberhead.tk/2021/12/30/pgpain
 
 [monocles chat](https://f-droid.org/de/packages/de.monocles.chat/) (a fork of Conversations and Blabber.im) will get OTR support in the next release. The client also only allows connections to XMPP servers with up to date SSL configurations and does not offer fallback SSL connections to avoid data leaks. Nevertheless it is compatible with every current XMPP account.
 
-A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (not just the person hosting the component, but anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages.
-
-Webhook payloads are processed by middleware and the XMPP notifications are template-based and written in [EJS](https://ejs.co/ "Embedded JavaScript templating"). It currently comes with GitLab and plain Git (yes, plain Git) integrations as well as a crude and untested Slack middleware, but it also understands plain text and PNG, JPEG and PDF content, which is sent to subscribers as attachments via [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html).
-
-The code is far from production quality but the developer would welcome any and all comments and suggestions to inform further development. The main repository is hosted at https://gitlab.com/navlost.eu/xmpp/components/webhooks and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
-
 [Libervia `0.8` "La Cecília"](https://www.goffi.org/b/libervia-v0-8-la-cecilia-BdQ4) (formerly known as "Salut à Toi") has been released with a complete OMEMO encrytion finalization for group chats, a new default theme, an easy to use invitation system, a non-standard (XMPP) list feature, photo albums and many technical changes.
 
 A new stable release of [SiskinIM `7.0.1` has been published](https://github.com/tigase/siskin-im/releases/tag/7.0.1) which includes sending unencrypted messages in single chats with default encryption for OMEMO and presenting automatic file download size limit.
@@ -116,6 +110,10 @@ A new stable release of [SiskinIM `7.0.1` has been published](https://github.com
 Snikket announced their [January 2022 server release](https://snikket.org/blog/jan-2022-server-release/), this includes a [security fix](https://snikket.org/blog/snikket-jan-2021-security-release/) announced earlier in January. The primary new feature in this release is account import/export functionality, the final part of the [XMPP account portability project](https://docs.modernxmpp.org/projects/portability/) funded by NGI DAPSI.
 
 ![XMPP account portability project](/images/newsletter/snikket-account-import-export.png "XMPP account portability project")
+
+## Libraries
+
+A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (the person hosting the component and anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages. Webhook payloads are processed by middleware and the XMPP notifications are template-based and written in [EJS](https://ejs.co/ "Embedded JavaScript templating"). It currently comes with GitLab and plain Git integrations as well as a crude and untested Slack middleware, but it also understands plain text and PNG, JPEG and PDF content, which is sent to subscribers as attachments via [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html). The main repository (no production quality yet) is hosted at https://gitlab.com/navlost.eu/xmpp/components/webhooks and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
 
 ## Extensions and specifications
 
