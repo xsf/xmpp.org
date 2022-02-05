@@ -24,7 +24,7 @@ Translations of the XMPP Newsletter will be released here (with some delay):
 - The French translation appears at [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - The German translation appears at [anoxinon.de](https://anoxinon.de/blog/)
 - The Italian translation appears at [NicFab.it](https://www.nicfab.it/)
-- The Spanish translation appears at TBA
+- The Spanish translation appears the same way as the English orginial, simply select [Spanish in the top bar](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/)
 
 Many thanks to the translators and their work! This is a great help to spread the news! Please join them in their work or start over with any another language!
 
@@ -113,7 +113,7 @@ Snikket announced their [January 2022 server release](https://snikket.org/blog/j
 
 ## Libraries
 
-A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (the person hosting the component and anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages. Webhook payloads are processed by middleware and the XMPP notifications are template-based and written in [EJS](https://ejs.co/ "Embedded JavaScript templating"). It currently comes with GitLab and plain Git integrations as well as a crude and untested Slack middleware, but it also understands plain text and PNG, JPEG and PDF content, which is sent to subscribers as attachments via [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html). The main repository (no production quality yet) is hosted at https://gitlab.com/navlost.eu/xmpp/components/webhooks and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
+A [new XMPP component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been published and could use some feedback. The component implements a [webhook](https://en.wikipedia.org/wiki/Webhook) transport that lets users (the person hosting the component and anyone they choose to allow) create HTTP endpoints to receive events on and translate those to XMPP messages. Webhook payloads are processed by middleware and the XMPP notifications are template-based and written in [EJS](https://ejs.co/ "Embedded JavaScript templating"). It currently comes with GitLab and plain Git integrations as well as a crude and untested Slack middleware, but it also understands plain text and PNG, JPEG and PDF content, which is sent to subscribers as attachments via [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html). Find the [main repository](https://gitlab.com/navlost.eu/xmpp/components/webhooks) (no production quality yet) and there is also a [demo server](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) available for casual testing.
 
 ## Extensions and specifications
 
@@ -197,7 +197,7 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 
 This XMPP Newsletter is produced collaboratively by the XMPP community.
 
-Therefore many thanks to Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, Sam Whited, vanitasvitae, wurstsalat3000 for their support and help in creation, review and translation!
+Therefore many thanks to Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 for their support and help in creation, review and translation!
 
 Many thanks to all contributors and their continuous support!
 
