@@ -72,7 +72,7 @@ Andrew Lewman pone a prueba varios protocolos de mensajería bajo redes congesti
 
 Ravi Dwivedi demuestra que "libertad y privacidad pueden ser cómodas también" en su introducción corta al cliente para Android [Quicksy](https://ravidwivedi.in/posts/quicksy-app/index.html)
 
-La “German Linux Magazin” estuvo [probando clientes libres de mensajería instantanea](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) para Linux en su último número impreso y, entre otros clientes de mensajería, repasaron el [cliente para escritorio Gajim](https://gajim.org/).
+La “Linux Magazin” alemana estuvo [probando clientes libres de mensajería instantanea](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) para Linux en su último número impreso y, entre otros clientes de mensajería, repasaron el [cliente para escritorio Gajim](https://gajim.org/).
 
 Un análisis de los peligros de servidores XMPP mal configurados en este artículo sobre [seguridad en servidores XMPP](https://bishopfox.com/blog/xmpp-underappreciated-attack-surface) por Bishop Fox.
 
@@ -108,7 +108,11 @@ Snikket anunció su [January 2022 server release](https://snikket.org/blog/jan-2
 
 Un [nuevo componente XMPP](https://gitlab.com/navlost.eu/xmpp/components/webhooks) fue publicado y podría tener algo de feedback. El componente implementa un transporte [webhook](https://en.wikipedia.org/wiki/Webhook) que le permite a los usuarios (la persona que aloja el componente y cualquiera al que éste permita) crear endpoints HTTP para recibir eventos y traducirlos a mensajes XMPP. Los Webhook payloads son procesados por un middleware y las notificaciones XMPP son basadas en plantillas y escritas en [EJS](https://ejs.co/ "Embedded JavaScript templating"). Actualmente viene con integraciones con GitLab y Git puro y también puede usarse con Slack como un middleware crudo y sin probar, pero también procesa texto plano y PNG, JPEG y contenido en PDF, que es enviado a los suscriptores como un adjunto vía [HTTP File Upload (XEP-0363)](https://xmpp.org/extensions/xep-0363.html). Puedes encontrar el [repositorio principal](https://gitlab.com/navlost.eu/xmpp/components/webhooks) (todavía sin calidad productiva) y también un [servidor de demostración](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/devel/README.md#demo-server) disponible para pruebas casuales.
 
-### Propuestas
+## Extensiones y Especificaciones
+
+Desarrolladores y otros expertos en estándares de todo el mundo colaboran en estas extensiones, desarrollando nuevas especificaciones para las prácticas emergentes y perfeccionando las formas existentes de hacer las cosas. Propuestas por cualquiera, las que tienen más éxito acaban siendo definitivas o activas -según su tipo-, mientras que otras se archivan cuidadosamente como diferidas. Este ciclo de vida se describe en [XEP-0001](https://xmpp.org/extensions/xep-0001.html), que contiene las definiciones formales y canónicas de los tipos, estados y procesos. [Más información sobre el proceso de normalización](https://xmpp.org/about/standards-process.html). La comunicación en torno a los estándares y las extensiones tiene lugar en la [Lista de correo de estándares](https://mail.jabber.org/mailman/listinfo/standards) ([archivo en línea](https://mail.jabber.org/pipermail/standards/)).
+
+### Proposed (Propuestas)
 
 El proceso de desarrollo de XEP inicia escribiendo una idea y presentándola en el XMPP Editor. Dentro de las dos semanas, el Consejo decidirá si acepta la propuesta como una XEP Experimental.
 
@@ -124,17 +128,17 @@ El proceso de desarrollo de XEP inicia escribiendo una idea y presentándola en 
 - [Message Replies](https://xmpp.org/extensions/inbox/replies.html)
   - Este documento define una forma para indicar que un mensaje es una respuesta a un mensaje previo.
 
-### Nuevas
+### New (Nuevas)
 
 - No hay nuevas XEPs este mes.
 
-### Pospuestas
+### Deferred (Diferidas)
 
-Si una XEP experimental no es actualizada por más de 12 meses, será movida de Experimental a Pospuesta. Si hay alguna actualización, la XEP será puesta nuevamente en Experimental.
+Si una XEP experimental no es actualizada por más de 12 meses, será movida de Experimental a Deferred (Diferida). Si hay alguna actualización, la XEP será puesta nuevamente en Experimental.
 
 - No hay XEPs pospuestas este mes.
 
-### Actualizadas
+### Updated (Actualizadas)
 
 - Versión `1.1.0` de [XEP-0363](https://xmpp.org/extensions/xep-0363.html) (HTTP File Upload)
   - Tamaño de Filename en bytes.
@@ -155,36 +159,38 @@ Si una XEP experimental no es actualizada por más de 12 meses, será movida de 
 - Versión `0.4.0` de [XEP-0380](https://xmpp.org/extensions/xep-0380.html) (Explicit Message Encryption)
   - Agrega nuevos namespaces de OMEMO: 'urn:xmpp:omemo:1' para versiones de OMEMO desde `0.4.0`, y 'urn:xmpp:omemo:2' para versiones de OMEMO desde `0.8.0` (melvo)
 
-### Últimos Llamados
+### Last Call (Últimos Llamados)
 
-Las últimas llamadas se emiten una vez que todos parecen estar satisfechos con el estado actual de la XEP. Después de que el Consejo decida si la XEP parece estar lista, el XMPP Editor emite una Última Llamada para recibir comentarios. Los comentarios recogidos durante la última llamada ayudan a mejorar el XEP antes de devolverlo al Consejo para que lo pase a borrador.
+Los Last Call (Últimos Llamados) se emiten una vez que todos parecen estar satisfechos con el estado actual de la XEP. Después de que el Consejo decida si la XEP parece estar lista, el XMPP Editor emite una Última Llamada para recibir comentarios. Los comentarios recogidos durante el Last Call ayudan a mejorar el XEP antes de devolverlo al Consejo para que lo pase a borrador.
 
 - Último llamado para comentarios en [XEP-0424](https://xmpp.org/extensions/xep-0424.html) (Message Retraction)
 - Último llamado para comentarios en [XEP-0425](https://xmpp.org/extensions/xep-0425.html) (Message Moderation)
 
-### Estable (anteriormente conocido como Borrador)
+### Stable (Estable, anteriormente conocido como Draft/Borrador)
 
 Info: La XSF ha decidido cambiar el nombre de "Borrador" a "Estable". [Lee más sobre esto aquí.](https://github.com/xsf/xeps/pull/1100)
 
 - Ningún XEP avanzó a Estable este mes.
 
-### Obsoleto
+### Deprecated
 
 - [XEP-0256](https://xmpp.org/extensions/xep-0256.html) (Last Activity in Presence)
 
+### Obsoleted (Obsoleto)
+
 - [XEP-0443](https://xmpp.org/extensions/xep-0443.html) (XMPP Compliance Suites 2021)
 
-### Llamado a Experiencia
+### Call for Experience (Llamado a Experiencia)
 
-Un Llamado a Experiencia, al igual que los “Últimos Llamados”, es un llamamiento explícito a comentarios, pero en este caso se dirige principalmente a las personas que han implementado, e idealmente desplegado, la especificación. A continuación, el Consejo vota para pasarla a definitiva.
+Un Call for Experience (Llamado a Experiencia), al igual que los “Last Call”, es un llamamiento explícito a comentarios, pero en este caso se dirige principalmente a las personas que han implementado, e idealmente desplegado, la especificación. A continuación, el Consejo vota para pasarla a definitiva.
 
--   No hubo Llamados a Experiencia este mes.
+-   No hubo Call for Experience este mes.
 
 ## ¡Gracias a todos!
 
 Este boletín XMPP es producido en colaboración por la comunidad XMPP.
 
-Por ello, ¡Muchas gracias a Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, NicFab, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 por su apoyo y su ayuda en la creación, revisión y traducción!
+Por ello, ¡Muchas gracias a Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, NicFab, Sam Whited, daimonduff, TheCoffeMaker, vanitasvitae, wurstsalat3000 por su apoyo y su ayuda en la creación, revisión y traducción!
 
 ¡Muchas gracias a todos los colaboradores y a su continuo apoyo!
 
