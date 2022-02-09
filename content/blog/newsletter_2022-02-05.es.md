@@ -190,7 +190,7 @@ Un Call for Experience (Llamado a Experiencia), al igual que los “Last Call”
 
 Este boletín XMPP es producido en colaboración por la comunidad XMPP.
 
-Por ello, ¡Muchas gracias a Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, NicFab, Sam Whited, daimonduff, TheCoffeMaker, vanitasvitae, wurstsalat3000 por su apoyo y su ayuda en la creación, revisión y traducción!
+Por ello, ¡Muchas gracias a Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, Ludovic Bocquet, MattJ, mdosch, NicFab, Sam Whited, daimonduff, TheCoffeMaker, vanitasvitae, wurstsalat3000 por su apoyo y su ayuda en la creación, revisión y traducción!
 
 ¡Muchas gracias a todos los colaboradores y a su continuo apoyo!
 
