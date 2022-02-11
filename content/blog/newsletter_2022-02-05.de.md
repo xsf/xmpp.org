@@ -5,8 +5,6 @@ date: 2022-02-05
 categories: ['Newsletter']
 ---
 
-*Info: [Anoxinon e.V.](https://anoxinon.de/) publiziert die deutsche Übersetzung des unter der CC by-sa 4.0 Lizenz stehenden XMPP Newsletters für die XSF Foundation. Den [Originalartikel findest Du im Blog der XSF](https://xmpp.org/2022/02/the-xmpp-newsletter-december-2021-january-2022/). Übersetzung und Korrektur der dt. Version von Anoxinon e.V..*
-
 Willkommen zum XMPP-Newsletter für den Dezember 2021 und den Jaunar 2022!
 
 Wir hoffen, dass du bisher einen guten Übergang in das neue Jahr hattest und dich auf die neue Ausgabe freust! Wir denken, dass diese Ausgabe über die Neujahrsfeiertage einen gewissen Umfang angenommen hat.
@@ -14,8 +12,10 @@ Wir hoffen, dass du bisher einen guten Übergang in das neue Jahr hattest und di
 Viele Projekte und deren Bemühungen in der XMPP-Gemeinschaft sind das Ergebnis von Freiwilligenarbeit. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen!
 
 Ließ diesen Newsletter über unseren RSS-Feed:
-- [Das englische Original](https://xmpp.org/feeds/all.atom.xml)!
-- [Die deutsche Übersetzung bei Anoxinon e.V.](https://anoxinon.de/tags/xmpp-newsletter/index.xml)
+- Die französische Übersetzung erscheint unter [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+- Die italienische Übersetzung erscheint unter [NicFab.it](https://www.nicfab.it/)
+- Die deutsche Übersetzung erscheint weiterhin auch unter [anoxinon.de](https://www.anoxinon.de/blog/)
+- Die spanische Übersetzung erscheint auf die gleiche Weise wie die englische Originalversion, wähle dazu einfach [Spanisch in der oberen Leiste](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/).
 
 Bist du daran interessiert, das Newsletter-Team zu unterstützen? Ließ mehr am Ende des Artikels.
 
