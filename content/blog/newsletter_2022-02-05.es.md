@@ -5,6 +5,8 @@ date: 2022-02-05
 categories: ['Newsletter']
 ---
 
+_¡Este articulo fue traducido por TheCoffeMaker y Daimonduff de la comunidad XMPP!_
+
 ¡Bienvenido al boletín de noticias de XMMP para los meses de Diciembre de 2021 y Enero 2022!
 
 ¡Esperamos que estén teniendo un gran año, en lo que va de éste, y estamos felices de que estés leyendo esta publicación! Suponemos que este episodio ganó algo de peso después de las fiestas de fin de año :-)
