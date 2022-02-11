@@ -5,6 +5,8 @@ date: 2022-02-05
 categories: ['Newsletter']
 ---
 
+_Diese Ausgabe wurde von [Anoxinon e.V.](https://anoxinon.de/) aus der XMPP Community übersetzt._
+
 Willkommen zum XMPP-Newsletter für den Dezember 2021 und den Jaunar 2022!
 
 Wir hoffen, dass du bisher einen guten Übergang in das neue Jahr hattest und dich auf die neue Ausgabe freust! Wir denken, dass diese Ausgabe über die Neujahrsfeiertage einen gewissen Umfang angenommen hat.
