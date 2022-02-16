@@ -31,11 +31,13 @@ The fact:
 
 "Secure" is not an absolute. In order to decide whether XMPP is secure, you need to decide what you want to be secure against. No system that relies on servers is secure against for example a rogue administrator (end-to-end encryption can protect your message contents even against a rogue admin, but only if you verify keys appropriately). Instead, our specifications consistently remind developers of the risks of various choices. Plenty of XMPP extensions will certainly increase the risk for both for the users and for the administrator - including allowing registration and password changing via the protocol.
 
-Different deployment patterns radically alter the security, too. XMPP is designed by its nature to be highly flexible. This is why it is used by everything from computer games to military and nation states, and from telephone switchboards to the video game handhelds. Security that suits the military will rarely suit the average internet user, and vice-versa - XMPP strives to handle all of these, and it's certainly possible to configure a server to provide much worse security - or much better. That said, basic security is both encouraged and provided for; and this is most effective when using a server you trust. One way of trusting your server administrator is, of course, to be your own server administrator. This may sound obvious, but XMPP has from its outset ensured that this is always an option; even on low-budget.
+Different deployment patterns radically alter the security, too. XMPP is designed by its nature to be highly flexible. This is why it is used by everything from gamers to militaries and nation states, and from telephone switchboards to the video game handhelds. Security that suits the military will rarely suit the average internet user, and vice-versa - XMPP strives to handle all of these, and it's certainly possible to configure a server to provide much worse security - or much better. That said, basic security is both encouraged and provided for; and this is most effective when using a server you trust. One way of trusting your server administrator is, of course, to be your own server administrator. This may sound obvious, but XMPP has from its outset ensured that this is always an option; even on low-budget.
 
 Some messaging systems will expose less metadata. Some will ensure and enforce end to end encryption. Some will allow for federation, which inevitably increases the metadata involved. Others will sacrifice server-side message handling entirely, trading user-experience for reduced exposure. The system-specific issues raised will affect any messaging system to some degree - sometimes better, and sometimes worse.
 
 The community vision remains as it always has - that users are enabled to make their own choices about their client software, server software, and the people involved in both. We think XMPP enables exactly this.
+
+Finally, XMPP specifications usually contain a "Security Considerations" section where developers are made aware of the risks of various choices.
 
 ## XMPP is not privacy-friendly.
 
@@ -49,7 +51,7 @@ The fact:
 
 XMPP enables in most aspects privacy-friendly implementations and usage. But there are no absolutes here. By using XMPP - or any other system - you give access to your metadata to some degree. XMPP is certainly not the system with the least metadata available to an observer, especially an observer with access to your server. But no single server administrator can possibly see all the metadata you provide via your interactions.
 
-By federation XMPP provides the user with the ability to trust just one server administrator or even split trust over several servers using multiple accounts, and remote servers will only see metadata that concerns them.
+By allowing federation, XMPP provides the user with the ability to self-host their own server, to choose which server administrator to trust, or even to split trust over several servers by using multiple accounts. Remote servers from contacts will only see the relevant metadata that concerns them.
 
 ## The baseline is minimal, therefore XMPP is useless.
 
