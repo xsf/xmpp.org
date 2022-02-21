@@ -119,21 +119,21 @@
     },
     {
         "doap": null,
-        "last_renewed": "2022-02-14T00:00:00",
-        "name": "Chat-O-Matic",
-        "platforms": [
-            "Haiku"
-        ],
-        "url": "https://github.com/JadedCtrl/Chat-O-Matic"
-    },
-    {
-        "doap": null,
         "last_renewed": null,
         "name": "Candy",
         "platforms": [
             "Browser"
         ],
         "url": "https://candy-chat.github.io/candy/"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2022-02-14T00:00:00",
+        "name": "Chat-O-Matic",
+        "platforms": [
+            "Haiku"
+        ],
+        "url": "https://github.com/JadedCtrl/Chat-O-Matic"
     },
     {
         "doap": null,
