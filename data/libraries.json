@@ -787,15 +787,6 @@
         "url": "https://github.com/BirknerAlex/XMPPHP"
     },
     {
-        "doap": null,
-        "last_renewed": null,
-        "name": "xmpppy",
-        "platforms": [
-            "Python"
-        ],
-        "url": "http://xmpppy.sourceforge.net"
-    },
-    {
         "doap": "https://gitlab.com/xmpp-rs/xmpp-rs/-/raw/main/parsers/doap.xml",
         "last_renewed": "2022-02-18T21:35:00",
         "name": "xmpp-rs",
@@ -803,6 +794,15 @@
             "Rust"
         ],
         "url": "https://xmpp.rs"
+    },
+    {
+        "doap": null,
+        "last_renewed": null,
+        "name": "xmpppy",
+        "platforms": [
+            "Python"
+        ],
+        "url": "http://xmpppy.sourceforge.net"
     },
     {
         "doap": null,
