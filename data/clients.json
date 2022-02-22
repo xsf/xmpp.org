@@ -490,7 +490,7 @@
         "url": "https://poez.io/en/"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/profanity-im/profanity/master/profanity.doap",
         "last_renewed": "2021-09-23T09:16:50",
         "name": "Profanity",
         "platforms": [
