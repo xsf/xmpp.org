@@ -494,6 +494,7 @@
         "last_renewed": "2021-09-23T09:16:50",
         "name": "Profanity",
         "platforms": [
+            "BSD",
             "Linux",
             "macOS",
             "Windows"
