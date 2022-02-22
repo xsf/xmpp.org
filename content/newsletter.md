@@ -26,6 +26,8 @@ To add your article, news or event you have three ways to contribute. For each o
 
 The XMPP Newsletter is also available in other languages. If you would like to translate it into other languages, please get in touch with the [Communication Team](https://xmpp.org/about/xsf/comm-team.html). Currently the translations are published by these communities:
 
+* [Deutsch](https://xmpp.org/categories/newsletter/)
+* [Español](https://xmpp.org/categories/newsletter/)
 * [Français](https://news.jabberfr.org/category/newsletter/)
-* [Deutsch](https://anoxinon.de/blog/)
-* [Italian](https://www.nicfab.it/)
+* [Italiano](https://www.nicfab.it/)
+
