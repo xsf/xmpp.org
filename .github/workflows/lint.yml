@@ -1,0 +1,19 @@
+name: xmpp.org linting
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Current branch ${{ github.ref }} (repository ${{ github.repository }})"
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "${{ github.repository }} has been cloned to the runner."
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Software list linting
+        run: |
+          python tools/lint-list.py clients.json
+          python tools/lint-list.py servers.json
+          python tools/lint-list.py libraries.json
