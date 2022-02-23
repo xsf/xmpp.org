@@ -168,7 +168,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Last Call
 
-Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call help improving the XEP before returning it to the Council for advancement to Draft.
+Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call help improving the XEP before returning it to the Council for advancement to Stable.
 
 -   Last Call for comments on [XEP-0424](https://xmpp.org/extensions/xep-0424.html) (Message Retraction)
 -   Last Call for comments on [XEP-0425](https://xmpp.org/extensions/xep-0425.html) (Message Moderation)
