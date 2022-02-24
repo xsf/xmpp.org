@@ -1,0 +1,23 @@
+{{ range first 1 .Site.Taxonomies.categories.newsletter }}
+<article class="post-preview">
+    <a href="{{ .Permalink }}">
+        <h3 class="post-title">{{ .Title }}</h3>
+
+        {{ if .Params.subtitle }}
+        <h4 class="post-subtitle">
+            {{ .Params.subtitle }}
+        </h4>
+        {{ end }}
+    </a>
+
+    <p class="post-meta">
+        {{ partial "post_meta.html" . }}
+    </p>
+    <div class="post-entry">
+        <p>
+            {{ .Summary | plainify | htmlUnescape }}
+            <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+        </p>
+    </div>
+</article>
+{{ end }}
