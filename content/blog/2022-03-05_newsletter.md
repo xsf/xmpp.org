@@ -20,7 +20,7 @@ Other than that — enjoy reading!
 Translations of the XMPP Newsletter will be released here (with some delay):
 
 - The French translation appears at [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-- The German translation appears the same way as the English orginial, simply select ['Deutsch' in the top bar]
+- The German translation appears the same way as the English orginial, simply select ['Deutsch' in the top bar], but still also at [Anoxinon e.V.](https://anoxinon.de/blog/)
 - The Italian translation appears at [NicFab.it](https://www.nicfab.it/)
 - The Spanish translation appears the same way as the English orginial, simply select ['Español' in the top bar](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/)
 
@@ -54,20 +54,51 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
+JMP.chat [describes in their blog](http://blog.jmp.chat/b/2022-bidirectional-gateways) why gateways, and especially bidirectional gateways) with XMPP and other protocols, are so useful. [Their Newsletter](http://blog.jmp.chat/b/february-newsletter-2022) also announces the launch of worldwide calling and completion of their light rebrand.
+
+Erik Bärwaldt, from the German "Linux Magazin" did [evaluate instant messenger including Conversations for XMPP](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) [DE].
 
 ## Software news
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Dino 0.3 has been released](https://dino.im/blog/2022/02/dino-0.3-release/): Video calls and conferences - encrypted and peer-to-peer. Dino now supports calls between two or more people!
+
+[Gajim development news](https://gajim.org/post/2022-02-24-development-news-february/): February brought a unified Groupchat Details window, which offers all the configuration knobs you need. Also this month: less memory leaks and improved OMEMO QR codes.
+
+Monal had a [successful funding campaign](https://monal.im/blog/funding-campaign-mac-mini-for-faster-monal-development/) for a build server, which will significantly reduce build time. [Further insights into Monal development](https://monal.im/blog/insights-into-monal-development/): Monal will drop support for iOS 12 and 13, and for macOS Catalina. Monal's team is searching for a SwiftUI developer, and they need help with building a new and simplified website.
+
+Big news from Movim: [Movim 0.20 "Skiff"](https://mov.im/?node/pubsub.movim.eu/Movim/dd90cd1c-4bcd-45a5-88a3-220fd4280b21) has been released, which features OMEMO support, GUI improvements, and better group chat management.
+
+[Psi+ 1.5.1605](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released with OMEMO fixes.
+
+[Poezio 0.13.2 has been released](https://github.com/poezio/poezio/releases/tag/v0.13.2), this version only fixes the compatibility with the newly released slixmpp 1.8.0, but a much more interesting release is to come soon.
+
+Profanity wrote a [blog post](https://profanity-im.github.io/blog/post/profanity-on-pinephone/) on how to run the client on the Pinephone.
+
+Tigase released [BeagleIM 5.1](https://github.com/tigase/beagle-im/releases/tag/5.1) and [SiskinIM 7.1](https://github.com/tigase/siskin-im/releases/tag/7.1) with improved OMEMO support.
 
 ## Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Jackal 0.57.0](https://github.com/ortuman/jackal/releases/tag/v0.57.0), an XMPP server written in Go has been released.
+
+Openfire announces the release of [Openfire 4.7.1](https://discourse.igniterealtime.org/t/openfire-4-7-1-released/91365): Notable fixes include security updates to bundled database drivers, logging configuration fixes, and an important fix for users experiencing troubles with users getting booted from group chat rooms. Furthermore, [Openfire Pàdé 1.6.1](https://discourse.igniterealtime.org/t/openfire-pade-1-6-1-released/91366) has been released. [REST API Openfire plugin 1.7.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-7-1-released/91358) hase been released, too.
+
+[Tigase XMPP Server 8.2.0](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released.
+
+Snikkket TBA
 
 ## Libraries
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+Mellium Co-op has released [v0.21.0](https://pkg.go.dev/mellium.im/xmpp@v0.21.0) and [v0.21.1](https://pkg.go.dev/mellium.im/xmpp@v0.21.1) of the [melium.im/xmpp](https://mellium.im/xmpp/) library for Go! Highlights for this release include basic support for 
+PubSub and PEP as well as In-Band Bytestreams. More information can be found in the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-0). Version 0.21.1 fixes a security issue that was discovered in the 
+websocket package and should be preferred when updating. For more information see [CVE-2022-24968](https://mellium.im/cve/cve-2022-24968/). [Mellium Dev Communiqué](https://opencollective.com/mellium/updates/dev-communique-for-february-2022):
+This month saw the release of several new packages including an integration testing package for slixmpp, support for PEP Native 
+Bookmarks, better support for various cryptographic hashes, and support for entity capabilities.
+
+[Slixmpp 1.8.0](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.0) has been released, which adds compatibility with python 3.10, as well as a lot of improvements related to typing and async under the hood.
+
+Tigase had several releases for their products: [Halcyon 0.0.17](https://github.com/tigase/halcyon/releases/tag/v0.0.17), [JaXMPP 3.5.0](https://github.com/tigase/jaxmpp/releases/tag/3.5.0), [Tigase Swift 3.1.0](https://github.com/tigase/tigase-swift/releases/tag/3.1.0), and [Tigase Swift-OMEMO 2.1.0](https://github.com/tigase/tigase-swift-omemo/releases/tag/2.1.0).
 
 ## Extensions and specifications
 
@@ -134,7 +165,7 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 
 This XMPP Newsletter is produced collaboratively by the XMPP community.
 
-Therefore many thanks to [CONTRIBUTORS] for their support and help in creation, review and translation!
+Therefore many thanks to emus, Ludovic Bocquet, Sam Whited, singpolyma, wurstsalat for their support and help in creation, review and translation!
 
 Many thanks to all contributors and their continuous support!
 
