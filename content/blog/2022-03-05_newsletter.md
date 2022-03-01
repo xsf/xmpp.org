@@ -84,6 +84,8 @@ Tigase released [BeagleIM 5.1](https://github.com/tigase/beagle-im/releases/tag/
 
 Openfire announces the release of [Openfire 4.7.1](https://discourse.igniterealtime.org/t/openfire-4-7-1-released/91365): Notable fixes include security updates to bundled database drivers, logging configuration fixes, and an important fix for users experiencing troubles with users getting booted from group chat rooms. Furthermore, [Openfire Pàdé 1.6.1](https://discourse.igniterealtime.org/t/openfire-pade-1-6-1-released/91366) has been released. [REST API Openfire plugin 1.7.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-7-1-released/91358) hase been released, too.
 
+Snikket published an important update for users of their [server software on ARM devices, including Raspberry Pi boards](https://snikket.org/blog/server-updates-for-arm/).
+
 [Tigase XMPP Server 8.2.0](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released.
 
 Snikkket TBA
