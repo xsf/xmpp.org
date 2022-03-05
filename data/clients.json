@@ -502,7 +502,7 @@
         "url": "https://profanity-im.github.io/"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi",
         "platforms": [
@@ -514,7 +514,7 @@
         "url": "https://psi-im.org/"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi+",
         "platforms": [
