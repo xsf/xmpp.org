@@ -51,7 +51,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### Clients and applications
 
-[Dino 0.3 has been released](https://dino.im/blog/2022/02/dino-0.3-release/): Video calls and conferences - encrypted and peer-to-peer. Dino now supports calls between two or more people!
+[Dino `0.3` has been released](https://dino.im/blog/2022/02/dino-0.3-release/): Video calls and conferences - encrypted and peer-to-peer. Dino now supports calls between two or more people!
 
 ![Dino calls](/images/newsletter/2022-02-05/dino_conference_call.png "Dino calls")
 
@@ -59,36 +59,36 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 Monal had a [successful funding campaign](https://monal.im/blog/funding-campaign-mac-mini-for-faster-monal-development/) for a build server, which will significantly reduce build time. [Further insights into Monal development](https://monal.im/blog/insights-into-monal-development/): Monal will drop support for iOS 12 and 13, and for macOS Catalina. Monal's team is searching for a SwiftUI developer, and they need help with building a new and simplified website.
 
-Big news from Movim: [Movim 0.20 "Skiff"](https://mov.im/?node/pubsub.movim.eu/Movim/dd90cd1c-4bcd-45a5-88a3-220fd4280b21) has been released, which features OMEMO support, GUI improvements, and better group chat management.
+Big news from Movim: [Movim `0.20` "Skiff"](https://mov.im/?node/pubsub.movim.eu/Movim/dd90cd1c-4bcd-45a5-88a3-220fd4280b21) has been released, which features OMEMO support, GUI improvements, and better group chat management.
 
 ![Movim GUI update](/images/newsletter/2022-02-05/movim_publish.png "Movim GUI update")
 
-[Psi+ 1.5.1605](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released with OMEMO fixes.
+[Psi+ `1.5.1605`](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released with OMEMO fixes.
 
-[Poezio 0.13.2 has been released](https://github.com/poezio/poezio/releases/tag/v0.13.2), this version only fixes the compatibility with the newly released slixmpp 1.8.0, but a much more interesting release is to come soon.
+[Poezio `0.13.2` has been released](https://github.com/poezio/poezio/releases/tag/v0.13.2), this version only fixes the compatibility with the newly released slixmpp `1.8.0`, but a much more interesting release is to come soon.
 
 Profanity developers wrote a [blog post](https://profanity-im.github.io/blog/post/profanity-on-pinephone/) on how to run their client on Pinephones.
 
-Tigase released [BeagleIM 5.1](https://github.com/tigase/beagle-im/releases/tag/5.1) and [SiskinIM 7.1](https://github.com/tigase/siskin-im/releases/tag/7.1) featuring improved OMEMO support.
+Tigase released [BeagleIM `5.1`](https://github.com/tigase/beagle-im/releases/tag/5.1) and [SiskinIM `7.1`](https://github.com/tigase/siskin-im/releases/tag/7.1) featuring improved OMEMO support.
 
 ## Servers
 
-[Jackal 0.57.0](https://github.com/ortuman/jackal/releases/tag/v0.57.0), an XMPP server written in Go has been released.
+[Jackal `0.57.0`](https://github.com/ortuman/jackal/releases/tag/v0.57.0), an XMPP server written in Go has been released.
 
-Openfire announces the release of [Openfire 4.7.1](https://discourse.igniterealtime.org/t/openfire-4-7-1-released/91365): Notable fixes include security updates to bundled database drivers, logging configuration fixes, and an important fix for users experiencing troubles with users getting booted from group chat rooms. Furthermore, [Openfire Pàdé 1.6.1](https://discourse.igniterealtime.org/t/openfire-pade-1-6-1-released/91366) has been released. [REST API Openfire plugin 1.7.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-7-1-released/91358) hase been released, too.
+Openfire announces the release of [Openfire `4.7.1`](https://discourse.igniterealtime.org/t/openfire-4-7-1-released/91365): Notable fixes include security updates to bundled database drivers, logging configuration fixes, and an important fix for users experiencing troubles with users getting booted from group chat rooms. Furthermore, [Openfire Pàdé `1.6.1`](https://discourse.igniterealtime.org/t/openfire-pade-1-6-1-released/91366) has been released. [REST API Openfire plugin `1.7.1`](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-7-1-released/91358) hase been released, too.
 
 Snikket published an important update for users of their [server software on ARM devices, including Raspberry Pi boards](https://snikket.org/blog/server-updates-for-arm/).
 
-[Tigase XMPP Server 8.2.0](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released.
+[Tigase XMPP Server `8.2.0`](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released.
 
 ## Libraries
 
-Mellium Co-op has released [v0.21.0](https://pkg.go.dev/mellium.im/xmpp@v0.21.0) and [v0.21.1](https://pkg.go.dev/mellium.im/xmpp@v0.21.1) of the [melium.im/xmpp](https://mellium.im/xmpp/) library for Go! Highlights for this release include basic support for 
+Mellium Co-op has released [`v0.21.0`](https://pkg.go.dev/mellium.im/xmpp@v0.21.0) and [`v0.21.1`](https://pkg.go.dev/mellium.im/xmpp@v0.21.1) of the [melium.im/xmpp](https://mellium.im/xmpp/) library for Go! Highlights for this release include basic support for 
 PubSub and PEP as well as In-Band Bytestreams. More information can be found in the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-0). Version 0.21.1 fixes a security issue that was discovered in the websocket package and should be preferred when updating. For more information see [CVE-2022-24968](https://mellium.im/cve/cve-2022-24968/).
 
-[Slixmpp 1.8.0](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.0) has been released, which adds compatibility with python 3.10, as well as a lot of improvements related to typing and async under the hood.
+[Slixmpp `1.8.0`](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.0) has been released, which adds compatibility with python 3.10, as well as a lot of improvements related to typing and async under the hood.
 
-Tigase had several releases for their products: [Halcyon 0.0.17](https://github.com/tigase/halcyon/releases/tag/v0.0.17), [JaXMPP 3.5.0](https://github.com/tigase/jaxmpp/releases/tag/3.5.0), [Tigase Swift 3.1.0](https://github.com/tigase/tigase-swift/releases/tag/3.1.0), and [Tigase Swift-OMEMO 2.1.0](https://github.com/tigase/tigase-swift-omemo/releases/tag/2.1.0).
+Tigase had several releases for their products: [Halcyon `0.0.17`](https://github.com/tigase/halcyon/releases/tag/v0.0.17), [JaXMPP `3.5.0`](https://github.com/tigase/jaxmpp/releases/tag/3.5.0), [Tigase Swift `3.1.0`](https://github.com/tigase/tigase-swift/releases/tag/3.1.0), and [Tigase Swift-OMEMO `2.1.0`](https://github.com/tigase/tigase-swift-omemo/releases/tag/2.1.0).
 
 ## Extensions and specifications
 
@@ -116,17 +116,17 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 2.13.0 of [XEP-0004](https://xmpp.org/extensions/xep-0004.html) (Data Forms)
+-   Version `2.13.0` of [XEP-0004](https://xmpp.org/extensions/xep-0004.html) (Data Forms)
     -   Add incomplete submission form handling (melvo)
 
--   Version 1.24.1 of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
+-   Version `1.24.1` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
     -   Add hint for processing incomplete submission forms (melvo)
 
--   Version 1.24.0 of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
+-   Version `1.24.0` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
     -   Advertise support for publishing items
     -   Replace 'allow' with 'allows' (melvo)
 
--   Version 1.23.0 of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
+-   Version `1.23.0` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
     -   Clarify (redefine) pubsub#type field. (edhelas, pep)
 
 ### Last Call
