@@ -23,7 +23,7 @@ This is a community effort, and we would like to thank translators for their con
 ![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
 
 - The XSF is planning to participate in [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/). If you are interested in participating as a student, mentor or as a project in general, please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022).
-- All XSF members are called to vote in the currently on-going member applications.
+- All XSF members are called to vote in the currently on-going [member applications](https://wiki.xmpp.org/web/Membership_Applications_Q1_2022).
 
 ## XSF fiscal hosting projects
 
@@ -37,14 +37,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 
-## Videos
-
-
 ## Articles
 
-- JMP.chat [describes in their blog](http://blog.jmp.chat/b/2022-bidirectional-gateways) why gateways, and especially bidirectional gateways) with XMPP and other protocols, are so useful. [Their Newsletter](http://blog.jmp.chat/b/february-newsletter-2022) also announces the launch of worldwide calling and completion of their light rebrand.
+- JMP.chat [describes in their blog](http://blog.jmp.chat/b/2022-bidirectional-gateways) why gateways, and especially bidirectional gateways, with XMPP and other protocols, are so useful. [Their Newsletter](http://blog.jmp.chat/b/february-newsletter-2022) also announces the launch of worldwide calling and completion of their rebrand.
 
-- Erik Bärwaldt, from the German "Linux Magazin" did [evaluate instant messenger including Conversations for XMPP](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) [DE].
+- Erik Bärwaldt, from the German "Linux Magazin" [evaluated instant messengers including Conversations for XMPP](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) [DE].
 
 ## Software news
 
@@ -52,7 +49,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 [Dino 0.3 has been released](https://dino.im/blog/2022/02/dino-0.3-release/): Video calls and conferences - encrypted and peer-to-peer. Dino now supports calls between two or more people!
 
-[Gajim development news](https://gajim.org/post/2022-02-24-development-news-february/): February brought a unified Groupchat Details window, which offers all the configuration knobs you need. Also this month: less memory leaks and improved OMEMO QR codes.
+[Gajim development news](https://gajim.org/post/2022-02-24-development-news-february/): February brought a unified group chat details window, which offers all the configuration knobs you need. Also this month: less memory leaks and improved OMEMO QR codes.
 
 Monal had a [successful funding campaign](https://monal.im/blog/funding-campaign-mac-mini-for-faster-monal-development/) for a build server, which will significantly reduce build time. [Further insights into Monal development](https://monal.im/blog/insights-into-monal-development/): Monal will drop support for iOS 12 and 13, and for macOS Catalina. Monal's team is searching for a SwiftUI developer, and they need help with building a new and simplified website.
 
@@ -80,9 +77,7 @@ Snikket published an important update for users of their [server software on ARM
 
 Mellium Co-op has released [v0.21.0](https://pkg.go.dev/mellium.im/xmpp@v0.21.0) and [v0.21.1](https://pkg.go.dev/mellium.im/xmpp@v0.21.1) of the [melium.im/xmpp](https://mellium.im/xmpp/) library for Go! Highlights for this release include basic support for 
 PubSub and PEP as well as In-Band Bytestreams. More information can be found in the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-0). Version 0.21.1 fixes a security issue that was discovered in the 
-websocket package and should be preferred when updating. For more information see [CVE-2022-24968](https://mellium.im/cve/cve-2022-24968/). [Mellium Dev Communiqué](https://opencollective.com/mellium/updates/dev-communique-for-february-2022):
-This month saw the release of several new packages including an integration testing package for slixmpp, support for PEP Native 
-Bookmarks, better support for various cryptographic hashes, and support for entity capabilities.
+websocket package and should be preferred when updating. For more information see [CVE-2022-24968](https://mellium.im/cve/cve-2022-24968/).
 
 [Slixmpp 1.8.0](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.0) has been released, which adds compatibility with python 3.10, as well as a lot of improvements related to typing and async under the hood.
 
