@@ -43,6 +43,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - Erik Bärwaldt, from the German "Linux Magazin" [evaluated instant messengers including Conversations for XMPP](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/) [DE].
 
+- [Mellium Dev Communiqué](https://opencollective.com/mellium/updates/dev-communique-for-february-2022): This month saw the release of several new packages including integration testing for Slixmpp, support for PEP Native Bookmarks, better support for various cryptographic hashes, and support for entity capabilities.
+
 ## Software news
 
 ### Clients and applications
