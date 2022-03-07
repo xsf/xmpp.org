@@ -42,7 +42,7 @@
         "url": "https://astrachat.com"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/tigase/beagle-im/master/beagle-im.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "BeagleIM by Tigase, Inc.",
         "platforms": [
@@ -594,7 +594,7 @@
         "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/tigase/siskin-im/master/siskin-im.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "SiskinIM by Tigase, Inc.",
         "platforms": [
