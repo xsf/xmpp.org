@@ -252,7 +252,7 @@
         "url": "http://siemens-enterprise.com"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/tigase/tigase-server/master/tigase-server.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase XMPP Server",
         "platforms": [
