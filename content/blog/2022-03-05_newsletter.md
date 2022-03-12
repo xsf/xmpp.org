@@ -101,7 +101,7 @@ The XEP development process starts by writing up an idea and submitting it to th
 -   [PubSub Type Filtering](https://xmpp.org/extensions/inbox/pubsub-filter.html)
     -   This specification provides a way to filter PubSub nodes in a disco query.
 
--   [MUC Affiliations Versioning](https://xmpp.org/extensions/inbox/muc-affiliations)
+-   [MUC Affiliations Versioning](https://xmpp.org/extensions/inbox/muc-affiliations-versioning.html)
     -   This specification provides a way to reduce the amount of queries necessary to stay up-to-date with affiliations in a MUC room.
 
 ### New
