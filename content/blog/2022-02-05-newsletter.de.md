@@ -13,12 +13,6 @@ Wir hoffen, dass du bisher einen guten Übergang in das neue Jahr hattest und di
 
 Viele Projekte und deren Bemühungen in der XMPP-Gemeinschaft sind das Ergebnis von Freiwilligenarbeit. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen!
 
-Ließ diesen Newsletter über unseren RSS-Feed:
-- Die französische Übersetzung erscheint unter [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-- Die italienische Übersetzung erscheint unter [NicFab.it](https://www.nicfab.it/)
-- Die deutsche Übersetzung erscheint weiterhin auch unter [anoxinon.de](https://www.anoxinon.de/blog/)
-- Die spanische Übersetzung erscheint auf die gleiche Weise wie die englische Originalversion, wähle dazu einfach [Spanisch in der oberen Leiste](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/).
-
 Bist du daran interessiert, das Newsletter-Team zu unterstützen? Ließ mehr am Ende des Artikels.
 
 Abseits davon - viel Spaß beim Lesen!
@@ -28,11 +22,9 @@ Abseits davon - viel Spaß beim Lesen!
 Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
 
 - Die französische Übersetzung erscheint auf [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-- Die deutsche Übersetzung erscheint auf [anoxinon.de](https://anoxinon.de/blog/)
+- Die deutsche Übersetzung erscheint auch auf [anoxinon.de](https://anoxinon.de/blog/)
 - Die italienische Übersetzung erscheint auf [NicFab.it](https://www.nicfab.it/)
 - Die spanische Übersetzung erscheint äquivalent zum englischen Original, wähle einfach [Spanisch in der oberen Leiste des Originalartikels](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/)
-
-Vielen Dank an die Übersetzenden und deren Arbeit! Das leistet eine klasse Hilfe dabei, die Neuigkeiten verfügbar zu machen! Bitte schließe dich deren Arbeit an oder starte neu mit einer weiteren Sprache!
 
 ## XSF Ankündigungen
 
