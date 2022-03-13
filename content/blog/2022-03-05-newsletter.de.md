@@ -9,13 +9,9 @@ _Diese Ausgabe wurde von [Anoxinon e.V.](https://anoxinon.de/) aus der XMPP Comm
 
 Willkommen zum XMPP-Newsletter für den Februar 2022!
 
-Wir hoffen, dass du bisher einen guten Übergang in das neue Jahr hattest und dich auf die neue Ausgabe freust! Wir denken, dass diese Ausgabe über die Neujahrsfeiertage einen gewissen Umfang angenommen hat.
-
 Viele Projekte und deren Bemühungen in der XMPP-Gemeinschaft sind das Ergebnis von Freiwilligenarbeit. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen!
 
 Bist du daran interessiert, das Newsletter-Team zu unterstützen? Ließ mehr am Ende des Artikels.
-
-Abseits davon - viel Spaß beim Lesen!
 
 ### Übersetzungen des Newsletters
 
@@ -24,11 +20,11 @@ Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffe
 - Die französische Übersetzung erscheint auf [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - Die deutsche Übersetzung erscheint auch auf [anoxinon.de](https://anoxinon.de/blog/)
 - Die italienische Übersetzung erscheint auf [NicFab.it](https://www.nicfab.it/)
-- Die spanische Übersetzung erscheint äquivalent zum englischen Original, wähle einfach [Spanisch in der oberen Leiste des Originalartikels](https://xmpp.org/2022/12/ES/newsletter-dec21-jan22/)
+- Die spanische Übersetzung erscheint äquivalent zum englischen Original, wähle einfach [Spanisch in der oberen Leiste des Originalartikels](https://xmpp.org/es/2022/03/the-xmpp-newsletter-february-2022/)
 
 ## XSF Ankündigungen
 
-![XSF und Google Summer of Code 2022](/img/blog/xmpp_newsletter_dezember_2021_januar_2022/GSoC_2022_Logo.png "XSF und Google Summer of Code 2022")
+![XSF und Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF und Google Summer of Code 2022")
 
 - Die XSF plant am [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/) [EN] teilzunehmen. Wenn du an einer Teilnahme als Student:in interessiert bist oder auch als Mentor:in oder eigenständiges Projekt, dann [eränze deine Ideen und nimmt mit uns Kontakt auf](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022) [EN]!
 - Alle XSF-Mitglieder werden aufgerufen in den aktuell stattfindenden [Mitgliederbewerbungen](https://wiki.xmpp.org/web/Membership_Applications_Q1_2022) [EN] abzustimmen.
@@ -49,7 +45,7 @@ The XSF bietet nun [fiscal hosting](https://xmpp.org/community/fiscalhost/) [EN]
 
 - JMP.chat beschreibt [in deren Blog](http://blog.jmp.chat/b/2022-bidirectional-gateways) [EN] warum Gateways, speziell bidirektionale Gateways zwischen XMPP und anderen Protokollen so nützlich sind. [Deren Newsletter](http://blog.jmp.chat/b/february-newsletter-2022) [EN] kündigt auch den Start von weltweiten Anrufen an, sowie die Fertigstellung derer Umgestaltung.
 
-![JMP.chat bidirektionale Gateways](/img/blog/xmpp_newsletter_februar_2022/JMP_bidirectional.png "JMP.chat bidirektionale Gateways")
+![JMP.chat bidirektionale Gateways](/images/newsletter/2022-02-05/JMP_bidirectional.png "JMP.chat bidirektionale Gateways")
 
 - Erik Bärwaldt, vom "Linux Magazin" [hat Instant Messenger, einschließlich Conversations für XMPP, evaluiert](https://www.linux-magazin.de/ausgaben/2022/02/bitparade/).
 
@@ -61,7 +57,7 @@ The XSF bietet nun [fiscal hosting](https://xmpp.org/community/fiscalhost/) [EN]
 
 [Dino `0.3` ist erschienen](https://dino.im/blog/2022/02/dino-0.3-release/) [EN]: Videotelefonie - Ende-zu-Ende-verschlüsselt und Peer-zu-Peer. Dino unterstützt nun Anrufe zwischen mehr als zwei Personen!
 
-![Dino Anrufe](/img/blog/xmpp_newsletter_februar_2022/dino_conference_call.png "Dino Anrufe")
+![Dino Anrufe](/images/newsletter/2022-02-05/dino_conference_call.png "Dino Anrufe")
 
 [Gajim Neuigkeiten aus der Entwicklung](https://gajim.org/de/post/2022-02-24-development-news-february/): Der Februar brachte ein einheitliches Fester für Gruppenchatsdetails, welches all die Konfigurationsknöpfe bietet, die du benötigst. Ebenfalls in diesem Monat: Weniger Speicherlecks und verbesserte OMEMO QR-Codes.
 
@@ -69,7 +65,7 @@ Monal hatte eine [erfolgreiche Förderkampagne](https://monal.im/blog/funding-ca
 
 Große Neuigkeiten von Movim: [Movim `0.20` "Skiff"](https://mov.im/?node/pubsub.movim.eu/Movim/dd90cd1c-4bcd-45a5-88a3-220fd4280b21) [EN] ist erschienen, welches OMEMO-Unterstützung, Verbesserungen der grafischen Oberfläche und besseres Gruppenchatmanagement mit sich bringt.
 
-![Aktualisierung der grafischen Oberfläche vom Movim](/img/blog/xmpp_newsletter_februar_2022/movim_publish.png "Aktualisierung der grafischen Oberfläche vom Movim")
+![Aktualisierung der grafischen Oberfläche vom Movim](/images/newsletter/2022-02-05/movim_publish.png "Aktualisierung der grafischen Oberfläche vom Movim")
 
 [Psi+ `1.5.1605`](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) [EN] wurde mit einigen OMEMO-Fehlerbehebungen veröffentlicht.
 
