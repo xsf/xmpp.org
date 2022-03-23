@@ -24,9 +24,9 @@ def clean():
 
 def build():
     local('python ./tools/prepare_xep_list.py')
-    local('python ./tools/lint-list.py clients.json')
-    local('python ./tools/lint-list.py servers.json')
-    local('python ./tools/lint-list.py libraries.json')
+    local('python ./tools/lint_list.py clients.json')
+    local('python ./tools/lint_list.py servers.json')
+    local('python ./tools/lint_list.py libraries.json')
     local('hugo')
 
 

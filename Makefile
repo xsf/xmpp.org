@@ -62,9 +62,9 @@ prepare_docker:
 publish:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
-	$(PY) $(TOOLSDIR)/lint-list.py clients.json
-	$(PY) $(TOOLSDIR)/lint-list.py servers.json
-	$(PY) $(TOOLSDIR)/lint-list.py libraries.json
+	$(PY) $(TOOLSDIR)/lint_list.py clients.json
+	$(PY) $(TOOLSDIR)/lint_list.py servers.json
+	$(PY) $(TOOLSDIR)/lint_list.py libraries.json
 	$(HUGO) version
 	$(HUGO)
 

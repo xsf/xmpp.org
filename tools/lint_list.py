@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
+'''
+Lint {clients,servers,libraries}.json
+'''
+from typing import Any
+from typing import Optional
+
 import json
 import os.path
 import sys
 
-from datetime import datetime, timedelta
+from datetime import datetime
+from datetime import timedelta
 
 
 VALID_ENTRY_KEYS = {
@@ -15,21 +22,20 @@ VALID_ENTRY_KEYS = {
 }
 
 
-def emit_violation(entry_name, message, *, warning=False):
+def emit_violation(entry_name: str,
+                   message: str,
+                   warning: bool = False
+                   ) -> None:
+    '''Prints warnings and errors'''
     prefix = "WARN" if warning else "ERROR"
-    print(
-        "{}: entry {!r}: {}".format(
-            prefix,
-            entry_name,
-            message,
-        ),
-        file=sys.stderr,
-    )
+    print(f"{prefix}: entry {entry_name!r}: {message}", file=sys.stderr)
 
 
-def check_entries(entries,
-                  allowed_platforms=None,
-                  show_warnings=False):
+def check_entries(entries: dict[str, Any],
+                  allowed_platforms: Optional[set[str]] = None,
+                  show_warnings: bool = False
+                  ) -> int:
+    '''Checks entries for violations and returns their count'''
     violations = 0
     previous_name = None
     previous_key = None
@@ -38,10 +44,8 @@ def check_entries(entries,
         if previous_key is not None and previous_key > key:
             emit_violation(
                 entry["name"],
-                "should be placed in front of {!r} (all entries must be "
-                "ordered alphabetically by case-folded name)".format(
-                    previous_name
-                )
+                f"should be placed in front of {previous_name!r} (all entries must be "
+                f"ordered alphabetically by case-folded name)"
             )
             violations += 1
 
@@ -52,72 +56,65 @@ def check_entries(entries,
         if unknown:
             emit_violation(
                 entry["name"],
-                "has unknown keys: {}".format(
-                    ", ".join(map(repr, unknown))
-                )
+                f"has unknown keys: {', '.join(map(repr, unknown))}"
             )
             violations += 1
 
         if missing:
             emit_violation(
                 entry["name"],
-                "misses the following required properties: {} "
-                "(see other entries for a reference)".format(
-                    ", ".join(map(repr, missing))
-                )
+                f"misses the following required properties: "
+                f"{', '.join(map(repr, missing))} "
+                f"(see other entries for a reference)"
             )
             violations += 1
 
         if entry.get("last_renewed") is not None:
             try:
-                dt = datetime.strptime(entry["last_renewed"],
-                                       "%Y-%m-%dT%H:%M:%S")
+                renewal_date = datetime.strptime(entry["last_renewed"],
+                                                 "%Y-%m-%dT%H:%M:%S")
             except ValueError:
                 emit_violation(
                     entry["name"],
-                    "malformed renewal timestamp: {!r} "
-                    "(format is YYYY-MM-DDThh:mm:ss)".format(
-                        entry["last_renewed"],
-                    )
+                    f"malformed renewal timestamp: {entry['last_renewed']!r} "
+                    f"(format is YYYY-MM-DDThh:mm:ss)"
                 )
                 violations += 1
             else:
                 now = datetime.utcnow()
                 # Add a time margin of 30 days in the future in order to
                 # let maintainers update entries before they expire.
-                if dt - now > timedelta(days=30):
+                if renewal_date - now > timedelta(days=30):
                     emit_violation(
                         entry["name"],
                         "renewal date must not be in the future",
                     )
                     violations += 1
 
-        platforms = entry.get("platforms", [])
+        supported_platforms = entry.get("platforms", [])
 
         if allowed_platforms is not None:
             is_severe = entry.get("last_renewed") is not None
-            unknown = set(platforms) - allowed_platforms
+            unknown = set(supported_platforms) - allowed_platforms
             if unknown and (is_severe or show_warnings):
                 emit_violation(
                     entry["name"],
-                    "undefined platforms: {} "
-                    "(the allowed platforms are listed in platforms.json. If"
-                    " you think a platform is missing add it and mention it "
-                    "in your Pull Request)".format(
-                        ", ".join(map(repr, unknown)),
-                    ),
+                    f"undefined platforms: {', '.join(map(repr, unknown))} "
+                    f"(the allowed platforms are listed in platforms.json. If"
+                    f" you think a platform is missing add it and mention it "
+                    f"in your Pull Request)",
                     warning=not is_severe
                 )
                 violations += is_severe
 
-        sorted_platforms = sorted(platforms, key=lambda x: x.casefold())
-        if sorted_platforms != platforms:
+        sorted_platforms = sorted(supported_platforms,
+                                  key=lambda x: x.casefold())
+        if sorted_platforms != supported_platforms:
             emit_violation(
                 entry["name"],
-                "platform order must be: {} "
-                "(platforms must be ordered alphabetically)".format(
-                    ", ".join(map(repr, sorted_platforms))
-                )
+                f"platform order must be: "
+                f"{', '.join(map(repr, sorted_platforms))} "
+                f"(platforms must be ordered alphabetically)"
             )
             violations += 1
 
@@ -145,25 +142,24 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
-    input_file = os.path.join(base_path, "../data/{}".format(args.which))
+    input_file = os.path.join(base_path, f"../data/{args.which}")
     platforms_file = os.path.join(base_path, "../data/platforms.json")
 
-    with open(input_file, "r") as f:
-        data = json.load(f)
+    with open(input_file, "rb") as data_file:
+        data = json.load(data_file)
 
     if args.which in ["clients.json", "servers.json"]:
-        with open(platforms_file, "r") as f:
-            platforms = set(json.load(f))
+        with open(platforms_file, "rb") as plattforms_file:
+            platforms = set(json.load(plattforms_file))
     else:
         platforms = None
 
-    violations = check_entries(
+    violations_count = check_entries(
         data,
         allowed_platforms=platforms,
         show_warnings=args.warnings,
     )
-    if violations:
-        print("Found {} severe violations. "
-              "Please fix them.".format(violations),
+    if violations_count:
+        print(f"Found {violations_count} severe violations. Please fix them.",
               file=sys.stderr)
         sys.exit(1)

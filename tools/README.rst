@@ -38,7 +38,7 @@ The tool will ask for confirmation::
    }
   is this okay? [y/n]
 
-After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
+After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint_list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Updating information
@@ -83,7 +83,7 @@ Do not set ``--no-ask`` and always be sure to review that your changes do what y
 
 If you do not know how to spell your project correctly, leave out the ``NAME`` argument; the tool will list the project it knows.
 
-Do not forget to **validate** that your entry is correct using the ``./lint-list.py`` on the respective JSON file and then make a Pull Request on GitHub.
+Do not forget to **validate** that your entry is correct using the ``./lint_list.py`` on the respective JSON file and then make a Pull Request on GitHub.
 
 
 Add a new entry
@@ -103,7 +103,7 @@ There is no tooling for that. Add the following template to the respective ``jso
 
 Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a renewal (this will sort the list correctly to minimize future diffs).
 
-**If you do not use the tool**, make sure that you set the ``last_renewed`` key manually to the current date (as seen in other entries) in UTC and adhere to the sorting requirements of the JSON file. You can use the ``lint-list.py`` tool to verify that everything is in order. If ``lint-list.py`` complains, the Travis  CI will reject your Pull Request.
+**If you do not use the tool**, make sure that you set the ``last_renewed`` key manually to the current date (as seen in other entries) in UTC and adhere to the sorting requirements of the JSON file. You can use the ``lint_list.py`` tool to verify that everything is in order. If ``lint_list.py`` complains, the Travis  CI will reject your Pull Request.
 
 Finally, create a Pull Request.
 
@@ -113,14 +113,14 @@ may result in the failure of the validation procedure, which will cause the pull
 Remove an existing entry
 ========================
 
-Simply drop the corresponding JSON Object from the array and make a PR. Use the ``./lint-list.py`` tool to ensure that the syntax is still valid.
+Simply drop the corresponding JSON Object from the array and make a PR. Use the ``./lint_list.py`` tool to ensure that the syntax is still valid.
 
 
 Validating Entries
 ==================
 
-To validate that the list contents are okay, use the ``lint-list.py`` tool::
+To validate that the list contents are okay, use the ``lint_list.py`` tool::
 
-  ./lint-list.py clients.json
+  ./lint_list.py clients.json
 
 Note: The tool can only be used on the three lists and does not require any path to the list.
