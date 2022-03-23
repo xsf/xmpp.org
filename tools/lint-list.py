@@ -83,9 +83,9 @@ def check_entries(entries,
                 violations += 1
             else:
                 now = datetime.utcnow()
-                # some slack, we don’t know how accurate travis
-                # clock is and also timezone stuff
-                if dt - now > timedelta(hours=24):
+                # Add a time margin of 30 days in the future in order to
+                # let maintainers update entries before they expire.
+                if dt - now > timedelta(days=30):
                     emit_violation(
                         entry["name"],
                         "renewal date must not be in the future",
