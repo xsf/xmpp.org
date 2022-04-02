@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter March 2022
-author: emus
+author: XMPP Communication Team and Contributors
 date: 2022-04-05
 categories: ['Newsletter']
 ---
@@ -22,8 +22,8 @@ This is a community effort, and we would like to thank translators for their con
 
 ![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
 
-- The XSF is planning to participate in [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/). If you are interested in participating as a student, mentor or as a project in general, please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022).
-- All XSF members are called to vote in the currently on-going [member applications](https://wiki.xmpp.org/web/Membership_Applications_Q1_2022).
+- The XSF has been accepted as hosting organization at [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/). If you are interested in participating as a student, mentor or as a project in general, please [add your ideas and reach out to us](https://wiki.xmpp.org/web/Google_Summer_of_Code_2022). The contributor application period has begun already, so be quick!
+- XMPP Newsletter via mail: We migrated to our [own mail-list server](https://mail.jabber.org/mailman/listinfo/newsletter) and stopped using Tinyletter. Its read-only and you will receive the XMPP Newsletter on a monthly basis. It also eliminates the privacy concerns with Tinyletter.
 
 ## XSF fiscal hosting projects
 
@@ -39,23 +39,49 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+The Profanity devs posted a quick guide on how to use [OpenPGP for XMPP (OX)](https://profanity-im.github.io/blog/post/openpgp-for-xmpp-ox/).
+
+[JMP's Newsletter](https://blog.jmp.chat/b/march-newsletter-2022) announces a new client for Android that has a focus on improving UX for users of standards-compliant gateways.
+
+The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module.
 
 ## Software news
 
 ### Clients and applications
 
-``` ![Dino calls](/images/newsletter/2022-02-05/dino_conference_call.png "Dino calls")```
+[Gajim development news](https://gajim.org/post/2022-03-24-development-news-march/): March brings a new issue reporting system and many performance improvements for both Gajim and python-nbxmpp. Gajim’s OMEMO plugin comes with some improvements as well. Last but not least, there has been a security issue in python-nbxmpp, which has been fixed in version `2.0.6`.
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Openfire Pàdé `1.5.7` and `1.6.3`](https://discourse.igniterealtime.org/t/openfire-pade-1-6-3-released/91536) and [Openfire Pàdé 1.6.2](https://discourse.igniterealtime.org/t/openfire-pade-1-6-2-released/91424) have been released.
+
+[Poezio `0.13.2`](https://lab.louiz.org/poezio/poezio/-/tags/v0.13.2) has been released with a fix for the newest slixmpp.
+
+[Profanity `0.12.0`](https://github.com/profanity-im/profanity/releases) has been released.
+
+[Psi+ `1.5.1615` and Psi+ `1.5.1618`](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
+
+[Conversations `2.10.3`](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.3) and [Conversations `2.10.4`](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md) are out, bringing better call reconnections after network switches, showing caller JID and account JID in incoming call screen and adapting the file storage locations per the new Android 11 requirements.
 
 ## Servers
+[Jackal `0.58.0`](https://github.com/ortuman/jackal/releases/tag/v0.58.0) has been released and added the BoltDB repository type.
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+After three years of development [Prosody `0.12.0`](https://blog.prosody.im/prosody-0.12.0-released/) has been released. The update covers XMPP Compliance, mobile and connectivity optimizations, updated HTTP file sharing, improved audio/video calling support, Direct TLS and many more - congratulations! 
+
+![Prosody](/images/newsletter/2022-03-05/LINK "Prosody")
+
+[Tigase #XMPP Server `8.2.0`](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released! Biggest feature is the support for #MIX protocol, which offers better group chat experience, especially on mobile devices. 
+Group chat (MUC) was not left be and received a lot of fixes as well. In addition we improved server-to-server connectivity, added option to store certificates in the repository (really helpful in cluster deployments) and more!
+
+The Ignite Realtime community is happy to announce the immediate availability of a maintenance release `2.2.3` of the [GoJara plugin for Openfire]. GoJara provides an implementation of [XEP-0321 “Remote Roster Management”](https://xmpp.org/extensions/xep-0321.html) and helps out with monitoring [Spectrum 2](https://spectrum.im/).
+
+The [ejabberd `21.12` release](https://www.process-one.net/blog/ejabberd-21-12/) comes with more than one hundred changes covering optimized MucSub and Multicast processing, support for [XEP-0317 MUC Hats](https://xmpp.org/extensions/xep-0317.html), new mod_conversejs and many PubSub improvements (delete_old_pubsub_items command, delete_expired_pubsub_items and get_max_items_node).
 
 ## Libraries
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+slixmpp version [`1.8.1`](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.1) has been released, fixing a compatibility issue with the python standard library due to the defusedxml introduction in the `1.8.0` release.
+
+python-nbxmpp versions [`2.0.5` and `2.0.6`](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/nbxmpp_2.0/ChangeLog) have been released, fixing a security issue in resolving websocket URIs.
+
+[Smack `4.4.5` and `4.5.0-alpha1`](https://discourse.igniterealtime.org/t/smack-4-4-5-and-4-5-0-alpha1-released/91437) has been released.
 
 ## Extensions and specifications
 
@@ -128,7 +154,7 @@ Please share the news on other networks:
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
-{{< newsletter-subscribe >}}
+Here you can [subscribe via email](https://mail.jabber.org/mailman/listinfo/newsletter). It is read-only and only the Newsletter will be send to you on a monthly basis.
 
 Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
@@ -136,9 +162,9 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), alkino, anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, marevalo, mathieui, MattJ, nicfab, seveso, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat,xdelatour, Ysabeau** for their support and help in creation, review and translation. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), alkino, anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, marevalo, mathieui, MattJ, nicfab, seveso, Sam Whited, TheCoffeMaker, wurstsalat, xdelatour, Ysabeau, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
-Each months's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
+Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
 Tasks we do on a regular basis:
 
