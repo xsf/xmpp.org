@@ -91,15 +91,15 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   [PubSub Type Filtering](https://xmpp.org/extensions/inbox/pubsub-filter.html)
-    -   This specification provides a way to filter PubSub nodes in a disco query.
-
--   [MUC Affiliations Versioning](https://xmpp.org/extensions/inbox/muc-affiliations)
-    -   This specification provides a way to reduce the amount of queries necessary to stay up-to-date with affiliations in a MUC room.
+-   No XEPs proposed this month.
 
 ### New
 
--   No new XEPs this month.
+-   Version 0.1.0 of [XEP-0462](https://xmpp.org/extensions/xep-0462.html) (PubSub Type Filtering)
+    -   Accepted by vote of Council on 2022-02-09.
+
+-   Version 0.1.0 of [XEP-0463](https://xmpp.org/extensions/xep-0463.html) (MUC Affiliations Versioning)
+    -   Accepted by vote of Council on 2022-02-16.
 
 ### Deferred
 
@@ -109,18 +109,11 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version `2.13.0` of [XEP-0004](https://xmpp.org/extensions/xep-0004.html) (Data Forms)
-    -   Add incomplete submission form handling (melvo)
+-   Version 1.6.0 of [XEP-0115](https://xmpp.org/extensions/xep-0115.html) (Entity Capabilities)
+    -   Mention preimage attacks explicitly (ssw)
 
--   Version `1.24.1` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
-    -   Add hint for processing incomplete submission forms (melvo)
-
--   Version `1.24.0` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
-    -   Advertise support for publishing items
-    -   Replace 'allow' with 'allows' (melvo)
-
--   Version `1.23.0` of [XEP-0060](https://xmpp.org/extensions/xep-0060.html) (Publish-Subscribe)
-    -   Clarify (redefine) pubsub#type field. (edhelas, pep)
+-   Version 1.4.0 of [XEP-0156](https://xmpp.org/extensions/xep-0156.html) (Discovering Alternative XMPP Connection Methods)
+    -   Remove DNS `_xmppconnect` method due to security vulnerability. (tjb)
 
 ### Last Call
 
@@ -137,6 +130,23 @@ Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it her
 ### Deprecated
 
 -   No XEP deprecated this month.
+
+### Obsoleted
+
+-   [XEP-0008](https://xmpp.org/extensions/xep-0008.html) (IQ-Based Avatars)
+    -   Obsoleted due to two superseding specifications (egp)
+
+-   [XEP-0038](https://xmpp.org/extensions/xep-0038.html) (Icon Styles)
+    -   Obsolete due to the omnipresence of Unicode emoji, as well as Bits of Binary stickers. (egp)
+
+-   [XEP-0051](https://xmpp.org/extensions/xep-0051.html) (Connection Transfer)
+    -   Obsolete because this feature has been merged into XMPP core, see RFC6120 section 4.9.3.19, which describes the <see-other-host/> stream error. (egp)
+
+-   [XEP-0138](https://xmpp.org/extensions/xep-0138.html) (Stream Compression)
+    -   Obsolete due to security vulnerability. (tjb)
+
+-   [XEP-0229](https://xmpp.org/extensions/xep-0229.html) (Stream Compression with LZW)
+    -   Obsolete due to security vulnerability. (tjb)
 
 ### Call for Experience
 
