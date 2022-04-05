@@ -41,7 +41,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 The Profanity devs posted a quick guide on how to use [OpenPGP for XMPP (OX)](https://profanity-im.github.io/blog/post/openpgp-for-xmpp-ox/).
 
-[JMP's Newsletter](https://blog.jmp.chat/b/march-newsletter-2022) announces a new client for Android that has a focus on improving UX for users of standards-compliant gateways.
+[JMP's Newsletter](https://blog.jmp.chat/b/march-newsletter-2022) announces a new client for Android (based on Conversations) that has a focus on improving UX for users of standards-compliant gateways.
 
 The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module.
 
@@ -55,11 +55,11 @@ The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/
 
 [Poezio `0.13.2`](https://lab.louiz.org/poezio/poezio/-/tags/v0.13.2) has been released with a fix for the newest slixmpp.
 
-[Profanity `0.12.0`](https://github.com/profanity-im/profanity/releases) has been released.
+[Profanity `0.12.0`](https://github.com/profanity-im/profanity/releases) has been released, with in-band account registration and user mood support, new theme, improved OX user experience (as the article above shows) and a slew of fixes and polished features.
 
 [Psi+ `1.5.1615` and Psi+ `1.5.1618`](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
-[Conversations `2.10.3`](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.3) and [Conversations `2.10.4`](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md) are out, bringing better call reconnections after network switches, showing caller JID and account JID in incoming call screen and adapting the file storage locations per the new Android 11 requirements.
+[Conversations `2.10.5`](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md) is out, bringing better call reconnections after network switches, showing caller JID and account JID in incoming call screen, adapting the file storage locations per the new Android 11 requirements and a security fix affecting file downloads. Note that the F-Droid version lags behind, due to unrelated issues, but `2.10.2.1` is out and includes only the security fix. Also announced was that accounts on conversations.im are free from now on.
 
 ## Servers
 [Jackal `0.58.0`](https://github.com/ortuman/jackal/releases/tag/v0.58.0) has been released and added the BoltDB repository type.
@@ -72,8 +72,6 @@ After three years of development [Prosody `0.12.0`](https://blog.prosody.im/pros
 Group chat (MUC) was not left be and received a lot of fixes as well. In addition we improved server-to-server connectivity, added option to store certificates in the repository (really helpful in cluster deployments) and more!
 
 The Ignite Realtime community is happy to announce the immediate availability of a maintenance release `2.2.3` of the [GoJara plugin for Openfire]. GoJara provides an implementation of [XEP-0321 “Remote Roster Management”](https://xmpp.org/extensions/xep-0321.html) and helps out with monitoring [Spectrum 2](https://spectrum.im/).
-
-The [ejabberd `21.12` release](https://www.process-one.net/blog/ejabberd-21-12/) comes with more than one hundred changes covering optimized MucSub and Multicast processing, support for [XEP-0317 MUC Hats](https://xmpp.org/extensions/xep-0317.html), new mod_conversejs and many PubSub improvements (delete_old_pubsub_items command, delete_expired_pubsub_items and get_max_items_node).
 
 ## Libraries
 
