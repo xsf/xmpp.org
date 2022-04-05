@@ -55,8 +55,6 @@ The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/
 
 [Openfire Pàdé `1.5.7` and `1.6.3`](https://discourse.igniterealtime.org/t/openfire-pade-1-6-3-released/91536) and [Openfire Pàdé 1.6.2](https://discourse.igniterealtime.org/t/openfire-pade-1-6-2-released/91424) have been released.
 
-[Poezio `0.13.2`](https://lab.louiz.org/poezio/poezio/-/tags/v0.13.2) has been released with a fix for the newest slixmpp.
-
 [Profanity `0.12.0`](https://github.com/profanity-im/profanity/releases) has been released, with in-band account registration and user mood support, new theme, improved OX user experience (as the article above shows) and a slew of fixes and polished features.
 
 [Psi+ `1.5.1615` and Psi+ `1.5.1618`](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
