@@ -14,9 +14,9 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-- German: [xmpp.org/de/blog](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
+- German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
 - Italian: [nicfab.it](https://www.nicfab.it/)
-- Spanish: [xmpp.org/es/blog](https://xmpp.org/categories/newsletter/)
+- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
 
 ## XSF Announcements
 
