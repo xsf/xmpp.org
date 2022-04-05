@@ -71,7 +71,7 @@ After three years of development [Prosody `0.12.0`](https://blog.prosody.im/pros
 [Tigase #XMPP Server `8.2.0`](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released! Biggest feature is the support for #MIX protocol, which offers better group chat experience, especially on mobile devices. 
 Group chat (MUC) was not left be and received a lot of fixes as well. In addition we improved server-to-server connectivity, added option to store certificates in the repository (really helpful in cluster deployments) and more!
 
-The Ignite Realtime community is happy to announce the immediate availability of a maintenance release `2.2.3` of the [GoJara plugin for Openfire]. GoJara provides an implementation of [XEP-0321 “Remote Roster Management”](https://xmpp.org/extensions/xep-0321.html) and helps out with monitoring [Spectrum 2](https://spectrum.im/).
+The Ignite Realtime community is happy to announce the immediate availability of a maintenance release `2.2.3` of the [GoJara plugin for Openfire](https://discourse.igniterealtime.org/t/gojara-plugin-for-openfire-version-2-2-3-release/91505). GoJara provides an implementation of [XEP-0321 “Remote Roster Management”](https://xmpp.org/extensions/xep-0321.html) and helps out with monitoring [Spectrum 2](https://spectrum.im/).
 
 ## Libraries
 
