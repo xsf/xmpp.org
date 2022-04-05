@@ -14,9 +14,9 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-- German: [xmpp.org/de/blog](https://xmpp.org/de/blog/) and [anoxinon.de](https://anoxinon.de/blog/)
+- German: [xmpp.org/de/blog](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
 - Italian: [nicfab.it](https://www.nicfab.it/)
-- Spanish: [xmpp.org/es/blog](https://xmpp.org/es/blog/)
+- Spanish: [xmpp.org/es/blog](https://xmpp.org/categories/newsletter/)
 
 ## XSF Announcements
 
@@ -43,6 +43,8 @@ The Profanity devs posted a quick guide on how to use [OpenPGP for XMPP (OX)](ht
 
 [JMP's Newsletter](https://blog.jmp.chat/b/march-newsletter-2022) announces a new client for Android (based on Conversations) that has a focus on improving UX for users of standards-compliant gateways.
 
+![JMP Cheogram](/images/newsletter/2022-03/cheogram-screenshot.png "JMP Cheogram")
+
 The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module.
 
 ## Software news
@@ -66,7 +68,7 @@ The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/
 
 After three years of development [Prosody `0.12.0`](https://blog.prosody.im/prosody-0.12.0-released/) has been released. The update covers XMPP Compliance, mobile and connectivity optimizations, updated HTTP file sharing, improved audio/video calling support, Direct TLS and many more - congratulations! 
 
-![Prosody](/images/newsletter/2022-03-05/LINK "Prosody")
+![Prosody](/images/newsletter/2022-03/grafana-screenshot.png "Prosody")
 
 [Tigase #XMPP Server `8.2.0`](https://github.com/tigase/tigase-server/releases/tag/tigase-server-8.2.0) has been released! Biggest feature is the support for #MIX protocol, which offers better group chat experience, especially on mobile devices. 
 Group chat (MUC) was not left be and received a lot of fixes as well. In addition we improved server-to-server connectivity, added option to store certificates in the repository (really helpful in cluster deployments) and more!
@@ -170,7 +172,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), alkino, anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, marevalo, mathieui, MattJ, nicfab, seveso, Sam Whited, TheCoffeMaker, wurstsalat, xdelatour, Ysabeau, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, MattJ, nicfab, Sam Whited, TheCoffeMaker, wurstsalat, Ysabeau, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
