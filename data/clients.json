@@ -383,12 +383,12 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T20:18:31",
+        "last_renewed": "2022-04-11T06:05:31",
         "name": "Kopete",
         "platforms": [
             "Linux"
         ],
-        "url": "https://userbase.kde.org/Kopete"
+        "url": "https://apps.kde.org/kopete/"
     },
     {
         "doap": null,
@@ -652,6 +652,15 @@
             "Mobile"
         ],
         "url": "http://talkonaut.com"
+    },
+    {
+        "doap": null,
+        "last_renewed": "2022-04-11T06:05:31",
+        "name": "Telepathy",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://userbase.kde.org/Telepathy"
     },
     {
         "doap": null,
