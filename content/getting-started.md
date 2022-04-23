@@ -34,13 +34,16 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 # 2. Create an account
 
-As with e-mail, you will need an account with a service provider. Again, there are plenty of choices. The following links provide lists of publicly available providers.
+As with email, you need an account with a service provider.
+Use a [public provider from the curated list of **XMPP Providers**](https://providers.xmpp.net) or be your own provider [by hosting a server yourself](https://xmpp.org/software/servers/).
 
-* [Public XMPP servers](https://list.jabber.at/), list.jabber.at
-* [Open list of public XMPP servers](https://xmpp-servers.404.city), xmpp-servers.404.city
-* You can also review the list of the [IM Observatory](https://xmpp.net/list.php) _(Service is eventually acting unexpected currently)_
+**XMPP Providers** takes various aspects into consideration to recommend providers.
+There are several other (uncurated) lists of providers:
 
-There is also the [XMPP Compliance Tester](https://compliance.conversations.im/old/)
+* [Public XMPP servers by jabber.at](https://list.jabber.at)
+* [Open list of public XMPP servers by 404.city](https://xmpp-servers.404.city)
+* [Public XMPP Server Directory by IM Observatory](https://xmpp.net/directory.php)
+* [XMPP Compliance Tester results](https://compliance.conversations.im/old/)
 
 # 3. Log in! That's it!
 
