@@ -30,7 +30,14 @@ This is a community effort, and we would like to thank translators for their con
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
 
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
+- NEW: [Mellium OMEMO encryption project](https://opencollective.com/mellium/projects/omemo)
 - [Mellium Co-op](https://opencollective.com/mellium)
+
+## XMPP Community Projects
+
+A new community space for XMPP related projects and individuals has been created in the Fediverse! Join us on our new [Lemmy instance](https://community.xmpp.net/) and chat about all things XMPP! 
+
+Are you looking for an XMPP provider that suits you? There is a [new website](https://providers.xmpp.net) based on the data of [XMPP Providers](https://invent.kde.org/melvo/xmpp-providers). XMPP Providers has a curated list of providers and tools for filtering and creating badges for them. The machine-readable list of providers can be [integrated in XMPP clients](https://providers.xmpp.net/apps/) to simplify the registration. You can [help](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md) by improving your website (as a provider), by automating the manual tasks (as a developer), by adding new providers to the list (as an interested contributor). Read the [first blogpost](https://providers.xmpp.net/blog/2022-04-25-start-of-xmpp-providers-website/)!
 
 ## Events
 
@@ -39,25 +46,46 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module. The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022).
 
-The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module.
+Maxime “pep.” Buquet wrote some thoughts regarding _"Deal on Digital Markets Act: EU rules to ensure fair competition and more choice for users"_ in his [Interoperability in a “Big Tech” world](https://bouah.net/2022/04/interoperability-in-a-big-tech-world/) article. In a later article an [XMPP threat model has been reviewed](https://bouah.net/2022/04/an-overview-of-my-threat-model/).
+
+German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken) on interoperability and the Digital Markets Act (DMA). They also offer [a comparison of "XMPP/Matrix"](https://www.freie-messenger.de/en/systemvergleich/xmpp-matrix)
 
 ## Software news
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
-
 [Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [v0.4.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
+
+[BeagleIM 5.2](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM 7.2](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
+
+JMP offers international call rates based on a [computing trie](https://blog.jmp.chat/b/2022-computing-call-rates). There are also [new commands and team members](https://blog.jmp.chat/b/april-newsletter-2022).
+
+[Monal 5.1 has been released](https://github.com/monal-im/Monal/releases/tag/Build_iOS_780). This release brings OMEMO support in private group chats, communication notifications on iOS 15, and many improvements.
+
+[Psi+ 1.5.1619 (2022-04-09)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
+
+[Poezio 0.14](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new 
+release brings in lots of bug fixes and small improvements bu doesn't bring in big new features and shows that even if not perfect, poezio reached a point where devs are mostly happy about. Big changes are coming nonetheless, you will find out in the article. Stay tuned.
+
+<!-- https://bouah.net/2022/04/poezio-full.png -->
 
 ## Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+Ignite Realtime Community:
+* Version 9.1.0 release 1 of the Openfire [inVerse plugin](https://discourse.igniterealtime.org/t/inverse-openfire-plugin-9-1-0-1-released/91560) was released which enables deployment of the third-party Converse client 37 in Openfire.
+* Version 4.4.0 release 1 of the Openfire [JSXC plugin](https://discourse.igniterealtime.org/t/jsxc-openfire-plugin-4-4-0-1-released/91559) was released which enables deployment the third-party JSXC client 13 in Openfire.
+* Version 1.2.3 of the Openfire [Message of the Day plugin](https://discourse.igniterealtime.org/t/openfire-message-of-the-day-motd-plugin-version-1-2-3-released/91556) was released and it ships with the German translation to the admin console
+* Version 1.8.0 of the Openfire [REST API plugin](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-0-released/91555/3) was released which adds new endpoints for readiness, liveliness and cluster status.
 
 ## Libraries
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[slixmpp 1.8.2](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.2) has been released. It fixes RFC3920 sessions, improves certificate errors handling, and adds a plugin for XEP-0454 (OMEMO media sharing).
+
+The mellium.im/xmpp library v0.21.2 has been released! Highlights include support for [PEP Native Bookmarks](https://xmpp.org/extensions/xep-0402.html), and [entity capabilities](https://xmpp.org/extensions/xep-0115.html). For more information, see the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-2).
+
+The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). The big news this month is that the [OMEMO encryption project](https://opencollective.com/mellium/projects/omemo) has received donations totalilng over $100!
 
 ## Extensions and specifications
 
@@ -140,7 +168,15 @@ Please share the news on other networks:
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
-Here you can [subscribe via email](https://mail.jabber.org/mailman/listinfo/newsletter). It is read-only and only the Newsletter will be send to you on a monthly basis.
+Here you can [subscribe via email](https://mail.jabber.org/mailman/listinfo/newsletter). It is read-only and only the Newsletter will be send to you on a monthly basis. Or simple via:
+
+<head>
+    <style>
+        body {padding: 2em;}
+        h1 a {text-decoration: none;}
+        .post-meta {color: gray;}
+    </style>
+</head>
 
 Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
@@ -148,7 +184,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, MattJ, nicfab, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Ysabeau, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, mathieui, MattJ, nicfab, Pierre Jarillon, Ppjet6, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
