@@ -10,7 +10,7 @@ The XMPP Standards Foundation (also known as the XSF and formerly the Jabber Sof
 
 The XSF also provides information and infrastructure to the worldwide community of Jabber/XMPP developers, service providers, and end users. In addition, the XSF administers the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark).
 
-At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). The Board also appoints various work teams (such as the [editor team](/about/xsf/editor-team), the [infrastructure team](/about/xsf/infrastructure-team), the [communication team](https://xmpp.org/about/xsf/comm-team/), the [Summits, Conferences, and Meetups team (SCAM)](https://wiki.xmpp.org/web/Summits_Conferences_And_Meetups_team) as well as the [Executive Director, Treasurer, and Secretary](/about/xsf/people).
+At the core of the XSF is its elected Membership who, in turn, elect a Council (the technical leadership) and Board (the business leadership). The Board also appoints various work teams (such as the [Editor team](/about/xsf/editor-team), the [Infrastructure team](/about/xsf/infrastructure-team), the [Communication team](https://xmpp.org/about/xsf/comm-team/), the [Summits, Conferences, and Meetups team (SCAM)](https://wiki.xmpp.org/web/Summits_Conferences_And_Meetups_team) as well as the [Executive Director, Treasurer, and Secretary](/about/xsf/people).
 
 If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
 
