@@ -375,4 +375,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     .software-list {
         background-color: #2e2e2e;
     }
+    .card {
+        background-color: #262626;
+    }
+    .card-header {
+        background-color: #313131;
+    }
 }
