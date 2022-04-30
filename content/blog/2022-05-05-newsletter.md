@@ -56,17 +56,19 @@ German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/e
 
 ### Clients and applications
 
-[Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [v0.4.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
+[Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [`v0.4.0`](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
 
-[BeagleIM 5.2](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM 7.2](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
+[BeagleIM `5.2`](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM 7.2](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
 
 JMP offers international call rates based on a [computing trie](https://blog.jmp.chat/b/2022-computing-call-rates). There are also [new commands and team members](https://blog.jmp.chat/b/april-newsletter-2022).
 
-[Monal 5.1 has been released](https://github.com/monal-im/Monal/releases/tag/Build_iOS_780). This release brings OMEMO support in private group chats, communication notifications on iOS 15, and many improvements.
+[Monal `5.1` has been released](https://github.com/monal-im/Monal/releases/tag/Build_iOS_780). This release brings OMEMO support in private group chats, communication notifications on iOS 15, and many improvements.
 
-[Psi+ 1.5.1619 (2022-04-09)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
+[PravApp project](https://prav.app/) is a plan to get a lot of people from India to invest small amounts to run an interoperable XMPP-based messaging service that is easier to join and discover contacts, similar to the Quicksy app. Prav will be Free Software, which respects users' freedom. The service will be backed by a cooperative society in India to ensure democratic decision making in which users can take part as well. Users will control the privacy policy of the service.
 
-[Poezio 0.14](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new 
+[Psi+ `1.5.1619` (2022-04-09)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
+
+[Poezio `0.14`](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new 
 release brings in lots of bug fixes and small improvements bu doesn't bring in big new features and shows that even if not perfect, poezio reached a point where devs are mostly happy about. Big changes are coming nonetheless, you will find out in the article. Stay tuned.
 
 <!-- https://bouah.net/2022/04/poezio-full.png -->
@@ -74,18 +76,18 @@ release brings in lots of bug fixes and small improvements bu doesn't bring in b
 ## Servers
 
 Ignite Realtime Community:
-* Version 9.1.0 release 1 of the Openfire [inVerse plugin](https://discourse.igniterealtime.org/t/inverse-openfire-plugin-9-1-0-1-released/91560) was released which enables deployment of the third-party Converse client 37 in Openfire.
-* Version 4.4.0 release 1 of the Openfire [JSXC plugin](https://discourse.igniterealtime.org/t/jsxc-openfire-plugin-4-4-0-1-released/91559) was released which enables deployment the third-party JSXC client 13 in Openfire.
-* Version 1.2.3 of the Openfire [Message of the Day plugin](https://discourse.igniterealtime.org/t/openfire-message-of-the-day-motd-plugin-version-1-2-3-released/91556) was released and it ships with the German translation to the admin console
-* Version 1.8.0 of the Openfire [REST API plugin](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-0-released/91555/3) was released which adds new endpoints for readiness, liveliness and cluster status.
+* Version `9.1.0` release 1 of the Openfire [inVerse plugin](https://discourse.igniterealtime.org/t/inverse-openfire-plugin-9-1-0-1-released/91560) was released which enables deployment of the third-party Converse client 37 in Openfire.
+* Version `4.4.0` release 1 of the Openfire [JSXC plugin](https://discourse.igniterealtime.org/t/jsxc-openfire-plugin-4-4-0-1-released/91559) was released which enables deployment the third-party JSXC client 13 in Openfire.
+* Version `1.2.3` of the Openfire [Message of the Day plugin](https://discourse.igniterealtime.org/t/openfire-message-of-the-day-motd-plugin-version-1-2-3-released/91556) was released and it ships with the German translation to the admin console
+* Version `1.8.0` of the Openfire [REST API plugin](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-0-released/91555/3) was released which adds new endpoints for readiness, liveliness and cluster status.
 
 ## Libraries
 
-[slixmpp 1.8.2](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.2) has been released. It fixes RFC3920 sessions, improves certificate errors handling, and adds a plugin for XEP-0454 (OMEMO media sharing).
+[slixmpp `1.8.2`](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.2) has been released. It fixes RFC3920 sessions, improves certificate errors handling, and adds a plugin for XEP-0454 (OMEMO media sharing).
 
-The mellium.im/xmpp library v0.21.2 has been released! Highlights include support for [PEP Native Bookmarks](https://xmpp.org/extensions/xep-0402.html), and [entity capabilities](https://xmpp.org/extensions/xep-0115.html). For more information, see the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-2).
+The mellium.im/xmpp library `v0.21.2` has been released! Highlights include support for [PEP Native Bookmarks](https://xmpp.org/extensions/xep-0402.html), and [entity capabilities](https://xmpp.org/extensions/xep-0115.html). For more information, see the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-2).
 
-The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). The big news this month is that the [OMEMO encryption project](https://opencollective.com/mellium/projects/omemo) has received donations totalilng over $100!
+The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). The big news this month is that the [OMEMO encryption project](https://opencollective.com/mellium/projects/omemo) has received donations totaling over $100!
 
 ## Extensions and specifications
 
