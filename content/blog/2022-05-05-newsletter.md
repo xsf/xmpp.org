@@ -24,6 +24,7 @@ This is a community effort, and we would like to thank translators for their con
 
 - The XSF has been accepted as hosting organization at [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/).
 - XMPP Newsletter via mail: We migrated to our [own mail-list server](https://mail.jabber.org/mailman/listinfo/newsletter) and stopped using Tinyletter. Its read-only and you will receive the XMPP Newsletter on a monthly basis. It also eliminates the privacy concerns with Tinyletter.
+- By the way, have you checked our nice [XMPP RFC page](https://xmpp.org/rfcs/)? :-)
 
 ## XSF fiscal hosting projects
 
@@ -56,9 +57,11 @@ German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/e
 
 ### Clients and applications
 
-[Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [`v0.4.0`](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
-
 [BeagleIM `5.2`](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM 7.2](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
+
+converse.js publishs version `9.1.0`. I comes with a new dark theme, several improvements of encryption (OMEMO), improvement of stanza timeout, font icons, updated translations and enhancement of the IndexedDB. Find the [release notes](https://github.com/conversejs/converse.js/releases/tag/v9.1.0).
+
+[Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [`v0.4.0`](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
 
 JMP offers international call rates based on a [computing trie](https://blog.jmp.chat/b/2022-computing-call-rates). There are also [new commands and team members](https://blog.jmp.chat/b/april-newsletter-2022).
 
@@ -72,6 +75,8 @@ JMP offers international call rates based on a [computing trie](https://blog.jmp
 release brings in lots of bug fixes and small improvements bu doesn't bring in big new features and shows that even if not perfect, poezio reached a point where devs are mostly happy about. Big changes are coming nonetheless, you will find out in the article. Stay tuned.
 
 <!-- https://bouah.net/2022/04/poezio-full.png -->
+
+UPWX ships two small pre-release updates concering a [critical fix](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.6.0) for a crash that occurs when trying to render an invalid user avatar and issues with the [Windows Store builds](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.5.0).
 
 ## Servers
 
@@ -92,6 +97,8 @@ The Mellium Dev Communiqué for April 2022 has also been released and can be fou
 ## Extensions and specifications
 
 Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
+
+By the way, have you checked our nice [XMPP RFC page](https://xmpp.org/rfcs/)? :-)
 
 ### Proposed
 
