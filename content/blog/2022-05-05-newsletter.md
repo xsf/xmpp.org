@@ -49,6 +49,8 @@ The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/
 
 _Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
 
+[Go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [v0.4.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.4.0) with experimental Ox (OpenPGP for XMPP) support has been released.
+
 ## Servers
 
 _Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
