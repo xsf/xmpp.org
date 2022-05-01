@@ -76,7 +76,7 @@ release brings in lots of bug fixes and small improvements bu doesn't bring in b
 
 <!-- https://bouah.net/2022/04/poezio-full.png -->
 
-UPWX ships two small pre-release updates concering a [critical fix](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.6.0) for a crash that occurs when trying to render an invalid user avatar and issues with the [Windows Store builds](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.5.0).
+[UWPX](https://uwpx.org) ships two small pre-release updates concering a [critical fix](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.6.0) for a crash that occurs when trying to render an invalid user avatar and issues with the [Windows Store builds](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.5.0). Besides that it also got a minor [UI update](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.42.0.0) this month.
 
 ## Servers
 
