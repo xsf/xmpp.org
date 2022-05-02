@@ -49,7 +49,7 @@ Are you looking for an XMPP provider that suits you? There is a [new website](ht
 
 The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module. The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022).
 
-Maxime “pep.” Buquet wrote some thoughts regarding _"Deal on Digital Markets Act: EU rules to ensure fair competition and more choice for users"_ in his [Interoperability in a “Big Tech” world](https://bouah.net/2022/04/interoperability-in-a-big-tech-world/) article. In a later article an [XMPP threat model has been reviewed](https://bouah.net/2022/04/an-overview-of-my-threat-model/).
+Maxime “pep.” Buquet wrote some thoughts regarding _"Deal on Digital Markets Act: EU rules to ensure fair competition and more choice for users"_ in his [Interoperability in a “Big Tech” world](https://bouah.net/2022/04/interoperability-in-a-big-tech-world/) article. In a later article he describes [part of his threat model](https://bouah.net/2022/04/an-overview-of-my-threat-model/), detailing how XMPP comes into play and proposing ways it could be improved.
 
 German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken) on interoperability and the Digital Markets Act (DMA). They also offer [a comparison of "XMPP/Matrix"](https://www.freie-messenger.de/en/systemvergleich/xmpp-matrix)
 
