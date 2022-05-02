@@ -98,21 +98,20 @@ The Mellium Dev Communiqué for April 2022 has also been released and can be fou
 
 Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
 
-By the way, have you checked our nice [XMPP RFC page](https://xmpp.org/rfcs/)? :-)
+By the way, xmpp.org features [a new page about XMPP RFCs](https://xmpp.org/rfcs/).
 
 ### Proposed
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   No XEPs proposed this month.
+-   [Pubsub Public Subscriptions](https://xmpp.org/extensions/inbox/pubsub-public-subscriptions.html)
+    -   This specification provides a way to make subscriptions to a node public
+-   [Ephemeral Messages](https://xmpp.org/extensions/inbox/ephemeral-messages-v2.html)
+    -   This specification encourages a shift in privacy settings wrt. logging policies.
 
 ### New
 
--   Version 0.1.0 of [XEP-0462](https://xmpp.org/extensions/xep-0462.html) (PubSub Type Filtering)
-    -   Accepted by vote of Council on 2022-02-09.
-
--   Version 0.1.0 of [XEP-0463](https://xmpp.org/extensions/xep-0463.html) (MUC Affiliations Versioning)
-    -   Accepted by vote of Council on 2022-02-16.
+-   No new XEPs this month.
 
 ### Deferred
 
@@ -122,11 +121,11 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 1.6.0 of [XEP-0115](https://xmpp.org/extensions/xep-0115.html) (Entity Capabilities)
-    -   Mention preimage attacks explicitly (ssw)
-
--   Version 1.4.0 of [XEP-0156](https://xmpp.org/extensions/xep-0156.html) (Discovering Alternative XMPP Connection Methods)
-    -   Remove DNS `_xmppconnect` method due to security vulnerability. (tjb)
+-   Version 0.4 of [XEP-0356](https://xmpp.org/extensions/xep-0356.html) (Privileged Entity)
+    -   Add "iq" privilege (necessary to implement XEPs such as ).
+    -   Roster pushes are now transmitted to privileged entity with "roster" permission of "get" or "both". This can be disabled.
+    -   Reformulate to specify than only initial stanza and "unavailable" stanzas are transmitted with "presence" pemission.
+    -   Namespace bump. (jp)
 
 ### Last Call
 
@@ -136,30 +135,13 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 ### Stable (formerly known as Draft)
 
-Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it here.](https://github.com/xsf/xeps/pull/1100)
+Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it here](https://github.com/xsf/xeps/pull/1100).
 
 -   No XEPs advanced to Stable this month.
 
 ### Deprecated
 
 -   No XEP deprecated this month.
-
-### Obsoleted
-
--   [XEP-0008](https://xmpp.org/extensions/xep-0008.html) (IQ-Based Avatars)
-    -   Obsoleted due to two superseding specifications (egp)
-
--   [XEP-0038](https://xmpp.org/extensions/xep-0038.html) (Icon Styles)
-    -   Obsolete due to the omnipresence of Unicode emoji, as well as Bits of Binary stickers. (egp)
-
--   [XEP-0051](https://xmpp.org/extensions/xep-0051.html) (Connection Transfer)
-    -   Obsolete because this feature has been merged into XMPP core, see RFC6120 section 4.9.3.19, which describes the <see-other-host/> stream error. (egp)
-
--   [XEP-0138](https://xmpp.org/extensions/xep-0138.html) (Stream Compression)
-    -   Obsolete due to security vulnerability. (tjb)
-
--   [XEP-0229](https://xmpp.org/extensions/xep-0229.html) (Stream Compression with LZW)
-    -   Obsolete due to security vulnerability. (tjb)
 
 ### Call for Experience
 
