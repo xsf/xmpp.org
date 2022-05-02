@@ -57,7 +57,7 @@ German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/e
 
 ### Clients and applications
 
-[BeagleIM `5.2`](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM 7.2](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
+[BeagleIM `5.2`](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM `7.2`](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
 
 converse.js publishs version `9.1.0`. I comes with a new dark theme, several improvements of encryption (OMEMO), improvement of stanza timeout, font icons, updated translations and enhancement of the IndexedDB. Find the [release notes](https://github.com/conversejs/converse.js/releases/tag/v9.1.0).
 
