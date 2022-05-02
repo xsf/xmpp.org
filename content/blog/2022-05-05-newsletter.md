@@ -59,7 +59,7 @@ German "Freie Messenger" [shares some thoughts](https://www.freie-messenger.de/e
 
 [BeagleIM `5.2`](https://github.com/tigase/beagle-im/releases/tag/5.2) and [SiskinIM `7.2`](https://github.com/tigase/siskin-im/releases/tag/7.2) just got released with fixes for OMEMO encrypted message in MUC channels, MUC participants disappearing randomly, and issues with VoIP call sending an incorrect payload during call negotiation.
 
-converse.js publishs version `9.1.0`. I comes with a new dark theme, several improvements of encryption (OMEMO), improvement of stanza timeout, font icons, updated translations and enhancement of the IndexedDB. Find the [release notes](https://github.com/conversejs/converse.js/releases/tag/v9.1.0).
+converse.js published version `9.1.0`. It comes with a new dark theme, several improvements for encryption (OMEMO), an improved stanza timeout, font icons, updated translations, and enhancements of the IndexedDB. Find more in the [release notes](https://github.com/conversejs/converse.js/releases/tag/v9.1.0).
 
 [Gajim Development News](https://gajim.org/post/2022-04-30-development-news-april/): This month came with a lot of preparations for the release of Gajim 1.4 🚀 Gajim’s release pipeline has been improved in many ways, allowing us to make releases more frequently. Furthermore, April brought improvements for file previews on Windows.
 
