@@ -161,15 +161,7 @@ Please share the news on other networks:
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
-Here you can [subscribe via email](https://mail.jabber.org/mailman/listinfo/newsletter). It is read-only and only the Newsletter will be send to you on a monthly basis. Or simple via:
-
-<head>
-    <style>
-        body {padding: 2em;}
-        h1 a {text-decoration: none;}
-        .post-meta {color: gray;}
-    </style>
-</head>
+If you like to subscribe to the monthly XMPP newsletter, just add your email to [this mailing list](https://mail.jabber.org/mailman/listinfo/newsletter). 
 
 Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
