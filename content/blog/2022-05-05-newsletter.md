@@ -86,7 +86,7 @@ Ignite Realtime Community:
 - Version `9.1.0` release 1 of the Openfire [inVerse plugin](https://discourse.igniterealtime.org/t/inverse-openfire-plugin-9-1-0-1-released/91560) has been released, which enables deployment of the third-party Converse client 37 in Openfire.
 - Version `4.4.0` release 1 of the Openfire [JSXC plugin](https://discourse.igniterealtime.org/t/jsxc-openfire-plugin-4-4-0-1-released/91559) has been released, which enables deployment the third-party JSXC client 13 in Openfire.
 - Version `1.2.3` of the Openfire [Message of the Day plugin](https://discourse.igniterealtime.org/t/openfire-message-of-the-day-motd-plugin-version-1-2-3-released/91556) has been released, and it ships with German translations for the admin console
-* Version `1.8.0` of the Openfire [REST API plugin](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-0-released/91555/3) was released which adds new endpoints for readiness, liveliness and cluster status.
+- Version `1.8.0` of the Openfire [REST API plugin](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-0-released/91555/3) has been released, which adds new endpoints for readiness, liveliness and cluster status.
 
 ## Libraries
 
