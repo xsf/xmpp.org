@@ -31,7 +31,7 @@ This is a community effort, and we would like to thank translators for their con
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
 
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
-- [Collection Mellium Co-op projects](https://opencollective.com/mellium)
+- [Mellium Co-op](https://opencollective.com/mellium)
 
 ## XMPP Community Projects
 
@@ -50,7 +50,7 @@ Thilo Molitor presented their new even more [privacy friendly push design in Mon
 
 ## Articles
 
-The Mellium Dev Communiqué for April 2022 has been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). Furthermore, the [OMEMO Encryption](https://opencollective.com/mellium/projects/omemo) funding has reach $100!
+The Mellium Dev Communiqué for April 2022 has been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022).
 
 Maxime “pep.” Buquet wrote some thoughts regarding _"Deal on Digital Markets Act: EU rules to ensure fair competition and more choice for users"_ in his [Interoperability in a “Big Tech” world](https://bouah.net/2022/04/interoperability-in-a-big-tech-world/) article. In a later article he describes [part of his threat model](https://bouah.net/2022/04/an-overview-of-my-threat-model/), detailing how XMPP comes into play and proposing ways it could be improved.
 
@@ -96,8 +96,6 @@ Ignite Realtime Community:
 [slixmpp `1.8.2`](https://lab.louiz.org/poezio/slixmpp/-/releases/slix-1.8.2) has been released. It fixes RFC3920 sessions, improves certificate errors handling, and adds a plugin for XEP-0454 (OMEMO media sharing).
 
 The mellium.im/xmpp library `v0.21.2` has been released! Highlights include support for [PEP Native Bookmarks](https://xmpp.org/extensions/xep-0402.html), and [entity capabilities](https://xmpp.org/extensions/xep-0115.html). For more information, see the [release announcement](https://opencollective.com/mellium/updates/new-release-mellium-im-xmpp-v0-21-2).
-
-The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). The big news this month is that the [OMEMO encryption project](https://opencollective.com/mellium/projects/omemo) has received donations totaling over $100!
 
 ## Extensions and specifications
 
@@ -159,8 +157,9 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 Please share the news on other networks:
 
 * [Mastodon](https://fosstodon.org/@xmpp/)
-* [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 * [Twitter](https://twitter.com/xmpp)
+* [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
+* [Lemmy instance](https://community.xmpp.net/)
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
