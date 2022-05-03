@@ -31,8 +31,7 @@ This is a community effort, and we would like to thank translators for their con
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
 
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
-- NEW: [Mellium OMEMO encryption project](https://opencollective.com/mellium/projects/omemo)
-- [Mellium Co-op](https://opencollective.com/mellium)
+- [Collection Mellium Co-op projects](https://opencollective.com/mellium)
 
 ## XMPP Community Projects
 
@@ -45,9 +44,13 @@ Are you looking for an XMPP provider that suits you? There is a [new website](ht
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 
+## Talks
+
+Thilo Molitor presented their new even more [privacy friendly push design in Monal](https://xmpp-meetup.in-berlin.de/talks/monal-and-push.pdf) at the Berlin XMPP Meetup!
+
 ## Articles
 
-The [Mellium Dev Communiqué for March 2022](https://opencollective.com/mellium/updates/dev-communique-for-march-20222) has been released! This release includes changes to the sidebar in the Communiqué TUI client and improvements to various packages in the main mellium.im/xmpp module. The Mellium Dev Communiqué for April 2022 has also been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022).
+The Mellium Dev Communiqué for April 2022 has been released and can be found over on [Open Collective](https://opencollective.com/mellium/updates/dev-communique-for-april-2022). Furthermore, the [OMEMO Encryption](https://opencollective.com/mellium/projects/omemo) funding has reach $100!
 
 Maxime “pep.” Buquet wrote some thoughts regarding _"Deal on Digital Markets Act: EU rules to ensure fair competition and more choice for users"_ in his [Interoperability in a “Big Tech” world](https://bouah.net/2022/04/interoperability-in-a-big-tech-world/) article. In a later article he describes [part of his threat model](https://bouah.net/2022/04/an-overview-of-my-threat-model/), detailing how XMPP comes into play and proposing ways it could be improved.
 
@@ -161,7 +164,7 @@ Please share the news on other networks:
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 
-If you like to subscribe to the monthly XMPP newsletter, just add your email to [this mailing list](https://mail.jabber.org/mailman/listinfo/newsletter). 
+{{< newsletter-subscribe >}}
 
 Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
