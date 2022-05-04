@@ -35,9 +35,13 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Community Projects
 
-A new community space for XMPP related projects and individuals has been created in the Fediverse! Join us on our new [Lemmy instance](https://community.xmpp.net/) and chat about all XMPP things! 
+A new community space for XMPP related projects and individuals has been created in the Fediverse! Join us on our new [Lemmy instance](https://community.xmpp.net/) and chat about all XMPP things!
+
+![Lemmy](/images/newsletter/2022-05/lemmy.png "Lemmy")
 
 Are you looking for an XMPP provider that suits you? There is a [new website](https://providers.xmpp.net) based on the data of [XMPP Providers](https://invent.kde.org/melvo/xmpp-providers). XMPP Providers has a curated list of providers and tools for filtering and creating badges for them. The machine-readable list of providers can be [integrated in XMPP clients](https://providers.xmpp.net/apps/) to simplify the registration. You can [help](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md) by improving your website (as a provider), by automating the manual tasks (as a developer), and by adding new providers to the list (as an interested contributor). Read the [first blog post](https://providers.xmpp.net/blog/2022-04-25-start-of-xmpp-providers-website/)!
+
+![XMPP Providers](/images/newsletter/xmppproviders.png "XMPP Providers")
 
 ## Events
 
@@ -47,6 +51,8 @@ Are you looking for an XMPP provider that suits you? There is a [new website](ht
 ## Talks
 
 Thilo Molitor presented their new even more [privacy friendly push design in Monal](https://xmpp-meetup.in-berlin.de/talks/monal-and-push.pdf) at the Berlin XMPP Meetup!
+
+![Monal push](/images/newsletter/monalpush.png "Monal push")
 
 ## Articles
 
@@ -79,7 +85,7 @@ JMP offers international call rates based on a [computing trie](https://blog.jmp
 [Poezio `0.14`](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new 
 release brings in lots of bug fixes and small improvements. Big changes are coming, read more in the article.
 
-<!-- https://bouah.net/2022/04/poezio-full.png -->
+![Poezio Stickers](/images/newsletter/poeizo.png "Poezio Stickers")
 
 [UWPX](https://uwpx.org) ships two small pre-release updates concering a [critical fix](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.6.0) for a crash that occurs when trying to render an invalid user avatar and issues with the [Windows Store builds](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.41.5.0). Besides that it also got a minor [UI update](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.42.0.0) this month.
 
@@ -136,9 +142,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 -   No Last Call this month.
 
-### Stable (formerly known as Draft)
-
-Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it here](https://github.com/xsf/xeps/pull/1100).
+### Stable
 
 -   No XEPs advanced to Stable this month.
 
