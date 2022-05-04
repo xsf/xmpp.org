@@ -82,8 +82,7 @@ JMP offers international call rates based on a [computing trie](https://blog.jmp
 
 [Psi+ `1.5.1619` (2022-04-09)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
 
-[Poezio `0.14`](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new 
-release brings in lots of bug fixes and small improvements. Big changes are coming, read more in the article.
+[Poezio `0.14`](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new release brings in lots of bug fixes and small improvements. Big changes are coming, read more in the article.
 
 ![Poezio Stickers](/images/newsletter/poeizo.png "Poezio Stickers")
 
