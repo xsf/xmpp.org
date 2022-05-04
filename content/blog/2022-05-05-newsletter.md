@@ -23,7 +23,7 @@ This is a community effort, and we would like to thank translators for their con
 ![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
 
 - The XSF has been accepted as hosting organization at [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/).
-- XMPP Newsletter via mail: We migrated to our [own mail-list server](https://mail.jabber.org/mailman/listinfo/newsletter) and stopped using Tinyletter. Its read-only and you will receive the XMPP Newsletter on a monthly basis. It also eliminates the privacy concerns with Tinyletter.
+- XMPP Newsletter via mail: We migrated to our [own server for a mailing list](https://mail.jabber.org/mailman/listinfo/newsletter) in order to move away from Tinyletter. It is a read-only list on which, once you subscribe to it, you will receive the XMPP Newsletter on a monthly basis. We moved away from Tinyletter due to privacy concerns.
 - By the way, have you checked our nice [XMPP RFC page](https://xmpp.org/rfcs/)? :-)
 
 ## XSF fiscal hosting projects
