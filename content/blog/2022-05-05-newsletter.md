@@ -41,7 +41,7 @@ A new community space for XMPP related projects and individuals has been created
 
 Are you looking for an XMPP provider that suits you? There is a [new website](https://providers.xmpp.net) based on the data of [XMPP Providers](https://invent.kde.org/melvo/xmpp-providers). XMPP Providers has a curated list of providers and tools for filtering and creating badges for them. The machine-readable list of providers can be [integrated in XMPP clients](https://providers.xmpp.net/apps/) to simplify the registration. You can [help](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md) by improving your website (as a provider), by automating the manual tasks (as a developer), and by adding new providers to the list (as an interested contributor). Read the [first blog post](https://providers.xmpp.net/blog/2022-04-25-start-of-xmpp-providers-website/)!
 
-![XMPP Providers](/images/newsletter/xmppproviders.png "XMPP Providers")
+![XMPP Providers](/images/newsletter/2022-05/xmppproviders.png "XMPP Providers")
 
 ## Events
 
@@ -52,7 +52,7 @@ Are you looking for an XMPP provider that suits you? There is a [new website](ht
 
 Thilo Molitor presented their new even more [privacy friendly push design in Monal](https://xmpp-meetup.in-berlin.de/talks/monal-and-push.pdf) at the Berlin XMPP Meetup!
 
-![Monal push](/images/newsletter/monalpush.png "Monal push")
+![Monal push](/images/newsletter/2022-05/monalpush.png "Monal push")
 
 ## Articles
 
@@ -84,7 +84,7 @@ JMP offers international call rates based on a [computing trie](https://blog.jmp
 
 [Poezio `0.14`](https://bouah.net/2022/04/updates-from-the-poezio-ecosystem/) has been released alongside with multiple backend libraries. This new release brings in lots of bug fixes and small improvements. Big changes are coming, read more in the article.
 
-![Poezio Stickers](/images/newsletter/poeizo.png "Poezio Stickers")
+![Poezio Stickers](/images/newsletter/2022-05/poeizo.png "Poezio Stickers")
 
 [Profanity `0.12.1`](https://github.com/profanity-im/profanity/releases/tag/0.12.1) has been released, which brings some bug fixes.
 
