@@ -11,6 +11,9 @@ defaultContentLanguage = "en"
 theme = "xmpp.org"
 enableEmoji = true
 
+[author]
+name = "XMPP Communication Team and Contributors"
+
 [Params]
   subtitle = "The universal messaging standard"
   hideAuthor = false
