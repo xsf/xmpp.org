@@ -132,7 +132,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 ### Updated
 
 -   Version 0.4 of [XEP-0356](https://xmpp.org/extensions/xep-0356.html) (Privileged Entity)
-    -   Add "iq" privilege (necessary to implement XEPs such as ).
+    -   Add "iq" privilege (necessary to implement XEPs such as Pubsub Account Management ([XEP-0376](https://xmpp.org/extensions/xep-0376.html))).
     -   Roster pushes are now transmitted to privileged entity with "roster" permission of "get" or "both". This can be disabled.
     -   Reformulate to specify than only initial stanza and "unavailable" stanzas are transmitted with "presence" pemission.
     -   Namespace bump. (jp)
