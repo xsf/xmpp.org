@@ -1,47 +1,68 @@
-# This file is used to download the XEP list and convert it to JSON
+'''
+This file is used to download the XEP list and convert it to JSON
+'''
+from typing import Any
+
 import sys
 import os
 import json
+
+from defusedxml.ElementTree import fromstring
+from defusedxml.ElementTree import ParseError
 import requests
-import xml.etree.ElementTree as ET
+
+XEP_LIST_URL = 'https://xmpp.org/extensions/xeplist.xml'
 
 
-def status_ok(status_code):
-    # Status codes ranging from 200 (OK) to 300 (redirects) are okay
-    if status_code >= 200 and status_code < 400:
-        return True
-    return False
+def status_ok(status_code: int) -> bool:
+    '''
+    Status codes ranging from 200 (OK) to 300 (redirects) are okay
+    '''
+    if not 200 >= status_code < 400:
+        return False
+    return True
 
 
-xeplist_request = requests.get("https://xmpp.org/extensions/xeplist.xml")
-if not status_ok(xeplist_request.status_code):
-    quit(f'Error while downloading xeplist.xml ({xeplist_request.status_code}')
+def build_xep_list() -> None:
+    '''
+    Download and parse xeplist.xml and build xeplist.json
+    '''
+    xeplist_request = requests.get(XEP_LIST_URL)
+    if not status_ok(xeplist_request.status_code):
+        sys.exit(f'Error while downloading xeplist.xml '
+                 f'({xeplist_request.status_code}')
 
-try:
-    root = ET.fromstring(xeplist_request.content)
-except Exception:
-    quit('Error while parsing xeplist.xml')
+    try:
+        root = fromstring(xeplist_request.content)
+    except ParseError:
+        sys.exit('Error while parsing xeplist.xml')
 
-def fix_status(status):
-    if status == 'Draft':
-        return 'Stable'
-    return status
+    def fix_status(status: str) -> str:
+        if status == 'Draft':
+            return 'Stable'
+        return status
 
-xeps = []
-for xep in root.findall("xep"):
-    if xep.get("accepted") == "true":
-        xeps.append(
-            {
-                "title": xep.find("title").text,
-                "status": fix_status(xep.find("status").text),
-                "number": int(xep.find("number").text),
-                "last_updated": xep.find("last-revision").find("date").text,
-                "type": xep.find("type").text,
-            }
-        )
+    xeps: list[dict[str, Any]] = []
+    for xep in root.findall("xep"):
+        if xep.get("accepted") == "true":
+            xeps.append(
+                {
+                    'title': xep.find('title').text,
+                    'status': fix_status(xep.find('status').text),
+                    'number': int(xep.find('number').text),
+                    'last_updated': xep.find('last-revision').find('date').text,
+                    'type': xep.find('type').text,
+                }
+            )
 
-base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 
-with open(f'{base_path}/../data/xeplist.json', 'w') as json_file:
-    json.dump(xeps, json_file, indent=4)
-print('XEP List prepared successfully')
+    with open(f'{base_path}/../data/xeplist.json',
+              'w',
+              encoding='utf-8') as json_file:
+        json.dump(xeps, json_file, indent=4)
+    print('XEP List prepared successfully')
+
+
+if __name__ == '__main__':
+    build_xep_list()
