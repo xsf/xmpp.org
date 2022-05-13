@@ -325,6 +325,18 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     color: grey;
 }
 
+/* Software (clients/servers/libraries) list */
+.software-collapse {
+    transition: none;
+}
+.software-logo-default {
+    filter: opacity(0.3);
+}
+.software-logo {
+    max-width: 150px;
+    width: 100%;
+}
+
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
 	body {

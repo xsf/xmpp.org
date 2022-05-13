@@ -30,7 +30,7 @@
     {{ $clients_list := .Site.Data.clients_list_doap}}
     {{ range $platforms }}
         {{ $platform := . }}
-        <div class="collapse {{ if eq (lower .) "android" }}show{{ end }}" id="collapse-{{ . | urlize }}" data-bs-parent="#software-clients" style="transition: none;">
+        <div class="collapse software-collapse {{ if eq (lower .) "android" }}show{{ end }}" id="collapse-{{ . | urlize }}" data-bs-parent="#software-clients">
             <h2 class="text-center pb-1">{{ $platform }}</h2>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 {{ range $supported_platform, $clients := $clients_list }}
@@ -41,9 +41,9 @@
                                     <div class="row g-0">
                                         <div class="col-md-3 text-center py-3">
                                             {{ if .logo }}
-                                                <img src="{{ .logo }}" class="py-1 ps-3" style="max-width:150px;width:100%">
+                                                <img src="{{ .logo }}" class="py-1 ps-3 software-logo">
                                             {{ else }}
-                                                <i class="fas fa-3x fa-cube py-1" style="filter:opacity(0.3);"></i>
+                                                <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
                                             {{ end }}
                                         </div>
                                         <div class="col-md-9">
