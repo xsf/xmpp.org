@@ -49,10 +49,10 @@ jobs:
         run: hugo
 
       - name: Create build archive
-        run: tar -czf xmpp-org-master.tar.gz "./public"
+        run: tar -czf ${{ env.ARCHIVE }} "./public"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@master
         with:
           name: xmpp.org-master
-          path: xmpp-org-master.tar.gz
+          path: ${{ env.ARCHIVE }}
