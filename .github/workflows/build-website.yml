@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ARCHIVE: xmpp-org-master.tar.gz
 
     steps:
       - name: Check out repository
@@ -46,8 +48,11 @@ jobs:
       - name: Build website
         run: hugo
 
+      - name: Create build archive
+        run: tar -czf xmpp-org-master.tar.gz "./public"
+
       - name: Upload build artifact
         uses: actions/upload-artifact@master
         with:
-          name: website
-          path: './public'
+          name: xmpp.org-master
+          path: xmpp-org-master.tar.gz
