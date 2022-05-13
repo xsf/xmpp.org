@@ -1,4 +1,4 @@
-name: xmpp.org linting
+name: lint software lists
 on:
   pull_request:
 
