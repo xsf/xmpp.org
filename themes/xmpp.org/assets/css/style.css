@@ -311,6 +311,9 @@ ul.share {
     position: relative;
     top: -3px;
 }
+.footer-xmpp-logo {
+    width: 150px;
+}
 .footer a {
     color:#ccc;
     font-family: "Exo 2", sans-serif;
