@@ -1,7 +1,6 @@
 # xmpp.org
 
-[![Build Status](https://app.travis-ci.com/xsf/xmpp.org.svg?branch=master)](https://app.travis-ci.com/xsf/xmpp.org)
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/xmppxsf/xmpp.org)](https://hub.docker.com/r/xmppxsf/xmpp.org/builds/)
+[![Build Website](https://github.com/xsf/xmpp.org/actions/workflows/build-website.yml/badge.svg)](https://github.com/xsf/xmpp.org/actions/workflows/build-website.yml)
 
 Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 
@@ -20,7 +19,7 @@ Please use [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join) for discussions about 
 ## Site generation
 
 * Commits to the master branch generate a new build.
-* Builds are visible at [Travis-CI](https://app.travis-ci.com/github/xsf/xmpp.org/builds)
+* Builds are visible at [Github Actions](https://github.com/xsf/xmpp.org/actions/workflows/)
 * Changes will be visible on [xmpp.org](https://xmpp.org) after the next update
 
 ## Software Requirements
