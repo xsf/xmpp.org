@@ -38,6 +38,7 @@ DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
 PLATFORMS: list[str] = [
     'Android',
     'iOS',
+    'Browser',
     'Windows',
     'macOS',
     'Linux',

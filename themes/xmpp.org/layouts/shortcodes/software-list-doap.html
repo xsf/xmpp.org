@@ -1,82 +1,102 @@
-{{ $platforms := slice "Android" "Linux" "Other" "Windows" "iOS" "macOS"}}
-
+{{ $platforms := slice "Android" "iOS" "Browser" "Windows" "macOS" "Linux" "Other" }}
 <div id="software-clients">
-    <div class="d-flex flex-wrap justify-content-center pb-3">
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-android" role="button" aria-controls="collapse-android" aria-expanded="true">
-            <i class="fab fa-android"></i>
-            Android
-        </button>
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-ios" role="button" aria-controls="collapse-ios" aria-expanded="false">
-            <i class="fab fa-app-store-ios"></i>
-            iOS
-        </button>
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-windows" role="button" aria-controls="collapse-windows" aria-expanded="false">
-            <i class="fab fa-windows"></i>
-            Windows
-        </button>
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-macos" role="button" aria-controls="collapse-macos" aria-expanded="false">
-            <i class="fab fa-apple"></i>
-            macOS
-        </button>
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-linux" role="button" aria-controls="collapse-linux" aria-expanded="false">
-            <i class="fab fa-linux"></i>
-            Linux
-        </button>
-        <button type="button" class="btn btn-secondary m-1" data-bs-toggle="collapse" data-bs-target="#collapse-other" role="button" aria-controls="collapse-other" aria-expanded="false">
-            <i class="fas fa-box"></i>
-            Other
-        </button>
-    </div>
-    {{ $clients_list := .Site.Data.clients_list_doap}}
-    {{ range $platforms }}
-        {{ $platform := . }}
-        <div class="collapse software-collapse {{ if eq (lower .) "android" }}show{{ end }}" id="collapse-{{ . | urlize }}" data-bs-parent="#software-clients">
-            <h2 class="text-center pb-1">{{ $platform }}</h2>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                {{ range $supported_platform, $clients := $clients_list }}
-                    {{ if in (lower $supported_platform) (lower $platform) }}
-                        {{ range $clients }}
-                            <div class="col">
-                                <div class="card h-100">
-                                    <div class="row g-0">
-                                        <div class="col-md-3 text-center py-3">
-                                            {{ if .logo }}
-                                                <img src="{{ .logo }}" class="py-1 ps-3 software-logo">
-                                            {{ else }}
-                                                <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
-                                            {{ end }}
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="card-body">
-                                                <a href="{{ .url }}" target="_blank">
-                                                    <h4 class="card-title">{{ .name }}</h4>
-                                                </a>
-                                                <p class="card-text small">{{ .shortdesc }}</p>
-                                                {{ if eq $platform "Other" }}
-                                                    <p class="card-text small mb-0">
-                                                        Platforms:
-                                                        <ul>
-                                                            {{ range .os }}
-                                                                <li class="small">
-                                                                    {{ . }}
-                                                                </li>
-                                                            {{ end }}
-                                                        </ul>
-                                                    </p>
+    <ul class="nav nav-pills nav-fill pb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="android-tab" data-bs-toggle="pill" data-bs-target="#pane-android" type="button" role="tab" aria-controls="pane-android" aria-selected="true">
+                <i class="fab fa-android"></i>
+                Android
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="ios-tab" data-bs-toggle="pill" data-bs-target="#pane-ios" type="button" role="tab" aria-controls="pane-ios" aria-selected="false">
+                <i class="fab fa-app-store-ios"></i>
+                iOS
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="browser-tab" data-bs-toggle="pill" data-bs-target="#pane-browser" type="button" role="tab" aria-controls="pane-browser" aria-selected="false">
+                <i class="fas fa-window-maximize"></i>
+                Browser
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="windows-tab" data-bs-toggle="pill" data-bs-target="#pane-windows" type="button" role="tab" aria-controls="pane-windows" aria-selected="false">
+                <i class="fab fa-windows"></i>
+                Windows
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="macos-tab" data-bs-toggle="pill" data-bs-target="#pane-macos" type="button" role="tab" aria-controls="pane-macos" aria-selected="false">
+                <i class="fab fa-apple"></i>
+                macOS
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="linux-tab" data-bs-toggle="pill" data-bs-target="#pane-linux" type="button" role="tab" aria-controls="pane-linux" aria-selected="false">
+                <i class="fab fa-linux"></i>
+                Linux
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="other-tab" data-bs-toggle="pill" data-bs-target="#pane-other" type="button" role="tab" aria-controls="pane-other" aria-selected="false">
+                <i class="fas fa-box"></i>
+                Other
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-software-content">
+        {{ $clients_list := .Site.Data.clients_list_doap}}
+        {{ range $platforms }}
+            {{ $platform := . }}
+            <div class="tab-pane {{ if eq (lower .) "android" }}show active{{ end }}" id="pane-{{ . | urlize }}" role="tabpanel" aria-labelledby="{{ . | urlize }}-tab">
+                <h2 class="text-center pb-1">{{ $platform }}</h2>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    {{ range $supported_platform, $clients := $clients_list }}
+                        {{ if in (lower $supported_platform) (lower $platform) }}
+                            {{ range $clients }}
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="row g-0">
+                                            <div class="col-md-3 text-center py-3">
+                                                {{ if .logo }}
+                                                    <img src="{{ .logo }}" class="py-1 ps-3 software-logo">
                                                 {{ else }}
-                                                    {{ if ne (lower $platform) (lower .os) }}
-                                                        <p class="small">Platform: {{ .os }}</p>
-                                                    {{ end }}
+                                                    <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
                                                 {{ end }}
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="card-body">
+                                                    <a href="{{ .url }}" target="_blank">
+                                                        <h4 class="card-title">{{ .name }}</h4>
+                                                    </a>
+                                                    <p class="card-text small">{{ .shortdesc }}</p>
+                                                    {{ if eq $platform "Other" }}
+                                                        <p class="card-text small mb-0">
+                                                            Platforms:
+                                                            <ul>
+                                                                {{ range .os }}
+                                                                    <li class="small">
+                                                                        {{ . }}
+                                                                    </li>
+                                                                {{ end }}
+                                                            </ul>
+                                                        </p>
+                                                    {{ else }}
+                                                        {{ if ne (lower $platform) (lower .os) }}
+                                                            <p class="small">Platform: {{ .os }}</p>
+                                                        {{ end }}
+                                                    {{ end }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            {{ end }}
                         {{ end }}
                     {{ end }}
-                {{ end }}
+                </div>
             </div>
-        </div>
-    {{ end }}
+        {{ end }}
+    </div>
 </div>
