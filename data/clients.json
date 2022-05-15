@@ -679,7 +679,7 @@
         "url": "https://trillian.im"
     },
     {
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/UWPX/UWPX-Client/master/uwpx.doap",
         "last_renewed": "2022-05-15T08:48:22",
         "name": "UWPX",
         "platforms": [
