@@ -1,6 +1,5 @@
 ---
 title: Der XMPP Newsletter März 2022
-author: Anoxinon e.V.
 date: 2022-04-05
 categories: ['Newsletter']
 ---
@@ -13,6 +12,7 @@ Wie dieser Newsletter auch sind viele Projekte und deren Mühen in der XMPP Geme
 
 Dies ist eine Gemeinschaftsarbeit und wir wollen allen Übersetzer:innen für deren Beiträge danken! Freiwillige sind Willkommen! Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
 
+- Englisch (original): [xmpp.org/blog](https://xmpp.org/blog/)
 - Französisch: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - Deutsch: [xmpp.org/de/blog](https://xmpp.org/de/blog/) und [anoxinon.de](https://anoxinon.de/blog/)
 - Italienisch: [nicfab.it](https://www.nicfab.it/)
@@ -158,7 +158,7 @@ Teile unsere Neuigkeiten in "Sozialen Netzwerken":
 * [Reddit](https://www.reddit.com/r/xmpp/) [EN]
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/) [EN]
 
-[Abonniere](https://tinyletter.com/xmpp) [EN] diesen Newsletter und erhalte die nächste Edition direkt in Dein Postfach, sobald sie veröffentlicht wird.
+{{< newsletter-subscribe >}}
 
 Auch via RSS-Feed in [Englisch](https://xmpp.org/feeds/all.atom.xml) und in [Deutsch](https://anoxinon.de/tags/xmpp-newsletter/index.xml)!
 
@@ -166,7 +166,7 @@ Finde und schreibe XMPP Job-Angebote im [XMPP job board](https://xmpp.work/) [EN
 
 ## Hilf uns, diesen Newsletter zu erstellen
 
-Der XMPP-Newsletter wurde kollaborativ von der Community produziert. Danke an Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, MattJ, nicfab, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Ysabeau und Zash ihre Hilfe, ihn zu erstellen!
+Der XMPP-Newsletter wurde kollaborativ von der Community produziert. Danke an **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, MattJ, nicfab, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Ysabeau und Zash** ihre Hilfe, ihn zu erstellen!
 
 Jede monatliche Ausgabe des Newsletters wird in [einfachen Notiz](https://yopad.eu/p/xmpp-newsletter-365days) [EN] entworfen. Am Ende des Monats wird der Inhalt dieser Notiz in das [XSF Github Repositorium](https://github.com/xsf/xmpp.org/milestone/3) [EN] übertragen. Wir freuen uns immer über Beteiligung. Zögere nicht, unserer Diskussion in unserem [Comm-Team Gruppenchat](xmpp:commteam@muc.xmpp.org?join) [EN] beizutreten und dabei zu helfen, den Newsletter in Community-Arbeit forzuführen. Du hast ein Projekt und schreibst darüber? Denk’ doch darüber nach, die Neuigkeiten oder Veranstaltungen im Newsletter zu teilen und einer großen Zielgruppe zu präsentieren. Schon ein Beitrag von ein paar Minuten ist hilfreich!
 
