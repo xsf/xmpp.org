@@ -17,7 +17,7 @@ Este es un esfuerzo comunitario, y nos gustaría agradecer a los traductores sus
 - Francés: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) y [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - Alemán: [xmpp.org](https://xmpp.org/categories/newsletter/) y [anoxinon.de](https://anoxinon.de/blog/)
 - Italiano: [nicfab.it](https://www.nicfab.it/)
-- Español: [xmpp.org](https://xmpp.org/categories/newsletter/)
+- English: [xmpp.org](https://xmpp.org/categories/newsletter/)
 
 ## Anuncios de la XSF
 
