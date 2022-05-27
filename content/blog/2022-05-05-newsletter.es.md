@@ -1,6 +1,5 @@
 ---
 title: The XMPP Newsletter April 2022
-author: XMPP Communication Team and Contributors
 date: 2022-05-05
 categories: ['Newsletter']
 ---
