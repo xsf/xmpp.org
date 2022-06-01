@@ -22,7 +22,11 @@ This is a community effort, and we would like to thank translators for their con
 
 ![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
 
-- The XSF has been accepted as hosting organization at [Google Summer of Code 2022 (GSoC)](https://xmpp.org/community/gsoc-2022/).
+- The Google Summer of Code 2022 is about to lift off and coding starts soon! Welcome the two new contributors Patiga and PawBud who will work on open-source software projects in the XMPP environment!
+  - **Patiga** will work on [more flexible file transfers in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ). Mentors will be **fiaxh** and **Marvin W.** - many thanks to both of you!
+  - **PawBud** will work towards [adding support for A/V communication via Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19). Mentors will be **JC Brand** and **vanitasvitae** - many thanks to both of you, too!
+
+  Feel free to spread the word via [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) or [Twitter](https://mobile.twitter.com/xmpp/status/1529199174729728000). More details in our [designated page at xmpp.org](https://xmpp.org/community/gsoc-2022/).
 
 ## XSF fiscal hosting projects
 
@@ -43,21 +47,37 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+bifrost bridge fork at aria-net.org implemented offline messages support for matrix rooms accessed via the bridge
+XMPP users connecting to matrix rooms via bifrost bridge did not get offline messages, because muc history
+ support was not implemented in the xmpp server implementation of the 
+bridge (based on xmpp-js). Thanks to great work done by Maranda, we can 
+now have history and also MAM support for matrix to xmpp bridged rooms. See this post for complete instructions to use this feature 
+https://opencollective.com/bifrost-mam/updates/maranda-from-aria-net-org-implements-mam-support-in-bifrost-bridge
+
+[The JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2022) announces a new release of the Cheogram Android client, SMS-only phone 
+number ports, deeper integration with Snikket, and a [new project for social instance hosting](https://blog.jmp.chat/b/togethr-sopranica-social).
 
 ## Software news
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Gajim 1.4.0](https://gajim.org/post/2022-05-11-gajim-1.4.0-released/), [1.4.1](https://gajim.org/post/2022-05-21-gajim-1.4.1-released/), and [1.4.2](https://gajim.org/post/2022-05-25-gajim-1.4.2-released/) have been released! After more than a year of development, it’s finally time to announce the release of Gajim 1.4! Gajim 1.4 series comes with a completely redesigned message window and conversation management. Workspaces allow you to organize your chats to keep matters separate where needed. These changes were only possible by touching a lot of Gajim’s code base, and we appreciate all the feedback we got from you.
+
+[Psi+ portable 11.5.1627 (2022-05-21)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) and [Psi+ installer 11.5.1629 (2022-05-31)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
+
+Go-sendxmpp [0.5.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.5.0) with Ox (OpenPGP for XMPP) improvements has been released, followed by a bugfix release [0.5.1](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.5.1).
+
+The Soprani.ca project has released a small tool hosted on their Cheogram infrastructure to [easily compute an equivalent Matrix ID for your Jabber ID](https://cheogram.com/matrix/) via known bridges.
 
 ## Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[ejabberd 22.05](https://www.process-one.net/blog/ejabberd-22-05/) has been released. This version includes five months of work, 200 commits, including many improvements (MQTT, MUC, PubSub, …) and bug fixes.
+
+[Jackal 0.60.0](https://github.com/ortuman/jackal) has been released.
 
 ## Libraries
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[python-nbxmpp versions 3.0.0 to 3.1.0](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, bringing support fo Message Moderation, Bookmarks extensions, and many bug fixes.
 
 ## Extensions and specifications
 
@@ -131,7 +151,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, mathieui, MattJ, nicfab, Pierre Jarillon, Ppjet6, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, Martin, mathieui, MattJ, nicfab, Pierre Jarillon, Pirate Praveen, Ppjet6, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
