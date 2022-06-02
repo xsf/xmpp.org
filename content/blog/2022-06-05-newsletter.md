@@ -55,7 +55,7 @@ number ports, deeper integration with Snikket, and a [new project for social ins
 
 ### Clients and applications
 
-[Gajim 1.4.0](https://gajim.org/post/2022-05-11-gajim-1.4.0-released/), [1.4.1](https://gajim.org/post/2022-05-21-gajim-1.4.1-released/), and [1.4.2](https://gajim.org/post/2022-05-25-gajim-1.4.2-released/) have been released! After more than a year of development, it’s finally time to announce the release of Gajim 1.4! Gajim 1.4 series comes with a completely redesigned message window and conversation management. Workspaces allow you to organize your chats to keep matters separate where needed. These changes were only possible by touching a lot of Gajim’s code base, and we appreciate all the feedback we got from you.
+[Gajim 1.4.0](https://gajim.org/post/2022-05-11-gajim-1.4.0-released/), [1.4.1](https://gajim.org/post/2022-05-21-gajim-1.4.1-released/), [1.4.2](https://gajim.org/post/2022-05-25-gajim-1.4.2-released/), and [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/) have been released! After more than a year of development, it’s finally time to announce the release of Gajim 1.4! Gajim 1.4 series comes with a completely redesigned message window and conversation management. Workspaces allow you to organize your chats to keep matters separate where needed. These changes were only possible by touching a lot of Gajim’s code base, and we appreciate all the feedback we got from you.
 
 [Psi+ portable 11.5.1627 (2022-05-21)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) and [Psi+ installer 11.5.1629 (2022-05-31)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
