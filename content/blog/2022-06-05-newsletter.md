@@ -28,6 +28,8 @@ This is a community effort, and we would like to thank translators for their con
 
   Feel free to spread the word via [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) or [Twitter](https://mobile.twitter.com/xmpp/status/1529199174729728000). More details in our [designated page at xmpp.org](https://xmpp.org/community/gsoc-2022/).
 
+- The current XSF member [voting period is ongoing](https://wiki.xmpp.org/web/Membership_Applications_Q2_2022). If you are an XSF member, please take your chance to vote. If your are interest to apply visit our [related page](https://xmpp.org/community/membership/).
+
 ## XSF fiscal hosting projects
 
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
