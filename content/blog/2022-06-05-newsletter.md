@@ -89,14 +89,14 @@ By the way, xmpp.org features [a new page about XMPP RFCs](https://xmpp.org/rfcs
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   [Pubsub Public Subscriptions](https://xmpp.org/extensions/inbox/pubsub-public-subscriptions.html)
-    -   This specification provides a way to make subscriptions to a node public
--   [Ephemeral Messages](https://xmpp.org/extensions/inbox/ephemeral-messages-v2.html)
-    -   This specification encourages a shift in privacy settings wrt. logging policies.
+-   No XEPs proposed this month.
 
 ### New
 
--   No new XEPs this month.
+-   Version 0.1.0 of [XEP-0465](https://xmpp.org/extensions/xep-0465.html) (Pubsub Public Subscriptions)
+    -   Accepted by vote of Council on 2022-04-13. (XEP Editor (jsc))
+-   Version 0.1.0 of [XEP-0466](https://xmpp.org/extensions/xep-0466.html) (Ephemeral Messages)
+    -   Accepted by vote of Council on 2022-05-03. (XEP Editor (jsc))
 
 ### Deferred
 
@@ -106,11 +106,8 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 0.4 of [XEP-0356](https://xmpp.org/extensions/xep-0356.html) (Privileged Entity)
-    -   Add "iq" privilege (necessary to implement XEPs such as ).
-    -   Roster pushes are now transmitted to privileged entity with "roster" permission of "get" or "both". This can be disabled.
-    -   Reformulate to specify than only initial stanza and "unavailable" stanzas are transmitted with "presence" pemission.
-    -   Namespace bump. (jp)
+-   Version 0.3 of [XEP-0365](https://xmpp.org/extensions/xep-0365.html) (Server to Server communication over STANAG 5066 ARQ)
+    -   Make use of SLEP Streaming service, which was not available for 0.1. This provides a better service mapping than direct use of 5066 and provides compression. (sek)
 
 ### Last Call
 
