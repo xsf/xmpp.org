@@ -37,24 +37,16 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
 - [Mellium Co-op](https://opencollective.com/mellium)
 
-## XMPP Community Projects
-
 ## Events
 
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 
-## Talks
-
-
 ## Articles
 
-bifrost bridge fork at aria-net.org implemented offline messages support for matrix rooms accessed via the bridge
-XMPP users connecting to matrix rooms via bifrost bridge did not get offline messages, because muc history
- support was not implemented in the xmpp server implementation of the 
-bridge (based on xmpp-js). Thanks to great work done by Maranda, we can 
-now have history and also MAM support for matrix to xmpp bridged rooms. See this post for complete instructions to use this feature 
-https://opencollective.com/bifrost-mam/updates/maranda-from-aria-net-org-implements-mam-support-in-bifrost-bridge
+Bifrost bridge fork at aria-net.org implemented offline messages support for matrix rooms accessed via the bridge
+XMPP users connecting to Matrix rooms via Bifrost bridge did not get offline messages, because group chat (MUC) history support was not implemented in the XMPP server implementation of the 
+bridge (based on xmpp-js). Thanks to great work done by Maranda, we can now have history and also message history (MAM) support for Matrix to XMPP bridged rooms. See [this post for complete instructions](https://opencollective.com/bifrost-mam/updates/maranda-from-aria-net-org-implements-mam-support-in-bifrost-bridge) to use this feature.
 
 [The JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2022) announces a new release of the Cheogram Android client, SMS-only phone 
 number ports, deeper integration with Snikket, and a [new project for social instance hosting](https://blog.jmp.chat/b/togethr-sopranica-social).
