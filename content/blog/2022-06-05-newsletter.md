@@ -57,11 +57,15 @@ number ports, deeper integration with Snikket, and a [new project for social ins
 
 [Gajim 1.4.0](https://gajim.org/post/2022-05-11-gajim-1.4.0-released/), [1.4.1](https://gajim.org/post/2022-05-21-gajim-1.4.1-released/), [1.4.2](https://gajim.org/post/2022-05-25-gajim-1.4.2-released/), and [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/) have been released! After more than a year of development, it’s finally time to announce the release of Gajim 1.4! Gajim 1.4 series comes with a completely redesigned message window and conversation management. Workspaces allow you to organize your chats to keep matters separate where needed. These changes were only possible by touching a lot of Gajim’s code base, and we appreciate all the feedback we got from you.
 
+![Gajim Workspaces Emoji](/images/newsletter/2022-06/workspaces-with-emojis.png "Gajim Workspaces Emoji")
+
 [Psi+ portable 11.5.1627 (2022-05-21)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) and [Psi+ installer 11.5.1629 (2022-05-31)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
 Go-sendxmpp [0.5.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.5.0) with Ox (OpenPGP for XMPP) improvements has been released, followed by a bugfix release [0.5.1](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.5.1).
 
 The Soprani.ca project has released a small tool hosted on their Cheogram infrastructure to [easily compute an equivalent Matrix ID for your Jabber ID](https://cheogram.com/matrix/) via known bridges.
+
+![Cheogram ID conversion](/images/newsletter/2022-06/cheogram.png "Cheogram ID conversion")
 
 ## Servers
 
