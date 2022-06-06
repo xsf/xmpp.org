@@ -67,11 +67,37 @@ The Soprani.ca project has released a small tool hosted on their Cheogram infras
 
 [ejabberd 22.05](https://www.process-one.net/blog/ejabberd-22-05/) has been released. This version includes five months of work, 200 commits, including many improvements (MQTT, MUC, PubSub, …) and bug fixes.
 
+```erlang
+mod_opt_type(bosh_service_url) ->
+    econf:either(auto, econf:binary());
+mod_opt_type(websocket_url) ->
+    econf:either(auto, econf:binary());
+mod_opt_type(conversejs_resources) ->
+    econf:either(undefined, econf:directory());
+mod_opt_type(conversejs_options) ->
+    econf:map(econf:binary(), econf:either(econf:binary(), econf:int()));
+mod_opt_type(conversejs_script) ->
+    econf:binary();
+mod_opt_type(conversejs_css) ->
+    econf:binary();
+mod_opt_type(default_domain) ->
+    econf:binary().
+
+mod_options(_) ->
+    [{bosh_service_url, auto},
+     {websocket_url, auto},
+     {default_domain, <<"@HOST@">>},
+     {conversejs_resources, undefined},
+     {conversejs_options, []},
+     {conversejs_script, auto},
+     {conversejs_css, auto}].
+```
+
 [Jackal 0.60.0](https://github.com/ortuman/jackal) has been released.
 
 ## Libraries
 
-[python-nbxmpp versions 3.0.0 to 3.1.0](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, bringing support fo Message Moderation, Bookmarks extensions, and many bug fixes.
+[python-nbxmpp versions 3.0.0 to 3.1.0](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, bringing support for Message Moderation, Bookmarks extensions, and many bug fixes.
 
 ## Extensions and specifications
 
