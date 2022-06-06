@@ -172,7 +172,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Ludovic Bocquet, Licaon_Kter, Martin, mathieui, MattJ, nicfab, Pierre Jarillon, Pirate Praveen, Ppjet6, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, daimonduff, emus, Holger, Ludovic Bocquet, Licaon_Kter, Martin, mathieui, MattJ, nicfab, Pirate Praveen, Ppjet6, Sam Whited, singpolyma, TheCoffeMaker, wurstsalat, Ysabeau, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
