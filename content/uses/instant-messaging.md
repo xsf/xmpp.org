@@ -18,8 +18,8 @@ There are many projects that have created an XMPP-based Instant Messaging networ
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
 | ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
+| ~300 million  | [Kik Messenger](https://www.kik.com/) | Kik Messenger uses a [variation of XMPP](https://github.com/tomer8007/kik-bot-api-unofficial) for its popular chat service. |
 | ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
-| ~15 million  | [Kik Messenger](https://www.kik.com/)   | Kik Messenger uses a [variation of XMPP](https://github.com/tomer8007/kik-bot-api-unofficial) for its popular chat service. |
 | ~4 million   | [Grindr](https://grindr.com)    | Grindr is a geosocial networking and online dating application that [uses XMPP for its chat application](https://www.meetup.com/Los-Angeles-Android-Developers-Mobile-Developers-Meetup/events/221112018/). |
 |    ~350k     | [Mailfence](https://mailfence.com)   | Mailfence uses XMPP for its [group chat](https://blog.mailfence.com/mailfence-groups/) functionality. |
 |    ~10k      | [Kontalk](http://kontalk.org)   | A free and open source XMPP service that uses your phone number as the user ID. |
