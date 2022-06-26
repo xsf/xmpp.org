@@ -7,7 +7,7 @@ categories: ["Google Summer of Code"]
 
 Hi, I am PawBud. I will be working as a GSoC Contributor with XSF. To know more about my project kindly read this [blog](https://xmpp.org/2022/05/xmpp-google-summer-of-code-2022-welcome-new-contributors/). Feel free to contact me through my [email](ferrypieme@gmail.com) to ask me anything you want!
 
-Before, I start, I feel that some things that I am going to write in this blog might offend someone, **Kindly note that these thoughts are my own**. Once again you are free to contact me through my email if you have anything to say, I would be happy to hear your thoughts.
+Before I start, I feel that some things that I am going to write in this blog might offend someone. **Kindly note that these thoughts are my own**. Once again you are free to contact me through my email if you have anything to say, I would be happy to hear your thoughts.
 
 
 ### On-Boarding Experience with XSF & Community Bonding Period
