@@ -35,7 +35,7 @@ they exploit human psychology by giving instant gratification, and blah blah bla
 
 That mentality has grown stronger over the years and yes, I am not on any social media except Reddit, which I occasionally use to text my friends. Hence, XSF was a no-brainer for me, plus I wanted to learn Javascript well, so I only submitted one proposal, which was for Converse.
 
-This was a personal and a non-technical blog, to be honest, I am still figuring out how to write blogs as this is my first blog. I think I will start writing more technical and project-related blogs after this.
+This was a personal and a non-technical blog post. To be honest, I am still figuring out how to write blogs, as this is my first blog post. I think I will start writing more technical and project-related blog posts after this.
 
 ### Acknowledgement
 
