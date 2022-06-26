@@ -21,6 +21,7 @@ implementing a UI for the jingle call modal and will hopefully be done with that
 
 
 ### Why Choose GSoC & specifically XSF?
+
 Ok, This is an interesting one, I still remember the special treatment I received from the whole community once the GSoC results were announced. I think Eddie instantly shared the results with the community through the XSF GSoC group chat, Twitter and a couple of other XSF social media pages. I genuinely feel pampered
 by the overwhelming support of the community, but I am so proud that I chose GSoC over a usual company internship.
 
