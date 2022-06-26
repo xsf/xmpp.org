@@ -22,7 +22,7 @@ implementing a UI for the jingle call modal and will hopefully be done with that
 
 ### Why Choose GSoC & specifically XSF?
 
-Ok, This is an interesting one, I still remember the special treatment I received from the whole community once the GSoC results were announced. I think Eddie instantly shared the results with the community through the XSF GSoC group chat, Twitter and a couple of other XSF social media pages. I genuinely feel pampered
+Ok, this is an interesting one, I still remember the special treatment I received from the whole community once the GSoC results were announced. I think Eddie instantly shared the results with the community through the XSF GSoC group chat, Twitter and a couple of other XSF social media pages. I genuinely feel pampered
 by the overwhelming support of the community, but I am so proud that I chose GSoC over a usual company internship.
 
 I took a course on software engineering during my sophomore year, and until now I have never ever seen/experienced its concepts being implemented. In Converse, I learned more about the applications of test-driven software development in 2 weeks than I ever did during my whole semester. Turns out, that practising a technique 
