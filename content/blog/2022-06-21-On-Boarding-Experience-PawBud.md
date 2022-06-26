@@ -12,7 +12,7 @@ Before I start, I feel that some things that I am going to write in this blog mi
 
 ### On-Boarding Experience with XSF & Community Bonding Period
 
-Well, I must say, this is unlike any technical intern that you will experience, the level of attention and support that you will get from the organization admins and your project mentors from Day 1 is genuinely surprising. I mean I started having weekly calls with my mentor before the coding period even began, and
+Well, I must say, this is unlike any technical internship that you will experience. The level of attention and support that you will get from the organization admins and your project mentors from day 1 is genuinely surprising. I mean, I started having weekly calls with my mentor before the coding period even began, and
 I am still quite thankful that my mentor(s) spared their time to guide me. Believe it or not, as soon as the results were announced and I saw my name, my first reaction was "oops, well this is bad". I wasn't ready for it!! Meeting JC(my primary mentor) definitely helped me a lot during the community bonding period. 
 Turns out not everyone does feel the same(thanks to Patiga, I knew about this). Still, from my past experience in internships, I do believe that self-doubt is something that our present-day society profits from, and it is something that one can't afford if one wants to improve.
 
