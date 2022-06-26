@@ -43,6 +43,6 @@ In conclusion, I would like to thank my Mentors ([JC](https://github.com/jcbrand
 ### For those of you who could not make it to GSoC with any organization including XSF
 
 Remember, open source is not GSoC. I would honestly still contribute to various organizations, had I not gotten selected to GSoC, because it's fun! Imagine writing code that is used by potentially millions of users daily. All those late-night hotfixes and mistakes that you do, do become good memories and of course, you get
-to learn a lot. The open-source community is so friendly, that I have yet to see organizations that have core contributors who do not support newcomers.
+to learn a lot. The open source community is so friendly, that I have yet to see organizations that have core contributors who do not support newcomers.
 
 GSoC should be a side goal in my opinion. If you get selected, that's good for you. If you don't get selected, you haven't lost anything, you simply gain knowledge and contributions.
