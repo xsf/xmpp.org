@@ -37,7 +37,7 @@ That mentality has grown stronger over the years and yes I am not on any social 
 This was a personal and a non-technical blog, to be honest, I am still figuring out how to write blogs as this is my first blog. I think I will start writing more technical and project-related blogs after this.
 
 ### Acknowledgement
-In conclusion, I would like to thank my Mentors ([JC](https://github.com/jcbrand) & Vanitas),  Eddie (XSF GSoC Admin), [Patiga](https://github.com/Patiga)(Co-contributor for XSF) and the whole XSF community for putting their trust in me. I would also like to take this opportunity to thank [Zerefwayne](https://github.com/zerefwayne) 
+In conclusion, I would like to thank my Mentors ([JC](https://github.com/jcbrand) & Vanitas),  Eddie (XSF GSoC Admin), [Patiga](https://github.com/Patiga) (Co-contributor for XSF) and the whole XSF community for putting their trust in me. I would also like to take this opportunity to thank [Zerefwayne](https://github.com/zerefwayne) 
 & [Yash Rathore](https://github.com/YashRE42) for guiding me in the journey leading up to me getting selected as a contributor for XSF. I look forward to learning from all of you henceforth the GSoC period is finished.
 
 ### For those of you who could not make it to GSoC with any organization including XSF
