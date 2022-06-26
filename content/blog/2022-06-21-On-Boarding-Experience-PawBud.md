@@ -1,5 +1,5 @@
 ---
-title: On-Boarding Experience with XSF(Converse)
+title: On-Boarding Experience with XSF (Converse)
 date: 2022-06-20
 author: PawBud
 categories: ["Google Summer of Code"]
