@@ -41,6 +41,7 @@ In conclusion, I would like to thank my Mentors ([JC](https://github.com/jcbrand
 & [Yash Rathore](https://github.com/YashRE42) for guiding me in the journey leading up to me getting selected as a contributor for XSF. I look forward to learning from all of you henceforth the GSoC period is finished.
 
 ### For those of you who could not make it to GSoC with any organization including XSF
+
 Remember, Open Source is not GSoC, I would honestly still contribute to various organizations had I not gotten selected to GSoC because it's fun!! Imagine writing code that is used by potentially millions of users daily. All those late-night hotfixes and mistakes that you do, do become good memories and of course, you get
 to learn a lot. The open-source community is so friendly, that I have yet to see organizations that have core contributors who do not support newcomers.
 
