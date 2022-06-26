@@ -33,7 +33,7 @@ There is this book called Zucked by Roger McNamee. For those of you who haven't 
 and Facebook from pivoting to its present-day state. My hate for social media giants like Instagram, Facebook and Twitter, started after I graduated from Secondary School, this was because I started watching a lot of technology-related youtube channels and understood how toxic these social media giants actually are and how 
 they exploit human psychology by giving instant gratification, and blah blah blah. I must say, I was infuriated and disgusted that all this time, I was just a product of these social media giants.
 
-That mentality has grown stronger over the years and yes I am not on any social media except Reddit which I occasionally use to text my friends. Hence, XSF was a no-brainer for me, plus I wanted to learn Javascript well, so I only submitted one proposal, which was for Converse.
+That mentality has grown stronger over the years and yes, I am not on any social media except Reddit, which I occasionally use to text my friends. Hence, XSF was a no-brainer for me, plus I wanted to learn Javascript well, so I only submitted one proposal, which was for Converse.
 
 This was a personal and a non-technical blog, to be honest, I am still figuring out how to write blogs as this is my first blog. I think I will start writing more technical and project-related blogs after this.
 
