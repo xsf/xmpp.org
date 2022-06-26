@@ -26,7 +26,7 @@ Ok, this is an interesting one, I still remember the special treatment I receive
 by the overwhelming support of the community, but I am so proud that I chose GSoC over a usual company internship.
 
 I took a course on software engineering during my sophomore year, and until now I have never ever seen/experienced its concepts being implemented. In Converse, I learned more about the applications of test-driven software development in 2 weeks than I ever did during my whole semester. Turns out, that practising a technique 
-is actually the best way to learn it. The fact that my mentor takes out his time which he could very easily spend on developing converse just to guide me through the smallest of obstructions is what really makes this whole thing special. No manager or supervisor in any company is going to give you this kind of attention!
+is actually the best way to learn it. The fact that my mentor takes out his time which he could very easily spend on developing Converse, just to guide me through the smallest of obstructions, is what really makes this whole thing special. No manager or supervisor in any company is going to give you this kind of attention!
 Period.
 
 There is this book called Zucked by Roger McNamee. For those of you who haven't read it here is a gist:- Roger was one of the initial investors of Facebook and a mentor to Mark Zuckerberg. Throughout the book, he explains how Facebook turned into an evil giant, and how the guilt he feels that he could not stop Zuckerberg 
