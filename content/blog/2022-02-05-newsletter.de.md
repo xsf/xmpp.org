@@ -57,7 +57,7 @@ The XSF bietet nun [fiscal hosting](https://xmpp.org/community/fiscalhost/) [EN]
 
 ## Videos
 
-Thilo Molitor (Entwickler von Monal) [hat einen Vortrag](https://xmpp-meetup.in-berlin.de/talks/monal.mp4) über die Entwicklung von Monal gehalten.
+Thilo Molitor (Entwickler von Monal) [hat einen Vortrag](https://xmpp-meetup.in-berlin.de/talks/monal-2021.mp4) über die Entwicklung von Monal gehalten.
 
 XMPP Office Hours: Fabian Sauter hat seine [Abenteuer bei der Entwicklung eines XMPP-Clients](https://www.youtube.com/watch?v=Bceu6E7c7GM) [EN] für Windows (Universal Windows Platform (UWP)) im Dezember präsentiert.
 
