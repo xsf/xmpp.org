@@ -19,7 +19,7 @@ Please use [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join) for discussions about 
 ## Site generation
 
 * Commits to the master branch generate a new build.
-* Builds are visible at [Github Actions](https://github.com/xsf/xmpp.org/actions/workflows/)
+* Builds are visible at [Github Actions](https://github.com/xsf/xmpp.org/actions)
 * Changes will be visible on [xmpp.org](https://xmpp.org) after the next update
 
 ## Software Requirements
