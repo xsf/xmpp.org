@@ -46,7 +46,7 @@ Las traducciones del Boletín de Noticias van a ser publicadas aquí (con alguna
 
 ## Videos
 
-Thilo Molitor (desarrollador de Monal) [tuvo una charla](https://xmpp-meetup.in-berlin.de/talks/monal.mp4) (DE) sobre el desarrollo de Monal.
+Thilo Molitor (desarrollador de Monal) [tuvo una charla](https://xmpp-meetup.in-berlin.de/talks/monal-2021.mp4) [DE] sobre el desarrollo de Monal.
 
 XMPP Office Hours: Fabian Sauter presentó sus [aventuras desarrollando un cliente XMPP](https://www.youtube.com/watch?v=Bceu6E7c7GM) para Windows (Universal Windows Platform (UWP)) en Diciembre.
 
