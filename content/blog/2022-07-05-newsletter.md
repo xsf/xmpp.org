@@ -50,6 +50,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 JMP News: [Command UI and Better Transcriptions Coming Soon](https://blog.jmp.chat/b/june-newsletter-2022)
 
+Nicola Fabiano wrote .
+
+Nicola Fabiano wrote the article [To be «IM apps addicted» or not to be, that is the question. Choose to be free: Snikket, the system messaging based on XMPP protocol](https://notes.nicfab.it/en/posts/snikket/) highlighting XMPP as his best solution and [Snikket](https://snikket.org) as his choice. In another article he states his reasons to avoid Whatsapp also considering the European Commission's actions, [Persisting with Whatsapp use: how to persevere unknowingly. The whys of our «No»](https://notes.nicfab.it/en/posts/nowa/).
+
 Paul Schaub writes on PGPainless: [Reproducible Builds – Telling of a Debugging Story](https://blog.jabberhead.tk/2022/06/20/reproducible-builds-telling-of-a-debugging-story/). 
 
 Prosodical Thoughts: [Modernizing XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/).
@@ -64,7 +68,7 @@ Gajim [1.4.4](https://gajim.org/post/2022-06-18-gajim-1.4.4-released/), [1.4.5](
 
 MongooseIM release 5.1: [Configuration Rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/)
 
-## Servers
+### Servers
 
 Jackal upgraded to version [0.61.0](https://github.com/ortuman/jackal/releases/tag/v0.61.0).
 
@@ -78,7 +82,9 @@ From the ignite realtime community:
 - Smack version 4.4.6 [has been released](https://discourse.igniterealtime.org/t/smack-4-4-6-released/91809).
 - Openfire REST API plugin [has been released in version 1.8.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-1-released/91785).
 
-## Libraries
+### Libraries
+
+No updates or news in this section.
 
 ## Extensions and specifications
 
@@ -90,14 +96,14 @@ By the way, xmpp.org features [a new page about XMPP RFCs](https://xmpp.org/rfcs
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   No XEPs proposed this month.
+-   [WebSocket S2S](https://xmpp.org/extensions/inbox/websocket-s2s.html)
+    -   This specification defines a procedure to make s2s XMPP connections over WebSocket.
+-   [XMPP over QUIC](https://xmpp.org/extensions/inbox/xmpp-over-quic.html)
+    -   This specification defines a procedure to make both c2s and s2s XMPP connections over the QUIC protocol instead of TCP+TLS.   
 
 ### New
 
--   Version 0.1.0 of [XEP-0465](https://xmpp.org/extensions/xep-0465.html) (Pubsub Public Subscriptions)
-    -   Accepted by vote of Council on 2022-04-13. (XEP Editor (jsc))
--   Version 0.1.0 of [XEP-0466](https://xmpp.org/extensions/xep-0466.html) (Ephemeral Messages)
-    -   Accepted by vote of Council on 2022-05-03. (XEP Editor (jsc))
+-   No New XEPs this month
 
 ### Deferred
 
@@ -107,14 +113,14 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
--   Version 0.3 of [XEP-0365](https://xmpp.org/extensions/xep-0365.html) (Server to Server communication over STANAG 5066 ARQ)
-    -   Make use of SLEP Streaming service, which was not available for 0.1. This provides a better service mapping than direct use of 5066 and provides compression. (sek)
+-   No XEPs updated this month.
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call help improving the XEP before returning it to the Council for advancement to Stable.
 
--   No Last Call this month.
+-  [External Service Discovery](https://xmpp.org/extensions/xep-0215.html)
+   -    This document specifies an XMPP protocol extension for discovering services external to the XMPP network. 
 
 ### Stable
 
@@ -149,7 +155,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Holger, Ludovic Bocquet, MattJ, nicfab, TheCoffeMaker, wh0nix, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Holger, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), nicfab, TheCoffeMaker, wh0nix, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
