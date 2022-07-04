@@ -48,13 +48,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-JMP News: [Command UI and Better Transcriptions Coming Soon](https://blog.jmp.chat/b/june-newsletter-2022)
+JMP News: [Command UI and better transcriptions coming soon](https://blog.jmp.chat/b/june-newsletter-2022).
 
-Nicola Fabiano wrote .
+Nicola Fabiano wrote the article [To be «IM apps addicted» or not to be, that is the question. Choose to be free: Snikket, the system messaging based on XMPP protocol](https://notes.nicfab.it/en/posts/snikket/) highlighting XMPP as his best solution and [Snikket](https://snikket.org) as his choice. In another article he states his reasons to avoid WhatsApp, also considering the European Commission's actions: [Persisting with Whatsapp use: how to persevere unknowingly. The whys of our «No»](https://notes.nicfab.it/en/posts/nowa/).
 
-Nicola Fabiano wrote the article [To be «IM apps addicted» or not to be, that is the question. Choose to be free: Snikket, the system messaging based on XMPP protocol](https://notes.nicfab.it/en/posts/snikket/) highlighting XMPP as his best solution and [Snikket](https://snikket.org) as his choice. In another article he states his reasons to avoid Whatsapp also considering the European Commission's actions, [Persisting with Whatsapp use: how to persevere unknowingly. The whys of our «No»](https://notes.nicfab.it/en/posts/nowa/).
-
-Paul Schaub writes on PGPainless: [Reproducible Builds – Telling of a Debugging Story](https://blog.jabberhead.tk/2022/06/20/reproducible-builds-telling-of-a-debugging-story/). 
+Paul Schaub wrote a piece on PGPainless: [Reproducible Builds – Telling of a Debugging Story](https://blog.jabberhead.tk/2022/06/20/reproducible-builds-telling-of-a-debugging-story/). 
 
 Prosodical Thoughts: [Modernizing XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/).
 
@@ -62,29 +60,30 @@ Prosodical Thoughts: [Modernizing XMPP authentication and authorization](https:/
 
 ### Clients and applications
 
-Gajim [1.4.4](https://gajim.org/post/2022-06-18-gajim-1.4.4-released/), [1.4.5](https://gajim.org/post/2022-06-21-gajim-1.4.5-released/) and [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/) have been released: Gajim 1.4.3, 1.4.4 and 1.4.5 come with many improvements: emoji auto-complete, automatic theme switching when your desktop switches from light to dark in the evening, a completely reworked Gajim remote interface, and many bug fixes.
+Gajim [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/), [1.4.4](https://gajim.org/post/2022-06-18-gajim-1.4.4-released/), and [1.4.5](https://gajim.org/post/2022-06-21-gajim-1.4.5-released/) have been released: Gajim’s new versions come with many improvements: emoji auto-complete, automatic theme switching when your desktop switches from light to dark in the evening, a completely reworked Gajim remote interface, and many bug fixes.
 
 ![Gajim emoji auto-complete](/images/static/2022-06-1/gajim-emoji-auto-complete.png "Gajim emoji auto-complete")
 
-MongooseIM release 5.1: [Configuration Rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/)
+MongooseIM’s new release 5.1 comes with a [configuration rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/).
 
 ### Servers
 
-Jackal upgraded to version [0.61.0](https://github.com/ortuman/jackal/releases/tag/v0.61.0).
+Jackal [0.61.0](https://github.com/ortuman/jackal/releases/tag/v0.61.0) has been released.
 
-ProcessOne has announced [ejabberd .deb and .rpm repositories](https://www.process-one.net/blog/announcing-ejabberd-deb-and-rpm-repositories/).
+ProcessOne announced [ejabberd .deb and .rpm repositories](https://www.process-one.net/blog/announcing-ejabberd-deb-and-rpm-repositories/).
 
 ![ejabberd .deb and .rpm](/images/static/2022-06-1/ejabberd.png "ejabberd .deb and .rpm")
 
-[Prosody 0.12.1](https://blog.prosody.im/prosody-0.12.1-released/) has been released, and it comes with improved compatibility with Jitsi Meet plus bug fixes for our newly-extended [XEP-0227](https://xmpp.org/extensions/xep-0227.html) support.
+[Prosody 0.12.1](https://blog.prosody.im/prosody-0.12.1-released/) has been released, and it comes with improved compatibility with Jitsi Meet plus bug fixes for its newly-extended [XEP-0227](https://xmpp.org/extensions/xep-0227.html) support.
 
 From the ignite realtime community:
+
 - Smack version 4.4.6 [has been released](https://discourse.igniterealtime.org/t/smack-4-4-6-released/91809).
 - Openfire REST API plugin [has been released in version 1.8.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-8-1-released/91785).
 
 ### Libraries
 
-No updates or news in this section.
+No news this month.
 
 ## Extensions and specifications
 
