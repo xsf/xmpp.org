@@ -54,7 +54,9 @@ Nicola Fabiano wrote the article [To be «IM apps addicted» or not to be, that 
 
 Paul Schaub wrote a piece on PGPainless: [Reproducible Builds – Telling of a Debugging Story](https://blog.jabberhead.tk/2022/06/20/reproducible-builds-telling-of-a-debugging-story/). 
 
-Prosodical Thoughts: [Modernizing XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/).
+Prosody devs got funded by EU’s NGI Assure via the NLnet Foundation to [modernize XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/) so users can secure they're sessions with MFA (multi-factor authentication) and have peace of mind with per session controls.
+
+Introduced more than 2 years ago [xmpp.work - The XMPP Job Board](https://xmpp.work) has failed to get the traction it needed and have companies post themselves job posting, if anyone is willing to maintain it you are asked to please contact [JC Brand](https://opkode.com/contact/) directly.
 
 ## Software news
 
@@ -64,13 +66,13 @@ Gajim [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/), [1.4.4](
 
 ![Gajim emoji auto-complete](/images/static/2022-06-1/gajim-emoji-auto-complete.png "Gajim emoji auto-complete")
 
-MongooseIM’s new release 5.1 comes with a [configuration rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/).
-
 ### Servers
+
+MongooseIM’s new release 5.1 comes with a [configuration rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/).
 
 Jackal [0.61.0](https://github.com/ortuman/jackal/releases/tag/v0.61.0) has been released.
 
-ProcessOne announced [ejabberd .deb and .rpm repositories](https://www.process-one.net/blog/announcing-ejabberd-deb-and-rpm-repositories/).
+ProcessOne announced [ejabberd .deb and .rpm repositories](https://www.process-one.net/blog/announcing-ejabberd-deb-and-rpm-repositories/) for amd64 and arm64 systems.
 
 ![ejabberd .deb and .rpm](/images/static/2022-06-1/ejabberd.png "ejabberd .deb and .rpm")
 
