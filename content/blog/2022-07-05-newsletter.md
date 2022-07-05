@@ -56,8 +56,6 @@ Paul Schaub wrote a piece on PGPainless: [Reproducible Builds – Telling of a D
 
 Prosody devs got funded by EU’s NGI Assure via the NLnet Foundation to [modernize XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/) so users can secure their sessions with MFA (multi-factor authentication) and have peace of mind with per session controls.
 
-Introduced more than 2 years ago [xmpp.work - The XMPP Job Board](https://xmpp.work) has failed to get the traction it needed and have companies post themselves job posting, if anyone is willing to maintain it you are asked to please contact [JC Brand](https://opkode.com/contact/) directly.
-
 ## Software news
 
 ### Clients and applications
