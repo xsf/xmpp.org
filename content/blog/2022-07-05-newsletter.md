@@ -63,8 +63,7 @@ Prosody devs got funded by EU’s NGI Assure via the NLnet Foundation to [modern
 
 Gajim [1.4.3](https://gajim.org/post/2022-06-01-gajim-1.4.3-released/), [1.4.4](https://gajim.org/post/2022-06-18-gajim-1.4.4-released/), and [1.4.5](https://gajim.org/post/2022-06-21-gajim-1.4.5-released/) have been released: Gajim’s new versions come with many improvements: emoji auto-complete, automatic theme switching when your desktop switches from light to dark in the evening, a completely reworked Gajim remote interface, and many bug fixes.
 
-![Gajim emoji auto-complete](/static/images/newsletter/2022-06-1/gajim-emoji-auto-complete.png "Gajim emoji auto-complete")
-
+![Gajim emoji auto-complete](/images/newsletter/2022-06-1/gajim-emoji-auto-complete.png "Gajim emoji auto-complete") static/images/newsletter/2022-06-1/gajim-emoji-auto-complete.png
 ### Servers
 
 MongooseIM’s new release 5.1 comes with a [configuration rework](https://www.erlang-solutions.com/blog/mongooseim-5-1-configuration-rework/).
@@ -73,7 +72,7 @@ Jackal [0.61.0](https://github.com/ortuman/jackal/releases/tag/v0.61.0) has been
 
 ProcessOne announced [ejabberd .deb and .rpm repositories](https://www.process-one.net/blog/announcing-ejabberd-deb-and-rpm-repositories/) for amd64 and arm64 systems.
 
-![ejabberd .deb and .rpm](/static/images/newsletter/2022-06-1/ejabberd.png "ejabberd .deb and .rpm")
+![ejabberd .deb and .rpm](/images/newsletter/2022-06-1/ejabberd.png "ejabberd .deb and .rpm")
 
 [Prosody 0.12.1](https://blog.prosody.im/prosody-0.12.1-released/) has been released, and it comes with improved compatibility with Jitsi Meet plus bug fixes for its newly-extended [XEP-0227](https://xmpp.org/extensions/xep-0227.html) support.
 
