@@ -54,7 +54,7 @@ Nicola Fabiano wrote the article [To be «IM apps addicted» or not to be, that 
 
 Paul Schaub wrote a piece on PGPainless: [Reproducible Builds – Telling of a Debugging Story](https://blog.jabberhead.tk/2022/06/20/reproducible-builds-telling-of-a-debugging-story/). 
 
-Prosody devs got funded by EU’s NGI Assure via the NLnet Foundation to [modernize XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/) so users can secure they're sessions with MFA (multi-factor authentication) and have peace of mind with per session controls.
+Prosody devs got funded by EU’s NGI Assure via the NLnet Foundation to [modernize XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/) so users can secure their sessions with MFA (multi-factor authentication) and have peace of mind with per session controls.
 
 Introduced more than 2 years ago [xmpp.work - The XMPP Job Board](https://xmpp.work) has failed to get the traction it needed and have companies post themselves job posting, if anyone is willing to maintain it you are asked to please contact [JC Brand](https://opkode.com/contact/) directly.
 
