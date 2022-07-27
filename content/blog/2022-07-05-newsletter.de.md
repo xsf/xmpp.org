@@ -8,11 +8,11 @@ categories: ['Newsletter']
 
 Willkommen zum XMPP Newsletter, schön, dass du wieder da bist! Diese Ausgabe umfasst den Juni 2022.
 
-Wie dieser Newsletter auch sind viele Projekte und deren Mühen in der XMPP Gemeinschaft das Ergebnis der Arbeit von Freiwilligen. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen! Bist du daran interessiert, das Newsletter-Team zu unterstützen? Ließ mehr am Ende des Beitrags.
+Wie dieser Newsletter auch sind viele Projekte und deren Mühen in der XMPP Gemeinschaft das Ergebnis der Arbeit von Freiwilligen. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen! Bist du daran interessiert, das Newsletter-Team zu unterstützen? Lies mehr am Ende des Beitrags.
 
 ### Übersetzungen des Newsletters
 
-Dies ist eine Gemeinschafstarbeit und wir wollen allen Übersetzer:innen für deren Beiträge danken! Freiwillige sind Willkommen! Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
+Dies ist eine Gemeinschafstarbeit und wir wollen allen Übersetzer:innen für deren Beiträge danken! Freiwillige sind willkommen! Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
 - Französisch: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
