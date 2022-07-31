@@ -48,16 +48,18 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-The site "Chat standard (XMPP)" with lots of information is avilable in Englisch now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
+In general, articles and thoughts on the European Digital Markets Act:
+- https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en
+- https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html
+- https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma
+- https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken
 
-Should we write about? https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en
-and https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html
- Additional thoughts on DMA and interoperability:
-     https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma
-     https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken
+The site "Chat standard (XMPP)" with lots of information is avilable in Englisch now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
 
 Axel from eversten.net published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different 
 server implementations. A good 15 mins read for both iOS users and their multi-platforms contacts alike.
+
+JMP now delivers transcribed voicemail in many common languages, not just English. The [voicemail system has also been updated](https://blog.jmp.chat/b/july-newsletter-2022) to source names from more modern XMPP profiles including vCard4 and PEP Nickname.
 
 MangooseIM 5.1 was released last month, as announced in the [June 2022 Newsletter](https://xmpp.org/2022/07/the-xmpp-newsletter-june-2022/), and that brought improvements to the Inbox features, too. You can now read more about the new Inbox settings and scalability improvements in this [article](https://www.erlang-solutions.com/blog/updates-to-the-mim-inbox-in-version-5-1/).
 
@@ -74,8 +76,6 @@ Mellium has moved to Codeberg! The repositories can now be found at [codeberg.or
 Monal [version 5.2.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_796) has been release by the Monal development team! This release highlights are the new (private) push servers in Europe and US, display of transferred files in app's documents directory and several fixes on its encryption (OMEMO), QR code scanning and onboarding. Besides, Monal has also a [new webpage](https://www.monal-im.org/).
 
 [Psi+ 11.5.1634 (2022-07-11)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
-
-![Gajim emoji auto-complete](/images/static/2022-06-1/gajim-emoji-auto-complete.png "Gajim emoji auto-complete")
 
 ### Servers
 
