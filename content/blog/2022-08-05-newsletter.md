@@ -48,7 +48,12 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-In general, articles and thoughts on the European Digital Markets Act:
+There are some articles and thoughts on the European Digital Markets Act: 
+
+- [ec.europa.eu](https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en)
+- [ZDF about interoperatibility](https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html) [DE]
+- German [freie-messenger.de about digital markets act](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma)
+- German [freie-messenger.de about interoperatibility](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken)
 - [The Digital Markets Act: ensuring fair and open digital markets, European Commission](https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en)
 - [Interoperability - Digital Markets Act (DMA), freie-messenger.de](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma)
 - [Interoperability - Thoughts, freie-messenger.de](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken)
