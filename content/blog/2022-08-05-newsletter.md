@@ -78,7 +78,7 @@ The Mellium Dev Communiqué for July 2022 has been published! Important updates 
 
 [Gajim 1.4.6](https://gajim.org/post/2022-07-07-gajim-1.4.6-released/) and [1.4.7](https://gajim.org/post/2022-07-24-gajim-1.4.7-released/) have been released. These releases bring performance improvements, better file previews, and fix some bugs with the status icon and notifications. Emoji short code detection has been improved as well.
 
-Monal [version 5.2.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_796) has been release by the Monal development team! This release highlights are the new (private) push servers in Europe and US, display of transferred files in app's documents directory and several fixes on its encryption (OMEMO), QR code scanning and onboarding. Besides, Monal has also a [new webpage](https://www.monal-im.org/).
+Monal [version 5.2.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_796) has been released by the Monal development team! This release’s highlights are the new (private) push servers in Europe and the US, display of transferred files in app's documents directory, and several fixes regarding encryption (OMEMO), QR code scanning, and onboarding. Besides, Monal also features a [new webpage](https://www.monal-im.org/).
 
 [Psi+ 11.5.1634 (2022-07-11)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
 
