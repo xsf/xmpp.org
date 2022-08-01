@@ -49,25 +49,25 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Articles
 
 In general, articles and thoughts on the European Digital Markets Act:
-- https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en
-- https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html
-- https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma
-- https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken
+- [The Digital Markets Act: ensuring fair and open digital markets, European Commission](https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_en)
+- [Interoperability - Digital Markets Act (DMA), freie-messenger.de](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/dma)
+- [Interoperability - Thoughts, freie-messenger.de](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken)
+- [WhatsApp muss sich für alle Messenger öffnen, Dominik Rzepka](https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html) [DE]
 
 The site "Chat standard (XMPP)" with lots of information is avilable in Englisch now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
 
-Axel from eversten.net published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different 
+Axel from [eversten.net](https://eversten.net/) published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different 
 server implementations. A good 15 mins read for both iOS users and their multi-platforms contacts alike.
 
 JMP now delivers transcribed voicemail in many common languages, not just English. The [voicemail system has also been updated](https://blog.jmp.chat/b/july-newsletter-2022) to source names from more modern XMPP profiles including vCard4 and PEP Nickname.
 
-MangooseIM 5.1 was released last month, as announced in the [June 2022 Newsletter](https://xmpp.org/2022/07/the-xmpp-newsletter-june-2022/), and that brought improvements to the Inbox features, too. You can now read more about the new Inbox settings and scalability improvements in this [article](https://www.erlang-solutions.com/blog/updates-to-the-mim-inbox-in-version-5-1/).
+MoongoseIM 5.1 was released as announced, as announced in the [June 2022 Newsletter](https://xmpp.org/2022/07/the-xmpp-newsletter-june-2022/). In addition to the previously mentioned features, this brought improvements to the Inbox feature. You can now read more about the new Inbox settings and scalability improvements in this [article](https://www.erlang-solutions.com/blog/updates-to-the-mim-inbox-in-version-5-1/).
 
 ## Software news
 
 ### Clients and applications
 
-The Mellium Dev Communiqué for July 2022 has been published! Important updates this month include an [implementation of the new RFC 9266 and a new tool for finding documentation related issues in Go projects](https://opencollective.com/mellium/updates/dev-communique-for-july-2022). Besides, Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
+The Mellium Dev Communiqué for July 2022 has been published! Important updates this month include an [implementation of the new RFC 9266 and a new tool for finding documentation related issues in Go projects](https://opencollective.com/mellium/updates/dev-communique-for-july-2022). In addition, Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
 
 [Conversations 2.10.8](https://conversations.im/), a Jabber/XMPP client for Android, has been released.
 
@@ -101,7 +101,7 @@ The [XMPP webhooks component](https://gitlab.com/navlost.eu/xmpp/components/webh
 
 Paul Schaub wrote a [short blog post](https://blog.jabberhead.tk/2022/07/19/creating-a-web-of-trust-implementation-certify-keys-with-pgpainless/) about their recent progress towards adding Web-of-Trust support to PGPainless. With release 1.3.2, the OpenPGP library got support for creating signatures on third-party certificates, which will help users to build their trust network.
 
-xmpp-dns, a tool to check XMPP SRV records, was released in version [0.3.0](https://salsa.debian.org/mdosch/xmpp-dns/-/releases/v0.3.0) bringing suplift for DNS over TLS (DoT) and for setting a custom DNS server.
+xmpp-dns, a tool to check XMPP SRV records, was released in [version 0.3.0](https://salsa.debian.org/mdosch/xmpp-dns/-/releases/v0.3.0), bringing support for DNS over TLS (DoT) and for setting a custom DNS server.
 
 ## Extensions and specifications
 
