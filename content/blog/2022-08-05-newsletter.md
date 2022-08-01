@@ -67,7 +67,7 @@ MangooseIM 5.1 was released last month, as announced in the [June 2022 Newslette
 
 ### Clients and applications
 
-Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
+The Mellium Dev Communiqué for July 2022 has been published! Important updates this month include an [implementation of the new RFC 9266 and a new tool for finding documentation related issues in Go projects](https://opencollective.com/mellium/updates/dev-communique-for-july-2022). Besides, Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
 
 [Conversations 2.10.8](https://conversations.im/), a Jabber/XMPP client for Android, has been released.
 
