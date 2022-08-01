@@ -1,12 +1,14 @@
 window.onload = function() {
     // Software list: Select tab for platform reported by user agent
-    const clients_list = document.getElementById("pills-software-content");
+    const packages_list = document.getElementById("pills-software-content");
     const select_tab = function(os_name) {
       var tab_trigger_element = document.querySelector('#' + os_name+ '-tab');
-      var tab = new bootstrap.Tab(tab_trigger_element);
-      tab.show();
+      if (tab_trigger_element) {
+        var tab = new bootstrap.Tab(tab_trigger_element);
+        tab.show();
+      }
     };
-    if (clients_list) {
+    if (packages_list) {
       if (navigator.userAgent.indexOf("Android") >= 0) {
         select_tab("android");
       } else if (navigator.userAgent.indexOf("Linux") >= 0) {
