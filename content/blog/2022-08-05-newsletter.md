@@ -113,14 +113,17 @@ xmpp.org features [a page about XMPP RFCs](https://xmpp.org/rfcs/) as well.
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
--   [WebSocket S2S](https://xmpp.org/extensions/inbox/websocket-s2s.html)
-    -   This specification defines a procedure to make s2s XMPP connections over WebSocket.
--   [XMPP over QUIC](https://xmpp.org/extensions/inbox/xmpp-over-quic.html)
-    -   This specification defines a procedure to make both c2s and s2s XMPP connections over the QUIC protocol instead of TCP+TLS.   
+-   [Bookmark Pinning](https://xmpp.org/extensions/inbox/bookmark-pinning.html)
+    -   This document defines an XMPP protocol extension to allow users to pin PEP Native Bookmarks.
+-   [Pubsub Attachments](https://xmpp.org/extensions/inbox/pubsub-attachments.html)
+    -   This specification provides a way to attach elements to a pubsub item.  
 
 ### New
 
--   No New XEPs this month
+-   [WebSocket S2S](https://xmpp.org/extensions/xep-0468.html)
+    -   This specification defines a procedure to make s2s XMPP connections over WebSocket.
+-   [XMPP over QUIC](https://xmpp.org/extensions/xep-0467.html)
+    -   This specification defines a procedure to make both c2s and s2s XMPP connections over the QUIC protocol instead of TCP+TLS.
 
 ### Deferred
 
