@@ -15,12 +15,12 @@ For developers, Compliance Suites provide guidance on which specifications they 
 For users, Compliance Suites provide an easy way to compare implementations based on their respective advertised compliance levels and year.
 
 ## Current Compliance Suites{#current}
-The 2022 specification for Compliance Suites can be found at [XEP-0423: XMPP Compliance Suites 2022](https://xmpp.org/extensions/xep-0459.html)
+
+The 2022 specification for Compliance Suites can be found at [XEP-0459: XMPP Compliance Suites 2022](https://xmpp.org/extensions/xep-0459.html)
 
 ## Historical Compliance Suites{#historical}
 
- - [XEP-0423: XMPP Compliance Suites 2022](https://xmpp.org/extensions/xep-0459.html)
- - [XEP-0423: XMPP Compliance Suites 2021](https://xmpp.org/extensions/xep-0443.html)
+ - [XEP-0443: XMPP Compliance Suites 2021](https://xmpp.org/extensions/xep-0443.html)
  - [XEP-0423: XMPP Compliance Suites 2020](https://xmpp.org/extensions/xep-0423.html)
  - [XEP-0412: XMPP Compliance Suites 2019](https://xmpp.org/extensions/xep-0412.html)
  - [XEP-0387: XMPP Compliance Suites 2018](https://xmpp.org/extensions/xep-0387.html)
