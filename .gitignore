@@ -13,6 +13,7 @@
 .project
 .vagrant/
 data/clients_list_doap.json
+data/compliance_suite.json
 data/libraries_list_doap.json
 data/servers_list_doap.json
 data/rfc_list.json
