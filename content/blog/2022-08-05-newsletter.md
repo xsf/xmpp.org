@@ -61,8 +61,7 @@ There are some articles and thoughts on the European Digital Markets Act:
 
 The site "Chat standard (XMPP)" with lots of information is avilable in Englisch now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
 
-Axel from [eversten.net](https://eversten.net/) published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different 
-server implementations. A good 15 mins read for both iOS users and their multi-platforms contacts alike.
+Axel from [eversten.net](https://eversten.net/) published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different server implementations. A good 15 minutes read for both iOS users and their multi-platforms contacts alike.
 
 JMP now delivers transcribed voicemail in many common languages, not just English. The [voicemail system has also been updated](https://blog.jmp.chat/b/july-newsletter-2022) to source names from more modern XMPP profiles including vCard4 and PEP Nickname.
 
@@ -72,7 +71,7 @@ MoongoseIM 5.1 was released as announced, as announced in the [June 2022 Newslet
 
 ### Clients and applications
 
-The Mellium Dev Communiqué for July 2022 has been published! Important updates this month include an [implementation of the new RFC 9266 and a new tool for finding documentation related issues in Go projects](https://opencollective.com/mellium/updates/dev-communique-for-july-2022). In addition, Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
+[The Mellium Dev Communiqué for July 2022](https://opencollective.com/mellium/updates/dev-communique-for-july-2022) has been published! Important updates this month include an implementation of the new [RFC 9266](https://www.rfc-editor.org/info/rfc9266) and a [new tool](https://mellium.im/checkdoc/) for finding documentation related issues in Go projects. In addition, Mellium has moved to Codeberg! The repositories can now be found at [codeberg.org/mellium](https://codeberg.org/mellium/) and the announcement post can be found on [Lemmy](https://community.xmpp.net/post/34677) or [Open Collective](https://opencollective.com/mellium/updates/mellium-development-has-moved-to-codeberg).
 
 [Conversations 2.10.8](https://conversations.im/), a Jabber/XMPP client for Android, has been released.
 
@@ -98,7 +97,7 @@ Push Notification Openfire [plugin 0.9.1](https://discourse.igniterealtime.org/t
 
 nbxmpp 3.1.1 [has been released](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog). This version comes with performance improvements and bug fixes.
 
-The [XMPP webhooks component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been udpated to support more webhooks out of the box. Effectively, this component replaces proprietary tools such as Slack with a better option based on open code and open protocols, fully under control of its users. It now has:
+The [XMPP webhooks component](https://gitlab.com/navlost.eu/xmpp/components/webhooks) has been updated to support more webhooks out of the box. Effectively, this component replaces proprietary tools such as Slack with a better option based on open code and open protocols, fully under control of its users. It now has:
 * Richer messages for [GitLab](https://gitlab.com/) events (labels, time spent, etc.)
 * Support for [Stripe](https://stripe.com/) events, including optional (but recommended) signature verification.
 * Support for [SMS to URL Forwarder](https://github.com/bogkonstantin/android_income_sms_gateway_webhook), a simple but effective SMS forwarder application for Android. This is handy for those with a second or third phone and it's also used to showcase some of the [new features](https://gitlab.com/navlost.eu/xmpp/components/webhooks/-/blob/a6b817012c6c5a0ebf3725cb0bbf5b1120291b6e/README.md#implemented-xeps).
