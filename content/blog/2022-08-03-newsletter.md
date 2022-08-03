@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter July 2022
-date: 2022-08-04
+date: 2022-08-03
 categories: ['Newsletter']
 ---
 
