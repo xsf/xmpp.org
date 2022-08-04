@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y hugo python3 python3-pip && pip3 install requests
+RUN apt-get install -y hugo lua5.4 luarocks python3 python3-pip && pip3 install -r /var/tmp/scr/xmpp.org/tools/requirements.txt && luarocks install luaexpat
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
