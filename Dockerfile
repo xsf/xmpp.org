@@ -20,11 +20,12 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y hugo lua5.4 luarocks python3 python3-pip && pip3 install -r /var/tmp/scr/xmpp.org/tools/requirements.txt && luarocks install luaexpat
+RUN apt-get install -y hugo lua5.2 lua-expat python3 python3-pip
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
 COPY . /var/tmp/src/xmpp.org
+RUN pip3 install -r /var/tmp/src/xmpp.org/tools/requirements.txt
 RUN cd /var/tmp/src/xmpp.org && make publish
 
 FROM nginx
