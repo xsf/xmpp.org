@@ -1,60 +1,51 @@
-{{ $platforms := slice "Android" "iOS" "Browser" "Windows" "macOS" "Linux" "Other" }}
+{{ $package_data := newScratch }}
+
+{{ if in .Page.Title "XMPP Clients" }}
+    {{ $package_data.Set "packages" .Site.Data.clients_list_doap }}
+    {{ $package_data.Set "platforms" (slice "Android" "iOS" "Browser" "Windows" "macOS" "Linux" "Other") }}
+{{ else if in .Page.Title "XMPP Servers" }}
+    {{ $package_data.Set "packages" .Site.Data.servers_list_doap }}
+    {{ $package_data.Set "platforms" (slice "Windows" "macOS" "Linux" "Other") }}
+{{ else }}
+    {{ $package_data.Set "packages" .Site.Data.libraries_list_doap }}
+    {{ $package_data.Set "platforms" (slice "Other") }}
+{{ end }}
+
 <div id="software-clients">
     <ul class="nav nav-pills nav-fill pb-3" id="pills-tab" role="tablist">
+        {{ range $package_data.Get "platforms" }}
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="android-tab" data-bs-toggle="pill" data-bs-target="#pane-android" type="button" role="tab" aria-controls="pane-android" aria-selected="true">
-                <i class="fab fa-android"></i>
-                Android
+            <button class="nav-link" id="{{ lower . | anchorize }}-tab" data-bs-toggle="pill" data-bs-target="#pane-{{ lower . | anchorize }}" type="button" role="tab" aria-controls="pane-{{ lower . | anchorize }}" aria-selected={{ if eq . "Other" }}"true"{{ else }}"false"{{ end }}>
+                {{ if eq (lower .) "android" }}
+                    <i class="fab fa-android"></i>
+                {{ else if eq (lower .) "ios" }}
+                    <i class="fab fa-app-store-ios"></i>
+                {{ else if eq (lower .) "browser" }}
+                    <i class="fas fa-window-maximize"></i>
+                {{ else if eq (lower .) "windows" }}
+                    <i class="fab fa-windows"></i>
+                {{ else if eq (lower .) "macos" }}
+                    <i class="fab fa-apple"></i>
+                {{ else if eq (lower .) "linux" }}
+                    <i class="fab fa-linux"></i>
+                {{ else if eq (lower .) "other" }}
+                    <i class="fas fa-box"></i>
+                {{ end }}
+                {{ . }}
             </button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="ios-tab" data-bs-toggle="pill" data-bs-target="#pane-ios" type="button" role="tab" aria-controls="pane-ios" aria-selected="false">
-                <i class="fab fa-app-store-ios"></i>
-                iOS
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="browser-tab" data-bs-toggle="pill" data-bs-target="#pane-browser" type="button" role="tab" aria-controls="pane-browser" aria-selected="false">
-                <i class="fas fa-window-maximize"></i>
-                Browser
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="windows-tab" data-bs-toggle="pill" data-bs-target="#pane-windows" type="button" role="tab" aria-controls="pane-windows" aria-selected="false">
-                <i class="fab fa-windows"></i>
-                Windows
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="macos-tab" data-bs-toggle="pill" data-bs-target="#pane-macos" type="button" role="tab" aria-controls="pane-macos" aria-selected="false">
-                <i class="fab fa-apple"></i>
-                macOS
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="linux-tab" data-bs-toggle="pill" data-bs-target="#pane-linux" type="button" role="tab" aria-controls="pane-linux" aria-selected="false">
-                <i class="fab fa-linux"></i>
-                Linux
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="other-tab" data-bs-toggle="pill" data-bs-target="#pane-other" type="button" role="tab" aria-controls="pane-other" aria-selected="false">
-                <i class="fas fa-box"></i>
-                Other
-            </button>
-        </li>
+        {{ end }}
     </ul>
 
     <div class="tab-content" id="pills-software-content">
-        {{ $clients_list := .Site.Data.clients_list_doap}}
-        {{ range $platforms }}
+        {{ range $package_data.Get "platforms" }}
             {{ $platform := . }}
-            <div class="tab-pane {{ if eq (lower .) "android" }}show active{{ end }}" id="pane-{{ . | urlize }}" role="tabpanel" aria-labelledby="{{ . | urlize }}-tab">
+            <div class="tab-pane {{ if eq (lower .) "other" }}show active{{ end }}" id="pane-{{ . | anchorize }}" role="tabpanel" aria-labelledby="{{ . | anchorize }}-tab">
                 <h2 class="text-center pb-1">{{ $platform }}</h2>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
-                    {{ range $supported_platform, $clients := $clients_list }}
-                        {{ if in (lower $supported_platform) (lower $platform) }}
-                            {{ range $clients }}
+                    {{ range $supported_platform, $packages := $package_data.Get "packages" }}
+                        {{ if eq (lower $supported_platform) (lower $platform) }}
+                            {{ range $packages }}
                                 <div class="col">
                                     <div class="card h-100">
                                         <div class="row g-0">

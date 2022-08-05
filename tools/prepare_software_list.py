@@ -25,7 +25,7 @@ from slugify import slugify
 DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
 STATIC_PATH = Path('static')
-LOGOS_PATH = STATIC_PATH / 'images' / 'clients'
+LOGOS_PATH = STATIC_PATH / 'images' / 'packages'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
 SCHEMA_NS = 'https://schema.org/'
@@ -34,6 +34,14 @@ DOAP_NAME = f'.//{{{DOAP_NS}}}name'
 DOAP_SHORTDESC = f'.//{{{DOAP_NS}}}shortdesc'
 DOAP_OS = f'.//{{{DOAP_NS}}}os'
 DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
+
+LIB_PLATFORMS: list[str] = [
+    '.NET',
+    'C#',
+    'C++',
+    'Go',
+    'Python',
+]
 
 PLATFORMS: list[str] = [
     'Android',
@@ -94,7 +102,7 @@ def check_renewal(name: str, renewed: Optional[str]) -> bool:
         return False
     now = datetime.utcnow()
     if now - renewed > ENTRY_LIFETIME:
-        print('Client entry expired for', name)
+        print('Package entry expired for', name)
         return False
     return True
 
@@ -171,13 +179,13 @@ def check_image_file(file_path: Path, extension: str) -> None:
     return True
 
 
-def process_logo(client_name: str, uri: str) -> Optional[str]:
+def process_logo(package_name: str, uri: str) -> Optional[str]:
     '''
-    Download client logo and return logo URI
+    Download package logo and return logo URI
     '''
     image_url = urlparse(uri)
     _, extension = os.path.splitext(image_url.path)
-    file_name = f'{client_name}{extension}'
+    file_name = f'{package_name}{extension}'
     success = download_file(
         uri,
         Path(file_name))
@@ -188,120 +196,127 @@ def process_logo(client_name: str, uri: str) -> Optional[str]:
         DOWNLOAD_PATH / file_name, extension[1:].lower())
     if not success:
         return None
-    logo_uri = f'/images/clients/{client_name}{extension}'
+    logo_uri = f'/images/packages/{package_name}{extension}'
     shutil.copyfile(
         DOWNLOAD_PATH / file_name,
         Path(LOGOS_PATH / file_name))
     return logo_uri
 
 
-def prepare_clients_list() -> None:
+def prepare_package_list(package_type: str) -> None:
     '''
-    Download and prepare clients data
+    Download and prepare data (clients/servers/libraries)
     '''
-    with open(DATA_PATH / 'clients.json', 'rb') as json_file:
-        xsf_clients_list = json.load(json_file)
+    with open(DATA_PATH / f'{package_type}.json', 'rb') as json_file:
+        xsf_package_list = json.load(json_file)
 
-    client_infos: dict[str, list[dict[str, Optional[str]]]] = {}
-    for platform in PLATFORMS:
-        client_infos[platform] = []
-    client_infos['Other'] = []
+    package_infos: dict[str, list[dict[str, Optional[str]]]] = {}
+    if package_type == 'libraries':
+        platforms = LIB_PLATFORMS
+    else:
+        platforms = PLATFORMS
 
-    number_of_clients = 0
-    number_of_expired_clients = 0
-    number_of_doap_clients = 0
+    for platform in platforms:
+        package_infos[platform] = []
+    package_infos['Other'] = []
 
-    for client in xsf_clients_list:
-        number_of_clients += 1
+    number_of_packages = 0
+    number_of_expired_packages = 0
+    number_of_doap_packages = 0
+
+    for package in xsf_package_list:
+        number_of_packages += 1
 
         if not check_renewal(
-                client['name'], client.get('last_renewed')):
-            number_of_expired_clients += 1
+                package['name'], package.get('last_renewed')):
+            number_of_expired_packages += 1
             continue
 
-        if client['doap'] is None:
+        if package['doap'] is None:
             added_to_other = False
-            for client_os in cast(list[str], client['platforms']):
+            for package_os in cast(list[str], package['platforms']):
                 added_to_os = False
-                for platform in PLATFORMS:
-                    if platform.lower() not in client_os.lower():
+                for platform in platforms:
+                    if platform.lower() not in package_os.lower():
                         continue
                     added_to_os = True
-                    client_infos[platform].append(
+                    package_infos[platform].append(
                         {
-                            'name': client['name'],
-                            'url': client['url'],
+                            'name': package['name'],
+                            'url': package['url'],
                             'logo': None,
                             'shortdesc': None,
-                            'os': client_os
+                            'os': package_os
                         }
                     )
                 if not added_to_os and not added_to_other:
                     added_to_other = True
-                    client_infos['Other'].append(
+                    package_infos['Other'].append(
                         {
-                            'name': client['name'],
-                            'url': client['url'],
+                            'name': package['name'],
+                            'url': package['url'],
                             'logo': None,
                             'shortdesc': None,
-                            'os': client['platforms']
+                            'os': package['platforms']
                         }
                     )
             continue
 
-        number_of_doap_clients += 1
-        client_name = slugify(client['name'])
+        number_of_doap_packages += 1
+        package_name = slugify(package['name'])
 
         download_file(
-            client['doap'],
-            Path(f'doap_files/{client_name}.doap'))
-        parsed_client_infos = parse_doap_infos(client_name)
-        if parsed_client_infos is None:
+            package['doap'],
+            Path(f'doap_files/{package_name}.doap'))
+        parsed_package_infos = parse_doap_infos(package_name)
+        if parsed_package_infos is None:
             continue
 
         logo_uri = None
-        if parsed_client_infos['logo'] is not None:
-            logo_uri = process_logo(client_name, parsed_client_infos['logo'])
+        if parsed_package_infos['logo'] is not None:
+            logo_uri = process_logo(package_name, parsed_package_infos['logo'])
 
         added_to_other = False
-        for client_os in parsed_client_infos['os']:
+        for package_os in parsed_package_infos['os']:
             added_to_os = False
-            for platform in PLATFORMS:
-                if platform.lower() not in client_os.lower():
+            for platform in platforms:
+                if platform.lower() not in package_os.lower():
                     continue
                 added_to_os = True
-                client_infos[platform].append(
+                package_infos[platform].append(
                     {
-                        'name': client['name'],
-                        'url': client['url'],
+                        'name': package['name'],
+                        'url': package['url'],
                         'logo': logo_uri,
-                        'shortdesc': parsed_client_infos['shortdesc'],
-                        'os': client_os
+                        'shortdesc': parsed_package_infos['shortdesc'],
+                        'os': package_os
                     }
                 )
             if not added_to_os and not added_to_other:
                 added_to_other = True
-                client_infos['Other'].append(
+                package_infos['Other'].append(
                     {
-                        'name': client['name'],
-                        'url': client['url'],
+                        'name': package['name'],
+                        'url': package['url'],
                         'logo': logo_uri,
-                        'shortdesc': parsed_client_infos['shortdesc'],
-                        'os': parsed_client_infos['os']
+                        'shortdesc': parsed_package_infos['shortdesc'],
+                        'os': parsed_package_infos['os']
                     }
                 )
 
-    print(f'Number of clients (total: {number_of_clients}, '
-          f'expired: {number_of_expired_clients}, '
-          f'with DOAP: {number_of_doap_clients})')
-    with open(DATA_PATH / 'clients_list_doap.json',
+    print(f'Number of packages (total: {number_of_packages}, '
+          f'expired: {number_of_expired_packages}, '
+          f'with DOAP: {number_of_doap_packages})')
+    with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',
-              encoding='utf-8') as client_data_file:
-        json.dump(client_infos, client_data_file, indent=4)
+              encoding='utf-8') as package_data_file:
+        json.dump(package_infos, package_data_file, indent=4)
 
 
 if __name__ == '__main__':
     initialize_directory(DOWNLOAD_PATH)
     initialize_directory(LOGOS_PATH)
     Path(DOWNLOAD_PATH / 'doap_files').mkdir(parents=True)
-    prepare_clients_list()
+    prepare_package_list('clients')
+    prepare_package_list('libraries')
+    prepare_package_list('servers')

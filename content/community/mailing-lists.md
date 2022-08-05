@@ -23,6 +23,10 @@ __Standards@xmpp.org email list__ — for general discussion about XMPP protocol
 
 __xmpp@ietf.org email list__ — official list for [XMPP Working Group](http://tools.ietf.org/wg/xmpp/) discussions at the [IETF](http://www.ietf.org/) ([subscribe](https://www.ietf.org/mailman/listinfo/xmpp) | [archives](http://www.ietf.org/mail-archive/web/xmpp/current/maillist.html))
 
+### For Members
+
+__Members@xmpp.org email list__ — official list for members of the XSF. Subscription is available for members only, but the [archives can be found here](https://mail.jabber.org/pipermail/members/).
+
 ### Special-Purpose Venues
 
 The following special-purpose mailing lists provide low-volume, high-quality discussion among developers interested in specific aspects of XMPP technologies.

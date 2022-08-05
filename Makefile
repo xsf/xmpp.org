@@ -53,6 +53,7 @@ serve:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(PY) $(TOOLSDIR)/prepare_software_list.py
+	$(PY) $(TOOLSDIR)/prepare_compliance.py
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
@@ -61,6 +62,7 @@ prepare_docker:
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
 	$(PY) $(TOOLSDIR)/prepare_software_list.py
+	$(PY) $(TOOLSDIR)/prepare_compliance.py
 	$(HUGO) version
 	$(HUGO) --baseURL="http://localhost/" --buildFuture
 
@@ -72,6 +74,7 @@ publish:
 	$(PY) $(TOOLSDIR)/lint_list.py servers.json
 	$(PY) $(TOOLSDIR)/lint_list.py libraries.json
 	$(PY) $(TOOLSDIR)/prepare_software_list.py
+	$(PY) $(TOOLSDIR)/prepare_compliance.py
 	$(HUGO) version
 	$(HUGO)
 

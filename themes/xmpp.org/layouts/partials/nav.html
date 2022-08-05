@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ .Site.BaseURL | relLangURL }}">
+      <a class="navbar-brand" href="{{ .Site.BaseURL | relURL }}">
         <img src="/images/logos/xmpp-logo.svg" alt="XMPP logo" class="navbar-logo">
         {{ .Site.Title }}
       </a>
@@ -14,18 +14,18 @@
                 {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
                 {{ if .HasChildren }}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ .URL | relLangURL }}" id="{{ .Name }}" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
+                    <a class="nav-link dropdown-toggle" href="{{ .URL | relURL }}" id="{{ .Name }}" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
                     <ul class="dropdown-menu" aria-labelledby="{{ .Name }}">
                       {{ range .Children }}
                         {{ $url := urls.Parse .URL }}
-                        <li><a class="dropdown-item" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a></li>
+                        <li><a class="dropdown-item" href="{{ .URL | relURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a></li>
                       {{ end }}
                     </ul>
                 </li>
                 {{ else }}
                   {{ $url := urls.Parse .URL }}
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a>
+                      <a class="nav-link" href="{{ .URL | relURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a>
                   </li>
                 {{ end }}
             {{ end }}
