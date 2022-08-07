@@ -59,7 +59,7 @@ There are some articles and thoughts on the European Digital Markets Act:
 - [Interoperability - Thoughts, freie-messenger.de](https://www.freie-messenger.de/en/begriffe/interoperabilitaet/gedanken)
 - [WhatsApp muss sich für alle Messenger öffnen, Dominik Rzepka](https://www.zdf.de/nachrichten/politik/whatsapp-threema-interoperabilitaet-100.html) [DE]
 
-The site "Chat standard (XMPP)" with lots of information is avilable in Englisch now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
+The site "Chat standard (XMPP)" with lots of information is available in English now at [freie-messenger.de](https://www.freie-messenger.de/en/sys_xmpp)
 
 Axel from [eversten.net](https://eversten.net/) published an [XMPP Push Notification Test for iOS](https://eversten.net/en/blog/notification/) covering latest Monal, Siskin IM and Snikket versions on different server implementations. A good 15 minutes read for both iOS users and their multi-platforms contacts alike.
 
