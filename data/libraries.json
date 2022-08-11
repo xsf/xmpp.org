@@ -389,7 +389,7 @@
         "url": "https://www.ag-software.net/matrix-vnext/"
     },
     {
-        "doap": null,
+        "doap": "https://xmpp.org/doap/mellium.doap",
         "last_renewed": "2022-03-29T00:00:00",
         "name": "Mellium",
         "platforms": [
