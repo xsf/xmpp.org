@@ -35,14 +35,6 @@ DOAP_SHORTDESC = f'.//{{{DOAP_NS}}}shortdesc'
 DOAP_OS = f'.//{{{DOAP_NS}}}os'
 DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
 
-LIB_PLATFORMS: list[str] = [
-    '.NET',
-    'C#',
-    'C++',
-    'Go',
-    'Python',
-]
-
 PLATFORMS: list[str] = [
     'Android',
     'iOS',
@@ -104,6 +96,7 @@ def check_renewal(name: str, renewed: Optional[str]) -> bool:
     if now - renewed > ENTRY_LIFETIME:
         print('Package entry expired for', name)
         return False
+    print('Package entry up to date for', name)
     return True
 
 
@@ -212,7 +205,7 @@ def prepare_package_list(package_type: str) -> None:
 
     package_infos: dict[str, list[dict[str, Optional[str]]]] = {}
     if package_type == 'libraries':
-        platforms = LIB_PLATFORMS
+        platforms = []
     else:
         platforms = PLATFORMS
 
