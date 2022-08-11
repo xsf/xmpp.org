@@ -26,6 +26,7 @@ DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
 STATIC_PATH = Path('static')
 LOGOS_PATH = STATIC_PATH / 'images' / 'packages'
+HOSTED_DOAP_PATH = STATIC_PATH / 'doap'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
 SCHEMA_NS = 'https://schema.org/'
@@ -258,9 +259,17 @@ def prepare_package_list(package_type: str) -> None:
         number_of_doap_packages += 1
         package_name = slugify(package['name'])
 
-        download_file(
-            package['doap'],
-            Path(f'doap_files/{package_name}.doap'))
+        doap_url = package['doap']
+        if doap_url.startswith('/doap'):
+            # DOAP file is hosted at xmpp.org
+            shutil.copyfile(
+                HOSTED_DOAP_PATH / f'{package_name}.doap',
+                Path(f'{DOWNLOAD_PATH}/doap_files/{package_name}.doap'))
+        else:
+            download_file(
+                package['doap'],
+                Path(f'doap_files/{package_name}.doap'))
+
         parsed_package_infos = parse_doap_infos(package_name)
         if parsed_package_infos is None:
             continue
