@@ -441,7 +441,7 @@
         "url": "https://github.com/pontarius/pontarius-xmpp/"
     },
     {
-        "doap": null,
+        "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
         "last_renewed": "2022-05-13T12:00:00",
         "name": "python-nbxmpp",
         "platforms": [
