@@ -268,6 +268,8 @@ def prepare_package_list(package_type: str) -> None:
         logo_uri = None
         if parsed_package_infos['logo'] is not None:
             logo_uri = process_logo(package_name, parsed_package_infos['logo'])
+        elif 'logo' in package.keys() and package['logo'] is not None:
+            logo_uri = process_logo(package_name, package['logo'])
 
         added_to_other = False
         for package_os in parsed_package_infos['os']:

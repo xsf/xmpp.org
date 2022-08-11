@@ -13,12 +13,15 @@ from datetime import datetime
 from datetime import timedelta
 
 
-VALID_ENTRY_KEYS = {
+REQUIRED_ENTRY_KEYS = {
     "platforms",
     "name",
     "last_renewed",
     "doap",
     "url",
+}
+VALID_ENTRY_KEYS = {
+        "logo",
 }
 
 
@@ -50,8 +53,8 @@ def check_entries(entries: dict[str, Any],
             violations += 1
 
         entry_keys = set(entry.keys())
-        unknown = entry_keys - VALID_ENTRY_KEYS
-        missing = VALID_ENTRY_KEYS - entry_keys
+        unknown = entry_keys - REQUIRED_ENTRY_KEYS - VALID_ENTRY_KEYS
+        missing = REQUIRED_ENTRY_KEYS - entry_keys
 
         if unknown:
             emit_violation(
