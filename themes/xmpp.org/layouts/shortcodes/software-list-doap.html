@@ -11,7 +11,7 @@
     {{ $package_data.Set "platforms" (slice "Other") }}
 {{ end }}
 
-<div id="software-clients">
+<div>
     <ul class="nav nav-pills nav-fill pb-3" id="pills-tab" role="tablist">
         {{ range $package_data.Get "platforms" }}
         <li class="nav-item" role="presentation">
@@ -66,7 +66,7 @@
                                                         <p class="card-text small mb-0">
                                                             Platforms:
                                                             <ul>
-                                                                {{ range .os }}
+                                                                {{ range .platforms }}
                                                                     <li class="small">
                                                                         {{ . }}
                                                                     </li>
@@ -74,8 +74,8 @@
                                                             </ul>
                                                         </p>
                                                     {{ else }}
-                                                        {{ if ne (lower $platform) (lower .os) }}
-                                                            <p class="small">Platform: {{ .os }}</p>
+                                                        {{ if ne (lower $platform) (lower .platforms) }}
+                                                            <p class="small">Platform: {{ .platforms }}</p>
                                                         {{ end }}
                                                     {{ end }}
                                                 </div>

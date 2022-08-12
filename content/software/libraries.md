@@ -10,4 +10,4 @@ Code libraries and tools are available for many different programming languages,
 
 __See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If __you are related to the project__ and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
 
-{{< software-list-doap >}}
+{{< libraries-list-doap >}}

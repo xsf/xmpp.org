@@ -34,6 +34,7 @@ RDF_RESOURCE = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'
 DOAP_NAME = f'.//{{{DOAP_NS}}}name'
 DOAP_SHORTDESC = f'.//{{{DOAP_NS}}}shortdesc'
 DOAP_OS = f'.//{{{DOAP_NS}}}os'
+DOAP_PROGRAMMING_LANGUAGE = f'.//{{{DOAP_NS}}}programming-language'
 DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
 
 PLATFORMS: list[str] = [
@@ -124,11 +125,17 @@ def parse_doap_infos(doap_file: str
     if doap_shortdesc is not None:
         info['shortdesc'] = doap_shortdesc.text
 
-    info['os'] = []
+    info['platforms'] = []
     for entry in doap.findall(DOAP_OS):
-        info['os'].append(entry.text)
-    if not info['os']:
-        info['os'] = ['Other']
+        info['platforms'].append(entry.text)
+    if not info['platforms']:
+        info['platforms'] = ['Other']
+
+    info['programming_lang'] = []
+    for entry in doap.findall(DOAP_PROGRAMMING_LANGUAGE):
+        info['programming_lang'].append(entry.text)
+    if not info['programming_lang']:
+        info['programming_lang'] = ['Other']
 
     info['logo'] = None
     doap_logo = doap.find(DOAP_LOGO)
@@ -228,22 +235,22 @@ def prepare_package_list(package_type: str) -> None:
 
         if package['doap'] is None:
             added_to_other = False
-            for package_os in cast(list[str], package['platforms']):
-                added_to_os = False
+            for package_platform in cast(list[str], package['platforms']):
+                added_to_platform = False
                 for platform in platforms:
-                    if platform.lower() not in package_os.lower():
+                    if platform.lower() not in package_platform.lower():
                         continue
-                    added_to_os = True
+                    added_to_platform = True
                     package_infos[platform].append(
                         {
                             'name': package['name'],
                             'url': package['url'],
                             'logo': None,
                             'shortdesc': None,
-                            'os': package_os
+                            'platforms': package_platform
                         }
                     )
-                if not added_to_os and not added_to_other:
+                if not added_to_platform and not added_to_other:
                     added_to_other = True
                     package_infos['Other'].append(
                         {
@@ -251,11 +258,12 @@ def prepare_package_list(package_type: str) -> None:
                             'url': package['url'],
                             'logo': None,
                             'shortdesc': None,
-                            'os': package['platforms']
+                            'platforms': package['platforms']
                         }
                     )
             continue
 
+        # DOAP is available
         number_of_doap_packages += 1
         package_name = slugify(package['name'])
 
@@ -279,22 +287,24 @@ def prepare_package_list(package_type: str) -> None:
             logo_uri = process_logo(package_name, parsed_package_infos['logo'])
 
         added_to_other = False
-        for package_os in parsed_package_infos['os']:
-            added_to_os = False
+        for package_platform in parsed_package_infos['platforms']:
+            added_to_platform = False
             for platform in platforms:
-                if platform.lower() not in package_os.lower():
+                if platform.lower() not in package_platform.lower():
                     continue
-                added_to_os = True
+                added_to_platform = True
                 package_infos[platform].append(
                     {
                         'name': package['name'],
                         'url': package['url'],
                         'logo': logo_uri,
                         'shortdesc': parsed_package_infos['shortdesc'],
-                        'os': package_os
+                        'platforms': package_platform,
+                        'programming_lang': parsed_package_infos[
+                            'programming_lang'],
                     }
                 )
-            if not added_to_os and not added_to_other:
+            if not added_to_platform and not added_to_other:
                 added_to_other = True
                 package_infos['Other'].append(
                     {
@@ -302,7 +312,9 @@ def prepare_package_list(package_type: str) -> None:
                         'url': package['url'],
                         'logo': logo_uri,
                         'shortdesc': parsed_package_infos['shortdesc'],
-                        'os': parsed_package_infos['os']
+                        'platforms': parsed_package_infos['platforms'],
+                        'programming_lang': parsed_package_infos[
+                            'programming_lang'],
                     }
                 )
 
