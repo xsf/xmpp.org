@@ -27,16 +27,11 @@
         "url": "https://mina.apache.org/vysper-project"
     },
     {
-        "doap": null,
+        "doap": "/doap/artalk-xmpp.doap",
         "last_renewed": "2022-07-30T06:24:00",
         "name": "Artalk.XMPP",
-        "platforms": [
-            ".NET 5",
-            ".NET Core",
-            ".NET Standard",
-            "C#"
-        ],
-        "url": "https://github.com/araditc/Artalk.Xmpp"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -67,11 +62,11 @@
         "url": "http://xmpp.rocks"
     },
     {
-        "doap": null,
+        "doap": "/doap/badxmpp.doap",
         "last_renewed": "2022-01-08T21:16:43",
         "name": "Bad XMPP",
         "platforms": [],
-        "url": "https://badxmpp.eu/"
+        "url": null
     },
     {
         "doap": null,
@@ -137,14 +132,11 @@
         "url": "https://github.com/EmiteGWT/emite"
     },
     {
-        "doap": null,
+        "doap": "/doap/erlang-elixir-xmpp.doap",
         "last_renewed": "2022-08-08T14:42:12",
         "name": "Erlang/Elixir XMPP",
-        "platforms": [
-            "Elixir",
-            "Erlang"
-        ],
-        "url": "https://github.com/processone/xmpp"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -228,13 +220,11 @@
         "url": "http://code.google.com/p/iksemel"
     },
     {
-        "doap": null,
+        "doap": "/doap/im-observatory.doap",
         "last_renewed": "2022-01-08T15:44:47",
         "name": "IM Observatory",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://xmpp.net/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -340,13 +330,11 @@
         "url": "https://developer.pidgin.im/wiki/WhatIsLibpurple"
     },
     {
-        "doap": null,
+        "doap": "/doap/libstrophe.doap",
         "last_renewed": "2021-11-11T17:00:00",
         "name": "libstrophe",
-        "platforms": [
-            "C"
-        ],
-        "url": "http://strophe.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -367,35 +355,25 @@
         "url": "https://github.com/mcabber/loudmouth"
     },
     {
-        "doap": null,
+        "doap": "/doap/matrix.doap",
         "last_renewed": "2022-03-07T14:50:41",
         "name": "MatriX",
-        "platforms": [
-            ".net",
-            "C#",
-            "Mono"
-        ],
-        "url": "https://www.ag-software.net/matrix-xmpp-sdk/"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/matrix-vnext.doap",
         "last_renewed": "2022-03-07T14:50:23",
         "name": "MatriX vNext",
-        "platforms": [
-            ".NET Core",
-            ".NET Standard",
-            "C#"
-        ],
-        "url": "https://www.ag-software.net/matrix-vnext/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "/doap/mellium.doap",
         "last_renewed": "2022-03-29T00:00:00",
         "name": "Mellium",
-        "platforms": [
-            "Go"
-        ],
-        "url": "https://mellium.im/code"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -425,11 +403,11 @@
         "url": "https://github.com/ObjFW/ObjXMPP"
     },
     {
-        "doap": null,
+        "doap": "/doap/observe-jabber-network.doap",
         "last_renewed": "2022-01-08T21:20:53",
         "name": "observe.jabber.network",
         "platforms": [],
-        "url": "https://observe.jabber.network/"
+        "url": null
     },
     {
         "doap": null,
@@ -444,10 +422,8 @@
         "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
         "last_renewed": "2022-05-13T12:00:00",
         "name": "python-nbxmpp",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://dev.gajim.org/gajim/python-nbxmpp"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -468,31 +444,25 @@
         "url": "https://github.com/Jajcus/pyxmpp2"
     },
     {
-        "doap": null,
+        "doap": "/doap/qxmpp.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "QXmpp",
-        "platforms": [
-            "C++"
-        ],
-        "url": "https://github.com/qxmpp-project"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/scansion.doap",
         "last_renewed": "2022-01-08T17:11:54",
         "name": "Scansion",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://matthewwild.co.uk/projects/scansion/"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/search-jabber-network.doap",
         "last_renewed": "2022-01-08T21:22:20",
         "name": "search.jabber.network",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://search.jabber.network/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -537,19 +507,15 @@
         "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
         "last_renewed": "2022-02-14T11:02:12",
         "name": "Slixmpp",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://lab.louiz.org/poezio/slixmpp"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/smack.doap",
         "last_renewed": "2021-12-07T08:30:00",
         "name": "Smack",
-        "platforms": [
-            "Java (Java SE and Android)"
-        ],
-        "url": "https://www.igniterealtime.org/projects/smack"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -579,13 +545,11 @@
         "url": "https://swift.im/swiften.html"
     },
     {
-        "doap": null,
+        "doap": "/doap/strophe-js.doap",
         "last_renewed": "2021-11-25T12:47:00",
         "name": "Strophe.js",
-        "platforms": [
-            "JavaScript"
-        ],
-        "url": "https://strophe.im/strophejs"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -606,45 +570,32 @@
         "url": "https://swift.im/swiften.html"
     },
     {
-        "doap": null,
+        "doap": "/doap/tigase-halcyon.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase Halcyon",
-        "platforms": [
-            "Android",
-            "Google Web Toolkit",
-            "Java",
-            "Kotlin"
-        ],
-        "url": "https://tigase.net/xmpp-libraries"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/tigase-jaxmpp.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase JaXMPP",
-        "platforms": [
-            "Android",
-            "Google Web Toolkit",
-            "Java"
-        ],
-        "url": "https://tigase.net/xmpp-libraries"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/tigase-swift-xmpp-client-library.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "Tigase Swift XMPP client library",
-        "platforms": [
-            "Swift"
-        ],
-        "url": "https://tigase.net/xmpp-libraries"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/tinder.doap",
         "last_renewed": "2021-12-07T08:30:00",
         "name": "Tinder",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://www.igniterealtime.org/projects/tinder/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -703,13 +654,11 @@
         "url": "https://waher.se/IoTGateway/Libraries.md#networking"
     },
     {
-        "doap": null,
+        "doap": "/doap/xmpp-account-exporter.doap",
         "last_renewed": "2022-01-08T21:17:47",
         "name": "XMPP account exporter",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://migrate.modernxmpp.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -733,22 +682,15 @@
         "doap": "https://gitlab.com/xmpp-rs/xmpp-rs/-/raw/main/parsers/doap.xml",
         "last_renewed": "2022-02-18T21:35:00",
         "name": "xmpp-rs",
-        "platforms": [
-            "Rust"
-        ],
-        "url": "https://xmpp.rs"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/doap/xmpp-js.doap",
         "last_renewed": "2021-08-22T12:06:06",
         "name": "xmpp.js",
-        "platforms": [
-            "JavaScript",
-            "Node.js",
-            "React Native",
-            "Web"
-        ],
-        "url": "https://github.com/xmppjs/xmpp.js"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,

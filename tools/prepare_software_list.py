@@ -26,13 +26,13 @@ DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
 STATIC_PATH = Path('static')
 LOGOS_PATH = STATIC_PATH / 'images' / 'packages'
-HOSTED_DOAP_PATH = STATIC_PATH / 'doap'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
 SCHEMA_NS = 'https://schema.org/'
 RDF_RESOURCE = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'
 DOAP_NAME = f'.//{{{DOAP_NS}}}name'
 DOAP_SHORTDESC = f'.//{{{DOAP_NS}}}shortdesc'
+DOAP_HOMEPAGE = f'.//{{{DOAP_NS}}}homepage'
 DOAP_OS = f'.//{{{DOAP_NS}}}os'
 DOAP_PROGRAMMING_LANGUAGE = f'.//{{{DOAP_NS}}}programming-language'
 DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
@@ -119,6 +119,11 @@ def parse_doap_infos(doap_file: str
     doap_name = doap.find(DOAP_NAME)
     if doap_name is not None:
         info['name'] = doap_name.text
+
+    info['homepage'] = None
+    doap_homepage = doap.find(DOAP_HOMEPAGE)
+    if doap_homepage is not None:
+        info['homepage'] = doap_homepage.attrib[RDF_RESOURCE]
 
     info['shortdesc'] = None
     doap_shortdesc = doap.find(DOAP_SHORTDESC)
@@ -244,7 +249,7 @@ def prepare_package_list(package_type: str) -> None:
                     package_infos[platform].append(
                         {
                             'name': package['name'],
-                            'url': package['url'],
+                            'homepage': package['url'],
                             'logo': None,
                             'shortdesc': None,
                             'platforms': package_platform
@@ -255,7 +260,7 @@ def prepare_package_list(package_type: str) -> None:
                     package_infos['Other'].append(
                         {
                             'name': package['name'],
-                            'url': package['url'],
+                            'homepage': package['url'],
                             'logo': None,
                             'shortdesc': None,
                             'platforms': package['platforms']
@@ -271,7 +276,7 @@ def prepare_package_list(package_type: str) -> None:
         if doap_url.startswith('/doap'):
             # DOAP file is hosted at xmpp.org
             shutil.copyfile(
-                HOSTED_DOAP_PATH / f'{package_name}.doap',
+                f'{STATIC_PATH}{doap_url}',
                 Path(f'{DOWNLOAD_PATH}/doap_files/{package_name}.doap'))
         else:
             download_file(
@@ -296,7 +301,7 @@ def prepare_package_list(package_type: str) -> None:
                 package_infos[platform].append(
                     {
                         'name': package['name'],
-                        'url': package['url'],
+                        'homepage': parsed_package_infos['homepage'],
                         'logo': logo_uri,
                         'shortdesc': parsed_package_infos['shortdesc'],
                         'platforms': package_platform,
@@ -309,7 +314,7 @@ def prepare_package_list(package_type: str) -> None:
                 package_infos['Other'].append(
                     {
                         'name': package['name'],
-                        'url': package['url'],
+                        'homepage': parsed_package_infos['homepage'],
                         'logo': logo_uri,
                         'shortdesc': parsed_package_infos['shortdesc'],
                         'platforms': parsed_package_infos['platforms'],
