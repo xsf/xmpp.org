@@ -6,9 +6,6 @@
   <Project>
     <name>Mellium</name>
     <shortdesc xml:lang="en">Go XMPP library</shortdesc>
-    <description xml:lang="en">
-      An implementation of the Extensible Messaging and Presence Protocol (XMPP) in Go
-    </description>
     <homepage rdf:resource="https://mellium.im/code"/>
     <schema:logo rdf:resource="https://mellium.im/mellium.svg"/>
     <programming-language>Go</programming-language>
