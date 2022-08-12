@@ -139,8 +139,6 @@ def parse_doap_infos(doap_file: str
     info['programming_lang'] = []
     for entry in doap.findall(DOAP_PROGRAMMING_LANGUAGE):
         info['programming_lang'].append(entry.text)
-    if not info['programming_lang']:
-        info['programming_lang'] = ['Other']
 
     info['logo'] = None
     doap_logo = doap.find(DOAP_LOGO)
