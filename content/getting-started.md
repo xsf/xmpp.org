@@ -12,25 +12,25 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 
 ### Desktop
 
-  * [Beagle IM](https://beagle.im/) (macOS)
-  * [Converse.js](https://conversejs.org/) (Browser)
-  * [Dino](https://dino.im/) (Linux)
-  * [Gajim](https://gajim.org/) (Linux, Windows)
-  * [Monal](https://monal.im/) (macOS)
-  * [Swift.IM](https://swift.im/swift.html) (Linux, macOS, Windows)
-  * [UWPX](https://uwpx.org/) (Windows)
+  * <a href="https://beagle.im/" target='_blank'>Beagle IM</a>  (macOS)
+  * <a href="https://conversejs.org/" target='_blank'>Converse.js</a> (Browser)
+  * <a href="https://dino.im/" target='_blank'>Dino</a> (Linux)
+  * <a href="https://gajim.org/" target="_blank">Gajim</a> (Linux, Windows)
+  * <a href="https://monal.im/" target="_blank">Monal</a> (macOS)
+  * <a href="https://swift.im/swift.html" target="_blank">Swift.IM</a> (Linux, macOS, Windows)
+  * <a href="https://uwpx.org/" target="_blank">UWPX</a> (Windows)
   
 ### Android
 
-  * [blabber.im](https://blabber.im./)
-  * [Conversations](https://conversations.im/)
-  * [Quicksy](https://quicksy.im/)
-  * [Yaxim](https://yax.im.)
+  * <a href="https://blabber.im./" target="_blank">blabber.im</a>
+  * <a href="https://conversations.im/" target="_blank">Conversations</a>
+  * <a href="https://quicksy.im/" target="_blank">Quicksy</a>
+  * <a href="https://yax.im." target="_blank">Yaxim</a>
   
 ### iOS
 
-  * [Monal](https://monal.im/)
-  * [Siskin IM](https://siskin.im/)
+  * <a href="https://monal.im/" target="_blank">Monal</a>
+  * <a href="https:/siskin.im" target="_blank">Siskin IM</a>
 
 # 2. Create an account
 
