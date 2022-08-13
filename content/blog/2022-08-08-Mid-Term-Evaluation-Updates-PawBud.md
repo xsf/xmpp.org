@@ -13,15 +13,18 @@ For those of you who don't know much about GSoC, a mid-term evaluation was sched
 
 ### Project Updates & Challenges Faced
 
-I have been working on the jingle message retraction feature and the jingle chat history feature. Let me explain:-
+I have been working on the jingle message retraction feature and the jingle chat history feature. Let me explain:
 
 If you have gone through [XEP-0353](https://xmpp.org/extensions/xep-0353.html), you might be knowing about the [retraction feature](https://xmpp.org/extensions/xep-0353.html#retract). If not, then the below two diagrams are my best attempts to explain it, and to be honest it is pretty simple.
+
 ![jingle_retraction](/images/blog/retraction_working.png) 
 
-Ok, now, let me show you another diagram which took me around 2 weeks to visualize:-
+Ok, now, let me show you another diagram which took me around 2 weeks to visualize:
+
 ![jingle_message_passing_in_detail](/images/blog/message-passing.png) 
 
-This is what confused me the most and took a lot of my time. If you look at the way I have written my code(and I won't link it, since I believe that the link might break in the future due to the constant changes in the codebase that are yet to come):- 
+This is what confused me the most and took a lot of my time. If you look at the way I have written my code (and I won't link it, since I believe that the link might break in the future due to the constant changes in the codebase that are yet to come):
+
 ```
     // Responder's Side Parser
     function parseJingleMessage(stanza, attrs) {
@@ -64,7 +67,8 @@ I borrowed this code from a single file called "utils.js" which as the name sugg
 
 Ohh, and by the way, the [create](https://backbonejs.org/#Collection-create) function creates an instance of the message model, and if you didn't understand this statement, I highly recommend going through the [backbone.js documentation](https://backbonejs.org/#).
 
-So Lessons to Learn:-
+So, lessons to learn:
+
 * Comment or possibly document your code from day one.
 * Don't keep random variable names.
 * Speak up to your mentor!! Period. I can assure you a lot of JC's time could have been saved had I spoken up about my thought process sooner.
