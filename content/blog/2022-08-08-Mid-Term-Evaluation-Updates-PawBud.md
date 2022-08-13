@@ -1,6 +1,6 @@
 ---
 title: Mid Term Evaluation Updates
-date: 2022-08-08
+date: 2022-08-13
 author: PawBud
 categories: ["Google Summer of Code"]
 ---
@@ -9,7 +9,7 @@ It's been a month since I wrote my [last blog](https://xmpp.org/2022/07/converse
 
 ### The Mid-Term Evaluation
 
-For those of you who don't know much about GSoC, a mid-term evaluation was scheduled, where as a contributor you have to fill out a form which contains some MCQs related to your experience with your mentor and the organization administrator so far and the project itself. It barely took me 5-10 minutes to complete the form so there's that.
+For those of you who don't know much about GSoC, a mid-term evaluation was scheduled, where as a contributor you have to fill out a form which had some questions related to your experience with your mentor and the organization administrator so far and the project itself. It barely took me 5-10 minutes to complete the form so there's that.
 
 ### Project Updates & Challenges Faced
 
