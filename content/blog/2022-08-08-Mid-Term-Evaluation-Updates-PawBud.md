@@ -1,5 +1,5 @@
 ---
-title: Google Summer of Code 2022 at XSF: Converse.js - Mid Term Evaluation Update
+title: "Google Summer of Code 2022 at XSF: Converse.js - Mid Term Evaluation Update"
 date: 2022-08-13
 author: PawBud
 categories: ["Google Summer of Code"]
