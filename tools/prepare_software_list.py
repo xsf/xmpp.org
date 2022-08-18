@@ -271,7 +271,7 @@ def prepare_package_list(package_type: str) -> None:
         package_name = slugify(package['name'])
 
         doap_url = package['doap']
-        if doap_url.startswith('/doap'):
+        if doap_url.startswith('/hosted-doap'):
             # DOAP file is hosted at xmpp.org
             shutil.copyfile(
                 f'{STATIC_PATH}{doap_url}',

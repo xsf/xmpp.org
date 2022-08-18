@@ -29,7 +29,7 @@
         "url": "http://aqq.eu"
     },
     {
-        "doap": "/doap/astrachat-client.doap",
+        "doap": "/hosted-doap/astrachat-client.doap",
         "last_renewed": "2021-11-06T00:00:00",
         "name": "AstraChat",
         "platforms": [],
@@ -117,7 +117,7 @@
         "url": "https://candy-chat.github.io/candy/"
     },
     {
-        "doap": "/doap/chat-o-matic.doap",
+        "doap": "/hosted-doap/chat-o-matic.doap",
         "last_renewed": "2022-02-14T00:00:00",
         "name": "Chat-O-Matic",
         "platforms": [],
@@ -319,7 +319,7 @@
         "url": "https://desktop.jitsi.org"
     },
     {
-        "doap": "/doap/jsxc.doap",
+        "doap": "/hosted-doap/jsxc.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "JSXC",
         "platforms": [],
@@ -362,7 +362,7 @@
         "url": "https://userbase.kde.org/Kopete"
     },
     {
-        "doap": "/doap/libervia.doap",
+        "doap": "/hosted-doap/libervia.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Libervia (formerly Salut \u00e0 Toi)",
         "platforms": [],
@@ -387,7 +387,7 @@
         "url": "http://miranda-im.org"
     },
     {
-        "doap": "/doap/miranda-ng.doap",
+        "doap": "/hosted-doap/miranda-ng.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Miranda NG",
         "platforms": [],
@@ -465,7 +465,7 @@
         "url": null
     },
     {
-        "doap": "/doap/pade.doap",
+        "doap": "/hosted-doap/pade.doap",
         "last_renewed": "2021-12-07T08:30:00",
         "name": "P\u00e0d\u00e9",
         "platforms": [],
@@ -547,14 +547,14 @@
         "url": "https://smuxi.im/"
     },
     {
-        "doap": "/doap/spark.doap",
+        "doap": "/hosted-doap/spark.doap",
         "last_renewed": "2021-12-07T08:30:00",
         "name": "Spark",
         "platforms": [],
         "url": null
     },
     {
-        "doap": "/doap/storkim-by-tigase.doap",
+        "doap": "/hosted-doap/storkim-by-tigase.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "StorkIM by Tigase, Inc. (Tigase Messenger for Android)",
         "platforms": [],

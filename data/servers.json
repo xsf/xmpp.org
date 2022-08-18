@@ -10,7 +10,7 @@
         "url": "https://mina.apache.org/vysper-project"
     },
     {
-        "doap": "/doap/astrachat-server.doap",
+        "doap": "/hosted-doap/astrachat-server.doap",
         "last_renewed": "2021-11-06T00:00:00",
         "name": "AstraChat",
         "platforms": [],
@@ -55,7 +55,7 @@
         "url": "https://danga.com"
     },
     {
-        "doap": "/doap/ejabberd.doap",
+        "doap": "/hosted-doap/ejabberd.doap",
         "last_renewed": "2022-08-08T14:37:44",
         "name": "ejabberd",
         "platforms": [],
@@ -179,7 +179,7 @@
         "url": "https://metronome.im"
     },
     {
-        "doap": "/doap/mongooseim.doap",
+        "doap": "/hosted-doap/mongooseim.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "MongooseIM",
         "platforms": [],
