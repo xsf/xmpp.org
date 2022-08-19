@@ -1,26 +1,51 @@
 window.onload = function() {
     // Software list: Select tab for platform reported by user agent
-    const packages_list = document.getElementById("pills-software-content");
-    const select_tab = function(os_name) {
-      var tab_trigger_element = document.querySelector('#' + os_name+ '-tab');
-      if (tab_trigger_element) {
-        var tab = new bootstrap.Tab(tab_trigger_element);
-        tab.show();
+    const platform_buttons = document.querySelectorAll('button[name="platform-button"]');
+    const filter_packages = function(os_name) {
+      for (const button of platform_buttons) {
+        if (button.dataset.platform == os_name) {
+          button.click();
+        }
       }
     };
-    if (packages_list) {
+    if (platform_buttons) {
       if (navigator.userAgent.indexOf("Android") >= 0) {
-        select_tab("android");
+        filter_packages("android");
       } else if (navigator.userAgent.indexOf("Linux") >= 0) {
-        select_tab("linux");
+        filter_packages("linux");
       } else if (navigator.userAgent.indexOf("iPhone") >= 0) {
-        select_tab("ios");
+        filter_packages("ios");
       } else if (navigator.userAgent.indexOf("Windows") >= 0) {
-        select_tab("windows");
+        filter_packages("windows");
       } else if (navigator.userAgent.indexOf("Macintosh") >= 0) {
-        select_tab("macos");
+        filter_packages("macos");
       } else {
-        select_tab("other");
+        filter_packages("other");
       }
     }
 };
+
+for (const button of document.querySelectorAll('button[name="platform-button"]')) {
+  button.addEventListener("click", function() {
+    var platform = button.dataset.platform;
+    var cards = document.getElementsByClassName("package-card");
+    for (const card of cards) {
+      if (platform == "other") {
+        // Show all cards
+        card.classList.remove("d-none");
+        continue;
+      }
+
+      var supported_platforms_list = card.querySelector('ul[name="supported_platforms_list"]');
+      if (supported_platforms_list.innerHTML.toLowerCase().indexOf(platform) > -1) {
+        card.classList.remove("d-none");
+      } else {
+        card.classList.add("d-none");
+      }
+    }
+  });
+} 
+
+function resizeIframe(obj) {
+  obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
+}

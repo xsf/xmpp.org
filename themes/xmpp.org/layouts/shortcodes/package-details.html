@@ -1,0 +1,59 @@
+{{ $name_slug := .Get "name_slug" }}
+{{ $package_type := .Get "package_type" }}
+
+{{ $package_data := newScratch }}
+{{ if eq $package_type "clients" }}
+    {{ $package_data.Set "packages" .Site.Data.clients_list_doap }}
+{{ else if eq $package_type "servers" }}
+    {{ $package_data.Set "packages" .Site.Data.servers_list_doap }}
+{{ else }}
+    {{ $package_data.Set "packages" .Site.Data.libraries_list_doap }}
+{{ end }}
+
+{{ range $name, $props := $package_data.Get "packages" }}
+    {{ if eq $props.name_slug $name_slug }}
+        <div class="pt-2 pb-5 my-2 text-center">
+            {{ if $props.logo }}
+                <img src="{{ $props.logo }}" class="d-block mx-auto mb-4 software-logo">
+            {{ else }}
+                <i class="fas fa-5x fa-cube py-1 software-logo-default"></i>
+            {{ end }}
+            <h1 class="display-5 fw-bold">{{ $name }}</h1>
+            <div class="col-lg-12 mx-auto">
+                <p class="lead mb-2">{{ $props.shortdesc }}</p>
+                <div class="mb-5">
+                    {{ range $props.platforms }}
+                        <span class="badge rounded-pill bg-secondary">{{ . }}</span>
+                    {{ end }}
+                </div>
+                <div class="d-grid gap-2 d-sm-flex pb-5 justify-content-sm-center">
+                    <a class="btn btn-primary px-4" href="{{ $props.homepage }}" target="_blank">Visit Website</a>
+                </div>
+                {{ if $props.badges }}
+                    <div class="p-4 mb-4 border-top border-start border-end rounded">
+                        <h4>Supported Features (<a href="/about/compliance-suites/">Compliance</a>)</h4>
+                        <div class="compliance-data">
+                        {{ range $category, $level := $props.badges }}
+                            {{ if eq $category "av" }}
+                                <span class="order-4 shadow-sm p-3 mb-2 mx-1 rounded"><b>Audio/Video Calling</b><br>{{ $level | title }}</span>
+                            {{ else if eq $category "core" }}
+                                <span class="order-0 shadow-sm p-3 mb-2 mx-1 rounded"><b>Core Compliance</b><br>{{ $level | title }} {{ if eq $package_type "libraries" }}Library{{ else}}{{ substr ($package_type | title) 0 -1 }}{{ end }}</span>
+                            {{ else if eq $category "im" }}
+                                <span class="order-1 shadow-sm p-3 mb-2 mx-1 rounded"><b>Instant Messaging (IM)</b><br>{{ $level | title }}</span>
+                            {{ else if eq $category "mobile" }}
+                                <span class="order-2 shadow-sm p-3 mb-2 mx-1 rounded"><b>Mobile</b><br>{{ $level | title }}</span>
+                            {{ else if eq $category "web" }}
+                                <span class="order-3 shadow-sm p-3 mb-2 mx-1 rounded"><b>Web</b><br>{{ $level | title }}</span>
+                            {{ end }}
+                            <br>
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    {{ end }}
+{{ end }}
+
+<h5 class="text-center py-2">Supported XMPP Extensions (XEPs)</h5>
+
+<iframe src="/doap/{{ $name_slug }}.doap" class="package-details-xeps" onload="resizeIframe(this)" style="height: 2000px;"></iframe>

@@ -1,29 +1,34 @@
 
 <h2 class="text-center pb-1">Libraries</h2>
 <div class="row row-cols-1 row-cols-md-2 g-4">
-    {{ range $supported_platform, $packages := .Site.Data.libraries_list_doap }}
-        {{ range $packages }}
+    {{ range $name, $props := .Site.Data.libraries_list_doap }}
         <div class="col">
             <div class="card h-100">
                 <div class="row g-0">
                     <div class="col-md-3 text-center py-3">
-                        {{ if .logo }}
-                            <img src="{{ .logo }}" class="py-1 ps-3 software-logo">
+                        {{ if $props.logo }}
+                            <img src="{{ $props.logo }}" class="py-1 ps-3 software-logo">
                         {{ else }}
                             <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
                         {{ end }}
                     </div>
                     <div class="col-md-9">
                         <div class="card-body">
-                            <a href="{{ .homepage }}" target="_blank">
-                                <h4 class="card-title">{{ .name }}</h4>
-                            </a>
-                            <p class="card-text small">{{ .shortdesc }}</p>
-                            {{ if .programming_lang }}
+                            {{ if $props.name_slug }}
+                                <a href="/software/libraries/{{ $props.name_slug }}">
+                                    <h4 class="card-title">{{ $name }}</h4>
+                                </a>
+                            {{ else }}
+                                <a href="{{ $props.homepage }}" target="_blank">
+                                    <h4 class="card-title">{{ $name }}</h4>
+                                </a>
+                            {{ end }}
+                            <p class="card-text small">{{ $props.shortdesc }}</p>
+                            {{ if $props.programming_lang }}
                                 <p class="card-text small mb-0">
                                     Programming language:
                                     <ul>
-                                        {{ range .programming_lang }}
+                                        {{ range $props.programming_lang }}
                                             <li class="small">
                                                 {{ . }}
                                             </li>
@@ -31,21 +36,22 @@
                                     </ul>
                                 </p>
                             {{ end }}
-                            <p class="card-text small mb-0">
-                                Platforms:
-                                <ul>
-                                    {{ range .platforms }}
-                                        <li class="small">
-                                            {{ . }}
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </p>
+                            {{ if $props.platforms }}
+                                <p class="card-text small mb-0">
+                                    Platforms:
+                                    <ul>
+                                        {{ range $props.platforms }}
+                                            <li class="small">
+                                                {{ . }}
+                                            </li>
+                                        {{ end }}
+                                    </ul>
+                                </p>
+                            {{ end }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{ end }}
     {{ end }}
 </div>

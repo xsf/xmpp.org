@@ -336,7 +336,36 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     max-width: 150px;
     width: 100%;
 }
-
+.package-details-xeps {
+	display: block;
+	border: none;
+	width: 100%;
+}
+.header-packages h1 {
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 0px;
+}
+.compliance-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.order-0 {
+    order: 0;
+}
+.order-1 {
+    order: 1;
+}
+.order-2 {
+    order: 2;
+}
+.order-3 {
+    order: 3;
+}
+.order-4 {
+    order: 4;
+}
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
 	body {

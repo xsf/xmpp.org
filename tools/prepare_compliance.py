@@ -63,23 +63,23 @@ def check_packages_compliance() -> None:
     def add_compliance_data(package_type: str) -> None:
         with open(DATA_PATH / f'{package_type}_list_doap.json',
                   'rb') as json_file:
-            clients_list = json.load(json_file)
+            package_list = json.load(json_file)
 
-        for _platform, clients in clients_list.items():
-            for client in clients:
-                compliance_data = compliance_dict.get(client['name'])
-                if compliance_data is None:
-                    client['badges'] = {}
-                    continue
-                client['badges'] = compliance_data['badges']
+        for name, props in package_list.items():
+            compliance_data = compliance_dict.get(name)
+            if compliance_data is None:
+                props['badges'] = {}
+                continue
+            props['badges'] = compliance_data['badges']
 
         with open(DATA_PATH / f'{package_type}_list_doap.json',
                   'w',
                   encoding='utf-8') as clients_data_file:
-            json.dump(clients_list, clients_data_file, indent=4)
+            json.dump(package_list, clients_data_file, indent=4)
 
-    compliance_dict: dict[str,
-                          dict[str, Union[str, dict[str, list[str]]]]] = {}
+    compliance_dict: dict[
+        str, dict[str, Union[str, dict[str, list[str]]]]] = {}
+
     for subdir, _dirs, files in os.walk(f'{DOWNLOAD_PATH}/doap_files'):
         for file in files:
             try:
@@ -100,7 +100,7 @@ def check_packages_compliance() -> None:
 
 if __name__ == '__main__':
     download_file(
-        COMPLIANCE_SUITE_URL, 'compliance-suite.xml')
-    download_file(COMPLIANCER_BUILD_URL, 'compliancer')
+        COMPLIANCE_SUITE_URL, Path('compliance-suite.xml'))
+    download_file(COMPLIANCER_BUILD_URL, Path('compliancer'))
     generate_compliance_json()
     check_packages_compliance()
