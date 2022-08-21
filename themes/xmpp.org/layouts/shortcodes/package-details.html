@@ -29,26 +29,29 @@
                 <div class="d-grid gap-2 d-sm-flex pb-5 justify-content-sm-center">
                     <a class="btn btn-primary px-4" href="{{ $props.homepage }}" target="_blank">Visit Website</a>
                 </div>
-                {{ if $props.badges }}
-                    <div class="p-4 mb-4 border-top border-start border-end rounded">
-                        <h4>Supported Features (<a href="/about/compliance-suites/">Compliance</a>)</h4>
-                        <div class="compliance-data">
-                        {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "av" }}
-                                <span class="order-4 shadow-sm p-3 mb-2 mx-1 rounded"><b>Audio/Video Calling</b><br>{{ $level | title }}</span>
-                            {{ else if eq $category "core" }}
-                                <span class="order-0 shadow-sm p-3 mb-2 mx-1 rounded"><b>Core Compliance</b><br>{{ $level | title }} {{ if eq $package_type "libraries" }}Library{{ else}}{{ substr ($package_type | title) 0 -1 }}{{ end }}</span>
-                            {{ else if eq $category "im" }}
-                                <span class="order-1 shadow-sm p-3 mb-2 mx-1 rounded"><b>Instant Messaging (IM)</b><br>{{ $level | title }}</span>
-                            {{ else if eq $category "mobile" }}
-                                <span class="order-2 shadow-sm p-3 mb-2 mx-1 rounded"><b>Mobile</b><br>{{ $level | title }}</span>
-                            {{ else if eq $category "web" }}
-                                <span class="order-3 shadow-sm p-3 mb-2 mx-1 rounded"><b>Web</b><br>{{ $level | title }}</span>
+                <div class="p-4 mb-4 border-top border-start border-end rounded">
+                    <h4>Features (<a href="/about/compliance-suites/">Compliance</a>)</h4>
+                    <div class="compliance-data">
+                        {{ if $props.badges }}
+                            {{ range $category, $level := $props.badges }}
+                                {{ if eq $category "av" }}
+                                    <span class="order-4 shadow-sm p-3 mb-2 mx-1 rounded"><b>Audio/Video Calling</b><br>{{ $level | title }}</span>
+                                {{ else if eq $category "core" }}
+                                    <span class="order-0 shadow-sm p-3 mb-2 mx-1 rounded"><b>Core Compliance</b><br>{{ $level | title }} {{ if eq $package_type "libraries" }}Library{{ else}}{{ substr ($package_type | title) 0 -1 }}{{ end }}</span>
+                                {{ else if eq $category "im" }}
+                                    <span class="order-1 shadow-sm p-3 mb-2 mx-1 rounded"><b>Instant Messaging (IM)</b><br>{{ $level | title }}</span>
+                                {{ else if eq $category "mobile" }}
+                                    <span class="order-2 shadow-sm p-3 mb-2 mx-1 rounded"><b>Mobile</b><br>{{ $level | title }}</span>
+                                {{ else if eq $category "web" }}
+                                    <span class="order-3 shadow-sm p-3 mb-2 mx-1 rounded"><b>Web</b><br>{{ $level | title }}</span>
+                                {{ end }}
+                                <br>
                             {{ end }}
-                            <br>
+                        {{ else }}
+                            <span class="text-muted small pt-3">Insufficient data or no data available.</span>
                         {{ end }}
                     </div>
-                {{ end }}
+                </div>
             </div>
         </div>
     {{ end }}
