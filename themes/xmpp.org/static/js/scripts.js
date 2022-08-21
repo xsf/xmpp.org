@@ -23,6 +23,12 @@ window.onload = function() {
         filter_packages("other");
       }
     }
+
+    // Resize DOAP iframe
+    frame = document.getElementById("doap-iframe");
+    if (frame) {
+      frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
+    }
 };
 
 for (const button of document.querySelectorAll('button[name="platform-button"]')) {
@@ -45,7 +51,3 @@ for (const button of document.querySelectorAll('button[name="platform-button"]')
     }
   });
 } 
-
-function resizeIframe(obj) {
-  obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
-}
