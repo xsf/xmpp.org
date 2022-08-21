@@ -74,7 +74,7 @@
 			</xsl:if>
 		</td>
 		<td>
-			<span class="{xmpp:status}"><xsl:value-of select="xmpp:status"/></span>
+			<span class="xep-implementation-status {xmpp:status}"><xsl:value-of select="xmpp:status"/></span>
 		</td>
 		<td>
 			<span class="version"><xsl:value-of select="xmpp:since"/></span>

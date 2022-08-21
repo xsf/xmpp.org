@@ -50,29 +50,27 @@ a:hover {
 	color: rgb(50, 90, 120);
     text-decoration: none;
 }
+.xep-implementation-status {
+	font-size: small;
+	padding: 5px;
+}
 .complete {
     color: rgb(81, 134, 81);
 	background-color: rgb(224, 241, 217);
-	font-size: small;
-    padding: 5px;
 }
 .partial {
     color: rgb(182, 124, 37);
 	background-color: rgb(241, 238, 196);
-	font-size: small;
-    padding: 5px;
-}
-.removed {
-	color:rgb(65, 65, 65);
-	background-color: rgb(233, 233, 233);
-	font-size: small;
-	padding: 5px;
 }
 .planned {
 	color: rgb(58, 101, 139);
 	background-color: rgb(199, 230, 242);
-	font-size: small;
-	padding: 5px;
+}
+.removed,
+.deprecated,
+.wontfix {
+	color:rgb(65, 65, 65);
+	background-color: rgb(233, 233, 233);
 }
 .version {
 	font-family: monospace;
@@ -127,13 +125,15 @@ a:hover {
 		color: rgb(255, 239, 215);
 		background-color: rgb(61, 58, 23);
 	}
-	.removed {
-		color: rgb(255, 255, 255);
-		background-color: rgb(79, 79, 79);
-	}
 	.planned {
 		color: rgb(144, 201, 243);
 		background-color: rgb(21, 58, 66);
+	}
+	.removed,
+	.deprecated,
+	.wontfix {
+		color: rgb(255, 255, 255);
+		background-color: rgb(79, 79, 79);
 	}
 	.version-outdated {
 		color: rgb(255, 239, 215);
