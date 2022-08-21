@@ -170,13 +170,11 @@
         "url": "http://www.kwickserver.info/cms/"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/metronome-im.doap",
         "last_renewed": "2022-08-20T21:06:00",
         "name": "Metronome IM",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://metronome.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "/hosted-doap/mongooseim.doap",
