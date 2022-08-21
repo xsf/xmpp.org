@@ -4,7 +4,7 @@ date: 2022-08-13
 author: PawBud
 categories: ["Google Summer of Code"]
 aliases:
-    - "2022/08/mid-term-evaluation-updates/"
+    - "/2022/08/mid-term-evaluation-updates/"
 ---
 
 It's been a month since I wrote my [last blog](https://xmpp.org/2022/07/conversejs-an-in-depth-view-into-my-gsoc22-project/). For those of you who have been following my blogs, thanks a lot for taking the time to read them. In this blog, I will give the updates post mid-term evaluation and the challenges that I have been facing and how I overcame some of them.
