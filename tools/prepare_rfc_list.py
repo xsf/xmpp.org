@@ -68,15 +68,6 @@ SELFHOSTED_RFCS = [
 BIB_XML_PATH = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml'
 
 
-def status_ok(status_code: int) -> bool:
-    '''
-    Status codes ranging from 200 (OK) to 300 (redirects) are okay
-    '''
-    if not 200 >= status_code < 400:
-        return False
-    return True
-
-
 def build_rfc_list() -> None:
     '''
     Downloads and parses RFC references and builds an RFC list with
@@ -86,10 +77,15 @@ def build_rfc_list() -> None:
     rfcs: list[dict[str, Any]] = []
 
     for number in RFC_NUMBERS:
-        request = requests.get(f'{BIB_XML_PATH}/reference.RFC.{number}.xml')
-        if not status_ok(request.status_code):
+        try:
+            request = requests.get(f'{BIB_XML_PATH}/reference.RFC.{number}.xml')
+        except requests.exceptions.RequestException as err:
             sys.exit(f'Error while downloading reference for '
-                    f'RFC {number} ({request.status_code})')
+                     f'RFC {number} ({err})')
+
+        if not 200 >= request.status_code < 400:
+            sys.exit(f'Error while downloading reference for '
+                     f'RFC {number} ({request.status_code})')
 
         try:
             root = fromstring(request.content)

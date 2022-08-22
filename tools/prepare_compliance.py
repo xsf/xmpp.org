@@ -5,35 +5,12 @@ import os
 from pathlib import Path
 import subprocess
 
-import requests
+from .util import download_file
 
 DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
 COMPLIANCE_SUITE_URL = 'https://xmpp.org/extensions/xep-0459.xml'
 COMPLIANCER_BUILD_URL = 'https://prosody.im/files/compliance'
-
-
-def download_file(url: str, path: Path) -> bool:
-    '''
-    Downloads file from url and stores it in /downloads/path
-    returns success
-    '''
-    file_request = requests.get(url, stream=True, timeout=5)
-    if not 200 >= file_request.status_code < 400:
-        print('Error while trying to download from', url)
-        return False
-
-    with open(DOWNLOAD_PATH / path, 'wb') as data_file:
-        max_size = 1024 * 1024 * 10  # 10 MiB
-        size = 0
-        for chunk in file_request.iter_content(chunk_size=8192):
-            data_file.write(chunk)
-            size += len(chunk)
-            if size > max_size:
-                file_request.close()
-                print('File size exceeds 10 MiB:', path)
-                return False
-    return True
 
 
 def generate_compliance_json() -> None:

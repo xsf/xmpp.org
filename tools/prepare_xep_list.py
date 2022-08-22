@@ -14,21 +14,16 @@ import requests
 XEP_LIST_URL = 'https://xmpp.org/extensions/xeplist.xml'
 
 
-def status_ok(status_code: int) -> bool:
-    '''
-    Status codes ranging from 200 (OK) to 300 (redirects) are okay
-    '''
-    if not 200 >= status_code < 400:
-        return False
-    return True
-
-
 def build_xep_list() -> None:
     '''
     Download and parse xeplist.xml and build xeplist.json
     '''
-    xeplist_request = requests.get(XEP_LIST_URL)
-    if not status_ok(xeplist_request.status_code):
+    try:
+        xeplist_request = requests.get(XEP_LIST_URL)
+    except requests.exceptions.RequestException as err:
+        sys.exit(f'Error while requesting xeplist.xml ({err}')
+
+    if not 200 >= xeplist_request.status_code < 400:
         sys.exit(f'Error while downloading xeplist.xml '
                  f'({xeplist_request.status_code}')
 
