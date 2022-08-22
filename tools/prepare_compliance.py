@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 import subprocess
 
-from .util import download_file
+from util import download_file
 
 DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')

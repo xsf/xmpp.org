@@ -22,8 +22,8 @@ from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
 
-from .util import download_file
-from .util import initialize_directory
+from util import download_file
+from util import initialize_directory
 
 SOFTWARE_PATH = Path('content/software')
 DATA_PATH = Path('data')
