@@ -254,7 +254,9 @@ def prepare_package_data(package_type: str) -> None:
 
         # DOAP is available
         number_of_doap_packages += 1
-        package_name_slug = slugify(package['name'])
+        package_name_slug = slugify(
+            package['name'],
+            replacements=[['+', 'plus']])
 
         doap_url = package['doap']
         if doap_url.startswith('/hosted-doap'):
