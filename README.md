@@ -125,8 +125,8 @@ Pages will be available in the /public folder.
 
 xmpp.org's theme makes use of:
 
-* [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
-* [FontAwesome 5](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use)
+* [Bootstrap 5.2](https://getbootstrap.com/docs/5.2)
+* [FontAwesome 6](https://fontawesome.com/v6/docs)
 
 The theme (layout and styling) can be customized in the [/themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
 
