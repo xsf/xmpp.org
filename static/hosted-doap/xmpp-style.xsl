@@ -53,7 +53,7 @@
 	/>
 	<tr>
 		<td>
-			<a href="{xmpp:xep/@rdf:resource}" title="{$xep-descriptor/abstract/text()}" id="xep-{$xepnumber}">
+			<a href="{xmpp:xep/@rdf:resource}" title="{$xep-descriptor/abstract/text()}" id="xep-{$xepnumber}" target="_blank">
                 XEP-<xsl:value-of select="$xepnumber"/>
                 <xsl:text>: </xsl:text>
                 <xsl:value-of select="$xep-descriptor/title/node()"/>
