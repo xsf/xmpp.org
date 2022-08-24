@@ -13,31 +13,32 @@
 {{ end }}
 
 
-
-<ul class="nav nav-pills nav-fill pb-3">
-    {{ range $package_data.Get "platforms" }}
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" name="platform-button" data-platform="{{ lower . | anchorize }}" data-bs-toggle="pill" type="button">
-            {{ if eq (lower .) "android" }}
-                <i class="fab fa-android"></i>
-            {{ else if eq (lower .) "ios" }}
-                <i class="fab fa-app-store-ios"></i>
-            {{ else if eq (lower .) "browser" }}
-                <i class="fas fa-window-maximize"></i>
-            {{ else if eq (lower .) "windows" }}
-                <i class="fab fa-windows"></i>
-            {{ else if eq (lower .) "macos" }}
-                <i class="fab fa-apple"></i>
-            {{ else if eq (lower .) "linux" }}
-                <i class="fab fa-linux"></i>
-            {{ else if eq (lower .) "other" }}
-                <i class="fas fa-box"></i>
-            {{ end }}
-            {{ . }}
-        </button>
-    </li>
-    {{ end }}
-</ul>
+{{ if ne $package_type "libraries" }}
+    <ul class="nav nav-pills nav-fill pb-3">
+        {{ range $package_data.Get "platforms" }}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" name="platform-button" data-platform="{{ lower . | anchorize }}" data-bs-toggle="pill" type="button">
+                {{ if eq (lower .) "android" }}
+                    <i class="fab fa-android"></i>
+                {{ else if eq (lower .) "ios" }}
+                    <i class="fab fa-app-store-ios"></i>
+                {{ else if eq (lower .) "browser" }}
+                    <i class="fas fa-window-maximize"></i>
+                {{ else if eq (lower .) "windows" }}
+                    <i class="fab fa-windows"></i>
+                {{ else if eq (lower .) "macos" }}
+                    <i class="fab fa-apple"></i>
+                {{ else if eq (lower .) "linux" }}
+                    <i class="fab fa-linux"></i>
+                {{ else if eq (lower .) "other" }}
+                    <i class="fas fa-box"></i>
+                {{ end }}
+                {{ . }}
+            </button>
+        </li>
+        {{ end }}
+    </ul>
+{{ end }}
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
     {{ range $name, $props := $package_data.Get "packages" }}
@@ -63,16 +64,32 @@
                                 </a>
                             {{ end }}
                             <p class="card-text small">{{ $props.shortdesc }}</p>
-                            <p class="card-text small mb-0">
-                                Platforms:
-                                <ul name="supported_platforms_list">
-                                    {{ range $props.platforms }}
-                                        <li class="small supported-platform">
-                                            {{ . }}
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </p>
+                            {{ if eq $package_type "libraries" }}
+                                {{ if $props.programming_lang }}
+                                    <p class="card-text small mb-0">
+                                        Programming language:
+                                        <ul>
+                                            {{ range $props.programming_lang }}
+                                                <li class="small">
+                                                    {{ . }}
+                                                </li>
+                                            {{ end }}
+                                        </ul>
+                                    </p>
+                                {{ end }}
+                            {{ end }}
+                            {{ if $props.platforms }}
+                                <p class="card-text small mb-0">
+                                    Platforms:
+                                    <ul name="supported_platforms_list">
+                                        {{ range $props.platforms }}
+                                            <li class="small supported-platform">
+                                                {{ . }}
+                                            </li>
+                                        {{ end }}
+                                    </ul>
+                                </p>
+                            {{ end }}
                         </div>
                     </div>
                 </div>

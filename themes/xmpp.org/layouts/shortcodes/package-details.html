@@ -39,7 +39,7 @@
                                 {{ else if eq $category "core" }}
                                     <span class="order-0 shadow-sm p-3 mb-2 mx-1 rounded"><b>Core Compliance</b><br>{{ $level | title }} {{ if eq $package_type "libraries" }}Library{{ else}}{{ substr ($package_type | title) 0 -1 }}{{ end }}</span>
                                 {{ else if eq $category "im" }}
-                                    <span class="order-1 shadow-sm p-3 mb-2 mx-1 rounded"><b>Instant Messaging (IM)</b><br>{{ $level | title }}</span>
+                                    <span class="order-1 shadow-sm p-3 mb-2 mx-1 rounded"><b>Instant Messaging</b><br>{{ $level | title }}</span>
                                 {{ else if eq $category "mobile" }}
                                     <span class="order-2 shadow-sm p-3 mb-2 mx-1 rounded"><b>Mobile</b><br>{{ $level | title }}</span>
                                 {{ else if eq $category "web" }}
