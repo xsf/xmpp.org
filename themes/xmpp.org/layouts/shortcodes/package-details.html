@@ -30,7 +30,7 @@
                     <a class="btn btn-primary px-4" href="{{ $props.homepage }}" target="_blank">Visit Website</a>
                 </div>
                 <div class="p-4 mb-4 border-top border-start border-end rounded">
-                    <h4>Features (<a href="/about/compliance-suites/">Compliance</a>)</h4>
+                    <h4>Features (<a href="/about/compliance-suites/">Compliance Suites</a>)</h4>
                     <div class="compliance-data">
                         {{ if $props.badges }}
                             {{ range $category, $level := $props.badges }}
@@ -48,7 +48,7 @@
                                 <br>
                             {{ end }}
                         {{ else }}
-                            <span class="text-muted small pt-3">Insufficient data or no data available.</span>
+                            <span class="text-muted small pt-3">No compliance level.</span>
                         {{ end }}
                     </div>
                 </div>
