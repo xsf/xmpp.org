@@ -1,36 +1,36 @@
 body {
-	font-family: sans-serif;
+    font-family: sans-serif;
 }
 table {
-	width: 100%;
-	border-collapse: collapse;
-	clear: both;
+    width: 100%;
+    border-collapse: collapse;
+    clear: both;
 }
 th {
-	border: 1px solid rgb(159, 175, 190);
-	background-color: rgb(112, 128, 144);
-	color: rgb(255, 255, 255);
-	padding: 10px;
+    border: 1px solid rgb(159, 175, 190);
+    background-color: rgb(112, 128, 144);
+    color: rgb(255, 255, 255);
+    padding: 10px;
 }
 th:nth-child(1) {
-	padding-left: 2.5rem;
-	padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
 }
 th:nth-child(5) {
-	text-align: left;
+    text-align: left;
 }
 tr {
-	border: 1px solid rgb(233, 233, 233);
+    border: 1px solid rgb(233, 233, 233);
 }
 tr:nth-child(odd) {
-	background-color: rgb(247, 247, 247);
+    background-color: rgb(247, 247, 247);
 }
 tr:hover {
-	background-color: rgb(240, 240, 240);
+    background-color: rgb(240, 240, 240);
 }
 td {
-	padding: 10px;
-	color: rgb(28, 28, 28);
+    padding: 10px;
+    color: rgb(28, 28, 28);
 }
 td:nth-child(2) {
     text-align: end;
@@ -42,101 +42,101 @@ td:nth-child(4) {
     text-align: end;
 }
 a {
-	padding: 5px;
-	color: rgb(70, 130, 180);
+    padding: 5px;
+    color: rgb(70, 130, 180);
     text-decoration: none;
 }
 a:hover {
-	color: rgb(50, 90, 120);
+    color: rgb(50, 90, 120);
     text-decoration: none;
 }
 .xep-implementation-status {
-	font-size: small;
-	padding: 5px;
+    font-size: small;
+    padding: 5px;
 }
 .complete {
     color: rgb(81, 134, 81);
-	background-color: rgb(224, 241, 217);
+    background-color: rgb(224, 241, 217);
 }
 .partial {
     color: rgb(182, 124, 37);
-	background-color: rgb(241, 238, 196);
+    background-color: rgb(241, 238, 196);
 }
 .planned {
-	color: rgb(58, 101, 139);
-	background-color: rgb(199, 230, 242);
+    color: rgb(58, 101, 139);
+    background-color: rgb(199, 230, 242);
 }
 .removed,
 .deprecated,
 .wontfix {
-	color:rgb(65, 65, 65);
-	background-color: rgb(233, 233, 233);
+    color:rgb(65, 65, 65);
+    background-color: rgb(233, 233, 233);
 }
 .version {
-	font-family: monospace;
-	margin: 1px;
+    font-family: monospace;
+    margin: 1px;
 }
 .version-outdated {
-	color: rgb(182, 124, 37);
-	background-color: rgb(241, 238, 196);
+    color: rgb(182, 124, 37);
+    background-color: rgb(241, 238, 196);
 }
 .small {
-	font-size: small;
+    font-size: small;
 }
 .no-info {
-	text-align: center;
+    text-align: center;
     opacity: 0.5;
     margin: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		background-color: #161616;
-		color: #ccc;
-	}
-	th {
-		border: 1px solid rgb(48, 54, 58);
-		background-color: rgb(34, 39, 44);
-		color: rgb(230, 230, 230);
-	}
-	tr {
-		border: 1px solid rgb(36, 36, 36);
-	}
-	tr:nth-child(odd) {
-		background-color: rgb(29, 29, 29);
-	}
-	tr:hover {
-		background-color: rgb(22, 22, 22);
-	}
-	td {
-		color: rgb(238, 238, 238);
-	}
-	a {
-		color: rgb(88, 163, 225);
-	}
-	a:hover {
-		color: rgb(137, 196, 241);
-	}
-	.complete {
-		color: rgb(179, 232, 179);
-		background-color: rgb(39, 54, 34);
-	}
-	.partial {
-		color: rgb(255, 239, 215);
-		background-color: rgb(61, 58, 23);
-	}
-	.planned {
-		color: rgb(144, 201, 243);
-		background-color: rgb(21, 58, 66);
-	}
-	.removed,
-	.deprecated,
-	.wontfix {
-		color: rgb(255, 255, 255);
-		background-color: rgb(79, 79, 79);
-	}
-	.version-outdated {
-		color: rgb(255, 239, 215);
-		background-color: rgb(61, 58, 23);
-	}
+    body {
+        background-color: #161616;
+        color: #ccc;
+    }
+    th {
+        border: 1px solid rgb(48, 54, 58);
+        background-color: rgb(34, 39, 44);
+        color: rgb(230, 230, 230);
+    }
+    tr {
+        border: 1px solid rgb(36, 36, 36);
+    }
+    tr:nth-child(odd) {
+        background-color: rgb(29, 29, 29);
+    }
+    tr:hover {
+        background-color: rgb(22, 22, 22);
+    }
+    td {
+        color: rgb(238, 238, 238);
+    }
+    a {
+        color: rgb(88, 163, 225);
+    }
+    a:hover {
+        color: rgb(137, 196, 241);
+    }
+    .complete {
+        color: rgb(179, 232, 179);
+        background-color: rgb(39, 54, 34);
+    }
+    .partial {
+        color: rgb(255, 239, 215);
+        background-color: rgb(61, 58, 23);
+    }
+    .planned {
+        color: rgb(144, 201, 243);
+        background-color: rgb(21, 58, 66);
+    }
+    .removed,
+    .deprecated,
+    .wontfix {
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 79, 79);
+    }
+    .version-outdated {
+        color: rgb(255, 239, 215);
+        background-color: rgb(61, 58, 23);
+    }
 }
