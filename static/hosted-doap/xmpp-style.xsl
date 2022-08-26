@@ -25,7 +25,7 @@
                         </table>
                     </xsl:when>
                     <xsl:otherwise>
-                        <p class="no-info">There is no info available.</p>
+                        <p class="no-info">No info about supported extensions available.</p>
                     </xsl:otherwise>
                 </xsl:choose>
             </body>
@@ -55,8 +55,10 @@
             <td>
                 <a href="{xmpp:xep/@rdf:resource}" title="{$xep-descriptor/abstract/text()}" id="xep-{$xepnumber}" target="_blank">
                     XEP-<xsl:value-of select="$xepnumber"/>
-                    <xsl:text>: </xsl:text>
-                    <xsl:value-of select="$xep-descriptor/title/node()"/>
+                    <xsl:if test="$xep-descriptor/title/node()">
+                        <xsl:text>: </xsl:text>
+                        <xsl:value-of select="$xep-descriptor/title/node()"/>
+                    </xsl:if>
                 </a>
             </td>
             <td>
@@ -79,8 +81,8 @@
             <td>
                 <span class="version"><xsl:value-of select="xmpp:since"/></span>
             </td>
-            <td class="small">
-                <xsl:value-of select="xmpp:note"/>
+            <td>
+                <span class="small"><xsl:value-of select="xmpp:note"/></span>
             </td>
         </tr>
     </xsl:template>
