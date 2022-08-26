@@ -326,6 +326,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 
 /* Software (clients/servers/libraries) list */
+.card:hover {
+    box-shadow: 0 3px 20px 0px rgb(125 125 125 / 12%), 0px 1px 8px rgb(125 125 125 / 6%);
+}
 .software-collapse {
     transition: none;
 }

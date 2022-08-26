@@ -55,11 +55,11 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             {{ if $props.name_slug }}
-                                <a href="/software/{{ $package_type }}/{{ $props.name_slug }}">
+                                <a href="/software/{{ $package_type }}/{{ $props.name_slug }}" class="stretched-link">
                                     <h4 class="card-title">{{ $name }}</h4>
                                 </a>
                             {{ else }}
-                                <a href="{{ $props.homepage }}" target="_blank">
+                                <a href="{{ $props.homepage }}" target="_blank" class="stretched-link">
                                     <h4 class="card-title">{{ $name }}</h4>
                                 </a>
                             {{ end }}
