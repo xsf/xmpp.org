@@ -31,9 +31,11 @@ The Google Summer of Code 2022 has lifted off and coding started a while ago! Th
     - [Stateless File Sharing GSoC project](https://dino.im/blog/2022/06/stateless-file-sharing-gsoc-project/)
     - [Project Stateless File Sharing: First Steps](https://dino.im/blog/2022/06/project-stateless-file-sharing-first-steps/)
     - [Stateless File Sharing: Base implementation](https://dino.im/blog/2022/08/stateless-file-sharing-base-implementation/)
+    - [Stateless File Sharing: Sources and Compatibility](https://dino.im/blog/2022/08/stateless-file-sharing-sources-and-compatibility/)
   - **PawBud** works towards [adding support for A/V communication via Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19). Mentors are **JC Brand** and **vanitasvitae**.
     - [On-Boarding Experience with XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/)
     - [ConverseJS: An in-depth view into my GSoC'22 project!](https://xmpp.org/2022/07/conversejs-an-in-depth-view-into-my-gsoc22-project/)
+    - [Google Summer of Code 2022 at XSF: Converse.js - Mid Term Evaluation Update](https://xmpp.org/2022/08/google-summer-of-code-2022-at-xsf-converse.js-mid-term-evaluation-update/)
 
 ### XSF fiscal hosting projects
 
@@ -87,6 +89,10 @@ Tigase released [BeagleIM 5.3](https://github.com/tigase/beagle-im/releases/tag/
 [python-nbxmpp 3.2.0 and 3.2.1](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, which bring support for Extensible SASL Profile ([XEP-0388](https://xmpp.org/extensions/xep-0388.html)) and bug fixes.
 
 [Tigase Martin 3.2.1](https://github.com/tigase/Martin/releases/tag/3.2.1) has been released.
+
+From the ignite realtime community:
+ - REST API Openfire plugin [1.9.0](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-9-0-released/91928/2) and [1.9.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-9-1-released/91936) has been released to fix several bugs.
+ - [Openfire ThreadDump plugin 1.1.0](https://discourse.igniterealtime.org/t/openfire-threaddump-plugin-1-1-0-released/92030) has been released and add two new evaluators for the TaskEngine and statistics from the database connection pool.
 
 ## Extensions and specifications
 
