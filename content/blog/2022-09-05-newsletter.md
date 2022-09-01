@@ -30,6 +30,7 @@ The Google Summer of Code 2022 has lifted off and coding started a while ago! Th
   - **Patiga** works on [more flexible file transfers in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ). Mentors are **fiaxh** and **Marvin W.**.
     - [Stateless File Sharing GSoC project](https://dino.im/blog/2022/06/stateless-file-sharing-gsoc-project/)
     - [Project Stateless File Sharing: First Steps](https://dino.im/blog/2022/06/project-stateless-file-sharing-first-steps/)
+    - [Stateless File Sharing: Base implementation](https://dino.im/blog/2022/08/stateless-file-sharing-base-implementation/)
   - **PawBud** works towards [adding support for A/V communication via Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19). Mentors are **JC Brand** and **vanitasvitae**.
     - [On-Boarding Experience with XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/)
     - [ConverseJS: An in-depth view into my GSoC'22 project!](https://xmpp.org/2022/07/conversejs-an-in-depth-view-into-my-gsoc22-project/)
@@ -48,21 +49,40 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+Prosody's team [announces a rework of their permission system](https://blog.prosody.im/role-auth/) in context of [modernizing XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/).
+
+[JMP newsletter](http://blog.jmp.chat/b/august-newsletter-2022) announces a new major release of the Cheogram Android client, with support for ad-hoc command UI and more, as well as a new multi-account billing feature. They also have an article [showcasing the command UI in pictures](http://blog.jmp.chat/b/signup-with-cheogram-android).
+
+Kaidan, the XMPP client for every device, released a [post about its end-to-end encryption trust management](https://www.kaidan.im/2022/08/31/e2ee-trust-management/)
+
+The [Mellium Dev Communiqué for August 2022](https://opencollective.com/mellium/updates/dev-communique-for-august-2022) outlines development for the past month including support for HTTP Upload, RFC 9266, various internal testing changes, and a call for feedback!
 
 ## Software news
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+Conversations [2.10.9](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.9) has finally been released for both Google Play Store and F-Droid. Many people were eagerly waiting for a new Conversations build on F-Droid as there are some issues regarding the usage of WebRTC libraries, for Audio/Video calls. F-Droid users were still on the 2.10.2.1+fcr build but now, after 5 months of waiting, they are using the latest version. This release improves interactions with Bluetooth output devices so be sure to grant the permission as needed.
+
+[Moxxyv2 0.2.0, 0.2.1, 0.2.2, 0.2.3](https://codeberg.org/moxxy/moxxyv2) have been released. A new XMPP client for the Android community is featured in this month's newsletter; it is currently only in the alpha stage. However, the future of the project appears to be pretty promising, and we are pleased to have another XMPP project join the community! The initial version (0.2.0) was made available on July 29th, and the second version (0.2.1) was made 
+available on August 14th. This project is the successor of moxxyv1, which was written in React Native and abandoned due to various technical issues.
+
+[Psi+ 1.5.1639 (2022-08-17)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
+
+Tigase released [BeagleIM 5.3](https://github.com/tigase/beagle-im/releases/tag/5.3) (macOS) and [SiskimIM7.3](https://github.com/tigase/siskin-im/releases/tag/7.3) (iOS) which contain changes and stability improvements. Note that SiskinIM will need at least iOS 13 from now on.
 
 ### Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Openfire 4.7.3](https://discourse.igniterealtime.org/t/openfire-4-7-2-released/91846) has been released, which brings many bug fixes, especially for BOSH.
 
 ### Libraries
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[libstrophe 0.12.2](https://github.com/strophe/libstrophe/releases/tag/0.12.2) has been released.
+
+[Mellium XMPP 0.21.3](https://github.com/mellium/xmpp/releases/tag/v0.21.3) has been released.
+
+[python-nbxmpp 3.2.0 and 3.2.1](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, which bring support for Extensible SASL Profile ([XEP-0388](https://xmpp.org/extensions/xep-0388.html)) and bug fixes.
+
+[Tigase Martin 3.2.1](https://github.com/tigase/Martin/releases/tag/3.2.1) has been released.
 
 ## Extensions and specifications
 
@@ -71,45 +91,56 @@ Developers and other standards experts from around the world collaborate on thes
 xmpp.org features [a page about XMPP RFCs](https://xmpp.org/rfcs/) as well.
 
 ### Proposed
+The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to 
+accept this proposal as an Experimental XEP.
 
-The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
-
--   [Bookmark Pinning](https://xmpp.org/extensions/inbox/bookmark-pinning.html)
-    -   This document defines an XMPP protocol extension to allow users to pin PEP Native Bookmarks.
--   [Pubsub Attachments](https://xmpp.org/extensions/inbox/pubsub-attachments.html)
-    -   This specification provides a way to attach elements to a pubsub item.  
+- No XEPs proposed this month.
 
 ### New
 
--   [WebSocket S2S](https://xmpp.org/extensions/xep-0468.html)
-    -   This specification defines a procedure to make s2s XMPP connections over WebSocket.
--   [XMPP over QUIC](https://xmpp.org/extensions/xep-0467.html)
-    -   This specification defines a procedure to make both c2s and s2s XMPP connections over the QUIC protocol instead of TCP+TLS.
-
+- Version 0.1.0 of [XEP-0469](https://xmpp.org/extensions/xep-0469.html) (Bookmark Pinning)
+  - This document defines an XMPP protocol extension to allow users to pin PEP Native Bookmarks.
+- Version 0.1.0 of [XEP-0470]((https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
+  - This specification provides a way to attach elements to a pubsub item.
+  
 ### Deferred
 
-If an experimental XEP is not updated for more than twelve months, it will be moved off Experimental to Deferred. If there is another update, it will put the XEP back onto Experimental.
+If an experimental XEP is not updated for more than twelve months, it will be moved off Experimental to Deferred. If there is another update, it 
+will put the XEP back onto Experimental.
 
--   No XEPs deferred this month.
+- No XEPs deferred this month.
 
 ### Updated
 
--   No XEPs updated this month.
+- Version 0.2.0 of [XEP-0447](https://xmpp.org/extensions/xep-0447.html) (Stateless file sharing)
+  - Add disposition attribute to signal when inlining is desired. (lmw)
+- Version 0.2.0 of [XEP-0470](https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
+  - Update reactions to be similar to  Message Reactions (XEP-0444)
+  - Namespace bump (jp)
+- Version 1.1 of [XEP-0231](https://xmpp.org/extensions/xep-0231.html) (Bits of Binary)
+  - Mention where to get textual names of hash functions. (ssw)
+- Version 0.3.0 of [XEP-0440](https://xmpp.org/extensions/xep-0440.html) (SASL Channel-Binding Type Capability)
+  - Make implementation of tls-server-end-point a MUST for servers. (tm)
+- Version 0.2.0 of [XEP-0446](https://xmpp.org/extensions/xep-0446.html) (File metadata element)
+  - Use height/width instead of dimensions (lmw)
+- Version 0.2.0 of [XEP-0448](https://xmpp.org/extensions/xep-0448.html) (Encryption for stateless file sharing)
+  - Replace the ProtoXEP reference with a reference to the published XEP.
+  - Add urn:xmpp:ciphers:aes-256-cbc-pkcs7:0 (same as used in XEP-0384) (lmw)
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call help improving the XEP before returning it to the Council for advancement to Stable.
 
--  [External Service Discovery](https://xmpp.org/extensions/xep-0215.html)
-   -    This document specifies an XMPP protocol extension for discovering services external to the XMPP network. 
+- No Last Call this month.
 
 ### Stable
 
--   No XEPs advanced to Stable this month.
-
+- Version 1.0.0 of [XEP-0215](https://xmpp.org/extensions/xep-0215.html) (External Service Discovery)
+  - Accept as Stable as per Council Vote from 2022-08-03. (XEP Editor (jsc)) 
+  
 ### Deprecated
 
--   No XEP deprecated this month.
+- No XEP deprecated this month.
 
 ### Call for Experience
 
@@ -136,7 +167,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Holger, *IM*, Ludovic Bocquet, martin, MattJ, MSavoritias (fae,ve), nicfab, Pierre Jarillon, Sam Whited, TheCoffeMaker, wh0nix, vanitasvitae, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
+This XMPP Newsletter is produced collaboratively by the XMPP community. Therefore, we would like to thank **Adrien Bourmault (neox), anubis, Anoxinon e.V., Benoît Sibaud, cpm, daimonduff, emus, Gooya, Holger, *IM*, Ludovic Bocquet, martin, MattJ, MSavoritias (fae,ve), nicfab, Pierre Jarillon, Sam Whited, TheCoffeMaker, wh0nix, vanitasvitae, wurstsalat, Zash** for their support and help in creation, review, translation and deployment. Many thanks to all contributors and their continuous support!
 
 Each month's newsletter issue is drafted in this [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
