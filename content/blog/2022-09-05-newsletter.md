@@ -20,7 +20,7 @@ This is a community effort, and we would like to thank translators for their con
 
 ## XSF Announcements
 
-- The XSF membership application period for the third quarter 2022 is currently open. If you are interested in becoming a XSF member then you can [apply for membership](https://wiki.xmpp.org/web/Membership_Applications_Q3_2022). Please submit by August 25, 2022.
+- The XSF membership application period for the fourth quarter 2022 is currently open. If you are interested in becoming a XSF member then you can [apply for membership](https://wiki.xmpp.org/web/Membership_Applications_Q4_2022). Please submit by November 27, 2022.
 
 ### Google Summer of Code 2022
 
@@ -53,7 +53,13 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 Prosody's team [announces a rework of their permission system](https://blog.prosody.im/role-auth/) in context of [modernizing XMPP authentication and authorization](https://blog.prosody.im/modern-xmpp-auth/).
 
+[Eversten.net](https://www.eversten.net) published two articles:
+- [Snikket: Getting Started (iOS)](https://www.eversten.net/en/blog/snikketmonal/)
+- [Snikket: Getting Started (Android)](https://www.eversten.net/en/blog/snikketandroid/)
+
 [JMP newsletter](http://blog.jmp.chat/b/august-newsletter-2022) announces a new major release of the Cheogram Android client, with support for ad-hoc command UI and more, as well as a new multi-account billing feature. They also have an article [showcasing the command UI in pictures](http://blog.jmp.chat/b/signup-with-cheogram-android).
+
+Anoxinon Media published ["XMPP - Teil 1 - Messaging mal anders"](https://anoxinon.media/blog/xmpp1/) [DE]. It is about XMPP - an alternative that stands out from the mass.
 
 Kaidan, the XMPP client for every device, released a [post about its end-to-end encryption trust management](https://www.kaidan.im/2022/08/31/e2ee-trust-management/)
 
