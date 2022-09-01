@@ -55,7 +55,11 @@ Prosody's team [announces a rework of their permission system](https://blog.pros
 
 Kaidan, the XMPP client for every device, released a [post about its end-to-end encryption trust management](https://www.kaidan.im/2022/08/31/e2ee-trust-management/)
 
+TODO: ADD IMAGE
+
 The [Mellium Dev Communiqué for August 2022](https://opencollective.com/mellium/updates/dev-communique-for-august-2022) outlines development for the past month including support for HTTP Upload, RFC 9266, various internal testing changes, and a call for feedback!
+
+[Easy Onboarding with Android Chat App blabber.im via XMPP Providers](https://providers.xmpp.net/blog/2022-08-17-xmpp-providers-and-blabber-im/)! Passwords are generated automatically and XMPP providers are suggested. Those suggestions are based on the [curated list of XMPP Providers project](https://providers.xmpp.net/).
 
 ## Software news
 
