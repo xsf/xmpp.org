@@ -143,6 +143,13 @@
         "url": "https://source.puri.sm/Librem5/chatty"
     },
     {
+        "doap": "https://git.singpolyma.net/cheogram-android/blob/master/cheogram.doap",
+        "last_renewed": "2022-09-07T00:00:00",
+        "name": "Cheogram Android",
+        "platforms": [],
+        "url": null
+    },
+    {
         "doap": null,
         "last_renewed": null,
         "name": "Coccinella",
