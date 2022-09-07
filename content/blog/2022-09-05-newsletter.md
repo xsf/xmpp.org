@@ -62,8 +62,7 @@ Prosody's team [announces a rework of their permission system](https://blog.pros
 Anoxinon Media published ["XMPP - Teil 1 - Messaging mal anders"](https://anoxinon.media/blog/xmpp1/) [DE]. It is about XMPP - an alternative that stands out from the mass.
 
 Kaidan, the XMPP client for every device, released a [post about its end-to-end encryption trust management](https://www.kaidan.im/2022/08/31/e2ee-trust-management/)
-
-TODO: ADD IMAGE
+![QR code scan](/images/newsletter/2022-09-05/kaidan-qr-code-scan.svg)
 
 The [Mellium Dev Communiqué for August 2022](https://opencollective.com/mellium/updates/dev-communique-for-august-2022) outlines development for the past month including support for HTTP Upload, RFC 9266, various internal testing changes, and a call for feedback!
 
