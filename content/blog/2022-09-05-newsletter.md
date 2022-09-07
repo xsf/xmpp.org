@@ -72,7 +72,7 @@ The [Mellium Dev Communiqué for August 2022](https://opencollective.com/mellium
 
 ### Clients and applications
 
-Conversations [2.10.9](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.9) has finally been released for both Google Play Store and F-Droid. Many people were eagerly waiting for a new Conversations build on F-Droid as there are some issues regarding the usage of WebRTC libraries, for Audio/Video calls. F-Droid users were still on the 2.10.2.1+fcr build but now, after 5 months of waiting, they are using the latest version. This release improves interactions with Bluetooth output devices so be sure to grant the permission as needed.
+Conversations [2.10.9](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.9) and [2.10.10](https://github.com/iNPUTmice/Conversations/releases/tag/2.10.10) have finally been released for both Google Play Store and F-Droid. Many people were eagerly waiting for a new Conversations build on F-Droid as there were some issues regarding the usage of WebRTC libraries, for Audio/Video calls. F-Droid users were still on the 2.10.2.1+fcr build but now, after 5 months of waiting, they are using the latest version. These releases improve interactions with Bluetooth output devices so be sure to grant the permission as needed. A note for jmp.chat users, the F-Droid version uses an incompatible WebRTC library, so it's better to switch to the Cheogram app (a fork from the jmp.chat developers) at the moment. The Play Store version does not have this issue.
 
 [Moxxyv2 0.2.0, 0.2.1, 0.2.2, 0.2.3](https://codeberg.org/moxxy/moxxyv2) have been released. A new XMPP client for the Android community is featured in this month's newsletter; it is currently only in the alpha stage. However, the future of the project appears to be pretty promising, and we are pleased to have another XMPP project join the community! The initial version (0.2.0) was made available on July 29th, and the second version (0.2.1) was made 
 available on August 14th. This project is the successor of moxxyv1, which was written in React Native and abandoned due to various technical issues.
@@ -115,7 +115,7 @@ accept this proposal as an Experimental XEP.
 
 - Version 0.1.0 of [XEP-0469](https://xmpp.org/extensions/xep-0469.html) (Bookmark Pinning)
   - This document defines an XMPP protocol extension to allow users to pin PEP Native Bookmarks.
-- Version 0.1.0 of [XEP-0470]((https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
+- Version 0.1.0 of [XEP-0470](https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
   - This specification provides a way to attach elements to a pubsub item.
   
 ### Deferred
