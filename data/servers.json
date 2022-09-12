@@ -170,7 +170,7 @@
         "url": "http://www.kwickserver.info/cms/"
     },
     {
-        "doap": "/hosted-doap/metronome-im.doap",
+        "doap": "https://raw.githubusercontent.com/maranda/metronome/master/misc/doap.xml",
         "last_renewed": "2022-08-20T21:06:00",
         "name": "Metronome IM",
         "platforms": [],
