@@ -444,8 +444,8 @@
         "url": "https://github.com/Jajcus/pyxmpp2"
     },
     {
-        "doap": "/hosted-doap/qxmpp.doap",
-        "last_renewed": "2022-01-24T00:00:00",
+        "doap": "https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/doc/doap.xml",
+        "last_renewed": "2022-09-12T00:00:00",
         "name": "QXmpp",
         "platforms": [],
         "url": null
