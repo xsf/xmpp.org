@@ -48,6 +48,8 @@ def check_packages_compliance() -> None:
                 props['badges'] = {}
                 continue
             props['badges'] = compliance_data['badges']
+            if compliance_data['badges']:
+                print('Compliance data added for', name)
 
         with open(DATA_PATH / f'{package_type}_list_doap.json',
                   'w',
