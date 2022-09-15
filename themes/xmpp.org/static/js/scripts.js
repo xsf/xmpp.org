@@ -24,10 +24,15 @@ window.onload = function() {
       }
     }
 
-    // Resize DOAP iframe
-    frame = document.getElementById("doap-iframe");
-    if (frame) {
-      frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
+    var extensions_collapse = document.getElementById("extensions-collapse");
+    if (extensions_collapse) {
+      extensions_collapse.addEventListener("shown.bs.collapse", function () {
+        // Resize DOAP iframe
+        var frame = document.getElementById("doap-iframe");
+        if (frame) {
+          frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
+        }
+      });
     }
 };
 
