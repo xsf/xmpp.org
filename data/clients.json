@@ -61,13 +61,11 @@
         "url": "https://www.bitlbee.org"
     },
     {
-        "doap": "https://codeberg.org/kriztan/blabber.im/src/branch/master/blabber.im.doap",
+        "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
         "last_renewed": "2022-09-16T18:52:00",
         "name": "blabber.im",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://blabber.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
