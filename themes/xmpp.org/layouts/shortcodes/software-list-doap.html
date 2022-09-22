@@ -1,21 +1,23 @@
-{{ $package_data := newScratch }}
+{{ $package_type := .Get "package_type" }}
 
-{{ if in .Page.Title "XMPP Clients" }}
+{{ $package_data := newScratch }}
+{{ if eq $package_type "clients" }}
     {{ $package_data.Set "packages" .Site.Data.clients_list_doap }}
     {{ $package_data.Set "platforms" (slice "Android" "iOS" "Browser" "Windows" "macOS" "Linux" "Other") }}
-{{ else if in .Page.Title "XMPP Servers" }}
+{{ else if eq $package_type "servers" }}
     {{ $package_data.Set "packages" .Site.Data.servers_list_doap }}
     {{ $package_data.Set "platforms" (slice "Windows" "macOS" "Linux" "Other") }}
 {{ else }}
     {{ $package_data.Set "packages" .Site.Data.libraries_list_doap }}
-    {{ $package_data.Set "platforms" (slice "Other") }}
+    {{ $package_data.Set "platforms" (slice "") }}
 {{ end }}
 
-<div id="software-clients">
-    <ul class="nav nav-pills nav-fill pb-3" id="pills-tab" role="tablist">
+
+{{ if ne $package_type "libraries" }}
+    <ul class="nav nav-pills nav-fill pb-3">
         {{ range $package_data.Get "platforms" }}
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="{{ lower . | anchorize }}-tab" data-bs-toggle="pill" data-bs-target="#pane-{{ lower . | anchorize }}" type="button" role="tab" aria-controls="pane-{{ lower . | anchorize }}" aria-selected={{ if eq . "Other" }}"true"{{ else }}"false"{{ end }}>
+            <button class="nav-link" name="platform-button" data-platform="{{ lower . | anchorize }}" data-bs-toggle="pill" type="button">
                 {{ if eq (lower .) "android" }}
                     <i class="fab fa-android"></i>
                 {{ else if eq (lower .) "ios" }}
@@ -36,58 +38,62 @@
         </li>
         {{ end }}
     </ul>
+{{ end }}
 
-    <div class="tab-content" id="pills-software-content">
-        {{ range $package_data.Get "platforms" }}
-            {{ $platform := . }}
-            <div class="tab-pane {{ if eq (lower .) "other" }}show active{{ end }}" id="pane-{{ . | anchorize }}" role="tabpanel" aria-labelledby="{{ . | anchorize }}-tab">
-                <h2 class="text-center pb-1">{{ $platform }}</h2>
-                <div class="row row-cols-1 row-cols-md-2 g-4">
-                    {{ range $supported_platform, $packages := $package_data.Get "packages" }}
-                        {{ if eq (lower $supported_platform) (lower $platform) }}
-                            {{ range $packages }}
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <div class="row g-0">
-                                            <div class="col-md-3 text-center py-3">
-                                                {{ if .logo }}
-                                                    <img src="{{ .logo }}" class="py-1 ps-3 software-logo">
-                                                {{ else }}
-                                                    <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
-                                                {{ end }}
-                                            </div>
-                                            <div class="col-md-9">
-                                                <div class="card-body">
-                                                    <a href="{{ .url }}" target="_blank">
-                                                        <h4 class="card-title">{{ .name }}</h4>
-                                                    </a>
-                                                    <p class="card-text small">{{ .shortdesc }}</p>
-                                                    {{ if eq $platform "Other" }}
-                                                        <p class="card-text small mb-0">
-                                                            Platforms:
-                                                            <ul>
-                                                                {{ range .os }}
-                                                                    <li class="small">
-                                                                        {{ . }}
-                                                                    </li>
-                                                                {{ end }}
-                                                            </ul>
-                                                        </p>
-                                                    {{ else }}
-                                                        {{ if ne (lower $platform) (lower .os) }}
-                                                            <p class="small">Platform: {{ .os }}</p>
-                                                        {{ end }}
-                                                    {{ end }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {{ end }}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {{ range $name, $props := $package_data.Get "packages" }}
+        <div class="col package-card">
+            <div class="card h-100">
+                <div class="row g-0">
+                    <div class="col-md-3 text-center py-3">
+                        {{ if $props.logo }}
+                            <img src="{{ $props.logo }}" class="py-1 ps-3 software-logo">
+                        {{ else }}
+                            <i class="fas fa-3x fa-cube py-1 software-logo-default"></i>
                         {{ end }}
-                    {{ end }}
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            {{ if $props.name_slug }}
+                                <a href="/software/{{ $package_type }}/{{ $props.name_slug }}" class="stretched-link">
+                                    <h4 class="card-title">{{ $name }}</h4>
+                                </a>
+                            {{ else }}
+                                <a href="{{ $props.homepage }}" target="_blank" class="stretched-link">
+                                    <h4 class="card-title">{{ $name }}</h4>
+                                </a>
+                            {{ end }}
+                            <p class="card-text small">{{ $props.shortdesc }}</p>
+                            {{ if eq $package_type "libraries" }}
+                                {{ if $props.programming_lang }}
+                                    <p class="card-text small mb-0">
+                                        Programming language:
+                                        <ul>
+                                            {{ range $props.programming_lang }}
+                                                <li class="small">
+                                                    {{ . }}
+                                                </li>
+                                            {{ end }}
+                                        </ul>
+                                    </p>
+                                {{ end }}
+                            {{ end }}
+                            {{ if $props.platforms }}
+                                <p class="card-text small mb-0">
+                                    Platforms:
+                                    <ul name="supported_platforms_list">
+                                        {{ range $props.platforms }}
+                                            <li class="small supported-platform">
+                                                {{ . }}
+                                            </li>
+                                        {{ end }}
+                                    </ul>
+                                </p>
+                            {{ end }}
+                        </div>
+                    </div>
                 </div>
             </div>
-        {{ end }}
-    </div>
+        </div>
+    {{ end }}
 </div>

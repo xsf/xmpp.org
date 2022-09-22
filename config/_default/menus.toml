@@ -1,136 +1,136 @@
 [[main]]
     name = "About"
-    url = "/about"
+    url = "/about/"
     identifier = "about"
     weight = 1
 [[main]]
     name = "Overview"
-    url = "about/technology-overview"
+    url = "/about/technology-overview/"
     parent = "about"
     weight = 1
 [[main]]
     name = "History"
-    url = "about/history"
+    url = "/about/history/"
     parent = "about"
     weight = 2
 [[main]]
     name = "Myths & Legends"
-    url = "about/myths"
+    url = "/about/myths/"
     parent = "about"
     weight = 3
 [[main]]
     name = "Publications"
-    url = "about/publications"
+    url = "/about/publications/"
     parent = "about"
     weight = 4
 [[main]]
     name = "The XSF"
-    url = "about/xmpp-standards-foundation"
+    url = "/about/xmpp-standards-foundation/"
     parent = "about"
     weight = 5
 [[main]]
     name = "Standards Process"
-    url = "about/standards-process"
+    url = "/about/standards-process/"
     parent = "about"
     weight = 6
 [[main]]
     name = "Specifications"
-    url = "extensions"
+    url = "/extensions/"
     parent = "about"
     weight = 7
 [[main]]
     name = "Compliance Suites"
-    url = "about/compliance-suites"
+    url = "/about/compliance-suites/"
     parent = "about"
     weight = 8
 [[main]]
     name = "FAQ"
-    url = "about/faq"
+    url = "/about/faq/"
     parent = "about"
     weight = 9
 [[main]]
     name = "Uses"
-    url = "/uses"
+    url = "/uses/"
     identifier = "uses"
     weight = 2
 [[main]]
     name = "Instant Messaging"
-    url = "uses/instant-messaging"
+    url = "/uses/instant-messaging/"
     parent = "uses"
     weight = 1
 [[main]]
     name = "Internet of Things"
-    url = "uses/internet-of-things"
+    url = "/uses/internet-of-things/"
     parent = "uses"
     weight = 2
 [[main]]
     name = "Online Gaming"
-    url = "uses/gaming"
+    url = "/uses/gaming/"
     parent = "uses"
     weight = 3
 [[main]]
     name = "Social"
-    url = "uses/social"
+    url = "/uses/social/"
     parent = "uses"
     weight = 4
 [[main]]
     name = "WebRTC"
-    url = "uses/webrtc"
+    url = "/uses/webrtc/"
     parent = "uses"
     weight = 5
 [[main]]
     name = "Software"
-    url = "/software"
+    url = "/software/"
     identifier = "software"
     weight = 3
 [[main]]
     name = "Clients"
-    url = "software/clients"
+    url = "/software/clients/"
     parent = "software"
     weight = 1
 [[main]]
     name = "Servers"
-    url = "software/servers"
+    url = "/software/servers/"
     parent = "software"
     weight = 2
 [[main]]
     name = "Libraries"
-    url = "software/libraries"
+    url = "/software/libraries/"
     parent = "software"
     weight = 3
 [[main]]
     name = "Community"
-    url = "/community"
+    url = "/community/"
     identifier = "community"
     weight = 4
 [[main]]
     name = "Chat/Logs"
-    url = "community/chat"
+    url = "/community/chat/"
     parent = "community"
     weight = 1
 [[main]]
     name = "Mailing Lists"
-    url = "community/mailing-lists"
+    url = "/community/mailing-lists/"
     parent = "community"
     weight = 2
 [[main]]
     name = "Membership"
-    url = "community/membership"
+    url = "/community/membership/"
     parent = "community"
     weight = 3
 [[main]]
     name = "Events"
-    url = "community/events"
+    url = "/community/events/"
     parent = "community"
     weight = 4
 [[main]]
     name = "Security Notices"
-    url = "community/security-notices"
+    url = "/community/security-notices/"
     parent = "community"
     weight = 5
 [[main]]
     name = "Sponsors"
-    url = "community/sponsors"
+    url = "/community/sponsors/"
     parent = "community"
     weight = 6
 [[main]]
@@ -140,30 +140,30 @@
     weight = 7
 [[main]]
     name = "Fiscal Hosting"
-    url = "community/fiscalhost"
+    url = "/community/fiscalhost/"
     parent = "community"
     weight = 8
 [[main]]
     name = "Office Hours"
-    url = "community/officehours"
+    url = "/community/officehours/"
     parent = "community"
     weight = 9
 [[main]]
     name = "Google Summer of Code 2022"
-    url = "community/gsoc-2022"
+    url = "/community/gsoc-2022/"
     parent = "community"
     weight = 10
 [[main]]
     name = "Getting Started"
-    url = "/getting-started"
+    url = "/getting-started/"
     weight = 5
 [[main]]
     name = "Newsletter"
-    url = "/newsletter"
+    url = "/newsletter/"
     weight = 6
 [[main]]
     name = "Blog"
-    url = "/blog"
+    url = "/blog/"
     identifier = "blog"
     weight = 7
 [[main]]

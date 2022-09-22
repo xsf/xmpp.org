@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://usefulinc.com/ns/doap#"
+         xmlns:xmpp="https://linkmauve.fr/ns/xmpp-doap#"
+         >
+  <Project>
+    <name>xmpp.js</name>
+    <homepage rdf:resource="https://github.com/xmppjs/xmpp.js"/>
+    <programming-language>JavaScript</programming-language>
+    <programming-language>Node.js</programming-language>
+    <programming-language>React Native</programming-language>
+    <os>Web</os>
+
+    <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-library"/>
+  </Project>
+</rdf:RDF>

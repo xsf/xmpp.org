@@ -12,6 +12,10 @@
 .hugo_build.lock
 .project
 .vagrant/
+.vscode/
+content/software/clients/*
+content/software/libraries/*
+content/software/servers/*
 data/clients_list_doap.json
 data/compliance_suite.json
 data/libraries_list_doap.json
@@ -21,5 +25,6 @@ data/xeplist.json
 downloads/
 public/
 resources/
+static/doap/
 static/images/clients/
 static/images/packages/

@@ -29,26 +29,18 @@
         "url": "http://aqq.eu"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/astrachat-client.doap",
         "last_renewed": "2021-11-06T00:00:00",
         "name": "AstraChat",
-        "platforms": [
-            "Android",
-            "iOS",
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://astrachat.com"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/beagle-im/master/beagle-im.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "BeagleIM by Tigase, Inc.",
-        "platforms": [
-            "macOS"
-        ],
-        "url": "https://beagle.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -69,13 +61,11 @@
         "url": "https://www.bitlbee.org"
     },
     {
-        "doap": null,
-        "last_renewed": "2020-11-28T00:00:00",
+        "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
+        "last_renewed": "2022-09-16T18:52:00",
         "name": "blabber.im",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://blabber.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -101,10 +91,8 @@
         "doap": "https://yaxim.org/doap/bruno.rdf.xml",
         "last_renewed": "2022-05-13T16:23:41",
         "name": "Bruno the Jabber\u2122 Bear",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://yaxim.org/bruno/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -127,13 +115,11 @@
         "url": "https://candy-chat.github.io/candy/"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/chat-o-matic.doap",
         "last_renewed": "2022-02-14T00:00:00",
         "name": "Chat-O-Matic",
-        "platforms": [
-            "Haiku"
-        ],
-        "url": "https://github.com/JadedCtrl/Chat-O-Matic"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -155,6 +141,13 @@
         "url": "https://source.puri.sm/Librem5/chatty"
     },
     {
+        "doap": "https://git.singpolyma.net/cheogram-android/blob/master/cheogram.doap",
+        "last_renewed": "2022-09-07T00:00:00",
+        "name": "Cheogram Android",
+        "platforms": [],
+        "url": null
+    },
+    {
         "doap": null,
         "last_renewed": null,
         "name": "Coccinella",
@@ -169,19 +162,15 @@
         "doap": "https://raw.githubusercontent.com/iNPUTmice/Conversations/master/conversations.doap",
         "last_renewed": "2022-01-23T17:00:00",
         "name": "Conversations",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://github.com/inputmice/Conversations"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/conversejs/converse.js/master/conversejs.doap",
         "last_renewed": "2021-11-11T17:00:00",
         "name": "Converse",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://conversejs.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -196,10 +185,8 @@
         "doap": "https://raw.githubusercontent.com/dino/dino/master/dino.doap",
         "last_renewed": "2021-09-23T12:00:00",
         "name": "Dino",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://dino.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -235,11 +222,8 @@
         "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
         "last_renewed": "2022-05-13T12:00:00",
         "name": "Gajim",
-        "platforms": [
-            "Linux",
-            "Windows"
-        ],
-        "url": "https://gajim.org"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -340,13 +324,11 @@
         "url": "https://desktop.jitsi.org"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/jsxc.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "JSXC",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://www.jsxc.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -363,14 +345,8 @@
         "doap": "https://invent.kde.org/network/kaidan/-/raw/master/misc/kaidan.doap",
         "last_renewed": "2021-11-30T12:00:00",
         "name": "Kaidan",
-        "platforms": [
-            "Android",
-            "Linux",
-            "macOS",
-            "Other",
-            "Windows"
-        ],
-        "url": "https://kaidan.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -391,16 +367,11 @@
         "url": "https://userbase.kde.org/Kopete"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/libervia.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Libervia (formerly Salut \u00e0 Toi)",
-        "platforms": [
-            "Android",
-            "Browser",
-            "Linux",
-            "Other"
-        ],
-        "url": "https://salut-a-toi.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -421,41 +392,32 @@
         "url": "http://miranda-im.org"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/miranda-ng.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Miranda NG",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "https://www.miranda-ng.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/monal-im/Monal/develop/monal.doap",
         "last_renewed": "2022-07-02T17:46:57",
         "name": "Monal IM",
-        "platforms": [
-            "iOS",
-            "macOS"
-        ],
-        "url": "https://monal.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://codeberg.org/Arne/monocles_chat/raw/branch/master/monocles_chat.doap",
         "last_renewed": "2021-12-04T00:00:00",
         "name": "monocles chat",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://monocles.de/more"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Movim",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://movim.eu"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -483,56 +445,36 @@
         "doap": "https://lab.louiz.org/poezio/poezio/-/raw/main/data/doap.xml",
         "last_renewed": "2022-02-14T11:01:25",
         "name": "Poezio",
-        "platforms": [
-            "Linux",
-            "macOS"
-        ],
-        "url": "https://poez.io/en/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/profanity-im/profanity/master/profanity.doap",
         "last_renewed": "2022-07-03T00:00:00",
         "name": "Profanity",
-        "platforms": [
-            "BSD",
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://profanity-im.github.io/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Other",
-            "Windows"
-        ],
-        "url": "https://psi-im.org/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "last_renewed": "2022-01-24T00:00:00",
         "name": "Psi+",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Other",
-            "Windows"
-        ],
-        "url": "https://psi-plus.com/"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
-        "last_renewed": "2021-12-07T08:30:00",
+        "doap": "/hosted-doap/pade.doap",
+        "last_renewed": "2022-09-06T20:55:00",
         "name": "P\u00e0d\u00e9",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://www.igniterealtime.org/projects/pade/"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -558,10 +500,8 @@
         "doap": "https://raw.githubusercontent.com/pulkomandy/Renga/master/doap.xml",
         "last_renewed": "2022-02-14T00:00:00",
         "name": "Renga",
-        "platforms": [
-            "Haiku"
-        ],
-        "url": "https://github.com/pulkomandy/Renga"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -597,10 +537,8 @@
         "doap": "https://raw.githubusercontent.com/tigase/siskin-im/master/siskin-im.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "SiskinIM by Tigase, Inc.",
-        "platforms": [
-            "iOS"
-        ],
-        "url": "https://siskin.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -614,24 +552,18 @@
         "url": "https://smuxi.im/"
     },
     {
-        "doap": null,
-        "last_renewed": "2021-12-07T08:30:00",
+        "doap": "/hosted-doap/spark.doap",
+        "last_renewed": "2022-09-06T20:55:00",
         "name": "Spark",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://igniterealtime.org/projects/spark/"
+        "platforms": [],
+        "url": null
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/storkim-by-tigase.doap",
         "last_renewed": "2022-01-20T13:14:51",
         "name": "StorkIM by Tigase, Inc. (Tigase Messenger for Android)",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://stork.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -682,10 +614,8 @@
         "doap": "https://raw.githubusercontent.com/UWPX/UWPX-Client/master/uwpx.doap",
         "last_renewed": "2022-05-15T08:48:22",
         "name": "UWPX",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "https://uwpx.org"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
@@ -766,10 +696,8 @@
         "doap": "https://yaxim.org/doap/yaxim.rdf.xml",
         "last_renewed": "2022-05-13T16:23:52",
         "name": "yaxim",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://yaxim.org"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,

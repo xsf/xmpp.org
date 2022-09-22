@@ -74,15 +74,17 @@
             </tr>
         </thead>
         <tbody>
-            {{ range sort .Site.Data.xeplist ".number" }}
-            {{ $number_str := printf "%04g" .number }}
-            <tr class="XEP-{{ .status }}" id="xep{{ $number_str }}">
-                <td><a href="/extensions/xep-{{ $number_str }}.html">XEP-{{ $number_str }}</a></td>
-                <td>{{ .title }}</td>
-                <td>{{ .type }}</td>
-                <td>{{ .status }}</td>
-                <td>{{ .last_updated }}</td>
-            </tr>
+            {{ if .Site.Data.xeplist }}
+                {{ range sort .Site.Data.xeplist ".number" }}
+                {{ $number_str := printf "%04g" .number }}
+                <tr class="XEP-{{ .status }}" id="xep{{ $number_str }}">
+                    <td><a href="/extensions/xep-{{ $number_str }}.html">XEP-{{ $number_str }}</a></td>
+                    <td>{{ .title }}</td>
+                    <td>{{ .type }}</td>
+                    <td>{{ .status }}</td>
+                    <td>{{ .last_updated }}</td>
+                </tr>
+                {{ end }}
             {{ end }}
         </tbody>
     </table>

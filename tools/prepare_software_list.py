@@ -4,27 +4,32 @@ Requires: Pillow, python-slugify
 '''
 from typing import Optional
 from typing import Union
-from typing import cast
 
+from datetime import date
 from datetime import datetime
 from datetime import timedelta
 from pathlib import Path
 import json
 import os
+import re
 import shutil
 from urllib.parse import urlparse
 
 from defusedxml.ElementTree import parse
 from defusedxml.ElementTree import ParseError
-import requests
 from PIL import Image
 from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
 
-DOWNLOAD_PATH = Path('downloads')
+from util import download_file
+from util import initialize_directory
+
+SOFTWARE_PATH = Path('content/software')
 DATA_PATH = Path('data')
+DOWNLOAD_PATH = Path('downloads')
 STATIC_PATH = Path('static')
+STATIC_DOAP_PATH = STATIC_PATH / 'doap'
 LOGOS_PATH = STATIC_PATH / 'images' / 'packages'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
@@ -32,16 +37,17 @@ SCHEMA_NS = 'https://schema.org/'
 RDF_RESOURCE = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'
 DOAP_NAME = f'.//{{{DOAP_NS}}}name'
 DOAP_SHORTDESC = f'.//{{{DOAP_NS}}}shortdesc'
+DOAP_HOMEPAGE = f'.//{{{DOAP_NS}}}homepage'
 DOAP_OS = f'.//{{{DOAP_NS}}}os'
+DOAP_PROGRAMMING_LANGUAGE = f'.//{{{DOAP_NS}}}programming-language'
 DOAP_LOGO = f'.//{{{SCHEMA_NS}}}logo'
 
-LIB_PLATFORMS: list[str] = [
-    '.NET',
-    'C#',
-    'C++',
-    'Go',
-    'Python',
-]
+XML_DECLARATION = '<?xml version=\"1.0\" encoding=\"UTF-8\"?>'
+XMPP_XSL = '<?xml-stylesheet href=\"/doap/xmpp-style.xsl\" type=\"text/xsl\"?>'
+
+MD_FRONTMATTER = '''---\ntitle: "%s"\ndate: %s\nlayout: packages\n---\n
+{{< package-details name_slug="%s" package_type="%s" >}}
+'''
 
 PLATFORMS: list[str] = [
     'Android',
@@ -55,40 +61,6 @@ PLATFORMS: list[str] = [
 ENTRY_LIFETIME = timedelta(days=365)
 
 
-def initialize_directory(path: Path) -> None:
-    '''
-    Remove path (if it exists) and containing files, then recreate path
-    '''
-    if path.exists() and path.is_dir():
-        shutil.rmtree(path)
-        os.mkdir(path)
-    else:
-        os.mkdir(path)
-
-
-def download_file(url: str, path: Path) -> bool:
-    '''
-    Downloads file from url and stores it in /downloads/path
-    returns success
-    '''
-    file_request = requests.get(url, stream=True, timeout=5)
-    if not 200 >= file_request.status_code < 400:
-        print('Error while trying to download from', url)
-        return False
-
-    with open(DOWNLOAD_PATH / path, 'wb') as data_file:
-        max_size = 1024 * 1024 * 10  # 10 MiB
-        size = 0
-        for chunk in file_request.iter_content(chunk_size=8192):
-            data_file.write(chunk)
-            size += len(chunk)
-            if size > max_size:
-                file_request.close()
-                print('File size exceeds 10 MiB:', path)
-                return False
-    return True
-
-
 def check_renewal(name: str, renewed: Optional[str]) -> bool:
     '''
     Check if 'last_renewed' entry is not older than 365 days
@@ -96,14 +68,15 @@ def check_renewal(name: str, renewed: Optional[str]) -> bool:
     if renewed is None:
         return False
     try:
-        renewed = datetime.strptime(renewed, "%Y-%m-%dT%H:%M:%S")
+        last_renewal = datetime.strptime(renewed, "%Y-%m-%dT%H:%M:%S")
     except ValueError:
         print('Failed to parse timestamp for', name)
         return False
     now = datetime.utcnow()
-    if now - renewed > ENTRY_LIFETIME:
+    if now - last_renewal > ENTRY_LIFETIME:
         print('Package entry expired for', name)
         return False
+    print('Package entry up to date for', name)
     return True
 
 
@@ -125,16 +98,23 @@ def parse_doap_infos(doap_file: str
     if doap_name is not None:
         info['name'] = doap_name.text
 
+    info['homepage'] = None
+    doap_homepage = doap.find(DOAP_HOMEPAGE)
+    if doap_homepage is not None:
+        info['homepage'] = doap_homepage.attrib[RDF_RESOURCE]
+
     info['shortdesc'] = None
     doap_shortdesc = doap.find(DOAP_SHORTDESC)
     if doap_shortdesc is not None:
         info['shortdesc'] = doap_shortdesc.text
 
-    info['os'] = []
+    info['platforms'] = []
     for entry in doap.findall(DOAP_OS):
-        info['os'].append(entry.text)
-    if not info['os']:
-        info['os'] = ['Other']
+        info['platforms'].append(entry.text)
+
+    info['programming_lang'] = []
+    for entry in doap.findall(DOAP_PROGRAMMING_LANGUAGE):
+        info['programming_lang'].append(entry.text)
 
     info['logo'] = None
     doap_logo = doap.find(DOAP_LOGO)
@@ -144,9 +124,10 @@ def parse_doap_infos(doap_file: str
     return info
 
 
-def check_image_file(file_path: Path, extension: str) -> None:
+def check_image_file(file_path: Path, extension: str) -> bool:
     '''
     Check if file size is greater than 300 KiB and if so, resize image
+    Returns success
     '''
     if extension == 'svg':
         # No need to resize SVG files
@@ -203,22 +184,18 @@ def process_logo(package_name: str, uri: str) -> Optional[str]:
     return logo_uri
 
 
-def prepare_package_list(package_type: str) -> None:
+def prepare_package_data(package_type: str) -> None:
     '''
-    Download and prepare data (clients/servers/libraries)
+    Download and prepare package data (clients/servers/libraries) for
+    rendering with Hugo
     '''
+    initialize_directory(SOFTWARE_PATH / package_type)
+
     with open(DATA_PATH / f'{package_type}.json', 'rb') as json_file:
         xsf_package_list = json.load(json_file)
 
-    package_infos: dict[str, list[dict[str, Optional[str]]]] = {}
-    if package_type == 'libraries':
-        platforms = LIB_PLATFORMS
-    else:
-        platforms = PLATFORMS
-
-    for platform in platforms:
-        package_infos[platform] = []
-    package_infos['Other'] = []
+    package_infos: dict[str, dict[
+        str, Union[None, str, list[str], dict[str, str]]]] = {}
 
     number_of_packages = 0
     number_of_expired_packages = 0
@@ -233,76 +210,53 @@ def prepare_package_list(package_type: str) -> None:
             continue
 
         if package['doap'] is None:
-            added_to_other = False
-            for package_os in cast(list[str], package['platforms']):
-                added_to_os = False
-                for platform in platforms:
-                    if platform.lower() not in package_os.lower():
-                        continue
-                    added_to_os = True
-                    package_infos[platform].append(
-                        {
-                            'name': package['name'],
-                            'url': package['url'],
-                            'logo': None,
-                            'shortdesc': None,
-                            'os': package_os
-                        }
-                    )
-                if not added_to_os and not added_to_other:
-                    added_to_other = True
-                    package_infos['Other'].append(
-                        {
-                            'name': package['name'],
-                            'url': package['url'],
-                            'logo': None,
-                            'shortdesc': None,
-                            'os': package['platforms']
-                        }
-                    )
+            package_infos[package['name']] = {
+                    'name_slug': None,
+                    'homepage': package['url'],
+                    'logo': None,
+                    'shortdesc': None,
+                    'platforms': package['platforms'],
+                    'programming_lang': None,
+            }
             continue
 
+        # DOAP is available
         number_of_doap_packages += 1
-        package_name = slugify(package['name'])
+        package_name_slug = slugify(
+            package['name'],
+            replacements=[['+', 'plus']])
 
-        download_file(
-            package['doap'],
-            Path(f'doap_files/{package_name}.doap'))
-        parsed_package_infos = parse_doap_infos(package_name)
+        doap_url = package['doap']
+        if doap_url.startswith('/hosted-doap'):
+            # DOAP file is hosted at xmpp.org
+            shutil.copyfile(
+                f'{STATIC_PATH}{doap_url}',
+                Path(f'{DOWNLOAD_PATH}/doap_files/{package_name_slug}.doap'))
+        else:
+            download_file(
+                package['doap'],
+                Path(f'doap_files/{package_name_slug}.doap'))
+
+        parsed_package_infos = parse_doap_infos(package_name_slug)
         if parsed_package_infos is None:
             continue
 
         logo_uri = None
-        if parsed_package_infos['logo'] is not None:
-            logo_uri = process_logo(package_name, parsed_package_infos['logo'])
+        logo = parsed_package_infos['logo']
+        if logo is not None and isinstance(logo, str):
+            logo_uri = process_logo(
+                package_name_slug, logo)
 
-        added_to_other = False
-        for package_os in parsed_package_infos['os']:
-            added_to_os = False
-            for platform in platforms:
-                if platform.lower() not in package_os.lower():
-                    continue
-                added_to_os = True
-                package_infos[platform].append(
-                    {
-                        'name': package['name'],
-                        'url': package['url'],
-                        'logo': logo_uri,
-                        'shortdesc': parsed_package_infos['shortdesc'],
-                        'os': package_os
-                    }
-                )
-            if not added_to_os and not added_to_other:
-                added_to_other = True
-                package_infos['Other'].append(
-                    {
-                        'name': package['name'],
-                        'url': package['url'],
-                        'logo': logo_uri,
-                        'shortdesc': parsed_package_infos['shortdesc'],
-                        'os': parsed_package_infos['os']
-                    }
-                )
+        package_infos[package['name']] = {
+            'name_slug': package_name_slug,
+            'homepage': parsed_package_infos['homepage'],
+            'logo': logo_uri,
+            'shortdesc': parsed_package_infos['shortdesc'],
+            'platforms': parsed_package_infos['platforms'],
+            'programming_lang': parsed_package_infos['programming_lang'],
+        }
+
+        create_package_page(package_type, package_name_slug, package['name'])
 
     print(f'Number of packages (total: {number_of_packages}, '
           f'expired: {number_of_expired_packages}, '
@@ -313,10 +267,86 @@ def prepare_package_list(package_type: str) -> None:
         json.dump(package_infos, package_data_file, indent=4)
 
 
+def create_package_page(package_type: str, name_slug: str, name: str) -> None:
+    '''
+    Create an .md page for package, containing a shortcode
+    for displaying package details
+    '''
+    today = date.today()
+    date_formatted = today.strftime('%Y-%m-%d')
+    with open(SOFTWARE_PATH / package_type / f'{name_slug}.md',
+              'w',
+              encoding='utf8') as md_file:
+        md_file.write(
+            MD_FRONTMATTER % (
+                f'XMPP {package_type.capitalize()}: {name}',
+                date_formatted,
+                name_slug,
+                package_type))
+
+
+def prepare_doap_files() -> None:
+    '''
+    Copy DOAP files to /static/doap/ and replace the
+    xml-stylesheet with our stylesheet (or add it, if there is none)
+    '''
+    for entry in os.scandir(DOWNLOAD_PATH / 'doap_files'):
+        shutil.copy(DOWNLOAD_PATH / 'doap_files' / entry.name,
+                    STATIC_DOAP_PATH / entry.name)
+
+    for entry in os.scandir(STATIC_PATH / 'hosted-doap'):
+        shutil.copy(STATIC_PATH / 'hosted-doap' / entry.name,
+                    STATIC_DOAP_PATH / entry.name)
+
+    xml_declaration_pattern = r'<\?xml version.+?\?>'
+    stylesheet_pattern = r'<\?xml-stylesheet.+?\?>'
+    for entry in os.scandir(STATIC_DOAP_PATH):
+        if not entry.name.endswith('.doap'):
+            continue
+
+        with open(STATIC_DOAP_PATH / entry.name, 'r+') as doap_file:
+            content = doap_file.read()
+
+            result = re.sub(
+                stylesheet_pattern,
+                XMPP_XSL,
+                content,
+                0,
+                re.MULTILINE)
+            if result != content:
+                # Replaced custom stylesheet with our stylesheet
+                doap_file.truncate(0)
+                doap_file.seek(0)
+                doap_file.write(result)
+                continue
+
+            # No custom stylesheet found
+            result = re.sub(
+                xml_declaration_pattern,
+                f'{XML_DECLARATION}\n{XMPP_XSL}',
+                content,
+                0,
+                re.MULTILINE)
+            if result != content:
+                # Added our stylesheet
+                doap_file.truncate(0)
+                doap_file.seek(0)
+                doap_file.write(result)
+            else:
+                print('WARNING: Could not alter XML header of', entry.name)
+                # Remove content entirely, since we can't
+                # control what would be rendered
+                doap_file.truncate(0)
+
+
 if __name__ == '__main__':
     initialize_directory(DOWNLOAD_PATH)
     initialize_directory(LOGOS_PATH)
     Path(DOWNLOAD_PATH / 'doap_files').mkdir(parents=True)
-    prepare_package_list('clients')
-    prepare_package_list('libraries')
-    prepare_package_list('servers')
+
+    prepare_package_data('clients')
+    prepare_package_data('libraries')
+    prepare_package_data('servers')
+
+    initialize_directory(STATIC_DOAP_PATH)
+    prepare_doap_files()
