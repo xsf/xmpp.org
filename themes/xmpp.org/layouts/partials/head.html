@@ -34,4 +34,12 @@
       {{- printf "%s | %s" .Site.Title .Title }}
       {{- end }}
     </title>
+    <noscript>
+        <style>
+            /* Expand all (usually collapsed) elements. */
+            #extensions-collapse:not(.show) {
+                display: block;
+            }
+        </style>
+    </noscript>
 </head>
