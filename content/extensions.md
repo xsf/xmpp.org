@@ -9,15 +9,8 @@ aliases:
 ---
 
 {{< row cols=3 >}}
-{{< col header="IETF specifications" >}}
-
--   [RFC 6120](/rfcs#6120) XMPP Core
--   [RFC 6121](/rfcs#6121) XMPP IM
--   [RFC 7622](/rfcs#7622) XMPP Address Format
--   [RFC 7590](/rfcs#7590) Use of TLS in XMPP
--   [RFC 7395](/rfcs#7395) XMPP over WebSockets
--   [View all XMPP RFCs](/rfcs)
-
+{{< col header="IETF specifications" content="shortcode" >}}
+{{< ietf-standards >}}
 {{< /col >}}
 
 {{< col header="New XEPs" content="shortcode" >}}
