@@ -94,7 +94,7 @@ Jackal [v0.62.0](https://github.com/ortuman/jackal/releases/tag/v0.62.0) is out 
 
 Metronome IM 4.0 [has been released](https://metronome.im/changelogs/4_0). This version introduces Lua 5.3 support, a revamped shared API for group chats stanza archiving, MIX Core/PAM experimental support, Message Moderation support and support for containerization.
 
-[Profanity 0.13.0 has been released](https://github.com/profanity-im/profanity/releases/tag/0.13.0).
+[Profanity 0.13.0](https://github.com/profanity-im/profanity/releases/tag/0.13.0) has been released.
 
 ### Libraries & Tools
 
