@@ -106,7 +106,7 @@ Find the article in [English](https://nicoco.fr/blog/2022/09/04/slidge-first-bet
 Work on [XMPP ⇔ ActivityPub gateway](https://nlnet.nl/project/Libervia/) (supported by a [NLnel](https://nlnet.nl/) funding) has been achieved. The gateway supports features such as following/followers, favourite/like (or ["noticed" in XMPP terms](https://xmpp.org/extensions/xep-0470.html#noticed-foreword), reactions (compatible with [Pleroma](https://pleroma.social/)), mentions, sharing/reboost and lastly events (compatible with [Mobilizon](https://mobilizon.org)). It has been tested with [Mastodon](https://joinmastodon.org), Pleroma and Mobilizon. It's still considered alpha quality, [a blog post should follow soon to explain in more details](https://www.goffi.org).
 
 Ignite Realtime Community:
-  - [REST API Openfire plugin 1.10.0 released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-0-released/92108)!
+  - REST API Openfire plugin 1.10.0 [has been released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-0-released/92108)
   - [New Openfire plugin: Push Server](https://discourse.igniterealtime.org/t/new-openfire-plugin-push-server/92069)!
 
 ## Extensions and specifications
