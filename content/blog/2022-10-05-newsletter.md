@@ -59,9 +59,13 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 Congrats to the Monal developers for the new [NLnet Funding](https://monal-im.org/post/00003-nlnet-funding/) that will cover privacy enhancements for the push servers, an explorative audio and video calls implementation, UI updates for MUC and Contact views, and SASL updates.
 
-Paul Schaub wrote a [blog post](https://blog.jabberhead.tk/2022/09/14/using-pushdown-automata-to-verify-packet-sequences/) focused on the technical details of how to check the validity of nested packet sequences using pushdown automata. This technique will be used in a partial rework of PGPainless to validate OpenPGP messages.
+Paul Schaub wrote a [blog post](https://blog.jabberhead.tk/2022/09/14/using-pushdown-automata-to-verify-packet-sequences/) focused on the technical details of how to check the validity of nested packet sequences using pushdown automata. This technique will be used in a partial rework of PGPainless to validate OpenPGP messages. Earlier this month another post on ["Creating a Web-of-Trust Implementation: Accessing Certificate Stores"](https://blog.jabberhead.tk/2022/09/01/creating-a-web-of-trust-implementation-accessing-certificate-stores/) has been published, too.
 
-jmp.chat brought [voicemail changes and opt-in Jabber ID discoverability](https://blog.jmp.chat/b/september-newsletter-2022) to their service, along with an updated Android app and new custom F-Droid repos for both stable and pre-release versions.
+jmp.chat brought [voicemail changes and opt-in Jabber ID discoverability](https://blog.jmp.chat/b/september-newsletter-2022) to their service, along with an updated Android app and new custom F-Droid repos for both stable and pre-release versions. Furthermore, they wrote about ["Privacy and Threat Modelling"](https://blog.jmp.chat/b/2022-privacy-threat-modelling) in general.
+
+Arnaud wrote about updates on the [chatty server and HTTPAuthentificationOverXMPP](https://blog.agayon.be/xmpp_auth_update.html).
+
+Anoxinon.media published their blogpost [XMPP - Teil 1 - Messaging mal anders](https://anoxinon.media/blog/xmpp1/) [DE].
 
 ## Software news
 
@@ -74,9 +78,11 @@ Gajim 1.5.0 and 1.5.1 [have been released](https://gajim.org/post/2022-09-19-gaj
 [An OMEMO 2 implementation has just been merged ](https://mastodon.social/@Goffi/109053947560868978) to [Libervia](https://salut-a-toi.org), coming with Stanza Content Encryption ([XEP-0420](https://xmpp.org/extensions/xep-0420.html)) support, thanks to the great work of Syndace, author or [python-omemo](https://github.com/Syndace/python-omemo) (which has been updated in the process). One of the major benefits is that other Stanza elements can now be encrypted too, not only the body.
 OX ([XEP-0373](https://xmpp.org/extensions/xep-0373.html)/[XEP-0374](https://xmpp.org/extensions/xep-0374.html)) should follow soon, exciting times!
 
-While Monal development is going forward, see the funding news above, and they deployed new Push servers as announced in the [July 2022](https://xmpp.org/2022/08/the-xmpp-newsletter-july-2022/) newsletter, users of old Monal versions would need to update, so if you or your contacts didn't already [the developers urge you to do it now](https://fosstodon.org/@Monal/108999198014279513).
+While Monal development is going forward, see the funding news above, and they deployed new Push servers as announced in the [July 2022](https://xmpp.org/2022/08/the-xmpp-newsletter-july-2022/) XMPP Newsletter, users of old Monal versions would need to update, so if you or your contacts didn't already [the developers urge you to do it now](https://fosstodon.org/@Monal/108999198014279513).
 
-Missed in the [August 2022 newsletter](https://xmpp.org/2022/09/the-xmpp-newsletter-august-2022/) was a release of UWPX, the XMPP client for UWP (Windows 10) devices. While version v.0.43.0.0 has only a fixup it's unfortunately also the [Final Update](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.43.0.0) as the developer is stepping away from the project. Maintainers to follow-up are welcome to reach out!
+Missed in the [August 2022 XMPP Newsletter](https://xmpp.org/2022/09/the-xmpp-newsletter-august-2022/) was a release of UWPX, the XMPP client for UWP (Windows 10) devices. While version v.0.43.0.0 has only a fixup it's unfortunately also the [Final Update](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.43.0.0) as the developer is stepping away from the project. Maintainers to follow-up are welcome to reach out!
+
+Kaidan, a user-friendly and modern chat app for every device, will receive a grant by NLnet for [adding encrypted audio and video calls](https://www.kaidan.im/2022/09/03/audio-video-calls/). Congratulations!
 
 ### Servers
 
@@ -94,6 +100,10 @@ The first beta of Slidge (XMPP bridges) is out!: Slidge, supporting Signal, Tele
 Find the article in [English](https://nicoco.fr/blog/2022/09/04/slidge-first-beta/) and [French](https://linuxfr.org/users/therealnicoco/journaux/la-premiere-beta-de-slidge-passerelles-xmpp-est-dehors).
 
 Work on [XMPP ⇔ ActivityPub gateway](https://nlnet.nl/project/Libervia/) (supported by a [NLnel](https://nlnet.nl/) funding) has been achieved. The gateway supports features such as following/followers, favourite/like (or ["noticed" in XMPP terms](https://xmpp.org/extensions/xep-0470.html#noticed-foreword), reactions (compatible with [Pleroma](https://pleroma.social/)), mentions, sharing/reboost and lastly events (compatible with [Mobilizon](https://mobilizon.org)). It has been tested with [Mastodon](https://joinmastodon.org), Pleroma and Mobilizon. It's still considered alpha quality, [a blog post should follow soon to explain in more details](https://www.goffi.org).
+
+Ignite Realtime Community:
+  - [REST API Openfire plugin 1.10.0 released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-0-released/92108)!
+  - [New Openfire plugin: Push Server](https://discourse.igniterealtime.org/t/new-openfire-plugin-push-server/92069)!
 
 ## Extensions and specifications
 
