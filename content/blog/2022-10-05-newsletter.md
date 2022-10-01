@@ -61,6 +61,8 @@ Congrats to the Monal developers for the new [NLnet Funding](https://monal-im.or
 
 Paul Schaub wrote a [blog post](https://blog.jabberhead.tk/2022/09/14/using-pushdown-automata-to-verify-packet-sequences/) focused on the technical details of how to check the validity of nested packet sequences using pushdown automata. This technique will be used in a partial rework of PGPainless to validate OpenPGP messages. Earlier this month another post on ["Creating a Web-of-Trust Implementation: Accessing Certificate Stores"](https://blog.jabberhead.tk/2022/09/01/creating-a-web-of-trust-implementation-accessing-certificate-stores/) has been published, too.
 
+![PGPainless to validate OpenPGP messages](/images/newsletter/2022-10-01/TigaseWebpage.png "PGPainless to validate OpenPGP messages")
+
 jmp.chat brought [voicemail changes and opt-in Jabber ID discoverability](https://blog.jmp.chat/b/september-newsletter-2022) to their service, along with an updated Android app and new custom F-Droid repos for both stable and pre-release versions. Furthermore, they wrote about ["Privacy and Threat Modelling"](https://blog.jmp.chat/b/2022-privacy-threat-modelling) in general.
 
 Arnaud wrote about updates on the [chatty server and HTTPAuthentificationOverXMPP](https://blog.agayon.be/xmpp_auth_update.html).
@@ -72,6 +74,8 @@ Anoxinon.media published their blogpost [XMPP - Teil 1 - Messaging mal anders](h
 ### Clients and applications
 
 Maintenance release of [Beagle IM 5.3.1](https://github.com/tigase/beagle-im/releases/tag/5.3.1) that fixes sending OMEMO encrypted files and entering password-protected MUC. Besides, Tigase launched a new, simpler website [tigase.org](https://tigase.org/) that makes it easier to access open-source projects created by Tigase.
+
+![New tigase.org](/images/newsletter/2022-10-01/TigaseWebpage.png "New tigase.org")
 
 Gajim 1.5.0 and 1.5.1 [have been released](https://gajim.org/post/2022-09-19-gajim-1.5.0-released/). These releases come with a significant performance boost. Pinned chats can be ordered via drag and drop, message corrections have been improved, and many bugs have been fixed.
 
