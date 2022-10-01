@@ -107,7 +107,7 @@ Work on [XMPP ⇔ ActivityPub gateway](https://nlnet.nl/project/Libervia/) (supp
 
 Ignite Realtime Community:
   - REST API Openfire plugin 1.10.0 [has been released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-0-released/92108)
-  - [New Openfire plugin: Push Server](https://discourse.igniterealtime.org/t/new-openfire-plugin-push-server/92069)!
+  - New Openfire plugin: [Push Server](https://discourse.igniterealtime.org/t/new-openfire-plugin-push-server/92069)
 
 ## Extensions and specifications
 
