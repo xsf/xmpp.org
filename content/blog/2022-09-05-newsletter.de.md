@@ -8,13 +8,13 @@ categories: ['Newsletter']
 
 Willkommen zum XMPP Newsletter, schön, dass du wieder da bist! Diese Ausgabe umfasst den August 2022.
 
-Wie dieser Newsletter auch sind viele Projekte und deren Mühen in der XMPP Gemeinschaft das Ergebnis der Arbeit von Freiwilligen. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen! Bist du daran interessiert, das Newsletter-Team zu unterstützen? Lies mehr am Ende des Artikels.
+Wie dieser Newsletter auch, sind viele Projekte und deren Mühen in der XMPP Gemeinschaft das Ergebnis der Arbeit von Freiwilligen. Wenn du mit den von dir verwendeten Diensten und Applikationen zufrieden bist - gerade in der jetzigen Situation - dann denke bitte darüber nach, dich bei diesen Projekten zu bedanken oder helfend einzubringen! Bist du daran interessiert, das Newsletter-Team zu unterstützen? Lies mehr am Ende des Artikels.
 
 ### Übersetzungen des Newsletters
 
-Dies ist eine Gemeinschafstarbeit und wir wollen allen Übersetzer:innen für deren Beiträge danken! Freiwillige sind Willkommen! Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
+Dies ist eine Gemeinschaftsarbeit und wir wollen allen Übersetzer:innen für deren Beiträge danken! Freiwillige sind Willkommen! Die Übersetzungen des XMPP Newsletters werden auf den folgenden Seiten veröffentlicht (mit etwas Verzögerung):
 
-- English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+- Englisch (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
 - Französisch: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) und [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
 - Deutsch: [xmpp.org/de/blog](https://xmpp.org/de/blog/) und [anoxinon.de](https://anoxinon.de/blog/)
 - Italienisch: [nicfab.it](https://www.nicfab.it/)
@@ -36,7 +36,7 @@ Der Google Summer of Code 2022 ist gestartet und das Programmieren hat schon beg
     - [Zustandsloses Dateiteilen: Grundlegende Implementierung](https://dino.im/blog/2022/08/stateless-file-sharing-base-implementation/) [EN]
     - [Zustandsloses Dateiteilen: Quelltext und Kompatibilität](https://dino.im/blog/2022/08/stateless-file-sharing-sources-and-compatibility/) [EN]
 - **PawBud** arbeitet daran, [Unterstützung für A/V-Kommunikation über Jingle in ConverseJS hinzuzufügen](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19) [EN]. Mentor:innen sind **JC Brand** und **vanitasvitae**.
-    - [On-Boarding Erfahrung mit XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/) [EN]
+    - [Onboarding Erfahrung mit XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/) [EN]
     - [ConverseJS: Ein tiefgehender Blick in mein GSoC'22-Projekt!](https://xmpp.org/2022/07/conversejs-an-in-depth-view-into-my-gsoc22-project/) [EN]
     - [Google Summer of Code 2022 bei der XSF: Converse.js - Aktualisierung der zwischenzeitlichen Evaluation](https://xmpp.org/2022/08/google-summer-of-code-2022-at-xsf-converse.js-mid-term-evaluation-update/) [EN]
 
@@ -103,11 +103,11 @@ Tigase hat [BeagleIM 5.3](https://github.com/tigase/beagle-im/releases/tag/5.3) 
 Von der ignite realtime Gemeinschaft:
 
 * Das REST API Openfire Plugin [1.9.0](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-9-0-released/91928/2)  [EN] und [1.9.1](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-9-1-released/91936) [EN] wurde veröffentlicht, um verschiedene Fehler zu beheben
-* [Das Openfire ThreadDump Plugin 1.1.0](https://discourse.igniterealtime.org/t/openfire-threaddump-plugin-1-1-0-released/92030) [EN] wurde veröffentlicht und fügt zwei neue Eveluatoren für die TaskEngine und Statistiken vom Database Connection Pool hinzu. 
+* [Das Openfire ThreadDump Plugin 1.1.0](https://discourse.igniterealtime.org/t/openfire-threaddump-plugin-1-1-0-released/92030) [EN] wurde veröffentlicht und fügt zwei neue Evaluatoren für die TaskEngine und Statistiken vom Database Connection Pool hinzu. 
 
 ## Extensions and Specifications (Erweiterungen und Spezifikationen)
 
-Entwickler:innen und andere Standard-Expert:innen von aller Welt arbeiten zusammen an diesen Extensions, entwicklen neue Specifications für aufkommende Praktiken und verfeinern die bestehenden Wege, Dinge umzusetzen. Proposed (Vorgeschlagen) werden können sie von jeder und jedem, wobei die besonders erfolgreichen es in den Status Final oder Active (Aktiv) schaffen - je nach Typ. Andere hingegen werden bedacht als Deferred (Zurückgestellt) markiert. Dieser Lebenszyklus ist in [XEP-0001](https://xmpp.org/extensions/xep-0001.html)  [EN] beschrieben, welches die formalen und anerkannten Definitionen für die Types (Typen), States (Status) und Processes (Prozesse) enthält. [Lies mehr über den Standards Process (Standard-Prozess)](https://xmpp.org/about/standards-process.html) [EN]. Die Kommunikation rund um Standards und Extensions findet auf der [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) [EN] statt. ([Online Archiv](https://mail.jabber.org/pipermail/standards/) [EN].)
+Entwickler:innen und andere Standard-Expert:innen von aller Welt arbeiten zusammen an diesen Extensions, entwickeln neue Specifications für aufkommende Praktiken und verfeinern die bestehenden Wege, Dinge umzusetzen. Proposed (Vorgeschlagen) werden können sie von jeder und jedem, wobei die besonders erfolgreichen es in den Status Final oder Active (Aktiv) schaffen - je nach Typ. Andere hingegen werden bedacht als Deferred (Zurückgestellt) markiert. Dieser Lebenszyklus ist in [XEP-0001](https://xmpp.org/extensions/xep-0001.html)  [EN] beschrieben, welches die formalen und anerkannten Definitionen für die Types (Typen), States (Status) und Processes (Prozesse) enthält. [Lies mehr über den Standards Process (Standard-Prozess)](https://xmpp.org/about/standards-process.html) [EN]. Die Kommunikation rund um Standards und Extensions findet auf der [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) [EN] statt. ([Online Archiv](https://mail.jabber.org/pipermail/standards/) [EN].)
 
 Im Übrigen gibt es [eine neue Seite über XMPP RFCs](https://xmpp.org/rfcs/) [EN].
 
