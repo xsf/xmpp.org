@@ -1,0 +1,6 @@
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">
+    {{ .Text | safeHTML }}
+    {{ if ne .Level 1 }}
+        <a class="heading-anchor" href="#{{ .Anchor | safeURL }}"><i class="fa-solid fa-link fa-xs"></i></a>
+    {{ end }}
+</h{{ .Level }}>

@@ -11,6 +11,17 @@ h6,
     font-family: "Exo 2", sans-serif;
     font-weight: 400;
 }
+.heading-anchor {
+    visibility: hidden;
+    color:#6c757d;
+    position: absolute;
+    margin-left: 0.3em;
+}
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor {
+    visibility: visible;
+}
 p,
 li,
 blockquote {
