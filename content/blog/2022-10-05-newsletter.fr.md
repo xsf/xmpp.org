@@ -4,24 +4,25 @@ date: 2022-10-17
 categories: ['Newsletter']
 ---
 
-N. D. T. — Ceci est une traduction de la lettre d’information publiée régulièrement par l’équipe de communication de la XSF, essayant de conserver les tournures de phrase et l’esprit de l’original. Elle est publiée conjointement sur les sites [LinuxFr.org](https://linuxfr.org/tags/xmpp/public) et [JabberFR.org](https://news.jabberfr.org/category/newsletter/). La liste des personnes y ayant contribué est disponible sur [LinuxFr.org](https://linuxfr.org/news/lettre-d-information-xmpp-de-septembre-2022)
-
 Bienvenue dans la lettre d’information XMPP, nous sommes ravis de vous retrouver ici ! Ce numéro couvre le mois de septembre 2022.
 
 Comme la présente lettre d’information, de nombreux projets et leurs efforts au sein de la communauté XMPP sont le résultat du travail bénévole de personnes. Si vous êtes satisfait des services et des logiciels que vous utilisez, surtout dans la situation actuelle, pensez à dire merci ou à aider ces projets ! Vous souhaitez soutenir l’équipe de la lettre d’information ? Lisez la suite en bas de page.
 
+## Traductions de bulletins
 
-# Annonces XSF
+C'est un effort communautaire, et nous tenons à remercier les traducteurs pour leur contribution. Les volontaires sont les bienvenus ! Les traductions de la Newsletter XMPP seront publiées ici (avec un certain retard):
 
+Anglais (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+Français : [xmpp.org](https://xmpp.org/categories/newsletter/), [jabberfr.org](https://news.jabberfr.org/category/newsletter/) et [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+Allemand: [xmpp.org](https://xmpp.org/categories/newsletter/) et [anoxinon.de](https://anoxinon.de/blog/)
+Italien: [nicfab.it](https://www.nicfab.it/)
+Espagnol: [xmpp.org](https://xmpp.org/categories/newsletter/)
 
+## Annonces XSF
 
 - La période de demande d’adhésion à XSF pour le quatrième trimestre 2022 est actuellement ouverte. Si vous souhaitez devenir membre de la XSF, vous pouvez [demander l’adhésion](https://wiki.xmpp.org/web/Membership_Applications_Q4_2022). Merci de soumettre votre demande avant le 27 novembre 2022.
 
-
-
 - La période de candidature au conseil d’administration et au conseil de la XSF pour l’année prochaine est actuellement ouverte. Si vous souhaitez vous présenter au conseil d’administration ou au conseil de la XSF, vous pouvez [postuler ici](https://wiki.xmpp.org/web/Board_and_Council_Elections_2022). Merci de soumettre votre candidature avant le 6 novembre 2022. Pour rappel, les membres du Conseil XMPP doivent être des membres élues ou élus de la XSF ; cependant, il n’y a pas de telle restriction pour le Conseil d’administration.
-
-
 
 - Avis de sécurité : la libexpat avant 2.4.9 est vulnérable à la [CVE-2022-40674](https://nvd.nist.gov/vuln/detail/CVE-2022-40674), assurez-vous de la mettre à jour, si vous en dépendez.
 
@@ -302,8 +303,7 @@ Vous recherchez des offres d’emploi ou vous souhaitez engager un consultant pr
 
 
 
-Cette lettre d’information XMPP est produite en collaboration par la communauté XMPP. Nous tenons donc à remercier **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, emus, goffi, Jeybe, Licaon_Kter, martin, MattJ, MSavoritias (fae,ve), nicfab, Ppjet6, vanitasvitae, wurstsalat, Zash** pour leur soutien et leur aide à la création, la révision, la traduction et le déploiement. Un grand merci à tous les contributeurs et à leur soutien continu !
-
+Cette lettre d’information XMPP est produite en collaboration par la communauté XMPP. Nous tenons donc à remercier **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, emus, goffi, Jeybe, Licaon_Kter, martin, MattJ, MSavoritias (fae,ve), nicfab, patrick_g, Ppjet6, pulkomandy, tisaac, vanitasvitae, wurstsalat, Zash** pour leur soutien et leur aide à la création, la révision, la traduction et le déploiement. Un grand merci à tous les contributeurs et à leur soutien continu !
 
 
 Le numéro de la lettre d’information de chaque mois est rédigé dans ce [simple pad](https://yopad.eu/p/xmpp-newsletter-365days). À la fin de chaque mois, le contenu du pad est fusionné dans le [dépôt Github XSF](https://github.com/xsf/xmpp.org/milestone/3). Nous sommes toujours heureux d’accueillir des contributeurs. N’hésitez pas à rejoindre la discussion dans notre [salon public Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) et ainsi nous aider à soutenir cet effort communautaire. Vous avez un projet et vous voulez faire connaître la nouvelle ? Pensez à partager vos nouvelles ou vos événements ici, et à les promouvoir auprès d’un large public.
