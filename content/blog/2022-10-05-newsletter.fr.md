@@ -12,11 +12,11 @@ Comme la présente lettre d’information, de nombreux projets et leurs efforts 
 
 C'est un effort communautaire, et nous tenons à remercier les traducteurs pour leur contribution. Les volontaires sont les bienvenus ! Les traductions de la Newsletter XMPP seront publiées ici (avec un certain retard):
 
-Anglais (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-Français : [xmpp.org](https://xmpp.org/categories/newsletter/), [jabberfr.org](https://news.jabberfr.org/category/newsletter/) et [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-Allemand: [xmpp.org](https://xmpp.org/categories/newsletter/) et [anoxinon.de](https://anoxinon.de/blog/)
-Italien: [nicfab.it](https://www.nicfab.it/)
-Espagnol: [xmpp.org](https://xmpp.org/categories/newsletter/)
+- Anglais (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+- Français : [xmpp.org](https://xmpp.org/categories/newsletter/), [jabberfr.org](https://news.jabberfr.org/category/newsletter/) et [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+- Allemand: [xmpp.org](https://xmpp.org/categories/newsletter/) et [anoxinon.de](https://anoxinon.de/blog/)
+- Italien: [nicfab.it](https://www.nicfab.it/)
+- Espagnol: [xmpp.org](https://xmpp.org/categories/newsletter/)
 
 ## Annonces XSF
 
