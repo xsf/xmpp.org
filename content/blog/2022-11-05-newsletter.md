@@ -26,7 +26,7 @@ This is a community effort, and we would like to thank translators for their con
 
 ![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
 
-The Google Summer of Code 2022 has lifted off and coding started a while ago! The two new contributors Patiga and PawBud who will work on open-source software projects in the XMPP environment. Read their first blog posts, too.
+The Google Summer of Code 2022 has finished! The two new contributors Patiga and PawBud worked on open-source software projects in the XMPP environment. Read the final collection blog posts:
   - **Patiga** works on [more flexible file transfers in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ). Mentors are **fiaxh** and **Marvin W.**.
     - [Stateless File Sharing GSoC project](https://dino.im/blog/2022/06/stateless-file-sharing-gsoc-project/)
     - [Project Stateless File Sharing: First Steps](https://dino.im/blog/2022/06/project-stateless-file-sharing-first-steps/)
@@ -57,11 +57,29 @@ _Please do not simply drop links, rather try to make a short (<5 lines) and dece
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
+
+[Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
+
+JMP Chat: [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification)
+
+PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
+
+[Profanity 0.13.1](https://profanity.im/) has been released.
+
+[Psi+ 1.5.1641 (2022-09-24)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
 
 ### Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[ejabberd 22.10](https://www.process-one.net/blog/ejabberd-22-10/) has been released.
+
+[Jackal 0.62.3](https://github.com/ortuman/jackal) has been released.
+
+Prosodical Thoughts: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
+
+### Libraries & Tools
+
+[python-nbxmpp 3.2.4 and 3.2.5](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, bringing bug fixes and internal improvements.
 
 ## Extensions and specifications
 
@@ -70,17 +88,20 @@ Developers and other standards experts from around the world collaborate on thes
 xmpp.org features [a page about XMPP RFCs](https://xmpp.org/rfcs/) as well.
 
 ### Proposed
+
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to 
 accept this proposal as an Experimental XEP.
 
-- No XEPs proposed this month.
+- [PubSub Social Feed](https://xmpp.org/extensions/inbox/pubsub-social-feed.html)
+  - This specification defines a way of publishing social content over XMPP.
+- [SASL SCRAM Downgrade Protection](https://xmpp.org/extensions/inbox/xep-downgrade-prevention.html)
+  - This specification provides a way to secure the SASL and SASL2 handshakes against method and channel-binding downgrades.
+- [OpenPGP for XMPP Pubsub](https://xmpp.org/extensions/inbox/pubsub-encryption.html)
+  - Specifies an OpenPGP for XMPP (XEP-0373) profile for the pubsub use case.
 
 ### New
 
-- Version 0.1.0 of [XEP-0469](https://xmpp.org/extensions/xep-0469.html) (Bookmark Pinning)
-  - This document defines an XMPP protocol extension to allow users to pin PEP Native Bookmarks.
-- Version 0.1.0 of [XEP-0470](https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
-  - This specification provides a way to attach elements to a pubsub item.
+- No new XEP this month.
   
 ### Deferred
 
@@ -91,20 +112,7 @@ will put the XEP back onto Experimental.
 
 ### Updated
 
-- Version 0.2.0 of [XEP-0447](https://xmpp.org/extensions/xep-0447.html) (Stateless file sharing)
-  - Add disposition attribute to signal when inlining is desired. (lmw)
-- Version 0.2.0 of [XEP-0470](https://xmpp.org/extensions/xep-0470.html) (Pubsub Attachments)
-  - Update reactions to be similar to  Message Reactions (XEP-0444)
-  - Namespace bump (jp)
-- Version 1.1 of [XEP-0231](https://xmpp.org/extensions/xep-0231.html) (Bits of Binary)
-  - Mention where to get textual names of hash functions. (ssw)
-- Version 0.3.0 of [XEP-0440](https://xmpp.org/extensions/xep-0440.html) (SASL Channel-Binding Type Capability)
-  - Make implementation of tls-server-end-point a MUST for servers. (tm)
-- Version 0.2.0 of [XEP-0446](https://xmpp.org/extensions/xep-0446.html) (File metadata element)
-  - Use height/width instead of dimensions (lmw)
-- Version 0.2.0 of [XEP-0448](https://xmpp.org/extensions/xep-0448.html) (Encryption for stateless file sharing)
-  - Replace the ProtoXEP reference with a reference to the published XEP.
-  - Add urn:xmpp:ciphers:aes-256-cbc-pkcs7:0 (same as used in XEP-0384) (lmw)
+- No XEPs updated this month.
 
 ### Last Call
 
@@ -114,8 +122,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 ### Stable
 
-- Version 1.0.0 of [XEP-0215](https://xmpp.org/extensions/xep-0215.html) (External Service Discovery)
-  - Accept as Stable as per Council Vote from 2022-08-03. (XEP Editor (jsc)) 
+- No XEP moved to stable this month.
   
 ### Deprecated
 
