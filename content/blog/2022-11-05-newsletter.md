@@ -51,19 +51,19 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
+
+JMP Chat: [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification)
+
+PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
 
 ## Software news
 
 ### Clients and applications
 
-ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
+Converse has been released in [version 10.0.0](https://github.com/conversejs/converse.js/releases/tag/v10.0.0)!
 
 [Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
-
-JMP Chat: [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification)
-
-PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
 
 [Profanity 0.13.1](https://profanity.im/) has been released.
 
