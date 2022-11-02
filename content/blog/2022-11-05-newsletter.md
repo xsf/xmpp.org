@@ -53,7 +53,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
 
-JMP Chat: [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification)
+The [JMP Newsletter](https://blog.jmp.chat/b/october-newsletter-2022) details a big new release of the Cheogram Android client with features including XHTML-IM, Bits of Binary, a form of message retraction, contact tagging, and more.  They also talk about an [XMPP channel integration they have built](https://github.com/chatwoot/chatwoot/pull/5587) for the Chatwoot support software, and offer to let community projects use their instance to try it out. This month they also wrote an article about [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification) and how it affects the ecosystem.
 
 PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
 
