@@ -389,14 +389,16 @@
         "platforms": [
             "Windows"
         ],
-        "url": "http://miranda-im.org"
+        "url": null
     },
     {
-        "doap": "/hosted-doap/miranda-ng.doap",
-        "last_renewed": "2022-01-24T00:00:00",
+        "doap": "https://raw.githubusercontent.com/miranda-ng/miranda-ng/master/docs/miranda.doap",
+        "last_renewed": "2022-11-03T00:00:00",
         "name": "Miranda NG",
-        "platforms": [],
-        "url": null
+        "platforms": [
+             "Windows"
+        ],
+        "url": "https://miranda-ng.org"
     },
     {
         "doap": "https://raw.githubusercontent.com/monal-im/Monal/develop/monal.doap",
