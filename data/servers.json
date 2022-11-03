@@ -55,8 +55,8 @@
         "url": "https://danga.com"
     },
     {
-        "doap": "/hosted-doap/ejabberd.doap",
-        "last_renewed": "2022-08-08T14:37:44",
+        "doap": "https://raw.githubusercontent.com/processone/ejabberd/master/ejabberd.doap",
+        "last_renewed": "2022-11-07T14:37:44",
         "name": "ejabberd",
         "platforms": [],
         "url": null
