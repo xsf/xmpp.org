@@ -383,17 +383,8 @@
         "url": "https://mcabber.com"
     },
     {
-        "doap": null,
-        "last_renewed": null,
-        "name": "Miranda IM",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "http://miranda-im.org"
-    },
-    {
-        "doap": "/hosted-doap/miranda-ng.doap",
-        "last_renewed": "2022-01-24T00:00:00",
+        "doap": "https://raw.githubusercontent.com/miranda-ng/miranda-ng/master/docs/miranda.doap",
+        "last_renewed": "2022-11-03T00:00:00",
         "name": "Miranda NG",
         "platforms": [],
         "url": null
