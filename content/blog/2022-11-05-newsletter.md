@@ -64,6 +64,8 @@ PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](ht
 
 Converse has been released in [version 10.0.0](https://github.com/conversejs/converse.js/releases/tag/v10.0.0)!
 
+[Dino 0.3.1](https://github.com/dino/dino/releases/tag/v0.3.1) has been released, which is a maintenance release for libsoup3 support and bug fixes.
+
 [Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
 
 [Profanity 0.13.1](https://profanity.im/) has been released.
