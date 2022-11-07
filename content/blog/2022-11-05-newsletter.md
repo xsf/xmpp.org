@@ -8,15 +8,20 @@ Welcome to the XMPP Newsletter, great to have you here again! This issue covers 
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, especially throughout the current situation, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more at the bottom.
 
-### Newsletter translations
+### Newsletter Contributors & Translations
 
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+  - General contributors: **emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Ppjet6**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
+  - Translators: **Jeybe, wh0nix**
 - Italian: [nicfab.it](https://www.nicfab.it/)
+  - Translators: **nicfab**
 - Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
+  - Translators: **daimonduff, TheCoffeMaker**
 
 ## XSF Announcements
 
@@ -69,6 +74,8 @@ Converse has released [version 10.0.0](https://github.com/conversejs/converse.js
 [Dino 0.3.1](https://github.com/dino/dino/releases/tag/v0.3.1) has been released, which is a maintenance release for libsoup3 support and bug fixes.
 
 [Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
+
+![QR code scan](/images/newsletter/2022-11-07/gajim-emoji-shortcodes.png)
 
 [Profanity 0.13.1](https://github.com/profanity-im/profanity/releases/tag/0.13.1) is out with improved plugins management.
 
