@@ -52,33 +52,33 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
+ejabberd has added [Matrix protocol support](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/) bringing their experience of scaling XMPP and MQTT to this new messaging avenue. At first a subset of the protocol will be implemented, acting like a bridge between protocols. Bussiness customers will get a taste of it first and later it will come to the Community Edition.
 
 The [JMP Newsletter](https://blog.jmp.chat/b/october-newsletter-2022) details a big new release of the Cheogram Android client with features including XHTML-IM, Bits of Binary, a form of message retraction, contact tagging, and more.  They also talk about an [XMPP channel integration they have built](https://github.com/chatwoot/chatwoot/pull/5587) for the Chatwoot support software, and offer to let community projects use their instance to try it out. This month they also wrote an article about [SMS Account Verification](https://blog.jmp.chat/b/2022-sms-account-verification) and how it affects the ecosystem.
 
 PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
 
+A new automated testing technique was recently adopted to help the Prosody during their daily development work: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
+
 ## Software news
 
 ### Clients and applications
 
-Converse has been released in [version 10.0.0](https://github.com/conversejs/converse.js/releases/tag/v10.0.0)!
+Converse has released [version 10.0.0](https://github.com/conversejs/converse.js/releases/tag/v10.0.0) with a lot of polishing and an updated feature set.
 
 [Dino 0.3.1](https://github.com/dino/dino/releases/tag/v0.3.1) has been released, which is a maintenance release for libsoup3 support and bug fixes.
 
 [Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
 
-[Profanity 0.13.1](https://profanity.im/) has been released.
+[Profanity 0.13.1](https://github.com/profanity-im/profanity/releases/tag/0.13.1) is out with improved plugins management.
 
 [Psi+ 1.5.1641 (2022-09-24)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
 
 ### Servers
 
-[ejabberd 22.10](https://www.process-one.net/blog/ejabberd-22-10/) has been released.
+[ejabberd 22.10](https://www.process-one.net/blog/ejabberd-22-10/) release includes six months of work, over 140 commits, including relevant improvements in MIX, MUC, SQL, and installers, and bug fixes as usual.
 
-[Jackal 0.62.3](https://github.com/ortuman/jackal) has been released.
-
-Prosodical Thoughts: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
+[Jackal 0.62.3](https://github.com/ortuman/jackal/releases/tag/v0.62.3) is out bringing 3 fixes for storage/archive and s2s stanzas.
 
 ### Libraries & Tools
 
