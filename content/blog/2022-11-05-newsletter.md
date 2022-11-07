@@ -63,7 +63,7 @@ The [JMP Newsletter](https://blog.jmp.chat/b/october-newsletter-2022) details a 
 
 PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](https://blog.jabberhead.tk/2022/10/26/implementing-packet-sequence-validation-using-pushdown-automata/)
 
-A new automated testing technique was recently adopted to help the Prosody during their daily development work: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
+A new automated testing technique was recently adopted to help the Prosody developers during their daily development work: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
 
 ## Software news
 
