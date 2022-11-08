@@ -65,6 +65,8 @@ PGPainless: [Implementing Packet Sequence Validation using Pushdown Automata](ht
 
 A new automated testing technique was recently adopted to help the Prosody developers during their daily development work: [Mutation Testing in Prosody](https://blog.prosody.im/mutation-testing-in-prosody/)
 
+Modernization of the authentication protocol is ongoing around the community, key word "SASL". Multiple hints of the ongoing work have been seen in the last two newsletters, in [libs](https://xmpp.org/2022/09/the-xmpp-newsletter-august-2022/#libraries), [XEPs](https://xmpp.org/2022/10/the-xmpp-newsletter-september-2022/#updated) updates and [funding](https://xmpp.org/2022/10/the-xmpp-newsletter-september-2022/#articles) news. It spans multiple clients, multiple platforms and at least one server. Thilo Molitor, the Monal developer, blogged about the current _broken_ state, the ideal properties of the system and [the solutions being worked on](https://monal-im.org/post/00004-sasl/). It's a 30 minutes long read but will sure come handy as more news of the SASL implementations will start to appear from the other involved projects.
+
 ## Software news
 
 ### Clients and applications
@@ -80,6 +82,10 @@ Converse has released [version 10.0.0](https://github.com/conversejs/converse.js
 [Profanity 0.13.1](https://github.com/profanity-im/profanity/releases/tag/0.13.1) is out with improved plugins management.
 
 [Psi+ 1.5.1641 (2022-09-24)](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
+
+Monal 5.3.3 has been [live in the AppStore](https://apps.apple.com/app/id317711500) for a while now, and even if it does not yet bring the SASL improvements mentioned above or the much awaited audio and video calls capabilities [funded last month](https://xmpp.org/2022/10/the-xmpp-newsletter-september-2022/#articles), it does feature several fixes for registrations, screenshots sharing and read markers.
+
+aTalk has been released with [an almost monthly cadence](https://github.com/cmeng-git/atalk-android/blob/master/aTalk/ReleaseNotes.txt). Each new version brings more polish, like location/map views, calls, libraries updates and keeping up to date on the newer Android requirements. It's biggest adoption impediment unfortunately still stays and stems from an outdated UI that precedes Android 5 Material UI.
 
 ### Servers
 
