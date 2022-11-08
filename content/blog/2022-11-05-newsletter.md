@@ -29,7 +29,7 @@ This is a community effort, and we would like to thank translators for their con
 
 ### Google Summer of Code 2022
 
-![XSF and Google Summer of Code 2022](/images/logos/GSoC_2022_Logo.png "XSF and Google Summer of Code 2022")
+{{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2022" >}}
 
 The Google Summer of Code 2022 has finished! The two new contributors Patiga and PawBud worked on open-source software projects in the XMPP environment. Read the final collection blog posts:
   - **Patiga** works on [more flexible file transfers in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ). Mentors are **fiaxh** and **Marvin W.**.
@@ -75,7 +75,7 @@ Converse has released [version 10.0.0](https://github.com/conversejs/converse.js
 
 [Gajim 1.5.2](https://gajim.org/post/2022-10-08-gajim-1.5.2-released/) and [1.5.3](https://gajim.org/post/2022-10-31-gajim-1.5.3-released/) have been released. These releases bring another performance boost, better emojis, selection of multiple messages, and many bug fixes.
 
-![QR code scan](/images/newsletter/2022-11-07/gajim-emoji-shortcodes.png)
+{{< figure src="/images/newsletter/2022-11-07/gajim-emoji-shortcodes.png" caption="Gajim emoji shortcodes" >}}
 
 [Profanity 0.13.1](https://github.com/profanity-im/profanity/releases/tag/0.13.1) is out with improved plugins management.
 
