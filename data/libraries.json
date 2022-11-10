@@ -570,22 +570,22 @@
         "url": "https://swift.im/swiften.html"
     },
     {
-        "doap": "/hosted-doap/tigase-halcyon.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "doap": "https://raw.githubusercontent.com/tigase/halcyon/master/halcyon.doap",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "Tigase Halcyon",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/tigase-jaxmpp.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "Tigase JaXMPP",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "Tigase Swift XMPP client library",
         "platforms": [],
         "url": null

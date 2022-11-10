@@ -37,7 +37,7 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/beagle-im/master/beagle-im.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "BeagleIM by Tigase, Inc.",
         "platforms": [],
         "url": null
@@ -526,7 +526,7 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/siskin-im/master/siskin-im.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "SiskinIM by Tigase, Inc.",
         "platforms": [],
         "url": null
@@ -550,8 +550,8 @@
         "url": null
     },
     {
-        "doap": "/hosted-doap/storkim-by-tigase.doap",
-        "last_renewed": "2022-01-20T13:14:51",
+        "doap": "https://raw.githubusercontent.com/tigase/Stork/master/stork-im.doap",
+        "last_renewed": "2022-11-10T13:14:51",
         "name": "StorkIM by Tigase, Inc. (Tigase Messenger for Android)",
         "platforms": [],
         "url": null
