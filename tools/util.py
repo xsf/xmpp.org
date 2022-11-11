@@ -26,7 +26,7 @@ def download_file(url: str, path: Path) -> bool:
     try:
         file_request = requests.get(url, stream=True, timeout=5)
     except requests.exceptions.RequestException as err:
-        print('Error while requesting file', err)
+        print('Error while requesting file', url, err)
         return False
 
     if not 200 >= file_request.status_code < 400:
@@ -41,6 +41,6 @@ def download_file(url: str, path: Path) -> bool:
             size += len(chunk)
             if size > max_size:
                 file_request.close()
-                print('File size exceeds 10 MiB:', path)
+                print('File size exceeds 10 MiB:', url, path)
                 return False
     return True
