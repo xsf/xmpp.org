@@ -76,7 +76,7 @@ def check_renewal(name: str, renewed: Optional[str]) -> bool:
     if now - last_renewal > ENTRY_LIFETIME:
         print('Package entry expired for', name)
         return False
-    print('Package entry up to date for', name)
+
     return True
 
 
@@ -153,7 +153,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
                 (new_width, new_height), Resampling.LANCZOS)
             img.save(file_path)
             print(f'Logo at {file_path} '
-                  f'(file size: {file_size}) has been resized')
+                  f'(file size: {file_size / (1<<10):,.0f} KB) has been resized')
     except (ValueError, OSError, UnidentifiedImageError) as error:
         print('An error occurred while trying to resize logo:', error)
         return False
@@ -190,6 +190,7 @@ def prepare_package_data(package_type: str) -> None:
     Download and prepare package data (clients/servers/libraries) for
     rendering with Hugo
     '''
+    print('Preparint data for', package_type)
     initialize_directory(SOFTWARE_PATH / package_type)
 
     with open(DATA_PATH / f'{package_type}.json', 'rb') as json_file:
@@ -261,7 +262,8 @@ def prepare_package_data(package_type: str) -> None:
 
     print(f'Number of packages (total: {number_of_packages}, '
           f'expired: {number_of_expired_packages}, '
-          f'with DOAP: {number_of_doap_packages})')
+          f'with DOAP: {number_of_doap_packages})'
+          f'\n{30 * "="')
     with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',
               encoding='utf-8') as package_data_file:
