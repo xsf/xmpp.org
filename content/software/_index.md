@@ -1,14 +1,27 @@
 ---
 title: XMPP software
-layout: single
+layout: packages
+aliases:
+    - "/software/clients"
+    - "/software/clients.html"
+    - "/software/libraries"
+    - "/software/libraries.html"
+    - "/software/servers"
+    - "/software/servers.html"
 ---
 
-In this section you’ll find information about XMPP Server, Clients and Libraries.
+In this section you’ll find information about XMPP Software, including clients, servers, libraries, and more.
 
 Please note that the software we list on these pages was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
 
-- [XMPP Servers](/software/servers)
-- [XMPP Clients](/software/clients)
-- [XMPP Libraries](/software/libraries)
+- An **XMPP client** is any software or application that enables you to connect to an XMPP for instant messaging with other people over the Internet. There are many free clients you can use to do this, for many different devices and operating systems.
+- An **XMPP server** provides basic messaging, presence, and XML routing features. This page lists Jabber/XMPP server software that you can use to run your own XMPP service, either over the Internet or on a local area network.
+- **Code libraries and tools** are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.
 
-We are keen to keep these pages up to date so, if you know of something we’ve missed, then please [submit a pull request](https://github.com/xsf/xmpp.org).
+> Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
+
+__See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If __you are related to the project__ and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
+
+{{< software-overview-doap >}}
+
+{{< software-list-legacy >}}

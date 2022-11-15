@@ -61,12 +61,7 @@ The first XMPP RFCs ([RFC 3920](/rfcs#3920) and  [RFC 3921](/rfcs#3921)) were
 
 #### Implementations
 
-There are many implementations of the core XMPP specifications. See the following pages for details:
-
-- [Clients](/software/clients)
-- [Servers](/software/servers)
-- [Code Libraries](/software/libraries)
-
+There are [many implementations](/software/) of the core XMPP specifications.
 
 ## Jingle{#jingle}
 

@@ -1,0 +1,310 @@
+<div class="row">
+    <div class="col-md-10 col-xl-8">
+        <form action="#">
+            <div class="card card-body mb-4 software-filter" id="software-filter">
+                <div class="container">
+                    <p class="text-muted small mb-2">Filter software by platform and more.</p>
+                    <div class="row pb-3">
+                        <div class="col">
+                            <label for="platform-select" class="form-label">Platform</label>
+                            <select id="platform-select" class="form-select form-select-sm" aria-label="Platform">
+                                <option value="all-platforms" selected>All Platforms</option>
+                                <option value="windows">Windows</option>
+                                <option value="macos">macOS</option>
+                                <option value="linux">Linux</option>
+                                <option value="android">Android</option>
+                                <option value="ios">iOS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p>
+                        <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#advanced-filters-collapse" aria-expanded="false" aria-controls="advanced-filters-collapse">
+                            More Filters&nbsp;&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </p>
+                    <div class="mb-3 collapse" id="advanced-filters-collapse">
+                        <div class="row pb-3">
+                            <label for="compliance-checkboxes" class="form-label">Compliance</label>
+                            <div class="col" id="compliance-checkboxes">
+                                <div class="input-group input-group-sm mb-3">
+                                    <label class="input-group-text" for="compliance-core">Base Compliance</label>
+                                    <select id="compliance-core" class="form-select" aria-label="Base Compliance">
+                                        <option selected value="-">-</option>
+                                        <option value="core">Core</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <label class="input-group-text" for="compliance-im">Instant Messaging</label>
+                                    <select id="compliance-im" class="form-select" aria-label="Instant Messaging">
+                                        <option selected value="-">-</option>
+                                        <option value="core">Core</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <label class="input-group-text" for="compliance-mobile">Mobile</label>
+                                    <select id="compliance-mobile" class="form-select" aria-label="Mobile">
+                                        <option selected value="-">-</option>
+                                        <option value="core">Core</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <label class="input-group-text" for="compliance-web">Web</label>
+                                    <select id="compliance-web" class="form-select" aria-label="Web">
+                                        <option selected value="-">-</option>
+                                        <option value="core">Core</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <div class="input-group input-group-sm mb-3">
+                                    <label class="input-group-text" for="compliance-av">Calls</label>
+                                    <select id="compliance-av" class="form-select" aria-label="Calls">
+                                        <option selected value="-">-</option>
+                                        <option value="core">Core</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="xep-select" class="form-label">Supported XEPs</label>
+                                <input id="xep-select" class="form-control form-select form-select-sm xep-select" type="text" value="Select XEPs..." aria-label="XEP Select" readonly>
+                                <div class="select-dropdown-container p-2 shadow rounded bg-body me-4 d-none" id="xep-select-dropdown-container" tabindex="0">
+                                    <div class="input-group input-group-sm m-2 pe-3">
+                                        <input class="form-control form-control-sm select-filter-input" id="xep-search" placeholder="Search..." role="searchbox" type="text">
+                                        <button class="btn btn-outline-secondary" type="button" id="reset-xep-filter">Reset</button>
+                                    </div>
+                                    <div class="select-options-wrapper me-2">
+                                        <div class="select-options-list" id="select-options-list">
+                                            {{ range .Site.Data.xeplist }}
+                                                {{ $full_number := "" }}
+                                                {{ if eq (len (string .number)) 1 }}
+                                                    {{ $full_number = print "000" .number }}
+                                                {{ else if eq (len (string .number)) 2 }}
+                                                    {{ $full_number = print "00" .number }}
+                                                {{ else if eq (len (string .number)) 3 }}
+                                                    {{ $full_number = print "0" .number }}
+                                                {{ end }}
+                                                <div class="form-check mb-2" data-title="XEP-{{ $full_number }}: {{ .title }}">
+                                                    <input class="form-check-input" type="checkbox" value="" id="xep-{{ $full_number }}" data-xep="{{ $full_number }}">
+                                                    <label class="form-check-label small" for="xep-{{ $full_number }}">
+                                                        XEP-{{ $full_number }}: {{ .title }}
+                                                    </label>
+                                                </div>
+                                            {{ end }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ul id="software-category-selector" class="nav nav-pills nav-fill pb-3">
+    <li class="nav-item" role="presentation">
+        <button id="category-button-clients" class="nav-link" name="category-button" data-category="clients" data-bs-toggle="pill" type="button">
+            Apps / Clients
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button id="category-button-libraries" class="nav-link" name="category-button" data-category="libraries" data-bs-toggle="pill" type="button">
+            Libraries
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button id="category-button-servers" class="nav-link" name="category-button" data-category="servers" data-bs-toggle="pill" type="button">
+            Servers
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button id="category-button-components" class="nav-link" name="category-button" data-category="components" data-bs-toggle="pill" type="button">
+            Components
+        </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button id="category-button-tools" class="nav-link" name="category-button" data-category="tools" data-bs-toggle="pill" type="button">
+            Tools
+        </button>
+    </li>
+</ul>
+
+<div id="software-list">
+{{ range $name, $props := .Site.Data.software_list_doap }}
+    <div class="card package-card mb-3"
+        data-name="{{ $props.name_slug }}"
+        data-categories="{{ delimit $props.categories "," }}"
+        data-rfcs="{{ delimit $props.rfcs "," }}"
+        data-xeps="
+        {{- range $index, $xep := $props.xeps -}}
+            {{ if or (eq $xep.status "complete") (eq $xep.status "partial") }}
+                {{- $xep.number -}},
+            {{ end }}
+        {{- end -}}
+        "
+        data-platforms="{{ delimit $props.platforms "," }}"
+        {{ if $props.badges }}
+            {{ $categories := slice "" }}
+            {{ range $category, $level := $props.badges }}
+                {{ $categories = $categories | append  $category }}
+            {{ end }}
+            {{ if in $categories "core" }}data-cscore="{{ $props.badges.core }}"{{ else }}data-cscore="-"{{ end }}
+            {{ if in $categories "im" }}data-csim="{{ $props.badges.im }}"{{ else }}data-csim="-"{{ end }}
+            {{ if in $categories "mobile" }}data-csmobile="{{ $props.badges.mobile }}"{{ else }}data-csmobile="-"{{ end }}
+            {{ if in $categories "web" }}data-csweb="{{ $props.badges.web }}"{{ else }}data-csweb="-"{{ end }}
+            {{ if in $categories "av" }}data-csav="{{ $props.badges.av }}"{{ else }}data-csav="-"{{ end }}
+        {{ else }}
+            data-cscore="-" data-csim="-" data-csmobile="-" data-csweb="-" data-csav="-"
+        {{ end }}
+        >
+        <div class="card-header">
+            <h2 class="accordion-header" id="heading-{{ $props.name_slug }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $props.name_slug }}" aria-expanded="true" aria-controls="collapse-{{ $props.name_slug }}">
+                    <div class="container text-center">
+                        <div class="row py-2 align-items-center justify-content-between">
+                            <div class="col-2">
+                                {{ if $props.logo }}
+                                    <img src="{{ $props.logo }}" class="software-logo-small">
+                                {{ else }}
+                                    <i class="fas fa-3x fa-cube software-logo-default"></i>
+                                {{ end }}
+                            </div>
+                            <div class="col-6 text-start">
+                                <div class="row pb-1">
+                                    <span class="lead fs-3">{{ $name }}</span><br>
+                                </div>
+                                <div class="row">
+                                    <span class="fw-lighter text-muted">{{ $props.shortdesc }}</span>
+                                </div>
+                            </div>
+                            <div class="col shadow-sm px-3 py-2 bg-body rounded text-muted">
+                                <div class="row p-1">
+                                    <span class="pb-2">Platforms</span>
+                                    <hr class="mb-0">
+                                </div>
+                                <div class="row p-1 text-body-secondary">
+                                    <div class="col">
+                                        {{ range $props.platforms }}
+                                            {{ if eq (lower .) "android" }}
+                                                <i class="fab fa-lg fa-android pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "ios" }}
+                                                <i class="fab fa-lg fa-app-store-ios pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "windows" }}
+                                                <i class="fab fa-lg fa-windows pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "macos" }}
+                                                <i class="fab fa-lg fa-apple pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "linux" }}
+                                                <i class="fab fa-lg fa-linux pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "freebsd" }}
+                                                <i class="fa-brands fa-lg fa-freebsd pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else if eq (lower .) "other" }}
+                                                <i class="fas fa-lg fa-box pb-3" title="{{ . }}"></i>&nbsp;
+                                            {{ else }}
+                                                <span class="text-muted small">{{ . }}&nbsp;</span>
+                                            {{ end }}
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1 text-end">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            </h2>
+        </div>
+        <div id="collapse-{{ $props.name_slug }}" class="collapse" aria-labelledby="heading-{{ $props.name_slug }}">
+            <div class="card-body">
+                <div class="container text-center">
+                    <div class="row pb-2">
+                        <span class="lead">Compliance</span>
+                    </div>
+                    <div class="row justify-content-center g-0">
+                        {{ if $props.badges }}
+                            {{ $categories := slice "" }}
+                            {{ range $category, $level := $props.badges }}
+                                {{ $categories = $categories | append  $category }}
+                            {{ end }}
+                            <div class="col" title="Base Compliance">
+                                Base<br>
+                                {{ if in $categories "core" }}
+                                    {{ if eq $props.badges.core "core" }}
+                                        <i class="fa-solid fa-check text-primary" title="{{ $props.badges.core | title }}"></i>
+                                    {{ else }}
+                                        <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.core | title }}"></i>
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </div>
+                            <div class="col" title="Instant Messaging">
+                                IM<br>
+                                {{ if in $categories "im" }}
+                                    {{ if eq $props.badges.im "core" }}
+                                        <i class="fa-solid fa-check text-primary" title="{{ $props.badges.im | title }}"></i>
+                                    {{ else }}
+                                        <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.im | title }}"></i>
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </div>
+                            <div class="col">
+                                Mobile<br>
+                                {{ if in $categories "mobile" }}
+                                    {{ if eq $props.badges.mobile "core" }}
+                                        <i class="fa-solid fa-check text-primary" title="{{ $props.badges.mobile | title }}"></i>
+                                    {{ else }}
+                                        <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.mobile | title }}"></i>
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </div>
+                            <div class="col">
+                                Web<br>
+                                {{ if in $categories "web" }}
+                                    {{ if eq $props.badges.web "core" }}
+                                        <i class="fa-solid fa-check text-primary" title="{{ $props.badges.web | title }}"></i>
+                                    {{ else }}
+                                        <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.web | title }}"></i>
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </div>
+                            <div class="col" title="Audio/Video Calling">
+                                Calls<br>
+                                {{ if in $categories "av" }}
+                                    {{ if eq $props.badges.av "core" }}
+                                        <i class="fa-solid fa-check text-primary" title="{{ $props.badges.av | title }}"></i>
+                                    {{ else }}
+                                        <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.av | title }}"></i>
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </div>
+                        {{ else }}
+                            <span class="text-muted small">No compliance data</span>
+                        {{ end }}
+                    </div>
+                    <div class="row align-items-center mt-3">
+                        <div class="col">
+                            <a class="btn btn-sm btn-secondary" href="/software/{{ $props.name_slug }}" role="button">Show Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
+</div>
+<hr class="my-5">

@@ -28,12 +28,6 @@ def main():
         description="Modify a software entry in the software list."
     )
     parser.add_argument(
-        "listfile",
-        type=argparse.FileType("r"),
-        metavar="JSONFILE",
-        help="Software list JSON file to manipulate",
-    )
-    parser.add_argument(
         "name",
         nargs="?",
         default=None,
@@ -84,7 +78,7 @@ def main():
 
     args = parser.parse_args()
 
-    with args.listfile as f:
+    with open("../data/software.json") as f:
         filename = f.name
         data = json.load(f)
 

@@ -13,6 +13,7 @@ VALID_ENTRY_KEYS = {
     "name",
     "doap",
     "url",
+    "categories",
 }
 
 
@@ -79,18 +80,8 @@ def check_entries(entries: dict[str, Any]) -> int:
 
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "which",
-        choices=("clients.json", "servers.json", "libraries.json"),
-    )
-
-    args = parser.parse_args()
-
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
-    input_file = os.path.join(base_path, f"../data/{args.which}")
+    input_file = os.path.join(base_path, f"../data/software.json")
     with open(input_file, "rb") as data_file:
         data = json.load(data_file)
 

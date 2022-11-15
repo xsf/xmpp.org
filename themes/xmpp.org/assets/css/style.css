@@ -340,6 +340,13 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     color: grey;
 }
 
+.abbr {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted #6c757d;
+    cursor: help;
+    color: #2a2e31;
+}
+
 /* Software (clients/servers/libraries) list */
 .card:hover {
     box-shadow: 0 3px 20px 0px rgb(125 125 125 / 12%), 0px 1px 8px rgb(125 125 125 / 6%);
@@ -352,6 +359,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 .software-logo {
     max-width: 150px;
+    width: 100%;
+}
+.software-logo-small {
+    max-width: 50px;
     width: 100%;
 }
 .package-details-xeps {
@@ -374,6 +385,25 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 .compliance-badge-advanced {
     background-color: #6e3778;
 }
+
+.software-filter p {
+    font-family: "Exo 2", sans-serif !important;
+}
+.select-options-wrapper {
+    overflow: auto;
+    max-height: 200px;
+}
+.select-dropdown-container {
+    position: absolute;
+    z-index: 1000;
+}
+.select-options-list {
+    margin: 12px;
+}
+.xep-select {
+    cursor: default;
+}
+
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
@@ -431,13 +461,16 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
         background-color: #262626;
     }
     .card-header {
-        background-color: #454545;
+        background-color: #2c2c2c;
     }
     .card > ul > li {
         background-color: #2b2b2b;
         color: #e3e3e3;
     }
+    .select-dropdown-container 	label {
+		color: #313131;
+	}
     .mermaid {
-	background-color: rgb(110 120 130);
+        background-color: rgb(110 120 130);
     }
 }

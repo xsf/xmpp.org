@@ -84,21 +84,6 @@
     identifier = "software"
     weight = 3
 [[main]]
-    name = "Clients"
-    url = "/software/clients/"
-    parent = "software"
-    weight = 1
-[[main]]
-    name = "Servers"
-    url = "/software/servers/"
-    parent = "software"
-    weight = 2
-[[main]]
-    name = "Libraries"
-    url = "/software/libraries/"
-    parent = "software"
-    weight = 3
-[[main]]
     name = "Community"
     url = "/community/"
     identifier = "community"

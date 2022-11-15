@@ -40,9 +40,8 @@ def check_packages_compliance() -> None:
     Runs the 'compliancer' tool against every package's DOAP file and adds the
     result to '{clients,libraries,servers}_list.doap'
     '''
-    def add_compliance_data(package_type: str) -> None:
-        print('Adding compliance data for', package_type)
-        with open(DATA_PATH / f'{package_type}_list_doap.json',
+    def add_compliance_data() -> None:
+        with open(DATA_PATH / 'software_list_doap.json',
                   'rb') as json_file:
             package_list = json.load(json_file)
 
@@ -54,7 +53,7 @@ def check_packages_compliance() -> None:
 
             props['badges'] = compliance_data['badges']
 
-        with open(DATA_PATH / f'{package_type}_list_doap.json',
+        with open(DATA_PATH / 'software_list_doap.json',
                   'w',
                   encoding='utf-8') as clients_data_file:
             json.dump(package_list, clients_data_file, indent=4)
@@ -76,11 +75,9 @@ def check_packages_compliance() -> None:
             except subprocess.CalledProcessError as err:
                 print(err)
 
-    add_compliance_data('clients')
-    add_compliance_data('libraries')
-    add_compliance_data('servers')
+    add_compliance_data()
 
-    for name, props in compliance_dict.items():
+    for _name, props in compliance_dict.items():
         if props['badges']:
             print(f'{Fore.YELLOW}Compliance data available, but no match for'
                   f'{Style.RESET_ALL}:',

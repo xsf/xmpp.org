@@ -8,7 +8,7 @@ Do you want to start chatting with XMPP? This page helps you get up and running 
 
 ## 1. Download a client
 
-There are [many, many XMPP clients](/software/clients) for you to choose from. To get you started, here are some of the more popular ones:
+There are [plenty of XMPP apps/clients](/software/) for you to choose from. To get you started, here are some of the more popular ones:
 
 ### Desktop
 
@@ -19,14 +19,14 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 * {{< external-link text="Monal" url="https://monal-im.org/" >}} (macOS)
 * {{< external-link text="Swift.IM" url="https://swift.im/swift.html" >}} (Linux, macOS, Windows)
 * {{< external-link text="UWPX" url="https://uwpx.org/" >}} (Windows)
-  
+
 ### Android
 
 * {{< external-link text="blabber.im" url="https://blabber.im./" >}}
 * {{< external-link text="Conversations" url="https://conversations.im/" >}}
 * {{< external-link text="Quicksy" url="https://quicksy.im/" >}}
 * {{< external-link text="Yaxim" url="https://yax.im" >}}
-  
+
 ### iOS
 
 * {{< external-link text="Monal" url="https://monal-im.org/" >}}
@@ -35,7 +35,7 @@ There are [many, many XMPP clients](/software/clients) for you to choose from. T
 ## 2. Create an account
 
 As with email, you need an account with a service provider.
-Use a [public provider from the curated list of **XMPP Providers**](https://providers.xmpp.net) or be your own provider [by hosting a server yourself](https://xmpp.org/software/servers/).
+Use a [public provider from the curated list of **XMPP Providers**](https://providers.xmpp.net) or be your own provider [by hosting a server yourself](https://xmpp.org/software/).
 
 **XMPP Providers** takes various aspects into consideration to recommend providers.
 There are several other (uncurated) lists of providers:

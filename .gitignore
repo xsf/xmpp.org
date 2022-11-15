@@ -13,14 +13,10 @@
 .project
 .vagrant/
 .vscode/
-content/software/clients/*
-content/software/libraries/*
-content/software/servers/*
-data/clients_list_doap.json
+content/software/*
 data/compliance_suite.json
-data/libraries_list_doap.json
-data/servers_list_doap.json
 data/rfc_list.json
+data/software_list_doap.json
 data/xeplist.json
 downloads/
 public/

@@ -3,13 +3,9 @@ Software Directory README
 
 To help software authors maintain their software entries, scripts are provided which help you with creating a proper pull request.
 
-The listing is split in three categories:
+All software entries are contained in ``software.json`` (`edit software entries directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/software.json>`_)
 
-* **Servers** are found in the ``servers.json`` (`edit servers directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/servers.json>`_),
-* **Clients** are found in the ``clients.json`` (`edit clients directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/clients.json>`_), and
-* **Libraries** are found in the ``libraries.json`` (`edit libraries directly on GitHub <https://github.com/xsf/xmpp.org/edit/master/data/libraries.json>`_).
-
-The tooling is the same for all three categories. What differs is what ``platforms`` means. For clients and servers, this is the list of platforms a project runs on. For libraries, this is the list of languages they support.
+A note on the ``platforms`` key: For clients and servers, this is the list of platforms a project runs on. For libraries, this is the list of languages they support.
 
 **Note:** You can of course also manually edit the JSON files if that’s what you prefer. Make sure to keep the diff minimal. All times are UTC.
 
@@ -19,7 +15,7 @@ Modifying your existing entry
 
 For changing an existing entry, you can use the ``update_entry.py`` tool from the command line. Example::
 
-  ./update_entry.py ../data/clients.json Conversations
+  ./update_entry.py Conversations
 
 The tool will ask for confirmation::
 
@@ -34,11 +30,14 @@ The tool will ask for confirmation::
        "platforms": [
            "Android"
        ],
-       "url": "https://github.com/siacs/Conversations"
+       "url": "https://github.com/siacs/Conversations",
+       "categories": [
+           "client"
+       ]
    }
   is this okay? [y/n]
 
-After confirmation, it writes the changes to the ``clients.json``. This works just the same for ``servers.json`` and ``libraries.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using the ``./lint_list.py`` on the respective JSON file and then make a Pull Request on GitHub.
+After confirmation, it writes the changes to the ``software.json``. You can then add and commit the changes to git as usual. **Validate** that your entry is correct using ``./lint_software_list.py`` and then make a Pull Request on GitHub.
 
 
 Updating information
@@ -49,12 +48,11 @@ When asking the tool for ``--help``, you will notice that it supports a few othe
   usage: update_entry.py [-h] [--rename NAME] [--set-url URL] [--set-doap URL]
                          [--set-platforms PLATFORM [PLATFORM ...]]
                          [--no-ask]
-                         JSONFILE [NAME]
+                         [NAME]
 
   Modify a software entry in the software list.
 
   positional arguments:
-    JSONFILE              Software list JSON file to manipulate
     NAME                  Current name of the project
 
   optional arguments:
@@ -74,13 +72,13 @@ The following options are useful for updating information about your project:
 
   Example use::
 
-    ./update_entry.py ../data/clients.json Pidgin --set-platforms 'Windows' 'Linux'
+    ./update_entry.py Pidgin --set-platforms 'Windows' 'Linux'
 
 Do not set ``--no-ask`` and always be sure to review that your changes do what you intend them to do.
 
 If you do not know how to spell your project correctly, leave out the ``NAME`` argument; the tool will list the project it knows.
 
-Do not forget to **validate** that your entry is correct using the ``./lint_list.py`` on the respective JSON file and then make a Pull Request on GitHub.
+Do not forget to **validate** that your entry is correct using the ``./lint_software_list.py`` and then make a Pull Request on GitHub.
 
 
 Add a new entry
@@ -91,15 +89,21 @@ There is no tooling for that. Add the following template to the respective ``jso
 .. code-block:: json
 
       {
-          "platforms": ["GNU Hurd", "Plan9"],
           "name": "My Fancy New Client",
           "doap": "https://myfancyclient.example/doap.rdf",
-          "url": "https://myfancyclient.example"
+          "platforms": [
+            "GNU Hurd",
+            "Plan9"
+          ],
+          "url": "https://myfancyclient.example",
+          "categories": [
+            "client"
+          ]
       }
 
 Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a modification (this will sort the list correctly to minimize future diffs).
 
-**If you do not use the tool**, make sure that you adhere to the sorting requirements of the JSON file. You can use the ``lint_list.py`` tool to verify that everything is in order. If ``lint_list.py`` complains, the CI will reject your Pull Request.
+**If you do not use the tool**, make sure that you adhere to the sorting requirements of the JSON file. You can use the ``lint_software_list.py`` tool to verify that everything is in order. If ``lint_software_list.py`` complains, the CI will reject your Pull Request.
 
 Finally, create a Pull Request.
 
@@ -109,14 +113,12 @@ may result in the failure of the validation procedure, which will cause the pull
 Remove an existing entry
 ========================
 
-Simply drop the corresponding JSON Object from the array and make a PR. Use the ``./lint_list.py`` tool to ensure that the syntax is still valid.
+Simply drop the corresponding JSON Object from the array and make a PR. Use the ``./lint_software_list.py`` tool to ensure that the syntax is still valid.
 
 
 Validating Entries
 ==================
 
-To validate that the list contents are okay, use the ``lint_list.py`` tool::
+To validate that the list contents are okay, use the ``lint_software_list.py`` tool::
 
-  ./lint_list.py clients.json
-
-Note: The tool can only be used on the three lists and does not require any path to the list.
+  ./lint_software_list.py
