@@ -190,7 +190,7 @@ def prepare_package_data(package_type: str) -> None:
     Download and prepare package data (clients/servers/libraries) for
     rendering with Hugo
     '''
-    print('Preparint data for', package_type)
+    print('Preparing data for', package_type)
     initialize_directory(SOFTWARE_PATH / package_type)
 
     with open(DATA_PATH / f'{package_type}.json', 'rb') as json_file:
@@ -260,10 +260,9 @@ def prepare_package_data(package_type: str) -> None:
 
         create_package_page(package_type, package_name_slug, package['name'])
 
-    print(f'Number of packages (total: {number_of_packages}, '
-          f'expired: {number_of_expired_packages}, '
-          f'with DOAP: {number_of_doap_packages})'
-          f'\n{30 * "="}')
+    print(f'Number of packages:\n'
+          f'total: {number_of_packages} (with DOAP: {number_of_doap_packages}), '
+          f'expired: {number_of_expired_packages}\n{42 * "="}')
     with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',
               encoding='utf-8') as package_data_file:
