@@ -263,7 +263,7 @@ def prepare_package_data(package_type: str) -> None:
     print(f'Number of packages (total: {number_of_packages}, '
           f'expired: {number_of_expired_packages}, '
           f'with DOAP: {number_of_doap_packages})'
-          f'\n{30 * "="')
+          f'\n{30 * "="}')
     with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',
               encoding='utf-8') as package_data_file:
