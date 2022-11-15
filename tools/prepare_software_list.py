@@ -88,7 +88,8 @@ def parse_doap_infos(doap_file: str
     try:
         doap = parse(
             DOWNLOAD_PATH / f'doap_files/{doap_file}.doap')
-    except (FileNotFoundError, ParseError):
+    except (FileNotFoundError, ParseError) as err:
+        print('Error while trying to parse DOAP file:', err)
         return None
 
     info: dict[str, Union[str, list[str], None]] = {}
