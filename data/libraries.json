@@ -570,18 +570,18 @@
         "url": "https://swift.im/swiften.html"
     },
     {
-        "doap": "https://raw.githubusercontent.com/tigase/halcyon/master/halcyon.doap",
-        "last_renewed": "2022-11-10T13:14:51",
-        "name": "Halcyon",
-        "platforms": [],
-        "url": "https://github.com/tigase/halcyon/"
-    },
-    {
         "doap": "https://raw.githubusercontent.com/tigase/jaxmpp/master/jaxmpp.doap",
         "last_renewed": "2022-11-10T13:14:51",
         "name": "JaXMPP",
         "platforms": [],
         "url": "https://github.com/tigase/jaxmpp/"
+    },
+    {
+        "doap": "https://raw.githubusercontent.com/tigase/halcyon/master/halcyon.doap",
+        "last_renewed": "2022-11-10T13:14:51",
+        "name": "Halcyon",
+        "platforms": [],
+        "url": "https://github.com/tigase/halcyon/"
     },
     {
         "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
