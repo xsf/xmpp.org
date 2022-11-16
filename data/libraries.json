@@ -369,6 +369,13 @@
         "url": "https://github.com/mcabber/loudmouth"
     },
     {
+        "doap": "https://github.com/tigase/Martin/blob/master/martin.doap",
+        "last_renewed": "2022-11-10T13:14:51",
+        "name": "Martin",
+        "platforms": [],
+        "url":"https://github.com/tigase/Martin"
+    },
+    {
         "doap": "/hosted-doap/matrix.doap",
         "last_renewed": "2022-03-07T14:50:41",
         "name": "MatriX",
@@ -582,13 +589,6 @@
             "C++"
         ],
         "url": "https://swift.im/swiften.html"
-    },
-    {
-        "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
-        "last_renewed": "2022-11-10T13:14:51",
-        "name": "Tigase Swift XMPP client library",
-        "platforms": [],
-        "url":"https://github.com/tigase/Martin"
     },
     {
         "doap": "/hosted-doap/tinder.doap",
