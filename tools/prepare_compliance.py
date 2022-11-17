@@ -38,18 +38,18 @@ def check_packages_compliance() -> None:
     result to '{clients,libraries,servers}_list.doap'
     '''
     def add_compliance_data(package_type: str) -> None:
+        print('Adding compliance data for', package_type)
         with open(DATA_PATH / f'{package_type}_list_doap.json',
                   'rb') as json_file:
             package_list = json.load(json_file)
 
         for name, props in package_list.items():
-            compliance_data = compliance_dict.get(name)
+            compliance_data = compliance_dict.pop(name, None)
             if compliance_data is None:
                 props['badges'] = {}
                 continue
+
             props['badges'] = compliance_data['badges']
-            if compliance_data['badges']:
-                print('Compliance data added for', name)
 
         with open(DATA_PATH / f'{package_type}_list_doap.json',
                   'w',
@@ -72,9 +72,15 @@ def check_packages_compliance() -> None:
                 compliance_dict[json_result['name']] = json_result
             except subprocess.CalledProcessError as err:
                 print(err)
+
     add_compliance_data('clients')
     add_compliance_data('libraries')
     add_compliance_data('servers')
+
+    for name, props in compliance_dict.items():
+        if props['badges']:
+            print('Compliance data available, but no match for:',
+                  props['name'])
 
 
 if __name__ == '__main__':
