@@ -15,6 +15,8 @@ import re
 import shutil
 from urllib.parse import urlparse
 
+from colorama import Fore
+from colorama import Style
 from defusedxml.ElementTree import parse
 from defusedxml.ElementTree import ParseError
 from PIL import Image
@@ -74,7 +76,6 @@ def check_renewal(name: str, renewed: Optional[str]) -> bool:
         return False
     now = datetime.utcnow()
     if now - last_renewal > ENTRY_LIFETIME:
-        print('Package entry expired for', name)
         return False
 
     return True
@@ -153,7 +154,8 @@ def check_image_file(file_path: Path, extension: str) -> bool:
                 (new_width, new_height), Resampling.LANCZOS)
             img.save(file_path)
             print(f'Logo at {file_path} '
-                  f'(file size: {file_size / (1<<10):,.0f} KB) has been resized')
+                  f'(file size: {file_size / (1<<10):,.0f} KB) '
+                  f'has been resized')
     except (ValueError, OSError, UnidentifiedImageError) as error:
         print('An error occurred while trying to resize logo:', error)
         return False
@@ -190,7 +192,7 @@ def prepare_package_data(package_type: str) -> None:
     Download and prepare package data (clients/servers/libraries) for
     rendering with Hugo
     '''
-    print('Preparing data for', package_type)
+    print(f'Preparing data from {package_type}.json')
     initialize_directory(SOFTWARE_PATH / package_type)
 
     with open(DATA_PATH / f'{package_type}.json', 'rb') as json_file:
@@ -209,9 +211,15 @@ def prepare_package_data(package_type: str) -> None:
         if not check_renewal(
                 package['name'], package.get('last_renewed')):
             number_of_expired_packages += 1
+            print(f'{Fore.RED}Entry expired'
+                  f'{Style.RESET_ALL}    ',
+                  package['name'])
             continue
 
         if package['doap'] is None:
+            print(f'{Fore.YELLOW}DOAP n/a'
+                  f'{Style.RESET_ALL}         ',
+                  package['name'])
             package_infos[package['name']] = {
                     'name_slug': None,
                     'homepage': package['url'],
@@ -231,10 +239,16 @@ def prepare_package_data(package_type: str) -> None:
         doap_url = package['doap']
         if doap_url.startswith('/hosted-doap'):
             # DOAP file is hosted at xmpp.org
+            print(f'{Fore.LIGHTCYAN_EX}DOAP by xmpp.org'
+                  f'{Style.RESET_ALL} ',
+                  package['name'])
             shutil.copyfile(
                 f'{STATIC_PATH}{doap_url}',
                 Path(f'{DOWNLOAD_PATH}/doap_files/{package_name_slug}.doap'))
         else:
+            print(f'{Fore.LIGHTBLUE_EX}DOAP by vendor'
+                  f'{Style.RESET_ALL}   ',
+                  package['name'])
             download_file(
                 package['doap'],
                 Path(f'doap_files/{package_name_slug}.doap'))
@@ -260,8 +274,9 @@ def prepare_package_data(package_type: str) -> None:
 
         create_package_page(package_type, package_name_slug, package['name'])
 
-    print(f'Number of packages:\n'
-          f'total: {number_of_packages} (with DOAP: {number_of_doap_packages}), '
+    print(f'Number of {package_type}:\n'
+          f'total: {number_of_packages} '
+          f'(with DOAP: {number_of_doap_packages}), '
           f'expired: {number_of_expired_packages}\n{42 * "="}')
     with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',

@@ -5,6 +5,9 @@ import os
 from pathlib import Path
 import subprocess
 
+from colorama import Fore
+from colorama import Style
+
 from util import download_file
 
 DOWNLOAD_PATH = Path('downloads')
@@ -79,7 +82,8 @@ def check_packages_compliance() -> None:
 
     for name, props in compliance_dict.items():
         if props['badges']:
-            print('Compliance data available, but no match for:',
+            print(f'{Fore.YELLOW}Compliance data available, but no match for'
+                  f'{Style.RESET_ALL}:',
                   props['name'])
 
 
