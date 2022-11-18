@@ -71,7 +71,7 @@ def check_packages_compliance() -> None:
                     '-v',
                     f'{DOWNLOAD_PATH}/compliance-suite.xml',
                     os.path.join(subdir, file)])
-                json_result = json.loads(result)
+                json_result = json.loads(result.decode('unicode_escape'))
                 compliance_dict[json_result['name']] = json_result
             except subprocess.CalledProcessError as err:
                 print(err)
