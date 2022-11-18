@@ -361,26 +361,16 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     text-align: left;
     margin-bottom: 0px;
 }
-.compliance-data {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.compliance-data-list span {
+    font-family: "Exo 2", sans-serif !important;
 }
-.order-0 {
-    order: 0;
+.compliance-badge-core {
+    background-color: #487095;
 }
-.order-1 {
-    order: 1;
+.compliance-badge-advanced {
+    background-color: #6e3778;
 }
-.order-2 {
-    order: 2;
-}
-.order-3 {
-    order: 3;
-}
-.order-4 {
-    order: 4;
-}
+
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
 	body {
@@ -419,7 +409,6 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     table > thead > tr > th {
 		background-color: #2c2c2c;
         color: #b3b3b3 !important;
-		color: #ccc;
 	}
     .header-home {
         background-image: url(/images/london-dark.jpg);
@@ -438,6 +427,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
         background-color: #262626;
     }
     .card-header {
-        background-color: #313131;
+        background-color: #454545;
+    }
+    .card > ul > li {
+        background-color: #2b2b2b;
+        color: #e3e3e3;
     }
 }
