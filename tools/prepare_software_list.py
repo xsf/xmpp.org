@@ -153,9 +153,9 @@ def check_image_file(file_path: Path, extension: str) -> bool:
             img = img.resize(
                 (new_width, new_height), Resampling.LANCZOS)
             img.save(file_path)
-            print(f'Logo at {file_path} '
+            print(f'                  Logo at {file_path} '
                   f'(file size: {file_size / (1<<10):,.0f} KB) '
-                  f'has been resized')
+                  f'too big, had to be resized')
     except (ValueError, OSError, UnidentifiedImageError) as error:
         print('An error occurred while trying to resize logo:', error)
         return False
