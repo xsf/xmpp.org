@@ -557,13 +557,11 @@
         "url": "https://github.com/jackal-xmpp/stravaganza"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/stroke.doap",
         "last_renewed": "2022-09-27T08:53:45",
         "name": "Stroke",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://swift.im/swiften.html"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "/hosted-doap/strophe-js.doap",
@@ -582,13 +580,11 @@
         "url": "https://github.com/ArchipelProject/StropheCappuccino"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/swiften.doap",
         "last_renewed": "2022-09-27T08:53:56",
         "name": "Swiften",
-        "platforms": [
-            "C++"
-        ],
-        "url": "https://swift.im/swiften.html"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",

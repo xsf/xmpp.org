@@ -99,14 +99,11 @@
         "url": "https://waher.se/Broker.md"
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/isode-m-link.doap",
         "last_renewed": "2022-09-27T08:54:33",
         "name": "Isode M-Link",
-        "platforms": [
-            "Linux",
-            "Windows"
-        ],
-        "url": "https://isode.com/products/m-link.html"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,

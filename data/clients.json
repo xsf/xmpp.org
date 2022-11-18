@@ -557,15 +557,11 @@
         "url": null
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/swift.doap",
         "last_renewed": "2022-09-27T08:54:17",
         "name": "Swift",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://swift.im"
+        "platforms": [],
+        "url": null
     },
     {
         "doap": null,
