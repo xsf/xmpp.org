@@ -41,8 +41,8 @@
                             {{ if eq $category "core" }}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fa-solid fa-fw fa-square-check"></i>&nbsp;
-                                        <span>Base Compliance</span>
+                                        <i class="fa-solid fa-fw fa-circle-check"></i>
+                                        <span class="px-2">Base Compliance</span>
                                     </div>
                                     <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
                                 </li>
@@ -52,8 +52,8 @@
                             {{ if eq $category "im" }}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fa-solid fa-fw fa-comments"></i>&nbsp;
-                                        <span>Instant Messaging</span>
+                                        <i class="fa-solid fa-fw fa-comments"></i>
+                                        <span class="px-2">Instant Messaging</span>
                                     </div>
                                     <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
                                 </li>
@@ -63,8 +63,8 @@
                             {{ if eq $category "mobile" }}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fa-solid fa-fw fa-mobile-screen"></i>&nbsp;
-                                        <span>Mobile</span>
+                                        <i class="fa-solid fa-fw fa-mobile-screen"></i>
+                                        <span class="px-2">Mobile</span>
                                     </div>
                                     <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
                                 </li>
@@ -74,8 +74,8 @@
                             {{ if eq $category "web" }}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fa-regular fa-fw fa-window-restore"></i>&nbsp;
-                                        <span>Web</span>
+                                        <i class="fa-regular fa-fw fa-window-restore"></i>
+                                        <span class="px-2">Web</span>
                                     </div>
                                     <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
                                 </li>
@@ -85,8 +85,8 @@
                             {{ if eq $category "av" }}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <i class="fa-solid fa-fw fa-phone"></i>&nbsp;
-                                        <span>Audio/Video Calling</span>
+                                        <i class="fa-solid fa-fw fa-phone"></i>
+                                        <span class="px-2">Audio/Video Calling</span>
                                     </div>
                                     <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
                                 </li>
