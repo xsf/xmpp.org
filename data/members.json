@@ -70,7 +70,7 @@
         {
             "name": "Jan-Carel Brand",
             "jids": ["jc@opkode.com"],
-            "roles": ["board", "editor", "commteam"]
+            "roles": ["editor", "commteam"]
         },
 
         {
@@ -82,6 +82,11 @@
         {
             "name": "Dan Caseley",
             "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"]
+        },        
+
+        {
+            "name": "Davide Conzon",
+            "jids": ["co_davde@xmpp.jp", "codavide@xabber.org"]
         },
 
         {
@@ -174,12 +179,7 @@
         {
             "name": "Edward Maurer",
             "jids": ["emus@jabbers.one"],
-            "roles": ["commteam"]
-        },
-
-        {
-            "name": "Ali Mattouk",
-            "jids": ["xnamed@jix.im", "admin@jabber.eu.org"]
+            "roles": ["board", "commteam"]
         },
 
         {
@@ -228,7 +228,7 @@
         {
             "name": "Peter Saint-Andre",
             "jids": ["stpeter@jabber.org"],
-            "roles": ["treasurer", "registrar", "editor", "infrastructure"]
+            "roles": ["treasurer", "registrar", "editor", "infrastructure", "board"]
         },
 
         {
