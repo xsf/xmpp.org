@@ -16,7 +16,7 @@ If you have an interest in XMPP standards, it is straightforward to [become a Me
 
 ## The Board{#board}
 
-The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors for 2020-2021 consists of the following individuals:
+The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors consists of the following individuals:
 
 - __Arc Riley__ has been contributing to the free software community for over two decades, and maintains a large number of freely licensed XMPP packages. He lead for Python XML-SIG, mentor students working on XMPP-related projects and frequently presents on XMPP (lightning talks, poster sessions, workshops, etc).
 - __Edward Maurer__ is working in engineering automation (energy sector, non-XMPP) and is volunteering in XMPP since more than five years already. Since 2020 he is thriving the [XSF Communication Team](https://xmpp.org/about/xsf/comm-team/). Besides successfully supporting the XMPP Community and its projects he is co-author of [XMPP Providers](https://providers.xmpp.net/). Find the contact and details in the [XMPP wiki profile](https://wiki.xmpp.org/web/User:Echolon).
