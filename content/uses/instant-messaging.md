@@ -13,7 +13,7 @@ Because user expectations for messaging apps continue to change over time, the X
 
 ## Projects using XMPP-based Instant Messaging
 
-The projects that are using vanilla and open XMPP are listed on our [XMPP Client, XMPP Server or XMPP Library pages].
+Projects that are using vanilla and open XMPP are listed on our [XMPP Client](/software/clients/), [XMPP Server](/software/servers/), and [XMPP Library](/software/libraries/) pages.
 
 There are also many, mostly commerical projects that have created an XMPP-based Instant Messaging network or use XMPP in their backend.
 
