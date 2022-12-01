@@ -61,6 +61,8 @@ _Please do not simply drop links, rather try to make a short (<5 lines) and dece
 
 {{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2022" >}}
 
+From the JMP blog, an article about [building an XMPP client from scratch](http://blog.jmp.chat/b/2022-chat-client-from-scratch), including worked examples of implementing many XEPs.
+
 ## Software news
 
 ### Clients and applications
