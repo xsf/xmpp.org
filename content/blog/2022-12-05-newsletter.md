@@ -37,6 +37,7 @@ The Google Summer of Code 2022 has finished! The two new contributors Patiga and
     - [Project Stateless File Sharing: First Steps](https://dino.im/blog/2022/06/project-stateless-file-sharing-first-steps/)
     - [Stateless File Sharing: Base implementation](https://dino.im/blog/2022/08/stateless-file-sharing-base-implementation/)
     - [Stateless File Sharing: Sources and Compatibility](https://dino.im/blog/2022/08/stateless-file-sharing-sources-and-compatibility/)
+    - [Stateless File Sharing: Source Attachment and Wrap-Up](https://dino.im/blog/2022/11/stateless-file-sharing-source-attachment-and-wrap-up/)
   - **PawBud** works towards [adding support for A/V communication via Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19). Mentors are **JC Brand** and **vanitasvitae**.
     - [On-Boarding Experience with XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/)
     - [ConverseJS: An in-depth view into my GSoC'22 project!](https://xmpp.org/2022/07/conversejs-an-in-depth-view-into-my-gsoc22-project/)
@@ -57,25 +58,41 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+All outstanding Google Summer of Code articles are now complete and have been published. See above ^
 
 {{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2022" >}}
 
-From the JMP blog, an article about [building an XMPP client from scratch](http://blog.jmp.chat/b/2022-chat-client-from-scratch), including worked examples of implementing many XEPs.
+From the JMP blog, an article about [building an XMPP client from scratch](http://blog.jmp.chat/b/2022-chat-client-from-scratch), including worked examples of implementing many XEPs. Read also their [Newsletter: New Cheogram Android Release, Chatwoot Instance](https://blog.jmp.chat/b/october-newsletter-2022)
+
+[ejabberd turns 20!](https://www.process-one.net/blog/ejabberd-turns-20/) Congratulations and many thanks to all who contributed to this great project!
+
+IT-Business writes about the most important internet protocols - [XMPP is part of it](https://www.it-business.de/iot-protokolle-und-standards-a-0de446b7b0d72c123fb1e2dce23dce0f/) [DE]! 
+
+Read about [how Libervia bridges XMPP and ActivityPub](https://www.goffi.org/b/libervia-progress-note-2022-w45-MTdL).
 
 ## Software news
 
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+Conversations 3.0 has been announced and is being [supported by the NLnet foundation](https://nlnet.nl/project/Conversations-3.0/)
+
+[Spark 3.0.0](https://discourse.igniterealtime.org/t/spark-3-0-0-released/92231) has been released.
 
 ### Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[Openfire 4.7.4](https://discourse.igniterealtime.org/t/openfire-4-7-4-release/92225) has been released, and it includes enhancements to cluster-specific 
+implementation of Multi-User Chat functionality, improved websocket handling and improved statistics. Futhermore from the ignite realtime community:
+- [Openfire Monitoring Service plugin 2.4.0 released](https://discourse.igniterealtime.org/t/openfire-monitoring-service-plugin-2-4-0-release/92266)
+- [Hazelcast plugin version 2.6.1 released](https://discourse.igniterealtime.org/t/hazelcast-plugin-version-2-6-1-released/92224)
+- [REST API Openfire plugin 1.10.1 released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-1-released/92223)
+
+Prosody developers on [Bringing FASTer authentication to Prosody and XMPP](https://blog.prosody.im/fast-auth/).
 
 ### Libraries & Tools
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[python-omemo 1.0.2](https://github.com/Syndace/python-omemo) [has been released](https://mail.jabber.org/pipermail/jdev/2022-November/090468.html) with support for the new [SCE](https://xmpp.org/extensions/xep-0420.html)-based OMEMO.
+
+[Mellium to receive grant for end-to-end encryption](https://opencollective.com/mellium/updates/mellium-to-receive-grant-for-end-to-end-encryption)!
 
 ## Extensions and specifications
 
