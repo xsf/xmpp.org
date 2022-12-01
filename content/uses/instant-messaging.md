@@ -13,13 +13,16 @@ Because user expectations for messaging apps continue to change over time, the X
 
 ## Projects using XMPP-based Instant Messaging
 
-There are many projects that have created an XMPP-based Instant Messaging network.
+The projects that are using vanilla and open XMPP are listed on our [XMPP Client, XMPP Server or XMPP Library pages].
+
+There are also many, mostly commerical projects that have created an XMPP-based Instant Messaging network or use XMPP in their backend.
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
 | ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
 | ~300 million | [Kik Messenger](https://www.kik.com/) | Kik Messenger uses a [variation of XMPP](https://github.com/tomer8007/kik-bot-api-unofficial) for its popular chat service. |
 | ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
+| ~6.5 million | [Moya App](https://moya.app/)   | A chat app and social communication platform mainly [used in South Africa](https://www.businessinsider.co.za/the-moyaapp-has-6m-active-users-and-challenging-whatsapp-2022-8). |
 | ~4 million   | [Grindr](https://grindr.com)    | Grindr is a geosocial networking and online dating application that [uses XMPP for its chat application](https://www.meetup.com/Los-Angeles-Android-Developers-Mobile-Developers-Meetup/events/221112018/). |
 |    ~350k     | [Mailfence](https://mailfence.com)   | Mailfence uses XMPP for its [group chat](https://blog.mailfence.com/mailfence-groups/) functionality. |
 |    ~10k      | [Kontalk](http://kontalk.org)   | A free and open source XMPP service that uses your phone number as the user ID. |
