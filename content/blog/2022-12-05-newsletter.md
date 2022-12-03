@@ -76,6 +76,8 @@ Read about [how Libervia bridges XMPP and ActivityPub](https://www.goffi.org/b/l
 
 Conversations 3.0 has been announced and is being [supported by the NLnet foundation](https://nlnet.nl/project/Conversations-3.0/)
 
+[Gajim 1.5.4](https://gajim.org/post/2022-12-03-gajim-1.5.4-released/) has been released, and it comes with a reworked file transfer interface, better URL detection, message selection improvements, and many fixes under the hood.
+
 [Spark 3.0.0](https://discourse.igniterealtime.org/t/spark-3-0-0-released/92231) has been released.
 
 ### Servers
