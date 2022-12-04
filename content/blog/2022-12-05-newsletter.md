@@ -54,7 +54,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
-- [Capitole du Libre](https://capitoledulibre.org): Members of the “JabberFR” and “Libre en Communs” associations will be present in Toulouse on the 19-20th of November
 
 ## Articles
 
@@ -68,7 +67,7 @@ From the JMP blog, an article about [building an XMPP client from scratch](http:
 
 IT-Business writes about the most important internet protocols - [XMPP is part of it](https://www.it-business.de/iot-protokolle-und-standards-a-0de446b7b0d72c123fb1e2dce23dce0f/) [DE]! 
 
-Read about [how Libervia bridges XMPP and ActivityPub](https://www.goffi.org/b/libervia-progress-note-2022-w45-MTdL).
+Read about [how Libervia bridges XMPP and ActivityPub](https://www.goffi.org/b/libervia-progress-note-2022-w45-MTdL) as the gateway developed by Goffi _(thanks to a NLnet/NGI0 grant)_ hit alpha state. Also announced is OMEMO:2 support, for messages, files, file transfers via Jingle and all Pubsub related features.
 
 ## Software news
 
@@ -78,7 +77,7 @@ Conversations 3.0 has been announced and is being [supported by the NLnet founda
 
 [Gajim 1.5.4](https://gajim.org/post/2022-12-03-gajim-1.5.4-released/) has been released, and it comes with a reworked file transfer interface, better URL detection, message selection improvements, and many fixes under the hood.
 
-[Spark 3.0.0](https://discourse.igniterealtime.org/t/spark-3-0-0-released/92231) has been released.
+[Spark 3.0.0](https://discourse.igniterealtime.org/t/spark-3-0-0-released/92231) has been released with a new look and includes the Pade Meetings plugin for audio and video calls via Jitsi Meet.
 
 ### Servers
 
@@ -87,14 +86,16 @@ implementation of Multi-User Chat functionality, improved websocket handling and
 - [Openfire Monitoring Service plugin 2.4.0 released](https://discourse.igniterealtime.org/t/openfire-monitoring-service-plugin-2-4-0-release/92266)
 - [Hazelcast plugin version 2.6.1 released](https://discourse.igniterealtime.org/t/hazelcast-plugin-version-2-6-1-released/92224)
 - [REST API Openfire plugin 1.10.1 released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-1-released/92223)
+- [HTTP File Upload plugin 1.2.0 released](https://discourse.igniterealtime.org/t/http-file-upload-plugin-1-2-0-released/92302)
+- [Denial of Service Vulnerability in Smack 4.4 if XMPPTCPConnection is used with StAX](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
 
-Prosody developers on [Bringing FASTer authentication to Prosody and XMPP](https://blog.prosody.im/fast-auth/).
+As mentioned in the [October 2022 Newsletter](https://xmpp.org/2022/11/the-xmpp-newsletter-october-2022/#articles) more info on the SASL2 related work starts to appear. The Prosody server developers talk about [Bringing FASTer authentication to Prosody and XMPP](https://blog.prosody.im/fast-auth/) and how "tokens" are the answer.
 
 ### Libraries & Tools
 
-[python-omemo 1.0.2](https://github.com/Syndace/python-omemo) [has been released](https://mail.jabber.org/pipermail/jdev/2022-November/090468.html) with support for the new [SCE](https://xmpp.org/extensions/xep-0420.html)-based OMEMO.
+[python-omemo 1.0.2](https://github.com/Syndace/python-omemo) has [been released](https://mail.jabber.org/pipermail/jdev/2022-November/090468.html) with support for the new [SCE](https://xmpp.org/extensions/xep-0420.html)-based OMEMO. Interesting enough the Libervia progress above is based on this work.
 
-[Mellium to receive grant for end-to-end encryption](https://opencollective.com/mellium/updates/mellium-to-receive-grant-for-end-to-end-encryption)!
+And OMEMO news in the Go corner too, [Mellium to receive grant for end-to-end encryption](https://opencollective.com/mellium/updates/mellium-to-receive-grant-for-end-to-end-encryption) from the NGI Assure Fund.
 
 ## Extensions and specifications
 
