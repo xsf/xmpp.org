@@ -59,11 +59,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 All outstanding Google Summer of Code articles are now complete and have been published. See above ^
 
-{{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2022" >}}
-
 From the JMP blog, an article about [building an XMPP client from scratch](http://blog.jmp.chat/b/2022-chat-client-from-scratch), including worked examples of implementing many XEPs. Read also their [Newsletter: New Cheogram Android Release, Chatwoot Instance](https://blog.jmp.chat/b/october-newsletter-2022)
 
 [ejabberd turns 20!](https://www.process-one.net/blog/ejabberd-turns-20/) Congratulations and many thanks to all who contributed to this great project!
+
+{{< figure src="/images/newsletter/2022-12-05/ejabberdturns20.png" caption="ejabberd turns 20" >}}
 
 IT-Business writes about the most important internet protocols - [XMPP is part of it](https://www.it-business.de/iot-protokolle-und-standards-a-0de446b7b0d72c123fb1e2dce23dce0f/) [DE]! 
 
@@ -76,6 +76,8 @@ Read about [how Libervia bridges XMPP and ActivityPub](https://www.goffi.org/b/l
 Conversations 3.0 has been announced and is being [supported by the NLnet foundation](https://nlnet.nl/project/Conversations-3.0/)
 
 [Gajim 1.5.4](https://gajim.org/post/2022-12-03-gajim-1.5.4-released/) has been released, and it comes with a reworked file transfer interface, better URL detection, message selection improvements, and many fixes under the hood.
+
+{{< figure src="/images/newsletter/2022-12-05/gajim-file-transfer-interface.png" caption="New Gajim file transfer interface" >}}
 
 [Spark 3.0.0](https://discourse.igniterealtime.org/t/spark-3-0-0-released/92231) has been released with a new look and includes the Pade Meetings plugin for audio and video calls via Jitsi Meet.
 
