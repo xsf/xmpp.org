@@ -84,7 +84,7 @@ Conversations 3.0 has been announced and is being [supported by the NLnet founda
 ### Servers
 
 [Openfire 4.7.4](https://discourse.igniterealtime.org/t/openfire-4-7-4-release/92225) has been released, and it includes enhancements to cluster-specific 
-implementation of Multi-User Chat functionality, improved websocket handling and improved statistics. Futhermore from the ignite realtime community:
+implementation of Multi-User Chat functionality, improved websocket handling and improved statistics. Furthermore from the ignite realtime community:
 - [Openfire Monitoring Service plugin 2.4.0 released](https://discourse.igniterealtime.org/t/openfire-monitoring-service-plugin-2-4-0-release/92266)
 - [Hazelcast plugin version 2.6.1 released](https://discourse.igniterealtime.org/t/hazelcast-plugin-version-2-6-1-released/92224)
 - [REST API Openfire plugin 1.10.1 released](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-1-released/92223)
