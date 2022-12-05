@@ -15,7 +15,7 @@ This is a community effort, and we would like to thank translators for their con
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
   - General contributors: **emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Ppjet6**
+  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
   - Translators: **Jeybe, wh0nix**
 - Italian: [nicfab.it](https://www.nicfab.it/)
