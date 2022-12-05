@@ -25,7 +25,7 @@ This is a community effort, and we would like to thank translators for their con
 
 ## XSF Announcements
 
-- The XSF membership application period for the fourth quarter 2022 is currently open. If you are interested in becoming a XSF member then you can [apply for membership](https://wiki.xmpp.org/web/Membership_Applications_Q4_2022). Please submit by November 27, 2022.
+- The XSF membership application period for the fourth quarter 2022 has ended. Voting results will be [announced on Dec 13th](https://wiki.xmpp.org/web/Membership_Applications_Q4_2022).
 
 ### Google Summer of Code 2022
 
