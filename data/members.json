@@ -52,13 +52,18 @@
         },
 
         {
-            "name": "Aditya Borikar",
-            "jids": ["adiaholic@xabber.org"]
+            "name": "Fannys Bampaloukas",
+            "jids": ["msavoritias@disroot.org"]
         },
 
         {
             "name": "Ludovic Bocquet",
             "jids": ["lbocquet@jabber.org"]
+        },
+
+        {
+            "name": "Adrien Bourmault ",
+            "jids": ["neox@a-lec.org"]
         },
 
         {
@@ -82,7 +87,12 @@
         {
             "name": "Dan Caseley",
             "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"]
-        },        
+        },
+
+        {
+            "name": "Nicolas Cedilnik",
+            "jids": ["nicoco@nicoco.fr"]
+        },       
 
         {
             "name": "Davide Conzon",
@@ -113,6 +123,11 @@
         {
             "name": "Waqas Hussain",
             "jids": ["waqas@prosody.im"]
+        },
+
+        {
+            "name": "Stephen Paul Weber",
+            "jids": ["singpolyma@singpolyma.net"]
         },
 
         {
@@ -194,6 +209,11 @@
         },
 
         {
+            "name": "Thilo Molitor",
+            "jids": ["thilo.molitor@juforum.de"]
+        },
+
+        {
             "name": "Edwin Mons",
             "jids": ["intosi@ik.nu"],
             "roles": ["infrastructure"]
@@ -212,6 +232,11 @@
         {
             "name": "Jérôme Poisson",
             "jids": ["goffi@jabber.fr"]
+        },
+
+        {
+            "name": "Axel Reimer ",
+            "jids": ["axel@snikket.eversten.net"]
         },
 
         {
@@ -278,11 +303,6 @@
         {
             "name": "Holger Weiß",
             "jids": ["holger@jabber.fu-berlin.de"]
-        },
-
-        {
-            "name": "Sam Whited",
-            "jids": ["sam@samwhited.com"]
         },
 
         {
