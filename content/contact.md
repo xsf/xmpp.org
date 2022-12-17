@@ -4,21 +4,17 @@ aliases:
     - "/contact.html"
 ---
 
-There are a number of ways to contact the XSF and/or its members.
+There are a number of ways to contact the XMPP Standards Foundation or its members.
 
-If you have a general enquiry please email info (at) xmpp (dot) org.
+- **General inquiry**: If you have a general enquiry please email *info (at) xmpp (dot) org*. If you’d prefer not to talk to an anonymous email address, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) can be contacted using the details in their profiles.
 
-If you want to enquire about sponsorship opportuntities please email sponsors (at) xmpp (dot) org.
+- **Chat & mailing lists**: Finally you can join in the many [XMPP Discussions](/community/chat) occurring on the mailing lists.
 
-If you’d prefer not to talk to an anonymous email address, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) can be contacted using the details in their profiles.
+- **Sponsorship opportuntities**: If you want to enquire about sponsorship opportuntities please email *sponsors (at) xmpp (dot) org*.
 
-Finally you can join in the many [XMPP Discussions](/community/chat) occurring on the mailing lists.
+- **Licensing**: If you have any questions about the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark), please contact *trademark (at) jabber (dot) org*.
 
-The Foundation’s postal address is:
+The XMPP Standards Foundation’s postal address is:
 
 P.O. Box 787
 Parker, CO 80134 USA
-
-Licensing
-
-If you have any questions about the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark), please contact trademark (at) jabber (dot) org.
