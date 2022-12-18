@@ -6,7 +6,7 @@ aliases:
 
 There are a number of ways to contact the XMPP Standards Foundation or its members.
 
-- **General inquiry**: If you have a general enquiry please email *info (at) xmpp (dot) org*. If you’d prefer not to talk to an anonymous email address, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) can be contacted using the details in their profiles.
+- **General enquiry**: For general enquiries please email *info (at) xmpp (dot) org*. If you prefer to contact someone directly, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) list contact details in their profiles.
 
 - **Chat & mailing lists**: Finally you can join in the many [XMPP Discussions](/community/chat) occurring on the mailing lists.
 
