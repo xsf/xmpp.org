@@ -10,7 +10,7 @@ There are a number of ways to contact the XMPP Standards Foundation or its membe
 
 - **Chat & mailing lists**: Finally, you can join one of many [XMPP-related discussions](/community/chat) by chat or by using the mailing lists.
 
-- **Sponsorship opportuntities**: If you want to enquire about sponsorship opportuntities please email *sponsors (at) xmpp (dot) org*.
+- **Sponsorship opportunities**: For sponsorship opportunities please email *sponsors (at) xmpp (dot) org*.
 
 - **Licensing**: If you have any questions about the [Jabber Trademark Licensing Program](/about/xsf/jabber-trademark), please contact *trademark (at) jabber (dot) org*.
 
