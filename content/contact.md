@@ -8,7 +8,7 @@ There are a number of ways to contact the XMPP Standards Foundation or its membe
 
 - **General enquiry**: For general enquiries please email *info (at) xmpp (dot) org*. If you prefer to contact someone directly, many of the [XSF Board and XMPP Council members](/about/xmpp-standards-foundation) list contact details in their profiles.
 
-- **Chat & mailing lists**: Finally you can join in the many [XMPP Discussions](/community/chat) occurring on the mailing lists.
+- **Chat & mailing lists**: Finally, you can join one of many [XMPP-related discussions](/community/chat) by chat or by using the mailing lists.
 
 - **Sponsorship opportuntities**: If you want to enquire about sponsorship opportuntities please email *sponsors (at) xmpp (dot) org*.
 
