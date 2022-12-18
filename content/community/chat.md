@@ -22,4 +22,4 @@ Chat about build software with XMPP ([join](xmpp:jdev@muc.xmpp.org?join) | [logs
 ### Operators chatroom
 Chat about running XMPP services ([join](xmpp:operators@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/operators/) | [webchat](https://xmpp.org/chat?operators))
 
-All of these venues are completely free and open to any interested individual. If you are interested in searching for other chat have a look at the [XMPP Chat Room Search Engine](https://search.jabber.network/rooms/1) (not related to XSF business or hosting).
+All of these venues are completely free and open to any interested individual. Community chats for software support etc. can be found via [XMPP Chat Room Search Engine](https://search.jabber.network/rooms/1) (not related to XSF business or hosting).
