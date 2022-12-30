@@ -22,7 +22,7 @@ Il s’agit d’un effort communautaire, et nous aimerions remercier les traduct
 - Anglais (original) : [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Contributeurs généraux : **emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
 - Français : [jabberfr.org](https://news.jabberfr.org/category/newsletter/) et [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Traduction : **(à venir)**
+  - Traduction : **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - Allemand : [xmpp.org](https://xmpp.org/categories/newsletter/) et [anoxinon.de](https://anoxinon.de/blog/)
   - Traduction : **Jeybe, wh0nix**
 - Italien : [nicfab.it](https://www.nicfab.it/)
