@@ -44,7 +44,7 @@ Il s’agit d’un effort communautaire, et nous aimerions remercier les traduct
 
 
 
-![GSoC 2022](https://news.jabberfr.org/wp-content/uploads/2022/02/GSoC_2022_Logo.png")
+![GSoC 2022](/images/logos/GSoC_2022_Logo.png)
 
 
 
@@ -103,7 +103,7 @@ Sur le blog de JMP, un article sur [la construction d’un client XMPP à partir
 
 
 
-![ejabberd a 20 ans !](https://news.jabberfr.org/wp-content/uploads/2022/12/ejabberdturns20.png")
+![ejabberd a 20 ans !](/images/newsletter/2022-12-05/ejabberdturns20.png)
 
 
 
@@ -131,7 +131,7 @@ Conversations 3.0 a été annoncé et est [soutenu par la fondation NLnet](https
 
 
 
-![Nouvelle interface de transfert de fichiers de Gajim 1.5.4](https://news.jabberfr.org/wp-content/uploads/2022/12/gajim-file-transfer-interface.png)
+![Nouvelle interface de transfert de fichiers de Gajim 1.5.4](/images/newsletter/2022-12-05/gajim-file-transfer-interface.png)
 
 
 
@@ -192,9 +192,9 @@ Le processus de développement XEP commence par la rédaction d’une idée et s
 
 
 
-- [PubSub Social Feed] (https://xmpp.org/extensions/inbox/pubsub-social-feed.html)
+- [PubSub Social Feed](https://xmpp.org/extensions/inbox/pubsub-social-feed.html)
   - Cette spécification définit un moyen de publier du contenu social via XMPP.
-- [SASL SCRAM Downgrade Protection] (https://xmpp.org/extensions/inbox/xep-downgrade-prevention.html)
+- [SASL SCRAM Downgrade Protection](https://xmpp.org/extensions/inbox/xep-downgrade-prevention.html)
   - Cette spécification fournit un moyen de sécuriser les prises de contact SASL et SASL2 contre les déclassements de méthode et de liaison de canal.
 - [OpenPGP pour XMPP Pubsub](https://xmpp.org/extensions/inbox/pubsub-encryption.html)
   - Spécifie un profil OpenPGP pour XMPP (XEP-0373) pour le cas d’utilisation pubsub.
