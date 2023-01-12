@@ -68,7 +68,6 @@ make -f MakefileDocker
 It'll do the following:
 
 * Create a Docker image based on `DockerfileDev` which is a development environment with a complete set of dependencies ready.
-
 * Build the website from the locally checked out xmpp.org repository (`make prepare_docker`). This includes `deploy/xsf.conf`.
 
 For development convenience, you can run the website on port 80:
@@ -99,9 +98,7 @@ Now, the website should be available at `http://localhost:1313`
 ```
 <repo>
   Dockerfile / DockerfileDev
-  fabfile.py
-  MakefileDocker
-  Makefile
+  Makefile / MakefileDocker
   README.md
   public
     <generated files>
@@ -119,7 +116,7 @@ To just generate a new version (without starting up a local webserver) just do:
 make publish
 ```
 
-Pages will be available in the /public folder.
+Pages will be available in the `/public` folder.
 
 ## Theme development
 
