@@ -37,61 +37,71 @@
                 </div>
                 <ul class="list-group list-group-flush compliance-data-list">
                     {{ if $props.badges }}
+                        {{ $categories := slice "" }}
                         {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "core" }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa-solid fa-fw fa-circle-check"></i>
-                                        <span class="px-2">Base Compliance</span>
-                                    </div>
-                                    <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
-                                </li>
-                            {{ end }}
+                            {{ $categories = $categories | append  $category }}
                         {{ end }}
-                        {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "im" }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa-solid fa-fw fa-comments"></i>
-                                        <span class="px-2">Instant Messaging</span>
-                                    </div>
-                                    <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
-                                </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa-solid fa-fw fa-circle-check"></i>
+                                <span class="px-2">Base Compliance</span>
+                            </div>
+                            {{ if in $categories "core" }}
+                                <span class="badge {{ if eq $props.badges.core "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $props.badges.core | title }}</span>
+                            {{ else }}
+                                -
                             {{ end }}
-                        {{ end }}
-                        {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "mobile" }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa-solid fa-fw fa-mobile-screen"></i>
-                                        <span class="px-2">Mobile</span>
-                                    </div>
-                                    <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
-                                </li>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa-solid fa-fw fa-comments"></i>
+                                <span class="px-2">Instant Messaging</span>
+                            </div>
+                            {{ if in $categories "im" }}
+                                <span class="badge {{ if eq $props.badges.im "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $props.badges.im | title }}</span>
+                            {{ else }}
+                                -
                             {{ end }}
-                        {{ end }}
-                        {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "web" }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa-regular fa-fw fa-window-restore"></i>
-                                        <span class="px-2">Web</span>
-                                    </div>
-                                    <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
-                                </li>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa-solid fa-fw fa-mobile-screen"></i>
+                                <span class="px-2">Mobile</span>
+                            </div>
+                            {{ if in $categories "mobile" }}
+                                <span class="badge {{ if eq $props.badges.mobile "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $props.badges.mobile | title }}</span>
+                            {{ else }}
+                                -
                             {{ end }}
-                        {{ end }}
-                        {{ range $category, $level := $props.badges }}
-                            {{ if eq $category "av" }}
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <i class="fa-solid fa-fw fa-phone"></i>
-                                        <span class="px-2">Audio/Video Calling</span>
-                                    </div>
-                                    <span class="badge {{ if eq $level "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $level | title }}</span>
-                                </li>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa-regular fa-fw fa-window-restore"></i>
+                                <span class="px-2">Web</span>
+                            </div>
+                            {{ if in $categories "web" }}
+                                <span class="badge {{ if eq $props.badges.web "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $props.badges.web | title }}</span>
+                            {{ else }}
+                                -
                             {{ end }}
-                        {{ end }}
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa-solid fa-fw fa-phone"></i>
+                                <span class="px-2">Audio/Video Calling</span>
+                            </div>
+                            {{ if in $categories "av" }}
+                                <span class="badge {{ if eq $props.badges.av "core" }}compliance-badge-core{{ else }}compliance-badge-advanced{{ end }}">{{ $props.badges.av | title }}</span>
+                            {{ else }}
+                                -
+                            {{ end }}
+                        </li>
+
                     {{ else }}
                         <li class="list-group-item d-flex justify-content-center align-items-center">
                             <span class="text-muted small py-2">No compliance level</span>
