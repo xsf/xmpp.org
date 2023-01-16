@@ -6,8 +6,6 @@ from typing import Optional
 from typing import Union
 
 from datetime import date
-from datetime import datetime
-from datetime import timedelta
 from pathlib import Path
 import json
 import os
@@ -59,26 +57,6 @@ PLATFORMS: list[str] = [
     'macOS',
     'Linux',
 ]
-
-ENTRY_LIFETIME = timedelta(days=365)
-
-
-def check_renewal(name: str, renewed: Optional[str]) -> bool:
-    '''
-    Check if 'last_renewed' entry is not older than 365 days
-    '''
-    if renewed is None:
-        return False
-    try:
-        last_renewal = datetime.strptime(renewed, "%Y-%m-%dT%H:%M:%S")
-    except ValueError:
-        print('Failed to parse timestamp for', name)
-        return False
-    now = datetime.utcnow()
-    if now - last_renewal > ENTRY_LIFETIME:
-        return False
-
-    return True
 
 
 def parse_doap_infos(doap_file: str
@@ -201,33 +179,13 @@ def prepare_package_data(package_type: str) -> None:
     package_infos: dict[str, dict[
         str, Union[None, str, list[str], dict[str, str]]]] = {}
 
-    number_of_packages = 0
-    number_of_expired_packages = 0
     number_of_doap_packages = 0
 
     for package in xsf_package_list:
-        number_of_packages += 1
-
-        if not check_renewal(
-                package['name'], package.get('last_renewed')):
-            number_of_expired_packages += 1
-            print(f'{Fore.RED}Entry expired'
-                  f'{Style.RESET_ALL}    ',
-                  package['name'])
-            continue
-
         if package['doap'] is None:
             print(f'{Fore.YELLOW}DOAP n/a'
                   f'{Style.RESET_ALL}         ',
                   package['name'])
-            package_infos[package['name']] = {
-                    'name_slug': None,
-                    'homepage': package['url'],
-                    'logo': None,
-                    'shortdesc': None,
-                    'platforms': package['platforms'],
-                    'programming_lang': None,
-            }
             continue
 
         # DOAP is available
@@ -275,9 +233,9 @@ def prepare_package_data(package_type: str) -> None:
         create_package_page(package_type, package_name_slug, package['name'])
 
     print(f'Number of {package_type}:\n'
-          f'total: {number_of_packages} '
+          f'total: {len(xsf_package_list)} '
           f'(with DOAP: {number_of_doap_packages}), '
-          f'expired: {number_of_expired_packages}\n{42 * "="}')
+          f'\n{42 * "="}')
     with open(DATA_PATH / f'{package_type}_list_doap.json',
               'w',
               encoding='utf-8') as package_data_file:
