@@ -5,6 +5,7 @@ a single JSON file
 from typing import Any
 from typing import Optional
 
+from multiprocessing.pool import ThreadPool
 import sys
 import os
 import json
@@ -68,89 +69,92 @@ SELFHOSTED_RFCS = [
 BIB_XML_PATH = 'https://xml2rfc.tools.ietf.org/public/rfc/bibxml'
 
 
-def build_rfc_list() -> None:
+def get_rfc_data(number: int) -> dict[str, Any]:
     '''
     Downloads and parses RFC references and builds an RFC list with
     additional parameters (e.g. selfhosted).
     Stores data in rfc_list.json
     '''
+    print(f'Get RFC data for RFC {number}')
+    try:
+        request = requests.get(f'{BIB_XML_PATH}/reference.RFC.{number}.xml')
+    except requests.exceptions.RequestException as err:
+        sys.exit(f'Error while downloading reference for '
+                 f'RFC {number} ({err})')
+
+    if not 200 >= request.status_code < 400:
+        sys.exit(f'Error while downloading reference for '
+                 f'RFC {number} ({request.status_code})')
+
+    try:
+        root = fromstring(request.content)
+    except ParseError:
+        sys.exit(f'Error while parsing RFC reference for RFC {number}')
+
+    authors: Optional[str] = None
+    title: Optional[str] = None
+    date: Optional[str] = None
+    abstract: Optional[str] = None
+    for item in root.iter():
+        if item.tag == 'title':
+            title = item.text
+        if item.tag == 'date':
+            date = item.attrib.get('year')
+        if item.tag == 'author':
+            if authors is None:
+                authors = item.attrib.get('fullname')
+            else:
+                authors += f", {item.attrib.get('fullname')}"
+        if item.tag == 'abstract':
+            abstract = item.find('t').text
+
+    obsoletes: Optional[str] = None
+    obsoleted_by: Optional[str] = None
+    if number == 3920:
+        obsoleted_by = '6120'
+    if number == 3921:
+        obsoleted_by = '6121'
+    if number == 4622:
+        obsoleted_by = '5122'
+    if number == 5122:
+        obsoletes = '4622'
+    if number == 6120:
+        obsoletes = '3920'
+    if number == 6121:
+        obsoletes = '3921'
+    if number == 7248:
+        obsoleted_by = '8084'
+    if number == 7700:
+        obsoleted_by = '8266'
+    if number == 8084:
+        obsoletes = '7248'
+    if number == 8266:
+        obsoletes = '7700'
+
+    basic = bool(number in BASIC_RFC_NUMBERS)
+    selfhosted = bool(number in SELFHOSTED_RFCS)
+
+    return {
+        'number': number,
+        'title': title,
+        'date': date,
+        'authors': authors,
+        'abstract': abstract,
+        'obsoletes': obsoletes,
+        'obsoleted_by': obsoleted_by,
+        'basic': basic,
+        'selfhosted': selfhosted,
+    }
+
+def build_rfc_list() -> None:
+    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     rfcs: list[dict[str, Any]] = []
 
-    for number in RFC_NUMBERS:
-        try:
-            request = requests.get(f'{BIB_XML_PATH}/reference.RFC.{number}.xml')
-        except requests.exceptions.RequestException as err:
-            sys.exit(f'Error while downloading reference for '
-                     f'RFC {number} ({err})')
+    results = ThreadPool(8).imap_unordered(get_rfc_data, RFC_NUMBERS)
+    for result in results:
+        rfcs.append(result)
 
-        if not 200 >= request.status_code < 400:
-            sys.exit(f'Error while downloading reference for '
-                     f'RFC {number} ({request.status_code})')
-
-        try:
-            root = fromstring(request.content)
-        except ParseError:
-            sys.exit(f'Error while parsing RFC reference for RFC {number}')
-
-        authors: Optional[str] = None
-        title: Optional[str] = None
-        date: Optional[str] = None
-        abstract: Optional[str] = None
-        for item in root.iter():
-            if item.tag == 'title':
-                title = item.text
-            if item.tag == 'date':
-                date = item.attrib.get('year')
-            if item.tag == 'author':
-                if authors is None:
-                    authors = item.attrib.get('fullname')
-                else:
-                    authors += f", {item.attrib.get('fullname')}"
-            if item.tag == 'abstract':
-                abstract = item.find('t').text
-
-        obsoletes: Optional[str] = None
-        obsoleted_by: Optional[str] = None
-        if number == 3920:
-            obsoleted_by = '6120'
-        if number == 3921:
-            obsoleted_by = '6121'
-        if number == 4622:
-            obsoleted_by = '5122'
-        if number == 5122:
-            obsoletes = '4622'
-        if number == 6120:
-            obsoletes = '3920'
-        if number == 6121:
-            obsoletes = '3921'
-        if number == 7248:
-            obsoleted_by = '8084'
-        if number == 7700:
-            obsoleted_by = '8266'
-        if number == 8084:
-            obsoletes = '7248'
-        if number == 8266:
-            obsoletes = '7700'
-
-        basic = bool(number in BASIC_RFC_NUMBERS)
-        selfhosted = bool(number in SELFHOSTED_RFCS)
-
-        rfcs.append(
-            {
-                'number': number,
-                'title': title,
-                'date': date,
-                'authors': authors,
-                'abstract': abstract,
-                'obsoletes': obsoletes,
-                'obsoleted_by': obsoleted_by,
-                'basic': basic,
-                'selfhosted': selfhosted,
-            }
-        )
-        print('Added RFC', number)
-
-    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+    rfcs = sorted(rfcs, key=lambda d: d['number'])
 
     with open(f'{base_path}/../data/rfc_list.json',
               'w',
