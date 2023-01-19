@@ -525,6 +525,13 @@
         "url": "https://github.com/fritzy/SleekXMPP"
     },
     {
+        "doap": "https://git.sr.ht/~nicoco/slidge/blob/master/doap.xml",
+        "last_renewed": null,
+        "name": "Slidge",
+        "platforms": [],
+        "url": null
+    },
+    {
         "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
         "last_renewed": "2022-10-18T00:00:00",
         "name": "slixmpp",
