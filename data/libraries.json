@@ -525,6 +525,15 @@
         "url": "https://github.com/fritzy/SleekXMPP"
     },
     {
+        "doap": "https://git.sr.ht/~nicoco/slidge/tree/master/item/doap.xml",
+        "last_renewed": "2023-01-18T00:00:00",
+        "name": "Slidge",
+        "platforms": [
+            "Python"
+        ],
+        "url": "https://sr.ht/~nicoco/slidge/"
+    },
+    {
         "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
         "last_renewed": "2022-10-18T00:00:00",
         "name": "slixmpp",
@@ -757,14 +766,5 @@
             "JavaScript"
         ],
         "url": "http://ivan.vucica.net"
-    },
-    {
-        "doap": "https://git.sr.ht/~nicoco/slidge/tree/master/item/doap.xml",
-        "last_renewed": "2023-01-18T00:00:00",
-        "name": "Slidge",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://sr.ht/~nicoco/slidge/"
     }
 ]
