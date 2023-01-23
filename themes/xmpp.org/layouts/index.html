@@ -2,7 +2,7 @@
 {{ if .Site.Data.announcement.enabled }}
 <div class="alert alert-info mb-0 text-center" role="alert">
   <a href="{{ .Site.Data.announcement.url }}" target="blank_" class="alert-link">
-    Announcement: {{ .Site.Data.announcement.text }} More »
+    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{ .Site.Data.announcement.text }}
   </a>
 </div>
 {{ end }}
