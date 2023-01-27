@@ -30,10 +30,7 @@ def emit_violation(entry_name: str,
     print(f"{prefix}: entry {entry_name!r}: {message}", file=sys.stderr)
 
 
-def check_entries(entries: dict[str, Any],
-                  allowed_platforms: Optional[set[str]] = None,
-                  show_warnings: bool = False
-                  ) -> int:
+def check_entries(entries: dict[str, Any]) -> int:
     '''Checks entries for violations and returns their count'''
     violations = 0
     previous_name = None
@@ -70,20 +67,6 @@ def check_entries(entries: dict[str, Any],
 
         supported_platforms = entry.get("platforms", [])
 
-        if allowed_platforms is not None:
-            is_severe = True
-            unknown = set(supported_platforms) - allowed_platforms
-            if unknown and (is_severe or show_warnings):
-                emit_violation(
-                    entry["name"],
-                    f"undefined platforms: {', '.join(map(repr, unknown))} "
-                    f"(the allowed platforms are listed in platforms.json. If"
-                    f" you think a platform is missing add it and mention it "
-                    f"in your Pull Request)",
-                    warning=not is_severe
-                )
-                violations += is_severe
-
         sorted_platforms = sorted(supported_platforms,
                                   key=lambda x: x.casefold())
         if sorted_platforms != supported_platforms:
@@ -108,34 +91,15 @@ if __name__ == "__main__":
         "which",
         choices=("clients.json", "servers.json", "libraries.json"),
     )
-    parser.add_argument(
-        "-W",
-        default=False,
-        dest="warnings",
-        action="store_true",
-        help="Show warnings in addition to errors",
-    )
 
     args = parser.parse_args()
 
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     input_file = os.path.join(base_path, f"../data/{args.which}")
-    platforms_file = os.path.join(base_path, "../data/platforms.json")
-
     with open(input_file, "rb") as data_file:
         data = json.load(data_file)
 
-    if args.which in ["clients.json", "servers.json"]:
-        with open(platforms_file, "rb") as plattforms_file:
-            platforms = set(json.load(plattforms_file))
-    else:
-        platforms = None
-
-    violations_count = check_entries(
-        data,
-        allowed_platforms=platforms,
-        show_warnings=args.warnings,
-    )
+    violations_count = check_entries(data)
     if violations_count:
         print(f"Found {violations_count} severe violations. Please fix them.",
               file=sys.stderr)

@@ -89,14 +89,6 @@ def main():
         filename = f.name
         data = json.load(f)
 
-    if "clients" in filename or "servers" in filename:
-        with open(os.path.join(
-                os.path.dirname(filename),
-                "platforms.json")) as f:
-            valid_platforms = set(json.load(f))
-    else:
-        valid_platforms = None
-
     name_map = {item["name"]: item for item in data}
 
     try:
@@ -147,24 +139,6 @@ def main():
             platform.strip()
             for platform in args.new_platforms
         ))
-
-    if valid_platforms is not None:
-        unknown = set(item["platforms"]) - valid_platforms
-        if unknown:
-            print(
-                "Error: the platform(s) {} is/are not defined".format(
-                    ", ".join(map(repr, unknown))
-                ),
-                file=sys.stderr,
-            )
-            print(
-                "Hint: the following platforms are allowed:",
-                file=sys.stderr,
-            )
-            for platform in sorted(valid_platforms, key=sortkey):
-                print("   ", platform, file=sys.stderr)
-
-            sys.exit(2)
 
     item["platforms"].sort(key=lambda x: x.casefold())
 

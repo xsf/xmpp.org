@@ -76,8 +76,6 @@ The following options are useful for updating information about your project:
 
     ./update_entry.py ../data/clients.json Pidgin --set-platforms 'Windows' 'Linux'
 
-  **Note:** For clients and servers, the platforms are restricted to those named in the ``platform.json`` file!
-
 Do not set ``--no-ask`` and always be sure to review that your changes do what you intend them to do.
 
 If you do not know how to spell your project correctly, leave out the ``NAME`` argument; the tool will list the project it knows.
