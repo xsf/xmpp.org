@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from typing import Any
+
 import argparse
 import difflib
 import copy
@@ -6,7 +8,7 @@ import json
 import sys
 
 
-def json_as_lines(data):
+def json_as_lines(data: Any) -> list[str]:
     return [
         line+"\n"
         for line in json.dumps(
@@ -17,7 +19,7 @@ def json_as_lines(data):
     ]
 
 
-def sortkey(x):
+def sortkey(x: str) -> str:
     return x.casefold()
 
 
