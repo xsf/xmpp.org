@@ -2,28 +2,21 @@
 Download / prepare / process XMPP DOAP files for the software list
 Requires: Pillow, python-slugify
 '''
-from typing import Optional
-from typing import Union
-
-from datetime import date
-from pathlib import Path
 import json
 import os
 import re
 import shutil
+from datetime import date
+from pathlib import Path
+from typing import Optional, Union
 from urllib.parse import urlparse
 
-from colorama import Fore
-from colorama import Style
-from defusedxml.ElementTree import parse
-from defusedxml.ElementTree import ParseError
-from PIL import Image
-from PIL import UnidentifiedImageError
+from colorama import Fore, Style
+from defusedxml.ElementTree import ParseError, parse
+from PIL import Image, UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
-
-from util import download_file
-from util import initialize_directory
+from util import download_file, initialize_directory
 
 SOFTWARE_PATH = Path('content/software')
 DATA_PATH = Path('data')

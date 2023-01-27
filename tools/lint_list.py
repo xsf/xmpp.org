@@ -8,7 +8,6 @@ import json
 import os.path
 import sys
 
-
 VALID_ENTRY_KEYS = {
     "platforms",
     "name",

@@ -3,13 +3,13 @@ This file is used to download the XEP list and convert it to JSON
 '''
 from typing import Any
 
-import sys
-import os
 import json
+import os
+import sys
 
+import requests
 from defusedxml.ElementTree import fromstring
 from defusedxml.ElementTree import ParseError
-import requests
 
 XEP_LIST_URL = 'https://xmpp.org/extensions/xeplist.xml'
 

@@ -5,14 +5,14 @@ a single JSON file
 from typing import Any
 from typing import Optional
 
-from multiprocessing.pool import ThreadPool
-import sys
-import os
 import json
+import os
+import sys
+from multiprocessing.pool import ThreadPool
 
+import requests
 from defusedxml.ElementTree import fromstring
 from defusedxml.ElementTree import ParseError
-import requests
 
 RFC_NUMBERS = [
     3920,
