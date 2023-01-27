@@ -3,14 +3,10 @@
 Lint {clients,servers,libraries}.json
 '''
 from typing import Any
-from typing import Optional
 
 import json
 import os.path
 import sys
-
-from datetime import datetime
-from datetime import timedelta
 
 
 VALID_ENTRY_KEYS = {

@@ -3,10 +3,7 @@ import argparse
 import difflib
 import copy
 import json
-import os.path
 import sys
-
-from datetime import datetime
 
 
 def json_as_lines(data):
