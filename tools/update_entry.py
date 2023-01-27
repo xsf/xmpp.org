@@ -26,7 +26,7 @@ def sortkey(x):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Renew a software entry in the software list."
+        description="Modify a software entry in the software list."
     )
     parser.add_argument(
         "listfile",
@@ -73,12 +73,6 @@ def main():
         default=None,
         nargs="+",
         help="Change the contents of the last column",
-    )
-
-    parser.add_argument(
-        "--no-renewal",
-        action="store_false",
-        dest="renew",
     )
 
     parser.add_argument(
@@ -169,20 +163,10 @@ def main():
             )
             for platform in sorted(valid_platforms, key=sortkey):
                 print("   ", platform, file=sys.stderr)
-            print(
-                "Hint: This is ignored by the linting tool for non-renewed",
-                "      software, but will be enforced once the software is",
-                "      renewed.",
-                sep="\n",
-            )
+
             sys.exit(2)
 
     item["platforms"].sort(key=lambda x: x.casefold())
-
-    if args.renew:
-        item["last_renewed"] = datetime.utcnow().replace(
-            microsecond=0
-        ).isoformat()
 
     if args.ask:
         old_entry = json_as_lines(orig)

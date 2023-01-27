@@ -1,7 +1,7 @@
 Software Directory README
 #########################
 
-The Software Directory needs yearly renewal for software to not disappear from the listing on the website. To help software authors with this, scripts are provided which help you with creating a proper pull request.
+To help software authors maintain their software entries, scripts are provided which help you with creating a proper pull request.
 
 The listing is split in three categories:
 
@@ -14,12 +14,12 @@ The tooling is the same for all three categories. What differs is what ``platfor
 **Note:** You can of course also manually edit the JSON files if that’s what you prefer. Make sure to keep the diff minimal. All times are UTC.
 
 
-Renewing your existing entry
+Modifying your existing entry
 ============================
 
-For renewing (and changing) an existing entry, you can use the ``update-entry.py`` tool from the command line. Example::
+For changing an existing entry, you can use the ``update_entry.py`` tool from the command line. Example::
 
-  ./update-entry.py ../data/clients.json Conversations
+  ./update_entry.py ../data/clients.json Conversations
 
 The tool will ask for confirmation::
 
@@ -28,8 +28,8 @@ The tool will ask for confirmation::
   +++ after
   @@ -1,8 +1,8 @@
    {
-  -    "last_renewed": null,
-  +    "last_renewed": "2017-03-23T15:13:58",
+  -    "doap": null,
+  +    "doap"; "https://raw.githubusercontent.com/iNPUTmice/Conversations/master/conversations.doap",
        "name": "Conversations",
        "platforms": [
            "Android"
@@ -46,12 +46,12 @@ Updating information
 
 When asking the tool for ``--help``, you will notice that it supports a few other options too::
 
-  usage: update-entry.py [-h] [--rename NAME] [--set-url URL] [--set-doap URL]
+  usage: update_entry.py [-h] [--rename NAME] [--set-url URL] [--set-doap URL]
                          [--set-platforms PLATFORM [PLATFORM ...]]
-                         [--no-renewal] [--no-ask]
+                         [--no-ask]
                          JSONFILE [NAME]
 
-  Renew a software entry in the software list.
+  Modify a software entry in the software list.
 
   positional arguments:
     JSONFILE              Software list JSON file to manipulate
@@ -64,7 +64,6 @@ When asking the tool for ``--help``, you will notice that it supports a few othe
     --set-doap URL        Change the URL of the project DOAP file
     --set-platforms PLATFORM [PLATFORM ...]
                           Change the contents of the last column
-    --no-renewal
     --no-ask              Do not ask for confirmation before applying changes.
 
 The following options are useful for updating information about your project:
@@ -75,7 +74,7 @@ The following options are useful for updating information about your project:
 
   Example use::
 
-    ./update-entry.py ../data/clients.json Pidgin --set-platforms 'Windows' 'Linux'
+    ./update_entry.py ../data/clients.json Pidgin --set-platforms 'Windows' 'Linux'
 
   **Note:** For clients and servers, the platforms are restricted to those named in the ``platform.json`` file!
 
@@ -95,15 +94,14 @@ There is no tooling for that. Add the following template to the respective ``jso
 
       {
           "platforms": ["GNU Hurd", "Plan9"],
-          "last_renewed": null,
           "name": "My Fancy New Client",
           "doap": "https://myfancyclient.example/doap.rdf",
           "url": "https://myfancyclient.example"
       }
 
-Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a renewal (this will sort the list correctly to minimize future diffs).
+Insert it into the top-level JSON Array as last element by adding a comma after the last ``,`` and then pasting the above template with your modifications. Use the tool as described in the previous section to perform a modification (this will sort the list correctly to minimize future diffs).
 
-**If you do not use the tool**, make sure that you set the ``last_renewed`` key manually to the current date (as seen in other entries) in UTC and adhere to the sorting requirements of the JSON file. You can use the ``lint_list.py`` tool to verify that everything is in order. If ``lint_list.py`` complains, the Travis  CI will reject your Pull Request.
+**If you do not use the tool**, make sure that you adhere to the sorting requirements of the JSON file. You can use the ``lint_list.py`` tool to verify that everything is in order. If ``lint_list.py`` complains, the CI will reject your Pull Request.
 
 Finally, create a Pull Request.
 

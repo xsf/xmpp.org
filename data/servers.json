@@ -1,7 +1,6 @@
 [
     {
         "doap": null,
-        "last_renewed": "2019-07-21T12:47:20",
         "name": "Apache Vysper",
         "platforms": [
             "Linux",
@@ -11,14 +10,12 @@
     },
     {
         "doap": "https://astrachat.com/server-doap.xml",
-        "last_renewed": "2022-11-03T00:00:00",
         "name": "AstraChat XMPP Server",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Citadel",
         "platforms": [
             "Linux"
@@ -27,7 +24,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "CommuniGate Pro",
         "platforms": [
             "Linux",
@@ -38,7 +34,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Coversant SoapBox Server",
         "platforms": [
             "Windows"
@@ -47,7 +42,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "djabberd",
         "platforms": [
             "Linux"
@@ -56,14 +50,12 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/processone/ejabberd/master/ejabberd.doap",
-        "last_renewed": "2022-11-07T14:37:44",
         "name": "ejabberd",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "IceWarp",
         "platforms": [
             "Linux",
@@ -73,7 +65,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "iChat Server",
         "platforms": [
             "macOS"
@@ -82,7 +73,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "in.jabberd",
         "platforms": [
             "Linux"
@@ -91,7 +81,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-02-04T13:59:00",
         "name": "IoT Broker",
         "platforms": [
             "Windows"
@@ -100,14 +89,12 @@
     },
     {
         "doap": "/hosted-doap/isode-m-link.doap",
-        "last_renewed": "2022-09-27T08:54:33",
         "name": "Isode M-Link",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Jabber XCP",
         "platforms": [
             "Linux",
@@ -118,7 +105,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "jabberd 1.x",
         "platforms": [
             "Linux"
@@ -127,7 +113,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "jabberd 2.x",
         "platforms": [
             "BSD",
@@ -139,7 +124,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2021-02-23T08:40:00",
         "name": "jackal",
         "platforms": [
             "Linux",
@@ -149,7 +133,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Jerry Messenger",
         "platforms": [
             "Linux",
@@ -159,7 +142,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Kwickserver",
         "platforms": [
             "Windows"
@@ -168,28 +150,24 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/maranda/metronome/master/misc/doap.xml",
-        "last_renewed": "2022-08-20T21:06:00",
         "name": "Metronome IM",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/mongooseim.doap",
-        "last_renewed": "2022-01-24T00:00:00",
         "name": "MongooseIM",
         "platforms": [],
         "url": null
     },
     {
         "doap": "https://raw.githubusercontent.com/igniterealtime/Openfire/main/documentation/openfire.doap",
-        "last_renewed": "2022-09-06T22:55:00",
         "name": "Openfire",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Oracle Communications IM Server",
         "platforms": [
             "Linux",
@@ -200,14 +178,12 @@
     },
     {
         "doap": "https://hg.prosody.im/trunk/raw-file/tip/doc/doap.xml",
-        "last_renewed": "2022-12-01T11:25:25",
         "name": "Prosody IM",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "psyced",
         "platforms": [
             "Linux",
@@ -218,7 +194,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Siemens OpenScape",
         "platforms": [
             "Linux"
@@ -227,14 +202,12 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/tigase-server/master/tigase-server.doap",
-        "last_renewed": "2022-11-10T13:14:51",
         "name": "Tigase XMPP Server",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Vines",
         "platforms": [
             "Linux",
@@ -244,7 +217,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-16T21:15:09",
         "name": "Wokkel",
         "platforms": [
             "Linux",

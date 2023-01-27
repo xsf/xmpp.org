@@ -16,7 +16,6 @@ from datetime import timedelta
 VALID_ENTRY_KEYS = {
     "platforms",
     "name",
-    "last_renewed",
     "doap",
     "url",
 }
@@ -69,32 +68,10 @@ def check_entries(entries: dict[str, Any],
             )
             violations += 1
 
-        if entry.get("last_renewed") is not None:
-            try:
-                renewal_date = datetime.strptime(entry["last_renewed"],
-                                                 "%Y-%m-%dT%H:%M:%S")
-            except ValueError:
-                emit_violation(
-                    entry["name"],
-                    f"malformed renewal timestamp: {entry['last_renewed']!r} "
-                    f"(format is YYYY-MM-DDThh:mm:ss)"
-                )
-                violations += 1
-            else:
-                now = datetime.utcnow()
-                # Add a time margin of 30 days in the future in order to
-                # let maintainers update entries before they expire.
-                if renewal_date - now > timedelta(days=30):
-                    emit_violation(
-                        entry["name"],
-                        "renewal date must not be in the future",
-                    )
-                    violations += 1
-
         supported_platforms = entry.get("platforms", [])
 
         if allowed_platforms is not None:
-            is_severe = entry.get("last_renewed") is not None
+            is_severe = True
             unknown = set(supported_platforms) - allowed_platforms
             if unknown and (is_severe or show_warnings):
                 emit_violation(

@@ -1,7 +1,6 @@
 [
     {
         "doap": null,
-        "last_renewed": "2020-09-05T17:09:11",
         "name": "aioxmpp",
         "platforms": [
             "Python"
@@ -10,7 +9,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "AnyEvent::XMPP",
         "platforms": [
             "Perl"
@@ -19,7 +17,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-07-21T12:47:20",
         "name": "Apache Vysper",
         "platforms": [
             "Java"
@@ -28,14 +25,12 @@
     },
     {
         "doap": "/hosted-doap/artalk-xmpp.doap",
-        "last_renewed": "2022-07-30T06:24:00",
         "name": "Artalk.XMPP",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "as3xmpp",
         "platforms": [
             "ActionScript",
@@ -45,7 +40,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "AXMPP",
         "platforms": [
             "Ada"
@@ -54,7 +48,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2018-04-24T18:50:00",
         "name": "Babbler",
         "platforms": [
             "Java"
@@ -63,14 +56,12 @@
     },
     {
         "doap": "/hosted-doap/badxmpp.doap",
-        "last_renewed": "2022-01-08T21:16:43",
         "name": "Bad XMPP",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Blather",
         "platforms": [
             "Ruby"
@@ -79,7 +70,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "cl-xmpp",
         "platforms": [
             "Lisp"
@@ -88,7 +78,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "dojox.xmpp",
         "platforms": [
             "JavaScript"
@@ -97,7 +86,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "dxmpp",
         "platforms": [
             "C++"
@@ -106,7 +94,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Echomine Feridian",
         "platforms": [
             "Java"
@@ -115,7 +102,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Eiffel",
         "platforms": [
             "Eiffel"
@@ -124,7 +110,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "emite",
         "platforms": [
             "Java"
@@ -133,14 +118,12 @@
     },
     {
         "doap": "/hosted-doap/erlang-elixir-xmpp.doap",
-        "last_renewed": "2022-08-08T14:42:12",
         "name": "Erlang/Elixir XMPP",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Escalus",
         "platforms": [
             "Erlang"
@@ -149,7 +132,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "exmpp",
         "platforms": [
             "Erlang"
@@ -158,7 +140,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2019-06-10T10:22:00",
         "name": "Fluux XMPP",
         "platforms": [
             "Go"
@@ -167,7 +148,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "frabjous",
         "platforms": [
             "JavaScript"
@@ -176,7 +156,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2018-11-12T16:23:00",
         "name": "gloox",
         "platforms": [
             "C++"
@@ -185,14 +164,12 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/halcyon/master/halcyon.doap",
-        "last_renewed": "2022-11-10T13:14:51",
         "name": "Halcyon",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "headstock",
         "platforms": [
             "Python"
@@ -201,7 +178,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "hsxmpp",
         "platforms": [
             "Haskell"
@@ -210,7 +186,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "hxmpp",
         "platforms": [
             "haXe"
@@ -219,7 +194,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "iksemel",
         "platforms": [
             "C"
@@ -228,14 +202,12 @@
     },
     {
         "doap": "/hosted-doap/im-observatory.doap",
-        "last_renewed": "2022-01-08T15:44:47",
         "name": "IM Observatory",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "IP*Works Internet Toolkit",
         "platforms": [
             "ActiveX, C++, C#,"
@@ -244,7 +216,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Iris",
         "platforms": [
             "C++"
@@ -253,7 +224,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Jabber Stream Objects (JSO)",
         "platforms": [
             "Java"
@@ -262,7 +232,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "jabber.net",
         "platforms": [
             ".net",
@@ -273,7 +242,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "jabber.py",
         "platforms": [
             "Python"
@@ -282,7 +250,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "JabberLib",
         "platforms": [
             "Tcl"
@@ -291,7 +258,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "JAXL",
         "platforms": [
             "PHP"
@@ -300,14 +266,12 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/jaxmpp/master/jaxmpp.doap",
-        "last_renewed": "2022-11-10T13:14:51",
         "name": "JaXMPP",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "jQuery-XMPP-plugin",
         "platforms": [
             "JavaScript"
@@ -316,7 +280,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Jreen",
         "platforms": [
             "C++",
@@ -326,7 +289,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "JSJaC",
         "platforms": [
             "JavaScript"
@@ -335,7 +297,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "libpurple",
         "platforms": [
             "C",
@@ -345,14 +306,12 @@
     },
     {
         "doap": "/hosted-doap/libstrophe.doap",
-        "last_renewed": "2021-11-11T17:00:00",
         "name": "libstrophe",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Lightr",
         "platforms": [
             "PHP"
@@ -361,7 +320,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Loudmouth",
         "platforms": [
             "C"
@@ -370,35 +328,30 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/tigase/Martin/master/martin.doap",
-        "last_renewed": "2022-11-10T13:14:51",
         "name": "Martin",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/matrix.doap",
-        "last_renewed": "2022-03-07T14:50:41",
         "name": "MatriX",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/matrix-vnext.doap",
-        "last_renewed": "2022-03-07T14:50:23",
         "name": "MatriX vNext",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/mellium.doap",
-        "last_renewed": "2022-03-29T00:00:00",
         "name": "Mellium",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "net::XMPP",
         "platforms": [
             "Perl"
@@ -407,7 +360,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "oajabber",
         "platforms": [
             "C++"
@@ -416,7 +368,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "ObjXMPP",
         "platforms": [
             "Objective-C"
@@ -425,14 +376,12 @@
     },
     {
         "doap": "/hosted-doap/observe-jabber-network.doap",
-        "last_renewed": "2022-01-08T21:20:53",
         "name": "observe.jabber.network",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Pontarius XMPP",
         "platforms": [
             "Haskell"
@@ -441,14 +390,12 @@
     },
     {
         "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
-        "last_renewed": "2022-05-13T12:00:00",
         "name": "python-nbxmpp",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "pyxmpp",
         "platforms": [
             "Python"
@@ -457,7 +404,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "pyxmpp2",
         "platforms": [
             "Python"
@@ -466,28 +412,24 @@
     },
     {
         "doap": "https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/doc/doap.xml",
-        "last_renewed": "2022-09-12T00:00:00",
         "name": "QXmpp",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/scansion.doap",
-        "last_renewed": "2022-01-08T17:11:54",
         "name": "Scansion",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/search-jabber-network.doap",
-        "last_renewed": "2022-01-08T21:22:20",
         "name": "search.jabber.network",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "seesmic-as3-xmpp",
         "platforms": [
             "ActionScript",
@@ -497,7 +439,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Sharp.Xmpp",
         "platforms": [
             ".net",
@@ -508,7 +449,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Skates",
         "platforms": [
             "Ruby"
@@ -517,7 +457,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2017-10-13T16:36:55",
         "name": "SleekXMPP",
         "platforms": [
             "Python"
@@ -526,28 +465,24 @@
     },
     {
         "doap": "https://git.sr.ht/~nicoco/slidge/blob/master/doap.xml",
-        "last_renewed": null,
         "name": "Slidge",
         "platforms": [],
         "url": null
     },
     {
         "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
-        "last_renewed": "2022-10-18T00:00:00",
         "name": "slixmpp",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/smack.doap",
-        "last_renewed": "2022-09-06T20:55:00",
         "name": "Smack",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": "2020-09-05T21:11:32",
         "name": "StanzaJS",
         "platforms": [
             "JavaScript"
@@ -556,7 +491,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "stravaganza",
         "platforms": [
             "Go"
@@ -565,21 +499,18 @@
     },
     {
         "doap": "/hosted-doap/stroke.doap",
-        "last_renewed": "2022-09-27T08:53:45",
         "name": "Stroke",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/strophe-js.doap",
-        "last_renewed": "2021-11-25T12:47:00",
         "name": "Strophe.js",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "StropheCappuccino",
         "platforms": [
             "Objective-J"
@@ -588,28 +519,24 @@
     },
     {
         "doap": "/hosted-doap/swiften.doap",
-        "last_renewed": "2022-09-27T08:53:56",
         "name": "Swiften",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
-        "last_renewed": "2022-11-10T13:14:51",
         "name": "Tigase Swift XMPP client library",
         "platforms": [],
         "url": null
     },
     {
         "doap": "/hosted-doap/tinder.doap",
-        "last_renewed": "2022-09-06T20:55:00",
         "name": "Tinder",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Twisted Words",
         "platforms": [
             "Python"
@@ -618,7 +545,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-12-10T19:00:55",
         "name": "txmmp",
         "platforms": [
             "Linux"
@@ -627,7 +553,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "txmpp",
         "platforms": [
             "C++"
@@ -636,7 +561,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Ubeity",
         "platforms": [
             "C#"
@@ -645,7 +569,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-09-03T16:06:33",
         "name": "Verse",
         "platforms": [
             "Lua"
@@ -654,7 +577,6 @@
     },
     {
         "doap": null,
-        "last_renewed": "2020-02-04T14:01:00",
         "name": "Waher Networking",
         "platforms": [
             ".NET Core",
@@ -665,14 +587,12 @@
     },
     {
         "doap": "/hosted-doap/xmpp-account-exporter.doap",
-        "last_renewed": "2022-01-08T21:17:47",
         "name": "XMPP account exporter",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": "2017-03-24T00:00:00",
         "name": "XMPP-FTW",
         "platforms": [
             "JavaScript"
@@ -681,14 +601,12 @@
     },
     {
         "doap": "https://gitlab.com/xmpp-rs/xmpp-rs/-/raw/main/parsers/doap.xml",
-        "last_renewed": "2022-02-18T21:35:00",
         "name": "xmpp-parsers",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmpp-psn",
         "platforms": [
             "Python"
@@ -697,14 +615,12 @@
     },
     {
         "doap": "/hosted-doap/xmpp-js.doap",
-        "last_renewed": "2021-08-22T12:06:06",
         "name": "xmpp.js",
         "platforms": [],
         "url": null
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmpp4js",
         "platforms": [
             "JavaScript"
@@ -713,7 +629,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "XMPP4R",
         "platforms": [
             "Ruby"
@@ -722,7 +637,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmpp4r-simple",
         "platforms": [
             "Ruby"
@@ -731,7 +645,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmppframework",
         "platforms": [
             "Objective C"
@@ -740,7 +653,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmpphp",
         "platforms": [
             "PHP"
@@ -749,7 +661,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "xmpppy",
         "platforms": [
             "Python"
@@ -758,7 +669,6 @@
     },
     {
         "doap": null,
-        "last_renewed": null,
         "name": "Z-XMPP",
         "platforms": [
             "JavaScript"
