@@ -5,6 +5,8 @@ aliases:
     - "/community/chat.html"
 ---
 
+{{< user-support-chat >}}
+
 The XSF hosts a variety of chat rooms and all archives are available online.
 
 ### Overview of logs
