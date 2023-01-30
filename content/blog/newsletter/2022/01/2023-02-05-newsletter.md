@@ -75,16 +75,27 @@ xmpp.org features [a page about XMPP RFCs](https://xmpp.org/rfcs/) as well.
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to 
 accept this proposal as an Experimental XEP.
 
-- [PubSub Social Feed](https://xmpp.org/extensions/inbox/pubsub-social-feed.html)
-  - This specification defines a way of publishing social content over XMPP.
-- [SASL SCRAM Downgrade Protection](https://xmpp.org/extensions/inbox/xep-downgrade-prevention.html)
-  - This specification provides a way to secure the SASL and SASL2 handshakes against method and channel-binding downgrades.
-- [OpenPGP for XMPP Pubsub](https://xmpp.org/extensions/inbox/pubsub-encryption.html)
-  - Specifies an OpenPGP for XMPP (XEP-0373) profile for the pubsub use case.
+- [XMPP Compliance Suites 2023](https://xmpp.org/extensions/inbox/cs-2023.html)
+  - This document defines XMPP application categories for different use cases (Core, Web, IM, and Mobile), and specifies the required XEPs that client and server software needs to implement for compliance with the use cases.
+- [Stream Limits Advertisement](https://xmpp.org/extensions/inbox/xep-sla.html)
+  - This specification defines a way for an XMPP entity to announce the limits it will enforce for data received on a stream.
 
 ### New
 
-- No new XEP this month.
+- [Version 0.1.0 of XEP-0477 (Pubsub Targeted Encryption)](https://xmpp.org/extensions/xep-0477.html)
+  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0476 (Pubsub Signing: OpenPGP Profile)](https://xmpp.org/extensions/xep-0476.html)
+  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0475 (Pubsub Signing)](https://xmpp.org/extensions/xep-0475.html)
+  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0471 (Events)](https://xmpp.org/extensions/xep-0471.html)
+  - Accepted by vote of Council on 2022-09-28. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0474 (SASL SCRAM Downgrade Protection)](https://xmpp.org/extensions/xep-0474.html)
+  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0473 (OpenPGP for XMPP Pubsub)](https://xmpp.org/extensions/xep-0473.html)
+  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
+- [Version 0.1.0 of XEP-0472 (PubSub Social Feed)](https://xmpp.org/extensions/xep-0472.html)
+  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
   
 ### Deferred
 
@@ -95,7 +106,17 @@ will put the XEP back onto Experimental.
 
 ### Updated
 
-- No XEPs updated this month.
+- [Version 0.2.0 of XEP-0474 (SASL SCRAM Downgrade Protection)](https://xmpp.org/extensions/xep-0474.html)
+  - Add description of attack model
+  - Add section defining IETF interaction (tm)
+- [Version 0.2.0 of XEP-0461 (Message Replies)](https://xmpp.org/extensions/xep-0461.html)
+  - Fix example character counting. Add disco feature. Relax the 'to' attribute constraints. (nc)
+- [Version 0.1.1 of XEP-0444 (Message Reactions)](https://xmpp.org/extensions/xep-0444.html)
+  - Add the XML Schema (egp)
+- [Version 0.3.0 of XEP-0426 (Character counting in message bodies)](https://xmpp.org/extensions/xep-0426.html)
+  - Added section about subsequences. (lmw)
+- [Version 0.5.0 of XEP-0353 (Jingle Message Initiation)](https://xmpp.org/extensions/xep-0353.html)
+  - Recommend usage of UUID v4 for id attributes. (tm)
 
 ### Last Call
 
