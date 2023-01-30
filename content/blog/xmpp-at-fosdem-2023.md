@@ -10,10 +10,12 @@ be attending, and we hope to see you there!
 ### Realtime Lounge
 
 As usual, we will have the *Realtime Lounge* set up, where you can come and meet community members, project developers, see demos and
-ask us questions. ~~Note that this year we will be in a slightly different location to usual - on the ground floor of the [K building](https://fosdem.org/2023/stands/).~~ \[**Update:** We'll be in our traditional location - find us on the K building 2nd floor, beside the elevator (map below)\].
+ask us questions. ~~Note that this year we will be in a slightly different location to usual - on the ground floor of the [K building](https://fosdem.org/2023/stands/).~~
+
+**Update:** We'll be in our traditional location - find us on the K building 2nd floor, beside the elevator (map below).
 Come and say hi!
 
-![Map of the K building level 2](/images/blog/realtime-lounge-location.png)
+{{< figure src="/images/blog/realtime-lounge-location.png" caption="Map of the K building level 2" >}}
 
 ### Talks
 
