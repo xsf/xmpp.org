@@ -21,11 +21,11 @@ def build_xep_list() -> None:
     try:
         xeplist_request = requests.get(XEP_LIST_URL)
     except requests.exceptions.RequestException as err:
-        sys.exit(f'Error while requesting xeplist.xml ({err}')
+        sys.exit(f'Error while requesting xeplist.xml ({err})')
 
     if not 200 >= xeplist_request.status_code < 400:
         sys.exit(f'Error while downloading xeplist.xml '
-                 f'({xeplist_request.status_code}')
+                 f'({xeplist_request.status_code})')
 
     try:
         root = fromstring(xeplist_request.content)
