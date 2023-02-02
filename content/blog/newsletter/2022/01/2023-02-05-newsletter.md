@@ -49,20 +49,48 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-charge-dun-peertube-en-live-avec-auposte/) [FR] including a live chat based on XMPP (Prosody) was performed. It helped to identify a number of possible optimizations in the Peertube live chat plugin. Read the [plugin author's post](https://john-livingston.fr/foss/article/peertube-chat-plugin-quick-feedbacks-about-a-live-stress-test) for more details.
+
+Jabber.org, the original XMPP instant messaging service has migrated the January 14-15 weekend to Prosody IM. Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
+
+[Paper](https://ieeexplore.ieee.org/document/9968404) presented on IECON2022, and just recently published. Based on XMPP.
+
+[JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service.
 
 ## Software news
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[BeagleIM 5.3.2 and SiskinIM 7.3.1](https://tigase.org/blog/beagleim-5.3.2-and-siskinim-7.3.1-released/) have been released with an option to block whole domains and a number of bugfixes.
+
+[Conversation 2.11.0 to 2.12.1 have been released](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md)! They implement Extensible SASL Profile, Bind 2.0 + Channel Binding and Fast for faster reconnects. Furthermore the ability to switch from audio call to video call, to delete your own avatar and a notification for missed calls has been added. Conversations 2.12.0 now also integrates a [UnifiedPush Distributor](https://unifiedpush.org/users/distributors/) to facilitate push messages to other UnifiedPush enabled apps like Tusky and Fedilab.
+
+[Gajim 1.6.0](https://gajim.org/post/2023-01-07-gajim-1.6.0-released/) and [1.6.1](https://gajim.org/post/2023-01-14-gajim-1.6.1-released/) have been released. For Gajim 1.6, developers ported Gajim’s and python-nbxmpp’s underlying HTTP library to libsoup3. Also, audio previews now look nicer and allow for more control (playback speed, jumping). Emoji rendering on MacOS has been repaired and many fixes have been implemented under the hood.
+
+[Moxxy 0.4.0](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.0) and [0.4.1](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.1) have been released. These two releases bring stickers, reactions, voice message recording and various improvements and fixes to the UI and XMPP code.
+
+[Spark 3.0.1 has been released](https://github.com/igniterealtime/Spark/releases), which brings some bug fixes
 
 ### Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[ejabberd 23.01 has been released](https://www.process-one.net/blog/ejabberd-23-01/) Almost three months after the previous release, ejabberd 23.01 includes many bug fixes, several improvements and some new features. A new module, mod_mqtt_bridge, can be used to replicate changes to MQTT topics between local and remote servers. Supported XEPs are now automatically gathered from source code documentation in order to provide a DOAP file for further processing on [xmpp.org/servers/ejabberd](https://xmpp.org/software/servers/ejabberd/).
+
+[Prosody 0.12.2 has been released](https://blog.prosody.im/prosody-0.12.2-released/), which contains bug fixes and improvements.
+
+[Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/) -  it includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
 
 ### Libraries & Tools
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+[omemo_dart](https://github.com/PapaTutuWawa/omemo_dart) is a Dart library to help developers of Dart/Flutter XMPP clients to implement OMEMO in its newest version - currently 0.8.3. It has been released in version 0.4.2.
+
+[python-nbxmpp 4.0.0 to 4.1.0 have been released](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog). These versions bring support for Message Reactions (XEP-0444) and port the library to libsoup3.
+
+A new tool for server operators and developers has arrived: [nbxmpp-client](https://pypi.org/project/nbxmpp-client/) lets you check and test various XMPP connection methods (and proxy configurations) while having an eye on the protocol's XML stream. Version 2.0.0 has just been released and comes with a fresh design (Gtk4+libadwaita).
+
+[Slidge 0.1.0 RC1 has been released](https://www.nicoco.fr/blog/2023/01/08/slidge-rc1/). Slidge is a collection of XMPP gateway components that lets you use your favorite XMPP client(s) to chat with other, non-XMPP and/or non-federated chat networks (i.e. WhatsApp, Facebook, Mattermost, Signal, Skype, Steam, Telegram).
+
+Daniel Gultsch's [compliance.conversations.im](https://compliance.conversations.im/) [will be discontinued](https://gultsch.social/@daniel/109653873511471850). This online compliance checker allowed server administrators and users to identify the XEPs/features supported by a provider, and it also allowed to check XEP support over time. This service helped users to check whether they are creating a future-proof account with a provider. Due to difficulties in maintaining the software, the service will be shut down in the near future.
+
+[QXmpp 1.5](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.0) has been released! The Qt-/C++-based XMPP library supports OMEMO 2, Stanza Content Encryption and Automatic Trust Management now. Much more data than with the old OMEMO versions can be end-to-end encrypted. For example, files including thumbnails are shared encrypted via Stateless File Sharing. Furthermore, Message Reactions is supported and QXmpp's PubSub implementation is almost feature-complete.
 
 ## Extensions and specifications
 
