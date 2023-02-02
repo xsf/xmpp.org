@@ -35,7 +35,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
 - [Mellium Co-op](https://opencollective.com/mellium)
 
-### Google Summer of Code 2022
+### Google Summer of Code 2023
 
 {{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2023" >}}
 
