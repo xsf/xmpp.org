@@ -14,7 +14,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: **emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
+  - General contributors: **Alexander "PapaTutuWawa", emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
@@ -41,21 +41,39 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 We are considering to participate the Google Summer of Code 2023! If you are interested start [reading here](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023).
 
-
 ## XMPP Events
 
+- [XMPP Summit 25 and at FOSDEM 2023](https://xmpp.org/2023/01/xmpp-at-fosdem-2023/)
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
+
+## XMPP Talks
+
+- XMPP - End of the year 2022 talk
+- [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interopable chat in healthcare that’s compatible with the EU’s new regulations.
+- [P10K: getting 10000 participants into a Jitsi meeting](https://fosdem.org/2023/schedule/event/jitsi_p10k/), Saúl from the Jitsi team will reveal their interesting journey to reach 10000 participants in an XMPP-powered Jitsi video conference.
+- [Modernizing Authentication and Authorization in XMPP Matthew](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/), founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
 
 ## Articles
 
 A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-charge-dun-peertube-en-live-avec-auposte/) [FR] including a live chat based on XMPP (Prosody) was performed. It helped to identify a number of possible optimizations in the Peertube live chat plugin. Read the [plugin author's post](https://john-livingston.fr/foss/article/peertube-chat-plugin-quick-feedbacks-about-a-live-stress-test) for more details.
 
-Jabber.org, the original XMPP instant messaging service has migrated the January 14-15 weekend to Prosody IM. Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
+Jabber.org, the original XMPP instant messaging service has [migrated the January 14-15 weekend to Prosody IM](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
 
 [Paper](https://ieeexplore.ieee.org/document/9968404) presented on IECON2022, and just recently published. Based on XMPP.
 
-[JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service.
+[JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service. Last but not least: [Writing a Chat Client from Scratch](https://blog.jmp.chat/b/2022-chat-client-from-scratch)
+
+Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/fdroid-security-warning/) and their [Securtiy update](https://snikket.org/blog/fdroid-security-update/). The issues has been solved already.
+
+PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
+
+From the ignite relatime community:
+
+- [Spark 3.0.1 Released](https://discourse.igniterealtime.org/t/spark-3-0-1-released/92353)
+- [Denial of Service Vulnerability in Smack 4.4 if XMPPTCPConnection is used with StAX](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
+- [New Mastodon service for the Ignite Realtime community!](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
+- [Help us translate Spark and Openfire!](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
 ## Software news
 ### Clients and applications
@@ -74,7 +92,7 @@ Jabber.org, the original XMPP instant messaging service has migrated the January
 
 [ejabberd 23.01 has been released](https://www.process-one.net/blog/ejabberd-23-01/) Almost three months after the previous release, ejabberd 23.01 includes many bug fixes, several improvements and some new features. A new module, mod_mqtt_bridge, can be used to replicate changes to MQTT topics between local and remote servers. Supported XEPs are now automatically gathered from source code documentation in order to provide a DOAP file for further processing on [xmpp.org/servers/ejabberd](https://xmpp.org/software/servers/ejabberd/).
 
-[Prosody 0.12.2 has been released](https://blog.prosody.im/prosody-0.12.2-released/), which contains bug fixes and improvements.
+[Prosody 0.12.2 has been released](https://blog.prosody.im/prosody-0.12.2-released/) and [Prosody 0.11.14 released](https://blog.prosody.im/prosody-0.11.14-released/), which contains allowance U+7F when constructing stanzas, bug fixes and improvements.
 
 [Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/) -  it includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
 
