@@ -75,6 +75,8 @@ From the ignite relatime community:
 - [New Mastodon service for the Ignite Realtime community!](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
 - [Help us translate Spark and Openfire!](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
+- [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
+
 ## Software news
 ### Clients and applications
 
@@ -83,6 +85,8 @@ From the ignite relatime community:
 [Conversation 2.11.0 to 2.12.1 have been released](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md)! They implement Extensible SASL Profile, Bind 2.0 + Channel Binding and Fast for faster reconnects. Furthermore the ability to switch from audio call to video call, to delete your own avatar and a notification for missed calls has been added. Conversations 2.12.0 now also integrates a [UnifiedPush Distributor](https://unifiedpush.org/users/distributors/) to facilitate push messages to other UnifiedPush enabled apps like Tusky and Fedilab.
 
 [Gajim 1.6.0](https://gajim.org/post/2023-01-07-gajim-1.6.0-released/) and [1.6.1](https://gajim.org/post/2023-01-14-gajim-1.6.1-released/) have been released. For Gajim 1.6, developers ported Gajim’s and python-nbxmpp’s underlying HTTP library to libsoup3. Also, audio previews now look nicer and allow for more control (playback speed, jumping). Emoji rendering on MacOS has been repaired and many fixes have been implemented under the hood.
+
+Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/Video Calls](https://nlnet.nl/project/Libervia-AV/).
 
 [Moxxy 0.4.0](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.0) and [0.4.1](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.1) have been released. These two releases bring stickers, reactions, voice message recording and various improvements and fixes to the UI and XMPP code.
 
