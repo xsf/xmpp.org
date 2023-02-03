@@ -60,11 +60,11 @@ A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-cha
 
 Jabber.org, the original XMPP instant messaging service has [migrated the January 14-15 weekend to Prosody IM](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
 
-[Paper](https://ieeexplore.ieee.org/document/9968404) presented on IECON2022, and just recently published. Based on XMPP.
+[A paper](https://ieeexplore.ieee.org/document/9968404) was presented on IECON2022, and just recently published. Based on XMPP.
 
-[JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service. Last but not least: [Writing a Chat Client from Scratch](https://blog.jmp.chat/b/2022-chat-client-from-scratch)
+[JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service. Last but not least: [Writing a Chat Client from Scratch](https://blog.jmp.chat/b/2022-chat-client-from-scratch) in Ruby.
 
-Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/fdroid-security-warning/) and their [Securtiy update](https://snikket.org/blog/fdroid-security-update/). The issues has been solved already.
+Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/fdroid-security-warning/) and their [Security update](https://snikket.org/blog/fdroid-security-update/). The issues has been solved already.
 
 PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
 
@@ -75,14 +75,14 @@ From the ignite relatime community:
 - [New Mastodon service for the Ignite Realtime community!](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
 - [Help us translate Spark and Openfire!](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
-- [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
+[EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
 
 ## Software news
 ### Clients and applications
 
-[BeagleIM 5.3.2 and SiskinIM 7.3.1](https://tigase.org/blog/beagleim-5.3.2-and-siskinim-7.3.1-released/) have been released with an option to block whole domains and a number of bugfixes.
+[BeagleIM 5.3.2, 5.3.3 and SiskinIM 7.3.1, 7.3.2](https://tigase.org/blog/beagleim-5.3.2-and-siskinim-7.3.1-released/) have been released with an option to block whole domains and a number of bugfixes. And brand new logos and icons.
 
-[Conversation 2.11.0 to 2.12.1 have been released](https://github.com/iNPUTmice/Conversations/blob/master/CHANGELOG.md)! They implement Extensible SASL Profile, Bind 2.0 + Channel Binding and Fast for faster reconnects. Furthermore the ability to switch from audio call to video call, to delete your own avatar and a notification for missed calls has been added. Conversations 2.12.0 now also integrates a [UnifiedPush Distributor](https://unifiedpush.org/users/distributors/) to facilitate push messages to other UnifiedPush enabled apps like Tusky and Fedilab.
+[Conversation 2.11.0 to 2.12.1 have been released](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md)! They implement Extensible SASL Profile, Bind 2.0 + Channel Binding and Fast for faster reconnects. Furthermore the ability to switch from audio call to video call, to delete your own avatar and a notification for missed calls has been added. Since version 2.12.0 it now also integrates an [UnifiedPush Distributor](https://unifiedpush.org/users/distributors/) to facilitate push messages to other UnifiedPush enabled apps like Tusky and Fedilab. Users can use the developer provided UP server or ask their server admins to host an UP server as [an universal XMPP transport component](https://codeberg.org/iNPUTmice/up) or load the [new Prosody module](https://modules.prosody.im/mod_unified_push). As announced in the [November 2022 newsletter](https://xmpp.org/2022/12/the-xmpp-newsletter-november-2022/) version 3.0 got funded, hence development has started already, you can keep an eye on its pace in the [new `c3` code branch](https://codeberg.org/iNPUTmice/Conversations/commits/branch/c3).
 
 [Gajim 1.6.0](https://gajim.org/post/2023-01-07-gajim-1.6.0-released/) and [1.6.1](https://gajim.org/post/2023-01-14-gajim-1.6.1-released/) have been released. For Gajim 1.6, developers ported Gajim’s and python-nbxmpp’s underlying HTTP library to libsoup3. Also, audio previews now look nicer and allow for more control (playback speed, jumping). Emoji rendering on MacOS has been repaired and many fixes have been implemented under the hood.
 
