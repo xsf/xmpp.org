@@ -37,7 +37,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### Google Summer of Code 2023
 
-{{< figure src="/images/logos/GSoC_2022_Logo.png" caption="XSF and Google Summer of Code 2023" >}}
+{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
 
 We are considering to participate the Google Summer of Code 2023! If you are interested start [reading here](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023).
 
