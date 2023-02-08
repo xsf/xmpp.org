@@ -71,7 +71,7 @@ Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/f
 From the ignite relatime community:
 
 - [Spark 3.0.1 Released](https://discourse.igniterealtime.org/t/spark-3-0-1-released/92353)
-- [Denial of Service Vulnerability in Smack 4.4 if XMPPTCPConnection is used with StAX](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
+- A Denial of Service Vulnerability in Smack 4.4 [has been fixed](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
 - [New Mastodon service for the Ignite Realtime community!](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
 - [Help us translate Spark and Openfire!](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
