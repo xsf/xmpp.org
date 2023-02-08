@@ -66,7 +66,7 @@ An article about ["Tokenization of sustainable real estate in Smart Cities : Mon
 
 Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/fdroid-security-warning/) and their [Security update](https://snikket.org/blog/fdroid-security-update/). The issues has been solved already.
 
-PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
+[vanitasvitae](https://blog.jabberhead.tk/) writes about PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
 
 From the ignite relatime community:
 
