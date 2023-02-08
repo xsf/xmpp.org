@@ -58,7 +58,7 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 
 A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-charge-dun-peertube-en-live-avec-auposte/) [FR] including a live chat based on XMPP (Prosody) was performed. It helped to identify a number of possible optimizations in the Peertube live chat plugin. Read the [plugin author's post](https://john-livingston.fr/foss/article/peertube-chat-plugin-quick-feedbacks-about-a-live-stress-test) for more details.
 
-Jabber.org, the original XMPP instant messaging service has [migrated the January 14-15 weekend to Prosody IM](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
+Jabber.org, the original XMPP instant messaging service was [migrated to the Prosody IM server on the weekend of January 14-15th](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
 
 [A paper](https://ieeexplore.ieee.org/document/9968404) was presented on IECON2022, and just recently published. Based on XMPP.
 
