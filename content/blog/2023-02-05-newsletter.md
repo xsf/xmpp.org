@@ -75,7 +75,7 @@ From the ignite relatime community:
 - [The Ignite Realtime community now offers a Mastodon service](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
 - [The community started a call for help with translating Spark and Openfire](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
-[EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
+nicfab writes about the new [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
 
 ## Software news
 ### Clients and applications
