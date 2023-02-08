@@ -9,21 +9,6 @@ This is the first release after a well-deserved winter break! Many thanks to all
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more at the bottom.
 
-### Newsletter Contributors & Translations
-
-This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
-
-- English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: **Alexander "PapaTutuWawa", emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
-- French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
-- German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
-  - Translators: **Jeybe, wh0nix**
-- Italian: [nicfab.it](https://www.nicfab.it/)
-  - Translators: **nicfab**
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - Translators: **daimonduff, TheCoffeMaker**
-
 ## XSF Announcements
 
 If you are interested in becoming an XSF member, the [listings are open until 19th February 2023](https://wiki.xmpp.org/web/Membership_Applications_Q1_2023).
@@ -50,7 +35,7 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 ## XMPP Talks
 
 - XMPP - End of the year 2022 talk
-- [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interopable chat in healthcare that’s compatible with the EU’s new regulations.
+- [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interoperable chat in healthcare that’s compatible with the EU’s new regulations.
 - [P10K: getting 10000 participants into a Jitsi meeting](https://fosdem.org/2023/schedule/event/jitsi_p10k/), Saúl from the Jitsi team reveals their interesting journey to reach 10000 participants in an XMPP-powered Jitsi video conference.
 - [Modernizing Authentication and Authorization in XMPP](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/): Matthew Wild, founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
 
@@ -68,13 +53,6 @@ Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/f
 
 [vanitasvitae](https://blog.jabberhead.tk/) writes about PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
 
-From the ignite relatime community:
-
-- [Spark 3.0.1 Released](https://discourse.igniterealtime.org/t/spark-3-0-1-released/92353)
-- A Denial of Service Vulnerability in Smack 4.4 [has been fixed](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
-- [The Ignite Realtime community now offers a Mastodon service](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
-- [The community started a call for help with translating Spark and Openfire](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
-
 nicfab writes about the new [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
 
 ## Software news
@@ -90,15 +68,20 @@ Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/V
 
 [Moxxy 0.4.0](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.0) and [0.4.1](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.1) have been released. These two releases bring stickers, reactions, voice message recording and various improvements and fixes to the UI and XMPP code.
 
-[Spark 3.0.1 has been released](https://github.com/igniterealtime/Spark/releases), which brings some bug fixes.
+From the ignite realtime community:
+
+- [Spark 3.0.1 Released](https://discourse.igniterealtime.org/t/spark-3-0-1-released/92353)
+- A Denial of Service Vulnerability in Smack 4.4 [has been fixed](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
+- [The Ignite Realtime community now offers a Mastodon service](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
+- [The community started a call for help with translating Spark and Openfire](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
 
 ### Servers
 
 [ejabberd 23.01 has been released](https://www.process-one.net/blog/ejabberd-23-01/). Almost three months after the previous release, ejabberd 23.01 includes many bug fixes, several improvements and some new features. A new module, mod_mqtt_bridge, can be used to replicate changes to MQTT topics between local and remote servers. Supported XEPs are now automatically gathered from source code documentation in order to provide a DOAP file for further processing on [xmpp.org/servers/ejabberd](https://xmpp.org/software/servers/ejabberd/).
 
-[Prosody 0.12.2](https://blog.prosody.im/prosody-0.12.2-released/) and [Prosody 0.11.14](https://blog.prosody.im/prosody-0.11.14-released/) have been released.  The 0.12 release brings bug fixes and improvements.
+[Prosody 0.12.2](https://blog.prosody.im/prosody-0.12.2-released/) and [Prosody 0.11.14](https://blog.prosody.im/prosody-0.11.14-released/) have been released. The 0.12 release brings bug fixes and improvements.
 
-[Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/). Tt includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
+[Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/). It includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
 
 ### Libraries & Tools
 
@@ -119,7 +102,6 @@ Daniel Gultsch's [compliance.conversations.im](https://compliance.conversations.
 The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](https://xmpp.org/extensions/) in addition to [XMPP RFCs](https://xmpp.org/rfcs/).
 
 Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
-
 
 ### Proposed
 
@@ -205,6 +187,21 @@ Please share the news on other networks:
 Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 
 Looking for job offers or want to hire a professional consultant for your XMPP project? Visit our [XMPP job board](https://xmpp.work/).
+
+### Newsletter Contributors & Translations
+
+This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
+
+- English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+  - General contributors: **Alexander "PapaTutuWawa", emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
+- French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
+- German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
+  - Translators: **Jeybe, wh0nix**
+- Italian: [nicfab.it](https://www.nicfab.it/)
+  - Translators: **nicfab**
+- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
+  - Translators: **daimonduff, TheCoffeMaker**
 
 ## Help us to build the newsletter
 
