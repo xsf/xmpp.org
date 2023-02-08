@@ -90,7 +90,7 @@ Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/V
 
 [Moxxy 0.4.0](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.0) and [0.4.1](https://codeberg.org/moxxy/moxxy/releases/tag/v0.4.1) have been released. These two releases bring stickers, reactions, voice message recording and various improvements and fixes to the UI and XMPP code.
 
-[Spark 3.0.1 has been released](https://github.com/igniterealtime/Spark/releases), which brings some bug fixes
+[Spark 3.0.1 has been released](https://github.com/igniterealtime/Spark/releases), which brings some bug fixes.
 
 ### Servers
 
