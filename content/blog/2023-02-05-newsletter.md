@@ -34,7 +34,7 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 
 ## XMPP Talks
 
-- XMPP - End of the year 2022 talk
+- [XMPP - End of the year 2022 talk](https://bbb.sfconservancy.org/b/ste-fdo-qen)
 - [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interoperable chat in healthcare that’s compatible with the EU’s new regulations.
 - [P10K: getting 10000 participants into a Jitsi meeting](https://fosdem.org/2023/schedule/event/jitsi_p10k/), Saúl from the Jitsi team reveals their interesting journey to reach 10000 participants in an XMPP-powered Jitsi video conference.
 - [Modernizing Authentication and Authorization in XMPP](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/): Matthew Wild, founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
@@ -42,6 +42,8 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 ## Articles
 
 A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-charge-dun-peertube-en-live-avec-auposte/) [FR] including a live chat based on XMPP (Prosody) was performed. It helped to identify a number of possible optimizations in the Peertube live chat plugin. Read the [plugin author's post](https://john-livingston.fr/foss/article/peertube-chat-plugin-quick-feedbacks-about-a-live-stress-test) for more details.
+
+{{< figure src="/images/newsletter/2023-02-05/peertube.jpg" caption="Peertube with XMPP-based live chat" >}}
 
 Jabber.org, the original XMPP instant messaging service was [migrated to the Prosody IM server on the weekend of January 14-15th](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
 
@@ -71,6 +73,8 @@ Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/V
 From the ignite realtime community:
 
 - [Spark 3.0.1 Released](https://discourse.igniterealtime.org/t/spark-3-0-1-released/92353)
+{{< figure src="/images/newsletter/2023-02-05/spark.png" caption="Spark 3.0.1" >}}
+
 - A Denial of Service Vulnerability in Smack 4.4 [has been fixed](https://discourse.igniterealtime.org/t/denial-of-service-vulnerability-in-smack-4-4-if-xmpptcpconnection-is-used-with-stax/92314)
 - [The Ignite Realtime community now offers a Mastodon service](https://discourse.igniterealtime.org/t/new-mastodon-service-for-the-ignite-realtime-community/92389)
 - [The community started a call for help with translating Spark and Openfire](https://discourse.igniterealtime.org/t/help-us-translate-spark-and-openfire/92399)
