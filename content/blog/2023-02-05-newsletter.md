@@ -98,7 +98,7 @@ Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/V
 
 [Prosody 0.12.2](https://blog.prosody.im/prosody-0.12.2-released/) and [Prosody 0.11.14](https://blog.prosody.im/prosody-0.11.14-released/) have been released.  The 0.12 release brings bug fixes and improvements.
 
-[Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/) -  it includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
+[Tigase XMPP Server 8.3 has been released](https://tigase.org/blog/tigase-xmpp-server-8.3.0/). Tt includes Tigase MEET - Tigase's take at SFU (Selective Forwarding Unit) group video-calls, support for XEP-0440 SASL Channel Binding Type Capability as well as initial, preview support for SASL2 and Bind2 and lots of usual fixes.
 
 ### Libraries & Tools
 
