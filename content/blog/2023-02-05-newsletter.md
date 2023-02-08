@@ -94,7 +94,7 @@ Libervia has been granted a [NLnet NGI Assure Fund for implementation of Audio/V
 
 ### Servers
 
-[ejabberd 23.01 has been released](https://www.process-one.net/blog/ejabberd-23-01/) Almost three months after the previous release, ejabberd 23.01 includes many bug fixes, several improvements and some new features. A new module, mod_mqtt_bridge, can be used to replicate changes to MQTT topics between local and remote servers. Supported XEPs are now automatically gathered from source code documentation in order to provide a DOAP file for further processing on [xmpp.org/servers/ejabberd](https://xmpp.org/software/servers/ejabberd/).
+[ejabberd 23.01 has been released](https://www.process-one.net/blog/ejabberd-23-01/). Almost three months after the previous release, ejabberd 23.01 includes many bug fixes, several improvements and some new features. A new module, mod_mqtt_bridge, can be used to replicate changes to MQTT topics between local and remote servers. Supported XEPs are now automatically gathered from source code documentation in order to provide a DOAP file for further processing on [xmpp.org/servers/ejabberd](https://xmpp.org/software/servers/ejabberd/).
 
 [Prosody 0.12.2 has been released](https://blog.prosody.im/prosody-0.12.2-released/) and [Prosody 0.11.14 released](https://blog.prosody.im/prosody-0.11.14-released/), which contains allowance U+7F when constructing stanzas, bug fixes and improvements.
 
