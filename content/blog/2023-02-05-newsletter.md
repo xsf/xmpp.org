@@ -60,7 +60,7 @@ A [stress test of PeerTube streaming server](https://www.octopuce.fr/test-de-cha
 
 Jabber.org, the original XMPP instant messaging service was [migrated to the Prosody IM server on the weekend of January 14-15th](http://www.jabber.org/notices.html). Full history: jabberd -> ejabberd -> Isode M-Link -> Prosody IM
 
-[A paper](https://ieeexplore.ieee.org/document/9968404) was presented on IECON2022, and just recently published. Based on XMPP.
+An article about ["Tokenization of sustainable real estate in Smart Cities : Monetization as basis for construction, authorization and carbon neutralization in CPS"](https://ieeexplore.ieee.org/document/9968404) (using techniques based on XMPP) was presented on IECON2022 and got published recently.
 
 [JMP's December Newsletter](https://blog.jmp.chat/b/december-newsletter-2022) talks about their new co-op structure, an important security fix in the Cheogram Android app, and a review of the highlights of 2022.  [JMP's January Newsletter](https://blog.jmp.chat/b/january-newsletter-2023) mentions another new release including a new [XMPP Threaded Chat UI](https://kumi.tube/w/1LQQp5Uia4u8Pdojxen1y8) and new payment options for the service. Last but not least: [Writing a Chat Client from Scratch](https://blog.jmp.chat/b/2022-chat-client-from-scratch) in Ruby.
 
