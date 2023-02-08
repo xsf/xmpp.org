@@ -52,7 +52,7 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 - XMPP - End of the year 2022 talk
 - [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interopable chat in healthcare that’s compatible with the EU’s new regulations.
 - [P10K: getting 10000 participants into a Jitsi meeting](https://fosdem.org/2023/schedule/event/jitsi_p10k/), Saúl from the Jitsi team reveals their interesting journey to reach 10000 participants in an XMPP-powered Jitsi video conference.
-- [Modernizing Authentication and Authorization in XMPP Matthew](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/), founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
+- [Modernizing Authentication and Authorization in XMPP](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/): Matthew Wild, founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
 
 ## Articles
 
