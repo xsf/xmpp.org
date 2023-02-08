@@ -5,7 +5,7 @@ categories: ['Newsletter']
 ---
 
 Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of December 2022 & January 2023. 
-This is the first release of this year and we have after a well-deserved winter break! Many thanks to all our readers and all contributors!
+This is the first release after a well-deserved winter break! Many thanks to all our readers and all contributors!
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, especially throughout the current situation, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more at the bottom.
 
