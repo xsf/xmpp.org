@@ -26,7 +26,7 @@ This is a community effort, and we would like to thank translators for their con
 
 ## XSF Announcements
 
-If you are interested in becoming an XSF member, the [listings are open until this 19th February 2023](https://wiki.xmpp.org/web/Membership_Applications_Q1_2023)!
+If you are interested in becoming an XSF member, the [listings are open until 19th February 2023](https://wiki.xmpp.org/web/Membership_Applications_Q1_2023).
 
 ### XSF fiscal hosting projects
 
