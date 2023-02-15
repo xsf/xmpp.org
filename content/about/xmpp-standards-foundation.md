@@ -36,7 +36,7 @@ The XMPP Council is the technical steering group that approves XMPP Extension Pr
 
 The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, chatroom logs and mailing list archives are available (anyone can subscribe to the mailing list, but only Council members can post). The Council meets once a week in a chatroom - anyone can join in, comments from the floor are welcome.
 
-The Council (2019-2020) consists of the following individuals:
+The Council (2022-2023) consists of the following individuals:
 
 - __Georg Lukas__ is a full-time [IT security consultant](https://rt-solutions.de/en/home-2/), a vocal advocate of [Easy XMPP](https://wiki.xmpp.org/web/Category:Easy_XMPP), the project janitor of [yaxim](https://yaxim.org) and the operator of the [public yax.im server](https://yaxim.org/yax.im/).
 - __Jonas Schäfer__ works on the [aioxmpp](https://github.com/horazont/aioxmpp) client library for Python, has a [FLOSS Qt based client in the making](https://github.com/jabbercat/jabbercat) and is in the [Editor Team](/about/xsf/editor-team). He also created and operates the [search.jabber.network MUC search service](https://search.jabber.network/).
