@@ -55,7 +55,7 @@ Snikket informs about the [F-Droid security warnings](https://snikket.org/blog/f
 
 [vanitasvitae](https://blog.jabberhead.tk/) writes about PGPainless: [Use Any SOP Binary With SOP-Java and External-SOP](https://blog.jabberhead.tk/2023/01/13/use-any-sop-binary-with-sop-java-and-external-sop/)
 
-nicfab writes about the new [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.it/en/posts/nis2/)
+nicfab writes about the new [EU NIS 2 directive: does it apply to anyone who provides free online digital services?](https://notes.nicfab.eu/en/posts/nis2/)
 
 ## Software news
 ### Clients and applications
@@ -202,7 +202,7 @@ This is a community effort, and we would like to thank translators for their con
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
   - Translators: **Jeybe, wh0nix**
-- Italian: [nicfab.it](https://www.nicfab.it/)
+- Italian: [notes.nicfab.eu](https://notes.nicfab.eu/)
   - Translators: **nicfab**
 - Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: **daimonduff, TheCoffeMaker**
