@@ -49,13 +49,14 @@ def build_xep_list() -> None:
                     'type': xep.find('type').text,
                 }
             )
+    xeps_sorted = sorted(xeps, key=lambda xep: xep['number']) 
 
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 
     with open(f'{base_path}/../data/xeplist.json',
               'w',
               encoding='utf-8') as json_file:
-        json.dump(xeps, json_file, indent=4)
+        json.dump(xeps_sorted, json_file, indent=4)
     print('XEP List prepared successfully')
 
 
