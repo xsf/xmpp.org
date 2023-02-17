@@ -249,6 +249,10 @@ ul.share {
 .post-meta {
     color: #787878;
 }
+.mermaid {
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
 
 /* Software list */
 .logo-software {
@@ -432,5 +436,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     .card > ul > li {
         background-color: #2b2b2b;
         color: #e3e3e3;
+    }
+    .mermaid {
+	background-color: rgb(110 120 130);
     }
 }
