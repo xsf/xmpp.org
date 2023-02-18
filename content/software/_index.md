@@ -1,5 +1,5 @@
 ---
-title: XMPP software
+title: XMPP Software
 layout: packages
 aliases:
     - "/software/clients"
@@ -20,7 +20,7 @@ Please note that the software we list on these pages was not developed by the XM
 
 > Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
 
-__See something missing?__ Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If __you are related to the project__ and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
+**See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
 
 {{< software-overview-doap >}}
 
