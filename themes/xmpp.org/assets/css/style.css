@@ -365,6 +365,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     max-width: 50px;
     width: 100%;
 }
+.software-platforms {
+    background-color: #fff;
+    color: #6b7b85;
+}
 .package-details-xeps {
     display: block;
     border: none;
@@ -456,6 +460,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     }
     .software-list {
         background-color: #2e2e2e;
+    }
+    .software-platforms {
+        background-color: #32373c;
+        color: #a4b1b9;
     }
     .card {
         background-color: #262626;
