@@ -6,6 +6,7 @@
   <Project>
     <name>Bad XMPP</name>
     <homepage rdf:resource="https://badxmpp.eu/"/>
+    <os>Browser</os>
 
     <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-library"/>
   </Project>
