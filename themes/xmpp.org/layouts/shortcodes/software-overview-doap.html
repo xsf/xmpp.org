@@ -143,9 +143,9 @@
         data-rfcs="{{ delimit $props.rfcs "," }}"
         data-xeps="
         {{- range $index, $xep := $props.xeps -}}
-            {{ if or (eq $xep.status "complete") (eq $xep.status "partial") }}
+            {{- if or (eq $xep.status "complete") (eq $xep.status "partial") (eq $xep.status "") -}}
                 {{- $xep.number -}},
-            {{ end }}
+            {{- end -}}
         {{- end -}}
         "
         data-platforms="{{ delimit $props.platforms "," }}"
