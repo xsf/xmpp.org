@@ -1,38 +1,37 @@
-{{ $package_type := .Get "package_type" }}
-
-{{ $data := newScratch }}
-{{ if eq $package_type "clients" }}
-    {{ $data.Set "data" .Site.Data.clients }}
-{{ else if eq $package_type "servers" }}
-    {{ $data.Set "data" .Site.Data.servers }}
-{{ else }}
-    {{ $data.Set "data" .Site.Data.libraries }}
-{{ end }}
-
-<h4>Other {{ $package_type | title }}</h4>
-<p>{{ $package_type | title }} without a <a href="https://xmpp.org/extensions/xep-0453.html">DOAP</a> file (Description of a Project) are listed here.</p>
-<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#legacy-clients" aria-expanded="false" aria-controls="legacy-clients">
+<h4>Other Software</h4>
+<p>Software without a <a href="https://xmpp.org/extensions/xep-0453.html">DOAP</a> file (Description of a Project) is listed here.</p>
+<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#legacy-software" aria-expanded="false" aria-controls="legacy-software">
     Show List
 </button>
 
-<div class="collapse pt-3" id="legacy-clients">
-    <table>
+<div class="collapse pt-3" id="legacy-software">
+    <table class="sortable">
         <thead>
             <tr>
+                <th>Category</th>
                 <th>Project Name</th>
                 <th>Platforms</th>
             </tr>
         </thead>
         <tbody>
-            {{ range $data.Get "data" }}
+            {{ range .Site.Data.software }}
                 {{ if not .doap }}
                     <tr>
+                        <td>
+                            {{ delimit .categories ", " | title }}
+                        </td>
                         {{ if .url }}
-                            <td><a href="{{ .url }}">{{ .name }}</a></td>
+                            <td>
+                                <a href="{{ .url }}">{{ .name }}</a>
+                            </td>
                         {{ else }}
-                            <td>{{ .name }}</td>
+                            <td>
+                                {{ .name }}
+                            </td>
                         {{ end }}
-                        <td>{{ delimit .platforms " / " }}</td>
+                        <td>
+                            {{ delimit .platforms " / " }}
+                        </td>
                     </tr>
                 {{ end }}
             {{ end }}
