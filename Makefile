@@ -70,9 +70,7 @@ publish:
 	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare_xep_list.py
 	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
-	$(PY) $(TOOLSDIR)/lint_list.py clients.json
-	$(PY) $(TOOLSDIR)/lint_list.py servers.json
-	$(PY) $(TOOLSDIR)/lint_list.py libraries.json
+	$(PY) $(TOOLSDIR)/lint_software_list.py software.json
 	$(PY) $(TOOLSDIR)/prepare_software_list.py
 	$(PY) $(TOOLSDIR)/prepare_compliance.py
 	$(HUGO) version
