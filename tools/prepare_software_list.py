@@ -356,7 +356,9 @@ def prepare_doap_files() -> None:
         if not entry.name.endswith('.doap'):
             continue
 
-        with open(STATIC_DOAP_PATH / entry.name, 'r+') as doap_file:
+        with open(STATIC_DOAP_PATH / entry.name,
+                  'r+',
+                  encoding='utf-8') as doap_file:
             content = doap_file.read()
 
             result = re.sub(
