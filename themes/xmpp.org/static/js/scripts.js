@@ -186,6 +186,7 @@ function software_filter_list() {
   let selected_xeps = software_get_selected_xeps();
   let platform = document.getElementById("platform-select").value;
 
+  let hidden_cards = 0;
   for (const card of document.getElementsByClassName("package-card")) {
     let category_list = card.dataset.categories;
     let xep_list = card.dataset.xeps.split(',');
@@ -199,13 +200,25 @@ function software_filter_list() {
         if (package_compliant) {
           if (selected_xeps.length === 0 || selected_xeps.every(r => xep_list.includes(r))) {
             show_card = true;
+          } else {
+            hidden_cards++;
           }
+        } else {
+          hidden_cards++;
         }
+      } else {
+        hidden_cards++;
       }
     }
     if (!show_card) {
       card.classList.add("d-none");
     }
+  }
+  let hidden_results_info = document.getElementById("hidden-results-info");
+  if (hidden_cards === 0) {
+    hidden_results_info.innerHTML = "All software entries are shown.";
+  } else {
+    hidden_results_info.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
   }
 }
 
