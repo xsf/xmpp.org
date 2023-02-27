@@ -14,10 +14,9 @@ prepare for the application phase. We would like to invite to review the XMPP pr
 ### XMPP Projects at Google Summer of Code 2023
 
 The projects that have signed up are:
-
-- [Dino](https://dino.im/): Ideas by the Dino team
-- [Monal](https://monal-im.org/): Ideas by the Monal team
-- [Moxxy](https://codeberg.org/moxxy/moxxy): Ideas by the Moxxy team
+- [Dino](https://dino.im/): Ideas by the [Dino team](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023#Dino)
+- [Monal](https://monal-im.org/): Ideas by the [Monal team](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023#Monal)
+- [Moxxy](https://codeberg.org/moxxy/moxxy): Ideas by the [Moxxy team](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023#Moxxy)
 - If you are capable and have the necessary skills in general you can propose you own topic. Please bear in mind that this requires extended efforts.
 
 ### Designated Webpage
