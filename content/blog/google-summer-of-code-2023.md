@@ -19,7 +19,7 @@ Projects which signed up are:
 - [Moxxy](https://codeberg.org/moxxy/moxxy): Ideas by the [Moxxy team](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023#Moxxy)
 - If you are capable and have the necessary skills in general you can propose you own topic. Please bear in mind that this requires extended efforts.
 
-### Designated Webpage
+### Designated Web Page
 
 We have further details on our designated webpage in several languages and advertisement material.
 
