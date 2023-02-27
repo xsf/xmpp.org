@@ -21,7 +21,7 @@ Projects which signed up are:
 
 ### Designated Web Page
 
-We have further details on our designated webpage in several languages and advertisement material.
+We have further details and advertisement material on our designated web page presented in various languages.
 
 Checkout our media channels!
 
