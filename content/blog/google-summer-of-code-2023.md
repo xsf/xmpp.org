@@ -8,7 +8,7 @@ categories: ['Google Summer of Code']
 
 The XSF has been accepted again as hosting organisation at the [Google Summer of Code 2023](https://summerofcode.withgoogle.com/programs/2023)!
 
-Now students but also simply open-source newcomers are invited to consider and review a participation and
+Now both students and open-source newcomers are invited to consider and review a participation and
 prepare for the application phase. We would like to invite to review the XMPP projects that signed up with their ideas for this year.
 
 ### XMPP Projects at Google Summer of Code 2023
