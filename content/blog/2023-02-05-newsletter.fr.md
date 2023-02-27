@@ -21,9 +21,9 @@ La XSF propose un [hébergement fiscal](https://xmpp.org/community/fiscalhost/) 
 - [Pont Bifrost : échange de messages hors-ligne entre Matrix et XMPP](https://opencollective.com/bifrost-mam)
 - [Coopérative Mellium](https://opencollective.com/mellium)
 
-## Google Summer of Code 2022 2023
+## Google Summer of Code 2023
 
-{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
+{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF et Google Summer of Code 2023" >}}
 
 Nous envisageons de participer au Google Summer of Code 2023! Si vous êtes intéressés ou interessées, [lire ici](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023).
 
@@ -54,7 +54,7 @@ Jabber.org, le service de messagerie instantanée XMPP originel, a été [migré
 
 
 
-Un article sur la ["tokenisation de l'immobilier durable dans les villes intelligentes : la monétisation comme base pour la construction, l'autorisation et la neutralisation du carbone dans les CPS (systèmes cyber-physiques)"] (https://ieeexplore.ieee.org/document/9968404) (utilisant des techniques basées sur XMPP) a été présenté à IECON2022 et a été publié récemment.
+Un article sur la ["tokenisation de l'immobilier durable dans les villes intelligentes : la monétisation comme base pour la construction, l'autorisation et la neutralisation du carbone dans les CPS (systèmes cyber-physiques)"](https://ieeexplore.ieee.org/document/9968404) (utilisant des techniques basées sur XMPP) a été présenté à IECON2022 et a été publié récemment.
 
 
 
@@ -62,7 +62,7 @@ Un article sur la ["tokenisation de l'immobilier durable dans les villes intelli
 
 
 
-Snikket vous informe des [avertissements de sécurité de F-Droid] (https://snikket.org/blog/fdroid-security-warning/) et de leur [mise à jour de sécurité] (https://snikket.org/blog/fdroid-security-update/). Les problèmes ont déjà été résolus.
+Snikket vous informe des [avertissements de sécurité de F-Droid](https://snikket.org/blog/fdroid-security-warning/) et de leur [mise à jour de sécurité](https://snikket.org/blog/fdroid-security-update/). Les problèmes ont déjà été résolus.
 
 
 
@@ -117,7 +117,7 @@ De la communauté ignite realtime :
 
 
 
-[Le serveur Tigase XMPP 8.3 a été publié] (https://tigase.org/blog/tigase-xmpp-server-8.3.0/). Elle inclut Tigase MEET - la version de Tigase des appels vidéo de groupe SFU (Selective Forwarding Unit), la prise en charge de la capacité de type de liaison de canal SASL XEP-0440 ainsi que la prise en charge initiale et anticipée de SASL2 et Bind2 et de nombreuses corrections habituelles.
+[Le serveur Tigase XMPP 8.3 a été publié](https://tigase.org/blog/tigase-xmpp-server-8.3.0/). Elle inclut Tigase MEET - la version de Tigase des appels vidéo de groupe SFU (Selective Forwarding Unit), la prise en charge de la capacité de type de liaison de canal SASL XEP-0440 ainsi que la prise en charge initiale et anticipée de SASL2 et Bind2 et de nombreuses corrections habituelles.
 
 ## Bibliothèques et outils
 
@@ -125,7 +125,7 @@ De la communauté ignite realtime :
 
 
 
-[python-nbxmpp 4.0.0 à 4.1.0 a été publiée] (https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog). Ces versions apportent le support des Messages de Réaction (XEP-0444) et portent la bibliothèque vers libsoup3.
+[python-nbxmpp 4.0.0 à 4.1.0 a été publiée](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog). Ces versions apportent le support des Messages de Réaction (XEP-0444) et portent la bibliothèque vers libsoup3.
 
 
 
