@@ -1,0 +1,26 @@
+- id: dateFormat  
+  translation: "2 gennaio 2006"
+- id: shortdateFormat
+  translation: "Jan 2, 2006 15:04:05"
+- id: postedOnDate
+  translation: "Pubblicato su {{ . }}"
+- id: translationsLabel
+  translation: "Altre lingue"
+- id: translationsSeparator
+  translation: ", " 
+- id: readMore
+  translation: "Per saperne di più"   
+- id: olderPosts 
+  translation: "Post più vecchi"  
+- id: newerPosts  
+  translation: "Post più recenti"
+- id: previousPost
+  translation: "Articolo precedente"
+- id: nextPost
+  translation: "Articolo successivo"   
+- id: readTime
+  translation: "minuti"   
+- id: words  
+  translation: "parole"   
+- id: translationHint
+  translation: "Questo articolo è stato tradotto da volontari. Mentre stanno facendo del loro meglio, la traduzione potrebbe ancora non essere accurata."# Content
