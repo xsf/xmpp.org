@@ -1,0 +1,35 @@
+---
+title: XMPP at Google Summer of Code 2023
+date: 2023-02-27
+categories: ['Google Summer of Code']
+---
+
+{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
+
+The XSF has been accepted again as hosting organisation at the [Google Summer of Code 2023](https://summerofcode.withgoogle.com/programs/2023)!
+
+Now students but also simply open-source newcomers are invited to consider and review a participation and
+prepare for the application phase. We would like to invite to review the XMPP projects that signed up with their ideas for this year.
+
+### XMPP Projects at Google Summer of Code 2023
+
+The projects that have signed up are:
+
+- [Dino](https://dino.im/): Ideas by the Dino team
+- [Monal](https://monal-im.org/): Ideas by the Monal team
+- [Moxxy](https://codeberg.org/moxxy/moxxy): Ideas by the Moxxy team
+- If you are capable and have the necessary skills in general you can propose you own topic. Please bear in mind that this requires extended efforts.
+
+### Designated Webpage
+
+We have further details on our designated webpage in several languages and advertisement material.
+
+Checkout our media channels!
+
+- [Twitter](https://twitter.com/xmpp)
+- [Mastodon/Fediverse](https://fosstodon.org/@xmpp/)
+- [Youtube](https://www.youtube.com/c/XMPPStandardsFoundation)
+
+Looking forward
+
+–The XSF Organisation Admin
