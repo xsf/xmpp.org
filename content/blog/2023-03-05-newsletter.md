@@ -43,6 +43,8 @@ We are considering to participate the Google Summer of Code 2023! If you are int
 
 _Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
 
+[nicfab](https://notes.nicfab.eu) wrote an article about the [Digital Service Act: EU Commission Questions and Answers on identification and counting of active recipients of the service under the DSA](https://notes.nicfab.eu/en/posts/dsa-faq/).
+
 ## Software news
 ### Clients and applications
 
