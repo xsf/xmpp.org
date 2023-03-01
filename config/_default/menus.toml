@@ -119,8 +119,8 @@
     parent = "community"
     weight = 6
 [[main]]
-    name = "Service Providers"
-    url = "https://xmpp.work/all-listings"
+    name = "Jobs with XMPP"
+    url = "https://xmpp.work/"
     parent = "community"
     weight = 7
 [[main]]
