@@ -2,46 +2,46 @@
     "teams": {
         "editor": {
             "list_name": "editor",
-            "page": "/about/xsf/editor-team.html"
+            "page": "/about/xsf/editor-team/"
         },
         "infrastructure": {
             "list_name": "infrastructure",
-            "page": "/about/xsf/infrastructure-team.html"
+            "page": "/about/xsf/infrastructure-team/"
         },
         "council": {
             "list_name": "XMPP Council",
-            "page": "/about/xmpp-standards-foundation.html#council"
+            "page": "/about/xmpp-standards-foundation#council"
         },
         "board": {
             "list_name": "XSF Board",
-            "page": "/about/xmpp-standards-foundation.html#board"
+            "page": "/about/xmpp-standards-foundation#board"
         },
         "registrar": {
             "list_name": "XMPP Registrar"
         },
         "chair": {
             "list_name": "XSF Chair",
-            "page": "/about/xsf/people.html"
+            "page": "/about/xsf/people/"
         },
         "ed": {
             "list_name": "Executive Director",
-            "page": "/about/xsf/people.html"
+            "page": "/about/xsf/people/"
         },        
         "secretary": {
             "list_name": "XSF Secretary",
-            "page": "/about/xsf/people.html"
+            "page": "/about/xsf/people/"
         },
         "treasurer": {
             "list_name": "XSF Treasurer",
-            "page": "/about/xsf/people.html"
+            "page": "/about/xsf/people/"
         },
         "scam": {
             "list_name": "SCAM",
-            "page": "/about/xsf/scam-team.html"
+            "page": "/about/xsf/scam-team/"
         },
         "commteam": {
             "list_name": "Communication Team",
-            "page": "/about/xsf/comm-team.html"
+            "page": "/about/xsf/comm-team/"
         }
     },
 
@@ -329,7 +329,7 @@
         {
             "name": "Matthew Wild",
             "jids": ["me@matthewwild.co.uk"],
-            "roles": ["board", "infrastructure"]
+            "roles": ["ed", "board", "infrastructure"]
         },
 
         {
