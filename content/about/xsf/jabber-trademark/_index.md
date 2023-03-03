@@ -20,7 +20,6 @@ For further information, visit any of the following pages:
 - [Licensing decision process & application](/about/xsf/jabber-trademark/license-decision-process)
 - [Dispute resolution](/about/xsf/jabber-trademark/dispute-resolution)
 - [Trademark License Agreement](/about/xsf/jabber-trademark/trademark-license-agreement)
-- [Pending applications](/about/xsf/jabber-trademark/pending-applications)
 - [Approved applications](/about/xsf/jabber-trademark/approved-applications)
 
 If you have any questions about the Jabber Trademark Licensing Program, please contact [trademark@jabber.org](mailto:trademark@jabber.org) or [Peter Saint-Andre](/about/xsf/people), the XSF’s Executive Director.
