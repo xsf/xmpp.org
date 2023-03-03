@@ -4,14 +4,22 @@ date: 2023-03-05
 categories: ['Newsletter']
 ---
 
-Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of February 2023. 
+Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of February 2023.
 Many thanks to all our readers and all contributors!
 
-Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more at the bottom.
+Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
 ## XSF Announcements
 
-If you are interested in becoming an XSF member, the [listings are open until 19th February 2023](https://wiki.xmpp.org/web/Membership_Applications_Q1_2023).
+### XMPP and Google Summer of Code 2023
+The XSF has been [accepted again as hosting organisation at the GSoC 2023](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/) !
+
+{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
+
+### xmpp.org got a new software section
+Looking for XMPP software, i.e. clients, servers, libraries, components, and tools? Check out [xmpp.org](https://xmpp.org/)'s new [software section](https://xmpp.org/software/), which lets you filter software by your own criteria. Looking for a client which works on Android and supports audio/video calls? Looking for a library that supports [XEP-0461: Message Replies](https://xmpp.org/extensions/xep-0461.html)? Just apply the filter and see what you get!
+
+{{< figure src="/images/newsletter/2023-03-05/xmpp-software-section.png" caption="xmpp.org's new software section" >}}
 
 ### XSF fiscal hosting projects
 
@@ -20,43 +28,42 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
 - [Mellium Co-op](https://opencollective.com/mellium)
 
-### Google Summer of Code 2023
-
-{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
-
-We are considering to participate the Google Summer of Code 2023! If you are interested start [reading here](https://wiki.xmpp.org/web/Google_Summer_of_Code_2023).
-
 ## XMPP Events
 
-- [XMPP Summit 25 and at FOSDEM 2023](https://xmpp.org/2023/01/xmpp-at-fosdem-2023/)
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 
-## XMPP Talks
+## XMPP Videos
 
-- [XMPP - End of the year 2022 talk](https://bbb.sfconservancy.org/b/ste-fdo-qen)
-- [Interoperable Chat, Dutch Healthcare and the Digital Services Act](https://fosdem.org/2023/schedule/event/interoperable_chat/) Winfried shares the many challenges faced while working on a standard for interoperable chat in healthcare that’s compatible with the EU’s new regulations.
-- [P10K: getting 10000 participants into a Jitsi meeting](https://fosdem.org/2023/schedule/event/jitsi_p10k/), Saúl from the Jitsi team reveals their interesting journey to reach 10000 participants in an XMPP-powered Jitsi video conference.
-- [Modernizing Authentication and Authorization in XMPP](https://fosdem.org/2023/schedule/event/modern_xmpp_auth/): Matthew Wild, founder of the Prosody and Snikket projects, explains why it’s time for us to look beyond passwords for authentication.
+- Cheogram offers a new [PeerTube channel](https://kumi.tube/c/cheogram) for videos about new features in their XMPP client and gateways. Also available [on YouTube](https://YouTube.com/@cheogram).
 
 ## Articles
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
-
-[nicfab](https://notes.nicfab.eu) wrote an article about the [Digital Service Act: EU Commission Questions and Answers on identification and counting of active recipients of the service under the DSA](https://notes.nicfab.eu/en/posts/dsa-faq/).
+- [nicfab](https://notes.nicfab.eu) wrote an article about the [Digital Service Act: EU Commission Questions and Answers on identification and counting of active recipients of the service under the DSA](https://notes.nicfab.eu/en/posts/dsa-faq/).
+- [New Profanity Old System](https://profanity-im.github.io/blog/post/distrobox/) by jubalh: This blog explains how to run latest profanity releases on years old systems properly.
+- The [JMP newsletter covering February 2023](https://blog.jmp.chat/b/february-newsletter-2023) has been published. As well as a [post about technical implemetation for stickers](https://blog.jmp.chat/b/cheogram-android-stickers-2023) in Cheogram Android.
 
 ## Software news
 ### Clients and applications
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+- [Converse 10.1.1](https://github.com/conversejs/converse.js/releases/tag/v10.1.1) and [10.1.2](https://github.com/conversejs/converse.js/releases/tag/v10.1.2) have been released, which both fix some bugs. Converse is a web based XMPP/Jabber chat client.
+- [Dino 0.4.0 'Ilulissat'](https://dino.im/blog/2023/02/dino-0.4-release/) and 0.4.1 have been released. The 0.4 release adds support for message reactions and replies. Dino also switched from GTK3 to GTK4 and makes use of libadwaita now.
+
+{{< figure src="/images/newsletter/2023-03-05/dino-reaction.png" caption="Dino 0.4 now supports Message Replies and Message Reactions" >}}
+
+- [Gajim 1.7.0](https://gajim.org/post/2023-02-03-gajim-1.7.0-released/) and [1.7.1](https://gajim.org/post/2023-02-08-gajim-1.7.1-released/) have been released. These releases bring improved KeepassXC integration, better defaults for group chats created with ejabberd, and some important bug fixes.
+- [Psi+ 1.5.1645](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) and [1.5.1646](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
 ### Servers
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+- [Prosody 0.12.3](https://blog.prosody.im/prosody-0.12.3-released/) has been released.
+- [Openfire inVerse plugin 10.1.2](https://discourse.igniterealtime.org/t/inverse-openfire-plugin-10-1-2-1-released/92591) has been released.
+- A new plugin for Openfire, the [MUC Real-Time Block List plugin](https://discourse.igniterealtime.org/t/new-openfire-muc-real-time-block-list-plugin/92587) has been released. It allows to moderate chat rooms, especially for federated services.
+- [Cobalt 1.3](https://www.isode.com/company/wordpress/cobalt-1-3-release-features/) has been released.
 
 ### Libraries & Tools
 
-_Please do not simply drop links, rather try to make a short (<5 lines) and decent formulated description of what is the main outcome of your source. This will help us a lot! You do not need to use a hard, formal tone, be passionate about why this motivates you or what you work on!_
+- [nbxmpp 4.2.0](https://dev.gajim.org/gajim/python-nbxmpp) has been released, which brings support for [XEP-0461](https://xmpp.org/extensions/xep-0461.html) Message Replies and a profile for SASLprep.
 
 ## Extensions and specifications
 
@@ -69,28 +76,12 @@ Developers and other standards experts from around the world collaborate on thes
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to 
 accept this proposal as an Experimental XEP.
 
-- [XMPP Compliance Suites 2023](https://xmpp.org/extensions/inbox/cs-2023.html)
-  - This document defines XMPP application categories for different use cases (Core, Web, IM, and Mobile), and specifies the required XEPs that client and server software needs to implement for compliance with the use cases.
-- [Stream Limits Advertisement](https://xmpp.org/extensions/inbox/xep-sla.html)
-  - This specification defines a way for an XMPP entity to announce the limits it will enforce for data received on a stream.
+- No XEPs proposed this month.
 
 ### New
 
-- [Version 0.1.0 of XEP-0477 (Pubsub Targeted Encryption)](https://xmpp.org/extensions/xep-0477.html)
-  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0476 (Pubsub Signing: OpenPGP Profile)](https://xmpp.org/extensions/xep-0476.html)
-  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0475 (Pubsub Signing)](https://xmpp.org/extensions/xep-0475.html)
-  - Accepted by vote of Council on 2022-11-30. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0471 (Events)](https://xmpp.org/extensions/xep-0471.html)
-  - Accepted by vote of Council on 2022-09-28. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0474 (SASL SCRAM Downgrade Protection)](https://xmpp.org/extensions/xep-0474.html)
-  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0473 (OpenPGP for XMPP Pubsub)](https://xmpp.org/extensions/xep-0473.html)
-  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
-- [Version 0.1.0 of XEP-0472 (PubSub Social Feed)](https://xmpp.org/extensions/xep-0472.html)
-  - Accepted by vote of Council on 2022-10-19. (XEP Editor (jsc))
-  
+- No new XEPs this month.
+
 ### Deferred
 
 If an experimental XEP is not updated for more than twelve months, it will be moved off Experimental to Deferred. If there is another update, it 
@@ -100,17 +91,7 @@ will put the XEP back onto Experimental.
 
 ### Updated
 
-- [Version 0.2.0 of XEP-0474 (SASL SCRAM Downgrade Protection)](https://xmpp.org/extensions/xep-0474.html)
-  - Add description of attack model
-  - Add section defining IETF interaction (tm)
-- [Version 0.2.0 of XEP-0461 (Message Replies)](https://xmpp.org/extensions/xep-0461.html)
-  - Fix example character counting. Add disco feature. Relax the 'to' attribute constraints. (nc)
-- [Version 0.1.1 of XEP-0444 (Message Reactions)](https://xmpp.org/extensions/xep-0444.html)
-  - Add the XML Schema (egp)
-- [Version 0.3.0 of XEP-0426 (Character counting in message bodies)](https://xmpp.org/extensions/xep-0426.html)
-  - Added section about subsequences. (lmw)
-- [Version 0.5.0 of XEP-0353 (Jingle Message Initiation)](https://xmpp.org/extensions/xep-0353.html)
-  - Recommend usage of UUID v4 for id attributes. (tm)
+- No XEPs updated this month.
 
 ### Last Call
 
@@ -121,7 +102,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 ### Stable
 
 - No XEP moved to stable this month.
-  
+
 ### Deprecated
 
 - No XEP deprecated this month.
@@ -154,7 +135,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: **Alexander "PapaTutuWawa", emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash** 
+  - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", emus, Licaon_Kter, Ludovic Bocquet, MattJ, MSavoritias (fae,ve), wurstsalat, Zash**
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
