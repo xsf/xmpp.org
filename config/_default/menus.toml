@@ -44,10 +44,15 @@
     parent = "about"
     weight = 8
 [[main]]
+    name = "Press Kit"
+    url = "/about/press-kit/"
+    parent = "about"
+    weight = 9
+[[main]]
     name = "History"
     url = "/about/history/"
     parent = "about"
-    weight = 9
+    weight = 10
 
 [[main]]
     name = "Uses"
