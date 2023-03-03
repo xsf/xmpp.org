@@ -40,6 +40,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Articles
 
 - [nicfab](https://notes.nicfab.eu) wrote an article about the [Digital Service Act: EU Commission Questions and Answers on identification and counting of active recipients of the service under the DSA](https://notes.nicfab.eu/en/posts/dsa-faq/).
+- [Digital Markets Act: the second stakeholders' workshop on the interoperability organized by the EU Commission](https://notes.nicfab.eu/en/posts/dmaworkshop/) an article by nicfab about the recent DMA stakeholder workshop on "Interoperability between messaging services"
 - [New Profanity Old System](https://profanity-im.github.io/blog/post/distrobox/) by jubalh: This blog explains how to run latest profanity releases on years old systems properly.
 - The [JMP newsletter covering February 2023](https://blog.jmp.chat/b/february-newsletter-2023) has been published. As well as a [post about technical implemetation for stickers](https://blog.jmp.chat/b/cheogram-android-stickers-2023) in Cheogram Android.
 
