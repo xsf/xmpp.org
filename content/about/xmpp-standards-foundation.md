@@ -18,7 +18,9 @@ At the core of the XSF is its elected Membership who, in turn, elect a Council (
 - [Summits, Conferences, and Meetups team (SCAM)](/about/xsf/scam-team/)
 - [Executive Director, Treasurer, and Secretary](/about/xsf/people).
 
-If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership). (See a [list of XSF members here](/about/xsf/members))
+If you have an interest in XMPP standards, it is straightforward to [become a Member of the XSF](/community/membership).
+
+- [XSF Members](/about/xsf/members)
 
 ## The Board{#board}
 

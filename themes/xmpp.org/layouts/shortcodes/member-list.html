@@ -6,21 +6,21 @@
 {{ range $members }}
     <li>
         {{ .name }}
-        {{ if .roles }}
-            (
-            {{ range $i, $role := .roles }}
+        {{- if .roles -}}
+            &nbsp;(
+            {{- range $i, $role := .roles -}}
                 {{ $teams := index $teams . }}
-                {{ with $teams }}
-                    {{ if $i }},&nbsp;{{ end }}
-                    {{ if .page }}
-                        <a href="{{ .page }}">{{ .list_name }}</a>
-                    {{ else }}
+                {{- with $teams -}}
+                    {{- if $i -}},&nbsp;{{- end -}}
+                    {{- if .page -}}
+                        <a href="{{ .page }}">{{ .list_name | title }}</a>
+                    {{- else -}}
                         {{ .list_name }}
-                    {{ end }}                    
-                {{ end }} 
-            {{ end }}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
             )
-        {{ end }}
+        {{- end -}}
     </li>
 {{ end }}
 </ul>
@@ -31,21 +31,21 @@
     {{ range $emeriti }}
         <li>
             {{ .name }}
-            {{ if .roles }}
-                (
-                {{ range $i, $role := .roles }}
+            {{- if .roles -}}
+                &nbsp;(
+                {{- range $i, $role := .roles -}}
                     {{ $teams := index $teams . }}
-                    {{ with $teams }}
-                        {{ if $i }},&nbsp;{{ end }}
-                        {{ if .page }}
-                            <a href="{{ .page }}">{{ .list_name }}</a>
-                        {{ else }}
-                            {{ .list_name }}
-                        {{ end }}                    
-                    {{ end }} 
-                {{ end }}
+                    {{- with $teams -}}
+                        {{- if $i -}},&nbsp;{{- end -}}
+                        {{- if .page -}}
+                            <a href="{{ .page }}">{{- .list_name | title -}}</a>
+                        {{- else -}}
+                            {{- .list_name -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
                 )
-            {{ end }}
+            {{- end -}}
         </li>
     {{ end }}
 </ul>
