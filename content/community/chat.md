@@ -15,6 +15,10 @@ Overview of the logs of XSF chatrooms ([logs](https://logs.xmpp.org/))
 ### XSF chatroom
 Chat about the XMPP standards process ([join](xmpp:xsf@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/xsf/) | [webchat](https://xmpp.org/chat?xsf))
 
+### Council chatroom
+The Council meets once a week in this chatroom - anyone can join in, comments from the floor are welcome ([join](xmpp:council@muc.xmpp.org?join) |
+[logs](https://logs.xmpp.org/council/) | [webchat](https://xmpp.org/chat?council))
+
 ### Editors chatroom
 Chat about the XMPP standards process and the editorial work ([join](xmpp:editor@muc.xmpp.org?join) | [logs](http://logs.xmpp.org/editor/) | [webchat](https://xmpp.org/chat?editor))
 
