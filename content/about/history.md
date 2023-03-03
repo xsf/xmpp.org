@@ -103,3 +103,6 @@ aliases:
 
 ## 2020
 - __February:__ The XSF holds the twenty fourth XMPP Summit in Brussels, Belgium.
+
+## 2022
+- __February:__ The XSF holds the [twenty fifth XMPP Summit](/2023/01/xmpp-at-fosdem-2023/) in Brussels, Belgium.
