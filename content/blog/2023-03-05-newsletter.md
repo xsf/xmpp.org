@@ -141,7 +141,7 @@ This is a community effort, and we would like to thank translators for their con
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
   - Translators: **Jeybe, wh0nix**
-- Italian: [nicfab.it](https://www.nicfab.it/)
+- Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: **nicfab**
 - Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: **daimonduff, TheCoffeMaker**
