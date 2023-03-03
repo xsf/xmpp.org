@@ -9,45 +9,46 @@
     parent = "about"
     weight = 1
 [[main]]
-    name = "History"
-    url = "/about/history/"
-    parent = "about"
-    weight = 2
-[[main]]
-    name = "Myths & Legends"
-    url = "/about/myths/"
-    parent = "about"
-    weight = 3
-[[main]]
-    name = "Publications"
-    url = "/about/publications/"
-    parent = "about"
-    weight = 4
-[[main]]
     name = "The XSF"
     url = "/about/xmpp-standards-foundation/"
     parent = "about"
-    weight = 5
+    weight = 2
 [[main]]
     name = "Standards Process"
     url = "/about/standards-process/"
     parent = "about"
-    weight = 6
+    weight = 3
 [[main]]
     name = "Specifications"
     url = "/extensions/"
     parent = "about"
-    weight = 7
+    weight = 4
 [[main]]
     name = "Compliance Suites"
     url = "/about/compliance-suites/"
     parent = "about"
-    weight = 8
+    weight = 5
 [[main]]
     name = "FAQ"
     url = "/about/faq/"
     parent = "about"
+    weight = 6
+[[main]]
+    name = "Myths & Legends"
+    url = "/about/myths/"
+    parent = "about"
+    weight = 7
+[[main]]
+    name = "Publications"
+    url = "/about/publications/"
+    parent = "about"
+    weight = 8
+[[main]]
+    name = "History"
+    url = "/about/history/"
+    parent = "about"
     weight = 9
+
 [[main]]
     name = "Uses"
     url = "/uses/"
@@ -78,11 +79,13 @@
     url = "/uses/webrtc/"
     parent = "uses"
     weight = 5
+
 [[main]]
     name = "Software"
     url = "/software/"
     identifier = "software"
     weight = 3
+
 [[main]]
     name = "Community"
     url = "/community/"
@@ -138,19 +141,23 @@
     url = "/community/gsoc-2023/"
     parent = "community"
     weight = 10
+
 [[main]]
     name = "Getting Started"
     url = "/getting-started/"
     weight = 5
+
 [[main]]
     name = "Newsletter"
     url = "/newsletter/"
     weight = 6
+
 [[main]]
     name = "Blog"
     url = "/blog/"
     identifier = "blog"
     weight = 7
+
 [[main]]
     name = "Jobs"
     url = "https://xmpp.work"
