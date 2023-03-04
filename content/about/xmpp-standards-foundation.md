@@ -3,6 +3,7 @@ Title: XMPP Standards Foundation (XSF)
 Url: about/xmpp-standards-foundation
 aliases:
     - "/about/xmpp-standards-foundation.html"
+    - "/about/xsf/"
 layout: single_xsf
 ---
 
