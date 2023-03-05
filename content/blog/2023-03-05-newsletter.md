@@ -11,15 +11,14 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ## XSF Announcements
 
+xmpp.org got a new software section! Looking for XMPP software, i.e. clients, servers, libraries, components, and tools? Check out [xmpp.org](https://xmpp.org/)'s new [software section](https://xmpp.org/software/), which lets you filter software by your own criteria. Looking for a client which works on Android and supports audio/video calls? Looking for a library that supports [XEP-0461: Message Replies](https://xmpp.org/extensions/xep-0461.html)? Just apply the filter and see what you get!
+
+{{< figure src="/images/newsletter/2023-03-05/xmpp-software-section.png" caption="xmpp.org's new software section" >}}
+
 ### XMPP and Google Summer of Code 2023
 The XSF has been [accepted again as hosting organisation at the GSoC 2023](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/) !
 
 {{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
-
-### xmpp.org got a new software section
-Looking for XMPP software, i.e. clients, servers, libraries, components, and tools? Check out [xmpp.org](https://xmpp.org/)'s new [software section](https://xmpp.org/software/), which lets you filter software by your own criteria. Looking for a client which works on Android and supports audio/video calls? Looking for a library that supports [XEP-0461: Message Replies](https://xmpp.org/extensions/xep-0461.html)? Just apply the filter and see what you get!
-
-{{< figure src="/images/newsletter/2023-03-05/xmpp-software-section.png" caption="xmpp.org's new software section" >}}
 
 ### XSF fiscal hosting projects
 
