@@ -4,8 +4,8 @@
          xmlns:xmpp="https://linkmauve.fr/ns/xmpp-doap#"
          >
   <Project>
-    <name>MatriX vNext</name>
-    <homepage rdf:resource="https://www.ag-software.net/matrix-vnext/"/>
+    <name>XmppDotNet</name>
+    <homepage rdf:resource="https://xmppdotnet.org//"/>
     <programming-language>.NET Core</programming-language>
     <programming-language>.NET Standard</programming-language>
     <programming-language>C#</programming-language>
