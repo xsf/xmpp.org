@@ -8,7 +8,7 @@
     <homepage rdf:resource="https://www.ag-software.net/matrix-xmpp-sdk/"/>
     <programming-language>.NET</programming-language>
     <programming-language>C#</programming-language>
-    <programming-language>Mono</programming-language>
+    <programming-language>netCore</programming-language>
 
     <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-library"/>
   </Project>

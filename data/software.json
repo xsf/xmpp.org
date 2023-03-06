@@ -1134,12 +1134,8 @@
     {
         "doap": "/hosted-doap/matrix.doap",
         "name": "MatriX",
-        "platforms": [
-            ".NET",
-            "C#",
-            "netCore"
-        ],
-        "url": "https://www.ag-software.net/matrix-xmpp-sdk/",
+        "platforms": [],
+        "url": null,
         "categories": [
             "library"
         ]
@@ -2050,12 +2046,8 @@
     {
         "doap": "/hosted-doap/xmppdotnet.doap",
         "name": "XmppDotNet",
-        "platforms": [
-            ".NET",
-            "C#",
-            "netCore"
-        ],
-        "url": "https://xmppdotnet.org",
+        "platforms": [],
+        "url": null,
         "categories": [
             "library"
         ]
