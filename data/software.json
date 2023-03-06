@@ -1132,19 +1132,14 @@
         ]
     },
     {
-        "doap": "/hosted-doap/matrix.doap",
+        "doap": null,
         "name": "MatriX",
-        "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
-    },
-    {
-        "doap": "/hosted-doap/matrix-vnext.doap",
-        "name": "MatriX vNext",
-        "platforms": [],
-        "url": null,
+        "platforms": [
+            ".NET",
+            "C#",
+            "netCore"
+        ],
+        "url": "https://www.ag-software.net/matrix-xmpp-sdk/",
         "categories": [
             "library"
         ]
@@ -2050,6 +2045,19 @@
         "url": "https://babelmonkeys.de",
         "categories": [
             "client"
+        ]
+    },
+    {
+        "doap": null,
+        "name": "XmppDotNet",
+        "platforms": [
+            ".NET",
+            "C#",
+            "netCore"
+        ],
+        "url": "https://xmppdotnet.org",
+        "categories": [
+            "library"
         ]
     },
     {
