@@ -1132,7 +1132,7 @@
         ]
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/matrix.doap",
         "name": "MatriX",
         "platforms": [
             ".NET",
@@ -2048,7 +2048,7 @@
         ]
     },
     {
-        "doap": null,
+        "doap": "/hosted-doap/xmppdotnet.doap",
         "name": "XmppDotNet",
         "platforms": [
             ".NET",
