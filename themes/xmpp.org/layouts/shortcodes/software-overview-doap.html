@@ -218,6 +218,9 @@
                                                 <span class="text-muted small">{{ . }}&nbsp;</span>
                                             {{ end }}
                                         {{ end }}
+                                        {{ if eq (len $props.platforms) 0 }}
+                                            <i class="fa-solid fa-circle-question" title="Unknown"></i>
+                                        {{ end }}
                                     </div>
                                 </div>
                             </div>
