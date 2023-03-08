@@ -10,7 +10,6 @@ This page contains information for and about elected members of the XMPP Standar
 
 * [List of members](/about/xsf/members.html)
 * [Mailing lists](/community/mailing-lists.html)
-* [Official meeting minutes](/about/xsf/records/meeting-minutes/)
 
 ## Become a Member{#application}
 
