@@ -152,6 +152,7 @@
         {{- end -}}
         "
         data-platforms="{{ delimit $props.platforms "," }}"
+        data-programminglang="{{ delimit $props.programming_lang "," }}"
         {{ if $props.badges }}
             {{ $categories := slice "" }}
             {{ range $category, $level := $props.badges }}
@@ -185,6 +186,11 @@
                                 <div class="row">
                                     <span class="fw-lighter text-muted">{{ $props.shortdesc }}</span>
                                 </div>
+                                {{ if in $props.categories "library" }}
+                                    <div class="row mt-1">
+                                        <span class="fw-lighter text-muted"><i class="fa-solid fa-sm fa-code align-middle" title="Programming Language"></i>&nbsp;&nbsp;{{ delimit $props.programming_lang ", " }}</span>
+                                    </div>
+                                {{ end }}
                             </div>
                             <div class="col-md-3 col-sm-10 shadow-sm px-3 py-2 rounded software-platforms">
                                 <div class="row p-1">
