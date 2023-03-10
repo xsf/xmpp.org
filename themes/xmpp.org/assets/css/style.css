@@ -408,6 +408,14 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     cursor: default;
 }
 
+#comparison-dropdown {
+    max-height: 300px;
+    overflow-y: auto;
+}
+#comparison-table tr td:not(:first-child) {
+    text-align: center;
+}
+
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {

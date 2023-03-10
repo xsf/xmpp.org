@@ -24,9 +24,19 @@ window.onload = function() {
     software_set_platform_by_user_agent();
   }
 
+  if (window.location.pathname == "/software/software-comparison/") {
+    for (const element of document.getElementById("comparison-dropdown").querySelectorAll("a")) {
+      element.addEventListener("click", add_to_comparison);
+    }
+    for (const button of document.getElementsByName("remove-from-comparison")) {
+      button.addEventListener("click", remove_from_comparison)
+    }
+  }
+
   software_resize_extensions_collapse();
 };
 
+// Page: /software/
 function software_reset_xep_filter() {
   for (const check of document.getElementById("select-options-list").querySelectorAll("[data-xep]")) {
     check.checked = false;
@@ -222,6 +232,35 @@ function software_filter_list() {
   }
 }
 
+// Page: /software/software-comparison/
+function add_to_comparison(event) {
+  let name = event.srcElement.innerHTML;
+  let col_index = 0;
+  let cells = document.querySelectorAll("#comparison-table thead tr th");
+  cells.forEach(function(cell) {
+    if (cell.getAttribute("name") == name) {
+      col_index = cell.cellIndex + 1;
+    }
+  })
+  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
+    element => element.classList.remove("d-none")
+  )
+  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
+    element => element.classList.remove("d-none")
+  )
+}
+
+function remove_from_comparison(event) {
+  let col_index = event.srcElement.closest("TH").cellIndex + 1;
+  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
+    element => element.classList.add("d-none")
+  )
+  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
+    element => element.classList.add("d-none")
+  )
+}
+
+// Page: /software/<app>/
 function software_resize_extensions_collapse() {
   // Resize DOAP iframe in software details view
   let extensions_collapse = document.getElementById("extensions-collapse");

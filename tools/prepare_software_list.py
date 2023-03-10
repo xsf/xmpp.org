@@ -237,9 +237,13 @@ def prepare_package_data() -> None:
 
     shutil.copy(SOFTWARE_PATH / '_index.md',
                 DOWNLOAD_PATH / 'software_index.md')
+    shutil.copy(SOFTWARE_PATH / 'software-comparison.md',
+                DOWNLOAD_PATH / 'software-comparison.md')
     initialize_directory(SOFTWARE_PATH)
     shutil.copy(DOWNLOAD_PATH / 'software_index.md',
                 SOFTWARE_PATH / '_index.md')
+    shutil.copy(DOWNLOAD_PATH / 'software-comparison.md',
+                SOFTWARE_PATH / 'software-comparison.md')
 
     with open(DATA_PATH / 'software.json', 'rb') as json_file:
         xsf_package_list = json.load(json_file)
@@ -316,6 +320,32 @@ def prepare_package_data() -> None:
               encoding='utf-8') as package_data_file:
         json.dump(package_infos, package_data_file, indent=4)
 
+
+def add_doap_data_to_xeplist() -> None:
+    with open(DATA_PATH / 'software_list_doap.json') as software_list:
+        software_data = json.load(software_list)
+    with open(DATA_PATH / 'xeplist.json') as xep_list:
+        xep_data = json.load(xep_list)
+
+    for xep in xep_data:
+        xep['implementations'] = []
+        for name, package_data in software_data.items():
+            if not package_data['xeps']:
+                continue
+            for supported_xep in package_data['xeps']:
+                if supported_xep['number'] == f'{xep["number"]:04d}':
+                    xep['implementations'].append({
+                        'package_name': name,
+                        'package_categories': package_data['categories'],
+                        'implemented_version': supported_xep['version'],
+                        'implementation_status': supported_xep['status']
+                    })
+                    break
+
+    with open(DATA_PATH / 'xeplist.json',
+              'w',
+              encoding='utf-8') as xep_list:
+        json.dump(xep_data, xep_list, indent=4)
 
 def create_package_page(package_type: str, name_slug: str, name: str) -> None:
     '''
@@ -399,6 +429,7 @@ if __name__ == '__main__':
     Path(DOWNLOAD_PATH / 'doap_files').mkdir(parents=True)
 
     prepare_package_data()
+    add_doap_data_to_xeplist()
 
     initialize_directory(STATIC_DOAP_PATH)
     prepare_doap_files()
