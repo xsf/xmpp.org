@@ -29,12 +29,37 @@ window.onload = function() {
       element.addEventListener("click", add_to_comparison);
     }
     for (const button of document.getElementsByName("remove-from-comparison")) {
-      button.addEventListener("click", remove_from_comparison)
+      button.addEventListener("click", remove_from_comparison);
+    }
+  }
+
+  if (window.location.pathname == "/extensions/") {
+    for (const button of document.getElementsByName("show-xep-implementations")) {
+      button.addEventListener("click", show_xep_implementations);
     }
   }
 
   software_resize_extensions_collapse();
 };
+
+// Page /extensions/
+function show_xep_implementations(event) {
+  let row = event.srcElement.closest("TR");
+  let xep_number = row.cells[0].children[0].innerText;
+  let xep_title = row.cells[1].innerHTML;
+  let xep_name = xep_number + ": " + xep_title;
+  document.getElementById("implementations-heading").innerHTML = xep_name;
+
+  let all_rows = document.querySelectorAll('tr[name^="implementation-xep-"');
+  for (const row of all_rows) {
+    row.classList.add("d-none");
+  }
+
+  let xep_rows = document.getElementsByName("implementation-xep-" + xep_number.slice(4));
+  for (const row of xep_rows) {
+    row.classList.remove("d-none");
+  }
+}
 
 // Page: /software/
 function software_reset_xep_filter() {
