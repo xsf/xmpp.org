@@ -1,49 +1,48 @@
 <span class="post-meta">
-    {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
-    {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
-    <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
-    {{ if ne $datestr $lastmodstr }}
-      &nbsp;{{ $lastmodstr }}
-    {{ end }}
-    {{ if .Site.Params.readingTime }}
-      &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
-    {{ end }}
-    {{ if .Params.categories }}
+    {{- $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format -}}
+    {{- $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format -}}
+    <i class="fas fa-calendar"></i>&nbsp;{{- $datestr | i18n "postedOnDate"}}
+    {{- if ne $datestr $lastmodstr -}}
+      &nbsp;{{- $lastmodstr -}}
+    {{- end -}}
+    {{- if .Site.Params.readingTime -}}
+      &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{- i18n "readingTime"}}{{- .ReadingTime -}}&nbsp;{{- i18n "readTime" -}}
+    {{- end -}}
+    {{- if .Params.categories -}}
       &nbsp;|&nbsp;
-      {{ range $category := .Params.categories }}
+      {{- range $category := .Params.categories -}}
         <span class="blog-tags">
-        <a href="/categories/{{ . | urlize }}/">{{ . }}</a></span>
-      {{ end }}
-    {{ end }}
-    {{ if .Params.tags }}
+        <a href="/categories/{{- . | urlize -}}/">{{- . -}}</a></span>
+      {{- end -}}
+    {{- end -}}
+    {{- if .Params.tags -}}
       &nbsp;|&nbsp;
-      {{ range $tag := .Params.tags }}
+      {{- range $tag := .Params.tags -}}
         <span class="blog-tags">
-        <a href="/tags/{{ . | urlize }}/">{{ . }}</a></span>
-      {{ end }}
-    {{ end }}
-    {{ if .Site.Params.wordCount }}
-      &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{ .WordCount }}&nbsp;{{ i18n "words" }}
-    {{ end }}
-    {{ if not .Site.Params.hideAuthor }}
-      {{ if .Params.author }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
-      {{ else }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
-      {{ end }}
-    {{ end }}
-    {{ if .IsTranslated -}}
+        <a href="/tags/{{- . | urlize -}}/">{{- . -}}</a></span>
+      {{- end -}}
+    {{- end -}}
+    {{- if .Site.Params.wordCount -}}
+      &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;{{- .WordCount -}}&nbsp;{{- i18n "words" -}}
+    {{- end -}}
+    {{- if not .Site.Params.hideAuthor -}}
+      {{- if .Params.author -}}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{- .Params.author | safeHTML -}}
+      {{- else -}}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{- .Site.Author.name | safeHTML -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if .IsTranslated -}}
       <br>
       {{- $sortedTranslations := sort .Translations "Site.Language.Weight" -}}
       {{- $links := apply $sortedTranslations "partial" "translation_link.html" "." -}}
       {{- $cleanLinks := apply $links "chomp" "." -}}
       {{- $linksOutput := delimit $cleanLinks (i18n "translationsSeparator") -}}
-      <i class="fas fa-language fa-lg" title="{{ i18n "translationsLabel" }}"></i>&nbsp;&nbsp;{{ $linksOutput }}
-      {{ if ne .Site.Language.Lang "en" }}
+      <i class="fas fa-language fa-lg" title="{{- i18n "translationsLabel" -}}"></i>&nbsp;&nbsp;{{- $linksOutput -}}
+      {{- if ne .Site.Language.Lang "en" -}}
       <div class="alert alert-info mt-3" role="alert">
-        {{ i18n "translationHint" }}
+        {{- i18n "translationHint" -}}
       </div>
-      {{ end }}
-    {{- end }}
+      {{- end -}}
+    {{- end -}}
 </span>
-  

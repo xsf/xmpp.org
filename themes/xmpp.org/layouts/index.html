@@ -1,14 +1,14 @@
-{{ define "main" }}
-{{ if .Site.Data.announcement.enabled }}
+{{- define "main" -}}
+{{- if .Site.Data.announcement.enabled -}}
 <div class="alert alert-info mb-0 text-center" role="alert">
-  <a href="{{ .Site.Data.announcement.url }}" target="blank_" class="alert-link">
-    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{ .Site.Data.announcement.text }}
+  <a href="{{- .Site.Data.announcement.url -}}" target="blank_" class="alert-link">
+    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- .Site.Data.announcement.text -}}
   </a>
 </div>
-{{ end }}
+{{- end -}}
 <div class="header-home py-5 text-center">
     <div class="hero">
-      <h1>{{ .Param "subtitle" }}</h1>
+      <h1>{{- .Param "subtitle" -}}</h1>
       <h3>Tried and tested. Independent. Privacy-focused.</h3>
       <a type="button" class="btn btn-primary btn-lg px-4" href="/getting-started/">Get Started</a>
       <a type="button" class="btn btn-secondary btn-lg m-2" href="/extensions/">Specifications</a>
@@ -31,7 +31,6 @@
       </div>
     </div>
 </div>
-
 <div class="software-list row p-4 pe-lg-0 pt-lg-5 mx-5 align-items-center rounded-3 border shadow-sm">
     <h2 class="text-center">
       Software for every platform<br> and libraries for every language
@@ -54,4 +53,4 @@
       <a href="/software/">Find the tools you need »</a>
     </h5>
  </div>
-{{ end }}
+{{- end -}}

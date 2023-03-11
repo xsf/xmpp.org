@@ -1,21 +1,21 @@
 <aside class="col-12 col-lg-2 ml-auto sidebar">
-    <h4>{{ .Section }}</h4>
+    <h4>{{- .Section -}}</h4>
     <ul>
-        {{ $currentSection := .Section }}
-        {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
-        {{ range .Site.Menus.main }}
-            {{ if .HasChildren }}
-                {{ range .Children }}
-                    {{ $url := urls.Parse .URL }}
-                    {{ if eq .Parent $currentSection }}
-                        {{ if ne $url.Host $baseurl.Host }}
-                        <li><a href="{{ .URL }}" target="_blank">{{ .Name }}</a>&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i></li>
-                        {{ else }}
-                        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-                        {{ end }}
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-        {{ end }}
+        {{- $currentSection := .Section -}}
+        {{- $baseurl := urls.Parse $.Site.Params.Baseurl -}}
+        {{- range .Site.Menus.main -}}
+            {{- if .HasChildren -}}
+                {{- range .Children -}}
+                    {{- $url := urls.Parse .URL -}}
+                    {{- if eq .Parent $currentSection -}}
+                        {{- if ne $url.Host $baseurl.Host -}}
+                        <li><a href="{{- .URL -}}" target="_blank">{{- .Name -}}</a>&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i></li>
+                        {{- else -}}
+                        <li><a href="{{- .URL -}}">{{- .Name -}}</a></li>
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
     </ul>
 </aside>

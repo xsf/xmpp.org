@@ -1,25 +1,25 @@
-{{ $name_slug := .Get "name_slug" }}
-{{ $package_type := .Get "package_type" }}
+{{- $name_slug := .Get "name_slug" -}}
+{{- $package_type := .Get "package_type" -}}
 
-{{ range $name, $props := .Site.Data.software_list_doap }}
-    {{ if eq $props.name_slug $name_slug }}
+{{- range $name, $props := .Site.Data.software_list_doap -}}
+    {{- if eq $props.name_slug $name_slug -}}
         <div class="pt-2 pb-5 my-2">
             <div class="col-lg-12 mx-auto text-center">
-            {{ if $props.logo }}
-                <img src="{{ $props.logo }}" class="d-block mx-auto mb-4 software-logo">
-            {{ else }}
+            {{- if $props.logo -}}
+                <img src="{{- $props.logo -}}" class="d-block mx-auto mb-4 software-logo">
+            {{- else -}}
                 <i class="fas fa-5x fa-cube py-1 software-logo-default"></i>
-            {{ end }}
-            <h1 class="display-5 fw-bold">{{ $name }}</h1>
-            <p class="lead mb-2">{{ $props.shortdesc }}</p>
+            {{- end -}}
+            <h1 class="display-5 fw-bold">{{- $name -}}</h1>
+            <p class="lead mb-2">{{- $props.shortdesc -}}</p>
             <div class="mb-5">
-                {{ range $props.platforms }}
-                    <span class="badge rounded-pill bg-secondary">{{ . }}</span>
-                {{ end }}
+                {{- range $props.platforms -}}
+                    <span class="badge rounded-pill bg-secondary">{{- . -}}</span>&nbsp;
+                {{- end -}}
             </div>
         </div>
         <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
-            <a class="btn btn-primary px-4" href="{{ $props.homepage }}" target="_blank">Visit Website</a>
+            <a class="btn btn-primary px-4" href="{{- $props.homepage -}}" target="_blank">Visit Website</a>
         </div>
         <div class="col-sm-8 col-lg-5 pb-5 mx-auto">
             <div class="card">
@@ -27,106 +27,99 @@
                     Features
                 </div>
                 <ul class="list-group list-group-flush compliance-data-list">
-                    {{ if $props.badges }}
-                        {{ $categories := slice "" }}
-                        {{ range $category, $level := $props.badges }}
-                            {{ $categories = $categories | append  $category }}
-                        {{ end }}
-
+                    {{- if $props.badges -}}
+                        {{- $categories := slice "" -}}
+                        {{- range $category, $level := $props.badges -}}
+                            {{- $categories = $categories | append  $category -}}
+                        {{- end -}}
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa-solid fa-fw fa-circle-check"></i>
                                 <span class="px-2">Base Compliance</span>
                             </div>
-                            {{ if in $categories "core" }}
-                                {{ if eq $props.badges.core "core" }}
-                                    <i class="fa-solid fa-check text-primary" title="{{ $props.badges.core | title }}"></i>
-                                {{ else }}
-                                    <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.core | title }}"></i>
-                                {{ end }}
-                            {{ else }}
+                            {{- if in $categories "core" -}}
+                                {{- if eq $props.badges.core "core" -}}
+                                    <i class="fa-solid fa-check text-primary" title="{{- $props.badges.core | title -}}"></i>
+                                {{- else -}}
+                                    <i class="fa-solid fa-check-double text-primary" title="{{- $props.badges.core | title -}}"></i>
+                                {{- end -}}
+                            {{- else -}}
                                 -
-                            {{ end }}
+                            {{- end -}}
                         </li>
-
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa-solid fa-fw fa-comments"></i>
                                 <span class="px-2">Instant Messaging</span>
                             </div>
-                            {{ if in $categories "im" }}
-                                {{ if eq $props.badges.im "core" }}
-                                    <i class="fa-solid fa-check text-primary" title="{{ $props.badges.im | title }}"></i>
-                                {{ else }}
-                                    <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.im | title }}"></i>
-                                {{ end }}
-                            {{ else }}
+                            {{- if in $categories "im" -}}
+                                {{- if eq $props.badges.im "core" -}}
+                                    <i class="fa-solid fa-check text-primary" title="{{- $props.badges.im | title -}}"></i>
+                                {{- else -}}
+                                    <i class="fa-solid fa-check-double text-primary" title="{{- $props.badges.im | title -}}"></i>
+                                {{- end -}}
+                            {{- else -}}
                                 -
-                            {{ end }}
+                            {{- end -}}
                         </li>
-
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa-solid fa-fw fa-mobile-screen"></i>
                                 <span class="px-2">Mobile</span>
                             </div>
-                            {{ if in $categories "mobile" }}
-                                {{ if eq $props.badges.mobile "core" }}
-                                    <i class="fa-solid fa-check text-primary" title="{{ $props.badges.mobile | title }}"></i>
-                                {{ else }}
-                                    <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.mobile | title }}"></i>
-                                {{ end }}
-                            {{ else }}
+                            {{- if in $categories "mobile" -}}
+                                {{- if eq $props.badges.mobile "core" -}}
+                                    <i class="fa-solid fa-check text-primary" title="{{- $props.badges.mobile | title -}}"></i>
+                                {{- else -}}
+                                    <i class="fa-solid fa-check-double text-primary" title="{{- $props.badges.mobile | title -}}"></i>
+                                {{- end -}}
+                            {{- else -}}
                                 -
-                            {{ end }}
+                            {{- end -}}
                         </li>
-
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa-regular fa-fw fa-window-restore"></i>
                                 <span class="px-2">Web</span>
                             </div>
-                            {{ if in $categories "web" }}
-                                {{ if eq $props.badges.web "core" }}
-                                    <i class="fa-solid fa-check text-primary" title="{{ $props.badges.web | title }}"></i>
-                                {{ else }}
-                                    <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.web | title }}"></i>
-                                {{ end }}
-                            {{ else }}
+                            {{- if in $categories "web" -}}
+                                {{- if eq $props.badges.web "core" -}}
+                                    <i class="fa-solid fa-check text-primary" title="{{- $props.badges.web | title -}}"></i>
+                                {{- else -}}
+                                    <i class="fa-solid fa-check-double text-primary" title="{{- $props.badges.web | title -}}"></i>
+                                {{- end -}}
+                            {{- else -}}
                                 -
-                            {{ end }}
+                            {{- end -}}
                         </li>
-
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa-solid fa-fw fa-phone"></i>
                                 <span class="px-2">Audio/Video Calling</span>
                             </div>
-                            {{ if in $categories "av" }}
-                                {{ if eq $props.badges.av "core" }}
-                                    <i class="fa-solid fa-check text-primary" title="{{ $props.badges.av | title }}"></i>
-                                {{ else }}
-                                    <i class="fa-solid fa-check-double text-primary" title="{{ $props.badges.av | title }}"></i>
-                                {{ end }}
-                            {{ else }}
+                            {{- if in $categories "av" -}}
+                                {{- if eq $props.badges.av "core" -}}
+                                    <i class="fa-solid fa-check text-primary" title="{{- $props.badges.av | title -}}"></i>
+                                {{- else -}}
+                                    <i class="fa-solid fa-check-double text-primary" title="{{- $props.badges.av | title -}}"></i>
+                                {{- end -}}
+                            {{- else -}}
                                 -
-                            {{ end }}
+                            {{- end -}}
                         </li>
-
-                    {{ else }}
+                    {{- else -}}
                         <li class="list-group-item d-flex justify-content-center align-items-center">
                             <span class="text-muted small py-2">No compliance level</span>
                         </li>
-                    {{ end }}
+                    {{- end -}}
                 </ul>
                 <div class="card-footer">
                     <small><a href="/about/compliance-suites/" class="card-link">Learn more…</a></small>
                 </div>
             </div>
         </div>
-    {{ end }}
-{{ end }}
-
+    {{- end -}}
+{{- end -}}
 <div class="text-center pb-2">
     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#extensions-collapse" aria-expanded="false" aria-controls="extensions-collapse">
         Show Supported XEPs
@@ -134,5 +127,5 @@
 </div>
 <div class="collapse" id="extensions-collapse">
     <h5 class="text-center py-2">Supported XMPP Extensions (XEPs)</h5>
-    <iframe src="/doap/{{ $name_slug }}.doap" class="package-details-xeps" id="doap-iframe"></iframe>
+    <iframe src="/doap/{{- $name_slug -}}.doap" class="package-details-xeps" id="doap-iframe"></iframe>
 </div>

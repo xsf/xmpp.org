@@ -6,12 +6,10 @@
       <li><a href="/sponsors/us-secure-hosting-center/" target="_blank"><img src="/images/logos/usshc.png" alt="US Secure Hosting Center"></a></li>
     </ul>
 </div>
-
 <div class="footer-github">
     <p><i class="fab fa-github fa-lg"></i><a href="https://github.com/xsf/xmpp.org" target="blank_"></a>&nbsp;&nbsp;&nbsp;This site is organized in the open on GitHub. <a href="https://github.com/xsf/xmpp.org" target="blank_">Suggest changes</a>.</p>
     <p>The xmpp.org domain was generously donated by <a href="https://opendomain.org" target="blank_">OpenDomain.org</a>.</p>
 </div>
-
 <footer class="footer mt-auto py-3 bg-dark">
     <div class="container">
         <div class="row g-4 py-5 row-cols-1 row-cols-sm-4">
@@ -64,16 +62,15 @@
                     <li>
                         <a href="https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA" target="blank_">@Youtube</a>
                     </li>
-                </ul>                
+                </ul>
             </div>
         </div>
     </div>
 </footer>
-
-<script src="{{ "js/bootstrap.bundle.min.js" | absURL }}"></script>
-<script src="{{ "js/extensions-table.js" | absURL }}"></script>
-<script src="{{ "js/sorttable.js" | absURL }}"></script>
-<script src="{{ "js/scripts.js" | absURL }}"></script>
-{{ if ( .Params.mermaid ) }}
-<script async src="{{ "js/mermaid.min.js" | absURL }}"></script>
-{{ end }}
+<script src="{{- "js/bootstrap.bundle.min.js" | absURL -}}"></script>
+<script src="{{- "js/extensions-table.js" | absURL -}}"></script>
+<script src="{{- "js/sorttable.js" | absURL -}}"></script>
+<script src="{{- "js/scripts.js" | absURL -}}"></script>
+{{- if ( .Params.mermaid ) -}}
+    <script async src="{{- "js/mermaid.min.js" | absURL -}}"></script>
+{{- end -}}

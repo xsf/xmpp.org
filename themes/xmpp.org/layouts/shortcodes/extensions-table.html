@@ -11,7 +11,6 @@
         </div>
     </div>
 </div>
-
 <div class="xeplist">
     <form action="#">
         <div id="status-selector" class="jsSupport pb-2">
@@ -62,7 +61,6 @@
             </div>
         </div>
     </form>
-
     <table class="sortable w-100" id="xeplist">
         <thead>
             <tr class="xepheader">
@@ -74,18 +72,18 @@
             </tr>
         </thead>
         <tbody>
-            {{ if .Site.Data.xeplist }}
-                {{ range sort .Site.Data.xeplist ".number" }}
-                {{ $number_str := printf "%04g" .number }}
-                <tr class="XEP-{{ .status }}" id="xep{{ $number_str }}">
-                    <td><a href="/extensions/xep-{{ $number_str }}.html">XEP-{{ $number_str }}</a></td>
-                    <td>{{ .title }}</td>
-                    <td>{{ .type }}</td>
-                    <td>{{ .status }}</td>
-                    <td>{{ .last_updated }}</td>
+            {{- if .Site.Data.xeplist -}}
+                {{- range sort .Site.Data.xeplist ".number" -}}
+                {{- $number_str := printf "%04g" .number -}}
+                <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}">
+                    <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
+                    <td>{{- .title -}}</td>
+                    <td>{{- .type -}}</td>
+                    <td>{{- .status -}}</td>
+                    <td>{{- .last_updated -}}</td>
                 </tr>
-                {{ end }}
-            {{ end }}
+                {{- end -}}
+            {{- end -}}
         </tbody>
     </table>
 </div>
