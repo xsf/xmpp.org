@@ -37,7 +37,6 @@ Multiple types of installations are documented:
 
 * [Local (regular)](#regular-installation)
 * [Docker container](#docker-based-installation)
-* [Vagrant virtual machine](#vagrant-based-installation)
 
 ### Regular installation
 
@@ -75,23 +74,6 @@ For development convenience, you can run the website on port 80:
 ```bash
 make -f MakefileDocker serve
 ```
-
-### Vagrant-based installation
-
-For your convenience, this repository ships with a basic Vagrantfile, which allows you to create virtual machine with all the dependencies required for local development.
-
-Assuming your computer has [Vagrant](https://www.vagrantup.com/) installed, the following will get you a running server:
-
-```bash
-git clone ssh://git@github.com/xsf/xmpp.org.git
-cd xmpp.org
-vagrant up
-vagrant ssh
-cd /vagrant/
-make serve
-```
-
-Now, the website should be available at `http://localhost:1313`
 
 ## Configuration
 
