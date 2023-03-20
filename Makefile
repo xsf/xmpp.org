@@ -7,6 +7,9 @@ INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/public
 TOOLSDIR=$(BASEDIR)/tools
 
+BASEURL=https://xmpp.org/
+BUILDFUTURE=""
+
 FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
@@ -17,21 +20,16 @@ SSH_USER=root
 SSH_TARGET_DIR=/var/www
 
 help:
-	@echo 'Makefile for a hugo web site                                           '
+	@echo 'Makefile for xmpp.org                                                  '
 	@echo '                                                                       '
 	@echo 'Usage:                                                                 '
-	@echo '   make html                        (re)generate the web site          '
 	@echo '   make clean                       remove the generated files         '
-	@echo '   make publish                     generate using production settings '
 	@echo '   make serve                       serve site at http://localhost:1313'
-	@echo '   make prepare_docker              prepare site for serving via docker'
+	@echo '   make publish                     generate using production settings '
 	@echo '   make ssh_upload                  upload the web site via SSH        '
 	@echo '   make rsync_upload                upload the web site via rsync+ssh  '
 	@echo '   make ftp_upload                  upload the web site via FTP        '
 	@echo '                                                                       '
-
-html:
-	$(HUGO)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
@@ -53,16 +51,7 @@ publish:
 	$(PY) $(TOOLSDIR)/prepare_software_list.py
 	$(PY) $(TOOLSDIR)/prepare_compliance.py
 	$(HUGO) version
-	$(HUGO)
-
-prepare_docker:
-	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
-	$(PY) $(TOOLSDIR)/prepare_xep_list.py
-	$(PY) $(TOOLSDIR)/prepare_rfc_list.py
-	$(PY) $(TOOLSDIR)/prepare_software_list.py
-	$(PY) $(TOOLSDIR)/prepare_compliance.py
-	$(HUGO) version
-	$(HUGO) --baseURL="http://localhost/" --buildFuture
+	$(HUGO) --baseURL=$(BASEURL) $(BUILDFUTURE)
 
 ssh_upload: publish
 	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
@@ -73,4 +62,4 @@ rsync_upload: publish
 ftp_upload: publish
 	lftp ftp://$(FTP_USER)@$(FTP_HOST) -e "mirror -R $(OUTPUTDIR) $(FTP_TARGET_DIR) ; quit"
 
-.PHONY: html help clean serve publish prepare_docker ssh_upload rsync_upload ftp_upload
+.PHONY: help clean serve publish ssh_upload rsync_upload ftp_upload
