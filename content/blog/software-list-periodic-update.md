@@ -25,6 +25,6 @@ can ask in the [jdev MUC][3] for a manual update of your listing.
 Please also ensure that you repeat this step in the following years.
 
 [0]:https://xmpp.org/software
-[1]:https://github.com/xsf/xmpp.org/blob/master/data/README.rst
+[1]:https://github.com/xsf/xmpp.org/blob/master/data/README.md
 [2]:https://github.com/xsf/xmpp.org/commit/8724430ff702bab98865ef2338cd392c277a71ee
 [3]:xmpp:jdev@conference.jabber.org?join
