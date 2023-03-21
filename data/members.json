@@ -21,19 +21,19 @@
         },
         "chair": {
             "list_name": "XSF Chair",
-            "page": "/about/xsf/people/"
+            "page": "/about/xsf/people#chair"
         },
         "ed": {
             "list_name": "Executive Director",
-            "page": "/about/xsf/people/"
-        },        
+            "page": "/about/xsf/people#executive-director"
+        },
         "secretary": {
             "list_name": "XSF Secretary",
-            "page": "/about/xsf/people/"
+            "page": "/about/xsf/people#secretary"
         },
         "treasurer": {
             "list_name": "XSF Treasurer",
-            "page": "/about/xsf/people/"
+            "page": "/about/xsf/people#treasurer"
         },
         "scam": {
             "list_name": "SCAM",
@@ -92,7 +92,7 @@
         {
             "name": "Nicolas Cedilnik",
             "jids": ["nicoco@nicoco.fr"]
-        },       
+        },
 
         {
             "name": "Davide Conzon",
