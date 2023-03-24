@@ -1,0 +1,191 @@
+{{- $teams := .Site.Data.members.teams -}}
+{{- $members := .Site.Data.members.members -}}
+{{- $emeriti := .Site.Data.members.emeriti -}}
+
+<div class="row gy-2 pb-2">
+    <div class="col-sm-6">
+        <div class="card border-secondary">
+            <div class="card-header text-bg-secondary">
+                Council
+            </div>
+            <ul class="list-group list-group-flush">
+                {{ range $members }}
+                    {{ if in .roles "council" }}
+                        <li class="list-group-item small">
+                            {{ .name }}
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted"><a href="#council">Read more…</a></small>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card border-secondary">
+            <div class="card-header text-bg-secondary">
+                Board of Directors
+            </div>
+            <ul class="list-group list-group-flush">
+                {{ range $members }}
+                    {{ if and (in .roles "board") (in .roles "chair") }}
+                        <li class="list-group-item small">
+                            {{ .name }} <a href="/about/xsf/people#chair">(XSF Chair)</a>
+                        </li>
+                    {{ end }}
+                {{ end }}
+                {{ range $members }}
+                    {{ if and (in .roles "board") (in .roles "ed") }}
+                        <li class="list-group-item small">
+                            {{ .name }} <a href="/about/xsf/people#executive-director">(Executive Director)</a>
+                        </li>
+                    {{ end }}
+                {{ end }}
+                {{ range $members }}
+                    {{ if and (in .roles "board") (not (in .roles "chair")) (not (in .roles "ed")) }}
+                        <li class="list-group-item small">
+                            {{ .name }}
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted"><a href="#board">Read more…</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row gy-2 pb-2">
+    <div class="col">
+        <div class="card border-secondary">
+            <div class="card-header">
+                XSF Secretary
+            </div>
+            <ul class="list-group list-group-flush">
+                {{ range $members }}
+                    {{ if in .roles "secretary" }}
+                        <li class="list-group-item small">
+                            {{ .name }}
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted"><a href="/about/xsf/people#secretary">Read more…</a></small>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary">
+            <div class="card-header">
+                XSF Treasurer
+            </div>
+            <ul class="list-group list-group-flush">
+                {{ range $members }}
+                    {{ if in .roles "treasurer" }}
+                        <li class="list-group-item small">
+                            {{ .name }}
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted"><a href="/about/xsf/people#treasurer">Read more…</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row pb-3">
+    <div class="col">
+        <div class="card border-secondary">
+            <div class="card-header">
+                Members
+            </div>
+            <div class="card-body small">
+                At the moment, the XSF has <a href="/about/xsf/members">{{ len $members }} members and {{ len $emeriti }} emeriti</a>.
+                If you have an interest in XMPP standards, it is straightforward to <a href="/community/membership">become a member of the XSF</a>.<br>
+                <hr>
+                <h4 class="text-center">Teams</h4>
+                <div class="row row-cols-sm-2 row-cols-1 g-4 py-3">
+                    <div class="col">
+                        <div class="card border-secondary">
+                            <div class="card-header">
+                                Editor team
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{ range $members }}
+                                    {{ if in .roles "editor" }}
+                                        <li class="list-group-item small">
+                                            {{ .name }}
+                                        </li>
+                                    {{ end }}
+                                {{ end }}
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/about/xsf/editor-team">Read more…</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-secondary">
+                            <div class="card-header">
+                                Infrastructure team
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{ range $members }}
+                                    {{ if in .roles "infrastructure" }}
+                                        <li class="list-group-item small">
+                                            {{ .name }}
+                                        </li>
+                                    {{ end }}
+                                {{ end }}
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/about/xsf/infrastructure-team">Read more…</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-secondary">
+                            <div class="card-header">
+                                Communication team
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{ range $members }}
+                                    {{ if in .roles "commteam" }}
+                                        <li class="list-group-item small">
+                                            {{ .name }}
+                                        </li>
+                                    {{ end }}
+                                {{ end }}
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/about/xsf/comm-team">Read more…</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card border-secondary">
+                            <div class="card-header">
+                                Summits, Conferences, and Meetups team (SCAM)
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{ range $members }}
+                                    {{ if in .roles "scam" }}
+                                        <li class="list-group-item small">
+                                            {{ .name }}
+                                        </li>
+                                    {{ end }}
+                                {{ end }}
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-muted"><a href="/about/xsf/scam-team">Read more…</a></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
