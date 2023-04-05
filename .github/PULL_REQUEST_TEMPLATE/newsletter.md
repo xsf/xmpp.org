@@ -21,6 +21,6 @@ It's really helpful if you try to give a short summary (<5 lines) of your contri
 
 - [ ] Collection of news
 - [ ] Review
-- [ ] Blog post + Tiny Newsletter
+- [ ] Blog post + Newsletter mail (use `tools/newsletter_email.py` after the post has been published)
 - [ ] Social media
 - [ ] Translations
