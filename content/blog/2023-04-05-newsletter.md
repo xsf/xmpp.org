@@ -40,7 +40,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Debian package maintainers give [a summary](https://xmpp-team.pages.debian.net/blog/2023/03/xmpp-whats-new-in-bookworm.html) of XMPP packages that will be available in the next Debian stable release (Debian 12 "Bookworm").
 - Cheogram Android [introduces Stickers](http://blog.jmp.chat/b/cheogram-android-stickers-2023).
 - IgniteRealtime: [Translations everywhere!](https://discourse.igniterealtime.org/t/translations-everywhere/92628)
-- [Here’s Why You Should Build Scalable and Concurrent Applications with Elixir](https://www.erlang-solutions.com/blog/heres-why-you-should-build-scalable-and-concurrent-applications-with-elixir/) by Cara May-Cole
 - Carl Schwan writes on the [Digital Market Act workshop in Brussels](https://carlschwan.eu/2023/03/02/digital-market-act-workshop-in-brussels/)
 {{< figure src="/images/newsletter/2023-04-05/dma_brussels.jpg" caption="Digital Market Act workshop in Brussels" >}}
 
