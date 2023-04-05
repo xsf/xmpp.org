@@ -66,7 +66,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [python-nbxmpp 4.2.1 and 4.2.2](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/master/ChangeLog) have been released, which fix some bugs with python-nbxmpp's HTTP library.
 - [QXmpp 1.5.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.1) and [QXmpp 1.5.2](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.2) have been released in February and [QXmpp 1.5.3](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.3) in March! They fix some important bugs.
 - [xmppbl.org](https://xmppbl.org) provides a Real-Time Block List (RTBL) service for XMPP.
-- [XmppDotNet](https://www.ag-software.net/2023/03/22/xmppdotnet-announcement/) is the new name and next generation of MatriX vNext XMPP library.
+- [XmppDotNet](https://www.ag-software.net/2023/03/22/xmppdotnet-announcement/) is the new name and next generation of the MatriX vNext XMPP library.
 
 From the ignite realtime community:
 - [Openfire MUC Real-Time Block List plugin 1.1.0](https://discourse.igniterealtime.org/t/release-v1-1-0-of-the-muc-real-time-block-list-plugin-for-openfire/) has been released.
