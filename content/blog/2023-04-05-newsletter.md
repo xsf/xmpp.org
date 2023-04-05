@@ -41,6 +41,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Cheogram Android [introduces Stickers](http://blog.jmp.chat/b/cheogram-android-stickers-2023).
 - IgniteRealtime: [Translations everywhere!](https://discourse.igniterealtime.org/t/translations-everywhere/92628)
 - [Here’s Why You Should Build Scalable and Concurrent Applications with Elixir](https://www.erlang-solutions.com/blog/heres-why-you-should-build-scalable-and-concurrent-applications-with-elixir/) by Cara May-Cole
+- Carl Schwan writes on the [Digital Market Act workshop in Brussels](https://carlschwan.eu/2023/03/02/digital-market-act-workshop-in-brussels/)
+- The IETF has approved [publication of Messaging Layer Security (MLS)](https://www.ietf.org/blog/mls-secure-and-usable-end-to-end-encryption/), a new standard for end-to-end security that will make it easy for apps to provide the highest level of security to their users. End-to-end encryption is an increasingly important security feature in Internet applications. It keeps users’ information safe even if the cloud service they’re using has been breached.
 
 ## Software news
 ### Clients and applications
