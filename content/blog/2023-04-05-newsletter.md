@@ -48,7 +48,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Software news
 ### Clients and applications
 
-- [Cheogram Android 2.12.1-4](https://git.singpolyma.net/cheogram-android/refs/2.12.1-4) released with support for sending message replies and reactions, swipe to reply, "note to self" contact, viewing vcard4 profiles, and occasional MUC ping.
+- [Cheogram Android 2.12.1-4](https://git.singpolyma.net/cheogram-android/refs/2.12.1-4) has been released with support for sending message replies and reactions, swipe to reply, "note to self" contact, viewing vcard4 profiles, and occasional MUC pings.
 - [Gajim 1.7.2](https://gajim.org/post/2023-03-09-gajim-1.7.2-released/) has been released. This release brings many bug fixes and some useful improvements. Gajim now allows you to delete messages from your local chat history (in case of nasty spam messages). Furthermore, detection of WAV audio files has been improved and you can now click the waveform to skip to a specific timestamp within a voice message.
 - [monocles chat 1.6.3](https://codeberg.org/Arne/monocles_chat) received support for message moderation ([XEP-0425](https://xmpp.org/extensions/xep-0425.html)) and will get some new features of Cheogram Android as well.
 - [Movim 0.21 "Whipple"](https://mov.im/?node/pubsub.movim.eu/Movim/81f7e9d0-8cb6-47d7-a5d4-f3324c6aa306) has been released, and it comes with a ton of new features. Message Replies, Web Push, voice messages, new emojis, and much more.
