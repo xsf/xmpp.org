@@ -45,7 +45,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 {{< figure src="/images/newsletter/2023-04-05/dma_brussels.jpg" caption="Digital Market Act workshop in Brussels" >}}
 
 - The IETF has approved [publication of Messaging Layer Security (MLS)](https://www.ietf.org/blog/mls-secure-and-usable-end-to-end-encryption/), a new standard for end-to-end security that will make it easy for apps to provide the highest level of security to their users. End-to-end encryption is an increasingly important security feature in Internet applications. It keeps users’ information safe even if the cloud service they’re using has been breached.
-- Peter Waher is experimenting with bridging OpenAI chat and the XMPP network. If anyone is interested to try, you can chat with xmpp:chatgpt@lab.tagroot.io. Image generation can be tested by chatting with xmpp:dalle256@lab.tagroot.io, xmpp:dalle512@lab.tagroot.io or xmpp:dalle1024@lab.tagroot.io.For more info, or QR-codes to the above JIDs, https://lab.tagroot.io/Community/Post/OpenAI_integration_with_the_Neuron
 
 ## Software news
 ### Clients and applications
