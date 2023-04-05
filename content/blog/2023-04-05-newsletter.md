@@ -15,7 +15,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 {{< figure src="/images/newsletter/2023-03-05/xmpp-software-section.png" caption="xmpp.org's new software section" >}}
 
-- If you are interested to become an [XSF member](https://xmpp.org/community/membership/) you can [apply in this quarter until May 21th, 2023, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q2_2023).
+- If you are interested to become an [XSF member](https://xmpp.org/community/membership/) you can [apply during this quarter until May 21th, 2023, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q2_2023).
 
 
 ### XMPP and Google Summer of Code 2023
