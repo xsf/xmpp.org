@@ -42,6 +42,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - IgniteRealtime: [Translations everywhere!](https://discourse.igniterealtime.org/t/translations-everywhere/92628)
 - [Here’s Why You Should Build Scalable and Concurrent Applications with Elixir](https://www.erlang-solutions.com/blog/heres-why-you-should-build-scalable-and-concurrent-applications-with-elixir/) by Cara May-Cole
 - Carl Schwan writes on the [Digital Market Act workshop in Brussels](https://carlschwan.eu/2023/03/02/digital-market-act-workshop-in-brussels/)
+{{< figure src="/images/newsletter/2023-04-05/dma_brussels.jpg" caption="Digital Market Act workshop in Brussels" >}}
+
 - The IETF has approved [publication of Messaging Layer Security (MLS)](https://www.ietf.org/blog/mls-secure-and-usable-end-to-end-encryption/), a new standard for end-to-end security that will make it easy for apps to provide the highest level of security to their users. End-to-end encryption is an increasingly important security feature in Internet applications. It keeps users’ information safe even if the cloud service they’re using has been breached.
 
 ## Software news
@@ -54,8 +56,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [SiskinIM 7.3.3](https://github.com/tigase/siskin-im/releases/tag/7.3.3) and [BeagleIM 5.3.4](https://github.com/tigase/beagle-im/releases/tag/5.3.4) from [Tigase](https://tigase.org/) have been released.
 - [Spark 3.0.2](https://igniterealtime.org/projects/spark/) from [Ignite Realtime](https://igniterealtime.org/) has been released.
 
-{{< figure src="/images/newsletter/2023-03-05/dino-reaction.png" caption="Dino 0.4 now supports Message Replies and Message Reactions" >}}
-https://movim.eu/files/0.21/replies.png
+{{< figure src="/images/newsletter/2023-04-05/movim_replies.png" caption="Movim supports replies" >}}
 
 ### Servers
 
