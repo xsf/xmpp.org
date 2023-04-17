@@ -15,7 +15,11 @@ If you would like to add news, that's possible via:
 
 It's really helpful if you try to give a short summary (<5 lines) of your contribution or of what the link you're posting is offering. You don't need to write in a formal tone - just be passionate about why this motivates you or about what you are working on!
 
-![XMPP Newsletter Timeline]()
+| April '23                          | 1st - 2nd May '23         | 3rd - 5th May '23             | 5th May '23       |
+|------------------------------------|---------------------------|-------------------------------|-------------------|
+| Create Draft in Pad & GitHub       | Last Call for final edits | Review phase                  | RELEASE! :rocket: |
+| Collect news & highlights          |                           | Translators can start working |                   |
+| Reminder mid-month + end of month  |                           |                               |                   |
 
 ## Status
 
