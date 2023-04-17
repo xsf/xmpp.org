@@ -4,6 +4,9 @@ date: 2023-04-17
 categories: ['Events']
 ---
 
+{{< figure src="/images/blog/elbe-sprint_small.jpg" caption="Elbe-Sprint Hamburg 2023 Logo" >}}  
+<sub><sup>_Source: [Wiki Commons, Container terminals in port of Hamburg](https://commons.wikimedia.org/wiki/Category:Container_terminals_in_port_of_Hamburg)</sup></sub>_
+
 A new sprint is being organised within the XMPP Community: **The Elbe-Sprint Hamburg**!
 
 We will have several days of good and fruitful exchange and projects. Many thank to the Chaos Computer Club Hansestadt Hamburg 
