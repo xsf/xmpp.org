@@ -21,7 +21,10 @@ Thursday, 22-06-2023 18:00 CEST — Sunday, 25-06-2023 12:00 CEST
 
 ### Location
 
-[CCC Hansestadt Hamburg e.V.](https://www.hamburg.ccc.de/#wegbeschreibung) — Zeiseweg 9 — Viktoria-Kaserne, mittlerer Osten, 1. OG, Raum 2 (mid east building area, 1st floor (= first level above the ground), room 2) — 22765 Hamburg
+[CCC Hansestadt Hamburg e.V.](https://www.hamburg.ccc.de/#wegbeschreibung)  
+Zeiseweg 9  
+Viktoria-Kaserne, mittlerer Osten, 1. OG, Raum 2 (mid east building area, 1st floor (= first level above the ground), room 2)  
+22765 Hamburg
 
 ### Organisational & Attendance
 
