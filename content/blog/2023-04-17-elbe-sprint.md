@@ -34,7 +34,7 @@ Adding yourself to the list will help us organise everything - thanks! If you do
 ### Chat & Communication
 
 It's recommended to join the chat and say hello if you are interested: [XMPP Chat](xmpp:sprints@joinjabber.org?join) & [WebChat](https://chat.joinjabber.org/#/guest?join=sprints)
-Feel free to share via [Mastodon](https://fosstodon.org/explore) or [Twitter](https://twitter.com/xmpp)!
+Feel free to share via [Mastodon](https://fosstodon.org/@xmpp/110214602731131770) or [Twitter](https://twitter.com/xmpp/status/1647968875877736451?cxt=HHwWhoC9-cK94d4tAAAA)!
 
 Looking forward to meet you,
 
