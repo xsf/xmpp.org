@@ -21,7 +21,10 @@ Thursday, 22-06-2023 18:00 CEST — Sunday, 25-06-2023 12:00 CEST
 
 ### Location
 
-[CCC Hansestadt Hamburg e.V.](https://www.hamburg.ccc.de/#wegbeschreibung) — Zeiseweg 9 — Viktoria-Kaserne, mittlerer Osten, 1. OG, Raum 2 (mid east building area, 1st floor (= first level above the ground), room 2) — 22765 Hamburg
+[CCC Hansestadt Hamburg e.V.](https://www.hamburg.ccc.de/#wegbeschreibung)  
+Zeiseweg 9  
+Viktoria-Kaserne, mittlerer Osten, 1. OG, Raum 2 (mid east building area, 1st floor (= first level above the ground), room 2)  
+22765 Hamburg
 
 ### Organisational & Attendance
 
@@ -31,7 +34,7 @@ Adding yourself to the list will help us organise everything - thanks! If you do
 ### Chat & Communication
 
 It's recommended to join the chat and say hello if you are interested: [XMPP Chat](xmpp:sprints@joinjabber.org?join) & [WebChat](https://chat.joinjabber.org/#/guest?join=sprints)
-Feel free to share via [Mastodon](https://fosstodon.org/explore) or [Twitter](https://twitter.com/xmpp)!
+Feel free to share via [Mastodon](https://fosstodon.org/@xmpp/110214602731131770) or [Twitter](https://twitter.com/xmpp/status/1647968875877736451?cxt=HHwWhoC9-cK94d4tAAAA)!
 
 Looking forward to meet you,
 
