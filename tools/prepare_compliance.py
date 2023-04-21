@@ -22,7 +22,7 @@ def generate_compliance_json() -> None:
     '''
     try:
         result = subprocess.check_output([
-            'lua',
+            'lua5.4',
             f'{DOWNLOAD_PATH}/compliancer',
             '-v',
             f'{DOWNLOAD_PATH}/compliance-suite.xml'])
@@ -65,7 +65,7 @@ def check_packages_compliance() -> None:
         for file in files:
             try:
                 result = subprocess.check_output([
-                    'lua',
+                    'lua5.4',
                     f'{DOWNLOAD_PATH}/compliancer',
                     '-v',
                     f'{DOWNLOAD_PATH}/compliance-suite.xml',
