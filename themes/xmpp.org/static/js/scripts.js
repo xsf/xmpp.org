@@ -35,7 +35,13 @@ window.onload = function() {
 
   if (window.location.pathname == "/extensions/") {
     for (const button of document.getElementsByName("show-xep-implementations")) {
-      button.addEventListener("click", show_xep_implementations);
+      button.addEventListener("click", function() {
+        window.location.hash = "xep-" + button.dataset.xep + "-implementations";
+        show_xep_implementations();
+      });
+    }
+    if(window.location.hash) {
+      show_xep_implementations();
     }
   }
 
@@ -43,11 +49,11 @@ window.onload = function() {
 };
 
 // Page /extensions/
-function show_xep_implementations(event) {
-  let row = event.srcElement.closest("TR");
-  let xep_number = row.cells[0].children[0].innerText;
+function show_xep_implementations() {
+  let xep_number = window.location.hash.slice(5, 9);
+  let row = document.getElementById("xep" + xep_number);
   let xep_title = row.cells[1].innerHTML;
-  let xep_name = xep_number + ": " + xep_title;
+  let xep_name = "XEP-" + xep_number + ": " + xep_title;
   document.getElementById("implementations-heading").innerHTML = xep_name;
 
   let all_rows = document.querySelectorAll('tr[name^="implementation-xep-"');
@@ -55,10 +61,15 @@ function show_xep_implementations(event) {
     row.classList.add("d-none");
   }
 
-  let xep_rows = document.getElementsByName("implementation-xep-" + xep_number.slice(4));
+  let xep_rows = document.getElementsByName("implementation-xep-" + xep_number);
   for (const row of xep_rows) {
     row.classList.remove("d-none");
   }
+
+  var implementations_offcanvas = new bootstrap.Offcanvas(
+    document.getElementById("implementations-offcanvas")
+  );
+  implementations_offcanvas.show();
 }
 
 // Page: /software/

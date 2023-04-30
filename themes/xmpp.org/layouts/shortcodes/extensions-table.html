@@ -84,7 +84,7 @@
                     <td>{{- .last_updated -}}</td>
                     <td class="text-center p-0">
                         {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
-                            <button type="button" class="btn btn-sm btn-outline-secondary" name="show-xep-implementations" data-bs-toggle="offcanvas" data-bs-target="#implementations-offcanvas" aria-controls="implementations-offcanvas">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button">
                                 <i class="fa-solid fa-code fa-xs"></i>
                             </button>
                         {{- end -}}
