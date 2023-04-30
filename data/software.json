@@ -1239,6 +1239,15 @@
         ]
     },
     {
+        "doap": "https://git.singpolyma.net/network-protocol-xmpp/blob/master/doap.xml",
+        "name": "network-protocol-haskell",
+        "platforms": [],
+        "url": null,
+        "categories": [
+            "library"
+        ]
+    },
+    {
         "doap": null,
         "name": "oajabber",
         "platforms": [
