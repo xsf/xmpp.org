@@ -33,29 +33,40 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
+- [FOSSY](https://fossy.us) will have an XMPP track at their conference this summer. Please [submit talk proposals](https://2023.fossy.us/call-for-proposals/) by May 14th.  Some financial support will be available from the track organizers for presenters who need it.
+- [XMPP Italian happy hour](https://tube.nicfab.eu/w/3KJMxZPYxRXQDAhXySZgLf): monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM. Online event, with web meeting mode and live streaming.
+
+## XMPP Sprints
+
+- [Elbe-Sprint Hamburg 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/): Thursday, 22-06-2023 18:00 CEST — Sunday, 25-06-2023 12:00 CEST
+
+## XMPP Videos
+
+- Axel Reimer published German video tutorials in his blog [eversten.net](https://eversten.net/).
+    - One [video [DE]](https://www.eversten.net/xmppvideo/) explains some main aspects of XMPP.
+    - A series of [four videos [DE]](https://www.eversten.net/blog/monalvideos/) explains how iOS users can start using XMPP by installing and configuring the messenger app Monal.
 
 ## Articles
 
-_It’s really helpful if you try to give a short summary (<5 lines) of your contribution or of what the link you’re posting is offering. You 
-don’t need to write in a formal tone - just be passionate about why this motivates you or about what you are working on!_
+- A draft of the EU chat-control [has been published for download at Netzpolitik.org.](https://cdn.netzpolitik.org/wp-upload/2023/04/2023-04-05_EPRS_CSAM_Complementary-Impact-Assessment_DRAFT.pdf). Those are comment by 
+  - [Netzpolitik.org](https://netzpolitik.org/2023/chatkontrolle-studie-zerlegt-plaene-der-eu-kommission/)[DE]
+  - [Patrick Beyer (politician)](https://www.patrick-breyer.de/wissenschaftlicher-dienst-des-eu-parlaments-bestaetigt-chatkontrolle-verstoesst-gegen-grundrechte/) [DE]
+- Axel Reimer introduced a new German website called [xmpp24.de [DE]](https://xmpp24.de/). This website focuses on helping new XMPP users who want to start using XMPP on their Android or iOS devices. It explains exactly one onboarding flow (as a video tutorial) for each operating system. See aboves section.
 
 ## Software news
 ### Clients and applications
 
-_It’s really helpful if you try to give a short summary (<5 lines) of your contribution or of what the link you’re posting is offering. You 
-don’t need to write in a formal tone - just be passionate about why this motivates you or about what you are working on!_
-
+- [Gajim 1.7.3](https://gajim.org/post/2023-04-04-gajim-1.7.3-released/) has been released.
 
 ### Servers
 
-_It’s really helpful if you try to give a short summary (<5 lines) of your contribution or of what the link you’re posting is offering. You 
-don’t need to write in a formal tone - just be passionate about why this motivates you or about what you are working on!_
+- [ejabberd 23.04](https://www.process-one.net/blog/ejabberd-23-04/) has been released. This a big new release with many changes including support XEP-0425 (Message moderation), Real-Time Block List for MUC rooms and several SQL improvements.
 
 ### Libraries & Tools
 
-_It’s really helpful if you try to give a short summary (<5 lines) of your contribution or of what the link you’re posting is offering. You 
-don’t need to write in a formal tone - just be passionate about why this motivates you or about what you are working on!_
+- [QXmpp 1.5.4](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.4) and [QXmpp 1.5.5](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.5) have been released! They fix some important bugs.
 
+- [Web Consosole Chat](https://soft.trung.fun/webcc/webcc.en.html) has been released. This is an installation guide and a collection of patches to make sure existing XMPP console clients are safe enough to before serving them to the web with [`ttyd`](https://github.com/tsl0922/ttyd) for your web-chat service.
 
 ## Extensions and specifications
 
@@ -83,20 +94,24 @@ will put the XEP back onto Experimental.
 
 ### Updated
 
-- [Version 0.2.0 of XEP-0444 (Message Reactions)](https://xmpp.org/extensions/xep-0444.html)
-  - Add emoji rejection mechanism. (NC)
-- [Version 0.7.0 of XEP-0359 (Unique and Stable Stanza IDs)](https://xmpp.org/extensions/xep-0359.html)
-  - Add security consideration regarding spoofability and reference example (fs)
-- [Version 0.12.0 of XEP-0292 (vCard4 Over XMPP)](https://xmpp.org/extensions/xep-0292.html)
-  - Removes raw-IQ mode and specifies the reuse of PEP (spw)
+- [Version 0.2.0 of XEP-0472 (Pubsub Social Feed)](https://xmpp.org/extensions/xep-0472.html)
+  - Change the pubsub#type to be consistent with other XEPs
+  - Add a Discovery section (tj)
+- [Version 0.4.1 of XEP-0356 (Privileged Entity)](https://xmpp.org/extensions/xep-0356.html)
+  - Fixed some typos (gh/@bodqhrohro)
+- [Version 0.2.0 of XEP-0428 (Fallback Indication)](https://xmpp.org/extensions/xep-0428.html)
+  - Add 'for' attribute such that entities can discover what the fallback is for.
+  - Allow to specify that only one of  or  is meant as a fallback.
+  - Allow to specify the part of respective text that is meant as fallback where applicable.
+  - Don't use encryption example, which should use XEP-0380 instead. (lmw)
 - [Version 0.4.0 of XEP-0388 (Extensible SASL Profile)](https://xmpp.org/extensions/xep-0388.html)
   - Bump namespace
-  - Add reference to XEP-0440 and RFC 5802
+  - Add reference to  and
   - Update security considerations and business rules
-  - Clarify `<continue/>` and tasks
+  - Clarify <continue/> and tasks
   - Add expansion point to inline stream resumption and BIND2 (and possibly others)
-  - Add optional `<user-agent/>` element
-  - Move from Deferred to Experimental
+  - Add optional <user-agent/> element
+  - Move from Deferred to Experimental (tm)
 - [Version 0.4.0 of XEP-0386 (Bind 2)](https://xmpp.org/extensions/xep-0386.html)
   - Various changes, made in parallel with working client and server implementation experience, and SASL2 updates.
   - More tightly define the integration with XEP-0388 and several session feature XEPs: XEP-0198, XEP-0280, XEP-0352.
@@ -104,12 +119,11 @@ will put the XEP back onto Experimental.
   - Drop unread tracking, as this is a deep topic not directly related to resource binding. Instead the details of integration with other extensions have been better defined and demonstrated, to allow such functionality when it is fully defined and exists.
   - Adjust proposed namespace on aesthetic grounds and consistency with SASL2's approach. As this protocol may become part of the new preferred connection flow for a long time to come, it makes no sense to include the redundant and potentially confusing '2' when there is no conflict without it. Similarly, the '.0' has been dropped from the XEP's title, as it isn't really a version number.
   - Allow the client some influence over the resulting resource identifier, and define a standard format for these combined identifiers.
-  - Specify that servers should terminate old sessions from a client when it binds a new resource.
-- [Version 0.2.0 of XEP-0428 (Fallback Indication)](https://xmpp.org/extensions/xep-0428.html)
-  - Add 'for' attribute such that entities can discover what the fallback is for.
-  - Allow to specify that only one of `<subject>` or `<body` is meant as a fallback.
-  - Allow to specify the part of respective text that is meant as fallback where applicable.
-  - Don't use encryption example, which should use XEP-0380 instead.
+  - Specify that servers should terminate old sessions from a client when it binds a new resource. (mw)
+- [Version 0.7.0 of XEP-0359 (Unique and Stable Stanza IDs)](https://xmpp.org/extensions/xep-0359.html)
+  - Add security consideration regarding spoofability and reference example (fs)
+- [Version 0.12.0 of XEP-0292 (vCard4 Over XMPP)](https://xmpp.org/extensions/xep-0292.html)
+  - Remove raw-IQ mode and specifies the reuse of PEP (spw)
 
 ### Last Call
 
