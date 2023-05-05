@@ -33,7 +33,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours): available on our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
-- [FOSSY](https://fossy.us) will have an XMPP track at their conference this summer. Please [submit talk proposals](https://2023.fossy.us/call-for-proposals/) by May 14th.  Some financial support will be available from the track organizers for presenters who need it.
+- [FOSSY](https://fossy.us) will have an XMPP track at their conference this summer. Please [submit talk proposals](https://2023.fossy.us/call-for-proposals/) by May 14th. The track organizers offer financial support for presenters, if needed.
 - [XMPP Italian happy hour](https://tube.nicfab.eu/w/3KJMxZPYxRXQDAhXySZgLf): monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM. Online event, with web meeting mode and live streaming.
 
 ## XMPP Sprints
