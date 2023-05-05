@@ -54,6 +54,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Axel Reimer introduced a new German website called [xmpp24.de [DE]](https://xmpp24.de/). This website focuses on helping new XMPP users who want to start using XMPP on their Android or iOS devices. It explains one onboarding flow (as a video tutorial) per operating system.
 - The [JMP April Newsletter](http://blog.jmp.chat/b/april-newsletter-2023) talks about several developments, including a new MMS stack in testing, integration with the [Quicksy](https://quicksy.im) directory, the ability to create [Snikket](https://snikket.org) instances from inside a Cheogram Android onboarding flow, and an experimental [WebXDC](https://webxdc.org) prototype.
 
+{{< figure src="/images/newsletter/2023-05-05/JMP_april2023.png" caption="Cheogram onboarding view" >}}
+
 ## Software news
 ### Clients and applications
 
