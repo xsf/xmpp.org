@@ -48,7 +48,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-- A draft of the EU chat-control [has been published for download at Netzpolitik.org.](https://cdn.netzpolitik.org/wp-upload/2023/04/2023-04-05_EPRS_CSAM_Complementary-Impact-Assessment_DRAFT.pdf). Those are comment by 
+- A draft of the EU chat-control [has been published for downloadhttps://news.jabberfr.org/category/newsletter/) at Netzpolitik.org.](https://cdn.netzpolitik.org/wp-upload/2023/04/2023-04-05_EPRS_CSAM_Complementary-Impact-Assessment_DRAFT.pdf). Those are comment by 
   - [Netzpolitik.org](https://netzpolitik.org/2023/chatkontrolle-studie-zerlegt-plaene-der-eu-kommission/)[DE]
   - [Patrick Beyer (politician)](https://www.patrick-breyer.de/wissenschaftlicher-dienst-des-eu-parlaments-bestaetigt-chatkontrolle-verstoesst-gegen-grundrechte/) [DE]
 - Axel Reimer introduced a new German website called [xmpp24.de [DE]](https://xmpp24.de/). This website focuses on helping new XMPP users who want to start using XMPP on their Android or iOS devices. It explains one onboarding flow (as a video tutorial) per operating system.
@@ -171,7 +171,7 @@ This is a community effort, and we would like to thank translators for their con
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
   - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, emus, Licaon_Kter, Ludovic Bocquet, melvo, MSavoritias (fae,ve), wurstsalat, XSF iTeam**
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, Pierre Jarillon, Ppjet6, Ysabeau**
+  - Translators: **Adrien Bourmault (neox), alkino, anubis, Benoît Sibaud, nyco, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
   - Translators: **Jeybe, wh0nix**
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
