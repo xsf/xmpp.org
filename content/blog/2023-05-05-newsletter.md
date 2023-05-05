@@ -57,7 +57,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Software news
 ### Clients and applications
 
-- [Gajim 1.7.3](https://gajim.org/post/2023-04-04-gajim-1.7.3-released/) has been released.
+- [Gajim 1.7.3](https://gajim.org/post/2023-04-04-gajim-1.7.3-released/) has been released. This release enables you to mute notifications for specific contacts and brings some improvements and bug fixes.
 
 ### Servers
 
