@@ -38,7 +38,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Sprints
 
-- [Elbe-Sprint Hamburg 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/): Thursday, 22-06-2023 18:00 CEST — Sunday, 25-06-2023 12:00 CEST
+- [Elbe-Sprint Hamburg 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/): Thursday, 22-06-2023 18:00 CEST — Sunday, 25-06-2023 12:00 CEST. This summer, XMPP developers are holding a development sprint in Hamburg, Germany.
 
 ## XMPP Videos
 
