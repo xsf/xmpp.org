@@ -66,7 +66,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### Libraries & Tools
 
 - [QXmpp 1.5.4](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.4) and [QXmpp 1.5.5](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.5.5) have been released! They fix some important bugs.
-- [Web Consosole Chat](https://soft.trung.fun/webcc/webcc.en.html) has been released. This is an installation guide and a collection of patches to make sure existing XMPP console clients are safe enough to before serving them to the web with [`ttyd`](https://github.com/tsl0922/ttyd) for your web-chat service.
+- [Web Console Chat](https://soft.trung.fun/webcc/webcc.en.html) has been released. This is an installation guide and a collection of patches to make sure existing XMPP console clients are safe enough before serving them to the web with [`ttyd`](https://github.com/tsl0922/ttyd) for your web-chat service.
 
 ## Extensions and specifications
 
