@@ -24,7 +24,7 @@ The XSF has been [accepted again as hosting organisation at the GSoC 2023](https
 
 ### XSF fiscal hosting projects
 
-The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
+The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. We're open for applications via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
 
 - [Bifrost bridge: Offline messages exchange between Matrix and XMPP](https://opencollective.com/bifrost-mam)
 - [Mellium Co-op](https://opencollective.com/mellium)
