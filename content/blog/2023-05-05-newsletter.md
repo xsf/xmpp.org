@@ -18,7 +18,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 - If you are interested to become an [XSF member](https://xmpp.org/community/membership/) you can [apply during this quarter until May 21th, 2023, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q2_2023).
 
 ### XMPP and Google Summer of Code 2023
-The XSF has been [accepted again as hosting organisation at the GSoC 2023](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/) !
+The XSF has been [accepted again as hosting organisation at the GSoC 2023](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/)!
 
 {{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
 
