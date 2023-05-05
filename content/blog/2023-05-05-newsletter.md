@@ -51,7 +51,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - A draft of the EU chat-control [has been published for download at Netzpolitik.org.](https://cdn.netzpolitik.org/wp-upload/2023/04/2023-04-05_EPRS_CSAM_Complementary-Impact-Assessment_DRAFT.pdf). Those are comment by 
   - [Netzpolitik.org](https://netzpolitik.org/2023/chatkontrolle-studie-zerlegt-plaene-der-eu-kommission/)[DE]
   - [Patrick Beyer (politician)](https://www.patrick-breyer.de/wissenschaftlicher-dienst-des-eu-parlaments-bestaetigt-chatkontrolle-verstoesst-gegen-grundrechte/) [DE]
-- Axel Reimer introduced a new German website called [xmpp24.de [DE]](https://xmpp24.de/). This website focuses on helping new XMPP users who want to start using XMPP on their Android or iOS devices. It explains exactly one onboarding flow (as a video tutorial) for each operating system. See aboves section.
+- Axel Reimer introduced a new German website called [xmpp24.de [DE]](https://xmpp24.de/). This website focuses on helping new XMPP users who want to start using XMPP on their Android or iOS devices. It explains one onboarding flow (as a video tutorial) per operating system.
 - The [JMP April Newsletter](http://blog.jmp.chat/b/april-newsletter-2023) talks about several developments, including a new MMS stack in testing, integration with the [Quicksy](https://quicksy.im) directory, the ability to create [Snikket](https://snikket.org) instances from inside a Cheogram Android onboarding flow, and an experimental [WebXDC](https://webxdc.org) prototype.
 
 ## Software news
