@@ -260,11 +260,13 @@ function software_filter_list() {
       card.classList.add("d-none");
     }
   }
-  let hidden_results_info = document.getElementById("hidden-results-info");
-  if (hidden_cards === 0) {
-    hidden_results_info.innerHTML = "All software entries are shown.";
-  } else {
-    hidden_results_info.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
+  let hidden_results_info = document.getElementsByName("hidden-results-info");
+  for (const info_text of hidden_results_info){
+    if (hidden_cards === 0) {
+      info_text.innerHTML = "All software entries are shown.";
+    } else {
+      info_text.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
+    }
   }
 }
 
