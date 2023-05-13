@@ -33,9 +33,11 @@ jobs:
       - name: Install Python packages
         run: pip install -r tools/requirements.txt
 
-      - name: Set up Lua LuaRocks
-        uses: leafo/gh-actions-lua@v9
-  
+      - name: Set up Lua
+        uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: "5.4"
+
       - name: Set up LuaRocks
         uses: leafo/gh-actions-luarocks@v4
 
