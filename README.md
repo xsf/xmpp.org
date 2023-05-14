@@ -43,7 +43,7 @@ You need to have the following dependencies installed:
 
 * Hugo
 * Python 3
-* lua 5.4 and lua5.4-expat
+* lua (>=5.2) and lua-expat
 
 The development server will automatically rebuild the page whenever a file is changed:
 
