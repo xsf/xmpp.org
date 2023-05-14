@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies.
-RUN apt-get install -y hugo lua5.4 lua-expat python3 python3-pip
+RUN apt-get install -y hugo lua5.2 lua-expat python3 python3-pip
 
 # Base URL for Hugo website builds
 ARG BASEURL=https://xmpp.org/
