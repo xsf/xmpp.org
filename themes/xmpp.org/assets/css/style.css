@@ -408,6 +408,14 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     cursor: default;
 }
 
+#comparison-dropdown {
+    max-height: 300px;
+    overflow-y: auto;
+}
+#comparison-table tr td:not(:first-child) {
+    text-align: center;
+}
+
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
@@ -440,14 +448,19 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     }
 	table {
 		background-color: #333;
-		border: 1px solid #444;
+		border: 1px solid #5a5a5a !important;
 	}
-
+    table thead {
+        background: #2c2c2c;
+    }
 	table > tbody > tr > td,
     table > thead > tr > th {
 		background-color: #2c2c2c;
         color: #b3b3b3 !important;
 	}
+    table tr:nth-of-type(even) {
+        background: #2b2b2b;
+    }
     .header-home {
         background-image: url(/images/london-dark.jpg);
     }
@@ -464,6 +477,12 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     .software-platforms {
         background-color: #32373c;
         color: #a4b1b9;
+    }
+    .offcanvas {
+        background-color: #2c2c2c;
+    }
+    .offcanvas-header .btn-close {
+        filter: invert(1);
     }
     .card {
         background-color: #262626;

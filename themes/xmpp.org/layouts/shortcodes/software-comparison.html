@@ -1,0 +1,62 @@
+<div class="dropdown text-center pb-3">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-plus"></i>&nbsp;Add App
+    </button>
+    <ul class="dropdown-menu" id="comparison-dropdown">
+        {{- range $name, $props := .Site.Data.software_list_doap -}}
+            <li><a class="dropdown-item" role="button">{{- $name -}}</a></li>
+        {{- end -}}
+    </ul>
+</div>
+<table class="table table-hover table-bordered" id="comparison-table">
+    <thead>
+        <tr>
+            <th>
+                <h5 class="mb-0">Extensions</h5>
+            </th>
+            {{- $names := slice -}}
+            {{- range $name, $props := .Site.Data.software_list_doap -}}
+                {{- $names = append $name $names -}}
+                <th name="{{- $name -}}" class="d-none">
+                    <h5 class="mb-0 text-center">
+                        <span class="badge text-bg-secondary p-2">
+                            <a class="text-reset align-text-top ps-1" href="/software/{{- $props.name_slug -}}">{{- $name -}}</a>&nbsp;
+                            <button type="button" class="btn-close btn-close-white" name="remove-from-comparison" title="Remove"></button>
+                        </span>
+                    </h5>
+                </th>
+            {{- end -}}
+        </tr>
+    </thead>
+    <tbody>
+        {{- range $xep := .Site.Data.xeplist -}}
+            {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
+                {{- if and (ne .status "Deprecated") (ne .status "Obsolete") (ne .status "Rejected") (ne .status "Retracted") -}}
+                    <tr>
+                        <td>
+                            {{- $number_str := printf "%04g" .number -}}
+                            <a href="/extensions/xep-{{ $number_str }}.html">XEP-{{- $number_str -}}</a>&nbsp;{{- .title -}}
+                        </td>
+                        {{- range $name := $names -}}
+                            <td class="d-none">
+                                {{- range $xep.implementations -}}
+                                    {{- if eq $name .package_name -}}
+                                        {{- if eq .implementation_status "complete" -}}
+                                            <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                        {{- else if eq .implementation_status "partial" -}}
+                                            <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                        {{- else if eq .implementation_status "planned" -}}
+                                            <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-plus text-reset"></i></span>
+                                        {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
+                                            <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
+                                        {{- end -}}
+                                    {{- end -}}
+                                {{- end -}}
+                            </td>
+                        {{- end -}}
+                    </tr>
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    </tbody>
+</table>

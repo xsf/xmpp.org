@@ -1,34 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ .Site.BaseURL | relURL }}">
+      <a class="navbar-brand" href="{{- .Site.BaseURL | relURL -}}">
         <img src="/images/logos/xmpp-logo.svg" alt="XMPP logo" class="navbar-logo">
-        {{ .Site.Title }}
+        {{- .Site.Title -}}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-            {{ range .Site.Menus.main }}
-                {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
-                {{ if .HasChildren }}
+            {{- range .Site.Menus.main -}}
+                {{- $baseurl := urls.Parse $.Site.Params.Baseurl -}}
+                {{- if .HasChildren -}}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ .URL | relURL }}" id="{{ .Name }}" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
-                    <ul class="dropdown-menu" aria-labelledby="{{ .Name }}">
-                      {{ range .Children }}
-                        {{ $url := urls.Parse .URL }}
-                        <li><a class="dropdown-item" href="{{ .URL | relURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a></li>
-                      {{ end }}
+                    <a class="nav-link dropdown-toggle" href="{{- .URL | relURL -}}" id="{{- .Name -}}" data-bs-toggle="dropdown" aria-expanded="false">{{- .Name -}}</a>
+                    <ul class="dropdown-menu" aria-labelledby="{{- .Name -}}">
+                      {{- range .Children -}}
+                        {{- $url := urls.Parse .URL -}}
+                        <li><a class="dropdown-item" href="{{- .URL | relURL -}}" {{- if ne $url.Host $baseurl.Host -}}target="_blank" {{- end -}}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a></li>
+                      {{- end -}}
                     </ul>
                 </li>
-                {{ else }}
-                  {{ $url := urls.Parse .URL }}
+                {{- else -}}
+                  {{- $url := urls.Parse .URL -}}
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ .URL | relURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a>
+                      <a class="nav-link" href="{{- .URL | relURL -}}" {{- if ne $url.Host $baseurl.Host -}}target="_blank" {{- end -}}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a>
                   </li>
-                {{ end }}
-            {{ end }}
+                {{- end -}}
+            {{- end -}}
         </ul>
       </div>
     </div>

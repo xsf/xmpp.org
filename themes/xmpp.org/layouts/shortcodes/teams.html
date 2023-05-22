@@ -1,15 +1,15 @@
-{{ $team_name := .Get "team_name" }}
+{{- $team_name := .Get "team_name" -}}
 <ul>
-    {{ range .Site.Data.members.members }}
-        {{ if .roles }}
-            {{ $name := .name }}
-            {{ range .roles }}
-                {{ if eq $team_name . }}
+    {{- range .Site.Data.members.members -}}
+        {{- if .roles -}}
+            {{- $name := .name -}}
+            {{- range .roles -}}
+                {{- if eq $team_name . -}}
                     <li>
-                        {{ $name }}
+                        {{- $name -}}
                     </li>
-                {{ end }}
-            {{ end }}
-        {{ end }}
-    {{ end }}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
 </ul>

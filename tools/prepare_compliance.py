@@ -3,10 +3,12 @@ from typing import Union
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 from colorama import Fore
 from colorama import Style
+from packaging.version import Version as V
 
 from util import download_file
 
@@ -85,6 +87,13 @@ def check_packages_compliance() -> None:
 
 
 if __name__ == '__main__':
+    # Make sure we're using Lua >= 5.2
+    lua_version_string = subprocess.check_output(
+        ['lua', '-v']).decode('unicode_escape')[4:9]
+    if V(lua_version_string) < V('5.2.0'):
+        print('Lua >= 5.2.0 required')
+        sys.exit(1)
+
     download_file(
         COMPLIANCE_SUITE_URL, Path('compliance-suite.xml'))
     download_file(COMPLIANCER_BUILD_URL, Path('compliancer'))

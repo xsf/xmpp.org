@@ -1,45 +1,42 @@
-{{ define "main" }}
+{{- define "main" -}}
 <div class="container" role="main">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main">
         <div class="header-internal">
-            <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-            {{ partial "post_meta" . }}
+            <h1><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></h1>
+            {{- partial "post_meta" . -}}
         </div>
-        {{ if $.Param "socialShare" }}
+        {{- if $.Param "socialShare" -}}
           <section id="social-share">
-            {{ partial "share-links" . }}
+            {{- partial "share-links" . -}}
           </section>
-        {{ end }}
+        {{- end -}}
         <div class="page-content">
             <article>
-                {{ .Content }}
+                {{- .Content -}}
             </article>
         </div>
       </article>
-
-      {{ if ne .Type "page" }}
+      {{- if ne .Type "page" -}}
         <ul class="pager blog-pager">
-          {{ if .PrevInSection }}
+          {{- if .PrevInSection -}}
             <li class="previous">
-              <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; {{ i18n "previousPost" }}</a>
+              <a href="{{- .PrevInSection.Permalink -}}" data-toggle="tooltip" data-placement="top" title="{{- .PrevInSection.Title -}}">&larr; {{- i18n "previousPost" -}}</a>
             </li>
-          {{ end }}
-          {{ if .NextInSection }}
+          {{- end -}}
+          {{- if .NextInSection -}}
             <li class="next">
-              <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">{{ i18n "nextPost" }} &rarr;</a>
+              <a href="{{- .NextInSection.Permalink -}}" data-toggle="tooltip" data-placement="top" title="{{- .NextInSection.Title -}}">{{- i18n "nextPost" -}} &rarr;</a>
             </li>
-          {{ end }}
+          {{- end -}}
         </ul>
-        
-      {{ end }}
-
+      {{- end -}}
     </div>
-    {{ $currentSection := .Section }}
-    {{ if $currentSection }}
-      {{ partial "sidebar_blog.html" . }}
-    {{ end }}
+    {{- $currentSection := .Section -}}
+    {{- if $currentSection -}}
+      {{- partial "sidebar_blog.html" . -}}
+    {{- end -}}
   </div>
 </div>
-{{ end }}
+{{- end -}}

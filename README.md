@@ -7,7 +7,7 @@ Please log any [issues](https://github.com/xsf/xmpp.org/issues/new).
 ## Contributing new content and updates
 
 * Fork the [code](https://github.com/xsf/xmpp.org/fork) to your own git repository.
-* Make your changes in `/content` or [directly](https://github.com/xsf/xmpp.org/tree/master/content) in GitHub.
+* Make your changes in `/content` or [directly via GitHub](https://github.com/xsf/xmpp.org/tree/master/content).
 * When you are happy with your updates, submit a [pull request](https://github.com/xsf/xmpp.org/pulls) describing the changes.
 * **IMPORTANT:** Before sending a **Pull Request** make sure that your forked repo is in sync with the base repo.
 * The updates will be reviewed and merged in.
@@ -19,37 +19,33 @@ Please use [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join) for discussions about 
 ## Site generation
 
 * Commits to the master branch generate a new build.
-* Builds are visible at [Github Actions](https://github.com/xsf/xmpp.org/actions)
-* Changes will be visible on [xmpp.org](https://xmpp.org) after the next update
+* Builds are visible at [Github Actions](https://github.com/xsf/xmpp.org/actions).
+* Changes will be visible on [xmpp.org](https://xmpp.org) after the next update.
 
-## Software Requirements
+### Build instructions
 
-* Hugo
-* Python
-
-## Introduction to Hugo
-
-Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a good place to learn about the basics of Hugo (installation, project skeleton, development cycle, etc.).
-
-## Installation instructions
-
-Multiple types of installations are documented:
-
-* [Local (regular)](#regular-installation)
-* [Docker container](#docker-based-installation)
-* [Vagrant virtual machine](#vagrant-based-installation)
-
-### Regular installation
-
-To run a development server on your local computer, follow these basic steps:
+Clone this repository:
 
 ```bash
 git clone ssh://git@github.com/xsf/xmpp.org.git
-# install Hugo
 cd xmpp.org
 ```
 
-Running the server in development mode (reloads whenever a file is changed):
+Build locally or via Docker:
+
+* [Local (regular) build](#regular-build)
+* [Docker container build](#docker-build)
+
+#### Regular build
+
+To run a development server on your local machine, follow these basic steps.
+You need to have the following dependencies installed:
+
+* Hugo
+* Python 3
+* lua (>=5.2) and lua-expat
+
+The development server will automatically rebuild the page whenever a file is changed:
 
 ```bash
 make serve
@@ -57,49 +53,33 @@ make serve
 
 View at `http://localhost:1313`
 
-### Docker-based installation
+#### Docker build
 
-The Makefile will build the website completely by running:
-
-```bash
-make -f MakefileDocker
-```
-
-It'll do the following:
-
-* Create a Docker image based on `DockerfileDev` which is a development environment with a complete set of dependencies ready.
-* Build the website from the locally checked out xmpp.org repository (`make prepare_docker`). This includes `deploy/xsf.conf`.
-
-For development convenience, you can run the website on port 80:
+To build and serve the website locally, simply run:
 
 ```bash
-make -f MakefileDocker serve
+docker build -t xmpp-org --build-arg BASEURL=http://localhost/ --build-arg BUILDFUTURE=--buildFuture .
 ```
 
-### Vagrant-based installation
+It will do the following:
 
-For your convenience, this repository ships with a basic Vagrantfile, which allows you to create virtual machine with all the dependencies required for local development.
+* Build a Docker image with a complete set of dependencies ready.
+* Generate the website from the locally checked out xmpp.org repository (`make publish`). This includes rules from `deploy/xsf.conf`.
 
-Assuming your computer has [Vagrant](https://www.vagrantup.com/) installed, the following will get you a running server:
+For development convenience, you can serve the website locally:
 
 ```bash
-git clone ssh://git@github.com/xsf/xmpp.org.git
-cd xmpp.org
-vagrant up
-vagrant ssh
-cd /vagrant/
-make serve
+docker run -p 80:80 -t -i xmpp-org
 ```
 
-Now, the website should be available at `http://localhost:1313`
+View at `http://localhost:80`
 
-## Configuration
+## Development
+
+### Repository structure
 
 ```
 <repo>
-  Dockerfile / DockerfileDev
-  Makefile / MakefileDocker
-  README.md
   public
     <generated files>
   content
@@ -108,17 +88,11 @@ Now, the website should be available at `http://localhost:1313`
     <website theme>
 ```
 
-## Local site generation
+### Introduction to Hugo
 
-To just generate a new version (without starting up a local webserver) just do:
+Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a good place to learn about the basics of Hugo (setup, project skeleton, development cycle, etc.).
 
-```bash
-make publish
-```
-
-Pages will be available in the `/public` folder.
-
-## Theme development
+### Theme development
 
 xmpp.org's theme makes use of:
 

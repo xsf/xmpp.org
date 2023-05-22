@@ -24,9 +24,55 @@ window.onload = function() {
     software_set_platform_by_user_agent();
   }
 
+  if (window.location.pathname == "/software/software-comparison/") {
+    for (const element of document.getElementById("comparison-dropdown").querySelectorAll("a")) {
+      element.addEventListener("click", add_to_comparison);
+    }
+    for (const button of document.getElementsByName("remove-from-comparison")) {
+      button.addEventListener("click", remove_from_comparison);
+    }
+  }
+
+  if (window.location.pathname == "/extensions/") {
+    for (const button of document.getElementsByName("show-xep-implementations")) {
+      button.addEventListener("click", function() {
+        window.location.hash = "xep-" + button.dataset.xep + "-implementations";
+        show_xep_implementations();
+      });
+    }
+    if(window.location.hash) {
+      show_xep_implementations();
+    }
+  }
+
   software_resize_extensions_collapse();
 };
 
+// Page /extensions/
+function show_xep_implementations() {
+  let xep_number = window.location.hash.slice(5, 9);
+  let row = document.getElementById("xep" + xep_number);
+  let xep_title = row.cells[1].innerHTML;
+  let xep_name = "XEP-" + xep_number + ": " + xep_title;
+  document.getElementById("implementations-heading").innerHTML = xep_name;
+
+  let all_rows = document.querySelectorAll('tr[name^="implementation-xep-"');
+  for (const row of all_rows) {
+    row.classList.add("d-none");
+  }
+
+  let xep_rows = document.getElementsByName("implementation-xep-" + xep_number);
+  for (const row of xep_rows) {
+    row.classList.remove("d-none");
+  }
+
+  var implementations_offcanvas = new bootstrap.Offcanvas(
+    document.getElementById("implementations-offcanvas")
+  );
+  implementations_offcanvas.show();
+}
+
+// Page: /software/
 function software_reset_xep_filter() {
   for (const check of document.getElementById("select-options-list").querySelectorAll("[data-xep]")) {
     check.checked = false;
@@ -214,14 +260,45 @@ function software_filter_list() {
       card.classList.add("d-none");
     }
   }
-  let hidden_results_info = document.getElementById("hidden-results-info");
-  if (hidden_cards === 0) {
-    hidden_results_info.innerHTML = "All software entries are shown.";
-  } else {
-    hidden_results_info.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
+  let hidden_results_info = document.getElementsByName("hidden-results-info");
+  for (const info_text of hidden_results_info){
+    if (hidden_cards === 0) {
+      info_text.innerHTML = "All software entries are shown.";
+    } else {
+      info_text.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
+    }
   }
 }
 
+// Page: /software/software-comparison/
+function add_to_comparison(event) {
+  let name = event.srcElement.innerHTML;
+  let col_index = 0;
+  let cells = document.querySelectorAll("#comparison-table thead tr th");
+  cells.forEach(function(cell) {
+    if (cell.getAttribute("name") == name) {
+      col_index = cell.cellIndex + 1;
+    }
+  })
+  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
+    element => element.classList.remove("d-none")
+  )
+  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
+    element => element.classList.remove("d-none")
+  )
+}
+
+function remove_from_comparison(event) {
+  let col_index = event.srcElement.closest("TH").cellIndex + 1;
+  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
+    element => element.classList.add("d-none")
+  )
+  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
+    element => element.classList.add("d-none")
+  )
+}
+
+// Page: /software/<app>/
 function software_resize_extensions_collapse() {
   // Resize DOAP iframe in software details view
   let extensions_collapse = document.getElementById("extensions-collapse");

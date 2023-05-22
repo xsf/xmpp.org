@@ -1,9 +1,0 @@
-#
-# Build a docker image to build the website locally (for development)
-#
-
-all:
-	docker build -t xmpp-dockerdev -f ./DockerfileDev .
-
-serve:
-	docker run -p 80:80 -t -i xmpp-dockerdev

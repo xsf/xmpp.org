@@ -24,4 +24,6 @@ Please note that the software we list on these pages was not developed by the XM
 
 {{< software-overview-doap >}}
 
+Want to compare individual apps and their features? Have a look at the [Software Comparison](/software/software-comparison).
+
 {{< software-list-legacy >}}

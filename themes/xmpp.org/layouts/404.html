@@ -1,5 +1,5 @@
-{{ define "header" }}<!-- No header on 404 pages -->{{ end }}
-{{ define "main" }}
+{{- define "header" -}}<!-- No header on 404 pages -->{{- end -}}
+{{- define "main" -}}
   <div role="main" class="container main-content">
     <div class="text-center">
       <br>
@@ -8,9 +8,9 @@
       <p class="error-text">404 - Page not found</p>
     </div>
   </div>
-  {{- with $err := resources.Get "js/err.js" }}
-  {{- with $secureErr := ($err | resources.Fingerprint "sha256") }}
-  <script src="{{ $err.RelPermalink }}" integrity="{{$secureErr.Data.Integrity}}"></script>
-  {{- end }}
-  {{- end }}
-{{ end }}
+  {{- with $err := resources.Get "js/err.js" -}}
+  {{- with $secureErr := ($err | resources.Fingerprint "sha256") -}}
+  <script src="{{- $err.RelPermalink -}}" integrity="{{$secureErr.Data.Integrity}}"></script>
+  {{- end -}}
+  {{- end -}}
+{{- end -}}

@@ -3,7 +3,6 @@
 <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#legacy-software" aria-expanded="false" aria-controls="legacy-software">
     Show List
 </button>
-
 <div class="collapse pt-3" id="legacy-software">
     <table class="sortable">
         <thead>
@@ -14,27 +13,27 @@
             </tr>
         </thead>
         <tbody>
-            {{ range .Site.Data.software }}
-                {{ if not .doap }}
+            {{- range .Site.Data.software -}}
+                {{- if not .doap -}}
                     <tr>
                         <td>
-                            {{ delimit .categories ", " | title }}
+                            {{- delimit .categories ", " | title -}}
                         </td>
-                        {{ if .url }}
+                        {{- if .url -}}
                             <td>
-                                <a href="{{ .url }}">{{ .name }}</a>
+                                <a href="{{- .url -}}">{{- .name -}}</a>
                             </td>
-                        {{ else }}
+                        {{- else -}}
                             <td>
-                                {{ .name }}
+                                {{- .name -}}
                             </td>
-                        {{ end }}
+                        {{- end -}}
                         <td>
-                            {{ delimit .platforms " / " }}
+                            {{- delimit .platforms " / " -}}
                         </td>
                     </tr>
-                {{ end }}
-            {{ end }}
+                {{- end -}}
+            {{- end -}}
         </tbody>
     </table>
 </div>

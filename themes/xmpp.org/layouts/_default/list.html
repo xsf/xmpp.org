@@ -1,58 +1,57 @@
-{{ define "main" }}
+{{- define "main" -}}
   <div class="container" role="main">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="header-internal">
-            <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+            <h1><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></h1>
         </div>
         <div class="page-content">
-        {{ with .Content }}
+        {{- with .Content -}}
             {{.}}
-        {{ end }}
+        {{- end -}}
         <div class="posts-list">
-          {{ range .Paginator.Pages }}
+          {{- range .Paginator.Pages -}}
             <article class="post-preview">
-              <a href="{{ .Permalink }}">
-                <h2 class="post-title">{{ .Title }}</h2>
+              <a href="{{- .Permalink -}}">
+                <h2 class="post-title">{{- .Title -}}</h2>
 
-                {{ if .Params.subtitle }}
+                {{- if .Params.subtitle -}}
                   <h3 class="post-subtitle">
-                    {{ .Params.subtitle }}
+                    {{- .Params.subtitle -}}
                   </h3>
-                {{ end }}
+                {{- end -}}
               </a>
-
               <p class="post-meta">
-                {{ partial "post_meta.html" . }}
+                {{- partial "post_meta.html" . -}}
               </p>
               <div class="post-entry">
-                {{ if .Truncated }}
-                  {{ .Summary | plainify | htmlUnescape }}
-                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
-                {{ else }}
-                  {{ .Content }}
-                {{ end }}
+                {{- if .Truncated -}}
+                  {{- .Summary | plainify | htmlUnescape -}}
+                  <a href="{{- .Permalink -}}" class="post-read-more">[{{- i18n "readMore" -}}]</a>
+                {{- else -}}
+                  {{- .Content -}}
+                {{- end -}}
               </div>
             </article>
-          {{ end }}
+          {{- end -}}
         </div>
-        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+        {{- if or (.Paginator.HasPrev) (.Paginator.HasNext) -}}
           <ul class="pager main-pager">
-            {{ if .Paginator.HasPrev }}
+            {{- if .Paginator.HasPrev -}}
               <li class="previous">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Prev.PageNumber }}/">&larr; {{ i18n "newerPosts" }}</a>
+                <a href="{{- .Permalink -}}page/{{- .Paginator.Prev.PageNumber -}}/">&larr; {{- i18n "newerPosts" -}}</a>
               </li>
-            {{ end }}
-            {{ if .Paginator.HasNext }}
+            {{- end -}}
+            {{- if .Paginator.HasNext -}}
               <li class="next">
-                <a href="{{ .Permalink }}page/{{ .Paginator.Next.PageNumber }}/">{{ i18n "olderPosts" }} &rarr;</a>
+                <a href="{{- .Permalink -}}page/{{- .Paginator.Next.PageNumber -}}/">{{- i18n "olderPosts" -}} &rarr;</a>
               </li>
-            {{ end }}
+            {{- end -}}
           </ul>
-        {{ end }}
+        {{- end -}}
       </div>
     </div>
-    {{ partial "sidebar.html" . }}
+    {{- partial "sidebar.html" . -}}
   </div>
 </div>
-{{ end }}
+{{- end -}}

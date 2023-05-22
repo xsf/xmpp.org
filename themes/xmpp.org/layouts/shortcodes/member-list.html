@@ -1,44 +1,42 @@
-{{ $teams := .Site.Data.members.teams }}
-{{ $members := .Site.Data.members.members }}
-{{ $emeriti := .Site.Data.members.emeriti }}
+{{- $teams := .Site.Data.members.teams -}}
+{{- $members := .Site.Data.members.members -}}
+{{- $emeriti := .Site.Data.members.emeriti -}}
 
 <ul>
-{{ range $members }}
+{{- range $members -}}
     <li>
-        {{ .name }}
+        {{- .name -}}
         {{- if .roles -}}
             &nbsp;(
             {{- range $i, $role := .roles -}}
-                {{ $teams := index $teams . }}
+                {{- $teams := index $teams . -}}
                 {{- with $teams -}}
                     {{- if $i -}},&nbsp;{{- end -}}
                     {{- if .page -}}
-                        <a href="{{ .page }}">{{ .list_name | title }}</a>
+                        <a href="{{- .page -}}">{{- .list_name | title -}}</a>
                     {{- else -}}
-                        {{ .list_name }}
+                        {{- .list_name -}}
                     {{- end -}}
                 {{- end -}}
             {{- end -}}
             )
         {{- end -}}
     </li>
-{{ end }}
+{{- end -}}
 </ul>
-
 <p>In addition, the following individuals are emeritus members of the XMPP Standards Foundation:</p>
-
 <ul>
-    {{ range $emeriti }}
+    {{- range $emeriti -}}
         <li>
-            {{ .name }}
+            {{- .name -}}
             {{- if .roles -}}
                 &nbsp;(
                 {{- range $i, $role := .roles -}}
-                    {{ $teams := index $teams . }}
+                    {{- $teams := index $teams . -}}
                     {{- with $teams -}}
                         {{- if $i -}},&nbsp;{{- end -}}
                         {{- if .page -}}
-                            <a href="{{ .page }}">{{- .list_name | title -}}</a>
+                            <a href="{{- .page -}}">{{- .list_name | title -}}</a>
                         {{- else -}}
                             {{- .list_name -}}
                         {{- end -}}
@@ -47,6 +45,5 @@
                 )
             {{- end -}}
         </li>
-    {{ end }}
+    {{- end -}}
 </ul>
-   

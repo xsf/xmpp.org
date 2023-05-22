@@ -10,6 +10,8 @@ To receive the newsletter in your email inbox, please sign up using the form bel
 
 {{< newsletter-subscribe >}}
 
+Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
+
 ## Most recent issue
 
 {{< newsletter-teaser >}}

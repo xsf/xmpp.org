@@ -22,11 +22,16 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-ge
 # Install dependencies.
 RUN apt-get install -y hugo lua5.2 lua-expat python3 python3-pip
 
+# Base URL for Hugo website builds
+ARG BASEURL=https://xmpp.org/
+# Build pages dated in the future (off by default)
+ARG BUILDFUTURE=""
+
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp.org
 COPY . /var/tmp/src/xmpp.org
 RUN pip3 install -r /var/tmp/src/xmpp.org/tools/requirements.txt
-RUN cd /var/tmp/src/xmpp.org && make publish
+RUN cd /var/tmp/src/xmpp.org && make publish BASEURL=$BASEURL BUILDFUTURE=$BUILDFUTURE
 
 FROM nginx
 COPY deploy/xsf.conf /etc/nginx/conf.d/default.conf
