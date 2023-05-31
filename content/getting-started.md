@@ -22,7 +22,7 @@ There are [plenty of XMPP apps/clients](/software/) for you to choose from. To g
 
 ### Android
 
-* {{< external-link text="blabber.im" url="https://blabber.im./" >}}
+* {{< external-link text="blabber.im" url="https://blabber.im/" >}}
 * {{< external-link text="Conversations" url="https://conversations.im/" >}}
 * {{< external-link text="Quicksy" url="https://quicksy.im/" >}}
 * {{< external-link text="Yaxim" url="https://yax.im" >}}
