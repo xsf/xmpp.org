@@ -53,7 +53,7 @@ No articles have received our sight this month.
 ### Servers
 
 - [MongooseIM 6.1.0](https://www.erlang-solutions.com/blog/mongooseim-6-1-handle-more-traffic-consume-less-resources/) has been released.
-- The Openfire XMPP server had two new releases: [Openfire 4.6.8 (old stable)](https://discourse.igniterealtime.org/t/openfire-4-6-8-release) and [Openfire 4.7.5 (stable)](https://discourse.igniterealtime.org/t/openfire-4-7-5-release)
+- The Openfire XMPP server had two new releases: [Openfire 4.6.8 (old stable)](https://discourse.igniterealtime.org/t/openfire-4-6-8-release) and [Openfire 4.7.5 (stable)](https://discourse.igniterealtime.org/t/openfire-4-7-5-release). Furthermore a [CVE on Openfire Administration Console authentication bypass has been submitted](https://discourse.igniterealtime.org/t/cve-2023-32315-openfire-administration-console-authentication-bypass/92869).
 
 ### Libraries & Tools
 
