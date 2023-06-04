@@ -46,7 +46,13 @@ No articles have received our sight this month.
 ### Clients and applications
 
 - [Gajim 1.8.0](https://gajim.org/post/2023-05-27-gajim-1.8.0-released/) has been released and it comes with integrated OMEMO encryption! Integrating the OMEMO plugin brings tighter integration and better user experience. We also rearranged the chat menu and added some quick buttons for convenience. Both Gajim’s message search and conversation view received some important changes and fixes.
+
+{{< figure src="/images/newsletter/2023-06-05/gajim-chat-banner-group-chat.png" caption="Gajim chat banner in group chat" >}}
+
 - [Kaidan 0.9](https://www.kaidan.im/2023/05/05/kaidan-0.9.0/) has been released! It adds support for OMEMO 2, Automatic Trust Management (ATM), [XMPP Providers](https://providers.xmpp.net/), Message Reactions and much more. Kaidan 0.9.1 too.
+
+{{< figure src="/images/newsletter/2023-06-05/kaidan-0.9-horizontal.png" caption="Kaidan chat view" >}}
+
 - Exciting developments are on the horizon for [Libervia](https://libervia.org/). Thanks to a grant from NLnet through the NGI Assure Fund, work on the implementation of A/V calls with Jingle across several frontends is underway. This new feature aims to support both one-on-one and multi-party calls, with plans to even add remote desktop control capabilities. Additionally, the ActivityPub Gateway is currently being stabilised, which will further enhance the functionality of Libervia. For a full rundown of these updates and more, check out the latest progress note on [Goffi's blog](https://www.goffi.org/b/libervia-progress-note-2023-w22-x3Wa).
 - JMP lets you send and receive text and picture messages (and calls) through a real phone number right from your computer, tablet, phone, or anything else that has a Jabber client. Jabber-side reactions are now translated where possible into the tapback pseudo-syntax. Read more in the [JMP blog](https://blog.jmp.chat/b/april-newsletter-2023). [Cheogram Android 2.12.1-6](https://git.singpolyma.net/cheogram-android/refs/2.12.1-6) features per-account colours and quiet hours, thumbhash previews for images, and many bug fixes.
 
