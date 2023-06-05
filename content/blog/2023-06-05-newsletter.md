@@ -47,7 +47,7 @@ No articles have received our sight this month.
 
 - [Gajim 1.8.0](https://gajim.org/post/2023-05-27-gajim-1.8.0-released/) has been released and it comes with integrated OMEMO encryption! Integrating the OMEMO plugin brings tighter integration and better user experience. The chat menu has been rearranged and some quick buttons have been added for convenience. Both Gajim’s message search and conversation view received some important changes and fixes.
 
-{{< figure src="/images/newsletter/2023-06-05/gajim-chat-banner-group-chat.png" caption="Gajim chat banner in group chat" >}}
+{{< figure src="/images/newsletter/2023-06-05/gajim-chat-banner-group-chat.png" caption="Gajim's chat banner in a group chat" >}}
 
 - [Kaidan 0.9](https://www.kaidan.im/2023/05/05/kaidan-0.9.0/) has been released! It adds support for OMEMO 2, Automatic Trust Management (ATM), [XMPP Providers](https://providers.xmpp.net/), Message Reactions and much more. Kaidan 0.9.1 too.
 
