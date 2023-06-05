@@ -37,10 +37,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Talks
 
 - The developer behind Libervia has scheduled a couple of informative talks in Paris for June. These presentations will delve into various aspects of the Libervia project and XMPP. The first talk is a 20-minute session in English, taking place at 15:00 on Thursday, June 15 at [OW2](https://www.ow2con.org/view/2023/Abstract_Community_Day#15061500). The second talk will be a more in-depth 60-minute discussion in French, scheduled for 17:30 on Friday, June 16 at [Pas Sage En Seine](https://passageenseine.fr/). These sessions provide a great opportunity to gain insights into the Libervia project and to interact with its developer.
-- 
+
 ## Articles
 
-No articles have received our sight this month.
+The German governmental competion authorthy has publish a [study on video and messaging services](https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2023/17_05_2023_SU_MD.html) [DE] where the XSF and also several XMPP projects provided statements. Read the [summary](https://www.bundeskartellamt.de/SharedDocs/Publikation/DE/Sektoruntersuchungen/Sektoruntersuchung_MessengerVideoDienste_Zusammfassung.pdf?__blob=publicationFile&v=3) [DE] or the [full document](https://www.bundeskartellamt.de/SharedDocs/Publikation/DE/Sektoruntersuchungen/Sektoruntersuchung_MessengerVideoDienste.pdf?__blob=publicationFile&v=5) [DE].
 
 ## Software news
 ### Clients and applications
