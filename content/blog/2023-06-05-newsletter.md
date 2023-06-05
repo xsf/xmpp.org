@@ -45,7 +45,7 @@ No articles have received our sight this month.
 ## Software news
 ### Clients and applications
 
-- [Gajim 1.8.0](https://gajim.org/post/2023-05-27-gajim-1.8.0-released/) has been released and it comes with integrated OMEMO encryption! Integrating the OMEMO plugin brings tighter integration and better user experience. We also rearranged the chat menu and added some quick buttons for convenience. Both Gajim’s message search and conversation view received some important changes and fixes.
+- [Gajim 1.8.0](https://gajim.org/post/2023-05-27-gajim-1.8.0-released/) has been released and it comes with integrated OMEMO encryption! Integrating the OMEMO plugin brings tighter integration and better user experience. The chat menu has been rearranged and some quick buttons have been added for convenience. Both Gajim’s message search and conversation view received some important changes and fixes.
 
 {{< figure src="/images/newsletter/2023-06-05/gajim-chat-banner-group-chat.png" caption="Gajim chat banner in group chat" >}}
 
