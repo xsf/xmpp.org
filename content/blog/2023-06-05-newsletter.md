@@ -49,7 +49,7 @@ No articles have received our sight this month.
 
 {{< figure src="/images/newsletter/2023-06-05/gajim-chat-banner-group-chat.png" caption="Gajim's chat banner in a group chat" >}}
 
-- [Kaidan 0.9](https://www.kaidan.im/2023/05/05/kaidan-0.9.0/) has been released! It adds support for OMEMO 2, Automatic Trust Management (ATM), [XMPP Providers](https://providers.xmpp.net/), Message Reactions and much more. Kaidan 0.9.1 too.
+- [Kaidan 0.9 and 0.9.1](https://www.kaidan.im/2023/05/05/kaidan-0.9.0/) have been released! It adds support for OMEMO 2, Automatic Trust Management (ATM), [XMPP Providers](https://providers.xmpp.net/), Message Reactions and much more.
 
 {{< figure src="/images/newsletter/2023-06-05/kaidan-0.9-horizontal.png" caption="Kaidan chat view" >}}
 
