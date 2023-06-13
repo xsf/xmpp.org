@@ -126,11 +126,6 @@
         },
 
         {
-            "name": "Waqas Hussain",
-            "jids": ["waqas@prosody.im"]
-        },
-
-        {
             "name": "Stephen Paul Weber",
             "jids": ["singpolyma@singpolyma.net"]
         },
@@ -225,6 +220,11 @@
         },
 
         {
+            "name": "Mathieu Pasquet",
+            "jids": ["mathieui@mathieui.net"]
+        },
+
+        {
             "name": "Jérôme Poisson",
             "jids": ["goffi@jabber.fr"]
         },
@@ -241,7 +241,7 @@
 
         {
             "name": "Arc Riley",
-            "jids": ["arc@concordance.io"],
+            "jids": ["arc@jix.im"],
             "roles": ["board"]
         },
 
@@ -249,11 +249,6 @@
             "name": "Peter Saint-Andre",
             "jids": ["stpeter@jabber.org"],
             "roles": ["treasurer", "registrar", "editor", "infrastructure", "board"]
-        },
-
-        {
-            "name": "Fabian Sauter",
-            "jids": ["com8@xmpp.uwpx.org"]
         },
 
         {
