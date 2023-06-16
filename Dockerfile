@@ -13,10 +13,10 @@ FROM python:3.11-slim-bookworm
 ENV DEBIAN_FRONTEND noninteractive
 
 # Update system
-RUN apt update && apt dist-upgrade -y && apt-get autoremove -y && apt clean
+RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies
-RUN apt install -y make lua5.2 lua-expat hugo
+RUN apt-get install -y make lua5.2 lua-expat hugo
 
 # Base URL for Hugo website builds
 ARG BASEURL=https://xmpp.org/
