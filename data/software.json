@@ -1,61 +1,64 @@
 [
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Adium",
         "platforms": [
             "macOS"
         ],
-        "url": "https://adium.im",
-        "categories": [
-            "client"
-        ]
+        "url": "https://adium.im"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "aioxmpp",
         "platforms": [
             "Python"
         ],
-        "url": "https://github.com/horazont/aioxmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/horazont/aioxmpp"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "AnyEvent::XMPP",
         "platforms": [
             "Perl"
         ],
-        "url": "http://ta-sa.org",
-        "categories": [
-            "library"
-        ]
+        "url": "http://ta-sa.org"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Apache Vysper",
         "platforms": [
             "Linux",
             "Windows"
         ],
-        "url": "https://mina.apache.org/vysper-project",
-        "categories": [
-            "server"
-        ]
+        "url": "https://mina.apache.org/vysper-project"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Apache Vysper",
         "platforms": [
             "Java"
         ],
-        "url": "https://mina.apache.org/vysper-project",
-        "categories": [
-            "library"
-        ]
+        "url": "https://mina.apache.org/vysper-project"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Apart\u00e9",
         "platforms": [
@@ -63,144 +66,144 @@
             "Linux",
             "macOS"
         ],
-        "url": "https://github.com/paulfariello/aparte/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://github.com/paulfariello/aparte/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "AQQ",
         "platforms": [
             "Windows"
         ],
-        "url": "http://aqq.eu",
-        "categories": [
-            "client"
-        ]
+        "url": "http://aqq.eu"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/artalk-xmpp.doap",
         "name": "Artalk.XMPP",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "as3xmpp",
         "platforms": [
             "ActionScript",
             "Flash"
         ],
-        "url": "https://github.com/lyokato/as3xmppclient",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/lyokato/as3xmppclient"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://astrachat.com/clients-doap.xml",
         "name": "AstraChat XMPP Client",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://astrachat.com/server-doap.xml",
         "name": "AstraChat XMPP Server",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "AXMPP",
         "platforms": [
             "Ada"
         ],
-        "url": "http://orge.ada-ru.org",
-        "categories": [
-            "library"
-        ]
+        "url": "http://orge.ada-ru.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Babbler",
         "platforms": [
             "Java"
         ],
-        "url": "http://xmpp.rocks",
-        "categories": [
-            "library"
-        ]
+        "url": "http://xmpp.rocks"
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/badxmpp.doap",
         "name": "Bad XMPP",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/beagle-im/master/beagle-im.doap",
         "name": "Beagle IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Beem",
         "platforms": [
             "Android"
         ],
-        "url": "https://beem-project.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://beem-project.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "BitlBee",
         "platforms": [
             "Linux"
         ],
-        "url": "https://www.bitlbee.org",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.bitlbee.org"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
         "name": "blabber.im",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Blather",
         "platforms": [
             "Ruby"
         ],
-        "url": "http://adhearsion.com",
-        "categories": [
-            "library"
-        ]
+        "url": "http://adhearsion.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "BlueJabb",
         "platforms": [
@@ -208,32 +211,32 @@
             "Blackberry",
             "Nokia Symbian"
         ],
-        "url": "http://www.bluejabb.com",
-        "categories": [
-            "client"
-        ]
+        "url": "http://www.bluejabb.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Boogie Chat",
         "platforms": [
             "iOS"
         ],
-        "url": "https://itunes.apple.com/app/boogie-chat/id779423907",
-        "categories": [
-            "client"
-        ]
+        "url": "https://itunes.apple.com/app/boogie-chat/id779423907"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://yaxim.org/doap/bruno.rdf.xml",
         "name": "Bruno",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Buddycloud",
         "platforms": [
@@ -241,86 +244,86 @@
             "Mobile",
             "Web"
         ],
-        "url": "http://buddycloud.com",
-        "categories": [
-            "client"
-        ]
+        "url": "http://buddycloud.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Candy",
         "platforms": [
             "Browser"
         ],
-        "url": "https://candy-chat.github.io/candy/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://candy-chat.github.io/candy/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "/hosted-doap/chat-o-matic.doap",
         "name": "Chat-O-Matic",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "ChatSecure",
         "platforms": [
             "iOS",
             "macOS"
         ],
-        "url": "https://chatsecure.org/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://chatsecure.org/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Chatty",
         "platforms": [
             "Linux"
         ],
-        "url": "https://source.puri.sm/Librem5/chatty",
-        "categories": [
-            "client"
-        ]
+        "url": "https://source.puri.sm/Librem5/chatty"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://git.singpolyma.net/cheogram-android/blob/master/cheogram.doap",
         "name": "Cheogram Android",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Citadel",
         "platforms": [
             "Linux"
         ],
-        "url": "http://citadel.org/doku.php",
-        "categories": [
-            "server"
-        ]
+        "url": "http://citadel.org/doku.php"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "cl-xmpp",
         "platforms": [
             "Lisp"
         ],
-        "url": "http://common-lisp.net",
-        "categories": [
-            "library"
-        ]
+        "url": "http://common-lisp.net"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Coccinella",
         "platforms": [
@@ -328,12 +331,12 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://coccinella.im",
-        "categories": [
-            "client"
-        ]
+        "url": "https://coccinella.im"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "CommuniGate Pro",
         "platforms": [
@@ -341,188 +344,188 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://www.communigate.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.communigate.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/iNPUTmice/Conversations/master/conversations.doap",
         "name": "Conversations",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/conversejs/converse.js/master/conversejs.doap",
         "name": "Converse.js",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Coversant SoapBox Communicator",
         "platforms": [
             "Windows"
         ],
-        "url": "http://coversant.com",
-        "categories": [
-            "client"
-        ]
+        "url": "http://coversant.com"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Coversant SoapBox Server",
         "platforms": [
             "Windows"
         ],
-        "url": "http://coversant.com",
-        "categories": [
-            "server"
-        ]
+        "url": "http://coversant.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/dino/dino/master/dino.doap",
         "name": "Dino",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "djabberd",
         "platforms": [
             "Linux"
         ],
-        "url": "https://danga.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://danga.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "dojox.xmpp",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/dojo/dojox",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/dojo/dojox"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "dxmpp",
         "platforms": [
             "C++"
         ],
-        "url": "https://github.com/stefandxm/dxmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/stefandxm/dxmpp"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Echomine Feridian",
         "platforms": [
             "Java"
         ],
-        "url": "https://github.com/jdevelop/feridian",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/jdevelop/feridian"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Eiffel",
         "platforms": [
             "Eiffel"
         ],
-        "url": "https://www.eiffel.org/resources/libraries/eiffel-xmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://www.eiffel.org/resources/libraries/eiffel-xmpp"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://raw.githubusercontent.com/processone/ejabberd/master/ejabberd.doap",
         "name": "ejabberd",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "eM Client",
         "platforms": [
             "macOS",
             "Windows"
         ],
-        "url": "https://www.emclient.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.emclient.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "emite",
         "platforms": [
             "Java"
         ],
-        "url": "https://github.com/EmiteGWT/emite",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/EmiteGWT/emite"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/erlang-elixir-xmpp.doap",
         "name": "Erlang/Elixir XMPP",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Escalus",
         "platforms": [
             "Erlang"
         ],
-        "url": "https://github.com/esl/escalus",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/esl/escalus"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "exmpp",
         "platforms": [
             "Erlang"
         ],
-        "url": "http://exmpp.org",
-        "categories": [
-            "library"
-        ]
+        "url": "http://exmpp.org"
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/explore-xep-0392-consistent-color-generation.doap",
         "name": "Explore XEP-0392 Consistent Color Generation",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "eyeCU",
         "platforms": [
@@ -530,195 +533,195 @@
             "Other",
             "Windows"
         ],
-        "url": "https://eyecu.opiums.eu",
-        "categories": [
-            "client"
-        ]
+        "url": "https://eyecu.opiums.eu"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Finch",
         "platforms": [
             "Linux"
         ],
-        "url": "https://developer.pidgin.im",
-        "categories": [
-            "client"
-        ]
+        "url": "https://developer.pidgin.im"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Fluux XMPP",
         "platforms": [
             "Go"
         ],
-        "url": "https://github.com/FluuxIO/go-xmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/FluuxIO/go-xmpp"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "frabjous",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/theozaurus/frabjous",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/theozaurus/frabjous"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
         "name": "Gajim",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "gloox",
         "platforms": [
             "C++"
         ],
-        "url": "https://camaya.net/",
-        "categories": [
-            "library"
-        ]
+        "url": "https://camaya.net/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "GNU Freetalk",
         "platforms": [
             "Linux"
         ],
-        "url": "https://gnufreetalk.github.io/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://gnufreetalk.github.io/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "GreenJab",
         "platforms": [
             "IBM i"
         ],
-        "url": "https://www.bvstools.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.bvstools.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/halcyon/master/halcyon.doap",
         "name": "Halcyon",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "headstock",
         "platforms": [
             "Python"
         ],
-        "url": "https://github.com/Lawouach/headstock",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/Lawouach/headstock"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "hsxmpp",
         "platforms": [
             "Haskell"
         ],
-        "url": "http://\u05d7\u05e0\u05d5\u05da.se",
-        "categories": [
-            "library"
-        ]
+        "url": "http://\u05d7\u05e0\u05d5\u05da.se"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "hxmpp",
         "platforms": [
             "haXe"
         ],
-        "url": "http://hxmpp.disktree.net",
-        "categories": [
-            "library"
-        ]
+        "url": "http://hxmpp.disktree.net"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "IceWarp",
         "platforms": [
             "Linux",
             "Windows"
         ],
-        "url": "https://www.icewarp.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.icewarp.com"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "iChat Server",
         "platforms": [
             "macOS"
         ],
-        "url": "https://www.apple.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.apple.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "iksemel",
         "platforms": [
             "C"
         ],
-        "url": "http://code.google.com/p/iksemel",
-        "categories": [
-            "library"
-        ]
+        "url": "http://code.google.com/p/iksemel"
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/im-observatory.doap",
         "name": "IM Observatory",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "IM+",
         "platforms": [
             "iOS",
             "macOS"
         ],
-        "url": "https://www.shape.ag/en/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.shape.ag/en/"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "in.jabberd",
         "platforms": [
             "Linux"
         ],
-        "url": "https://rawsontetley.org/proj_inetdxtra.html",
-        "categories": [
-            "server"
-        ]
+        "url": "https://rawsontetley.org/proj_inetdxtra.html"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Instantbird",
         "platforms": [
@@ -726,77 +729,77 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://instantbird.com",
-        "categories": [
-            "client"
-        ]
+        "url": "http://instantbird.com"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "IoT Broker",
         "platforms": [
             "Windows"
         ],
-        "url": "https://waher.se/Broker.md",
-        "categories": [
-            "server"
-        ]
+        "url": "https://waher.se/Broker.md"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "IP*Works Internet Toolkit",
         "platforms": [
             "ActiveX, C++, C#,"
         ],
-        "url": "https://www.nsoftware.com/ipworks/",
-        "categories": [
-            "library"
-        ]
+        "url": "https://www.nsoftware.com/ipworks/"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Iris",
         "platforms": [
             "C++"
         ],
-        "url": "https://github.com/psi-im/iris",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/psi-im/iris"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "irssi-xmpp",
         "platforms": [
             "Console",
             "Text-Mode"
         ],
-        "url": "https://cybione.org",
-        "categories": [
-            "client"
-        ]
+        "url": "https://cybione.org"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "/hosted-doap/isode-m-link.doap",
         "name": "Isode M-Link",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Jabber Stream Objects (JSO)",
         "platforms": [
             "Java"
         ],
-        "url": "https://java.net/projects/jso",
-        "categories": [
-            "library"
-        ]
+        "url": "https://java.net/projects/jso"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Jabber XCP",
         "platforms": [
@@ -804,23 +807,23 @@
             "Solaris",
             "Windows"
         ],
-        "url": "https://www.cisco.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.cisco.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "jabber.el",
         "platforms": [
             "Linux"
         ],
-        "url": "http://emacs-jabber.sourceforge.net",
-        "categories": [
-            "client"
-        ]
+        "url": "http://emacs-jabber.sourceforge.net"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "jabber.net",
         "platforms": [
@@ -828,34 +831,34 @@
             "C#",
             "Mono"
         ],
-        "url": "https://code.google.com/archive/p/jabber-net/",
-        "categories": [
-            "library"
-        ]
+        "url": "https://code.google.com/archive/p/jabber-net/"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "jabber.py",
         "platforms": [
             "Python"
         ],
-        "url": "http://jabberpy.sourceforge.net/",
-        "categories": [
-            "library"
-        ]
+        "url": "http://jabberpy.sourceforge.net/"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "jabberd 1.x",
         "platforms": [
             "Linux"
         ],
-        "url": "http://jabberd.org",
-        "categories": [
-            "server"
-        ]
+        "url": "http://jabberd.org"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "jabberd 2.x",
         "platforms": [
@@ -864,23 +867,23 @@
             "Solaris",
             "Windows"
         ],
-        "url": "https://jabberd2.org",
-        "categories": [
-            "server"
-        ]
+        "url": "https://jabberd2.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "JabberLib",
         "platforms": [
             "Tcl"
         ],
-        "url": "http://coccinella.im",
-        "categories": [
-            "library"
-        ]
+        "url": "http://coccinella.im"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Jabbim",
         "platforms": [
@@ -888,78 +891,78 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://www.jabbim.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.jabbim.com"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "jackal",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://github.com/ortuman/jackal",
-        "categories": [
-            "server"
-        ]
+        "url": "https://github.com/ortuman/jackal"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "JAJC",
         "platforms": [
             "Windows"
         ],
-        "url": "http://jajc.jrudevels.org",
-        "categories": [
-            "client"
-        ]
+        "url": "http://jajc.jrudevels.org"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Jappix",
         "platforms": [
             "Browser"
         ],
-        "url": "http://jappix.org",
-        "categories": [
-            "client"
-        ]
+        "url": "http://jappix.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "JAXL",
         "platforms": [
             "PHP"
         ],
-        "url": "https://github.com/jaxl/JAXL",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/jaxl/JAXL"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/jaxmpp/master/jaxmpp.doap",
         "name": "JaXMPP",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Jerry Messenger",
         "platforms": [
             "Linux",
             "Windows"
         ],
-        "url": "http://j-livesupport.com",
-        "categories": [
-            "server"
-        ]
+        "url": "http://j-livesupport.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Jitsi Desktop",
         "platforms": [
@@ -967,55 +970,55 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://desktop.jitsi.org",
-        "categories": [
-            "client"
-        ]
+        "url": "https://desktop.jitsi.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "jQuery-XMPP-plugin",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/maxpowel/jQuery-XMPP-plugin",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/maxpowel/jQuery-XMPP-plugin"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Jreen",
         "platforms": [
             "C++",
             "Qt"
         ],
-        "url": "http://qutim.org",
-        "categories": [
-            "library"
-        ]
+        "url": "http://qutim.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "JSJaC",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/sstrigler/JSJaC",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/sstrigler/JSJaC"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "/hosted-doap/jsxc.doap",
         "name": "JSXC",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Kadu",
         "platforms": [
@@ -1023,198 +1026,198 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://kadu.net",
-        "categories": [
-            "client"
-        ]
+        "url": "http://kadu.net"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://invent.kde.org/network/kaidan/-/raw/master/misc/doap.xml",
         "name": "Kaidan",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Kaiwa",
         "platforms": [
             "Browser"
         ],
-        "url": "http://getkaiwa.com/",
-        "categories": [
-            "client"
-        ]
+        "url": "http://getkaiwa.com/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Kopete",
         "platforms": [
             "Linux"
         ],
-        "url": "https://userbase.kde.org/Kopete",
-        "categories": [
-            "client"
-        ]
+        "url": "https://userbase.kde.org/Kopete"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Kwickserver",
         "platforms": [
             "Windows"
         ],
-        "url": "http://www.kwickserver.info/cms/",
-        "categories": [
-            "server"
-        ]
+        "url": "http://www.kwickserver.info/cms/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "/hosted-doap/libervia.doap",
         "name": "Libervia (formerly Salut \u00e0 Toi)",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "libpurple",
         "platforms": [
             "C",
             "C++"
         ],
-        "url": "https://developer.pidgin.im/wiki/WhatIsLibpurple",
-        "categories": [
-            "library"
-        ]
+        "url": "https://developer.pidgin.im/wiki/WhatIsLibpurple"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/libstrophe.doap",
         "name": "libstrophe",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Lightr",
         "platforms": [
             "PHP"
         ],
-        "url": "https://github.com/myYearbook/lightr",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/myYearbook/lightr"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Loudmouth",
         "platforms": [
             "C"
         ],
-        "url": "https://github.com/mcabber/loudmouth",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/mcabber/loudmouth"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/Martin/master/martin.doap",
         "name": "Martin",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/matrix.doap",
         "name": "MatriX",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "mcabber",
         "platforms": [
             "Other"
         ],
-        "url": "https://mcabber.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://mcabber.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/mellium.doap",
         "name": "Mellium",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://raw.githubusercontent.com/maranda/metronome/master/misc/doap.xml",
         "name": "Metronome IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/miranda-ng/miranda-ng/master/docs/miranda.doap",
         "name": "Miranda NG",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/monal-im/Monal/develop/monal.doap",
         "name": "Monal IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://raw.githubusercontent.com/esl/MongooseDocs/gh-pages/latest/mongooseim.doap",
         "name": "MongooseIM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://codeberg.org/Arne/monocles_chat/raw/branch/master/monocles_chat.doap",
         "name": "monocles chat",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
         "name": "Movim",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Mozilla Thunderbird",
         "platforms": [
@@ -1222,72 +1225,72 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://www.thunderbird.net/en-US/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.thunderbird.net/en-US/"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "net::XMPP",
         "platforms": [
             "Perl"
         ],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://git.singpolyma.net/network-protocol-xmpp/blob/master/doap.xml",
         "name": "network-protocol-haskell",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "oajabber",
         "platforms": [
             "C++"
         ],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "ObjXMPP",
         "platforms": [
             "Objective-C"
         ],
-        "url": "https://github.com/ObjFW/ObjXMPP",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/ObjFW/ObjXMPP"
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/observe-jabber-network.doap",
         "name": "observe.jabber.network",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://raw.githubusercontent.com/igniterealtime/Openfire/main/documentation/openfire.doap",
         "name": "Openfire",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Oracle Communications IM Server",
         "platforms": [
@@ -1295,12 +1298,12 @@
             "Solaris",
             "Windows"
         ],
-        "url": "https://www.oracle.com/index.html",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.oracle.com/index.html"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Pidgin",
         "platforms": [
@@ -1308,68 +1311,68 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://pidgin.im",
-        "categories": [
-            "client"
-        ]
+        "url": "https://pidgin.im"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://lab.louiz.org/poezio/poezio/-/raw/main/data/doap.xml",
         "name": "poezio",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Pontarius XMPP",
         "platforms": [
             "Haskell"
         ],
-        "url": "https://github.com/pontarius/pontarius-xmpp/",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/pontarius/pontarius-xmpp/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/profanity-im/profanity/master/profanity.doap",
         "name": "profanity",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://hg.prosody.im/trunk/raw-file/tip/doc/doap.xml",
         "name": "Prosody IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "name": "Psi",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
         "name": "Psi+",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "psyced",
         "platforms": [
@@ -1377,63 +1380,63 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://psyced.org",
-        "categories": [
-            "server"
-        ]
+        "url": "http://psyced.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
         "name": "python-nbxmpp",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "pyxmpp",
         "platforms": [
             "Python"
         ],
-        "url": "http://pyxmpp.jajcus.net/pyxmpp.html",
-        "categories": [
-            "library"
-        ]
+        "url": "http://pyxmpp.jajcus.net/pyxmpp.html"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "pyxmpp2",
         "platforms": [
             "Python"
         ],
-        "url": "https://github.com/Jajcus/pyxmpp2",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/Jajcus/pyxmpp2"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/igniterealtime/pade/master/docs/pade.doap",
         "name": "P\u00e0d\u00e9",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Quiet Internet Pager",
         "platforms": [
             "Windows"
         ],
-        "url": "http://forum.qip.ru",
-        "categories": [
-            "client"
-        ]
+        "url": "http://forum.qip.ru"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "qutIM",
         "platforms": [
@@ -1441,60 +1444,60 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://qutim.org",
-        "categories": [
-            "client"
-        ]
+        "url": "https://qutim.org"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/doc/doap.xml",
         "name": "QXmpp",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/pulkomandy/Renga/master/doap.xml",
         "name": "Renga",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/scansion.doap",
         "name": "Scansion",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/search-jabber-network.doap",
         "name": "search.jabber.network",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "seesmic-as3-xmpp",
         "platforms": [
             "ActionScript",
             "Flash"
         ],
-        "url": "https://code.google.com/archive/p/seesmic-as3-xmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://code.google.com/archive/p/seesmic-as3-xmpp"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Sharp.Xmpp",
         "platforms": [
@@ -1502,35 +1505,35 @@
             "C#",
             "Mono"
         ],
-        "url": "https://github.com/pgstath/Sharp.Xmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/pgstath/Sharp.Xmpp"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Shmoose",
         "platforms": [
             "Linux",
             "Sailfish OS"
         ],
-        "url": "https://github.com/geobra/harbour-shmoose",
-        "categories": [
-            "client"
-        ]
+        "url": "https://github.com/geobra/harbour-shmoose"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Siemens OpenScape",
         "platforms": [
             "Linux"
         ],
-        "url": "http://siemens-enterprise.com",
-        "categories": [
-            "server"
-        ]
+        "url": "http://siemens-enterprise.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Sim-IM",
         "platforms": [
@@ -1538,81 +1541,81 @@
             "Linux",
             "Windows"
         ],
-        "url": "http://www.sim-im.org/index.php?title=Main_Page",
-        "categories": [
-            "client"
-        ]
+        "url": "http://www.sim-im.org/index.php?title=Main_Page"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Simple IoT Client",
         "platforms": [
             "Windows"
         ],
-        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md",
-        "categories": [
-            "client"
-        ]
+        "url": "https://waher.se/IoTGateway/SimpleIoTClient.md"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/siskin-im/master/siskin-im.doap",
         "name": "Siskin IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Skates",
         "platforms": [
             "Ruby"
         ],
-        "url": "https://github.com/julien51/skates",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/julien51/skates"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "SleekXMPP",
         "platforms": [
             "Python"
         ],
-        "url": "https://github.com/fritzy/SleekXMPP",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/fritzy/SleekXMPP"
     },
     {
+        "categories": [
+            "component"
+        ],
         "doap": "https://git.sr.ht/~nicoco/slidge/blob/master/doap.xml",
         "name": "Slidge",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "component"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
         "name": "slixmpp",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/smack.doap",
         "name": "Smack",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Smuxi",
         "platforms": [
@@ -1620,137 +1623,137 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://smuxi.im/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://smuxi.im/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "/hosted-doap/spark.doap",
         "name": "Spark",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "StanzaJS",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/legastero/stanza",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/legastero/stanza"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/Stork/master/stork-im.doap",
         "name": "Stork IM",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "stravaganza",
         "platforms": [
             "Go"
         ],
-        "url": "https://github.com/jackal-xmpp/stravaganza",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/jackal-xmpp/stravaganza"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/stroke.doap",
         "name": "Stroke",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/strophe-js.doap",
         "name": "Strophe.js",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "StropheCappuccino",
         "platforms": [
             "Objective-J"
         ],
-        "url": "https://github.com/ArchipelProject/StropheCappuccino",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/ArchipelProject/StropheCappuccino"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "/hosted-doap/swift.doap",
         "name": "Swift",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/swiften.doap",
         "name": "Swiften",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Talkonaut",
         "platforms": [
             "Mobile"
         ],
-        "url": "http://talkonaut.com",
-        "categories": [
-            "client"
-        ]
+        "url": "http://talkonaut.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
         "name": "Tigase Swift XMPP client library",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": "https://raw.githubusercontent.com/tigase/tigase-server/master/tigase-server.doap",
         "name": "Tigase XMPP Server",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "server"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/tinder.doap",
         "name": "Tinder",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Tkabber",
         "platforms": [
@@ -1758,12 +1761,12 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://tkabber.jabber.ru",
-        "categories": [
-            "client"
-        ]
+        "url": "http://tkabber.jabber.ru"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Trillian",
         "platforms": [
@@ -1774,121 +1777,121 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://trillian.im",
-        "categories": [
-            "client"
-        ]
+        "url": "https://trillian.im"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Twisted Words",
         "platforms": [
             "Python"
         ],
-        "url": "http://twistedmatrix.com",
-        "categories": [
-            "library"
-        ]
+        "url": "http://twistedmatrix.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "txmmp",
         "platforms": [
             "Linux"
         ],
-        "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c",
-        "categories": [
-            "library"
-        ]
+        "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "txmpp",
         "platforms": [
             "C++"
         ],
-        "url": "https://github.com/rpavlik/txmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/rpavlik/txmpp"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Ubeity",
         "platforms": [
             "C#"
         ],
-        "url": "https://github.com/ubiety/xmpp",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/ubiety/xmpp"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/UWPX/UWPX-Client/master/uwpx.doap",
         "name": "UWPX",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "V&V Messenger",
         "platforms": [
             "Windows"
         ],
-        "url": "https://www.altertech.com/products/vv/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.altertech.com/products/vv/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Vayusphere",
         "platforms": [
             "BlackBerry"
         ],
-        "url": "https://www.vayusphere.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.vayusphere.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Verse",
         "platforms": [
             "Lua"
         ],
-        "url": "http://code.matthewwild.co.uk/verse/",
-        "categories": [
-            "library"
-        ]
+        "url": "http://code.matthewwild.co.uk/verse/"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Vines",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://www.getvines.com",
-        "categories": [
-            "server"
-        ]
+        "url": "https://www.getvines.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "VSTalk",
         "platforms": [
             "Windows"
         ],
-        "url": "https://archive.codeplex.com/?p=vstalk",
-        "categories": [
-            "client"
-        ]
+        "url": "https://archive.codeplex.com/?p=vstalk"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Waher Networking",
         "platforms": [
@@ -1896,12 +1899,12 @@
             ".NET Standard",
             "C#"
         ],
-        "url": "https://waher.se/IoTGateway/Libraries.md#networking",
-        "categories": [
-            "library"
-        ]
+        "url": "https://waher.se/IoTGateway/Libraries.md#networking"
     },
     {
+        "categories": [
+            "server"
+        ],
         "doap": null,
         "name": "Wokkel",
         "platforms": [
@@ -1909,23 +1912,23 @@
             "macOS",
             "Solaris"
         ],
-        "url": "https://wokkel.ik.nu",
-        "categories": [
-            "server"
-        ]
+        "url": "https://wokkel.ik.nu"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "WTW",
         "platforms": [
             "Windows"
         ],
-        "url": "https://wtw.im/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://wtw.im/"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Xabber",
         "platforms": [
@@ -1933,208 +1936,205 @@
             "Browser",
             "iOS"
         ],
-        "url": "https://www.xabber.com",
-        "categories": [
-            "client"
-        ]
+        "url": "https://www.xabber.com"
     },
     {
+        "categories": [
+            "tool"
+        ],
         "doap": "/hosted-doap/xmpp-account-exporter.doap",
         "name": "XMPP account exporter",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "tool"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/nioc/xmpp-web/master/doap.xml",
         "name": "XMPP Web",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "xmpp-client",
         "platforms": [
             "Linux",
             "macOS"
         ],
-        "url": "https://github.com/agl/xmpp-client",
-        "categories": [
-            "client"
-        ]
+        "url": "https://github.com/agl/xmpp-client"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "XMPP-FTW",
         "platforms": [
             "JavaScript"
         ],
-        "url": "https://github.com/xmpp-ftw",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/xmpp-ftw"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "https://gitlab.com/xmpp-rs/xmpp-rs/-/raw/main/parsers/doap.xml",
         "name": "xmpp-parsers",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmpp-psn",
         "platforms": [
             "Python"
         ],
-        "url": "http://code.google.com",
-        "categories": [
-            "library"
-        ]
+        "url": "http://code.google.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/xmpp-js.doap",
         "name": "xmpp.js",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmpp4js",
         "platforms": [
             "JavaScript"
         ],
-        "url": "http://xmpp4js.sourceforge.net/",
-        "categories": [
-            "library"
-        ]
+        "url": "http://xmpp4js.sourceforge.net/"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "XMPP4R",
         "platforms": [
             "Ruby"
         ],
-        "url": "https://xmpp4r.github.io/",
-        "categories": [
-            "library"
-        ]
+        "url": "https://xmpp4r.github.io/"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmpp4r-simple",
         "platforms": [
             "Ruby"
         ],
-        "url": "http://code.google.com",
-        "categories": [
-            "library"
-        ]
+        "url": "http://code.google.com"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "xmppchat",
         "platforms": [
             "Browser"
         ],
-        "url": "https://babelmonkeys.de",
-        "categories": [
-            "client"
-        ]
+        "url": "https://babelmonkeys.de"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": "/hosted-doap/xmppdotnet.doap",
         "name": "XmppDotNet",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "library"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmppframework",
         "platforms": [
             "Objective C"
         ],
-        "url": "http://github.com",
-        "categories": [
-            "library"
-        ]
+        "url": "http://github.com"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmpphp",
         "platforms": [
             "PHP"
         ],
-        "url": "https://github.com/BirknerAlex/XMPPHP",
-        "categories": [
-            "library"
-        ]
+        "url": "https://github.com/BirknerAlex/XMPPHP"
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "xmpppy",
         "platforms": [
             "Python"
         ],
-        "url": "http://xmpppy.sourceforge.net",
-        "categories": [
-            "library"
-        ]
+        "url": "http://xmpppy.sourceforge.net"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "XMPPWebChat",
         "platforms": [
             "Browser"
         ],
-        "url": "https://github.com/udayg/xmppwebchat",
-        "categories": [
-            "client"
-        ]
+        "url": "https://github.com/udayg/xmppwebchat"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": "https://yaxim.org/doap/yaxim.rdf.xml",
         "name": "yaxim",
         "platforms": [],
-        "url": null,
-        "categories": [
-            "client"
-        ]
+        "url": null
     },
     {
+        "categories": [
+            "library"
+        ],
         "doap": null,
         "name": "Z-XMPP",
         "platforms": [
             "JavaScript"
         ],
-        "url": "http://ivan.vucica.net",
-        "categories": [
-            "library"
-        ]
+        "url": "http://ivan.vucica.net"
     },
     {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Zom",
         "platforms": [
             "Android",
             "iOS"
         ],
-        "url": "https://zom.im/",
-        "categories": [
-            "client"
-        ]
+        "url": "https://zom.im/"
     }
 ]
