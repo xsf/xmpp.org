@@ -1,3 +1,7 @@
+'''
+Utilities for files/folders/downloads management
+'''
+
 import os
 import shutil
 from pathlib import Path

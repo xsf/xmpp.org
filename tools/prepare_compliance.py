@@ -1,4 +1,7 @@
-from typing import Union
+'''
+Adds compliance ratings to software_list_doap.json via
+compliancer (https://code.zash.se/compliancer/)
+'''
 
 import json
 import os
@@ -61,7 +64,7 @@ def check_packages_compliance() -> None:
             json.dump(package_list, clients_data_file, indent=4)
 
     compliance_dict: dict[
-        str, dict[str, Union[str, dict[str, list[str]]]]] = {}
+        str, dict[str, str | dict[str, list[str]]]] = {}
 
     for subdir, _dirs, files in os.walk(f'{DOWNLOAD_PATH}/doap_files'):
         for file in files:

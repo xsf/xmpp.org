@@ -19,7 +19,7 @@ def build_xep_list() -> None:
     Download and parse xeplist.xml and build xeplist.json
     '''
     try:
-        xeplist_request = requests.get(XEP_LIST_URL)
+        xeplist_request = requests.get(XEP_LIST_URL, timeout=5)
     except requests.exceptions.RequestException as err:
         sys.exit(f'Error while requesting xeplist.xml ({err})')
 
@@ -38,8 +38,8 @@ def build_xep_list() -> None:
         return status
 
     xeps: list[dict[str, Any]] = []
-    for xep in root.findall("xep"):
-        if xep.get("accepted") == "true":
+    for xep in root.findall('xep'):
+        if xep.get('accepted') == 'true':
             xeps.append(
                 {
                     'title': xep.find('title').text,
@@ -49,7 +49,7 @@ def build_xep_list() -> None:
                     'type': xep.find('type').text,
                 }
             )
-    xeps_sorted = sorted(xeps, key=lambda xep: xep['number']) 
+    xeps_sorted = sorted(xeps, key=lambda xep: xep['number'])
 
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
 

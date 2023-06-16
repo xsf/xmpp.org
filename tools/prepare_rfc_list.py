@@ -3,7 +3,6 @@ This file is used to download RFC references and convert them to
 a single JSON file
 '''
 from typing import Any
-from typing import Optional
 
 import json
 import os
@@ -77,7 +76,8 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     '''
     print(f'Get RFC data for RFC {number}')
     try:
-        request = requests.get(f'{BIB_XML_PATH}/reference.RFC.{number}.xml')
+        request = requests.get(
+            f'{BIB_XML_PATH}/reference.RFC.{number}.xml', timeout=5)
     except requests.exceptions.RequestException as err:
         sys.exit(f'Error while downloading reference for '
                  f'RFC {number} ({err})')
@@ -91,10 +91,10 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     except ParseError:
         sys.exit(f'Error while parsing RFC reference for RFC {number}')
 
-    authors: Optional[str] = None
-    title: Optional[str] = None
-    date: Optional[str] = None
-    abstract: Optional[str] = None
+    authors: str | None = None
+    title: str | None = None
+    date: str | None = None
+    abstract: str | None = None
     for item in root.iter():
         if item.tag == 'title':
             title = item.text
@@ -104,12 +104,12 @@ def get_rfc_data(number: int) -> dict[str, Any]:
             if authors is None:
                 authors = item.attrib.get('fullname')
             else:
-                authors += f", {item.attrib.get('fullname')}"
+                authors += f', {item.attrib.get("fullname")}'
         if item.tag == 'abstract':
             abstract = item.find('t').text
 
-    obsoletes: Optional[str] = None
-    obsoleted_by: Optional[str] = None
+    obsoletes: str | None = None
+    obsoleted_by: str | None = None
     if number == 3920:
         obsoleted_by = '6120'
     if number == 3921:
@@ -147,6 +147,9 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     }
 
 def build_rfc_list() -> None:
+    '''
+    Generates rfc_list.json from downloaded data
+    '''
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     rfcs: list[dict[str, Any]] = []
 

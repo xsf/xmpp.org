@@ -3,8 +3,6 @@ Download / prepare / process XMPP DOAP files for the software list
 Requires: Pillow, python-slugify
 '''
 from typing import Any
-from typing import Optional
-from typing import Union
 
 import json
 import os
@@ -82,9 +80,11 @@ PLATFORMS: list[str] = [
     'Linux',
 ]
 
+DoapInfoT = dict[
+    str, str | list[str] | list[dict[str, str]] | None] | None
 
-def parse_doap_infos(doap_file: str
-                     ) -> Optional[dict[str, Union[str, list[str], list[dict[str, str]], None]]]:
+
+def parse_doap_infos(doap_file: str) -> DoapInfoT:
     '''
     Parse DOAP file and return infos
     '''
@@ -95,7 +95,7 @@ def parse_doap_infos(doap_file: str
         print('Error while trying to parse DOAP file:', doap_file, err)
         return None
 
-    info: dict[str, Union[str, list[str], list[dict[str, str]], None]] = {}
+    info: dict[str, str | list[str] | list[dict[str, str]] | None] = {}
 
     info['name'] = None
     doap_name = doap.find(DOAP_NAME)
@@ -200,7 +200,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
     return True
 
 
-def process_logo(package_name: str, uri: str) -> Optional[str]:
+def process_logo(package_name: str, uri: str) -> str | None:
     '''
     Download package logo and return logo URI
     '''
@@ -322,9 +322,13 @@ def prepare_package_data() -> None:
 
 
 def add_doap_data_to_xeplist() -> None:
-    with open(DATA_PATH / 'software_list_doap.json') as software_list:
+    '''
+    Adds data from DOAP files (implementations) to xeplist.json
+    '''
+    with open(DATA_PATH / 'software_list_doap.json',
+              encoding='utf-8') as software_list:
         software_data = json.load(software_list)
-    with open(DATA_PATH / 'xeplist.json') as xep_list:
+    with open(DATA_PATH / 'xeplist.json', encoding='utf-8') as xep_list:
         xep_data = json.load(xep_list)
 
     for xep in xep_data:
