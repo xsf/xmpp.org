@@ -428,6 +428,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     .header-internal h1, .header-internal h1 a {
         color: #95c0d9;
     }
+    .header-internal {
+        border-bottom: 1px solid #435760;
+    }
     article h1,
     article h2,
     article h3 {
