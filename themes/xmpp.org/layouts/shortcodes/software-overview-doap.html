@@ -3,7 +3,7 @@
         <form action="#">
             <div class="card card-body mb-4 software-filter" id="software-filter">
                 <div class="container">
-                    <p class="text-muted small mb-2">Filter software by platform and more.</p>
+                    <p class="text-body-secondary small mb-2">Filter software by platform and more.</p>
                     <div class="row pb-3">
                         <div class="col">
                             <label for="platform-select" class="form-label">Platform</label>
@@ -88,7 +88,7 @@
                                                 {{- else if eq (len (string .number)) 3 -}}
                                                     {{- $full_number = print "0" .number -}}
                                                 {{- end -}}
-                                                <div class="form-check mb-2" data-title="XEP-{{- $full_number -}}: {{- .title -}}">
+                                                <div class="form-check mb-2 text-body-secondary" data-title="XEP-{{- $full_number -}}: {{- .title -}}">
                                                     <input class="form-check-input" type="checkbox" value="" id="xep-{{- $full_number -}}" data-xep="{{- $full_number -}}">
                                                     <label class="form-check-label small" for="xep-{{- $full_number -}}">
                                                         XEP-{{- $full_number -}}:&nbsp;{{- .title -}}
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <span name="hidden-results-info" class="text-muted"></span>
+                        <span name="hidden-results-info" class="text-body-secondary"></span>
                     </div>
                 </div>
             </div>
@@ -182,11 +182,11 @@
                                     <span class="lead fs-3">{{- $name -}}</span><br>
                                 </div>
                                 <div class="row">
-                                    <span class="fw-lighter text-muted">{{- $props.shortdesc -}}</span>
+                                    <span class="fw-lighter text-body-secondary">{{- $props.shortdesc -}}</span>
                                 </div>
                                 {{- if in $props.categories "library" -}}
                                     <div class="row mt-1">
-                                        <span class="fw-lighter text-muted"><i class="fa-solid fa-sm fa-code align-middle" title="Programming Language"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
+                                        <span class="fw-lighter text-body-secondary"><i class="fa-solid fa-sm fa-code align-middle" title="Programming Language"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
                                     </div>
                                 {{- end -}}
                             </div>
@@ -195,7 +195,7 @@
                                     <span class="pb-2">Platforms</span>
                                     <hr class="mb-0">
                                 </div>
-                                <div class="row p-1 text-body-secondary">
+                                <div class="row p-1 opacity-75">
                                     <div class="col">
                                         {{- range $props.platforms -}}
                                             {{- if eq (lower .) "android" -}}
@@ -213,7 +213,7 @@
                                             {{- else if eq (lower .) "other" -}}
                                                 <i class="fas fa-lg fa-box pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else -}}
-                                                <span class="text-muted small">{{- . -}}&nbsp;</span>
+                                                <span class="small">{{- . -}}&nbsp;</span>
                                             {{- end -}}
                                         {{- end -}}
                                         {{- if eq (len $props.platforms) 0 -}}
@@ -247,9 +247,9 @@
                                 Base<br>
                                 {{- if in $categories "core" -}}
                                     {{- if eq $props.badges.core "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.core | title -}}</span>
+                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>
                                     {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.core | title -}}</span>
+                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -259,9 +259,9 @@
                                 IM<br>
                                 {{- if in $categories "im" -}}
                                     {{- if eq $props.badges.im "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.im | title -}}</span>
+                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>
                                     {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.im | title -}}</span>
+                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -271,9 +271,9 @@
                                 Mobile<br>
                                 {{- if in $categories "mobile" -}}
                                     {{- if eq $props.badges.mobile "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.mobile | title -}}</span>
+                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>
                                     {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.mobile | title -}}</span>
+                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -283,9 +283,9 @@
                                 Web<br>
                                 {{- if in $categories "web" -}}
                                     {{- if eq $props.badges.web "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.web | title -}}</span>
+                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>
                                     {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.web | title -}}</span>
+                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -295,16 +295,16 @@
                                 Calls<br>
                                 {{- if in $categories "av" -}}
                                     {{- if eq $props.badges.av "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.av | title -}}</span>
+                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>
                                     {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-muted">{{- $props.badges.av | title -}}</span>
+                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>
                                     {{- end -}}
                                 {{- else -}}
                                     -
                                 {{- end -}}
                             </div>
                         {{- else -}}
-                            <span class="text-muted small">No compliance data</span>
+                            <span class="text-body-secondary small">No compliance data</span>
                         {{- end -}}
                     </div>
                     <div class="row align-items-center mt-3">
@@ -318,7 +318,7 @@
     </div>
 {{- end -}}
     <div class="row">
-        <span name="hidden-results-info" class="text-muted text-center p-5"></span>
+        <span name="hidden-results-info" class="text-body-secondary text-center p-5"></span>
     </div>
 </div>
 <hr class="my-5">

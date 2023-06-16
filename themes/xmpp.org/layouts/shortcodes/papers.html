@@ -4,9 +4,9 @@
             <h5><a href="{{- .url -}}" target="_blank">{{- .title -}}&nbsp;({{- .year -}})</a></h5>
             <p class="mb-0"><small>{{- .authors -}}</small>
             {{- if .published_in -}}
-                <small class="text-muted">&nbsp;—&nbsp;{{- .published_in -}}{{- if .pages -}},&nbsp;{{- .pages -}}.{{- end -}}</small>
+                <small class="text-body-secondary">&nbsp;—&nbsp;{{- .published_in -}}{{- if .pages -}},&nbsp;{{- .pages -}}.{{- end -}}</small>
                 {{- if .doi -}}
-                    <small class="text-muted">&nbsp;DOI:&nbsp;<em>{{- .doi -}}</em></small>
+                    <small class="text-body-secondary">&nbsp;DOI:&nbsp;<em>{{- .doi -}}</em></small>
                 {{- end -}}
             {{- end -}}
             </p>

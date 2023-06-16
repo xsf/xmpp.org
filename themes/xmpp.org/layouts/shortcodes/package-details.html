@@ -40,9 +40,9 @@
                             <div>
                                 {{- if in $categories "core" -}}
                                     {{- if eq $props.badges.core "core" -}}
-                                        <span class="small text-muted">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
                                     {{- else -}}
-                                        <span class="small text-muted">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -57,9 +57,9 @@
                             <div>
                                 {{- if in $categories "im" -}}
                                     {{- if eq $props.badges.im "core" -}}
-                                        <span class="small text-muted">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
                                     {{- else -}}
-                                        <span class="small text-muted">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -74,9 +74,9 @@
                             <div>
                                 {{- if in $categories "mobile" -}}
                                     {{- if eq $props.badges.mobile "core" -}}
-                                        <span class="small text-muted">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
                                     {{- else -}}
-                                        <span class="small text-muted">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -91,9 +91,9 @@
                             <div>
                                 {{- if in $categories "web" -}}
                                     {{- if eq $props.badges.web "core" -}}
-                                        <span class="small text-muted">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
                                     {{- else -}}
-                                        <span class="small text-muted">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -108,9 +108,9 @@
                             <div>
                                 {{- if in $categories "av" -}}
                                     {{- if eq $props.badges.av "core" -}}
-                                        <span class="small text-muted">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
                                     {{- else -}}
-                                        <span class="small text-muted">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        <span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
                                     {{- end -}}
                                 {{- else -}}
                                     -
@@ -119,7 +119,7 @@
                         </li>
                     {{- else -}}
                         <li class="list-group-item d-flex justify-content-center align-items-center">
-                            <span class="text-muted small py-2">No compliance level</span>
+                            <span class="text-body-secondary small py-2">No compliance level</span>
                         </li>
                     {{- end -}}
                 </ul>

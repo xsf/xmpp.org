@@ -19,9 +19,9 @@
                 {{- $names = append $name $names -}}
                 <th name="{{- $name -}}" class="d-none">
                     <h5 class="mb-0 text-center">
-                        <span class="badge text-bg-secondary p-2">
+                        <span class="badge text-bg-secondary p-2" data-bs-theme="dark">
                             <a class="text-reset align-text-top ps-1" href="/software/{{- $props.name_slug -}}">{{- $name -}}</a>&nbsp;
-                            <button type="button" class="btn-close btn-close-white" name="remove-from-comparison" title="Remove"></button>
+                            <button type="button" class="btn-close" name="remove-from-comparison" title="Remove"></button>
                         </span>
                     </h5>
                 </th>

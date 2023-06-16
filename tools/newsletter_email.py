@@ -41,7 +41,7 @@ def process(input_url: str) -> None:
     link["style"] = "text-decoration: none; color: #333;"
 
     # Change post meta color
-    meta_span = article.find("span", {"class": "post-meta"})
+    meta_span = header_box.find("span", {"class": "text-body-secondary"})
     meta_span["style"] = "color: gray;"
 
     # Improve rendering of figures

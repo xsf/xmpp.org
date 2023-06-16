@@ -5,7 +5,7 @@ aliases:
     - "/sponsors/tigase.html"
 ---
 
-![](/images/logos/tigase.png)
+{{< figure src="/images/logos/tigase.png" class="p-2" >}}
 
 Tigase is home to Tigase XMPP Server, Tigase JaXMPP Client library, Tigase Messenger for Android and iOS, and other XMPP-related projects.  We specialize in creating robust, secure, and reliable XMPP-based real time communication systems.  Tigase provides agility and the freedom to scale projects and installations from small one-office networks to hundreds of thousands of connected users to a clustered network.
 

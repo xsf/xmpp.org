@@ -246,9 +246,6 @@ ul.share {
    ul.share li:hover .fab {
     transform: scale(1.2)
 }
-.post-meta {
-    color: #787878;
-}
 .mermaid {
     border-radius: 6px;
     margin-bottom: 12px;
@@ -310,6 +307,9 @@ ul.share {
 .footer-sponsors img {
     height: 50px;
 }
+.sponsor-logo {
+    filter: drop-shadow(0px 0px 10px rgba(100, 100, 100, 0.5));
+}
 .footer-github {
     border-top: 1px solid #eee;
     padding: 12px;
@@ -367,7 +367,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 .software-platforms {
     background-color: #fff;
-    color: #6b7b85;
+    color: #515d64;
 }
 .package-details-xeps {
     display: block;
@@ -419,32 +419,27 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
-	body {
-		background-color: #161616;
-		color: #ccc;
-	}
-
 	label {
-		color: #aaa;
+		color: #acb6bd;
 	}
-
 	h1, h2, h3, h4, h5, h6 {
-		color: #aaa;
+		color: #95c0d9;
 	}
     .header-internal h1, .header-internal h1 a {
-        color: #288cb3;
+        color: #95c0d9;
     }
     article h1,
     article h2,
     article h3 {
-        color: #b0b0b0;
+        color: #95c0d9;
     }
     ul.share li a {
-        background-color: #505050;
+        background-color: #3b5160;
     }
     blockquote {
-        background: #313131;
-        border-left: 10px solid #575757;
+        background: #2e353a;
+        border-left: 10px solid #56707a;
+        color: #b9cbdb;
     }
 	table {
 		background-color: #333;
@@ -455,7 +450,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     }
 	table > tbody > tr > td,
     table > thead > tr > th {
-		background-color: #2c2c2c;
+		background-color: #21242a;
         color: #b3b3b3 !important;
 	}
     table tr:nth-of-type(even) {
@@ -468,36 +463,27 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
         background-color: rgba(0,0,0,.7);
     }
     .footer-sponsors {
-        background-color: #474747;
+        background-color: #3a444e;
         border: 1px solid #838383;
     }
     .software-list {
-        background-color: #2e2e2e;
+        background-color: #1b252a;
     }
     .software-platforms {
         background-color: #32373c;
         color: #a4b1b9;
     }
-    .offcanvas {
-        background-color: #2c2c2c;
-    }
-    .offcanvas-header .btn-close {
-        filter: invert(1);
-    }
     .card {
-        background-color: #262626;
+        background-color: #161920;
     }
     .card-header {
-        background-color: #2c2c2c;
+        background-color: #161920;
     }
     .card > ul > li {
-        background-color: #2b2b2b;
+        background-color: #1f232c;
         color: #e3e3e3;
     }
-    .select-dropdown-container 	label {
-		color: #313131;
-	}
     .mermaid {
-        background-color: rgb(110 120 130);
+        background-color: #6e7882;
     }
 }

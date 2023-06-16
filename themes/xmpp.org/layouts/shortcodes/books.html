@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-md-8">
             <h2>{{- .title -}}</h2>
-            <p><small class="text-muted">By:&nbsp;<em>{{- .authors -}}</em>&nbsp;({{- .year -}})</small></p>
+            <p><small class="text-body-secondary">By:&nbsp;<em>{{- .authors -}}</em>&nbsp;({{- .year -}})</small></p>
             <p>{{- (replace .abstract "\n" "<br/>") | safeHTML -}}</p>
         </div>
     </div>
