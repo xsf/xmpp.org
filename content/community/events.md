@@ -5,7 +5,7 @@ aliases:
     - "/community/events.html"
 ---
 
-## Meetups
+## Regular Meetups
 
 * [Berlin](https://xmpp-meetup.in-berlin.de/)
 * [Dresden](https://wiki.xmpp.org/web/Meetups/Dresden)
@@ -16,7 +16,7 @@ aliases:
 
 Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Do you spot out-of-date information? Can you improve this page? Please, [submit a pull request](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md). Sprints are contributor events organized by members of the community. They focus on improving the XMPP ecosystem. You can find detailed information about sprints on the [wiki page](https://wiki.xmpp.org/web/Sprints), as well as a list of [past conferences](https://wiki.xmpp.org/web/Category:Events).
 
-* [Elbe-Sprint, June 22-25th, 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/)
+{{< events type="upcoming" >}}
 
 ## XMPP Summits
 
@@ -26,20 +26,6 @@ The XSF organizes periodic in-person gatherings in order to coordinate high-band
 
 Please reach out to the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) to attend their public meetings.
 
-### Past events
+### Past Events
 
-* [Portland, May 14th, 2023](https://fossy.us/) (around Fossy)
-* [Brussels, February 30th, 2023](https://xmpp.org/2023/01/xmpp-at-fosdem-2023/) (around FOSDEM)
-* [Gruenstadt, July 9-10th, 2022](https://wiki.xmpp.org/web/Sprints/2022_July_Gruenstadt)
-* [Toulouse, April 18-19th, 2020](https://wiki.xmpp.org/web/Sprints/2020_April_Toulouse)
-* [Berlin, March 26-29th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Berlin)
-* [Duesseldorf, March 7-8th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Duesseldorf)
-* [Leipzig, December 27-30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig)
-* [Stockholm, September 2019](https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm)
-* [Lyon, July 2019](https://wiki.xmpp.org/web/Sprints/2019_July_Lyon)
-* [The Hague, June 7-9th, 2019](https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague)
-* [Karlsruhe, May 30th - June 2nd, 2019](https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe) (at GPN19)
-* [Berlin, March 30-31st, 2019](https://wiki.xmpp.org/web/Sprints/2019_March_Berlin)
-* [Brussels, January 30th, 2019](https://wiki.xmpp.org/web/Sprints/2019_January_Brussels) (around FOSDEM)
-* [Dusseldorf, November 17-18th, 2018](https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf)
-* [Cambridge, August 18-19th, 2018](https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge)
+{{< events type="past" >}}

@@ -1,0 +1,79 @@
+{{- $type := .Get "type" -}}
+
+{{- if eq $type "past" -}}
+<ul>
+{{- end -}}
+{{- $events_counter := 0 -}}
+{{- range .Site.Data.events -}}
+    {{- $start_date := .date_start | time -}}
+    {{- if eq $type "upcoming" -}}
+        {{- if gt $start_date now -}}
+            {{- $events_counter = add $events_counter 1 -}}
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="card text-bg-tertiary mb-3">
+                        <h5 class="card-header">
+                          {{- .type -}}
+                        </h5>
+                        <div class="card-body">
+                            <div class="mb-1">
+                                <i class="fa-solid fa-location-dot text-body-tertiary"></i>&nbsp;
+                                {{- .location -}}
+                            </div>
+                            <a href="{{- .url -}}">
+                                {{- if .title -}}
+                                    {{- .title -}}&nbsp;-&nbsp;
+                                {{- end -}}
+                                {{- if .date_end -}}
+                                    {{- $end_date := .date_end | time -}}
+                                    {{- if eq (dateFormat "January" $start_date) (dateFormat "January" $end_date) -}}
+                                        {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "2, 2006" $end_date -}}
+                                    {{- else -}}
+                                        {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "January 2, 2006" $end_date -}}
+                                    {{- end -}}
+                                {{- else -}}
+                                    {{- dateFormat "January 2, 2006" $start_date -}}
+                                {{- end -}}
+                            </a>
+                            {{- if .desc -}}
+                                &nbsp;({{- .desc -}})
+                            {{- end -}}
+                        </div>
+                    </div>
+                    {{- if eq $events_counter 0 -}}
+                        No upcoming events.
+                    {{- end -}}
+                </div>
+            </div>
+        {{- end -}}
+    {{- end -}}
+
+    {{- if eq $type "past" -}}
+        {{- if lt $start_date now -}}
+        <li>
+            {{- .type -}}: <a href="{{- .url -}}">
+            {{- .location -}}&nbsp;-&nbsp;
+            {{- if .title -}}
+                {{- .title -}},&nbsp;
+            {{- end -}}
+            {{- if .date_end -}}
+                {{- $end_date := .date_end | time -}}
+                {{- if eq (dateFormat "January" $start_date) (dateFormat "January" $end_date) -}}
+                    {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "2, 2006" $end_date -}}
+                {{- else -}}
+                    {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "January 2, 2006" $end_date -}}
+                {{- end -}}
+            {{- else -}}
+                {{- dateFormat "January 2, 2006" $start_date -}}
+            {{- end -}}
+            </a>
+            {{- if .desc -}}
+                &nbsp;({{- .desc -}})
+            {{- end -}}
+        </li>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- if eq $type "past" -}}
+</ul>
+{{- end -}}

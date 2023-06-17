@@ -1,0 +1,200 @@
+[
+    {
+        "type": "Sprint",
+        "title": "Elbe-Sprint",
+        "location": "Hamburg (DE)",
+        "date_start": "2023-06-22",
+        "date_end": "2023-06-25",
+        "url": "https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Portland (US)",
+        "date_start": "2023-05-30",
+        "date_end": null,
+        "url": "https://2023.fossy.us/",
+        "desc": "around Fossy"
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 25",
+        "location": "Brussels (BE)",
+        "date_start": "2023-02-02",
+        "date_end": "2023-02-03",
+        "url": "https://wiki.xmpp.org/web/Conferences/Summit_25",
+        "desc": "before FOSDEM"
+    },
+    {
+        "type": "Sprint",
+        "title": "OMEMO Sprint",
+        "location": "Grünstadt (DE)",
+        "date_start": "2022-07-09",
+        "date_end": "2022-07-10",
+        "url": "https://wiki.xmpp.org/web/Sprints/2022_July_Gruenstadt",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": "Spring Relay 2021",
+        "location": "Online",
+        "date_start": "2021-03-06",
+        "date_end": "2021-04-17",
+        "url": "https://wiki.xmpp.org/web/Spring_Relay_2021",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": "Discord Sprint",
+        "location": "Online",
+        "date_start": "2020-11-21",
+        "date_end": "2020-11-22",
+        "url": "https://wiki.xmpp.org/web/Sprints/2020_November_Online",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": "Operators Sprint",
+        "location": "Online",
+        "date_start": "2020-05-23",
+        "date_end": "2020-05-24",
+        "url": "https://wiki.xmpp.org/web/Sprints/2020_May_Online",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Toulouse (FR)",
+        "date_start": "2020-04-18",
+        "date_end": "2020-04-19",
+        "url": "https://wiki.xmpp.org/web/Sprints/2020_April_Toulouse",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Berlin (DE)",
+        "date_start": "2020-03-26",
+        "date_end": "2020-03-29",
+        "url": "https://wiki.xmpp.org/web/Sprints/2020_March_Berlin",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": "OMEMO Sprint",
+        "location": "Düsseldorf (DE)",
+        "date_start": "2020-03-07",
+        "date_end": "2020-03-08",
+        "url": "https://wiki.xmpp.org/web/Sprints/2020_March_Duesseldorf",
+        "desc": null
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 24",
+        "location": "Brussels (BE)",
+        "date_start": "2020-01-30",
+        "date_end": "2020-01-31",
+        "url": "https://wiki.xmpp.org/web/Conferences/Summit_24",
+        "desc": "before FOSDEM"
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Leipzig (DE)",
+        "date_start": "2019-12-27",
+        "date_end": "2019-12-30",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_December_Leipzig",
+        "desc": "at 36C3"
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Stockholm (SE)",
+        "date_start": "2019-09-28",
+        "date_end": "2019-09-29",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_September_Stockholm",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Lyon (FR)",
+        "date_start": "2019-07-13",
+        "date_end": "2019-07-14",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_July_Lyon",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "The Hague (NL)",
+        "date_start": "2019-06-07",
+        "date_end": "2019-06-09",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_June_The_Hague",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Karlsruhe (DE)",
+        "date_start": "2019-05-30",
+        "date_end": "2019-06-02",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_May_Karlsruhe",
+        "desc": "at Gulaschprogrammiernacht, GPN19"
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Berlin (DE)",
+        "date_start": "2019-03-29",
+        "date_end": "2019-03-31",
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_March_Berlin",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Brussels (BE)",
+        "date_start": "2019-01-30",
+        "date_end": null,
+        "url": "https://wiki.xmpp.org/web/Sprints/2019_January_Brussels",
+        "desc": "around FOSDEM"
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 23",
+        "location": "Brussels (BE)",
+        "date_start": "2020-01-31",
+        "date_end": "2020-02-01",
+        "url": "https://wiki.xmpp.org/web/Conferences/Summit_23",
+        "desc": "before FOSDEM"
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Düsseldorf (DE)",
+        "date_start": "2018-11-17",
+        "date_end": "2018-11-18",
+        "url": "https://wiki.xmpp.org/web/Sprints/2018_November_Dusseldorf",
+        "desc": null
+    },
+    {
+        "type": "Sprint",
+        "title": null,
+        "location": "Cambridge (UK)",
+        "date_start": "2018-08-18",
+        "date_end": "2018-08-19",
+        "url": "https://wiki.xmpp.org/web/Sprints/2018_August_Cambridge",
+        "desc": null
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 22",
+        "location": "Brussels (BE)",
+        "date_start": "2018-02-01",
+        "date_end": "2018-02-02",
+        "url": "https://wiki.xmpp.org/web/Conferences/Summit_22",
+        "desc": "before FOSDEM"
+    }
+]
