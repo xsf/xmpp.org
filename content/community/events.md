@@ -14,7 +14,7 @@ aliases:
 
 ### Upcoming Events
 
-Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Do you spot out-of-date information? Can you improve this page? Please, [submit a pull request](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md). Sprints are contributor events organized by members of the community. They focus on improving the XMPP ecosystem. You can find detailed information about sprints on the [wiki page](https://wiki.xmpp.org/web/Sprints), as well as a list of [past conferences](https://wiki.xmpp.org/web/Category:Events).
+Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Do you spot out-of-date information? Can you improve this page? Please, [submit a pull request](https://github.com/xsf/xmpp.org/edit/master/data/events.json). Sprints are contributor events organized by members of the community. They focus on improving the XMPP ecosystem. You can find detailed information about sprints on the [wiki page](https://wiki.xmpp.org/web/Sprints), as well as a list of [past conferences](https://wiki.xmpp.org/web/Category:Events).
 
 {{< events type="upcoming" >}}
 
