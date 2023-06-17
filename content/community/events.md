@@ -14,7 +14,7 @@ aliases:
 
 ### Upcoming Events
 
-Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md) Sprints are contributor events that are being organized by members of the community, to improve the ecosystem. You can find more detailed information about sprints on the [wikipage](https://wiki.xmpp.org/web/Sprints). You can get a list of past conferences [on the wiki](https://wiki.xmpp.org/web/Category:Events).
+Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Do you spot out-of-date information? Can you improve this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md). Sprints are contributor events organized by members of the community. They focus to improve the XMPP ecosystem. You can find detailed information about sprints on the [wiki page](https://wiki.xmpp.org/web/Sprints), as well as a list of [past conferences](https://wiki.xmpp.org/web/Category:Events).
 
 * [Elbe-Sprint, June 22-25th, 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/)
 
