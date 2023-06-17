@@ -5,39 +5,32 @@ aliases:
     - "/community/events.html"
 ---
 
-## XMPP Summits
-
-The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face. Attending a summit for the first time or considering to do so? This may be helpful: [XMPP summits for dummies](https://wiki.xmpp.org/web/XMPP_summits_for_dummies).
-
-You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
-The next Summit will happen next year.
-
-## Conferences and Talks
-
-No conference at the moment. You can get a list of past conferences [on the
-wiki](https://wiki.xmpp.org/web/Category:Events).
-
-[XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offered on a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)!
-
 ## Meetups
 
 * [Berlin](https://xmpp-meetup.in-berlin.de/)
 * [Dresden](https://wiki.xmpp.org/web/Meetups/Dresden)
+* [XMPP Italian happy hour](https://mobilizon.it/events/207032cc-b7bf-48c2-9394-f5cce684608f)
+* [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offered in a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA).
 
-## Sprints
+### Upcoming Events
 
-Sprints are contributor events that are being organized by members of the
-community, to improve the ecosystem.
+Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Do you spot out-of-date information? Can you improve this page? Please, [submit a pull request](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md). Sprints are contributor events organized by members of the community. They focus on improving the XMPP ecosystem. You can find detailed information about sprints on the [wiki page](https://wiki.xmpp.org/web/Sprints), as well as a list of [past conferences](https://wiki.xmpp.org/web/Category:Events).
 
-You can find more detailed information about sprints on the [wiki
-page](https://wiki.xmpp.org/web/Sprints).
+* [Elbe-Sprint, June 22-25th, 2023](https://xmpp.org/2023/04/elbe-sprint-hamburg-2023/)
 
-### Upcoming
+## XMPP Summits
 
-Events come and go at a speed that is sometimes hard to keep track of. Do you know of an event not listed here? Did you spot out-of-date information? Can you otherwise improve on this page? Please, [submit a pull request!](https://github.com/xsf/xmpp.org/edit/master/content/community/events.md)
+The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face. Attending a summit for the first time or considering to do so? This may be helpful: [XMPP summits for dummies](https://wiki.xmpp.org/web/XMPP_summits_for_dummies). You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
 
-### Past
+## XMPP Standards Foundation Meetings
 
+Please reach out to the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) to attend their public meetings.
+
+### Past events
+
+* [Portland, May 14th, 2023](https://fossy.us/) (around Fossy)
+* [Brussels, February 30th, 2023](https://xmpp.org/2023/01/xmpp-at-fosdem-2023/) (around FOSDEM)
+* [Gruenstadt, July 9-10th, 2022](https://wiki.xmpp.org/web/Sprints/2022_July_Gruenstadt)
 * [Toulouse, April 18-19th, 2020](https://wiki.xmpp.org/web/Sprints/2020_April_Toulouse)
 * [Berlin, March 26-29th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Berlin)
 * [Duesseldorf, March 7-8th, 2020](https://wiki.xmpp.org/web/Sprints/2020_March_Duesseldorf)
