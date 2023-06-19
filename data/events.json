@@ -1,5 +1,14 @@
 [
     {
+        "type": "Conference",
+        "title": "XMPP Conference Track (and booth)",
+        "location": "Portland (US)",
+        "date_start": "2023-07-13",
+        "date_end": "2023-07-16",
+        "url": "https://2023.fossy.us/",
+        "desc": null
+    },
+    {
         "type": "Sprint",
         "title": "Elbe-Sprint",
         "location": "Hamburg (DE)",
