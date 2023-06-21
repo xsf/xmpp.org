@@ -190,6 +190,11 @@
             "jids": ["tm@ayena.de"],
             "roles": ["infrastructure"]
         },
+        
+        {
+            "name": "Ali Mattouk",
+            "jids": ["xnamed@jix.im", "admin@jabber.eu.org"]
+        },
 
         {
             "name": "Edward Maurer",
