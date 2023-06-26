@@ -1,0 +1,34 @@
+default_language_version:
+    python: python3.11
+
+repos:
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        language_version: python3.11
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.275
+    hooks:
+      - id: ruff
+        exclude: ".githooks/"
+
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.315
+    hooks:
+    - id: pyright
+      pass_filenames: false
+      additional_dependencies:
+        - "beautifulsoup4"
+        - "colorama"
+        - "defusedxml"
+        - "packaging"
+        - "Pillow"
+        - "python-slugify"
+        - "requests"
