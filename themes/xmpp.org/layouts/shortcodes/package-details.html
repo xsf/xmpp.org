@@ -21,6 +21,25 @@
         <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
             <a class="btn btn-primary px-4" href="{{- $props.homepage -}}" target="_blank">Visit Website</a>
         </div>
+        <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
+            {{- if $props.download_page -}}
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $props.download_page -}}" target="_blank"><i class="fa-solid fa-download"></i>&nbsp;Download</a>
+            {{- end -}}
+            {{- if $props.code_repository -}}
+                <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $props.code_repository -}}" target="_blank"><i class="fa-solid fa-code"></i>&nbsp;Code Repository</a>
+            {{- end -}}
+            {{- if $props.support_forum -}}
+                {{- $url := $props.support_forum -}}
+                {{- if or (hasPrefix $url "xmpp:") (hasPrefix $url "https:") -}}
+                    <a class="btn btn-outline-secondary btn-sm"
+                       role="button"
+                       href="{{- safeURL $props.support_forum -}}"
+                       {{- if hasPrefix $url "https:" -}}target="_blank"{{- end -}}>
+                       <i class="fa-regular fa-comments"></i>&nbsp;Support Chat
+                    </a>
+                {{- end -}}
+            {{- end -}}
+        </div>
         <div class="col-sm-8 col-lg-5 pb-5 mx-auto">
             <div class="card">
                 <div class="card-header">

@@ -10,6 +10,7 @@ import re
 import shutil
 from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 from urllib.parse import urlparse
 
 from colorama import Fore
@@ -37,7 +38,11 @@ RDF_RESOURCE = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
 DOAP_NAME = f".//{{{DOAP_NS}}}name"
 DOAP_SHORTDESC = f".//{{{DOAP_NS}}}shortdesc"
 DOAP_HOMEPAGE = f".//{{{DOAP_NS}}}homepage"
+DOAP_DOWNLOAD_PAGE = f".//{{{DOAP_NS}}}download-page"
+DOAP_SUPPORT_FORUM = f".//{{{DOAP_NS}}}support-forum"
 DOAP_OS = f".//{{{DOAP_NS}}}os"
+DOAP_CODE_REPO = f".//{{{DOAP_NS}}}repository"
+DOAP_CODE_REPO_BROWSE = f".//{{{DOAP_NS}}}browse"
 DOAP_PROGRAMMING_LANGUAGE = f".//{{{DOAP_NS}}}programming-language"
 DOAP_LOGO = f".//{{{SCHEMA_NS}}}logo"
 DOAP_IMPLEMENTS = f".//{{{DOAP_NS}}}implements"
@@ -109,9 +114,32 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
     if doap_shortdesc is not None:
         info["shortdesc"] = doap_shortdesc.text
 
+    info["download_page"] = None
+    doap_download_page = doap.find(DOAP_DOWNLOAD_PAGE)
+    if doap_download_page is not None:
+        info["download_page"] = doap_download_page.attrib.get(RDF_RESOURCE)
+
+    info["support_forum"] = None
+    doap_support_forum = doap.find(DOAP_SUPPORT_FORUM)
+    if doap_support_forum is not None:
+        url = doap_support_forum.attrib.get(RDF_RESOURCE)
+        parsed_url = urlparse(url)
+        url = url.removeprefix(f"{parsed_url.scheme}:")
+        info["support_forum"] = f"{parsed_url.scheme}:{quote(url)}"  # Escape URL
+
     info["platforms"] = []
     for entry in doap.findall(DOAP_OS):
         info["platforms"].append(entry.text)
+
+    info["code_repository"] = None
+    doap_code_repository = doap.find(DOAP_CODE_REPO)
+    if doap_code_repository is not None:
+        repos = doap_code_repository.findall(".//*")
+        for element in repos:
+            browse_element = element.find(DOAP_CODE_REPO_BROWSE)
+            if browse_element is not None:
+                info["code_repository"] = browse_element.attrib.get(RDF_RESOURCE)
+                break
 
     info["programming_lang"] = []
     for entry in doap.findall(DOAP_PROGRAMMING_LANGUAGE):
@@ -293,6 +321,9 @@ def prepare_package_data() -> None:
             "homepage": parsed_package_infos["homepage"],
             "logo": logo_uri,
             "shortdesc": parsed_package_infos["shortdesc"],
+            "download_page": parsed_package_infos["download_page"],
+            "code_repository": parsed_package_infos["code_repository"],
+            "support_forum": parsed_package_infos["support_forum"],
             "platforms": parsed_package_infos["platforms"],
             "programming_lang": parsed_package_infos["programming_lang"],
             "rfcs": parsed_package_infos["rfcs"],
@@ -307,9 +338,11 @@ def prepare_package_data() -> None:
             create_package_page(category, package_name_slug, package["name"])
 
     print(
-        f"Number of packages:\n"
-        f"total: {len(xsf_package_list)} "
-        f"(with DOAP: {number_of_doap_packages}), "
+        f'\n{42 * "="}\n'
+        f"Number of packages\n"
+        f"Total: {len(xsf_package_list)}\n"
+        f"With DOAP: {number_of_doap_packages} "
+        f"({number_of_doap_packages / len(xsf_package_list) * 100} %)"
         f'\n{42 * "="}'
     )
     with open(
