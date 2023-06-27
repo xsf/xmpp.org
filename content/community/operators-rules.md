@@ -103,6 +103,6 @@ To discuss software development related to XMPP, there exists [jdev@muc.xmpp.org
 
 Other options include the following channels which are not XSF-operated channels. They may have their own rules and moderation policies. Accordingly it follows that we are not responsible for the content or moderation of these channels. They are merely suggestions.
 
-For broader discussions related to the XMPP network and ecosystem, check out the [joinjabber.org community](https://joinjabber.org/community/). They have a range of channels across various relevant topics.
+For broader discussions related to the XMPP network and ecosystem, check out the [joinjabber.org community](https://joinjabber.org/about/community/). They have a range of channels across various relevant topics.
 
 A general off-topic chat can be found at [conversations-offtopic-reloaded@conference.trashserver.net](xmpp:conversations-offtopic-reloaded@conference.trashserver.net?join).
