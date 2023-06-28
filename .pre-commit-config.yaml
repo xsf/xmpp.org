@@ -17,7 +17,6 @@ repos:
     rev: v0.0.275
     hooks:
       - id: ruff
-        exclude: ".githooks/"
 
   - repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.315
