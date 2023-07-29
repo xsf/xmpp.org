@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       ARCHIVE: xmpp-org-master.tar.gz
 
@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Install Python packages
         run: pip install -r tools/requirements.txt
@@ -63,7 +63,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.80.0'
+          hugo-version: '0.110.0'
 
       - name: Build website
         run: hugo
@@ -72,7 +72,7 @@ jobs:
         run: tar -czf ${{ env.ARCHIVE }} "./public"
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: xmpp.org-master
           path: ${{ env.ARCHIVE }}
