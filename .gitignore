@@ -12,6 +12,7 @@
 .hugo_build.lock
 .project
 .vagrant/
+.venv/
 .vscode/
 content/software/*
 data/compliance_suite.json
