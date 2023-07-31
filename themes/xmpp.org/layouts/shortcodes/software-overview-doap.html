@@ -136,10 +136,18 @@
         </button>
     </li>
 </ul>
-<div id="software-list">
+
+{{ $packages := slice }}
 {{- range $name, $props := .Site.Data.software_list_doap -}}
+    {{ $name_lower := lower $name }}
+    {{ $packages = $packages | append (dict "name" $name "name_lower" $name_lower "data" .) }}
+{{ end }}
+
+<div id="software-list">
+{{ range sort $packages ".name_lower" }}
+    {{ $props := .data }}
     <div class="card package-card mb-3"
-        data-name="{{- $props.name_slug -}}"
+        data-name="{{- .data.name_slug -}}"
         data-categories="{{- delimit $props.categories "," -}}"
         data-rfcs="{{- delimit $props.rfcs "," -}}"
         data-xeps="
@@ -179,7 +187,7 @@
                             </div>
                             <div class="col-md-6 col-sm-12 text-start">
                                 <div class="row pb-1">
-                                    <span class="lead fs-3">{{- $name -}}</span><br>
+                                    <span class="lead fs-3">{{- .name -}}</span><br>
                                 </div>
                                 <div class="row">
                                     <span class="fw-lighter text-body-secondary">{{- $props.shortdesc -}}</span>
