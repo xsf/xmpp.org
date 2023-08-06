@@ -75,7 +75,8 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
-- No XEPs proposed this month.
+- [Reporting Account Affiliations](https://xmpp.org/extensions/inbox/xep-reporting-account-affiliations.html)
+  - This specification documents a way for an XMPP server to report to other entities the relationship it has with a user on its domain.
 
 ### New
 
@@ -89,7 +90,10 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- No XEPs updated this month.
+- [Version 0.2.0 of XEP-0317 (Hats)](https://xmpp.org/extensions/xep-0317.html)
+  - Select a syntax for hats. (mw)
+- [Version 0.1.2 of XEP-0453 (DOAP usage in XMPP)](https://xmpp.org/extensions/xep-0453.html)
+  - Fix XMLNS typo (spw)
 
 ### Last Call
 
