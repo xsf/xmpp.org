@@ -26,7 +26,7 @@ Moving on after a first good day we continued working on Saturday. After the lun
 
 After the final dinner, we went out for a walk and took a boat drive along the river Elbe and watched the sunset and scenery together. We finished with another round of drinks at the Festival where we started:
 
-How do we want to build our (communcation) future?
+How do we want to build our (communication) future?
 
 {{< figure src="/images/blog/elbe-sprint_2023_boat.JPG" caption="Developers happy enjoying a boat ride on a Elbe ferry" >}}
 
