@@ -11,16 +11,16 @@ In this blog post we want to summarize progress we've made during the sprint.
 
 First of all, many thanks to the [CCCHH](https://www.hamburg.ccc.de/) and their members for offering the opportunity and their space in Hamburg-Altona. It was a great location and it served the purpose well.
 
-We met on Thursday night for dinner and got some delicious pizza and Italian food. We had a short welcoming round and exchange on XMPP topics followed immediately. Afterwards, we me at a [small park area](https://osm.org/go/0HoGQM9A?m=). Accidentially, there was a small festival called ["Altonale - Festival of the cultural Future"](https://www.altonale.de/altonale-festival/) and welcoming open seating options on the grass ground. As the festival title says, it was organised around discussing future topics - the perfect place to kick of the XMPP Elbe Sprint!
+We met on Thursday night for dinner and got some delicious pizza and Italian food. We had a short welcoming round and exchange on XMPP topics followed immediately. Afterwards, we met at a [small park area](https://osm.org/go/0HoGQM9A?m=). Accidentially, there was a small festival called ["Altonale - Festival of the cultural Future"](https://www.altonale.de/altonale-festival/) and welcoming open seating options on the grass ground. As the festival title says, it was organised around discussing future topics - the perfect place to kick of the XMPP Elbe Sprint!
 
 {{< figure src="/images/blog/elbe-sprint_2023_venue.JPG" caption="Developers at the location where the Elbe-Sprint takes place" >}}
 
 Then, on Friday we kicked off at 10:00 am in the morning with a short presentation of what everyone plans to work on. The developers and topics present allocated around ANIS update, [Conversations 3.0](https://conversations.im/) and [lttrs](https://codeberg.org/iNPUTmice/lttrs-android), [Dino](https://dino.im/), [PGPainless](https://gh.pgpainless.org/) and [XMPP Providers](https://providers.xmpp.net/).
-The night we spent at a kurdish & turkish restaurant at the city and finished nearby the river Elbe enjoying the scenery.
+The night we spent at a Kurdish & Turkish restaurant at the city and finished nearby the river Elbe enjoying the scenery.
 
 {{< figure src="/images/blog/elbe-sprint_2023_node.JPG" caption="Developers trying to find the right node :-)" >}}
 
-Moving on after a first good day we continued working on Saturday. After the lunch break we had three presentations: One on ANIS update, then an XMPP introduction talk so anyone who is interested can join and ask about it, and finally a status update on PGPpainless. The night we spent in an Indian restaurant in the famous St. Pauli quarter of Hamburg as a little highlight. As in many other countries, the idea of sharing the food served seemed to be the best choice for the knowledge, the XMPP protocol and the technology we are developing and last but not least how we work together.
+Moving on after a first good day we continued working on Saturday. After the lunch break we had three presentations: One on ANIS update, then an XMPP introduction talk so anyone who is interested can join and ask about it, and finally a status update on PGPainless. The night we spent in an Indian restaurant in the famous St. Pauli quarter of Hamburg as a little highlight. As in many other countries, the idea of sharing the food served seemed to be the best choice for the knowledge, the XMPP protocol and the technology we are developing and last but not least how we work together.
 
 {{< figure src="/images/blog/elbe-sprint_2023_dinner.JPG" caption="Developers sharing knowlege & dinner in an India restaurant" >}}
 
@@ -38,5 +38,5 @@ As you read, we were not only focusing on work, we also spent a decent amount of
 
 {{< figure src="/images/blog/elbe-sprint_2023_melon.jpg" caption="Developers being served with stickers & melons :-)" >}}
 
-See you at the next sprint hopefully,
+See you at the next sprint hopefully,  
 Eddie — The organizer
