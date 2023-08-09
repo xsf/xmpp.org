@@ -54,6 +54,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Two thoughts on killing decentralized networks:
   - [How to Kill a Decentralised Network (such as the Fediverse)](https://ploum.net/2023-06-23-how-to-kill-decentralised-networks.html)
   - [A thread on this article by MattJ](https://floss.social/@mattj/110595483224579575)
+- [XMPP - Teil 2 - XMPP etwas genauer](https://anoxinon.media/blog/xmpp2/) [DE]
 
 ## Software news
 ### Clients and applications
