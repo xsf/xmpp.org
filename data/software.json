@@ -1218,6 +1218,15 @@
         "categories": [
             "client"
         ],
+        "doap": "https://codeberg.org/moxxy/moxxy/raw/branch/master/moxxy.doap",
+        "name": "Moxxy",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Mozilla Thunderbird",
         "platforms": [
