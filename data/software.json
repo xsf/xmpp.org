@@ -1216,6 +1216,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": "https://codeberg.org/moxxy/moxxmpp/raw/branch/master/packages/moxxmpp/moxxmpp.doap",
+        "name": "moxxmpp",
+        "platforms": [],
+        "url": "https://codeberg.org/moxxy/moxxmpp/src/branch/master/packages/moxxmpp"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": "https://codeberg.org/moxxy/moxxy/raw/branch/master/moxxy.doap",
