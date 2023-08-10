@@ -1298,6 +1298,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": "https://raw.githubusercontent.com/PapaTutuWawa/omemo_dart/master/omemo_dart.doap",
+        "name": "omemo_dart",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": "https://raw.githubusercontent.com/igniterealtime/Openfire/main/documentation/openfire.doap",
