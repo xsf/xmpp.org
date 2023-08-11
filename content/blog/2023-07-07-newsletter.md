@@ -38,7 +38,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Talks
 
-- [Une messagerie instantanée qui respecte vos libertés ?](https://www.a-lec.org/actus/2023-06-23-conference-xmpp-bourbon-archambault/)[FR]: Through a brief history of the web, in order to depict its current centralization centralization and its problems, Adrien Bourmault, member of the XMPP Standards Foundation, will introduce you to the problems problems posed by non-free instant messaging, based on centralized applications and services, and explore the solutions offered by the solutions offered by decentralization and free software with XMPP. See the video below.
+- [Une messagerie instantanée qui respecte vos libertés ?](https://www.a-lec.org/actus/2023-06-23-conference-xmpp-bourbon-archambault/)[FR]: Through a brief history of the web, in order to depict its current centralization and its problems, Adrien Bourmault, member of the XMPP Standards Foundation, will introduce you to the problems problems posed by non-free instant messaging, based on centralized applications and services. He will also explore the solutions offered by decentralization and free software with XMPP.  See the video below.
 
 # Videos
 
