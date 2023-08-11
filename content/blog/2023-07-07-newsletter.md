@@ -72,7 +72,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### Libraries & Tools
 
 - New website and [xmpp.rs version 0.4 release](https://xmpp.rs/blog/release-xmpp-0-4/): After more than 3 and a half years since the last release (version 0.3 in septembre 2019), xmpp-rs developers are happy to announce xmpp-rs version 0.4.0. If you don't know about xmpp-rs, those are Rust crates for interoperable and federated instant messaging and other social networking applications.
-- [omemo_dart](https://github.com/PapaTutuWawa/omemo_dart) released [version 0.5.0](https://github.com/PapaTutuWawa/omemo_dart/releases/tag/v0.5.0), which finally allowed Moxxy to establish stable OMEMO:2 sessions between two Moxxy clients.
+- [omemo_dart](https://github.com/PapaTutuWawa/omemo_dart) released [version 0.5.0](https://github.com/PapaTutuWawa/omemo_dart/releases/tag/v0.5.0), which finally allows [Moxxy](https://moxxy.org/) to establish stable OMEMO:2 sessions between two Moxxy clients.
 - [Openfire inVerse plugin v10.1.4-1 release!](https://discourse.igniterealtime.org/t/openfire-inverse-plugin-v10-1-4-1-release/92969)
 - From the ignite realtime community:
   - [Candy plugin for Openfire 2.2.0 Release 4 now available](https://discourse.igniterealtime.org/t/candy-plugin-for-openfire-2-2-0-release-4-now-available/93042)
