@@ -62,7 +62,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [JMP is launched and out of Beta](https://blog.jmp.chat/b/launch-2023)
 - [Cheogram Android version `2.12.1-6`](https://git.singpolyma.net/cheogram-android/refs/2.12.1-6) adds per-account colours, per-account quiet hours, thumb hash previews of un-downloaded files, and more.
 - [Libervia progress note 2023-W22](https://www.goffi.org/b/libervia-progress-note-2023-w22-x3Wa) on A/V Implementation, ActivityPub Gateway and more.
-- [Dino 0.4.3](https://github.com/dino/dino/releases/tag/v0.4.3).
+- [Dino 0.4.3](https://github.com/dino/dino/releases/tag/v0.4.3) has been released.
 - [Movim 0.22.2 is out](https://mov.im/node/pubsub.movim.eu/Movim/1d407d21-989d-404b-9a39-aa9b328882d1).
 
 ### Servers
