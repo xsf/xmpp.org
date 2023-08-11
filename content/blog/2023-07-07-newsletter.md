@@ -17,7 +17,7 @@ On Dino:
  - [Windows woes](https://hrxi.github.io/gsoc/blog/windows-woes)
 
 On Moxxy:
-- The [first blog post](https://moxxy.org/posts/2023-05-06-Groupchat-GSoC-Project.html), detailing the plan to implement basic groupchat functionality.
+- The [first blog post](https://moxxy.org/posts/2023-05-06-Groupchat-GSoC-Project.html), detailing the plan to implement basic group chat functionality.
 - The [second blog post](https://moxxy.org/posts/2023-06-17-XEP-0045-In-Moxxmpp.html), describing the plans to bring a basic implementation of [XEP-0045](https://xmpp.org/extensions/xep-0045.html) into Moxxy’s XMPP library moxxmpp.
 - The [third blog post](https://moxxy.org/posts/2023-07-24-Join-MUC-With-Moxxy.html), sketching the frontend implementation plan.
 
