@@ -74,6 +74,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - New website and [xmpp.rs version 0.4 release](https://xmpp.rs/blog/release-xmpp-0-4/): After more than 3 and a half years since the last release (version 0.3 in septembre 2019), xmpp-rs developers are happy to announce xmpp-rs version 0.4.0. If you don't know about xmpp-rs, those are Rust crates for interoperable and federated instant messaging and other social networking applications.
 - [omemo_dart](https://github.com/PapaTutuWawa/omemo_dart) released [version 0.5.0](https://github.com/PapaTutuWawa/omemo_dart/releases/tag/v0.5.0), which finally allows [Moxxy](https://moxxy.org/) to establish stable OMEMO:2 sessions between two Moxxy clients.
 - [Openfire inVerse plugin v10.1.4-1 has been released](https://discourse.igniterealtime.org/t/openfire-inverse-plugin-v10-1-4-1-release/92969)
+- [A feature-rich Matrix to XMPP puppeteering gateway, based on slidge and nio.](https://git.sr.ht/~nicoco/matridge)
 - From the ignite realtime community:
   - [Candy plugin for Openfire 2.2.0 Release 4 now available](https://discourse.igniterealtime.org/t/candy-plugin-for-openfire-2-2-0-release-4-now-available/93042)
   - [Search Openfire plugin 0.7.4 release](https://discourse.igniterealtime.org/t/search-openfire-plugin-0-7-4-release/93043)
@@ -81,7 +82,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
   - [JmxWeb plugin for Openfire 0.9.1 release](https://discourse.igniterealtime.org/t/jmxweb-plugin-for-openfire-0-9-1-release/93045)
   - [Agent Information plugin for Openfire release 1.0.1](https://discourse.igniterealtime.org/t/agent-information-plugin-for-openfire-release-1-0-1/93057/1)
   - [Jabber Browsing Openfire Plugin 1.0.1 released](https://discourse.igniterealtime.org/t/jabber-browsing-openfire-plugin-1-0-1-released/93059)
-- [A feature-rich Matrix to XMPP puppeteering gateway, based on slidge and nio.](https://git.sr.ht/~nicoco/matridge)
  
 
 ## Extensions and specifications
