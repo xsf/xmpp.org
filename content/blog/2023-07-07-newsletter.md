@@ -68,7 +68,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### Servers
 
 - The ejabberd [mod_s3_upload](https://github.com/processone/ejabberd-contrib/tree/master/mod_s3_upload) module gained [support for the use of a separate download host](https://github.com/processone/ejabberd-contrib/pull/320). This allows clients to download media content from a statically hosted S3 bucket. Initially, this feature was proposed to allow ejabberd to integrate with [Garage](https://garagehq.deuxfleurs.fr/), an open-source distributed object storage service tailored for self-hosting.
-with [Garage](https://garagehq.deuxfleurs.fr/), an open-source distributed object storage service tailored for self-hosting.
 
 ### Libraries & Tools
 
