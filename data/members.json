@@ -170,6 +170,11 @@
         },
 
         {
+            "name": "Trevor Krahn",
+            "jids": ["root@nicolosus.chat"]
+        },
+
+        {
             "name": "Joachim Lindborg",
             "jids": ["jabberjocke@jabber.org"]
         },
@@ -200,11 +205,6 @@
             "name": "Edward Maurer",
             "jids": ["emus@jabbers.one"],
             "roles": ["board", "commteam"]
-        },
-
-        {
-            "name": "Yvo Meeres",
-            "jids": ["eevvoor@jabber.fr"]
         },
 
         {
