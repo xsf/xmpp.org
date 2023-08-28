@@ -1627,6 +1627,17 @@
     },
     {
         "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Snikket Server",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://snikket.org/service/"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": "/hosted-doap/spark.doap",
