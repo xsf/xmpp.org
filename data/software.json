@@ -1954,9 +1954,18 @@
             "tool"
         ],
         "doap": "/hosted-doap/xmpp-account-exporter.doap",
-        "name": "XMPP account exporter",
+        "name": "XMPP Account Exporter",
         "platforms": [],
         "url": null
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "XMPP Status Checker",
+        "platforms": [],
+        "url": "https://connect.xmpp.net/"
     },
     {
         "categories": [
