@@ -1987,6 +1987,15 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "XMPP Status Checker",
+        "platforms": [],
+        "url": "https://connect.xmpp.net/"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": "https://raw.githubusercontent.com/nioc/xmpp-web/master/doap.xml",
