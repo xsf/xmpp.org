@@ -292,7 +292,7 @@ def prepare_package_data() -> None:
         if doap_url.startswith("/hosted-doap"):
             # DOAP file is hosted at xmpp.org
             print(
-                f"{Fore.LIGHTCYAN_EX}DOAP by xmpp.org" f"{Style.RESET_ALL} ",
+                f"{Fore.LIGHTCYAN_EX}DOAP by xmpp.org{Style.RESET_ALL} ",
                 package["name"],
             )
             shutil.copyfile(
@@ -301,7 +301,7 @@ def prepare_package_data() -> None:
             )
         else:
             print(
-                f"{Fore.LIGHTBLUE_EX}DOAP by vendor" f"{Style.RESET_ALL}   ",
+                f"{Fore.LIGHTBLUE_EX}DOAP by vendor{Style.RESET_ALL}   ",
                 package["name"],
             )
             download_file(package["doap"], Path(f"doap_files/{package_name_slug}.doap"))
@@ -342,7 +342,7 @@ def prepare_package_data() -> None:
         f"Number of packages\n"
         f"Total: {len(xsf_package_list)}\n"
         f"With DOAP: {number_of_doap_packages} "
-        f"({number_of_doap_packages / len(xsf_package_list) * 100} %)"
+        f"({round(number_of_doap_packages / len(xsf_package_list) * 100, 1)} %)"
         f'\n{42 * "="}'
     )
     with open(

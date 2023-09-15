@@ -81,8 +81,15 @@ def check_packages_compliance() -> None:
                 )
                 json_result = json.loads(result.decode("unicode_escape"))
                 compliance_dict[json_result["name"]] = json_result
+                badges = json_result['badges']
+                print(
+                    f"{Fore.LIGHTBLUE_EX}Compliance checked:{Style.RESET_ALL}",
+                    json_result["name"],
+                    f"{Fore.MAGENTA}{badges}{Style.RESET_ALL}" if badges else
+                    f"{Fore.YELLOW}No level{Style.RESET_ALL}",
+                )
             except subprocess.CalledProcessError as err:
-                print(err)
+                print(f"{Fore.LIGHTRED_EX}{err}{Style.RESET_ALL}")
 
     add_compliance_data()
 
