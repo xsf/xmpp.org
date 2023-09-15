@@ -1,4 +1,8 @@
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
   if (window.location.pathname == "/software/") {
     for (const button of document.querySelectorAll('button[name="category-button"]')) {
       button.addEventListener("click", software_filter_list);
@@ -46,7 +50,7 @@ window.onload = function() {
   }
 
   software_resize_extensions_collapse();
-};
+});
 
 // Page /extensions/
 function show_xep_implementations() {
