@@ -12,11 +12,16 @@
             {{- end -}}
             <h1 class="display-5 fw-bold">{{- $name -}}</h1>
             <p class="lead mb-2">{{- $props.shortdesc -}}</p>
-            <div class="mb-5">
+            <div class="mb-4">
                 {{- range $props.platforms -}}
                     <span class="badge rounded-pill bg-secondary">{{- . -}}</span>&nbsp;
                 {{- end -}}
             </div>
+            {{- if eq $package_type "libraries" -}}
+                <div class="mb-4">
+                    <span title="Programming Language"><i class="fa-solid fa-sm fa-code align-middle"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
+                </div>
+            {{- end -}}
         </div>
         <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
             <a class="btn btn-primary px-4" href="{{- $props.homepage -}}" target="_blank">Visit Website</a>
@@ -156,5 +161,5 @@
 </div>
 <div class="collapse" id="extensions-collapse">
     <h5 class="text-center py-2">Supported XMPP Extensions (XEPs)</h5>
-    <iframe src="/doap/{{- $name_slug -}}.doap" class="package-details-xeps" id="doap-iframe"></iframe>
+    <iframe src="/doap/{{- $name_slug -}}.doap" class="software-details-xeps" id="doap-iframe"></iframe>
 </div>

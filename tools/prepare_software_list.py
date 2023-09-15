@@ -65,7 +65,7 @@ aliases:
     - "/software/%(type)s/%(name_slug)s"
 ---
 
-{{< package-details name_slug="%(name_slug)s" package_type="%(type)s" >}}
+{{< software-details name_slug="%(name_slug)s" package_type="%(type)s" >}}
 """
 
 SOFTWARE_CATEGORIES: list[str] = [

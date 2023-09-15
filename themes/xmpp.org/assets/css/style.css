@@ -369,7 +369,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     background-color: #fff;
     color: #515d64;
 }
-.package-details-xeps {
+.software-details-xeps {
     display: block;
     border: none;
     width: 100%;
