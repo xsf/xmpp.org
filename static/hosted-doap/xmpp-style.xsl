@@ -68,7 +68,7 @@
                 </span>
                 <xsl:if test="$xep-descriptor/last-revision/version/text() != xmpp:version">
                     <br></br>
-                    <span title="{$xep-descriptor/last-revision/date/text()}" class="version version-outdated">
+                    <span title="{$xep-descriptor/last-revision/date/text()}" data-bs-toggle="tooltip" class="version version-outdated">
                         <xsl:text>latest: </xsl:text>
                         <xsl:value-of select="$xep-descriptor/last-revision/version/text()"/>
                         <xsl:text> </xsl:text>

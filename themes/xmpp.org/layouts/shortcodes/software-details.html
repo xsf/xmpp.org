@@ -19,7 +19,7 @@
             </div>
             {{- if eq $package_type "libraries" -}}
                 <div class="mb-4">
-                    <span title="Programming Language"><i class="fa-solid fa-sm fa-code align-middle"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
+                    <span title="Programming Language" data-bs-toggle="tooltip"><i class="fa-solid fa-sm fa-code align-middle"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
                 </div>
             {{- end -}}
         </div>

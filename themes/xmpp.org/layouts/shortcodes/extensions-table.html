@@ -105,8 +105,8 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th title="Implementation Status">Status</th>
-                    <th title="Implemented Version">Version</th>
+                    <th title="Implementation Status" data-bs-toggle="tooltip">Status</th>
+                    <th title="Implemented Version" data-bs-toggle="tooltip">Version</th>
                 </tr>
             </thead>
             <tbody>
@@ -122,13 +122,13 @@
                                 </td>
                                 <td>
                                     {{- if eq .implementation_status "complete" -}}
-                                        <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                        <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                     {{- else if eq .implementation_status "partial" -}}
-                                        <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                        <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                     {{- else if eq .implementation_status "planned" -}}
-                                        <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-plus text-reset"></i></span>
+                                        <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-plus text-reset"></i></span>
                                     {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
-                                        <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
+                                        <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
                                     {{- end -}}
                                 </td>
                                 <td>{{- .implemented_version -}}</td>

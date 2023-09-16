@@ -21,7 +21,7 @@
                     <h5 class="mb-0 text-center">
                         <span class="badge text-bg-secondary p-2" data-bs-theme="dark">
                             <a class="text-reset align-text-top ps-1" href="/software/{{- $props.name_slug -}}">{{- $name -}}</a>&nbsp;
-                            <button type="button" class="btn-close" name="remove-from-comparison" title="Remove"></button>
+                            <button type="button" class="btn-close" name="remove-from-comparison" title="Remove" data-bs-toggle="tooltip"></button>
                         </span>
                     </h5>
                 </th>
@@ -42,13 +42,13 @@
                                 {{- range $xep.implementations -}}
                                     {{- if eq $name .package_name -}}
                                         {{- if eq .implementation_status "complete" -}}
-                                            <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                            <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                         {{- else if eq .implementation_status "partial" -}}
-                                            <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-check text-reset"></i></span>
+                                            <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                         {{- else if eq .implementation_status "planned" -}}
-                                            <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-solid fa-plus text-reset"></i></span>
+                                            <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-plus text-reset"></i></span>
                                         {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
-                                            <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
+                                            <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
                                         {{- end -}}
                                     {{- end -}}
                                 {{- end -}}
