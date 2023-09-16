@@ -10,7 +10,6 @@ import re
 import shutil
 from datetime import date
 from pathlib import Path
-from urllib.parse import quote
 from urllib.parse import urlparse
 
 from colorama import Fore
@@ -122,10 +121,7 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
     info["support_forum"] = None
     doap_support_forum = doap.find(DOAP_SUPPORT_FORUM)
     if doap_support_forum is not None:
-        url = doap_support_forum.attrib.get(RDF_RESOURCE)
-        parsed_url = urlparse(url)
-        url = url.removeprefix(f"{parsed_url.scheme}:")
-        info["support_forum"] = f"{parsed_url.scheme}:{quote(url)}"  # Escape URL
+        info["support_forum"] = doap_support_forum.attrib.get(RDF_RESOURCE)
 
     info["platforms"] = []
     for entry in doap.findall(DOAP_OS):
