@@ -10,10 +10,9 @@ The XSF’s Infrastructure Team is responsible for maintaining and improving the
 
 - Several physical server machines hosted at USSHC
 - Operating system maintenance (Debian GNU/Linux)
-- Web server and associated software (lighttpd, MySQL, WordPress, MediaWiki)
+- Web server and associated software (nginx, MediaWiki)
 - Tools for XEP publication (Python scripts, shell scripts, XSLT)
 - Email server and list software (Postfix and Mailman)
-- Source control (Subversion and various products donated by Atlassian)
 - XMPP server, chatrooms, and bots (Prosody and homegrown software)
 - DNS (Bind, with mirrors)
 - Digital certificates
