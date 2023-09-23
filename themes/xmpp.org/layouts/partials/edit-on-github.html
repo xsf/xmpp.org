@@ -1,0 +1,13 @@
+{{ if or (.IsPage) (.IsSection) }}
+    {{ if .File }}
+        {{ if .File.Path}}
+            {{ $.Scratch.Set "FilePath" .File.Path }}
+        {{ end }}
+        {{ with .Site.Params.GithubEdit}}
+            <a class="icon-link icon-link-hover" href='{{ . }}{{ $.Scratch.Get "FilePath" }}'>
+                Edit this page
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+        {{ end }}
+    {{ end }}
+{{ end }}
