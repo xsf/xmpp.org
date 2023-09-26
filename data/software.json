@@ -1182,10 +1182,10 @@
         "categories": [
             "client"
         ],
-        "doap": "https://raw.githubusercontent.com/monal-im/Monal/develop/monal.doap",
+        "doap": "https://raw.githubusercontent.com/monal-im/Monal/stable/monal.doap",
         "name": "Monal IM",
-        "platforms": [],
-        "url": null
+        "platforms": ["iOS", "macOS"],
+        "url": "https://monal-im.org"
     },
     {
         "categories": [
