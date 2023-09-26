@@ -48,7 +48,8 @@
     "members": [
         {
             "name": "Kim Alvefur",
-            "jids": ["zash@zash.se"]
+            "jids": ["zash@zash.se"],
+            "roles": ["infrastructure"]
         },
 
         {
@@ -127,7 +128,8 @@
 
         {
             "name": "Stephen Paul Weber",
-            "jids": ["singpolyma@singpolyma.net"]
+            "jids": ["singpolyma@singpolyma.net"],
+            "roles": ["infrastructure"]
         },
 
         {
@@ -171,7 +173,8 @@
 
         {
             "name": "Trevor Krahn",
-            "jids": ["root@nicolosus.chat"]
+            "jids": ["root@nicolosus.chat"],
+            "roles": ["infrastructure"]
         },
 
         {
@@ -192,10 +195,9 @@
 
         {
             "name": "Tobias Markmann",
-            "jids": ["tm@ayena.de"],
-            "roles": ["infrastructure"]
+            "jids": ["tm@ayena.de"]
         },
-        
+
         {
             "name": "Ali Mattouk",
             "jids": ["xnamed@jix.im", "admin@jabber.eu.org"]
@@ -259,7 +261,7 @@
         {
             "name": "Jonas Schäfer",
             "jids": ["jonas@wielicki.name"],
-            "roles": ["council", "editor"]
+            "roles": ["council", "infrastructure"]
         },
 
         {
