@@ -19,4 +19,14 @@ window.addEventListener("load", function() {
   jsSupport.forEach(function(elem) {
     elem.classList.remove("jsSupport");
   });
+
+  document.addEventListener("keypress", function (event) {
+    if (event.code != "Slash" && event.code != "Find") {
+      return;
+    }
+    checkboxes.forEach(function (checkbox) {
+      checkbox.checked = true;
+      show_hide(checkbox);
+    });
+  });
 });
