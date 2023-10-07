@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter September 2023
-date: 2023-10-05
+date: 2023-10-07
 categories: ['Newsletter']
 ---
 
