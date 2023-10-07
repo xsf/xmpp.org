@@ -119,9 +119,9 @@ Please share the news on other networks:
 - [Mastodon](https://fosstodon.org/@xmpp/)
 - [Twitter](https://twitter.com/xmpp)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
-- [Lemmy instance](https://community.xmpp.net/)
-- [Reddit](https://www.reddit.com/r/xmpp/)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
+- [Lemmy instance (unofficial)](https://slrpnk.net/c/xmpp)
+- [Reddit (unofficial)](https://www.reddit.com/r/xmpp/)
 
 {{< newsletter-subscribe >}}
 
