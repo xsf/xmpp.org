@@ -62,7 +62,7 @@ There has been an XMPP track at [FOSSY2023](https://2023.fossy.us/schedule/) wit
 
 - [Moxxy 0.5.0](https://codeberg.org/moxxy/moxxy/releases/tag/v0.5.0) has been released. This release brings improved notifications, image picking, and translations. Initial work on groupchats has been started, thanks to the Google Summer of Code 2023.
 
-{{< figure src="images/newsletter/2023-10-05/moxxy-muc-demo.gif" caption="Moxxy Group CHat (MUC) Demo" >}}
+{{< figure src="/images/newsletter/2023-10-05/moxxy-muc-demo.gif" caption="Moxxy Group Chat (MUC) Demo" >}}
 
 ### Servers
 
