@@ -22,8 +22,10 @@ Please note that the software we list on these pages was not developed by the XM
 
 **See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
 
-{{< software-overview-doap >}}
-
 Want to compare individual apps and their features? Have a look at the [Software Comparison](/software/software-comparison).
 
 {{< software-list-legacy >}}
+
+{{< software-overview-doap >}}
+
+
