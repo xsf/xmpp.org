@@ -12,15 +12,13 @@ aliases:
 
 In this section you’ll find information about XMPP Software, including clients, servers, libraries, and more.
 
-Please note that the software we list on these pages was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
-
 - An **XMPP client** is any software or application that enables you to connect to an XMPP for instant messaging with other people over the Internet. There are many free clients you can use to do this, for many different devices and operating systems.
 - An **XMPP server** provides basic messaging, presence, and XML routing features. This page lists Jabber/XMPP server software that you can use to run your own XMPP service, either over the Internet or on a local area network.
 - **Code libraries and tools** are available for many different programming languages, thus enabling developers to build a wide variety of XMPP-enabled applications.
 
 > Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
 
-**See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the table below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
+**See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the list below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
 
 {{< software-overview-doap >}}
 
