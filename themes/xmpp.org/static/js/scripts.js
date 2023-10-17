@@ -38,6 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (window.location.pathname == "/extensions/") {
+    // XEP checkboxes and search bar
+    document.getElementById("xep-search-input").addEventListener("input", filter_xeps)
+
+    const checkboxes = document.querySelectorAll("#status-selector input");
+    for (const checkbox of checkboxes) {
+      checkbox.addEventListener("click", filter_xeps)
+    }
+    filter_xeps()
+
+    // XEP implementations offcanvas
     for (const button of document.getElementsByName("show-xep-implementations")) {
       button.addEventListener("click", function() {
         window.location.hash = "xep-" + button.dataset.xep + "-implementations";
@@ -53,6 +63,34 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Page /extensions/
+function filter_xeps() {
+  const search_string = document.getElementById("xep-search-input").value.toLowerCase();
+  const checkboxes = document.querySelectorAll("#status-selector input");
+
+  if (search_string !== "") {
+    // Ignore status checkboxes when searching
+    for (const checkbox of checkboxes) {
+      checkbox.disabled = true;
+    }
+    const rows = document.querySelectorAll("[class*=XEP-]")
+    for (const row of rows) {
+      const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLowerCase();
+      row.hidden = xep_name.includes(search_string) ? false : true
+    }
+    return
+  }
+
+  // Handle status checkboxes
+  for (const checkbox of checkboxes) {
+    checkbox.disabled = false;
+    const xep_status = checkbox.getAttribute("name");
+    const relevant_xeps = document.querySelectorAll(`.XEP-${xep_status}`);
+    for (const row of relevant_xeps) {
+      row.hidden = !checkbox.checked;
+    }
+  }
+}
+
 function show_xep_implementations() {
   let xep_number = window.location.hash.slice(5, 9);
   let row = document.getElementById("xep" + xep_number);
@@ -75,6 +113,7 @@ function show_xep_implementations() {
   );
   implementations_offcanvas.show();
 }
+
 
 // Page: /software/
 function software_reset_xep_filter() {
