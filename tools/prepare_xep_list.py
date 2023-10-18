@@ -44,6 +44,13 @@ def build_xep_list() -> None:
             shortname = xep.find("shortname")
             if shortname is not None:
                 shortname = shortname.text
+
+            tag_list: list[str] = []
+            tags = xep.find("tags")
+            if tags is not None:
+                for tag in tags.findall("tag"):
+                    tag_list.append(tag.text)
+
             xeps.append(
                 {
                     "title": xep.find("title").text,
@@ -53,6 +60,7 @@ def build_xep_list() -> None:
                     "last_updated": xep.find("last-revision").find("date").text,
                     "type": xep.find("type").text,
                     "abstract": xep.find("abstract").text,
+                    "tags": tag_list,
                 }
             )
     xeps_sorted = sorted(xeps, key=lambda xep: xep["number"])

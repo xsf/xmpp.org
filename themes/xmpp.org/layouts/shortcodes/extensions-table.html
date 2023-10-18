@@ -75,6 +75,7 @@
                 <th>Type</th>
                 <th>Status</th>
                 <th>Date</th>
+                <th>Tags</th>
                 <th>Implementations</th>
             </tr>
         </thead>
@@ -88,6 +89,11 @@
                     <td>{{- .type -}}</td>
                     <td>{{- .status -}}</td>
                     <td>{{- .last_updated -}}</td>
+                    <td>
+                        {{- range .tags -}}
+                            <span class="badge rounded-pill text-bg-secondary">{{- . -}}</span>
+                        {{- end -}}
+                    </td>
                     <td class="text-center p-0">
                         {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
                             <button type="button" class="btn btn-sm btn-outline-secondary" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button">
