@@ -77,7 +77,15 @@ function filter_xeps() {
       const xep_number = row.id.slice(3)
       const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLowerCase();
       const xep_shortname = row.dataset.shortname
-      if (xep_number.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string)) {
+      let tags = ""
+      const tag_array = row.querySelector('td:nth-child(6)').querySelectorAll("span")
+      if (tag_array.length > 0) {
+        for (const tag of tag_array) {
+          tags += ` ${tag.innerHTML.toLocaleLowerCase()}`
+        }
+      }
+
+      if (xep_number.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string) || tags.includes(search_string)) {
         row.hidden = false
       } else {
         row.hidden = true
