@@ -152,7 +152,7 @@
         data-rfcs="{{- delimit $props.rfcs "," -}}"
         data-xeps="
         {{- range $index, $xep := $props.xeps -}}
-            {{- if or (eq $xep.status "complete") (eq $xep.status "partial") (eq $xep.status "") -}}
+            {{- if or (eq $xep.status "complete") (eq $xep.status "partial") (eq $xep.status "") (eq $xep.status nil) -}}
                 {{- $xep.number -}},
             {{- end -}}
         {{- end -}}
