@@ -41,13 +41,18 @@ def build_xep_list() -> None:
     xeps: list[dict[str, Any]] = []
     for xep in root.findall("xep"):
         if xep.get("accepted") == "true":
+            shortname = xep.find("shortname")
+            if shortname is not None:
+                shortname = shortname.text
             xeps.append(
                 {
                     "title": xep.find("title").text,
+                    "shortname": shortname,
                     "status": fix_status(xep.find("status").text),
                     "number": int(xep.find("number").text),
                     "last_updated": xep.find("last-revision").find("date").text,
                     "type": xep.find("type").text,
+                    "abstract": xep.find("abstract").text,
                 }
             )
     xeps_sorted = sorted(xeps, key=lambda xep: xep["number"])

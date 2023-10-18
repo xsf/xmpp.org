@@ -74,8 +74,14 @@ function filter_xeps() {
     }
     const rows = document.querySelectorAll("[class*=XEP-]")
     for (const row of rows) {
+      const xep_number = row.id.slice(3)
       const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLowerCase();
-      row.hidden = xep_name.includes(search_string) ? false : true
+      const xep_shortname = row.dataset.shortname
+      if (xep_number.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string)) {
+        row.hidden = false
+      } else {
+        row.hidden = true
+      }
     }
     return
   }

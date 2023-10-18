@@ -82,7 +82,7 @@
             {{- if .Site.Data.xeplist -}}
                 {{- range sort .Site.Data.xeplist ".number" -}}
                 {{- $number_str := printf "%04g" .number -}}
-                <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}">
+                <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
                     <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
                     <td>{{- .title -}}</td>
                     <td>{{- .type -}}</td>
