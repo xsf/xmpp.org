@@ -18,7 +18,7 @@ In this section you’ll find information about XMPP Software, including clients
 
 > Note: The following software was not developed by the XMPP Standards Foundation and has not been formally tested for standards compliance, usability, reliability, or performance.
 
-**See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the list below, please [submit a pull request!](https://github.com/xsf/xmpp.org/tree/master/tools/README.rst)
+**See something missing?** Any list of XMPP servers, clients or libraries will, due to the dynamic and evolving nature of the XMPP market, be out of date almost as soon as it’s published. If **you are related to the project** and spot mistakes, errors or omissions in the list below, please [submit a pull request!](https://github.com/xsf/xmpp.org/blob/master/tools/README.md)
 
 {{< software-overview-doap >}}
 
