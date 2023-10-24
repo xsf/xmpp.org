@@ -280,6 +280,17 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "CertWatch",
+        "platforms": [
+            "Web"
+        ],
+        "url": "https://certwatch.xmpp.net/"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
