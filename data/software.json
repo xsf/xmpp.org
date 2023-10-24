@@ -259,6 +259,17 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "CertWatch",
+        "platforms": [
+            "Web"
+        ],
+        "url": "https://certwatch.xmpp.net/"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": "/hosted-doap/chat-o-matic.doap",
@@ -277,17 +288,6 @@
             "macOS"
         ],
         "url": "https://chatsecure.org/"
-    },
-    {
-        "categories": [
-            "tool"
-        ],
-        "doap": null,
-        "name": "CertWatch",
-        "platforms": [
-            "Web"
-        ],
-        "url": "https://certwatch.xmpp.net/"
     },
     {
         "categories": [
