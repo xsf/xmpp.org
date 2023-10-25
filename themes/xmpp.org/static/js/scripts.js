@@ -38,8 +38,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (window.location.pathname == "/extensions/") {
+    const xep_search_input = document.getElementById("xep-search-input")
+
+    document.addEventListener("keypress", function (event) {
+      if (event.code != "Slash" && event.code != "Find") {
+        return;
+      }
+      xep_search_input.focus();
+    });
+
     // XEP checkboxes and search bar
-    document.getElementById("xep-search-input").addEventListener("input", filter_xeps)
+    xep_search_input.addEventListener("input", filter_xeps)
 
     const checkboxes = document.querySelectorAll("#status-selector input");
     for (const checkbox of checkboxes) {
