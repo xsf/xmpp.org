@@ -41,10 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const xep_search_input = document.getElementById("xep-search-input")
 
     document.addEventListener("keypress", function (event) {
-      if (event.code != "Slash" && event.code != "Find") {
+      if ((event.code != "Slash" && event.code != "Find") || xep_search_input == document.activeElement) {
         return;
       }
       xep_search_input.focus();
+      event.preventDefault();
     });
 
     // XEP checkboxes and search bar
