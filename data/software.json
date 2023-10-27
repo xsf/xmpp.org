@@ -515,17 +515,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "exmpp",
-        "platforms": [
-            "Erlang"
-        ],
-        "url": "http://exmpp.org"
-    },
-    {
-        "categories": [
             "tool"
         ],
         "doap": "/hosted-doap/explore-xep-0392-consistent-color-generation.doap",
