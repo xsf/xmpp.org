@@ -96,7 +96,11 @@
                     </td>
                     <td class="text-center p-0">
                         {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
-                            <button type="button" class="btn btn-sm btn-outline-secondary w-50" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button">
+                            <button type="button" class="btn btn-sm btn-outline-secondary w-50" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button"
+                            {{- if eq (len .implementations) 0 -}}
+                            disabled
+                            {{- end -}}
+                            >
                                 {{- len .implementations -}}
                             </button>
                         {{- end -}}
