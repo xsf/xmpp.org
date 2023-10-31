@@ -101,7 +101,8 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- No Last Call this month.
+- [Community Code of Conduct](https://xmpp.org/extensions/xep-0458.html)
+  - This document describes the XMPP Standard Foundation's Code of Conduct. This Last Call begins today and shall end at the close of business on 2023-11-30. 
 
 ### Stable
 
