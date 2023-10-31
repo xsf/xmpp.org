@@ -497,7 +497,7 @@
         "categories": [
             "library"
         ],
-        "doap": "/hosted-doap/erlang-elixir-xmpp.doap",
+        "doap": "https://raw.githubusercontent.com/processone/xmpp/master/xmpp.doap",
         "name": "Erlang/Elixir XMPP",
         "platforms": [],
         "url": null
