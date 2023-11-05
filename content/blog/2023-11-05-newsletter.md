@@ -15,7 +15,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 [Recently](#articles), an XMPP service was targeted by a so-called machine-in-the-middle attack (MitM). To reduce the risk of such attacks in the future, an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our community. This service is created and kindly provided by Stephen P. Weber (singpolyma). Find more details below.
 
-{{< figure src="" caption="CertWatch Logo" >}}
+{{< figure src="/images/newsletter/2023-11-05/certwatch-logo.svg" caption="CertWatch Logo" >}}
 
 ### XMPP Summit 26 & FOSDEM 2024
 
@@ -64,16 +64,17 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [XMPP—the Universal Technology for Instant Messaging](https://upsub.me/posts/xmpp/)
 - Attack on an XMPP Server and and a new tool called CertWatch: [Recently](#articles), the XMPP service at [jabber.ru was targeted](https://notes.valdikss.org.ru/jabber.ru-mitm/) by a so-called machine-in-the-middle attack (MitM). To reduce the risk of such attacks in the future, an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our community. This service is created and kindly provided by Stephen P. Weber (singpolyma).
   - Many articles have been published around this incident. Three blog posts on the topic are presented here:
-     - [jmp.chat on Machine-in-the-middle Detection and Monitoring for XMPP Servers](https://blog.jmp.chat/b/certwatch)
-     - [snikket.org on the jabber.ru MITM attack](https://snikket.org/blog/on-the-jabber-ru-mitm/)
-     - [Mitigating the Hetzner/Linode XMPP.ru MitM interception incident](https://www.devever.net/~hl/xmpp-incident)
+    - [jmp.chat on Machine-in-the-middle Detection and Monitoring for XMPP Servers](https://blog.jmp.chat/b/certwatch)
+    - [snikket.org on the jabber.ru MITM attack](https://snikket.org/blog/on-the-jabber-ru-mitm/)
+    - [Mitigating the Hetzner/Linode XMPP.ru MitM interception incident](https://www.devever.net/~hl/xmpp-incident)
   - Other media representation:
-     - [Bruce Schneier: Messaging Service Wiretap Discovered through Expired TLS Cert](https://www.schneier.com/blog/archives/2023/10/messaging-service-wiretap-discovered-through-expired-tls-cert.html]
-     - [Lauschangriff auf russischen Jabber-Server in Deutschland: Wer steckt dahinter?](https://www.heise.de/news/Lauschangriff-auf-russischen-Jabber-Server-in-Deutschland-Wer-steckt-dahinter-9343653.html) [DE]
-     - [Russischer Messaging-Dienst wurde in Deutschland abgehört](https://www.golem.de/news/bei-hetzner-und-linode-russischer-messaging-dienst-wurde-in-deutschland-abgehoert-2310-178765.html) [DE]
+    - [Bruce Schneier: Messaging Service Wiretap Discovered through Expired TLS Cert](https://www.schneier.com/blog/archives/2023/10/messaging-service-wiretap-discovered-through-expired-tls-cert.html)
+    - [Lauschangriff auf russischen Jabber-Server in Deutschland: Wer steckt dahinter?](https://www.heise.de/news/Lauschangriff-auf-russischen-Jabber-Server-in-Deutschland-Wer-steckt-dahinter-9343653.html) [DE]
+    - [Russischer Messaging-Dienst wurde in Deutschland abgehört](https://www.golem.de/news/bei-hetzner-und-linode-russischer-messaging-dienst-wurde-in-deutschland-abgehoert-2310-178765.html) [DE]
 
 In other news:
-- [EuGH-Gutachterin: Deutschland darf Encrochat-Daten aus Frankreich beziehen] [DE]
+
+- [EuGH-Gutachterin: Deutschland darf Encrochat-Daten aus Frankreich beziehen](https://www.heise.de/news/EuGH-Gutachterin-Deutschland-darf-Encrochat-Daten-aus-Frankreich-beziehen-9346163.html) [DE]
 
 ## Software News
 
@@ -84,7 +85,6 @@ In other news:
 - [monocles chat 1.7.5 to 1.7.7 have been released](https://f-droid.org/en/packages/de.monocles.chat/). These releases come with many design improvements to meet modern messaging clients. There are also many new settings, like custom backgrounds, the often requested option to switch between round and square avatars, and the introduction of Material Design 3. [Read the full changelog on monocles 1.7.7](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.7) and stay tuned for a final release 1.8 in November!
 - [Conversations](https://conversations.im/) [2.12.12](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) has been released, which brings support for Private DNS (DNS over TLS), a themed launcher icon, and a fix for a rare permission issue when sharing files on Android 11+.
 - [Cheogram](https://cheogram.com/) [2.12.8-3](https://git.singpolyma.net/cheogram-android/refs/2.12.8-3) has been released, coming with bugfixes and calling stability improvements.
-
 
 ### Servers
 
@@ -137,7 +137,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
 - [Community Code of Conduct](https://xmpp.org/extensions/xep-0458.html)
-  - This document describes the XMPP Standard Foundation's Code of Conduct. This Last Call begins today and shall end at the close of business on 2023-11-30. 
+  - This document describes the XMPP Standard Foundation's Code of Conduct. This Last Call begins today and shall end at the close of business on 2023-11-30.
 
 ### Stable
 
