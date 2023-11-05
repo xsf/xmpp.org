@@ -9,23 +9,25 @@ Many thanks to all our readers and all contributors!
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
-### XSF Announcments
+## XSF Announcments
 
 ### CertWatch
 
-Recently there was an incident via a so called, man-in-the_middle-attack (MitM) happened to an XMPP server. To reduce the risk of such attacks in the future an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our Community. Many thanks to Stephen P. Weber! Find more details below.
+[Recently](#articles), an XMPP service was targeted by a so-called machine-in-the-middle attack (MitM). To reduce the risk of such attacks in the future, an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our community. This service is created and kindly provided by Stephen P. Weber (singpolyma). Find more details below.
 
-{{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
+{{< figure src="" caption="CertWatch Logo" >}}
 
-#### XMPP Summit 26 & FOSDEM 2024
-The XSF is again planning the XMPP Summit 26 to take place on February 1st & 2nd 2024 in Brussels (Belgium, Europe) and also be present at the FOSDEM 2024 February 3rd & 4th 2024! Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_26). Please sign-up now if you are planning, this helps a lot. The event is of course open for everyone interested to participate. [Spread the word](https://fosstodon.org/@xmpp/111313123888872184) also to your circles!
+### XMPP Summit 26 & FOSDEM 2024
+
+The XSF is planning the XMPP Summit 26, which is to take place on February 1st & 2nd 2024 in Brussels (Belgium, Europe). Following the Summit, the XSF is also planning to be present at FOSDEM 2024, which takes place on February 3rd & 4th 2024. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_26). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. [Spread the word](https://fosstodon.org/@xmpp/111313123888872184) within your circles!
 
 ### XMPP Vision & Strategic Workshop
-Join the upcoming XMPP Vision & Strategic Workshop to discuss and understand our community better, but also ask for your input on different topics with focus to the future of our federated network and technology. It will take place on Tuesday, 14th November 2023, 6:00 - 9:00 pm UTC. The event will be online and in English (details will follow). Everyone is welcome - please [spread the word](https://fosstodon.org/@xmpp/111319439579383047)! If you have questions [write here](https://xmpp.org/chat?xsf).
+
+Join the upcoming XMPP Vision & Strategic Workshop to discuss and understand our community better! We also asking ask for your input on different topics with focus on the future of our federated network and technology. The workshop will take place on Tuesday, 14th November 2023, 6:00 - 9:00 pm UTC. This event will take place online and will be held in English (details to follow). Everyone is welcome - please [spread the word](https://fosstodon.org/@xmpp/111319439579383047)! If you have questions [please write us in the XSF chat](https://xmpp.org/chat?xsf).
 
 ### XMPP and Google Summer of Code 2023
 
-The XSF has been [accepted again as hosting organisation at the GSoC 2023 and receive two slots for XMPP Contributors](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/)!
+The XSF has been [accepted again as a hosting organisation at GSoC 2023, receiving two slots for XMPP Contributors](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/).
 
 On Dino:
 
@@ -41,7 +43,7 @@ On Moxxy:
 
 {{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
 
-### XSF fiscal hosting projects
+### XSF Fiscal Hosting Projects
 
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
 
@@ -55,44 +57,44 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Videos
 
-- [Ok, but what is XMPP?](https://www.youtube.com/@Denshi)
+- [Ok, but what is XMPP?](https://www.youtube.com/@Denshi) - an easy to follow introduction to XMPP.
 
 ## Articles
 
-- Attack on XMPP Server and CertWatch: Recently there was an incident via a so called man-in-the-middle-attack (MitM) happened to the [jabber.ru server](https://notes.valdikss.org.ru/jabber.ru-mitm/). To reduce the risk of such attacks in the future an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our Community. Many thanks to Stephen P. Weber!
-  - Read three blog posts on the topic:
-     - [Machine-in-the-middle Detection and Monitoring for XMPP Servers](https://blog.jmp.chat/b/certwatch)
-     - [On the jabber.ru MITM attack](https://snikket.org/blog/on-the-jabber-ru-mitm/)
+- [XMPP—the Universal Technology for Instant Messaging](https://upsub.me/posts/xmpp/)
+- Attack on an XMPP Server and and a new tool called CertWatch: [Recently](#articles), the XMPP service at [jabber.ru was targeted](https://notes.valdikss.org.ru/jabber.ru-mitm/) by a so-called machine-in-the-middle attack (MitM). To reduce the risk of such attacks in the future, an early stage service called [CertWatch](https://certwatch.xmpp.net/) has been published by our community. This service is created and kindly provided by Stephen P. Weber (singpolyma).
+  - Many articles have been published around this incident. Three blog posts on the topic are presented here:
+     - [jmp.chat on Machine-in-the-middle Detection and Monitoring for XMPP Servers](https://blog.jmp.chat/b/certwatch)
+     - [snikket.org on the jabber.ru MITM attack](https://snikket.org/blog/on-the-jabber-ru-mitm/)
      - [Mitigating the Hetzner/Linode XMPP.ru MitM interception incident](https://www.devever.net/~hl/xmpp-incident)
-  - Read other media representation:
-     - [Messaging Service Wiretap Discovered through Expired TLS Cert](https://www.schneier.com/blog/archives/2023/10/messaging-service-wiretap-discovered-through-expired-tls-cert.html]
+  - Other media representation:
+     - [Bruce Schneier: Messaging Service Wiretap Discovered through Expired TLS Cert](https://www.schneier.com/blog/archives/2023/10/messaging-service-wiretap-discovered-through-expired-tls-cert.html]
      - [Lauschangriff auf russischen Jabber-Server in Deutschland: Wer steckt dahinter?](https://www.heise.de/news/Lauschangriff-auf-russischen-Jabber-Server-in-Deutschland-Wer-steckt-dahinter-9343653.html) [DE]
      - [Russischer Messaging-Dienst wurde in Deutschland abgehört](https://www.golem.de/news/bei-hetzner-und-linode-russischer-messaging-dienst-wurde-in-deutschland-abgehoert-2310-178765.html) [DE]
-- [XMPP—the Universal Technology for Instant Messaging](https://upsub.me/posts/xmpp/)
 
 In other news:
 - [EuGH-Gutachterin: Deutschland darf Encrochat-Daten aus Frankreich beziehen] [DE]
 
-## Software news
+## Software News
 
-### Clients and applications
+### Clients and Applications
 
 - Two months after the last release, [Gajim 1.8.2](https://gajim.org/post/2023-10-29-gajim-1.8.2-released/) comes with better support for gateways, improved group chats, an easy way to change the font size, and many small fixes.
-- After several month of hard work Monal 6.0 was finally released. This version comes with new artwork by Ann-Sophie Zwahlen, support for Audio-Calls funded by the EU’s NGI Assure via the NLnet Foundation and many, many other improvements and bugfixes. The full list of changes can be found in [this blog post](https://monal-im.org/post/00008-monal-6.0-released/).
-- [monocles chat 1.7.5](https://f-droid.org/en/packages/de.monocles.chat/) is released on F-Droid and more [1.7.6.2](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.2)/[1.7.6.3](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.3)/[1.7.6.4](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.4)/[1.7.6.5](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.5)/[1.7.6.6](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.6)/[1.7.6.7](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.7)/[1.7.6.7-2](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.6.7-2)/[1.7.7](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.7) with even more updates on codeberg with a lot of design improvements to meet modern messaging clients. There are also many new settings, like the custom background, the requested option to switch between round and square avatars and the introduction of material 3. Looking forward to a final release 1.8 in november!
-- [Conversations](https://conversations.im/) 2.12.12 has been released.
-- [Cheogram](https://cheogram.com/) 2.12.8-3 has been released.
+- After several month of hard work Monal 6.0 was finally released. This version comes with new artwork by Ann-Sophie Zwahlen, support for Audio-Calls funded by EU’s NGI Assure via the NLnet Foundation and many, many other improvements and bugfixes. The full list of changes can be found in [this blog post](https://monal-im.org/post/00008-monal-6.0-released/).
+- [monocles chat 1.7.5 to 1.7.7 have been released](https://f-droid.org/en/packages/de.monocles.chat/). These releases come with many design improvements to meet modern messaging clients. There are also many new settings, like custom backgrounds, the often requested option to switch between round and square avatars, and the introduction of Material Design 3. [Read the full changelog on monocles 1.7.7](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.7) and stay tuned for a final release 1.8 in November!
+- [Conversations](https://conversations.im/) [2.12.12](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) has been released, which brings support for Private DNS (DNS over TLS), a themed launcher icon, and a fix for a rare permission issue when sharing files on Android 11+.
+- [Cheogram](https://cheogram.com/) [2.12.8-3](https://git.singpolyma.net/cheogram-android/refs/2.12.8-3) has been released, coming with bugfixes and calling stability improvements.
+
 
 ### Servers
 
-- A new ejabberd release, [ejabberd 23.10](https://www.process-one.net/blog/ejabberd-23-10/), is now published with more than 150 commits since the previous 23.04. It includes many new features and improvements, and also many more bugfixes.
-- [M-Link 19.4 Limited Release](https://www.isode.com/company/wordpress/m-link-19-4-limited-release/)
+- [ejabberd 23.10](https://www.process-one.net/blog/ejabberd-23-10/) has been published and brings support for [XEP-0402: PEP Native Bookmarks](https://xmpp.org/extensions/xep-0402.html), [XEP-0421: Anonymous unique occupant identifiers for MUCs](https://xmpp.org/extensions/xep-0421.html), and includes many bugfixes.
+- [isode announced their M-Link 19.4 Limited Release](https://www.isode.com/company/wordpress/m-link-19-4-limited-release/)
 
 ### Libraries & Tools
 
 - As mentioned [above](https://xmpp.org/2023/11/the-xmpp-newsletter-october-2023/#articles), the [CertWatch](https://certwatch.xmpp.net/) service has been published.
-
-- [nbxmpp 4.4.0](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.4.0) and [4.5.0](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.5.0) which bring support for [XEP-0440: SASL Channel-Binding Type Capability](https://xmpp.org/extensions/xep-0440.html) and include some bug fixes.
+- [nbxmpp 4.4.0](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.4.0) and [4.5.0](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.5.0) have been released, which bring support for [XEP-0440: SASL Channel-Binding Type Capability](https://xmpp.org/extensions/xep-0440.html) and include some bugfixes.
 
 ## Extensions and specifications
 
