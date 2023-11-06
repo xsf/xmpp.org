@@ -57,7 +57,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Videos
 
-- [Ok, but what is XMPP?](https://www.youtube.com/@Denshi) - an easy to follow introduction to XMPP.
+- [Ok, but what is XMPP?](https://www.youtube.com/watch?v=GurbaZzwYvU) - an easy to follow introduction to XMPP.
 
 ## Articles
 
@@ -81,8 +81,8 @@ In other news:
 ### Clients and Applications
 
 - Two months after the last release, [Gajim 1.8.2](https://gajim.org/post/2023-10-29-gajim-1.8.2-released/) comes with better support for gateways, improved group chats, an easy way to change the font size, and many small fixes.
-- After several month of hard work Monal 6.0 was finally released. This version comes with new artwork by Ann-Sophie Zwahlen, support for Audio-Calls funded by EU’s NGI Assure via the NLnet Foundation and many, many other improvements and bugfixes. The full list of changes can be found in [this blog post](https://monal-im.org/post/00008-monal-6.0-released/).
-- [monocles chat 1.7.5 to 1.7.7 have been released](https://f-droid.org/en/packages/de.monocles.chat/). These releases come with many design improvements to meet modern messaging clients. There are also many new settings, like custom backgrounds, the often requested option to switch between round and square avatars, and the introduction of Material Design 3. [Read the full changelog on monocles 1.7.7](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.7) and stay tuned for a final release 1.8 in November!
+- After several months of hard work Monal 6.0 was finally released. This version comes with new artwork by Ann-Sophie Zwahlen, support for Audio-Calls funded by EU’s NGI Assure via the NLnet Foundation and many, many other improvements and bugfixes. The full list of changes can be found in [this blog post](https://monal-im.org/post/00008-monal-6.0-released/).
+- monocles chat 1.7.5 to 1.7.7 have been released. monocles chat 1.7.5 is now [available on F-Droid](https://f-droid.org/en/packages/de.monocles.chat/), while [1.7.7 is only available on Codeberg](https://codeberg.org/Arne/monocles_chat/releases/tag/CodebergRelease-v1.7.7) yet. These releases come with many design improvements to meet modern messaging clients. There are also many new settings, like custom backgrounds, the often requested option to switch between round and square avatars (in 1.7.7), and the introduction of Material Design 3. Stay tuned for a final release 1.8 in November!
 - [Conversations](https://conversations.im/) [2.12.12](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) has been released, which brings support for Private DNS (DNS over TLS), a themed launcher icon, and a fix for a rare permission issue when sharing files on Android 11+.
 - [Cheogram](https://cheogram.com/) [2.12.8-3](https://git.singpolyma.net/cheogram-android/refs/2.12.8-3) has been released, coming with bugfixes and calling stability improvements.
 
