@@ -5,11 +5,8 @@
          >
   <Project>
     <name>Swift</name>
-    <homepage rdf:resource="https://swift.im"/>
-    <os>Linux</os>
-    <os>MacOS</os>
-    <os>Windows</os>
-
+    <homepage rdf:resource="https://www.isode.com/products/swift.html"/>
+    <os>Browser</os>
     <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-client"/>
   </Project>
 </rdf:RDF>
