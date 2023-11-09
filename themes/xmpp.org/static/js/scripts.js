@@ -19,13 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("compliance-web").addEventListener("change", software_filter_list);
     document.getElementById("compliance-av").addEventListener("change", software_filter_list);
 
-    document.getElementById("platform-select").addEventListener("change", software_filter_list);
+    document.getElementById("platform-select").addEventListener("change", software_platform_changed);
     document.getElementById("xep-select").addEventListener("click", software_show_xep_select_dropdown);
     document.getElementById("xep-select-dropdown-container").addEventListener("focusout", software_hide_xep_select_dropdown);
     document.getElementById("xep-search").addEventListener("keyup", software_search_xeps);
     document.getElementById("reset-xep-filter").addEventListener("click", software_reset_xep_filter);
 
-    software_set_platform_by_user_agent();
+    software_set_filters();
+    software_filter_list();
   }
 
   if (window.location.pathname == "/software/software-comparison/") {
@@ -177,7 +178,7 @@ function software_hide_xep_select_dropdown(event) {
   }
 }
 
-function get_user_platform() {
+function get_user_platform_by_user_agent() {
   if (navigator.userAgent.indexOf("Android") >= 0) {
     return "android";
   } else if (navigator.userAgent.indexOf("Linux") >= 0) {
@@ -193,15 +194,36 @@ function get_user_platform() {
   }
 }
 
-function software_set_platform_by_user_agent() {
-  // Software list: Select platform reported by user agent
+function software_platform_changed(event) {
+  const url_params = new URLSearchParams(window.location.search);
+  url_params.set("platform", event.target.value);
+  history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
+
+  software_filter_list()
+}
+
+function software_set_filters() {
+  // Software list: Set filters for displaying software
+
+  // Select platform by query parameter or via reported user agent
+  const url_params = new URLSearchParams(window.location.search);
+
+  let user_platform = "";
+  if(window.location.search) {
+    user_platform = url_params.get("platform")
+  }
+
+  if (user_platform === "") {
+    user_platform = get_user_platform_by_user_agent();
+    url_params.set("platform", user_platform);
+    history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
+  }
+
   let platform_select = document.getElementById("platform-select");
   if (platform_select) {
-    let user_platform = get_user_platform();
     for (const option of platform_select) {
       if (option.value == user_platform) {
         option.setAttribute("selected", true);
-        software_filter_list();
         return;
       }
     }
