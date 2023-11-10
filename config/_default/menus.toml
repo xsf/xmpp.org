@@ -153,17 +153,12 @@
     weight = 5
 
 [[main]]
-    name = "Newsletter"
-    url = "/newsletter/"
-    weight = 6
-
-[[main]]
-    name = "Blog"
+    name = "News"
     url = "/blog/"
     identifier = "blog"
-    weight = 7
+    weight = 6
 
 [[main]]
     name = "Jobs"
     url = "https://xmpp.work"
-    weight = 8
+    weight = 7
