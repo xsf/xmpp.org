@@ -8,11 +8,10 @@ aliases:
     - "/xmpp-protocols/xmpp-core"
 ---
 
-{{< row cols=3 >}}
-{{< col header="IETF specifications" content="shortcode" >}}
-{{< ietf-standards >}}
-{{< /col >}}
 
+{{< ietf-standards >}}
+
+{{< row cols=2 >}}
 {{< col header="New XEPs" content="shortcode" >}}
 {{< new-xeps >}}
 {{< /col >}}

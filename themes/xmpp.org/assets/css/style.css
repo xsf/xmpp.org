@@ -339,6 +339,12 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     content: " \25B4\25BE";
     color: grey;
 }
+.extensions-block-listing li {
+    font-family: "Exo 2", sans-serif !important;
+}
+.extensions-logos img {
+    height: 100px;
+}
 
 .abbr {
     -webkit-text-decoration: underline dotted;
