@@ -1344,7 +1344,7 @@
         "categories": [
             "client"
         ],
-        "doap": "https://lab.louiz.org/poezio/poezio/-/raw/main/data/doap.xml",
+        "doap": "https://codeberg.org/poezio/poezio/raw/branch/main/data/doap.xml",
         "name": "poezio",
         "platforms": [],
         "url": null
@@ -1625,7 +1625,7 @@
         "categories": [
             "library"
         ],
-        "doap": "https://lab.louiz.org/poezio/slixmpp/-/raw/master/doap.xml",
+        "doap": "https://codeberg.org/poezio/slixmpp/raw/branch/master/doap.xml",
         "name": "slixmpp",
         "platforms": [],
         "url": null
