@@ -1754,15 +1754,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": "/hosted-doap/tigase-swift-xmpp-client-library.doap",
-        "name": "Tigase Swift XMPP client library",
-        "platforms": [],
-        "url": null
-    },
-    {
-        "categories": [
             "server"
         ],
         "doap": "https://raw.githubusercontent.com/tigase/tigase-server/master/tigase-server.doap",
