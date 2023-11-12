@@ -19,11 +19,12 @@ There are also many, mostly commerical projects that have created an XMPP-based 
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
-| ~800 million | [WhatsApp](http://whatsapp.com) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
+| ~2 billion   | [WhatsApp](https://www.whatsapp.com/about) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
 | ~300 million | [Kik Messenger](https://www.kik.com/) | Kik Messenger uses a [variation of XMPP](https://github.com/tomer8007/kik-bot-api-unofficial) for its popular chat service. |
 | ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
+|  ~20 million | [Jitsi](https://jitsi.org)      | [Jitsi](https://jitsi.org/about/) is a free and open source project that enables video-conferences. It uses XMPP for its chat functionality. |
 | ~6.5 million | [Moya App](https://moya.app/)   | A chat app and social communication platform mainly [used in South Africa](https://www.businessinsider.co.za/the-moyaapp-has-6m-active-users-and-challenging-whatsapp-2022-8). |
 | ~4 million   | [Grindr](https://grindr.com)    | Grindr is a geosocial networking and online dating application that [uses XMPP for its chat application](https://www.meetup.com/Los-Angeles-Android-Developers-Mobile-Developers-Meetup/events/221112018/). |
-|    ~350k     | [Mailfence](https://mailfence.com)   | Mailfence uses XMPP for its [group chat](https://blog.mailfence.com/mailfence-groups/) functionality. |
-|    ~10k      | [Kontalk](http://kontalk.org)   | A free and open source XMPP service that uses your phone number as the user ID. |
-|   Unknown    | [Jitsi](https://jitsi.org)      | Jitsi is a free and open source project that enables video-conferences. It uses XMPP for its chat functionality. |
+|    ~350,000  | [Mailfence](https://mailfence.com) | Mailfence uses XMPP for its [group chat](https://blog.mailfence.com/mailfence-groups/) functionality. |
+|    ~10,000   | [Kontalk](http://kontalk.org)   | A free and open source XMPP service that uses your phone number as the user ID. |
+|    ~2,000    | [MOKA](https://www.bundespolizei.de/Web/DE/Service/Mediathek/Jahresberichte/jahresbericht_2020_EN_file.pdf?__blob=publicationFile&v=48) | An app for the German Federal Police’s Android devices and a desktop app used as a communication tool by the members of the control centre. |
