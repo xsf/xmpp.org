@@ -87,7 +87,8 @@
 
         {
             "name": "Dan Caseley",
-            "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"]
+            "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"],
+            "roles": ["council"]
         },
 
         {
@@ -113,7 +114,8 @@
 
         {
             "name": "Nicola Fabiano",
-            "jids": ["nicola@nicfab.chat"]
+            "jids": ["nicola@nicfab.chat"],
+            "roles": ["board"]
         },
 
         {
@@ -129,7 +131,7 @@
         {
             "name": "Stephen Paul Weber",
             "jids": ["singpolyma@singpolyma.net"],
-            "roles": ["infrastructure"]
+            "roles": ["council", "infrastructure"]
         },
 
         {
@@ -184,8 +186,7 @@
 
         {
             "name": "Georg Lukas",
-            "jids": ["georg@yax.im"],
-            "roles": ["council"]
+            "jids": ["georg@yax.im"]
         },
 
         {
@@ -248,8 +249,7 @@
 
         {
             "name": "Arc Riley",
-            "jids": ["arc@jix.im"],
-            "roles": ["board"]
+            "jids": ["arc@jix.im"]
         },
 
         {
@@ -261,7 +261,7 @@
         {
             "name": "Jonas Schäfer",
             "jids": ["jonas@wielicki.name"],
-            "roles": ["council", "infrastructure"]
+            "roles": ["infrastructure"]
         },
 
         {
