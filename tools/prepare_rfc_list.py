@@ -137,7 +137,7 @@ def build_rfc_list() -> None:
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     rfcs: list[dict[str, Any]] = []
 
-    results = ThreadPool(8).imap_unordered(get_rfc_data, RFC_NUMBERS)
+    results = ThreadPool(2).imap_unordered(get_rfc_data, RFC_NUMBERS)
     for result in results:
         rfcs.append(result)
 
