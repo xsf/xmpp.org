@@ -7,7 +7,6 @@ from typing import Any
 import json
 import os
 import sys
-from multiprocessing.pool import ThreadPool
 
 import requests
 from defusedxml.ElementTree import fromstring
@@ -43,9 +42,7 @@ RFC_NUMBERS = [
     8284,
     8600,
 ]
-
 BASIC_RFC_NUMBERS = [6120, 6121, 7395, 7590, 7622]
-
 SELFHOSTED_RFCS = [3920, 3921, 3922, 3923, 4622, 4854, 5122, 6120, 6121, 6122]
 
 BIB_XML_PATH = "https://xml2rfc.tools.ietf.org/public/rfc/bibxml"
@@ -57,7 +54,7 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     additional parameters (e.g. selfhosted).
     Stores data in rfc_list.json
     """
-    print(f"Get RFC data for RFC {number}")
+    print(f"Getting RFC data for RFC {number}")
     try:
         request = requests.get(f"{BIB_XML_PATH}/reference.RFC.{number}.xml", timeout=5)
     except requests.exceptions.RequestException as err:
@@ -134,11 +131,12 @@ def build_rfc_list() -> None:
     """
     Generates rfc_list.json from downloaded data
     """
+    print("Generating RFC list...")
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     rfcs: list[dict[str, Any]] = []
 
-    results = ThreadPool(2).imap_unordered(get_rfc_data, RFC_NUMBERS)
-    for result in results:
+    for rfc_number in RFC_NUMBERS:
+        result = get_rfc_data(rfc_number)
         rfcs.append(result)
 
     rfcs = sorted(rfcs, key=lambda d: d["number"])
