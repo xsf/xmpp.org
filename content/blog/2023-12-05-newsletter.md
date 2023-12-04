@@ -17,19 +17,9 @@ The XSF is planning the XMPP Summit 26, which is to take place on February 1st &
 
 ### XMPP and Google Summer of Code 2023
 
-The XSF [works as a hosting organisation at GSoC 2023, and manages two slots for XMPP Contributors](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/).
+The XSF [has been a hosting organisation at GSoC in 2023 again, and manages two successful slots for XMPP Contributors](https://xmpp.org/2023/02/xmpp-at-google-summer-of-code-2023/). Find the projects for ["Windows Support for Dino"](https://summerofcode.withgoogle.com/programs/2023/projects/ygGSIiHc) and ["Implement group chats in Moxxy"](https://summerofcode.withgoogle.com/programs/2023/projects/UK3oE0f9).
 
-On Dino:
-
-- [Windows support for Dino](https://hrxi.github.io/gsoc/blog/windows-support-for-dino)
-- [Windows woes](https://hrxi.github.io/gsoc/blog/windows-woes)
-
-On Moxxy:
-
-- The [first blog post](https://moxxy.org/posts/2023-05-06-Groupchat-GSoC-Project.html), detailing the plan to implement basic group chat functionality.
-- The [second blog post](https://moxxy.org/posts/2023-06-17-XEP-0045-In-Moxxmpp.html), describing the plans to bring a basic implementation of [XEP-0045](https://xmpp.org/extensions/xep-0045.html) into Moxxy’s XMPP library moxxmpp.
-- The [third blog post](https://moxxy.org/posts/2023-07-24-Join-MUC-With-Moxxy.html), sketching the frontend implementation plan.
-- The [fourth blog post](https://moxxy.org/posts/2023-08-20-Moxxy-MUC-GSoC-Final-Report.html), concluding with Moxxy's completed MUC support.
+We are planning to participate the next year. The time to reach out to the XMPP community is now :-)
 
 {{< figure src="/images/logos/gsoc-2023-logo.svg" caption="XSF and Google Summer of Code 2023" >}}
 
@@ -44,23 +34,41 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 - [XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp): monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM (online event, with web meeting mode and live streaming).
 
+## Talks
+
+- XMPP Italian Happy Hour Podcast: Dive into the world of XMPP with the Italian Happy Hour podcast, a monthly event derived from recorded video sessions. Each episode is dedicated to the XMPP protocol, offering insights and discussions from enthusiasts and professionals within the community. Whether you're commuting, working out, or simply seeking to listen to interesting conversation, this podcast delivers the essence of Italian XMPP gatherings directly to your ears. Tune in at XMPP Italian Happy Hour Podcast or subscribe to the RSS feed to never miss an episode. Find the [link to podcast](https://open.audio/channels/xmpphappyhour/) and the [link to RSS feed to subscribe the podcast](https://open.audio/api/v1/channels/xmpphappyhour/rss). Plus, join the conversation and keep up with updates by following the podcast page in the Fediverse: @xmpphappyhour@open.audio. The podcast is in Italian but but there may be contributions in English.
+
 ## Articles
 
-- ...
+- [Automating the automatable](https://providers.xmpp.net/blog/2023-11-22-xmpp-providers-automation/): During the past year, the team behind the [XMPP Providers project](https://providers.xmpp.net/) worked on automating the process of gathering data about XMPP providers. Automating this process reduces manual work significantly (for example, checking websites by hand, verifying information, listing sources, etc.) and helps to sustain the team’s efforts. Automation also enables the project to be up to date - every day! A [suite of tools](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/TOOLS.md#automation) has been developed since, providing the ability to query properties via XMPP and through the web. All of these tools are working together in a GitLab pipeline, which runs every night to keep the data up to date.
+- [Planned downtime + Happy 10th anniversary, yax.im!](https://yaxim.org/blog/2023/11/27/happy-10th-yax_im/) by Georg Lukas, discussing about the last ten years evolution of yaxim and what's next.
+- [Automatic schema update in ejabberd](https://www.process-one.net/blog/automatic-schema-update-in-ejabberd/) by Jérôme Sautret: Previously, if you were using ejabberd with an external relational database, you might have to manually apply some schema changes that come with new features when you upgrade to a new ejabberd release. ejabberd can now handle this schema upgrade automatically. This articles discuss about this feature.
+- [Software is Political](https://blog.samwhited.com/2023/11/software-is-political/) by SamWhited: adapted from closing remarks of an XMPP talk at FOSSY, this article discuss about why SamWhited thinks to use as a universal standardized chat protocol is the correct choice.
+- [The Power of Green Coding: Erlang and Elixir Leading the Charge](https://www.erlang-solutions.com/blog/the-power-of-green-coding/) by Simon El Nahas: In the era of the green revolution, Erlang and Elixir languages are helping industries reduce server consumption and minimise environmental impact. Here are some industry examples demonstrating this.
+- Italian XMPP-IT Community - they have a website now: [www.xmpp-it.net](https://www.xmpp-it.net), a group chat: [xmpp-it@conference.xmpp-it.net](xmpp:xmpp-it@conference.xmpp-it.net?join), they also have a Git to share, create and develop software, configurations and documents concerning the XMPP protocol: [git.xmpp-it.net](https://git.xmpp-it.net), and finally created a wiki for documentation in Italian: [wiki.xmpp-it.net](https://wiki.xmpp-it.net). There is a first translated  [guide](https://www.xmpp-it.net/2023/11/11/roughnecks/xmpp-snikket/) in Snikket.
 
 ## Software News
 
 ### Clients and Applications
 
-- ...
+- [Gajim 1.8.3](https://gajim.org/post/2023-11-06-gajim-1.8.3-released/) and [1.8.4](https://gajim.org/post/2023-11-26-gajim-1.8.4-released/) have been released. These releases come with improvements for the profile window, fail-safes for anonymous accounts, usability improvements, and several fixes.
+- [Psi+ 1.5.1653](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
+- [Libervia](https://libervia.org) has received new funding from NLnet/NGI0 for the development of an email-XMPP gateway. This project will enable the conversion of email messages to XMPP and vice versa, including the transformation of mailing lists into pubsub-based forums. Enhancements in Libervia will include UI/UX improvements, end-to-end encryption, and advanced handling of attachments. More details on the project are available [here](https://nlnet.nl/project/EmailXMPPgateway/).
+- [monocles chat 1.7.7.5](https://f-droid.org/en/packages/de.monocles.chat/) has been released and got several fixes and improvements like the re-implementation of stickers or a DNSSEC and DANE check shown in the interface. Also an option to enforce DANE and further improvements in the latest Beta [1.7.8](https://codeberg.org/monocles/monocles_chat/releases/tag/Codeberg-beta-v1.7.8).
 
 ### Servers
 
-- ...
+- [Openfire 4.8.0 Beta](https://discourse.igniterealtime.org/t/openfire-4-8-0-beta-release/93338) with a lot of security improvements...
+- [Openfire plugin maintenance release galore!](https://discourse.igniterealtime.org/t/openfire-plugin-maintenance-release-galore/93347)
+- [New Openfire plugin: Reporting Account Affiliations](https://discourse.igniterealtime.org/t/new-openfire-plugin-reporting-account-affiliations/93360)
+- [More Openfire plugin maintenance releases!](https://discourse.igniterealtime.org/t/more-openfire-plugin-maintenance-releases/93369)
+- [External Service Discovery plugin 1.0.2 released!](https://discourse.igniterealtime.org/t/external-service-discovery-plugin-1-0-2-released/93351)
+- [REST API Openfire plugin 1.10.2 released!](https://discourse.igniterealtime.org/t/rest-api-openfire-plugin-1-10-2-released/93343)
 
 ### Libraries & Tools
 
-- ...
+- [nbxmpp 4.5.1](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.5.1), [4.5.2](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.5.2) and [4.5.3](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/4.5.3) have been released and come with bug fixes.
+- [Smack 4.4.7](https://discourse.igniterealtime.org/t/smack-4-4-7-released/93357) has been released
 
 ## Extensions and specifications
 
@@ -125,7 +133,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, melvo, MSavoritias (fae,ve), nicola, XSF iTeam**
+  - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam**
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau**
 - German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
