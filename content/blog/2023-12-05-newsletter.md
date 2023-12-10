@@ -1,15 +1,21 @@
 ---
 title: The XMPP Newsletter November 2023
-date: 2023-12-05
+date: 2023-12-10
 categories: ['Newsletter']
 ---
 
-Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of November 2023.
+Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of November 2023 and will be the last publication for 2023.
 Many thanks to all our readers and all contributors!
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
 ## XSF Announcments
+
+### New XSF Board and Council
+
+The XSF members have [voted for a new XSF Board and XSF Council](https://wiki.xmpp.org/web/Meeting-Minutes-2023-11-23). Congratulations to the new Board members Nicola Fabiano, Edward Maurer, Ralph Meijer, Peter Saint-Andre and Matthew Wild. And congratulations to the new Board members Travis Burtrum, Dan Caseley, Daniel Gultsch, Stephen Paul Weber and Marvin Wissfeld.
+
+Please welcome the members to their [new or continuing role](https://xmpp.org/about/xmpp-standards-foundation/)!
 
 ### XMPP Summit 26 & FOSDEM 2024
 
