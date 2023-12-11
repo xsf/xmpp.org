@@ -5,7 +5,7 @@ aliases:
     - "/community/mailing-lists.html"
 ---
 
-There are many active discussion venues for Jabber/XMPP developers, system administrators, and end users. These lists are all easily searchable at [jabber.markmail.org](http://jabber.markmail.org/).
+There are many active discussion venues for Jabber/XMPP developers, system administrators, and end users. These lists are all easily searchable at [www.mail-archive.com](https://www.mail-archive.com/search?l=all&q=xmpp.org).
 
 ### For End Users
 
