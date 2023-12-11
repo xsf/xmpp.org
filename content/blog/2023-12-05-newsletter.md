@@ -13,7 +13,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ### New XSF Board and Council
 
-The XSF members have [voted for a new XSF Board and XSF Council](https://wiki.xmpp.org/web/Meeting-Minutes-2023-11-23). Congratulations to the new Board members Nicola Fabiano, Edward Maurer, Ralph Meijer, Peter Saint-Andre and Matthew Wild. And congratulations to the new Board members Travis Burtrum, Dan Caseley, Daniel Gultsch, Stephen Paul Weber and Marvin Wissfeld.
+The XSF members have [voted for a new XSF Board and XSF Council](https://wiki.xmpp.org/web/Meeting-Minutes-2023-11-23). Congratulations to the new Board members Nicola Fabiano, Edward Maurer, Ralph Meijer, Peter Saint-Andre and Matthew Wild. And congratulations to the new Council members Travis Burtrum, Dan Caseley, Daniel Gultsch, Stephen Paul Weber and Marvin Wissfeld.
 
 Please welcome the members to their [new or continuing role](https://xmpp.org/about/xmpp-standards-foundation/)!
 
