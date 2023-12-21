@@ -24,7 +24,7 @@ We are drafting every month’s newsletter in  [a pull request](https://github.c
 
 To add your article, news or event you have three ways to contribute. For each of them we are asking you to write a short summary of the content you would like to contribute and post it to one of the following:
 
-* the [online pad]([https://yopad.eu/p/xmpp-newsletter-365days](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung))
+* the [online pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung)
 * the [XSF Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join)
 * the current [newsletter pull request](https://github.com/xsf/xmpp.org/milestone/3)
 

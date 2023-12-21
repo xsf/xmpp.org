@@ -12,24 +12,24 @@ There are [plenty of XMPP apps/clients](/software/) for you to choose from. To g
 
 ### Desktop
 
-* {{< external-link text="Beagle IM" url="https://beagle.im/" >}} (macOS)
-* {{< external-link text="Converse.js" url="https://conversejs.org/" >}} (Browser)
-* {{< external-link text="Dino" url="https://dino.im/" >}} (Linux)
-* {{< external-link text="Gajim" url="https://gajim.org/" >}} (Linux, Windows)
-* {{< external-link text="Monal" url="https://monal-im.org/" >}} (macOS)
-* {{< external-link text="Swift.IM" url="https://swift.im/swift.html" >}} (Linux, macOS, Windows)
-* {{< external-link text="UWPX" url="https://uwpx.org/" >}} (Windows)
+* [Beagle IM](https://beagle.im/) (macOS)
+* [Converse.js](https://conversejs.org/) (Browser)
+* [Dino](https://dino.im/) (Linux)
+* [Gajim](https://gajim.org/) (Linux, Windows)
+* [Monal](https://monal-im.org/) (macOS)
+* [Swift.IM](https://swift.im/swift.html) (Linux, macOS, Windows)
+* [UWPX](https://uwpx.org/) (Windows)
 
 ### Android
 
-* {{< external-link text="Conversations" url="https://conversations.im/" >}}
-* {{< external-link text="Quicksy" url="https://quicksy.im/" >}}
-* {{< external-link text="Yaxim" url="https://yax.im" >}}
+* [Conversations](https://conversations.im/)
+* [Quicksy](https://quicksy.im/)
+* [Yaxim](https://yax.im)
 
 ### iOS
 
-* {{< external-link text="Monal" url="https://monal-im.org/" >}}
-* {{< external-link text="Siskin IM" url="https://siskin.im/" >}}
+* [Monal](https://monal-im.org/)
+* [Siskin IM](https://siskin.im/)
 
 ## 2. Create an account
 
