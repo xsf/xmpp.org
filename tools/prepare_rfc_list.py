@@ -56,18 +56,20 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     """
     print(f"Getting RFC data for RFC {number}")
     try:
-        request = requests.get(f"{BIB_XML_PATH}/reference.RFC.{number}.xml", timeout=5)
+        response = requests.get(f"{BIB_XML_PATH}/reference.RFC.{number}.xml", timeout=5)
     except requests.exceptions.RequestException as err:
-        sys.exit(f"Error while downloading reference for " f"RFC {number} ({err})")
+        sys.exit(
+            f"Error while downloading reference for RFC {number} ({err.response})"
+        )
 
-    if not 200 >= request.status_code < 400:
+    if not 200 >= response.status_code < 400:
         sys.exit(
             f"Error while downloading reference for "
-            f"RFC {number} ({request.status_code})"
+            f"RFC {number} ({response.status_code})"
         )
 
     try:
-        root = fromstring(request.content)
+        root = fromstring(response.content)
     except ParseError:
         sys.exit(f"Error while parsing RFC reference for RFC {number}")
 
