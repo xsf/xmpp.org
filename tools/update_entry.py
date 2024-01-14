@@ -107,7 +107,7 @@ def main():
             pass
         else:
             print(
-                f"Error: new name {args.new_name!r} " f"already in use by a project",
+                f"Error: new name {args.new_name!r} already in use by a project",
                 file=sys.stderr,
             )
             print("Hint: the existing project looks like this:", file=sys.stderr)
@@ -124,9 +124,7 @@ def main():
         item["doap"] = args.new_doap or None
 
     if args.new_platforms is not None:
-        item["platforms"] = list(
-            set(platform.strip() for platform in args.new_platforms)
-        )
+        item["platforms"] = list({platform.strip() for platform in args.new_platforms})
 
     item["platforms"].sort(key=lambda x: x.casefold())
 

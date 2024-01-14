@@ -28,8 +28,8 @@ def process(input_url: str) -> None:
         return
 
     assert isinstance(article, Tag)
-    # Remove social share box, since it uses FontAwesome icons
-    # (not available in emails)
+    # Remove social share box, since it uses FontAwesome icons,
+    # which are not available in emails
     social_share = article.find("section", {"id": "social-share"})
     if isinstance(social_share, Tag):
         social_share.decompose()

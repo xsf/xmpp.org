@@ -8,7 +8,8 @@ import json
 import os
 import re
 import shutil
-from datetime import date
+from datetime import datetime
+from datetime import UTC
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -210,8 +211,8 @@ def check_image_file(file_path: Path, extension: str) -> bool:
             width, height = img.size
             new_width = 400
             new_height = int(new_width * height / width)
-            img = img.resize((new_width, new_height), Resampling.LANCZOS)
-            img.save(file_path)
+            resized_img = img.resize((new_width, new_height), Resampling.LANCZOS)
+            resized_img.save(file_path)
             print(
                 f"                  Logo at {file_path} "
                 f"(file size: {file_size / (1<<10):,.0f} KB) "
@@ -248,12 +249,6 @@ def prepare_package_data() -> None:
     Download and prepare package data (software.json) for
     rendering with Hugo
     """
-    for category in SOFTWARE_CATEGORIES:
-        if category == "library":
-            category = "libraries"
-        else:
-            category = f"{category}s"
-
     shutil.copy(SOFTWARE_PATH / "_index.md", DOWNLOAD_PATH / "software_index.md")
     shutil.copy(
         SOFTWARE_PATH / "software-comparison.md",
@@ -275,9 +270,7 @@ def prepare_package_data() -> None:
 
     for package in xsf_package_list:
         if package["doap"] is None:
-            print(
-                f"{Fore.YELLOW}DOAP n/a" f"{Style.RESET_ALL}         ", package["name"]
-            )
+            print(f"{Fore.YELLOW}DOAP n/a{Style.RESET_ALL}         ", package["name"])
             continue
 
         # DOAP is available
@@ -327,11 +320,8 @@ def prepare_package_data() -> None:
         }
 
         for category in package["categories"]:
-            if category == "library":
-                category = "libraries"
-            else:
-                category = f"{category}s"
-            create_package_page(category, package_name_slug, package["name"])
+            package_category = "libraries" if category == "library" else f"{category}s"
+            create_package_page(package_category, package_name_slug, package["name"])
 
     print(
         f'\n{42 * "="}\n'
@@ -383,7 +373,7 @@ def create_package_page(package_type: str, name_slug: str, name: str) -> None:
     Create an .md page for package, containing a shortcode
     for displaying package details
     """
-    today = date.today()
+    today = datetime.now(tz=UTC).date()
     date_formatted = today.strftime("%Y-%m-%d")
     with open(SOFTWARE_PATH / f"{name_slug}.md", "w", encoding="utf8") as md_file:
         md_file.write(

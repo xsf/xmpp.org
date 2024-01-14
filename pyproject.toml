@@ -14,6 +14,48 @@ sections = [
 skip_gitignore = true
 
 [tool.ruff]
+
+select = [
+  "A",      # flake8-builtins
+  "ANN",    # flake8-annotations
+  "ARG",    # flake8-unused-arguments
+  "B",      # flake8-bugbear
+  "BLE",    # flake8-blind-except
+  "C4",     # flake8-comprehensions
+  "C90",    # mccabe
+  "DTZ",    # flake8-datetimez
+  "E",      # pycodestyle
+  "EM",     # flake8-errmsg
+  "ERA",    # eradicate
+  "F",      # pyflakes
+  # "FBT",  # flake8-boolean-trap
+  "ICN",    # flake8-import-conventions
+  "ISC",    # flake8-implicit-str-concat
+  "N",      # pep8-naming
+  "PIE",    # flake8-pie
+  "PGH",    # pygrep-hooks
+  "PLC",    # pylint
+  "PLE",    # pylint
+  "PLR",    # pylint
+  "PLW",    # pylint
+  "Q",      # flake8-quotes
+  "RUF",    # Ruff-specific rules
+  "RET",    # flake8-return
+  "S",      # flake8-bandit
+  "SIM",    # flake8-simplify
+  "T",      # flake8-debugger, flake8-print
+  "TID",    # flake8-tidy-imports
+  "UP",     # pyupgrade
+  "W",      # pycodestyle
+  "YTT",    # flake8-2020
+]
+
+ignore = [
+  "ANN401", # use of Any
+  "S101",   # assert
+  "T201",   # print
+]
+
 target-version = "py311"
 
 [tool.ruff.flake8-quotes]

@@ -11,7 +11,7 @@ from pathlib import Path
 
 from colorama import Fore
 from colorama import Style
-from packaging.version import Version as V
+from packaging.version import Version as V  # noqa: N817
 from util import download_file
 
 DOWNLOAD_PATH = Path("downloads")
@@ -81,12 +81,13 @@ def check_packages_compliance() -> None:
                 )
                 json_result = json.loads(result.decode("unicode_escape"))
                 compliance_dict[json_result["name"]] = json_result
-                badges = json_result['badges']
+                badges = json_result["badges"]
                 print(
                     f"{Fore.LIGHTBLUE_EX}Compliance checked:{Style.RESET_ALL}",
                     json_result["name"],
-                    f"{Fore.MAGENTA}{badges}{Style.RESET_ALL}" if badges else
-                    f"{Fore.YELLOW}No level{Style.RESET_ALL}",
+                    f"{Fore.MAGENTA}{badges}{Style.RESET_ALL}"
+                    if badges
+                    else f"{Fore.YELLOW}No level{Style.RESET_ALL}",
                 )
             except subprocess.CalledProcessError as err:
                 print(f"{Fore.LIGHTRED_EX}{err}{Style.RESET_ALL}")
