@@ -11,6 +11,9 @@ import sys
 import requests
 from defusedxml.ElementTree import fromstring
 from defusedxml.ElementTree import ParseError
+from requests import Session
+from requests.adapters import HTTPAdapter
+from requests.adapters import Retry
 
 RFC_NUMBERS = [
     3920,
@@ -48,7 +51,7 @@ SELFHOSTED_RFCS = [3920, 3921, 3922, 3923, 4622, 4854, 5122, 6120, 6121, 6122]
 BIB_XML_PATH = "https://xml2rfc.tools.ietf.org/public/rfc/bibxml"
 
 
-def get_rfc_data(number: int) -> dict[str, Any]:
+def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
     """
     Downloads and parses RFC references and builds an RFC list with
     additional parameters (e.g. selfhosted).
@@ -56,11 +59,9 @@ def get_rfc_data(number: int) -> dict[str, Any]:
     """
     print(f"Getting RFC data for RFC {number}")
     try:
-        response = requests.get(f"{BIB_XML_PATH}/reference.RFC.{number}.xml", timeout=5)
+        response = session.get(f"{BIB_XML_PATH}/reference.RFC.{number}.xml", timeout=5)
     except requests.exceptions.RequestException as err:
-        sys.exit(
-            f"Error while downloading reference for RFC {number} ({err.response})"
-        )
+        sys.exit(f"Error while downloading reference for RFC {number} ({err.response})")
 
     if not 200 >= response.status_code < 400:
         sys.exit(
@@ -137,8 +138,12 @@ def build_rfc_list() -> None:
     base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
     rfcs: list[dict[str, Any]] = []
 
+    session = requests.Session()
+    retries = Retry(total=10, backoff_factor=0.1)
+    session.mount("https://", HTTPAdapter(max_retries=retries))
+
     for rfc_number in RFC_NUMBERS:
-        result = get_rfc_data(rfc_number)
+        result = get_rfc_data(session, rfc_number)
         rfcs.append(result)
 
     rfcs = sorted(rfcs, key=lambda d: d["number"])
