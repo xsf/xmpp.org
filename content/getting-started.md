@@ -18,7 +18,6 @@ There are [plenty of XMPP apps/clients](/software/) for you to choose from. To g
 * [Gajim](https://gajim.org/) (Linux, Windows)
 * [Monal](https://monal-im.org/) (macOS)
 * [Swift.IM](https://swift.im/swift.html) (Linux, macOS, Windows)
-* [UWPX](https://uwpx.org/) (Windows)
 
 ### Android
 
