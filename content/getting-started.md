@@ -38,7 +38,6 @@ Use a [public provider from the curated list of **XMPP Providers**](https://prov
 **XMPP Providers** takes various aspects into consideration to recommend providers.
 There are several other (uncurated) lists of providers:
 
-* [Curated XMPP server list at providers.xmpp.net](https://providers.xmpp.net/)
 * [Public XMPP servers by jabber.at](https://list.jabber.at)
 * [Open list of public XMPP servers by 404.city](https://xmpp-servers.404.city)
 
