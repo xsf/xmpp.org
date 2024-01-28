@@ -31,17 +31,19 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
-- [XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/)
-- [FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/)
-- [Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
-- [XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp): monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM (online event, with web meeting mode and live streaming).
+- [1st - 2nd February 2024: XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/) [EN]
+- [3rd - 4th February 2024: XMPP at FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/) [EN]
+- [1st February 2024: "XMPP advanced" at TroLUG](https://trolug.de/) [DE]: The TroLUG meets on every first Thursday at 19:00 local time online. This time we explore XMPP tools together in the online workshop "XMPP advanced". How can I write scripts sending XMPP messages from your weather station? Join us and lets solve trivial and advanced questions together.
+- [14th February 2024: Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
+- [16th May 2024: XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp) [IT]: monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM (online event, with web meeting mode and live streaming).
 
 ## Talks
 
-
+- [XMPP Italian Happy Hour Podcast](https://open.audio/channels/xmpphappyhour/) [IT]: Dive into the world of XMPP with the Italian Happy Hour podcast, a monthly event derived from recorded video sessions. Each episode is dedicated to the XMPP protocol, offering insights and discussions from enthusiasts and professionals within the community. Whether you're commuting, working out, or simply seeking to listen to interesting conversation, this podcast delivers the essence of Italian XMPP gatherings directly to your ears. Tune in at XMPP Italian Happy Hour Podcast or subscribe to the [RSS feed](https://open.audio/api/v1/channels/xmpphappyhour/rss) to never miss an episode. Fediverse: @xmpphappyhour@open.audio.
 
 ## Articles
 
+- OpenPGP published a book: 
 
 ## Software News
 
@@ -50,9 +52,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### Servers
 
+- [MongooseIM 6.2.0](https://github.com/esl/MongooseIM/releases/tag/6.2.0) has been released. [XEP-0386](https://xmpp.org/extensions/xep-0386.html) and [XEP-0388](https://xmpp.org/extensions/xep-0388.html) are now supported. The [blog post](https://www.erlang-solutions.com/blog/mongoose-im-6-2/) shows how to use the [helm chart](https://artifacthub.io/packages/helm/mongoose/mongooseim) to quickly set up a multi-node cluster connected to RDBMS without the need for persistent volumes thanks to [CETS](https://esl.github.io/MongooseDocs/latest/tutorials/CETS-configure/).
 
 ### Libraries & Tools
 
+- [Smack 4.5.0 Alpha 2](https://discourse.igniterealtime.org/t/smack-4-5-0-alpha2-released/93391) has been released
 
 ## Extensions and specifications
 
