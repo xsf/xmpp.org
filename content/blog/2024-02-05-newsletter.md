@@ -33,9 +33,10 @@ The XSF has been applying as a hosting organisation at GSoC in 2024 again. [If y
 
 ### XSF Fiscal Hosting Projects
 
-The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects:
+The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
 
 - [Mellium Co-op](https://opencollective.com/mellium)
+- [Prav iOS](https://opencollective.com/prav-ios)
 
 ## XMPP Events
 
