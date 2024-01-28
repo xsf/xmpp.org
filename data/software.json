@@ -1972,6 +1972,17 @@
             "tool"
         ],
         "doap": null,
+        "name": "XMPP Network Graph",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://xmppnetwork.goodbytes.im/"
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "doap": null,
         "name": "XMPP Status Checker",
         "platforms": [],
         "url": "https://connect.xmpp.net/"
@@ -2099,7 +2110,7 @@
         "platforms": [
             "Objective C"
         ],
-        "url": "http://github.com"
+        "url": "https://github.com/robbiehanson/XMPPFramework"
     },
     {
         "categories": [
