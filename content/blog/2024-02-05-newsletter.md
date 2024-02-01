@@ -151,12 +151,8 @@ This is a community effort, and we would like to thank translators for their con
   - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam**
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: **Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau**
-- German: [xmpp.org](https://xmpp.org/categories/newsletter/) and [anoxinon.de](https://anoxinon.de/blog/)
-  - Translators: **Jeybe, wh0nix**
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: **nicola**
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - Translators: **daimonduff, TheCoffeMaker**
 
 ## Help us to build the newsletter
 
