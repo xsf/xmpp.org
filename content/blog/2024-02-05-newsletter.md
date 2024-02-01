@@ -54,7 +54,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Articles
 
 - Happy Birthday ejabberd: [Celebrating 21 Years of Innovation with ejabberd](https://www.process-one.net/blog/happy-new-year-celebrating-21-years-of-innovation-with-ejabberd/)
-- OpenPGP published a book:
+- [OpenPGP published a book](https://openpgp.dev/)
 - Creating the XMPP Network Graph: [Visualizing decentralisation with XMPP](https://discourse.igniterealtime.org/t/creating-the-xmpp-network-graph/93521)
 - [XMPP Providers Fully Automated](https://providers.xmpp.net/blog/2023-12-29-xmpp-providers-fully-automated/): During the past year, the team behind the XMPP Providers project worked on automating the process of gathering data about XMPP providers.
 - ProcessOne on Instant Messaging: [Protocols are “Commons”, Let’s Take Them Seriously](https://www.process-one.net/blog/instant-messaging-protocols-are-commons-lets-take-them-seriously/)
@@ -67,6 +67,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Software News
 
 ### Clients and Applications
+
+No updates have reach us :-(
 
 ### Servers
 
