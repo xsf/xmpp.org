@@ -79,7 +79,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
  
 ### Libraries & Tools
 
-- [Smack 4.5.0 Alpha 2](https://discourse.igniterealtime.org/t/smack-4-5-0-alpha2-released/93391) has been released
 - ignite realtime community:
   - [HTTP File Upload plugin 1.4.0 released](https://discourse.igniterealtime.org/t/http-file-upload-plugin-1-4-0-released/93503)
   - [Presence Service plugin v1.7.2 release](https://discourse.igniterealtime.org/t/presence-service-plugin-v1-7-2-release/93502)
