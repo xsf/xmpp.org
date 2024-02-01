@@ -9,19 +9,19 @@ Many thanks to all our readers and all contributors!
 
 Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
-## XSF Announcments
+## XSF Announcements
 
 ### Happy Birthday, Jabber!
 
-On [4th January 2024 the announcment of Jeremie Miller turns 25](https://fosstodon.org/@xmpp/111699229188608479) and with it what would become the initiation, development and propagation of XMPP until today!
+On [4th January 2024 the announcement of Jeremie Miller turns 25](https://fosstodon.org/@xmpp/111699229188608479) and with it what would become the initiation, development and propagation of XMPP until today!
 
-Join the endeavour for the next 25 years!
+Join the endeavor for the next 25 years!
 
 [Happy Birthday](https://discourse.igniterealtime.org/t/happy-birthday-jabber/93463)!
 
 ### XSF Membership
 
-If you are interest to join the XMPP Standards Foundation [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q1_2024).
+If you are interest to join the XMPP Standards Foundation, [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q1_2024).
 
 ### XMPP Summit 26 & FOSDEM 2024
 
@@ -29,7 +29,7 @@ The XSF is holding the [XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/
 
 ### XMPP and Google Summer of Code 2024
 
-The XSF has been applying as a hosting organisation at GSoC in 2024 again. [If you are interested, please reach out!](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024).
+The XSF has been applying as a hosting organisation at GSoC in 2024 again. [If you are interested, please reach out!](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)
 
 ### XSF Fiscal Hosting Projects
 
@@ -42,7 +42,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [1st - 2nd February 2024: XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/) [EN]
 - [3rd - 4th February 2024: XMPP at FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/) [EN]
-- [1st February 2024: "XMPP advanced" at TroLUG](https://trolug.de/) [DE]: The TroLUG meets on every first Thursday at 19:00 local time online. This time we explore XMPP tools together in the online workshop "XMPP advanced". How can I write scripts sending XMPP messages from your weather station? Join us and lets solve trivial and advanced questions together.
+- [1st February 2024: "XMPP advanced" at TroLUG](https://trolug.de/) [DE]: The TroLUG meets on every first Thursday at 19:00 local time online. This time we explore XMPP tools together in the online workshop "XMPP advanced". How can I write scripts sending XMPP messages from your weather station? Join us and let's solve trivial and advanced questions together.
 - [14th February 2024: Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
 - [16th May 2024: XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp) [IT]: monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM (online event, with web meeting mode and live streaming).
 
