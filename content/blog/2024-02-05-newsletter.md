@@ -31,6 +31,8 @@ The XSF is holding the [XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/
 
 The XSF has been applying as a hosting organisation at GSoC in 2024 again. [If you are interested, please reach out!](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)
 
+{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
+
 ### XSF Fiscal Hosting Projects
 
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
@@ -56,6 +58,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Happy Birthday ejabberd: [Celebrating 21 Years of Innovation with ejabberd](https://www.process-one.net/blog/happy-new-year-celebrating-21-years-of-innovation-with-ejabberd/)
 - [OpenPGP published a book](https://openpgp.dev/)
 - Creating the XMPP Network Graph: [Visualizing decentralisation with XMPP](https://discourse.igniterealtime.org/t/creating-the-xmpp-network-graph/93521)
+  {{< figure src="/images/newsletter/2024-02-02/network_graph.jpeg" caption="XMPP Network Graph" >}}
 - [XMPP Providers Fully Automated](https://providers.xmpp.net/blog/2023-12-29-xmpp-providers-fully-automated/): During the past year, the team behind the XMPP Providers project worked on automating the process of gathering data about XMPP providers.
 - ProcessOne on Instant Messaging: [Protocols are “Commons”, Let’s Take Them Seriously](https://www.process-one.net/blog/instant-messaging-protocols-are-commons-lets-take-them-seriously/)
 - Easily accessible (anonymous) Converse.js webchat for [prosody-hosted chatrooms](https://op-co.de/blog/posts/prosody-converse-webchat/)
@@ -73,7 +76,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### Servers
 
 - [MongooseIM 6.2.0](https://github.com/esl/MongooseIM/releases/tag/6.2.0) has been released. [XEP-0386](https://xmpp.org/extensions/xep-0386.html) and [XEP-0388](https://xmpp.org/extensions/xep-0388.html) are now supported. The [blog post](https://www.erlang-solutions.com/blog/mongoose-im-6-2/) shows how to use the [helm chart](https://artifacthub.io/packages/helm/mongoose/mongooseim) to quickly set up a multi-node cluster connected to RDBMS without the need for persistent volumes thanks to [CETS](https://esl.github.io/MongooseDocs/latest/tutorials/CETS-configure/).
-- ejabberd: [Matrix protocol added](https://www.process-one.net/blog/matrix-protocol-added-to-ejabberd/)
 - ignite realtime community:
   - [Openfire 4.8.0 Released!](https://discourse.igniterealtime.org/t/openfire-4-8-0-released/93479)
   - [Dan is voted in the XSF’s Council!](https://discourse.igniterealtime.org/t/dan-is-voted-in-the-xsfs-council/93419)
