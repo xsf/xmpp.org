@@ -97,11 +97,17 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
-- No XEPs proposed this month.
+- [PubSub Server Information](https://xmpp.org/extensions/inbox/pubsub-server-info.html)
+  - This document defines a data format whereby basic information of an XMPP domain can be expressed and exposed over pub-sub.
+- [Host Meta 2 - One Method To Rule Them All](https://xmpp.org/extensions/inbox/host-meta-2.html)
+  - This document defines an XMPP Extension Protocol for extending XEP-0156 by modifying the JSON Web Host Metadata Link format to support discovering all possible XMPP connection methods, for c2s and s2s
 
 ### New
 
-- No new XEPs this month.
+- Version 0.1.0 of [XEP-0484 (Fast Authentication Streamlining Tokens)](https://xmpp.org/extensions/xep-0484.html)
+  - This specification defines a token-based method to streamline authentication in XMPP, allowing fully authenticated stream establishment within a single round-trip. Promoted to Experimental. (XEP Editor: kis)
+- Version 0.1.0 of [XEP-0483 (HTTP Online Meetings)](https://xmpp.org/extensions/xep-0483.html)
+  - This specification defines a protocol extension to request URLs from an external HTTP entity usable to initiate and invite participants to an online meeting. Promoted to Experimental. (XEP Editor: kis)
 
 ### Deferred
 
@@ -111,14 +117,23 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- No XEPs updated this month.
+- Version 0.2.0 of [XEP-0483 (HTTP Online Meetings)](https://xmpp.org/extensions/xep-0483.html)
+  - Use [XEP-0482](https://xmpp.org/extensions/xep-0482.html) to send the meeting link to another party (do)
+- 0.3.0 of [XEP-0474 (SASL SCRAM Downgrade Protection)](https://xmpp.org/extensions/xep-0474.html)
+  - Rework all explanations explaining why this specification is needed
+  - Simplify protocol (tm)
+- Version 1.0.0 of [XEP-0458 (Community Code of Conduct)](https://xmpp.org/extensions/xep-0458.html)
+  - Address Last Call feedback; complete a copy edit and apply clarifications in several places. Changed status to Active per Board vote on 2024-01-05. (psa)
+- Version 1.1.4 of [XEP-0402 (PEP Native Bookmarks)](https://xmpp.org/extensions/xep-0402.html)
+  - Recommend setting pubsub#max_items to 'max' instead of some arbitrary large number (egp)
+- Version 1.6.1 of [XEP-0198 (Stream Management)](https://xmpp.org/extensions/xep-0198.html)
+  - Clarify SASL2 and BIND2 interaction. (tm)
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- [Community Code of Conduct](https://xmpp.org/extensions/xep-0458.html)
-  - This document describes the XMPP Standard Foundation's Code of Conduct. This Last Call begins today and shall end at the close of business on 2023-11-30.
+- No last call this month.
 
 ### Stable
 
