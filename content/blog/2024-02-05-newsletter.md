@@ -25,7 +25,7 @@ If you are interest to join the XMPP Standards Foundation, [please apply now](ht
 
 ### XMPP Summit 26 & FOSDEM 2024
 
-The XSF is holding the [XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/), which is to take place on February 1st & 2nd 2024 in Brussels (Belgium, Europe). Following the Summit, the XSF is also planning to be present at [FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/), which takes place on February 3rd & 4th 2024. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_26). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. [Spread the word](https://fosstodon.org/@xmpp/111313123888872184) within your circles!
+The XSF is holding the [26th XMPP Summit](https://xmpp.org/2024/01/xmpp-summit-26/), which is to take place on February 1st & 2nd 2024 in Brussels (Belgium, Europe). Following the Summit, the XSF is also present at [FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/), which takes place on February 3rd & 4th 2024. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_26). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. [Spread the word](https://fosstodon.org/@xmpp/111313123888872184) within your circles!
 
 ### XMPP and Google Summer of Code 2024
 
@@ -42,11 +42,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
-- [1st - 2nd February 2024: XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/) [EN]
-- [3rd - 4th February 2024: XMPP at FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/) [EN]
+- [1st - 2nd February 2024: XMPP Summit 26](https://xmpp.org/2024/01/xmpp-summit-26/)
+- [3rd - 4th February 2024: XMPP at FOSDEM 2024](https://xmpp.org/2024/01/xmpp-at-fosdem-2024/)
 - [1st February 2024: "XMPP advanced" at TroLUG](https://trolug.de/) [DE]: The TroLUG meets on every first Thursday at 19:00 local time online. This time we explore XMPP tools together in the online workshop "XMPP advanced". How can I write scripts sending XMPP messages from your weather station? Join us and let's solve trivial and advanced questions together.
 - [14th February 2024: Berlin XMPP Meetup (remote)](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
-- [16th May 2024: XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp) [IT]: monthly Italian XMPP web meeting, starting May 16th and then every third Tuesday of the month at 7:00 PM (online event, with web meeting mode and live streaming).
+- [16th May 2024: XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp) [IT]: monthly Italian XMPP web meeting, starting May 16th and then every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 
 ## Talks
 
@@ -57,7 +57,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - Happy Birthday ejabberd: [Celebrating 21 Years of Innovation with ejabberd](https://www.process-one.net/blog/happy-new-year-celebrating-21-years-of-innovation-with-ejabberd/)
 - [OpenPGP published a book](https://openpgp.dev/)
-- Creating the XMPP Network Graph: [Visualizing decentralisation with XMPP](https://discourse.igniterealtime.org/t/creating-the-xmpp-network-graph/93521)
+- Creating the XMPP Network Graph: [Visualizing decentralization with XMPP](https://discourse.igniterealtime.org/t/creating-the-xmpp-network-graph/93521)
   {{< figure src="/images/newsletter/2024-02-02/network_graph.jpeg" caption="XMPP Network Graph" >}}
 - [XMPP Providers Fully Automated](https://providers.xmpp.net/blog/2023-12-29-xmpp-providers-fully-automated/): During the past year, the team behind the XMPP Providers project worked on automating the process of gathering data about XMPP providers.
 - ProcessOne on Instant Messaging: [Protocols are “Commons”, Let’s Take Them Seriously](https://www.process-one.net/blog/instant-messaging-protocols-are-commons-lets-take-them-seriously/)
