@@ -84,7 +84,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### Libraries & Tools
 
 - [libstrophe 0.13.0 has been updated](https://github.com/strophe/libstrophe/releases/tag/0.13.0)
-- [slixmpp has been pubkished in version 1.8.5](https://codeberg.org/poezio/slixmpp/releases)
+- [slixmpp has been published in version 1.8.5](https://codeberg.org/poezio/slixmpp/releases)
 - ignite realtime community:
   - [HTTP File Upload plugin 1.4.0 released](https://discourse.igniterealtime.org/t/http-file-upload-plugin-1-4-0-released/93503)
   - [Presence Service plugin v1.7.2 release](https://discourse.igniterealtime.org/t/presence-service-plugin-v1-7-2-release/93502)
