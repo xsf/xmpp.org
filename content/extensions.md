@@ -27,6 +27,6 @@ The XMPP Standards Foundation develops extensions to XMPP in its XEP series. Thi
 
 XEP series data can be explored using [data.xmpp.net/explore](https://data.xmpp.net/explore/).
 
-Good places for developers to start are the [compliance suites](https://xmpp.org/about/compliance-suites-current), as well as the [technology overview pages](https://xmpp.org/about-xmpp/technology-overview/). For further reading, we suggest the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
+Good places for developers to start are the [compliance suites](/about/compliance-suites/), as well as the [technology overview pages](/about-xmpp/technology-overview/). For further reading, we suggest the independent [Modern XMPP project](https://docs.modernxmpp.org/) which attempts to improve the quality of user-to-user messaging applications that use XMPP.
 
 {{< extensions-table >}}
