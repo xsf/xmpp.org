@@ -19,7 +19,7 @@ Importantly, you don't need to be an XSF member to propose new XEPs or work on e
 
 The first thing to do is to write up your idea. XEPs are written in an XML format that's pretty simple and straightforward - it's really just a very simplified HTML. The syntax is formally described in XEP-0001, but the key here is to ensure everyone knows the general shape of the problem and solution by reading it, so there's no need - yet - to get everything perfect. Once you're happy that it looks reasonable, then send this XML document to the "XMPP Editor".
 
-The XMPP Editor isn't actually one person, but a team of amazingly hard working XSF members led by Matthew Miller. To send them a proposed new XEP, just send it in an email to them - but because that's a list, and would be drowned in spam, you'll need to get the subject line right.
+The XMPP Editor isn't actually one person, but a team of amazingly hard working XSF members. To send them a proposed new XEP, just send it in an email to them - but because that's a list, and would be drowned in spam, you'll need to get the subject line right.
 
 #### Submit your extension{#submitting-a-xep}
 
