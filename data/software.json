@@ -815,13 +815,8 @@
         ],
         "doap": "https://codeberg.org/emacs-jabber/emacs-jabber/raw/branch/production/doap.xml",
         "name": "jabber.el",
-        "platforms": [
-            "Android",
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://codeberg.org/emacs-jabber/emacs-jabber/"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
