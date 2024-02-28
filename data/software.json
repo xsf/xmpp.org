@@ -813,12 +813,15 @@
         "categories": [
             "client"
         ],
-        "doap": null,
+        "doap": "https://codeberg.org/emacs-jabber/emacs-jabber/raw/branch/production/doap.xml",
         "name": "jabber.el",
         "platforms": [
-            "Linux"
+            "Android",
+            "Linux",
+            "macOS",
+            "Windows"
         ],
-        "url": "http://emacs-jabber.sourceforge.net"
+        "url": "https://codeberg.org/emacs-jabber/emacs-jabber/"
     },
     {
         "categories": [
