@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies
-RUN apt-get install -y make lua5.2 lua-expat hugo
+RUN apt-get install -y make lua5.2 lua-expat hugo --no-install-recommends
 
 # Base URL for Hugo website builds
 ARG BASEURL=https://xmpp.org/
