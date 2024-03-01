@@ -1,0 +1,187 @@
+{
+    "main": [
+        {
+            "identifier": "about",
+            "name": "About",
+            "url": "/about/",
+            "weight": 1
+        },
+        {
+            "name": "Overview",
+            "parent": "about",
+            "url": "/about/technology-overview/",
+            "weight": 1
+        },
+        {
+            "name": "The XSF",
+            "parent": "about",
+            "url": "/about/xmpp-standards-foundation/",
+            "weight": 2
+        },
+        {
+            "name": "Standards Process",
+            "parent": "about",
+            "url": "/about/standards-process/",
+            "weight": 3
+        },
+        {
+            "name": "Compliance Suites",
+            "parent": "about",
+            "url": "/about/compliance-suites/",
+            "weight": 4
+        },
+        {
+            "name": "FAQ",
+            "parent": "about",
+            "url": "/about/faq/",
+            "weight": 5
+        },
+        {
+            "name": "Myths & Legends",
+            "parent": "about",
+            "url": "/about/myths/",
+            "weight": 6
+        },
+        {
+            "name": "Publications",
+            "parent": "about",
+            "url": "/about/publications/",
+            "weight": 7
+        },
+        {
+            "name": "Press Kit",
+            "parent": "about",
+            "url": "/about/press-kit/",
+            "weight": 8
+        },
+        {
+            "name": "History",
+            "parent": "about",
+            "url": "/about/history/",
+            "weight": 9
+        },
+        {
+            "identifier": "uses",
+            "name": "Uses",
+            "url": "/uses/",
+            "weight": 2
+        },
+        {
+            "name": "Instant Messaging",
+            "parent": "uses",
+            "url": "/uses/instant-messaging/",
+            "weight": 1
+        },
+        {
+            "name": "Internet of Things",
+            "parent": "uses",
+            "url": "/uses/internet-of-things/",
+            "weight": 2
+        },
+        {
+            "name": "Online Gaming",
+            "parent": "uses",
+            "url": "/uses/gaming/",
+            "weight": 3
+        },
+        {
+            "name": "Social",
+            "parent": "uses",
+            "url": "/uses/social/",
+            "weight": 4
+        },
+        {
+            "name": "WebRTC",
+            "parent": "uses",
+            "url": "/uses/webrtc/",
+            "weight": 5
+        },
+        {
+            "identifier": "software",
+            "name": "Software",
+            "url": "/software/",
+            "weight": 3
+        },
+        {
+            "name": "Specifications",
+            "url": "/extensions/",
+            "weight": 4
+        },
+        {
+            "identifier": "community",
+            "name": "Community",
+            "url": "/community/",
+            "weight": 5
+        },
+        {
+            "name": "Chat/Logs",
+            "parent": "community",
+            "url": "/community/chat/",
+            "weight": 1
+        },
+        {
+            "name": "Mailing Lists",
+            "parent": "community",
+            "url": "/community/mailing-lists/",
+            "weight": 2
+        },
+        {
+            "name": "Membership",
+            "parent": "community",
+            "url": "/community/membership/",
+            "weight": 3
+        },
+        {
+            "name": "Events",
+            "parent": "community",
+            "url": "/community/events/",
+            "weight": 4
+        },
+        {
+            "name": "Security Notices",
+            "parent": "community",
+            "url": "/community/security-notices/",
+            "weight": 5
+        },
+        {
+            "name": "Sponsors",
+            "parent": "community",
+            "url": "/community/sponsors/",
+            "weight": 6
+        },
+        {
+            "name": "Fiscal Hosting",
+            "parent": "community",
+            "url": "/community/fiscalhost/",
+            "weight": 7
+        },
+        {
+            "name": "Office Hours",
+            "parent": "community",
+            "url": "/community/officehours/",
+            "weight": 8
+        },
+        {
+            "name": "Google Summer of Code 2023",
+            "parent": "community",
+            "url": "/community/gsoc-2023/",
+            "weight": 9
+        },
+        {
+            "name": "Getting Started",
+            "url": "/getting-started/",
+            "weight": 6
+        },
+        {
+            "identifier": "blog",
+            "name": "News",
+            "url": "/blog/",
+            "weight": 7
+        },
+        {
+            "name": "Jobs",
+            "url": "https://xmpp.work",
+            "weight": 8
+        }
+    ]
+}

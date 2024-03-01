@@ -1,0 +1,32 @@
+{
+    "baseURL": "https://xmpp.org/",
+    "canonifyurls": true,
+    "contentdir": "content",
+    "layoutdir": "layouts",
+    "publishdir": "public",
+    "Paginate": 10,
+    "defaultContentLanguage": "en",
+    "disableHugoGeneratorInject": true,
+    "enableEmoji": true,
+    "theme": "xmpp.org",
+    "title": "XMPP",
+    "permalinks": {
+        "blog": "/:year/:month/:title/"
+    },
+    "author": {
+        "name": "XMPP Communication Team and Contributors"
+    },
+    "privacy": {
+        "youtube": {
+            "privacyEnhanced": true
+        }
+    },
+    "Params": {
+        "dateFormat": "January 2, 2006",
+        "githubEdit": "https://github.com/xsf/xmpp.org/edit/master/content/",
+        "hideAuthor": false,
+        "readingTime": true,
+        "socialShare": true,
+        "subtitle": "The universal messaging standard"
+    }
+}

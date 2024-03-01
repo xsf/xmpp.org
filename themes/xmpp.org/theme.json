@@ -1,0 +1,14 @@
+{
+    "name": "xmpp.org",
+    "description": "Hugo theme for xmpp.org",
+    "homepage": "https://xmpp.org",
+    "license": "MIT",
+    "licenselink": "https://github.com/xsf/xmpp.org/themes/xmpp.org/blob/master/LICENSE",
+    "min_version": "112.0",
+    "author": {
+        "homepage": "https://xmpp.org",
+        "name": "XMPP Standards Foundation (XSF)"
+    },
+    "features": [],
+    "tags": []
+}

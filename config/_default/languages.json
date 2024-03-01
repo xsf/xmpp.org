@@ -1,0 +1,39 @@
+{
+    "de": {
+        "params": {
+            "dateFormat": "2. January 2006",
+            "languageName": "Deutsch"
+        }
+    }
+    ,
+    "en": {
+        "params": {
+            "languageName": "English",
+            "weight": 1
+        }
+    },
+    "es": {
+        "params": {
+            "dateFormat": "2 de january de 2006",
+            "languageName": "Español"
+        }
+    },
+    "fr": {
+        "params": {
+            "dateFormat": "2 january 2006",
+            "languageName": "Français"
+        }
+    },
+    "it": {
+        "params": {
+            "dateFormat": "2 gennaio 2006",
+            "languageName": "Italiano"
+        }
+    },
+    "ro": {
+        "params": {
+            "dateFormat": "2 january 2006",
+            "languageName": "Romanian"
+        }
+    }
+}
