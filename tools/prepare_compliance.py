@@ -16,7 +16,7 @@ from util import download_file
 
 DOWNLOAD_PATH = Path("downloads")
 DATA_PATH = Path("data")
-COMPLIANCE_SUITE_URL = "https://xmpp.org/extensions/xep-0459.xml"
+COMPLIANCE_SUITE_URL = "https://xmpp.org/extensions/xep-0479.xml"
 COMPLIANCER_BUILD_URL = "https://prosody.im/files/compliance"
 
 
@@ -68,7 +68,7 @@ def check_packages_compliance() -> None:
     compliance_dict: dict[str, dict[str, str | dict[str, list[str]]]] = {}
 
     for subdir, _dirs, files in os.walk(f"{DOWNLOAD_PATH}/doap_files"):
-        for file in files:
+        for file in sorted(files):
             try:
                 result = subprocess.check_output(
                     [
