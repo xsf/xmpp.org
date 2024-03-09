@@ -10,16 +10,12 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ## XSF Announcements
 
-Welcome our reapplicants and new members in Q1 2024!
-
-### XSF Membership
-
-If you are interest to join the XMPP Standards Foundation, [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q1_2024).
+Welcome to our reapplicants and new members in Q1 2024!
+If you are interested to join the XMPP Standards Foundation, [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q1_2024).
 
 ### XMPP and Google Summer of Code 2024
 
-The XSF has been accepted as a hosting organisation at GSoC in 2024 again! [If you are interested, please reach out!](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)
-
+The XSF has been accepted as a hosting organisation at GSoC in 2024 again! [If you are interested, please reach out](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)!
 The GSoC project ideas from XMPP-related organisations are:
 
 - Monal
@@ -48,26 +44,26 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-We are happy to announce the launch of the XMPP-IT community's PeerTube instance, a dedicated platform for sharing and discovering videos about the XMPP protocol and its applications. Members of the XMPP community are encouraged to contribute by creating and sharing their own videos. Whether it's tutorials, project showcases, or discussions on XMPP topics, your contributions are welcome. [The XMPP-IT community's PeerTube instance](https://video.xmpp-it.net) and [Link to article](https://www.xmpp-it.net/2024/03/03/mario/the-xmpp-it-peertube-instance/)
+We are happy [to announce](https://www.xmpp-it.net/2024/03/03/mario/the-xmpp-it-peertube-instance/) the launch of the [XMPP-IT community's PeerTube instance](https://video.xmpp-it.net), a dedicated platform for sharing and discovering videos about the XMPP protocol and its applications. Members of the XMPP community are encouraged to contribute by creating and sharing their own videos. Whether it's tutorials, project showcases, or discussions on XMPP topics, your contributions are welcome.
 
 ## Software News
 
 ### Clients and Applications
 
-[monocles chat](https://play.google.com/store/apps/details?id=eu.monocles.chat) is available on the playstore. It comes with many updates like a working commands view and better support for WebXDC apps but also an initial modern integration of stickers.
+[monocles chat](https://play.google.com/store/apps/details?id=eu.monocles.chat) is available on Google Play. It comes with many updates like a working commands view and better support for [WebXDC](https://webxdc.org/) apps, but also an initial modern integration of stickers.
 
 ### Servers
 
-- [ejabberd 24.02](https://www.process-one.net/blog/ejabberd-24-02/).
+- [ejabberd 24.02](https://www.process-one.net/blog/ejabberd-24-02/) has been released, and it comes with support for TLS 1.3 and advanced SASL2 protocols. This release brings performance enhancements with Bind 2 for faster connection times, which is especially crucial for mobile network users. Support for [XEP-0424: Message Retraction](https://xmpp.org/extensions/xep-0424.html) allows users to manage their message history and remove something they posted by mistake.
  
 ### Libraries & Tools
 
-- [xmpp-rs](https://xmpp.rs) has gained a [Code of Conduct](https://gitlab.com/xmpp-rs/xmpp-rs/-/blob/main/CODE_OF_CONDUCT.md) and a [CONTRIBUTING](https://gitlab.com/xmpp-rs/xmpp-rs/-/blob/main/CONTRIBUTING.md) guide. Feel free to come and say hi!
-- [Slixfeed](https://gitgud.io/sjehuda/slixfeed) is a news bot offered as client and service component; it can handle multiple chats simultaneously and also display media inline, which, in addition of it being intended primarily for private chats, makes it exceptionally useful for groupchats where visual contents are essential.
-- [GitLab XMPP Bot](https://dev.gajim.org/gajim/gitlab-xmpp-bot/-/blob/master/README.md) an XMPP bot that sends messages based on GitLab hooks had its 1.0.0 release. This bot is based on [python-nbxmpp](https://dev.gajim.org/gajim/python-nbxmpp) and it is active in [Gajim's support chat](xmpp:gajim@conference.gajim.org?join).
+- [GitLab XMPP Bot](https://dev.gajim.org/gajim/gitlab-xmpp-bot/-/blob/master/README.md), an XMPP bot that sends messages based on GitLab hooks had its 1.0.0 release. This bot is based on [python-nbxmpp](https://dev.gajim.org/gajim/python-nbxmpp) and it is active in [Gajim's support chat](xmpp:gajim@conference.gajim.org?join).
+- [go-xmpp 0.1.0](https://github.com/xmppo/go-xmpp/releases/tag/v0.1.0) has been released.
 - [python-nbxmpp 4.5.4](https://dev.gajim.org/gajim/python-nbxmpp/-/blob/4.5.4/ChangeLog) has been released, which fixes some issues around subject changes and date parsing.
-- [StropheJS 2.0.0](https://github.com/strophe/strophejs/releases/tag/v2.0.0).
-- [go-xmpp 0.1.0](https://github.com/xmppo/go-xmpp/releases/tag/v0.1.0).
+- [Slixfeed](https://gitgud.io/sjehuda/slixfeed) is a news bot offered as client and service component; it can handle multiple chats simultaneously and also display media inline, which, in addition of it being intended primarily for private chats, makes it exceptionally useful for groupchats where visual contents are essential.
+- [StropheJS 2.0.0](https://github.com/strophe/strophejs/releases/tag/v2.0.0) has been released.
+- [xmpp-rs](https://xmpp.rs) has gained a [Code of Conduct](https://gitlab.com/xmpp-rs/xmpp-rs/-/blob/main/CODE_OF_CONDUCT.md) and a [CONTRIBUTING](https://gitlab.com/xmpp-rs/xmpp-rs/-/blob/main/CONTRIBUTING.md) guide. Feel free to come and say hi!
 
 ## Extensions and specifications
 
