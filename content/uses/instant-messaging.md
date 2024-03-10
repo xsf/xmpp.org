@@ -19,7 +19,7 @@ There are also many, mostly commerical projects that have created an XMPP-based 
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|
-| ~2 billion   | [WhatsApp](https://www.whatsapp.com/about) | WhatApp uses a [variation of XMPP](https://github.com/WHAnonymous/Chat-API/wiki/FunXMPP-Protocol) for its popular chat service |
+| ~2 billion   | [WhatsApp](https://www.whatsapp.com/about) | WhatApp uses a [variation of XMPP](https://developers.facebook.com/m/messaging-interoperability) for its popular chat service |
 | ~300 million | [Kik Messenger](https://www.kik.com/) | Kik Messenger uses a [variation of XMPP](https://github.com/tomer8007/kik-bot-api-unofficial) for its popular chat service. |
 | ~200 million | [Zoom](https://zoom.us)         | Zoom uses [XMPP (with some proprietary extensions) for its chat functionality](https://blog.talosintelligence.com/2020/04/zoom-user-enumeration.html). |
 |  ~20 million | [Jitsi](https://jitsi.org)      | [Jitsi](https://jitsi.org/about/) is a free and open source project that enables video-conferences. It uses XMPP for its chat functionality. |
