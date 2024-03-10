@@ -9,12 +9,15 @@
     <a href="/community/sponsorship/" class="p-2 border rounded text-secondary">Become a sponsor</a>
 </div>
 <div class="footer-github">
-    <p>
+    <p>The xmpp.org domain was generously donated by <a href="https://opendomain.org" target="blank_">OpenDomain.org</a>.</p>
+    <p class="mt-3">
         <i class="fab fa-github fa-lg"></i>
         This site is organized in the open on <a href="https://github.com/xsf/xmpp.org" target="blank_">GitHub</a>.
         {{- partial "edit-on-github" . -}}
     </p>
-    <p>The xmpp.org domain was generously donated by <a href="https://opendomain.org" target="blank_">OpenDomain.org</a>.</p>
+    <p class="mt-1 text-center text-body-tertiary small">
+        Last website build:&nbsp;{{- time.Now | time.Format ":date_medium" -}}&nbsp;({{- time.Now.UTC.Hour -}}:{{- time.Now.UTC.Minute -}}&nbsp;UTC)
+    </p>
 </div>
 <footer class="footer mt-auto py-3 bg-dark">
     <div class="container">
