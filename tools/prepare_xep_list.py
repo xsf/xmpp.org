@@ -49,13 +49,29 @@ def build_xep_list() -> None:
                 for tag in tags.findall("tag"):
                     tag_list.append(tag.text)
 
+            date_element = xep.find("last-revision").find("date")
+            date = date_element.text if date_element is not None else None
+
+            version_element = xep.find("last-revision").find("version")
+            version = version_element.text if version_element is not None else None
+
+            initials_element = xep.find("last-revision").find("initials")
+            initials = initials_element.text if initials_element is not None else None
+
+            remarks_element = xep.find("last-revision").find("remarks")
+            remarks = remarks_element.text if remarks_element is not None else None
+
+
             xeps.append(
                 {
                     "title": xep.find("title").text,
                     "shortname": shortname,
                     "status": fix_status(xep.find("status").text),
                     "number": int(xep.find("number").text),
-                    "last_updated": xep.find("last-revision").find("date").text,
+                    "last_revision_date": date,
+                    "last_revision_version": version,
+                    "last_revision_initials": initials,
+                    "last_revision_remarks": remarks,
                     "type": xep.find("type").text,
                     "abstract": xep.find("abstract").text,
                     "tags": tag_list,

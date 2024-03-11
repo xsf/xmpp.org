@@ -1,6 +1,6 @@
 <ul class="extensions-block-listing">
 {{- if .Site.Data.xeplist -}}
-    {{- range first 5 (sort .Site.Data.xeplist ".last_updated" "desc") -}}
+    {{- range first 5 (sort .Site.Data.xeplist ".last_revision_date" "desc") -}}
         {{- $number_str := printf "%04g" .number -}}
         <li><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a>&nbsp;{{- .title -}}</li>
     {{- end -}}
