@@ -31,7 +31,7 @@ The XMPP Council is the technical steering group that approves XMPP Extension Pr
 
 The Council is elected by the members of the XMPP Standards Foundation. In the interest of transparency, [chatroom logs](/community/chat/) and [mailing list archives](/community/mailing-lists/) are available (anyone can subscribe to the mailing list, but only Council members can post). The Council meets once a week in a [chatroom](/community/chat/#council-chatroom) - anyone can join in, comments from the floor are welcome.
 
-The Council (2022-2023) consists of the following individuals:
+The Council consists of the following individuals:
 
 - __Dan Caseley__ is a regular contributor to the [Openfire](https://www.igniterealtime.org/projects/openfire/) project, and an author and contributor in Openfire's plugin ecosystem. Initially involved in XMPP implementations at work, Dan is now a contributor in both his professional and personal life as part of the OSS community.
 - __Daniel Gultsch__ is the maintainer of the Android client [Conversations](https://conversations.im) and operates an [XMPP domain hosting service](https://account.conversations.im/domain). He has also (co-) created several XEPs. Contact information can be found on [his website](https://gultsch.de).
