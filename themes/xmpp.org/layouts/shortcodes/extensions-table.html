@@ -67,49 +67,51 @@
             <input class="form-control form-control-sm" id="xep-search-input" type="text" placeholder="Search by title, number, etc. ..." aria-label="Search">
         </div>
     </div>
-    <table class="sortable w-100" id="xeplist">
-        <thead>
-            <tr class="xepheader">
-                <th>Number</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Tags</th>
-                <th>Implemen<br>tations</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{- if .Site.Data.xeplist -}}
-                {{- range sort .Site.Data.xeplist ".number" -}}
-                {{- $number_str := printf "%04g" .number -}}
-                <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
-                    <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
-                    <td>{{- .title -}}</td>
-                    <td>{{- .type -}}</td>
-                    <td>{{- .status -}}</td>
-                    <td>{{- .last_revision_date -}}</td>
-                    <td>
-                        {{- range .tags -}}
-                            <span class="badge rounded-pill text-bg-secondary">{{- . -}}</span>
-                        {{- end -}}
-                    </td>
-                    <td class="text-center p-0">
-                        {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
-                            <button type="button" class="btn btn-sm btn-outline-secondary w-50" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button"
-                            {{- if eq (len .implementations) 0 -}}
-                            disabled
-                            {{- end -}}
-                            >
-                                {{- len .implementations -}}
-                            </button>
-                        {{- end -}}
-                    </td>
+    <div class="table-responsive">
+        <table class="sortable w-100" id="xeplist">
+            <thead>
+                <tr class="xepheader">
+                    <th>Number</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Tags</th>
+                    <th>Implemen<br>tations</th>
                 </tr>
+            </thead>
+            <tbody>
+                {{- if .Site.Data.xeplist -}}
+                    {{- range sort .Site.Data.xeplist ".number" -}}
+                    {{- $number_str := printf "%04g" .number -}}
+                    <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
+                        <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
+                        <td>{{- .title -}}</td>
+                        <td>{{- .type -}}</td>
+                        <td>{{- .status -}}</td>
+                        <td>{{- .last_revision_date -}}</td>
+                        <td>
+                            {{- range .tags -}}
+                                <span class="badge rounded-pill text-bg-secondary mx-1">{{- . -}}</span>
+                            {{- end -}}
+                        </td>
+                        <td class="text-center p-0">
+                            {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
+                                <button type="button" class="btn btn-sm btn-outline-secondary w-50" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button"
+                                {{- if eq (len .implementations) 0 -}}
+                                disabled
+                                {{- end -}}
+                                >
+                                    {{- len .implementations -}}
+                                </button>
+                            {{- end -}}
+                        </td>
+                    </tr>
+                    {{- end -}}
                 {{- end -}}
-            {{- end -}}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="implementations-offcanvas" aria-labelledby="implementations-offcanvas-label">
     <div class="offcanvas-header">
