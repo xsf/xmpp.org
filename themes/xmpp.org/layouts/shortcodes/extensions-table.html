@@ -63,8 +63,13 @@
             </div>
         </form>
         <hr class="border">
-        <div class="pb-2 col col-md-4">
-            <input class="form-control form-control-sm" id="xep-search-input" type="text" placeholder="Search by title, number, etc. ..." aria-label="Search">
+        <div class="row justify-content-between align-items-center pb-2">
+            <div class="col col-md-4">
+                <input class="form-control form-control-sm" id="xep-search-input" type="text" placeholder="Search by title, number, etc. ..." aria-label="Search">
+            </div>
+            <div class="col col-md-4 text-end">
+                <span id="xep-filter-results-count" class="text-muted small"></span>
+            </div>
         </div>
     </div>
     <div class="table-responsive">

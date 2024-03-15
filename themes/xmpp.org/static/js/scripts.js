@@ -78,14 +78,17 @@ function initialize_bootstrap_tooltips() {
 
 // Page /extensions/
 function filter_xeps() {
+  const xeplist = document.getElementById("xeplist");
   const search_string = document.getElementById("xep-search-input").value.toLowerCase();
   const checkboxes = document.querySelectorAll("#status-selector input");
+  const xepFilterResultsCountElement = document.getElementById("xep-filter-results-count");
 
   if (search_string !== "") {
     // Ignore status checkboxes when searching
     for (const checkbox of checkboxes) {
       checkbox.disabled = true;
     }
+
     const rows = document.querySelectorAll("[class*=XEP-]")
     for (const row of rows) {
       const xep_number = row.id.slice(3)
@@ -105,6 +108,10 @@ function filter_xeps() {
         row.hidden = true
       }
     }
+
+    const hiddenXepsCount = xeplist.querySelectorAll('tr[hidden]').length;
+    const shownXeps = xeplist.querySelectorAll('tr:not([hidden])').length - 1;
+    xepFilterResultsCountElement.innerText = `Showing ${shownXeps} of ${shownXeps + hiddenXepsCount} XEPs`
     return
   }
 
@@ -117,6 +124,10 @@ function filter_xeps() {
       row.hidden = !checkbox.checked;
     }
   }
+
+  const hiddenXepsCount = xeplist.querySelectorAll('tr[hidden]').length;
+  const shownXeps = xeplist.querySelectorAll('tr:not([hidden])').length - 1;
+  xepFilterResultsCountElement.innerText = `Showing ${shownXeps} of ${shownXeps + hiddenXepsCount} XEPs`
 }
 
 function show_xep_implementations() {
