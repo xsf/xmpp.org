@@ -59,6 +59,10 @@
                         <input class="form-check-input" type="checkbox" id="Retracted" name="Retracted" />
                         <label class="form-check-label" for="Retracted">Retracted</label>
                     </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="Dormant" name="Dormant" />
+                        <label class="form-check-label" for="Dormant">Dormant</label>
+                    </div>
                 </div>
             </div>
         </form>
@@ -88,30 +92,59 @@
             <tbody>
                 {{- if .Site.Data.xeplist -}}
                     {{- range sort .Site.Data.xeplist ".number" -}}
-                    {{- $number_str := printf "%04g" .number -}}
-                    <tr class="XEP-{{- .status -}}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
-                        <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
-                        <td>{{- .title -}}</td>
-                        <td>{{- .type -}}</td>
-                        <td>{{- .status -}}</td>
-                        <td>{{- .last_revision_date -}}</td>
-                        <td>
-                            {{- range .tags -}}
-                                <span class="badge rounded-pill text-bg-secondary mx-1">{{- . -}}</span>
-                            {{- end -}}
-                        </td>
-                        <td class="text-center p-0">
-                            {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
-                                <button type="button" class="btn btn-sm btn-outline-secondary w-50" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button"
-                                {{- if eq (len .implementations) 0 -}}
-                                disabled
+                        {{- $number_str := printf "%04g" .number -}}
+                        {{ $last_revision_date := .last_revision_date | time }}
+                        {{ $last_revision_date_diff := now.Sub $last_revision_date }}
+                        {{ $days_since_last_modification := math.Round (div $last_revision_date_diff.Hours 24) }}
+                        {{ $xep_dormant := false }}
+                        {{- if and (eq .type "Standards Track") (or (eq .status "Experimental") (eq .status "Deferred")) (gt ($days_since_last_modification) 365) (eq (len .implementations) 0) -}}
+                            {{ $xep_dormant = true }}
+                        {{- end -}}
+
+                        <tr class="XEP-{{ .status }} {{ if $xep_dormant }} XEP-Dormant{{ end }}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
+                            <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
+                            <td>{{- .title -}}</td>
+                            <td>{{- .type -}}</td>
+                            <td>{{- .status -}}</td>
+                            <td>{{- .last_revision_date -}}</td>
+                            <td>
+                                {{- range .tags -}}
+                                    <span class="badge rounded-pill text-bg-secondary mx-1">{{- . -}}</span>
                                 {{- end -}}
-                                >
-                                    {{- len .implementations -}}
-                                </button>
-                            {{- end -}}
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="text-end pe-3 py-0">
+                                <div class="d-flex align-items-center justify-content-end">
+                                {{- if and (eq .type "Standards Track") (or (eq .status "Experimental") (eq .status "Deferred")) -}}
+                                    {{- if and (gt ($days_since_last_modification) 365) (eq (len .implementations) 0) -}}
+                                        <!-- This XEP has no recent activity and no implementations -> dormant -->
+                                        <i class="fa-regular fa-moon text-muted me-2" data-bs-toggle="tooltip" title="Dormant: This XEP has been inactive for more than 12 months and there are no known implementations yet"></i>
+                                    {{- end -}}
+                                    {{- if and (gt ($days_since_last_modification) 365) (gt (len .implementations) 0) -}}
+                                        <!-- This XEP has no recent activity, but implementations -> needs advancement -->
+                                        <i class="fa-regular fa-clock text-muted me-2" data-bs-toggle="tooltip" title="Needs advancement: This XEP has been inactive for more than 12 months, but there are known implementations"></i>
+                                    {{- end -}}
+                                    {{- if and (lt ($days_since_last_modification) 365) (gt (len .implementations) 0) -}}
+                                        <!-- This XEP has recent activity and implementations -> needs advancement and implementations -->
+                                        <i class="fa-solid fa-rocket text-muted me-2" data-bs-toggle="tooltip" title="Needs advancements and implementations: This XEP has been actively developed in the past 12 months and there are known implementations"></i>
+                                    {{- end -}}
+                                    {{- if and (lt ($days_since_last_modification) 365) (eq (len .implementations) 0) -}}
+                                        <!-- This XEP has recent activity, but no implementations -> needs implementations -->
+                                        <i class="fa-solid fa-ruler-combined text-muted me-2" data-bs-toggle="tooltip" title="Needs implementations: This XEP has been actively developed in the past 12 months, but there are no known implementations yet"></i>
+                                    {{- end -}}
+                                {{- end -}}
+
+                                {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" name="show-xep-implementations" data-xep="{{- $number_str -}}" role="button"
+                                    {{- if eq (len .implementations) 0 -}}
+                                    disabled
+                                    {{- end -}}
+                                    >
+                                        {{- len .implementations -}}
+                                    </button>
+                                {{- end -}}
+                                </div>
+                            </td>
+                        </tr>
                     {{- end -}}
                 {{- end -}}
             </tbody>
