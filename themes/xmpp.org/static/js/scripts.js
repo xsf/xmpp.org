@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
   if (window.location.pathname == "/software/") {
     for (const button of document.querySelectorAll('button[name="category-button"]')) {
       button.addEventListener("click", software_filter_list);
@@ -70,8 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  initialize_bootstrap_tooltips()
+
   software_resize_extensions_collapse();
 });
+
+function initialize_bootstrap_tooltips() {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+}
 
 // Page /extensions/
 function filter_xeps() {
@@ -118,22 +121,63 @@ function filter_xeps() {
 
 function show_xep_implementations() {
   let xep_number = window.location.hash.slice(5, 9);
-  let row = document.getElementById("xep" + xep_number);
-  let xep_title = row.cells[1].innerHTML;
-  let xep_name = "XEP-" + xep_number + ": " + xep_title;
-  document.getElementById("implementations-heading").innerHTML = xep_name;
 
-  let all_rows = document.querySelectorAll('tr[name^="implementation-xep-"');
-  for (const row of all_rows) {
-    row.classList.add("d-none");
+  const tableBody = document.getElementById("implementations-table-body")
+  tableBody.innerHTML = ""
+  for (const item of xepListData) {
+    const paddedXEPNum = item.number.toString().padStart(4, '0')
+    if (paddedXEPNum === xep_number) {
+      document.getElementById("implementations-heading").innerText = `XEP-${paddedXEPNum}: ${item.title}`;
+
+      for (const implementation of item.implementations) {
+        const implementationRow = document.createElement("tr")
+        const nameCell = document.createElement("td")
+        const nameLink = document.createElement("a")
+        nameLink.innerText = implementation.package_name
+        nameLink.href = `/software/${implementation.package_name_slug}/`
+        nameCell.append(nameLink)
+        implementationRow.append(nameCell)
+
+        const stateCell = document.createElement("td")
+        if (implementation.implementation_status) {
+          let iconClasses = ["fa-solid", "fa-check"]
+          let badgeClass = "text-bg-success"
+
+          if (implementation.implementation_status === "planned") {
+            iconClasses = ["fa-solid", "fa-plus"]
+            badgeClass = "text-bg-primary"
+          }
+          if (implementation.implementation_status === "removed") {
+            iconClasses = ["fa-regular", "fa-circle-xmark"]
+            badgeClass = "text-bg-secondary"
+          }
+          if (implementation.implementation_status === "partial") {
+            badgeClass = "text-bg-warning"
+          }
+          const stateSpan = document.createElement("span")
+          stateSpan.classList.add("badge", "opacity-50", badgeClass)
+          stateSpan.dataset.bsToggle = "tooltip"
+          stateSpan.title = implementation.implementation_status.charAt(0).toUpperCase() + implementation.implementation_status.slice(1)
+          const stateIcon = document.createElement("i")
+          stateIcon.classList.add("text-reset", ...iconClasses)
+          stateSpan.append(stateIcon)
+          stateCell.append(stateSpan)
+        }
+        implementationRow.append(stateCell)
+
+        const versionCell = document.createElement("td")
+        if (implementation.implemented_version) {
+          versionCell.innerText = implementation.implemented_version
+        }
+        implementationRow.append(versionCell)
+
+        tableBody.append(implementationRow)
+      }
+    }
   }
 
-  let xep_rows = document.getElementsByName("implementation-xep-" + xep_number);
-  for (const row of xep_rows) {
-    row.classList.remove("d-none");
-  }
-
-  var implementations_offcanvas = new bootstrap.Offcanvas(
+  initialize_bootstrap_tooltips()
+  const implementations_offcanvas = new bootstrap.Offcanvas(
     document.getElementById("implementations-offcanvas")
   );
   implementations_offcanvas.show();

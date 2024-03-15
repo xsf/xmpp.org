@@ -2,6 +2,7 @@
 Download / prepare / process XMPP DOAP files for the software list
 Requires: Pillow, python-slugify
 """
+
 from typing import Any
 
 import json
@@ -29,6 +30,7 @@ DATA_PATH = Path("data")
 DOWNLOAD_PATH = Path("downloads")
 STATIC_PATH = Path("static")
 STATIC_DOAP_PATH = STATIC_PATH / "doap"
+THEMES_PATH = Path("themes")
 LOGOS_PATH = STATIC_PATH / "images" / "packages"
 
 DOAP_NS = "http://usefulinc.com/ns/doap#"
@@ -366,6 +368,15 @@ def add_doap_data_to_xeplist() -> None:
 
     with open(DATA_PATH / "xeplist.json", "w", encoding="utf-8") as xep_list:
         json.dump(xep_data, xep_list, indent=4)
+
+    # Store xeplist as JS array in assets path in
+    # order to make it available for scripts
+    with open(
+        THEMES_PATH / "xmpp.org" / "static" / "js" / "xeplist.js",
+        "w",
+        encoding="utf-8",
+    ) as js_file:
+        js_file.write(f"const xepListData = {json.dumps(xep_data)}")
 
 
 def create_package_page(package_type: str, name_slug: str, name: str) -> None:

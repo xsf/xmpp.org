@@ -127,34 +127,7 @@
                     <th title="Implemented Version" data-bs-toggle="tooltip">Version</th>
                 </tr>
             </thead>
-            <tbody>
-                {{- range sort .Site.Data.xeplist ".number" -}}
-                    {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
-                        {{- $number_str := printf "%04g" .number -}}
-                        {{- range .implementations -}}
-                            <tr name="implementation-xep-{{- $number_str -}}" class="d-none">
-                                <td>
-                                    <a href="/software/{{- .package_name_slug -}}">
-                                        {{- .package_name -}}
-                                    </a>
-                                </td>
-                                <td>
-                                    {{- if eq .implementation_status "complete" -}}
-                                        <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
-                                    {{- else if eq .implementation_status "partial" -}}
-                                        <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
-                                    {{- else if eq .implementation_status "planned" -}}
-                                        <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-plus text-reset"></i></span>
-                                    {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
-                                        <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
-                                    {{- end -}}
-                                </td>
-                                <td>{{- .implemented_version -}}</td>
-                            </tr>
-                        {{- end -}}
-                    {{- end -}}
-                {{- end -}}
-            </tbody>
+            <tbody id="implementations-table-body"></tbody>
         </table>
     </div>
   </div>
