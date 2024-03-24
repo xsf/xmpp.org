@@ -9,16 +9,26 @@ aliases:
 
 Tigase is home to Tigase XMPP Server, Tigase JaXMPP Client library, Tigase Messenger for Android and iOS, and other XMPP-related projects.  We specialize in creating robust, secure, and reliable XMPP-based real time communication systems.  Tigase provides agility and the freedom to scale projects and installations from small one-office networks to hundreds of thousands of connected users to a clustered network.
 
-Tigase XMPP Server is our flagship product providing instant communication services using the XMPP protocol.  Tigase is unique in open source XMPP software:  
+Tigase XMPP Server is our flagship product providing instant communication services using the XMPP protocol. Tigase is unique in open source XMPP software:
+
 ### Unmatched Flexibility:
-Our software is easy to configure, and can be done on the fly without server restart. Tigase can be customized with available extensions, or custom code to fit your needs.  
+
+Our software is easy to configure, and can be done on the fly without server restart. Tigase can be customized with available extensions, or custom code to fit your needs.
+
 ### Highly Optimized:
-Small footprint on servers, and can run on anything that supports JDK v8.  
+
+Small footprint on servers, and can run on anything that supports JDK v8.
+
 ### Easy scripting support:
-Tigase can support scripts such as Java, Groovy, Python, Ruby, and Scala.  You won’t need to learn another language to customize scripts to have Tigase do exactly what you want.  
+
+Tigase can support scripts such as Java, Groovy, Python, Ruby, and Scala.  You won’t need to learn another language to customize scripts to have Tigase do exactly what you want.
+
 ### Clustering support:
-Many open source XMPP servers support clustering, but Tigase can cluster out of the box with a single configuration change!  Quickly grow and expand your server potential without hassle.  
+
+Many open source XMPP servers support clustering, but Tigase can cluster out of the box with a single configuration change!  Quickly grow and expand your server potential without hassle.
+
 ### Security minded:
+
 Want to keep your servers secure?  Tigase supports authentication from SASL-PLAIN to SCRAM-SHA-PLUS-1, and features a one-line hardened mode setting that forces the highest level of security for your XMPP server.
 
 Looking to embed a low footprint chat client to match your XMPP server needs?  Look no further than Tigase’s JaXMPP client library.  This library can be deployed on any environment running Java, and can be used in Android mobile devices.  This library is an easy way to standardize communication on your network by having the same look and feel for every device to keep training costs down.  This library can be customized to fit a branded environment to maintain that bespoke corporate look.

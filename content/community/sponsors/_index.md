@@ -26,10 +26,10 @@ Tigase, Inc. is a leading provider of customized implementations of XMPP-based s
 
 {{< figure src="/images/logos/tygrys.png" link="/sponsors/tygrys" class="p-2 sponsor-logo" >}}
 
-Tygrys is an expansive tech suite crafted to deliver secure and efficient communication for individuals and teams. Integrating our XMPP service supplemented with a hand-made multi-platform XMPP client, email service, and comprehensive project and code management tools, the suite is designed from the ground up for seamless operation across multiple platforms. By prioritizing user privacy, Tygrys ensures that personal data remains strictly in the hands of its users, with our staunch commitment to having no data to collect and nothing to track. ([more about Tygrys](/sponsors/tygrys))
+Tygrys is an expansive tech suite crafted to deliver secure and efficient communication for individuals and teams. Integrating our XMPP service supplemented with a hand-made multi-platform XMPP client, email service, and comprehensive project and code management tools, the suite is designed from the ground up for seamless operation across multiple platforms. By prioritizing user privacy, Tygrys ensures that personal data remains strictly in the hands of its users, with our staunch commitment to having no data to collect and nothing to track ([more about Tygrys](/sponsors/tygrys))
 
 ### US Secure Hosting Center
 
 {{< figure src="/images/logos/usshc.png" link="/sponsors/us-secure-hosting-center" class="p-2 sponsor-logo" >}}
 
-USSHC is a privately owned underground secure colocation data center located in the rural Midwestern United States ([more about USSHC](/sponsors/us-secure-hosting-center)).
+USSHC is a privately owned underground secure colocation data center located in the rural Midwestern United States ([more about USSHC](/sponsors/us-secure-hosting-center))
