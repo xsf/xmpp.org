@@ -1,7 +1,7 @@
 ---
 title: The XMPP Newsletter February 2024
 date: 2024-03-24
-categories: ['Newsletter']
+categories: ['Newsletter'] 
 ---
 
 Welcome to the XMPP Newsletter, great to have you here again! This issue covers the month of February 2024. Many thanks to all our readers and all Newsletter contributors!
