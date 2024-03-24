@@ -11,7 +11,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 ## XSF Announcements
 
 Welcome to our reapplicants and new members in Q1 2024!
-If you are interested to join the XMPP Standards Foundation, [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q1_2024).
+If you are interested to join the XMPP Standards Foundation, [please apply now](https://wiki.xmpp.org/web/Membership_Applications_Q2_2024).
 
 ### XMPP and Google Summer of Code 2024
 
@@ -40,7 +40,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
-- [16th May 2024: XMPP Italian happy hour](https://tube.nicfab.eu/c/xmpp) [IT]: monthly Italian XMPP web meeting, starting May 16th and then every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
+- [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 
 ## Articles
 
