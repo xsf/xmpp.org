@@ -31,14 +31,14 @@ At the moment, this table intends to support discussing the translation of key t
 | Contact list            | Kontaktliste   | Liste de contacts | Lista de contactos | Lista de contactos | 連絡帳           |
 | Profile picture         | Profilbild     |                   |                    |                    | プロフィーロ写真 |
 
-You’ll find more terms in the [term overview](/translation-discussion).
+You’ll find more terms in the [term overview](/implementation-guidelines/translation-discussion).
 
 [Add a language...](https://github.com/modernxmpp/modernxmpp)
 
 <!-- Footnotes -->
 
-[^rationale-gc]: Rationale [group chat terminology](/rationale#terminology)
+[^rationale-gc]: Rationale [group chat terminology](/implementation-guidelines/rationale#terminology)
 
-[Multi-user Chats]: client/groupchat.md
+[Multi-user Chats]: /implementation-guidelines/groupchat
 
 [^rationale-dev-terms]: General agreement is that this would only cause confusion, for little gain. See e.g. discussion at https://github.com/modernxmpp/modernxmpp/pull/23
