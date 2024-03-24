@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter February 2024
-date: 2024-03-10
+date: 2024-03-24
 categories: ['Newsletter']
 ---
 
@@ -45,6 +45,12 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Articles
 
 We are happy [to announce](https://www.xmpp-it.net/2024/03/03/mario/the-xmpp-it-peertube-instance/) the launch of the [XMPP-IT community's PeerTube instance](https://video.xmpp-it.net), a dedicated platform for sharing and discovering videos about the XMPP protocol and its applications. Members of the XMPP community are encouraged to contribute by creating and sharing their own videos. Whether it's tutorials, project showcases, or discussions on XMPP topics, your contributions are welcome.
+
+[20 years ago ejabberd was born](https://www.process-one.net/blog/ejabberd-turns-20/)! Happy birthday!
+
+[JMP turned 7 years old!](https://blog.jmp.chat/b/february-newsletter-2024) Congratulations! Read also about [mobile-friendly gateway to any SIP provider](https://blog.jmp.chat/b/mobile-friendly-sip-gateway).
+
+{{< figure src="/images/logos/gsoc2024_logo.svg" caption="SIP via XMPP" >}}
 
 ## Software News
 
