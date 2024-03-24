@@ -53,4 +53,4 @@ implementation recommendations for MAM.
       `end: <first message time> && limit: X`
 
 
-[MAM]: https://xmpp.org/extensions/xep-0313.html
+[MAM]: /extensions/xep-0313.html

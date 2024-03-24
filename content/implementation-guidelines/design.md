@@ -1,10 +1,6 @@
 ---
-Title: Design Guidelines
+Title: Client Design Guidelines
 ---
-
-Title: 
-
-# Client design guidelines
 
 This document lays out a set of guidelines for designing Modern XMPP clients. For contributions,
 please [open an issue or pull request](https://github.com/modernxmpp/modernxmpp) at Github for discussion.
@@ -41,8 +37,8 @@ Support for these options is OPTIONAL, but **not** recommended. They are only ne
 | Connect port        | The network port to connect to               |
 | TLS Mode[^tls-mode] | Multiple choice: "STARTTLS" or "Direct TLS"  |
 
-Both of the above should be automatically discovered from DNS, according to the [rules in RFC 6120](https://xmpp.org/rfcs/rfc6120.html#tcp-resolution).
-Clients that support other connection mechanisms, such as BOSH, SHOULD also implement [XEP-0156](https://xmpp.org/extensions/xep-0156.html).
+Both of the above should be automatically discovered from DNS, according to the [rules in RFC 6120](/rfcs/rfc6120.html#tcp-resolution).
+Clients that support other connection mechanisms, such as BOSH, SHOULD also implement [XEP-0156](/extensions/xep-0156.html).
 
 ### Deprecated options
 
@@ -50,7 +46,7 @@ Support for these options is NOT RECOMMENDED.
 
 | Option       | Description                              | Notes |
 |:-------------|:-----------------------------------------|:--------|
-| Resource     |  The resource to request from the server | see [Resource generation](protocol.md#resource-generation)  |
+| Resource     |  The resource to request from the server | see [Resource generation](/implementation-guidelines/protocol#resource-generation)  |
 | Priority     |  The priority to include in presence     | 0       |
 
 ## User status
@@ -133,7 +129,7 @@ Support for multiple accounts is OPTIONAL.
 
 ## Group chat
 
-You can find more details about [group chats here](groupchat.md).
+You can find more details about [group chats here](/implementation-guidelines/groupchat).
 
 ## Documentation
 
@@ -168,7 +164,7 @@ Address book
 : Platform-dependent. If the application is somehow linked to the user's address book and is able to access a contact's information there.
 
 User nickname
-: A nickname published by the sender in PEP per [XEP-0172](https://xmpp.org/extensions/xep-0172.html).
+: A nickname published by the sender in PEP per [XEP-0172](/extensions/xep-0172.html).
 
 Resource
 : The resource of the sending JID.
@@ -203,7 +199,7 @@ A client may want to associate a color with a user. Example use cases for this i
 - Dummy avatars in contexts where an avatar cannot be or has not yet been retrieved
 - Coloring the user name in a conversation log (be aware that this needs to be done very carefully to be accessible!)
 
-To generate a color for a user, the algorithm described in [XEP-0392](https://xmpp.org/extensions/xep-0392.html) MUST be used.
+To generate a color for a user, the algorithm described in [XEP-0392](/extensions/xep-0392.html) MUST be used.
 
 ### Generator input based on context
 

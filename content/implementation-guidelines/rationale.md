@@ -8,7 +8,7 @@ in the Modern XMPP documentation are made.
 ## Group chats
 
 Discussion about the UI/UX issues around group chats initially happened
-at the first [UX sprint](meetings/2019-01-brussels.md). Some observations
+at the first [UX sprint](/implementation-guidelines/2019-01-brussels.md). Some observations
 were made:
 
 * MUC configuration is messy, for users and developers

@@ -116,6 +116,6 @@ If possible, platform detection should be used to highlight download links relev
 
 If the detected platform is a desktop environment, consider also adding a QR code for easy transmission to a user's mobile device.
 
-[XEP-0401]: https://xmpp.org/extensions/xep-0401.html "Ad-hoc Account Invitation Generation"
-[XEP-0445]: https://xmpp.org/extensions/xep-0445.html "Pre-Authenticated In-Band Registration"
-[XEP-0379]: https://xmpp.org/extensions/xep-0379.html "Pre-Authenticated Roster Subscription"
+[XEP-0401]: /extensions/xep-0401.html "Ad-hoc Account Invitation Generation"
+[XEP-0445]: /extensions/xep-0445.html "Pre-Authenticated In-Band Registration"
+[XEP-0379]: /extensions/xep-0379.html "Pre-Authenticated Roster Subscription"

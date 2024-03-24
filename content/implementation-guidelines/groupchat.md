@@ -20,9 +20,9 @@ To detect if a multi-user chat is a *group chat* or a *channel*
 | Publicly listed  | muc#roomconfig_publicroom | No  (3)   | muc_hidden      | Yes     | muc_public    |
 | PMs              | muc#roomconfig_allowpm | No  (3)   | muc#roomconfig_allowpm to `none` | Yes     | muc#roomconfig_allowpm to `anyone` |
 
-(1) As defined in [XEP-0045: Multi-User Chat - 16.5.3](https://xmpp.org/extensions/xep-0045.html#registrar-formtype-owner)
+(1) As defined in [XEP-0045: Multi-User Chat - 16.5.3](/extensions/xep-0045.html#registrar-formtype-owner)
 
-(2) As defined in [XEP-0045: Multi-User Chat - 16.3](https://xmpp.org/extensions/xep-0045.html#registrar-features)
+(2) As defined in [XEP-0045: Multi-User Chat - 16.3](/extensions/xep-0045.html#registrar-features)
 
 (3) Immutable for *group chats*.
 
@@ -31,7 +31,7 @@ Options marked `(3) Immutable` should be used when creating group chats, and als
 #### About PMs
 
 While it is possible to entirely prevent PMs from being sent with
-[`muc#roomconfig_allowpm`](https://xmpp.org/extensions/xep-0045.html#privatemessage),
+[`muc#roomconfig_allowpm`](/extensions/xep-0045.html#privatemessage),
 clients should prefer using JIDs when `muc#roomconfig_whois` is set to `anyone`.
 
 In channels, if the initiating client has access to revealed JIDs (with
@@ -73,12 +73,12 @@ Bookmark
 : If the chat is present in the user's bookmarks and has a nickname present (as the resource).
 
 Reserved name
-: A chat [may be queried](https://xmpp.org/extensions/xep-0045.html#reservednick) to fetch the
+: A chat [may be queried](/extensions/xep-0045.html#reservednick) to fetch the
     name that is registered by the user for that chat.
 
 User nickname (PEP)
 : The name stored in the user's account according to
-    [XEP-0172](https://xmpp.org/extensions/xep-0172.html#manage).
+    [XEP-0172](/extensions/xep-0172.html#manage).
 
 User nickname (vCard)
 : The name stored in the user's vCard as `NICKNAME`.
@@ -91,7 +91,7 @@ JID username
 
 ### Other user's names
 
-The display of other user's names is covered in the [general UI recommendations](design.md#names).
+The display of other user's names is covered in the [general UI recommendations](/implementation-guidelines/design#names).
 
 ## Bookmarks
 
@@ -99,13 +99,13 @@ Figuring out which group chats to join is the client’s job. For that it
 should store the list of group chats to rejoin automatically on the
 server, named bookmarks. Three possible protocols exist for this:
 
-- [XEP-0402](https://xmpp.org/extensions/xep-0402.html) which is the
+- [XEP-0402](/extensions/xep-0402.html) which is the
   current preferred method
-- [XEP-0048 1.1](https://xmpp.org/extensions/xep-0048.html), recently
+- [XEP-0048 1.1](/extensions/xep-0048.html), recently
   deprecated but still in use by some clients
-- [XEP-0048 1.0](https://xmpp.org/extensions/attic/xep-0048-1.0.html),
+- [XEP-0048 1.0](/extensions/attic/xep-0048-1.0.html),
   in wide use, based on
-  [XEP-0049](https://xmpp.org/extensions/xep-0049.html)
+  [XEP-0049](/extensions/xep-0049.html)
 
 In order to see the same set of bookmarks as every other client the
 user might be using, it is recommended to implement **XEP-0048 1.0** first
@@ -115,7 +115,7 @@ This legacy protocol however doesn’t support notifications when the bookmarks
 change due to another client or the server. To avoid this issue, a modern client
 should also implement **XEP-0402** ("PEP Native Bookmarks"), but use it *only* if the account
 advertises 'urn:xmpp:bookmarks:1#compat' (as defined in [XEP-0402 paragraph 5.3
-Compatibility](https://xmpp.org/extensions/xep-0402.html#compatibility)).
+Compatibility](/extensions/xep-0402.html#compatibility)).
 
 Implementing XEP-0048 1.1 is not recommended in modern clients.
 
@@ -133,7 +133,7 @@ Clients must always use real JIDs for messaging privately within a *group chat* 
 
 <!-- Footnotes -->
 
-[^rationale-gc]: Rationale [group chats](/rationale#group-chats)
+[^rationale-gc]: Rationale [group chats](/implementation-guidelines/rationale#group-chats)
 [^local-nickname]: To avoid requiring the user to configure a nickname manually on each device, shared cross-device stores such as PEP and vCard should be preferred.
 [^pm-realjid]: If real JIDs are known to all participants, it is preferable to use that for private communication to avoid confusion. Through-MUC PMs have the following disadvantages:
 

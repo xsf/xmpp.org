@@ -4,7 +4,7 @@ Title: XMPP Protocol Guidelines
 
 ## Overview
 
-The XSF has published [over 400 XEPs](https://xmpp.org/extensions/) over many years. However as technology,
+The XSF has published [over 400 XEPs](/extensions/) over many years. However as technology,
 user expectations and best practices evolve, the protocol too is always evolving.
 
 This leads to confusion about which set of XEPs are "current", which are required
@@ -42,12 +42,12 @@ It is often useful to know what features a remote entity supports before perform
 For example when deciding whether to send formatted messages, or determining the best available
 method of transferring a file.
 
-- [XEP-0030](https://xmpp.org/extensions/xep-0030.html) is the basic mechanism for advertising and discovering features
-- [XEP-0115](https://xmpp.org/extensions/xep-0115.html) is a strongly recommended extension that allows caching of these features
+- [XEP-0030](/extensions/xep-0030.html) is the basic mechanism for advertising and discovering features
+- [XEP-0115](/extensions/xep-0115.html) is a strongly recommended extension that allows caching of these features
 
 #### Notes
 
-[XEP-0115](https://xmpp.org/extensions/xep-0115.html) may be revised or replaced at some point in the future, such as by [XEP-0390](https://xmpp.org/extensions/xep-0390.html), to allow
+[XEP-0115](/extensions/xep-0115.html) may be revised or replaced at some point in the future, such as by [XEP-0390](/extensions/xep-0390.html), to allow
 hash agility and making the algorithm more robust to cache poisoning attacks.
 
 ### Resource generation
@@ -62,16 +62,16 @@ This section covers some protocols that are useful for general messaging.
 
 ### Formatting
 
-The current recommendation is that developers may simply implement the rules in [XEP-0393](https://xmpp.org/extensions/xep-0393.html) for
+The current recommendation is that developers may simply implement the rules in [XEP-0393](/extensions/xep-0393.html) for
 formatting message bodies that they receive.
 
 #### XHTML-IM deprecation
 
-A previous formatting specification defined in [XEP-0071](https://xmpp.org/extensions/xep-0071.html) has been deprecated. Many implementations
+A previous formatting specification defined in [XEP-0071](/extensions/xep-0071.html) has been deprecated. Many implementations
 failed to properly sanitize the formatted payload (it's tricky), leading to security issues
 (particularly in web applications).
 
-Implementation of [XEP-0071](https://xmpp.org/extensions/xep-0071.html) is not encouraged, but if formatting is a strong requirement along with
+Implementation of [XEP-0071](/extensions/xep-0071.html) is not encouraged, but if formatting is a strong requirement along with
 backwards compatibility (many clients still implement it currently), it remains an option if careful
 attention is given to sanitizing the XHTML before display. Consider using [xhtml-im.js](https://github.com/zeen/xhtml-im.js) in a web client, or as a reference.
 
@@ -89,8 +89,8 @@ approach to messaging, where all their devices are in sync.
 Modern XMPP clients should not set a priority in their presence, and they should implement the
 following XEPs:
 
-- [XEP-0280](https://xmpp.org/extensions/xep-0280.html): Message Carbons - for "live" synchronization of conversations between online devices
-- [XEP-0313](https://xmpp.org/extensions/xep-0313.html): Message Archive Management - for "catch-up" of messages that were exchanged while a device was offline
+- [XEP-0280](/extensions/xep-0280.html): Message Carbons - for "live" synchronization of conversations between online devices
+- [XEP-0313](/xep-0313.html): Message Archive Management - for "catch-up" of messages that were exchanged while a device was offline
 
 ### Known issues
 
@@ -106,7 +106,7 @@ If you enable Carbons first, you may receive duplicates from the archive of mess
 The current best solution is to enable Carbons, perform the query, and de-duplicate any received messages
 before presentation to the user.
 
-This issue will be solved in the future through [XEP-0386](https://xmpp.org/extensions/xep-0386.html) or an alternative atomic "fetch and subscribe"
+This issue will be solved in the future through [XEP-0386](/extensions/xep-0386.html) or an alternative atomic "fetch and subscribe"
 command.
 
 #### IDs of outgoing messages
@@ -131,8 +131,8 @@ with the ID added and any other additional info), or through a new MAM subscript
 There are some special considerations that mobile clients can make to increase battery life and reduce
 data consumption.
 
-- [XEP-0286](https://xmpp.org/extensions/xep-0286.html) - informational XEP providing advice to mobile developers on efficient data usage
-- [XEP-0352](https://xmpp.org/extensions/xep-0352.html) - used to inform the server of whether the client is currently active/focused (which allows
+- [XEP-0286](/extensions/xep-0286.html) - informational XEP providing advice to mobile developers on efficient data usage
+- [XEP-0352](/extensions/xep-0352.html) - used to inform the server of whether the client is currently active/focused (which allows
 the server to prioritize traffic)
 
 ## Reliability
@@ -140,8 +140,8 @@ the server to prioritize traffic)
 In the real world, it is normal for clients to get briefly disconnected. These extensions deal with
 ensuring reliable message delivery and reporting.
 
-- [XEP-0184](https://xmpp.org/extensions/xep-0184.html) - end-to-end acknowledgement, i.e. the recipient has successfully received the message
-- [XEP-0198](https://xmpp.org/extensions/xep-0198.html) - hop-to-hop acknowledgement, and allows efficient resume of broken connections without data loss
+- [XEP-0184](/extensions/xep-0184.html) - end-to-end acknowledgement, i.e. the recipient has successfully received the message
+- [XEP-0198](/extensions/xep-0198.html) - hop-to-hop acknowledgement, and allows efficient resume of broken connections without data loss
 
 ## Read state synchronization
 
@@ -150,9 +150,9 @@ that further improves the experience is not having to dismiss
 notifications and unread counters for messages that have already been
 read on another device.
 
-- [XEP-0280](https://xmpp.org/extensions/xep-0280.html): Carbon copies
+- [XEP-0280](/extensions/xep-0280.html): Carbon copies
   of replies, implying that prior messages have been read.
-- [XEP-0333](https://xmpp.org/extensions/xep-0333.html): Chat Markers -
+- [XEP-0333](/extensions/xep-0333.html): Chat Markers -
   to signal that messages have been shown to the user.
 
 ### Notifications
@@ -182,7 +182,7 @@ There are three file transfer methods that a modern XMPP client may implement:
 
 **Required:** *yes*
 
-The newest file transfer mechanism available, described in [XEP-0363](https://xmpp.org/extensions/xep-0363.html). It is strongly recommended to
+The newest file transfer mechanism available, described in [XEP-0363](/extensions/xep-0363.html). It is strongly recommended to
 implement this mechanism to provide the best user experience.
 
 #### Benefits
@@ -203,7 +203,7 @@ implement this mechanism to provide the best user experience.
 After uploading the file successfully, the sender should communicate the URL to the recipient by sending a
 `<message>` stanza with the "Get URL" provided by the server in the `<body>` of the message.
 
-Additionally the sender should include a [jabber:x:oob](https://xmpp.org/extensions/xep-0066.html#x-oob)
+Additionally the sender should include a [jabber:x:oob](/extensions/xep-0066.html#x-oob)
 element in the message stanza with the same URL.
 
 !!! note
@@ -226,10 +226,10 @@ originally developed at Google and contributed to the XSF where it evolved into 
 Because it is a generic framework that supports different underlying transports and different media types,
 Jingle is split into multiple XEPs. For file transfer the following are relevant:
 
-- [XEP-0166](https://xmpp.org/extensions/xep-0166.html) - the core Jingle framework
-- [XEP-0234](https://xmpp.org/extensions/xep-0234.html) - the Jingle file transfer definition
-- [XEP-0260](https://xmpp.org/extensions/xep-0260.html) - the most common transport mechanism for files (SOCKS5 Bytestreams - may be directly peer-to-peer or server-mediated)
-- [XEP-0261](https://xmpp.org/extensions/xep-0261.html) - a fallback transport for tunneling the data directly over the XMPP stream (inefficient and slow, but always succeeds)
+- [XEP-0166](/extensions/xep-0166.html) - the core Jingle framework
+- [XEP-0234](/extensions/xep-0234.html) - the Jingle file transfer definition
+- [XEP-0260](/extensions/xep-0260.html) - the most common transport mechanism for files (SOCKS5 Bytestreams - may be directly peer-to-peer or server-mediated)
+- [XEP-0261](/extensions/xep-0261.html) - a fallback transport for tunneling the data directly over the XMPP stream (inefficient and slow, but always succeeds)
 
 #### Advantages
 
@@ -255,11 +255,11 @@ it suitable for larger files.
 
 **Required:** *no - optionally implement for sending large files to pre-Jingle clients*
 
-[XEP-0096](https://xmpp.org/extensions/xep-0096.html) describes the stream negotiation protocol that was used before Jingle. It is widely supported, and can use the same
+[XEP-0096](/extensions/xep-0096.html) describes the stream negotiation protocol that was used before Jingle. It is widely supported, and can use the same
 transports:
 
-- [XEP-0065](https://xmpp.org/extensions/xep-0065.html)
-- [XEP-0047](https://xmpp.org/extensions/xep-0047.html)
+- [XEP-0065](/extensions/xep-0065.html)
+- [XEP-0047](/extensions/xep-0047.html)
 
 It is not recommended to implement this mechanism in new clients, except for compatibility with older clients
 is required (and HTTP Upload does not suffice for some reason).
@@ -278,11 +278,11 @@ is required (and HTTP Upload does not suffice for some reason).
 
 ## User Profiles
 
--   [XEP-0163](https://xmpp.org/extensions/xep-0163.html) is the base publishing method.
--   [XEP-0222](https://xmpp.org/extensions/xep-0222.html) for access controls.
--   [XEP-0084](https://xmpp.org/extensions/xep-0084.html) for profile picture.
--   [XEP-0172](https://xmpp.org/extensions/xep-0172.html) for nickname.
--   [XEP-0292](https://xmpp.org/extensions/xep-0292.html) for extended details (optional).
+-   [XEP-0163](/extensions/xep-0163.html) is the base publishing method.
+-   [XEP-0222](/extensions/xep-0222.html) for access controls.
+-   [XEP-0084](/extensions/xep-0084.html) for profile picture.
+-   [XEP-0172](/extensions/xep-0172.html) for nickname.
+-   [XEP-0292](/extensions/xep-0292.html) for extended details (optional).
 
 Simpler clients may choose to only use XEP-0084 and XEP-0172 to provide a limited user profile,
 while more advanced clients could publish more details via XEP-0292.
@@ -302,12 +302,12 @@ under 100 KiB.
 
 ### Access control
 
-Data published via [XEP-0163](https://xmpp.org/extensions/xep-0163.html) would by default be
+Data published via [XEP-0163](/extensions/xep-0163.html) would by default be
 available only to the user's contacts. Historically, profiles published via the legacy
-[XEP-0054](https://xmpp.org/extensions/xep-0054.html) method were public.
+[XEP-0054](/extensions/xep-0054.html) method were public.
 
 Modern PEP implementations should implement for 'access model' as described by
-[XEP-0222](https://xmpp.org/extensions/xep-0222.html), and allow users to share or limit their
+[XEP-0222](/extensions/xep-0222.html), and allow users to share or limit their
 personal details as they choose.
 
 Access model for both XEP-0084 nodes and the XEP-0172 node should be kept the same.
@@ -321,20 +321,20 @@ such as:
 
 ### Legacy
 
--   [XEP-0054](https://xmpp.org/extensions/xep-0054.html) is the legacy profile publishing method.
--   [XEP-0153](https://xmpp.org/extensions/xep-0153.html) notifies contacts about avatar changes.
--   [XEP-0398](https://xmpp.org/extensions/xep-0398.html) tells you whether you can ignore that and
+-   [XEP-0054](/extensions/xep-0054.html) is the legacy profile publishing method.
+-   [XEP-0153](/extensions/xep-0153.html) notifies contacts about avatar changes.
+-   [XEP-0398](/extensions/xep-0398.html) tells you whether you can ignore that and
     let the server do it for you.
 
 ## Group chat
 
-See [Group Chat](../groupchat/).
+See [Group Chat](/implementation-guidelines/groupchat).
 
 ## Contact management
 
 ### Blocking
 
-- [XEP-0191](https://xmpp.org/extensions/xep-0191.html) for blocking communication with a list of other JIDs
+- [XEP-0191](/extensions/xep-0191.html) for blocking communication with a list of other JIDs
 
 ## Encryption
 
@@ -346,7 +346,7 @@ the contents of exchanged messages, and is known as 'end-to-end
 encryption'.
 
 The current preferred protocol for this in XMPP is OMEMO, specified
-in [XEP-0384](https://xmpp.org/extensions/xep-0384.html). Client support is indicated at <https://omemo.top/>.
+in [XEP-0384](/extensions/xep-0384.html). Client support is indicated at [omemo.top](https://omemo.top/).
 
 ### Notes
 
@@ -362,7 +362,7 @@ very well, nor group chats, and it only protects the message body.
 
 These issues lead to a poor user experience.
 
-Modern XMPP clients that implement OTR must add a [XEP-0380](https://xmpp.org/extensions/xep-0380.html) tag to their outgoing
+Modern XMPP clients that implement OTR must add a [XEP-0380](/extensions/xep-0380.html) tag to their outgoing
 messages.
 
 #### MLS
