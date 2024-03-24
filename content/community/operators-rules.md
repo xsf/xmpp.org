@@ -105,4 +105,4 @@ Other options include the following channels which are not XSF-operated channels
 
 For broader discussions related to the XMPP network and ecosystem, check out the [joinjabber.org community](https://joinjabber.org/about/community/). They have a range of channels across various relevant topics.
 
-A general off-topic chat can be found at [conversations-offtopic-reloaded@conference.trashserver.net](xmpp:conversations-offtopic-reloaded@conference.trashserver.net?join).
+For other topics, you may find chat rooms to your liking at [search.jabber.network](https://search.jabber.network).
