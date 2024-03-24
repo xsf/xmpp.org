@@ -99,7 +99,7 @@ Finally, note that channel membership does not imply any kind of immunity from t
 
 ### I want to discuss something that is considered off-topic in this channel, where can I go?
 
-To discuss software development related to XMPP, there exists [jdev@muc.xmpp.org](xmpp:jdev@muc.xmpp.org?join). Discussion of XMPP Extension Proposals as well as the XMPP standard itself and matters concerning the XMPP Standards Foundation takes place in [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join).
+To discuss software development related to XMPP, there exists the [XMPP Developers channel](jdev-rules.md) at [jdev@muc.xmpp.org](xmpp:jdev@muc.xmpp.org?join). Discussion of XMPP Extension Proposals as well as the XMPP standard itself and matters concerning the XMPP Standards Foundation takes place in [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join).
 
 Other options include the following channels which are not XSF-operated channels. They may have their own rules and moderation policies. Accordingly it follows that we are not responsible for the content or moderation of these channels. They are merely suggestions.
 
