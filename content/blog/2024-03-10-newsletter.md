@@ -50,7 +50,7 @@ We are happy [to announce](https://www.xmpp-it.net/2024/03/03/mario/the-xmpp-it-
 
 [JMP turned 7 years old!](https://blog.jmp.chat/b/february-newsletter-2024) Congratulations! Read also about [mobile-friendly gateway to any SIP provider](https://blog.jmp.chat/b/mobile-friendly-sip-gateway).
 
-{{< figure src="/images/logos/gsoc2024_logo.svg" caption="SIP via XMPP" >}}
+{{< figure src="/images/newsletter/2024-03-05/jmp-sip-gateway.png" caption="SIP via XMPP" >}}
 
 ## Software News
 
