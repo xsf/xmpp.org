@@ -1,6 +1,7 @@
 ---
 Title: Sponsors
 Url: community/sponsors
+layout: single
 aliases:
   - "/community/sponsors.html"
 ---
