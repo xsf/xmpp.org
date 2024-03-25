@@ -324,6 +324,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 .extensions-block-listing li {
     font-family: "Exo 2", sans-serif !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .extensions-logos img {
     height: 100px;

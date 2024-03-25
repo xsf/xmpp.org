@@ -1,0 +1,28 @@
+<div class="row row-cols-2 my-4">
+    <div class="col">
+        <div class="border rounded shadow-sm p-2">
+            <h2 class="text-center my-2">New XEPs</h2>
+            <ul class="extensions-block-listing">
+            {{- if .Site.Data.xeplist -}}
+                {{- range first 5 (sort .Site.Data.xeplist ".number" "desc") -}}
+                    {{- $number_str := printf "%04g" .number -}}
+                    <li><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a>&nbsp;{{- .title -}}</li>
+                {{- end -}}
+            {{- end -}}
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="border rounded shadow-sm p-2">
+            <h2 class="text-center my-2">Recently Updated XEPs</h2>
+            <ul class="extensions-block-listing">
+                {{- if .Site.Data.xeplist -}}
+                {{- range first 5 (sort .Site.Data.xeplist ".last_revision_date" "desc") -}}
+                    {{- $number_str := printf "%04g" .number -}}
+                    <li><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a>&nbsp;{{- .title -}}</li>
+                {{- end -}}
+            {{- end -}}
+            </ul>
+        </div>
+    </div>
+</div>
