@@ -29,13 +29,15 @@ Find out [more about MongooseIM here](https://www.erlang-solutions.com/technolog
 
 {{< figure src="/images/logos/process-one.png" link="/sponsors/processone" class="p-2 sponsor-logo" >}}
 
-ProcessOne helps its customers build large scale realtime messaging platforms, using standard-based protocols. The company develops ejabberd, one of the most popular XMPP server. ejabberd is highly customizable and powers some of the largest messaging services & IoT platforms. Easy to deploy for small community servers, it scales massively and supports clustering, with the ability to support hundreds of millions users in a single domain ([more about ProcessOne](/sponsors/processone))
+ProcessOne helps its customers build large scale realtime messaging platforms, using standard-based protocols. The company develops ejabberd, one of the most popular XMPP server. ejabberd is highly customizable and powers some of the largest messaging services & IoT platforms. Easy to deploy for small community servers, it scales massively and supports clustering, with the ability to support hundreds of millions users in a single domain.
+
+([more about ProcessOne](/sponsors/processone))
 
 ### Tigase
 
 {{< figure src="/images/logos/tigase.png" link="/sponsors/tigase" class="p-2 sponsor-logo" >}}
 
-Tigase, Inc. is a leading provider of customized implementations of XMPP-based software. Written in Java, Tigase XMPP Server can run on any hardware supporting the Java Development Kit, and can easily scale from small single machine installations to millions of users on a clustered network
+Tigase, Inc. is a leading provider of customized implementations of XMPP-based software. Written in Java, Tigase XMPP Server can run on any hardware supporting the Java Development Kit, and can easily scale from small single machine installations to millions of users on a clustered network.
 
 ([more about Tigase](/sponsors/tigase))
 
@@ -43,7 +45,7 @@ Tigase, Inc. is a leading provider of customized implementations of XMPP-based s
 
 {{< figure src="/images/logos/tygrys.png" link="/sponsors/tygrys" class="p-2 sponsor-logo" >}}
 
-Tygrys is an expansive tech suite crafted to deliver secure and efficient communication for individuals and teams. Integrating our XMPP service supplemented with a hand-made multi-platform XMPP client, email service, and comprehensive project and code management tools, the suite is designed from the ground up for seamless operation across multiple platforms. By prioritizing user privacy, Tygrys ensures that personal data remains strictly in the hands of its users, with our staunch commitment to having no data to collect and nothing to track
+Tygrys is an expansive tech suite crafted to deliver secure and efficient communication for individuals and teams. Integrating our XMPP service supplemented with a hand-made multi-platform XMPP client, email service, and comprehensive project and code management tools, the suite is designed from the ground up for seamless operation across multiple platforms. By prioritizing user privacy, Tygrys ensures that personal data remains strictly in the hands of its users, with our staunch commitment to having no data to collect and nothing to track.
 
 [more about Tygrys](/sponsors/tygrys)
 
@@ -51,6 +53,6 @@ Tygrys is an expansive tech suite crafted to deliver secure and efficient commun
 
 {{< figure src="/images/logos/usshc.png" link="/sponsors/us-secure-hosting-center" class="p-2 sponsor-logo" >}}
 
-USSHC is a privately owned underground secure colocation data center located in the rural Midwestern United States
+USSHC is a privately owned underground secure colocation data center located in the rural Midwestern United States.
 
 [more about USSHC](/sponsors/us-secure-hosting-center)
