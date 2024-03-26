@@ -10,6 +10,14 @@ The XSF is generously supported by the sponsors below, please visit their xmpp.o
 
 If your organization would like to become an XSF sponsor, then [please read about the benefits you’ll enjoy](/community/sponsorship).
 
+### Erlang Solutions
+
+{{< figure src="/images/logos/erlang-solutions.png" link="/sponsors/erlang-solutions" class="p-2 sponsor-logo" >}}
+
+Text
+
+([more about Erlang Solutions](/sponsors/erlang-solutions))
+
 ### ProcessOne
 
 {{< figure src="/images/logos/process-one.png" link="/sponsors/processone" class="p-2 sponsor-logo" >}}
