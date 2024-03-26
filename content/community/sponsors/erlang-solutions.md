@@ -5,20 +5,7 @@ Url: sponsors/erlang-solutions
 
 {{< figure src="/images/logos/erlang-solutions.png" class="p-2 sponsor-logo" >}}
 
-## Short overview of Erlang Solutions
-
 [Erlang Solutions Ltd](https://www.erlang-solutions.com/) is the world-leading expert at building massively scalable, distributed
-systems using resilient, fault-tolerant and scalable technologies.
-
-We’re the creators of MongooseIM, a scalable, extensible and efficient real-time messaging
-server that allows organisations to build cost-effective communication solutions. Built on the
-XMPP server, MongooseIM is specifically designed for businesses facing the challenge of
-large deployments, where real-time communication and user experience are critical.
-Find out [more about MongooseIM here](https://www.erlang-solutions.com/technologies/mongooseim/), or try out our [demo system here](https://trymongoose.im/).
-
-## Sponsor description - longer version
-
-Erlang Solutions Ltd is the world-leading expert at building massively scalable, distributed
 systems using resilient, fault-tolerant and scalable technologies.
 
 We’re the creators of MongooseIM, a scalable, extensible and efficient real-time messaging
