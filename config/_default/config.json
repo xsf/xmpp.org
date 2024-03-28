@@ -13,9 +13,6 @@
     "permalinks": {
         "blog": "/:year/:month/:title/"
     },
-    "author": {
-        "name": "XMPP Communication Team and Contributors"
-    },
     "privacy": {
         "youtube": {
             "privacyEnhanced": true
@@ -23,6 +20,9 @@
     },
     "Params": {
         "dateFormat": "January 2, 2006",
+        "author": {
+            "name": "XMPP Communication Team and Contributors"
+        },
         "githubEdit": "https://github.com/xsf/xmpp.org/edit/master/content/",
         "hideAuthor": false,
         "readingTime": true,

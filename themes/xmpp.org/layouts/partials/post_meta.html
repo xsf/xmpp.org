@@ -29,7 +29,7 @@
       {{- if .Params.author -}}
         &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{- .Params.author | safeHTML -}}
       {{- else -}}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{- .Site.Author.name | safeHTML -}}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{- .Site.Params.author.name | safeHTML -}}
       {{- end -}}
     {{- end -}}
     {{- if .IsTranslated -}}
