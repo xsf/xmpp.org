@@ -1,6 +1,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="{{ .Site.Params.Description }}">
+    <meta property="og:url" content="{{ .Site.BaseURL }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
+    <meta property="og:image" content="{{ .Site.Params.SiteLogoUrl }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="providers.xmpp.net">
+    <meta property="twitter:url" content="{{ .Site.BaseURL }}">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ .Site.Params.Description }}">
+    <meta name="twitter:image" content="{{ .Site.Params.SiteLogoUrl }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#212529">
+
+    <link rel="canonical" href="{{- .Permalink -}}">
+    <link rel="me" href="https://fosstodon.org/@xmpp">
+
+    <title>
+      {{- if .IsHome -}}
+      {{- printf "%s | %s" .Site.Title (.Param "subtitle") -}}
+      {{- else -}}
+      {{- printf "%s | %s" .Site.Title .Title -}}
+      {{- end -}}
+    </title>
+
     {{- with $bootstrap := resources.Get "css/bootstrap.min.css" -}}
     {{- with $secureBootstrap := $bootstrap | resources.Fingerprint "sha256" -}}
     <link rel="stylesheet" type="text/css" href="{{- $bootstrap.Permalink}}" integrity="{{$secureBootstrap.Data.Integrity}}">
@@ -21,19 +52,7 @@
     <link rel="stylesheet" type="text/css" href="{{- $style.Permalink -}}" integrity="{{$secureStyle.Data.Integrity}}">
     {{- end -}}
     {{- end -}}
-    <link rel="me" href="https://fosstodon.org/@xmpp">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#212529">
-    <link rel="canonical" href="{{- .Permalink -}}">
-    <title>
-      {{- if .IsHome -}}
-      {{- printf "%s | %s" .Site.Title (.Param "subtitle") -}}
-      {{- else -}}
-      {{- printf "%s | %s" .Site.Title .Title -}}
-      {{- end -}}
-    </title>
+
     <noscript>
         <style>
             /* Expand all (usually collapsed) elements. */
