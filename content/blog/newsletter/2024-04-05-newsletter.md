@@ -7,7 +7,8 @@ categories: ['Newsletter']
 # The 50th release of the XMPP Newsletter!
 
 This is the 50th release of the XMPP Newsletter since it started in February 2019.
-We thought it is worth to celebrate this and say thanks to all the contributors as well as all our readers.
+At the Summit at Brussels JC Brand, Nicolas Vérité (Nyco) and Severino Ferrer (S0ul) proposed and initialed the XMPP Newsletter and since then we had almost every month a release of the news in the XMPP universe.
+We think it is worth to celebrate this achievement and say thanks to all the contributors as well as all our readers!
 We are looking forward to the next releases and invite you to participate! We would love to see more contributors as well as more translations.
 
 So, welcome to the 50th edition of the XMPP Newsletter, great to have you here again!
