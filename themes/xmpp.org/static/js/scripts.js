@@ -82,12 +82,14 @@ function filter_xeps() {
   const search_string = document.getElementById("xep-search-input").value.toLowerCase();
   const checkboxes = document.querySelectorAll("#status-selector input");
   const xepFilterResultsCountElement = document.getElementById("xep-filter-results-count");
+  const dormantWarning = document.getElementById("dormant_xeps_filter_warning")
 
   if (search_string !== "") {
     // Ignore status checkboxes when searching
     for (const checkbox of checkboxes) {
       checkbox.disabled = true;
     }
+    dormantWarning.classList.add("d-none")
 
     const rows = document.querySelectorAll("[class*=XEP-]")
     for (const row of rows) {
@@ -111,11 +113,14 @@ function filter_xeps() {
 
     const hiddenXepsCount = xeplist.querySelectorAll('tr[hidden]').length;
     const shownXeps = xeplist.querySelectorAll('tr:not([hidden])').length - 1;
+
     xepFilterResultsCountElement.innerText = `Showing ${shownXeps} of ${shownXeps + hiddenXepsCount} XEPs`
     return
   }
 
   // Handle status checkboxes
+  let activeFilterCount = 0
+
   for (const checkbox of checkboxes) {
     checkbox.disabled = false;
     const xep_status = checkbox.getAttribute("name");
@@ -123,11 +128,37 @@ function filter_xeps() {
     for (const row of relevant_xeps) {
       row.hidden = !checkbox.checked;
     }
+
+    if (checkbox.checked) {
+      activeFilterCount += 1
+    }
   }
 
   const hiddenXepsCount = xeplist.querySelectorAll('tr[hidden]').length;
   const shownXeps = xeplist.querySelectorAll('tr:not([hidden])').length - 1;
-  xepFilterResultsCountElement.innerText = `Showing ${shownXeps} of ${shownXeps + hiddenXepsCount} XEPs`
+
+  xepFilterResultsCountElement.innerText = `Showing ${shownXeps} of ${shownXeps + hiddenXepsCount} XEPs `
+
+  if (activeFilterCount > 0) {
+    const filterSpan = document.createElement("a")
+    filterSpan.href = "#"
+    filterSpan.dataset.bsToggle = "collapse"
+    filterSpan.dataset.bsTarget = "#filter_collapse"
+
+    if (activeFilterCount === 1) {
+      filterSpan.innerText = "(1 filter active)"
+      xepFilterResultsCountElement.append(filterSpan)
+    } else if (activeFilterCount > 1) {
+      filterSpan.innerText = `(${activeFilterCount} filters active)`
+      xepFilterResultsCountElement.append(filterSpan)
+    }
+  }
+
+  if (document.getElementById("Dormant").checked) {
+    dormantWarning.classList.add("d-none")
+  } else {
+    dormantWarning.classList.remove("d-none")
+  }
 }
 
 function show_xep_implementations() {
