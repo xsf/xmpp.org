@@ -71,7 +71,7 @@
         {
             "name": "Jan-Carel Brand",
             "jids": ["jc@opkode.com"],
-            "roles": ["editor", "commteam"]
+            "roles": ["commteam"]
         },
 
         {
@@ -108,8 +108,7 @@
 
         {
             "name": "Martin Dosch",
-            "jids": ["martin@mdosch.de"],
-            "roles": ["editor"]
+            "jids": ["martin@mdosch.de"]
         },
 
         {
@@ -255,7 +254,7 @@
         {
             "name": "Peter Saint-Andre",
             "jids": ["stpeter@jabber.org"],
-            "roles": ["treasurer", "registrar", "editor", "infrastructure", "board"]
+            "roles": ["treasurer", "registrar", "infrastructure", "board"]
         },
 
         {
@@ -271,8 +270,7 @@
 
         {
             "name": "Florian Schmaus",
-            "jids": ["flo@geekplace.eu"],
-            "roles": ["editor"]
+            "jids": ["flo@geekplace.eu"]
         },
 
         {
