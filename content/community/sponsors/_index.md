@@ -23,7 +23,7 @@ XMPP server, MongooseIM is specifically designed for businesses facing the chall
 large deployments, where real-time communication and user experience are critical.
 Find out [more about MongooseIM here](https://www.erlang-solutions.com/technologies/mongooseim/), or try out our [demo system here](https://trymongoose.im/).
 
-([more about Erlang Solutions](/sponsors/erlang-solutions))
+[More about Erlang Solutions](/sponsors/erlang-solutions)
 
 ### ProcessOne
 
@@ -31,7 +31,7 @@ Find out [more about MongooseIM here](https://www.erlang-solutions.com/technolog
 
 ProcessOne helps its customers build large scale realtime messaging platforms, using standard-based protocols. The company develops ejabberd, one of the most popular XMPP server. ejabberd is highly customizable and powers some of the largest messaging services & IoT platforms. Easy to deploy for small community servers, it scales massively and supports clustering, with the ability to support hundreds of millions users in a single domain.
 
-([more about ProcessOne](/sponsors/processone))
+[More about ProcessOne](/sponsors/processone)
 
 ### Tigase
 
@@ -39,7 +39,7 @@ ProcessOne helps its customers build large scale realtime messaging platforms, u
 
 Tigase, Inc. is a leading provider of customized implementations of XMPP-based software. Written in Java, Tigase XMPP Server can run on any hardware supporting the Java Development Kit, and can easily scale from small single machine installations to millions of users on a clustered network.
 
-([more about Tigase](/sponsors/tigase))
+[More about Tigase](/sponsors/tigase)
 
 ### Tygrys
 
@@ -47,7 +47,7 @@ Tigase, Inc. is a leading provider of customized implementations of XMPP-based s
 
 Tygrys is an expansive tech suite crafted to deliver secure and efficient communication for individuals and teams. Integrating our XMPP service supplemented with a hand-made multi-platform XMPP client, email service, and comprehensive project and code management tools, the suite is designed from the ground up for seamless operation across multiple platforms. By prioritizing user privacy, Tygrys ensures that personal data remains strictly in the hands of its users, with our staunch commitment to having no data to collect and nothing to track.
 
-[more about Tygrys](/sponsors/tygrys)
+[More about Tygrys](/sponsors/tygrys)
 
 ### US Secure Hosting Center
 
@@ -55,4 +55,4 @@ Tygrys is an expansive tech suite crafted to deliver secure and efficient commun
 
 USSHC is a privately owned underground secure colocation data center located in the rural Midwestern United States.
 
-[more about USSHC](/sponsors/us-secure-hosting-center)
+[More about USSHC](/sponsors/us-secure-hosting-center)
