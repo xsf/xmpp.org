@@ -73,7 +73,7 @@ Though please do [donate to support](https://snikket.org/donate/) the project, e
 
 ### Clients and Applications
 
-- JMP eSIM Adapter
+- The [JMP newsletter introduces the JMP eSIM Adapter](https://blog.jmp.chat/b/march-newsletter-2024), allowing users to use eSIMs from any provider in any device. It explains how to download and write eSIMs to the adapter, including using an open source Android app or PC/SC reader. Cheogram Android also receives an update with new features and a visual refresh. There's a clarification on contact integration, with Google now requiring the app claim to upload the contacts even though it does not.
 - [Converse 10.1.7](https://github.com/conversejs/converse.js/releases/tag/v10.1.7) with StropheJS fix for [XEP-0474: SASL SCRAM Downgrade Protection](https://xmpp.org/extensions/xep-0474.html).
 - [Psi+ 1.5.1716](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/), [Psi+ 1.5.1682](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/),
 [Psi+ 1.5.1669](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
