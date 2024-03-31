@@ -170,6 +170,7 @@ function show_xep_implementations() {
     const paddedXEPNum = item.number.toString().padStart(4, '0')
     if (paddedXEPNum === xep_number) {
       document.getElementById("implementations-heading").innerText = `XEP-${paddedXEPNum}: ${item.title}`;
+      document.getElementById("implementations-description").innerText = `Last revision: Version ${item.last_revision_version} (${item.last_revision_date})`
 
       for (const implementation of item.implementations) {
         const implementationRow = document.createElement("tr")
