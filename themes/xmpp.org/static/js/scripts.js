@@ -208,11 +208,17 @@ function show_xep_implementations() {
         }
         implementationRow.append(stateCell)
 
-        const versionCell = document.createElement("td")
-        if (implementation.implemented_version) {
-          versionCell.innerText = implementation.implemented_version
+        const implementationSinceVersionCell = document.createElement("td")
+        if (implementation.implementation_since) {
+          implementationSinceVersionCell.innerText = implementation.implementation_since
         }
-        implementationRow.append(versionCell)
+        implementationRow.append(implementationSinceVersionCell)
+
+        const implementedVersionCell = document.createElement("td")
+        if (implementation.implemented_version) {
+          implementedVersionCell.innerText = implementation.implemented_version
+        }
+        implementationRow.append(implementedVersionCell)
 
         tableBody.append(implementationRow)
       }

@@ -52,6 +52,7 @@ DOAP_SUPPORTED_XEP = f".//{{{XMPP_NS}}}SupportedXep"
 DOAP_XEP_NUMBER = f".//{{{XMPP_NS}}}xep"
 DOAP_XEP_VERSION = f".//{{{XMPP_NS}}}version"
 DOAP_XEP_STATUS = f".//{{{XMPP_NS}}}status"
+DOAP_XEP_SINCE = f".//{{{XMPP_NS}}}since"
 
 RFC_REGEX = r"rfc\d{1,4}"
 XEP_REGEX = r"xep-\d{1,4}"
@@ -175,11 +176,16 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
             if status is not None:
                 status = status.text
 
+            since = supported_xep.find(DOAP_XEP_SINCE)
+            if since is not None:
+                since = since.text
+
             xeps.append(
                 {
                     "number": number,
                     "version": version,
                     "status": status,
+                    "since": since,
                 }
             )
 
@@ -362,6 +368,7 @@ def add_doap_data_to_xeplist() -> None:
                             "package_categories": package_data["categories"],
                             "implemented_version": supported_xep["version"],
                             "implementation_status": supported_xep["status"],
+                            "implementation_since": supported_xep["since"],
                         }
                     )
                     break
