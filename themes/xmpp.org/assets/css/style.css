@@ -336,6 +336,24 @@ button[name="show-xep-implementations"] {
 .extensions-logos img {
     height: 100px;
 }
+.offcanvas.offcanvas-end.extensions-offcanvas {
+    width: 100%;
+}
+@media (min-width: 576px) {
+    .offcanvas.offcanvas-end.extensions-offcanvas {
+        width: 70%;
+    }
+}
+@media (min-width: 768px) {
+    .offcanvas.offcanvas-end.extensions-offcanvas {
+        width: 50%;
+    }
+}
+@media (min-width: 992px) {
+    .offcanvas.offcanvas-end.extensions-offcanvas {
+        width: var(--bs-offcanvas-width);
+    }
+}
 
 .abbr {
     -webkit-text-decoration: underline dotted;
