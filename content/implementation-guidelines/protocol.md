@@ -206,14 +206,11 @@ After uploading the file successfully, the sender should communicate the URL to 
 Additionally the sender should include a [jabber:x:oob](/extensions/xep-0066.html#x-oob)
 element in the message stanza with the same URL.
 
-!!! note
-
-    To enable automatic display of media in the conversation view, Conversations (at least) currently requires
-    that the `<body>` contain *just* the URL, and it must be identical to the URL in the `jabber:x:oob` payload.
-
-    The `<desc>` element is not used or supported by Conversations.
-
-    This behavior means that it is not possible for any text to directly accompany a media file, and must be sent separately.
+{{< info-block type="note" >}}
+To enable automatic display of media in the conversation view, Conversations (at least) currently requires that the `<body>` contain *just* the URL, and it must be identical to the URL in the `jabber:x:oob` payload.  
+The `<desc>` element is not used or supported by Conversations.  
+This behavior means that it is not possible for any text to directly accompany a media file, and must be sent separately.
+{{< /info-block >}}
 
 ### Jingle
 
@@ -246,10 +243,9 @@ it suitable for larger files.
 - Does not work for sharing a file with multiple people (e.g. in a group chat)
 - Only works if the recipient is online
 
-!!! note
-
-    Although it is the only recommended negotiation protocol for peer-to-peer streams today, note that Jingle
-    support is not nearly universal even among modern clients.
+{{< info-block type="note" >}}
+Although it is the only recommended negotiation protocol for peer-to-peer streams today, note that Jingle support is not nearly universal even among modern clients.
+{{< /info-block >}}
 
 ### Stream Initiation (pre-Jingle)
 

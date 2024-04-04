@@ -7,7 +7,7 @@ please [open an issue or pull request](https://github.com/modernxmpp/modernxmpp)
 
 ## Registration
 
-!!! TODO
+{{< info-block type="todo" / >}}
 
 ## Initial configuration
 
@@ -71,12 +71,9 @@ The client MUST display offline contacts by default, and allow sending messages 
 The client MUST sort the contact list. Either in [lexicographical order](https://en.wikipedia.org/wiki/Lexicographical_order) by contact name or
 chronologically by the time of the last message exchanged with that contact.
 
-!!! Note
-    Historically, some clients have sorted by presence (available, offline,
-    busy, etc.) as a secondary sorting category.
-    Due to the rise in mobile clients which always consider themselves
-    "available", presence is not always a reliable indicator that a contact is
-    available to chat.
+{{< info-block type="note" >}}
+Historically, some clients have sorted by presence (available, offline, busy, etc.) as a secondary sorting category.  Due to the rise in mobile clients which always consider themselves "available", presence is not always a reliable indicator that a contact is available to chat.
+{{< /info-block >}}
 
 If sorting chronologically and/or by presence, clients MUST NOT rearrange the
 contacts list while fetching history, or when the contact list has focus.
@@ -89,8 +86,9 @@ screen reader or during tab selection.
 The client MUST display status messages of contacts when present. It MAY also provide visual indication of the contact's status ('show'), but
 SHOULD NOT rely on color alone to distinguish different status values[^color].
 
-!!! todo
-    Describe how to display multiple remote resources.
+{{< info-block type="todo" >}}
+Describe how to display multiple remote resources.
+{{< /info-block >}}
 
 ## Conversation view
 
@@ -106,8 +104,9 @@ A client must be able to unambiguously display the following outgoing message st
 * Message read by contact
 * Delivery error for message
 
-!!! todo
-    Add table or flowchart
+{{< info-block type="todo" >}}
+Add table or flowchart
+{{< /info-block >}}
 
 ## Notifications
 
@@ -123,9 +122,10 @@ Do display error text
 
 Support for multiple accounts is OPTIONAL.
 
-!!! todo
-    Research recommendations for the best way to handle multiple accounts. E.g. merge contacts, or not.
-    Not required. Describe how to display multiple accounts in a single client?
+{{< info-block type="todo" >}}
+Research recommendations for the best way to handle multiple accounts. E.g. merge contacts, or not.  
+Not required. Describe how to display multiple accounts in a single client?
+{{< /info-block >}}
 
 ## Group chat
 
@@ -135,16 +135,17 @@ You can find more details about [group chats here](/implementation-guidelines/gr
 
 Clients should have documentation covering essential functionality, including:
 
-!!! todo
-    List of recommended documentation topics, e.g. how to add a contact
+{{< info-block type="todo" >}}
+List of recommended documentation topics, e.g. how to add a contact
+{{< /info-block >}}
 
 ## Privacy
 
 Clients must not reveal full JID. Don't query unsubscribed contacts.
 
-!!! todo
-    Probably belongs in protocol reference. Probably some things relevant
-    to UI that should be mentioned, however.
+{{< info-block type="todo" >}}
+Probably belongs in protocol reference. Probably some things relevant to UI that should be mentioned, however.
+{{< /info-block >}}
 
 ## Names
 
