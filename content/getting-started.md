@@ -14,7 +14,7 @@ There are [plenty of XMPP apps/clients](/software/) for you to choose from. To g
 
 * [Beagle IM](https://beagle.im/) (macOS)
 * [Converse.js](https://conversejs.org/) (Browser)
-* [mov.im](https://mov.im/chat) (Browser)
+* [Movim](https://movim.eu/) (Browser)
 * [Dino](https://dino.im/) (Linux)
 * [Gajim](https://gajim.org/) (Linux, Windows)
 * [Monal](https://monal-im.org/) (macOS)
