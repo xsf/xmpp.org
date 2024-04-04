@@ -1,0 +1,34 @@
+{{- $text := .Inner -}}
+{{- $type := .Get "type" -}}
+
+{{- $alert_class := "primary" -}}
+{{- $prefix_text := "" -}}
+{{- $icon_class := "" -}}
+
+{{- if eq $type "todo" -}}
+    {{- $alert_class = "secondary" -}}
+    {{- $icon_class = "fa-solid fa-clipboard-list" -}}
+    {{- $prefix_text = "To-do" -}}
+{{- else if eq $type "note" -}}
+    {{- $prefix_text = "Note" -}}
+    {{- $icon_class = "fa-solid fa-circle-info" -}}
+{{- else if eq $type "warning" -}}
+    {{- $alert_class = "warning" -}}
+    {{- $icon_class = "fa-solid fa-circle-exclamation" -}}
+{{- end -}}
+
+<div class="alert d-flex alert-{{ $alert_class }}" role="alert">
+    <i class="{{ $icon_class }} text-muted mt-1 me-2"></i>
+    <div>
+        {{- if $text -}}
+            {{- if $prefix_text -}}
+                <b>{{- $prefix_text -}}:</b>&nbsp;
+            {{- end -}}
+            {{- $text | markdownify -}}
+        {{- else -}}
+            {{- if $prefix_text -}}
+                <b>{{- $prefix_text -}}</b>
+            {{- end -}}
+        {{- end -}}
+    </div>
+</div>
