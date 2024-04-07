@@ -1,3 +1,6 @@
+html {
+    scroll-padding-top: 4rem;
+}
 h1 {
     font-weight: 700 !important;
 }
