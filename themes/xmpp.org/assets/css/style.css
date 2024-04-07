@@ -267,6 +267,10 @@ ul.share {
 }
 
 /* Footer: Sponsors, Github link */
+.footer-sponsors {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .footer-sponsors ul {
     -webkit-filter: grayscale(80%);
     filter: grayscale(80%);
@@ -481,8 +485,11 @@ button[name="show-xep-implementations"] {
         background-color: rgba(0,0,0,.7);
     }
     .footer-sponsors {
-        background-color: #3a444e;
-        border: 1px solid #838383;
+        background-color: #2e3439;
+        border: 1px solid #4c4c4c;
+    }
+    .footer-github {
+        border-top: 1px solid #3d3f41;
     }
     .software-list {
         background-color: #1b252a;
