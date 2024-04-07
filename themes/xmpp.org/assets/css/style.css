@@ -458,6 +458,9 @@ button[name="show-xep-implementations"] {
     ul.share li a {
         background-color: #3b5160;
     }
+    a {
+        color: #27b7e6;
+    }
     blockquote {
         background: #2e353a;
         border-left: 10px solid #56707a;
