@@ -4,14 +4,17 @@ date: 2024-04-07
 categories: ['Newsletter']
 ---
 
-{{< figure src="images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
+{{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
 
-# The 50<sup>th</sup> release of the XMPP Newsletter!
+# The 50th release of the XMPP Newsletter!
 
 This is the 50th release of the XMPP Newsletter since it started in February 2019.
 We think it is worth to celebrate this achievement and say thanks to all the contributors as well as all our readers!
-Back then at the Summit at Brussels JC Brand, Nicolas Vérité (Nyco) and Severino Ferrer (S0ul) proposed and initialed the XMPP Newsletter and since then we had almost every month a release of the news in the XMPP universe.
-Hence, we are looking forward to the next releases and invite you to participate this community effort! We would love to see more contributors as well as more translations of the XMPP Newsletter. [Read more about how to help below.](#newsletter-contributors--translations)
+Back at the Summit in Brussels, JC Brand, Nicolas Vérité (Nyco) and Severino Ferrer (S0ul) proposed and initiated the XMPP Newsletter.
+Since then almost every month there has been a release full of news from the XMPP universe.
+Hence, we are looking forward to the next releases and invite you to participate in this community effort!
+We would love to see more contributors as well as more translations of the XMPP Newsletter.
+[Read more about how to help below.](#newsletter-contributors--translations)
 
 That being said, welcome to the 50th edition of the XMPP Newsletter, great to have you here again!
 This issue covers the month of March 2024.
@@ -24,7 +27,8 @@ If you are interested to join the XMPP Standards Foundation as member, [please a
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
-Currently the XMPP project mentors are reviewing the proposals. The GSoC project ideas from XMPP-related projects are:
+Currently XMPP project mentors are reviewing the proposals.
+GSoC project ideas from XMPP-related projects are:
 
 - Monal
   - [Modern Onboarding (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Modern_Onboarding)
@@ -33,7 +37,7 @@ Currently the XMPP project mentors are reviewing the proposals. The GSoC project
   - [SiriKit support (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/SiriKit_support)
 - Dino
   - [Inline link preview (175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Dino/Inline_link_preview)
-  - [Rich message support	(175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Dino/Rich_message_support)
+  - [Rich message support (175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Dino/Rich_message_support)
 - Prav.app
   - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
 
@@ -78,20 +82,19 @@ European Union news:
 
 - The [JMP newsletter introduces the JMP eSIM Adapter](https://blog.jmp.chat/b/march-newsletter-2024), allowing users to use eSIMs from any provider in any device. It explains how to download and write eSIMs to the adapter, including using an open source Android app or PC/SC reader. Cheogram Android also receives an update with new features and a visual refresh. There's a clarification on contact integration, with Google now requiring the app claim to upload the contacts even though it does not.
 - [Converse 10.1.7](https://github.com/conversejs/converse.js/releases/tag/v10.1.7) with StropheJS fix for [XEP-0474: SASL SCRAM Downgrade Protection](https://xmpp.org/extensions/xep-0474.html).
-- [Psi+ 1.5.1716](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/), [Psi+ 1.5.1682](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/),
-[Psi+ 1.5.1669](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
+- [Psi+ 1.5.1716  through 1.5.1669](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
 ### Servers
 
 - Openfire has been released in [version 4.8.1](https://discourse.igniterealtime.org/t/openfire-4-8-1-release/93681).
   - Openfire inVerse plugin [version 10.1.7.1 has been released](https://discourse.igniterealtime.org/t/openfire-inverse-plugin-version-10-1-7-1-released/93740).
-  - Openfire [PionTurn plugin](https://discourse.igniterealtime.org/t/pionturn-plugin-1-0-0-released/93757) 1.0.0 released! It creates a TURN/STUN server for Openfire.
+  - Openfire [PionTurn plugin](https://discourse.igniterealtime.org/t/pionturn-plugin-1-0-0-released/93757) 1.0.0 has been released! It creates a TURN/STUN server for Openfire.
 
 ### Libraries & Tools
 
 - A new release of [go-xmpp 0.1.4](https://github.com/xmppo/go-xmpp/releases/tag/v0.1.4).
 - A new release of [go-sendxmpp 0.9.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.9.0).
-- [overpush](https://github.com/mrusme/overpush): A self-hosted, drop-in replacement for Pushover, that uses XMPP as delivery method and offers the same API for submitting messages, so that existing setups (e.g. Grafana) can continue working and only require changing the API URL. [Release article](https://xn--gckvb8fzb.com/goodbye-pushover-hello-overpush/).
+- [overpush](https://github.com/mrusme/overpush): A self-hosted, drop-in replacement for Pushover, that uses XMPP as delivery method. It offers the same API for submitting messages, so that existing setups (e.g. Grafana) can continue working and only require changing the API URL. [Release article](https://xn--gckvb8fzb.com/goodbye-pushover-hello-overpush/).
 
 ## Extensions and specifications
 
