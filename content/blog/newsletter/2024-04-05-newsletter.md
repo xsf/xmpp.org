@@ -1,20 +1,18 @@
 ---
 title: The XMPP Newsletter March 2024
-date: 2024-04-05
+date: 2024-04-07
 categories: ['Newsletter']
 ---
 
 # The 50th release of the XMPP Newsletter!
 
 This is the 50th release of the XMPP Newsletter since it started in February 2019.
-At the Summit at Brussels JC Brand, Nicolas Vérité (Nyco) and Severino Ferrer (S0ul) proposed and initialed the XMPP Newsletter and since then we had almost every month a release of the news in the XMPP universe.
 We think it is worth to celebrate this achievement and say thanks to all the contributors as well as all our readers!
-We are looking forward to the next releases and invite you to participate! We would love to see more contributors as well as more translations.
+Back then at the Summit at Brussels JC Brand, Nicolas Vérité (Nyco) and Severino Ferrer (S0ul) proposed and initialed the XMPP Newsletter and since then we had almost every month a release of the news in the XMPP universe.
+Hence, we are looking forward to the next releases and invite you to participate this community effort! We would love to see more contributors as well as more translations of the XMPP Newsletter. [Read more about how to help below.](#newsletter-contributors--translations)
 
-So, welcome to the 50th edition of the XMPP Newsletter, great to have you here again!
+That being said, welcome to the 50th edition of the XMPP Newsletter, great to have you here again!
 This issue covers the month of March 2024.
-
-Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
 ## XSF Announcements
 
@@ -23,8 +21,8 @@ If you are interested to join the XMPP Standards Foundation as member, [please a
 
 ### XMPP and Google Summer of Code 2024
 
-The XSF has been accepted as a hosting organisation at GSoC in 2024 again! [If you are interested, please reach out](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)!
-The GSoC project ideas from XMPP-related organisations are:
+The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
+Currently the XMPP project mentors are reviewing the proposals. The GSoC project ideas from XMPP-related projects are:
 
 - Monal
   - [Modern Onboarding (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Modern_Onboarding)
@@ -68,7 +66,9 @@ It is a simple, Ansible-based all-in-one server setup that can be used for *your
 the options that are already available. If you are already self-hosting Snikket, or planning to, nothing is changing for you.
 Though please do [donate to support](https://snikket.org/donate/) the project, even a little helps!
 
-{{< figure src="/images/newsletter/2024-03-05/jmp-sip-gateway.png" caption="SIP via XMPP" >}}
+European Union news:
+  - [Designated gatekeepers must now comply with all obligations under the Digital Markets Act](https://ec.europa.eu/commission/presscorner/detail/en/ip_24_1342)
+  - [Interoperable Europe act: Council adopts new law for more efficient digital public services across the EU](https://www.consilium.europa.eu/en/press/press-releases/2024/03/04/interoperable-europe-act-council-adopts-new-law-for-more-efficient-digital-public-services-across-the-eu/)
 
 ## Software News
 
