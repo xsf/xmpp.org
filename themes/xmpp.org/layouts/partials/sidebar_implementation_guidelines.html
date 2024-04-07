@@ -15,4 +15,12 @@
             <a href="/implementation-guidelines/terminology/">Terminology</a>
         </li>
     </ul>
+    <hr>
+    <div>
+        <h4>Content</h4>
+        {{ $startLevel := 2 }}
+        {{ $endLevel := 2 }}
+        {{ $ordered := false }}
+        {{ .Fragments.ToHTML $startLevel $endLevel $ordered }}
+    </div>
 </aside>
