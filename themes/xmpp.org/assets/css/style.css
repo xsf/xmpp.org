@@ -272,24 +272,12 @@ ul.share {
     margin-bottom: 2rem;
 }
 .footer-sponsors ul {
-    -webkit-filter: grayscale(80%);
-    filter: grayscale(80%);
-    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
-    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
-    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
     padding: 0;
 }
 .footer-sponsors li {
     list-style: none;
     display: inline-block;
     margin: 1.5rem;
-}
-.footer-sponsors:hover ul {
-    -webkit-filter: grayscale(0%);
-    filter: grayscale(0%);
-    -webkit-transition: opacity 1.5s, -webkit-filter 1.5s;
-    -moz-transition: opacity 1.5s, -moz-filter 1.5s;
-    transition: opacity 1.5s, filter 1.5s, -webkit-filter 1.5s, moz-filter 1.5s;
 }
 .footer-sponsors img {
     height: 3.5rem;
