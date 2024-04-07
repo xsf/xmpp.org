@@ -4,7 +4,9 @@ date: 2024-04-07
 categories: ['Newsletter']
 ---
 
-# The 50th release of the XMPP Newsletter!
+{{< figure src="images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
+
+# The 50<sup>th</sup> release of the XMPP Newsletter!
 
 This is the 50th release of the XMPP Newsletter since it started in February 2019.
 We think it is worth to celebrate this achievement and say thanks to all the contributors as well as all our readers!
