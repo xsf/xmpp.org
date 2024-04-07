@@ -90,7 +90,7 @@ Modern XMPP clients should not set a priority in their presence, and they should
 following XEPs:
 
 - [XEP-0280](/extensions/xep-0280.html): Message Carbons - for "live" synchronization of conversations between online devices
-- [XEP-0313](/xep-0313.html): Message Archive Management - for "catch-up" of messages that were exchanged while a device was offline
+- [XEP-0313](/extensions/xep-0313.html): Message Archive Management - for "catch-up" of messages that were exchanged while a device was offline
 
 ### Known issues
 
@@ -203,7 +203,7 @@ implement this mechanism to provide the best user experience.
 After uploading the file successfully, the sender should communicate the URL to the recipient by sending a
 `<message>` stanza with the "Get URL" provided by the server in the `<body>` of the message.
 
-Additionally the sender should include a [jabber:x:oob](/extensions/xep-0066.html#x-oob)
+Additionally the sender should include a [`jabber:x:oob`](/extensions/xep-0066.html#x-oob)
 element in the message stanza with the same URL.
 
 {{< info-block type="note" >}}
@@ -232,8 +232,7 @@ Jingle is split into multiple XEPs. For file transfer the following are relevant
 
 - Supports streaming (recipient receives at the same time as the sender sends)
 - Allows code re-use if the client also implements Jingle for audio/video streams
-- No server-side storage required, and the data will pass directly between clients if firewalls/network conditions allow, which makes
-it suitable for larger files.
+- No server-side storage required, and the data will pass directly between clients if firewalls/network conditions allow, which makes it suitable for larger files.
 
 #### Disadvantages
 
@@ -274,19 +273,19 @@ is required (and HTTP Upload does not suffice for some reason).
 
 ## User Profiles
 
--   [XEP-0163](/extensions/xep-0163.html) is the base publishing method.
--   [XEP-0222](/extensions/xep-0222.html) for access controls.
--   [XEP-0084](/extensions/xep-0084.html) for profile picture.
--   [XEP-0172](/extensions/xep-0172.html) for nickname.
--   [XEP-0292](/extensions/xep-0292.html) for extended details (optional).
+- [XEP-0163](/extensions/xep-0163.html) is the base publishing method.
+- [XEP-0222](/extensions/xep-0222.html) for access controls.
+- [XEP-0084](/extensions/xep-0084.html) for profile picture.
+- [XEP-0172](/extensions/xep-0172.html) for nickname.
+- [XEP-0292](/extensions/xep-0292.html) for extended details (optional).
 
 Simpler clients may choose to only use XEP-0084 and XEP-0172 to provide a limited user profile,
 while more advanced clients could publish more details via XEP-0292.
 
 ### Avatars
 
--   **Do** publish avatars via XEP-0084.
--   **Do not** publish avatars via XEP-0292.
+- **Do** publish avatars via XEP-0084.
+- **Do not** publish avatars via XEP-0292.
 
 #### Format and size considerations
 
@@ -311,16 +310,15 @@ Access model for both XEP-0084 nodes and the XEP-0172 node should be kept the sa
 Access to the full XEP-0292 profile, if supported, may be configured separately or via a tri-state
 such as:
 
--   Everything contacts only
--   Public picture and nickname, private profile
--   Everything public
+- Everything contacts only
+- Public picture and nickname, private profile
+- Everything public
 
 ### Legacy
 
--   [XEP-0054](/extensions/xep-0054.html) is the legacy profile publishing method.
--   [XEP-0153](/extensions/xep-0153.html) notifies contacts about avatar changes.
--   [XEP-0398](/extensions/xep-0398.html) tells you whether you can ignore that and
-    let the server do it for you.
+- [XEP-0054](/extensions/xep-0054.html) is the legacy profile publishing method.
+- [XEP-0153](/extensions/xep-0153.html) notifies contacts about avatar changes.
+- [XEP-0398](/extensions/xep-0398.html) tells you whether you can ignore that and let the server do it for you.
 
 ## Group chat
 

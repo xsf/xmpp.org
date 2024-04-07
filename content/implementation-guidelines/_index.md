@@ -3,7 +3,6 @@ title: Implementation Guidelines
 layout: single
 ---
 
-
 ## Overview
 
 **Modern XMPP** is an independent project launched to improve the quality of user-to-user messaging applications

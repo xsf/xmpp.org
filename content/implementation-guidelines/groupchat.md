@@ -13,7 +13,7 @@ To detect if a multi-user chat is a *group chat* or a *channel*
 |                  | MUC Configuration variable (1) | Group chat | Disco Feature (2)  | Channel | Disco Feature (2)  |
 |:-----------------|:-------------------|:-----------|:---------------|:--------|:---------------|
 | Persistent       | muc#roomconfig_persistentroom | Yes        | muc_persistent | Yes     | muc_persistent |
-| MAM enabled      | **Prosody** muc#roomconfig_enablearchiving<br>**ejabberd community**: mam<br>**ejabberd saas** muc#roomconfig_mam | Yes        | urn:xmpp:mam:2 | Yes     | urn:xmpp:mam:2  |
+| MAM enabled      | **Prosody** muc#roomconfig_enablearchiving  **ejabberd community**: mam  **ejabberd saas** muc#roomconfig_mam | Yes        | urn:xmpp:mam:2 | Yes     | urn:xmpp:mam:2  |
 | Subject editable | muc#roomconfig_changesubject | No         | muc#roomconfig_changesubject to `false` | No      | muc#roomconfig_changesubject to `false` |
 | Members-only     | muc#roomconfig_membersonly | Yes (3)   | muc_membersonly | No      | muc_open      |
 | JIDs revealed    | muc#roomconfig_whois | Yes (3)   | muc_nonanonymous| No      | muc_semianonymous |
@@ -45,7 +45,6 @@ recipient is in their roster).
 People in the *group chat* / *channel*: *Participants*
 
 Roles are not displayed and cannot be modified through the UI.
-
 
 | Affiliations | In group chats | In channels |
 |:-------------|:--------------:|:-----------:|
@@ -123,9 +122,9 @@ The following table summarizes the implementation recommendations described in t
 
 | XEP                                        | Implement                                | Use                                                                         |
 |--------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------|
-| XEP-0048 1.0<br>(Private XML storage)      | Yes<br>(for backwards compatibility)     | When `urn:xmpp:bookmarks:1#compat` **is not** advertised by the server on the user's account. |
-| XEP-0048 1.1<br>(PEP storage, single-item) | No<br>(deprecated in favour of XEP-0402) | Never                                                                       |
-| XEP-0402<br>(PEP storage, multi-item)      | Yes                                      | When `urn:xmpp:bookmarks:1#compat` **is** advertised by the server on the user's account.     |
+| XEP-0048 1.0  (Private XML storage)      | Yes  (for backwards compatibility)     | When `urn:xmpp:bookmarks:1#compat` **is not** advertised by the server on the user's account. |
+| XEP-0048 1.1  (PEP storage, single-item) | No  (deprecated in favour of XEP-0402) | Never                                                                       |
+| XEP-0402  (PEP storage, multi-item)      | Yes                                      | When `urn:xmpp:bookmarks:1#compat` **is** advertised by the server on the user's account.     |
 
 ## Private messages
 

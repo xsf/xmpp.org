@@ -46,6 +46,7 @@ invitations can be shared to people via any mechanism (e.g. email, SMS, web)
 and if you don't know the recipient's XMPP address or they don't yet have one.
 
 A potential contact invites you to communicate with them:
+
 ```
 xmpp:contact@example.com?roster;preauth=3c7efeafc1bb10d034
 ```

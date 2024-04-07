@@ -18,6 +18,7 @@ If the client has an out-of-band configuration mechanism, or it can query the OS
 it may use these.
 
 ## Configuration options
+
 List recommended configuration options.
 
 ### Account
@@ -59,6 +60,7 @@ Allowing the user to set a status message is an OPTIONAL feature.
 ## Contact list
 
 ### Terminology
+
 In its interface, the client MUST NOT use the technical term "roster", but MUST instead use the term "contact list" (or a suitable translation)
 where necessary. See the main "Terminology" section for more information.
 
@@ -221,7 +223,6 @@ The following table lists which strings to use as input for the generator:
 To provide a good contrast ratio for accessibility of the resulting user interface, the guidelines from [^color] should be obeyed. XEP-0392 intentionally allows the implementation to pick a saturation and lightness value based on the environment to allow for high contrast.
 
 Contrast considerations apply between the generated color and the background, as well as for text rendered on top of the generated color (for example in a dummy avatar).
-
 
 <!-- Footnotes -->
 
