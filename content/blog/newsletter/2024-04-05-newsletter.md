@@ -91,6 +91,7 @@ European Union news:
 
 - A new release of [go-xmpp 0.1.4](https://github.com/xmppo/go-xmpp/releases/tag/v0.1.4).
 - A new release of [go-sendxmpp 0.9.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.9.0).
+- [overpush](https://github.com/mrusme/overpush): A self-hosted, drop-in replacement for Pushover, that uses XMPP as delivery method and offers the same API for submitting messages, so that existing setups (e.g. Grafana) can continue working and only require changing the API URL. [Release article](https://xn--gckvb8fzb.com/goodbye-pushover-hello-overpush/).
 
 ## Extensions and specifications
 
