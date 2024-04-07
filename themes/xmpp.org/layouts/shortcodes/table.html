@@ -1,0 +1,15 @@
+{{ $htmlTable := .Inner | markdownify }}
+{{ $table_class := .Get "table_class" }}
+{{ $thead_class := .Get "thead_class" }}
+
+{{ $old_table_tag := "<table>" }}
+{{ $new_table_tag := printf "<table class=\"%s\">" $table_class }}
+{{ $htmlTable = replace $htmlTable $old_table_tag $new_table_tag }}
+
+{{ $old_thead_tag := "<thead>" }}
+{{ $new_thead_tag := printf "<thead class=\"%s\">" $thead_class }}
+{{ $htmlTable = replace $htmlTable $old_thead_tag $new_thead_tag }}
+
+<div class="table-responsive">
+    {{ $htmlTable | safeHTML }}
+</div>
