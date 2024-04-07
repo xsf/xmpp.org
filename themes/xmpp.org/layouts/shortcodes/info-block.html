@@ -12,8 +12,13 @@
 {{- else if eq $type "note" -}}
     {{- $prefix_text = "Note" -}}
     {{- $icon_class = "fa-solid fa-circle-info" -}}
+{{- else if eq $type "info" -}}
+    {{- $icon_class = "fa-solid fa-circle-info" -}}
 {{- else if eq $type "warning" -}}
     {{- $alert_class = "warning" -}}
+    {{- $icon_class = "fa-solid fa-circle-exclamation" -}}
+{{- else if eq $type "danger" -}}
+    {{- $alert_class = "danger" -}}
     {{- $icon_class = "fa-solid fa-circle-exclamation" -}}
 {{- end -}}
 
