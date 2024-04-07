@@ -435,6 +435,23 @@ button[name="show-xep-implementations"] {
     text-align: center;
 }
 
+.docs-container {
+    background-color: #f8f9fa;
+}
+.docs-container p, li {
+    font-family: unset !important;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+}
+
+code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 0.275rem;
+}
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
@@ -513,5 +530,15 @@ button[name="show-xep-implementations"] {
     }
     .mermaid {
         background-color: #6e7882;
+    }
+
+    .docs-container {
+        background-color: #2f3337;
+    }
+    .docs-container p, li {
+        color: #dddddd
+    }
+    code {
+        background-color: rgba(215, 215, 215, 0.05);
     }
 }

@@ -1,5 +1,6 @@
 ---
 Title: XMPP Protocol Guidelines
+layout: single-implementation-guidelines
 ---
 
 ## Overview

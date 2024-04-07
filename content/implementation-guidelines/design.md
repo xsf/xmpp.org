@@ -1,5 +1,6 @@
 ---
 Title: Client Design Guidelines
+layout: single-implementation-guidelines
 ---
 
 This document lays out a set of guidelines for designing Modern XMPP clients. For contributions,

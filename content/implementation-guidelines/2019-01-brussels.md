@@ -1,5 +1,6 @@
 ---
 Title: UX Sprint (January 2019, Brussels)
+layout: single-implementation-guidelines
 ---
 
 These are the archived notes from the Jan 2019 Brussels sprint,

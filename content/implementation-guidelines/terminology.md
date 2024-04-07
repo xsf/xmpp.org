@@ -1,5 +1,6 @@
 ---
 Title: Terminology
+layout: single-implementation-guidelines
 ---
 
 To reduce user confusion when switching between clients, it is good to use only recommended

@@ -1,5 +1,6 @@
 ---
 Title: Syncing Message History
+layout: single-implementation-guidelines
 ---
 
 ## MAM Strategies

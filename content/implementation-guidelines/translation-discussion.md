@@ -1,5 +1,6 @@
 ---
 Title: Translation discussion
+layout: single-implementation-guidelines
 ---
 
 Most XMPP clients are distributed in multiple languages. In the process of translating a client, people with various backgrounds (not necessarily XMPP-related) are contributing translations.

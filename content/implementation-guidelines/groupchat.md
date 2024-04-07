@@ -1,5 +1,6 @@
 ---
 Title: Multi-user Chats
+layout: single-implementation-guidelines
 ---
 
 ## Types of chat

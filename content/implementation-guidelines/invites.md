@@ -1,5 +1,6 @@
 ---
 Title: Registration through invitation
+layout: single-implementation-guidelines
 ---
 
 It is possible to create invitation links in XMPP. There are currently a few

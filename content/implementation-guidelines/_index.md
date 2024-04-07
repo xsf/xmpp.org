@@ -1,6 +1,6 @@
 ---
 title: Implementation Guidelines
-layout: single
+layout: single-implementation-guidelines
 ---
 
 ## Overview

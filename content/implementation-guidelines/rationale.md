@@ -1,5 +1,6 @@
 ---
 Title: Rationale
+layout: single-implementation-guidelines
 ---
 
 This page gives additional insight into why some of the recommendations
