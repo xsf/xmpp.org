@@ -11,6 +11,7 @@ There are two kinds of multi-user chat. Private *group chats*, and public *chann
 
 To detect if a multi-user chat is a *group chat* or a *channel*
 
+{{< table >}}
 |                  | MUC Configuration variable (1) | Group chat | Disco Feature (2)  | Channel | Disco Feature (2)  |
 |:-----------------|:-------------------|:-----------|:---------------|:--------|:---------------|
 | Persistent       | muc#roomconfig_persistentroom | Yes        | muc_persistent | Yes     | muc_persistent |
@@ -20,6 +21,7 @@ To detect if a multi-user chat is a *group chat* or a *channel*
 | JIDs revealed    | muc#roomconfig_whois | Yes (3)   | muc_nonanonymous| No      | muc_semianonymous |
 | Publicly listed  | muc#roomconfig_publicroom | No  (3)   | muc_hidden      | Yes     | muc_public    |
 | PMs              | muc#roomconfig_allowpm | No  (3)   | muc#roomconfig_allowpm to `none` | Yes     | muc#roomconfig_allowpm to `anyone` |
+{{< /table >}}
 
 (1) As defined in [XEP-0045: Multi-User Chat - 16.5.3](/extensions/xep-0045.html#registrar-formtype-owner)
 
