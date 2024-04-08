@@ -64,8 +64,8 @@ The episode has been published recently and can be accessed via [archive.org](ht
 Axel Reimer published an XMPP app decision table. It compares typical instant messaging features of popular XMPP apps and might be a guideline for new users who want to try an XMPP app.
 The table is available in [English](https://apps.xmpp24.de/english/) and [German](https://apps.xmpp24.de/deutsch/).
 
-You can now ask all your questions about [XMPP Providers](https://providers.xmpp.net) in the **new** [support chat](https://providers.xmpp.net/blog/2024-03-11-xmpp-providers-chat/).
-That chat is hosted on an own XMPP server which is set up with the **new** [XMPP Providers Server](https://providers.xmpp.net/blog/2024-03-28-xmpp-providers-server/) project.
+You can now ask all your questions about [XMPP Providers](https://providers.xmpp.net) in the *new* [support chat](https://providers.xmpp.net/blog/2024-03-11-xmpp-providers-chat/).
+That chat is hosted on an own XMPP server which is set up with the *new* [XMPP Providers Server](https://providers.xmpp.net/blog/2024-03-28-xmpp-providers-server/) project.
 It is a simple, Ansible-based all-in-one server setup that can be used for *your* own XMPP server as well.
 
 [Snikket Hosting is now publicly available!](https://snikket.org/blog/snikket-hosting-launched/) The launch is about providing new ways to get started with Snikket, not replacing
@@ -212,11 +212,11 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 This is a community effort, and we would like to thank translators for their contributions. Volunteers are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: **Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam**
+  - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam*
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: **Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau**
+  - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
-  - Translators: **nicola**
+  - Translators: *nicola*
 
 ## Help us to build the newsletter
 
