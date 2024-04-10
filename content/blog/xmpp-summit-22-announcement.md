@@ -2,7 +2,7 @@
 title: XMPP Summit 22
 date: 2017-12-28
 author: Guus
-categories: ["XMPP Summit"]
+categories: ["XMPP Summit", "FOSDEM"]
 aliases:
     - "/2017/12/xmpp-summit-22"
 ---
