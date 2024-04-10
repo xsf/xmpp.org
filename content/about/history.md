@@ -75,34 +75,46 @@ aliases:
 - __October:__ The XSF holds the fourteenth XMPP Summit in Portland, Oregon, USA.
 
 ## 2014
-- __January:__ The XSF holds the fifteenth XMPP Summit in Brussels, Belgium.
+- __January:__ The XSF holds the [fifteenth XMPP Summit](/2014/01/xmpp-summit-15/) in Brussels, Belgium.
 - __May:__ Operators of servers on the public XMPP network permanently upgrade to encrypted communications.
 - __September:__ The XSF holds the sixteenth XMPP Summit in Berlin, Germany.
 - __October:__ The IETF publishes [RFC 7395](https://datatracker.ietf.org/doc/rfc7395/) defining XMPP over WebSocket.
 
 ## 2015
-- __February:__ The XSF holds the seventeenth XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF holds the [seventeenth XMPP Summit](/2015/01/xmpp-summit-17/) in Brussels, Belgium.
 - __June:__ The IETF publishes [RFC 7590](https://datatracker.ietf.org/doc/rfc7590/) updating the use of Transport Layer Security (TLS) in XMPP.
-- __June-August:__ The XSF participates in the Google Summer of Code.
+- __June-August:__ The XSF participates in the [Google Summer of Code 2015](/2015/12/xmpp-at-the-end-of-the-google-summer-of-code-2015/).
 - __September:__ The IETF publishes [RFC 7622](https://datatracker.ietf.org/doc/rfc7622/) modernizing the definition of XMPP addresses.
 - __October:__ The XSF holds the eighteenth XMPP Summit in Richland, Washington, USA.
 
 ## 2016
-- __February:__ The XSF holds the nineteenth XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF holds the [nineteenth XMPP Summit](/2016/02/the-19th-xmpp-summit-and-fosdem-2016/) in Brussels, Belgium.
 - __May:__ The XSF holds the twentieth XMPP Summit in Austin, Texas, USA, and host a booth at PyCon 2016 in Portland, Oregon, USA.
 - __November:__ The XSF accepted a Special Interest Group on IoT.
 
 ## 2017
-- __February:__ The XSF holds the twenty first XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF holds the [twenty first XMPP Summit](/2017/01/xmpp-summit-21/) in Brussels, Belgium.
+- __June-August:__ The XSF participates in the [Google Summer of Code 2017](/2017/03/xmpp-and-the-gsoc-2017/).
 
 ## 2018
-- __February:__ The XSF holds the twenty second XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF holds the [twenty second XMPP Summit](/2017/12/xmpp-summit-22/) in Brussels, Belgium.
 
 ## 2019
-- __February:__ The XSF holds the twenty third XMPP Summit in Brussels, Belgium.
+- __February:__ The XSF holds the [twenty third XMPP Summit](/2018/11/xmpp-summit-23/) in Brussels, Belgium.
+- __June-August:__ The XSF participates in the [Google Summer of Code 2019](/2019/01/google-summer-of-code-2019/).
 
 ## 2020
 - __February:__ The XSF holds the twenty fourth XMPP Summit in Brussels, Belgium.
 
+## 2021
+- __September:__ The XSF starts acting as a [fiscal host](/2021/09/the-xsf-as-a-fiscal-host/) for XMPP related projects
+
 ## 2022
+- __June-August:__ The XSF participates in the [Google Summer of Code 2022](/2022/05/xmpp-google-summer-of-code-2022-welcome-new-contributors/).
+
+## 2023
 - __February:__ The XSF holds the [twenty fifth XMPP Summit](/2023/01/xmpp-at-fosdem-2023/) in Brussels, Belgium.
+- __June-August:__ The XSF participates in the [Google Summer of Code 2023](/2023/02/xmpp-at-google-summer-of-code-2023/).
+
+## 2024
+- __February:__ The XSF holds the [twenty sixth XMPP Summit](/2024/01/xmpp-summit-26/) in Brussels, Belgium.
