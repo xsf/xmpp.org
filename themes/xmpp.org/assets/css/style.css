@@ -195,6 +195,12 @@ table tr td {
     padding: 40px 0;
     min-height: 600px;
 }
+.blog-tags {
+    background: #e8f1f9;
+    padding: 0.2rem 0.3rem;
+    margin: 0 0.1rem;
+    border-radius: 0.375rem;
+}
 
 /* Sharing */
 .share-box {
@@ -440,6 +446,9 @@ button[name="show-xep-implementations"] {
     }
     .header-internal {
         border-bottom: 1px solid #435760;
+    }
+    .blog-tags {
+        background: #103a5e;
     }
     article h1,
     article h2,
