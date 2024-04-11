@@ -21,7 +21,7 @@ MongooseIM offers:
 - Resilient & fault tolerant: unparalleled availability, perfect for applications requiring guaranteed uptime
 - Speed and ease of deployment: guaranteeing rapid time to market
 - On-premise deployment: removing the security risk and legal concern of the cloud
-- Reduced costs: compact code base vastly reduces your physical infrastructure and hosting requirements
+- Reduced costs: vastly reduces your physical infrastructure and hosting requirements, enabling you to [deliver billions of messages at low cost](https://www.erlang-solutions.com/blog/mongooseim-6-1-handle-more-traffic-consume-less-resources/)
 - Proven, reliable, no-risk technology: built on the tried and tested XMPP open standard and being used by multiple thousands of business across the world
 
 As the creators of MongooseIM, our team is a global centre of messaging excellence,
