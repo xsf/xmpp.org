@@ -1672,6 +1672,17 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Squawk",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://macaw.me/projects/squawk/"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
