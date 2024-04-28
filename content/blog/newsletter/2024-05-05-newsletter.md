@@ -70,23 +70,11 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
-- [Message Displayed Synchronization](https://xmpp.org/extensions/inbox/xep-mds.html)
-  - This specification allows multiple clients of the same user to synchronize the displayed state of their chats.
+- No XEP was proposed this month.
 
 ### New
 
-- Version 0.1.0 of XEP-0485 (PubSub Server Information)
-  - Promoted to Experimental. (dg)
-- Version 0.1.0 of XEP-0486 (MUC Avatars)
-  - Promoted to Experimental (XEP Editor: dg)
-- Version 0.1.0 of XEP-0487 (Host Meta 2 - One Method To Rule Them All)
-  - Promoted to Experimental (XEP Editor: dg)
-- Version 0.1.0 of XEP-0488 (MUC Token Invite)
-  - Promoted to Experimental (XEP Editor: dg)
-- Version 0.1.0 of XEP-0489 (Reporting Account Affiliations)
-  - Promoted to Experimental (XEP Editor: dg)
-- Version 0.1.0 of XEP-0490 (Message Displayed Synchronization)
-  - Promoted to Experimental (XEP Editor: dg)
+- No new XEPs this month.
 
 ### Deferred
 
@@ -96,54 +84,32 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- Version 1.25.0 of XEP-0001 (XMPP Extension Protocols)
-  - Add note that editorial changes do not affect Deferred state (XEP Editor: dg)
-- Version 1.26.0 of XEP-0060 (Publish-Subscribe)
-  - Add examples for publishing item without ID (melvo)
-- Version 1.1.1 of XEP-0313 (Message Archive Management)
-  - Add XEP-0136 to superseded specifications (gdk)
-- Version 0.5.0 and 0.6.0 of XEP-0333 (Displayed Markers (was: Chat Markers))
-  - Remove `<received/>` to not replicate  functionality.
-  - Remove `<acknowledged/>` because it was not implemented in the last 10 years and apparently is not needed.
-  - Remove Disco feature. Opting in via `<markable/>` is enough (dg)
-  - Add Business Rule about opportunistic Displayed Markers in 1:1 chats (dg)
-- Version 0.5.0 of XEP-0334 (Message Processing Hints)
-  - Incorporate last call feedback from 2017.
-  - Differences between this specification and XEP-0079 have been clarified.
-  - A note about handling of hints found in error stanzas has been added. (mw)
-- Version 0.4.1 of XEP-0388 (Extensible SASL Profile)
-  - Add missing elements to XML Schema
-  - Add missing XMPP Registrar Considerations (dg)
-- Version 0.3.0 of XEP-0398 (User Avatar to vCard-Based Avatars Conversion)
-  - Add text to explain that both  and  are valid implementations.
-  - Add Security Considerations for both variants (dg)
-- Version 0.4.1 of XEP-0424 (Message Retraction)
-  - Fix schema.
-  - Add missing for attribute in fallback element (Example 4). (nc)
-- Version of XEP-0425 (Moderated Message Retraction)
-  - Remove the dependency on XEP-0422 Message Fastening
-  - Rename to 'Moderated Message Retraction' and focus only on the retraction use-case
-  - Ensure compatibility with clients that only implement XEP-0424
-  - Clarify the purpose of the `<reason/>` element
-- Version 0.3.0 and 0.3.1 of XEP-0447 (Stateless file sharing)
-  - Describe how to use for multiple files, with body text, without any source in original message and compatibility with various current deployed protocols. (lmw)
-  - Fix example for multiple files. (lmw)
+- Version 0.7.0 of XEP-0333 (Displayed Markers)
+  - Change title to "Displayed Markers"
+  - Bring back Service Discovery feature (dg)
+- Version 0.4.1 of XEP-0440 (SASL Channel-Binding Type Capability)
+  - Recommend the usage of tls-exporter over tls-server-end-point (fs)
+- Version 0.2.1 of XEP-0444 (Message Reactions)
+  - fix grammar and spelling (wb)
+- Version 1.0.1 of XEP-0388 (Extensible SASL Profile)
+  - Fixed typos (md)
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- XEP-0333: Displayed Markers (was: Chat Markers)
-- XEP-0334: Message Processing Hints
-- XEP-0360: Nonzas (are not Stanzas)
-- XEP-0386: Bind 2
-- XEP-0388: Extensible SASL Profile
-- XEP-0392: Consistent Color Generation
+- XEP-0398: User Avatar to vCard-Based Avatars Conversion
 
 ### Stable
 
-- Version 1.0.0 of XEP-0392 (Consistent Color Generation)
-  - Accept as Stable as per Council Vote from 2024-03-27. (XEP Editor (dg))
+- Version 1.0.0 of XEP-0386 (Bind 2)
+  - Accept as Stable as per Council Vote from 2024-04-02. (XEP Editor (dg))
+- Version 1.0.0 of XEP-0388 (Extensible SASL Profile)
+  - Accept as Stable as per Council Vote from 2024-04-02. (XEP Editor (dg))
+- Version 1.0.0 of XEP-0333 (Displayed Markers)
+  - Accept as Stable as per Council Vote from 2024-04-17. (XEP Editor (dg))
+- Version 1.0.0 of XEP-0334 (Message Processing Hints)
+  - Accept as Stable as per Council Vote from 2024-04-17 (XEP Editor (dg))
 
 ### Deprecated
 
