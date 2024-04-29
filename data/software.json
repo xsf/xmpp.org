@@ -19,7 +19,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "https://github.com/horazont/aioxmpp"
+        "url": "https://codeberg.org/jssfr/aioxmpp"
     },
     {
         "categories": [
@@ -30,7 +30,7 @@
         "platforms": [
             "Perl"
         ],
-        "url": "http://ta-sa.org"
+        "url": "https://github.com/AnyEvent-XMPP/AnyEvent-XMPP"
     },
     {
         "categories": [
@@ -127,7 +127,7 @@
         "platforms": [
             "Ada"
         ],
-        "url": "http://orge.ada-ru.org"
+        "url": "https://github.com/coopht/axmpp"
     },
     {
         "categories": [
@@ -138,7 +138,7 @@
         "platforms": [
             "Java"
         ],
-        "url": "http://xmpp.rocks"
+        "url": "https://github.com/sco0ter/babbler"
     },
     {
         "categories": [
@@ -167,7 +167,7 @@
         "platforms": [
             "Android"
         ],
-        "url": "https://beem-project.com"
+        "url": "https://elyzion.net/projects/beem"
     },
     {
         "categories": [
@@ -198,7 +198,7 @@
         "platforms": [
             "Ruby"
         ],
-        "url": "http://adhearsion.com"
+        "url": "https://adhearsion.github.io/blather"
     },
     {
         "categories": [
@@ -211,7 +211,7 @@
             "Blackberry",
             "Nokia Symbian"
         ],
-        "url": "http://www.bluejabb.com"
+        "url": "https://www.bluejabb.com"
     },
     {
         "categories": [
@@ -298,7 +298,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://source.puri.sm/Librem5/chatty"
+        "url": "https://gitlab.gnome.org/World/Chatty"
     },
     {
         "categories": [
@@ -318,7 +318,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://citadel.org/doku.php"
+        "url": "https://citadel.org"
     },
     {
         "categories": [
@@ -329,7 +329,7 @@
         "platforms": [
             "Lisp"
         ],
-        "url": "http://common-lisp.net"
+        "url": "https://cl-xmpp.common-lisp.dev"
     },
     {
         "categories": [
@@ -544,7 +544,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://developer.pidgin.im"
+        "url": "https://developer.pidgin.im/wiki/Using%20Finch"
     },
     {
         "categories": [
@@ -586,7 +586,7 @@
         "platforms": [
             "C++"
         ],
-        "url": "https://camaya.net/"
+        "url": "https://camaya.net/gloox"
     },
     {
         "categories": [
@@ -608,7 +608,7 @@
         "platforms": [
             "IBM i"
         ],
-        "url": "https://www.bvstools.com"
+        "url": "https://www.bvstools.com/greenjab.html"
     },
     {
         "categories": [
@@ -684,7 +684,7 @@
         "platforms": [
             "C"
         ],
-        "url": "http://code.google.com/p/iksemel"
+        "url": "https://github.com/meduketto/iksemel"
     },
     {
         "categories": [
@@ -716,7 +716,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "https://rawsontetley.org/proj_inetdxtra.html"
+        "url": "https://github.com/bobintetley/inetdxtra/tree/master/in.jabberd"
     },
     {
         "categories": [
@@ -774,7 +774,7 @@
             "Console",
             "Text-Mode"
         ],
-        "url": "https://cybione.org"
+        "url": "https://github.com/cdidier/irssi-xmpp"
     },
     {
         "categories": [
@@ -840,7 +840,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "http://jabberpy.sourceforge.net/"
+        "url": "https://jabberpy.sourceforge.net"
     },
     {
         "categories": [
@@ -851,7 +851,7 @@
         "platforms": [
             "Linux"
         ],
-        "url": "http://jabberd.org"
+        "url": "https://gitlab.com/jabberd/jabberd"
     },
     {
         "categories": [
@@ -923,7 +923,7 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://jappix.org"
+        "url": "https://jappix.org"
     },
     {
         "categories": [
@@ -991,7 +991,7 @@
             "C++",
             "Qt"
         ],
-        "url": "http://qutim.org"
+        "url": "https://github.com/euroelessar/jreen"
     },
     {
         "categories": [
@@ -1024,7 +1024,7 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://kadu.net"
+        "url": "https://github.com/vogel/kadu"
     },
     {
         "categories": [
@@ -1044,7 +1044,7 @@
         "platforms": [
             "Browser"
         ],
-        "url": "http://getkaiwa.com/"
+        "url": "https://github.com/getkaiwa/kaiwa"
     },
     {
         "categories": [
@@ -1425,7 +1425,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "http://pyxmpp.jajcus.net/pyxmpp.html"
+        "url": "https://github.com/Jajcus/pyxmpp"
     },
     {
         "categories": [
@@ -1469,7 +1469,7 @@
             "macOS",
             "Windows"
         ],
-        "url": "https://qutim.org"
+        "url": "https://github.com/euroelessar/qutim"
     },
     {
         "categories": [
@@ -1790,7 +1790,7 @@
             "macOS",
             "Windows"
         ],
-        "url": "http://tkabber.jabber.ru"
+        "url": "https://tkabber.jabber.ru"
     },
     {
         "categories": [
@@ -1817,7 +1817,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "http://twistedmatrix.com"
+        "url": "https://twisted.org"
     },
     {
         "categories": [
@@ -1892,7 +1892,7 @@
         "platforms": [
             "Lua"
         ],
-        "url": "http://code.matthewwild.co.uk/verse/"
+        "url": "https://code.matthewwild.co.uk/verse"
     },
     {
         "categories": [
@@ -1915,7 +1915,7 @@
         "platforms": [
             "Windows"
         ],
-        "url": "https://archive.codeplex.com/?p=vstalk"
+        "url": "https://marketplace.visualstudio.com/items?itemName=IvanNovitskii.VSTalk"
     },
     {
         "categories": [
@@ -2046,7 +2046,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "http://code.google.com"
+        "url": "https://code.google.com/archive/p/xmpp-psn"
     },
     {
         "categories": [
@@ -2066,7 +2066,7 @@
         "platforms": [
             "JavaScript"
         ],
-        "url": "http://xmpp4js.sourceforge.net/"
+        "url": "https://xmpp4js.sourceforge.net"
     },
     {
         "categories": [
@@ -2088,7 +2088,7 @@
         "platforms": [
             "Ruby"
         ],
-        "url": "http://code.google.com"
+        "url": "https://github.com/blaine/xmpp4r-simple"
     },
     {
         "categories": [
@@ -2141,7 +2141,7 @@
         "platforms": [
             "Python"
         ],
-        "url": "http://xmpppy.sourceforge.net"
+        "url": "https://xmpppy.sourceforge.net"
     },
     {
         "categories": [
@@ -2172,6 +2172,6 @@
         "platforms": [
             "JavaScript"
         ],
-        "url": "http://ivan.vucica.net"
+        "url": "https://ivan.vucica.net/zxmpp"
     }
 ]
