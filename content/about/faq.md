@@ -51,13 +51,11 @@ XMPP has had its security vetted by the experts at the IETF, and so has native s
 
 In terms of end-to-end security, though there has been deployment of OTR and other proprietary extensions, the XMPP community has yet to settle on a particular method. This is in part because of the security benefits of being able to run your own server, which heavily mitigate against the attacks end-to-end cryptography would prevent - remember, XMPP servers talk to each other and your client across heavily encrypted links.
 
-## What's wrong with Skype/WhatsApp/Google Hangouts/whatever? Why should I use XMPP?
-
-If every contact you want to talk to is on Skype already, and you only want to talk to people using whatever facilities Skype offers, then Skype is the one for you.
+## What's wrong with WhatsApp/Skype/whatever? Why should I use XMPP?
 
 If you only need to talk to people on mobile handsets who already have WhatsApp, then that’s perfect for you.
 
-Google Hangouts actually still has XMPP under the hood in places, but similar rules apply.
+If every contact you want to talk to is on Skype already, and you only want to talk to people using whatever facilities Skype offers, then Skype is the one for you.
 
 The interesting question is where you need something more. Maybe your contacts all want to run their own server. Maybe you need better security. Maybe you need to exchange arbitrary data. Maybe you’re not happy with one company knowing all your secrets.
 
