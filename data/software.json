@@ -120,6 +120,15 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": "https://raw.githubusercontent.com/cmeng-git/atalk-android/master/atalk.doap",
+        "name": "aTalk",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
