@@ -9,7 +9,7 @@ aliases:
 
 The XSF hosts a variety of chat rooms and all archives are available online. Participation in the XSF's discussion channels is subject to the [Community Code of Conduct](https://xmpp.org/extensions/xep-0458.html).
 
-## Archives
+### Archives
 
 All logs of public XSF chatrooms are available at [logs.xmpp.org](https://logs.xmpp.org/).
 
