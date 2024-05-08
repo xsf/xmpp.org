@@ -16,18 +16,11 @@ If you are interested to join the XMPP Standards Foundation as member, [please a
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
-Currently XMPP project mentors are reviewing the proposals.
-GSoC project ideas from XMPP-related projects are:
+These XMPP project have received a slot and in the community bonding phase now:
 
-- Monal
-  - [Modern Onboarding (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Modern_Onboarding)
+- [Monal](https://monal-im.org/)
   - [Media Gallery (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
-  - [MDM support (175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/MDM_support)
-  - [SiriKit support (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/SiriKit_support)
-- Dino
-  - [Inline link preview (175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Dino/Inline_link_preview)
-  - [Rich message support (175 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Dino/Rich_message_support)
-- Prav.app
+- [Prav.app](https://prav.app/)
   - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
 
 {{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
