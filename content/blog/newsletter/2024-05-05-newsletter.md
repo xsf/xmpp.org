@@ -47,8 +47,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Monal 6.3.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_900) has been released, which brings support for [XEP-0425: Moderated Message Retraction](https://xmpp.org/extensions/xep-0425.html) and [XEP-0490: Message Displayed Synchronization](https://xmpp.org/extensions/attic/xep-0490-0.1.0.html).
 - [Movim 0.24 "#Mueller"](https://mov.im/node/pubsub.movim.eu/Movim/007843a5-5a44-4710-86a1-70ad7e18bd84) and a [0.24.1 bugfix](https://mov.im/node/pubsub.movim.eu/Movim/d71c1b3a-d36a-4eb4-a6fb-ff245123348f) have been released.
-- [Psi+ 1.5.1747 through 1.5.1816 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released. Now with Qt6 instead of Qt5.
-- [Psi+ 1.5.1768 through 1.5.1819 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) have been released.
+- [Psi+ 1.5.1747 through 1.5.1816 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) and [Psi+ 1.5.1768 through 1.5.1819 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) have been released. Now with Qt6 instead of Qt5.
 
 ### Servers
 
