@@ -39,7 +39,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Articles
 
-- [Partial security audit for Monal iOS client](https://monal-im.org/post/00011-security-audit-1/): Radically Open Security (ROS) performed a security audit of some parts of Monal.
+- Monal:
+  - [iOS app banned from Chinese Appstore](https://monal-im.org/post/00010-ios-banned/)
+  - [Partial security audit for Monal iOS client](https://monal-im.org/post/00011-security-audit-1/): Radically Open Security (ROS) performed a security audit of some parts of Monal.
+- Snikket Android app temporarily [unavailable in Google Play store](https://snikket.org/blog/snikket-google-play-removal) [problem already resolved]
 
 ## Software News
 
