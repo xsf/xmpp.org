@@ -41,24 +41,33 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
+- [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin): On Friday, 12th to Sunday, 14th of July 2024.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
-
-## Talks
-
 
 ## Articles
 
+- [Partial security audit for Monal iOS client](https://monal-im.org/post/00011-security-audit-1/): Radically Open Security (ROS) performed a security audit of some parts of Monal.
 
 ## Software News
 
 ### Clients and Applications
 
+- [Monal 6.3.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_900) has been released, which brings support for [XEP-0425: Moderated Message Retraction](https://xmpp.org/extensions/xep-0425.html) and [XEP-0490: Message Displayed Synchronization](https://xmpp.org/extensions/attic/xep-0490-0.1.0.html).
+- [Movim 0.24 "#Mueller"](https://mov.im/node/pubsub.movim.eu/Movim/007843a5-5a44-4710-86a1-70ad7e18bd84) and a [0.24.1 bugfix](https://mov.im/node/pubsub.movim.eu/Movim/d71c1b3a-d36a-4eb4-a6fb-ff245123348f) have been released.
+- [Psi+ 1.5.1747 through 1.5.1816 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released. Now with Qt6 instead of Qt5.
+- [Psi+ 1.5.1768 through 1.5.1819 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) have been released.
 
 ### Servers
 
+- [MongooseIM 6.2.1](https://github.com/esl/MongooseIM/releases/tag/6.2.1) has been released. Version 1.1.0 of [XEP-0313 Message Archive Management](https://xmpp.org/extensions/xep-0313.html) is now supported. The improved CETS in-memory storage backend allows you to easily deploy, manage and scale your MongooseIM installation in the cloud without the burden of persistent volumes.
+- [ejabberd Docs now using MkDocs](https://www.process-one.net/blog/ejabberd-docs-now-using-mkdocs/)
 
 ### Libraries & Tools
 
+- [Smack 4.4.8](https://discourse.igniterealtime.org/t/smack-4-4-8-released/93807) has been released
+- [Slidge v0.1.0](https://sr.ht/~nicoco/slidge/) Slidge is an XMPP (puppeteer) gateway library in python. It makes writing gateways to other chat networks (legacy modules) as frictionless as possible.
+- [go-xmpp 0.2.0](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.0).
+- [go-sendxmpp 0.10.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.10.0).
 
 ## Extensions and specifications
 
