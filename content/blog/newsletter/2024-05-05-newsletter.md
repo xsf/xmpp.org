@@ -11,12 +11,12 @@ This issue covers the month of April 2024.
 
 ## XSF Announcements
 
-If you are interested to join the XMPP Standards Foundation as member, [please apply until 19th May 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q2_2024).
+If you are interested to join the XMPP Standards Foundation as a member, [please apply until 19th May 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q2_2024).
 
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
-These XMPP project have received a slot and in the community bonding phase now:
+These XMPP projects have received a slot and are in the community bonding phase now:
 
 - [Monal](https://monal-im.org/)
   - [Media Gallery (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
@@ -42,13 +42,13 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - Monal:
   - [iOS app banned from Chinese Appstore](https://monal-im.org/post/00010-ios-banned/)
   - [Partial security audit for Monal iOS client](https://monal-im.org/post/00011-security-audit-1/): Radically Open Security (ROS) performed a security audit of some parts of Monal.
-- Snikket Android app temporarily [unavailable in Google Play store](https://snikket.org/blog/snikket-google-play-removal) [problem already resolved]
+- Snikket Android app temporarily [unavailable in Google Play store](https://snikket.org/blog/snikket-google-play-removal) (problem already resolved)
 
 ## Software News
 
 ### Clients and Applications
 
-- [Monal 6.3.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_900) has been released, which brings support for [XEP-0425: Moderated Message Retraction](https://xmpp.org/extensions/xep-0425.html) and [XEP-0490: Message Displayed Synchronization](https://xmpp.org/extensions/attic/xep-0490-0.1.0.html).
+- [Monal 6.3.0](https://github.com/monal-im/Monal/releases/tag/Build_iOS_900) has been released, which brings support for [XEP-0425: Moderated Message Retraction](https://xmpp.org/extensions/xep-0425.html) and [XEP-0490: Message Displayed Synchronization](https://xmpp.org/extensions/xep-0490.html).
 - [Movim 0.24 "#Mueller"](https://mov.im/node/pubsub.movim.eu/Movim/007843a5-5a44-4710-86a1-70ad7e18bd84) and a [0.24.1 bugfix](https://mov.im/node/pubsub.movim.eu/Movim/d71c1b3a-d36a-4eb4-a6fb-ff245123348f) have been released.
 - [Psi+ 1.5.1747 through 1.5.1816 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) and [Psi+ 1.5.1768 through 1.5.1819 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) have been released. Now with Qt6 instead of Qt5.
 
