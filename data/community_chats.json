@@ -1,0 +1,50 @@
+[
+    {
+        "name": "XSF",
+        "text": "Chat about the XMPP Standards Foundation itself, including the standards process.",
+        "logo": "/images/logos/chatroom-xsf.png",
+        "chat": "xmpp:xsf@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?xsf",
+        "logs": "https://logs.xmpp.org/xsf/"
+    },
+    {
+        "name": "Developers",
+        "text": "Ask questions about developing XMPP software.",
+        "logo": "/images/logos/chatroom-jdev.png",
+        "chat": "xmpp:jev@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?jdev",
+        "logs": "https://logs.xmpp.org/jdev/"
+    },
+    {
+        "name": "Operators",
+        "text": "A place for civil discussion between XMPP server operators about the XMPP network. Anyone may join and follow discussions. To reduce noise, active participation is limited to XSF members and server operators, see the [channel guidelines](/community/channels/operators/) for more information.",
+        "logo": "/images/logos/chatroom-operators.png",
+        "chat": "xmpp:operators@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?operators",
+        "logs": "https://logs.xmpp.org/operators/"
+    },
+    {
+        "name": "Council",
+        "text": "The Council meets once a week in this chatroom - anyone can join in, comments from the floor are welcome.",
+        "logo": "/images/logos/chatroom-council.svg",
+        "chat": "xmpp:council@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?council",
+        "logs": "https://logs.xmpp.org/council/"
+    },
+    {
+        "name": "Editors",
+        "text": "Chat about the XMPP standards process and the editorial work.",
+        "logo": "/images/logos/chatroom-editors.svg",
+        "chat": "xmpp:editor@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?editor",
+        "logs": "https://logs.xmpp.org/editor/"
+    },
+    {
+        "name": "XSF Communications",
+        "text": "Here we discuss general communication for the XSF, this website and of course the XMPP Newsletter.",
+        "logo": "/images/logos/chatroom-commteam.png",
+        "chat": "xmpp:commteam@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?commteam",
+        "logs": "https://logs.xmpp.org/commteam/"
+    }
+]
