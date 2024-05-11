@@ -10,11 +10,11 @@
                 <span class="card-text text-muted">{{ .text | markdownify }}</span>
             </div>
             <div class="card-footer text-body-secondary text-center">
-                <a href="{{ .chat }}" class="btn btn-sm btn-primary m-1"><i
+                <a href="{{ .chat | safeURL }}" class="btn btn-sm btn-primary m-1"><i
                         class="fa-regular fa-comments me-2"></i>Join</a>
-                <a href="{{ .web_chat }}" target="_blank" class="btn btn-sm btn-secondary m-1"><i
+                <a href="{{ .web_chat | safeURL }}" target="_blank" class="btn btn-sm btn-secondary m-1"><i
                         class="fa-regular fa-comment-dots me-2"></i></i>Web Chat</a>
-                <a href="{{ .logs }}" target="_blank" class="btn btn-sm btn-outline-secondary m-1"><i
+                <a href="{{ .logs | safeURL }}" target="_blank" class="btn btn-sm btn-outline-secondary m-1"><i
                         class="fa-solid fa-box-archive me-2"></i>Logs</a>
             </div>
         </div>
