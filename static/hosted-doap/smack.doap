@@ -7,7 +7,10 @@
     <name>Smack</name>
     <homepage rdf:resource="https://www.igniterealtime.org/projects/smack"/>
     <programming-language>Java</programming-language>
-    <os>Java (Java SE and Android)</os>
+    <os>Android</os>
+    <os>Linux</os>
+    <os>macOS</os>
+    <os>Windows</os>
 
     <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-library"/>
   </Project>
