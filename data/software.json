@@ -1648,6 +1648,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": "/hosted-doap/jxmpp.doap",
+        "name": "JXMPP",
+        "platforms": [],
+        "url": null
+    },
+   {
+        "categories": [
             "client"
         ],
         "doap": null,
