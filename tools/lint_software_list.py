@@ -20,7 +20,7 @@ VALID_ENTRY_KEYS = {
 def emit_violation(entry_name: str, message: str, warning: bool = False) -> None:
     """Prints warnings and errors"""
     prefix = "WARN" if warning else "ERROR"
-    print(f"{prefix}: entry {entry_name!r}: {message}", file=sys.stderr)
+    print(f"{prefix}: entry {entry_name!r}: {message}")
 
 
 def check_entries(entries: list[dict[str, Any]]) -> int:
@@ -82,8 +82,5 @@ if __name__ == "__main__":
 
     violations_count = check_entries(data)
     if violations_count:
-        print(
-            f"Found {violations_count} severe violations. Please fix them.",
-            file=sys.stderr,
-        )
+        print(f"Found {violations_count} severe violations. Please fix them.")
         sys.exit(1)
