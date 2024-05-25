@@ -13,7 +13,7 @@ XMPP was originally developed in the Jabber open-source community to provide an 
 
 - **Standard** — the [Internet Engineering Task Force (IETF)](http://www.ietf.org/) has formalized the core XML streaming protocols as an approved instant messaging and presence technology. The XMPP specifications were published as [RFC 3920](/rfcs#3920) and [RFC 3921](/rfcs#3921) in 2004, and the XMPP Standards Foundation continues to publish many [XMPP Extension Protocols](/extensions/). In 2011 the core RFCs were revised, resulting in the most up-to-date specifications ([RFC 6120](/rfcs#6120), [RFC 6121](/rfcs#6121), and [RFC 7622](/rfcs#7622)).
 
-- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through public services such as [Google Talk](http://talk.google.com/) and XMPP deployments at organizations worldwide.
+- **Proven** — the first Jabber/XMPP technologies were developed by Jeremie Miller in 1998 and are now quite stable; hundreds of developers are working on these technologies, there are tens of thousands of XMPP servers running on the Internet today, and millions of people use XMPP for instant messaging through various public services and XMPP deployments at organizations worldwide.
 
 - **Decentralized** — the architecture of the XMPP network is similar to email; as a result, anyone can run their own XMPP server, enabling individuals and organizations to take control of their communications experience.
 
