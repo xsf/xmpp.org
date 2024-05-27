@@ -1,11 +1,11 @@
 ---
 title: Scaling up with MongooseIM 6.2.1
-date: 2024-05-22
+date: 2024-05-28
 author: Paweł Chrząszcz (Erlang Solutions)
 categories: ["Miscellaneous"]
 ---
 
-The main feature of the recently released [MongooseIM 6.2.1](https://github.com/esl/MongooseIM/releases/tag/6.2.1) is the improved [CETS in-memory storage backend](https://esl.github.io/MongooseDocs/latest/configuration/internal-databases), which simplifies and enhances its scalability.
+[MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/) is a scalable, extensible and efficient real-time messaging server that allows organisations to build cost-effective communication solutions. Built on the XMPP server, MongooseIM is specifically designed for businesses facing the challenge of large deployments, where real-time communication and user experience are critical. The main feature of the recently released [MongooseIM 6.2.1](https://github.com/esl/MongooseIM/releases/tag/6.2.1) is the improved [CETS in-memory storage backend](https://esl.github.io/MongooseDocs/latest/configuration/internal-databases), which simplifies and enhances its scalability.
 
 It is difficult to predict how much traffic your XMPP server will need to handle. This is why MongooseIM offers several means of scalability. Firstly, even one machine can handle millions of connected users, provided that it is powerful enough. However, one machine is not recommended for fault tolerance reasons, because every time it needs to be shut down for maintenance, upgrade or because of any issues, your service would experience downtime. As a result, it is recommended to have a cluster of connected MongooseIM nodes, which communicate efficiently over the [Erlang Distribution protocol](https://www.erlang.org/doc/apps/erts/erl_dist_protocol.html). Having at least three nodes in the cluster allows you to perform a *rolling upgrade*, where each node is stopped, upgraded, and then restarted before moving to the next node, maintaining fault tolerance. During such an upgrade, you can increase hardware capabilities of each node, scaling the system vertically. Horizontal scaling is even easier, because you only need to add new nodes to the already deployed cluster.
 
@@ -28,3 +28,5 @@ Getting rid of Mnesia removes a lot of important obstacles. For example, if you 
 ## See it in action
 
 If you want quickly set up a working autoscaled MIM cluster using Helm, see the detailed [blog post](https://www.erlang-solutions.com/blog/instant-scalability-with-mongooseim-and-cets). For more information, consult the [documentation](https://esl.github.io/MongooseDocs/latest/), [GitHub](https://github.com/esl/MongooseIM) or the [product page](https://www.erlang-solutions.com/technologies/mongooseim). You can [try MongooseIM](https://trymongoose.im/) online as well.
+
+[Read about Erlang Solution as sponsor of the XSF](https://xmpp.org/sponsors/erlang-solutions/).
