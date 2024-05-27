@@ -29,6 +29,6 @@ Getting rid of Mnesia removes a lot of important obstacles. For example, if you 
 
 If you want quickly set up a working autoscaled MIM cluster using Helm, see the detailed [blog post](https://www.erlang-solutions.com/blog/instant-scalability-with-mongooseim-and-cets). For more information, consult the [documentation](https://esl.github.io/MongooseDocs/latest/), [GitHub](https://github.com/esl/MongooseIM) or the [product page](https://www.erlang-solutions.com/technologies/mongooseim). You can [try MongooseIM](https://trymongoose.im/) online as well.
 
-[Read about Erlang Solution as sponsor of the XSF](https://xmpp.org/sponsors/erlang-solutions/).
+[Read about Erlang Solution as sponsor of the XSF](/sponsors/erlang-solutions/).
 
 {{< figure src="/images/logos/erlang-solutions.png" class="p-2 sponsor-logo" >}}
