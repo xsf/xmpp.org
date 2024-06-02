@@ -83,32 +83,22 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- Version 0.7.0 of XEP-0333 (Displayed Markers)
-  - Change title to "Displayed Markers"
-  - Bring back Service Discovery feature (dg)
-- Version 0.4.1 of XEP-0440 (SASL Channel-Binding Type Capability)
-  - Recommend the usage of tls-exporter over tls-server-end-point (fs)
-- Version 0.2.1 of XEP-0444 (Message Reactions)
-  - fix grammar and spelling (wb)
-- Version 1.0.1 of XEP-0388 (Extensible SASL Profile)
-  - Fixed typos (md)
+- Version 2.5.0 of XEP-0030 (Service Discovery)
+  - Add note about some entities not advertising the  feature. (pep)
+- Version 1.34.6 of XEP-0045 (Multi-User Chat)
+  - Remove contradicting keyword on sending subject in §7.2.2. (pep)
 
 ### Last Call
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- XEP-0398: User Avatar to vCard-Based Avatars Conversion
+- XEP-0421: Anonymous unique occupant identifiers for MUCs
+- XEP-0440: SASL Channel-Binding Type Capability
 
 ### Stable
 
-- Version 1.0.0 of XEP-0386 (Bind 2)
-  - Accept as Stable as per Council Vote from 2024-04-02. (XEP Editor (dg))
-- Version 1.0.0 of XEP-0388 (Extensible SASL Profile)
-  - Accept as Stable as per Council Vote from 2024-04-02. (XEP Editor (dg))
-- Version 1.0.0 of XEP-0333 (Displayed Markers)
-  - Accept as Stable as per Council Vote from 2024-04-17. (XEP Editor (dg))
-- Version 1.0.0 of XEP-0334 (Message Processing Hints)
-  - Accept as Stable as per Council Vote from 2024-04-17 (XEP Editor (dg))
+- Version 1.0.0 of XEP-0398 (User Avatar to vCard-Based Avatars Conversion)
+  - Accept as Stable as per Council Vote from 2024-04-30. (XEP Editor (dg))
 
 ### Deprecated
 
@@ -116,7 +106,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 ### Rejected
 
-- XEP-0360: Nonzas (are not Stanzas)
+- No XEP rejected this month.
 
 ## Spread the news
 
