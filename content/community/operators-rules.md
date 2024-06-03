@@ -7,6 +7,17 @@ Url: community/channels/operators
 
 The XMPP Operators Channel is located at [operators@muc.xmpp.org](xmpp:operators@muc.xmpp.org?join). It is a place primarily for operators of federated XMPP services, to have civil and low-bar discourse and resolution of interoperability issues. In addition to that primary purpose, it is also a place for the wider XMPP community (including end-users and operators of non-federated servers) to get in touch with operators to resolve issues, report abuse (see below for important notes on that!) or any other service related topic.
 
+## Participation
+
+While the channel is currently open for anyone to read, active participation in the channel is currently restricted to:
+
+- Verified operators of XMPP servers on the public federated network
+- Members of the XSF Standards Foundation
+
+This was implemented to create a focused space where the community can collaborate on the channel's stated topics, and to help reduce noise, spam and abuse from other sources.
+
+Participation rights are managed automatically. For more information (including how to obtain permission to send messages) see the FAQ below.
+
 ## Code of Conduct
 
 Like any growing community, the XMPP Operators Channel has a set of rules to govern the interactions, in order to make as many people as possible feel safe and welcome.
@@ -87,15 +98,11 @@ If the behaviour continues despite those measures or if the transgression is suf
 
 You may notice an occupant of the channel called `authbot`. It is a moderation assistant bot that automatically grants channel membership to users it identifies as server operators. It performs a [contact addresses (XEP-0157)](https://xmpp.org/extensions/xep-0157.html) query on servers and looks for a match with any of the returned XMPP addresses.
 
-We recommend that all public servers publish contact addresses through this mechanism, but it is not a requirement, nor is it required to join the channel from your listed contact addresses.
-
 ### How do I get channel membership?
 
-First, don't fret about it. Membership is generally not required to participate in the chat, it is only used as an aid for moderation purposes when necessary.
+Membership is automatically granted by authbot when the criteria are met.
 
-If you have alternative proof that you are a server operator or a member of the XMPP Standards Foundation, you may request membership manually from one of the channel admins. Please don't ask for membership in any other circumstances - it won't be given.
-
-Finally, note that channel membership does not imply any kind of immunity from the rules, or endorsement of a user. Membership will be granted and revoked by channel moderators as they need, irrespective of whether a user is a server operator or not.
+Also, please note that channel membership does not imply any kind of immunity from the rules, or endorsement of a user.
 
 ### I want to discuss something that is considered off-topic in this channel, where can I go?
 
