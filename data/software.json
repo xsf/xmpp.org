@@ -1378,6 +1378,15 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": "https://raw.githubusercontent.com/prose-im/prose-core-client/master/prose.doap",
+        "name": "Prose",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": "https://hg.prosody.im/trunk/raw-file/tip/doc/doap.xml",
