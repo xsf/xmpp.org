@@ -39,7 +39,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Articles
 
-No news on XMPP articles reached us this month. :-(
+- In the [JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2024) they discuss new upcoming SMS routes, a future XMPP to RCS gateway option, and the Cheogram Android 2.15.3-1 release.
 
 ## XMPP Software News
 
