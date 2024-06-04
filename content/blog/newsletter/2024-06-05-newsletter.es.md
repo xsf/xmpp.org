@@ -156,7 +156,7 @@ Tareas que llevamos a cabo regularmente:
 
 - recolectar noticias acerca en el universo XMPP
 - sumarios *cortos* sobre novedades y eventos
-`- sumario mensual acerca de comunicaciones sobre extensiones (XEPs)
+- sumario mensual acerca de comunicaciones sobre extensiones (XEPs)
 - revisión del borrador del Newsletter
 - preparación de las imágenes
 - traducciones
