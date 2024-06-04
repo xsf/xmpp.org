@@ -30,6 +30,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
+- [XMPP Track at FOSSY](https://2024.fossy.us/pages/tracks/): Call for proposals ends June 14th!
 - [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin): On Friday, 12th to Sunday, 14th of July 2024.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 
