@@ -39,7 +39,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ## Artículos sobre XMPP
 
-No tuvimos novedades relacionadas a artículos sobre XMPP este mes. :-(
+- En el [JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2024) se expuso el tema de la censura en las rederes SMS y el trabajo (casi finalizado) que se llevó a cabo para integrar nuevas rutas que reduzcan dramáticamente los niveles de censura. También se anunción que ya se está realizando el testeo interno para adicionar soporte a RCS, y se hizo un repaso sobre las nuevas características de la última versión de [Cheogram 2.15.3-1](https://git.singpolyma.net/cheogram-android/refs/2.15.3-1) para Android.
 
 ## Noticias sobre Software XMPP
 
@@ -51,7 +51,7 @@ No tuvimos novedades relacionadas a artículos sobre XMPP este mes. :-(
 
 ### Servidores XMPP
 
-No tuvimos novedades relacionadas a los servidores XMPP este mes. :-(
+No hubo novedades relacionadas a los servidores XMPP este mes. :-(
 
 ### Librerías y Herramientas XMPP
 
@@ -71,7 +71,7 @@ definiciones formales y canónicas para los tipos, estados y procesos. [Lea más
 
 El proceso de desarrollo de un XEP ("Proposal") comienza con la descripción escrita de una idea y su envío al "XMPP Editor". Dentro del plazo de dos semanas, el Consejo ("Council") decide si acepta la propuesta en carácter de XEP Experimental ("Experimental XEP").
 
-- No hubo XEP propuestos este mes.
+- No hubo nuevos XEPs propuestos este mes.
 
 ### Nuevos
 
