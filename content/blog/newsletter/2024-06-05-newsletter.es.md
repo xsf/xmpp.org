@@ -1,4 +1,3 @@
-@@ -0,0 +1,168 @@
 ---
 title: The XMPP Newsletter May 2024
 date: 2024-06-05
