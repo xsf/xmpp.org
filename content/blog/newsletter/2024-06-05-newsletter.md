@@ -55,13 +55,13 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Scaling up with MongooseIM 6.2.1](https://xmpp.org/2024/05/scaling-up-with-mongooseim-6.2.1/).
 - XMPP Web is a third-party webclient that is available as [plugin for Openfire](https://discourse.igniterealtime.org/t/new-openfire-plugin-xmpp-web/93982)!
 
-{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XMPP Web as Openfire plugin" >}}
+{{< figure src="/images/newsletter/2024-05-05/openfire_xmpp_web.png" caption="XMPP Web as Openfire plugin" >}}
 
 ### XMPP Libraries & Tools
 
 - [Initial public announcement of Slixfeed News Bot](https://slixfeed.woodpeckersnest.space/posts/slixfeed-news-bot/).
 
-{{< figure src="/images/logos/gsoc2024_logo.svg" caption="Slixfeed News Bot" >}}
+{{< figure src="/images/newsletter/2024-05-05/slixfeed.png" caption="Slixfeed News Bot" >}}
 
 - QXmpp [1.6.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.6.1) (with fixed OMEMO group chat support) and [1.7.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.7.0) (with [MIX](https://xmpp.org/extensions/xep-0369.html), [SASL2](https://xmpp.org/extensions/xep-0388.html) and updated [SFS](https://xmpp.org/extensions/xep-0447.html) for compatibility with deployed protocols) have been released.
 - [go-xmpp 0.2.1](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.1).
