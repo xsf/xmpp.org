@@ -41,20 +41,27 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## XMPP Articles
 
 - In the [JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2024) they discuss new upcoming SMS routes, a future XMPP to RCS gateway option, and the Cheogram Android 2.15.3-1 release.
+- Aaron P. MacSween [announced webxdc evolve](https://cryptography.dog/blog/announcing-webxdc-evolve/). Besides other it has also been ported to the XMPP-based [Cheogram service](https://cheogram.com/).
 
 ## XMPP Software News
 
 ### XMPP Clients and Applications
 
-- [Scaling up with MongooseIM 6.2.1](https://xmpp.org/2024/05/scaling-up-with-mongooseim-6.2.1/)
 - [Psi+ 1.5.1844 through 1.5 1930 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) have been released.
 - [Psi+ 1.5.1834 through 1.5 1937 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
 ### XMPP Servers
 
-No news on XMPP servers reached us this month. :-(
+- [Scaling up with MongooseIM 6.2.1](https://xmpp.org/2024/05/scaling-up-with-mongooseim-6.2.1/).
+- XMPP Web is a third-party webclient that is available as [plugin for Openfire](https://discourse.igniterealtime.org/t/new-openfire-plugin-xmpp-web/93982)!
+
+{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XMPP Web as Openfire plugin" >}}
 
 ### XMPP Libraries & Tools
+
+- [Initial public announcement of Slixfeed News Bot](https://slixfeed.woodpeckersnest.space/posts/slixfeed-news-bot/).
+
+{{< figure src="/images/logos/gsoc2024_logo.svg" caption="Slixfeed News Bot" >}}
 
 - QXmpp [1.6.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.6.1) (with fixed OMEMO group chat support) and [1.7.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.7.0) (with [MIX](https://xmpp.org/extensions/xep-0369.html), [SASL2](https://xmpp.org/extensions/xep-0388.html) and updated [SFS](https://xmpp.org/extensions/xep-0447.html) for compatibility with deployed protocols) have been released.
 - [go-xmpp 0.2.1](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.1).
@@ -132,11 +139,13 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 This is a community effort, and we would like to thank translators for their contributions. Volunteers an more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam*
+  - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, singpolyma, XSF iTeam*
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: *nicola*
+- Spanish: [xmpp.org/categories/newsletter/]
+  - Translators: *Gonzalo Raúl Nemmi*
 
 ## Help us to build the newsletter
 
