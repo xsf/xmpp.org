@@ -92,7 +92,7 @@ Si una XEP experimental ("Experimental XEP") no es actualizada por más de doce 
 
 ### Últimos llamados
 
-Los “Últimos Llamados” ("Last calls") se emiten una vez que todos parecen estar satisfechos con el estado actual del XEP. Luego de que el "Council" decide si un XEP parece estar listo, el "XMPP Editor" emite un “Último Llamado para comentarios” ("Last Call for comments"). Las devoluciones que se reciben como respuesta los “Últimos Llamados” ("Last calls") pueden ayudar a mejorar el XEP antes de devolverlo al "Council" para que este pueda ser promovido a Estable ("Stable). 
+Los "Últimos Llamados" ("Last calls") se emiten una vez que todos parecen estar satisfechos con el estado actual del XEP. Luego de que el "Council" decide si un XEP parece estar listo, el "XMPP Editor" emite un "Último Llamado para comentarios" ("Last Call for comments"). Las devoluciones que se reciben como respuesta los "Últimos Llamados" ("Last calls") pueden ayudar a mejorar el XEP antes de devolverlo al "Council" para que este pueda ser promovido a Estable ("Stable"). 
 
 
 - XEP-0421: Anonymous unique occupant identifiers for MUCs
@@ -105,11 +105,11 @@ Los “Últimos Llamados” ("Last calls") se emiten una vez que todos parecen e
 
 ### Desechadas
 
-- No hubo XEP's desechadas este mes.
+- No hubo XEPs desechadas este mes.
 
 ### Rechazadas
 
-- No hubo XEP rechazadas este mes.
+- No hubo XEPs rechazadas este mes.
 
 ## Difunda las noticias
 
