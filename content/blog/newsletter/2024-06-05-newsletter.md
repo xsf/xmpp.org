@@ -15,7 +15,7 @@ The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wi
 These XMPP projects have received a slot and will kick-off with coding now:
 
 - [Monal](https://monal-im.org/)
-  - [Media Gallery (90 hours, easy)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
+  - [Modern Monal onboarding and Media gallery (175 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
 - [Prav.app](https://prav.app/)
   - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
 
