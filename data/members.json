@@ -51,6 +51,11 @@
             "jids": ["zash@zash.se"],
             "roles": ["infrastructure"]
         },
+        
+        {
+            "name": "Fannys Bampaloukas",
+            "jids": ["msavoritias@macaw.me"]
+        },
 
         {
             "name": "Ludovic Bocquet",
@@ -261,11 +266,6 @@
             "name": "Jonas Schäfer",
             "jids": ["jonas@wielicki.name"],
             "roles": ["infrastructure"]
-        },
-
-        {
-            "name": "Paul Schaub",
-            "jids": ["vanitasvitae@mercury-im.org"]
         },
 
         {
