@@ -19,7 +19,7 @@ Estos son los proyectos XMPP que fueron seleccionados y sobre los cuales comenza
 - [Prav.app](https://prav.app/)
   - [Standards compliant SMS OTP based authentication (350 houras, medio)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
 
-{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
+{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF y Google Summer of Code 2024" >}}
 
 ### Proyecto de Hosting Fiscal XSF
 
@@ -30,7 +30,8 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ## Eventos XMPP
 
-- [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin): del Viernes 12 al Domingo 14 de Julio del 2024.
+- [XMPP Track en el FOSSY](https://2024.fossy.us/pages/tracks/): ¡El llamado para propuestas finaliza el 14 de Junio!
+- [XMPP Sprint en Berlin](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin): del Viernes 12 al Domingo 14 de Julio del 2024.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: XMPP web meeting mensual de la comunidad Italiana cada tercer Lunes del mes a las 7:00 PM hora local (evento online, en modo web meeting y con live streaming).
 
 ## Videos sobre XMPP
@@ -40,20 +41,27 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 ## Artículos sobre XMPP
 
 - En el [JMP Newsletter](http://blog.jmp.chat/b/may-newsletter-2024) se expuso el tema de la censura en las rederes SMS y el trabajo (casi finalizado) que se llevó a cabo para integrar nuevas rutas que reduzcan dramáticamente los niveles de censura. También se anunción que ya se está realizando el testeo interno para adicionar soporte a RCS, y se hizo un repaso sobre las nuevas características de la última versión de [Cheogram 2.15.3-1](https://git.singpolyma.net/cheogram-android/refs/2.15.3-1) para Android.
+- Aaron P. MacSween [anunció webxdc evolve](https://cryptography.dog/blog/announcing-webxdc-evolve/) que, entre otros, también ha sido portado a [Cheogram service](https://cheogram.com/), la plataforma basada en XMPP.
 
 ## Noticias sobre Software XMPP
 
 ### Clientes y Aplicaciones XMPP
 
-- [Scaling up with MongooseIM 6.2.1](https://xmpp.org/2024/05/scaling-up-with-mongooseim-6.2.1/)
 - [Psi+ 1.5.1844 a 1.5 1930 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) actualización disponible.
 - [Psi+ 1.5.1834 a 1.5 1937 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) actualización disponible.
 
 ### Servidores XMPP
 
-No hubo novedades relacionadas a los servidores XMPP este mes. :-(
+- [Scaling up with MongooseIM 6.2.1](https://xmpp.org/2024/05/scaling-up-with-mongooseim-6.2.1/).
+- XMPP Web es un cliente web independiente, disponible en forma de [plugin para Openfire](https://discourse.igniterealtime.org/t/new-openfire-plugin-xmpp-web/93982)!
+
+{{< figure src="/images/newsletter/2024-05-05/openfire_xmpp_web.png" caption="XMPP Web como Openfire plugin" >}}
 
 ### Librerías y Herramientas XMPP
+
+- [Anuncio público inicial del Slixfeed News Bot](https://slixfeed.woodpeckersnest.space/posts/slixfeed-news-bot/).
+
+{{< figure src="/images/newsletter/2024-05-05/slixfeed.png" caption="Slixfeed News Bot" >}}
 
 - QXmpp [1.6.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.6.1) (con corrección de errores en el soporte para grupos de chat OMEMO) y [1.7.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.7.0) (con [MIX](https://xmpp.org/extensions/xep-0369.html), [SASL2](https://xmpp.org/extensions/xep-0388.html) y actualización [SFS](https://xmpp.org/extensions/xep-0447.html) para compatibilidad con los protocolos implementados) disponible para su descarga.
 - [go-xmpp 0.2.1](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.1).
@@ -134,7 +142,7 @@ Recuerde revisar nuestro [Feed RSS](https://xmpp.org/feeds/all.atom.xml)!
 Este es un esfuerzo comunitario, y nos gustaría agradecer a nuestros traductores por su contribución. ¡Todos los voluntarios y traductores a nuevos idiomas son bienvenidos! Las traducciones del "XMPP Newsletter" se pondrán a disposición aquí (con cierto retraso):
 
 - Inglés (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - Contribuidores asiduos: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti, XSF iTeam*
+  - Contribuidores asiduos: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Simone Canaletti,singpolyma, XSF iTeam*
 - Francés: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) y [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Traductores: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italiano: [notes.nicfab.eu](https://notes.nicfab.eu)
