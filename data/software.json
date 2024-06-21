@@ -1950,6 +1950,15 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": "https://raw.githubusercontent.com/bqv/weechat-xmpp/master/DOAP.xml",
+        "name": "weechat-xmpp",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": null,
