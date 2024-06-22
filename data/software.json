@@ -185,6 +185,7 @@
         "doap": null,
         "name": "BitlBee",
         "platforms": [
+            "BSD",
             "Linux"
         ],
         "url": "https://www.bitlbee.org"
@@ -604,6 +605,7 @@
         "doap": null,
         "name": "GNU Freetalk",
         "platforms": [
+            "BSD",
             "Linux"
         ],
         "url": "https://gnufreetalk.github.io/"
@@ -1154,7 +1156,9 @@
         "doap": null,
         "name": "mcabber",
         "platforms": [
-            "Other"
+            "BSD",
+            "Linux",
+            "macOS"
         ],
         "url": "https://mcabber.com"
     },
@@ -1246,6 +1250,7 @@
         "doap": null,
         "name": "Mozilla Thunderbird",
         "platforms": [
+            "BSD",
             "Linux",
             "macOS",
             "Windows"
@@ -1662,6 +1667,7 @@
         "doap": null,
         "name": "Smuxi",
         "platforms": [
+            "FreeBSD",
             "Linux",
             "macOS",
             "Windows"
@@ -2020,7 +2026,9 @@
         ],
         "doap": null,
         "name": "XMPP Status Checker",
-        "platforms": [],
+        "platforms": [
+            "Browser"
+        ],
         "url": "https://connect.xmpp.net/"
     },
     {
