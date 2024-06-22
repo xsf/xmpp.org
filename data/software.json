@@ -1261,7 +1261,7 @@
         "platforms": [
             "Perl"
         ],
-        "url": null
+        "url": "https://metacpan.org/pod/Net::XMPP"
     },
     {
         "categories": [
@@ -2142,7 +2142,7 @@
             "library"
         ],
         "doap": null,
-        "name": "xmppframework",
+        "name": "XMPPFramework",
         "platforms": [
             "Objective C"
         ],
@@ -2153,7 +2153,7 @@
             "library"
         ],
         "doap": null,
-        "name": "xmpphp",
+        "name": "XMPPHP",
         "platforms": [
             "PHP"
         ],
