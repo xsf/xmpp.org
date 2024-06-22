@@ -389,28 +389,6 @@
         "categories": [
             "client"
         ],
-        "doap": null,
-        "name": "Coversant SoapBox Communicator",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "http://coversant.com"
-    },
-    {
-        "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "Coversant SoapBox Server",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "http://coversant.com"
-    },
-    {
-        "categories": [
-            "client"
-        ],
         "doap": "https://raw.githubusercontent.com/dino/dino/master/dino.doap",
         "name": "Dino",
         "platforms": [],
@@ -699,27 +677,6 @@
     },
     {
         "categories": [
-            "tool"
-        ],
-        "doap": null,
-        "name": "IM Observatory",
-        "platforms": [],
-        "url": null
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "IM+",
-        "platforms": [
-            "iOS",
-            "macOS"
-        ],
-        "url": "https://www.shape.ag/en/"
-    },
-    {
-        "categories": [
             "server"
         ],
         "doap": null,
@@ -795,17 +752,6 @@
         "name": "Isode M-Link",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "Jabber Stream Objects (JSO)",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://java.net/projects/jso"
     },
     {
         "categories": [
@@ -891,19 +837,6 @@
     },
     {
         "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Jabbim",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://www.jabbim.com"
-    },
-    {
-        "categories": [
             "server"
         ],
         "doap": null,
@@ -955,18 +888,6 @@
         "name": "JaXMPP",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "Jerry Messenger",
-        "platforms": [
-            "Linux",
-            "Windows"
-        ],
-        "url": "http://j-livesupport.com"
     },
     {
         "categories": [
@@ -1067,17 +988,6 @@
             "Linux"
         ],
         "url": "https://userbase.kde.org/Kopete"
-    },
-    {
-        "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "Kwickserver",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "http://www.kwickserver.info/cms/"
     },
     {
         "categories": [
@@ -1282,17 +1192,6 @@
             "library"
         ],
         "doap": null,
-        "name": "oajabber",
-        "platforms": [
-            "C++"
-        ],
-        "url": null
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
         "name": "ObjXMPP",
         "platforms": [
             "Objective-C"
@@ -1469,17 +1368,6 @@
         "name": "P\u00e0d\u00e9",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Quiet Internet Pager",
-        "platforms": [
-            "Windows"
-        ],
-        "url": "http://forum.qip.ru"
     },
     {
         "categories": [
@@ -1773,17 +1661,6 @@
         "name": "Swiften",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Talkonaut",
-        "platforms": [
-            "Mobile"
-        ],
-        "url": "http://talkonaut.com"
     },
     {
         "categories": [
