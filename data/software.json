@@ -228,6 +228,17 @@
             "client"
         ],
         "doap": null,
+        "name": "BombusMod",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://github.com/BombusMod/BombusMod"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
         "name": "Boogie Chat",
         "platforms": [
             "iOS"
@@ -384,6 +395,19 @@
         "name": "Converse.js",
         "platforms": [],
         "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "CoyIM",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://coy.im"
     },
     {
         "categories": [
@@ -801,6 +825,17 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "JabberCat",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://jabbercat.org"
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": null,
@@ -846,6 +881,19 @@
             "macOS"
         ],
         "url": "https://github.com/ortuman/jackal"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Jackline",
+        "platforms": [
+            "BSD",
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://github.com/hannesm/jackline"
     },
     {
         "categories": [
@@ -977,6 +1025,20 @@
             "Browser"
         ],
         "url": "https://github.com/getkaiwa/kaiwa"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Kontalk",
+        "platforms": [
+            "Android",
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://www.kontalk.org"
     },
     {
         "categories": [
@@ -1778,6 +1840,20 @@
             "client"
         ],
         "doap": null,
+        "name": "Vacuum-IM",
+        "platforms": [
+            "FreeBSD",
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://github.com/vacuum-im/vacuum-im"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
         "name": "Vayusphere",
         "platforms": [
             "BlackBerry"
@@ -1876,6 +1952,17 @@
             "iOS"
         ],
         "url": "https://www.xabber.com"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "xmpp",
+        "platforms": [
+            "Plan 9"
+        ],
+        "url": "https://git.sr.ht/~ft/xmpp"
     },
     {
         "categories": [
@@ -2001,6 +2088,17 @@
             "Ruby"
         ],
         "url": "https://github.com/blaine/xmpp4r-simple"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "xmppc",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://codeberg.org/Anoxinon_e.V./xmppc"
     },
     {
         "categories": [
