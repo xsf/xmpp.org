@@ -1,0 +1,125 @@
+[
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Coversant SoapBox Communicator",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "http://coversant.com"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Coversant SoapBox Server",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "http://coversant.com"
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "IM Observatory",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "IM+",
+        "platforms": [
+            "iOS",
+            "macOS"
+        ],
+        "url": "https://www.shape.ag/en/"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "Jabber Stream Objects (JSO)",
+        "platforms": [
+            "Java"
+        ],
+        "url": "https://java.net/projects/jso"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Jabbim",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://www.jabbim.com"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Jerry Messenger",
+        "platforms": [
+            "Linux",
+            "Windows"
+        ],
+        "url": "http://j-livesupport.com"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Kwickserver",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "http://www.kwickserver.info/cms/"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "oajabber",
+        "platforms": [
+            "C++"
+        ],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Quiet Internet Pager",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "http://forum.qip.ru"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Talkonaut",
+        "platforms": [
+            "Mobile"
+        ],
+        "url": "http://talkonaut.com"
+    }
+]
