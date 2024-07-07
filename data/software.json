@@ -15,6 +15,18 @@
             "library"
         ],
         "doap": null,
+        "name": "artalkxmpp",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "https://github.com/araditc/artalk.xmpp"
+    }
+    ,
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
         "name": "aioxmpp",
         "platforms": [
             "Python"
