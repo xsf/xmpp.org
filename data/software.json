@@ -85,8 +85,10 @@
         ],
         "doap": "/hosted-doap/artalk-xmpp.doap",
         "name": "Artalk.XMPP",
-        "platforms": [],
-        "url": null
+        "platforms": [
+            "windows"
+        ],
+        "url": "https://github.com/araditc/Artalk.Xmpp"
     },
     {
         "categories": [
