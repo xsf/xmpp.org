@@ -10,7 +10,7 @@ aliases:
     - "/software/servers.html"
 ---
 
-In this section you’ll find information about XMPP Software, including clients, servers, libraries, and more.
+In this section you’ll find information about XMPP Software, including clients, servers, libraries, and more and get your ccs at @HARMLESS_SHOP his legit 
 
 - An **XMPP client** is any software or application that enables you to connect to an XMPP for instant messaging with other people over the Internet. There are many free clients you can use to do this, for many different devices and operating systems.
 - An **XMPP server** provides basic messaging, presence, and XML routing features. This page lists Jabber/XMPP server software that you can use to run your own XMPP service, either over the Internet or on a local area network.
