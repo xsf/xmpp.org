@@ -54,7 +54,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Rivista 0.1](https://git.xmpp-it.net/sch/Rivista) has been released.
 - [Psi+ 1.5.2033 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
 - [Psi+ 1.5.2029 through 1.5 2038 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
-- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) has been released and [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) fixes an issue with the MS Store installer and brings some improvements.
+- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) has been released and comes with an important OMEMO encryption fix, native notifications on Windows, plus usability improvements. Also, [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) has been released, which fixes an issue with the MS Store installer and brings some improvements.
 - [Monal 6.4.1](https://github.com/monal-im/Monal/releases/tag/Build_iOS_941) has been released with quite a few fixes and updated translations. ATTENTION, this is the last release that will support macOS 11 + 12 and the last release that will support iOS 14 + 15. Furthermore, [Monal IM](https://monal-im.org/) got selected in [another funding round](https://nlnet.nl/project/Monal-IM-UI/) by the [EU’s NGI](https://ngi.eu) via the [NLnet Foundation NGI0 Entrust Fund](https://nlnet.nl/entrust/) to work on some important features. Namely: Implement Dialpad, Rewrite Chat UI, Implement Message Reactions, Rich Replies and Stickers, XSF work and a documentation of Monal's internals. You can find out more on the [Monal IM Blog post](https://monal-im.org/post/00013-nlnet-funding2/).
 - [Movim 0.26](https://github.com/movim/movim/releases/tag/v0.26) has been released. Featuring Custom Emojis, Codeblock support in messages, Better handling of spam messages, Updated message moderation and retraction and also some bug fixes. [Movim](https://movim.eu/) is also happy to announce that it was selected by the [NLnet Foundation](https://nlnet.nl/) to receive funds through the [NGI0 Core](https://nlnet.nl/core/) to work on a [large set of exciting features](https://mov.im/node/pubsub.movim.eu/Movim/f619c49c-ccd3-4487-8c2e-20b6d3555da2) around [video-conferencing](https://nlnet.nl/project/Movim-E2EE-video/) on the platform, including one-to-many audio and video calls. Some more specifics and technical blogs posts will be published soon.
 
@@ -79,14 +79,11 @@ Developers and other standards experts from around the world collaborate on thes
 
 The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
 
-- [Chat notification settings](https://xmpp.org/extensions/inbox/notification-filter.html)
-  - This document defines an XMPP protocol extension to synchronise per-chat notification settings across different clients.
-- [WebXDC](https://xmpp.org/extensions/inbox/webxdc.html)
-  - This document defines an XMPP protocol extension to communicate WebXDC widgets and their state updates.
+- No XEPs Proposed this month.
 
 ### New
 
-- Version 0.1.0 of XEP-0491 (WebXDC)
+- Version 0.1.0 of XEP-0492 (Chat notification settings)
   - Promoted to Experimental (XEP Editor: dg)
 
 ### Deferred
@@ -97,15 +94,19 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- Version 0.2.0 of XEP-0421 (Anonymous unique occupant identifiers for MUCs)
-  - Make explicit that one can't just hash the real JID.
-  - Expand security considerations.
-  - Add schema.
-  - Fix some examples captions and casing (mw)
-- Version 1.1.1 of XEP-0153 (vCard-Based Avatars)
-  - XEP-0054 says “Email addresses MUST be contained in a `<USERID>` element”. (egp)
-- Version 1.2.2 of XEP-0107 (User Mood)
-  - Fixed typo (XEP Editor (dg))
+- Version 0.1.1 of XEP-0484 (Fast Authentication Streamlining Tokens)
+  - Link to latest draft version (09) of the HT SASL mechanism. (lnj)
+- Version 0.2.0 of XEP-0484 (Fast Authentication Streamlining Tokens)
+  - Added an XML Schema.
+  - Fixed text where 'count' was assumed to be an element, not an attribute.
+  - Fixed indentation in a few examples. (egp)
+- Version 0.4.2 of XEP-0440 (SASL Channel-Binding Type Capability)
+  - Add an XML schema.
+  - Mention that this specification does add a new namespace that should go to the registrar.
+  - Fix indentation, typos, misuse of `''` vs. `</>` for elements, etc. (egp)
+- Version 0.1.2 of XEP-0491 (WebXDC)
+  - Suggest what to use for selfAddr
+  - Add acknowledgements (spw)
 
 ### Last Call
 
