@@ -43,7 +43,9 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## XMPP Articles
 
 - [Rivista](https://git.xmpp-it.net/sch/Rivista) is a new publishing system which creates a dynamic journal site from XMPP PubSub nodes; Rivista is compatible with Atom/RSS news readers and HTML browsers as one.
-- [July's XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) list of projects that got worked on!
+- [A blogpost from Haiku-OS on the XMPP Sprint Berlin July 2024](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Find also July's XMPP Sprint in Berlin list of projects](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) that got worked on!
+- [JMP.chat: Calls from SIP and a potential new SIM plan](https://blog.jmp.chat/b/july-newsletter-2024)
+- [ProcessOne: Breaking Down the Costs of Large Messaging Services](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/)
 
 ## XMPP Software News
 
@@ -60,6 +62,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [openfire 4.8.2](https://discourse.igniterealtime.org/t/openfire-4-8-2-release/94171) and [4.8.3](https://discourse.igniterealtime.org/t/openfire-4-8-3-release/94194) have been released.
 - [ejabberd 24.07](https://www.process-one.net/blog/ejabberd-24-07/) has been released.
+  - Publication of an ejabberd [extauth script for OIDC password grant flow](https://codeberg.org/Natureshadow/ejabberd-extauth-oidc-password)
 
 ### XMPP Libraries & Tools
 
