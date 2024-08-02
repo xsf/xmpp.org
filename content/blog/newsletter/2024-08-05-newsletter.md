@@ -17,6 +17,7 @@ These XMPP projects have received a slot and have kicked-off with coding:
 - [Monal](https://monal-im.org/)
   - [Modern Monal onboarding and Media gallery (175 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
     - [Blog post 1](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-1-xmpp-standards-foundation-da781ac95560)
+    - [Blog post 2](https://medium.com/@thevaidik/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
 - [Prav.app](https://prav.app/)
   - INFO: Unfortunately, the mid-term evaluation has not been passed and the project has been stopped
   - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
