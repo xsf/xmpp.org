@@ -52,8 +52,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 ## Artículos sobre XMPP
 
 - [Rivista](https://git.xmpp-it.net/sch/Rivista) es un nuevo sistema de edición que permite crear un diario con entradas dinámicas a partir de nodos XMPP PubSub; Rivista es compatible tanto con lectores de noticias Atom/RSS como con navegadores HTML indistintamente. (solo disponible en Inglés).
-- [Un blogpost de Haiku-OS sobre el XMPP Sprint Berlin de Julio del 2024](https://www.haiku-os.org/blog/ (solo disponible en Inglés).
-nephele/2024-07-21_xmpp_coding_sprint_berlin). Aquí puede encontrar la [lista de proyectos](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) sobre los cuales se trabajó durante el XMPP Sprint de Berlín en Julio. (solo disponible en Inglés).
+- [Un blogpost de Haiku-OS sobre el XMPP Sprint Berlin de Julio del 2024](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Aquí puede encontrar la [lista de proyectos](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) sobre los cuales se trabajó durante el XMPP Sprint de Berlín en Julio. (solo disponible en Inglés).
 - [JMP.chat: Llamadas mediante SIP y potencial plan SIM](https://blog.jmp.chat/b/july-newsletter-2024) (solo disponible en Inglés).
 - [ProcessOne: Desglosando el costo de los Servicios de Mensajería de Gran Escala](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/) (solo disponible en Inglés).
 
