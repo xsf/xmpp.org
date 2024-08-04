@@ -6,33 +6,35 @@ categories: ['Newsletter']
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
 
-Welcome to the XMPP Newsletter, great to have you here again!
-This issue covers the month of July 2024.
+¡Bienvenido al XMPP Newsletter, es un placer tenerlo aquí nuevamente!.
+Esta edición corresponde al mes de Julio del 2024.
 
-## XSF Announcements
+## Anuncios de la XSF
             
-If you are interested to join the XMPP Standards Foundation as a member, [please apply until August 18th, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024).
+Si usted está interesado en unirse a la "XMPP Standards Foundation" en carácter de miembro, [por favor envíe su solicitud antes del 18 de Agosto, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024).
   
 
-### XMPP and Google Summer of Code 2024
+### XMPP en el "Google Summer of Code 2024"
 
-The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
-These XMPP projects have received a slot and have kicked-off with coding:
+¡La XSF ha sido aceptada como [organización anfitriona en el GSoC 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) una vez más!
+
+Los siguientes proyectos ya se encuentran trabajando en su código:
 
 - [Monal](https://monal-im.org/)
-  - [Modern Monal onboarding and Media gallery (175 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
-    - [Blog post 1](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-1-xmpp-standards-foundation-da781ac95560)
-    - [Blog post 2](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
+  - [Modern Monal onboarding and Media gallery (175 horas, medio)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
+    - [Primer Blog post](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-1-xmpp-standards-foundation-da781ac95560)
+    - [Segundo Blog post](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
+
 - [Prav.app](https://prav.app/)
-  - INFO: Unfortunately, the mid-term evaluation has not been passed and the project has been stopped
-  - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
-    - [Blog post 1](https://write.as/assu/gsoc-and-open-source-my-first-steps-into-xmpp)
+  - INFO: Desafortunadamente, no ha superado la evaluación de medio término y el proyecto se ha detenido
+  - [Standards compliant SMS OTP based authentication (350 horas, medio)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
+    - [Primer Blog post](https://write.as/assu/gsoc-and-open-source-my-first-steps-into-xmpp)
 
 {{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
 
-### XSF Fiscal Hosting Projects
+### Proyecto de Hosting Fiscal XSF
 
-The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
+La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proyectos XMPP. Por favor envíe su solicitud vía [Open Collective](https://opencollective.com/xmpp). Para más información [vea el post de anuncio en nuestro blog](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Estos son los proyectos a los que actualmente puede apoyar:
 
 - [Mellium Co-op](https://opencollective.com/mellium)
 - [Bifrost bridge](https://opencollective.com/bifrost-mam)
@@ -41,100 +43,102 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
-- [XMPP Sprint in Worcester, UK](https://wiki.xmpp.org/web/Sprints/2024-09_Worcester_UK):  September, 21st - 22nd 2024 — The Hive, Worcester
-- [XMPP Track at FOSSY](https://2024.fossy.us/): August 1-4th 2024 — Portland State University
-- [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup)[DE / EN]: Monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month
-- [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: Monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
+- [XMPP Sprint en Worcester, UK](https://wiki.xmpp.org/web/Sprints/2024-09_Worcester_UK): 21 y 22 de Septiembre, 2024 — The Hive, Worcester
+- [XMPP Track en el FOSSY](https://2024.fossy.us/): 1 al 4 de Agosto del 2024 — Universidad Estatal de Portland
+- [Encuentro XMPP en Berlín](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup)[DE / EN]: Encuentro mensual de entusiastas de XMPP en Berlín, cada 2do Miércoles del mes.
+- [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]:XMPP web meeting mensual de la comunidad Italiana cada tercer Lunes del mes a las 7:00 PM hora local (evento online, web meeting con live streaming).
 
-## XMPP Articles
 
-- [Rivista](https://git.xmpp-it.net/sch/Rivista) is a new publishing system which creates a dynamic journal site from XMPP PubSub nodes; Rivista is compatible with Atom/RSS news readers and HTML browsers as one.
-- [A blogpost from Haiku-OS on the XMPP Sprint Berlin July 2024](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Find also July's XMPP Sprint in Berlin list of projects](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) that got worked on!
-- [JMP.chat: Calls from SIP and a potential new SIM plan](https://blog.jmp.chat/b/july-newsletter-2024)
-- [ProcessOne: Breaking Down the Costs of Large Messaging Services](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/)
+## Artículos sobre XMPP
 
-## XMPP Software News
+- [Rivista](https://git.xmpp-it.net/sch/Rivista) es un nuevo sistema de edición que permite crear un diario con entradas dinámicas a partir de nodos XMPP PubSub; Rivista es compatible tanto con lectores de noticias Atom/RSS como con navegadores HTML indistintamente. (solo disponible en Inglés).
+- [Un blogpost de Haiku-OS sobre el XMPP Sprint Berlin de Julio del 2024](https://www.haiku-os.org/blog/ (solo disponible en Inglés).
+nephele/2024-07-21_xmpp_coding_sprint_berlin). Aquí puede encontrar la [lista de proyectos](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) sobre los cuales se trabajó durante el XMPP Sprint de Berlín en Julio. (solo disponible en Inglés).
+- [JMP.chat: Llamadas mediante SIP y potencial plan SIM](https://blog.jmp.chat/b/july-newsletter-2024) (solo disponible en Inglés).
+- [ProcessOne: Desglosando el costo de los Servicios de Mensajería de Gran Escala](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/) (solo disponible en Inglés).
 
-### XMPP Clients and Applications
+## Noticias sobre Software XMPP
 
-- [Rivista 0.1](https://git.xmpp-it.net/sch/Rivista) has been released.
-- [Psi+ 1.5.2033 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
-- [Psi+ 1.5.2029 through 1.5 2038 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
-- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) has been released and comes with an important OMEMO encryption fix, native notifications on Windows, plus usability improvements. Also, [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) has been released, which fixes an issue with the MS Store installer and brings some improvements.
-- [Monal 6.4.1](https://github.com/monal-im/Monal/releases/tag/Build_iOS_941) has been released with quite a few fixes and updated translations. ATTENTION, this is the last release that will support macOS 11 + 12 and the last release that will support iOS 14 + 15. Furthermore, [Monal IM](https://monal-im.org/) got selected in [another funding round](https://nlnet.nl/project/Monal-IM-UI/) by the [EU’s NGI](https://ngi.eu) via the [NLnet Foundation NGI0 Entrust Fund](https://nlnet.nl/entrust/) to work on some important features. Namely: Implement Dialpad, Rewrite Chat UI, Implement Message Reactions, Rich Replies and Stickers, XSF work and a documentation of Monal's internals. You can find out more on the [Monal IM Blog post](https://monal-im.org/post/00013-nlnet-funding2/).
-- [Movim 0.26](https://github.com/movim/movim/releases/tag/v0.26) has been released. Featuring Custom Emojis, Codeblock support in messages, Better handling of spam messages, Updated message moderation and retraction and also some bug fixes. [Movim](https://movim.eu/) is also happy to announce that it was selected by the [NLnet Foundation](https://nlnet.nl/) to receive funds through the [NGI0 Core](https://nlnet.nl/core/) to work on a [large set of exciting features](https://mov.im/node/pubsub.movim.eu/Movim/f619c49c-ccd3-4487-8c2e-20b6d3555da2) around [video-conferencing](https://nlnet.nl/project/Movim-E2EE-video/) on the platform, including one-to-many audio and video calls. Some more specifics and technical blogs posts will be published soon.
+### Clientes y aplicaciones XMPP
 
-### XMPP Servers
+- [Rivista 0.1](https://git.xmpp-it.net/sch/Rivista) disponible para su descarga.
+- [Psi+ 1.5.2033 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) nueva actualización disponible.
+- [Psi+ 1.5.2029 through 1.5 2038 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) nueva actualización disponible.
+- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) nueva actualización disponible, con una corrección importante en su encriptación OMEMO, notificaciones nativas en Windows y mejoras en su usabilidad. [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) corrige un problema con el instalador de MS Store y trae algunas mejoras.
+- [Monal 6.4.1](https://github.com/monal-im/Monal/releases/tag/Build_iOS_941) nueva actualización disponible, con varias correcciones de errores y traducciones actualizadas. ¡ATENCIÓN: esta es la última versión con soporte para macOS 11 + 12 y para iOS 14 + 15!. En otro orden de cosas: [Monal IM](https://monal-im.org/) fue seleccionado [en otra ronda de fondos](https://nlnet.nl/project/Monal-IM-UI/) por la [EU’s NGI](https://ngi.eu), vía la [NLnet Foundation NGI0 Entrust Fund](https://nlnet.nl/entrust/) para trabajar en varios aspectos importantes. A saber: Implementar un Teclado para Discar, Reescribir la Interface de Usuario del Chat, Implementar Reacciones a Mensajes, Respuestas Enriquecidas y Stickers, trabajo con la XSF y documentación sobre el código de Monal. Puede encontrar información más detallada en [Blog de Monal IM](https://monal-im.org/post/00013-nlnet-funding2/).
+- [Movim 0.26](https://github.com/movim/movim/releases/tag/v0.26) tiene una nueva actualización. Con emojis personalizados, soporte para "bloque de código" en los mensajes, mejoras en el manejo de mensajes spam, actualización en la moderación de mensajes, eliminación de mensajes y también algunas correcciones de errores. [Movim](https://movim.eu/) también se complace en anunciar que fue seleccionado por la [NLnet Foundation](https://nlnet.nl/) para recibir fondos a través de la [NGI0 Core](https://nlnet.nl/core/) con el objeto de trabajar en un [gran conjunto de nuevas y excitantes características](https://mov.im/node/pubsub.movim.eu/Movim/f619c49c-ccd3-4487-8c2e-20b6d3555da2) relacionadas a la [video conferencia](https://nlnet.nl/project/Movim-E2EE-video/) en la plataforma, incluyendo llamadas de audio y video de uno-a-muchos.  Más especificaciones y detalles técnicos serán publicados próximamente en su blog.
 
-- [openfire 4.8.2](https://discourse.igniterealtime.org/t/openfire-4-8-2-release/94171) and [4.8.3](https://discourse.igniterealtime.org/t/openfire-4-8-3-release/94194) have been released.
-- [ejabberd 24.07](https://www.process-one.net/blog/ejabberd-24-07/) has been released.
-  - Publication of an ejabberd [extauth script for OIDC password grant flow](https://codeberg.org/Natureshadow/ejabberd-extauth-oidc-password)
+### Servidores XMPP
 
-### XMPP Libraries & Tools
+- [openfire 4.8.2](https://discourse.igniterealtime.org/t/openfire-4-8-2-release/94171) y  [4.8.3](https://discourse.igniterealtime.org/t/openfire-4-8-3-release/94194) nueva actualización disponible.
+- [ejabberd 24.07](https://www.process-one.net/blog/ejabberd-24-07/) nueva actualización disponible.
+  - [extauth script for OIDC password grant flow](https://codeberg.org/Natureshadow/ejabberd-extauth-oidc-password) para ejabberd. 
 
-- [nbxmpp 5.0.2](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/5.0.2) and [5.0.3](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/5.0.3) have been released.
-- [QXmpp 1.7.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.7.1) (with improved [OMEMO](https://xmpp.org/extensions/xep-0384.html) support) and [1.8.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.8.0) (with support for [SRV records](https://xmpp.org/extensions/xep-0368.html), [Bind 2](https://xmpp.org/extensions/xep-0386.html), [FAST](https://xmpp.org/extensions/xep-0484.html), [XMPP URIs](https://xmpp.org/extensions/xep-0147.html) and account migration to another server) have been released.
+### Librerías y Herramientas XMPP
 
-## Extensions and specifications
+- [nbxmpp 5.0.2](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/5.0.2) y [5.0.3](https://dev.gajim.org/gajim/python-nbxmpp/-/tags/5.0.3), nuevas actualizaciones disponibles.
+- [QXmpp 1.7.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.7.1) (con mejoras en [OMEMO](https://xmpp.org/extensions/xep-0384.html) support) y [1.8.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.8.0) (con soporte para [registros SRV](https://xmpp.org/extensions/xep-0368.html), [Bind 2](https://xmpp.org/extensions/xep-0386.html), [FAST](https://xmpp.org/extensions/xep-0484.html), [XMPP URIs](https://xmpp.org/extensions/xep-0147.html) y migración de cuentas a otros servidores) tiene una nueva actualización disponible.
 
-The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](https://xmpp.org/extensions/) in addition to [XMPP RFCs](https://xmpp.org/rfcs/).
+## Extensiones y especificaciones
 
-Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
+La "XMPP Standards Foundation", responsable por los [XMPP RFCs](https://xmpp.org/rfcs/), también desarrolla extensiones XMPP a través de su [XEP series](https://xmpp.org/extensions/).
 
-### Proposed
+Desarrolladores y otros expertos en estándares de todas partes del mundo colaboran en estas extensiones, desarrollando especificaciones para nuevas prácticas emergentes y refinar los métodos que se utilizan actualmente para llevar a cabo las tareas existentes. Propuestas por quien quiera hacerlo, las XEP que resultan ser particularmente exitosas son categorizadas como Final ("Final") o Activa ("Active") - dependiendo de su tipo - mientras que otras son cuidadosamente archivadas como Diferidas ("Deferred"). Este ciclo de vida se describe en la [XEP-0001](https://xmpp.org/extensions/xep-0001.html), que contiene las definiciones formales y canónicas para los tipos, estados y procesos. [Lea más acerca del proceso sobre estándares](https://xmpp.org/about/standards-process.html). Las Comunicaciones acerca de los Estándares y Extensiones ("Standars and Extensiones") tienen lugar en la [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([archivo en línea](https://mail.jabber.org/pipermail/standards/)).
 
-The XEP development process starts by writing up an idea and submitting it to the XMPP Editor. Within two weeks, the Council decides whether to accept this proposal as an Experimental XEP.
+### Propuestas
 
-- No XEPs Proposed this month.
+El proceso de desarrollo de una XEP ("Proposal") comienza con la descripción escrita de una idea y su envío al "XMPP Editor". Dentro del plazo de dos semanas, el Consejo ("Council") decide si acepta la propuesta en carácter de XEP Experimental ("Experimental XEP").
 
-### New
+- No hubo nuevos XEPs propuestos este mes.
 
-- Version 0.1.0 of XEP-0492 (Chat notification settings)
-  - Promoted to Experimental (XEP Editor: dg)
+### Nuevos
 
-### Deferred
+- Versión 0.1.0 del XEP-0492 (Ajustes de notificaciones del Chat)
+  - Promovida a XEP Experimental (XEP Editor: dg)
 
-If an experimental XEP is not updated for more than twelve months, it will be moved off Experimental to Deferred. If there is another update, it will put the XEP back onto Experimental.
+### Diferidas
 
-- No XEPs deferred this month.
+Si una XEP experimental ("Experimental XEP") no es actualizada por más de doce meses, perderá su carácter de "Experimental" y será clasificada como Diferida ("Deferred"). Si recibiera una nueva actualización, ésta le devolverá a la XEP carácter de "Experimental".
 
-### Updated
+- No hubo XEPs diferidas ("Deferred") este mes.
 
-- Version 0.1.1 of XEP-0484 (Fast Authentication Streamlining Tokens)
-  - Link to latest draft version (09) of the HT SASL mechanism. (lnj)
-- Version 0.2.0 of XEP-0484 (Fast Authentication Streamlining Tokens)
-  - Added an XML Schema.
-  - Fixed text where 'count' was assumed to be an element, not an attribute.
-  - Fixed indentation in a few examples. (egp)
-- Version 0.4.2 of XEP-0440 (SASL Channel-Binding Type Capability)
-  - Add an XML schema.
-  - Mention that this specification does add a new namespace that should go to the registrar.
-  - Fix indentation, typos, misuse of `''` vs. `</>` for elements, etc. (egp)
-- Version 0.1.2 of XEP-0491 (WebXDC)
-  - Suggest what to use for selfAddr
-  - Add acknowledgements (spw)
+### Actualizadas
 
-### Last Call
+- Versión 0.1.1 del XEP-0484 (Fast Authentication Streamlining Tokens)
+  - Enlace a la última versión del borrador (09) del mecanismo HT SASL. (lnj)
+- Versión 0.2.0 del XEP-0484 (Fast Authentication Streamlining Tokens)
+  - Se agregó un XML Schema.
+  - Corrección en el texto donde 'count' se suponía que era un elemento, no un atributo.
+  - Corrección en el espaciado de algunos ejemplos. (egp)
+- Versión 0.4.2 del XEP-0440 (SASL Channel-Binding Type Capability)
+  - Se agregó un XML Schema.
+  - Mencionar que esta especificación agrega un nuevo nombre de espacio que debe ir al registrador.
+  - Corrección en el espaciado, errores de tipeo, abuso de `''` vs. `</>` para elementos, etc. (egp)
+- Versión 0.1.2 del XEP-0491 (WebXDC)
+  - Sugerir que usar para "selfAddr"
+  - Agregar reconocimientos (spw)
 
-Last calls are issued once everyone seems satisfied with the current XEP status. After the Council decides whether the XEP seems ready, the XMPP Editor issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
+### Últimos Llamados
 
-- No Last Call this month.
+Los "Últimos Llamados" ("Last calls") se emiten una vez que todos parecen estar satisfechos con el estado actual de la XEP. Luego de que el "Council" decide si una XEP parece estar lista, el "XMPP Editor" emite un "Último Llamado para Comentarios" ("Last Call for comments"). Las devoluciones que se reciben como respuesta a los "Últimos Llamados" pueden ayudar a mejorar la XEP antes de devolverla al "Council" para que este pueda ser promovida a Estable ("Stable").
 
-### Stable
+- No hubo "Últimos Llamados" este mes.
 
-- No XEP moved to Stable this month.
+### Estable
 
-### Deprecated
+- No hubo XEPs promovidas a Estable este mes.
 
-- No XEP deprecated this month.
+### Desechadas
 
-### Rejected
+- No hubo XEPs desechadas este mes.
 
-- No XEP rejected this month.
+### Rechazadas
 
-## Spread the news
+- No hubo XEPs rechazadas este mes.
 
-Please share the news on other networks:
+## Difunda las noticias
+
+Por favor difunda las noticias en otras redes:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
 - [Twitter](https://twitter.com/xmpp)
@@ -146,41 +150,45 @@ Please share the news on other networks:
 
 {{< newsletter-subscribe >}}
 
-Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
+Recuerde revisar nuestro [Feed RSS](https://xmpp.org/feeds/all.atom.xml)!
 
-Looking for job offers or want to hire a professional consultant for your XMPP project? Visit our [XMPP job board](https://xmpp.work/).
+¿Buscando ofertas de trabajo o contratar consultoría profesional para su proyecto XMPP? Visite nuestra [Pizarra de trabajo XMPP](https://xmpp.work/).
 
-### Newsletter Contributors & Translations
+### Contribuidores y Traductores del Newsletter
 
-This is a community effort, and we would like to thank translators for their contributions. Volunteers an more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
+Este es un esfuerzo comunitario, y nos gustaría agradecer a nuestros traductores por su contribución. ¡Todos los voluntarios y traductores a nuevos idiomas son bienvenidos! Las traducciones del "XMPP Newsletter" estarán disponibles aquí (aunque quizás con cierto retraso):
 
-- English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
-  - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Schimon Zachary, Simone Canaletti, singpolyma, XSF iTeam*
-- French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
-- Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
-  - Translators: *nicola*
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/])
-  - Translators: *Gonzalo Raúl Nemmi*
+- Inglés (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+  - Contribuidores generales: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Schimon Zachary, Simone Canaletti, singpolyma, XSF iTeam*
+- Francés: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) y [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
+  - Traductores: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
+- Italiano: [notes.nicfab.eu](https://notes.nicfab.eu)
+  - Traductores: *nicola*
+- Español: [xmpp.org](https://xmpp.org/categories/newsletter/])
+  - Traductores: *Gonzalo Raúl Nemmi*
 
-## Help us to build the newsletter
+## Ayúdenos a construir el XMPP Newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Each month's newsletter issue is drafted in this [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
+El "XMPP Newsletter" es el resultado del esfuerzo colaborativo de la comunidad XMPP. El Newsletter de cada mes se construye en este [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). Al fin de cada mes, el contenido del pad se fusiona en el [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3).
 
-Tasks we do on a regular basis:
+Siempre estamos felices de darle la bienvenida a nuevos contribuidores. No dude en unirse a la discusión en nuestro [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) y de esa forma, ayudarnos a sostener este esfuerzo comunitario.
 
-- gathering news in the XMPP universe
-- *short* summaries of news and events
-- summary of the monthly communication on extensions (XEPs)
-- review of the newsletter draft
-- preparation of media images
-- translations
-- communication via media accounts
+¿Tiene un proyecto y quiere difundir la noticia?. Por favor considere compartir sus noticias o eventos aquí, con nosotros, para llegar a alcanzar una audiencia mayor.
 
-## Unsubscribe from the XMPP Newsletter
-To unsubscribe from this list, [please log in first](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
-If you have not previously logged in, you may need to set up an account with the appropriate email address.
+Tareas que llevamos a cabo regularmente:
 
-## License
+- recolectar noticias acerca en el universo XMPP
+- sumarios *cortos* sobre novedades y eventos
+- sumario mensual acerca de comunicaciones sobre extensiones (XEPs)
+- revisión del borrador del Newsletter
+- preparación de las imágenes
+- traducciones
+- comunicación a través de cuentas en medios
 
-This newsletter is published under [CC BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/).
+## Cancelar su suscripción al XMPP Newsletter
+Para cancelar su suscripción a esta lista, [por favor ingrese aquí](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
+Si usted no ha ingresado aquí previamente, es posible que necesite crear una cuenta con el correo correspondiente.
+
+## Licencia
+
+El presente newsletter se publica bajo los términos de la [CC BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/).
