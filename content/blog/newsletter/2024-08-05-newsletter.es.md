@@ -99,7 +99,7 @@ El proceso de desarrollo de una XEP ("Proposal") comienza con la descripción es
 
 Si una XEP experimental ("Experimental XEP") no es actualizada por más de doce meses, perderá su carácter de "Experimental" y será clasificada como Diferida ("Deferred"). Si recibiera una nueva actualización, ésta le devolverá a la XEP carácter de "Experimental".
 
-- No hubo XEPs diferidas ("Deferred") este mes.
+- No hubo XEPs diferidas este mes.
 
 ### Actualizadas
 
