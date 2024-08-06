@@ -113,7 +113,7 @@ Si una XEP experimental ("Experimental XEP") no es actualizada por más de doce 
   - Corrección en el espaciado de algunos ejemplos. (egp)
 - Versión 0.4.2 del XEP-0440 (SASL Channel-Binding Type Capability)
   - Se agregó un XML Schema.
-  - Mencionar que esta especificación agrega un nuevo nombre de espacio que debe ir al registrador.
+  - Mencionar que esta especificación agrega un nuevo espacio de nombres que debe ir al registrador.
   - Corrección en el espaciado, errores de tipeo, abuso de `''` vs. `</>` para elementos, etc. (egp)
 - Versión 0.1.2 del XEP-0491 (WebXDC)
   - Sugerir que usar para "selfAddr"
@@ -127,7 +127,7 @@ Los "Últimos Llamados" ("Last calls") se emiten una vez que todos parecen estar
 
 ### Estable
 
-- No hubo XEPs promovidas a Estable este mes.
+- No hubo XEPs promovidas a estable este mes.
 
 ### Desechadas
 
@@ -178,13 +178,13 @@ Siempre estamos felices de darle la bienvenida a nuevos contribuidores. No dude 
 
 Tareas que llevamos a cabo regularmente:
 
-- recolectar noticias acerca en el universo XMPP
-- sumarios *cortos* sobre novedades y eventos
-- sumario mensual acerca de comunicaciones sobre extensiones (XEPs)
-- revisión del borrador del Newsletter
-- preparación de las imágenes
-- traducciones
-- comunicación a través de cuentas en medios
+- Recolectar noticias acerca en el universo XMPP.
+- Sumarios *cortos* sobre novedades y eventos.
+- Sumario mensual acerca de comunicaciones sobre extensiones (XEPs).
+- Revisión del borrador del Newsletter.
+- Preparación de las imágenes.
+- Traducciones.
+- Comunicación a través de cuentas en redes sociales y otros medios.
 
 ## Cancelar su suscripción al XMPP Newsletter
 Para cancelar su suscripción a esta lista, [por favor ingrese aquí](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
