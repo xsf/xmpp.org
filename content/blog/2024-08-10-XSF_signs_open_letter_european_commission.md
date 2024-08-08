@@ -47,7 +47,7 @@ The XMPP Standards Foundation supports this initiative as well as the statements
 In the past, many [XMPP projects](https://ngi.eu/?s=xmpp) have been funded by NGI programmes to enhance realtime infrastructure using established XMPP standards.
 These funds significantly helped drive innovation in a community with two decades of history in the European digital landscape.
 
-Below name some of the current project that also show project that go beyond user applications and are also part of EU strategic initiatives:
+These are some of the funded projects:
 
 - [Email <=> XMPP gateway](https://ngi.eu/funded_solution/emailxmppgateway/)
 - [Kaidan](https://ngi.eu/funded_solution/kaidan-mediasharing/)
