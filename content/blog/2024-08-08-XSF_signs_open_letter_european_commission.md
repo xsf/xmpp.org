@@ -1,6 +1,6 @@
 ---
 title: The XSF signs Open Letter to the European Commission
-date: 2024-01-05
+date: 2024-08-08
 author: XMPP Standards Foundation
 categories: ["XSF Organisational"]
 ---
