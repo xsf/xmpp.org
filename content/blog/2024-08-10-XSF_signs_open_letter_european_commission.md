@@ -5,7 +5,7 @@ author: XMPP Standards Foundation
 categories: ["XSF Organisational"]
 ---
 
-As currently many other organisations doing, the XMPP Standards Foundation (XSF) has decided to also sign the Open Letter to the European Commission initiated by [Petites Singularités](https://ps.zoethical.org/pub/lettre-publique-aux-ncp-au-sujet-de-ngi/) and translated to English by [OW2](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter)
+_As currently many other organisations doing, the XMPP Standards Foundation (XSF) has decided to also sign the Open Letter to the European Commission._
 
 # The European Union must keep funding free software
 
