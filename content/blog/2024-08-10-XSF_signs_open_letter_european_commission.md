@@ -43,7 +43,9 @@ In this perspective, we urge you to claim for preserving the NGI programme as pa
 
 ## Statement by the XMPP Standards Foundation
 
-The XMPP Standards Foundation supports the initiative as well as the statements made. In the past, many [XMPP projects](https://ngi.eu/?s=xmpp) have been funded by the European Union to enhance realtime infrastructe with our standard but also drive innovation we as Community are building for more than two decades and is well established in the European digital landscape.
+The XMPP Standards Foundation supports this initiative as well as the statements made.
+In the past, many [XMPP projects](https://ngi.eu/?s=xmpp) have been funded by NGI programmes to enhance realtime infrastructure using established XMPP standards.
+These funds significantly helped drive innovation in a community with two decades of history in the European digital landscape.
 
 Below name some of the current project that also show project that go beyond user applications and are also part of EU strategic initiatives:
 
