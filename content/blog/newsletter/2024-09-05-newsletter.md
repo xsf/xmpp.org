@@ -9,9 +9,6 @@ categories: ['Newsletter']
 Welcome to the XMPP Newsletter, great to have you here again!
 This issue covers the month of August 2024.
 
-## XSF Announcements       
-If you are interested to join the XMPP Standards Foundation as a member, [please apply until August 18th, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024).
-
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
@@ -21,10 +18,6 @@ These XMPP projects have received a slot and have kicked-off with coding:
   - [Modern Monal onboarding and Media gallery (175 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
     - [Blog post 1](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-1-xmpp-standards-foundation-da781ac95560)
     - [Blog post 2](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
-- [Prav.app](https://prav.app/)
-  - INFO: Unfortunately, the mid-term evaluation has not been passed and the project has been stopped
-  - [Standards compliant SMS OTP based authentication (350 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
-    - [Blog post 1](https://write.as/assu/gsoc-and-open-source-my-first-steps-into-xmpp)
 
 {{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
 
