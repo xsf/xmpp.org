@@ -9,11 +9,6 @@ categories: ['Newsletter']
 Welcome to the XMPP Newsletter, great to have you here again!
 This issue covers the month of August 2024.
 
-## XSF Announcements
-            
-If you are interested to join the XMPP Standards Foundation as a member, [please apply until August 18th, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024).
-  
-
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
@@ -62,7 +57,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (and a small bugfix [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) has been released with a large number of [changes, new features and fixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 - [Psi+ 1.5.2040 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
 - [Quicksy](https://quicksy.im/), the spin-off of the popular Jabber/XMPP client, now has iOS version based on [Monal](https://monal-im.org/) and its [available](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! ([annoucement](https://fosstodon.org/@Monal/113004853520449161) on Mastodon)
-- [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) is a federated bookmarking system based on XMPP, which allows you to share the collection of bookmarks (aka "social bookmarking") stored on your own XMPP account, not only among your own software, devices and machines, but also with other people.
 
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
@@ -71,6 +65,8 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - While Yunohost is nearing the release of its version 12, a (non-official) Prosody app aiming at providing the best XMPP support has been drafted and available for tests : https://github.com/anubister/prosody_ynh . As a reminder, [Yunohost](https://yunohost.org) is a server distribution based on Debian, which makes easy to host by yourself a lot of services (apps). Till the version 11, the XMPP server [Metronome](https://archon.im/metronome-im/) was integrated in the core installation, allowing a lot of people to discover XMPP easily (though with some limitations).
 
 ### XMPP Libraries & Tools
+
+- [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) is a federated bookmarking system based on XMPP, which allows you to share the collection of bookmarks (aka "social bookmarking") stored on your own XMPP account, not only among your own software, devices and machines, but also with other people.
 
 ## Extensions and specifications
 
