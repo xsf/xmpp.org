@@ -9,6 +9,9 @@ categories: ['Newsletter']
 Welcome to the XMPP Newsletter, great to have you here again!
 This issue covers the month of August 2024.
 
+## XSF Announcements       
+If you are interested to join the XMPP Standards Foundation as a member, [please apply until August 18th, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024).
+
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
