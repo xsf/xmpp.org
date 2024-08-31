@@ -64,6 +64,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) is a federated bookmarking system based on XMPP, which allows you to share the collection of bookmarks (aka "social bookmarking") stored on your own XMPP account, not only among your own software, devices and machines, but also with other people.
 
+{{< figure src="/images/newsletter/2024-09-05/blasta_browse-0.27.png" caption="Blasta browse" >}}
+
+{{< figure src="/images/newsletter/2024-09-05/blasta_tag-0.27.png" caption="Blasta tag" >}}
+
 ## Extensions and specifications
 
 The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](https://xmpp.org/extensions/) in addition to [XMPP RFCs](https://xmpp.org/rfcs/).
