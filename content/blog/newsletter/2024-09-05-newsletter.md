@@ -50,9 +50,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ### XMPP Clients and Applications
 
 - [Monal 6.4.2](https://github.com/monal-im/Monal/releases/tag/Build_iOS_964), [6.4.3](https://github.com/monal-im/Monal/releases/tag/Build_iOS_976) and version [6.4.4](https://github.com/monal-im/Monal/releases/tag/Build_iOS_978) have been released.
-- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (and a small bugfix [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) has been released with a large number of [changes, new features and fixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 - [Psi+ 1.5.2040 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
-- [Quicksy](https://quicksy.im/), the spin-off of the popular Jabber/XMPP client, now has iOS version based on [Monal](https://monal-im.org/) and its [available](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! ([annoucement](https://fosstodon.org/@Monal/113004853520449161) on Mastodon)
+- [Quicksy](https://quicksy.im/), the spin-off of the popular Jabber/XMPP client, now has iOS version based on [Monal](https://monal-im.org/) and its [available](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! ([annoucement](https://fosstodon.org/@Monal/113004853520449161) on Mastodon).
+- [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) for F-Droid has been released, and its packing a huge list of fixes, corrections, updates, improvements and changes!.
+- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (and a small bugfix [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) has been released with a large number of [changes, new features and fixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
