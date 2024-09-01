@@ -49,7 +49,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## XMPP Articles
 
 - [Rivista](https://git.xmpp-it.net/sch/Rivista) is a new publishing system which creates a dynamic journal site from XMPP PubSub nodes; Rivista is compatible with Atom/RSS news readers and HTML browsers as one.
-- [A blogpost from Haiku-OS on the XMPP Sprint Berlin July 2024](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Find also July's XMPP Sprint in Berlin list of projects](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) that got worked on!
+- [A blogpost from Haiku-OS on the XMPP Sprint Berlin July 2024](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Find also July's [XMPP Sprint in Berlin list of projects](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) that got worked on!
 - [JMP.chat: Calls from SIP and a potential new SIM plan](https://blog.jmp.chat/b/july-newsletter-2024)
 - [ProcessOne: Breaking Down the Costs of Large Messaging Services](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/)
 
