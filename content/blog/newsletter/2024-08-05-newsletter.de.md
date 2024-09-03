@@ -23,7 +23,7 @@ Die XSF wurde auch 2024 wieder als [Gastgeber-Organisation im Google Summer of C
     - [2. Blogpost](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
 - [Prav.app](https://prav.app/)
   - INFO: Unglücklicherweise hat das Projekt die Zwischenevaluation nicht bestanden und wurde eingestellt.
-  - [Standard-konforme SMS-Authentifizierung via OTP compliant] (350 Arbeitsstunden, Medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
+  - [Standard-konforme SMS-Authentifizierung via OTP] (350 Arbeitsstunden, Medium)](https://wiki.xmpp.org/web/Gsoc2024/Prav.app/Standards_compliant_SMS_OTP_based_authentication)
     - [1. Blogpost](https://write.as/assu/gsoc-and-open-source-my-first-steps-into-xmpp)
 
 {{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
