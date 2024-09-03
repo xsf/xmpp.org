@@ -15,7 +15,7 @@ Wenn Du Mitglied der XMPP Standards Foundation (XSF)  werden möchtest, [kannst 
   
 ### XMPP beim Google Summer of Code 2024
 
-Die XSF wurde auch 2024 wieder als [Gastgeber-Organisation im Google Summer of Code](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)! Folgende XMPP-Projekte haben Plätze erhalten und sind am coden:
+Die XSF wurde auch 2024 wieder als [Gastgeber-Organisation im Google Summer of Code](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)! Folgende XMPP-Projekte haben Plätze erhalten und sind am Coden:
 
 - [Monal](https://monal-im.org/)
   - [Modernes Onboarding und Mediengallerie in Monal] (175 Arbeitsstunden, Medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
