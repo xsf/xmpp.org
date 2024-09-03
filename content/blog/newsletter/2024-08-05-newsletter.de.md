@@ -30,7 +30,7 @@ Die XSF wurde auch 2024 wieder als [Gastgeber-Organisation im Google Summer of C
 
 ### Spenden für XMPP-Projekte
 
-Die XSF bietet XMPP-Projekten an, die [Verwaltung ihrer Finanzen](https://xmpp.org/community/fiscalhost/) zu übernehmen. Projekte können dies via via [Open Collective](https://opencollective.com/xmpp) anfragen. Für weitere Informationen, siehe [die ursprüngliche Ankündigung im Blog](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Derzeit kann so an folgende Projekte gespendet werden:
+Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](https://xmpp.org/community/fiscalhost/) zu übernehmen. Projekte können dies via [Open Collective](https://opencollective.com/xmpp) anfragen. Für weitere Informationen, siehe [die ursprüngliche Ankündigung im Blog](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Derzeit kann so an folgende Projekte gespendet werden:
 
 - [Mellium Co-op](https://opencollective.com/mellium)
 - [Bifrost bridge](https://opencollective.com/bifrost-mam)
