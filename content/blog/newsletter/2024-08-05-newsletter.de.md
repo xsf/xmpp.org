@@ -9,7 +9,7 @@ categories: ['Newsletter']
 Herzlich willkommen zum XMPP Newsletter! Schön, dass Du hier bist.
 Diese Ausgabe behandelt Juli 2024.
 
-##  Meldungen der XSF
+## Meldungen der XSF
 
 Wenn Du Mitglied der XMPP Standards Foundation (XSF)  werden möchtest, [kannst Du Dich noch bis einschließlich 18. August 2024 bewerben](https://wiki.xmpp.org/web/Membership_Applications_Q3_2024)!
   
