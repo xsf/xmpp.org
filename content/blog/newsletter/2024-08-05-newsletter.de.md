@@ -46,9 +46,9 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 
 ## Artikel über XMPP
 
-- [Rivista](https://git.xmpp-it.net/sch/Rivista) ist ein neues Veröffentlichungssystem das aus XMPP PubSub-Knoten dynamisch eine Journal-Seite generiet. Rivista ist mit Atom/RSS kompatibel und kann auch im Browser gelesen werden.
-- [Ein Blogpost von Haiku-OS über den XMPP Sprint in Berlin im Juli 2024 (englisch)](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Die [Liste der dort angegangenen Projekte](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees)  findet ihr im XMPP-Wiki.
-- [JMP.chat-Newsletter Juli 2024: Anrufe aus SIP und ein möglicher neuer SMS-Tarif (englisch)](https://blog.jmp.chat/b/july-newsletter-2024)
+- [Rivista](https://git.xmpp-it.net/sch/Rivista) ist ein neues Veröffentlichungssystem das aus XMPP PubSub-Knoten dynamisch eine Journal-Seite erstellt. Rivista ist mit Atom/RSS kompatibel und kann auch im Browser gelesen werden.
+- [Ein Blogpost von Haiku-OS über den XMPP Sprint in Berlin im Juli 2024 (englisch)](https://www.haiku-os.org/blog/nephele/2024-07-21_xmpp_coding_sprint_berlin). Die [Liste der dort bearbeiteten Projekte](https://wiki.xmpp.org/web/Sprints/2024-07_Berlin#Attendees) findet ihr im XMPP-Wiki.
+- [JMP.chat-Newsletter Juli 2024: Anrufe aus SIP und ein möglicher neuer SIM-Tarif (englisch)](https://blog.jmp.chat/b/july-newsletter-2024)
 - [ProcessOne: Kostenaufschlüsselung für große IM-Dienste (englisch)](https://www.process-one.net/blog/breaking-down-the-costs-of-large-messaging-services/)
 
 ## Neuigkeiten über XMPP-Software
@@ -58,9 +58,9 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 - [Rivista 0.1](https://git.xmpp-it.net/sch/Rivista) wurde veröffentlicht.
 - [Psi+ 1.5.2033 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) wurde veröffentlicht
 - [Psi+ 1.5.2029 bis 1.5 2038 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) wurden veröffentlicht.
-- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) wurde veröffentlich. Die Änderungen umfasst eine wichtige Korrektur in der OMEMO-Verschlüsselung, native Benachrichtigungen unter Windows und Verbesserung in der Bedienung. Außerdem wurde [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) mit einer Korrektur für den MS Store und weiteren Verbesserungen veröffentlicht.
-- [Monal 6.4.1](https://github.com/monal-im/Monal/releases/tag/Build_iOS_941)wurde mit einigen Korrekturen und aktualisierten Übersetzungen veröffentlicht. ACHTUNG, das ist das letzte Release mit Unterstützung für MacOS 11 und 12 sowie iOS 14 und 15. Außerdem wurde [Monal IM](https://monal-im.org/) von der [NGI der EU](https://ngi.eu) für [eine weitere Förderphase](https://nlnet.nl/project/Monal-IM-UI/) des [NLnet Foundation NGI0 Entrust Fund](https://nlnet.nl/entrust/) ausgewählt, um an einigen wichtigen Features zu arbeiten. Namentlich: die Implementierung eines Wählfelds, die Überarbeitung des UI-Codes, die Implementierung von Reaktionen, klickbaren Antworten und Stickern, Arbeiten im Rahmen der XSF und die Dokumentation von Monals Software-Architektur. Weitere Details im[Monal IM Blogpost (englisch)](https://monal-im.org/post/00013-nlnet-funding2/).
-- [Movim 0.26](https://github.com/movim/movim/releases/tag/v0.26) wurde veröffentlicht. Neue Features sind benutzerdefinierte Emojis, Codeblöcke in Nachrichten, besseres Spam-Handling, bessere Nachrichtenmoderation und -Rückzug  und natürlich Fehlerkorrekturen.  Darüber hinaus wurde[Movim](http://movim.eu/) von der [NLnet Foundation](https://nlnet.nl/) für Förderungen aus dem [NGI0 Core](https://nlnet.nl/core/) ausgewählt, um an [vielen Features](https://mov.im/node/pubsub.movim.eu/Movim/f619c49c-ccd3-4487-8c2e-20b6d3555da2) rund um  [Video-Konferenzen](https://nlnet.nl/project/Movim-E2EE-video/) zu arbeiten, unter Anderem one-to-many Audio- und Videoanrufeon the platform. Weitere Einblicke und technische Details folgen in künftigen Blogposts.
+- [Gajim 1.9.2](https://gajim.org/post/2024-07-19-gajim-1.9.2-released/) wurde veröffentlicht. Die Änderungen umfasst eine wichtige Korrektur in der OMEMO-Verschlüsselung, native Benachrichtigungen unter Windows und Verbesserungen in der Bedienung. Außerdem wurde [Gajim 1.9.3](https://gajim.org/post/2024-07-29-gajim-1.9.3-released/) mit einer Korrektur für den MS Store und weiteren Verbesserungen veröffentlicht.
+- [Monal 6.4.1](https://github.com/monal-im/Monal/releases/tag/Build_iOS_941) wurde mit einigen Korrekturen und aktualisierten Übersetzungen veröffentlicht. ACHTUNG, das ist das letzte Release mit Unterstützung für MacOS 11 und 12 sowie iOS 14 und 15. Außerdem wurde [Monal IM](https://monal-im.org/) von der [NGI der EU](https://ngi.eu) für [eine weitere Förderphase](https://nlnet.nl/project/Monal-IM-UI/) des [NLnet Foundation NGI0 Entrust Fund](https://nlnet.nl/entrust/) ausgewählt, um an einigen wichtigen Features zu arbeiten. Namentlich: die Implementierung eines Wählfelds, die Überarbeitung des UI-Codes, die Implementierung von Reaktionen, klickbaren Antworten und Stickern, Arbeiten im Rahmen der XSF und die Dokumentation von Monals Software-Architektur. Weitere Details im [Monal IM Blogpost (englisch)](https://monal-im.org/post/00013-nlnet-funding2/).
+- [Movim 0.26](https://github.com/movim/movim/releases/tag/v0.26) wurde veröffentlicht. Neue Features sind benutzerdefinierte Emojis, Codeblöcke in Nachrichten, besseres Spam-Handling, bessere Nachrichtenmoderation und -Rückzug und natürlich Fehlerkorrekturen.  Darüber hinaus wurde[Movim](http://movim.eu/) von der [NLnet Foundation](https://nlnet.nl/) für Förderungen aus dem [NGI0 Core](https://nlnet.nl/core/) ausgewählt, um an [vielen Features](https://mov.im/node/pubsub.movim.eu/Movim/f619c49c-ccd3-4487-8c2e-20b6d3555da2) rund um [Video-Konferenzen](https://nlnet.nl/project/Movim-E2EE-video/) zu arbeiten, unter Anderem Gruppenanrufe mit Audio und Video. Weitere Einblicke und technische Details folgen in künftigen Blogposts.
 
 {{< figure src="/images/newsletter/2024-08-05/movim-0.26.png" caption="Movim 0.26 with custom emojis" >}}
 
@@ -81,7 +81,7 @@ Die XSF entwickelt Erweiterungen für das XMPP-Protokoll. Diese [XEPs](https://x
 
 Entwickler:innen und andere Expert:innen für Standardisierung aus der ganzen Welt arbeiten für diese Erweiterungen zusammen. Sie entwickeln neue Spezifikationen für entstehende Features und Praktiken und verbessern bestehende Erweiterungen des Protokolls. Erweiterungen können von jedem Menschen vorgeschlagen werden. Falls erfolgreich, werden sie je nach Typ als _Final_ oder _Active_ hinterlegt. Andere werden sorgsam als _Deferred_ für die Zukunft bewahrt.
 
-Beschrieben wird dieser XEP-Lebenszyklus samt förmlicher und kanonischer Definitionen der Typen, Zustände und Prozesse im ersten XEP, [XEP-0001](https://xmpp.org/extensions/xep-0001.html). [Lerne mehr über den Standardisierungsprozess](https://xmpp.org/about/standards-process.html)
+Beschrieben wird dieser XEP-Lebenszyklus samt förmlicher und kanonischer Definitionen der Typen, Zustände und Prozesse im ersten XEP, [XEP-0001](https://xmpp.org/extensions/xep-0001.html). [Lerne mehr über den Standardisierungsprozess](https://xmpp.org/about/standards-process.html).
 Über die Standards und Erweiterungen kommunizieren wir in der [Standardisierungs- Mailingliste](https://mail.jabber.org/mailman/listinfo/standards) ([Archiv](https://mail.jabber.org/pipermail/standards/)).
 
 ### Proposed (vorgeschlagen)
@@ -119,7 +119,7 @@ Wenn ein experimenteller XEP länger als zwölf Monate nicht aktualisiert wird, 
 
 ### Last Call (letzter Aufruf)
 
-Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsolidiert hat. Heißt: Nachdem der Rat einen XEP für fertig befunden hat, startet die:er XEP-Editor:in einen letzten Aufruf für Kommentare. Die so eingehalten Rückmeldungen helfen, den XEP zu verbessern. Danach geht er zurück an den Rat, um als _Stable_ eingestuft zu werden.
+Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsolidiert hat. Heißt: Nachdem der Rat einen XEP für fertig befunden hat, startet die:er XEP-Editor:in einen letzten Aufruf für Kommentare. Die so erhaltenen Rückmeldungen helfen, den XEP zu verbessern. Danach geht er zurück an den Rat, um als _Stable_ eingestuft zu werden.
 
 - Es wurden in diesem Monat keine _Last Calls_ gestartet.
 
@@ -151,7 +151,7 @@ Teile diese Neuigkeiten auch in anderen Netzwerken:
 
 Du kannst den Newsletter auch als [RSS Feed](https://xmpp.org/feeds/all.atom.xml) abonnieren!
 
-Auf der Suche nach Jobangeboten im XMPP-Umfeld oder professionellem Consulting für ein XMPP-Projekt? Wirf einen Blick auf unser  [job board](https://xmpp.work/)!
+Auf der Suche nach Jobangeboten im XMPP-Umfeld oder professionellem Consulting für ein XMPP-Projekt? Wirf einen Blick auf unser [job board](https://xmpp.work/)!
 
 ### Mitwirkung beim Newsletter
 
@@ -168,7 +168,7 @@ Dieser Newsletter ist ein Gemeinschaftsprojekt und wir bedanken uns herzlich bei
 
 ## Hilf dem Newsletter!
 
-Der XMPP-Newsletter wird gemeinsam von der XMPP-Gemeinschaft geschrieben. Die monatlich erscheinende Ausgabe wird in einem [schlichten Pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung) vorbereitet und am Ende des Monats in das  [Github-Repositorium der XSF](https://github.com/xsf/xmpp.org) übertragen. Mach gerne mit! Komm in [unseren Chatraum (MUC)](xmpp:commteam@muc.xmpp.org?join) und hilf uns dabei, dieses Projekt fortzuführen. Hast Du ein neues Projekt, von dem Leute wissen sollten? Teile es in unserem Newsletter mit einem großen Publikum!
+Der XMPP-Newsletter wird gemeinsam von der XMPP-Gemeinschaft geschrieben. Die monatlich erscheinende Ausgabe wird in einem [schlichten Pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung) vorbereitet und am Ende des Monats in das [Github-Repositorium der XSF](https://github.com/xsf/xmpp.org) übertragen. Mach gerne mit! Komm in [unseren Chatraum (MUC)](xmpp:commteam@muc.xmpp.org?join) und hilf uns dabei, dieses Projekt fortzuführen. Hast Du ein neues Projekt, von dem Leute wissen sollten? Teile es in unserem Newsletter mit einem großen Publikum!
 
 Regelmäßige Aufgaben umfassen:
 
@@ -186,4 +186,4 @@ Wenn Du Dich noch nie eingeloggt hast, musst Du gegebenenfalls erst einen Accoun
 
 ## Lizenz
 
-Dieser Newsletter wird unter der  [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) veröffentlicht.
+Dieser Newsletter wird unter der [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/) veröffentlicht.
