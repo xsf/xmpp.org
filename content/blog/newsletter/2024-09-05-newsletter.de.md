@@ -9,6 +9,10 @@ categories: ['Newsletter']
 Herzlich willkommen zum XMPP Newsletter! Schön, dass Du hier bist.
 Diese Ausgabe behandelt August 2024.
 
+## Meldungen der XSF
+
+[Offener Brief an die Europäische Kommission](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/)[EN]. Im Einklang mit vielen anderen Organisationen hat sich die [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) entschieden, den [Offenen Brief an die Europäische Kommission](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter)[EN] für den Erhalt der Förderung freier Software zu unterzeichnen.
+
 ### XMPP beim Google Summer of Code 2024
 
 Die XMPP Standards Foundation (XSF) wurde auch 2024 wieder als [Gastgeber-Organisation im Google Summer of Code](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)! Folgende XMPP-Projekte haben Plätze erhalten und sind am Coden:
@@ -37,11 +41,10 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 
 ## Videos
 
-- Blasta: Eine Einführung in das XMPP-basierte Lesezeichensystem. [video.xmpp-it.net](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn) (06:38)
+- Blasta: Eine Einführung in das [XMPP-basierte Lesezeichensystem](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn). (06:38)
 
 ## Artikel über XMPP
 
-- [Offener Brief an die Europäische Kommission](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/)[EN]. Im Einklang mit vielen anderen Organisationen hat sich die [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) entschieden, den [Offenen Brief an die Europäische Kommission](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter)[EN] für den Erhalt der Förderung freier Software zu unterzeichnen.
 - [XMPP Protocol](https://machaddr.substack.com/p/xmpp-protocol)[EN]: ein einführender Artikel und konziser Überblick über das XMPP-Protokoll und seine wichtigsten Eigenschaften, geschrieben von André Machado. Der Artikel ist auch auf [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) und [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html) verfügbar.
 
 ## Neuigkeiten über XMPP-Software
@@ -52,7 +55,7 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 - [Psi+ 1.5.2040 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) wurde veröffentlicht.
 - [Quicksy](https://quicksy.im/), der Ableger des bekannten Jabber-/XMPP-Clients Conversations, hat jetzt eine auf [Monal](https://monal-im.org/) basierende iOS-Version und ist ab sofort für iPhone und iPad [erhältlich](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! Hier die ([Ankündigung](https://fosstodon.org/@Monal/113004853520449161)[EN] auf Mastodon).
 - [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) für [F-Droid](https://f-droid.org/) wurde veröffentlicht, mit einer großen Liste an Bugfixes, Fehlerkorrekturen, Updates, Verbesserungen und Änderungen!
-- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (und ein kleines Bugfix-Release [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) wurden veröffentlicht. Die neue Version enthält [Änderungen, neue Features und Bugfixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
+- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) und ein kleines Bugfix-Release [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1) wurden veröffentlicht. Die neue Version enthält [Änderungen, neue Features und Bugfixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
@@ -66,8 +69,6 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 - [Blasta](https://git.xmpp-it.net/sch/Blasta) ([Mirror](https://www.f-hub.org/XMPP/Blasta)) ist ein föderiertes Lesezeichensystem auf XMPP-Basis. Es erlaubt Dir, beliebige Links in Deinem XMPP-Konto zu speichern und sie von dort aus mit verschiedenen Apps, Geräten, aber auch anderen Menschen zu teilen ("social bookmarking").
 
 {{< figure src="/images/newsletter/2024-09-05/blasta_browse.png" caption="Blasta browse" >}}
-
-{{< figure src="/images/newsletter/2024-09-05/blasta_tag.png" caption="Blasta tag" >}}
 
 ## Erweiterumgen und Spezifikationen
 
