@@ -32,7 +32,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ## Eventos XMPP
 
-- [Encuentro XMPP en Berlín](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup)[DE / EN]: Encuentro mensual de entusiastas de XMPP en Berlín, cada 2do miércoles del mes.
+- [Encuentro XMPP en Berlín](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup)[DE / EN]: Encuentro mensual de entusiastas de XMPP en Berlín, cada segundo miércoles del mes.
 - [XMPP Sprint en Worcester, UK](https://wiki.xmpp.org/web/Sprints/2024-09_Worcester_UK): 21 y 22 de Septiembre, 2024 — The Hive, Worcester
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: XMPP web meeting mensual de la comunidad Italiana cada tercer lunes del mes a las 7:00 PM hora local (evento online, web meeting con live streaming).
 
@@ -41,7 +41,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 - Blasta: Una introducción al Sistema de Anotaciones basado en XMPP [video.xmpp-it.net](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn) (06:38).
 
 ## Artículos sobre XMPP
-- La XSF sumó su [firma en la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+- La XSF [firma la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
 - [Protocolo XMPP](https://machaddr.substack.com/p/xmpp-protocol): artículo introductorio y conciso repaso sobre las características mas prominentes del Protocolo XMPP por André Machado. Este artículo también se encuentra disponible para su lectura en [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) y [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
 
 ## Noticias sobre Software XMPP
@@ -63,7 +63,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 ### Librerías y Herramientas XMPP
 
 - [QXmpp 1.8.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.8.1) nueva actualización disponible.
-- [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) es un sistema de marcadores ("bookmarking system") federado, basado en XMPP, que hace posible compartir la colección de marcadores (también conocido como "social bookmarking") almacenados en su cuenta XMPP, no solo entre su software, dispositivos y equipos, sino también, y en especial, con otras personas.
+- [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) es un sistema de marcadores ("bookmarking system") federado, basado en XMPP, que hace posible compartir la colección de marcadores (también conocido como "social bookmarking") almacenados en su cuenta XMPP, no solo entre su software, dispositivos y equipos, sino también y en especial, con otras personas.
 
 {{< figure src="/images/newsletter/2024-09-05/blasta_browse.png" caption="Blasta browse" >}}
 
@@ -166,6 +166,8 @@ Este es un esfuerzo comunitario, y nos gustaría agradecer a nuestros traductore
   - Traductores: *nicola*
 - Español: [xmpp.org](https://xmpp.org/categories/newsletter/])
   - Traductores: *Gonzalo Raúl Nemmi*
+- Alemán: [xmpp.org](https://xmpp.org/categories/newsletter/])
+  - Traductores: *Millesimus*
 
 ## Ayúdenos a construir el XMPP Newsletter
 
