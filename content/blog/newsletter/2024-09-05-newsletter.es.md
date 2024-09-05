@@ -9,6 +9,10 @@ categories: ['Newsletter']
 ¡Bienvenido al XMPP Newsletter, es un placer tenerlo aquí nuevamente!.
 Esta edición corresponde al mes de Agosto del 2024.
 
+### Anuncio de la XSF
+
+- La XSF [firma la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+
 ### XMPP en el "Google Summer of Code 2024"
 
 ¡La XSF ha sido aceptada como [organización anfitriona en el GSoC 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) una vez más!
@@ -38,10 +42,10 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ## Videos
 
-- Blasta: Una introducción al Sistema de Anotaciones basado en XMPP [video.xmpp-it.net](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn) (06:38).
+- Blasta: Una introducción al [Sistema de Anotaciones basado en XMPP](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn). (06:38)
 
 ## Artículos sobre XMPP
-- La XSF [firma la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+
 - [Protocolo XMPP](https://machaddr.substack.com/p/xmpp-protocol): artículo introductorio y conciso repaso sobre las características mas prominentes del Protocolo XMPP por André Machado. Este artículo también se encuentra disponible para su lectura en [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) y [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
 
 ## Noticias sobre Software XMPP
@@ -51,14 +55,14 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 - [Monal 6.4.2](https://github.com/monal-im/Monal/releases/tag/Build_iOS_964), [6.4.3](https://github.com/monal-im/Monal/releases/tag/Build_iOS_976) y [6.4.4](https://github.com/monal-im/Monal/releases/tag/Build_iOS_978) nuevas actualizaciones disponibles.
 - [Psi+ 1.5.2040 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) actualización disponible.
 - [Quicksy](https://quicksy.im/), el derivado del popular cliente para Jabber/XMPP, ahora cuenta con una versión para iOS basada en [Monal](https://monal-im.org/) y se encuentra [disponible](https://apps.apple.com/us/app/quicksy/id6538727270) para iPhone y iPad! ([anuncio](https://fosstodon.org/@Monal/113004853520449161) en Mastodon)
-- [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) publicó su última actualización. ¡Y trae una larga lista de correción de errores, actualizaciones, mejoras, cambios, y ya se encuentra disponible en [F-Droid](https://f-droid.org/)!.
-- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (y una pequeña corrección de errores [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) publicó su última actualización con una extensa lista de [cambios, nuevas características y corrección de errores](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
+- [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) publicó su última actualización. ¡Y trae una larga lista de correción de errores, actualizaciones, mejoras, cambios, y ya se encuentra disponible en F-Droid!.
+- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) y una pequeña corrección de errores [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1) publicó su última actualización con una extensa lista de [cambios, nuevas características y corrección de errores](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
 ### Servidores XMPP
 
-- Mientras que Yunohost se aproxima al lanzamiento de su versión 12, se ha creado un borrador de una aplicación (no-oficial) para Prosody, que tiene por objetivo brindar el mejor soporte a XMPP, y ya se encuentra disponible para ser testeada : https://github.com/anubister/prosody_ynh . A modo de recordatorio, [Yunohost](https://yunohost.org) es una distribución del tipo servidor, basada en Debian, que facilita el hospedaje de varios servicios. Hasta su versión 11, el servidor XMPP [Metronome](https://archon.im/metronome-im/) se encontraba integrado en la instalación básica, facilitando que el usuario final tome contacto y descubra XMPP con facilidad (aunque con algunas limitaciones).
+- Yunohost, un paquete (no-oficial) de Prosody, que tiene por objetivo brindar el mejor soporte a XMPP, ya se encuentra disponible para ser [testeada](https://github.com/anubister/prosody_ynh). A modo de recordatorio, [Yunohost](https://yunohost.org) es una distribución del tipo servidor, basada en Debian, que facilita el hospedaje de varios servicios. Mientras que se aproxima al lanzamiento de su versión 12, y hasta su versión 11, el servidor XMPP [Metronome](https://archon.im/metronome-im/) se encontraba integrado en la instalación básica, facilitando que el usuario final tome contacto y descubra XMPP con facilidad (aunque con algunas limitaciones).
 
 ### Librerías y Herramientas XMPP
 
@@ -66,8 +70,6 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 - [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) es un sistema de marcadores ("bookmarking system") federado, basado en XMPP, que hace posible compartir la colección de marcadores (también conocido como "social bookmarking") almacenados en su cuenta XMPP, no solo entre su software, dispositivos y equipos, sino también y en especial, con otras personas.
 
 {{< figure src="/images/newsletter/2024-09-05/blasta_browse.png" caption="Blasta browse" >}}
-
-{{< figure src="/images/newsletter/2024-09-05/blasta_tag.png" caption="Blasta tag" >}}
 
 ## Extensiones y especificaciones
 
