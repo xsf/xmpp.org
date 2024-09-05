@@ -13,6 +13,8 @@ This issue covers the month of August 2024.
 
 The XSF [has signed an Open Letter to the European Commission](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). As currently many other organizations doing, the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) has decided to also sign the [Open Letter to the European Commission](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
 
+The [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) is also calling for XSF Board 2024 and XSF Council 2024. Be involved in the XMPP Standards Foundation organisation decisions as well as on our specifications we publish. If you are interested in running for Board or Council, please add a wiki page about your candidacy to one or both of the following sections until  November 3rd, 2024, 00:00 UTC. Note: XMPP Council members must be elected members of the XSF; however, there is no such restriction for the Board of Directors.
+
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
