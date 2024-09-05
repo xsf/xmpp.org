@@ -164,9 +164,9 @@ Este es un esfuerzo comunitario, y nos gustaría agradecer a nuestros traductore
   - Traductores: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italiano: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Traductores: *nicola*
-- Español: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- Español: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Traductores: *Gonzalo Raúl Nemmi*
-- Alemán: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- Alemán: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Traductores: *Millesimus*
 
 ## Ayúdenos a construir el XMPP Newsletter
