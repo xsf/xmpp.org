@@ -165,9 +165,9 @@ This is a community effort, and we would like to thank translators for their con
   - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: *nicola*
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: *Gonzalo Raúl Nemmi*
-- German: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- German: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: *Millesimus*
 
 ## Help us to build the newsletter
