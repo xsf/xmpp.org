@@ -9,9 +9,11 @@ categories: ['Newsletter']
 ¡Bienvenido al XMPP Newsletter, es un placer tenerlo aquí nuevamente!.
 Esta edición corresponde al mes de Agosto del 2024.
 
-### Anuncio de la XSF
+### Anuncios de la XSF
 
-- La XSF [firma la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+La XSF [firma la Carta Abierta a la Comisión Europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Tal y como muchas otras otras organizaciones lo están haciendo, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) decidió sumar su firma a la [Carta Abierta a la Comisión Europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+
+La [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) abre su llamado para el "XSF Board" 2024 y el "XSF Council" 2024. Involúcrese en las decisiónes organizativas de la XMPP Standards Foundation [XFS] y en las las espesificaciones que publicamos. Si usted está interesado en postularse para el "Board" o para el "Council", por favor agregue una página en el [wiki](https://wiki.xmpp.org/web/Main_Page) acerca de su candidatura [en una o ambas secciones](https://wiki.xmpp.org/web/Board_and_Council_Elections_2024). Tiene tiempo hasta el 3 de Noviembre de 2024, 00:00 UTC. Nota: Los miembros del "Council" deben ser miembros electos de la XSF; sin perjuicio de ello, esta restricción no se aplica para los Directores del "Board".
 
 ### XMPP en el "Google Summer of Code 2024"
 
@@ -46,7 +48,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ## Artículos sobre XMPP
 
-- [Protocolo XMPP](https://machaddr.substack.com/p/xmpp-protocol): artículo introductorio y conciso repaso sobre las características mas prominentes del Protocolo XMPP por André Machado. Este artículo también se encuentra disponible para su lectura en [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) y [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
+- [Protocolo XMPP](https://machaddr.substack.com/p/xmpp-protocol): artículo introductorio y conciso repaso sobre las características fundamentales del Protocolo XMPP por André Machado. Este artículo también se encuentra disponible para su lectura en [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) y [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
 
 ## Noticias sobre Software XMPP
 
@@ -62,7 +64,7 @@ La XSF ofrece [hosting fiscal](https://xmpp.org/community/fiscalhost/) para proy
 
 ### Servidores XMPP
 
-- Yunohost, un paquete (no-oficial) de Prosody, que tiene por objetivo brindar el mejor soporte a XMPP, ya se encuentra disponible para ser [testeada](https://github.com/anubister/prosody_ynh). A modo de recordatorio, [Yunohost](https://yunohost.org) es una distribución del tipo servidor, basada en Debian, que facilita el hospedaje de varios servicios. Mientras que se aproxima al lanzamiento de su versión 12, y hasta su versión 11, el servidor XMPP [Metronome](https://archon.im/metronome-im/) se encontraba integrado en la instalación básica, facilitando que el usuario final tome contacto y descubra XMPP con facilidad (aunque con algunas limitaciones).
+- Yunohost, cuenta ahora con el borrador de una aplicación (no-oficial) para Prosody que tiene por objetivo brindar el mejor soporte a XMPP, y se encuentra disponible para ser [testeada](https://github.com/anubister/prosody_ynh). A modo de recordatorio, [Yunohost](https://yunohost.org) es una distribución del tipo servidor, basada en Debian, que facilita el hospedaje de varios servicios. Mientras que se acerca al lanzamiento de su versión 12, y hasta su versión 11, el servidor XMPP [Metronome](https://archon.im/metronome-im/) se encontraba integrado en la instalación básica, facilitando el camino para que el usuario final tome contacto y descubra XMPP (aunque con algunas limitaciones).
 
 ### Librerías y Herramientas XMPP
 
