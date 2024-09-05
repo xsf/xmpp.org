@@ -9,6 +9,10 @@ categories: ['Newsletter']
 Welcome to the XMPP Newsletter, great to have you here again!
 This issue covers the month of August 2024.
 
+### XSF Announcement
+
+The XSF [has signed an Open Letter to the European Commission](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). As currently many other organizations doing, the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) has decided to also sign the [Open Letter to the European Commission](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
+
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
@@ -38,12 +42,11 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Videos
 
-- Blasta: An introduction to the XMPP-based Annotation System. [video.xmpp-it.net](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn) (06:38)
+- Blasta: An introduction to the [XMPP-based Annotation System](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn). (06:38)
 
 ## XMPP Articles
 
-- The XSF [signs Open Letter to the European Commission](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). As currently many other organisations doing, the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) has decided to also sign the [Open Letter to the European Commission](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
-- [XMPP Protocol](https://machaddr.substack.com/p/xmpp-protocol): an introductory article and consice overview of the XMPP Protocol and its most prominent features by André Machado. This article is also available for reading in [[PT]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) and [[ES]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
+- [XMPP Protocol - Introduction to XMPP](https://machaddr.substack.com/p/xmpp-protocol): An introductory article and concicse overview of the XMPP Protocol and its most prominent features by André Machado. This article is also available for reading in [[Portuguese]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) and [[Spanish]](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html), too.
 
 ## XMPP Software News
 
@@ -51,15 +54,15 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Monal 6.4.2](https://github.com/monal-im/Monal/releases/tag/Build_iOS_964), [6.4.3](https://github.com/monal-im/Monal/releases/tag/Build_iOS_976) and version [6.4.4](https://github.com/monal-im/Monal/releases/tag/Build_iOS_978) have been released.
 - [Psi+ 1.5.2040 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
-- [Quicksy](https://quicksy.im/), the spin-off of the popular Jabber/XMPP client, now has iOS version based on [Monal](https://monal-im.org/) and its [available](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! ([annoucement](https://fosstodon.org/@Monal/113004853520449161) on Mastodon).
-- [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) for [F-Droid](https://f-droid.org/) has been released, and its packing a huge list of fixes, corrections, updates, improvements and changes!.
-- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) (and a small bugfix [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1)) has been released with a large number of [changes, new features and fixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
+- [Quicksy](https://quicksy.im/), the spin-off of the popular Jabber/XMPP client, now has iOS version based on [Monal](https://monal-im.org/) and its [available](https://apps.apple.com/us/app/quicksy/id6538727270) for iPhone and iPad! ([announcement](https://fosstodon.org/@Monal/113004853520449161) on Mastodon).
+- [Monocles Chat 1.7.11](https://codeberg.org/monocles/monocles_chat/releases/tag/v1.7.11) for F-Droid has been released, and its packing a huge list of fixes, corrections, updates, improvements and changes!.
+- [Movim 0.27](https://github.com/movim/movim/releases/tag/v0.27) and a small bugfix [0.27.1](https://github.com/movim/movim/releases/tag/v0.27.1) has been released with a large number of [changes, new features and fixes](https://mov.im/node/pubsub.movim.eu/Movim/11207a09-8c4d-4cf9-9756-b0fb0b273ee1).
 
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
 ### XMPP Servers
 
-- While Yunohost is nearing the release of its version 12, a (non-official) Prosody app aiming at providing the best XMPP support has been drafted and available for tests : https://github.com/anubister/prosody_ynh . As a reminder, [Yunohost](https://yunohost.org) is a server distribution based on Debian, which makes easy to host by yourself a lot of services (apps). Till the version 11, the XMPP server [Metronome](https://archon.im/metronome-im/) was integrated in the core installation, allowing a lot of people to discover XMPP easily (though with some limitations).
+- Yunohost, a (non-official) Prosody host package aiming at providing better XMPP support has been drafted and available for [tests](https://github.com/anubister/prosody_ynh). As a reminder, [Yunohost](https://yunohost.org) is a server distribution based on Debian, which makes easy to host by yourself a lot of services (apps). Nearing the release of its version 12, till the version 11 the XMPP server [Metronome](https://archon.im/metronome-im/) was integrated in the core installation, allowing a lot of people to discover XMPP easier (though with some limitations).
 
 ### XMPP Libraries & Tools
 
@@ -67,8 +70,6 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Blasta](https://git.xmpp-it.net/sch/Blasta) ([mirror](https://www.f-hub.org/XMPP/Blasta)) is a federated bookmarking system based on XMPP, which allows you to share the collection of bookmarks (aka "social bookmarking") stored on your own XMPP account, not only among your own software, devices and machines, but also with other people.
 
 {{< figure src="/images/newsletter/2024-09-05/blasta_browse.png" caption="Blasta browse" >}}
-
-{{< figure src="/images/newsletter/2024-09-05/blasta_tag.png" caption="Blasta tag" >}}
 
 ## Extensions and specifications
 
