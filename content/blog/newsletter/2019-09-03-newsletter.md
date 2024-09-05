@@ -47,7 +47,7 @@ The igniterealtime community has announced multiple releases:
 * [Monitoring Service 1.8.0 and inVerse 4.2.0.1 plugins](https://discourse.igniterealtime.org/t/monitoring-service-1-8-0-and-inverse-4-2-0-1-plugins-released/85601)
 * [Thread Dump 1.0.0 plugin](https://discourse.igniterealtime.org/t/thread-dump-1-0-0-plugin-released/85794)
 
-Antonino Siena has announced [xmpp-http-upload](https://gitlab.com/nifker/xmpp-http-upload), a lightweight and efficient HTTP upload server for XMPP (MIT license).
+Announcement of [xmpp-http-upload](https://gitlab.com/nifker/xmpp-http-upload), a lightweight and efficient HTTP upload server for XMPP (MIT license).
 
 Mickaël Rémond has announced [ejabberd 19.08](https://blog.process-one.net/ejabberd-19-08/), with JSON Web Token, configuration validator, improved scalability, and more.
 
