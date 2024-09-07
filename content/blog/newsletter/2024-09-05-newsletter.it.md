@@ -1,3 +1,9 @@
+---
+title: The XMPP Newsletter August 2024
+date: 2024-09-05
+categories: ['Newsletter']
+---
+
 # Benvenuti alla Newsletter XMPP, è un piacere avervi di nuovo qui! Questo numero copre il mese di agosto 2024.
 
 
