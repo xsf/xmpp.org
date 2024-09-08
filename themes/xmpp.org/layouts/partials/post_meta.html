@@ -1,10 +1,6 @@
 <span class="text-body-secondary">
-    {{- $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format -}}
-    {{- $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format -}}
+    {{- $datestr := .Date | time.Format (i18n "dateFormat") -}}
     <i class="fas fa-calendar"></i>&nbsp;{{- $datestr | i18n "postedOnDate"}}
-    {{- if ne $datestr $lastmodstr -}}
-      &nbsp;{{- $lastmodstr -}}
-    {{- end -}}
     {{- if .Site.Params.readingTime -}}
       &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;{{- i18n "readingTime"}}{{- .ReadingTime -}}&nbsp;{{- i18n "readTime" -}}
     {{- end -}}
