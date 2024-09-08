@@ -4,17 +4,19 @@ date: 2024-09-05
 categories: ['Newsletter']
 ---
 
-# Benvenuti alla Newsletter XMPP, è un piacere avervi di nuovo qui! Questo numero copre il mese di agosto 2024.
+{{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
+
+Benvenuti alla Newsletter XMPP, è un piacere avervi di nuovo qui! Questo numero copre il mese di agosto 2024.
 
 
-# Annunci XSF
+## Annunci XSF
 
 La XSF [ha firmato una lettera aperta alla Commissione europea](https://xmpp.org/2024/08/the-xsf-signs-open-letter-to-the-european-commission/). Come stanno facendo molte altre organizzazioni, la [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) (XSF) ha deciso di firmare anche la [Lettera aperta alla Commissione europea](https://www.ow2.org/view/Events/The_European_Union_must_keep_funding_free_software_open_letter).
 
 La [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) sta inoltre convocando il Board XSF 2024 e il Consiglio XSF 2024. Partecipate alle decisioni dell'organizzazione della XMPP Standards Foundation e alle specifiche che pubblichiamo. Se siete interessati a candidarvi per il Board o il Council, aggiungete una pagina [wiki](https://wiki.xmpp.org/web/Main_Page) sulla vostra candidatura a [una o entrambe](https://wiki.xmpp.org/web/Board_and_Council_Elections_2024) delle seguenti sezioni fino al 3 novembre 2024, ore 00:00 UTC. Nota: i membri del Consiglio devono essere membri eletti dell'XSF; tuttavia, non c'è questa restrizione per il Board.
 
 
-# XMPP e Google Summer of Code 2024
+## XMPP e Google Summer of Code 2024
 
 L'XSF è stato accettato come [organizzazione ospitante della GSoC nel 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024)! Questi progetti XMPP hanno ricevuto uno slot e hanno iniziato la loro attività di codifica:
 
@@ -28,7 +30,7 @@ L'XSF è stato accettato come [organizzazione ospitante della GSoC nel 2024](htt
 
 
 
-# Progetti di hosting fiscale XSF
+## Progetti di hosting fiscale XSF
 
 L'XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per progetti XMPP. Fai domanda tramite [Open Collective](https://opencollective.com/xmpp). Per maggiori informazioni, vedi [l’annuncio sul blog](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Progetti in corso:
 
@@ -37,23 +39,23 @@ L'XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per proget
 - [Prav iOS](https://opencollective.com/prav-ios)
 - [diasp.in](https://opencollective.com/diasp-in)
 
-# Eventi XMPP
+## Eventi XMPP
 
 - [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) (DE / EN): incontro mensile degli appassionati di XMPP a Berlino, ogni secondo mercoledì del mese alle 18:00 ora locale.
 - [XMPP Sprint a Worcester, Regno Unito](https://wiki.xmpp.org/web/Sprints/2024-09_Worcester_UK): Da sabato 21 a domenica 22 settembre 2024.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) \[IT\]: incontro mensile degli appassionati di XMPP in Italia, ogni terzo lunedì del mese alle 19:00 ora locale (evento online, con modalità web meeting e live streaming).
 
-# Video
+## Video
 
 - Blasta: Un'introduzione al [Sistema di Annotazione basato su XMPP](https://video.xmpp-it.net/w/cfozoUeVLFbBFMCCSCJ1Dn). (06:38)
 
-# Articoli su XMPP
+## Articoli su XMPP
 
 - [XMPP Protocol - Introduction to XMPP](https://machaddr.substack.com/p/xmpp-protocol): Un articolo introduttivo e una panoramica concisa del protocollo XMPP e delle sue caratteristiche più importanti, a cura di André Machado. Questo articolo è disponibile per la lettura anche in [Portoghese](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-pt.html) e [Spagnolo](https://leaf.dragonflybsd.org/~gnemmi/blog/xmpp/xmpp-protocolo-es.html).
 
-# Notizie sul software XMPP
+## Notizie sul software XMPP
 
-## Client e applicazioni XMPP
+### Client e applicazioni XMPP
 
 
 
@@ -66,14 +68,14 @@ L'XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per proget
 {{< figure src="/images/newsletter/2024-09-05/movim-0.27.png" caption="Movim 0.27 introducing the floating, chat-integrated, and full-screen modes" >}}
 
 
-## Server XMPP
+### Server XMPP
 
 
 
 - Yunohost, un pacchetto host Prosody (non ufficiale) che mira a fornire un migliore supporto XMPP, è stato redatto e reso disponibile per [test](https://github.com/anubister/prosody_ynh). Come promemoria, [Yunohost](https://yunohost.org/) è una distribuzione server basata su Debian, che rende facile ospitare da soli molti servizi (applicazioni). Si avvicina il rilascio della versione 12, mentre fino alla versione 11 il server XMPP [Metronome](https://archon.im/metronome-im/) era integrato nell'installazione principale, permettendo a molte persone di scoprire XMPP più facilmente (anche se con alcune limitazioni).
 
 
-## Librerie e Tool
+### Librerie e Tool
 
 
 
@@ -83,7 +85,7 @@ L'XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per proget
 {{< figure src="/images/newsletter/2024-09-05/blasta_browse.png" caption="Blasta browse" >}}
 
 
-# Estensioni e specifiche
+## Estensioni e specifiche
 
 
 
@@ -92,7 +94,7 @@ La XMPP Standards Foundation sviluppa estensioni di XMPP nella sua [serie XEP](h
 Sviluppatori e altri esperti di standard di tutto il mondo collaborano a queste estensioni, sviluppando nuove specifiche per le pratiche emergenti e perfezionando i modi di fare esistenti. Le estensioni proposte da chiunque, quelle di particolare successo finiscono per diventare Final o Active - a seconda del loro tipo - mentre altre vengono accuratamente archiviate come Deferred. Questo ciclo di vita è descritto in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), che contiene le definizioni formali e canoniche per i tipi, gli stati e i processi. [Per saperne di più sul processo degli standard](https://xmpp.org/about/standards-process.html). La comunicazione su standard ed estensioni avviene nella [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([archivio online](https://mail.jabber.org/pipermail/standards/)).
 
 
-## Proposte
+### Proposte
 
 
 
@@ -100,13 +102,13 @@ Il processo di sviluppo di un XEP inizia scrivendo un'idea e sottoponendola all'
 
 - Nessuno XEP proposto questo mese.
 
-## Nuove
+### Nuove
 
 
 
 - Nessuno XEP nuovo questo mese.
 
-## Differimenti
+### Differimenti
 
 
 
@@ -114,7 +116,7 @@ Se uno XEP sperimentale non viene aggiornato per più di dodici mesi, verrà spo
 
 -   Nessuno XEP differito questo mese.
 
-## Aggiornamenti
+### Aggiornamenti
 
 
 
@@ -143,7 +145,7 @@ Se uno XEP sperimentale non viene aggiornato per più di dodici mesi, verrà spo
 -   Version 1.3.0 of [XEP-0054](https://xmpp.org/extensions/xep-0054.html) (vcard-temp)
     -   Updated error cases to be compatible with . (gk)
 
-## Last Call
+### Last Call
 
 
 
@@ -151,26 +153,26 @@ Last Call sono emesse una volta che tutti sembrano soddisfatti dello stato attua
 
 - Nessuna last call questo mese.
 
-## Stabile
+### Stabile
 
 
 
 - Nessun XEP è passato a Stabile questo mese.
 
-## Deprecato
+### Deprecato
 
 
 
 - Nessuno XEP deprecato questo mese.
 
-## Non ammessi
+### Non ammessi
 
 
 
 - Nessun XEP non ammesso questo mese.
 
 
-# Diffondete la notizia!
+## Diffondete la notizia!
 
 
 
@@ -191,7 +193,7 @@ Controlla anche il nostro [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
 Cerchi offerte di lavoro o vuoi assumere un consulente professionale per il tuo progetto XMPP? Visita la nostra [bacheca delle offerte di lavoro XMPP](https://xmpp.work/).
 
 
-# Collaboratori della newsletter e traduzioni
+## Collaboratori della newsletter e traduzioni
 
 Si tratta di uno sforzo comunitario e vorremmo ringraziare i traduttori per il loro contributo. I volontari sono i benvenuti! Le traduzioni della newsletter XMPP saranno pubblicate qui (con un certo ritardo):
 
@@ -207,7 +209,7 @@ Si tratta di uno sforzo comunitario e vorremmo ringraziare i traduttori per il l
     -   Traduttori: _Millesimus_
 
 
-# Aiutaci a realizzare la newsletter
+## Aiutaci a realizzare la newsletter
 
 
 
@@ -224,12 +226,12 @@ Attività che facciamo regolarmente:
 - comunicazione attraverso gli account social
 
 
-# Cancellazione dalla newsletter XMPP
+## Cancellazione dalla newsletter XMPP
 
 Per annullare l'iscrizione a questa lista, [effettuare prima il login](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/). Se in precedenza non si è effettuato il login, potrebbe essere necessario creare un account con un idoneo indirizzo e-mail.
 
 
-# Licenza
+## Licenza
 
 
 
