@@ -391,6 +391,17 @@
         "categories": [
             "client"
         ],
+        "doap": "https://codeberg.org/prav/prav/raw/branch/master/prav.doap",
+        "name": "Prav",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://prav.app/"
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/conversejs/converse.js/master/conversejs.doap",
         "name": "Converse.js",
         "platforms": [],
