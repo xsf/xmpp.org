@@ -69,6 +69,16 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
             )
             violations += 1
 
+        doap = entry.get("doap")
+        url = entry.get("url")
+        if doap is not None and (url is not None or supported_platforms):
+            emit_violation(
+                entry["name"],
+                "a DOAP file is linked, therefore 'url' must be null and "
+                "'platforms' must be [], because the DOAP file provides both"
+            )
+            violations += 1
+
         previous_key, previous_name = key, entry["name"]
 
     return violations
