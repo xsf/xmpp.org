@@ -2174,6 +2174,13 @@
         "url": null
     },
     {
+      "categories": ["library"],
+      "doap": "https://github.com/vsevex/whixp/blob/main/doap.xml",
+      "name": "Whixp",
+      "platforms": ["Dart"],
+      "url": "https://pub.dev/packages/whixp"
+    },
+    {
         "categories": [
             "library"
         ],
@@ -2183,12 +2190,5 @@
             "JavaScript"
         ],
         "url": "https://ivan.vucica.net/zxmpp"
-    },
-  {
-    "categories": ["library"],
-    "doap": "https://github.com/vsevex/whixp/blob/main/doap.xml",
-    "name": "Whixp",
-    "platforms": ["Dart"],
-    "url": "https://pub.dev/packages/whixp"
-  }
+    }
 ]
