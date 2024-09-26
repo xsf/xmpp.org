@@ -1918,10 +1918,10 @@
     },
     {
       "categories": ["library"],
-      "doap": "https://github.com/vsevex/whixp/blob/main/doap.xml",
+      "doap": "https://raw.githubusercontent.com/vsevex/whixp/refs/heads/main/doap.xml",
       "name": "Whixp",
-      "platforms": ["Dart"],
-      "url": "https://pub.dev/packages/whixp"
+      "platforms": [],
+      "url": null
     },
     {
         "categories": [
