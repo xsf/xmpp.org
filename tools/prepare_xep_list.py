@@ -1,11 +1,11 @@
+"""This file is used to download the XEP list and convert it to JSON
 """
-This file is used to download the XEP list and convert it to JSON
-"""
+
 from typing import Any
 
 import json
-import os
 import sys
+from pathlib import Path
 
 import requests
 from defusedxml.ElementTree import fromstring
@@ -15,9 +15,7 @@ XEP_LIST_URL = "https://xmpp.org/extensions/xeplist.xml"
 
 
 def build_xep_list() -> None:
-    """
-    Download and parse xeplist.xml and build xeplist.json
-    """
+    """Download and parse xeplist.xml and build xeplist.json"""
     try:
         xeplist_request = requests.get(XEP_LIST_URL, timeout=5)
     except requests.exceptions.RequestException as err:
@@ -38,50 +36,80 @@ def build_xep_list() -> None:
 
     xeps: list[dict[str, Any]] = []
     for xep in root.findall("xep"):
-        if xep.get("accepted") == "true":
-            shortname = xep.find("shortname")
-            if shortname is not None:
-                shortname = shortname.text
+        if xep.get("accepted") != "true":
+            continue
 
-            tag_list: list[str] = []
-            tags = xep.find("tags")
-            if tags is not None:
-                for tag in tags.findall("tag"):
-                    tag_list.append(tag.text)
+        title_element = xep.find("title")
+        title = title_element.text if title_element is not None else None
 
-            date_element = xep.find("last-revision").find("date")
+        shortname_element = xep.find("shortname")
+        shortname = shortname_element.text if shortname_element is not None else None
+
+        status_element = xep.find("status")
+        status = None
+        if status_element is not None and status_element.text is not None:
+            status = fix_status(status_element.text)
+
+        number_element = xep.find("number")
+        number = 0
+        if number_element is not None and number_element.text is not None:
+            number = int(number_element.text)
+
+        xep_type_element = xep.find("type")
+        xep_type = xep_type_element.text if xep_type_element is not None else None
+
+        abstact_element = xep.find("abstract")
+        abstract = abstact_element.text if abstact_element is not None else None
+
+        tag_list: list[str] = []
+        tags = xep.find("tags")
+        if tags is not None:
+            for tag in tags.findall("tag"):
+                if tag.text is not None:
+                    tag_list.append(tag.text)  # noqa: PERF401
+
+        date = None
+        version = None
+        initials = None
+        remarks = None
+
+        last_revision_element = xep.find("last-revision")
+        if last_revision_element is not None:
+            date_element = last_revision_element.find("date")
             date = date_element.text if date_element is not None else None
 
-            version_element = xep.find("last-revision").find("version")
+            version_element = last_revision_element.find("version")
             version = version_element.text if version_element is not None else None
 
-            initials_element = xep.find("last-revision").find("initials")
+            initials_element = last_revision_element.find("initials")
             initials = initials_element.text if initials_element is not None else None
 
-            remarks_element = xep.find("last-revision").find("remarks")
+            remarks_element = last_revision_element.find("remarks")
             remarks = remarks_element.text if remarks_element is not None else None
 
-
-            xeps.append(
-                {
-                    "title": xep.find("title").text,
-                    "shortname": shortname,
-                    "status": fix_status(xep.find("status").text),
-                    "number": int(xep.find("number").text),
-                    "last_revision_date": date,
-                    "last_revision_version": version,
-                    "last_revision_initials": initials,
-                    "last_revision_remarks": remarks,
-                    "type": xep.find("type").text,
-                    "abstract": xep.find("abstract").text,
-                    "tags": tag_list,
-                }
-            )
+        xeps.append(
+            {
+                "title": title,
+                "shortname": shortname,
+                "status": status,
+                "number": number,
+                "last_revision_date": date,
+                "last_revision_version": version,
+                "last_revision_initials": initials,
+                "last_revision_remarks": remarks,
+                "type": xep_type,
+                "abstract": abstract,
+                "tags": tag_list,
+            },
+        )
     xeps_sorted = sorted(xeps, key=lambda xep: xep["number"])
 
-    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+    base_path = Path.resolve(Path(sys.argv[0])).parent
 
-    with open(f"{base_path}/../data/xeplist.json", "w", encoding="utf-8") as json_file:
+    with Path(f"{base_path}/../data/xeplist.json").open(
+        "w",
+        encoding="utf-8",
+    ) as json_file:
         json.dump(xeps_sorted, json_file, indent=4)
     print("XEP List prepared successfully")
 

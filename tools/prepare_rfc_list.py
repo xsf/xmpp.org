@@ -1,12 +1,12 @@
-"""
-This file is used to download RFC references and convert them to
+"""This file is used to download RFC references and convert them to
 a single JSON file
 """
+
 from typing import Any
 
 import json
-import os
 import sys
+from pathlib import Path
 
 import requests
 from defusedxml.ElementTree import fromstring
@@ -25,18 +25,18 @@ RFC_NUMBERS = [
     4979,
     5122,
     5437,
-    6120,  #
-    6121,  #
+    6120,  # important
+    6121,  # important
     7081,
     7165,
     7247,
     7248,
     7259,
-    7395,  #
+    7395,  # important
     7572,
     7573,
-    7590,  #
-    7622,  #
+    7590,  # important
+    7622,  # important
     7700,
     7702,
     7712,
@@ -52,8 +52,7 @@ BIB_XML_PATH = "https://xml2rfc.tools.ietf.org/public/rfc/bibxml"
 
 
 def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
-    """
-    Downloads and parses RFC references and builds an RFC list with
+    """Downloads and parses RFC references and builds an RFC list with
     additional parameters (e.g. selfhosted).
     Stores data in rfc_list.json
     """
@@ -66,7 +65,7 @@ def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
     if not 200 >= response.status_code < 400:
         sys.exit(
             f"Error while downloading reference for "
-            f"RFC {number} ({response.status_code})"
+            f"RFC {number} ({response.status_code})",
         )
 
     try:
@@ -89,7 +88,9 @@ def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
             else:
                 authors += f', {item.attrib.get("fullname")}'
         if item.tag == "abstract":
-            abstract = item.find("t").text
+            t_element = item.find("t")
+            if t_element is not None:
+                abstract = t_element.text
 
     obsoletes: str | None = None
     obsoleted_by: str | None = None
@@ -131,11 +132,9 @@ def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
 
 
 def build_rfc_list() -> None:
-    """
-    Generates rfc_list.json from downloaded data
-    """
+    """Generates rfc_list.json from downloaded data"""
     print("Generating RFC list...")
-    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+    base_path = Path.resolve(Path(sys.argv[0])).parent
     rfcs: list[dict[str, Any]] = []
 
     session = requests.Session()
@@ -148,7 +147,10 @@ def build_rfc_list() -> None:
 
     rfcs = sorted(rfcs, key=lambda d: d["number"])
 
-    with open(f"{base_path}/../data/rfc_list.json", "w", encoding="utf-8") as json_file:
+    with Path(f"{base_path}/../data/rfc_list.json").open(
+        "w",
+        encoding="utf-8",
+    ) as json_file:
         json.dump(rfcs, json_file, indent=4)
 
     print(f"RFC list prepared successfully ({len(RFC_NUMBERS)} RFCs)")

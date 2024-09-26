@@ -1,5 +1,4 @@
-"""
-Download / prepare / process XMPP DOAP files for the software list
+"""Download / prepare / process XMPP DOAP files for the software list
 Requires: Pillow, python-slugify
 """
 
@@ -87,20 +86,18 @@ PLATFORMS: list[str] = [
     "Linux",
 ]
 
-DoapInfoT = dict[str, str | list[str] | list[dict[str, str]] | None] | None
+DoapInfoT = dict[str, str | list[str] | list[dict[str, str | None]] | None] | None
 
 
 def parse_doap_infos(doap_file: str) -> DoapInfoT:
-    """
-    Parse DOAP file and return infos
-    """
+    """Parse DOAP file and return infos"""
     try:
         doap = parse(DOWNLOAD_PATH / f"doap_files/{doap_file}.doap")
     except (FileNotFoundError, ParseError) as err:
         print("Error while trying to parse DOAP file:", doap_file, err)
         return None
 
-    info: dict[str, str | list[str] | list[dict[str, str]] | None] = {}
+    info: dict[str, str | list[str] | list[dict[str, str | None]] | None] = {}
 
     info["name"] = None
     doap_name = doap.find(DOAP_NAME)
@@ -129,7 +126,8 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
 
     info["platforms"] = []
     for entry in doap.findall(DOAP_OS):
-        info["platforms"].append(entry.text)
+        if entry.text is not None:
+            info["platforms"].append(entry.text)
 
     info["code_repository"] = None
     doap_code_repository = doap.find(DOAP_CODE_REPO)
@@ -143,7 +141,8 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
 
     info["programming_lang"] = []
     for entry in doap.findall(DOAP_PROGRAMMING_LANGUAGE):
-        info["programming_lang"].append(entry.text)
+        if entry.text is not None:
+            info["programming_lang"].append(entry.text)
 
     info["logo"] = None
     doap_logo = doap.find(DOAP_LOGO)
@@ -151,7 +150,7 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
         info["logo"] = doap_logo.attrib.get(RDF_RESOURCE)
 
     rfcs: list[str] = []
-    xeps: list[dict[str, str]] = []
+    xeps: list[dict[str, str | None]] = []
     for entry in doap.findall(DOAP_IMPLEMENTS):
         rfc = entry.attrib.get(RDF_RESOURCE)
         if rfc is not None:
@@ -186,7 +185,7 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
                     "version": version,
                     "status": status,
                     "since": since,
-                }
+                },
             )
 
     info["rfcs"] = rfcs
@@ -196,8 +195,7 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
 
 
 def check_image_file(file_path: Path, extension: str) -> bool:
-    """
-    Check if file size is greater than 300 KiB and if so, resize image
+    """Check if file size is greater than 300 KiB and if so, resize image
     Returns success
     """
     if extension == "svg":
@@ -205,7 +203,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
         return True
 
     try:
-        file_size = os.path.getsize(file_path)
+        file_size = file_path.stat().st_size
     except OSError as error:
         print("An error occurred while trying to open logo:", error)
         return False
@@ -224,7 +222,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
             print(
                 f"                  Logo at {file_path} "
                 f"(file size: {file_size / (1<<10):,.0f} KB) "
-                f"too big, had to be resized"
+                f"too big, had to be resized",
             )
     except (ValueError, OSError, UnidentifiedImageError) as error:
         print("An error occurred while trying to resize logo:", error)
@@ -234,11 +232,9 @@ def check_image_file(file_path: Path, extension: str) -> bool:
 
 
 def process_logo(package_name: str, uri: str) -> str | None:
-    """
-    Download package logo and return logo URI
-    """
+    """Download package logo and return logo URI"""
     image_url = urlparse(uri)
-    _, extension = os.path.splitext(image_url.path)
+    extension = Path(image_url.path).suffix
     file_name = f"{package_name}{extension}"
     success = download_file(uri, Path(file_name))
     if not success:
@@ -253,8 +249,7 @@ def process_logo(package_name: str, uri: str) -> str | None:
 
 
 def prepare_package_data() -> None:
-    """
-    Download and prepare package data (software.json) for
+    """Download and prepare package data (software.json) for
     rendering with Hugo
     """
     shutil.copy(SOFTWARE_PATH / "_index.md", DOWNLOAD_PATH / "software_index.md")
@@ -269,7 +264,7 @@ def prepare_package_data() -> None:
         SOFTWARE_PATH / "software-comparison.md",
     )
 
-    with open(DATA_PATH / "software.json", "rb") as json_file:
+    with Path(DATA_PATH / "software.json").open("rb") as json_file:
         xsf_package_list = json.load(json_file)
 
     package_infos: dict[str, Any] = {}
@@ -337,21 +332,22 @@ def prepare_package_data() -> None:
         f"Total: {len(xsf_package_list)}\n"
         f"With DOAP: {number_of_doap_packages} "
         f"({round(number_of_doap_packages / len(xsf_package_list) * 100, 1)} %)"
-        f'\n{42 * "="}'
+        f'\n{42 * "="}',
     )
-    with open(
-        DATA_PATH / "software_list_doap.json", "w", encoding="utf-8"
+    with Path(DATA_PATH / "software_list_doap.json").open(
+        "w",
+        encoding="utf-8",
     ) as package_data_file:
         json.dump(package_infos, package_data_file, indent=4)
 
 
 def add_doap_data_to_xeplist() -> None:
-    """
-    Adds data from DOAP files (implementations) to xeplist.json
-    """
-    with open(DATA_PATH / "software_list_doap.json", encoding="utf-8") as software_list:
+    """Adds data from DOAP files (implementations) to xeplist.json"""
+    with Path(DATA_PATH / "software_list_doap.json").open(
+        encoding="utf-8",
+    ) as software_list:
         software_data = json.load(software_list)
-    with open(DATA_PATH / "xeplist.json", encoding="utf-8") as xep_list:
+    with Path(DATA_PATH / "xeplist.json").open(encoding="utf-8") as xep_list:
         xep_data = json.load(xep_list)
 
     for xep in xep_data:
@@ -369,17 +365,16 @@ def add_doap_data_to_xeplist() -> None:
                             "implemented_version": supported_xep["version"],
                             "implementation_status": supported_xep["status"],
                             "implementation_since": supported_xep["since"],
-                        }
+                        },
                     )
                     break
 
-    with open(DATA_PATH / "xeplist.json", "w", encoding="utf-8") as xep_list:
+    with Path(DATA_PATH / "xeplist.json").open("w", encoding="utf-8") as xep_list:
         json.dump(xep_data, xep_list, indent=4)
 
     # Store xeplist as JS array in assets path in
     # order to make it available for scripts
-    with open(
-        THEMES_PATH / "xmpp.org" / "static" / "js" / "xeplist.js",
+    with Path(THEMES_PATH / "xmpp.org" / "static" / "js" / "xeplist.js").open(
         "w",
         encoding="utf-8",
     ) as js_file:
@@ -387,13 +382,12 @@ def add_doap_data_to_xeplist() -> None:
 
 
 def create_package_page(package_type: str, name_slug: str, name: str) -> None:
-    """
-    Create an .md page for package, containing a shortcode
+    """Create an .md page for package, containing a shortcode
     for displaying package details
     """
     today = datetime.now(tz=UTC).date()
     date_formatted = today.strftime("%Y-%m-%d")
-    with open(SOFTWARE_PATH / f"{name_slug}.md", "w", encoding="utf8") as md_file:
+    with Path(SOFTWARE_PATH / f"{name_slug}.md").open("w", encoding="utf-8") as md_file:
         md_file.write(
             MD_FRONTMATTER
             % {
@@ -401,23 +395,24 @@ def create_package_page(package_type: str, name_slug: str, name: str) -> None:
                 "date": date_formatted,
                 "type": package_type,
                 "name_slug": name_slug,
-            }
+            },
         )
 
 
 def prepare_doap_files() -> None:
-    """
-    Copy DOAP files to /static/doap/ and replace the
+    """Copy DOAP files to /static/doap/ and replace the
     xml-stylesheet with our stylesheet (or add it, if there is none)
     """
     for entry in os.scandir(DOWNLOAD_PATH / "doap_files"):
         shutil.copy(
-            DOWNLOAD_PATH / "doap_files" / entry.name, STATIC_DOAP_PATH / entry.name
+            DOWNLOAD_PATH / "doap_files" / entry.name,
+            STATIC_DOAP_PATH / entry.name,
         )
 
     for entry in os.scandir(STATIC_PATH / "hosted-doap"):
         shutil.copy(
-            STATIC_PATH / "hosted-doap" / entry.name, STATIC_DOAP_PATH / entry.name
+            STATIC_PATH / "hosted-doap" / entry.name,
+            STATIC_DOAP_PATH / entry.name,
         )
 
     xml_declaration_pattern = r"<\?xml version.+?\?>"
@@ -426,10 +421,19 @@ def prepare_doap_files() -> None:
         if not entry.name.endswith(".doap"):
             continue
 
-        with open(STATIC_DOAP_PATH / entry.name, "r+", encoding="utf-8") as doap_file:
+        with Path(STATIC_DOAP_PATH / entry.name).open(
+            "r+",
+            encoding="utf-8",
+        ) as doap_file:
             content = doap_file.read()
 
-            result = re.sub(stylesheet_pattern, XMPP_XSL, content, 0, re.MULTILINE)
+            result = re.sub(
+                stylesheet_pattern,
+                XMPP_XSL,
+                content,
+                count=0,
+                flags=re.MULTILINE,
+            )
             if result != content:
                 # Replaced custom stylesheet with our stylesheet
                 doap_file.truncate(0)
@@ -442,8 +446,8 @@ def prepare_doap_files() -> None:
                 xml_declaration_pattern,
                 f"{XML_DECLARATION}\n{XMPP_XSL}",
                 content,
-                0,
-                re.MULTILINE,
+                count=0,
+                flags=re.MULTILINE,
             )
             if result != content:
                 # Added our stylesheet

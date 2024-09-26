@@ -1,8 +1,6 @@
-"""
-Utilities for files/folders/downloads management
+"""Utilities for files/folders/downloads management
 """
 
-import os
 import shutil
 from pathlib import Path
 
@@ -12,19 +10,16 @@ DOWNLOAD_PATH = Path("downloads")
 
 
 def initialize_directory(path: Path) -> None:
-    """
-    Remove path (if it exists) and containing files, then recreate path
-    """
+    """Remove path (if it exists) and containing files, then recreate path"""
     if path.exists() and path.is_dir():
         shutil.rmtree(path)
-        os.mkdir(path)
+        Path.mkdir(path)
     else:
-        os.mkdir(path)
+        Path.mkdir(path)
 
 
 def download_file(url: str, path: Path) -> bool:
-    """
-    Downloads file from url and stores it in /downloads/path
+    """Downloads file from url and stores it in /downloads/path
     returns success
     """
     try:
@@ -37,7 +32,7 @@ def download_file(url: str, path: Path) -> bool:
         print("Error while trying to download from", url)
         return False
 
-    with open(DOWNLOAD_PATH / path, "wb") as data_file:
+    with Path(DOWNLOAD_PATH / path).open("wb") as data_file:
         max_size = 1024 * 1024 * 10  # 10 MiB
         size = 0
         for chunk in file_request.iter_content(chunk_size=8192):

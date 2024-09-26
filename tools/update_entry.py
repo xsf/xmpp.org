@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-"""
-Tool for maintaining software list entries
+"""Tool for maintaining software list entries
 """
 from typing import Any
 
@@ -10,6 +9,7 @@ import copy
 import difflib
 import json
 import sys
+from pathlib import Path
 
 
 def json_as_lines(data: Any) -> list[str]:
@@ -19,12 +19,10 @@ def json_as_lines(data: Any) -> list[str]:
     ]
 
 
-def main():
-    """
-    Main logic of update_entry tool
-    """
+def main() -> None:
+    """Main logic of update_entry tool"""
     parser = argparse.ArgumentParser(
-        description="Modify a software entry in the software list."
+        description="Modify a software entry in the software list.",
     )
     parser.add_argument(
         "name",
@@ -77,7 +75,7 @@ def main():
 
     args = parser.parse_args()
 
-    with open("../data/software.json", encoding="utf-8") as software_file:
+    with Path("../data/software.json").open(encoding="utf-8") as software_file:
         filename = software_file.name
         data = json.load(software_file)
 
@@ -139,7 +137,7 @@ def main():
                 fromfile="before",
                 tofile="after",
                 n=1000,
-            )
+            ),
         )
 
         prompt = "is this okay? [y/n]"
@@ -157,7 +155,7 @@ def main():
 
     data.sort(key=lambda x: x["name"].casefold())
 
-    with open(filename, "w", encoding="utf-8") as software_file:
+    with Path(filename).open("w", encoding="utf-8") as software_file:
         json.dump(data, software_file, indent=4, sort_keys=True)
         software_file.write("\n")
 

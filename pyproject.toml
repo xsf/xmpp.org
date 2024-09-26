@@ -15,50 +15,30 @@ skip_gitignore = true
 
 [tool.ruff]
 
-select = [
-  "A",      # flake8-builtins
-  "ANN",    # flake8-annotations
-  "ARG",    # flake8-unused-arguments
-  "B",      # flake8-bugbear
-  "BLE",    # flake8-blind-except
-  "C4",     # flake8-comprehensions
-  "C90",    # mccabe
-  "DTZ",    # flake8-datetimez
-  "E",      # pycodestyle
-  "EM",     # flake8-errmsg
-  "ERA",    # eradicate
-  "F",      # pyflakes
-  # "FBT",  # flake8-boolean-trap
-  "ICN",    # flake8-import-conventions
-  "ISC",    # flake8-implicit-str-concat
-  "N",      # pep8-naming
-  "PIE",    # flake8-pie
-  "PGH",    # pygrep-hooks
-  "PLC",    # pylint
-  "PLE",    # pylint
-  "PLR",    # pylint
-  "PLW",    # pylint
-  "Q",      # flake8-quotes
-  "RUF",    # Ruff-specific rules
-  "RET",    # flake8-return
-  "S",      # flake8-bandit
-  "SIM",    # flake8-simplify
-  "T",      # flake8-debugger, flake8-print
-  "TID",    # flake8-tidy-imports
-  "UP",     # pyupgrade
-  "W",      # pycodestyle
-  "YTT",    # flake8-2020
+lint.select = [
+  "ALL"
 ]
 
-ignore = [
-  "ANN401", # use of Any
-  "S101",   # assert
-  "T201",   # print
+lint.ignore = [
+  "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `xx`
+  "C901",     # `xx` is too complex
+  "D",        # docstyle
+  "FBT001",   # Boolean-typed positional argument in function definition
+  "FBT002",   # Boolean default positional argument in function definition
+  "I",        # imports, covered by isort
+  "INP001",   # File `xx` is part of an implicit namespace package. Add an `__init__.py`.
+  "PLR0912",  # Too many branches
+  "PLR0915",  # Too many statements
+  "PLR2004",  # Magic value used in comparison, consider replacing `xx` with a constant variable
+  "S101",     # Use of `assert` detected
+  "S603",     # `subprocess` call: check for execution of untrusted input
+  "S607",     # Starting a process with a partial executable path
+  "T201",     # `print` found
 ]
 
-target-version = "py311"
+target-version = "py312"
 
-[tool.ruff.flake8-quotes]
+[tool.ruff.lint.flake8-quotes]
 inline-quotes = "double"
 docstring-quotes = "double"
 multiline-quotes = "double"

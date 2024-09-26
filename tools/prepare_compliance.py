@@ -1,5 +1,4 @@
-"""
-Adds compliance ratings to software_list_doap.json via
+"""Adds compliance ratings to software_list_doap.json via
 compliancer (https://code.zash.se/compliancer/)
 """
 
@@ -21,9 +20,7 @@ COMPLIANCER_BUILD_URL = "https://prosody.im/files/compliance"
 
 
 def generate_compliance_json() -> None:
-    """
-    Runs the 'compliancer' tool to generate a 'comppliance_suite.json' file
-    """
+    """Runs the 'compliancer' tool to generate a 'comppliance_suite.json' file"""
     try:
         result = subprocess.check_output(
             [
@@ -31,11 +28,12 @@ def generate_compliance_json() -> None:
                 f"{DOWNLOAD_PATH}/compliancer",
                 "-v",
                 f"{DOWNLOAD_PATH}/compliance-suite.xml",
-            ]
+            ],
         )
         json_result = json.loads(result)
-        with open(
-            DATA_PATH / "compliance_suite.json", "w", encoding="utf-8"
+        with Path(DATA_PATH / "compliance_suite.json").open(
+            "w",
+            encoding="utf-8",
         ) as compliance_suite_file:
             json.dump(json_result, compliance_suite_file, indent=4)
     except subprocess.CalledProcessError as err:
@@ -43,13 +41,14 @@ def generate_compliance_json() -> None:
 
 
 def check_packages_compliance() -> None:
-    """
-    Runs the 'compliancer' tool against every package's DOAP file and adds the
+    """Runs the 'compliancer' tool against every package's DOAP file and adds the
     result to '{clients,libraries,servers}_list.doap'
     """
 
     def add_compliance_data() -> None:
-        with open(DATA_PATH / "software_list_doap.json", "rb") as json_file:
+        with Path(DATA_PATH / "software_list_doap.json").open(
+            "rb",
+        ) as json_file:
             package_list = json.load(json_file)
 
         for name, props in package_list.items():
@@ -60,8 +59,9 @@ def check_packages_compliance() -> None:
 
             props["badges"] = compliance_data["badges"]
 
-        with open(
-            DATA_PATH / "software_list_doap.json", "w", encoding="utf-8"
+        with Path(DATA_PATH / "software_list_doap.json").open(
+            "w",
+            encoding="utf-8",
         ) as clients_data_file:
             json.dump(package_list, clients_data_file, indent=4)
 
@@ -76,8 +76,8 @@ def check_packages_compliance() -> None:
                         f"{DOWNLOAD_PATH}/compliancer",
                         "-v",
                         f"{DOWNLOAD_PATH}/compliance-suite.xml",
-                        os.path.join(subdir, file),
-                    ]
+                        Path(subdir) / file,
+                    ],
                 )
                 json_result = json.loads(result.decode("unicode_escape"))
                 compliance_dict[json_result["name"]] = json_result
@@ -85,16 +85,18 @@ def check_packages_compliance() -> None:
                 print(
                     f"{Fore.LIGHTBLUE_EX}Compliance checked:{Style.RESET_ALL}",
                     json_result["name"],
-                    f"{Fore.MAGENTA}{badges}{Style.RESET_ALL}"
-                    if badges
-                    else f"{Fore.YELLOW}No level{Style.RESET_ALL}",
+                    (
+                        f"{Fore.MAGENTA}{badges}{Style.RESET_ALL}"
+                        if badges
+                        else f"{Fore.YELLOW}No level{Style.RESET_ALL}"
+                    ),
                 )
             except subprocess.CalledProcessError as err:
                 print(f"{Fore.LIGHTRED_EX}{err}{Style.RESET_ALL}")
 
     add_compliance_data()
 
-    for _name, props in compliance_dict.items():
+    for props in compliance_dict.values():
         if props["badges"]:
             print(
                 f"{Fore.YELLOW}Compliance data available, but no match for"
@@ -106,7 +108,7 @@ def check_packages_compliance() -> None:
 if __name__ == "__main__":
     # Make sure we're using Lua >= 5.2
     lua_version_string = subprocess.check_output(["lua", "-v"]).decode(
-        "unicode_escape"
+        "unicode_escape",
     )[4:9]
     if V(lua_version_string) < V("5.2.0"):
         print("Lua >= 5.2.0 required")

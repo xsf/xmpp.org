@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""
-Lint software.json
+"""Lint software.json
 """
 from typing import Any
 
 import json
-import os.path
 import sys
+from pathlib import Path
 
 VALID_ENTRY_KEYS = {
     "platforms",
@@ -44,7 +43,8 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
 
         if unknown:
             emit_violation(
-                entry["name"], f'has unknown keys: {", ".join(map(repr, unknown))}'
+                entry["name"],
+                f'has unknown keys: {", ".join(map(repr, unknown))}',
             )
             violations += 1
 
@@ -75,7 +75,7 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
             emit_violation(
                 entry["name"],
                 "a DOAP file is linked, therefore 'url' must be null and "
-                "'platforms' must be [], because the DOAP file provides both"
+                "'platforms' must be [], because the DOAP file provides both",
             )
             violations += 1
 
@@ -85,9 +85,9 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
 
 
 if __name__ == "__main__":
-    base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
-    input_file = os.path.join(base_path, "../data/software.json")
-    with open(input_file, "rb") as data_file:
+    base_path = Path.resolve(Path(sys.argv[0])).parent
+    input_file = Path(base_path / "../data/software.json")
+    with Path(input_file).open("rb") as data_file:
         data = json.load(data_file)
 
     violations_count = check_entries(data)

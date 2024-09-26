@@ -3,9 +3,11 @@
 """In order to have newsletter e-mails formatted properly,
 we need to add inline style attributes to some elements.
 This tool takes a post URL for input, processes its HTML,
-and stores it afterwards ready for copy and paste."""
+and stores it afterwards ready for copy and paste.
+"""
 
 from http import HTTPStatus
+from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
@@ -14,7 +16,6 @@ from bs4 import Tag
 
 def process(input_url: str) -> None:
     """Processes page content for sending via e-mail."""
-
     print("Processing...")
     with requests.get(input_url, timeout=5) as response:
         if response.status_code != HTTPStatus.OK:
@@ -24,7 +25,7 @@ def process(input_url: str) -> None:
 
     article = soup.find("article", {"role": "main"})
     if article is None:
-        print("Could not find post’s article element.")
+        print("Could not find post's article element.")
         return
 
     assert isinstance(article, Tag)
@@ -55,11 +56,11 @@ def process(input_url: str) -> None:
         img = figure.find("img")
         img["style"] = "max-width: 100%;"
 
-    with open("newsletter-mail.html", "w", encoding="utf-8") as html_file:
+    with Path("newsletter-mail.html").open("w", encoding="utf-8") as html_file:
         html_file.write(str(article))
     print(
         'All done! Please copy and paste contents from "newsletter-mail.html" '
-        'into your e-mail client of choice (use "Insert HTML").'
+        'into your e-mail client of choice (use "Insert HTML").',
     )
 
 
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     print(
         "This tool processes newsletter posts for emails.\n"
         "It takes a post URL, processes its content, "
-        "and saves HTML ready for copy and paste."
+        "and saves HTML ready for copy and paste.",
     )
     print(50 * "=")
     url = input("Please paste the URL you want to process: ")
