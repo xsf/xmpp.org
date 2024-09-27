@@ -137,7 +137,7 @@ Alors que le développement de Monal se poursuit, voir les nouvelles de financem
 
 
 
-La [Lettre d’information XMPP d’août 2022] (https://xmpp.org/2022/09/the-xmpp-newsletter-august-2022/) n’a pas publié la mise-à-jour d’UWPX, le client XMPP pour les appareils UWP (Windows 10). Bien que la version v.0.43.0.0 ne contienne qu’un correctif, c’est malheureusement aussi la [Mise à jour finale](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.43.0.0) car le développeur se retire du projet. Les personnes disposées à prendre le relais sont invitées à se manifester !
+La [Lettre d’information XMPP d’août 2022](https://xmpp.org/2022/09/the-xmpp-newsletter-august-2022/) n’a pas publié la mise-à-jour d’UWPX, le client XMPP pour les appareils UWP (Windows 10). Bien que la version v.0.43.0.0 ne contienne qu’un correctif, c’est malheureusement aussi la [Mise à jour finale](https://github.com/UWPX/UWPX-Client/releases/tag/v.0.43.0.0) car le développeur se retire du projet. Les personnes disposées à prendre le relais sont invitées à se manifester !
 
 
 
@@ -327,4 +327,4 @@ Tâches que nous effectuons régulièrement :
 
 
 
-Cette lettre d’information est publiée sous licence [CC BY-SA] (https://creativecommons.org/licenses/by-sa/4.0/).
+Cette lettre d’information est publiée sous licence [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/).
