@@ -109,7 +109,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
     - Improved 'Service Removes Non-Member' example.
     - Clarify usage of presence stanzas when removing a non-member from a members-only room.
     - Replace inappropriate RFC 2119 key word usage in §9.7.
-    - Presence sent to occupants of a destroyed room includes a <destroy/> element.
+    - Presence sent to occupants of a destroyed room includes a `<destroy/>` element.
     - Explicitly use bare JIDs when operating on affiliations.
     - Allow non-owners to retrieve owner and admin lists in non-anonymous rooms.
     - Members should be allowed to retrieve the member list only in non-anonymous rooms. (gk)
@@ -188,6 +188,7 @@ Tasks we do on a regular basis:
 - communication via media accounts
 
 ## Unsubscribe from the XMPP Newsletter
+
 To unsubscribe from this list, [please log in first](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
 If you have not previously logged in, you may need to set up an account with the appropriate email address.
 
