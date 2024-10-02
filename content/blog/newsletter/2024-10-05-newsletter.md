@@ -13,6 +13,8 @@ This issue covers the month of September 2024.
 
 If you are interested in joining the XMPP Standards Foundation as a member, [please apply until November 24th, 2024!](https://wiki.xmpp.org/web/Membership_Applications_Q4_2024).
 
+The [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) is also calling for XSF Board 2024 and XSF Council 2024. Be involved in the XMPP Standards Foundation organisation decisions as well as on our specifications we publish. If you are interested in running for Board or Council, please add a wiki page about your candidacy to one or both of the following sections until  November 3rd, 2024, 00:00 UTC. Note: XMPP Council members must be elected members of the XSF; however, there is no such restriction for the Board of Directors.
+
 ### XMPP and Google Summer of Code 2024
 
 The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
