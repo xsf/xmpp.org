@@ -47,6 +47,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Articles
 
+- [XMPP Interop Testing: Containers](https://xmpp-interop-testing.github.io/2024/09/04/containers.html)
 - List of projects that got worked on in September’s [XMPP Sprint in Worcester, UK!](https://wiki.xmpp.org/web/Sprints/2024-09_Worcester_UK#Attendees).
 - [Monal Internals - XML Query Language](https://monal-im.org/post/00014-monal-internals-xml-query-language/): This new article shines some light onto specific parts of Monal’s internals. It is dedicated to programmers or people curious about how Monal works internally.
 - [The Quick and Easy Guide to Jabber/XMPP](https://contrapunctus.codeberg.page/the-quick-and-easy-guide-to-xmpp.html): Why XMPP matters.
