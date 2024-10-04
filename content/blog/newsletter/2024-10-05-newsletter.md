@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter September 2024
-date: 2024-10-05
+date: 2024-10-04
 categories: ['Newsletter']
 ---
 
