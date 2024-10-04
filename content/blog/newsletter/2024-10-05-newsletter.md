@@ -60,7 +60,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Cheogram](https://cheogram.com/) has released version [2.15.3-4](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.15.3-4) for Android.
 - [Conversations](https://conversations.im/) has released version [2.16.7](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.16.7) for Android.
 - [Psi+ 1.5.2041 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
-- [Gajim 1.9.4](https://gajim.org/post/2024-09-19-gajim-1.9.4-released/) and [1.9.5](https://gajim.org/post/2024-09-30-gajim-1.9.5-released/) have been released. These releases come with integrated support for the [XMPP Providers](https://providers.xmpp.net/) project. Furthermore, there is now suppport for "Hats" ([XEP-0317](https://xmpp.org/extensions/xep-0317.html)), which allow you to assign roles to group chat participants, i.e. "Support", "Expert" or really anything you like to assign. Last but not least, Gajim’s Microsoft Store release has been improved in many ways. You can check the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for more details.
+- [Gajim 1.9.4](https://gajim.org/post/2024-09-19-gajim-1.9.4-released/) and [1.9.5](https://gajim.org/post/2024-09-30-gajim-1.9.5-released/) have been released. These releases come with integrated support for the [XMPP Providers](https://providers.xmpp.net/) project. Furthermore, there is now support for "Hats" ([XEP-0317](https://xmpp.org/extensions/xep-0317.html)), which allow you to assign roles to group chat participants, i.e. "Support", "Expert" or really anything you like to assign. Last but not least, Gajim’s Microsoft Store release has been improved in many ways. You can check the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for more details.
 - [Movim 0.28](https://github.com/movim/movim/releases/tag/v0.28) has been released. This new version (code named "Tempel") brings a "Freshly redesigned Search panel, improved account gateways and administration features, databases fixes and a new call flow and conference lobby" among [many other fixes and improvements](https://mov.im/node/pubsub.movim.eu/Movim/movim-0-28-tempel-and-the-movim-live-plan-4EO29q).
 
 {{< figure src="/images/newsletter/2024-10-05/movim-0.28.png" caption="Movim 0.28 (Tempel) Introducing the new call flow and conference lobby" >}}
@@ -72,10 +72,10 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### XMPP Libraries & Tools
 
-ignite realtime community:
+Ignite Realtime community:
   - [Hazelcast plugin for Openfire](https://www.igniterealtime.org/projects/openfire/plugin-archive.jsp?plugin=hazelcast) version [3.0.0](https://www.igniterealtime.org/projects/openfire/plugin-archive.jsp?plugin=hazelcast) has been released, adding clustering support to [Openfire](https://www.igniterealtime.org/projects/openfire/). It is based on [the Hazelcast platform](https://hazelcast.com/). This release brings a major upgrade of the platform. It migrates from version 3.12.5 to 5.3.7. Please [read the upgrade instructions carefully](https://www.igniterealtime.org/projects/openfire/plugins/3.0.0/hazelcast/readme.html) for this one.
   - [HTTP File Upload plugin for Openfire](https://discourse.igniterealtime.org/t/openfire-http-file-upload-plugin-v1-4-1-release/94687) version [1.4.1](https://www.igniterealtime.org/projects/openfire/plugin-archive.jsp?plugin=httpfileupload) has been released. This plugin adds functionality to Openfire that allows clients to share files, as defined in [XEP-0363: HTTP File Upload](https://xmpp.org/extensions/xep-0363.html).
-- [nbxmpp 5.0.4](https://dev.gajim.org/gajim/python-nbxmpp/-/releases/5.0.4) comes with a fix for MUC passwords and futher bug fixes.
+- [nbxmpp 5.0.4](https://dev.gajim.org/gajim/python-nbxmpp/-/releases/5.0.4) comes with a fix for MUC passwords and further bug fixes.
 - [go-sendxmpp 0.11.2](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.11.2) has been released.
 
 ## Extensions and specifications
