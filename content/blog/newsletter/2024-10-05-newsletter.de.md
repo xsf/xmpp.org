@@ -11,7 +11,7 @@ Diese Ausgabe behandelt September 2024.
 
 ## Meldungen der XSF
 
-Wenn Du Mitglied der XMPP Standards Foundation (XSF)  werden möchtest, [kannst Du Dich noch bis einschließlich 24. November 2024 bewerben](https://wiki.xmpp.org/web/Membership_Applications_Q4_2024)!
+Wenn Du Mitglied der XMPP Standards Foundation (XSF) werden möchtest, [kannst Du Dich noch bis einschließlich 24. November 2024 bewerben](https://wiki.xmpp.org/web/Membership_Applications_Q4_2024)!
 
 Die [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) ruft außerdem zu den Wahlen des XSF Board 2024 und des XSF Council 2024 auf. Bringe Dich in die Entscheidungen und Spezifikationsprozesse der XSF ein und stelle Dich zur Wahl auf! Wenn Du Dich für das Board oder das Council bewerben möchtest, füge bitte bis zum 3. November 2024, 0:00 Uhr UTC, eine [Wiki](https://wiki.xmpp.org/web/Main_Page)-Seite für Deine Kandidatur [zur entsprechenden Wahlübersichtsseite](https://wiki.xmpp.org/web/Board_and_Council_Elections_2024) im Wiki hinzu. Hinweis: _Council_-Mitglieder müssen gewählte Mitglieder der XSF sein. Beim _Board of Directors_ besteht diese Beschränkung nicht.
 
