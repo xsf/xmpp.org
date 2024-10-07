@@ -12,7 +12,7 @@ The XMPP Operators Channel is located at [operators@muc.xmpp.org](xmpp:operators
 While the channel is currently open for anyone to read, active participation in the channel is currently restricted to:
 
 - Verified operators of XMPP servers on the public federated network
-- Members of the XSF Standards Foundation
+- Members of the XMPP Standards Foundation
 
 This was implemented to create a focused space where the community can collaborate on the channel's stated topics, and to help reduce noise, spam and abuse from other sources.
 
