@@ -28,7 +28,7 @@
                             <label for="compliance-checkboxes" class="form-label">Compliance</label>
                             <div class="col" id="compliance-checkboxes">
                                 <div class="input-group input-group-sm mb-3">
-                                    <label class="input-group-text" for="compliance-core">Base Compliance</label>
+                                    <label class="input-group-text" for="compliance-core">Core Compliance</label>
                                     <select id="compliance-core" class="form-select" aria-label="Base Compliance">
                                         <option selected value="-">-</option>
                                         <option value="core">Core</option>
@@ -253,7 +253,7 @@
                                 {{- $categories = $categories | append  $category -}}
                             {{- end -}}
                             <div class="col" title="Base Compliance">
-                                Base<br>
+                                Core<br>
                                 {{- if in $categories "core" -}}
                                     {{- if eq $props.badges.core "core" -}}
                                         <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>
