@@ -4,12 +4,14 @@
     "contentdir": "content",
     "layoutdir": "layouts",
     "publishdir": "public",
-    "Paginate": 10,
     "defaultContentLanguage": "en",
     "disableHugoGeneratorInject": true,
     "enableEmoji": true,
     "theme": "xmpp.org",
     "title": "XMPP",
+    "pagination": {
+        "pagerSize": 10
+    },
     "permalinks": {
         "blog": "/:year/:month/:title/"
     },
