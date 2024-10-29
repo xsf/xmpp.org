@@ -1635,7 +1635,7 @@
         "categories": [
             "client"
         ],
-        "doap": "/hosted-doap/spark.doap",
+        "doap": "https://raw.githubusercontent.com/igniterealtime/Spark/refs/heads/master/core/src/documentation/spark.doap",
         "name": "Spark",
         "platforms": [],
         "url": null
