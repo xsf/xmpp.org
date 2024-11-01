@@ -65,7 +65,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Conversations](https://conversations.im/) has released versions [2.17.0](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.0), [2.17.1](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.1) and [2.17.2](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.2) for Android. This version adds support for [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html).
 - [Convo](https://store.bananahackers.net/#Convo) version [0.1.0](https://git.disroot.org/badrihippo/convo/releases/tag/0.1.0) has been released. Convo is a basic XMPP messaging client for [KaiOS](https://www.kaiostech.com/).
 
-{{< figure src="/images/newsletter/2024-11-05/convo.png" caption="A basic XMPP messaging client for KaiOS" >}}
+{{< figure src="/images/newsletter/2024-11-05/Convo.png" caption="A basic XMPP messaging client for KaiOS" >}}
 
 - [Mellium co-op](https://mellium.im/) has released [Communique](https://mellium.im/communique/), version [0.0.1](https://codeberg.org/mellium/communique-tui/releases/tag/v0.0.1) of its instant messaging client with a terminal-based user interface. This initial release features 1:1 and multi-user chat support, HTTP file upload, ad-hoc commands, and chat history.
 
