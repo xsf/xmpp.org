@@ -1601,7 +1601,7 @@
         "categories": [
             "library"
         ],
-        "doap": "/hosted-doap/smack.doap",
+        "doap": "https://raw.githubusercontent.com/igniterealtime/Smack/refs/heads/master/resources/smack.doap",
         "name": "Smack",
         "platforms": [],
         "url": null
