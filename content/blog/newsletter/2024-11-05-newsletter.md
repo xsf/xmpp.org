@@ -104,7 +104,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 - Version 1.6.2 of [XEP-0198](https://xmpp.org/extensions/xep-0198.html) (Stream Management)
     - Clarify server enabling stream management without requested resume functionality. (gk)
 - Version 0.3.0 of [XEP-0394](https://xmpp.org/extensions/xep-0394.html) (Message Markup)
-    - Add support for strong emphasis, declaring langauge on code blocks and making lists ordered. (lmw)
+    - Add support for strong emphasis, declaring language on code blocks and making lists ordered. (lmw)
 - Version 0.1.3 of [XEP-0491](https://xmpp.org/extensions/xep-0491.html) (WebXDC)
     - Clarifications and wording
     - Better references for WebXDC spec (spw)
