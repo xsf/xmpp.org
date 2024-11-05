@@ -17,18 +17,6 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 ### XMPP Summit 27 & FOSDEM 2025
 The XSF is planning the XMPP Summit 27, which is to take place on January 30th & 31st 2025 in Brussels (Belgium, Europe). Following the Summit, the XSF is also planning to be present at [FOSDEM 2025](https://fosdem.org/2025/), which takes place on February 1st & 2nd 2025. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_27). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. Spread the word within your circles!
 
-### XMPP and Google Summer of Code 2024
-
-The XSF has been accepted as a [hosting organisation at GSoC in 2024](https://wiki.xmpp.org/web/Google_Summer_of_Code_2024) again!
-These XMPP projects have received a slot and have kicked-off with coding:
-
-- [Monal](https://monal-im.org/)
-  - [Modern Monal onboarding and Media gallery (175 hours, medium)](https://wiki.xmpp.org/web/Gsoc2024/Monal/Media_Gallery)
-    - [Blog post 1](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-1-xmpp-standards-foundation-da781ac95560)
-    - [Blog post 2](https://thevaidik.medium.com/google-summer-of-code-gsoc-my-experience-2-midterm-evaluations-xmpp-standards-foundation-3be8b27dc653)
-
-{{< figure src="/images/logos/gsoc2024_logo.svg" caption="XSF and Google Summer of Code 2024" >}}
-
 ### XSF Fiscal Hosting Projects
 
 The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
@@ -40,28 +28,28 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Events
 
-- [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) (DE / EN): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month at 6pm local time
+- [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month at 6pm local time
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 
 ## XMPP Articles
 
-- [Ignite Realtime Community](https://www.igniterealtime.org/news/): [XMPP: The Protocol for Open, Extensible Instant Messaging](https://discourse.igniterealtime.org/t/xmpp-the-protocol-for-open-extensible-instant-messaging/94748). A detailed introduction to the XMPP protocol, goals, core concepts and features.
-- [ProcessOne: Matrix and XMPP: Thoughts on Improving Messaging Protocols – Part 1](https://www.process-one.net/blog/matrix-and-xmpp-thoughts-on-improving-messaging-protocols-part-1/).
-- [ProcessOne: WebPush support on your fluux.io instance](https://www.process-one.net/blog/webpush-support-on-your-fluux-io-instance/).
-- [ProcessOne: Easily Monitor Push Notifications with Fluux ejabberd Managed Service ](https://www.process-one.net/blog/check-your-push-logs-on-fluux-io/).
+- [XMPP: The Protocol for Open, Extensible Instant Messaging](https://discourse.igniterealtime.org/t/xmpp-the-protocol-for-open-extensible-instant-messaging/94748). A detailed introduction to the XMPP protocol, goals, core concepts and features by the [Ignite Realtime Community](https://www.igniterealtime.org/news/).
+- ProcessOne:
+  - [Matrix and XMPP: Thoughts on Improving Messaging Protocols – Part 1](https://www.process-one.net/blog/matrix-and-xmpp-thoughts-on-improving-messaging-protocols-part-1/).
+  - [WebPush support on your fluux.io instance](https://www.process-one.net/blog/webpush-support-on-your-fluux-io-instance/).
 - [XMPP Interop Testing](https://xmpp-interop-testing.github.io/): [Incoming: Improvements!](https://xmpp-interop-testing.github.io/2024/10/10/funding.html).
-- [Introducing Honeybee: Calling via XMPP](https://momi.ca/posts/2024-10-09-honeybee.html) an XMPP client for calling using the [snikket sdk](https://github.com/snikket-im/snikket-sdk). The program is called [honeybee](https://git.sr.ht/~anjan/honeybee) and it is currently in pre-alpha.
+- [Introducing Honeybee: Calling via XMPP](https://momi.ca/posts/2024-10-09-honeybee.html) an XMPP client for calling using the [Snikket SDK](https://github.com/snikket-im/snikket-sdk). The program is called [Honeybee](https://git.sr.ht/~anjan/honeybee) and it is currently in pre-alpha.
 - [Prav - A Free Software Challenger To WhatsApp](https://fsf.org.in/article/prav/). A Free Software messaging service using the open XMPP protocol. [Prav](https://prav.app/) aims to make the experience as user-friendly as well-known messaging apps.
 
 ## XMPP Software News
 
 ### XMPP Clients and Applications
 
-- [Monocles Chat 2.0](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0) and [2.0.1](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0.1) have been released. This is a big rebuild of Monocles Chat and it brings in a huge list of new features, new options, performance improvements, a big redesign on Material 3, integrated photo editor, reduced battery consumption, support for [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html), many fixes and a lot more!.
+- [Monocles Chat 2.0](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0) and [2.0.1](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0.1) have been released. This is a big rebuild of Monocles Chat and it brings in a huge list of new features, new options, performance improvements, a big redesign on Material 3, integrated photo editor, reduced battery consumption, support for [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html), many fixes and a lot more!
 - [Cheogram](https://cheogram.com/) has released version [2.17.2-1](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-1) for Android. This release brings initial link preview, improves reactions, and adds a navigation drawer with account and tag filters among many other improvements.
+- [JMP at SeaGL, Cheogram now on Amazon](https://blog.jmp.chat/b/october-newsletter-2024)
 - [Monal IM](https://monal-im.org/) has released version [6.4.5](https://github.com/monal-im/Monal/releases/tag/Build_iOS_982/) for iOS an macOS.
-- [Psi+ 1.5.2057 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
-- [Psi+ 1.5.2066 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
+- [Psi+ 1.5.2057 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) and [Psi+ 1.5.2066 portable](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/tehnick/) has been released.
 - [Conversations](https://conversations.im/) has released versions [2.17.0](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.0), [2.17.1](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.1) and [2.17.2](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.2) for Android. This version adds support for [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html).
 - [Convo](https://store.bananahackers.net/#Convo) version [0.1.0](https://git.disroot.org/badrihippo/convo/releases/tag/0.1.0) has been released. Convo is a basic XMPP messaging client for [KaiOS](https://www.kaiostech.com/).
 
@@ -82,7 +70,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [go-xmpp](https://github.com/xmppo/go-xmpp) versions [0.2.2](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.2), [0.2.3](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.3) and [0.2.4](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.4) have been released.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) versions [0.11.3](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.11.3) and [0.11.4](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.11.4) have been released.
 - [Slidge v0.2.0](https://git.sr.ht/~nicoco/slidge/refs/v0.2.0), the XMPP (puppeteer) gateway library in python that makes writing gateways to other chat networks (legacy modules) as frictionless as possible has been released.
-- [Join Jabber](https://joinjabber.org/) added two new entries to their growing list of [XMPP integration tutorials](https://joinjabber.org/tutorials/integration/): [Forgejo](https://joinjabber.org/tutorials/integration/forgejo/) and [Sharkey](https://joinjabber.org/tutorials/integration/sharkey/) !
+- [Join Jabber](https://joinjabber.org/) added two new entries to their growing list of [XMPP integration tutorials](https://joinjabber.org/tutorials/integration/): [Forgejo](https://joinjabber.org/tutorials/integration/forgejo/) and [Sharkey](https://joinjabber.org/tutorials/integration/sharkey/)!
 - [QXmpp](https://github.com/qxmpp-project/qxmpp) versions [1.8.2](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.8.2) and [1.8.3](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.8.3) have been released.
 
 ## Extensions and specifications
