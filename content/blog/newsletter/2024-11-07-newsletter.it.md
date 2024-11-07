@@ -1,9 +1,15 @@
+---
+title: The XMPP Newsletter October 2024
+date: 2024-11-05
+categories: ['Newsletter']
+---
+
 Benvenuti alla Newsletter XMPP, è un piacere avervi di nuovo qui! Questo numero copre il mese di settembre 2024.
 
 
 ## Annunci XSF
 
-***
+
 
 ## XSF Membership
 
@@ -17,7 +23,7 @@ L'XSF sta pianificando il XMPP Summit 27, che si terrà il 30 e 31 gennaio 2025 
 
 ## Progetti di hosting fiscale XSF
 
-*** 
+ 
 
 XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per progetti XMPP. Si prega di fare domanda tramite [Open Collective](https://opencollective.com/xmpp). Per ulteriori informazioni, vedere il [post sul blog dell'annuncio](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Progetti attuali che potete sostenere:
 
@@ -28,14 +34,14 @@ XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per progetti
 
 ## Eventi XMPP
 
-***
+
 
 - [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) \[DE / EN\]: incontro mensile degli appassionati di XMPP a Berlino, ogni secondo mercoledì del mese alle 18:00 ora locale.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) \[IT\]: incontro mensile di appassionati di XMPP a Berlino, ogni terzo lunedì del mese alle 19:00 ora locale (evento online, con modalità web meeting e live streaming).
 
 ## Articoli su XMPP
 
-***
+
 
 - [XMPP: The Protocol for Open, Extensible Instant Messaging](https://discourse.igniterealtime.org/t/xmpp-the-protocol-for-open-extensible-instant-messaging/94748). Un'introduzione dettagliata al protocollo XMPP, agli obiettivi, ai concetti fondamentali e alle caratteristiche della [Ignite Realtime Community](https://www.igniterealtime.org/news/).
 - ProcessOne:
@@ -51,7 +57,7 @@ XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per progetti
 
 ### Client e applicazioni XMPP
 
-***
+
 
 - Sono state rilasciati [Monocles Chat 2.0](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0) e [2.0.1](https://codeberg.org/monocles/monocles_chat/releases/tag/v2.0.1). Si tratta di una grande ristrutturazione di Monocles Chat che porta con sé un'enorme lista di nuove funzionalità, nuove opzioni, miglioramenti delle prestazioni, una grande riprogettazione su Material 3, un editor di foto integrato, una riduzione del consumo di batteria, il supporto per [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html), molte correzioni e molto altro ancora!
 - [Cheogram](https://cheogram.com/) ha rilasciato la versione [2.17.2-1](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-1) per Android. Questa versione introduce l'anteprima iniziale dei link, migliora le reazioni e aggiunge un cassetto di navigazione con filtri per account e tag, oltre a molti altri miglioramenti.
@@ -71,13 +77,13 @@ Un client di messaggistica XMPP di base per KaiOS
 
 ### Server XMPP
 
-***
+
 
 - È stato rilasciato [ejabberd 24.10: The “Bidi” Stream Release](https://www.process-one.net/blog/ejabberd-24-10/). Si tratta di una release importante, ricca di miglioramenti sostanziali e di supporto per importanti estensioni specificate dalla XMPP Standard Foundation (XSF). I miglioramenti riguardano una maggiore sicurezza e una connettività semplificata, il tutto per rendere ejabberd più potente e più facile da usare che mai.
 
 ### Librerie e Tool
 
-***
+
 
 - Comunità Ignite Realtime:
     - È stato rilasciato [Smack 4.5.0-beta5](https://discourse.igniterealtime.org/t/smack-4-5-0-beta5-released/94796)! La comunità di sviluppatori Ignite Realtime è lieta di annunciare che Smack 4.5 è entrato in fase beta. Smack è un'API client XMPP scritta in Java che può essere eseguita su Java SE e Android. Le API di Smack 4.5 sono considerate stabili, tuttavia sono ancora possibili piccoli aggiustamenti durante la fase beta.
@@ -89,7 +95,7 @@ Un client di messaggistica XMPP di base per KaiOS
 
 ## Estensioni e specifiche
 
-***
+
 
 La XMPP Standards Foundation sviluppa estensioni di XMPP nella sua [serie XEP](https://xmpp.org/extensions/), oltre alle [RFC di XMPP](https://xmpp.org/rfcs/).
 
@@ -98,7 +104,7 @@ Sviluppatori e altri esperti di standard di tutto il mondo collaborano a queste 
 
 ### Proposte
 
-***
+
 
 Il processo di sviluppo di un XEP inizia scrivendo un'idea e sottoponendola all'Editor XMPP. Entro due settimane, il Consiglio decide se accettare la proposta come XEP sperimentale.
 
@@ -110,7 +116,7 @@ Il processo di sviluppo di un XEP inizia scrivendo un'idea e sottoponendola all'
 
 ### Nuove
 
-***
+
 
 -   Version 0.1.0 of [XEP-0495](https://xmpp.org/extensions/xep-0495.html) (Happy Eyeballs)
     -   Promoted to Experimental (XEP Editor: dg)
@@ -118,7 +124,7 @@ Il processo di sviluppo di un XEP inizia scrivendo un'idea e sottoponendola all'
 
 ### Differimenti
 
-***
+
 
 Se uno XEP sperimentale non viene aggiornato per più di dodici mesi, verrà spostato da Experimental a Deferred. Se c'è un altro aggiornamento, lo XEP verrà rimesso su Experimental.
 
@@ -126,7 +132,7 @@ Se uno XEP sperimentale non viene aggiornato per più di dodici mesi, verrà spo
 
 ### Aggiornamenti
 
-***
+
 
 -   Version 1.6.2 of [XEP-0198](https://xmpp.org/extensions/xep-0198.html) (Stream Management)
     -   Clarify server enabling stream management without requested resume functionality. (gk)
@@ -139,7 +145,7 @@ Se uno XEP sperimentale non viene aggiornato per più di dodici mesi, verrà spo
 
 ### Last Call
 
-***
+
 
 Last Call sono emesse una volta che tutti sembrano soddisfatti dello stato attuale del XEP. Dopo che il Consiglio decide se lo XEP sembra pronto, l'XMPP Editor emette una Last Call per i commenti. Il feedback raccolto durante la Last Call aiuta a migliorare lo XEP prima di riportarlo al Consiglio per l'avanzamento a Stable.
 
@@ -147,26 +153,26 @@ Last Call sono emesse una volta che tutti sembrano soddisfatti dello stato attua
 
 ### Stabile
 
-***
+
 
 - Nessun XEP è passato a Stabile questo mese.
 
 ### Deprecato
 
-***
+
 
 - Nessuno XEP deprecato questo mese.
 
 ### Non ammessi
 
-***
+
 
 - Nessun XEP non ammesso questo mese.
 
 
 ## Diffondete la notizia!
 
-***
+
 
 Condividete la notizia sui "social network":
 
@@ -205,7 +211,7 @@ Si tratta di uno sforzo comunitario e vorremmo ringraziare i traduttori per il l
 
 ## Aiutaci a realizzare la newsletter
 
-***
+
 
 Questa newsletter XMPP è prodotta in collaborazione dalla comunità XMPP. Il numero di ogni mese della newsletter viene redatto in questo [semplice pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). Alla fine di ogni mese, il contenuto del blocco viene inserito nel [repository XSF Github](https://github.com/xsf/xmpp.org/milestone/3). Siamo sempre felici di accogliere i collaboratori. Non esitate a partecipare alla discussione nella [chat del gruppo Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) e ad aiutarci così a sostenere questo sforzo della comunità. Avete un progetto e volete diffondere la notizia? Considerate la possibilità di condividere qui le vostre notizie o i vostri eventi e di promuoverli a un vasto pubblico.
 
@@ -227,7 +233,7 @@ Per annullare l'iscrizione a questa lista, [effettuare prima il login](https://m
 
 ## Licenza
 
-***
+
 
 Questa newsletter è pubblicata sotto [licenza CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/).
 
