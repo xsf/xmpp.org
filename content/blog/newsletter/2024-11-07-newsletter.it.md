@@ -4,7 +4,11 @@ date: 2024-11-05
 categories: ['Newsletter']
 ---
 
+{{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
+
+
 Benvenuti alla Newsletter XMPP, è un piacere avervi di nuovo qui! Questo numero copre il mese di settembre 2024.
+
 
 
 ## Annunci XSF
@@ -67,13 +71,13 @@ XSF offre [hosting fiscale](https://xmpp.org/community/fiscalhost/) per progetti
 - [Conversazioni](https://conversations.im/) ha rilasciato le versioni [2.17.0](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.0), [2.17.1](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.1) e [2.17.2](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.2) per Android. Questa versione aggiunge il supporto per [Message Reactions (XEP-0444)](https://xmpp.org/extensions/xep-0444.html).
 - È stata rilasciata la versione [0.1.0](https://git.disroot.org/badrihippo/convo/releases/tag/0.1.0) di [Convo](https://store.bananahackers.net/#Convo). Convo è un client di messaggistica XMPP di base per [KaiOS](https://www.kaiostech.com/).
 
-![Un client di messaggistica XMPP di base per KaiOS](https://xmpp.org/images/newsletter/2024-11-05/Convo.png)
+{{< figure src="/images/newsletter/2024-11-05/Convo.png" caption="A basic XMPP messaging client for KaiOS" >}}
 
 Un client di messaggistica XMPP di base per KaiOS
 
 - [Mellium co-op](https://mellium.im/) ha rilasciato [Communique](https://mellium.im/communique/), la versione [0.0.1](https://codeberg.org/mellium/communique-tui/releases/tag/v0.0.1) del suo client di messaggistica istantanea con interfaccia utente basata su terminale. Questa versione iniziale offre il supporto per le chat 1:1 e multiutente, il caricamento di file HTTP, i comandi ad hoc e la cronologia delle chat.
 
-![Communique: Versione iniziale con funzionalità che includono il supporto per chat 1:1 e multiutente](https://xmpp.org/images/newsletter/2024-11-05/communique.png)
+{{< figure src="/images/newsletter/2024-11-05/communique.png" caption="Communique: Initial release with features including 1:1 and multi-user chat support" >}}
 
 ### Server XMPP
 
@@ -183,6 +187,8 @@ Condividete la notizia sui "social network":
 -   [Istanza di Lemmy (non ufficiale)](https://slrpnk.net/c/xmpp)
 -   [Reddit (non ufficiale)](https://www.reddit.com/r/xmpp/)
 -   [Pagina Facebook XMPP (non ufficiale)](https://www.facebook.com/jabber)
+
+{{< newsletter-subscribe >}}
 
 ## Iscriviti alla newsletter mensile XMPP
 
