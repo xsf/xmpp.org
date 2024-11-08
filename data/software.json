@@ -393,13 +393,13 @@
         "url": null
     },
     {
-      "name": "Convo",
-      "doap": "https://git.disroot.org/badrihippo/convo/raw/branch/master/convo.doap",
-      "platforms": [],
-      "url": null,
-      "categories": [
-        "client"
-      ]
+        "categories": [
+            "client"
+        ],
+        "name": "Convo",
+        "doap": "https://git.disroot.org/badrihippo/convo/raw/branch/master/convo.doap",
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
