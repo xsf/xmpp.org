@@ -378,6 +378,17 @@
         "categories": [
             "client"
         ],
+        "doap": null,
+        "name": "Communiqué",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://mellium.im/communique/"
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": "https://codeberg.org/iNPUTmice/Conversations/raw/branch/master/conversations.doap",
         "name": "Conversations",
         "platforms": [],
