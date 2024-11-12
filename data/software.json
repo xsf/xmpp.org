@@ -1588,6 +1588,19 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "sj",
+        "platforms": [
+            "BSD",
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://klemkow.net/sj.html"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
