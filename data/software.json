@@ -257,9 +257,9 @@
         "doap": null,
         "name": "Buddycloud",
         "platforms": [
-            "Console",
-            "Mobile",
-            "Web"
+            "Android",
+            "Browser",
+            "Linux"
         ],
         "url": "http://buddycloud.com"
     },
@@ -281,7 +281,7 @@
         "doap": null,
         "name": "CertWatch",
         "platforms": [
-            "Web"
+            "Browser"
         ],
         "url": "https://certwatch.xmpp.net/"
     },
@@ -558,7 +558,7 @@
         "name": "eyeCU",
         "platforms": [
             "Linux",
-            "Other",
+            "OS/2",
             "Windows"
         ],
         "url": "https://eyecu.opiums.eu"
@@ -779,8 +779,9 @@
         "doap": null,
         "name": "irssi-xmpp",
         "platforms": [
-            "Console",
-            "Text-Mode"
+            "BSD",
+            "Linux",
+            "macOS"
         ],
         "url": "https://github.com/cdidier/irssi-xmpp"
     },
