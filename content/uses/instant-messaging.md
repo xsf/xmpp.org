@@ -15,7 +15,7 @@ Because user expectations for messaging apps continue to change over time, the X
 
 Projects that are using vanilla and open XMPP are listed on our [software section](/software/).
 
-There are also many, mostly commerical projects that have created an XMPP-based Instant Messaging network or use XMPP in their backend.
+There are also many, mostly commercial projects that have created an XMPP-based Instant Messaging network or use XMPP in their backend.
 
 | Users        | Company                         | Description                            |
 |--------------|---------------------------------|----------------------------------------|

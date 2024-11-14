@@ -47,7 +47,7 @@ The hypothesis:
 
 The fact:
 
-> As any other system, XMPP will interact with metadata and privacy must be enforced by the implementation and server adminstrators.
+> As any other system, XMPP will interact with metadata and privacy must be enforced by the implementation and server administrators.
 
 XMPP enables in most aspects privacy-friendly implementations and usage. But there are no absolutes here. By using XMPP - or any other system - you give access to your metadata to some degree. XMPP is certainly not the system with the least metadata available to an observer, especially an observer with access to your server. But no single server administrator can possibly see all the metadata you provide via your interactions.
 
