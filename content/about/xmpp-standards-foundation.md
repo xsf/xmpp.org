@@ -19,11 +19,11 @@ At the core of the XSF is its elected Membership who, in turn, elect a [Council]
 
 The Board of Directors of the XMPP Standards Foundation oversees the business affairs of the organisation. As elected by the XSF membership, the Board of Directors consists of the following individuals:
 
+- __Dave Cridland__
 - __Edward Maurer__ is working in engineering automation (energy sector, non-XMPP) and is volunteering in XMPP since more than five years already. Since 2020 he is thriving the [XSF Communication Team](https://xmpp.org/about/xsf/comm-team/). Besides successfully supporting the XMPP Community and its projects he is co-author of [XMPP Providers](https://providers.xmpp.net/). Find the contact and details in the [XMPP wiki profile](https://wiki.xmpp.org/web/User:Echolon).
-- __Matthew Wild__ is a founder of the [Prosody XMPP server](http://prosody.im/) project and a number of [smaller XMPP projects](http://code.matthewwild.co.uk/). Matthew has been a member of the XMPP Council since 2009, has authored and co-authored various [XEPs](/extensions/) and helps maintain the [Jabber.org IM service](http://jabber.org/).
-- __Nicola Fabiano__ is an Italian lawyer and adjunct professor at Ostrava university (Rome). Former president of the San Marino data protection authority. Former national expert for the republic of San Marino on the committees of the council of Europe Convention No. 108 and ad hoc committee on artificial intelligence. He has been the government of the republic of San Marino’s advisor for drafting legislation on personal data protection. Nicola Fabiano created the Data Protection and Privacy Relationships Model (DAPPREMO) based on high-mathematics and set theory. Author of articles, essays, books, and papers.
-- __Peter Saint-Andre__ is a semi-retired technologist who has been involved with the Jabber/XMPP community since late 1999, including many years as Executive Director.  Although he currently advises several tech companies, he is mainly focused on a startup that offers training to early- and mid-career managers.
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu).
+- __Florian Schmaus__
+- __Arne-Bruen Vogelsang__
 
 ## The Council{#council}
 
@@ -37,4 +37,4 @@ The Council consists of the following individuals:
 - __Daniel Gultsch__ is the maintainer of the Android client [Conversations](https://conversations.im) and operates an [XMPP domain hosting service](https://account.conversations.im/domain). He has also (co-) created several XEPs. Contact information can be found on [his website](https://gultsch.de).
 - __Marvin Wissfeld__  is one of the maintainers of the XMPP client [Dino](https://dino.im/). He has contributed to several XEPs and various free software projects related to XMPP.
 - __Stephen Paul Weber__ is one of the maintainers at the [Sopranica Project](https://soprani.ca) which includes the [Cheogram Services and Client](https://cheogram.com) and also [JMP](https://jmp.chat). Feel free to contact him via [his Jabber ID](xmpp:singpolyma@singpolyma.net).
-- __Travis Burtrum__ is a programmer who works on various XMPP projects such as [xmpp-proxy](https://github.com/moparisthebest/xmpp-proxy) and [sendxmpp-rs](https://github.com/moparisthebest/sendxmpp-rs), among others. He is author of [XEP-0368](https://xmpp.org/extensions/xep-0368.html) and [XEP-0418](https://xmpp.org/extensions/xep-0418.html). Feel free to contact him via [XMPP](xmpp:travis@burtrum.org).
+- __Jérôme Poisson__
