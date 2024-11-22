@@ -9,7 +9,7 @@ Every year the members of the XSF get together to vote on the current quarter's 
 
 This year that meeting was held on November 21th, 2024 and Alexander has recorded the details on the [XSF Wiki](https://wiki.xmpp.org/web/Meeting-Minutes-2024-11-21)
 
-The XMPP Council for the 2024/2025 term will be integrated by:
+The XMPP [Council](https://xmpp.org/about/xmpp-standards-foundation/#council) for the 2024/2025 term will be integrated by:
 
 - Dan Caseley
 - Daniel Gultsch
@@ -17,7 +17,7 @@ The XMPP Council for the 2024/2025 term will be integrated by:
 - Stephen Paul Weber
 - Marvin Wißfeld
 
-The Board of Directors for the 2024/2025 term will be integrated by:
+The [Board of Directors](https://xmpp.org/about/xmpp-standards-foundation/#board) for the 2024/2025 term will be integrated by:
 
 - Edward Maurer
 - Ralph Meijer
