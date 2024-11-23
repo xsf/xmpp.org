@@ -5,9 +5,9 @@ author: nemmig
 categories: ["XSF Organisational"]
 ---
 
-Every year the members of the XSF get together to vote on the current quarter's new and renewing members and to also elect who will become members of the XMPP Council and who will server on the Board of Directors.
+Every year the members of the [XSF](https://xmpp.org/about/xmpp-standards-foundation/) get together to vote on the current quarter's new and renewing members and to also elect who will become members of the XMPP Council and who will server on the Board of Directors.
 
-This year that meeting was held on November 21th, 2024 and Alexander has recorded the details on the [XSF Wiki](https://wiki.xmpp.org/web/Meeting-Minutes-2024-11-21)
+This year that meeting was held on November 21st, 2024 and Alexander recorded the details on the [XSF Wiki](https://wiki.xmpp.org/web/Meeting-Minutes-2024-11-21)
 
 The XMPP [Council](https://xmpp.org/about/xmpp-standards-foundation/#council) for the 2024/2025 term will be integrated by:
 
