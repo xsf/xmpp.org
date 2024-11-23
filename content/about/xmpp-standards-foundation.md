@@ -23,7 +23,10 @@ The Board of Directors of the XMPP Standards Foundation oversees the business af
 - __Edward Maurer__ is working in engineering automation (energy sector, non-XMPP) and is volunteering in XMPP since more than five years already. Since 2020 he is thriving the [XSF Communication Team](https://xmpp.org/about/xsf/comm-team/). Besides successfully supporting the XMPP Community and its projects he is co-author of [XMPP Providers](https://providers.xmpp.net/). Find the contact and details in the [XMPP wiki profile](https://wiki.xmpp.org/web/User:Echolon).
 - __Ralph Meijer__ is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu).
 - __Florian Schmaus__
-- __Arne-Bruen Vogelsang__
+- __Arne-Bruen Vogelsang__ is the founder and lead developer of [monocles](https://monocles.eu/more/). Whereas he is maintaining two public XMPP servers and [monocles chat]( https://f-droid.org/packages/de.monocles.chat/) is a known XMPP chat client for Android, he's also working on other non-XMPP related open source projects.
+During his studies he learned a lot about the need for more ethical and fair digital and technological solutions. He also experienced the business side for founding a sustainable company providing open source solutions.
+He advocates and supports XMPP and open source since many years and is an official XSF member since 2023.
+You can contact him via [email](mailto:arne-bruen@monocles.de) or [XMPP](xmpp:arne-bruen@monocles.de).
 
 ## The Council{#council}
 
