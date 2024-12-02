@@ -45,7 +45,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### XMPP Clients and Applications
 
-- [Cheogram](https://cheogram.com/) has released version [2.17.2-2](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-2) for Android. This release brings a chat requests feature to hide possible SPAM, with option to report all, several improvements and bugfixes.
+- [Cheogram](https://cheogram.com/) has released version [2.17.2-2](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-2) for Android. This release brings a chat requests feature to hide possible SPAM, with an option to report all. Additionally, it comes with several improvements and bugfixes.
 - [Conversations](https://conversations.im/) has released versions [2.17.3](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.3) and [2.17.4](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.4) for Android.
 - [Monocles Chat 2.0.2](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.2) has been released. This version brings MiniDNS, settings export, fixes and more!.
 - [Monal](https://monal-im.org/) has released version [6.4.6](https://github.com/monal-im/Monal/releases/tag/Build_iOS_989) for iOS an macOS.
@@ -54,14 +54,14 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Openfire 4.9.1](https://discourse.igniterealtime.org/t/openfire-4-9-1-release/94857) and [4.9.2](https://github.com/igniterealtime/Openfire/releases/tag/v4.9.2) have been released. Version [4.9.1](https://github.com/igniterealtime/Openfire/releases/tag/v4.9.1) is a bugfix and maintenance release, whereas version [4.9.2](https://github.com/igniterealtime/Openfire/releases/tag/v4.9.2) is a bugfix release. You can read the full [changelog](https://download.igniterealtime.org/openfire/docs/latest/changelog.html) for more details.
 - [MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/) version [6.3.0](https://github.com/esl/MongooseIM/releases/tag/6.3.0) has been released. The main highlight is the complete instrumentation rework, allowing integration with Prometheus. Additionally, CockroachDB has been added to the list of supported databases for increased scalability. See the [release notes](https://github.com/esl/MongooseIM/releases/tag/6.3.0) for more information.
-- The [(non-official) Prosody app](https://github.com/anubister/prosody_ynh) for Yunohost has now reached a beta maturity making it opened for test for all. This variant aims at providing the better XMPP support for Yunohost users. In comparison to official Metronome and Prosody official apps, this app enables A/V calls working out of the box. An optional import of rosters, MUCs, bookmarks from Metronome is also provided. As a reminder, Yunohost is a server distribution based on Debian, which makes easy to host by yourself a lot of services (apps). Till the last major release (version 12), Metronome was integrated in the core installation, allowing a lot of people to discover XMPP easier (though with some limitations).
+- The [(non-official) Prosody app](https://github.com/anubister/prosody_ynh) for Yunohost has now reached a beta maturity opening it for everybody to test. This variant aims at providing better XMPP support for Yunohost users. In comparison to official Metronome and Prosody apps, this app enables A/V calls working out of the box. An optional import of rosters, MUCs, and bookmarks from Metronome is also provided. As a reminder, Yunohost is a server distribution based on Debian, which makes it easy to host a lot of services (apps) by yourself. Till the last major release (version 12), Metronome was integrated in the core installation, allowing a lot of people to discover XMPP easier (though with some limitations).
 
 ### XMPP Libraries & Tools
 
 - [go-xmpp](https://github.com/xmppo/go-xmpp) versions [0.2.5](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.5), [0.2.6](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.6) and [0.2.7](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.7) have been released.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) versions [0.12.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.12.0) and [0.12.1](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.12.1) have been released.
 - [QXmpp](https://github.com/qxmpp-project/qxmpp) versions [1.9.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.9.0) and [1.9.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.9.1) have been released.
-- [Slidge](https://sr.ht/~nicoco/slidge/) versions [v0.2.1](https://git.sr.ht/~nicoco/slidge/refs/v0.2.1) and [v0.2.2](https://git.sr.ht/~nicoco/slidge/refs/v0.2.2) have been released bringing quite a few bugfixes.
+- [Slidge](https://sr.ht/~nicoco/slidge/) versions [v0.2.1](https://git.sr.ht/~nicoco/slidge/refs/v0.2.1) and [v0.2.2](https://git.sr.ht/~nicoco/slidge/refs/v0.2.2) have been released, bringing quite a few bugfixes.
 
 ## Extensions and specifications
 
