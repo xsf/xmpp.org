@@ -45,10 +45,12 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ### XMPP Clients and Applications
 
-- [Cheogram](https://cheogram.com/) has released version [2.17.2-2](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-2) for Android. This release brings a chat requests feature to hide possible SPAM, with an option to report all. Additionally, it comes with several improvements and bugfixes.
 - [Conversations](https://conversations.im/) has released versions [2.17.3](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.3) and [2.17.4](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.4) for Android.
 - [Monocles Chat 2.0.2](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.2) has been released. This version brings MiniDNS, settings export, fixes and more!.
 - [Monal](https://monal-im.org/) has released version [6.4.6](https://github.com/monal-im/Monal/releases/tag/Build_iOS_989) for iOS an macOS.
+- [Cheogram](https://cheogram.com/) has released version [2.17.2-2](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-2) for Android. This release brings a chat requests feature to hide possible SPAM, with an option to report all. Additionally, it comes with several improvements and bugfixes.
+
+{{< figure src="/images/newsletter/2024-12-05/cheogram.png" caption="Cheogram 2.17.2-2 navigation drawer with account and tag filters and SPAM control, with option to report all from feature" >}}
 
 ### XMPP Servers
 
