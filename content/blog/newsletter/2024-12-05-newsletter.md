@@ -88,7 +88,7 @@ The XEP development process starts by writing up an idea and submitting it to th
 - Version 0.1.0 of [XEP-0499](https://xmpp.org/extensions/xep-0499.html) (Pubsub Extended Discovery)
   - Promoted to Experimental (XEP Editor: dg)
 - Version 0.1.0 of [XEP-0500](https://xmpp.org/extensions/xep-0500.html) (MUC Slow Mode)
-  - Promoted to Experimental (XEP Editor: dg))
+  - Promoted to Experimental (XEP Editor: dg)
 
 ### Deferred
 
@@ -111,7 +111,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 ### Stable
 
 - Version 1.0.0 of [XEP-0490](https://xmpp.org/extensions/xep-0490.html) (Message Displayed Synchronization)
-  - Accept as Stable as per Council Vote from 2024-11-05. (XEP Editor (dg))
+  - Accept as Stable as per Council Vote from 2024-11-05. (XEP Editor (dg)
 
 ### Deprecated
 
