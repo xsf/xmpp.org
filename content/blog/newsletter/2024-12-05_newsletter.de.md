@@ -48,7 +48,7 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 
 ### XMPP-Clients und -Anwendungen
 
-- [Conversations](https://conversations.im/) ist in Version [2.17.3](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.3) znd [2.17.4](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.4) für Android erschienen.
+- [Conversations](https://conversations.im/) ist in Version [2.17.3](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.3) und [2.17.4](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.4) für Android erschienen.
 - [Monocles Chat 2.0.2](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.2) wurde veröffentlicht. Diese Version bringt ihren Nutzer:innen MiniDNS, Einstellungsexporte, Bugfixes und mehr!
 - [Monal](https://monal-im.org/) hat Version [6.4.6](https://github.com/monal-im/Monal/releases/tag/Build_iOS_989) für iOS und macOS veröffentlicht.
 - [Cheogram](https://cheogram.com/) ist in Version [2.17.2-2](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-2) für Android erschienen. Mit ihr kann man anfragen, dass möglicher Spam versteckt wird und diesen auch melden. Außerdem gibt es einige weitere Verbesserungen und Bugfixes. Ebenfalls nicht unwichtig: Seit diesem November ist Cheogram wieder im Google Play Store erhältlich!
