@@ -67,7 +67,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [ProcessOne](https://www.process-one.net/)
   - [ejabberd 24.12: The "evacuate_kindly" release](https://www.process-one.net/blog/ejabberd-24-12/): Including a few improvements and bug fixes, this release comes a month and half after version 24.10, with around 60 commits to the core repository alongside a few updates in dependencies.
-- [Prosoy IM](https://prosody.im/)
+- [Prosody IM](https://prosody.im/)
   -  [Prosody] is pleased to announce the release of version [0.12.5](https://blog.prosody.im/prosody-0.12.5-released/), a new minor release of the 0.12 stable branch. As usual, you can consult the [changelog](https://prosody.im/doc/release/0.12.5) for this release, and the download instructions for many platforms on their [download page](https://prosody.im/download/). 
 
 ### XMPP Libraries & Tools
