@@ -100,7 +100,7 @@
         "categories": [
             "client"
         ],
-        "doap": "https://astrachat.com/clients-doap.xml",
+        "doap": null,
         "name": "AstraChat XMPP Client",
         "platforms": [],
         "url": null
@@ -109,7 +109,7 @@
         "categories": [
             "server"
         ],
-        "doap": "https://astrachat.com/server-doap.xml",
+        "doap": null,
         "name": "AstraChat XMPP Server",
         "platforms": [],
         "url": null
