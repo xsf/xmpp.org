@@ -49,6 +49,8 @@
                                             <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-plus text-reset"></i></span>
                                         {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
                                             <span class="badge text-bg-secondary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-regular fa-circle-xmark text-reset"></i></span>
+                                        {{- else -}}
+                                            <span class="badge text-bg-secondary opacity-50" title="No implementation status given" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                         {{- end -}}
                                     {{- end -}}
                                 {{- end -}}
