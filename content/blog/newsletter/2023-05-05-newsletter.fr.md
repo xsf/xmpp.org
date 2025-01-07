@@ -102,16 +102,16 @@ Si une XEP _expérimentale_ n’est pas mise à jour pendant plus de douze mois,
   - Correction de quelques fautes de frappe (gh/@bodqhrohro)
 - [Version 0.2.0 de XEP-0428 (Fallback Indication)](https://xmpp.org/extensions/xep-0428.html)
   - Ajout de l’attribut « for » pour que les entités puissent savoir à quoi sert le fallback.
-  - Permet de spécifier qu’un seul des éléments <subject/> ou <body/> est considéré comme une solution de repli.
+  - Permet de spécifier qu’un seul des éléments `<subject/>` ou `<body/>` est considéré comme une solution de repli.
   - Permettre de spécifier la partie du texte respectif qui est censée servir de solution de repli, le cas échéant.
   - Ne pas utiliser l’exemple de chiffrement, qui devrait utiliser XEP-0380 à la place. (lmw)
 - [Version 0.4.0 de XEP-0388 (Extensible SASL Profile)](https://xmpp.org/extensions/xep-0388.html)
   - Ajustement de l’espace de noms
   - Ajout d’une référence à SASL Channel-Binding Type Capability (XEP-0440) et RFC 5802.
   - Mise à jour des considérations de sécurité et des règles commerciales
-  - Clarification de <continue/> et des tâches
+  - Clarification de `<continue/>` et des tâches
   - Ajout d’un point d’expansion pour la reprise de flux en ligne et BIND2 (et éventuellement d’autres)
-  - Ajout de l’élément facultatif <user-agent/>.
+  - Ajout de l’élément facultatif `<user-agent/>`.
   - Déplacement de « Deferred » à « Experimental » (tm)
 - [Version 0.4.0 de XEP-0386 (Bind 2)](https://xmpp.org/extensions/xep-0386.html)
   - Diverses modifications, effectuées parallèlement à l’expérience de mise en œuvre des clients et des serveurs, et aux mises à jour de SASL2.
@@ -184,7 +184,7 @@ Il s’agit d’un effort communautaire, et nous aimerions remercier les traduct
 
 ## Aidez-nous à créer la lettre d’information
 
-Cette lettre d’information XMPP est produite collaborativement par la communauté XMPP. La lettre d’information de chaque mois est rédigé dans ce [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). À la fin de chaque mois, le contenu du pad est fusionné dans le [dépôt Github de la XSF]](https://github.com/xsf/xmpp.org/milestone/3). Nous sommes toujours heureux d’accueillir des contributeurs et contributrices. N’hésitez pas à vous joindre à la discussion dans notre [salon public Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) et ainsi nous aider à soutenir cet effort communautaire. Vous avez un projet et vous voulez en parler ? Pensez à partager vos nouvelles ou vos événements ici, et à les promouvoir auprès d’un large public.
+Cette lettre d’information XMPP est produite collaborativement par la communauté XMPP. La lettre d’information de chaque mois est rédigé dans ce [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). À la fin de chaque mois, le contenu du pad est fusionné dans le [dépôt Github de la XSF](https://github.com/xsf/xmpp.org/milestone/3). Nous sommes toujours heureux d’accueillir des contributeurs et contributrices. N’hésitez pas à vous joindre à la discussion dans notre [salon public Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) et ainsi nous aider à soutenir cet effort communautaire. Vous avez un projet et vous voulez en parler ? Pensez à partager vos nouvelles ou vos événements ici, et à les promouvoir auprès d’un large public.
 
 Tâches que nous effectuons régulièrement :
 

@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2015-07-30
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/2015-07-30/](http://logs.xmpp.org/xsf/2015-07-30/)
@@ -54,7 +54,7 @@ Status: published
         mremond (at) process-one.net 
         gnauck (at) jabber.org 
 
-    <p>
+    
     The XSF has 57 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -71,231 +71,30 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Christoph Hartmann|32|3|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Christoph Hartmann
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Timothée Jaussoin|34|1|
+|Joe Hildebrand|35|0|
+|Bartosz Malkowski|33|2|
+|Tobias Markmann|35|0|
+|Ralph Meijer|34|1|
+|Matthew Miller|34|1|
+|Edwin Mons|34|1|
+|Peter Saint-Andre|35|0|
+|Jonathan Schleifer|33|2|
+|Ben Schumacher|32|3|
+|Jonathan Siegle|34|1|
+|Lance Stout|35|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Timothée Jaussoin
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Joe Hildebrand
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Bartosz Malkowski
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tobias Markmann
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ralph Meijer
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Miller
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Edwin Mons
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Saint-Andre
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Schleifer
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ben Schumacher
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Siegle
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Lance Stout
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**
     -   none
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

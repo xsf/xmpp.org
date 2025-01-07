@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2014-07-31
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/2014-07-31/](http://logs.xmpp.org/xsf/2014-07-31/)
@@ -52,7 +52,7 @@ Status: published
         me (at) matthewwild.co.uk
         gnauck (at) jabber.org
 
-    <p>
+    
     The XSF has 53 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -69,287 +69,33 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Michael Holdmann|28|5|
+|Timothée Jaussoin|33|0|
+|Teemu Vaisanen|29|4|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Lisa Dusseault|33|0|
+|Joe Hildebrand|33|0|
+|Bartosz Malkowski|28|5|
+|Tobias Markmann|32|1|
+|Ralph Meijer|33|0|
+|Matthew Miller|32|1|
+|Edwin Mons|33|0|
+|Peter Saint-Andre|32|1|
+|Jonathan Schleifer|32|1|
+|Ben Schumacher|30|3|
+|Jonathan Siegle|33|0|
+|Yana Stamcheva|32|1|
+|Lance Stout|33|0|
+|Remko Tronçon|33|0|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Michael Holdmann
-
-    </td>
-    <td>
-    28
-
-    </td>
-    <td>
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Timothée Jaussoin
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Teemu Vaisanen
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Lisa Dusseault
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Joe Hildebrand
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Bartosz Malkowski
-
-    </td>
-    <td>
-    28
-
-    </td>
-    <td style="height: 22px; width: 26px;">
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tobias Markmann
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ralph Meijer
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Miller
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Edwin Mons
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Saint-Andre
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Schleifer
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ben Schumacher
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Siegle
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Yana Stamcheva
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Lance Stout
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Remko Tronçon
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**
     -   none
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

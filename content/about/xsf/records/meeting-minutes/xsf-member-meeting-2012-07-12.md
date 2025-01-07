@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2012-07-12
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/120712/](http://logs.xmpp.org/xsf/120712/)
@@ -54,7 +54,7 @@ Status: published
         kobit@tigase.org
         bear@code-bear.com
 
-    <p>
+    
     The XSF has 53 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -67,157 +67,20 @@ Status: published
     1.  no members voted in the meeting
 
 4.  **Announcement of Voting Results**  
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Wayne Franklin|31|4|
+|Artur Hefczyc|34|1|
+|Arc Riley|32|3|
+|Kevin Smith|34|1|
+|Mike Taylor|35|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Abhinav Singh|33|2|
+|Mayank Singh|21|14|
+|Florian Zeitz|35|0|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Wayne Franklin
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Artur Hefczyc
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Arc Riley
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kevin Smith
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Applicants
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Abhinav Singh
-
-    </td>
-    <td style="height: 27px;">
-    33
-
-    </td>
-    <td style="height: 27px;">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Mayank Singh
-
-    </td>
-    <td style="height: 27px;">
-    21
-
-    </td>
-    <td style="height: 27px;">
-    14
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Florian Zeitz
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**None
 6.  **Formal Adjournment**
 

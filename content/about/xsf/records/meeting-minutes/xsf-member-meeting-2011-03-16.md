@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2011-03-16
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
       
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
@@ -63,7 +63,7 @@ Status: published
         remko (at) el-tramo.be
         gnauck (at) jabber.org
 
-    <p>
+    
     The XSF has 68 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -110,7 +110,6 @@ Status: published
 
 5.  **Any Other Business?**
 
-    </p>
     None
 
 6.  **Formal Adjournment**

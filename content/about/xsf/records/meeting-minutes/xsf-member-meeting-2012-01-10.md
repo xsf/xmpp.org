@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2012-01-10
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Time: Wednesday, 2012-01-10, 20:00 UTC
 -   When is 20:00 UTC in your local time? [Click
@@ -55,7 +55,7 @@ Status: published
         florob (at) babelmonkeys.de
         kevin (at) doomsong.co.uk
 
-    <p>
+    
     The XSF has 56 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -68,242 +68,26 @@ Status: published
     1.  No member voted in the meeting
 
 4.  **Announcement of Voting Results**  
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Sergey Dobrov|33|3|
+|Peter Waher|33|3|
+|Kim Alvefur|33|3|
+|John Martellaro|30|6|
+|Michael Lundberg|28|8|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Michael Grigutsch|34|2|
+|Waqas Hussain|35|1|
+|Tuomas Koski|35|1|
+|Steffen Larsen|36|0|
+|Alexey Melnikov|35|1|
+|Steven Parkes|33|3|
+|Mike Taylor|35|1|
+|Will Thompson|36|0|
+|Kurt Zeilenga|36|0|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Sergey Dobrov
-
-    </td>
-    <td style="height: 27px">
-    33
-
-    </td>
-    <td style="height: 27px">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Waher
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kim Alvefur
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    John Martellaro
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    6
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Michael Lundberg
-
-    </td>
-    <td>
-    28
-
-    </td>
-    <td>
-    8
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Reappliers
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Michael Grigutsch
-
-    </td>
-    <td style="height: 27px;">
-    34
-
-    </td>
-    <td style="height: 27px;">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Waqas Hussain
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Tuomas Koski
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Steffen Larsen
-
-    </td>
-    <td style="height: 27px;">
-    36
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Alexey Melnikov
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Steven Parkes
-
-    </td>
-    <td style="height: 27px;">
-    33
-
-    </td>
-    <td style="height: 27px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Mike Taylor
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Will Thompson
-
-    </td>
-    <td style="height: 27px;">
-    36
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Kurt Zeilenga
-
-    </td>
-    <td style="height: 27px;">
-    36
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
        
      
 

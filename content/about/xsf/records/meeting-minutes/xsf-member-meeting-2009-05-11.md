@@ -71,7 +71,6 @@ Status: published
 
     1.  The following members voted in the meeting
 
-        </p>
          
 
 4.  **Announcement of Voting Results**

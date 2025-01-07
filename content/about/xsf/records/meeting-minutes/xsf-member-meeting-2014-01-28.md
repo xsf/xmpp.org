@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2014-01-28
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/140128/](http://logs.xmpp.org/xsf/1410128/)
@@ -51,7 +51,7 @@ Status: published
         zeank (at) jwchat.org
         zooldk (at) gmail.com
 
-    <p>
+    
     The XSF has 57 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -68,220 +68,31 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Laura Gill|30|2|
+|Justin Karneges|32|0|
+|Mili Verma|26|6|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Laura Gill
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Justin Karneges
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mili Verma
-
-    </td>
-    <td>
-    26
-
-    </td>
-    <td>
-    6
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Kim Alvefur|32|0|
+|Michael Grigutsch|29|3|
+|Waqas Hussain|32|0|
+|Steffen Larsen|31|1|
+|Joachim Lindborg|32|0|
+|Steven Parkes|27|5|
+|Mike Taylor|32|0|
+|Peter Waher|31|1|
+|Kurt Zeilenga|29|3|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th style="width: 26px">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Kim Alvefur
-
-    </td>
-    <td style="height: 27px">
-    32
-
-    </td>
-    <td style="height: 27px; width: 26px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Michael Grigutsch
-
-    </td>
-    <td style="height: 27px">
-    29
-
-    </td>
-    <td style="height: 27px; width: 26px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 22px">
-    Waqas Hussain
-
-    </td>
-    <td style="height: 22px">
-    32
-
-    </td>
-    <td style="height: 22px; width: 26px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Steffen Larsen
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td style="width: 26px">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Joachim Lindborg
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Steven Parkes
-
-    </td>
-    <td>
-    27
-
-    </td>
-    <td style="width: 26px">
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Waher
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td style="width: 26px">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kurt Zeilenga
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td style="width: 26px">
-    3
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
      
 
 5.  **Any Other Business?**
     -   none
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

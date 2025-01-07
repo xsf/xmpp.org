@@ -7,8 +7,7 @@ Status: published
 This is the agenda for the 2009 Annual Meeting of the Members of the
 XMPP  
 Standards Foundation (XSF). Meeting participants may want to refer to
-the [  
-XSF Bylaws](/xsf/docs/bylaws.shtml).
+the [XSF Bylaws](/xsf/docs/bylaws.shtml).
 
 -   Where: foundation at conference.jabber.org
 -   Time: Thursday, 2009-10-06, 19:00 UTC
@@ -116,9 +115,6 @@ XSF Bylaws](/xsf/docs/bylaws.shtml).
           Florian Jensen   30    9
           Will Sheward     32    7
           Nicolas Verite   24    15
-
-        <p>
-        <!--p>All 5 candidates are accepted and will comprise the Board for 2008-2009.</p-->
 
     2.  Council Election
 

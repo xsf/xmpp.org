@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2013-08-29
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/130829/](http://logs.xmpp.org/xsf/130829/)
@@ -54,7 +54,7 @@ Status: published
         bmalkow (at) malkowscy.net
         gnauck (at) jabber.org
 
-    <p>
+    
     The XSF has 57 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -71,158 +71,21 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Shubham Dh|23|13|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Wayne Franklin|34|2|
+|Artur Hefczyc|35|1|
+|Arc Riley|35|1|
+|Abhinav Singh|35|1|
+|Kevin Smith|36|0|
+|Mike Taylor|36|0|
+|Florian Zeitz|35|1|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Shubham Dh
-
-    </td>
-    <td>
-    23
-
-    </td>
-    <td>
-    13
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Wayne Franklin
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Artur Hefczyc
-
-    </td>
-    <td style="height: 27px">
-    35
-
-    </td>
-    <td style="height: 27px">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Arc Riley
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Abhinav Singh
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kevin Smith
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Florian Zeitz
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
+    
      
 
 5.  **Any Other Business?**  

@@ -111,9 +111,9 @@ will put the XEP back onto Experimental.
   - Bump namespace
   - Add reference to  and
   - Update security considerations and business rules
-  - Clarify <continue/> and tasks
+  - Clarify `<continue/>` and tasks
   - Add expansion point to inline stream resumption and BIND2 (and possibly others)
-  - Add optional <user-agent/> element
+  - Add optional `<user-agent/>` element
   - Move from Deferred to Experimental (tm)
 - [Version 0.4.0 of XEP-0386 (Bind 2)](https://xmpp.org/extensions/xep-0386.html)
   - Various changes, made in parallel with working client and server implementation experience, and SASL2 updates.

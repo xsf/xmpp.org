@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2011-09-06
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join)
+-   Where: [xsf@muc.xmpp.org](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/110906/](http://logs.xmpp.org/xsf/110906/)
 -   Time: Wednesday, 2011-09-06, 19:00 UTC
@@ -51,7 +51,7 @@ Status: published
         yuppinturic (at) jabber.bluendo.com
         zooldk (at) gmail.com
 
-    <p>
+    
     The XSF has 62 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -65,314 +65,34 @@ Status: published
         -   admin (at) im.flosoft.biz
 
 4.  **Announcement of Voting Results**  
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Ivan Martinez|29|3|
+|Ben Schumacher|30|2|
+|Lance Stout|31|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Aaron Axelsen|21|11|
+|Diana Cionoiu|32|0|
+|David Czech|28|4|
+|Sebastiaan Deckers|29|3|
+|Joe Hildebrand|32|0|
+|Florian Jensen|32|0|
+|Bartosz Malkowski|27|5|
+|Tobias Markmann|30|2|
+|Ralph Meijer|31|1|
+|Dirk Meyer|28|4|
+|Matthew Miller|32|0|
+|Edwin Mons|31|1|
+|Peter Saint-Andre|30|2|
+|Jonathan Schleifer|29|3|
+|Jonathan Siegle|32|0|
+|Remko Tronçon|32|0|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Ivan Martinez
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ben Schumacher
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Lance Stout
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Reappliers
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Aaron Axelsen
-
-    </td>
-    <td style="height: 27px;">
-    21
-
-    </td>
-    <td style="height: 27px;">
-    11
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Diana Cionoiu
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    David Czech
-
-    </td>
-    <td style="height: 27px;">
-    28
-
-    </td>
-    <td style="height: 27px;">
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Sebastiaan Deckers
-
-    </td>
-    <td style="height: 27px;">
-    29
-
-    </td>
-    <td style="height: 27px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Joe Hildebrand
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Florian Jensen
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Bartosz Malkowski
-
-    </td>
-    <td style="height: 27px;">
-    27
-
-    </td>
-    <td style="height: 27px;">
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Tobias Markmann
-
-    </td>
-    <td style="height: 27px;">
-    30
-
-    </td>
-    <td style="height: 27px;">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Ralph Meijer
-
-    </td>
-    <td style="height: 27px;">
-    31
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Dirk Meyer
-
-    </td>
-    <td style="height: 27px;">
-    28
-
-    </td>
-    <td style="height: 27px;">
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Matthew Miller
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Edwin Mons
-
-    </td>
-    <td style="height: 27px;">
-    31
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Peter Saint-Andre
-
-    </td>
-    <td style="height: 27px;">
-    30
-
-    </td>
-    <td style="height: 27px;">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Jonathan Schleifer
-
-    </td>
-    <td style="height: 27px;">
-    29
-
-    </td>
-    <td style="height: 27px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Jonathan Siegle
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Remko Tronçon
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <p>
+    
      
 
 5.  **Any Other Business?**None

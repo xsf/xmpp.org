@@ -14,6 +14,4 @@ This presentation gives a fast-paced introduction to XMPP, and is mostly based o
 
 - [XMPP 101](http://www.slideshare.net/remko.troncon/xmpp-101?type=presentation "XMPP 101")
 
-    <object width="425" height="355" data="http://static.slideshare.net/swf/ssplayer2.swf?doc=xmpp101-key-090303164623-phpapp01&amp;stripped_title=xmpp-101" type="application/x-shockwave-flash"><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><param name="src" value="http://static.slideshare.net/swf/ssplayer2.swf?doc=xmpp101-key-090303164623-phpapp01&amp;stripped_title=xmpp-101"></param><param name="allowfullscreen" value="true"></param></object>
-
 Peter and Remko were the first of a series of speakers in the XMPP devroom. We'll hopefully be publishing slides provided by the other speakers shortly.

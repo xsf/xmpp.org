@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2010-05-06
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where<: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:  
     [  
@@ -80,9 +80,7 @@ Status: published
 
 3.  **Opportunity for XSF Members to Vote in the Meeting**
 
-    1.  The following members voted in the meeting<!--
-        <pre></pre>
-        <p>-->
+    1.  The following members voted in the meeting
 
 4.  **Announcement of Voting Results**
 
@@ -106,7 +104,6 @@ Status: published
 
 5.  **Any Other Business?**
 
-    </p>
     None
 
 6.  **Formal Adjournment**

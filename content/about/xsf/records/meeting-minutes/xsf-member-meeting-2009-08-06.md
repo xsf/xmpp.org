@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2009-08-06
 Status: published
 
--   <span>Where</span>:
+-   Where:
     [foundation@conference.jabber.org](xmpp:foundation@conference.jabber.org?join)
 -   Log:  
     [  

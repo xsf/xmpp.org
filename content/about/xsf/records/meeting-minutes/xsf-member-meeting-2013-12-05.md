@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2013-12-05
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/131205/](http://logs.xmpp.org/xsf/131205/)
@@ -50,7 +50,7 @@ Status: published
         dwd (at) dave.cridland.net
         gnauck (at) jabber.org
 
-    <p>
+    
     The XSF has 57 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -67,270 +67,30 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Lisa Dusseault|30|2|
+|Yana Stamcheva|32|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Lisa Dusseault
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Yana Stamcheva
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Todd Herman|27|5|
+|Joe Hildebrand|31|1|
+|Florian Jensen|28|4|
+|Bartosz Malkowski|32|0|
+|Tobias Markmann|31|1|
+|Ralph Meijer|32|0|
+|Matthew Miller|31|1|
+|Edwin Mons|32|0|
+|Peter Saint-Andre|30|2|
+|Jonathan Schleifer|31|1|
+|Ben Schumacher|29|3|
+|Jonathan Siegle|30|2|
+|Lance Stout|32|0|
+|Remko Tronçon|32|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Todd Herman
-
-    </td>
-    <td style="height: 27px">
-    27
-
-    </td>
-    <td style="height: 27px">
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Joe Hildebrand
-
-    </td>
-    <td style="height: 27px">
-    31
-
-    </td>
-    <td style="height: 27px">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 22px">
-    Florian Jensen
-
-    </td>
-    <td style="height: 22px">
-    28
-
-    </td>
-    <td style="height: 22px">
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Bartosz Malkowski
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tobias Markmann
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ralph Meijer
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Miller
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Edwin Mons
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Saint-Andre
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Schleifer
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ben Schumacher
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jonathan Siegle
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Lance Stout
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Remko Tronçon
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
+    
      
 
 5.  **Any Other Business?**
@@ -341,7 +101,7 @@ Status: published
         How  
         can we achieve this?
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

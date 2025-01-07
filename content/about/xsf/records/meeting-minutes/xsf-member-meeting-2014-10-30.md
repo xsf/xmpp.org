@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2014-10-30
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/2014-10-30/](http://logs.xmpp.org/xsf/2014-10-30/)
@@ -56,7 +56,7 @@ Status: published
         zeank (at) jwchat.org
         zooldk (at) gmail.com
 
-    <p>
+    
     The XSF has 54 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -73,217 +73,28 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Thijs Alkemade|36|1|
+|Michael Weibel|36|1|
+|Klaus Herberth|33|4|
+|Lars Åkerskog|34|3|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Kim Alvefur|34|3|
+|Laura Gill|35|2|
+|Waqas Hussain|37|0|
+|Steffen Larsen|35|2|
+|Joachim Lindborg|37|0|
+|Mike Taylor|37|0|
+|Peter Waher|36|1|
+|Kurt Zeilenga|33|4|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Thijs Alkemade
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Michael Weibel
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Klaus Herberth
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Lars Åkerskog
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Kim Alvefur
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Laura Gill
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Waqas Hussain
-
-    </td>
-    <td>
-    37
-
-    </td>
-    <td style="height: 22px; width: 26px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Steffen Larsen
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Joachim Lindborg
-
-    </td>
-    <td>
-    37
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Mike Taylor
-
-    </td>
-    <td style="height: 27px">
-    37
-
-    </td>
-    <td style="height: 27px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Waher
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kurt Zeilenga
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**
     -   TODO
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

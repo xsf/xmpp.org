@@ -76,7 +76,6 @@ Status: published
       yes                    38
       no                     2
 
-    <p>
      
 
 5.  **Open Discussion**

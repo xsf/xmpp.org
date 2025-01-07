@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2013-01-24
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/130124/](http://logs.xmpp.org/xsf/130124/)
@@ -50,7 +50,7 @@ Status: published
         kevin@doomsong.co.uk
         gnauck@jabber.org
 
-    <p>
+    
     The XSF has 52 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -65,256 +65,28 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Dave Richards|31|1|
+|Jason Frankel|29|3|
+|Eero Neuenschwander|26|6|
+|Joachim Lindborg|23|9|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Applicants
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Dave Richards
-
-    </td>
-    <td style="height: 27px;">
-    31
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Jason Frankel
-
-    </td>
-    <td style="height: 27px;">
-    29
-
-    </td>
-    <td style="height: 27px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Eero Neuenschwander
-
-    </td>
-    <td style="height: 27px;">
-    26
-
-    </td>
-    <td style="height: 27px;">
-    6
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Joachim Lindborg
-
-    </td>
-    <td style="height: 27px;">
-    23
-
-    </td>
-    <td style="height: 27px;">
-    9
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Kim Alvefur|29|3|
+|John Martellaro|30|2|
+|Peter Waher|32|0|
+|Michael Grigutsch|31|1|
+|Waqas Hussain|32|0|
+|Steffen Larsen|32|0|
+|Alexey Melnikov|32|0|
+|Steven Parkes|30|2|
+|Mike Taylor|32|0|
+|Will Thompson|29|3|
+|Kurt Zeilenga|31|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th style="width: 26px">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Kim Alvefur
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td style="width: 26px">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    John Martellaro
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td style="width: 26px">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Peter Waher
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Michael Grigutsch
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td style="width: 26px">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Waqas Hussain
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Steffen Larsen
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Alexey Melnikov
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Steven Parkes
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td style="width: 26px">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td style="width: 26px">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Will Thompson
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td style="width: 26px">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kurt Zeilenga
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td style="width: 26px">
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
      
 
 5.  **Any Other Business?**None

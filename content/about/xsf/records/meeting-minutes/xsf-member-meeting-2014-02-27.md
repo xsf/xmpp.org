@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2014-02-27
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/140227/](http://logs.xmpp.org/xsf/1410227/)
@@ -53,7 +53,7 @@ Status: published
         zeank (at) jwchat.org
         zooldk (at) gmail.com
 
-    <p>
+    
     The XSF has 52 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -69,263 +69,34 @@ Status: published
 
 4.  **Announcement of Voting Results**
 
-     
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Martin Hewitt|31|3|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|David Banes|32|2|
+|Ludovic Bocquet|26|8|
+|Dave Cridland|34|0|
+|Alexander Gnauck|33|1|
+|Philipp Hancke|33|1|
+|Emil Ivov|34|0|
+|Jack Moffitt|33|1|
+|Stefan Strigler|33|1|
+|Simon Tennant|33|1|
+|Winfried Tilanus|34|0|
+|Ashley Ward|34|0|
+|Lloyd Watkin|30|4|
+|Matthew Wild|34|0|
+|Christopher Zorn|32|2|
 
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Martin Hewitt
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-     
-
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    David Banes
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ludovic Bocquet
-
-    </td>
-    <td>
-    26
-
-    </td>
-    <td>
-    8
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Dave Cridland
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td style="height: 22px; width: 26px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Alexander Gnauck
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Philipp Hancke
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Emil Ivov
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jack Moffitt
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Stefan Strigler
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Simon Tennant
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Winfried Tilanus
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ashley Ward
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px">
-    Lloyd Watkin
-
-    </td>
-    <td style="height: 27px">
-    30
-
-    </td>
-    <td style="height: 27px">
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Wild
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Christopher Zorn
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
+    
      
 
 5.  **Any Other Business?**
     -   none
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

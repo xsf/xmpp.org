@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2010-02-17
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:  
     [  
@@ -103,7 +103,6 @@ Status: published
 
 5.  **Any Other Business?**
 
-    </p>
     None
 
 6.  **Formal Adjournment**

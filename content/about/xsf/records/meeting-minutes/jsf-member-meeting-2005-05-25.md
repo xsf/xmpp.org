@@ -11,8 +11,6 @@ Status: published
 
 ### Agenda
 
-<ol>
-<li>
 **Call for Quorum**
 
 The following 39 JSF members voted via proxy:
@@ -62,22 +60,16 @@ The JSF has 59 [members](/members/memberlist.shtml) as of this date.
 Therefore quorum is achieved in accordance with Section 3.8 of the [JSF
 Bylaws](/jsf/bylaws.shtml).
 
-</li>
-<li>
 **Items Subject to a Vote**
 
 1.  JSF Membership Applications
 
     Vote yes or no for the current applicants.
 
-</li>
-<li>
 **Opportunity for JSF Members to Vote in the Meeting**
 
 No JSF members voted during the meeting.
 
-</li>
-<li>
 **Announcement of Voting Results**
 
 In accordance with Section 2.1 of the of the [JSF
@@ -117,12 +109,10 @@ The results are as follows:
   Tony Cheung          34    5
   Vipul Kumar          18    21
 
-<p>
 In addition to the foregoing voting results, the following JSF members
 were eligible to re-apply but did not do so and therefore have forfeited
 their membership, but are welcome to apply in the future:
 
-</li>
 -   Tony Bamonti
 -   JD Conley
 -   David Corvoysier
@@ -137,13 +127,6 @@ therefore will be removed from the membership:
 
 -   Jean-Louis Seguineau
 
-<li>
 **Open Discussion**
 
-</li>
-<li>
 **Formal Adjournment**
-
-</li>
-</ol>
-

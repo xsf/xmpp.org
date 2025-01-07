@@ -156,9 +156,9 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
     
 -   Version `0.4.0` of [XEP-0353](https://xmpp.org/extensions/xep-0353.html) (Jingle Message Initiation)
     -   Rework whole spec, namespace bump
-    -   Add new <finish/> message
+    -   Add new `<finish/>` message
     -   Add dependency on XEP-0280, XEP-0313 and XEP-0334
-    -   Add <reason/> to some messages (tm)
+    -   Add `<reason/>` to some messages (tm)
 
 -   Version `1.1.0` of [XEP-0459](https://xmpp.org/extensions/xep-0459.html) (XMPP Compliance Suites 2022)
     -   Replace deprecated XEP-0411 with XEP-0402 in Advanced Group Chat (egp)

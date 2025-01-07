@@ -11,8 +11,6 @@ Status: published
 
 ### Agenda
 
-<ol>
-<li>
 **Call for Quorum**
 
 The following 30 JSF members voted via proxy:
@@ -53,8 +51,6 @@ The JSF has 54 [members](/members/memberlist.shtml) as of this date.
 Therefore quorum is achieved in accordance with Section 3.8 of the [JSF
 Bylaws](/jsf/bylaws.shtml).
 
-</li>
-<li>
 **Items Subject to a Vote**
 
 1.  New and Returning Members
@@ -67,12 +63,8 @@ Bylaws](/jsf/bylaws.shtml).
     Vote yes or no on emeritus membership for Jeremie Miller, Thomas
     Muldowney, Dave Smith, Ryan Eatmon, and Julian Missig.
 
-</li>
-<li>
 **Opportunity for JSF Members to Vote in the Meeting**
 
-</li>
-<li>
 **Announcement of Voting Results**
 
 **1. New and Returning Members**
@@ -113,12 +105,10 @@ Bylaws](/jsf/bylaws.shtml).
   Ryan Eatmon        24    6
   Julian Missig      24    6
 
-<p>
 In addition to the foregoing voting results, the following JSF members
 were eligible to re-apply but did not do so and therefore have forfeited
 their membership, but are welcome to apply in the future:
 
-</li>
 -   Michail Pishchagin
 -   Damian Saez
 -   Driest Staelens
@@ -131,14 +121,6 @@ therefore will be removed from the membership:
 -   Boyd Fletcher
 -   Adrian Rapa
 
-</li>
-<li>
 **Open Discussion**
 
-</li>
-<li>
 **Formal Adjournment**
-
-</li>
-</ol>
-

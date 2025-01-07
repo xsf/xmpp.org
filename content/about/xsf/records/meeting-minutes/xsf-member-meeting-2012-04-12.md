@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2012-04-12
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/120412/](http://logs.xmpp.org/xsf/120412/)
@@ -52,7 +52,7 @@ Status: published
         hildjj (at) jabber.org
         gnauck (at) jabber.org
 
-    <p>
+    
     The XSF has 57 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -65,227 +65,26 @@ Status: published
     1.  no members voted in the meeting
 
 4.  **Announcement of Voting Results**  
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|David Banes|31|2|
+|Ludovic Bocquet|28|5|
+|Dave Cridland|32|1|
+|Alexander Gnauck|32|1|
+|Stephan Maka|33|0|
+|Jack Moffitt|32|1|
+|Jehan Pagès|30|3|
+|Simon Tennant|32|1|
+|Mick Thompson|24|9|
+|Matthew Wild|33|0|
+|Christopher Zorn|33|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    David Banes
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ludovic Bocquet
-
-    </td>
-    <td>
-    28
-
-    </td>
-    <td>
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Dave Cridland
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Alexander Gnauck
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Stephan Maka
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jack Moffitt
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jehan Pagès
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Simon Tennant
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mick Thompson
-
-    </td>
-    <td>
-    24
-
-    </td>
-    <td>
-    9
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Wild
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Christopher Zorn
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Stefan de Konink|30|3|
+|Winfried Tilanus|32|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Applicants
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Stefan de Konink
-
-    </td>
-    <td style="height: 27px;">
-    30
-
-    </td>
-    <td style="height: 27px;">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Winfried Tilanus
-
-    </td>
-    <td style="height: 27px;">
-    32
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**None
 6.  **Formal Adjournment**
 

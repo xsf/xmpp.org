@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2009-11-24
 Status: published
 
--   <span>Where</span>:
+-   Where:
     [foundation@conference.jabber.org](xmpp:foundation@conference.jabber.org?join)
 -   Log:  
     [  
@@ -124,7 +124,6 @@ Status: published
 
 6.  **Any Other Business?**
 
-    </p>
     None
 
 7.  **Formal Adjournment**

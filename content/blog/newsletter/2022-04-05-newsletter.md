@@ -137,7 +137,7 @@ Info: The XSF has decided to rename 'Draft' to 'Stable'. [Read more about it her
     -   Obsolete due to the omnipresence of Unicode emoji, as well as Bits of Binary stickers. (egp)
 
 -   [XEP-0051](https://xmpp.org/extensions/xep-0051.html) (Connection Transfer)
-    -   Obsolete because this feature has been merged into XMPP core, see RFC6120 section 4.9.3.19, which describes the <see-other-host/> stream error. (egp)
+    -   Obsolete because this feature has been merged into XMPP core, see RFC6120 section 4.9.3.19, which describes the `<see-other-host/>` stream error. (egp)
 
 -   [XEP-0138](https://xmpp.org/extensions/xep-0138.html) (Stream Compression)
     -   Obsolete due to security vulnerability. (tjb)

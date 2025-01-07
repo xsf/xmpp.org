@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2013-05-02
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/130502/](http://logs.xmpp.org/xsf/130502/)
@@ -54,7 +54,7 @@ Status: published
         kevin (at) doomsong.co.uk
         gnauck (at) ag-software.de
 
-    <p>
+    
     The XSF has 52 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -69,284 +69,31 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Philipp Hancke|34|1|
+|Emil Ivov|35|0|
+|Stefan Strigler|35|0|
+|Ashley Ward|34|1|
+|Lloyd Watkin|35|0|
+|Heiner Wolf|31|4|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Applicants
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Philipp Hancke
-
-    </td>
-    <td style="height: 27px;">
-    34
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Emil Ivov
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Stefan Strigler
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Ashley Ward
-
-    </td>
-    <td style="height: 27px;">
-    34
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Lloyd Watkin
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px; width: 150px;">
-    Heiner Wolf
-
-    </td>
-    <td style="height: 27px;">
-    31
-
-    </td>
-    <td style="height: 27px;">
-    4
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|David Banes|33|2|
+|Ludovic Bocquet|27|8|
+|Dave Cridland|35|0|
+|Alexander Gnauck|34|1|
+|Jack Moffitt|35|0|
+|Simon Tennant|32|3|
+|Mick Thompson|32|3|
+|Matthew Wild|35|0|
+|Christopher Zorn|34|1|
+|Stefan de Konink|33|2|
+|Winfried Tilanus|35|0|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th class="auto-style1">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    David Banes
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td class="auto-style1">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ludovic Bocquet
-
-    </td>
-    <td>
-    27
-
-    </td>
-    <td class="auto-style1">
-    8
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Dave Cridland
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td class="auto-style1">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Alexander Gnauck
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td class="auto-style1">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Jack Moffitt
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td class="auto-style1">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Simon Tennant
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td class="auto-style1">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mick Thompson
-
-    </td>
-    <td>
-    32
-
-    </td>
-    <td class="auto-style1">
-    3
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Matthew Wild
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td class="auto-style1">
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Christopher Zorn
-
-    </td>
-    <td>
-    34
-
-    </td>
-    <td class="auto-style1">
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Stefan de Konink
-
-    </td>
-    <td>
-    33
-
-    </td>
-    <td class="auto-style1">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Winfried Tilanus
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td class="auto-style1">
-    0
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
+    
      
 
 5.  **Any Other Business?**None

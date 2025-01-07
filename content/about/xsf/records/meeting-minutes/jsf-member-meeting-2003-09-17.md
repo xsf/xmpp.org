@@ -15,8 +15,6 @@ to the [JSF Bylaws](/jsf/bylaws.shtml).
 
 ### Agenda
 
-<ol>
-<li>
 **Call for Quorum**
 
 The following 60 JSF members voted via proxy:
@@ -87,8 +85,6 @@ The JSF has 81 [members](/members/memberlist.shtml) as of this date.
 Therefore quorum is achieved in accordance with section 3.8 of the [JSF
 Bylaws](/jsf/bylaws.shtml).
 
-</li>
-<li>
 **Items Subject to a Vote**
 
 1.  Board Election
@@ -123,14 +119,10 @@ Bylaws](/jsf/bylaws.shtml).
         Shchepin](/council/candidates/2003/Alexey_Shchepin.shtml)
     -   [Dave Smith](/council/candidates/2003/Dave_Smith.shtml)
 
-</li>
-<li>
 **Opportunity for JSF members to Vote in the Meeting**
 
 JSF member Mike Prince voted during the meeting.
 
-</li>
-<li>
 **Announcement of Voting Results**
 
 1.  Board Election

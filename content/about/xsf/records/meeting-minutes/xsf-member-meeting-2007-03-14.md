@@ -69,7 +69,6 @@ Status: published
 
     1.  Clarifying the Purposes of the XSF
 
-        </p>
         Vote yes or no on the  
         [proposal](https://xmpp.org/xsf/proposals/purpose-proposal.shtml).
 

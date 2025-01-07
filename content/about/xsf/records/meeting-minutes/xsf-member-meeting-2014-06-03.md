@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2014-06-03
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/2014-06-03/](http://logs.xmpp.org/xsf/2014-06-03/)
@@ -50,7 +50,7 @@ Status: published
         zeank@jwchat.org
         zooldk@gmail.com
 
-    <p>
+    
     The XSF has 50 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -69,237 +69,33 @@ Status: published
 4.  **Announcement of Voting Results**
 
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Yusuke Doi|30|1|
+|Wojciech Kapcia|26|5|
+|Ben Langfeld|31|0|
+|Paul Witty|29|2|
+|Andrzej Wójcik|27|4|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Applicants
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Yusuke Doi
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Wojciech Kapcia
-
-    </td>
-    <td>
-    26
-
-    </td>
-    <td>
-    5
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ben Langfeld
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Paul Witty
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td>
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Andrzej Wójcik
-
-    </td>
-    <td>
-    27
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Wayne Franklin|27|4|
+|Artur Hefczyc|31|0|
+|Arc Riley|29|2|
+|Kevin Smith|31|0|
+|Mike Taylor|30|1|
+|Florian Zeitz|30|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Wayne Franklin
-
-    </td>
-    <td>
-    27
-
-    </td>
-    <td>
-    4
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Artur Hefczyc
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Arc Riley
-
-    </td>
-    <td>
-    29
-
-    </td>
-    <td style="height: 22px; width: 26px;">
-    2
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kevin Smith
-
-    </td>
-    <td>
-    31
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Florian Zeitz
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Other Items|Yes|No|
+|--- |--- |--- |
+|cooperate membership|30|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Other Items
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    cooperate membership
-
-    </td>
-    <td>
-    30
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
 5.  **Any Other Business?**
     -   none
 
-    <p>
+    
       
 6.  **Formal Adjournment**
 

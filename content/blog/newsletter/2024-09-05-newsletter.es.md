@@ -109,7 +109,7 @@ Si una XEP experimental ("Experimental XEP") no es actualizada por más de doce 
     - Improved 'Service Removes Non-Member' example.
     - Clarify usage of presence stanzas when removing a non-member from a members-only room.
     - Replace inappropriate RFC 2119 key word usage in §9.7.
-    - Presence sent to occupants of a destroyed room includes a <destroy/> element.
+    - Presence sent to occupants of a destroyed room includes a `<destroy/>` element.
     - Explicitly use bare JIDs when operating on affiliations.
     - Allow non-owners to retrieve owner and admin lists in non-anonymous rooms.
     - Members should be allowed to retrieve the member list only in non-anonymous rooms. (gk)

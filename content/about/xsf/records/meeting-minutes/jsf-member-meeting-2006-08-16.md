@@ -155,18 +155,6 @@ The following 35 JSF members voted via proxy:
       Bart van Bragt       33    3
       Heiner Wolf          34    2
 
-    <p>
-    <!--</p>
-    <p>In addition to the foregoing voting results, the following JSF members were eligible to re-apply but did not do so and therefore have forfeited their membership, but are welcome to apply in the future:</li>
-    <ul>
-    <li>Michail Pishchagin</li>
-    <li>Damian Saez</li>
-    <li>Driest Staelens</li>
-    <li>Jason Sweeney</li>
-    <li>David Young</li>
-    </ul>
-    <p>-->
-
 5.  **Open Discussion**
 
 6.  **Formal Adjournment**

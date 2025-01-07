@@ -4,7 +4,7 @@ Author: agnauck
 Slug: xsf-member-meeting-2011-06-14
 Status: published
 
--   <span>Where</span>: [xsf@muc.xmpp.org  
+-   Where: [xsf@muc.xmpp.org  
    ](xmpp:xsf@muc.xmpp.org?join)
 -   Log:
     [http://logs.xmpp.org/xsf/110614/](http://logs.xmpp.org/xsf/110614/)
@@ -57,7 +57,7 @@ Status: published
         tuomas (at) xmpp.lobstermonster.org
         kevin (at) doomsong.co.uk
 
-    <p>
+    
     The XSF has 66 members as of this date. Therefore quorum is achieved
     in accordance with Section 3.8 of the [XSF
     Bylaws](/about/xsf/bylaws).
@@ -72,191 +72,26 @@ Status: published
 
 4.  **Announcement of Voting Results**  
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px;">
-    Reappliers
-
-    </th>
-    <th>
-    Yes
-
-    </th>
-    <th>
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td>
-    Artur Hefczyc
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Arc Riley
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Kevin Smith
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Mike Taylor
-
-    </td>
-    <td>
-    36
-
-    </td>
-    <td>
-    0
-
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Ilya Braude
-
-    </td>
-    <td>
-    35
-
-    </td>
-    <td>
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
+|Reappliers|Yes|No|
+|--- |--- |--- |
+|Artur Hefczyc|35|1|
+|Arc Riley|36|0|
+|Kevin Smith|35|1|
+|Mike Taylor|36|0|
+|Ilya Braude|35|1|
      
+|Applicants|Yes|No|
+|--- |--- |--- |
+|Wayne Franklin|30|6|
+|Keith Lirette|26|10|
+|Jon Neal|26|10|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Applicants
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Wayne Franklin
-
-    </td>
-    <td style="height: 27px;">
-    30
-
-    </td>
-    <td style="height: 27px;">
-    6
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Keith Lirette
-
-    </td>
-    <td style="height: 27px;">
-    26
-
-    </td>
-    <td style="height: 27px;">
-    10
-
-    </td>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    Jon Neal
-
-    </td>
-    <td style="height: 27px;">
-    26
-
-    </td>
-    <td style="height: 27px;">
-    10
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
      
+|Other|Yes|No|
+|--- |--- |--- |
+|bylaw changes|35|1|
 
-    <table border="1" cellspacing="0" cellpadding="3">
-    <tbody>
-    <tr>
-    <th style="width: 150px; height: 27px;">
-    Other
-
-    </th>
-    <th style="height: 27px;">
-    Yes
-
-    </th>
-    <th style="height: 27px;">
-    No
-
-    </th>
-    </tr>
-    <tr>
-    <td style="height: 27px;">
-    bylaw changes
-
-    </td>
-    <td style="height: 27px;">
-    35
-
-    </td>
-    <td style="height: 27px;">
-    1
-
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    <p>
+    
      
 
 5.  **Any Other Business?**None

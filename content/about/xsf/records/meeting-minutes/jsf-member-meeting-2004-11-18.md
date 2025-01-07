@@ -15,8 +15,6 @@ to the [JSF Bylaws](/jsf/bylaws.shtml).
 
 ### Agenda
 
-<ol>
-<li>
 **Call for Quorum**
 
 The following 39 JSF members voted via proxy:
@@ -66,25 +64,19 @@ The JSF has 58 [members](/members/memberlist.shtml) as of this date.
 Therefore quorum is achieved in accordance with section 3.8 of the [JSF
 Bylaws](/jsf/bylaws.shtml).
 
-</li>
-<li>
 **Items Subject to a Vote**
 
 1.  JSF Membership Applications
 
     Vote yes or no for the current applicants.
 
-</li>
-<li>
 **Opportunity for JSF Members to Vote in the Meeting**
 
 No JSF members voted during the meeting.
 
-</li>
-<li>
 **Announcement of Voting Results**
 
-  Person              Yes</tth>   No
+  Person              Yes   No
   ------------------- ----------- ----
   Jonathan Ah Kit     23          16
   Rachel Blackman     39          0
@@ -114,29 +106,15 @@ future:
 
 -   Haohua Xu
 
-<p>
+
 The following JSF members were eligible to re-apply but did not do so
 and therefore have forfeited their membership, but are welcome to apply
 in the future:
 
-</li>
 -   Russell Davis
 -   Lee Friedman
 -   Justin Karneges
 
-<!--</p>
-<p>The following individuals have missed the last three JSF votes and therefore will be removed from the membership:</p>
-<ul>
-    </ul>
-<p>-->
-
-<li>
 **Open Discussion**
 
-</li>
-<li>
 **Formal Adjournment**
-
-</li>
-</ol>
-

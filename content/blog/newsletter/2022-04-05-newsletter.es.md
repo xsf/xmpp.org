@@ -140,7 +140,7 @@ Info: La XSF ha decidido cambiar el nombre de "Borrador" a "Estable". [Lee más 
     -   Obsoleta debido a la omnipresencia de los emoji Unicode, así como de los Bits of Binary stickers. (egp)
 
 -   [XEP-0051](https://xmpp.org/extensions/xep-0051.html) (Connection Transfer)
-    -   Obsoleta porque esta característica ha sido fusionada en el núcleo de XMPP, ver RFC6120 sección 4.9.3.19, que describe el error de flujo <see-other-host/>. (egp)
+    -   Obsoleta porque esta característica ha sido fusionada en el núcleo de XMPP, ver RFC6120 sección 4.9.3.19, que describe el error de flujo `<see-other-host/>`. (egp)
 
 -   [XEP-0138](https://xmpp.org/extensions/xep-0138.html) (Stream Compression)
     -   Obsoleta debido a una vulnerabilidad de seguridad. (tjb)

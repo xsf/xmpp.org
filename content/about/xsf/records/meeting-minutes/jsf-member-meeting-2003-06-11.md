@@ -91,7 +91,7 @@ to refer to the [JSF Bylaws](/jsf/bylaws.shtml).
     1.  RESOLVED that the following Section 2.9 be added to the JSF
         Bylaws:
 
-        **Section 2.9 <u>Terms of Membership</u>.** Membership in the
+        **Section 2.9 __Terms of Membership__.** Membership in the
         Corporation shall be valid for a period of one (1) year,
         measured from the date of the Members' meeting at which the
         member was admitted or last re-admitted. In order for an
@@ -109,7 +109,7 @@ to refer to the [JSF Bylaws](/jsf/bylaws.shtml).
     2.  RESOLVED that the following Section 8.3 be added to the JSF
         Bylaws:
 
-        **Section 8.3 <u>JSF Work Teams</u>.** The Board of Directors or
+        **Section 8.3 __JSF Work Teams__.** The Board of Directors or
         the Members of the Corporation may, by resolution, establish one
         or more JSF Work Teams ("Teams"). Participation in Teams shall
         be limited to elected Members of the Corporation. The Board
@@ -143,7 +143,7 @@ to refer to the [JSF Bylaws](/jsf/bylaws.shtml).
     3.  RESOLVED that Section 8.2 of the JSF Bylaws be amended to read
         as follows:
 
-        **Section 8.2 <u>Jabber Interest Groups</u>.** The Board of
+        **Section 8.2 __Jabber Interest Groups__.** The Board of
         Directors, the Jabber Council, or the Members of the Corporation
         may, by resolution, establish one or more Jabber Interest Groups
         ("JIGs"). A JIG is an open forum in which the Jabber community
@@ -177,7 +177,7 @@ to refer to the [JSF Bylaws](/jsf/bylaws.shtml).
     4.  RESOLVED that Section 8.1 of the JSF Bylaws be amended to read
         as follows:
 
-        **Section 8.1 <u>Jabber Council</u>.** The Corporation shall
+        **Section 8.1 __Jabber Council__.** The Corporation shall
         have an advisory council ("Jabber Council") to provide technical
         advice to the Corporation, to approve changes to the Jabber
         protocol, and to oversee and direct the activities of certain
