@@ -47,7 +47,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## XMPP Articles
 
-- [Setting up XMPP (Prosody) on Debian Bookworm](https://blog.hetherington.uk/2024/12/setting-up-xmpp-prosody-on-debian-bookworm/): Howto on setting up and running Prosody XMPP server on Debian 12, Bookworm.
+- [Setting up XMPP (Prosody) on Debian Bookworm](https://blog.hetherington.uk/2024/12/setting-up-xmpp-prosody-on-debian-bookworm/): A howto on setting up and running Prosody XMPP server on Debian 12, Bookworm.
 - [Atom Over XMPP For New Readers](https://portal.mozz.us/gemini/woodpeckersnest.space/~schapps/journal/2024-12-09-atom-over-xmpp-for-news-readers.gmi): XMPP as a syndication platform for news readers and all other software.
 
 ## XMPP Software News
@@ -57,18 +57,16 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Psi+ 1.5.2069 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
 - [Conversations](https://conversations.im/) has released versions [2.17.5](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.5), [2.17.6](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.6) and [2.17.7](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.7) for Android.
 - [Monal](https://monal-im.org/) has released versions [6.4.7](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1003) and [6.4.8](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1012) for iOS an macOS.
-- [Monocles Chat 2.0.3](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.3) has been released for Android. This version bring fixes, extensions, UI improvements and more!.
-- [Cheogram](https://cheogram.com/) has released version [2.17.2-3 ](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-3) for Android. Now you can use direct share, hide media, extensions, and more!.
-- [Kaidan](https://www.kaidan.im/) has released version [0.10.0](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/) with so many features that just can't be summarized in one sentence!. There is a complete list of changes on the [changelog section](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/#changelog) and a [technical overview of all currently supported features](https://xmpp.org/software/kaidan/) for you to check out!. Version [0.10.1](https://www.kaidan.im/2024/12/14/kaidan-0.10.1/) was released a few days later with some bugfixes.
+- [Monocles Chat 2.0.3](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.3) has been released for Android. This version brings fixes, extensions, UI improvements and more.
+- [Cheogram](https://cheogram.com/) has released version [2.17.2-3 ](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-3) for Android. Now you can use direct share, hide media, extensions, and more.
+- [Kaidan](https://www.kaidan.im/) has released version [0.10.0](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/) with so many features that just can't be summarized in one sentence!. There is a complete list of changes on the [changelog section](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/#changelog) and a [technical overview of all currently supported features](https://xmpp.org/software/kaidan/) for you to check out! Version [0.10.1](https://www.kaidan.im/2024/12/14/kaidan-0.10.1/) was released a few days later with some bugfixes.
 
-{{< figure src="/images/newsletter/2025-01-05/kaidan_0_10.png" caption="Kaidan IM 0.10 horizontal view screenshot." >}}
+{{< figure src="/images/newsletter/2025-01-05/kaidan_0_10.png" caption="Kaidan IM 0.10 horizontal view screenshot" >}}
 
 ### XMPP Servers
 
-- [ProcessOne](https://www.process-one.net/)
-  - [ejabberd 24.12: The "evacuate_kindly" release](https://www.process-one.net/blog/ejabberd-24-12/): Including a few improvements and bug fixes, this release comes a month and half after version 24.10, with around 60 commits to the core repository alongside a few updates in dependencies.
-- [Prosody IM](https://prosody.im/)
-  -  [Prosody] is pleased to announce the release of version [0.12.5](https://blog.prosody.im/prosody-0.12.5-released/), a new minor release of the 0.12 stable branch. As usual, you can consult the [changelog](https://prosody.im/doc/release/0.12.5) for this release, and the download instructions for many platforms on their [download page](https://prosody.im/download/). 
+- [ProcessOne](https://www.process-one.net/) announces [ejabberd 24.12: The "evacuate_kindly" release](https://www.process-one.net/blog/ejabberd-24-12/): Including a few improvements and bug fixes, this release comes a month and half after version 24.10, with around 60 commits to the core repository alongside a few updates in dependencies.
+- [Prosody IM](https://prosody.im/) is pleased to announce the release of version [0.12.5](https://blog.prosody.im/prosody-0.12.5-released/), a new minor release of the 0.12 stable branch. As usual, you can consult the [changelog](https://prosody.im/doc/release/0.12.5) for this release, and the download instructions for many platforms on their [download page](https://prosody.im/download/). 
 
 ### XMPP Libraries & Tools
 
