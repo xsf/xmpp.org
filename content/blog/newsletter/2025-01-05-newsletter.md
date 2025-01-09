@@ -43,7 +43,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 ## Talks
 
 - Podcast: [NGI0: Next Generation Internet](https://podcast.nlnet.nl/@NGIZero)
-  - ["Technology is not neutral" - Libervia](https://podcast.nlnet.nl/@NGIZero/episodes/technology-is-not-neutral-libervia/activity): "It is important to be able to communicate freely", says Jérôme Poisson a.k.a [@Goffi@mastodon.social](https://mastodon.social/@Goffi). He is the main developer of [Libervia](https://libervia.org/), a communication ecosystem based on XMPP. The open standard is mostly associated with chat but [Libervia](https://libervia.org/) offers many more features such as blogs, fora, calendars and file & photo sharing. It has gateways to other open protocols like [ActivityPub](https://www.w3.org/TR/activitypub/) and email.
+  - ["Technology is not neutral" - Libervia](https://podcast.nlnet.nl/@NGIZero/episodes/technology-is-not-neutral-libervia/activity): "It is important to be able to communicate freely", says Jérôme Poisson a.k.a. [@Goffi@mastodon.social](https://mastodon.social/@Goffi). He is the main developer of [Libervia](https://libervia.org/), a communication ecosystem based on XMPP. The open standard is mostly associated with chat but [Libervia](https://libervia.org/) offers many more features such as blogs, fora, calendars and file & photo sharing. It has gateways to other open protocols like [ActivityPub](https://www.w3.org/TR/activitypub/) and email.
 
 ## XMPP Articles
 
@@ -59,7 +59,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 - [Monal](https://monal-im.org/) has released versions [6.4.7](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1003) and [6.4.8](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1012) for iOS an macOS.
 - [Monocles Chat 2.0.3](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.3) has been released for Android. This version brings fixes, extensions, UI improvements and more.
 - [Cheogram](https://cheogram.com/) has released version [2.17.2-3 ](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-3) for Android. Now you can use direct share, hide media, extensions, and more.
-- [Kaidan](https://www.kaidan.im/) has released version [0.10.0](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/) with so many features that just can't be summarized in one sentence!. There is a complete list of changes on the [changelog section](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/#changelog) and a [technical overview of all currently supported features](https://xmpp.org/software/kaidan/) for you to check out! Version [0.10.1](https://www.kaidan.im/2024/12/14/kaidan-0.10.1/) was released a few days later with some bugfixes.
+- [Kaidan](https://www.kaidan.im/) has released version [0.10.0](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/) with so many features that just can't be summarized in one sentence! There is a complete list of changes on the [changelog section](https://www.kaidan.im/2024/12/09/kaidan-0.10.0/#changelog) and a [technical overview of all currently supported features](https://xmpp.org/software/kaidan/) for you to check out! Version [0.10.1](https://www.kaidan.im/2024/12/14/kaidan-0.10.1/) was released a few days later with some bugfixes.
 
 {{< figure src="/images/newsletter/2025-01-05/kaidan_0_10.png" caption="Kaidan IM 0.10 horizontal view screenshot" >}}
 
@@ -149,7 +149,7 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 ### Newsletter Contributors & Translations
 
-This is a community effort, and we would like to thank translators for their contributions. Volunteers an more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
+This is a community effort, and we would like to thank translators for their contributions. Volunteers and more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
 - English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
   - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Schimon Zachary, Simone Canaletti, singpolyma, XSF iTeam*
@@ -157,14 +157,14 @@ This is a community effort, and we would like to thank translators for their con
   - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: *nicola*
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: *Gonzalo Raúl Nemmi*
-- German: [xmpp.org](https://xmpp.org/categories/newsletter/])
+- German: [xmpp.org](https://xmpp.org/categories/newsletter/)
   - Translators: *Millesimus*
 
 ## Help us to build the newsletter
 
-This XMPP Newsletter is produced collaboratively by the XMPP community. Each month's newsletter issue is drafted in this [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). At the end of each month, the pad's content is merged into the [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
+This XMPP Newsletter is produced collaboratively by the XMPP community. Each month's newsletter issue is drafted in this [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). At the end of each month, the pad's content is merged into the [XSF GitHub repository](https://github.com/xsf/xmpp.org/milestone/3). We are always happy to welcome contributors. Do not hesitate to join the discussion in our [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) and thereby help us sustain this as a community effort. You have a project and want to spread the news? Please consider sharing your news or events here, and promote it to a large audience.
 
 Tasks we do on a regular basis:
 
