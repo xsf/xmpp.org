@@ -76,8 +76,6 @@ Die XSF bietet XMPP-Projekten an, die [steuerliche Verwaltung ihrer Finanzen](ht
 - [go-xmpp](https://github.com/xmppo/go-xmpp) ist in den Versionen [0.2.8](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.8) und [0.2.9](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.9) veröffentlicht wurden.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) wurde in den Versionen [0.13.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.13.0) und [0.14.0](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.14.0) veröffentlicht.
 
-<!-- ARBEITSSTAND -->
-
 ## Erweiterumgen und Spezifikationen
 
 Die XSF entwickelt Erweiterungen für das XMPP-Protokoll. Diese [XEPs](https://xmpp.org/extensions/) ergänzen die ursprünglichen [XMPP-RFCs](https://xmpp.org/rfcs/).
