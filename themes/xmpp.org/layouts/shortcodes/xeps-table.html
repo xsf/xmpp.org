@@ -106,6 +106,7 @@
             </thead>
             <tbody>
                 {{- if .Site.Data.xeplist -}}
+                    {{- $xeplist := .Site.Data.xeplist -}}
                     {{- range sort .Site.Data.xeplist ".number" -}}
                         {{- $number_str := printf "%04g" .number -}}
                         {{ $last_revision_date := .last_revision_date | time }}
@@ -118,10 +119,36 @@
 
                         <tr class="XEP-{{ .status }} {{ if $xep_dormant }} XEP-Dormant{{ end }}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
                             <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
-                            <td>{{- .title -}}</td>
-                            <td>{{- .type -}}</td>
-                            <td>{{- .status -}}</td>
-                            <td>{{- .last_revision_date -}}</td>
+                            <td>
+                                {{- .title -}}
+                                {{- if .supersededby -}}
+                                    <br>
+                                    <span class="text-muted small">Superseded by:&nbsp;</span>
+                                    <span class="text-muted small">
+                                        {{- range $index, $content := .supersededby -}}
+                                            {{- if $index -}}
+                                                ,&nbsp;
+                                            {{- end -}}
+                                            {{- if hasPrefix (. | lower) "xep-" -}}
+                                                {{- $xep_number := int (trim (. | lower) "xep-" | replaceRE "^0+" "") -}}
+                                                {{- $spec := . -}}
+                                                {{- range $xeplist -}}
+                                                    {{- if eq (int .number) $xep_number -}}
+                                                        <a href="/extensions/{{- $spec | lower -}}.html">{{- print ($spec | upper) ": " .title -}}</a>
+                                                    {{- end -}}
+                                                {{- end -}}
+                                            {{- else if hasPrefix (. | lower) "rfc" -}}
+                                                <a href="https://datatracker.ietf.org/doc/{{- replaceRE "(\\s)" "" . | lower -}}/" target="_blank">{{ print "RFC " (index (findRE `\d{4}` . 1) 0) }}</a>
+                                            {{- else -}}
+                                                <span>{{- . -}}</span>
+                                            {{- end -}}
+                                        {{- end -}}
+                                    </span>
+                                {{- end -}}
+                            </td>
+                            <td class="text-nowrap">{{- .type -}}</td>
+                            <td class="text-nowrap">{{- .status -}}</td>
+                            <td class="text-nowrap">{{- .last_revision_date -}}</td>
                             <td>
                                 {{- range .tags -}}
                                     <span class="badge rounded-pill text-bg-secondary mx-1">{{- . -}}</span>
