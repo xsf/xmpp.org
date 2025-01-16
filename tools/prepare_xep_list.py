@@ -68,6 +68,20 @@ def build_xep_list() -> None:
                 if tag.text is not None:
                     tag_list.append(tag.text)  # noqa: PERF401
 
+        supersedes_list: list[str] = []
+        supersedes = xep.find("supersedes")
+        if supersedes is not None:
+            for spec in supersedes.findall("spec"):
+                if spec.text is not None:
+                    supersedes_list.append(spec.text)  # noqa: PERF401
+
+        supersededby_list: list[str] = []
+        supersededby = xep.find("supersededby")
+        if supersededby is not None:
+            for spec in supersededby.findall("spec"):
+                if spec.text is not None:
+                    supersededby_list.append(spec.text)  # noqa: PERF401
+
         date = None
         version = None
         initials = None
@@ -100,6 +114,8 @@ def build_xep_list() -> None:
                 "type": xep_type,
                 "abstract": abstract,
                 "tags": tag_list,
+                "supersedes": supersedes_list,
+                "supersededby": supersededby_list,
             },
         )
     xeps_sorted = sorted(xeps, key=lambda xep: xep["number"])
