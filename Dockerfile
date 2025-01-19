@@ -18,7 +18,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-ge
 # Install dependencies
 RUN apt-get install -y make curl lua5.2 lua-expat --no-install-recommends
 
-RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.123.0/hugo_0.123.0_linux-amd64.deb -o hugo.deb
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.139.4/hugo_0.139.4_linux-amd64.deb -o hugo.deb
 RUN apt-get install ./hugo.deb
 
 # Base URL for Hugo website builds
