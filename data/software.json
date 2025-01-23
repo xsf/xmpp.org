@@ -1171,6 +1171,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": "https://raw.githubusercontent.com/mierenhoop/xmpp/refs/heads/doap-file/project.doap",
+        "name": "mierenhoop/xmpp",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": "https://raw.githubusercontent.com/miranda-ng/miranda-ng/master/docs/miranda.doap",
