@@ -130,15 +130,16 @@
                                                 ,&nbsp;
                                             {{- end -}}
                                             {{- if hasPrefix (. | lower) "xep-" -}}
-                                                {{- $xep_number := int (trim (. | lower) "xep-" | replaceRE "^0+" "") -}}
+                                                {{- $xep_number := trim (. | lower) "xep-" -}}
+                                                {{- $trimmed_xep_number := int (trim (. | lower) "xep-" | replaceRE "^0+" "") -}}
                                                 {{- $spec := . -}}
                                                 {{- range $xeplist -}}
-                                                    {{- if eq (int .number) $xep_number -}}
-                                                        <a href="/extensions/{{- $spec | lower -}}.html">{{- print ($spec | upper) ": " .title -}}</a>
+                                                    {{- if eq (int .number) $trimmed_xep_number -}}
+                                                        <a href="#xep{{- $xep_number -}}">{{- print ($spec | upper) ": " .title -}}</a>
                                                     {{- end -}}
                                                 {{- end -}}
                                             {{- else if hasPrefix (. | lower) "rfc" -}}
-                                                <a href="https://datatracker.ietf.org/doc/{{- replaceRE "(\\s)" "" . | lower -}}/" target="_blank">{{ print "RFC " (index (findRE `\d{4}` . 1) 0) }}</a>
+                                                <a href="https://datatracker.ietf.org/doc/{{- replaceRE "(\\s)" "" . | lower -}}/" target="_blank">{{ print "RFC " (index (findRE `\d{4}` . 1) 0) }}&nbsp;<i class="fas fa-external-link-alt"></i></a>
                                             {{- else -}}
                                                 <span>{{- . -}}</span>
                                             {{- end -}}
