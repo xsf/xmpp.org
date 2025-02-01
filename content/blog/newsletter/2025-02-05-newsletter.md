@@ -80,7 +80,7 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Slixmpp](https://codeberg.org/poezio/slixmpp) version [1.8.6](https://codeberg.org/poezio/slixmpp/releases/tag/slix-1.8.6) has been released ([release announcement](https://blog.mathieui.net/slixmpp-1.8.6.html))
 - [Slidge](https://codeberg.org/slidge/slidge#readme) versions [v0.2.3](https://codeberg.org/slidge/slidge/releases/tag/v0.2.3), [v0.2.3.post1](https://codeberg.org/slidge/slidge/releases/tag/v0.2.3.post1) and [0.24](https://codeberg.org/slidge/slidge/releases/tag/v0.2.4) have been released.
-- [QXmpp](https://github.com/qxmpp-project/qxmpp) version [1.9.3](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.9.3) has been released.
+- [QXmpp](https://github.com/qxmpp-project/qxmpp) versions [1.9.3](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.9.3) and [1.9.4](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.9.4) have been released.
 - [go-xmpp](https://github.com/xmppo/go-xmpp) version [0.2.10](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.10) has been released.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp) version [0.14.1](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.14.1) has been released.
 
