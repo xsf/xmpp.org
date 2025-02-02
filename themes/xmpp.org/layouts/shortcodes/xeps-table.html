@@ -120,7 +120,7 @@
                         <tr class="XEP-{{ .status }} {{ if $xep_dormant }} XEP-Dormant{{ end }}" id="xep{{- $number_str -}}" data-shortname="{{- .shortname -}}">
                             <td><a href="/extensions/xep-{{- $number_str -}}.html">XEP-{{- $number_str -}}</a></td>
                             <td>
-                                {{- .title -}}
+                                <span>{{- .title -}}</span>{{- if .shortname -}}<span class="ms-1 text-muted small">[{{- .shortname -}}]</span>{{- end -}}
                                 {{- if .supersededby -}}
                                     <br>
                                     <span class="text-muted small">Superseded by:&nbsp;</span>
