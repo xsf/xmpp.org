@@ -18,25 +18,25 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ### XMPP Summit 27
 
-The XSF held its [27th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_27) on January 30th & 31st 2025 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part of the Summit for their continuous commitment and contribution to the XFS and all the XMPP related projects!
+The XSF held its [27th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_27) on January 30th & 31st 2025 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part of the Summit for their continuous commitment and contribution to the XSF and all the XMPP related projects!
 
 The XSF would like to extend a special thank you to those who made the Summit possible:
 
 - [Daniel Gultsch](https://gultsch.de/) for his time and resources to help organising the event.
-- [Alexander Gnauck](https://xmppdotnet.org/) for sponsoring the XSF Dinner.
+- [Alexander Gnauck](https://xmppdotnet.org/) and Dave Cridland for sponsoring the XSF Dinner.
 - [Ralph Meijer](https://ralphm.net/) for his time and dedicated work on streaming/swag/booking dinnner.
 - Edwin Mons for the dinner form.
 - Kevin Smith for leading the Summit and moderating the speakers.
-- [Alex Palaistras](https://deuill.org/) for keeping up a record on the pad with all the topics and the feedback during the entire Summit. 
+- [Alex Palaistras](https://deuill.org/) for keeping up [a record](/2025/02/summit-27-summary/) on the pad with all the topics and the feedback during the entire Summit. 
 - [Isode](https://www.isode.com/) for sponsoring the XMPP Summit again.
 
 {{< figure src="/images/newsletter/2025-02-05/summit_27.jpg" caption="Welcome to the 27th XMPP Summit!" >}}
 
-You can find a summary of the main topics discussed over the course of Summit in the following [link](https://xmpp.org/2025/02/2025_summit_27/)
+You can find a summary of the main topics discussed over the course of Summit [here](/2025/02/summit-27-summary/)
 
 ### XSF Fiscal Hosting Projects
 
-The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](https://xmpp.org/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
+The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
 
 - [Mellium Co-op](https://opencollective.com/mellium)
 - [Bifrost bridge](https://opencollective.com/bifrost-mam)
@@ -65,9 +65,9 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 - [Conversations](https://conversations.im/) has released versions [2.17.8](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.8) and [2.17.9](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.9) for Android.
 - [Monal](https://monal-im.org/) has released version [6.4.9](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1019) and [6.4.10](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1029) for iOS an macOS.
-- [Monocles Chat 2.0.4](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.4) has been released for Android. This version brings in several fixes!
+- [Monocles Chat 2.0.4](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.4) has been released for Android. This version brings in several fixes.
 - [Cheogram](https://cheogram.com/) has released version [2.17.2-4](https://git.sr.ht/~singpolyma/cheogram-android/refs/2.17.2-4) for Android.
-- [Movim 0.29](https://github.com/movim/movim/releases/tag/v0.29) and [0.29.1](https://github.com/movim/movim/releases/tag/v0.29.1) have been released. Movim 0.29 (code named "Rankin") is the first XMPP client that implements "Stories" ([XEP-0501](https://xmpp.org/extensions/xep-0501.html) (Pubsub Stories)), a very nice way to share content with your contacts and allow them to react easily by chat! It also intruces "Briefs", a simpler way to create a short publication that only consists of a text and some medias on your profile or in your Communities. Version [0.29.1](https://mov.im/community/pubsub.movim.eu/Movim/movim-0-29-1-is-out-time-to-upgrade-XMpha9) comes with a more polished and improved "Stories" feature, database fixes as well as some preparatory work for the PHP 8.4 version. To learn more about this releases, head over to the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim)!
+- [Movim 0.29](https://github.com/movim/movim/releases/tag/v0.29) and [0.29.1](https://github.com/movim/movim/releases/tag/v0.29.1) have been released. Movim 0.29 (code named "Rankin") is the first XMPP client that implements "Stories" ([XEP-0501](/extensions/xep-0501.html) (Pubsub Stories)), a very nice way to share content with your contacts and allow them to react easily by chat. It also introduces "Briefs", a simpler way to create a short publication that only consists of a text and some medias on your profile or in your Communities. Version [0.29.1](https://mov.im/community/pubsub.movim.eu/Movim/movim-0-29-1-is-out-time-to-upgrade-XMpha9) comes with a more polished and improved "Stories" feature, database fixes as well as some preparatory work for the PHP 8.4 version. To learn more about this releases, head over to the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim).
 
 {{< figure src="/images/newsletter/2025-02-05/movim_story.jpg" caption="Movim 0.29 (Rankin) introducing Stories!" >}}
 
@@ -87,17 +87,17 @@ The XSF offers [fiscal hosting](https://xmpp.org/community/fiscalhost/) for XMPP
 
 ## Extensions and specifications
 
-The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](https://xmpp.org/extensions/) in addition to [XMPP RFCs](https://xmpp.org/rfcs/). Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](https://xmpp.org/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](https://xmpp.org/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
+The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](/extensions/) in addition to [XMPP RFCs](/rfcs/). Developers and other standards experts from around the world collaborate on these extensions, developing new specifications for emerging practices, and refining existing ways of doing things. Proposed by anybody, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. [Read more about the standards process](/about/standards-process.html). Communication around Standards and Extensions happens in the [Standards Mailing List](https://mail.jabber.org/mailman/listinfo/standards) ([online archive](https://mail.jabber.org/pipermail/standards/)).
 
 ### Proposed
 
-The XEP development process starts by writing up an idea and submitting it to the [XMPP Editor](https://xmpp.org/about/xsf/editor-team/). Within two weeks, the [Council](https://xmpp.org/about/xmpp-standards-foundation/#council) decides whether to accept this proposal as an Experimental XEP.
+The XEP development process starts by writing up an idea and submitting it to the [XMPP Editor](/about/xsf/editor-team/). Within two weeks, the [Council](/about/xmpp-standards-foundation/#council) decides whether to accept this proposal as an Experimental XEP.
 
-- [GRE Formatter: MIME](https://xmpp.org/extensions/inbox/gre-formatter-mime.html)
+- [GRE Formatter: MIME](/extensions/inbox/gre-formatter-mime.html)
   - This GRE Formatter uses Multipurpose Internet Mail Extensions (MIME) to format payload.
-- [GRE Encrypter: OpenPGP](https://xmpp.org/extensions/inbox/gre-encrypter-openpgp.html)
+- [GRE Encrypter: OpenPGP](/extensions/inbox/gre-encrypter-openpgp.html)
   - This GRE Encrypter uses OpenPGP to encrypt payload.
-- [Gateway Relayed Encryption](https://xmpp.org/extensions/inbox/gateway-relayed-encryption.html)
+- [Gateway Relayed Encryption](/extensions/inbox/gateway-relayed-encryption.html)
   - This specification describes a mechanism for end-to-end encryption with gateways that is compatible with third-party networks.
 
 ### New
@@ -112,24 +112,24 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- Version 0.4.2 of [XEP-0424](https://xmpp.org/extensions/xep-0424.html) (Message Retraction)
+- Version 0.4.2 of [XEP-0424](/extensions/xep-0424.html) (Message Retraction)
   - Use a XEP-0425 /me command in the fallback body
-  - State that a tombstone's <retracted/> element's 'id' attribute should match the retraction message's 'id'.
+  - State that a tombstone's `<retracted/>` element's 'id' attribute should match the retraction message's 'id'.
   - Specify XEP-0359 as a dependency and require that the stanza 'id' be used instead of the origin-id.
   - Update the "Security Considerations" to mention the risk of non-unique message IDs. (jcb)
-- Version 0.4.0 of [XEP-0474](https://xmpp.org/extensions/xep-0474.html) (SASL SCRAM Downgrade Protection)
+- Version 0.4.0 of [XEP-0474](/extensions/xep-0474.html) (SASL SCRAM Downgrade Protection)
   - Use better value delimiter (tm)
 
 ### Last Call
 
-Last calls are issued once everyone seems satisfied with the current XEP status. After the [Council](https://xmpp.org/about/xmpp-standards-foundation/#council) decides whether the XEP seems ready, the [XMPP Editor](https://xmpp.org/about/xsf/editor-team/) issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
+Last calls are issued once everyone seems satisfied with the current XEP status. After the [Council](/about/xmpp-standards-foundation/#council) decides whether the XEP seems ready, the [XMPP Editor](/about/xsf/editor-team/) issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- Last Call for comments on [XEP-0484](https://xmpp.org/extensions/xep-0484.html) (Fast Authentication Streamlining Tokens).
+- Last Call for comments on [XEP-0484](/extensions/xep-0484.html) (Fast Authentication Streamlining Tokens).
   - This Last Call shall end at the close of business on 2025-01-27
 
 ### Stable
 
-- Version 1.0.0 of [XEP-0421](https://xmpp.org/extensions/xep-0421.html) (Occupant identifiers for semi-anonymous MUCs)
+- Version 1.0.0 of [XEP-0421](/extensions/xep-0421.html) (Occupant identifiers for semi-anonymous MUCs)
   - Accept as Stable as per Council Vote from 2025-01-14. (XEP Editor(dg))
 
 ### Deprecated
@@ -154,7 +154,7 @@ Please share the news on other networks:
 
 {{< newsletter-subscribe >}}
 
-Also check out our [RSS Feed](https://xmpp.org/feeds/all.atom.xml)!
+Also check out our [RSS Feed](/feeds/all.atom.xml)!
 
 Looking for job offers or want to hire a professional consultant for your XMPP project? Visit our [XMPP job board](https://xmpp.work/).
 
@@ -162,15 +162,15 @@ Looking for job offers or want to hire a professional consultant for your XMPP p
 
 This is a community effort, and we would like to thank translators for their contributions. Volunteers and more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
 
-- English (original): [xmpp.org](https://xmpp.org/categories/newsletter/)
+- English (original): [xmpp.org](/categories/newsletter/)
   - General contributors: *Adrien Bourmault (neox), Alexander "PapaTutuWawa", Arne, cal0pteryx, emus, Federico, Gonzalo Raúl Nemmi, Jonas Stein, Kris "poVoq", Licaon_Kter, Ludovic Bocquet, Mario Sabatino, melvo, MSavoritias (fae,ve), nicola, Schimon Zachary, Simone Canaletti, singpolyma, XSF iTeam*
 - French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
   - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
   - Translators: *nicola*
-- Spanish: [xmpp.org](https://xmpp.org/categories/newsletter/)
+- Spanish: [xmpp.org](/categories/newsletter/)
   - Translators: *Gonzalo Raúl Nemmi*
-- German: [xmpp.org](https://xmpp.org/categories/newsletter/)
+- German: [xmpp.org](/categories/newsletter/)
   - Translators: *Millesimus*
 
 ## Help us to build the newsletter
