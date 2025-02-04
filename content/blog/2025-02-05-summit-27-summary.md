@@ -9,6 +9,8 @@ categories: ["XMPP Summit"]
 
 [Summit wiki page](https://wiki.xmpp.org/web/Conferences/Summit_27) | [Discussion channel](xmpp:summit@muc.xmpp.org?join) | [Code of Conduct](https://xmpp.org/extensions/xep-0458.html)
 
+This post lists topics discussed during [XMPP Summit 27](https://xmpp.org/2024/11/xmpp-summit-27/) in Brussels, Belgium.
+
 ---
 ## Day 1
 
