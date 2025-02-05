@@ -48,6 +48,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 - [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) (DE / EN): monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month at 6pm local time
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 - [PravConf 2025](https://prav.app/conf/2025/): PravConf 2025 is the first edition of the annual gathering of the [Prav community](https://prav.app/), and it will be held on March 1, 2025, at the [Model Engineering College](https://osmapp.org/way/1026274468#17.00/10.0284/76.3284), in Kochi. Feel free to [Join the group](https://xmpp.link/#prav-publicity-and-outreach@conference.diasp.in%3Fjoin) to learn more!
+- [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2025-05_Berlin): On Friday, 23rd, Saturday, 24th, and Sunday, 25th of May 2025.
 
 ## Talks
 
