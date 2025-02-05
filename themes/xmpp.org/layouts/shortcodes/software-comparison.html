@@ -42,9 +42,9 @@
                                 {{- range $xep.implementations -}}
                                     {{- if eq $name .package_name -}}
                                         {{- if eq .implementation_status "complete" -}}
-                                            <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
+                                            <span class="badge text-bg-success opacity-50" title="{{- .implementation_status | title -}}{{- if .implemented_version -}}&nbsp;(implemented version:&nbsp;{{- .implemented_version -}}){{- end -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                         {{- else if eq .implementation_status "partial" -}}
-                                            <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
+                                            <span class="badge text-bg-warning opacity-50" title="{{- .implementation_status | title -}}{{- if .implemented_version -}}&nbsp;(implemented version:&nbsp;{{- .implemented_version -}}){{- end -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-check text-reset"></i></span>
                                         {{- else if eq .implementation_status "planned" -}}
                                             <span class="badge text-bg-primary opacity-50" title="{{- .implementation_status | title -}}" data-bs-toggle="tooltip"><i class="fa-solid fa-plus text-reset"></i></span>
                                         {{- else if or (eq .implementation_status "wontfix") (eq .implementation_status "removed") (eq .implementation_status "deprecated") -}}
