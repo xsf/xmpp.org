@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter January 2025
-date: 2025-02-05
+date: 2025-02-07
 categories: ['Newsletter']
 ---
 
@@ -22,9 +22,9 @@ The XSF held its [27th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit
 
 The XSF would like to extend a special thank you to those who made the Summit possible:
 
-- [Daniel Gultsch](https://gultsch.de/) for his time and resources to help organising the event.
+- [Daniel Gultsch](https://gultsch.de/) for his time and resources to help organizing the event.
 - [Alexander Gnauck](https://xmppdotnet.org/) and Dave Cridland for sponsoring the XSF Dinner.
-- [Ralph Meijer](https://ralphm.net/) for his time and dedicated work on streaming/swag/booking dinnner.
+- [Ralph Meijer](https://ralphm.net/) for his time and dedicated work on streaming/swag/booking dinner.
 - Edwin Mons for the dinner form.
 - Kevin Smith for leading the Summit and moderating the speakers.
 - [Alex Palaistras](https://deuill.org/) for keeping up [a record](/2025/02/summit-27-summary/) on the pad with all the topics and the feedback during the entire Summit. 
