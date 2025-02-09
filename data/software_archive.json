@@ -121,5 +121,14 @@
             "Mobile"
         ],
         "url": "http://talkonaut.com"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
+        "name": "blabber.im",
+        "platforms": [],
+        "url": null
     }
 ]
