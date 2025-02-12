@@ -27,7 +27,7 @@ The XSF would like to extend a special thank you to those who made the Summit po
 - [Ralph Meijer](https://ralphm.net/) for his time and dedicated work on streaming/swag/booking dinner.
 - Edwin Mons for the dinner form.
 - Kevin Smith for leading the Summit and moderating the speakers.
-- [Alex Palaistras](https://deuill.org/) for keeping up [a record](/2025/02/summit-27-summary/) on the pad with all the topics and the feedback during the entire Summit. 
+- [Alex Palaistras](https://deuill.org/) for keeping up [a record](/2025/02/xmpp-summit-27-report/) on the pad with all the topics and the feedback during the entire Summit.
 - [Isode](https://www.isode.com/) for sponsoring the XMPP Summit again.
 
 {{< figure src="/images/newsletter/2025-02-05/summit_27.jpg" caption="Welcome to the 27th XMPP Summit!" >}}
