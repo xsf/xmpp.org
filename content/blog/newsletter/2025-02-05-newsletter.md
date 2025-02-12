@@ -32,7 +32,7 @@ The XSF would like to extend a special thank you to those who made the Summit po
 
 {{< figure src="/images/newsletter/2025-02-05/summit_27.jpg" caption="Welcome to the 27th XMPP Summit!" >}}
 
-You can find a summary of the main topics discussed over the course of Summit [here](/2025/02/summit-27-summary/)
+You can find a summary of the main topics discussed over the course of the Summit [here](/2025/02/xmpp-summit-27-report/).
 
 ### XSF Fiscal Hosting Projects
 
