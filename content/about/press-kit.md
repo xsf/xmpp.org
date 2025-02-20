@@ -17,7 +17,7 @@ The [XMPP Standards Foundation (XSF)](/about/xmpp-standards-foundation/) is an i
 
 The XSF’s product is [protocols](/extensions/); the XSF’s market is developers. We do not write code; instead, we make it possible for others to write code. We listen to developers, service providers, and end users regarding the kinds of problems they want to solve, and we work with them to create protocols that solve those problems. Our [standards process](/about/standards-process/) is developer-friendly. We strenuously avoid design by committee and we place a premium on the values that built the Internet in the first place: rough consensus and running code. Read more in our [mission statement](/about/xsf/mission/).
 
-## Ressources
+## Resources
 
 Who owns XMPP? Who uses XMPP? How secure is XMPP? Read our [FAQ](/about/faq/) for answers. You can find XMPP on [Mastodon](https://fosstodon.org/@xmpp) and [Twitter](https://twitter.com/xmpp). Read more about XMPP:
 
