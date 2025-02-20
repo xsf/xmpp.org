@@ -173,7 +173,6 @@ Ein Call for Experience (ein Aufruf für Erfahrungen) ist, wie ein Last Call, ei
 Teile doch bitte unsere Neuigkeiten auch in anderen Netzwerken:
 
 * [Mastodon](https://fosstodon.org/@xmpp/) [EN]
-* [Twitter](https://twitter.com/xmpp) [EN]
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA) [EN]
 * [Lemmy-Instanz](https://community.xmpp.net/) [EN]
 * [Reddit](https://www.reddit.com/r/xmpp/) [EN]

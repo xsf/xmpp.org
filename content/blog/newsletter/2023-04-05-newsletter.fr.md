@@ -151,7 +151,6 @@ Un _appel à l’expérience_ – comme un _dernier appel_ – est un appel expl
 Merci de partager les nouvelles sur d’autres réseaux :
 
 * [Mastodon](https://fosstodon.org/@xmpp/)
-* [Twitter](https://twitter.com/xmpp)
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 * [Lemmy instance](https://community.xmpp.net/)
 * [Reddit](https://www.reddit.com/r/xmpp/)

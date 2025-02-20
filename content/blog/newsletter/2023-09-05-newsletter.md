@@ -129,7 +129,6 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 Please share the news on other networks:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Twitter](https://twitter.com/xmpp)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Lemmy instance](https://community.xmpp.net/)
 - [Reddit](https://www.reddit.com/r/xmpp/)

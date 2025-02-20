@@ -163,7 +163,6 @@ Please share the news on "social networks":
 
 * [Mastodon](https://fosstodon.org/@xmpp/)
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
-* [Twitter](https://twitter.com/xmpp)
 * [Reddit](https://www.reddit.com/r/xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 * [Facebook](https://www.facebook.com/jabber/)

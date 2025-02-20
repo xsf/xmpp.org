@@ -136,7 +136,6 @@ Thanks to edhelas, emus, erszcz, guusdk, licaon-kter, mwild1 and wurstsalat3000 
 
 Please share the news on "social networks":
 
-* [Twitter](https://twitter.com/xmpp)
 * [Mastodon](https://fosstodon.org/@xmpp/)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 * [Facebook](https://www.facebook.com/jabber/)

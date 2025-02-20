@@ -130,7 +130,6 @@ Aucune XEP déclarée dépréciée ce mois-ci.
 N’hésitez pas à partager les nouvelles sur d’autres réseaux :
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Twitter](https://twitter.com/xmpp)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [Instance Lemmy (non officiel)](https://slrpnk.net/c/xmpp)

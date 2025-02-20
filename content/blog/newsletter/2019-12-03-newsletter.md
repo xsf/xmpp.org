@@ -110,7 +110,6 @@ Thanks to Nyco, Guus, Wurstsalat, MDosch, Neustradamus, Ppjet6 for their help in
 
 Please share the news on "social networks":
 
-* Twitter: [https://twitter.com/xmpp](https://twitter.com/xmpp)
 * Mastodon: [https://fosstodon.org/@xmpp/](https://fosstodon.org/@xmpp/)
 * LinkedIn: [https://www.linkedin.com/company/xmpp-standards-foundation/](https://www.linkedin.com/company/xmpp-standards-foundation/)
 * Facebook: [https://www.facebook.com/jabber/](https://www.facebook.com/jabber/)

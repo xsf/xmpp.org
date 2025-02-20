@@ -160,7 +160,6 @@ Teile unsere Neuigkeiten in "Sozialen Netzwerken":
 
 * [Mastodon](https://fosstodon.org/@xmpp/) [EN]
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA) [EN]
-* [Twitter](https://twitter.com/xmpp) [EN]
 * [Reddit](https://www.reddit.com/r/xmpp/) [EN]
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/) [EN]
 

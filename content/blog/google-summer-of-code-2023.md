@@ -25,7 +25,6 @@ We have further details and advertisement material on our designated web page pr
 
 Checkout our media channels!
 
-- [Twitter](https://twitter.com/xmpp)
 - [Mastodon/Fediverse](https://fosstodon.org/@xmpp/)
 - [Youtube](https://www.youtube.com/c/XMPPStandardsFoundation)
 

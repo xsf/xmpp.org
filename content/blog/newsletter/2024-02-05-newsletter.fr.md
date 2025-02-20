@@ -151,7 +151,6 @@ Les derniers appels sont lancés une fois que tout le monde semble satisfait de 
 N’hésitez pas à partager la nouvelle sur d’autres réseaux :
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Twitter](https://twitter.com/xmpp)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [Instance Lemmy (non officielle)](https://slrpnk.net/c/xmpp)
