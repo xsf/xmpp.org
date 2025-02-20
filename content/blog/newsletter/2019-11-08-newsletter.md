@@ -94,7 +94,7 @@ This XMPP Newsletter is produced collaboratively by the community.
 
 Thanks to Nyco, MDosch, Daniel, Guus, Link Mauve, and mwild1 for their help in creating it!
 
-Please follow our Twitter account [@xmpp](https://twitter.com/xmpp), and relay the XMPP news.
+Please follow our [Mastodon](https://fosstodon.org/@xmpp) account, and relay the XMPP news.
 
 ## License
 
