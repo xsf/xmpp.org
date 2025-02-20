@@ -19,7 +19,7 @@ The XSF’s product is [protocols](/extensions/); the XSF’s market is develope
 
 ## Resources
 
-Who owns XMPP? Who uses XMPP? How secure is XMPP? Read our [FAQ](/about/faq/) for answers. You can find XMPP on [Mastodon](https://fosstodon.org/@xmpp) and [Twitter](https://twitter.com/xmpp). Read more about XMPP:
+Who owns XMPP? Who uses XMPP? How secure is XMPP? Read our [FAQ](/about/faq/) for answers. You can find XMPP on [Mastodon](https://fosstodon.org/@xmpp). Read more about XMPP:
 
 - [XMPP Standards](/extensions/)
 - [Getting Started with XMPP](/getting-started/)
