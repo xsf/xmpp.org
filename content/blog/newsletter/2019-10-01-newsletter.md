@@ -110,7 +110,7 @@ URL: https://xmpp.org/extensions/inbox/auth-tokens.html
 
 This XMPP Newsletter is a community collaborative effort. Thanks to Nÿco, Daniel, Jwi, and MDosch for aggregating the news. Thanks Nÿco, Seve, Jwi, and Matt for the copywriting. Thanks Guus, Seve, Jonas for the reviews.
 
-Please follow and relay the XMPP news on our Twitter account [@xmpp](https://twitter.com/xmpp).
+Please follow and relay the XMPP news on our [Mastodon](https://fosstodon.org/@xmpp) account.
 
 ## License
 
