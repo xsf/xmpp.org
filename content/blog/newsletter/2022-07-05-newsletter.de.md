@@ -32,7 +32,7 @@ Der Google Summer of Code 2022 ist gestartet und das Programmieren hat schon beg
 - **PawBud** arbeitet daran, [Unterstützung für A/V-Kommunikation über Jingle in ConverseJS hinzuzufügen](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19) [EN]. Mentor:innen sind **JC Brand** und **vanitasvitae**.
     - [On-Boarding Erfahrung mit XSF (Converse)](https://xmpp.org/2022/06/on-boarding-experience-with-xsf-converse/) [EN]
 
-Fühle dich frei, diese News über [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) [EN] oder [Twitter](https://mobile.twitter.com/xmpp/status/1529199174729728000) zu verbreiten. Weitere Einzelheiten auf der dafür [vorgesehenen Seite unter xmpp.org](https://xmpp.org/community/gsoc-2022/) [EN].
+Fühle dich frei, diese News über [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) [EN] zu verbreiten. Weitere Einzelheiten auf der dafür [vorgesehenen Seite unter xmpp.org](https://xmpp.org/community/gsoc-2022/) [EN].
 
 ## XSF fiscal hosting Projekte
 

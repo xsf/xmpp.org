@@ -26,7 +26,7 @@ This is a community effort, and we would like to thank translators for their con
   - **Patiga** will work on [more flexible file transfers in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ). Mentors will be **fiaxh** and **Marvin W.** - many thanks to both of you!
   - **PawBud** will work towards [adding support for A/V communication via Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19). Mentors will be **JC Brand** and **vanitasvitae** - many thanks to both of you, too!
 
-  Feel free to spread the word via [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) or [Twitter](https://mobile.twitter.com/xmpp/status/1529199174729728000). More details in our [designated page at xmpp.org](https://xmpp.org/community/gsoc-2022/).
+  Feel free to spread the word via [Mastodon](https://fosstodon.org/@xmpp/108358826402429966). More details in our [designated page at xmpp.org](https://xmpp.org/community/gsoc-2022/).
 
 - The current XSF member [voting period is ongoing](https://wiki.xmpp.org/web/Membership_Applications_Q2_2022). If you are an XSF member, please take your chance to vote. If your are interest to apply visit our [related page](https://xmpp.org/community/membership/).
 

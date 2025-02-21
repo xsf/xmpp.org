@@ -27,7 +27,7 @@ Dies ist eine Gemeinschafstarbeit und wir wollen allen Übersetzer:innen für de
 - Der Google Summer of Code 2022 steht in den Startlöchern und das Programmieren beginnt bald! Begrüßt die beiden neuen Mitwirkenden Patiga und PawBud, die an Open-Source-Softwareprojekten in der XMPP-Umgebung arbeiten werden!
         - Patiga wird an [flexibleren Dateiübertragungen in Dino](https://summerofcode.withgoogle.com/programs/2022/projects/z9ixHTWZ) [EN] arbeiten. Mentoren werden fiaxh und Marvin W. sein - vielen Dank an euch beide!
         - PawBud wird daran arbeiten, [Unterstützung für A/V-Kommunikation über Jingle in ConverseJS](https://summerofcode.withgoogle.com/programs/2022/projects/0nRwZN19) [EN] hinzuzufügen. Mentoren werden JC Brand und vanitasvitae sein - vielen Dank auch an euch beide!
- Fühlt euch frei, die Nachricht über [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) [EN] oder [Twitter](https://mobile.twitter.com/xmpp/status/1529199174729728000) [EN] zu verbreiten. Weitere Einzelheiten findest du auf der dafür [vorgesehenen Seite unter xmpp.org](https://xmpp.org/community/gsoc-2022/) [EN].
+ Fühlt euch frei, die Nachricht über [Mastodon](https://fosstodon.org/@xmpp/108358826402429966) [EN] zu verbreiten. Weitere Einzelheiten findest du auf der dafür [vorgesehenen Seite unter xmpp.org](https://xmpp.org/community/gsoc-2022/) [EN].
 - Die aktuelle [Abstimmungsphase für XSF-Mitglieder läuft noch](https://wiki.xmpp.org/web/Membership_Applications_Q2_2022) [EN]. Wenn du ein XSF-Mitglied bist, nutze bitte deine Chance, abzustimmen. Wenn du Interesse an einer Bewerbung hast, besuche unsere [entsprechende Seite](https://xmpp.org/community/membership/) [EN].
 
 ## XSF finanziell bewirtete Projekte
