@@ -22,4 +22,4 @@ For further information, visit any of the following pages:
 - [Trademark License Agreement](/about/xsf/jabber-trademark/trademark-license-agreement)
 - [Approved applications](/about/xsf/jabber-trademark/approved-applications)
 
-If you have any questions about the Jabber Trademark Licensing Program, please contact [trademark@jabber.org](mailto:trademark@jabber.org) or [Peter Saint-Andre](/about/xsf/people), the XSF’s Executive Director.
+If you have any questions about the Jabber Trademark Licensing Program, please contact [trademark@jabber.org](mailto:trademark@jabber.org) or [Peter Saint-Andre](/about/xsf/people).

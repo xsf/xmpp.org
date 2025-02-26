@@ -23,4 +23,4 @@ The Jabber Software Foundation (JSF) was incorporated in August 2001 and renamed
 
 Note: The original incorporator was the first Executive Director, Michael Bauer (then affiliated with Jabber Inc.), who worked with the law firm of Gray, Plant, Mooty, Mooty & Bennett on the incorporation. The initial Board of Directors consisted of Andre Durand (then of Jabber Inc.), James Barry (then of CollabNet), Jeremie Miller (inventor of Jabber technologies), and Dan Powers (then of IBM). The initial officers of the JSF were Michael Bauer (Executive Director), Andre Durand (Chair of the Board), Peter Saint-Andre (Secretary), and Stuart Lucko (Treasurer). Since that time, the various officers and Board members have changed in accordance with the procedures defined in the organization’s [Bylaws](/about/xsf/bylaws).
 
-If you have any questions about these documents, please contact Peter Saint-Andre, [Executive Director](/about/xsf/people) of the XSF.
+If you have any questions about these documents, please contact Peter Saint-Andre.
