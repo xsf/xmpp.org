@@ -3,7 +3,7 @@
 {{- $emeriti := .Site.Data.members.emeriti -}}
 
 <div class="row gy-2 pb-2">
-    <div class="col-sm-6">
+    <div class="col">
         <div class="card border-secondary">
             <div class="card-header text-bg-secondary">
                 Council
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col">
         <div class="card border-secondary">
             <div class="card-header text-bg-secondary">
                 Board of Directors
@@ -55,44 +55,41 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row gy-2 pb-2">
     <div class="col">
         <div class="card border-secondary">
             <div class="card-header text-bg-secondary">
-                XSF Secretary
+                XSF Officers
             </div>
             <ul class="list-group list-group-flush">
+                {{ range $members }}
+                    {{ if and (in .roles "board") (in .roles "chair") }}
+                        <li class="list-group-item small">
+                            Chair: <a href="/about/xsf/people#chair">{{ .name }}</a>
+                        </li>
+                    {{ end }}
+                {{ end }}
+                {{ range $members }}
+                    {{ if in .roles "ed" }}
+                        <li class="list-group-item small">
+                            Executive Director: <a href="/about/xsf/people#executive-director">{{ .name }}</a>
+                        </li>
+                    {{ end }}
+                {{ end }}
                 {{ range $members }}
                     {{ if in .roles "secretary" }}
                         <li class="list-group-item small">
-                            {{ .name }}
+                            Secretary: <a href="/about/xsf/people#secretary">{{ .name }}</a>
                         </li>
                     {{ end }}
                 {{ end }}
-            </ul>
-            <div class="card-footer">
-                <small class="text-body-secondary"><a href="/about/xsf/people#secretary">Read more…</a></small>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card border-secondary">
-            <div class="card-header text-bg-secondary">
-                XSF Treasurer
-            </div>
-            <ul class="list-group list-group-flush">
                 {{ range $members }}
                     {{ if in .roles "treasurer" }}
                         <li class="list-group-item small">
-                            {{ .name }}
+                            Treasurer: <a href="/about/xsf/people#treasurer">{{ .name }}</a>
                         </li>
                     {{ end }}
                 {{ end }}
             </ul>
-            <div class="card-footer">
-                <small class="text-body-secondary"><a href="/about/xsf/people#treasurer">Read more…</a></small>
-            </div>
         </div>
     </div>
 </div>

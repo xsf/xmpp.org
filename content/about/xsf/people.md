@@ -8,7 +8,7 @@ layout: single_xsf
 
 ### XSF Chair{#chair}
 
-Chairman of the XSF is Ralph Meijer. Ralph is the lead developer of several Jabber-related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can find him on [Twitter](http://twitter.com/ralphm) and chat with him on [XMPP](xmpp:ralphm@ik.nu)
+Chairman of the XSF is Ralph Meijer. Ralph is an independent consultant for Nuntians Services B.V., working on real-time communications systems, event-driven architectures, and observability. He is the lead developer of several XMPP related projects and services, including Wokkel and the XMPP support in Twisted, the Idavoll pubsub component, and Planet Jabber. Ralph has been member of the XMPP Council from 2004 to 2013 and Director since 2013. You can contact him via [email](mailto:ralphm@ik.nu) or [XMPP](xmpp:ralphm@ik.nu).
 
 ### Executive Director{#executive-director}
 
