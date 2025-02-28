@@ -151,7 +151,7 @@ Today, phone networks are **interoperable and federated**. No matter which provi
 
 The **same model can and should be applied to messaging interoperability**. 
 
-The XMPP Standards Foundation has already done the heavy lifting: by **adopting the XMPP S2S protocol as the interoperability standard**, we can **achieve the same seamless communication in messaging**.
+The XMPP Standards Foundation has already done the heavy lifting: by **adopting the XMPP S2S (server-to-server) protocol as the interoperability standard**, we can **achieve the same seamless communication in messaging**.
 
 ## Interoperability Through XMPP Federation
 
