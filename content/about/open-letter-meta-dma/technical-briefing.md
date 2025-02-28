@@ -1,4 +1,7 @@
-# Detailled technical briefing: The Case for XMPP – Why Meta Must Embrace True Messaging Interoperability
+---
+title: "Detailed technical briefing: The Case for XMPP – Why Meta Must Embrace True Messaging Interoperability"
+layout: single_open_letter_meta_dma
+---
 
 ## Introduction
 
