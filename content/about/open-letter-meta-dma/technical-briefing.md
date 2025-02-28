@@ -91,7 +91,7 @@ What is worst, is that this issue is no longer limited to text-based messaging. 
 
 ## The European Commission and the Digital Markets Act
 
-To prevent extreme concentration of power in the messaging sector, the **European Commission introduced the Digital Markets Act (DMA)**. Its goal is to ensure that communication remains **open, fair, and competitive**, preventing a future where global messaging is controlled by a **monopoly, duopoly, or, at best, an oligopoly**. Enforcing interoperability is the only way to allow users to **freely choose their preferred messaging provider** rather than being locked into dominant platforms.
+To prevent extreme concentration of power in the messaging sector, the **European Commission included it firmly within the scope of the Digital Markets Act (DMA)**. Its goal is to ensure that communication remains **open, fair, and competitive**, preventing a future where global messaging is controlled by a **monopoly, duopoly, or, at best, an oligopoly**. Enforcing interoperability is the only way to allow users to **freely choose their preferred messaging provider** rather than being locked into dominant platforms.
 
 In this spirit—enabling a truly **competitive market** where users can select messaging providers that align with their **budget, business model, and privacy preferences**—we must return to the **core principle of interoperability: the adoption of open communication standards**.
 
