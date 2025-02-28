@@ -116,7 +116,7 @@ Requiring an NDA **prevents non-profit organizations like the XSF** from evaluat
 Meta’s proposal appears to be based on **APIs rather than open protocols**. This is a fundamental problem because:
 
 - **Protocols** are designed for **interoperability and cooperation**, ensuring long-term stability.
-- **APIs** are controlled by the provider and offer a **limited set of features**, with associated **rate limits, fees, and restrictions** that can change over time.
+- **APIs** are controlled by the provider and offer a **limited set of features**, with associated **usage limits, fees, and restrictions** that can change over time.
 
 The industry has already seen the dangers of relying on APIs—as seen with Twitter, Facebook, and Reddit, where API access was restricted or monetized, disrupting their entire ecosystems. **No sustainable business or long-term project can be built on API access alone.**
 
