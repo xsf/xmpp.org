@@ -44,3 +44,9 @@ It’s time for real interoperability. Let’s make it happen.
 Ralph Meijer  
 [Chair of the Board](/about/xsf/people#chair)  
 On behalf of the XSF Board and Members
+
+***
+
+### Further Reading
+
+- [Detailed Technical Briefing](/about/open-letter-meta-dma/technical-briefing) on the case for XMPP: why Meta must embrace true messaging interoperability.
