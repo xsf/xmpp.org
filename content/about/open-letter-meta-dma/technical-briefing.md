@@ -138,7 +138,7 @@ Relying on APIs for interoperability is inefficient and **does not scale**. Cons
 - This approach is **not sustainable**, as the cost and maintenance overhead would deter smaller players from participating.
 - Worse, **platforms could exploit this loophole to avoid true interoperability**. For example, if Meta and Telegram each offer APIs but neither is willing to implement the other's API, they can both claim they are open to interoperability—while **ensuring that nothing actually happens**. This **completely undermines the intent of the DMA**.
 
-### Understanding federation: A Telephone Analogy: Why Meta’s Approach is Flawed**
+### Understanding federation: A Telephone Analogy: Why Meta’s Approach is Flawed
 
 This is why the **XMPP Standards Foundation (XSF) steps in** and propose to enable interoperability on federation principles which are at the hearth of the Internet majors protocols and allowed it to stay open.
 
@@ -194,7 +194,7 @@ This gives all providers, including Meta, the opportunity to put **multiple laye
 
 There is no **technical limitation** preventing Meta from supporting **XMPP**—in fact, **Meta has already done so in the past**.
 
-### **Meta’s History with XMPP: Proof of Feasibility**
+### Meta’s History with XMPP: Proof of Feasibility
 
 Meta (formerly Facebook) has previously supported XMPP in its messaging products:
 
