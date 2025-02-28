@@ -41,4 +41,6 @@ We urge Meta to **adopt XMPP for messaging interoperability**. The **XMPP Standa
 
 It’s time for real interoperability. Let’s make it happen.
 
--- The XSF Board and Members
+Ralph Meijer  
+[Chair of the Board](/about/xsf/people#chair)  
+On behalf of the XSF Board and Members

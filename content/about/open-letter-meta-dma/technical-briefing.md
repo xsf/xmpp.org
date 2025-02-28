@@ -247,3 +247,25 @@ The XSF is the right place to have these discussions. Our mission is to evolve a
 We understand that Meta may wish to contribute to the development of XMPP, and we would welcome Meta’s most prominent messaging experts to bring their expertise, concerns, and ideas into the work of the XMPP Standards Foundation.
 
 Let’s work together to build a truly interoperable, open, and competitive messaging future.
+
+***
+
+### Contact Information
+
+Press and general inquiries: [info@xmpp.org](mailto:info@xmpp.org)
+
+Ralph Meijer  
+[Chair of the Board](/about/xsf/people#chair)  
+XMPP: [ralphm@ik.nu](xmpp:ralphm@ik.nu)  
+Mail: [ralphm@ik.nu](mailto:ralphm@ik.nu)
+
+Matthew Wild  
+[Executive Director](/about/xsf/people#executive-director)  
+XMPP: [me@matthewwild.co.uk](xmpp:me@matthewwild.co.uk)  
+Mail: [me@matthewwild.co.uk](mailto:me@matthewwild.co.uk)
+
+Mickaël Rémond  
+Member and Author  
+XMPP: [mremond@process-one.net](xmpp:mremond@process-one.net)  
+Mail: [mremond@process-one.net](mailto:mremond@process-one.net)
+
