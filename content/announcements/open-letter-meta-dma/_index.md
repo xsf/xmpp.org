@@ -49,4 +49,4 @@ On behalf of the XSF Board and Members
 
 ### Further Reading
 
-- [Detailed Technical Briefing](/about/open-letter-meta-dma/technical-briefing) on the case for XMPP: why Meta must embrace true messaging interoperability.
+- [Detailed Technical Briefing](technical-briefing) on the case for XMPP: why Meta must embrace true messaging interoperability.
