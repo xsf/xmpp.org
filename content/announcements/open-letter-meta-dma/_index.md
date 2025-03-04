@@ -9,11 +9,11 @@ The European Digital Markets Act (DMA) is designed to break down walled gardens 
 
 Meta's proposed approach relies on restrictive NDAs, proprietary APIs, and centralized control. This is **not true interoperability**—it is a closed system that forces third parties to operate within Meta’s terms, undermining the spirit of the DMA. Key issues include:
 
-- **Gatekeeper Agreements:** Companies must sign NDAs to access interoperability details, creating artificial barriers.
+- **Gatekeeper Agreements:** Companies must sign NDAs to access interoperability details, creating artificial barriers. Managing these legal aspects increases costs for all parties involved.
 
-- **API-Based Control:** APIs limit flexibility, can be modified unilaterally, and do not scale for true federation.
+- **API-Based Control:** APIs limit flexibility, can be modified unilaterally, do not scale for true federation, and have to maintained.
 
-- **User Tracking Risks:** The approach risks exposing external users to Meta’s data collection practices.
+- **User Tracking Risks:** The approach involves compliance issues of tracking third-party users at Meta, as well as third-parties tracking Meta's users.
 
 - **Scalability Issues:** Maintaining separate API bridges for each provider is inefficient and prevents sustainable competition.
 
