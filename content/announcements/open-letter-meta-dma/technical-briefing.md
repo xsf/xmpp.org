@@ -265,7 +265,7 @@ XMPP: [me@matthewwild.co.uk](xmpp:me@matthewwild.co.uk)
 Mail: [me@matthewwild.co.uk](mailto:me@matthewwild.co.uk)
 
 Mickaël Rémond  
-Member and Author  
+Member and Rapporteur to the XSF on the DMA  
 XMPP: [mremond@process-one.net](xmpp:mremond@process-one.net)  
 Mail: [mremond@process-one.net](mailto:mremond@process-one.net)
 
