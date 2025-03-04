@@ -21,13 +21,13 @@ Meta's proposed approach relies on restrictive NDAs, proprietary APIs, and centr
 
 Meta does not need to reinvent interoperability. The **eXtensible Messaging and Presence Protocol (XMPP)** is a **proven, open standard** that has powered global federated messaging for 25 years. XMPP enables **direct server-to-server communication**, removing the need for restrictive agreements and ensuring:
 
-- **Seamless federation**: connecting users across providers, just like email or phone networks.
+- **Seamless Federation**: connecting users across providers, just like email or phone networks.
 
-- **Decentralized control**: allowing each service provider to enforce its own policies.
+- **Decentralized Control**: allowing each service provider to enforce its own policies.
 
-- **Enhanced privacy**: avoiding unnecessary data exposure.
+- **Enhanced Privacy**: avoiding unnecessary data exposure.
 
-- **Scalability and flexibility**: ensuring long-term sustainability.
+- **Scalability and Flexibility**: ensuring long-term sustainability.
 
 ## Meta Has Already Used XMPP—Why Not Now?
 
