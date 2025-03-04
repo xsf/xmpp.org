@@ -53,7 +53,7 @@ Despite XMPP’s success, technical advantages, and suitability for messaging in
 
 In **2007**, Apple launched the iPhone, ushering in the smartphone era and the widespread adoption of mobile internet. By **2009**, the introduction of both the App Store and push notification services paved the way for the launch of **WhatsApp**. Messaging, which had previously been limited to SMS on mobile, quickly became a **rich and ubiquitous communication tool**.
 
-WhatsApp took a strategic approach by leveraging a public resource—the phone number system—as a unique user identifier. Combined with easy access to users’ phone contacts in modern smartphone operating systems, WhatsApp was able to build an extensive **proprietary** messaging network. In essence, it **became the new ICQ**, but at an even larger scale. As the service grew, it positioned itself **in direct competition with mobile carriers**, as **over-the-top (OTT) messaging**—services that bypass traditional carrier networks by leveraging the open internet. At the time, **net neutrality** was seen as a safeguard ensuring that carriers could not abuse their control over communication infrastructure, but it also allowed closed proprietary messaging services to thrive.
+WhatsApp took a strategic approach by leveraging a public resource—the phone number system—as a unique user identifier. Combined with easy access to users’ phone contacts in modern smartphone operating systems, and starting out as an **XMPP service with a locked-in client**, WhatsApp was able to build an extensive **proprietary** messaging network. In essence, it **became the new ICQ**, but at an even larger scale. As the service grew, it positioned itself **in direct competition with mobile carriers**, as **over-the-top (OTT) messaging**—services that bypass traditional carrier networks by leveraging the open internet. At the time, **net neutrality** was seen as a safeguard ensuring that carriers could not abuse their control over communication infrastructure, but it also allowed closed proprietary messaging services to thrive.
 
 ### The Pivotal Year: 2014 and the Rise of Messaging Gatekeeping
 
@@ -250,7 +250,7 @@ Let’s work together to build a truly interoperable, open, and competitive mess
 
 ***
 
-### Contact Information
+## Contact Information
 
 Press and general inquiries: [info@xmpp.org](mailto:info@xmpp.org)
 
