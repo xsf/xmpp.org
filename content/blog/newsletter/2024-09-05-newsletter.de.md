@@ -146,7 +146,6 @@ Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsoli
 Teile diese Neuigkeiten auch in anderen Netzwerken:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Twitter](https://twitter.com/xmpp)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [Lemmy instance (inoffiziell)](https://slrpnk.net/c/xmpp)

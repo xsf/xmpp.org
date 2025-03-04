@@ -231,7 +231,6 @@ Thanks to Aleja, emus, Licaon_Kter, MDosch, Neustradamus, Nyco, pep, Sven, Vanit
 
 Please share the news on "social networks":
 
-* Twitter: [twitter.com/xmpp](https://twitter.com/xmpp)
 * Mastodon: [fosstodon.org/@xmpp/](https://fosstodon.org/@xmpp/)
 * LinkedIn: [www.linkedin.com/company/xmpp-standards-foundation/](https://www.linkedin.com/company/xmpp-standards-foundation/)
 * Facebook: [www.facebook.com/jabber/](https://www.facebook.com/jabber/)
