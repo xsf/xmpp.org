@@ -1162,15 +1162,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": "https://raw.githubusercontent.com/mierenhoop/picomemo/refs/heads/master/project.doap",
-        "name": "picomemo",
-        "platforms": [],
-        "url": null
-    },
-    {
-        "categories": [
             "client"
         ],
         "doap": "https://raw.githubusercontent.com/miranda-ng/miranda-ng/master/docs/miranda.doap",
@@ -1316,6 +1307,15 @@
             "Windows"
         ],
         "url": "https://www.oracle.com/index.html"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": "https://raw.githubusercontent.com/mierenhoop/picomemo/refs/heads/master/project.doap",
+        "name": "picomemo",
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
