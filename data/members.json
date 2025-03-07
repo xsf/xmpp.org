@@ -198,11 +198,6 @@
         },
 
         {
-            "name": "Ali Mattouk",
-            "jids": ["xnamed@jix.im", "admin@jabber.eu.org"]
-        },
-
-        {
             "name": "Edward Maurer",
             "jids": ["emus@jabbers.one"],
             "roles": ["board", "commteam"]
@@ -223,6 +218,11 @@
             "name": "Edwin Mons",
             "jids": ["intosi@ik.nu"],
             "roles": ["infrastructure"]
+        },
+
+        {
+            "name": "Benson Muite",
+            "jids": ["benson_muite@disroot.org"]
         },
 
         {
