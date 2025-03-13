@@ -15,6 +15,14 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ### XMPP at FOSDEM 2025
 
+During February 1st and 2nd, the [XSF](https://xmpp.org) was present at [FOSDEM25](https://fosdem.org/2025/) in Brussels, Belgium. The XMPP community took part of the _Realtime Lounge_, a corner located on the 2nd floor of K building, where several open source projects around [Real Time Communication (RTC)](https://fosdem.org/2025/schedule/track/rtc/) can present themselves.
+
+We are really happy to say that there was a lot of interaction at the XMPP booth! A rather large number of  FOSDEM visitors had the opportunity to come say "Hi!",  meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
+
+In addition to the activities that took place on the XMPP booth, [Jérôme Poisson (Goffi)](https://fosdem.org/2025/schedule/speaker/jerome_poisson_goffi/) hosted a most interesting presentation in the [Real Time Communication (RTC)](https://fosdem.org/2025/schedule/track/rtc/) room, titled: [A Universal and Stable API to Everything: XMPP](https://fosdem.org/2025/schedule/event/fosdem-2025-5721-a-universal-and-stable-api-to-everything-xmpp/).
+
+And, of course .. we had the coolest swag, and plenty of sticker! ;)
+
 {{< figure src="/images/newsletter/2025-03-05/xmpp_fosdem_25.jpg" caption="XMPP stand at FOSDEM 2025!" >}}
 
 {{< figure src="/images/newsletter/2025-03-05/xmpp_fosdem_25_bereal.jpeg" caption="Be Real!" >}}
