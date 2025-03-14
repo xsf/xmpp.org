@@ -68,7 +68,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 - [Movim](https://movim.eu/) has released version [0.29.2](https://github.com/movim/movim/releases/tag/v0.29.2) with some important fixes and improvements. Head over to the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim/b23ec974-ace7-41e9-a3ac-5d3eb8ef8c1c) for all the details.
 - [prose-web-app](https://github.com/prose-im/prose-app-web) has released versions [0.6.0](https://github.com/prose-im/prose-app-web/releases/tag/0.6.0) and [0.6.1](https://github.com/prose-im/prose-app-web/releases/tag/0.6.1) of its Web implementation of the [Prose](https://prose.org/) app.
 
-{{< figure src="/images/newsletter/2025-03-05/gajim_main_window.png" caption="Gajim 2.0: Chat window" >}}
+{{< figure src="/images/newsletter/2025-03-05/gajim_main-window.png" caption="Gajim 2.0: Chat window" >}}
 
 {{< figure src="/images/newsletter/2025-03-05/gajim_mention.png" caption="Gajim 2.0: Mention a participant by typing @nickname" >}}
 
