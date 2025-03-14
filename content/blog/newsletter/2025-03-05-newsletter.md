@@ -15,13 +15,13 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ### XMPP at FOSDEM 2025
 
-During February 1st and 2nd, the [XSF](https://xmpp.org) was present at [FOSDEM25](https://fosdem.org/2025/) in Brussels, Belgium. The XMPP community took part of the _Realtime Lounge_, a corner located on the 2nd floor of K building, where several open source projects around [Real Time Communication (RTC)](https://fosdem.org/2025/schedule/track/rtc/) can present themselves.
+During February 1st and 2nd, the [XSF](https://xmpp.org) was present at [FOSDEM 25](https://fosdem.org/2025/) in Brussels, Belgium. The XMPP community took part of the _Realtime Lounge_, a corner located on the 2nd floor of the K building, where several open source projects around [Real Time Communication (RTC)](https://fosdem.org/2025/schedule/track/rtc/) can present themselves.
 
-We are really happy to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say "Hi!", meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
+We are pleased to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say "Hi!", meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
 
 In addition to the activities that took place on the XMPP booth, [Jérôme Poisson (Goffi)](https://fosdem.org/2025/schedule/speaker/jerome_poisson_goffi/) hosted a most interesting presentation in the [Real Time Communication (RTC)](https://fosdem.org/2025/schedule/track/rtc/) room, titled: [A Universal and Stable API to Everything: XMPP](https://fosdem.org/2025/schedule/event/fosdem-2025-5721-a-universal-and-stable-api-to-everything-xmpp/).
 
-And, of course .. we had the coolest swag, and plenty of sticker! ;)
+And, of course .. we had the coolest swag, and plenty of stickers! ;)
 
 {{< figure src="/images/newsletter/2025-03-05/xmpp_fosdem_25.jpg" caption="XMPP stand at FOSDEM 2025!" >}}
 
@@ -61,16 +61,16 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 ### XMPP Clients and Applications
 
 - [Conversations](https://conversations.im/) has released versions [2.17.10](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.10) and [2.17.12](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.17.12) for Android.
-- [Monocles Chat 2.0.5](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.5) has been released for Android. This version brings in several fixes.
-- [Kaidan](https://www.kaidan.im/) has released version [0.11.0](https://www.kaidan.im/2025/02/14/kaidan-0.11.0/) integrating Qt 6 support. In addition, this release improves the user interface and fixes some bugs. Have a look at the [changelog](https://www.kaidan.im/2025/02/14/kaidan-0.11.0/#changelog) for more details.
-- [Movim](https://movim.eu/) has released version [0.29.2](https://github.com/movim/movim/releases/tag/v0.29.2) with some important fixes and improvements. Head over to the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim/b23ec974-ace7-41e9-a3ac-5d3eb8ef8c1c) for all the details.
 - [Dino](https://dino.im/) has released version [0.4.5](https://github.com/dino/dino/releases/tag/v0.4.5).
-- [prose-web-app](https://github.com/prose-im/prose-app-web) has released versions [0.6.0](https://github.com/prose-im/prose-app-web/releases/tag/0.6.0) and [0.6.1](https://github.com/prose-im/prose-app-web/releases/tag/0.6.1) of its Web implementation of the [Prose](https://prose.org/) app.
 - [Gajim](https://gajim.org/) has released version [2.0.0](https://dev.gajim.org/gajim/gajim/-/releases/2.0.0) and it comes with a big upgrade. Gajim migrated its user interface toolkit to GTK 4, which brings performance improvements and sets the ground for great features to follow. Check out the official [announcement](https://gajim.org/post/2025-02-28-gajim-2.0.0-released/) for more information and have a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for a complete list.
+- [Kaidan](https://www.kaidan.im/) has released version [0.11.0](https://www.kaidan.im/2025/02/14/kaidan-0.11.0/) integrating Qt 6 support. In addition, this release improves the user interface and fixes some bugs. Have a look at the [changelog](https://www.kaidan.im/2025/02/14/kaidan-0.11.0/#changelog) for more details.
+- [Monocles Chat 2.0.5](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.5) has been released for Android. This version brings in several fixes.
+- [Movim](https://movim.eu/) has released version [0.29.2](https://github.com/movim/movim/releases/tag/v0.29.2) with some important fixes and improvements. Head over to the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim/b23ec974-ace7-41e9-a3ac-5d3eb8ef8c1c) for all the details.
+- [prose-web-app](https://github.com/prose-im/prose-app-web) has released versions [0.6.0](https://github.com/prose-im/prose-app-web/releases/tag/0.6.0) and [0.6.1](https://github.com/prose-im/prose-app-web/releases/tag/0.6.1) of its Web implementation of the [Prose](https://prose.org/) app.
 
-{{< figure src="/images/newsletter/2025-03-05/gajim_main_window.png" caption="Gajim 2.0 main window" >}}
+{{< figure src="/images/newsletter/2025-03-05/gajim_main_window.png" caption="Gajim 2.0: Chat window" >}}
 
-{{< figure src="/images/newsletter/2025-03-05/gajim_mention.png" caption="Mention a participant by typing @nickname" >}}
+{{< figure src="/images/newsletter/2025-03-05/gajim_mention.png" caption="Gajim 2.0: Mention a participant by typing @nickname" >}}
 
 ### XMPP Servers
 
@@ -78,10 +78,10 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 ### XMPP Libraries & Tools
 
-- [Slidge](https://codeberg.org/slidge/slidge#readme) versions [0.2.5](https://codeberg.org/slidge/slidge/releases/tag/v0.2.5), [0.2.6](https://codeberg.org/slidge/slidge/releases/tag/v0.2.6), [0.2.7](https://codeberg.org/slidge/slidge/releases/tag/v0.2.7) and [0.2.7.post1](https://codeberg.org/slidge/slidge/releases/tag/v0.2.7.post1) have been released.
-- [QXmpp](https://github.com/qxmpp-project/qxmpp) versions [1.10.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.10.0) and [1.10.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.10.1) have been released.
-- [python-nbxmpp](https://dev.gajim.org/gajim/python-nbxmpp) version [6.0.0](https://dev.gajim.org/gajim/python-nbxmpp/-/releases/6.0.0) has been released.
 - [prose-core-client](https://github.com/prose-im/prose-core-client) version [0.1.100](https://github.com/prose-im/prose-core-client/releases/tag/0.1.100) has been released.
+- [python-nbxmpp](https://dev.gajim.org/gajim/python-nbxmpp) version [6.0.0](https://dev.gajim.org/gajim/python-nbxmpp/-/releases/6.0.0) has been released.
+- [QXmpp](https://github.com/qxmpp-project/qxmpp) versions [1.10.0](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.10.0) and [1.10.1](https://github.com/qxmpp-project/qxmpp/releases/tag/v1.10.1) have been released.
+- [Slidge](https://codeberg.org/slidge/slidge#readme) versions [0.2.5](https://codeberg.org/slidge/slidge/releases/tag/v0.2.5), [0.2.6](https://codeberg.org/slidge/slidge/releases/tag/v0.2.6), [0.2.7](https://codeberg.org/slidge/slidge/releases/tag/v0.2.7) and [0.2.7.post1](https://codeberg.org/slidge/slidge/releases/tag/v0.2.7.post1) have been released.
 - [Slixmpp](https://codeberg.org/poezio/slixmpp) version [1.9.0](https://codeberg.org/poezio/slixmpp/releases/tag/slix-1.9.0) has been released. You can read the [release announcement](https://blog.mathieui.net/en/slixmpp-1.9.0.html) for all the details.
 
 ## Extensions and specifications
