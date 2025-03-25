@@ -1,6 +1,8 @@
 ---
 title: "Detailed technical briefing: The Case for XMPP – Why Meta Must Embrace True Messaging Interoperability"
 layout: single_open_letter_meta_dma
+date: 2025-03-25
+author: XMPP Standards Foundation
 ---
 
 ## Introduction
@@ -268,4 +270,3 @@ Mickaël Rémond
 Member and Rapporteur to the XSF on the DMA  
 XMPP: [mremond@process-one.net](xmpp:mremond@process-one.net)  
 Mail: [mremond@process-one.net](mailto:mremond@process-one.net)
-

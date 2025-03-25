@@ -1,6 +1,9 @@
 ---
 title: "Open Letter to Meta: Support True Messaging Interoperability with XMPP"
 layout: single_open_letter_meta_dma
+date: 2025-03-25
+author: Ralph Meijer
+categories: ["Announcement"]
 ---
 
 The European Digital Markets Act (DMA) is designed to break down walled gardens and enforce messaging interoperability. As a designated gatekeeper, Meta—controlling WhatsApp and Messenger—must comply. However, its current proposal falls short, risking further entrenchment of its dominance rather than fostering genuine competition.
