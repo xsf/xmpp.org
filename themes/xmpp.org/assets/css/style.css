@@ -12,7 +12,10 @@ h5,
 h6,
 .nav-link {
     font-family: "Exo 2", sans-serif;
-    font-weight: 400;
+    font-weight: 700;
+}
+h3 + h4 {
+     margin-top: 1rem;
 }
 .heading-anchor {
     visibility: hidden;
@@ -88,6 +91,10 @@ article li {
 article h2,
 article h3 {
     color: #002b5c;
+}
+article b,
+article strong {
+    font-weight: 800;
 }
 table {
     background: #fff;
@@ -438,7 +445,12 @@ button[name="show-xep-implementations"] {
 	label {
 		color: #acb6bd;
 	}
-	h1, h2, h3, h4, h5, h6 {
+	h1,
+	h2,
+	h3,
+	.sidebar h4,
+	.sidebar h5,
+	.sidebar h6 {
 		color: #95c0d9;
 	}
     .header-internal h1, .header-internal h1 a {
