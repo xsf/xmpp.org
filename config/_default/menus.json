@@ -173,10 +173,23 @@
             "weight": 6
         },
         {
-            "identifier": "blog",
+            "identifier": "news",
             "name": "News",
-            "url": "/blog/",
             "weight": 7
+        },
+        {
+            "identifier": "blog",
+            "name": "Blog",
+            "parent": "news",
+            "url": "/blog/",
+            "weight": 1
+        },
+        {
+            "identifier": "announcements",
+            "name": "Announcements",
+            "parent": "news",
+            "url": "/announcements/",
+            "weight": 2
         },
         {
             "name": "Jobs",

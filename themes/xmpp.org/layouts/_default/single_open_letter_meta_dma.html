@@ -1,0 +1,24 @@
+
+{{- define "main" -}}
+<div class="container" role="main">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main">
+        <div class="header-internal">
+            <h1><a href="{{- .RelPermalink -}}">{{- .Title -}}</a></h1>
+            {{- partial "post_meta" . -}}
+        </div>
+        <div class="page-content">
+            <article>
+                {{- .Content -}}
+            </article>
+        </div>
+      </article>
+    </div>
+    {{- $currentSection := .Section -}}
+    {{- if $currentSection -}}
+      {{- partial "sidebar_open_letter_meta_dma.html" . -}}
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

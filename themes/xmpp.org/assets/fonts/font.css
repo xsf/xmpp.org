@@ -32,12 +32,32 @@
 }
 @font-face {
 	font-family: 'Merriweather';
+	font-display: swap;
+	font-style: normal;
+	font-weight: 300;
+	src: url('merriweather-v30-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Merriweather';
 	font-style: normal;
 	font-weight: 400;
-	src:
-		url('merriweather-v22-latin-regular.woff2') format('woff2'),
-		url('merriweather-v22-latin-regular.woff') format('woff'),
-		url('merriweather-v22-latin-regular.eot') format('embedded-opentype'),
-		url('merriweather-v22-latin-regular.svg#Merriweather') format('svg'),
-		url('merriweather-v22-latin-regular.ttf') format('truetype');
+	src: url('merriweather-v30-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Merriweather';
+	font-style: normal;
+	font-weight: 700;
+	src: url('merriweather-v30-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Merriweather';
+	font-style: normal;
+	font-weight: 900;
+	src: url('merriweather-v30-latin-900.woff2') format('woff2');
 }
