@@ -1,7 +1,7 @@
 ---
 title: "Detailed technical briefing: The Case for XMPP – Why Meta Must Embrace True Messaging Interoperability"
 layout: single_open_letter_meta_dma
-date: 2025-03-25
+date: 2025-03-27
 author: XMPP Standards Foundation
 ---
 

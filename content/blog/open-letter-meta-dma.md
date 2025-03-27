@@ -1,6 +1,6 @@
 ---
 title: "Open Letter to Meta: Support True Messaging Interoperability with XMPP"
-date: 2025-03-25
+date: 2025-03-27
 categories: ["XSF", "Open Letter"]
 author: Ralph Meijer
 ---
