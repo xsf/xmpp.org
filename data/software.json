@@ -1776,7 +1776,7 @@
         "categories": [
             "library"
         ],
-        "doap": "/hosted-doap/tinder.doap",
+        "doap": "https://raw.githubusercontent.com/igniterealtime/tinder/refs/heads/main/tinder.doap",
         "name": "Tinder",
         "platforms": [],
         "url": null
