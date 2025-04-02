@@ -960,6 +960,17 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "jj",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://23.fi/jj"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
@@ -1055,9 +1066,22 @@
         "doap": null,
         "name": "Kopete",
         "platforms": [
+            "BSD",
             "Linux"
         ],
         "url": "https://userbase.kde.org/Kopete"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Kopete (TDE)",
+        "platforms": [
+            "FreeBSD",
+            "Linux"
+        ],
+        "url": "https://mirror.git.trinitydesktop.org/gitea/TDE/tdenetwork/src/branch/master/kopete"
     },
     {
         "categories": [
@@ -2145,6 +2169,17 @@
             "Linux"
         ],
         "url": "https://codeberg.org/Anoxinon_e.V./xmppc"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "xmppcd",
+        "platforms": [
+            "Linux"
+        ],
+        "url": "https://github.com/stanson-ch/xmppcd"
     },
     {
         "categories": [
