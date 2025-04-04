@@ -45,6 +45,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 - [Kaidan 0.12.0: User Interface Polishing and Account Migration Fixes](https://www.kaidan.im/2025/03/21/kaidan-0.12.0/) by melvo for [Kaidan IM](https://www.kaidan.im/).
 - [It’s time for real interoperability. Let’s make it happen!](https://discourse.igniterealtime.org/t/it-s-time-for-real-interoperability-let-s-make-it-happen/95342) by [guus](https://discourse.igniterealtime.org/u/guus/summary) for the [Ignite Realtime News](https://www.igniterealtime.org/news/).
 - [Supporting XMPP Standard Foundation's open letter to Meta for true interop](https://www.process-one.net/blog/supporting-xmpp-standard-foundations-open-letter-to-meta-for-true-interop/) by [ProcessOne](https://www.process-one.net/).
+- [Monocles](https://monocles.eu/more/), the project responsible for the XMPP Monocles chat [Web](https://monocles.chat/login) and [Android](https://f-droid.org/en/packages/de.monocles.chat/) clients, started a [crowdfunding campaign](https://www.startnext.com/en/monocles). The main goal is to create a platform where privacy, digital sovereignty and sustainability take center stage. Your privacy is non-negotiable. The funding period will span from 03.28.2025 to 06.30.2025.
 
 ## XMPP Software News
 
