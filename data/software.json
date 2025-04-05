@@ -23,6 +23,17 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "another.im",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://another.im"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
@@ -133,6 +144,20 @@
             "Ada"
         ],
         "url": "https://github.com/coopht/axmpp"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Azoth (LeechCraft)",
+        "platforms": [
+            "FreeBSD",
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://leechcraft.org/plugins-azoth"
     },
     {
         "categories": [
