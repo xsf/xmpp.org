@@ -30,7 +30,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 ## XMPP Events
 
-- [XMPP Track at FOSSY](https://2025.fossy.us/pages/tracks/): Call for [proposals](https://2025.fossy.us/call-for-proposals/) is open until May 5th 2025! Once again this year, the [soprani.ca](https://soprani.ca/) project is pleased to announce its annual offer for funding to the potential attendees who may be struggling with financial limitations, especially to those who would like to give an XMPP related talk. Please, join us at [discuss@conference.soprani.ca](xmpp:discuss@conference.soprani.ca?join), and don't hesitate to ask for more information.
+- [XMPP Track at FOSSY](https://2025.fossy.us/pages/tracks/): Call for [proposals](https://2025.fossy.us/call-for-proposals/) is open until April 28th 2025! Once again this year, the [soprani.ca](https://soprani.ca/) project is pleased to announce its annual offer for funding to the potential attendees who may be struggling with financial limitations, especially to those who would like to give an XMPP related talk. Please, join us at [discuss@conference.soprani.ca](xmpp:discuss@conference.soprani.ca?join), and don't hesitate to ask for more information.
 - [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: monthly meeting of XMPP enthusiasts in Berlin, every 2nd Wednesday of the month at 6pm local time.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
 - [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2025-05_Berlin): On Friday, 23rd, Saturday, 24th, and Sunday, 25th of May 2025.
