@@ -5,7 +5,7 @@
          >
   <Project>
     <name>Isode M-Link</name>
-    <homepage rdf:resource="https://www.isode.com/products/m-link.html"/>
+    <homepage rdf:resource="https://www.isode.com/product/xmpp-server/"/>
     <os>Linux</os>
     <os>Windows</os>
     <category rdf:resource="https://linkmauve.fr/ns/xmpp-doap#category-server"/>
