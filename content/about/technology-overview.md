@@ -83,7 +83,6 @@ _Note: Many of the following implementations support the older Google Talk proto
 
 __Clients__
 
-- [Coccinella](http://coccinella.im/)
 - [Gajim](https://gajim.org/)
 - [Jitsi](http://jitsi.org/)
 - [Movim](https://movim.eu)
@@ -146,9 +145,7 @@ __Clients__
 
 __Libraries__
 
-- [AnyEvent:XMPP](http://www.ta-sa.org/projects/anyevent_xmpp.html) (Perl)
 - [gloox](https://camaya.net/gloox) (C++)
-- [jabber-net](https://code.google.com/archive/p/jabber-net/) (.Net)
 - [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
 - [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
@@ -245,11 +242,8 @@ The following standalone XMPP connection managers can be used with a wide variet
 
 #### Libraries
 
-- [emite](https://github.com/EmiteGWT/emite) (gwt)
 - [gloox](https://camaya.net/gloox) (C++)
-- [JSJaC](http://blog.jwchat.org/jsjac/) (JavaScript)
 - [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
 - [Swiften](https://swift.im/swiften.html) (C++)
 - [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
-- [xmpp4js](https://xmpp4js.sourceforge.net/index.html) (JavaScript)
 - [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
