@@ -1405,9 +1405,9 @@
         ],
         "doap": "https://codeberg.org/prav/prav/raw/branch/master/prav.doap",
         "name": "Prav",
-	"platforms": [],
+        "platforms": [],
         "url": null
-    },    
+    },
     {
         "categories": [
             "client"
@@ -2005,11 +2005,13 @@
         "url": null
     },
     {
-      "categories": ["library"],
-      "doap": "https://raw.githubusercontent.com/vsevex/whixp/refs/heads/main/doap.xml",
-      "name": "Whixp",
-      "platforms": [],
-      "url": null
+        "categories": [
+            "library"
+        ],
+        "doap": "https://raw.githubusercontent.com/vsevex/whixp/refs/heads/main/doap.xml",
+        "name": "Whixp",
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
