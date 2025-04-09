@@ -83,28 +83,26 @@ _Note: Many of the following implementations support the older Google Talk proto
 
 __Clients__
 
-- [Coccinella](http://coccinella.im/)
 - [Gajim](https://gajim.org/)
-- [Jitsi](http://jitsi.org/)
+- [Jitsi](https://jitsi.org/)
 - [Movim](https://movim.eu)
-- [Pandion](http://pandion.im/)
 - [Pidgin](https://pidgin.im/)
 - [Psi](https://psi-im.org/)
 - [Telepathy](https://telepathy.freedesktop.org/)
-- [Yate](http://yate.null.ro/)
+- [YateClient](https://yate.ro/opensource.php?page=yateclient)
 
 __Libraries__
 
 - [libjingle](http://code.google.com/apis/talk/) (C/C++)
 - [Smack](http://www.igniterealtime.org/projects/smack/) (Java)
 - [Telepathy Gabble](https://telepathy.freedesktop.org/components/telepathy-gabble/) (C)
-- [yjingle](http://yate.null.ro/) (C++)
+- [yjingle](https://yate.ro/) (C++)
 
 __Call Managers / VoIP Servers__
 
-- [Asterisk](http://www.asterisk.org/)
+- [Asterisk](https://www.asterisk.org/)
 - [FreeSWITCH](https://signalwire.com/freeswitch)
-- [Yate](http://yate.null.ro/)
+- [Yate](https://yate.ro/)
 
 
 ## Multi-User-Chat (MUC){#muc}
@@ -124,8 +122,8 @@ MUC is defined in one primary specification (XEP-0045) and several ancillary spe
 __Servers__ - the following XMPP servers include built-in support for MUC:
 
 - [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [Jabber XCP](https://www.cisco.com/)
+- [M-Link](https://www.isode.com/product/xmpp-server/)
 - [MongooseIM](https://github.com/esl/MongooseIM)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Prosody](https://prosody.im/)
@@ -134,13 +132,12 @@ __Servers__ - the following XMPP servers include built-in support for MUC:
 __External Components__ - the following standalone components can be used with a wide variety of XMPP servers:
 
 - [mu-conference](https://gna.org/projects/mu-conference/)
-- [palaver](http://code.stanziq.com/palaver)
+- [palaver](https://github.com/twonds/palaver)
 
 __Clients__
 
 - [Adium](https://adium.im/)
 - [Gajim](https://gajim.org/)
-- [JWChat](http://blog.jwchat.org/jwchat/)
 - [mcabber](https://mcabber.com/)
 - [Movim](https://movim.eu)
 - [Pidgin](https://pidgin.im/)
@@ -148,12 +145,10 @@ __Clients__
 
 __Libraries__
 
-- [AnyEvent:XMPP](http://www.ta-sa.org/projects/anyevent_xmpp.html) (Perl)
 - [gloox](https://camaya.net/gloox) (C++)
-- [jabber-net](https://code.google.com/archive/p/jabber-net/) (.Net)
 - [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
 - [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
-- [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
+- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
 
 ## PubSub{#pubsub}
 
@@ -186,14 +181,14 @@ PubSub and PEP are “payload-agnostic” — you can use them as neutral transp
 __Servers__ - the following XMPP servers include built-in support for PubSub or PEP:
 
 - [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [Jabber XCP](https://www.cisco.com/)
+- [M-Link](https://www.isode.com/product/xmpp-server/)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Tigase](https://tigase.org/)
 
 __Server Components__
 
-- [Idavoll](http://idavoll.ik.nu/)
+- [Idavoll](https://github.com/ralphm/idavoll)
 
 __Clients__
 
@@ -203,8 +198,8 @@ __Clients__
 
 __3.4 Libraries__
 
-- [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
-- [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
+- [strophe](https://strophe.im/) (C or JavaScript)
+- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
 
 ## BOSH{#bosh}
 
@@ -220,8 +215,8 @@ BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-
 Servers The following XMPP servers include built-in support for BOSH:
 
 - [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](http://www.jabber.com/)
-- [M-Link](http://www.isode.com/products/m-link.html)
+- [Jabber XCP](https://www.cisco.com/)
+- [M-Link](https://www.isode.com/product/xmpp-server/)
 - [MongooseIM](https://github.com/esl/MongooseIM)
 - [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
 - [Prosody](https://prosody.im/)
@@ -232,7 +227,7 @@ Servers The following XMPP servers include built-in support for BOSH:
 The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:
 
 - [JabberHTTPBind](http://blog.jwchat.org/jhb/)
-- [Punjab](http://code.stanziq.com/punjab)
+- [Punjab](https://github.com/twonds/punjab)
 - [node-xmpp-bosh](https://github.com/xmppo/node-xmpp-bosh)
 - [rhb](http://rubyforge.org/projects/rhb/)
 
@@ -240,22 +235,15 @@ The following standalone XMPP connection managers can be used with a wide variet
 
 - [Adium](https://adium.im/)
 - [Gajim](https://gajim.org/)
-- [JWChat](http://blog.jwchat.org/jwchat/)
 - [Pidgin](https://pidgin.im/)
-- [Soashable](http://www.soashable.com/)
-- [SparkWeb](http://www.igniterealtime.org/projects/sparkweb/)
 - [Swift](https://swift.im/swift.html)
 - [Tigase Messenger](http://www.tigase.org/project/messenger)
 - [Tigase Minichat](http://www.tigase.org/project/minichat)
 
 #### Libraries
 
-- [emite](https://github.com/EmiteGWT/emite) (gwt)
 - [gloox](https://camaya.net/gloox) (C++)
-- [JSJaC](http://blog.jwchat.org/jsjac/) (JavaScript)
-- [strophe](http://code.stanziq.com/strophe/) (C or JavaScript)
+- [strophe](https://strophe.im/) (C or JavaScript)
 - [Swiften](https://swift.im/swiften.html) (C++)
-- [XIFF](http://www.igniterealtime.org/projects/xiff/) (Flash)
 - [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
-- [xmpp4js](https://xmpp4js.sourceforge.net/index.html) (JavaScript)
-- [XMPP4R](http://home.gna.org/xmpp4r/) (Ruby)
+- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
