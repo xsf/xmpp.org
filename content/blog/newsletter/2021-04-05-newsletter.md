@@ -134,7 +134,6 @@ Thanks to anubis, Bastoon, emus, jeybe, jonas-l, Julien Jorge, Holger, pmaziere,
 
 Please share the news on "social networks":
 
-* [Twitter](https://twitter.com/xmpp)
 * [Mastodon](https://fosstodon.org/@xmpp/)
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 * [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
