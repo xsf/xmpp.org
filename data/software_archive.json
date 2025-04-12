@@ -80,6 +80,17 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "JWChat",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://github.com/sstrigler/jwchat"
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": null,
@@ -105,6 +116,17 @@
             "client"
         ],
         "doap": null,
+        "name": "Pandion",
+        "platforms": [
+            "Windows"
+        ],
+        "url": "https://github.com/pandion/pandion"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
         "name": "Quiet Internet Pager",
         "platforms": [
             "Windows"
@@ -116,11 +138,45 @@
             "client"
         ],
         "doap": null,
+        "name": "Soashable",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://soashable.sourceforge.net/soashable-web/"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "SparkWeb",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "http://www.igniterealtime.org/projects/sparkweb/"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
         "name": "Talkonaut",
         "platforms": [
             "Mobile"
         ],
         "url": "http://talkonaut.com"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "XIFF",
+        "platforms": [
+            "ActionScript",
+            "Flash"
+        ],
+        "url": "http://www.igniterealtime.org/projects/xiff/"
     },
     {
         "categories": [
