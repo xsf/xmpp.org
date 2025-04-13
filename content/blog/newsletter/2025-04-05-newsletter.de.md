@@ -7,7 +7,7 @@ categories: ['Newsletter']
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
 
 Herzlich willkommen zum XMPP Newsletter! Schön, dass Du hier bist.
-Diese Ausgabe behandelt Februar 2025.
+Diese Ausgabe behandelt März 2025.
 
 Viele Projekte in der XMPP-Gemeinschaft – auch dieser Newsletter – sind das Ergebnis freiwilliger Arbeit. Wenn Du mit den Diensten und der Software, die Du nutzt, glücklich bist, lass diesen Projekten ein Dankeschön da oder unterstütze sie in ihrer Arbeit. Auch der Newsletter ist ein offenes Projekt. Informationen dazu, wie Du uns unterstützen kannst, findest Du am [am Ende des Newsletters](#help-us-to-build-the-newsletter).
 
