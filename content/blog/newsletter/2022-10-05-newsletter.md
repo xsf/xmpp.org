@@ -164,7 +164,6 @@ A Call For Experience - like a Last Call, is an explicit call for comments, but 
 Please share the news on other networks:
 
 * [Mastodon](https://fosstodon.org/@xmpp/)
-* [Twitter](https://twitter.com/xmpp)
 * [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 * [Lemmy instance](https://community.xmpp.net/)
 * [Reddit](https://www.reddit.com/r/xmpp/)
