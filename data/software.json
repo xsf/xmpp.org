@@ -193,17 +193,6 @@
             "client"
         ],
         "doap": null,
-        "name": "Beem",
-        "platforms": [
-            "Android"
-        ],
-        "url": "https://elyzion.net/projects/beem"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
         "name": "BitlBee",
         "platforms": [
             "BSD",
@@ -278,17 +267,6 @@
             "Linux"
         ],
         "url": "http://buddycloud.com"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Candy",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://candy-chat.github.io/candy/"
     },
     {
         "categories": [
@@ -711,17 +689,6 @@
     },
     {
         "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "iChat Server",
-        "platforms": [
-            "macOS"
-        ],
-        "url": "https://www.apple.com"
-    },
-    {
-        "categories": [
             "library"
         ],
         "doap": null,
@@ -812,19 +779,6 @@
     },
     {
         "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "Jabber XCP",
-        "platforms": [
-            "Linux",
-            "Solaris",
-            "Windows"
-        ],
-        "url": "https://www.cisco.com"
-    },
-    {
-        "categories": [
             "client"
         ],
         "doap": "https://codeberg.org/emacs-jabber/emacs-jabber/raw/branch/production/doap.xml",
@@ -844,17 +798,6 @@
             "Mono"
         ],
         "url": "https://code.google.com/archive/p/jabber-net/"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "jabber.py",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://jabberpy.sourceforge.net"
     },
     {
         "categories": [
@@ -1058,17 +1001,6 @@
         "name": "Kaidan",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Kaiwa",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://github.com/getkaiwa/kaiwa"
     },
     {
         "categories": [
@@ -1662,17 +1594,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "SleekXMPP",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://github.com/fritzy/SleekXMPP"
-    },
-    {
-        "categories": [
             "component"
         ],
         "doap": "https://codeberg.org/slidge/slidge/raw/branch/main/doap.xml",
@@ -1880,17 +1801,6 @@
             "Linux"
         ],
         "url": "https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=tools/txxmpp.c"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "txmpp",
-        "platforms": [
-            "C++"
-        ],
-        "url": "https://github.com/rpavlik/txmpp"
     },
     {
         "categories": [
