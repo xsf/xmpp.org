@@ -3,10 +3,32 @@
         "categories": [
             "client"
         ],
+        "doap": null,
+        "name": "Beem",
+        "platforms": [
+            "Android"
+        ],
+        "url": "https://elyzion.net/projects/beem"
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
         "name": "blabber.im",
         "platforms": [],
         "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Candy",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://candy-chat.github.io/candy/"
     },
     {
         "categories": [
@@ -29,6 +51,17 @@
             "Windows"
         ],
         "url": "http://coversant.com"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "iChat Server",
+        "platforms": [
+            "macOS"
+        ],
+        "url": "https://www.apple.com"
     },
     {
         "categories": [
@@ -61,6 +94,30 @@
             "Java"
         ],
         "url": "https://java.net/projects/jso"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Jabber XCP",
+        "platforms": [
+            "Linux",
+            "Solaris",
+            "Windows"
+        ],
+        "url": "https://www.cisco.com/c/en/us/products/unified-communications/jabber-extensible-communications-platform-xcp/index.html"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "jabber.py",
+        "platforms": [
+            "Python"
+        ],
+        "url": "https://jabberpy.sourceforge.net"
     },
     {
         "categories": [
@@ -97,6 +154,17 @@
             "Browser"
         ],
         "url": "https://github.com/sstrigler/jwchat"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Kaiwa",
+        "platforms": [
+            "Browser"
+        ],
+        "url": "https://github.com/getkaiwa/kaiwa"
     },
     {
         "categories": [
@@ -144,6 +212,17 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "SleekXMPP",
+        "platforms": [
+            "Python"
+        ],
+        "url": "https://github.com/fritzy/SleekXMPP"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
@@ -174,6 +253,17 @@
             "Mobile"
         ],
         "url": "http://talkonaut.com"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "txmpp",
+        "platforms": [
+            "C++"
+        ],
+        "url": "https://github.com/rpavlik/txmpp"
     },
     {
         "categories": [
