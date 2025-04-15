@@ -47,6 +47,7 @@ jobs:
       - name: Software list linting
         run: |
           python tools/lint_software_list.py software.json
+          python tools/lint_software_list.py software_archive.json
 
       - name: Prepare XEP list
         run: python tools/prepare_xep_list.py
