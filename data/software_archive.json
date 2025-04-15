@@ -191,6 +191,19 @@
             "library"
         ],
         "doap": null,
+        "name": "Jabber-Net",
+        "platforms": [
+            ".net",
+            "C#",
+            "Mono"
+        ],
+        "url": "https://github.com/xmppo/Jabber-Net"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
         "name": "jabber.py",
         "platforms": [
             "Python"

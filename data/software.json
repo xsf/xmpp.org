@@ -710,19 +710,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "jabber.net",
-        "platforms": [
-            ".net",
-            "C#",
-            "Mono"
-        ],
-        "url": "https://code.google.com/archive/p/jabber-net/"
-    },
-    {
-        "categories": [
             "client"
         ],
         "doap": null,
