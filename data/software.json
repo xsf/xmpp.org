@@ -97,18 +97,6 @@
     },
     {
         "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "as3xmpp",
-        "platforms": [
-            "ActionScript",
-            "Flash"
-        ],
-        "url": "https://github.com/lyokato/as3xmppclient"
-    },
-    {
-        "categories": [
             "client"
         ],
         "doap": "https://astrachat.com/astrachat-clients.xml",
@@ -466,17 +454,6 @@
             "library"
         ],
         "doap": null,
-        "name": "Echomine Feridian",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://github.com/jdevelop/feridian"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
         "name": "Eiffel",
         "platforms": [
             "Eiffel"
@@ -503,17 +480,6 @@
             "Windows"
         ],
         "url": "https://www.emclient.com"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "emite",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://github.com/EmiteGWT/emite"
     },
     {
         "categories": [
@@ -647,28 +613,6 @@
             "library"
         ],
         "doap": null,
-        "name": "headstock",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://github.com/Lawouach/headstock"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "hsxmpp",
-        "platforms": [
-            "Haskell"
-        ],
-        "url": "http://\u05d7\u05e0\u05d5\u05da.se"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
         "name": "hxmpp",
         "platforms": [
             "Haxe"
@@ -686,28 +630,6 @@
             "Windows"
         ],
         "url": "https://www.icewarp.com"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "iksemel",
-        "platforms": [
-            "C"
-        ],
-        "url": "https://github.com/meduketto/iksemel"
-    },
-    {
-        "categories": [
-            "server"
-        ],
-        "doap": null,
-        "name": "in.jabberd",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://github.com/bobintetley/inetdxtra/tree/master/in.jabberd"
     },
     {
         "categories": [
@@ -942,17 +864,6 @@
             "library"
         ],
         "doap": null,
-        "name": "jQuery-XMPP-plugin",
-        "platforms": [
-            "JavaScript"
-        ],
-        "url": "https://github.com/maxpowel/jQuery-XMPP-plugin"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
         "name": "Jreen",
         "platforms": [
             "C++",
@@ -1069,17 +980,6 @@
         "name": "libstrophe",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "Lightr",
-        "platforms": [
-            "PHP"
-        ],
-        "url": "https://github.com/myYearbook/lightr"
     },
     {
         "categories": [
@@ -1492,18 +1392,6 @@
             "library"
         ],
         "doap": null,
-        "name": "seesmic-as3-xmpp",
-        "platforms": [
-            "ActionScript",
-            "Flash"
-        ],
-        "url": "https://code.google.com/archive/p/seesmic-as3-xmpp"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
         "name": "Sharp.Xmpp",
         "platforms": [
             ".net",
@@ -1534,19 +1422,6 @@
             "Linux"
         ],
         "url": "http://siemens-enterprise.com"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "Sim-IM",
-        "platforms": [
-            "FreeBSD",
-            "Linux",
-            "Windows"
-        ],
-        "url": "http://www.sim-im.org/index.php?title=Main_Page"
     },
     {
         "categories": [
@@ -2047,32 +1922,10 @@
         "categories": [
             "library"
         ],
-        "doap": null,
-        "name": "xmpp-psn",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://code.google.com/archive/p/xmpp-psn"
-    },
-    {
-        "categories": [
-            "library"
-        ],
         "doap": "/hosted-doap/xmpp-js.doap",
         "name": "xmpp.js",
         "platforms": [],
         "url": null
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "xmpp4js",
-        "platforms": [
-            "JavaScript"
-        ],
-        "url": "https://xmpp4js.sourceforge.net"
     },
     {
         "categories": [
@@ -2084,17 +1937,6 @@
             "Ruby"
         ],
         "url": "https://xmpp4r.github.io/"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "xmpp4r-simple",
-        "platforms": [
-            "Ruby"
-        ],
-        "url": "https://github.com/blaine/xmpp4r-simple"
     },
     {
         "categories": [
@@ -2117,17 +1959,6 @@
             "Linux"
         ],
         "url": "https://github.com/stanson-ch/xmppcd"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "xmppchat",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://babelmonkeys.de"
     },
     {
         "categories": [
@@ -2170,17 +2001,6 @@
             "Python"
         ],
         "url": "https://xmpppy.sourceforge.net"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
-        "name": "XMPPWebChat",
-        "platforms": [
-            "Browser"
-        ],
-        "url": "https://github.com/udayg/xmppwebchat"
     },
     {
         "categories": [
