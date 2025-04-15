@@ -85,12 +85,18 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
 
 
 if __name__ == "__main__":
-    base_path = Path.resolve(Path(sys.argv[0])).parent
-    input_file = Path(base_path / "../data/software.json")
+    file_name = Path(sys.argv[1]).name
+    base_path = Path.resolve(Path(__file__)).parent.parent
+    input_file = Path(base_path / "data" / file_name)
     with Path(input_file).open("rb") as data_file:
         data = json.load(data_file)
 
     violations_count = check_entries(data)
     if violations_count:
-        print(f"Found {violations_count} severe violations. Please fix them.")
+        print(
+            f"Found {violations_count} severe violations in {file_name}."
+            "Please fix them.",
+        )
         sys.exit(1)
+
+    print(f"Lint check passed successfully for {file_name}")
