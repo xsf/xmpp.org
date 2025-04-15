@@ -3,6 +3,15 @@
         "categories": [
             "client"
         ],
+        "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
+        "name": "blabber.im",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Coversant SoapBox Communicator",
         "platforms": [
@@ -177,14 +186,5 @@
             "Flash"
         ],
         "url": "http://www.igniterealtime.org/projects/xiff/"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": "https://codeberg.org/kriztan/blabber.im/raw/branch/master/blabber.im.doap",
-        "name": "blabber.im",
-        "platforms": [],
-        "url": null
     }
 ]
