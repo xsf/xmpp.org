@@ -314,6 +314,17 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "pyxmpp",
+        "platforms": [
+            "Python"
+        ],
+        "url": "https://github.com/Jajcus/pyxmpp"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
