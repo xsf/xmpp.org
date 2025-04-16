@@ -421,8 +421,9 @@
             "server"
         ],
         "doap": null,
-        "name": "djabberd",
+        "name": "DJabberd",
         "platforms": [
+            "FreeBSD",
             "Linux"
         ],
         "url": "https://danga.com"
@@ -1192,6 +1193,7 @@
         "doap": null,
         "name": "Pidgin",
         "platforms": [
+            "BSD",
             "Linux",
             "macOS",
             "Windows"
@@ -1647,7 +1649,7 @@
             "library"
         ],
         "doap": null,
-        "name": "txmmp",
+        "name": "txxmmp",
         "platforms": [
             "Linux"
         ],
