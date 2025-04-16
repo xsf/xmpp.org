@@ -397,6 +397,18 @@
             "client"
         ],
         "doap": null,
+        "name": "StepChat",
+        "platforms": [
+            "FreeBSD",
+            "Linux"
+        ],
+        "url": "https://github.com/etoile/StepChat"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
         "name": "Talkonaut",
         "platforms": [
             "Mobile"
@@ -469,6 +481,17 @@
             "Browser"
         ],
         "url": "https://cgit.babelmonkeys.de/?p=xmppchat.git;a=summary"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": null,
+        "name": "XMPPKit",
+        "platforms": [
+            "Objective-C"
+        ],
+        "url": "https://github.com/etoile/XMPPKit"
     },
     {
         "categories": [
