@@ -1579,6 +1579,19 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Swift",
+        "platforms": [
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://swift.im/swift.html"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": "/hosted-doap/swiften.doap",
@@ -1979,6 +1992,20 @@
             "Python"
         ],
         "url": "https://xmpppy.sourceforge.net"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "YateClient",
+        "platforms": [
+            "FreeBSD",
+            "Linux",
+            "macOS",
+            "Windows"
+        ],
+        "url": "https://www.yate.ro/opensource.php?page=yateclient"
     },
     {
         "categories": [
