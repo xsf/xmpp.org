@@ -36,7 +36,7 @@ lint.ignore = [
   "T201",     # `print` found
 ]
 
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = "double"
