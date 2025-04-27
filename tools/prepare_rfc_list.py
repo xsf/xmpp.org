@@ -86,7 +86,7 @@ def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
             if authors is None:
                 authors = item.attrib.get("fullname")
             else:
-                authors += f', {item.attrib.get("fullname")}'
+                authors += f", {item.attrib.get('fullname')}"
         if item.tag == "abstract":
             t_element = item.find("t")
             if t_element is not None:

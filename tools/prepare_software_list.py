@@ -221,7 +221,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
             resized_img.save(file_path)
             print(
                 f"                  Logo at {file_path} "
-                f"(file size: {file_size / (1<<10):,.0f} KB) "
+                f"(file size: {file_size / (1 << 10):,.0f} KB) "
                 f"too big, had to be resized",
             )
     except (ValueError, OSError, UnidentifiedImageError) as error:
@@ -327,12 +327,12 @@ def prepare_package_data() -> None:
             create_package_page(package_category, package_name_slug, package["name"])
 
     print(
-        f'\n{42 * "="}\n'
+        f"\n{42 * '='}\n"
         f"Number of packages\n"
         f"Total: {len(xsf_package_list)}\n"
         f"With DOAP: {number_of_doap_packages} "
         f"({round(number_of_doap_packages / len(xsf_package_list) * 100, 1)} %)"
-        f'\n{42 * "="}',
+        f"\n{42 * '='}",
     )
     with Path(DATA_PATH / "software_list_doap.json").open(
         "w",
@@ -356,7 +356,7 @@ def add_doap_data_to_xeplist() -> None:
             if not package_data["xeps"]:
                 continue
             for supported_xep in package_data["xeps"]:
-                if supported_xep["number"] == f'{xep["number"]:04d}':
+                if supported_xep["number"] == f"{xep['number']:04d}":
                     xep["implementations"].append(
                         {
                             "package_name": name,

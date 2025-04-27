@@ -1,5 +1,4 @@
-"""Utilities for files/folders/downloads management
-"""
+"""Utilities for files/folders/downloads management"""
 
 import shutil
 from pathlib import Path

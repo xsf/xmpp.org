@@ -1,5 +1,4 @@
-"""This file is used to download the XEP list and convert it to JSON
-"""
+"""This file is used to download the XEP list and convert it to JSON"""
 
 from typing import Any
 

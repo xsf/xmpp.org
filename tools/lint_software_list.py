@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Lint software.json
-"""
+"""Lint software.json"""
+
 from typing import Any
 
 import json
@@ -44,7 +44,7 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
         if unknown:
             emit_violation(
                 entry["name"],
-                f'has unknown keys: {", ".join(map(repr, unknown))}',
+                f"has unknown keys: {', '.join(map(repr, unknown))}",
             )
             violations += 1
 
@@ -52,7 +52,7 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
             emit_violation(
                 entry["name"],
                 f"misses the following required properties: "
-                f'{", ".join(map(repr, missing))} '
+                f"{', '.join(map(repr, missing))} "
                 f"(see other entries for a reference)",
             )
             violations += 1
@@ -64,7 +64,7 @@ def check_entries(entries: list[dict[str, Any]]) -> int:
             emit_violation(
                 entry["name"],
                 f"platform order must be: "
-                f'{", ".join(map(repr, sorted_platforms))} '
+                f"{', '.join(map(repr, sorted_platforms))} "
                 f"(platforms must be ordered alphabetically)",
             )
             violations += 1
