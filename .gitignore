@@ -11,9 +11,11 @@
 .DS_Store
 .hugo_build.lock
 .project
+.ruff_cache
 .vagrant/
 .venv/
 .vscode/
+
 content/software/*
 data/compliance_suite.json
 data/rfc_list.json
