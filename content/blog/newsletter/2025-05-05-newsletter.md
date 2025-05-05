@@ -53,7 +53,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 - [Kaidan](https://www.kaidan.im/) has received [NLnet](https://nlnet.nl) funding for [various improvement across the board](https://nlnet.nl/project/Kaidan-MUC/), most notably multi-user chat and support for legacy OMEMO. The second point is significant because while Kaidan is using a newer version of the OMEMO end-to-end encryption protocol, other popular clients including Conversations, Monal, and Dino are still using an older version. Since the two are not compatible, this meant Kaidan users were unable to use OMEMO encryption with users of most other clients. By implementing the older spec as well, Kaidan will help bridge that gap.
 
-- [Monocles Chat 2.0.6](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.6) has been released for Android. This version brings initial captions to files, initial option to pin unencrypted message to top, providers list implementation and the option to register on your own xmpp server among many other new features and improvements.
+- [Monocles Chat 2.0.6](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.6) has been released for Android. This version brings initial support for file captions, the option to pin an unencrypted message to the top of a conversation, providers list support, and the option to register on your own XMPP server, among many other new features and improvements.
 
 {{< figure src="/images/newsletter/2025-05-05/monocles-pin-message.png" caption="Monocles Chat 2.0.6: Initial captions to files and pin message to the top" >}}
 
