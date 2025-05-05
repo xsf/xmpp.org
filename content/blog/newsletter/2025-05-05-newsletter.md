@@ -14,7 +14,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 ## XSF Announcements
 
 ### XSF Membership
-If you are interested in joining the XMPP Standards Foundation as a member, [please apply until May 18th, 2025, 00:00 UTC!](https://wiki.xmpp.org/web/Membership_Applications_Q2_2025).
+If you are interested in joining the XMPP Standards Foundation as a member, [submissions are open until May 18th, 2025, 00:00 UTC!](https://wiki.xmpp.org/web/Membership_Applications_Q2_2025).
 
 ### XSF Fiscal Hosting Projects
 
