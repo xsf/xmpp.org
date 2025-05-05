@@ -59,7 +59,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 {{< figure src="/images/newsletter/2025-05-05/monocles-providers.png" caption="Monocles Chat 2.0.6: Register on your own XMPP server or pick one from the providers list" >}}
  
-- [Movim](https://movim.eu/) has released version [0.30](https://mov.im/community/pubsub.movim.eu/Movim/good-news-everyone-movim-0-30-encke-is-there-xMvYPr) (code named "[Encke](https://en.wikipedia.org/wiki/Comet_Encke)"), the biggest Movim evolution in many years! This release brings [multi-participant calls](https://movim.eu/#visio), reactions are now displayed in the detailed message view, support for Unicode 15.1 with plenty of new emojis to use, avatar change on contacts new [story](https://movim.eu/#stories)
+- [Movim](https://movim.eu/) has released version [0.30](https://mov.im/community/pubsub.movim.eu/Movim/good-news-everyone-movim-0-30-encke-is-there-xMvYPr) (code named "[Encke](https://en.wikipedia.org/wiki/Comet_Encke)"), the biggest Movim evolution in many years! This release brings [multi-participant calls](https://movim.eu/#visio), reactions being displayed in the detailed message view, support for Unicode 15.1 with plenty of new emojis to use, and avatars that change when a contact adds to their [Story](https://movim.eu/#stories).
 
 {{< figure src="/images/newsletter/2025-05-05/movim-visio.jpg" caption="Movim 0.30 (Encke): Multi Participant Calls. Bob Cat looking disgruntled by the presence of the 'Hooman' on the lower right of the screen!" >}}
 
