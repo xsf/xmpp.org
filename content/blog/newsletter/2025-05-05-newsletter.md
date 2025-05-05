@@ -169,6 +169,8 @@ This is a community effort, and we would like to thank translators for their con
   - Translators: *Gonzalo Raúl Nemmi*
 - German: [xmpp.org](/categories/newsletter/)
   - Translators: *Millesimus*
+- Português (BR): [xmpp.org](/categories/newsletter/)
+  - Translators: *Paulo*
 
 ## Help us to build the newsletter
 
