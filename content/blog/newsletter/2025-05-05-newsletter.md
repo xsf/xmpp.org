@@ -63,7 +63,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 {{< figure src="/images/newsletter/2025-05-05/movim-visio.jpg" caption="Movim 0.30 (Encke): Multi Participant Calls. Bob Cat looking disgruntled by the presence of the 'Hooman' on the lower right of the screen!" >}}
 
-{{< figure src="/images/newsletter/2025-05-05/movim-visio-phone.png" caption="Movim 0.30 (Encke): Meow OwO bedazzled by the looks of Multi Participant Calls on his movile device!" >}}
+{{< figure src="/images/newsletter/2025-05-05/movim-visio-phone.jpg" caption="Movim 0.30 (Encke): Meow OwO bedazzled by the looks of Multi Participant Calls on his mobile device!" >}}
 
   - and following right on its heels, [Movim](https://movim.eu/) also published its first bug-fix release: version [0.30.1](https://mov.im/community/pubsub.movim.eu/Movim/here-comes-the-new-movim-release-encke-0-30-1-ckTLY4), adding animated pictures support in the image proxy and a new Avatar and Banner Configuration Panel, as well as implementing ([XEP-0392](https://xmpp.org/extensions/xep-0392.html)) Consistent Color Generation, among many other improvements and bugfixes. Make sure to check out the official announcements at the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim) for all the details!
 
