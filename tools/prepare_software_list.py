@@ -361,6 +361,7 @@ def add_doap_data_to_xeplist() -> None:
                         {
                             "package_name": name,
                             "package_name_slug": package_data["name_slug"],
+                            "package_logo": package_data["logo"],
                             "package_categories": package_data["categories"],
                             "implemented_version": supported_xep["version"],
                             "implementation_status": supported_xep["status"],

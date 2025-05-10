@@ -359,6 +359,11 @@ button[name="show-xep-implementations"] {
 }
 @media (min-width: 992px) {
     .offcanvas.offcanvas-end.extensions-offcanvas {
+        width: 40%;
+    }
+}
+@media (min-width: 1200px) {
+    .offcanvas.offcanvas-end.extensions-offcanvas {
         width: var(--bs-offcanvas-width);
     }
 }

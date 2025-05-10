@@ -169,20 +169,35 @@ function show_xep_implementations() {
   for (const item of xepListData) {
     const paddedXEPNum = item.number.toString().padStart(4, '0')
     if (paddedXEPNum === xep_number) {
-      document.getElementById("implementations-heading").innerText = `XEP-${paddedXEPNum}: ${item.title}`;
-      document.getElementById("implementations-description").innerText = `Last revision: Version ${item.last_revision_version} (${item.last_revision_date})`
+      const heading = document.getElementById("implementations-heading")
+      heading.innerText = `XEP-${paddedXEPNum}: ${item.title}`;
+      heading.href = `/extensions/xep-${paddedXEPNum}.html`;
+      document.getElementById("implementations-description").innerText = `Last XEP revision: Version ${item.last_revision_version} (${item.last_revision_date})`
 
       for (const implementation of item.implementations) {
         const implementationRow = document.createElement("tr")
         const nameCell = document.createElement("td")
+        const nameContainer = document.createElement("div")
+        nameContainer.classList.add("d-flex", "align-items-center")
+        implementationRow.append(nameContainer)
+
+        if (implementation.package_logo) {
+          const logo = document.createElement("img")
+          logo.src = implementation.package_logo
+          logo.style.width = "1rem"
+          logo.classList.add("ms-2")
+          nameContainer.append(logo)
+        }
+
         const nameLink = document.createElement("a")
         nameLink.innerText = implementation.package_name
         nameLink.href = `/software/${implementation.package_name_slug}/`
         nameCell.append(nameLink)
-        implementationRow.append(nameCell)
+        nameContainer.append(nameCell)
 
         const stateCell = document.createElement("td")
         if (implementation.implementation_status) {
+          // Complete (default)
           let iconClasses = ["fa-solid", "fa-check"]
           let badgeClass = "text-bg-success"
 
@@ -190,7 +205,7 @@ function show_xep_implementations() {
             iconClasses = ["fa-solid", "fa-plus"]
             badgeClass = "text-bg-primary"
           }
-          if (implementation.implementation_status === "removed") {
+          if (implementation.implementation_status === "removed" || implementation.implementation_status === "wontfix" || implementation.implementation_status === "deprecated") {
             iconClasses = ["fa-regular", "fa-circle-xmark"]
             badgeClass = "text-bg-secondary"
           }
@@ -205,19 +220,17 @@ function show_xep_implementations() {
           stateIcon.classList.add("text-reset", ...iconClasses)
           stateSpan.append(stateIcon)
           stateCell.append(stateSpan)
+        } else {
+          stateCell.innerText = "-"
         }
         implementationRow.append(stateCell)
 
         const implementationSinceVersionCell = document.createElement("td")
-        if (implementation.implementation_since) {
-          implementationSinceVersionCell.innerText = implementation.implementation_since
-        }
+        implementationSinceVersionCell.innerText = implementation.implementation_since ?? "-"
         implementationRow.append(implementationSinceVersionCell)
 
         const implementedVersionCell = document.createElement("td")
-        if (implementation.implemented_version) {
-          implementedVersionCell.innerText = implementation.implemented_version
-        }
+        implementedVersionCell.innerText = implementation.implemented_version ?? "-"
         implementationRow.append(implementedVersionCell)
 
         tableBody.append(implementationRow)
