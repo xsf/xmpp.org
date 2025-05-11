@@ -28,7 +28,7 @@ A XSF oferece [gestão fiscal institucional](/community/fiscalhost/) para projet
 - [Prav](https://opencollective.com/pravapp)
 - [diasp.in](https://opencollective.com/diasp-in)
 
-## XMPP Events
+## Eventos XMPP
 
 - [Berlin XMPP Meetup](https://mov.im/?node/pubsub.movim.eu/berlin-xmpp-meetup) [DE / EN]: Encontro mensal de entusiastas de XMPP em Berlin, toda 2ª quarta-feira do mês, às 6:00 PM horário local.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: Encontro online mensal da comunidade XMPP italiana, toda 3ª segunda-feira do mês, às 7:00 PM horário local (evento online e transmitido em tempo real).
@@ -74,14 +74,14 @@ A XSF oferece [gestão fiscal institucional](/community/fiscalhost/) para projet
 
 - [Prose](https://prose.org/) lançou versões [0.8.0](https://github.com/prose-im/prose-app-web/releases/tag/0.8.0), [0.8.1](https://github.com/prose-im/prose-app-web/releases/tag/0.8.1), [0.8.2](https://github.com/prose-im/prose-app-web/releases/tag/0.8.2), [0.8.3](https://github.com/prose-im/prose-app-web/releases/tag/0.8.3), [0.9.0](https://github.com/prose-im/prose-app-web/releases/tag/0.9.0), [0.9.1](https://github.com/prose-im/prose-app-web/releases/tag/0.9.1) e [0.10.0](https://github.com/prose-im/prose-app-web/releases/tag/0.10.0) de seu frontend na web [prose-web-app](https://github.com/prose-im/prose-app-web).
 
-### XMPP Servers
+### Servidores XMPP
 
 - [MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/) lançou a versão [6.3.3](https://github.com/esl/MongooseIM/releases/tag/6.3.3) de sua Solução Corporativa de Mensagens Instantâneas. Esta pequena atualização inclui várias melhorias e correções. Para maiores informações, confira a [documentação](https://esl.github.io/MongooseDocs/6.3.3).
 - [ProcessOne](https://www.process-one.net/) publicou [ejabberd 25.04](https://www.process-one.net/blog/ejabberd-25-04/). Esse lançamento traz uma importante correção de segurança, correçoes de bugs um novo comando API.
 - [Prosody IM](https://prosody.im/) tem o prazer de apresentar a versão [13.0.1](https://blog.prosody.im/prosody-13.0.1-released/), uma nova versão secundária (minor release) da=o branch estável mais recente. Esta atualização corrige alguns bugs importantes descobertos após o último lançamento. Leia todos os detalhes no [changelog](https://prosody.im/doc/release/13.0.1). Como sempre, instruções detalhadas de instalação e download estão disponíveis na [página de download](https://prosody.im/download/) para sua conveniência.
 - O [app Prosody para  YunoHost](https://github.com/YunoHost-Apps/prosody_ynh) foi atualizado para forner suporte a diversos [XEPs](https://raw.githubusercontent.com/YunoHost-Apps/prosody_ynh/refs/heads/master/xmpp_compliance) por padrão, configurado para todos os usuários YunoHost em somente um click. [YunoHost](https://yunohost.org/) é um conjunto de ferramentas que permitem administrar com facilidade os serviços que você hospeda e, apesar de no passado vir originalmente distribuido com o Metronome, uma derivação do Prosody, recentemente passou a distribuir sua funcionalidade XMPP em um "app" separado, para que as pessoas possam usar outro servidor XMPP de sua escolha.
 
-### XMPP Libraries & Tools
+### Bibliotecas e Ferramentas XMPP
 
 - [go-xmpp](https://github.com/xmppo/go-xmpp) versões [0.2.13](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.13) e [0.2.14](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.14) foram lançadas.
 - [libomemo-c](https://github.com/dino/libomemo-c) versão [0.5.1](https://github.com/dino/libomemo-c/releases/tag/v0.5.1) foi lançada.
@@ -100,7 +100,7 @@ Este ciclo está descrito [XEP-0001](/extensions/xep-0001.html), que contém as 
 
 - Não há XEPs novos nesse mês.
 
-### Propostas
+### Propostos
 
 O processo desenvolvimento de um XEP começa pela elaboração de uma ideia e seu envio ao [Editor XMPP](/about/xsf/editor-team/). Dentro de duas semanas, o [Conselho](/about/xmpp-standards-foundation/#council) decide se aceita a proposta como uma XEP Experimental.
 
