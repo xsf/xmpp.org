@@ -39,14 +39,14 @@ La XSF offre [ospitalità fiscale](/community/fiscalhost/) per i progetti XMPP. 
 
 ### Client
 
-- **Cheogram** v2.17.10-1 introduce gli Spaces ([XEP-503](https://xmpp.org/extensions/xep-0503.html))
-- **Conversations** v2.18.0/1/2: backup personalizzato, supporto URI ampliato
-- **Dino** v0.5: OMEMO di default, migliorie UX; finanziato da NLnet
-- **Gajim** v2.1.0/1: feed attività, miglioramenti UI, supporto XEP-0490
-- **Kaidan**: migliora supporto OMEMO e MUC con fondi NLnet
-- **Monocles Chat** v2.0.6: messaggi fissabili, caption nei file, registrazione su server proprio
-- **Movim** v0.30/0.30.1: chiamate multiutente, emoji Unicode 15.1, pannello avatar/banner, supporto XEP-0392
-- **Prose** v0.8.0–0.10.0: aggiornamenti all’interfaccia web
+- [**Cheogram**](https://cheogram.com/) v2.17.10-1 introduce gli Spaces ([XEP-503](https://xmpp.org/extensions/xep-0503.html))
+- [**Conversations**](https://conversations.im/) v2.18.0/1/2: backup personalizzato, supporto URI ampliato
+- [**Dino**](https://dino.im/) v0.5: OMEMO di default, migliorie UX; [finanziato da NLnet](https://nlnet.nl/project/Dino-UX/)
+- [**Gajim**](https://gajim.org/) v2.1.0/1: feed attività, miglioramenti UI, supporto XEP-0490
+- [**Kaidan**](https://www.kaidan.im/): migliora supporto OMEMO e MUC con [fondi NLnet](https://nlnet.nl/project/Kaidan-MUC/)
+- [**Monocles Chat**](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.6) v2.0.6: messaggi fissabili, caption nei file, registrazione su server proprio
+- [**Movim**](https://movim.eu/) v0.30/0.30.1: chiamate multiutente, emoji Unicode 15.1, pannello avatar/banner, supporto XEP-0392
+- [**Prose**](https://prose.org/) v0.8.0–0.10.0: aggiornamenti all’interfaccia web
 
 ### Server
 
