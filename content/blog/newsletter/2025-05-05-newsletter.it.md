@@ -41,11 +41,28 @@ La XSF offre [ospitalità fiscale](/community/fiscalhost/) per i progetti XMPP. 
 
 - [**Cheogram**](https://cheogram.com/) v2.17.10-1 introduce gli Spaces ([XEP-503](https://xmpp.org/extensions/xep-0503.html))
 - [**Conversations**](https://conversations.im/) v2.18.0/1/2: backup personalizzato, supporto URI ampliato
-- [**Dino**](https://dino.im/) v0.5: OMEMO di default, migliorie UX; [finanziato da NLnet](https://nlnet.nl/project/Dino-UX/)
-- [**Gajim**](https://gajim.org/) v2.1.0/1: feed attività, miglioramenti UI, supporto XEP-0490
+- [**Dino**](https://dino.im/) [v0.5](https://dino.im/blog/2025/04/dino-0.5-release/): OMEMO di default, migliorie UX; [finanziato da NLnet](https://nlnet.nl/project/Dino-UX/)
+- [**Gajim**](https://gajim.org/) [v2.1.0/1](https://gajim.org/post/2025-04-08-gajim-2.1.0-released/): feed attività, miglioramenti UI, supporto XEP-0490
+
+{{< figure src="/images/newsletter/2025-05-05/gajim-activity-feed.png" caption="Feed attività Gajim 2.1" >}}
+
+{{< figure src="/images/newsletter/2025-05-05/gajim-account-select.png" caption="Account and status selection in Gajim 2.1" >}}
+
 - [**Kaidan**](https://www.kaidan.im/): migliora supporto OMEMO e MUC con [fondi NLnet](https://nlnet.nl/project/Kaidan-MUC/)
 - [**Monocles Chat**](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.6) v2.0.6: messaggi fissabili, caption nei file, registrazione su server proprio
-- [**Movim**](https://movim.eu/) v0.30/0.30.1: chiamate multiutente, emoji Unicode 15.1, pannello avatar/banner, supporto XEP-0392
+
+{{< figure src="/images/newsletter/2025-05-05/monocles-pin-message.png" caption="Monocles Chat 2.0.6: Initial captions to files and pin message to the top" >}}
+
+{{< figure src="/images/newsletter/2025-05-05/monocles-providers.png" caption="Monocles Chat 2.0.6: Register on your own XMPP server or pick one from the providers list" >}}
+
+- [**Movim**](https://movim.eu/) [v0.30/0.30.1](https://mov.im/community/pubsub.movim.eu/Movim/good-news-everyone-movim-0-30-encke-is-there-xMvYPr): chiamate multiutente, emoji Unicode 15.1, pannello avatar/banner, supporto XEP-0392
+
+{{< figure src="/images/newsletter/2025-05-05/movim-visio.jpg" caption="Movim 0.30 (Encke): Multi Participant Calls. Bob Cat looking disgruntled by the presence of the 'Hooman' on the lower right of the screen!" >}}
+
+{{< figure src="/images/newsletter/2025-05-05/movim-visio-phone.jpg" caption="Movim 0.30 (Encke): Meow OwO bedazzled by the looks of Multi Participant Calls on his mobile device!" >}}
+
+{{< figure src="/images/newsletter/2025-05-05/movim-avatar-panel.png" caption="Movim 0.30.1: Avatar and banner configuration panel" >}}
+
 - [**Prose**](https://prose.org/) v0.8.0–0.10.0: aggiornamenti all’interfaccia web
 
 ### Server
@@ -91,6 +108,8 @@ Condividi su:
 - [Lemmy](https://slrpnk.net/c/xmpp)
 - [Reddit](https://www.reddit.com/r/xmpp/)
 - [Facebook](https://www.facebook.com/jabber)
+
+{{< newsletter-subscribe >}}
 
 ## Contributi e traduzioni
 
