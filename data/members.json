@@ -51,11 +51,6 @@
             "jids": ["zash@zash.se"],
             "roles": ["infrastructure"]
         },
-        
-        {
-            "name": "Fannys Bampaloukas",
-            "jids": ["msavoritias@macaw.me"]
-        },
 
         {
             "name": "Ludovic Bocquet",
@@ -88,6 +83,11 @@
             "name": "Dan Caseley",
             "jids": ["fishbowler@xmpp.co", "dan.caseley@igniterealtime.org"],
             "roles": ["council"]
+        },
+
+        {
+            "name": "Nicolas Cedilnik",
+            "jids": ["nicoco@nicoco.fr"]
         },
 
         {
@@ -226,6 +226,11 @@
         },
 
         {
+            "name": "Dele Olajide",
+            "jids": ["dele@igniterealtime.org", "dele@pade.chat"]
+        },
+
+        {
             "name": "Mathieu Pasquet",
             "jids": ["mathieui@mathieui.net"]
         },
@@ -258,6 +263,11 @@
         },
 
         {
+            "name": "Jérôme Sautret",
+            "jids": ["jsautret@process-one.net"]
+        },
+
+        {
             "name": "Jonas Schäfer",
             "jids": ["jonas@wielicki.name"],
             "roles": ["infrastructure"]
@@ -278,6 +288,11 @@
             "name": "Kevin Smith",
             "jids": ["kevin.smith@isode.com"],
             "roles": ["editor", "infrastructure"]
+        },
+
+        {
+            "name": "Badri Sunderarajan",
+            "jids": ["badrihippo@disroot.org"]
         },
 
         {
