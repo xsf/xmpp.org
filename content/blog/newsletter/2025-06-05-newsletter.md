@@ -31,7 +31,7 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ## XMPP Articles
 
-- [El gran lío de la mensajería instantánea](https://jdrm.info/el-gran-lio-de-la-mensajeria-instantanea.html) by [Jacobo Da Riva Muñoz](https://jdrm.info/author/jacobo-da-riva-munoz.html). [ES]
+- [El gran lío de la mensajería instantánea](https://jdrm.info/el-gran-lio-de-la-mensajeria-instantanea.html) by [Jacobo Da Riva Muñoz](https://jdrm.info/pages/about.html). [ES]
 - [Introducing Converse 11: A Major Leap Forward for XMPP Webchat](https://opkode.com/blog/2025-05-21-converse-11/) by [JC Brand](https://opkode.com/about/) for the [Opkode blog](https://opkode.com/blog/).
 - [Monocles](https://monocles.eu/more/), the project responsible for the XMPP Monocles chat [Web](https://monocles.chat/login) and [Android](https://f-droid.org/en/packages/de.monocles.chat/) clients, started a [crowdfunding campaign](https://www.startnext.com/en/monocles). The main goal is to create a platform where privacy, digital sovereignty and sustainability take center stage. Your privacy is non-negotiable. The funding period will span from 03.28.2025 to 06.30.2025.
 - XMPP is now featured on the list of the 'Delightful Lists', see [delightful XMPP](https://delightful.club/delightful_xmpp/).
