@@ -14,27 +14,23 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 ## XMPP Events
 
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
-
-- The [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2025-05_Berlin) took place during the 23rd, 24th and 25th of May 2025. Developers from Germany, France & the United Kingdom representing [Conversations](https://conversations.im/), [Dino](https://dino.im/), [ejabberd](https://www.ejabberd.im/), [Kaidan](https://www.kaidan.im/), LiveDashboard, Macaw, [Monal](https://monal-im.org/), [Renga](https://pulkomandy.tk/projects/renga/) and [Prose](https://prose.org/) gathered together to take part of it and make it happen!
-
-  - Sponsored by: [XSF](https://xmpp.org/), Ammonit Measurement GmbH & [Wikimedia e.V.](https://www.wikimedia.de/)
+- The [XMPP Sprint in Berlin](https://wiki.xmpp.org/web/Sprints/2025-05_Berlin) took place during the 23rd-25th of May 2025. Developers from Germany, France & the United Kingdom representing [Conversations](https://conversations.im/), [Dino](https://dino.im/), [ejabberd](https://www.ejabberd.im/), [Kaidan](https://www.kaidan.im/), LiveDashboard, Macaw, [Monal](https://monal-im.org/), [Renga](https://pulkomandy.tk/projects/renga/), and [Prose](https://prose.org/) gathered to make it happen! The sprint was sponsored by [the XSF](https://xmpp.org/), Ammonit Measurement GmbH, and [Wikimedia e.V.](https://www.wikimedia.de/).
 
 {{< figure src="/images/newsletter/2025-06-05/post-berlinsprint.jpg" caption="A still from the XMPP Sprint in Berlin, May 2025" >}}
 
 ## Videos
 
-- [Goffi](https://mastodon.sdf.org/@goffi@videos.libervia.org), from [Libervia](https://libervia.org/), published a [Short Overview of the New Design Progress in Web Frontend](https://videos.libervia.org/w/7fcb981e-5e6a-4c15-b6e5-d27db8a6e804) on the [Libervia Video Channel](https://videos.libervia.org/c/libervia/videos?s=1)
+- [Goffi](https://mastodon.sdf.org/@goffi@videos.libervia.org), from [Libervia](https://libervia.org/), published a [short progress overview of the new web frontend design](https://videos.libervia.org/w/7fcb981e-5e6a-4c15-b6e5-d27db8a6e804) on the [Libervia video channel](https://videos.libervia.org/c/libervia/videos?s=1).
 
 ## Talks
 
-- On Friday, May 16, Vril hosted the [Workshop di XMPP e Free Software all’AntiBiennale di Venezia](https://www.xmpp-it.net/2025/05/20/vril/workshop-di-xmpp-e-free-software-allantibiennale-di-venezia/) (a workshop on XMPP and free software) at Cabasego, in Venice, Italy. The whole workshop lasted around one and a half hours and the slides are freely available for you to check out in [here](https://cryptpad.disroot.org/slide/#/2/slide/view/LD2suM7gLDdabbevD+OsMX4M1jknPJ57oq0fWJn0mcE/present/). The event took place in a most beautiful house, incredibly located in the center of Venice, inhabited by people who are always willing to leave their door open to Venice’s underground communities. [IT]
+- On Friday, May 16, Vril hosted the [Workshop di XMPP e Free Software all’AntiBiennale di Venezia](https://www.xmpp-it.net/2025/05/20/vril/workshop-di-xmpp-e-free-software-allantibiennale-di-venezia/) (a workshop on XMPP and free software) at Cabasego, in Venice, Italy. The whole workshop lasted around one and a half hours and the slides are freely [available for you to check out](https://cryptpad.disroot.org/slide/#/2/slide/view/LD2suM7gLDdabbevD+OsMX4M1jknPJ57oq0fWJn0mcE/present/). The event took place in a most beautiful house, incredibly located in the center of Venice, inhabited by people who are always willing to leave their door open to Venice’s underground communities. [IT]
 
 ## XMPP Articles
 
 - [El gran lío de la mensajería instantánea](https://jdrm.info/el-gran-lio-de-la-mensajeria-instantanea.html) by [Jacobo Da Riva Muñoz](https://jdrm.info/pages/about.html). [ES]
-- [Introducing Converse 11: A Major Leap Forward for XMPP Webchat](https://opkode.com/blog/2025-05-21-converse-11/) by [JC Brand](https://opkode.com/about/) for the [Opkode blog](https://opkode.com/blog/).
-- [Monocles](https://monocles.eu/more/), the project responsible for the XMPP Monocles chat [Web](https://monocles.chat/login) and [Android](https://f-droid.org/en/packages/de.monocles.chat/) clients, started a [crowdfunding campaign](https://www.startnext.com/en/monocles). The main goal is to create a platform where privacy, digital sovereignty and sustainability take center stage. Your privacy is non-negotiable. The funding period will span from 03.28.2025 to 06.30.2025.
-- XMPP is now featured on the list of the 'Delightful Lists', see [delightful XMPP](https://delightful.club/delightful_xmpp/).
+- [Monocles](https://monocles.eu/more/), the project responsible for the XMPP Monocles chat [Web](https://monocles.chat/login) and [Android](https://f-droid.org/en/packages/de.monocles.chat/) clients, started a [crowdfunding campaign](https://www.startnext.com/en/monocles). The main goal is to create a platform where privacy, digital sovereignty and sustainability take center stage. Your privacy is non-negotiable. The funding period will span from March 28 to June 30.
+- [XMPP is now featured](https://delightful.club/delightful_xmpp/) on the list of the 'Delightful Lists'.
 - [Towards a Password-Mukt XMPP](https://badrihippo.thekambattu.rocks/clog/towards-a-password-mukt-xmpp/) for some thoughts and fantasies by [Badri (Hippo)](https://badrihippo.thekambattu.rocks) on how passwordless XMPP login could be achieved, either via an out-of-band mechanism or by authorizing from an already logged-in client.
 - [XMPP packages coming with Debian 13](https://xmpp-team.pages.debian.net/blog/2025/05/xmpp-debian-13-trixie-news.html) as the freeze toward next stable Debian (13 or Trixie) has been engaged, an overview of the XMPP clients, servers and librairies coming with it is provided in this article from the Debian XMPP Team.
 
@@ -42,8 +38,8 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 
 ### XMPP Clients and Applications
 
-- [Converse.js](https://conversejs.org/) has released version [11.0.0](https://github.com/conversejs/converse.js/releases/tag/v11.0.0) of its open-source and web-based XMPP chat client. The Desktop version can be downloaded from [here](https://github.com/conversejs/converse-desktop/releases). This release comes packed full of bugfixes, changes and new features. Way too many to list in here. Make sure to check out the [release link](https://github.com/conversejs/converse.js/releases) for all the details!
-- [Gajim](https://gajim.org/) has released version [2.2.0](https://gajim.org/post/2025-05-15-gajim-2.2.0-released/). This release brings three new features: message retraction (via [XEP-0424: Message Retraction](https://xmpp.org/extensions/xep-0424.html)), blocking participants in group chats, and updated support for modern group chat avatars (via [XEP-0486: MUC Avatars](https://xmpp.org/extensions/xep-0486.html)), among many other improvements and bugfixes. Head over to their [News](https://gajim.org/post/) section or check the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
+- [Converse.js](https://conversejs.org/) has released version [11.0.0](https://opkode.com/blog/2025-05-21-converse-11/) of its open-source and web-based XMPP chat client. The Desktop version can be downloaded from [here](https://github.com/conversejs/converse-desktop/releases). This release comes packed full of bugfixes, changes and new features. Way too many to list in here. Make sure to check out the [release link](https://github.com/conversejs/converse.js/releases) for all the details!
+- [Gajim](https://gajim.org/) has released version [2.2.0](https://gajim.org/post/2025-05-15-gajim-2.2.0-released/). This release brings three new features: message retraction (via [XEP-0424: Message Retraction](https://xmpp.org/extensions/xep-0424.html)), blocking participants in group chats, and updated support for modern group chat avatars (via [XEP-0486: MUC Avatars](https://xmpp.org/extensions/xep-0486.html)), among many other improvements and bugfixes. Head over to their [news section](https://gajim.org/post/) or check the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
 - [Monal](https://monal-im.org/) has released version [6.4.11](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1040) for iOS an macOS.
 - [Monocles Chat 2.0.7](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.7) for Android, has been released. This version brings fixes for lagging, pinned status message, I2P and more.
 - [Prose](https://prose.org/) has released versions [0.10.1](https://github.com/prose-im/prose-app-web/releases/tag/0.10.1) of its web frontend [prose-web-app](https://github.com/prose-im/prose-app-web).
@@ -159,6 +155,7 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 - [diasp.in](https://opencollective.com/diasp-in)
 
 ## Unsubscribe from the XMPP Newsletter
+
 To unsubscribe from this list, [please log in first](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
 If you have not previously logged in, you may need to set up an account with the appropriate email address.
 
