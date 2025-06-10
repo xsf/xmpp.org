@@ -39,6 +39,9 @@ Like this newsletter, many projects and their efforts in the XMPP community are 
 ### XMPP Clients and Applications
 
 - [Converse.js](https://conversejs.org/) has released version [11.0.0](https://opkode.com/blog/2025-05-21-converse-11/) of its open-source and web-based XMPP chat client. The Desktop version can be downloaded from [here](https://github.com/conversejs/converse-desktop/releases). This release comes packed full of bugfixes, changes and new features. Way too many to list in here. Make sure to check out the [release link](https://github.com/conversejs/converse.js/releases) for all the details!
+
+{{< figure src="/images/newsletter/2025-06-05/converse-11-enter-muc.png" caption="Converse 11" >}}
+
 - [Gajim](https://gajim.org/) has released version [2.2.0](https://gajim.org/post/2025-05-15-gajim-2.2.0-released/). This release brings three new features: message retraction (via [XEP-0424: Message Retraction](https://xmpp.org/extensions/xep-0424.html)), blocking participants in group chats, and updated support for modern group chat avatars (via [XEP-0486: MUC Avatars](https://xmpp.org/extensions/xep-0486.html)), among many other improvements and bugfixes. Head over to their [news section](https://gajim.org/post/) or check the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
 - [Monal](https://monal-im.org/) has released version [6.4.11](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1040) for iOS an macOS.
 - [Monocles Chat 2.0.7](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.7) for Android, has been released. This version brings fixes for lagging, pinned status message, I2P and more.
