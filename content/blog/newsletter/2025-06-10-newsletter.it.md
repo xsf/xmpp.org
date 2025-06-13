@@ -1,4 +1,5 @@
-﻿Title: La Newsletter XMPP Mggio 2025
+---
+title: La Newsletter XMPP Maggio 2025
 data: 2025-06-10
 categories: ['Newsletter']
 ---
@@ -52,7 +53,7 @@ Come questa newsletter, molti progetti e le attività della comunità XMPP sono 
 
 ### Librerie e strumenti XMPP
 
-- È stata rilasciata la versione [1.8.4](https://www.igniterealtime. org/projects/openfire/plugin-archive.jsp?plugin=pade) per [Openfire](https://www.igniterealtime.org/projects/openfire/).
+- È stata rilasciata la versione [1.8.4](https://www.igniterealtime. org/projects/openfire/plugin-archive.jsp?plugin=pade) del plugin [Pade](https://discourse.igniterealtime.org/t/version-1-8-4-of-openfire-pade-plugin-released/95434) per [Openfire](https://www.igniterealtime.org/projects/openfire/).
 - È stata rilasciata la versione [12.0.4](https://github.com/JohnXLivingston/peertube-plugin-livechat/releases/tag/v12.0.4) del plugin [peertube-plugin-livechat](https://github.com/JohnXLivingston/peertube-plugin-livechat).
 - È stata rilasciata la versione [6.2.0](https://dev.gajim.org/gajim/python-nbxmpp/-/releases/6.2.0) di [python-nbxmpp](https://dev.gajim.org/gajim/python-nbxmpp).
 - È stata rilasciata la versione [3.1.1](https://github.com/strophe/strophejs/releases/tag/v3.1.1) di [strophejs](https://strophe.im/strophejs/).
