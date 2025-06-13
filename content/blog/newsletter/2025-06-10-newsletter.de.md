@@ -24,7 +24,7 @@ Viele Projekte in der XMPP-Gemeinschaft – auch dieser Newsletter – sind das 
 
 ## Vorträge
 
-- Am Freitag, den 16. Mai, hat Vril den [Workshop di XMPP e Free Software all’AntiBiennale di Venezia](https://www.xmpp-it.net/2025/05/20/vril/workshop-di-xmpp-e-free-software-allantibiennale-di-venezia/) (ein Workshop zu XMPP und Freier Software) im Cabasego in Venedig, Italien, ausgerichtet. Die [Vortragsfolien](https://cryptpad.disroot.org/slide/#/2/slide/view/LD2suM7gLDdabbevD+OsMX4M1jknPJ57oq0fWJn0mcE/present/) des gut anderthalbstündigen Vortrags sind frei verfügbar. Die Veranstaltung fand in einem der schönsten Häuser in wunderbarer Lage im Zentrum von Venedig statt. Die Bewohner sind immer bereits Nischengemeinschaften in ihren Räumen zu empfangen. [IT]
+- Am Freitag, den 16. Mai, hat Vril den [Workshop di XMPP e Free Software all’AntiBiennale di Venezia](https://www.xmpp-it.net/2025/05/20/vril/workshop-di-xmpp-e-free-software-allantibiennale-di-venezia/) (ein Workshop zu XMPP und Freier Software) im Cabasego in Venedig, Italien, ausgerichtet. Die [Vortragsfolien](https://cryptpad.disroot.org/slide/#/2/slide/view/LD2suM7gLDdabbevD+OsMX4M1jknPJ57oq0fWJn0mcE/present/) des gut anderthalbstündigen Vortrags sind frei verfügbar. Die Veranstaltung fand in einem der schönsten Häuser in wunderbarer Lage im Zentrum von Venedig statt. Die Bewohner sind immer bereit, Nischengemeinschaften in ihren Räumen zu empfangen. [IT]
 
 ## Artikel über XMPP
 
