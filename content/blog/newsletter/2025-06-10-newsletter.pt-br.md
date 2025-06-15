@@ -63,7 +63,7 @@ projetos? Interessado em apoiar a equipe do boletim mensal? Saiba mais [ao final
 ## Extensões e Especificações
 
 A XMPP Standards Foundation desenvolve extensões ao XMPP em sua [Série XEP](/extensions/) além dos [RFCs XMPP](/rfcs/). Desenvolvedores e outros especialistas em padrões técnicos de todo o mundo colaboram nessas extensões, desenvolvendo novas especificações para práticas emergentes, bem como refinando a práticas já existentes. As extensões podem ser propostas por qualquer pessoa e as bem-sucedidas eventualmente se tornam Final ou Active - dependendo de seu tipo - enquanto outras são cuidadosamente arquivadas como Deferred.
-Este ciclo está descrito [XEP-0001](/extensions/xep-0001.html), que contém as definições formais e canônicas dos tipos, estados e processos. [Leia mais sobre o processo dos standards](/about/standards-process.html). Comunicação acerca dos standards e de suas extensões dão-se pelo [Standards Mailing List](https://mail.jabber.org/postorius/lists/standards.xmpp.org/) ([arquivo online]((https://mail.jabber.org/hyperkitty/list/standards@xmpp.org/)).
+Este ciclo está descrito [XEP-0001](/extensions/xep-0001.html), que contém as definições formais e canônicas dos tipos, estados e processos. [Leia mais sobre o processo dos standards](/about/standards-process.html). Comunicação acerca dos standards e de suas extensões dão-se pelo [Standards Mailing List](https://mail.jabber.org/postorius/lists/standards.xmpp.org/) ([arquivo online](https://mail.jabber.org/hyperkitty/list/standards@xmpp.org/)).
 
 
 ### Propostos
