@@ -18,7 +18,7 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ## XMPP Events
 
-- [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM local time (online event, with web meeting mode and live streaming).
+- [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM UTC+2 (online event, with web meeting mode and live streaming).
 
 ## Videos
 
