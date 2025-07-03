@@ -18,6 +18,9 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ## XMPP Events
 
+- [DebConf25](https://debconf25.debconf.org/): The 26th Debian Conference is in Brest, France, from July 14th to 19th 2025, will feature:
+  - [Federated instant messaging, 100% debianized](https://debconf25.debconf.org/talks/161-federated-instant-messaging-100-debianized/) by [Elena Grandi](https://debconf25.debconf.org/users/valhalla/). A short talk (20 minutes) that will take place at the Grand amphi room on monday July 14th at 18:00 hours.
+  - [Jabber/XMPP BoF session](https://debconf25.debconf.org/talks/110-jabberxmpp-bof-session/), hosted by [Martin](https://debconf25.debconf.org/users/debacle/). A BoF meeting (45 minutes) that will take place at 'Room: B03-035' on monday July 14th at 14:00 hours.
 - [XMPP Italian happy hour](https://video.xmpp-it.net/c/happyhour/videos) [IT]: monthly Italian XMPP web meeting, every third Monday of the month at 7:00 PM UTC+2 (online event, with web meeting mode and live streaming).
 
 ## Videos
