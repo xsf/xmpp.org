@@ -38,6 +38,7 @@ Comunicación Libre, Segura y Descentralizada: [Taller abierto de XMPP](https://
 - [Openfire 5.0.0: A New Era of Real-Time Communication](https://discourse.igniterealtime.org/t/openfire-5-0-0-a-new-era-of-real-time-communication/95627) by the [Ignite Realtime community](https://www.igniterealtime.org/).
 - [Setting up Slidge Gateway with Openfire for use with Whatsapp, Matrix and Telegram](https://discourse.igniterealtime.org/t/setting-up-slidge-gateway-with-openfire-for-use-with-whatsapp-matrix-telegram/95656/1) by surfbum for the [Ignite Realtime Community](https://www.igniterealtime.org/).
 - [Per-application passwords in Tigase](https://tigase.org/blog/tigase-per-app-credentials/) from the [Tigase Posts](https://tigase.org/posts/).
+- [Join the XMPP-IT Community: Your Help Matters!](https://www.xmpp-it.net/2025/07/05/roughnecks/collabora-con-noi/) The XMPP-IT community is launching a call for active collaboration — no need to be an expert, and it’s not paid work, just shared participation. From translations to testing software, writing wiki content or contributing code, there’s room for everyone. [IT]
 
 ## XMPP Software News
 
