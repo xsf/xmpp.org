@@ -292,7 +292,7 @@
         "categories": [
             "client"
         ],
-        "doap": null,
+        "doap": "https://gitlab.gnome.org/World/Chatty/-/raw/main/chatty.doap?ref_type=heads",
         "name": "Chatty",
         "platforms": [
             "Linux"
