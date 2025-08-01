@@ -90,9 +90,9 @@ The XEP development process starts by writing up an idea and submitting it to th
 ### New
 
 - Version 0.1.0 of [XEP-0504](/extensions/xep-0504.html) (Data Policy)
-  - Accepted as Experimental by Concil vote on 2025-06-08 (XEP Editor: dg)
+  - Accepted as Experimental by Council vote on 2025-06-08 (XEP Editor: dg)
 - Version 0.1.0 of [XEP-0505](/extensions/xep-0505.html) (Data Forms File Input Element)
-  - Accepted as Experimental by Concil vote on 2025-07-08 (XEP Editor: dg)
+  - Accepted as Experimental by Council vote on 2025-07-08 (XEP Editor: dg)
  
 ### Deferred
 
