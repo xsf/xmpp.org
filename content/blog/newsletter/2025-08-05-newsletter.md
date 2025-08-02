@@ -19,7 +19,7 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ### XMPP at FrOSCon 20
 
-On August 16th & 17th, 2025, the [FrOSCon](https://froscon.org/en/) will hold it's 20th anniversary edition™. It will take place at the Hochschule Bonn-Rhein-Sieg in Sankt Augustin, Germany, and the XMPP community will be part of it!
+On August 16th & 17th, 2025, the [FrOSCon](https://froscon.org/en/) will hold its 20th anniversary edition™. It will take place at the Hochschule Bonn-Rhein-Sieg in Sankt Augustin, Germany, and the XMPP community will be part of it!
 
 While you are there, you may be interested in what is going on at the [Devrooms](https://froscon.org/en/program/project-rooms/).
 
