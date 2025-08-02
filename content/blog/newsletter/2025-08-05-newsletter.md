@@ -9,7 +9,7 @@ categories: ['Newsletter']
 Welcome to the XMPP Newsletter, great to have you here again!
 This issue covers the month of July 2025.
 
-Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or help these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
+Like this newsletter, many projects and their efforts in the XMPP community are a result of people’s voluntary work. If you are happy with the services and software you may be using, please consider saying thanks or helping these projects! Interested in supporting the Newsletter team? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
 ## XSF Announcements
 
