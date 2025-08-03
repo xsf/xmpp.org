@@ -30,6 +30,12 @@ And, of course: make sure to come by the [XMPP booth](https://froscon.org/en/pro
 ## Videos
 - [Federated instant messaging, 100% debianized](https://meetings-archive.debian.net/pub/debian-meetings/2025/DebConf25/debconf25-764-federated-instant-messaging-100-debianized.av1.webm) by [Elena “of Valhalla” Grandi](https://debconf25.debconf.org/users/valhalla/) at the [DebConf25](https://debconf25.debconf.org/talks/161-federated-instant-messaging-100-debianized/).
 - [Why Aren't You Using XMPP?](https://www.youtube.com/watch?v=HkkIySvM8g0)
+- [FOSSY 2025](https://2025.fossy.us/): [XMPP track at Room 327](https://2025.fossy.us/schedule/#saturday).
+  - [Setting Up A Simple XMPP Server](https://youtu.be/8DLYl3-qVTk?t=11410)  by [Root](https://2025.fossy.us/speaker/profile/424/).
+  - [Telecomms for Preppers](https://youtu.be/8DLYl3-qVTk?t=15130) by [Phillip](https://2025.fossy.us/speaker/profile/502/).
+  - [Messaging interoperability with MLS, MIMI and XMPP](https://youtu.be/8DLYl3-qVTk?t=16600) by [Marvin W.](https://2025.fossy.us/speaker/profile/512/).
+  - [Adventures in Onboarding: Helping New Users Navigate Federated Services](https://youtu.be/8DLYl3-qVTk?t=20445) by [Gideon Mayhak](https://2025.fossy.us/speaker/profile/468/).
+  - [How do you solve a problem like iOS?](https://youtu.be/8DLYl3-qVTk?t=24120) by [Stephen Paul Weber](https://2025.fossy.us/speaker/profile/447/).
 
 ## XMPP Articles
 
