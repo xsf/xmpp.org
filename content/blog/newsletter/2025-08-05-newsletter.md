@@ -39,10 +39,7 @@ And, of course: make sure to come by the [XMPP booth](https://froscon.org/en/pro
 
 ## XMPP Articles
 
-- [Ignite Realtime community](https://www.igniterealtime.org/)
-  - [WebRTC based audio and video in Openfire 2025](https://discourse.igniterealtime.org/t/webrtc-based-audio-and-video-in-openfire-2025/95683) by [Dele_Olajide1](https://discourse.igniterealtime.org/u/Dele_Olajide1/summary).
-  - [Empowering Digital Sovereignty with Openfire: A Secure and Customizable Communication Platform](https://discourse.igniterealtime.org/t/empowering-digital-sovereignty-with-openfire-a-secure-and-customizable-communication-platform/95723) by [guus](https://discourse.igniterealtime.org/u/guus/summary).
-  - [XEP-0483: HTTP Online Meetings](https://discourse.igniterealtime.org/t/xep-0483-http-online-meetings/95771/1) by [Dele_Olajide1](https://discourse.igniterealtime.org/u/Dele_Olajide1/summary).
+- [Empowering Digita:l Sovereignty with Openfire: A Secure and Customizable Communication Platform](https://discourse.igniterealtime.org/t/empowering-digital-sovereignty-with-openfire-a-secure-and-customizable-communication-platform/95723) by [guus](https://discourse.igniterealtime.org/u/guus/summary).
 - [ProcessOne ](https://www.process-one.net/)
   - [XMPP: When a 25-Year-Old Protocol Becomes Strategic Again ](https://www.process-one.net/blog/xmpp-when-a-25-year-old-protocol-becomes-strategic-again/) by [Mickaël Rémond ](https://www.process-one.net/author/mremond/).
 - [XMPP Interop Testing](https://xmpp-interop-testing.github.io/)
@@ -74,6 +71,7 @@ And, of course: make sure to come by the [XMPP booth](https://froscon.org/en/pro
 
 - [ProcessOne](https://www.process-one.net/) is pleased to announce the release of [ejabberd 25.07](https://www.process-one.net/blog/ejabberd-25-07/). This release focuses on integration in a wider federated network, with support for [spam fighting features](https://github.com/processone/ejabberd/releases/tag/25.07#mod_antispam), [improved Matrix gateway](https://github.com/processone/ejabberd/releases/tag/25.07#matrix), native support for [PubSub Server Information](https://github.com/processone/ejabberd/releases/tag/25.07#mod_pubsub_serverinfo) to have your server count as part of the wider XMPP network (e.g. register your server on [XMPP Network Graph](https://xmppnetwork.goodbytes.im/)), new modules, features, improvements and bugfixes. Make sure to read the [changelog](https://github.com/processone/ejabberd/releases/tag/25.07#changelog) for all the details and a complete list of changes!
 - [Prosodical Thoughts](https://blog.prosody.im/): [Debian repository key change](https://blog.prosody.im/debian-repository-key-change/). The [Prosody](https://prosody.im/) Team has been working on some changes on the Debian/Ubuntu package repository. If you use this repository to keep up to date with new Prosody packages, **you need to take action before 4th August 2025** to continue receiving updates smoothly. Please follow the instructions described in the article. If you have any questions about this change, the Prosody Team is always happy to help and answer them on their [community chat](https://prosody.im/discuss)!
+- [WebRTC based audio and video in Openfire 2025](https://discourse.igniterealtime.org/t/webrtc-based-audio-and-video-in-openfire-2025/95683) by [Dele_Olajide1](https://discourse.igniterealtime.org/u/Dele_Olajide1/summary).
 
 ### XMPP Libraries & Tools
 
@@ -82,6 +80,7 @@ And, of course: make sure to come by the [XMPP booth](https://froscon.org/en/pro
 - [xmpp-ap-bridge](https://github.com/Barbapulpe/xmpp-ap-bridge/blob/main/README.md) versions [0.7.0](https://github.com/Barbapulpe/xmpp-ap-bridge/releases/tag/v0.7.0), [0.7.1](https://github.com/Barbapulpe/xmpp-ap-bridge/releases/tag/v0.7.1) and [0.7.2](https://github.com/Barbapulpe/xmpp-ap-bridge/releases/tag/v0.7.2) have been released.
 - [xmpp-dns](https://salsa.debian.org/mdosch/xmpp-dns/-/blob/master/README.md?ref_type=heads) version [0.5.0 Beta 1](https://salsa.debian.org/mdosch/xmpp-dns/-/tags/v0.5.0-beta1) has been released.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp/-/blob/master/README.md?ref_type=heads) version [0.15.0 Beta 1](https://salsa.debian.org/mdosch/go-sendxmpp/-/tags/v0.15.0-beta1) has been released.
+- [ignite realtime community: XEP-0483: HTTP Online Meetings](https://discourse.igniterealtime.org/t/xep-0483-http-online-meetings/95771/1) by [Dele_Olajide1](https://discourse.igniterealtime.org/u/Dele_Olajide1/summary).
 
 ## Extensions and specifications
 
