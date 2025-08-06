@@ -1265,15 +1265,6 @@
     },
     {
         "categories": [
-            "client"
-        ],
-        "doap": "https://raw.githubusercontent.com/psi-im/psi/master/psi.doap",
-        "name": "Psi+",
-        "platforms": [],
-        "url": null
-    },
-    {
-        "categories": [
             "server"
         ],
         "doap": null,
