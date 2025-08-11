@@ -9,7 +9,7 @@ categorie: [‘Newsletter’]
 Benvenuti alla newsletter XMPP, è un piacere avervi di nuovo qui!
 Questo è il numero del mese di giugno 2025.
 
-Come questa newsletter, molti progetti e le attività della comunità XMPP sono il risultato del lavoro volontario di molte persone. Se siete soddisfatti dei servizi e dei software che utilizzate, vi invitiamo a ringraziare o aiutare questi progetti! Siete interessati a sostenere il team della Newsletter? Maggiori informazioni [in fondo alla pagina](#help-us-to-build-the-newsletter).
+Come questa newsletter, molti progetti e le attività della comunità XMPP sono il risultato del lavoro volontario di molte persone. Se siete soddisfatti dei servizi e dei software che utilizzate, vi invitiamo a ringraziare o aiutare questi progetti! Siete interessati a sostenere il team della Newsletter? Maggiori informazioni [in fondo alla pagina](#aiutaci-a-realizzare-la-newsletter).
 
 ## Annunci XSF
 
