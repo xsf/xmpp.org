@@ -35,5 +35,5 @@ The XMPP Newsletter is also available in other languages. If you would like to t
 * [Deutsch](https://xmpp.org/categories/newsletter/)
 * [Español](https://xmpp.org/categories/newsletter/)
 * [Français](https://news.jabberfr.org/category/newsletter/)
-* [Italiano](https://notes.nicfab.eu/it/newsletter/)
+* [Italiano](https://xmpp.org/categories/newsletter/)
 
