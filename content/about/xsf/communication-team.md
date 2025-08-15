@@ -12,6 +12,10 @@ The team consists of the following members:
 
 {{< teams team_name="commteam">}}
 
+Check our media channels:
+
+{{< communication >}}
+
 Current projects and status of the team can be checked at the team's [wiki page](https://wiki.xmpp.org/web/CommTeam)
 
 ## Chat

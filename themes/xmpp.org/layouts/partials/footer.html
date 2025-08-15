@@ -66,24 +66,11 @@
             </div>
             <div class="col d-flex">
                 <ul>
+                {{- range .Site.Data.communication -}}
                     <li>
-                        <a href="https://xmpp.org/blog/index.xml" target="blank_">RSS</a>
+                        <a href="{{- .url -}}" target="_blank">{{- .name -}}</a>
                     </li>
-                    <li>
-                        <a href="https://mov.im/blog/xmpp-official" target="blank_">@Movim</a>
-                    </li>
-                    <li>
-                        <a href="https://fosstodon.org/@xmpp" target="blank_">@Mastodon</a>
-                    </li>
-                    <li>
-                        <a href="https://bsky.app/profile/xmpp-official.bsky.social" target="blank_">@Bluesky</a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/company/xmpp-standards-foundation" target="blank_">@LinkedIn</a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA" target="blank_">@Youtube</a>
-                    </li>
+                {{- end -}}
                 </ul>
             </div>
         </div>

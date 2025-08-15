@@ -1,0 +1,7 @@
+<ul>
+{{- range .Site.Data.communication -}}
+    <li>
+        <a href="{{- .url -}}" target="_blank">{{- .name -}}</a>
+    </li>
+{{- end -}}
+</ul>
