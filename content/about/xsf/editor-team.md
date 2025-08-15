@@ -15,6 +15,10 @@ NOTE: In order to send email to the team (via [editor@xmpp.org](mailto:editor@xm
 
 Additional resources can be found at the [wiki page](http://wiki.xmpp.org/web/Editor_team).
 
+{{< row classes="mb-4" >}}
+{{< community-chat-card chat="Editors" >}}
+{{< /row >}}
+
 The charter of the team is as follows:
 
 > Since 2001, the XMPP Extensions Editor has managed numerous details

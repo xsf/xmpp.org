@@ -13,10 +13,17 @@ The XSF hosts a variety of chat rooms and all archives are available online. Par
 
 All logs of public XSF chatrooms are available at [logs.xmpp.org](https://logs.xmpp.org/).
 
-### Chatrooms
+### Chats
 
-{{< community-chat-cards >}}
+{{< row classes="row-cols-2 g-4 mb-4" >}}
+{{< community-chat-card chat="XSF" >}}
+{{< community-chat-card chat="Developers" >}}
+{{< community-chat-card chat="Operators" >}}
+{{< community-chat-card chat="Council" >}}
+{{< community-chat-card chat="Editors" >}}
+{{< community-chat-card chat="XSF Communications" >}}
+{{< /row >}}
 
-### Other chatrooms
+### Other Chats
 
 Additionally, community chats for software support and other topics can be found via [XMPP Chat Room Search Engine](https://search.jabber.network/rooms/1) (the search engine and external chats are not hosted or operated by the XSF).

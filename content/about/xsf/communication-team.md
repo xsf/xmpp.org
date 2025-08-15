@@ -17,7 +17,7 @@ The team consists of the following members:
 
 Our current media channels are:
 
-{{< community-chat-card chat="XSF Communications" >}}
+//TODO: Footer.html
 
 ## Adding your resource to the Planet Jabber RSS feed:
 See [Planet Jabber](https://planet.jabber.org/). The maintainer of this Planet is Ralph Meijer. He can be contacted at ralphm@ik.nu (Jabber and e-mail).
@@ -25,6 +25,8 @@ See [Planet Jabber](https://planet.jabber.org/). The maintainer of this Planet i
 ## Contact
 If you want to communicate with us, the best way is to reach us in our chat group:
 
-// TODO: Can we just show the {{< community-chat-cards >}} for XSF Communication Team?
+{{< community-chat-card chat="XSF Communications" >}}
 
 Find our [wiki page](https://wiki.xmpp.org/web/CommTeam) here.
+=======
+Current projects and status of the team can be checked at the team's [wiki page](https://wiki.xmpp.org/web/CommTeam)
