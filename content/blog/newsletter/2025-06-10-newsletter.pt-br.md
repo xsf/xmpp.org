@@ -109,6 +109,7 @@ As últimas chamadas são feitas quando todos parecem satisfeitos com o atual es
 Por favor compartilhe essas notícias em outras plataformas:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
+- [Movim](https://mov.im/community/news.xmpp.org/Newsletter)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Instância Lemmy (não oficial)](https://slrpnk.net/c/xmpp)
