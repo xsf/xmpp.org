@@ -17,7 +17,7 @@ The team consists of the following members:
 
 Our current media channels are:
 
-// TODO: Can we add the footer.html in here?
+{{< community-chat-card chat="XSF Communications" >}}
 
 ## Adding your resource to the Planet Jabber RSS feed:
 See [Planet Jabber](https://planet.jabber.org/). The maintainer of this Planet is Ralph Meijer. He can be contacted at ralphm@ik.nu (Jabber and e-mail).
