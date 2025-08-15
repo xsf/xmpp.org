@@ -105,7 +105,7 @@ Le ultime chiamate vengono emesse quando tutti sembrano soddisfatti dello stato 
 Condividi la notizia su altri social network:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Movim](https://mov.im/blog/xmpp-official)
+- [Movim](https://mov.im/community/news.xmpp.org/Newsletter)
 - [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)

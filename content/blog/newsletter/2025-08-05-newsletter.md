@@ -135,7 +135,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 Please share the news on other networks:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Movim](https://mov.im/blog/xmpp-official)
+- [Movim](https://mov.im/community/news.xmpp.org/Newsletter)
 - [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
