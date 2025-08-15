@@ -106,7 +106,7 @@ Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsoli
 Teile diese Neuigkeiten auch in anderen Netzwerken:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Movim](https://mov.im/blog/xmpp-official)
+- [Movim](https://mov.im/community/news.xmpp.org/Newsletter)
 - [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
