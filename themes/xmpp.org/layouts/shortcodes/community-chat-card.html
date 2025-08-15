@@ -1,0 +1,25 @@
+{{- $chat_name := .Get "chat" -}}
+
+{{ $all_chats := index .Site.Data.community_chats }}
+{{ $chats := where $all_chats "name" $chat_name }}
+{{ $chat := index $chats 0 }}
+
+<div class="col-6">
+    <div class="card h-100 shadow-sm">
+        <div class="card-img-top text-center bg-body-tertiary">
+            <img src="{{ $chat.logo }}" class="p-2" alt="Chat Logo" style="max-width: 40%;">
+        </div>
+        <div class="card-body">
+            <h3 class="card-title fw-bold">{{ $chat.name }}</h3>
+            <span class="card-text text-muted">{{ $chat.text | markdownify }}</span>
+        </div>
+        <div class="card-footer text-body-secondary text-center">
+            <a href="{{ $chat.chat | safeURL }}" class="btn btn-sm btn-primary m-1"><i
+                    class="fa-regular fa-comments me-2"></i>Join</a>
+            <a href="{{ $chat.web_chat | safeURL }}" target="_blank" class="btn btn-sm btn-secondary m-1"><i
+                    class="fa-regular fa-comment-dots me-2"></i></i>Web Chat</a>
+            <a href="{{ $chat.logs | safeURL }}" target="_blank" class="btn btn-sm btn-outline-secondary m-1"><i
+                    class="fa-solid fa-box-archive me-2"></i>Logs</a>
+        </div>
+    </div>
+</div>
