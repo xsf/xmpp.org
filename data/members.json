@@ -105,11 +105,6 @@
             "name": "Mario Sabatino",
             "jids": ["mario@sabatino.pro"]
         },
-
-        {
-            "name": "Martin Dosch",
-            "jids": ["martin@mdosch.de"]
-        },
         
         {
             "name": "Yvo Meeres",
@@ -193,11 +188,6 @@
         },
 
         {
-            "name": "Tobias Markmann",
-            "jids": ["tm@ayena.de"]
-        },
-
-        {
             "name": "Edward Maurer",
             "jids": ["emus@jabbers.one"],
             "roles": ["board", "commteam"]
@@ -223,6 +213,11 @@
         {
             "name": "Benson Muite",
             "jids": ["benson_muite@disroot.org"]
+        },
+
+        {
+            "name": "Gonzalo Raúl Nemmi",
+            "jids": ["gnemmi@xmpp.social"]
         },
 
         {
