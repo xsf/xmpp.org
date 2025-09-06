@@ -96,7 +96,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 - Version 1.6.3 of [XEP-0198](/extensions/xep-0198.html) (Stream Management)
   - Remove leftover `<optional/>` and `<required/>` children in `<sm/>` element. (egp)
 - Version 0.3.0 of [XEP-0317](/extensions/xep-0317.html) (Hats)
-  - Add hat creation and detruction flows; add hue optional parameter; add chatroom presence hats broadcast; complete disco#info; clarify how the service should broadcast updated hats; typos; standardize the form fields; (tj)
+  - Add hat creation and destruction flows; add hue optional parameter; add chatroom presence hats broadcast; complete disco#info; clarify how the service should broadcast updated hats; typos; standardize the form fields; (tj)
 - Version 1.0.4 of [XEP-0388](/extensions/xep-0388.html) (Extensible SASL Profile)
   - Schema should use all instead of sequence (dg)
 - Version 0.4.0 of [XEP-0455](/extensions/xep-0455.html) (Service Outage Status)
