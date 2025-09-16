@@ -1479,10 +1479,12 @@
         "categories": [
             "server"
         ],
-        "doap": null,
+        "doap": "/hosted-doap/snikket-server.doap",
         "name": "Snikket Server",
         "platforms": [
-            "Linux"
+            "Linux",
+            "macOS",
+            "Windows"
         ],
         "url": "https://snikket.org/service/"
     },
