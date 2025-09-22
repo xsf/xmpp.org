@@ -9,7 +9,7 @@ On October 14th, the European Parliament will vote on a regulation that could ef
 
 The proposal seems straightforward: require platforms to scan for child sexual abuse material. But the technical reality reveals a **devastating contradiction**: it demands the impossible from open, federated European alternatives while handing structural advantages to the very US tech giants Europe claims to want to regulate.
 
-# What the proposal actually requires
+## What the proposal actually requires
 
 Proposal 11596/25 targets child sexual abuse material across a large range of services operating in the European Union: hosting services, interpersonal communications services, software application stores, internet access services, and online search engines. Under this regulation, these providers would be required to detect illegal content (images, URLs, text), report it to authorities, and remove it.
 
@@ -17,7 +17,7 @@ The scope goes far beyond what the European Parliament previously considered acc
 
 This proposal abandons that restraint. It creates an obligation for service providers to scan all user traffic – encrypted or not – in search of illegal materials. More critically, **it requires scanning private chat conversations** before content is encrypted, not just publicly available content.
 
-# The risk of surveillance overreach
+## The risk of surveillance overreach
 
 While child protection is undeniably crucial, the surveillance mechanisms described in this regulation create infrastructure that could **threaten fundamental civil liberties**. Once governments possess the technical capability to scan all private communications before encryption, the temptation to expand its use becomes overwhelming.
 
@@ -27,11 +27,11 @@ The infrastructure created for child protection becomes the foundation that futu
 
 This is what privacy advocates primarily focus on, and their concerns are valid. However, as operators of messaging infrastructure, we face more immediate technical realities that make this regulation unworkable regardless of its civil liberties implications.
 
-# Why the technical requirements are impossible to implement
+## Why the technical requirements are impossible to implement
 
 As operators of XMPP messaging infrastructure in sensitive industries, like for example the medical sector, we face the practical reality of what this regulation would require. The technical demands in Articles 7 and 10 reveal fundamental misunderstandings about how modern communication systems actually work.
 
-## The architectural reality: In-band vs. out-of-band content
+### The architectural reality: In-band vs. out-of-band content
 
 Modern messaging platforms fundamentally separate data types. Messages and protocol data transfer "in-band" through the messaging protocol, while binary content like images and documents transfers "out-of-band" because files are too large for messaging channels.
 
@@ -43,7 +43,7 @@ This creates an immediate problem for the regulation's scanning requirements. Wh
 
 The regulation can only scan in-band messaging content and metadata, not the out-of-band transfers where sensitive material could actually reside. It will break confidentiality of legitimate medical discussions without accessing the data it claims to monitor.
 
-## The open protocols impossibility
+### The open protocols impossibility
 
 Article 10.1's requirement to scan "prior to transmission" in end-to-end encrypted services assumes complete client control -- something impossible with open protocols like XMPP.
 
@@ -53,7 +53,7 @@ The problem deepens with federation. XMPP servers interconnect, allowing users o
 
 This creates an absurd regulatory requirement: we would need to either abandon open standards entirely or somehow police every piece of software that implements XMPP, including modified open-source clients that users could easily deploy to bypass scanning.
 
-# The circumvention reality
+## The circumvention reality
 
 Real criminals can easily bypass these measures through three complementary approaches that the regulation fails to address:
 
@@ -67,11 +67,11 @@ The result is predictable: the regulation will only catch criminals amateur enou
 
 This isn't theoretical speculation. These methods are already standard practice across European messaging infrastructure, used by both legitimate services and bad actors alike.
 
-# The programmed death of European alternatives
+## The programmed death of European alternatives
 
 This regulation creates a structural disadvantage for European communication services trying to build alternatives to US tech giants.
 
-## Complexity favors incumbents
+### Complexity favors incumbents
 
 Annex XIV reveals a scoring system of Kafkaesque complexity, requiring considerable resources for compliance. This complexity structurally favors large platforms, usually Americans, that can:
 
@@ -79,13 +79,13 @@ Annex XIV reveals a scoring system of Kafkaesque complexity, requiring considera
 - Control their closed ecosystems completely
 - Distribute compliance costs across billions of users
 
-## The decentralized ecosystem under threat
+### The decentralized ecosystem under threat
 
 Meanwhile, Europe's emerging decentralized alternatives face impossible technical requirements. There are currently tens of thousands of independent XMPP servers, federated Matrix deployments, and GDPR-compliant solutions that represent Europe's best chance for **digital messaging independence**. Can they comply with obligations designed around centralized architectures?
 
 We operate several messaging servers on behalf of customers. Under this regulation, we face a stark choice: shut down services we cannot control completely, from clients to servers, or force our European clients to migrate for example to Microsoft Teams to avoid regulatory complications.
 
-# Conclusion
+## Conclusion
 
 This technical analysis reveals a regulation that fails on multiple levels. It demands **technical impossibilities** from European service providers while offering trivial workarounds for actual criminals. It structurally advantages US tech giants over European alternatives at precisely the moment Europe seeks digital independence.
 
