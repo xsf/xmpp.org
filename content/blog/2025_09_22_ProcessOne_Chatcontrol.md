@@ -1,5 +1,5 @@
 ---
-title: ProcessOne: Why Europe's 'Chat Control' Proposal Will Cripple European Communication Industry While Failing to Protect Children
+title: ProcessOne - Why Europe's 'Chat Control' Proposal Will Cripple European Communication Industry While Failing to Protect Children
 date: 2025-09-22
 author: Mickaël Rémond (ProcessOne)
 categories: ["Miscellaneous"]
