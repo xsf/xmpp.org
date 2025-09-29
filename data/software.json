@@ -1944,7 +1944,7 @@
         "categories": [
             "library"
         ],
-        "doap": "/hosted-doap/xmppdotnet.doap",
+        "doap": "https://raw.githubusercontent.com/agnauck/XmppDotNet/refs/heads/agnauck-doap-file/doap.xml",
         "name": "XmppDotNet",
         "platforms": [],
         "url": null
