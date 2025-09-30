@@ -25,13 +25,10 @@ Get involved in the XMPP Standards Foundation organization decisions and with th
 
 **Note**: XMPP Council members must be [elected members](/about/xsf/members/) of the XSF; however, there is no such restriction for the Board of Directors.
 
-## Videos
+## Videos and Talks
 - [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos) by [eversten.net](https://makertube.net/a/eversten.net/video-channels). 
   - [Conversations (XMPP) - Verbindungsproblem nach Update beheben](https://makertube.net/w/8yXjHWpVd77tz5vRySpJeH). [DE]
   - [Quicksy - Der einfachste Einstieg in XMPP (iOS-Version)](https://makertube.net/w/7osSvECKBQvFPTYkjP9kz5). [DE]
-
-## Talks
-
 - [UnifiedPush](https://gultsch.video/w/85UeGATR1i13E7j6eKzq2r): a [lecture](https://talks.datenspuren.de/ds25/talk/3783DB/) by [Daniel Gultsch](https://gultsch.de/) at the [Datenspuren 2025](https://www.datenspuren.de/2025/). [DE]
 
 ## XMPP Articles
