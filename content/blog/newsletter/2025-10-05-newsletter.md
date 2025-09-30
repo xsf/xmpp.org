@@ -47,7 +47,7 @@ Get involved in the XMPP Standards Foundation organization decisions and with th
 - [Montando un WhatsApp gateway desde XMPP con Slidge](https://portal.mozz.us/gemini/z3r0.maverick-hq.org/gemlog/montando-un-whatsapp-gateway-desde-xmpp-con-slidge.gmi) by [z3r0](https://gts.maverick-hq.org/@z3r0) for [Z3R0 Maverick-HQ](gemini://z3r0.maverick-hq.org/) via [SMOLNET PORTAL](https://portal.mozz.us/about). [ES]
 - [Modern messaging: Running your own XMPP server](https://www.codedge.de/posts/modern-messaging-running-your-own-xmpp-server/) by [Holger](https://hachyderm.io/@theaitch) for [codedge](https://www.codedge.de/).
 - [Install Slidgram in NetBSD](https://eugene-andrienko.com/it/2025/09/20/slidgram-netbsd-install-howto.html) by [Eugene](https://eugene-andrienko.com/about.html) for [Dragon's notes](https://eugene-andrienko.com/).
-- XMPP Brasil [celebrates its first anniversary](https://mastodon.social/@xmppbrasil/115232713992094928) providing free accounts for the brazilian community and its new status as a [Category Provider A](https://providers.xmpp.net/provider/xmpp.eco.br/) by [XMPP Providers](https://providers.xmpp.net/). [PT]
+- XMPP Brasil [celebrates its first anniversary](https://mastodon.social/@xmppbrasil/115232713992094928) providing free accounts for the Brasilian community and its new status as a [Category Provider A](https://providers.xmpp.net/provider/xmpp.eco.br/) by [XMPP Providers](https://providers.xmpp.net/). [PT]
 
 ## XMPP Software News
 
