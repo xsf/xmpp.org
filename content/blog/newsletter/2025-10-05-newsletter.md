@@ -49,14 +49,6 @@ Get involved in the XMPP Standards Foundation organization decisions and with th
 - [Install Slidgram in NetBSD](https://eugene-andrienko.com/it/2025/09/20/slidgram-netbsd-install-howto.html) by [Eugene](https://eugene-andrienko.com/about.html) for [Dragon's notes](https://eugene-andrienko.com/).
 - XMPP Brasil [celebrates its first anniversary](https://mastodon.social/@xmppbrasil/115232713992094928) providing free accounts for the brasilian community and its new status as a [Category Provider A](https://providers.xmpp.net/provider/xmpp.eco.br/) by [XMPP Providers](https://providers.xmpp.net/). [PT]
 
-## XMPP Public channels
-
-New rooms and public channels are created on a daily basis on the XMPP network. So, if you are on the look out for new and exciting public channels to join, make sure to check out the [Public Channel Search Engine](https://search.jabber.network/search) to find out groups or communities that share your interests!
-
-- If you want to list all the channels, you can find them [here](https://search.jabber.network).
-- If you are interested on something in particular, [look by tag](https://search.jabber.network/tags/)!
-- If you only want to list rooms in a particular language just add `lang:xx` in the search box, like in this example for the [Spanish language](https://search.jabber.network/search?q=lang%3Aes&f=y&sinaddr=on&sindescr=on&sinname=on). Just make sure to replace `es` for your desired language (like `lang:fr`, `lang:de`, `lang:pt` and so on).
-
 ## XMPP Software News
 
 ### XMPP Clients and Applications
@@ -145,6 +137,14 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 ### Rejected
 
 - No XEPs rejected this month.
+
+## XMPP Public channels
+
+New rooms and public channels are created on a daily basis on the XMPP network. So, if you are on the look out for new and exciting public channels to join, make sure to check out the [Public Channel Search Engine](https://search.jabber.network/search) to find out groups or communities that share your interests!
+
+- If you want to list all the channels, you can find them [here](https://search.jabber.network).
+- If you are interested on something in particular, [look by tag](https://search.jabber.network/tags/)!
+- If you only want to list rooms in a particular language just add `lang:xx` in the search box, like in this example for the [Spanish language](https://search.jabber.network/search?q=lang%3Aes&f=y&sinaddr=on&sindescr=on&sinname=on). Just make sure to replace `es` for your desired language (like `lang:fr`, `lang:de`, `lang:pt` and so on).
 
 ## Spread the news
 
