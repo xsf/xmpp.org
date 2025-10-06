@@ -169,20 +169,20 @@ Also check out our [RSS Feed](/feeds/all.atom.xml)!
 
 Looking for job offers or want to hire a professional consultant for your XMPP project? Visit our [XMPP job board](https://xmpp.work/).
 
-### Newsletter Contributors & Translations
+### Newsletter Contributors & Translations section:
 
-This is a community effort, and we would like to thank translators for their contributions. Volunteers and more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
+This is a community effort, and we would like to thank translators for their contributions.
+Volunteers and more languages are welcome!
+Translations of the XMPP Newsletter will be released here (with some delay):
 
-- English (original): [xmpp.org](/categories/newsletter/)
-  - This month's contributors: *emus, cal0pteryx, Gonzalo Raúl Nemmi, Ludovic Bocquet, Kris "poVoq", Badri Sunderarajan, XSF iTeam*
-- French: [jabberfr.org](https://news.jabberfr.org/category/newsletter/) and [linuxfr.org](https://linuxfr.org/tags/xmpp/public)
-  - Translators: *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
-- German: [xmpp.org](/categories/newsletter/)
-  - Translators: *Millesimus*
-- Italian: [notes.nicfab.eu](https://notes.nicfab.eu)
-  - Translators: *nicola*
-- Portuguese: [xmpp.org](/categories/newsletter/)
-  - Translators: *Paulo*
+Newsletter Contributors this month:
+emus, Badri Sunderarajan, cal0pteryx, Gonzalo Raúl Nemmi, Kris "poVoq", Ludovic Bocquet, XSF iTeam
+
+Translation Contributors:
+- [French](https://linuxfr.org/tags/xmpp/public): Adrien Bourmault (neox), anubis, Benoît Sibaud, Julien Jorge seveso, Pierre Jarillon
+- [German](/categories/newsletter/): Millesimus
+- [Italian](https://notes.nicfab.eu): nicola
+- [Portuguese](https://notes.nicfab.eu): Paulo
 
 ## Help us to build the newsletter
 
