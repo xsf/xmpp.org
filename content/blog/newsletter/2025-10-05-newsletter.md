@@ -63,7 +63,7 @@ Get involved in the XMPP Standards Foundation organization decisions and with th
 
 {{< figure src="/images/newsletter/2025-10-05/convo.png" caption="Convo 0.2.0: Support for end-to-end encryption with OMEMO." >}}
 
-- [Gajim](https://gajim.org/) has released version [2.3.5](https://gajim.org/posts/2025-09-11-gajim-2.3.5-released/) of its free and fully featured chat app for XMPP. This release brings reorganized account settings, a brand new shortcuts manager, more contact info, video previews, performance improvements, and many bugfixes. You can take a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details. Thank you for all your contributions!
+- [Gajim](https://gajim.org/) has released versions [2.3.5](https://gajim.org/posts/2025-09-11-gajim-2.3.5-released/) and [2.3.6](https://gajim.org/posts/2025-09-30-gajim-2.3.6-released/) of its free and fully featured chat app for XMPP. This release brings reorganized account settings, a brand new shortcuts manager, more contact info, video previews, performance improvements, and many bugfixes. The latest update fixes some issues with video previews and preview generation as well as some issues around loading icons. You can take a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details. Thank you for all your contributions!
 
 {{< figure src="/images/newsletter/2025-10-05/main-window.png" caption="Gajim 2.3.5 bundles preferences and account settings!" >}}
 
@@ -176,13 +176,13 @@ Volunteers and more languages are welcome!
 Translations of the XMPP Newsletter will be released here (with some delay):
 
 Newsletter Contributors this month:
-emus, Badri Sunderarajan, cal0pteryx, Gonzalo Raúl Nemmi, Kris "poVoq", Ludovic Bocquet, XSF iTeam
+*emus, Badri Sunderarajan, cal0pteryx, Gonzalo Raúl Nemmi, Kris "poVoq", Ludovic Bocquet, XSF iTeam*
 
 Translation Contributors:
-- [French](https://linuxfr.org/tags/xmpp/public): Adrien Bourmault (neox), anubis, Benoît Sibaud, Julien Jorge seveso, Pierre Jarillon
-- [German](/categories/newsletter/): Millesimus
-- [Italian](https://notes.nicfab.eu): nicola
-- [Portuguese](https://notes.nicfab.eu): Paulo
+- [French](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), anubis, Benoît Sibaud, Julien Jorge seveso, Pierre Jarillon*
+- [German](/categories/newsletter/): *Millesimus*
+- [Italian](https://notes.nicfab.eu): *nicola*
+- [Portuguese](/categories/newsletter/): *Paulo*
 
 ## Help us to build the newsletter
 
