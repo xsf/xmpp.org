@@ -1839,6 +1839,15 @@
         "categories": [
             "tool"
         ],
+        "doap": "https://raw.githubusercontent.com/XMPP-Interop-Testing/smack-sint-server-extensions/refs/heads/main/xmpp-interop-testing.doap",
+        "name": "XMPP Interop Testing",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "tool"
+        ],
         "doap": null,
         "name": "XMPP Network Graph",
         "platforms": [
