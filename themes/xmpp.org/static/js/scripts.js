@@ -1,11 +1,21 @@
+const url_params = new URLSearchParams(window.location.search);
+
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname == "/software/") {
     for (const button of document.querySelectorAll('button[name="category-button"]')) {
-      button.addEventListener("click", software_filter_list);
-      if (button.id == "category-button-clients") {
-        button.click();
-      }
+      button.addEventListener("click", () => {
+        url_params.set("category", button.dataset.category);
+        history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
+
+        software_filter_list()
+      });
     }
+
+    // Select category tab by URL param (or default to Clients tab)
+    const url_params_category = url_params.get("category") ?? "clients"
+    document.getElementById(`category-button-${url_params_category}`)?.click()
+
+
     for (const check of document.getElementById("select-options-list").querySelectorAll('input[id^="xep-"')) {
       check.addEventListener("click", software_filter_list);
     }
@@ -285,7 +295,6 @@ function software_hide_xep_select_dropdown(event) {
 }
 
 function software_platform_changed(event) {
-  const url_params = new URLSearchParams(window.location.search);
   url_params.set("platform", event.target.value);
   history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
 
@@ -296,8 +305,6 @@ function software_set_filters() {
   // Software list: Set filters for displaying software
 
   // Select platform by query parameter or via reported user agent
-  const url_params = new URLSearchParams(window.location.search);
-
   let user_platform = "";
   if(window.location.search) {
     user_platform = url_params.get("platform")
