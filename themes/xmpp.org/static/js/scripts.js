@@ -284,22 +284,6 @@ function software_hide_xep_select_dropdown(event) {
   }
 }
 
-function get_user_platform_by_user_agent() {
-  if (navigator.userAgent.indexOf("Android") >= 0) {
-    return "android";
-  } else if (navigator.userAgent.indexOf("Linux") >= 0) {
-    return "linux";
-  } else if (navigator.userAgent.indexOf("iPhone") >= 0) {
-    return "ios";
-  } else if (navigator.userAgent.indexOf("Windows") >= 0) {
-    return "windows";
-  } else if (navigator.userAgent.indexOf("Macintosh") >= 0) {
-    return "macos";
-  } else {
-    return "all-platforms";
-  }
-}
-
 function software_platform_changed(event) {
   const url_params = new URLSearchParams(window.location.search);
   url_params.set("platform", event.target.value);
@@ -317,12 +301,6 @@ function software_set_filters() {
   let user_platform = "";
   if(window.location.search) {
     user_platform = url_params.get("platform")
-  }
-
-  if (user_platform === "") {
-    user_platform = get_user_platform_by_user_agent();
-    url_params.set("platform", user_platform);
-    history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
   }
 
   let platform_select = document.getElementById("platform-select");
