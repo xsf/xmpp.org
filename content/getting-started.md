@@ -40,7 +40,6 @@ Use a [public provider from the curated list of **XMPP Providers**](https://prov
 There are several other (uncurated) lists of providers:
 
 * [Public XMPP servers by jabber.at](https://list.jabber.at)
-* [Open list of public XMPP servers by 404.city](https://xmpp-servers.404.city)
 
 ## 3. Log in! That's it
 

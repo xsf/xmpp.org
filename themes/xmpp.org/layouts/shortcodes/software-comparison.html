@@ -1,10 +1,17 @@
+{{ $packages := slice }}
+{{- range $name, $props := .Site.Data.software_list_doap -}}
+    {{ $name_lower := lower $name }}
+    {{ $packages = $packages | append (dict "name" $name "name_lower" $name_lower "data" .) }}
+{{ end }}
+
 <div class="dropdown text-center pb-3">
     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa-solid fa-plus"></i>&nbsp;Add App
     </button>
     <ul class="dropdown-menu" id="comparison-dropdown">
-        {{- range $name, $props := .Site.Data.software_list_doap -}}
-            <li><a class="dropdown-item" role="button">{{- $name -}}</a></li>
+        {{ range sort $packages ".name_lower" }}
+            {{ $props := .data }}
+            <li><a class="dropdown-item" role="button">{{- .name -}}</a></li>
         {{- end -}}
     </ul>
 </div>
@@ -15,12 +22,13 @@
                 <h5 class="mb-0">Extensions</h5>
             </th>
             {{- $names := slice -}}
-            {{- range $name, $props := .Site.Data.software_list_doap -}}
-                {{- $names = append $name $names -}}
-                <th name="{{- $name -}}" class="d-none">
+            {{ range sort $packages ".name_lower" }}
+                {{- $names = append .name $names -}}
+                {{ $props := .data }}
+                <th name="{{- .name -}}" class="d-none">
                     <h5 class="mb-0 text-center">
                         <span class="badge text-bg-secondary p-2" data-bs-theme="dark">
-                            <a class="text-reset align-text-top ps-1" href="/software/{{- $props.name_slug -}}">{{- $name -}}</a>&nbsp;
+                            <a class="text-reset align-text-top ps-1" href="/software/{{- $props.name_slug -}}">{{- .name -}}</a>&nbsp;
                             <button type="button" class="btn-close" name="remove-from-comparison" title="Remove" data-bs-toggle="tooltip"></button>
                         </span>
                     </h5>

@@ -1,11 +1,21 @@
+const url_params = new URLSearchParams(window.location.search);
+
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname == "/software/") {
     for (const button of document.querySelectorAll('button[name="category-button"]')) {
-      button.addEventListener("click", software_filter_list);
-      if (button.id == "category-button-clients") {
-        button.click();
-      }
+      button.addEventListener("click", () => {
+        url_params.set("category", button.dataset.category);
+        history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
+
+        software_filter_list()
+      });
     }
+
+    // Select category tab by URL param (or default to Clients tab)
+    const url_params_category = url_params.get("category") ?? "clients"
+    document.getElementById(`category-button-${url_params_category}`)?.click()
+
+
     for (const check of document.getElementById("select-options-list").querySelectorAll('input[id^="xep-"')) {
       check.addEventListener("click", software_filter_list);
     }
@@ -284,24 +294,7 @@ function software_hide_xep_select_dropdown(event) {
   }
 }
 
-function get_user_platform_by_user_agent() {
-  if (navigator.userAgent.indexOf("Android") >= 0) {
-    return "android";
-  } else if (navigator.userAgent.indexOf("Linux") >= 0) {
-    return "linux";
-  } else if (navigator.userAgent.indexOf("iPhone") >= 0) {
-    return "ios";
-  } else if (navigator.userAgent.indexOf("Windows") >= 0) {
-    return "windows";
-  } else if (navigator.userAgent.indexOf("Macintosh") >= 0) {
-    return "macos";
-  } else {
-    return "all-platforms";
-  }
-}
-
 function software_platform_changed(event) {
-  const url_params = new URLSearchParams(window.location.search);
   url_params.set("platform", event.target.value);
   history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
 
@@ -312,17 +305,9 @@ function software_set_filters() {
   // Software list: Set filters for displaying software
 
   // Select platform by query parameter or via reported user agent
-  const url_params = new URLSearchParams(window.location.search);
-
   let user_platform = "";
   if(window.location.search) {
     user_platform = url_params.get("platform")
-  }
-
-  if (user_platform === "") {
-    user_platform = get_user_platform_by_user_agent();
-    url_params.set("platform", user_platform);
-    history.pushState(null, "", `${window.location.pathname}?${url_params.toString()}`);
   }
 
   let platform_select = document.getElementById("platform-select");

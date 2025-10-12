@@ -3,7 +3,7 @@
 {{- $emeriti := .Site.Data.members.emeriti -}}
 
 <ul>
-{{- range $members -}}
+{{- range sort $members ".name" -}}
     <li>
         {{- .name -}}
         {{- if .roles -}}
@@ -26,7 +26,7 @@
 </ul>
 <p>In addition, the following individuals are emeritus members of the XMPP Standards Foundation:</p>
 <ul>
-    {{- range $emeriti -}}
+    {{- range sort $emeriti ".name" -}}
         <li>
             {{- .name -}}
             {{- if .roles -}}
