@@ -19,11 +19,14 @@ Our current media channels are:
 
 //TODO: Footer.html
 
-## Adding your resource to the Planet Jabber RSS feed:
-See [Planet Jabber](https://planet.jabber.org/). The maintainer of this Planet is Ralph Meijer. He can be contacted at ralphm@ik.nu (Jabber and e-mail).
+## News Aggregator
+
+There is a news aggregator (RSS) for Jabber/XMPP news at [planet.jabber.org](https://planet.jabber.org/).
+
+If you like, add your feed by contacting the maintainer, Ralph Meijer (ralphm@ik.nu Jabber and email).
 
 ## Contact
-If you want to communicate with us, the best way is to reach us in our chat group:
+Reach us in our chat:
 
 {{< community-chat-card chat="XSF Communications" >}}
 
