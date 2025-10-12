@@ -8,7 +8,6 @@ layout: single_xsf
 
 The Communication Team's mission is to inform the XMPP community and interested parties on news and recent developments within XMPP ecosystem.
 Furthermore, with communication and expansion of our public relations we also attempt to be an instance of reference in the diverse and decentralized community.
-This should help to growth the network and its application, too.
 
 ## Team and Channels
 The team consists of the following members:
@@ -16,8 +15,6 @@ The team consists of the following members:
 {{< teams team_name="commteam">}}
 
 Our current media channels are:
-
-//TODO: Footer.html
 
 ## News Aggregator
 
@@ -29,7 +26,3 @@ If you like, add your feed by contacting the maintainer, Ralph Meijer (ralphm@ik
 Reach us in our chat:
 
 {{< community-chat-card chat="XSF Communications" >}}
-
-Find our [wiki page](https://wiki.xmpp.org/web/CommTeam) here.
-=======
-Current projects and status of the team can be checked at the team's [wiki page](https://wiki.xmpp.org/web/CommTeam)
