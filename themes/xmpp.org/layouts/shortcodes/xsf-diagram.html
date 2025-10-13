@@ -9,23 +9,9 @@
                 Council
             </div>
             <ul class="list-group list-group-flush">
-                {{ range $members }}
+                {{ range sort $members ".name" }}
                     {{ if in .roles "council" }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>{{ .name }}</span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
+                        {{ partial "xsf-diagram-entry" (dict "name" .name "email" .email "jids" .jids "roles" .roles) }}
                     {{ end }}
                 {{ end }}
             </ul>
@@ -40,61 +26,9 @@
                 Board of Directors
             </div>
             <ul class="list-group list-group-flush">
-                {{ range $members }}
-                    {{ if and (in .roles "board") (in .roles "chair") }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>{{ .name }} <a href="/about/xsf/people#chair">(XSF Chair)</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
-                {{ end }}
-                {{ end }}
-                {{ range $members }}
-                    {{ if and (in .roles "board") (in .roles "ed") }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>{{ .name }} <a href="/about/xsf/people#executive-director">(Executive Director)</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
-                    {{ end }}
-                {{ end }}
-                {{ range $members }}
-                    {{ if and (in .roles "board") (not (in .roles "chair")) (not (in .roles "ed")) }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>{{ .name }}</span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
+                {{ range sort $members ".name" }}
+                    {{ if in .roles "board" }}
+                        {{ partial "xsf-diagram-entry" (dict "name" .name "email" .email "jids" .jids "roles" .roles) }}
                     {{ end }}
                 {{ end }}
             </ul>
@@ -111,80 +45,9 @@
                 XSF Officers
             </div>
             <ul class="list-group list-group-flush">
-                {{ range $members }}
-                    {{ if and (in .roles "board") (in .roles "chair") }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>Chair: <a href="/about/xsf/people#chair">{{ .name }}</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
-                    {{ end }}
-                {{ end }}
-                {{ range $members }}
-                    {{ if in .roles "ed" }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>Executive Director: <a href="/about/xsf/people#executive-director">{{ .name }}</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
-                    {{ end }}
-                {{ end }}
-                {{ range $members }}
-                    {{ if in .roles "secretary" }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>Secretary: <a href="/about/xsf/people#secretary">{{ .name }}</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
-                    {{ end }}
-                {{ end }}
-                {{ range $members }}
-                    {{ if in .roles "treasurer" }}
-                        <li class="list-group-item small" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span>Treasurer: <a href="/about/xsf/people#treasurer">{{ .name }}</a></span>
-                            <div>
-                                {{ if .email }}
-                                <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}">
-                                    <i class="fa-regular fa-envelope me-2"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .jids }}
-                                <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}">
-                                    <i class="fa-regular fa-comment-dots me-2"></i>
-                                </a>
-                                {{ end }}
-                            </div>
-                        </li>
+                {{ range sort $members ".name" }}
+                    {{ if or (in .roles "chair") (in .roles "ed") (in .roles "secretary") (in .roles "treasurer")  }}
+                        {{ partial "xsf-diagram-entry" (dict "name" .name "email" .email "jids" .jids "roles" .roles) }}
                     {{ end }}
                 {{ end }}
             </ul>
@@ -209,7 +72,7 @@
                                 Editor team
                             </div>
                             <ul class="list-group list-group-flush">
-                                {{ range $members }}
+                                {{ range sort $members ".name" }}
                                     {{ if in .roles "editor" }}
                                         <li class="list-group-item small">
                                             {{ .name }}
@@ -228,7 +91,7 @@
                                 Infrastructure team
                             </div>
                             <ul class="list-group list-group-flush">
-                                {{ range $members }}
+                                {{ range sort $members ".name" }}
                                     {{ if in .roles "infrastructure" }}
                                         <li class="list-group-item small">
                                             {{ .name }}
@@ -247,7 +110,7 @@
                                 Communication team
                             </div>
                             <ul class="list-group list-group-flush">
-                                {{ range $members }}
+                                {{ range sort $members ".name" }}
                                     {{ if in .roles "commteam" }}
                                         <li class="list-group-item small">
                                             {{ .name }}
@@ -266,7 +129,7 @@
                                 Summits, Conferences, and Meetups team (SCAM)
                             </div>
                             <ul class="list-group list-group-flush">
-                                {{ range $members }}
+                                {{ range sort $members ".name" }}
                                     {{ if in .roles "scam" }}
                                         <li class="list-group-item small">
                                             {{ .name }}
