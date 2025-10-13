@@ -105,7 +105,7 @@ Die XSF entwickelt Erweiterungen für das XMPP-Protokoll. Diese [XEPs](https://x
 
 ### Proposed (vorgeschlagen)
 
-Der XEP-Lebenszyklus beginnt damit, eine Idee in einen XEP-Entwurf zu gießen und [der:m XEP-Editor:in](/about/xsf/editor-team/) zu übermitteln. Binnen zwei Wochen entscheidet der [Rat](/about/xmpp-standards-foundation/#council) über die Annahme. Der erste Zustand eines angenommenen Entwurf heißt _Experimental_.
+Der XEP-Lebenszyklus beginnt damit, eine Idee in einen XEP-Entwurf zu gießen und [dem Editor-Team](/about/xsf/editor-team/) zu übermitteln. Binnen zwei Wochen entscheidet der [Rat](/about/xmpp-standards-foundation/#council) über die Annahme. Der erste Zustand eines angenommenen Entwurf heißt _Experimental_.
 
 - [Pubsub Node Bookmark](/extensions/inbox/pubsub-node-bookmark.html)
   - Diese Spezifikation definiert ein Lesezeichen-Element, das auf einen Pubsub-Knoten zeigt.
@@ -129,7 +129,7 @@ Wenn ein experimenteller XEP länger als zwölf Monate nicht aktualisiert wird, 
 
 ### Last Call (letzter Aufruf)
 
-Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsolidiert hat. Heißt: Nachdem der [Rat](/about/xmpp-standards-foundation/#council) einen XEP für fertig befunden hat, startet [die:er XEP-Editor:in](/about/xsf/editor-team/) einen letzten Aufruf zu Kommentaren. Die so erhaltenen Rückmeldungen helfen, den XEP zu verbessern. Danach geht er zurück an den Rat, um als _Stable_ eingestuft zu werden.
+Letzte Aufrufe (_Last Calls_) erfolgen sobald sich der Status eines XEPs konsolidiert hat. Heißt: Nachdem der [Rat](/about/xmpp-standards-foundation/#council) einen XEP für fertig befunden hat, startet [das Editor-Team](/about/xsf/editor-team/) einen letzten Aufruf zu Kommentaren. Die so erhaltenen Rückmeldungen helfen, den XEP zu verbessern. Danach geht er zurück an den Rat, um als _Stable_ eingestuft zu werden.
 
 - Es wurden in diesem Monat keine letzten Aufrufe gestartet.
 
