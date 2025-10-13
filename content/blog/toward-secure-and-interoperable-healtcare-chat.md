@@ -13,6 +13,8 @@ The Netherlands is taking major steps to address this gap through the upcoming N
 
 XMPP (Extensible Messaging and Presence Protocol) is an open standard for secure messaging that allows different chat systems to talk to each other. You can think of it as email for chat: anyone can host their own service, and as long as both sides follow the same rules, messages flow securely and reliably between organizations.
 
+Because XMPP is built on core Internet Engineering Task Force (IETF) standards, it works hand-in-hand with the technologies that power the Internet itself: like TLS for encryption, SASL for authentication, and DNS for service discovery. This means XMPP isn’t just compatible - it’s part of the Internet's DNA.
+
 XMPP is already used by government, defense, and healthcare networks in several countries, proving that open protocols can deliver high-assurance, privacy-compliant communication at scale.
 
 ## A Quick Example from Healthcare
