@@ -9,7 +9,9 @@ mermaid: true
 
 The XSF develops extensions to XMPP through a lightweight standards process centered around XMPP Extension Protocols (XEPs).
 
-The XEP series contains around 350 specifications, covering everything outside of the core of XMPP (which is worked on within the IETF). These specifications are liberally licensed under the XSF's [IPR Policy](/about/xsf/ipr-policy) for wide implementation. Developers and other standards experts from around the world collaborate on these, developing new specifications for emerging practises, and refining existing ways of doing things. Proposed by anyone, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. This page will only look at XEPs aiming to become a Final Standard, which is what most people would want.
+The XEP series contains around 350 specifications, covering everything outside of the core of XMPP (which is worked on within the IETF). These specifications are liberally licensed under the XSF's [IPR Policy](/about/xsf/ipr-policy) for wide implementation. Developers and other standards experts from around the world collaborate on these, developing new specifications for emerging practises, and refining existing ways of doing things. Proposed by anyone, the particularly successful ones end up as Final or Active - depending on their type - while others are carefully archived as Deferred. This life cycle is described in [XEP-0001](/extensions/xep-0001.html), which contains the formal and canonical definitions for the types, states, and processes. Similarly, there is [XEP-0143](/extensions/xep-0143.html) which contains the canonical guidelines for how to write XEPs, how to submit, and how to maintain them.
+
+This page will only look at XEPs aiming to become a Final Standard, which is what most people would want.
 
 So if you have an idea for a new extension in XMPP, what do you do?
 
@@ -27,7 +29,7 @@ Here's how to submit a proposal to the XMPP Standards Foundation for considerati
 
 1. Write your proposal following the guidelines described in [XEP-0143: Guidelines for Authors of XMPP Extension Protocols](/extensions/xep-0143.html).
 2. Make sure you read, understand, and agree to the XSF’s [IPR Policy](/about/xsf/ipr-policy) before you submit your proposal!
-3. Email the XML file (or a URL for the file) to the [Editor Team](mailto:editor@xmpp.org) with a subject line of "ProtoXEP: [your title here]".
+3. Make a GitHub Pull Request putting your new XML file into the "inbox" directory, as described in [Submitting a Proposal](/extensions/xep-0143.html#submit). (If you don't have a GitHub account, you can email it to the Standards SIG mailing list)
 
 Note: It is the author’s responsibility to provide a properly-formatted source file (see the [template](https://raw.githubusercontent.com/xsf/xeps/master/xep-template.xml) file maintained under [source control](/about/xsf/source-control)). Proposals submitted in HTML, TXT, MS Word, Open Document Format, etc. will be returned to the proposal author for proper formatting.
 
