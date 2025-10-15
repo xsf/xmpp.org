@@ -7,7 +7,9 @@ layout: single_xsf
 ---
 
 The Communication Team's mission is to inform the XMPP community and interested parties on news and recent developments within XMPP ecosystem.
-Furthermore, with communication and expansion of our public relations we also attempt to be an instance of reference in the diverse and decentralized community.
+
+Everyone interested to support is invited to reach out.
+You don't need to be a member of the XSF or the Communication Team for this.
 
 ## Team and Channels
 The team consists of the following members:
