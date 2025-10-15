@@ -3,7 +3,7 @@
 
 ## Who We Are and Why This Matters
 
-We are members of the **XMPP Standards Foundation (XSF)** - the independent, non-profit organization that develops and maintains the Extensible Messaging and Presence Protocol (XMPP). Our mission is to build an open, secure, feature-rich, decentralized infrastructure for real-time communication and collaboration over the Internet
+The XMPP Standards Foundation (XSF) is an independent, non-profit organization that promotes and advances open standards for real-time communication and collaboration. The XSF oversees the development of extensions to the Extensible Messaging and Presence Protocol (XMPP) and fosters an open, secure, and decentralized ecosystem for messaging technologies across the Internet.
 
 In healthcare, chat and messaging have become essential for coordination between doctors, nurses, general practitioners, and patients. Yet many existing tools are consumer-grade, not designed to meet healthcare’s strict requirements for **privacy, auditability, and compliance**.
 
