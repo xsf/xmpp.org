@@ -155,7 +155,7 @@ New rooms and public channels are created on a daily basis on the XMPP network. 
 Please share the news on other networks:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Movim](https://mov.im/community/news.xmpp.org/Newsletter)
+- [Movim](https://mov.im/community/news.xmpp.org/News)
 - [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
