@@ -327,6 +327,15 @@
         "categories": [
             "client"
         ],
+        "doap": "https://raw.githubusercontent.com/UWPX/UWPX-Client/master/uwpx.doap",
+        "name": "UWPX",
+        "platforms": [],
+        "url": "https://uwpx.org/"
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "Quiet Internet Pager",
         "platforms": [
