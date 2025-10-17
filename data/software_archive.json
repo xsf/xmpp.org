@@ -328,15 +328,6 @@
             "client"
         ],
         "doap": null,
-        "name": "UWPX",
-        "platforms": [],
-        "url": "https://uwpx.org/"
-    },
-    {
-        "categories": [
-            "client"
-        ],
-        "doap": null,
         "name": "Quiet Internet Pager",
         "platforms": [
             "Windows"
@@ -434,6 +425,15 @@
             "C++"
         ],
         "url": "https://github.com/rpavlik/txmpp"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "UWPX",
+        "platforms": [],
+        "url": "https://uwpx.org/"
     },
     {
         "categories": [
