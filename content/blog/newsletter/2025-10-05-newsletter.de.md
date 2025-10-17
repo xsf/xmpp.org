@@ -158,7 +158,7 @@ Es werden jeden Tag neue Räume und öffentliche Kanäle im XMPP-Netzwerk erstel
 Teile diese Neuigkeiten auch in anderen Netzwerken:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
-- [Movim](https://mov.im/blog/xmpp-official)
+- [Movim](https://mov.im/community/news.xmpp.org/News)
 - [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
