@@ -8,7 +8,7 @@
     "disableHugoGeneratorInject": true,
     "enableEmoji": true,
     "theme": "xmpp.org",
-    "title": "XMPP",
+    "title": "XMPP - The universal messaging standard",
     "pagination": {
         "pagerSize": 10
     },
@@ -30,7 +30,10 @@
         "readingTime": true,
         "socialShare": true,
         "subtitle": "The universal messaging standard",
-        "description": "XMPP - The universal messaging standard",
-        "SiteLogoUrl": "https://xmpp.org/images/logos/xmpp-logo-text-800px.png"
+        "description": "XMPP is the Extensible Messaging and Presence Protocol, a set of open technologies for instant messaging, presence, multi-party chat, voice and video calls, collaboration, lightweight middleware, content syndication, and generalized routing of XML data.",
+        "SiteLogoUrl": "https://xmpp.org/images/logos/xmpp-logo-text-1200px-wide.png",
+        "SiteLogoAlt": "XMPP (Extensible Messaging and Presence Protocol) Logo",
+        "SiteLogoWidth": 800,
+        "SiteLogoHeight": 800
     }
 }
