@@ -1,0 +1,29 @@
+<li class="list-group-item small d-flex justify-content-between align-items-center">
+    <span>
+        {{ .name }}
+        {{ if in .roles "chair" }}
+            (<a href="/about/xsf/people#chair">XSF Chair</a>)
+        {{ end }}
+        {{ if in .roles "ed" }}
+            (<a href="/about/xsf/people#executive-director">Executive Director</a>)
+        {{ end }}
+        {{ if in .roles "secretary" }}
+            (<a href="/about/xsf/people#secretary">Secretary</a>)
+        {{ end }}
+        {{ if in .roles "treasurer" }}
+            (<a href="/about/xsf/people#treasurer">Treasurer</a>)
+        {{ end }}
+    </span>
+    <div class="d-flex gap-2">
+        {{ if .email }}
+            <a href="mailto:{{ index .email 0 | safeURL }}" aria-label="Send mail to {{ .name }}" title="Send mail to {{ .name }}">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+        {{ end }}
+        {{ if .jids }}
+            <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}" title="Chat with {{ .name }}">
+                <i class="fa-regular fa-comment-dots"></i>
+            </a>
+        {{ end }}
+    </div>
+</li>
