@@ -10,6 +10,6 @@ categories: ["Events"]
 
 [Linux Day Torino](https://linuxdaytorino.org/2025/) would like to invite you, your friends, colleagues and families to join the event and hopes to see you there!
 
-**Date**: Saturday, October 25th, 2025
-**Location**: Arsenale della Pace, Piazza Borgo Dora, Torino, Italia.
-**Time**: 2 p.m. at MISC CLASSROOM
+- **Date**: Saturday, October 25th, 2025
+- **Location**: Arsenale della Pace, Piazza Borgo Dora, Torino, Italia.
+- **Time**: 2 p.m. at MISC CLASSROOM
