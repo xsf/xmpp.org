@@ -1,4 +1,10 @@
-# Towards Secure and Interoperable Healthcare Chat
+---
+title: "Towards Secure and Interoperable Healthcare Chat"
+date: 2025-10-28
+author: "Guus der Kinderen"
+categories: ["XSF", "Open Letter", "Miscellaneous"]
+---
+
 *Supporting the development of the Dutch NTA 7532 standard with lessons from international practice*
 
 ## Who We Are and Why This Matters
