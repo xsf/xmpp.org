@@ -14,7 +14,7 @@ Meta's proposed approach relies on restrictive NDAs, proprietary APIs, and centr
 
 - **Gatekeeper Agreements:** Companies must sign NDAs to access interoperability details, creating artificial barriers. Managing these legal aspects increases costs for all parties involved.
 
-- **API-Based Control:** APIs limit flexibility, can be modified unilaterally, do not scale for true federation, and have to maintained.
+- **API-Based Control:** APIs limit flexibility, can be modified unilaterally, do not scale for true federation, and have to be maintained.
 
 - **User Tracking Risks:** The approach involves compliance issues of tracking third-party users at Meta, as well as third-parties tracking Meta's users.
 

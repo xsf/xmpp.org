@@ -1,5 +1,5 @@
 ---
-title: "Technische Zusammenfassung: Argumente für XMPP - Warum Meta sich echte Messenger-Interoperabilität bemühen muss"
+title: "Technische Zusammenfassung: Argumente für XMPP - Warum Meta sich um echte Messenger-Interoperabilität bemühen muss"
 layout: single_open_letter_meta_dma
 date: 2025-03-27
 author: XMPP Standards Foundation
