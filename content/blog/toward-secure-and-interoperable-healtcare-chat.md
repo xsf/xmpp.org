@@ -1,6 +1,6 @@
 ---
 title: "Towards Secure and Interoperable Healthcare Chat"
-date: 2025-10-28
+date: 2025-10-28T07:00:00+00:00
 author: "Guus der Kinderen"
 categories: ["XSF", "Open Letter", "Miscellaneous"]
 ---
