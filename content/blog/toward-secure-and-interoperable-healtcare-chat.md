@@ -3,6 +3,7 @@ title: "Towards Secure and Interoperable Healthcare Chat"
 date: 2025-10-28T07:00:00+00:00
 author: "Guus der Kinderen"
 categories: ["XSF", "Open Letter", "Miscellaneous"]
+summary: "Healthcare messaging must be secure, interoperable, and compliant, yet too often relies on closed consumer platforms. In the Netherlands, the forthcoming NTA 7532 specification aims to provide a national framework for secure, auditable communication between healthcare professionals. This open letter explains how the XMPP standard offers a proven foundation for NTA 7532, supporting vendor-independent and interoperable messaging. By engaging with initiatives like NTA 7532, the XSF promotes open, privacy-respecting communication technologies and invites collaboration with Dutch healthcare stakeholders and the global XMPP community."
 ---
 
 *Supporting the development of the Dutch NTA 7532 standard with lessons from international practice*
