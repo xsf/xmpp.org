@@ -25,12 +25,8 @@
               </p>
               <div class="post-entry">
                 <p>
-                {{- if .Truncated -}}
                   {{- .Summary | plainify | htmlUnescape -}}
                   <a href="{{- .Permalink -}}" class="post-read-more">&nbsp;[{{- i18n "readMore" -}}]</a>
-                {{- else -}}
-                  {{- .Content -}}
-                {{- end -}}
                 </p>
               </div>
             </article>
