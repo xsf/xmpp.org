@@ -17,14 +17,14 @@
                     <ul class="dropdown-menu" aria-labelledby="{{- .Name -}}">
                       {{- range .Children -}}
                         {{- $url := urls.Parse .URL -}}
-                        <li><a class="dropdown-item" href="{{- .URL | relURL -}}" {{- if ne $url.Host $baseurl.Host -}}target="_blank" {{- end -}}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a></li>
+                        <li><a class="dropdown-item" href="{{- .URL | relURL -}}" {{ if ne $url.Host $baseurl.Host }}target="_blank"{{ end }}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a></li>
                       {{- end -}}
                     </ul>
                 </li>
                 {{- else -}}
                   {{- $url := urls.Parse .URL -}}
                   <li class="nav-item">
-                      <a class="nav-link" href="{{- .URL | relURL -}}" {{- if ne $url.Host $baseurl.Host -}}target="_blank" {{- end -}}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a>
+                      <a class="nav-link" href="{{- .URL | relURL -}}" {{ if ne $url.Host $baseurl.Host }}target="_blank"{{ end }}>{{- .Name -}}{{- if ne $url.Host $baseurl.Host -}}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{- end -}}</a>
                   </li>
                 {{- end -}}
             {{- end -}}
