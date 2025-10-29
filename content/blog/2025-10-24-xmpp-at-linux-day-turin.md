@@ -4,7 +4,7 @@ date: 2025-10-24
 categories: ["Events"]
 ---
 
-[**Nicolas Vial**](@laic_salocin@poliversity.it) will host the [*Quale sistema alternativo per il vostro cellulare?*](https://linuxdaytorino.org/2025/#schedule) talk with a workshop that will demonstrate how to install and use XMPP for free from [F-DROID](https://f-droid.org/), but will also give away free QR codes for [Monocles Chat](https://monocles.eu/) from [Google Play](https://play.google.com). The talk will center around [LineageOS](https://lineageos.org/), with a strong focus on XMPP as an IM solution.
+[**Nicolas Vial**](https://poliversity.it/@laic_salocin) will host the [*Quale sistema alternativo per il vostro cellulare?*](https://linuxdaytorino.org/2025/#schedule) talk with a workshop that will demonstrate how to install and use XMPP for free from [F-DROID](https://f-droid.org/), but will also give away free QR codes for [Monocles Chat](https://monocles.eu/) from [Google Play](https://play.google.com). The talk will center around [LineageOS](https://lineageos.org/), with a strong focus on XMPP as an IM solution.
 
 [Linux Day Torino 2025](https://linuxdaytorino.org/2025/) will take place this next Saturday, October 25th, at the *Arsenale della Pace, Piazza Borgo Dora, Torino*, ***Italia***. The event will be free, open to everyone and no prior registration will be required.
 
