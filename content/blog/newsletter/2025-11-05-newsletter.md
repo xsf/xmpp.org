@@ -39,6 +39,7 @@ P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](htt
 
 - [Selfhosting I2P XMPP Server](https://tube.tchncs.de/w/o6ssQJKgKvPLuuCDTF9Uwi) by [RightToPrivacy & Tech Tips](https://fosstodon.org/@RTP).
 - [Messaging mit XMPP - Wie finde ich den passenden Anbieter?](https://makertube.net/w/grSQbdNDF3cYfv9HPQzn9Z) by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
+- [Quale sistema alternativo per il vostro cellulare?] by [Nicolas Vial](https://poliversity.it/@laic_salocin) for the [XMPP related Workshop at the Linux Day Torino 2025](/2025/10/xmpp-related-workshop-at-the-linux-day-torino-2025/). [IT]
 
 ## XMPP Articles
 
