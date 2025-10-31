@@ -32,8 +32,8 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 The talk will be as accessible as possible in terms of vocabulary. Aiming to give an overview of the XMPP protocol and what are the methodologies to start using it immediately through applications installed on your smartphone or PC. Immediately after the talk, the Workshop will move to a corner of the [VAG61](https://mastodon.bida.im/@vag61) to help each other install applications and create accounts on companion servers to immediately start chatting via XMPP and 1000 different accounts! + chaos!!. 
 P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](https://wiki.xmpp-it.net/xmpp-it:guide:indice). [IT]
 
-**Date**: November 7th and 8th, 2025.
-**Location**: Via Paolo Fabbri 110, rione Cirenaica, Bologna, **Italy**.
+- **Date**: November 7th and 8th, 2025.
+- **Location**: Via Paolo Fabbri 110, rione Cirenaica, Bologna, **Italy**.
 
 ## Videos and Talks
 
