@@ -2,7 +2,7 @@
 title: The XMPP Newsletter October 2025
 date: 2025-11-05
 categories: ['Newsletter']
-summary: "On this issue: XSF Open Letter, Interoperable Healthcare Chat and the Dutch NTA 7532, XMPP an IETF standar protocol for chat with interoperability by design. XSF Membership Q4. XMPP at Hack or Di(y|e) 2025 in Italy. On video: Selfhosting I2P XMPP Server! Ignite Realtime and XMPP Interop Testing on healthcare communication interoperability and the Dutch NTA 7532. ProcessOne on Europe's Digital Sovereignty Paradox. New NLnet grant. XMPP Providers Overview page gets new functions. E2EE chat that you can control ft. Prosody. Update your clients with Monocles, Prose and Psi+ and your servers with ejabberd 25.10. XEP's news: three proposed, a new XEP, eight updated and three Last Calls!"
+summary: "On this issue: XSF Open Letter, Interoperable Healthcare Chat and the Dutch NTA 7532, XMPP - an IETF standard protocol for chat with interoperability by design. XSF Membership Q4. XMPP at Hack or Di(y|e) 2025 in Italy. On video: Selfhosting I2P XMPP Server! Ignite Realtime and XMPP Interop Testing on healthcare communication interoperability and the Dutch NTA 7532. ProcessOne on Europe's Digital Sovereignty Paradox. New NLnet grant. XMPP Providers Overview page gets new functions. E2EE chat that you can control ft. Prosody. Update your clients with Monocles, Prose and Psi+ and your servers with ejabberd 25.10. XEP's news: three proposed, a new XEP, eight updated and three Last Calls!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
@@ -12,7 +12,7 @@ This issue covers the month of October 2025.
 
 The [XMPP Newsletter](/categories/newsletter/) is brought to you by the [XSF Communication Team](/about/xsf/comm-team/).
 
-Just like any other product or project by the XSF, the Newsletter is the result of the voluntary work of its members and contributors. If you are happy with the services and software you may be using, please consider saying thanks or help these projects!
+Just like any other product or project by the XSF, the Newsletter is the result of voluntary work of its members and contributors. If you are happy with the services and software you may be using, please consider saying thanks or help these projects!
 
 Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/)? Read more [at the bottom](#help-us-to-build-the-newsletter).
 
@@ -20,7 +20,7 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 Healthcare messaging must be secure, interoperable, and compliant, yet too often relies on closed consumer platforms. In the Netherlands, the forthcoming NTA 7532 specification aims to provide a national framework for secure, auditable communication between healthcare professionals.
 
-To this effect, the XMPP Standards Foundation published the ['Towards Secure and Interoperable Healthcare Chat'](2025/10/towards-secure-and-interoperable-healthcare-chat/) open letter, in order to explain how the XMPP standard offers a proven foundation for NTA 7532, supporting vendor-independent and interoperable messaging. By engaging with initiatives like NTA 7532, the XSF promotes open, privacy-respecting communication technologies and invites collaboration with Dutch healthcare stakeholders and the global XMPP community.
+To this effect, the XMPP Standards Foundation published the ['Towards Secure and Interoperable Healthcare Chat'](/2025/10/towards-secure-and-interoperable-healthcare-chat/) open letter, in order to explain how the XMPP standard offers a proven foundation for NTA 7532, supporting vendor-independent and interoperable messaging. By engaging with initiatives like NTA 7532, the XSF promotes open, privacy-respecting communication technologies and invites collaboration with Dutch healthcare stakeholders and the global XMPP community.
 
 ### XSF Membership
 
@@ -30,7 +30,7 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 [Vril](https://mastodon.bida.im/@thevril) will host the [*XMPP - Iniziamo ad usare sistemi compagni di chat (se chattiamo*](https://hacklabbo.indivia.net/hackordiye25/programma/#xmpp---iniziamo-ad-usare-sistemi-compagni-di-chat-se-chattiamo) talk and workshop at the [Hack or Di(y|e) 2025](https://hacklabbo.indivia.net/hackordiye25/) in Bologna, **Italy**, on this next November 7th and 8th, 2025.
 
-The talk will be as accessible as possible in terms of vocabulary. Aiming to give an overview of the XMPP protocol and what are the methodologies to start using it immediately through applications installed on your smartphone or PC. Immediately after the talk, the Workshop will move to a corner of the [VAG61](https://mastodon.bida.im/@vag61) to help each other install applications and create accounts on companion servers to immediately start chatting via XMPP and 1000 different accounts! + chaos!!. 
+The talk will be as accessible as possible in terms of vocabulary. Aiming to give an overview of the XMPP protocol and what are the methodologies to start using it immediately through applications installed on your smartphone or PC. Immediately after the talk, the workshop will move to a corner of the [VAG61](https://mastodon.bida.im/@vag61) to help each other install applications and create accounts on companion servers to immediately start chatting via XMPP and 1000 different accounts! + chaos!!. 
 P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](https://wiki.xmpp-it.net/xmpp-it:guide:indice). [IT]
 
 - **Date**: November 7th and 8th, 2025.
@@ -40,25 +40,25 @@ P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](htt
 
 - [Selfhosting I2P XMPP Server](https://tube.tchncs.de/w/o6ssQJKgKvPLuuCDTF9Uwi) by [RightToPrivacy & Tech Tips](https://fosstodon.org/@RTP).
 - [Messaging mit XMPP - Wie finde ich den passenden Anbieter?](https://makertube.net/w/grSQbdNDF3cYfv9HPQzn9Z) by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
-- [Quale sistema alternativo per il vostro cellulare?](https://video.linux.it/w/kpv22cF5UnNgoAoBX669bS) by [Nicolas Vial](https://poliversity.it/@laic_salocin) for the [XMPP related Workshop at the Linux Day Torino 2025](/2025/10/xmpp-related-workshop-at-the-linux-day-torino-2025/). [IT]
+- [Quale sistema alternativo per il vostro cellulare?](https://video.linux.it/w/kpv22cF5UnNgoAoBX669bS) by [Nicolas Vial](https://poliversity.it/@laic_salocin) for the [XMPP related workshop at the Linux Day Torino 2025](/2025/10/xmpp-related-workshop-at-the-linux-day-torino-2025/). [IT]
 
 ## XMPP Articles
 
 - [Ignite Realtime](https://www.igniterealtime.org/)
   - The XMPP Standards Foundation [has put out a call to action](/2025/10/towards-secure-and-interoperable-healthcare-chat/): it’s time for the community to help make secure, interoperable chat a reality - especially in healthcare. At [Ignite Realtime](https://www.igniterealtime.org/), we’re excited to support this effort. Our projects, such as [Openfire](https://www.igniterealtime.org/projects/openfire/) and [Smack](https://www.igniterealtime.org/projects/smack/), provide powerful building blocks to explore what’s possible for Dutch healthcare communication. Let’s Build a Connected Dutch Healthcare Community! [[NL](https://fosstodon.org/@xmpp/115450856352408857)]
 - [XMPP Interop Testing](https://xmpp-interop-testing.github.io/)
-  - [Putting NTA 7532 to the Test (Literally)](https://xmpp-interop-testing.github.io/2025/10/28/putting-nta7532-to-the-test.html): If you’re building a chat system that has to _actually talk_ to someone else’s chat system (and keep doctors happy while doing it), you’ll know: writing a specification is only half the battle. The other half is making sure that everyone follow it, and that everyone follows it in the same way. That’s where the **XMPP Interop Testing Framework** comes in. By [Dan Caseley](https://xmpp-interop-testing.github.io/contact) for the [XMPP Interop Testing Blog](https://xmpp-interop-testing.github.io/blog).
-- [ProcessOne ](https://www.process-one.net/)
-  - [Europe's Digital Sovereignty Paradox - "Chat Control" update: Can you build tech independence while breaking encryption?](https://www.process-one.net/blog/chat-control-update-oct-2025/) by [Mickaël Rémond ](https://www.process-one.net/author/mremond/) for the [ProcessOne Blog](https://www.process-one.net/blog/).
+  - [Putting NTA 7532 to the Test (literally)](https://xmpp-interop-testing.github.io/2025/10/28/putting-nta7532-to-the-test.html): If you’re building a chat system that has to _actually talk_ to someone else’s chat system (and keep doctors happy while doing it), you’ll know: writing a specification is only half the battle. The other half is making sure that everyone follow it, and that everyone follows it in the same way. That’s where the **XMPP Interop Testing Framework** comes in. By [Dan Caseley](https://xmpp-interop-testing.github.io/contact) for the [XMPP Interop Testing Blog](https://xmpp-interop-testing.github.io/blog).
+- [ProcessOne](https://www.process-one.net/)
+  - [Europe's Digital Sovereignty Paradox - "Chat Control" update: Can you build tech independence while breaking encryption?](https://www.process-one.net/blog/chat-control-update-oct-2025/) by [Mickaël Rémond](https://www.process-one.net/author/mremond/) for the [ProcessOne Blog](https://www.process-one.net/blog/).
 - [NLnet](https://nlnet.nl/): [29 Free and Open Source Projects Receive Grants to Build Digital Commons](https://nlnet.nl/news/2025/20251016-selection-NGI0CommonsFund.html)
-  - [Latest OMEMO support to Converse.js with libomemo.js](https://nlnet.nl/project/Converse.js-OMEMO/): This project will finalise support for the latest version of OMEMO protocol in [Converse.js](https://github.com/conversejs/converse.js), bringing both state-of-the-art security based on the Noise protocol in private messaging, as well as standards-based interoperability between several messaging applications and services.
+  - [Latest OMEMO support for Converse.js with libomemo.js](https://nlnet.nl/project/Converse.js-OMEMO/): This project will finalise support for the latest version of the OMEMO protocol in [Converse.js](https://github.com/conversejs/converse.js), bringing both state-of-the-art security based on the Noise protocol in private messaging, as well as standards-based interoperability between several messaging applications and services.
 - [XMPP Providers](https://providers.xmpp.net/)
   - [More Adoption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Server Update](https://providers.xmpp.net/blog/2025-10-11-more_adoption_xmpp_providers/) by the [XMPP Providers Team](https://providers.xmpp.net/about/) for the [XMPP Providers blog](https://providers.xmpp.net/blog/).
   - The [Overview](https://providers.xmpp.net/overview/) page received new functions. Now you can see all the available information across the operators in a tabular view. Thanks to the work of the [XMPP Providers Team](https://providers.xmpp.net/about/), you can search each column for specific information. If you are actively looking for custom properties, easily start breaking down the table to your needs!
-- [Un nuovo server di chat per la libertà di comunicare: la nostra risposta a ChatControl](https://estelinux.serviziliberi.it/un-nuovo-server-di-chat-per-la-liberta-di-comunicare-la-nostra-risposta-a-chatcontrol/) by [Fabio Lovato](https://loviuz.it/) for [ILS Este ](https://estelinux.serviziliberi.it/). [IT]
+- [Un nuovo server di chat per la libertà di comunicare: la nostra risposta a ChatControl](https://estelinux.serviziliberi.it/un-nuovo-server-di-chat-per-la-liberta-di-comunicare-la-nostra-risposta-a-chatcontrol/) by [Fabio Lovato](https://loviuz.it/) for [ILS Este](https://estelinux.serviziliberi.it/). [IT]
 - [End-to-End Encrypted Chat that YOU Control: Hosting XMPP (Jabber) with Prosody](https://roguesecurity.dev/blog/xmpp) by [starkzarn](https://roguesecurity.dev/authors/starkzarn) for the [RogueSecurity blog](https://roguesecurity.dev/blog).
 - [New home for the slidge room(s!)](https://slidge.im/blog/2025/10/19/moving-away-from-nicoco.fr/), from the [Slidge.im blog](https://slidge.im/blog/).
-- [Libervia CLI tips](https://mastodon.social/@Goffi/tagged/tips): [Goffi](https://mastodon.social/@Goffi) keeps adding them and the list keeps growing with more and more [CLI](https://libervia.org/__b/doc/backend/libervia-cli/) tips to make it easier for you to use and do nearly everything you need with [Liverbia](https://libervia.org/) from the comfort of your terminal!
+- [Libervia CLI tips](https://mastodon.social/@Goffi/tagged/tips): [Goffi](https://mastodon.social/@Goffi) keeps adding them and the list keeps growing with more and more [CLI](https://libervia.org/__b/doc/backend/libervia-cli/) tips to make it easier for you to use and do nearly everything you need with [Libervia](https://libervia.org/) from the comfort of your terminal!
 
 ## XMPP Software News
 
@@ -71,14 +71,14 @@ P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](htt
 
 ### XMPP Servers
 
-- [ProcessOne](https://www.process-one.net/) is pleased to announce the release of [ejabberd 25.10](https://www.process-one.net/blog/ejabberd-25-10/) only two months after the previous one. This release brings [updated support for XEP-0317 Hats](https://www.process-one.net/blog/ejabberd-25-10/#hats), adds more [Ad-Hoc Commands from XEP-0133](https://www.process-one.net/blog/ejabberd-25-10/#adhoc), includes several bugfixes and many improvements for administrators and developers! Make sure to read the [changelog](https://www.process-one.net/blog/ejabberd-25-10/#changelog) for all the details and a complete list of changes, new features, fixes and improvements!
+- [ProcessOne](https://www.process-one.net/) is pleased to announce the release of [ejabberd 25.10](https://www.process-one.net/blog/ejabberd-25-10/) only two months after the previous one. This release brings [updated support for XEP-0317 Hats](https://www.process-one.net/blog/ejabberd-25-10/#hats), adds more [Ad-Hoc Commands from XEP-0133](https://www.process-one.net/blog/ejabberd-25-10/#adhoc), and includes several bugfixes and many improvements for administrators and developers! Make sure to read the [changelog](https://www.process-one.net/blog/ejabberd-25-10/#changelog) for all the details and a complete list of changes, new features, fixes and improvements!
 
 ### XMPP Libraries & Tools
 
 - [go-xmpp](https://github.com/xmppo/go-xmpp/blob/master/README.md) version [0.2.18](https://github.com/xmppo/go-xmpp/releases/tag/v0.2.18) has been released.
 - [go-sendxmpp](https://salsa.debian.org/mdosch/go-sendxmpp/-/blob/master/README.md?ref_type=heads), a tool to send messages to an XMPP contact or MUC inspired by [sendxmpp](https://sendxmpp.hostname.sk/), version [0.15.1](https://salsa.debian.org/mdosch/go-sendxmpp/-/releases/v0.15.1) has been released. Full details on the [changelog](https://salsa.debian.org/mdosch/go-sendxmpp/-/blob/master/CHANGELOG.md?ref_type=heads).
 - [QXmpp](https://invent.kde.org/libraries/qxmpp/-/blob/master/README.md?ref_type=heads), the cross-platform C++ XMPP client and server library, version [1.11.3](https://invent.kde.org/libraries/qxmpp/-/tags/v1.11.3) has been released. Full the details on the [changelog](https://invent.kde.org/libraries/qxmpp/-/blob/master/CHANGELOG.md?ref_type=heads).
-- [Slidge](https://slidge.im/) versions [0.3.2](https://codeberg.org/slidge/slidge/releases/tag/v0.3.2) and [0.3.3](https://codeberg.org/slidge/slidge/releases/tag/v0.3.3) have been released with a lot of improvements and bugfixes. You can check the intermediate changelog from [0.3.1 to 0.3.3](https://codeberg.org/slidge/slidge/compare/v0.3.1...v0.3.3) for the full list of changes.
+- [Slidge](https://slidge.im/) versions [0.3.2](https://codeberg.org/slidge/slidge/releases/tag/v0.3.2) and [0.3.3](https://codeberg.org/slidge/slidge/releases/tag/v0.3.3) have been released with many improvements and bugfixes. You can check the intermediate changelog from [0.3.1 to 0.3.3](https://codeberg.org/slidge/slidge/compare/v0.3.1...v0.3.3) for the full list of changes.
   - [slidge-whatsapp](https://codeberg.org/slidge/slidge-whatsapp#readme), the [WhatsApp](https://www.whatsapp.com/) to XMPP gateway based on [Slidge](https://slidge.im/) and [whatsmeow](https://github.com/tulir/whatsmeow), version [0.3.1](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.1), [0.3.2](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.2), [0.3.3](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.3), [0.3.4](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.4), [0.3.5](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.5), [0.3.6](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.6) and [0.3.7](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.7) have been released.
   - [matteridge](https://codeberg.org/slidge/matteridge#readme), the [Mattermost](https://mattermost.com/) to XMPP gateway based on [Slidge](https://slidge.im/) and the [mattermost-api-reference-client](https://git.sr.ht/~nicoco/mattermost-api-reference-client), version [0.3.1](https://codeberg.org/slidge/matteridge/releases/tag/v0.3.1) has been released.
 - [Slixmpp](https://codeberg.org/poezio/slixmpp/src/branch/master/README.rst) version [1.12.0](https://codeberg.org/poezio/slixmpp/releases/tag/slix-1.12.0) has been released. You can read the official [release announcement](https://blog.mathieui.net/slixmpp-1.12.html) for all the details.
@@ -98,7 +98,7 @@ The XEP development process starts by writing up an idea and submitting it to th
 - [Forums](/extensions/inbox/forums.html)
   - This specification describes how to implement XMPP-based discussion forums.
 - [Jingle Content Category](/extensions/inbox/jingle-content-category.html)
-  - This specification defines an XMPP extension to negotiate the use of Session Description Protocol (SDP) media- level attribute ` content` as defined by [RFC 4796](https://datatracker.ietf.org/doc/html/rfc4796) with [Jingle RTP sessions](https://xmpp.org/extensions/xep-0167.html).
+  - This specification defines an XMPP extension to negotiate the use of Session Description Protocol (SDP) media- level attribute `content` as defined by [RFC 4796](https://datatracker.ietf.org/doc/html/rfc4796) with [Jingle RTP sessions](/extensions/xep-0167.html).
 
 ### New
 
@@ -162,11 +162,11 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 ## XMPP Public channels
 
-New rooms and public channels are created on a daily basis on the XMPP network. So, if you are on the look out for new and exciting public channels to join, make sure to check out the [Public Channel Search Engine](https://search.jabber.network/search) to find out groups or communities that share your interests!
+New rooms and public channels are created on a daily basis on the XMPP network. So, if you are on the lookout for new and exciting public channels to join, make sure to check out the [Public Channel Search Engine](https://search.jabber.network/search) to find out groups or communities that share your interests!
 
 - If you want to list all the channels, you can find them [here](https://search.jabber.network).
 - If you are interested on something in particular, [look by tag](https://search.jabber.network/tags/)!
-- If you only want to list rooms in a particular language just add `lang:xx` in the search box, like in this example for the [Spanish language](https://search.jabber.network/search?q=lang%3Aes&f=y&sinaddr=on&sindescr=on&sinname=on). Just make sure to replace `es` for your desired language (like `lang:fr`, `lang:de`, `lang:pt` and so on).
+- If you only want to list rooms in a particular language just add `lang:xx` in the search box, like in this example for the [Spanish language](https://search.jabber.network/search?q=lang%3Aes&f=y&sinaddr=on&sindescr=on&sinname=on). Just make sure to replace `es` by your desired language (like `lang:fr`, `lang:de`, `lang:pt` and so on).
 
 ## Spread the news
 
