@@ -30,6 +30,10 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ## Events
 
+The [28th XMPP Summit has been announced](/2025/11/xmpp-summit-28/).
+It will be held Thursday 29th - Friday 30th January 2026 in Brussels, Belgium. 
+These are the two days preceding FOSDEM.
+
 ### XMPP at Hack or Di(y|e) 2025
 
 [Vril](https://mastodon.bida.im/@thevril) will host the [*XMPP - Iniziamo ad usare sistemi compagni di chat (se chattiamo*](https://hacklabbo.indivia.net/hackordiye25/programma/#xmpp---iniziamo-ad-usare-sistemi-compagni-di-chat-se-chattiamo) talk and workshop at the [Hack or Di(y|e) 2025](https://hacklabbo.indivia.net/hackordiye25/) in Bologna, **Italy**, on this next November 7th and 8th, 2025.
