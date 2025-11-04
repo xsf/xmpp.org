@@ -10,7 +10,7 @@
 FROM python:3.13-slim-bookworm
 
 # Set environment variables
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Update system
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
