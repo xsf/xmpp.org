@@ -18,6 +18,8 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 ## XSF Announcements
 
+### XMPP and Dutch Healthcare Chat
+
 Healthcare messaging must be secure, interoperable, and compliant, yet too often relies on closed consumer platforms. In the Netherlands, the forthcoming NTA 7532 specification aims to provide a national framework for secure, auditable communication between healthcare professionals.
 
 To this effect, the XMPP Standards Foundation published the ['Towards Secure and Interoperable Healthcare Chat'](/2025/10/towards-secure-and-interoperable-healthcare-chat/) open letter, in order to explain how the XMPP standard offers a proven foundation for NTA 7532, supporting vendor-independent and interoperable messaging. By engaging with initiatives like NTA 7532, the XSF promotes open, privacy-respecting communication technologies and invites collaboration with Dutch healthcare stakeholders and the global XMPP community.
@@ -25,6 +27,8 @@ To this effect, the XMPP Standards Foundation published the ['Towards Secure and
 ### XSF Membership
 
 If you are interested in joining the XMPP Standards Foundation as a member, [please apply before November 23th, 2025, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q4_2025).
+
+## Events
 
 ### XMPP at Hack or Di(y|e) 2025
 
@@ -67,7 +71,6 @@ P.S. if you already want to get informed, here is a nice guide: [XMPP Guide](htt
 - [Monocles](https://monocles.eu/) has released version [2.0.16](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.0.16) of its chat client for Android. This update comes **loaded** with features and improvements; way too many to list in here! Make sure to take a look at the [changelog](https://codeberg.org/monocles/monocles_chat/src/branch/master/fastlane/metadata/android/en-US/changelogs/19301.txt) for all the details!
 - [Prose](https://prose.org/) has released versions [0.13.0](https://github.com/prose-im/prose-app-web/releases/tag/0.13.0) of its web frontend [prose-app-web](https://github.com/prose-im/prose-app-web).
 - [prose-core-client](https://github.com/prose-im/prose-core-client) has released versions [0.1.107](https://github.com/prose-im/prose-core-client/releases/tag/0.1.107), [0.1.108](https://github.com/prose-im/prose-core-client/releases/tag/0.1.108), [0.1.109](https://github.com/prose-im/prose-core-client/releases/tag/0.1.109) and [0.1.110](https://github.com/prose-im/prose-core-client/releases/tag/0.1.110) of its core XMPP client manager and protocols. You can read all the details on their [changelog](https://github.com/prose-im/prose-core-client/blob/master/CHANGELOG.md).
-- [Psi+](https://sourceforge.net/projects/psiplus/) has released version [1.5.2125.0 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) of its development branch of the [Psi](https://sourceforge.net/projects/psi/) XMPP client.
 
 ### XMPP Servers
 
