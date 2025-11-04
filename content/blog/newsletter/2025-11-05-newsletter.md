@@ -2,7 +2,7 @@
 title: The XMPP Newsletter October 2025
 date: 2025-11-05
 categories: ['Newsletter']
-summary: "On this issue: XSF Open Letter, Interoperable Healthcare Chat and the Dutch NTA 7532, XMPP - an IETF standard protocol for chat with interoperability by design. XSF Membership Q4. XMPP at Hack or Di(y|e) 2025 in Italy. On video: Selfhosting I2P XMPP Server! Ignite Realtime and XMPP Interop Testing on healthcare communication interoperability and the Dutch NTA 7532. ProcessOne on Europe's Digital Sovereignty Paradox. New NLnet grant. XMPP Providers Overview page gets new functions. E2EE chat that you can control ft. Prosody. Update your clients with Monocles, Prose and Psi+ and your servers with ejabberd 25.10. XEP's news: three proposed, a new XEP, eight updated and three Last Calls!"
+summary: "In this issue: XSF Open Letter, Interoperable Healthcare Chat and the Dutch NTA 7532, XMPP - an IETF standard protocol for chat with interoperability by design. XSF Membership Q4. XMPP at Hack or Di(y|e) 2025 in Italy. On video: Selfhosting I2P XMPP Server! Ignite Realtime and XMPP Interop Testing on healthcare communication interoperability and the Dutch NTA 7532. ProcessOne on Europe's Digital Sovereignty Paradox. New NLnet grant. XMPP Providers Overview page gets new functions. E2EE chat that you can control ft. Prosody. Update your clients with Monocles, Prose and Psi+ and your servers with ejabberd 25.10. XEP's news: three proposed, a new XEP, eight updated and three Last Calls!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
