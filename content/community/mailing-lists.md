@@ -31,6 +31,6 @@ __council@xmpp.org email list__ — This list is for discussion by the XMPP Coun
 
 __scam@xmpp.org email list__ - XSF Summits, Conferences and Meetups {{< subscribe-archive-block subscribe="https://mail.jabber.org/postorius/lists/scam.xmpp.org/" archives="https://mail.jabber.org/hyperkitty/list/scam@xmpp.org/" >}}
 
-__summit@xmpp.org email list__ - XMPP Summit, planning and logistics for participants {{< subscribe-archive-block subscribe="https://mail.jabber.org/postorius/lists/scam.xmpp.org/" archives="https://mail.jabber.org/hyperkitty/list/scam@xmpp.org/" >}}
+__summit@xmpp.org email list__ - XMPP Summit, planning and logistics for participants {{< subscribe-archive-block subscribe="https://mail.jabber.org/postorius/lists/summit.xmpp.org/" archives="https://mail.jabber.org/hyperkitty/list/summit@xmpp.org/" >}}
 
 All of these venues are completely free and open to any interested individual.
