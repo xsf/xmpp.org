@@ -49,13 +49,13 @@
     },
         {
         "name": "XMPP Summit",
-        "text": "Join here if you plan to attend our summit or get in contact with us at FOSDEM.",
+        "text": "Room for discussion on and during XMPP Summits",
         "logo": "/images/logos/chatroom-commteam.png",
         "chat": "xmpp:summit@muc.xmpp.org?join",
         "web_chat": "https://xmpp.org/chat?summit",
         "logs": "https://logs.xmpp.org/summit/"
     },
-        {
+    {
         "name": "Summits, Conferences and Meetups workgroup (SCAM)",
         "text": "Here we attempt to organise mostly physical event involving XMPP.",
         "logo": "/images/logos/chatroom-commteam.png",
@@ -63,11 +63,11 @@
         "web_chat": "https://xmpp.org/chat?scam",
         "logs": "https://logs.xmpp.org/scam/"
     },
-        {
+    {
         "name": "Google Summer of Code",
         "text": "If you are participating the Google Summer of Code through the XSF umbrella or are interested, please join.",
         "logo": "/images/logos/chatroom-commteam.png",
-        "chat": "xmpp:commteam@muc.xmpp.org?join",
+        "chat": "xmpp:gsoc@muc.xmpp.org?join",
         "web_chat": "https://xmpp.org/chat?gsoc",
         "logs": "https://logs.xmpp.org/gsoc/"
     }
