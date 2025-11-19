@@ -23,7 +23,6 @@ All logs of public XSF chatrooms are available at [logs.xmpp.org](https://logs.x
 {{< community-chat-card chat="Editors" >}}
 {{< community-chat-card chat="XSF Communications" >}}
 {{< community-chat-card chat="XMPP Summit" >}}
-{{< community-chat-card chat="Summits, Conferences and Meetups workgroup (SCAM)" >}}
 {{< community-chat-card chat="Google Summer of Code" >}}
 {{< /row >}}
 
