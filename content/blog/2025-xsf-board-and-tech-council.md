@@ -1,7 +1,6 @@
 ---
 title: 2025 Annual Meeting and Voting Results
-date: 2025-11-20
-author: gnemmi
+date: 2025-11-21
 categories: ["XSF Organisational"]
 ---
 
@@ -16,8 +15,8 @@ The 2025/2026 term will be formed by the following members:
   - [Dan Caseley](https://wiki.xmpp.org/web/User:Fishbowler/Council_Candidacy_2025)
   - [Daniel Gultsch](https://wiki.xmpp.org/web/User:Daniel/Council_2025)
   - [Jérôme Poisson](https://wiki.xmpp.org/web/User:Goffi/Council_Candidacy_2025)
-  - [Stephen Paul Weber](https://wiki.xmpp.org/web/User:Singpolyma/Council_Candidacy_2025)
   - [Marvin Wißfeld](https://wiki.xmpp.org/web/User:Larma/Council_Candidacy_2025)
+  - [Stephen Paul Weber](https://wiki.xmpp.org/web/User:Singpolyma/Council_Candidacy_2025)
 
 - [Board of Directors](/about/xmpp-standards-foundation/#board):
 
