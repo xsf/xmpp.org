@@ -46,5 +46,21 @@
         "chat": "xmpp:commteam@muc.xmpp.org?join",
         "web_chat": "https://xmpp.org/chat?commteam",
         "logs": "https://logs.xmpp.org/commteam/"
+    },
+    {
+        "name": "XMPP Summit",
+        "text": "Room for discussion on and during XMPP Summits",
+        "logo": "/images/logos/chatroom-commteam.png",
+        "chat": "xmpp:summit@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?summit",
+        "logs": "https://logs.xmpp.org/summit/"
+    },
+    {
+        "name": "Google Summer of Code",
+        "text": "If you are participating the Google Summer of Code through the XSF umbrella or are interested, please join.",
+        "logo": "/images/logos/chatroom-commteam.png",
+        "chat": "xmpp:gsoc@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?gsoc",
+        "logs": "https://logs.xmpp.org/gsoc/"
     }
 ]
