@@ -1,5 +1,23 @@
 [
     {
+        "type": "FOSDEM",
+        "title": "XMPP at FOSDEM 2026",
+        "location": "Brussels (BE)",
+        "date_start": "2026-01-21",
+        "date_end": "2026-02-01",
+        "url": "https://xmpp.org/2025/11/xmpp-at-fosdem-2026/",
+        "desc": null
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 28",
+        "location": "Brussels (BE)",
+        "date_start": "2026-01-29",
+        "date_end": "2026-01-30",
+        "url": "https://xmpp.org/2025/11/xmpp-summit-28/",
+        "desc": "before FOSDEM"
+    },
+    {
         "type": "Sprint",
         "title": null,
         "location": "Berlin (DE)",
