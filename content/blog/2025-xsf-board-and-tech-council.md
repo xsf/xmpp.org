@@ -1,6 +1,6 @@
 ---
 title: 2025 Annual Meeting and Voting Results
-date: 2025-11-21
+date: 2025-11-26
 categories: ["XSF Organisational"]
 ---
 
@@ -20,7 +20,6 @@ The 2025/2026 term will be formed by the following members:
 
 - [Board of Directors](/about/xmpp-standards-foundation/#board):
 
-  - [Adrien Bourmault](https://wiki.xmpp.org/web/Adrien_Bourmault_for_Board_2025)
   - [Arne-Bruen Vogelsang](https://wiki.xmpp.org/web/Arne-Bruen_Vogelsang_for_Board_2025)
   - [Florian Schmaus](https://wiki.xmpp.org/web/Florian_Schmaus_for_Board_2025)
   - [Guus der Kinderen](https://wiki.xmpp.org/web/Guus_der_Kinderen_for_Board_2025)
