@@ -1,6 +1,6 @@
 ---
 title: 2025 Annual Meeting and Voting Results
-date: 2025-11-26
+date: 2025-12-01
 categories: ["XSF Organisational"]
 ---
 
