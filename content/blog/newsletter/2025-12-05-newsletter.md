@@ -48,6 +48,7 @@ The XSF is planning the [XMPP Summit 28](/2025/11/xmpp-summit-28/), which will t
 {{< figure src="/images/newsletter/2025-12-05/movim-chat_image.png" caption="Movim: Share, like, and comment on articles more easily." >}}
 
 - [Prose](https://prose.org/) has released version [0.1.111](https://github.com/prose-im/prose-core-client/releases/tag/0.1.111) of [prose-core-client](https://github.com/prose-im/prose-core-client), their core XMPP client manager and protocols. Full details on the [changelog](https://github.com/prose-im/prose-core-client/blob/master/CHANGELOG.md). The project also released version [0.13.1](https://github.com/prose-im/prose-app-web/releases/tag/0.13.1) and [0.14.0 ](https://github.com/prose-im/prose-app-web/releases/tag/0.14.0) of [prose-app-web](https://github.com/prose-im/prose-app-web), their web application built in TypeScript / VueJS / WebAssembly.
+- [Psi+ 1.5.2128.0 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) has been released.
 
 ### XMPP Servers
 
