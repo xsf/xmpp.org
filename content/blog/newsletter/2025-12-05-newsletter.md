@@ -186,8 +186,8 @@ The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Pleas
 
 ## Unsubscribe from the XMPP Newsletter
 
-To unsubscribe from this list, [please log in first](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/).
-If you have not previously logged in, you may need to set up an account with the appropriate email address.
+For this newsletter either [log in here](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/) and unsubscribe or simply send an email to newsletter-leave@xmpp.org.
+(If you have not previously logged in, you may need to set up an account with the appropriate email address.)
 
 ## License
 
