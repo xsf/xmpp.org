@@ -49,7 +49,9 @@
             "server"
         ],
         "doap": "https://raw.githubusercontent.com/apache/mina-vysper/master/doap.xml",
-        "name": "Apache Vysper"
+        "name": "Apache Vysper",
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
