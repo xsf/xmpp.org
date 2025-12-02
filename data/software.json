@@ -45,26 +45,11 @@
     },
     {
         "categories": [
+            "library",
             "server"
         ],
-        "doap": null,
-        "name": "Apache Vysper",
-        "platforms": [
-            "Linux",
-            "Windows"
-        ],
-        "url": "https://mina.apache.org/vysper-project"
-    },
-    {
-        "categories": [
-            "library"
-        ],
-        "doap": null,
-        "name": "Apache Vysper",
-        "platforms": [
-            "Java"
-        ],
-        "url": "https://mina.apache.org/vysper-project"
+        "doap": "https://raw.githubusercontent.com/apache/mina-vysper/master/doap.xml",
+        "name": "Apache Vysper"
     },
     {
         "categories": [
