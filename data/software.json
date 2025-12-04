@@ -598,11 +598,9 @@
         "categories": [
             "library"
         ],
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/tong/hxmpp/refs/heads/master/doap.xml",
         "name": "hxmpp",
-        "platforms": [
-            "Haxe"
-        ],
+        "platforms": [],
         "url": "https://github.com/tong/hxmpp"
     },
     {
