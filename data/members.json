@@ -114,9 +114,6 @@
             "name": "Dave Cridland",
             "jids": [
                 "dwd@dave.cridland.net"
-            ],
-            "roles": [
-                "board"
             ]
         },
         {
@@ -165,6 +162,7 @@
                 "guus.der.kinderen@igniterealtime.org"
             ],
             "roles": [
+                "board",
                 "infrastructure",
                 "scam"
             ]
@@ -245,7 +243,6 @@
                 "emus@jabbers.one"
             ],
             "roles": [
-                "board",
                 "commteam"
             ]
         },
@@ -322,6 +319,9 @@
             "name": "Mickaël Rémond",
             "jids": [
                 "mremond@process-one.net"
+            ],
+            "roles": [
+                "board"
             ]
         },
         {
