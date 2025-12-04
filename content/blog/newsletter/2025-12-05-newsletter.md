@@ -2,6 +2,7 @@
 title: The XMPP Newsletter November 2025
 date: 2025-12-05
 categories: ['Newsletter']
+summary: "In this issue: XMPP Summit 28 & FOSDEM 2026, Europe’s Decentralized Messaging Survives “Chat Control” Threat, Stop Telling Us XMPP Should Use JSON, Movim Blog - The difference between XMPP and ActivityPub explained through the Blog feature, Introducing Borogove the new Snikket SDK, Best Python XMPP/Jabber Client Libraries - Your Experiences & Top Recommendations. Update your clients with Dino, Gajim, Monal, Monocles, Movim, Prose. Update your servers: Snikket Server - November 2025 release. XEP's news - a new XEP, a new stable XEP, and four updated!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
