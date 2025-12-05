@@ -20,7 +20,7 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 ### XMPP Summit 28 & FOSDEM 2026
 
-The XSF is planning the [XMPP Summit 28](/2025/11/xmpp-summit-28/), which will take place during Thursday 29th & Friday 30th, January 2026, in Brussels (Belgium, Europe). Following the Summit, the XSF is also planning to be present at [FOSDEM 2026](https://fosdem.org/2026/), which will take place during Saturday, January 31st & Sunday, February 1st, 2026. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_28). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. Spread the word within your circles!
+The XSF is planning [XMPP Summit 28](/2025/11/xmpp-summit-28/), which will take place on Thursday 29th & Friday 30th, January 2026, in Brussels (Belgium, Europe). Following the Summit, the XSF is also planning to be present at [FOSDEM 2026](https://fosdem.org/2026/), which will take place during Saturday, January 31st & Sunday, February 1st, 2026. Find all the details in our [Wiki](https://wiki.xmpp.org/web/Conferences/Summit_28). Please sign-up now if you are planning to attend, since this helps organizing. The event is of course open for everyone interested to participate. Spread the word within your circles!
 
 ## XMPP Articles
 
