@@ -37,7 +37,7 @@ The XSF is planning the [XMPP Summit 28](/2025/11/xmpp-summit-28/), which will t
 
 ### XMPP Clients and Applications
 
-- [Dino](https://dino.im/) has released version [0.5.1](https://github.com/dino/dino/releases/tag/v0.5.1) of it's a modern open-source chat client for the desktop. It focuses on providing a clean and reliable Jabber/XMPP experience while having your privacy in mind.
+- [Dino](https://dino.im/) has released version [0.5.1](https://github.com/dino/dino/releases/tag/v0.5.1) of its modern open-source chat client for the desktop. It focuses on providing a clean and reliable Jabber/XMPP experience while having your privacy in mind.
 - [Gajim](https://gajim.org/) has released version [2.4.0](https://gajim.org/posts/2025-11-04-gajim-2.4.0-released/) of its free and fully featured chat app for XMPP. This release brings read markers in group chats, improved file transfers, more details for your account, and many smaller changes and bug fixes. Thank you for all your contributions! You can take a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
 
 {{< figure src="/images/newsletter/2025-12-05/gajim-profile.png" caption="Gajim: Your profile on the account page." >}}
