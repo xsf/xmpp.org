@@ -142,8 +142,10 @@ td:nth-child(4) {
 }
 
 .xep-implementation-status {
-    font-size: small;
-    padding: 5px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: 50rem;
 }
 .complete {
     color: hsl(120, 25%, 42%);
@@ -169,7 +171,7 @@ td:nth-child(4) {
 }
 .version-outdated {
     color: hsl(36, 66%, 43%);
-    background-color: hsl(56, 62%, 86%);
+    white-space: nowrap;
 }
 .small {
     font-size: small;
@@ -261,6 +263,5 @@ td:nth-child(4) {
     }
     .version-outdated {
         color: hsl(36, 100%, 92%);
-        background-color: hsl(55, 45%, 16%);
     }
 }
