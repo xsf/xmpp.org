@@ -185,13 +185,6 @@
             "weight": 1
         },
         {
-            "identifier": "announcements",
-            "name": "Announcements",
-            "parent": "news",
-            "url": "/announcements/",
-            "weight": 2
-        },
-        {
             "name": "Jobs",
             "url": "https://xmpp.work",
             "weight": 8
