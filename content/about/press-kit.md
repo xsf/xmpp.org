@@ -33,3 +33,9 @@ Who owns XMPP? Who uses XMPP? How secure is XMPP? Read our [FAQ](/about/faq/) fo
 {{< figure src="/images/logos/xmpp-logo-text.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-2 pb-3" >}}
 
 {{< figure src="/images/logos/xmpp-logo-text-300dpi.png" caption="XMPP Logo (PNG file, 300 DPI)" width="250" class="img-thumbnail p-3" >}}
+
+### Monochrome Variants
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-variant.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-3" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-text.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-3" >}}
