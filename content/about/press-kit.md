@@ -30,12 +30,32 @@ Who owns XMPP? Who uses XMPP? How secure is XMPP? Read our [FAQ](/about/faq/) fo
 
 ## XMPP Logo
 
-{{< figure src="/images/logos/xmpp-logo-text.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-2 pb-3" >}}
+{{< figure src="/images/logos/xmpp-logo-text.svg" caption="SVG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
 
-{{< figure src="/images/logos/xmpp-logo-text-300dpi.png" caption="XMPP Logo (PNG file, 300 DPI)" width="250" class="img-thumbnail p-3" >}}
+{{< figure src="/images/logos/xmpp-logo-text-black.png" caption="PNG file (black)" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-text-white.png" caption="PNG file (white)" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
 
 ### Monochrome Variants
 
-{{< figure src="/images/logos/xmpp-logo-monochrome-variant.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-3" >}}
+{{< figure src="/images/logos/xmpp-logo-text-monochrome.svg" caption="SVG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
 
-{{< figure src="/images/logos/xmpp-logo-monochrome-text.svg" caption="XMPP Logo (SVG file)" width="250" class="img-thumbnail p-3" >}}
+{{< figure src="/images/logos/xmpp-logo-monochrome.svg" caption="SVG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-variant.svg" caption="SVG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+---
+
+{{< figure src="/images/logos/xmpp-logo-text-monochrome-white.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-white.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-variant-white.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+---
+
+{{< figure src="/images/logos/xmpp-logo-text-monochrome-black.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-black.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
+
+{{< figure src="/images/logos/xmpp-logo-monochrome-variant-black.png" caption="PNG file" width="150" class="img-thumbnail p-3 bg-body-secondary" >}}
