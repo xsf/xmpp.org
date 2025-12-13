@@ -18,6 +18,15 @@
         "desc": "before FOSDEM"
     },
     {
+        "type": "Conference",
+        "title": "Chaos Communication Congress 39C3",
+        "location": "Hamburg (DE)",
+        "date_start": "2025-12-27",
+        "date_end": "2025-12-30",
+        "url": "https://xmpp.org/2025/12/xmpp-at-chaos-communication-congress-39c3/",
+        "desc": "XMPP Assembly located in the Critical Decentralization Cluster"
+    },
+    {
         "type": "Sprint",
         "title": null,
         "location": "Berlin (DE)",
