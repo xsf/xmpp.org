@@ -2,7 +2,7 @@
 title: The XMPP Newsletter November 2025
 date: 2025-12-05
 categories: ['Newsletter']
-summary: “In questo numero: XMPP Summit 28 & FOSDEM 2026, La messaggistica decentralizzata europea sopravvive alla minaccia del ”controllo delle chat", Smettete di dirci che XMPP dovrebbe usare JSON, Blog Movim - La differenza tra XMPP e ActivityPub spiegata attraverso la funzione Blog, Presentazione di Borogove, il nuovo SDK Snikket, Le migliori librerie client Python XMPP/Jabber - Le vostre esperienze e i vostri consigli migliori. Aggiornate i vostri client con Dino, Gajim, Monal, Monocles, Movim, Prose. Aggiornate i vostri server: Snikket Server - versione novembre 2025. Notizie XEP - un nuovo XEP, un nuovo XEP stabile e quattro aggiornamenti!"
+summary: "In questo numero: XMPP Summit 28 e FOSDEM 2026, la messaggistica decentralizzata europea sopravvive alla minaccia del “controllo delle chat”, smettete di dirci che XMPP dovrebbe usare JSON, blog Movim - La differenza tra XMPP e ActivityPub spiegata attraverso la funzione Blog, Presentazione di Borogove, il nuovo SDK Snikket, Le migliori librerie client Python XMPP/Jabber - Le vostre esperienze e i vostri consigli migliori. Aggiornate i vostri client con Dino, Gajim, Monal, Monocles, Movim, Prose. Aggiornate i vostri server: Snikket Server - versione novembre 2025. Notizie XEP - una nuovo XEP, una nuovo XEP stabile e quattro aggiornamenti!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
@@ -159,7 +159,7 @@ Questo è un progetto comunitario e desideriamo ringraziare i traduttori per il 
 - Traduzioni:
 - [Francese](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - [Tedesco](/categories/newsletter/): *Millesimus*
-- [Italiano](https://notes.nicfab.eu/en/newsletter/): *nicola*
+- [Italiano](/categories/newsletter/): *Mario Sabatino, Roberto Resoli*
 - [Portoghese](/categories/newsletter/): *Paulo*
 
 ## Aiutaci a creare la newsletter
