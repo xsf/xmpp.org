@@ -26,7 +26,7 @@ L'XSF sta organizzando l'[XMPP Summit 28](/2025/11/xmpp-summit-28/), che si terr
 
 - [La messaggistica decentralizzata europea sopravvive alla la minaccia del “controllo delle chat”](https://www.process-one.net/blog/decentralized-messaging-survives-chat-control-threat/) di [Mickaël Rémond](https://www.process-one.net/author/mremond/) per il [blog ProcessOne](https://www.process-one.net/blog/).
 - [Smettete di dirci che XMPP dovrebbe usare JSON ](https://www.process-one.net/blog/stop-telling-us-xmpp-should-use-json/) di [Mickaël Rémond](https://www.process-one.net/author/mremond/) per il [blog ProcessOne](https://www.process-one.net/blog/) .
-- [La differenza tra XMPP e ActivityPub, spiegata attraverso la funzione Blog](https://mov.im/community/pubsub.movim.eu/Movim/ the-difference-between-xmpp-and-activitypub-explained-through-the-blog-feature-Hdx4FR) per il [Blog Movim](https://mov.im/community/pubsub.movim.eu/Movim). Un articolo dettagliato e accessibile che spiega le differenze tra la rete XMPP e Fediverse e mostra in modo più approfondito come vengono gestiti i blog sulla rete XMPP.
+- [La differenza tra XMPP e ActivityPub, spiegata attraverso la funzione Blog](https://mov.im/community/pubsub.movim.eu/Movim/the-difference-between-xmpp-and-activitypub-explained-through-the-blog-feature-Hdx4FR) per il [Blog Movim](https://mov.im/community/pubsub.movim.eu/Movim). Un articolo dettagliato e accessibile che spiega le differenze tra la rete XMPP e Fediverso e mostra in modo più approfondito come vengono gestiti i blog sulla rete XMPP.
 
 {{< figure src="/images/newsletter/2025-12-05/movim_post.png" caption="XMPP e ActivityPub: due approcci diversi." >}}
 
