@@ -160,6 +160,7 @@ Questo è un progetto comunitario e desideriamo ringraziare i traduttori per il 
 - [Francese](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
 - [Tedesco](/categories/newsletter/): *Millesimus*
 - [Italiano](/categories/newsletter/): *Mario Sabatino, Roberto Resoli*
+  - Disponibile, da Giugno 2025, anche su: [XMPP-IT Italian Community](https://www.xmpp-it.net/tag/newsletter/)
 - [Portoghese](/categories/newsletter/): *Paulo*
 
 ## Aiutaci a creare la newsletter
