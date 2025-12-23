@@ -1,6 +1,6 @@
 ---
 title: Newsletter XMPP ottobre 2025
-date: 05-11-2025
+date: 2025-11-05
 categories: ['Newsletter']
 sommario: "In questo numero: Lettera aperta XSF, chat sanitaria interoperabile e NTA 7532 olandese, XMPP - un protocollo standard IETF per la chat con interoperabilità integrata. Iscrizione all'XSF nel quarto trimestre. XMPP all'Hack or Di(y|e) 2025 in Italia. In video: Selfhosting I2P XMPP Server! Ignite Realtime e XMPP Interop Testing sull'interoperabilità delle comunicazioni sanitarie e lo standard olandese NTA 7532. ProcessOne sul paradosso della sovranità digitale in Europa. Nuova sovvenzione NLnet. La pagina Panoramica dei provider XMPP ottiene nuove funzioni. Chat E2EE che puoi controllare ft. Prosody. Aggiorna i tuoi client con Monocles, Prose e Psi+ e i tuoi server con ejabberd 25.10. Notizie XEP: tre proposte, un nuovo XEP, otto aggiornamenti e tre Last Call!"
 ---
