@@ -409,8 +409,8 @@ function software_filter_list() {
     category = category.slice(0, -1);
   }
 
-  let selected_xeps = software_get_selected_xeps();
-  let platform = document.getElementById("platform-select").value;
+  const selected_xeps = software_get_selected_xeps();
+  const platform = document.getElementById("platform-select").value.toLowerCase();
 
   let hidden_cards = 0;
   for (const card of document.getElementsByClassName("package-card")) {
@@ -422,7 +422,8 @@ function software_filter_list() {
     card.classList.remove("d-none");
 
     if (category_list.toLowerCase().includes(category)) {
-      if (card.dataset.platforms.toLowerCase().includes(platform) || platform == "all-platforms") {
+      const platforms = card.dataset.platforms.split(",").map((platform) => platform.toLowerCase());
+      if (platforms.includes(platform) || platform == "all-platforms") {
         if (package_compliant) {
           if (selected_xeps.length === 0 || selected_xeps.every(r => xep_list.includes(r))) {
             show_card = true;
