@@ -181,7 +181,8 @@ Collaboratori alla newsletter di questo mese:
 Collaboratori alla traduzione:
 - [Francese](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), anubis, Benoît Sibaud, Julien Jorge seveso, Pierre Jarillon*
 - [Tedesco](/categories/newsletter/): *Millesimus*
-- [Italiano](https://notes.nicfab.eu): *nicola*
+- [Italiano](/categories/newsletter/): *Mario Sabatino, Roberto Resoli*
+  - Disponibile, da Giugno 2025, anche su: [XMPP-IT Italian Community](https://www.xmpp-it.net/tag/newsletter/)
 - [Portoghese](/categories/newsletter/): *Paulo*
 
 ## Aiutaci a creare la newsletter
