@@ -9,9 +9,9 @@
         <name>Snikket Server</name>
         <short-name>Snikket</short-name>
 
-        <shortdesc xml:lang="en">XMPP Server</shortdesc>
+        <shortdesc xml:lang="en">Opinionated XMPP distribution</shortdesc>
         <description xml:lang="en">
-            Snikket is an open-source self-hosted personal messaging service. It aims to provide an alternative to proprietary and centralized messaging platforms while supporting all the expected features and being easy to use. The Snikket server lets you create and manage user accounts, and acts as a central safe place to manage your data. Snikket supports multiple devices on a single chat account, it keeps track of which ones are online, and helps deliver messages reliably from person to person.
+            Snikket is an open-source self-hosted personal messaging service. It aims to provide an alternative to proprietary and centralized messaging platforms while supporting all the expected features and being easy to use. The Snikket server lets you create and manage user accounts, and acts as a central safe place to manage your data. Snikket supports multiple devices on a single chat account, it keeps track of which ones are online, and helps deliver messages reliably from person to person. For more info, see the Snikket service overview: https://snikket.org/service/ and the FAQ: https://snikket.org/faq/
         </description>
 
         <homepage rdf:resource="https://snikket.org/"/>

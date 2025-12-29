@@ -73,6 +73,7 @@ aliases:
 SOFTWARE_CATEGORIES: list[str] = [
     "client",
     "component",
+    "integrated-platform",
     "library",
     "server",
     "tool",
