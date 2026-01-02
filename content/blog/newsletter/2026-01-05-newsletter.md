@@ -91,6 +91,7 @@ The XSF is proud to announce that the official XMPP logo has been [accepted](htt
   - [slidge-whatsapp](https://codeberg.org/slidge/slidge-whatsapp#readme), the [WhatsApp](https://www.whatsapp.com/) to XMPP gateway based on [Slidge](https://slidge.im/) and [whatsmeow](https://github.com/tulir/whatsmeow), version [0.3.9](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.9) has been released.
   - [slidgram](https://codeberg.org/slidge/slidgram#readme), the [Telegram](https://telegram.org/) to XMPP gateway based on Slidge and [Pyrofork](https://pyrofork.wulan17.dev/main/), version [0.3.1](https://codeberg.org/slidge/slidgram/releases/tag/v0.3.1), has been released.
 - [xmpp-ap-bridge](https://github.com/Barbapulpe/xmpp-ap-bridge/blob/main/README.md), a lightweight Fediverse to XMPP implementation based on client bots to enable chat-like conversations between any Fediverse application and any XMPP client, from your usual client applications, versions [0.7.3](https://github.com/Barbapulpe/xmpp-ap-bridge/releases/tag/v0.7.3) and [0.7.4](https://github.com/Barbapulpe/xmpp-ap-bridge/releases/tag/v0.7.4) have been released.
+- [xmpp-dns](https://salsa.debian.org/mdosch/xmpp-dns/-/blob/master/README.md?ref_type=heads), a CLI tool to check XMPP SRV records, version [0.5.5](https://salsa.debian.org/mdosch/xmpp-dns/-/releases/v0.5.5) has been released. Full details on the [changelog](https://salsa.debian.org/mdosch/xmpp-dns/-/blob/master/CHANGELOG.md?ref_type=heads).
 
 ## Extensions and specifications
 
