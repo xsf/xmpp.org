@@ -2,7 +2,7 @@
 title: The XMPP Newsletter December 2025
 date: 2026-01-05
 categories: ['Newsletter']
-summary: "In this issue: Pack your bags and get ready for the XMPP Summit 28, take part on any or all of the 3 XMPP events on Fosdem 26 and the other 2 on the RHL26. Learn about Monal IM internals. Last JMP newsletter of the year. Update your clients with Cheogram, Conversations, Gajim, Monal and Monocles. Update your servers: MoongooseIM 6.0.5, Openfire 5.0.3. and Snikket Server - December 2025. XEP’s news - a proposed XEP, two updated, two new ones, a stable XEP and a last call!"
+summary: "In this issue: Pack your bags and get ready for the XMPP Summit 28, take part on any or all of the 3 XMPP events on Fosdem 26 and the other 2 on the RHL26. Learn about Monal IM internals. Last JMP newsletter of the year. Update your clients with Cheogram, Conversations, Gajim, Kaidan, Monal, Monocles and Quicksy! Update your servers: MoongooseIM 6.0.5, Openfire 5.0.3. and Snikket Server - December 2025. XEP’s news - a proposed XEP, two updated, two new ones, a stable XEP and a last call!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
