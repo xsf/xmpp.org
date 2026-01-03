@@ -1,0 +1,84 @@
+---
+title: Chat of the Future Initiative
+date: 2026-01-04
+categories: ["Events"]
+---
+
+{{< figure src="/images/blog/ChatFutureInitiative_banner.png" caption="Chat of Future Initiative Banner.png" >}}
+
+Dear all,
+
+the XSF Communication Team is please to announce a new initiative to help evolving of the XMPP ecosystem in a broader perspective and aligned perspective.
+This should cover discussions, development but also extended communication.
+As this is being setup in an iterative way, participants will be able to form and steer its direction.
+
+### Why the Chat of the Future Initiative?
+
+XMPP exists for more than 20 years now, with world-wide implementations across various applications and more than 500 published and public specifications.
+At [xmpp.org](https://xmpp.org/software/), software of around 35 clients, 20 libraries and 8 servers are listed. This rich history and only possible through the federation endorse over decades.
+
+Though, maintaining a federated and decentralised network also requires significantly higher efforts for cross-network alignment, adoption and also quality of our technology. Establishing communication that goes deeply into the ecosystem helps and supports 
+orientation.
+
+### What is the Chat of the Future Initiative about?
+
+With this ambitious activity, participants will try to identify, collect, and articulate key activity areas that apply to the XMPP ecosystem that needs efforts and help us to review and challenge the current status quo.
+Though, the space is considered open about its outcomes, one guiding element here is a user-centric and developer-centric formulation.
+Any activity is welcome, though it should just try to organise on common ground.
+
+One potential early outcome recommended could be to formulate a so-called Community Vision and Community Goals that every project can decide to contribute individually.
+Of course, the scope needs to be manageable and should be focused.
+But let's start this process.
+
+### How will the Chat of the Future Initiative work?
+
+The Chat of the Future initiative will begin a series of interactive collaboration sessions in the first phase to initiate a new space for discussion, alignment and collecting our thoughts and ideas.
+Subsequently, conclusions will be gathered, reviewed, and adjusted.
+
+The participants will have the chance to contribute with their perspective, feedback and discussion topics via the collaboration tool Mural, both in spoken and written form.
+If other organisation spaces - such as a group chat - be necessary, the development of the initiative will show.
+At its best, Let's try to integrate this in what is available in the existing spaces.
+As said, each session are also matter of adjustment to collaborative learnings.
+
+The interactive collaboration workspace will be [Mural](https://www.mural.co/), which has the capabilities and feature to help work together.
+Info: This initiative evolves out of a former attempt in 2024 that failed due to poor tool choice.
+
+### Who can participate the Chat of the Future Initiative?
+
+Anyone interested and willing to contribute to the XMPP ecosystem of any level of experience.
+This also involves newcomers and bare users as well as professionals of the XMPP technology as well as professionals.
+If you cannot participate, consider to provide your thoughts in a written statement to the organiser.
+There are multiple sessions and more planned, so one can join at another time or phase.
+
+### When & Where will the Chat of the Future Initiative take place?
+
+Currently a set of sessions is planned and listed below.
+More session to work on actual topics are yet to come.
+This can be matter of change in the future based on feedback.
+
+The first session link can be found here: [Teamjoin](https://talk.teamjoin.de/room/94d2cdda-0c55-4a7a-858a-6c26fb29e0d1?invite=fcd1e44e-754b-4fc8-88d7-10505155114f).
+
+Password is: _XMPP@chatfuture2026_
+
+The interactive workspace will be accessible from the first session: [Workspace](https://app.mural.co/invitation/team/xmppstandardsfoundation0344?code=8d235b1edbbf4d8cad9da5a0aefed1ec&sender=uf8ae920573bee597ec5f7794&returnUrl=%2Ft%2Fxmppstandardsfoundation0344%2Fm%2Fxmppstandardsfoundation0344%2F1762524289918%2Fb143a70480e62e90a3c672d592683dcf7e64af8b%3Fsender%3Duf8ae920573bee597ec5f7794).
+
+Meeting netiquette: Please keep a respectful, constructive and positive tone and statements.
+
+| Event name | Date | Time | Agenda |
+|------------|------|------|--------|
+| Kick-off Session | Tue, 13 Jan 2026     |  19:00 - 20:00 (CET)    |  Check-in & Warm-up, Abou the Initiative, Retrospective on XMPP today   |
+| Q1 Vision & Scope Session  | Tue, 20 Jan 2026     |  19:00 - 20:00 (CET)  |  Check-in & Warm-up, Key development points  |
+| Q1 Deep Dive Session  | Tue, 3 Feb 2026     |  19:00 - 19:45 (CET)  |  Deep Dive Key Development points March - May 2026   |
+| Q1 Check-in Session  | Tue, 11 + 25 Mar 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
+| Q1 Check-in Session  | Tue, 8 + 22 Apr 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
+| Q2 Vision & Scope Session  | Tue, 7 May 2026     |  19:00 - 20:00 (CET)  |  TBA  |
+| Q2 Check-in Session  | Tue, 6 & 20 May 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
+
+
+If you have further questions, please join the [XSF chat](https://xmpp.org/community/chat/).
+
+
+We hope this will positively contribute to the community and technology as a whole.
+See you soon,
+
+— The XSF Communication Team
