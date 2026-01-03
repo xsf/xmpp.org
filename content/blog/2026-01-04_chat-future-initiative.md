@@ -8,7 +8,7 @@ categories: ["Events"]
 
 Dear all,
 
-the XSF Communication Team is please to announce a new initiative to help evolving of the XMPP ecosystem in a broader perspective and aligned perspective.
+the XSF Communication Team is pleased to announce a new initiative to help evolving of the XMPP ecosystem in a broader and aligned perspective.
 This should cover discussions, development but also extended communication.
 As this is being setup in an iterative way, participants will be able to form and steer its direction.
 
