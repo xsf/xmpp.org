@@ -2,7 +2,7 @@
 title: Chat of the Future Initiative
 date: 2026-01-05T08:00:00+00:00
 categories: ["Events", "XMPP Community"]
-summary: "The XSF Communication Team is launching the "Chat of the Future Initiative" to support the XMPP ecosystem through collaborative discussions, development, and improved public communication. This new initiative invites participants from all experience levels to contribute ideas and help steer the XMPP network direction, lead by a user-centric and developer-centric approach. This initiative will consist of interactive collaboration sessions, where feedback and ideas will be collected. The first set of sessions is scheduled from January to May 2026, covering topics like the current state of XMPP."
+summary: "The XSF Communication Team is launching the 'Chat of the Future Initiative' to support the XMPP ecosystem through collaborative discussions, development, and improved public communication. This new initiative invites participants from all experience levels to contribute ideas and help steer the XMPP network direction, lead by a user-centric and developer-centric approach. This initiative will consist of interactive collaboration sessions, where feedback and ideas will be collected. The first set of sessions is scheduled from January to May 2026, covering topics like the current state of XMPP."
 ---
 
 {{< figure src="/images/blog/ChatFutureInitiative_banner.png" caption="Chat of Future Initiative Banner.png" >}}
