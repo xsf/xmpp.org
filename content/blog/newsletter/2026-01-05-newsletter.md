@@ -200,15 +200,6 @@ Tasks we do on a regular basis:
 - translations
 - communication via media accounts
 
-## XSF Fiscal Hosting Projects
-
-The XSF offers [fiscal hosting](/community/fiscalhost/) for XMPP projects. Please apply via [Open Collective](https://opencollective.com/xmpp). For more information, see the [announcement blog post](/2021/09/the-xsf-as-a-fiscal-host/). Current projects you can support:
-
-- [Mellium Co-op](https://opencollective.com/mellium)
-- [Bifrost bridge](https://opencollective.com/bifrost-mam)
-- [Prav](https://opencollective.com/pravapp)
-- [diasp.in](https://opencollective.com/diasp-in)
-
 ## Unsubscribe from the XMPP Newsletter
 
 For this newsletter either [log in here](https://mail.jabber.org/accounts/login/?next=/postorius/lists/newsletter.xmpp.org/) and unsubscribe or simply send an email to newsletter-leave@xmpp.org.
