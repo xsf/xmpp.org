@@ -27,6 +27,7 @@ RFC_NUMBERS = [
     5437,
     6120,  # important
     6121,  # important
+    6122,
     7081,
     7165,
     7247,

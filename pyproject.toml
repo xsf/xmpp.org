@@ -23,6 +23,7 @@ lint.ignore = [
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `xx`
   "C901",     # `xx` is too complex
   "D",        # docstyle
+  "EXE002",   # no shebang
   "FBT001",   # Boolean-typed positional argument in function definition
   "FBT002",   # Boolean default positional argument in function definition
   "I",        # imports, covered by isort
