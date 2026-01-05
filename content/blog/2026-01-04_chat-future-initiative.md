@@ -29,6 +29,7 @@ Though, this new space is considered to be open about its outcomes, one guiding 
 Any activity here is welcome, though this activity should be to organised on common ground and steer in the same direction towards those audiences.
 
 One potential early outcome recommended could be to formulate a so-called community vision and potential key areas that every actor can decide to contribute individually.
+**If you have an idea and believe its essential for the XMPP eco-system, such as establishing an interoperability session, work on encryption or having a landing page for developers, then this is your place to expose this.**
 Of course, the scope here needs to be manageable and should be limited to the actors capabilities.
 But let's first start this process.
 
