@@ -102,7 +102,7 @@ La XMPP Standards Foundation sviluppa estensioni per XMPP nella sua [serie XEP](
 Il processo di sviluppo XEP inizia con la stesura di un'idea e la sua presentazione all'[XMPP Editor](/about/xsf/editor-team/). Entro due settimane, il [Consiglio](/about/xmpp-standards-foundation/#council) decide se accettare questa proposta come XEP sperimentale.
 
 - [Pipelining dell'autenticazione iniziale](/extensions/inbox/iap.html)
-  - Questa specifica definisce un protocollo per scoprire se il SASL2 `<authenticate>` può essere pipelinato in modo sicuro insieme allo stream aperto e, in tal caso, consente al client di eseguire questo pipelining in modo sicuro.
+  - Questa specifica definisce un protocollo per scoprire se il SASL2 `<authenticate>` può essere messo in serie in modo corretto assieme allo stream aperto e, in tal caso, consente al client di eseguire questa messa in serie in modo corretto.
 
 ### Novità
 
