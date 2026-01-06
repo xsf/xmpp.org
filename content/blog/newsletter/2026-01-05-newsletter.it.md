@@ -7,7 +7,7 @@ summary: "In questo numero: Preparate le valigie e tenetevi pronti per l'XMPP Su
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
 
-Benvenuti alla newsletter XMPP, è un piacere avervi di nuovo qui!
+Benvenuti nella newsletter XMPP, è un piacere avervi di nuovo qui!
 Questo numero riguarda il mese di dicembre 2025.
 
 La [Newsletter XMPP](/categories/newsletter/) è offerta dal [Team di comunicazione XSF](/about/xsf/comm-team/).
