@@ -1960,12 +1960,10 @@
         "categories": [
             "library"
         ],
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/xmpppy/xmpppy/refs/heads/master/doap.xml",
         "name": "xmpppy",
-        "platforms": [
-            "Python"
-        ],
-        "url": "https://xmpppy.sourceforge.net"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
