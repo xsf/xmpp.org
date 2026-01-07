@@ -11,11 +11,11 @@ Dear all,
 
 the XSF Communication Team is pleased to announce a new initiative to help evolving the XMPP ecosystem in a broader and aligned perspective.
 This should cover discussions, development but also extended public communication and presence.
-As this is being setup in an iterative way and therefore participants will be able to form and steer its direction over time.
+As this initiative is being setup in an iterative way, participants will be able to form and steer its direction over time.
 
 ### Why the Chat of the Future Initiative?
 
-XMPP exists for more than 20 years now, with world-wide implementations across various applications and more than 500 [published and public specifications](https://xmpp.org/extensions/).
+XMPP exists for more than 25 years now, with world-wide implementations across various applications and more than 500 [published and public specifications](https://xmpp.org/extensions/).
 At [xmpp.org](https://xmpp.org/software/), software of more than 35 clients, 20 libraries and 8 servers are listed.
 This rich history is only possible through the federation endorsed since 1999.
 
@@ -31,7 +31,7 @@ Any activity here is welcome, though this activity should be to organised on com
 One potential early outcome recommended could be to formulate a so-called community vision and potential key areas that every actor can decide to contribute individually.
 **If you have an idea and believe its essential for the XMPP eco-system, such as establishing an interoperability session, work on encryption or having a landing page for developers, then this is your place to expose this.**
 Of course, the scope here needs to be manageable and should be limited to the actors capabilities.
-But let's first start this process.
+But first let's start this process.
 
 ### How will the Chat of the Future Initiative work?
 
@@ -47,8 +47,8 @@ Info: This initiative evolves out of a former attempt in 2024 that failed due to
 
 ### Who can participate the Chat of the Future Initiative?
 
-Anyone interested and willing to contribute to the XMPP ecosystem of any level of experience can join this with their perspective.
-This also involves newcomers and bare users as well as professionals of the XMPP technology as well as professionals.
+Anyone interested and willing to contribute to the XMPP ecosystem of any level of experience can join with their perspective.
+This also involves newcomers and bare users as well as professionals of the XMPP technology.
 If you cannot participate, consider to provide your thoughts in a written statement to the organiser.
 There are multiple sessions and more planned, so one can join at another time or phase.
 
@@ -68,7 +68,7 @@ Meeting netiquette: Please keep a respectful, constructive and positive tone and
 
 | Event name | Date | Time | Agenda |
 |------------|------|------|--------|
-| Kick-off Session | Tue, 13 Jan 2026     |  19:00 - 20:00 (CET)    |  Check-in & Warm-up, Abou the Initiative, Retrospective on XMPP today   |
+| Kick-off Session | Tue, 13 Jan 2026     |  19:00 - 20:00 (CET)    |  Check-in & Warm-up, About the Initiative, Retrospective on XMPP today   |
 | Q1 Vision & Scope Session  | Tue, 20 Jan 2026     |  19:00 - 20:00 (CET)  |  Check-in & Warm-up, Key development points  |
 | Q1 Deep Dive Session  | Tue, 3 Feb 2026     |  19:00 - 19:45 (CET)  |  Deep Dive Key Development points March - May 2026   |
 | Q1 Check-in Session  | Tue, 11 + 25 Mar 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
