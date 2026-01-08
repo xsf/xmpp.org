@@ -150,22 +150,16 @@
             "weight": 6
         },
         {
-            "name": "Fiscal Hosting",
-            "parent": "community",
-            "url": "/community/fiscalhost/",
-            "weight": 7
-        },
-        {
             "name": "Office Hours",
             "parent": "community",
             "url": "/community/officehours/",
-            "weight": 8
+            "weight": 7
         },
         {
             "name": "Google Summer of Code",
             "parent": "community",
             "url": "/community/gsoc-2023/",
-            "weight": 9
+            "weight": 8
         },
         {
             "name": "Getting Started",
