@@ -14,7 +14,7 @@ La [Newsletter XMPP](/categories/newsletter/) è offerta dal [Team di comunicazi
 
 Proprio come qualsiasi altro prodotto o progetto dell'XSF, la Newsletter è il risultato del lavoro volontario dei suoi membri e collaboratori. Se siete soddisfatti dei servizi e dei software che utilizzate, vi invitiamo a ringraziare o aiutare questi progetti!
 
-Ti interessa contribuire al [Team di comunicazione XSF](/about/xsf/comm-team/)? Per saperne di più, leggi [in fondo alla pagina](#help-us-to-build-the-newsletter).
+Ti interessa contribuire al [Team di comunicazione XSF](/about/xsf/comm-team/)? Per saperne di più, leggi [in fondo alla pagina](#aiutaci-a-realizzare-la-newsletter).
 
 ## Annunci XSF
 
