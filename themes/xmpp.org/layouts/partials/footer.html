@@ -78,8 +78,10 @@
 </footer>
 <script src="{{- "js/bootstrap.bundle.min.js" | absURL -}}"></script>
 <script src="{{- "js/bootstrap-theme-switcher.js" | absURL -}}"></script>
+{{- if ( .Params.xeplist ) -}}
 <script src="{{- "js/sorttable.js" | absURL -}}"></script>
 <script src="{{- "js/xeplist.js" | absURL -}}"></script>
+{{- end -}}
 <script src="{{- "js/scripts.js" | absURL -}}"></script>
 {{- if ( .Params.mermaid ) -}}
     <script async src="{{- "js/mermaid.min.js" | absURL -}}"></script>

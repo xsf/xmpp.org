@@ -6,6 +6,7 @@ aliases:
     - "/protocols/xmpp-extensions"
     - "/xmpp-protocols"
     - "/xmpp-protocols/xmpp-core"
+xeplist: true
 ---
 
 
