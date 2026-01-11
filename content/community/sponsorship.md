@@ -11,6 +11,8 @@ Sponsoring the XSF puts your company in front of an influential and highly techn
 
 XSF sponsors are widely recognized as significant contributors to the success of XMPP technologies. In particular, funds raised through the Sponsorship Program support in-person XMPP developer summits, travel for key XMPP community members to speak at industry conferences (in particular our very popular seminars at OSCON and FOSDEM) and participate in IETF meetings, hosting and maintenance of XSF servers, and continuing operations devoted to improved standardization and adoption of XMPP technologies.
 
+For sponsorship opportunities please get in contact with us by email via [sponsors@xmpp.org](mailto:sponsors@xmpp.org).
+
 The table below summarizes the benefits available to sponsors at each of the sponsorship levels. Please note the XSF only allows 1 Titanium and 3 Platinum sponsors per year.
 
 An explanation of the benefits, together with sponsorships costs, can be found below the table.
@@ -51,4 +53,4 @@ The XSF offers four levels of sponsorship:
 - __Platinum__: $10,000
 - __Titanium__: $25,000
 
-Sponsorship applies on a calendar-year basis. Sponsor funds received in the middle of the calendar year shall be pro-rated accordingly. The XSF often accepts ‘in kind’ donations of equipment, software or services in place of monetary commitments. Please [contact us](/contact) for more information.
+Sponsorship applies on a calendar-year basis. Sponsor funds received in the middle of the calendar year shall be pro-rated accordingly. The XSF often accepts ‘in kind’ donations of equipment, software or services in place of monetary commitments. Please contact us at [sponsors@xmpp.org](mailto:sponsors@xmpp.org) for more information.
