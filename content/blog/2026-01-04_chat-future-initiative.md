@@ -19,31 +19,32 @@ XMPP exists for more than 25 years now, with world-wide implementations across v
 At [xmpp.org](https://xmpp.org/software/), software of more than 35 clients, 20 libraries and 8 servers are listed.
 This rich history is only possible through the federation endorsed since 1999.
 
-Though, maintaining a federated and decentralised network also requires significantly higher efforts for cross-network alignment, adoption and also quality of the XMPP technology.
-Establishing communication that goes deeply into the ecosystem will help and support orientation along different actors.
+Although this is an advantage, maintaining a federated and decentralised network also requires significantly higher efforts for cross-network alignment, adoption and also quality of the XMPP technology.
+This initiative intends to support such activities along different actors.
 
 ### What is the Chat of the Future Initiative about?
 
-With this ambitious activity, participants will try to identify, collect, and articulate key activity areas that apply to the XMPP ecosystem that needs efforts and help us to review and challenge the current status quo.
-Though, this new space is considered to be open about its outcomes, one guiding element here is a **user-centric and developer-centric formulation**.
-Any activity here is welcome, though this activity should be to organised on common ground and steer in the same direction towards those audiences.
+Participants will try to identify, collect, and formulate activities that apply to the XMPP ecosystem that needs efforts around today's status quo.
+This new collaboration space is considered to formulate along **user and developer needs**.
+From the discussions common ground on where we can act should be found.
 
-One potential early outcome recommended could be to formulate a so-called community vision and potential key areas that every actor can decide to contribute individually.
-**If you have an idea and believe its essential for the XMPP eco-system, such as establishing an interoperability session, work on encryption or having a landing page for developers, then this is your place to expose this.**
-Of course, the scope here needs to be manageable and should be limited to the actors capabilities.
-But first let's start this process.
+Far thinking, this could lead to community vision and strategic thinking that every actor can decide to contribute individually.
+In the past, possible topics named have been for example an interoperability session, to work on encryption or having a landing page for developers.**
+Of course, the scope should be limited to the actors capabilities.
 
 ### How will the Chat of the Future Initiative work?
 
-The Chat of the Future initiative will begin with a series of interactive collaboration sessions and open up for discussion, alignment and collecting of thoughts and ideas.
-Subsequently, conclusions will be gathered, reviewed, and adjusted into the next session.
+The Chat of the Future initiative will begin with a series of open-ended and interactive collaboration sessions and open up for discussion, alignment and collecting of thoughts and ideas.
+This can happend across multiple session and is always a quarterly activity.
+It's for example planned to ask you about your perspective on the status quo of the XMPP ecosystem.
+What are we getting right, what are we not?
+Where is it that we see room for improvement? 
+Can we formulate any activities out of this?
 
-The participants will have the chance to contribute with their perspective, feedback and discussion topics via the collaboration tool [Mural](https://www.mural.co/), both in spoken and written form.
-The interactive collaboration workspace has the capabilities and feature to help work together.
+The participants will have the chance to contribute with their perspective, feedback and discussion topics via a BigBlueBotton session, both in spoken and written form.
+For notetaking a HedgeDoc pad will be used.
 If other organisation spaces - such as a group chat - be necessary, the development of the initiative will show.
 At its best, this interactions are integrated in what is available in the existing XMPP channels.
-
-Info: This initiative evolves out of a former attempt in 2024 that failed due to poor tool choice.
 
 ### Who can participate the Chat of the Future Initiative?
 
@@ -54,27 +55,24 @@ There are multiple sessions and more planned, so one can join at another time or
 
 ### When & Where will the Chat of the Future Initiative take place?
 
-Currently a first set of sessions is planned and listed below.
-More session to work on actual topics are yet to come.
-This can be matter of change in the future based on feedback.
+Currently a first set of sessions is planned and listed below with more sessions to work on actual topics to come.
+This can be matter of change based on feedback.
 
-The first session link can be found here: [Teamjoin](https://talk.teamjoin.de/room/94d2cdda-0c55-4a7a-858a-6c26fb29e0d1?invite=fcd1e44e-754b-4fc8-88d7-10505155114f).
+The session link can be found here: [BigBlueBotton](https://lecture.senfcall.de/xsf-pp5-pim-gjg).
 
-Password is: _XMPP@chatfuture2026_
-
-The interactive workspace will be accessible from the first session: [Workspace](https://app.mural.co/invitation/team/xmppstandardsfoundation0344?code=8d235b1edbbf4d8cad9da5a0aefed1ec&sender=uf8ae920573bee597ec5f7794&returnUrl=%2Ft%2Fxmppstandardsfoundation0344%2Fm%2Fxmppstandardsfoundation0344%2F1762524289918%2Fb143a70480e62e90a3c672d592683dcf7e64af8b%3Fsender%3Duf8ae920573bee597ec5f7794).
+The password code and the pad will posted on the day in the XSF Chat (see below).
 
 Meeting netiquette: Please keep a respectful, constructive and positive tone and statements.
 
 | Event name | Date | Time | Agenda |
 |------------|------|------|--------|
-| Kick-off Session | Tue, 13 Jan 2026     |  19:00 - 20:00 (CET)    |  Check-in & Warm-up, About the Initiative, Retrospective on XMPP today   |
-| Q1 Vision & Scope Session  | Tue, 20 Jan 2026     |  19:00 - 20:00 (CET)  |  Check-in & Warm-up, Key development points  |
-| Q1 Deep Dive Session  | Tue, 3 Feb 2026     |  19:00 - 19:45 (CET)  |  Deep Dive Key Development points March - May 2026   |
-| Q1 Check-in Session  | Tue, 11 + 25 Mar 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
-| Q1 Check-in Session  | Tue, 8 + 22 Apr 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
-| Q2 Vision & Scope Session  | Tue, 7 May 2026     |  19:00 - 20:00 (CET)  |  TBA  |
-| Q2 Check-in Session  | Tue, 6 & 20 May 2026     |  19:00 - 19:30 (CET)  |  Review of Vision & Scope, Retrospective on activities   |
+| Kick-off Session | Tue, 13 Jan 2026     |  19:00 - 20:00 (CET)    |   About the Initiative, Check-in & Warm-up, Retrospective on XMPP today   |
+| Q1 Focus Session  | Tue, 20 Jan 2026     |  19:00 - 20:00 (CET)  |  Check-in & Warm-up, Focus topic from previous session |
+| Q1 Activities Discussion Session  | Tue, 3 Feb 2026     |  19:00 - 19:45 (CET)  |  Activities March - May 2026   |
+| Q1 Check-in Session  | Tue, 11 + 25 Mar 2026     |  19:00 - 19:30 (CET)  |  Review of activities   |
+| Q1 Check-in Session  | Tue, 8 + 22 Apr 2026     |  19:00 - 19:30 (CET)  |  Review of activities    |
+| Q2 Planning Session  | Tue, 7 May 2026     |  19:00 - 20:00 (CET)  |  TBA  |
+| Q2 Check-in Session  | Tue, 6 & 20 May 2026     |  19:00 - 19:30 (CET)  | Review of activities    |
 
 If you have further questions, please join the [XSF chat](https://xmpp.org/community/chat/).
 
@@ -82,3 +80,7 @@ We hope this will positively contribute to the community and technology as a who
 See you soon,
 
 — The XSF Communication Team
+
+_____
+
+Note: In a previous statement another tool and setup has been named. Through dicussions this has been changed.
