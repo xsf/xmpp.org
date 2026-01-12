@@ -59,6 +59,7 @@ Currently a first set of sessions is planned and listed below with more sessions
 This can be matter of change based on feedback.
 
 The session link can be found here: [BigBlueBotton](https://lecture.senfcall.de/xsf-pp5-pim-gjg).
+Access code: 932872
 
 The password code and the pad will posted on the day in the XSF Chat (see below).
 
