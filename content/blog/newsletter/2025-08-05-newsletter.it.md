@@ -1,7 +1,7 @@
-﻿---
-titolo: Newsletter XMPP luglio 2025
-data: 2025-08-05
-categorie: [‘Newsletter’]
+---
+title: Newsletter XMPP luglio 2025
+date: 2025-08-05
+categories: ['Newsletter']
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
