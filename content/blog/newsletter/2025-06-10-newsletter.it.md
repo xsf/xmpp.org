@@ -1,6 +1,6 @@
 ---
 title: La Newsletter XMPP Maggio 2025
-data: 2025-06-10
+date: 2025-06-10
 categories: ['Newsletter']
 ---
 
