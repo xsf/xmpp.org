@@ -62,5 +62,13 @@
         "chat": "xmpp:gsoc@muc.xmpp.org?join",
         "web_chat": "https://xmpp.org/chat?gsoc",
         "logs": "https://logs.xmpp.org/gsoc/"
+    },
+    {
+        "name": "XMPP Sprints",
+        "text": "Developer-focused meetups to get stuff done",
+        "logo": "/images/logos/chatroom-sprints.png",
+        "chat": "xmpp:sprints@muc.xmpp.org?join",
+        "web_chat": "https://xmpp.org/chat?sprints",
+        "logs": "https://logs.xmpp.org/sprints/"
     }
 ]
