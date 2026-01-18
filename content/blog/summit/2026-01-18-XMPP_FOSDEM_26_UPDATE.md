@@ -10,13 +10,22 @@ Once again, many members of the XMPP community will be attending, and will happi
 
 ## Realtime Lounge: UPDATE!
 
-The XMPP community invites you to the *Realtime Lounge*, where you can come and meet community members, project developers, see demos and ask all the questions.
+The XMPP community invites you to the join the *Realtime Lounge*, where you can come and meet community members, project developers, see demos and ask all the questions.
 
 **Due to organizational issues, this year the XMPP & Realtime Lounge has been reallocated to the [AW building, Level 1](https://fosdem.org/2026/stands/).**
 
 {{< figure src="/images/blog/xmpp-realtime-lounge-location.png" caption="Map of the **AW building, Level 1**" >}}
 
 *For XMPP Community members and interested individuals: Please share any promotion materials, ideas, or planned activities for the XMPP & Realtime Lounge, and your thoughts will help us prepare a welcoming space. [Click here to contribute.](https://wiki.xmpp.org/web/Conferences/Summit_28#FOSDEM_2026)*
+
+## What to expect
+
+- The chance to meet and engange in face to face conversations with the developers of the XMPP client that you use, the server that you may be selfhosting, the libraries and/or tools that you may be using in your proyect.
+- Promotional and informational material: XMPP 2025 highlight Flyers, DI.DAY for XMPP Flyer ...
+- Free candy!
+- And .. say what? Sticker? Oh my you are in for a treat .. because there will be more stickers than you can dream of! XMPP logo stickers, OMEMO, Dino, Monocles Chat, Conversations IM, Quiksy, Libervia,  .. you name it! ( And who knows? Maybe somebody will even be there presenting the new mascot for their project!! ).
+
+Don't forget to **come by our stand**, please believe us: **you really won't want to miss it!**
 
 ## Decentralised Communication Devroom
 
