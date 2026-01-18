@@ -37,7 +37,7 @@ These are the XMPP related talks that will take place on the [Decentralised Comm
 |-----------------|---|
 | When?           | 31st January + 1st February 2026 | 
 | Where?          | [ULB, Campus du Solbosch, Av. F. D. Roosevelt 50, 1050 Bruxelles, Belgium](https://www.openstreetmap.org/?mlat=50.81236&mlon=4.38073#map=15/50.81236/4.38073)  |
-| Where exactly?  | [AW building, level 1](https://fosdem.org/2026/stands/)  |
+| Where exactly?  | [AW building, Level 1](https://fosdem.org/2026/stands/)  |
 | Contact         | [XMPP Community chats](https://xmpp.org/community/chat/) & [XMPP Community mailing lists](https://xmpp.org/community/mailing-lists/)  |
 
 ## XMPP Summit 28 prior to FOSDEM 2026
