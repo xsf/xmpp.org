@@ -23,7 +23,7 @@ The XMPP community invites you to the join the *Realtime Lounge*, where you can 
 - The chance to meet and engange in face to face conversations with the developers of the XMPP client that you use, the server that you may be selfhosting, the libraries and/or tools that you may be using in your proyect.
 - Promotional and informational material: XMPP 2025 highlight Flyers, DI.DAY for XMPP Flyer ...
 - Free candy!
-- And .. say what? Sticker? Oh my you are in for a treat .. because there will be more stickers than you can dream of! XMPP logo stickers, OMEMO, Movim, Dino, Monocles Chat, Conversations IM, Libervia, ... you name it! ( And who knows? Maybe somebody will even be there presenting the new mascot for their project!! ).
+- And .. say what? Sticker? You are in for a treat! XMPP logo stickers, OMEMO, Movim, Dino, Monocles Chat, Conversations IM, Libervia, ... you name it! ( And who knows? Maybe somebody will even be there presenting the new mascot for their project!! ).
 
 Don't forget to **come by our stand**, please believe us: **you really won't want to miss it!**
 
