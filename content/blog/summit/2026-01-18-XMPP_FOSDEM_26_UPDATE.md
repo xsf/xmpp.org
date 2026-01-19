@@ -31,7 +31,7 @@ These are the XMPP related talks that will take place on the [Decentralised Comm
 
 ## What to expect
 
-- The chance to meet and engange in face to face conversations with the developers of the XMPP client that you use, the server that you may be selfhosting, the libraries and/or tools that you may be using in your proyect.
+- The chance to meet and engange in face to face conversations with the developers of the XMPP client that you use, the server that you may be selfhosting, the libraries and/or tools that you may be using in your project.
 - Promotional and informational material: XMPP 2025 highlight Flyers, DI.DAY for XMPP Flyer ...
 - Free candy!
 - And .. say what? Sticker? You are in for a treat! XMPP logo stickers, OMEMO, Movim, Dino, Monocles Chat, Conversations IM, Libervia, ... you name it! ( And who knows? Maybe somebody will even be there presenting the new mascot for their project!! ).
