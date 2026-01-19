@@ -16,8 +16,6 @@ The XMPP community invites you to the join the *Realtime Lounge*, where you can 
 
 {{< figure src="/images/blog/xmpp-realtime-lounge-location.png" caption="Map of the **AW building, Level 1**" >}}
 
-*For XMPP Community members and interested individuals: Please share any promotion materials, ideas, or planned activities for the XMPP & Realtime Lounge, and your thoughts will help us prepare a welcoming space. [Click here to contribute.](https://wiki.xmpp.org/web/Conferences/Summit_28#FOSDEM_2026)*
-
 ## What to expect
 
 - The chance to meet and engange in face to face conversations with the developers of the XMPP client that you use, the server that you may be selfhosting, the libraries and/or tools that you may be using in your proyect.
