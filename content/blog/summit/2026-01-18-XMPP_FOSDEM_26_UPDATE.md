@@ -12,7 +12,7 @@ Once again, many members of the XMPP community will be attending, and will happi
 
 The XMPP community invites you to the join the *Realtime Lounge*, where you can come and meet community members, project developers, see demos and ask all the questions.
 
-**Due to organizational issues, this year the XMPP & Realtime Lounge has been reallocated to the [AW building, Level 1](https://fosdem.org/2026/stands/).**
+**This year the XMPP & Realtime Lounge has been reallocated to the [AW building, Level 1](https://fosdem.org/2026/stands/).**
 
 {{< figure src="/images/blog/xmpp-realtime-lounge-location.png" caption="Map of the **AW building, Level 1**" >}}
 
