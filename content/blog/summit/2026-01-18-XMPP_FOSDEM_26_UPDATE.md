@@ -52,6 +52,7 @@ Don't forget to **come by our stand**, please believe us: **you really won't wan
 Prior to FOSDEM, the XSF will also traditionally hold its [28th XMPP summit](https://xmpp.org/2025/11/xmpp-summit-28/).
 This is where community members gather to discuss protocol changes and the XMPP roadmap.
 Everyone is welcome to join, just kindly list yourself free of cost as there is only limited space.
+Please make yourself known by filling out your details on the [wiki page for Summit 28]( https://wiki.xmpp.org/web/Conferences/Summit_28)
 Check the official online presence and communication, too (see the media links in the footer).
 
 Looking forward to see you there!
