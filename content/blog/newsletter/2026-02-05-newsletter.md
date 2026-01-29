@@ -24,7 +24,7 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ### XMPP Summit 28
 
-The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_28) during January 31st and February 1st 2026 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part of the Summit for their continuous commitment and contribution to the XFS and all the XMPP related projects!
+The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_28) during January 29th and 30th 2026 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part of the Summit for their continuous commitment and contribution to the XFS and all the XMPP related projects!
 
 The XSF would like to extend a special thank you to those who made the Summit possible:
 
