@@ -20,4 +20,4 @@ Find many other chat apps at [xmpp.org](https://xmpp.org/software/?category=clie
 
 See you [online via XMPP](https://xmpp.org/community/chat/) and open-source software!
 
-{{< figure src="static/images/blog/di-day.jpg" caption="The XMPP switch recipie handouts infront of the XMPP booth at FOSDEM." >}}
+{{< figure src="/images/blog/di-day.jpg" caption="The XMPP switch recipie handouts infront of the XMPP booth at FOSDEM." >}}
