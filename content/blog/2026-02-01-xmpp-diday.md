@@ -20,4 +20,4 @@ Find at [xmpp.org](https://xmpp.org/software/?category=clients) also many other 
 
 See you [online via XMPP](https://xmpp.org/community/chat/) and open-source software!
 
-{{< figure src="" caption="The XMPP switch recipie handouts infront of the XMPP booth at FOSDEM." >}}
+{{< figure src="static/images/blog/di-day.jpg" caption="The XMPP switch recipie handouts infront of the XMPP booth at FOSDEM." >}}
