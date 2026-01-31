@@ -1,6 +1,6 @@
 ---
 title: "XMPP listed as Alternative Chat at Di.Day Initiative"
-date: 2025-10-28T09:00:00+00:00
+date: 2026-02-01T09:00:00+00:00
 author: "Edward Maurer"
 categories: ["Event", "Miscellaneous"]
 summary: "The German initiative 'Digital Independence Day' (DI.DAY) has been kicked off this year to enable users to migrate to open-source software alternatives in various contexts. Beside others XMPP is listed as an alternative chat option and XMPP Community members have created so-called switch recipes."
