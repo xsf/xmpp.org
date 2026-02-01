@@ -13,7 +13,7 @@ The DI.DAY is not a single event, it takes place every [first sunday of the mont
 This initiative shares many values of the XMPP community, such as digital sovereignty and digital privacy.
 Still, we believe XMPP as standardised technology for realtime communication serves these values best.
 
-Many thanks to the XMPP Community members and beyond for investing their efforts to provide all material, namely Axel, Daniel, emus, Ge0rG, padeluun and especially *IM* from [freie-messenger.de](https://www.freie-messenger.de/)!
+Many thanks to the XMPP Community members and beyond for investing their time and efforts to provide all material, namely Axel, Daniel, emus, Ge0rG, padeluun and especially *IM* from [freie-messenger.de](https://www.freie-messenger.de/)!
 Additional thanks to [Digitalcourage](https://digitalcourage.de/en) and [Save Social](https://savesocial.eu/en/) for sponsoring the handouts for [FOSDEM](https://xmpp.org/2026/01/xmpp-at-fosdem-2026-update/)!
 
 Find many other chat apps at [xmpp.org](https://xmpp.org/software/?category=clients)!
