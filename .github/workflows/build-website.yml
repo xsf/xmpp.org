@@ -33,17 +33,6 @@ jobs:
       - name: Install Python packages
         run: pip install -r tools/requirements.txt
 
-      - name: Set up Lua
-        uses: leafo/gh-actions-lua@v10
-        with:
-          luaVersion: "5.4"
-
-      - name: Set up LuaRocks
-        uses: leafo/gh-actions-luarocks@v4
-
-      - name: Install Lua packages
-        run: luarocks install luaexpat
-
       - name: Software list linting
         run: |
           python tools/lint_software_list.py software.json
@@ -57,9 +46,6 @@ jobs:
 
       - name: Prepare software list
         run: python tools/prepare_software_list.py
-
-      - name: Generate/add compliance data
-        run: python tools/prepare_compliance.py
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3

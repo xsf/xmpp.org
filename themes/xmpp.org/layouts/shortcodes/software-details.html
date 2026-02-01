@@ -45,112 +45,106 @@
                 {{- end -}}
             {{- end -}}
         </div>
-        <div class="col-sm-8 col-lg-5 pb-5 mx-auto">
-            <div class="card">
-                <div class="card-header">
-                    Features
-                </div>
-                <ul class="list-group list-group-flush compliance-data-list">
-                    {{- if $props.badges -}}
-                        {{- $categories := slice "" -}}
-                        {{- range $category, $level := $props.badges -}}
-                            {{- $categories = $categories | append  $category -}}
-                        {{- end -}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa-solid fa-fw fa-circle-check"></i>
-                                <span class="px-2">Core Compliance</span>
-                            </div>
-                            <div>
-                                {{- if in $categories "core" -}}
-                                    {{- if eq $props.badges.core "core" -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                    {{- else -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                    {{- end -}}
+        <div class="col-sm-10 col-lg-8 pb-5 mx-auto">
+            <h3>Features</h3>
+            <span class="text-muted small">Information listed here always refers to the latest <a href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software checked against.</span>
+            {{- if $props.compliance_badges -}}
+            <div class="accordion mt-2" id="compliance-level-accordion">
+                {{- $categories := slice "core" "im" "mobile" "web" "av" -}}
+                {{- range $categories -}}
+                    {{- $level := index $props.compliance_badges . -}}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#compliance-collapse-{{ . }}" aria-controls="compliance-collapse-{{ . }}">
+                                <div class="d-flex justify-content-between align-items-center w-100 me-4">
+                                    <div>
+                                        {{- if eq . "core" -}}
+                                            <i class="fa-solid fa-fw fa-circle-check"></i>
+                                            <span class="px-2">Core Compliance</span>
+                                        {{- else if eq . "im" -}}
+                                            <i class="fa-solid fa-fw fa-comments"></i>
+                                            <span class="px-2">Instant Messaging</span>
+                                        {{- else if eq . "mobile" -}}
+                                            <i class="fa-solid fa-fw fa-mobile-screen"></i>
+                                            <span class="px-2">Mobile</span>
+                                        {{- else if eq . "web" -}}
+                                            <i class="fa-regular fa-fw fa-window-restore"></i>
+                                            <span class="px-2">Web</span>
+                                        {{- else if eq . "av" -}}
+                                            <i class="fa-solid fa-fw fa-phone"></i>
+                                            <span class="px-2">Audio/Video Calling</span>
+                                        {{- end -}}
+                                    </div>
+                                    <div>
+                                        {{- if eq $level "core" -}}
+                                            <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
+                                        {{- else if eq $level "advanced" -}}
+                                            <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
+                                        {{- else -}}
+                                            <span class="small text-body-secondary">-</span>
+                                        {{- end -}}
+                                    </div>
+                                </div>
+                            </button>
+                        </h2>
+                        <div id="compliance-collapse-{{ . }}" class="accordion-collapse collapse" data-bs-parent="#compliance-level-accordion">
+                            <div class="accordion-body small">
+                                {{- $compliance_data := index $props.compliance_data . -}}
+
+                                {{- $core_level_compliance_data := index $compliance_data "core" -}}
+                                {{- $core_missing_rfcs := index (index $core_level_compliance_data "missing") "rfcs" -}}
+                                {{- $core_missing_xeps := index (index $core_level_compliance_data "missing") "xeps" -}}
+
+                                {{- $advanced_level_compliance_data := index $compliance_data "advanced" -}}
+                                {{- $advanced_missing_rfcs := index (index $advanced_level_compliance_data "missing") "rfcs" -}}
+                                {{- $advanced_missing_xeps := index (index $advanced_level_compliance_data "missing") "xeps" -}}
+
+                                {{- if eq $level "core" -}}
+                                    <span>{{ $name }} claims compliance at <b>core</b> level in this category.</span>
+                                    <br><br>
+                                    <span>Missing specifications to reach advanced level:</span>
+                                    <ul>
+                                    {{ range $advanced_missing_rfcs }}
+                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+                                    {{ end }}
+                                    {{ range $advanced_missing_xeps }}
+                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+                                    {{ end }}
+                                    </ul>
+                                {{- else if eq $level "advanced" -}}
+                                    <span>{{ $name }} claims compliance at <b>advanced</b> level in this category.</span>
                                 {{- else -}}
-                                    -
+                                    <span>{{ $name }} does <b>not</b> claim compliance in this category.</span>
+                                    <br><br>
+                                    <span>Missing specifications to reach core level:</span>
+                                    <ul>
+                                    {{ range $core_missing_rfcs }}
+                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+                                    {{ end }}
+                                    {{ range $core_missing_xeps }}
+                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+                                    {{ end }}
+                                    </ul>
+                                    <span>Missing specifications to reach advanced level:</span>
+                                    <ul>
+                                    {{ range $advanced_missing_rfcs }}
+                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+                                    {{ end }}
+                                    {{ range $advanced_missing_xeps }}
+                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+                                    {{ end }}
+                                    </ul>
                                 {{- end -}}
                             </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa-solid fa-fw fa-comments"></i>
-                                <span class="px-2">Instant Messaging</span>
-                            </div>
-                            <div>
-                                {{- if in $categories "im" -}}
-                                    {{- if eq $props.badges.im "core" -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                    {{- else -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa-solid fa-fw fa-mobile-screen"></i>
-                                <span class="px-2">Mobile</span>
-                            </div>
-                            <div>
-                                {{- if in $categories "mobile" -}}
-                                    {{- if eq $props.badges.mobile "core" -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                    {{- else -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa-regular fa-fw fa-window-restore"></i>
-                                <span class="px-2">Web</span>
-                            </div>
-                            <div>
-                                {{- if in $categories "web" -}}
-                                    {{- if eq $props.badges.web "core" -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                    {{- else -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa-solid fa-fw fa-phone"></i>
-                                <span class="px-2">Audio/Video Calling</span>
-                            </div>
-                            <div>
-                                {{- if in $categories "av" -}}
-                                    {{- if eq $props.badges.av "core" -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                    {{- else -}}
-                                        <span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                        </li>
-                    {{- else -}}
-                        <li class="list-group-item d-flex justify-content-center align-items-center">
-                            <span class="text-body-secondary small py-2">No compliance level</span>
-                        </li>
-                    {{- end -}}
-                </ul>
-                <div class="card-footer">
-                    <small><a href="/about/compliance-suites/" class="card-link">Learn more…</a></small>
-                </div>
+                        </div>
+                    </div>
+                {{- end -}}
             </div>
+            {{- else -}}
+                <li class="list-group-item d-flex justify-content-center align-items-center">
+                    <span class="text-body-secondary small py-2">No compliance level</span>
+                </li>
+            {{- end -}}
         </div>
     {{- end -}}
 {{- end -}}

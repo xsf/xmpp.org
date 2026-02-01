@@ -3,6 +3,8 @@ Requires: Pillow, python-slugify
 """
 
 from typing import Any
+from typing import cast
+from typing import Literal
 
 import json
 import os
@@ -84,6 +86,267 @@ PLATFORMS: list[str] = [
     "Windows",
     "macOS",
     "Linux",
+]
+
+# XEP-0479 (2023)
+COMPLIANCE_SUITE = [
+    {
+        "category": "core",
+        "label": "Core Compliance Suite",
+        "client": {
+            "core": {
+                "rfcs": [
+                    "6120",
+                    "7590",
+                ],
+                "xeps": [
+                    "0030",
+                    "0115",
+                ],
+            },
+            "advanced": {
+                "rfcs": [
+                    "6120",
+                    "7590",
+                ],
+                "xeps": [
+                    "0030",
+                    "0115",
+                    "0163",
+                    "0368",
+                ],
+            },
+        },
+        "server": {
+            "core": {
+                "rfcs": [
+                    "6120",
+                    "7590",
+                ],
+                "xeps": [
+                    "0030",
+                    "0114",
+                ],
+            },
+            "advanced": {
+                "rfcs": [
+                    "6120",
+                    "7590",
+                ],
+                "xeps": [
+                    "0030",
+                    "0114",
+                    "0115",
+                    "0163",
+                    "0368",
+                ],
+            },
+        },
+    },
+    {
+        "category": "web",
+        "label": "Web Compliance Suite",
+        "client": {
+            "core": {
+                "rfcs": [
+                    "7395",
+                ],
+                "xeps": [
+                    "0156",
+                    "0206",
+                ],
+            },
+            "advanced": {
+                "rfcs": [
+                    "7395",
+                ],
+                "xeps": [
+                    "0156",
+                    "0206",
+                ],
+            },
+        },
+        "server": {
+            "core": {
+                "rfcs": [
+                    "7395",
+                ],
+                "xeps": {},
+            },
+            "advanced": {
+                "rfcs": [
+                    "7395",
+                ],
+                "xeps": {},
+            },
+        },
+    },
+    {
+        "category": "im",
+        "label": "IM Compliance Suite",
+        "client": {
+            "core": {
+                "rfcs": [
+                    "6121",
+                ],
+                "xeps": [
+                    "0045",
+                    "0054",
+                    "0245",
+                    "0249",
+                    "0280",
+                    "0363",
+                ],
+            },
+            "advanced": {
+                "rfcs": [
+                    "6121",
+                ],
+                "xeps": [
+                    "0045",
+                    "0048",
+                    "0049",
+                    "0054",
+                    "0084",
+                    "0085",
+                    "0153",
+                    "0184",
+                    "0191",
+                    "0198",
+                    "0223",
+                    "0234",
+                    "0245",
+                    "0249",
+                    "0261",
+                    "0280",
+                    "0308",
+                    "0313",
+                    "0363",
+                    "0398",
+                    "0402",
+                    "0410",
+                ],
+            },
+        },
+        "server": {
+            "core": {
+                "rfcs": [
+                    "6121",
+                ],
+                "xeps": [
+                    "0045",
+                    "0054",
+                    "0249",
+                    "0280",
+                    "0363",
+                ],
+            },
+            "advanced": {
+                "rfcs": [
+                    "6121",
+                ],
+                "xeps": [
+                    "0045",
+                    "0048",
+                    "0049",
+                    "0054",
+                    "0153",
+                    "0191",
+                    "0198",
+                    "0223",
+                    "0249",
+                    "0280",
+                    "0313",
+                    "0363",
+                    "0398",
+                    "0402",
+                    "0410",
+                ],
+            },
+        },
+    },
+    {
+        "category": "mobile",
+        "label": "Mobile Compliance Suite",
+        "client": {
+            "core": {
+                "rfcs": [],
+                "xeps": [
+                    "0198",
+                    "0352",
+                ],
+            },
+            "advanced": {
+                "rfcs": [],
+                "xeps": [
+                    "0198",
+                    "0352",
+                    "0357",
+                ],
+            },
+        },
+        "server": {
+            "core": {
+                "rfcs": [],
+                "xeps": [
+                    "0198",
+                    "0352",
+                ],
+            },
+            "advanced": {
+                "rfcs": [],
+                "xeps": [
+                    "0198",
+                    "0352",
+                    "0357",
+                ],
+            },
+        },
+    },
+    {
+        "category": "av",
+        "label": "A/V Calling Compliance Suite",
+        "client": {
+            "core": {
+                "rfcs": [],
+                "xeps": [
+                    "0167",
+                    "0176",
+                    "0215",
+                    "0320",
+                    "0353",
+                ],
+            },
+            "advanced": {
+                "rfcs": [],
+                "xeps": [
+                    "0167",
+                    "0176",
+                    "0215",
+                    "0293",
+                    "0294",
+                    "0320",
+                    "0338",
+                    "0339",
+                    "0353",
+                ],
+            },
+        },
+        "server": {
+            "core": {
+                "rfcs": [],
+                "xeps": [
+                    "0215",
+                ],
+            },
+            "advanced": {
+                "rfcs": [],
+                "xeps": [
+                    "0215",
+                ],
+            },
+        },
+    },
 ]
 
 DoapInfoT = dict[str, str | list[str] | list[dict[str, str | None]] | None] | None
@@ -192,6 +455,53 @@ def parse_doap_infos(doap_file: str) -> DoapInfoT:
     info["xeps"] = xeps
 
     return info
+
+
+def get_compliance_data(
+    package_category: Literal["client", "server"],
+    supported_rfcs: list[str],
+    supported_xeps: list[str],
+) -> tuple[dict, dict]:
+    package_compliance = {}
+    package_compliance_badges = {}
+
+    for category_data in COMPLIANCE_SUITE:
+        compliance_category = category_data["category"]
+
+        package_compliance[compliance_category] = {}
+        package_compliance_badges[compliance_category] = None
+        for level in ["core", "advanced"]:
+            package_compliance[compliance_category][level] = {
+                "compliant": False,
+                "missing": {
+                    "rfcs": [],
+                    "xeps": [],
+                },
+            }
+            requirements = category_data[package_category][level]
+
+            missing_rfcs = [
+                rfc for rfc in requirements["rfcs"] if rfc not in supported_rfcs
+            ]
+            missing_xeps = [
+                xep for xep in requirements["xeps"] if xep not in supported_xeps
+            ]
+
+            package_compliance[compliance_category][level]["missing"]["rfcs"] = (
+                missing_rfcs
+            )
+            package_compliance[compliance_category][level]["missing"]["xeps"] = (
+                missing_xeps
+            )
+
+            is_compliant = bool(len(missing_rfcs) == 0 and len(missing_xeps) == 0)
+
+            package_compliance[compliance_category][level]["compliant"] = is_compliant
+
+            if is_compliant:
+                package_compliance_badges[compliance_category] = level
+
+    return package_compliance, package_compliance_badges
 
 
 def check_image_file(file_path: Path, extension: str) -> bool:
@@ -307,6 +617,27 @@ def prepare_package_data() -> None:
         if logo is not None and isinstance(logo, str):
             logo_uri = process_logo(package_name_slug, logo)
 
+        category_type = "server" if "server" in package["categories"] else "client"
+        supported_xeps = [
+            xep["number"]  # pyright: ignore[reportArgumentType]
+            for xep in parsed_package_infos["xeps"]  # pyright: ignore[reportOptionalIterable]
+            if xep["status"] not in ("wontfix", "planned")  # pyright: ignore[reportArgumentType]
+        ]
+        compliance_data, compliance_badges = get_compliance_data(
+            category_type,
+            cast("list[str]", parsed_package_infos["rfcs"]),
+            cast("list[str]", supported_xeps),
+        )
+        print(
+            f"{Fore.LIGHTBLUE_EX}Compliance{Style.RESET_ALL}       ",
+            package["name"],
+            (
+                f"{Fore.MAGENTA}{compliance_badges}{Style.RESET_ALL}"
+                if compliance_badges
+                else f"{Fore.YELLOW}No level{Style.RESET_ALL}"
+            ),
+        )
+
         package_infos[package["name"]] = {
             "categories": package["categories"],
             "name_slug": package_name_slug,
@@ -320,6 +651,8 @@ def prepare_package_data() -> None:
             "programming_lang": parsed_package_infos["programming_lang"],
             "rfcs": parsed_package_infos["rfcs"],
             "xeps": parsed_package_infos["xeps"],
+            "compliance_data": compliance_data,
+            "compliance_badges": compliance_badges,
         }
 
         for category in package["categories"]:

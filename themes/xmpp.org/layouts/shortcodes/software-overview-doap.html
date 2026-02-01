@@ -160,16 +160,16 @@
         "
         data-platforms="{{- delimit $props.platforms "," -}}"
         data-programminglang="{{- delimit $props.programming_lang "," -}}"
-        {{- if $props.badges -}}
+        {{- if $props.compliance_badges -}}
             {{- $categories := slice "" -}}
-            {{- range $category, $level := $props.badges -}}
+            {{- range $category, $level := $props.compliance_badges -}}
                 {{- $categories = $categories | append  $category -}}
             {{- end -}}
-            {{- if in $categories "core" -}}data-cscore="{{- $props.badges.core -}}"{{- else -}}data-cscore="-"{{- end -}}
-            {{- if in $categories "im" -}}data-csim="{{- $props.badges.im -}}"{{- else -}}data-csim="-"{{- end -}}
-            {{- if in $categories "mobile" -}}data-csmobile="{{- $props.badges.mobile -}}"{{- else -}}data-csmobile="-"{{- end -}}
-            {{- if in $categories "web" -}}data-csweb="{{- $props.badges.web -}}"{{- else -}}data-csweb="-"{{- end -}}
-            {{- if in $categories "av" -}}data-csav="{{- $props.badges.av -}}"{{- else -}}data-csav="-"{{- end -}}
+            {{- if in $categories "core" -}}data-cscore="{{- $props.compliance_badges.core -}}"{{- else -}}data-cscore="-"{{- end -}}
+            {{- if in $categories "im" -}}data-csim="{{- $props.compliance_badges.im -}}"{{- else -}}data-csim="-"{{- end -}}
+            {{- if in $categories "mobile" -}}data-csmobile="{{- $props.compliance_badges.mobile -}}"{{- else -}}data-csmobile="-"{{- end -}}
+            {{- if in $categories "web" -}}data-csweb="{{- $props.compliance_badges.web -}}"{{- else -}}data-csweb="-"{{- end -}}
+            {{- if in $categories "av" -}}data-csav="{{- $props.compliance_badges.av -}}"{{- else -}}data-csav="-"{{- end -}}
         {{- else -}}
             data-cscore="-" data-csim="-" data-csmobile="-" data-csweb="-" data-csav="-"
         {{- end -}}
@@ -244,74 +244,51 @@
                 <div class="container text-center">
                     <div class="row justify-content-center pb-2">
                         <span class="lead mb-2">Compliance</span>
-                        <span class="small text-muted mb-2" style="max-width: 30rem;">Information listed here always refers to the latest <a href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software tested against.</span>
+                        <span class="small text-muted mb-2" style="max-width: 30rem;">Information listed here always refers to the latest <a href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software checked against.</span>
                     </div>
-                    <div class="row justify-content-center g-0">
-                        {{- if $props.badges -}}
-                            {{- $categories := slice "" -}}
-                            {{- range $category, $level := $props.badges -}}
-                                {{- $categories = $categories | append  $category -}}
+                    <div class="d-flex justify-content-center">
+                        {{- if $props.compliance_badges -}}
+                            <table class="table" style="max-width: 40rem;">
+                            {{- $categories := slice "core" "im" "mobile" "web" "av" -}}
+                            {{- range $categories -}}
+                                {{- $level := index $props.compliance_badges . -}}
+                                <tr>
+                                    <td>
+                                        <div>
+                                        {{- if eq . "core" -}}
+                                            <i class="fa-solid fa-fw fa-circle-check"></i>
+                                            <span class="px-2">Core Compliance</span>
+                                        {{- else if eq . "im" -}}
+                                            <i class="fa-solid fa-fw fa-comments"></i>
+                                            <span class="px-2">Instant Messaging</span>
+                                        {{- else if eq . "mobile" -}}
+                                            <i class="fa-solid fa-fw fa-mobile-screen"></i>
+                                            <span class="px-2">Mobile</span>
+                                        {{- else if eq . "web" -}}
+                                            <i class="fa-regular fa-fw fa-window-restore"></i>
+                                            <span class="px-2">Web</span>
+                                        {{- else if eq . "av" -}}
+                                            <i class="fa-solid fa-fw fa-phone"></i>
+                                            <span class="px-2">Audio/Video Calling</span>
+                                        {{- end -}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            {{- if eq $level "core" -}}
+                                                <i class="fa-solid fa-check text-primary"></i>
+                                                <span class="small text-body-secondary">{{- (index $props.compliance_badges .) | title -}}</span>
+                                            {{- else if eq $level "advanced" -}}
+                                                <i class="fa-solid fa-check-double text-primary"></i>
+                                                <span class="small text-body-secondary">{{- (index $props.compliance_badges .) | title -}}</span>
+                                            {{- else -}}
+                                                <span class="small text-body-secondary">-</span>
+                                            {{- end -}}
+                                        </div>
+                                    </td>
+                                </tr>
                             {{- end -}}
-                            <div class="col" title="Base Compliance">
-                                Core<br>
-                                {{- if in $categories "core" -}}
-                                    {{- if eq $props.badges.core "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>
-                                    {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.core | title -}}</span>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                            <div class="col" title="Instant Messaging">
-                                IM<br>
-                                {{- if in $categories "im" -}}
-                                    {{- if eq $props.badges.im "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>
-                                    {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.im | title -}}</span>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                            <div class="col">
-                                Mobile<br>
-                                {{- if in $categories "mobile" -}}
-                                    {{- if eq $props.badges.mobile "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>
-                                    {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.mobile | title -}}</span>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                            <div class="col">
-                                Web<br>
-                                {{- if in $categories "web" -}}
-                                    {{- if eq $props.badges.web "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>
-                                    {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.web | title -}}</span>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
-                            <div class="col" title="Audio/Video Calling">
-                                Calls<br>
-                                {{- if in $categories "av" -}}
-                                    {{- if eq $props.badges.av "core" -}}
-                                        <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>
-                                    {{- else -}}
-                                        <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">{{- $props.badges.av | title -}}</span>
-                                    {{- end -}}
-                                {{- else -}}
-                                    -
-                                {{- end -}}
-                            </div>
+                            </table>
                         {{- else -}}
                             <span class="text-body-secondary small">No compliance data</span>
                         {{- end -}}

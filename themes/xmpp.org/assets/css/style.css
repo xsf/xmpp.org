@@ -408,7 +408,7 @@ button[name="show-xep-implementations"] {
     text-align: left;
     margin-bottom: 0px;
 }
-.compliance-data-list span {
+#compliance-level-accordion li {
     font-family: "Exo 2", sans-serif !important;
 }
 .compliance-badge-core {
