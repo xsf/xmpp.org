@@ -45,7 +45,10 @@ You can find a summary of the main topics discussed over the course of Summit in
 
 ## Videos and Talks
 
-
+- [FOSDEM 2026: Decentralised Communication](https://fosdem.org/2026/schedule/track/decentralised-communication/)
+  - [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview)
+  - [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview)
+  - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview)
 
 ## XMPP Articles
 
