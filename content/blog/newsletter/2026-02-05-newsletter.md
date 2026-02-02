@@ -28,7 +28,7 @@ The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit
 
 The XSF would like to extend a special thank you to those who made the Summit possible:
 
-- [Edward Maurer](LINK) for his time and resources to help organising the event.
+- [Edward Maurer](LINK) for his time, resources, strong commitment, thorough contribution and attention to detail in the organization of the event.
 - [NAME](LINK) for sponsoring the XSF Dinner.
 - [NAME](LINK) for his time and dedicated work on streaming/swag/booking dinnner.
 - [NAME](LINK) for the dinner form.
@@ -39,16 +39,24 @@ The XSF would like to extend a special thank you to those who made the Summit po
 
 You can find a summary of the main topics discussed over the course of Summit in the following [link](ADD LINK)
 
-## XMPP Events
+## XMPP at FOSDEM 2026
 
-- FOSDEM26
+During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part of the Realtime Lounge, a room located in Level 1, AW building, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
 
-## Videos and Talks
+We are pleased to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say “Hi!”, meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
+
+In addition to the activities that took place on the XMPP booth, [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/), [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/), and [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hosted three different presentations about XMPP in the Decentralised Communication Developer Room.
+
+And, of course .. we had plenty of leaflets, informational material, and as always: the coolest stickers! ;)
+
+{{< figure src="/images/newsletter/2026-02-05/PICTURE.JPG" caption="XMPP stand at FOSDEM 2026!" >}}
+
+## Videos
 
 - [FOSDEM 2026: Decentralised Communication](https://fosdem.org/2026/schedule/track/decentralised-communication/)
-  - [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview)
-  - [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview)
-  - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview)
+  - [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) at FOSDEM 2026
+  - [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview) by [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
+  - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview) by [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) at FOSDEM 2026
 
 ## XMPP Articles
 
