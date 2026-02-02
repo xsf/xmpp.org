@@ -39,7 +39,7 @@ The XSF would like to extend a special thank you to those who made the Summit po
 
 You can find a summary of the main topics discussed over the course of Summit in the following [link](ADD LINK)
 
-## XMPP at FOSDEM 2026
+### XMPP at FOSDEM 2026
 
 During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part of the Realtime Lounge, a room located in Level 1, AW building, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
 
