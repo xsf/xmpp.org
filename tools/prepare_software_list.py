@@ -69,8 +69,8 @@ aliases:
     - "/software/%(type)s/%(name_slug)s"
 ---
 
-{{< software-details name_slug="%(name_slug)s" package_type="%(type)s" >}}
-"""
+{{< software-details name_slug="%(name_slug)s" package_type="%(type)s" name="%(name)s" doap_url="%(doap_url)s" >}}
+"""  # noqa: E501
 
 SOFTWARE_CATEGORIES: list[str] = [
     "client",
@@ -610,6 +610,28 @@ def prepare_package_data() -> None:
 
         parsed_package_infos = parse_doap_infos(package_name_slug)
         if parsed_package_infos is None:
+            # DOAP could not be downloaded/parsed:
+            # Create page anyways, but don't process further
+            package_infos[package["name"]] = {
+                "categories": package["categories"],
+                "name_slug": package_name_slug,
+                "doap_retrieved": False,
+                "platforms": [],
+                "programming_lang": [],
+                "xeps": [],
+                "rfcs": [],
+            }
+
+            for category in package["categories"]:
+                package_category = (
+                    "libraries" if category == "library" else f"{category}s"
+                )
+                create_package_page(
+                    package_category,
+                    package_name_slug,
+                    package["name"],
+                    doap_url,
+                )
             continue
 
         logo_uri = None
@@ -641,6 +663,7 @@ def prepare_package_data() -> None:
         package_infos[package["name"]] = {
             "categories": package["categories"],
             "name_slug": package_name_slug,
+            "doap_retrieved": True,
             "homepage": parsed_package_infos["homepage"],
             "logo": logo_uri,
             "shortdesc": parsed_package_infos["shortdesc"],
@@ -657,7 +680,12 @@ def prepare_package_data() -> None:
 
         for category in package["categories"]:
             package_category = "libraries" if category == "library" else f"{category}s"
-            create_package_page(package_category, package_name_slug, package["name"])
+            create_package_page(
+                package_category,
+                package_name_slug,
+                package["name"],
+                doap_url,
+            )
 
     print(
         f"\n{42 * '='}\n"
@@ -686,7 +714,7 @@ def add_doap_data_to_xeplist() -> None:
     for xep in xep_data:
         xep["implementations"] = []
         for name, package_data in software_data.items():
-            if not package_data["xeps"]:
+            if not package_data.get("xeps"):
                 continue
             for supported_xep in package_data["xeps"]:
                 if supported_xep["number"] == f"{xep['number']:04d}":
@@ -715,7 +743,12 @@ def add_doap_data_to_xeplist() -> None:
         js_file.write(f"const xepListData = {json.dumps(xep_data)}")
 
 
-def create_package_page(package_type: str, name_slug: str, name: str) -> None:
+def create_package_page(
+    package_type: str,
+    name_slug: str,
+    name: str,
+    doap_url: str,
+) -> None:
     """Create an .md page for package, containing a shortcode
     for displaying package details
     """
@@ -729,6 +762,8 @@ def create_package_page(package_type: str, name_slug: str, name: str) -> None:
                 "date": date_formatted,
                 "type": package_type,
                 "name_slug": name_slug,
+                "name": name,
+                "doap_url": doap_url,
             },
         )
 

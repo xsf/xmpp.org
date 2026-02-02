@@ -1,5 +1,6 @@
 {{- $name_slug := .Get "name_slug" -}}
 {{- $package_type := .Get "package_type" -}}
+{{- $doap_url := .Get "doap_url" -}}
 
 {{- range $name, $props := .Site.Data.software_list_doap -}}
     {{- if eq $props.name_slug $name_slug -}}
@@ -23,9 +24,11 @@
                 </div>
             {{- end -}}
         </div>
+        {{- if $props.homepage -}}
         <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
             <a class="btn btn-primary px-4" href="{{- $props.homepage -}}" target="_blank">Visit Website</a>
         </div>
+        {{- end -}}
         <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
             {{- if $props.download_page -}}
                 <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $props.download_page -}}" target="_blank"><i class="fa-solid fa-download"></i>&nbsp;Download</a>
@@ -45,6 +48,9 @@
                 {{- end -}}
             {{- end -}}
         </div>
+        {{- if ne $props.doap_retrieved true -}}
+            <p class="text-muted text-center small mb-5">Could not retrieve <a href="{{- $doap_url -}}" target="_blank">package data</a>. This may be a temporary problem, please come back later.</p>
+        {{- end -}}
         <div class="col-sm-10 col-lg-8 pb-5 mx-auto">
             <h3>Features</h3>
             <span class="text-muted small">Information listed here always refers to the latest <a href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software checked against.</span>
@@ -148,6 +154,7 @@
         </div>
     {{- end -}}
 {{- end -}}
+
 <div class="text-center pb-2">
     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#extensions-collapse" aria-expanded="false" aria-controls="extensions-collapse">
         Show Supported XEPs
