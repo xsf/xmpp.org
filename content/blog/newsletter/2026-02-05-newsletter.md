@@ -35,7 +35,7 @@ The XSF would like to extend a special thank you to those who made the Summit po
 - [NAME](LINK) for leading the Summit and moderating the speakers.
 - [NAME](LINK) for sponsoring the XMPP Summit again.
 
-{{< figure src="/images/newsletter/2026-02-05/PICTURE.JPG" caption="Welcome to the 28th XMPP Summit!" >}}
+{{< figure src="/images/newsletter/2026-02-05/summit.jpg" caption="Welcome to the 28th XMPP Summit!" >}}
 
 You can find a summary of the main topics discussed over the course of Summit in the following [link](ADD LINK)
 
