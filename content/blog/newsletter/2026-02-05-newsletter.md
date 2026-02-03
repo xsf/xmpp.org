@@ -2,7 +2,7 @@
 title: The XMPP Newsletter January 2025
 date: 2026-02-05
 categories: ['Newsletter']
-summary: "In this issue: INCOMPLETE Read about the XMPP Summit 28 and watch the Fosdem 26 presentation videos! Learn about XMPP and Metadata, XMPP integration with n8n, Independent Messaging Day: A recipe for digital freedom and sovereignty, Fluux Messenger and more. Update your clients with Conversations, Gajim, Kaidan, Monal, Monocles and Prose. Update your servers: Prosody, MongooseIM 6.5, ejabberd. XEP’s news - a proposed XEP and an updated one!"
+summary: "In this issue: INCOMPLETE Read about the XMPP Summit 28 and watch the Fosdem 26 presentation videos! Learn about XMPP and Metadata, XMPP integration with n8n, Independent Messaging Day: A recipe for digital freedom and sovereignty, Fluux Messenger and more. Update your clients with Conversations, Gajim, Kaidan, Monal, Monocles and Prose. Update your servers: Prosody, MongooseIM 6.5, ejabberd. Specifications update: a proposed XEP and an updated one!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
@@ -24,9 +24,9 @@ If you are interested in joining the XMPP Standards Foundation as a member, [ple
 
 ### XMPP Summit 28
 
-The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_28) during January 29th and 30th 2026 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part of the Summit for their continuous commitment and contribution to the XFS and all the XMPP related projects!
+The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_28) during January 29th and 30th 2026 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part in the Summit for their continuous commitment and contribution to the XSF and all the XMPP related projects!
 
-The XSF would like to extend a special thank you to those who made the Summit possible:
+The XSF would like to extend a special thank you to those who made this Summit possible:
 
 - [Edward Maurer](LINK) for his time, resources, strong commitment, thorough contribution and attention to detail in the organization of the event.
 - [NAME](LINK) for sponsoring the XSF Dinner.
@@ -41,7 +41,7 @@ You can find a summary of the main topics discussed over the course of Summit in
 
 ### XMPP at FOSDEM 2026
 
-During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part of the Realtime Lounge, a room located in Level 1, AW building, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
+During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part in the Realtime Lounge, a room located in Level 1, AW building, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
 
 We are pleased to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say “Hi!”, meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
 
@@ -81,14 +81,14 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
 
 ### XMPP Clients and Applications
 
-- [Conversations](https://conversations.im/) has released versions [2.19.8](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.8) and [2.19.9](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.9) for Android. This versions introduce a fix for calls getting stuck at connecting when 'Use Relays' is enabled but server doesn't have any and bandwidth optimizations and combine QR code related actions (show, scan, invite) into one central menu. You can take a look at the [changelog](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) for all the details.
-- [Gajim](https://gajim.org/) has released version [2.4.2](https://gajim.org/posts/2026-01-15-gajim-2.4.2-released/) and [2.4.3](https://gajim.org/posts/2026-01-21-gajim-2.4.3-released/) of its free and fully featured chat app for XMPP. Installing Gajim on macOS is now only a single click away. This release brings a simplified macOS setup, easier sharing for files and support for link previews, along many other improvements, changes and some important bug fixes. Thank you for all your contributions! You can take a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
+- [Conversations](https://conversations.im/) has released versions [2.19.8](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.8) and [2.19.9](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.9) for Android. These versions introduce a fix for calls getting stuck at connecting when 'Use Relays' is enabled but server doesn't have any. They also come with bandwidth optimizations and they combine QR code related actions (show, scan, invite) into one central menu. You can take a look at the [changelog](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) for all the details.
+- [Gajim](https://gajim.org/) has released versions [2.4.2](https://gajim.org/posts/2026-01-15-gajim-2.4.2-released/) and [2.4.3](https://gajim.org/posts/2026-01-21-gajim-2.4.3-released/) of its free and fully featured chat app for XMPP. Installing Gajim on macOS is now only a single click away. Gajim 2.4.2 release brings a simplified macOS setup, easier sharing for files and support for link previews, along many other improvements, changes and some important bug fixes. You can take a look at the [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) for all the details.
 - [Kaidan](https://www.kaidan.im/) has released versions [0.14.0](https://www.kaidan.im/2026/01/01/kaidan-0.14.0/) and [0.15.0](https://www.kaidan.im/2026/01/30/kaidan-0.15.0/) of its user-friendly and modern chat app for XMPP. The former release brings support for advanced media sharing and registration provider filtering, while the latter implements an integrated search field and experimental support for Audio/Video Calls (with most of the work being funded by [NLnet](https://nlnet.nl/foundation/) via [NGI Zero Entrust](https://nlnet.nl/entrust/) and [NGI Zero Commons Fund](https://nlnet.nl/commonsfund/) with [public money](https://publiccode.eu/en/) provided by the European Commission) in addition to some very useful improvements and lots of fixes! You can find a detailed list of new features, bugfixes and notes in their respective release announcements, or the [changelog](https://invent.kde.org/network/kaidan/-/blob/Kaidan/0.15/NEWS.md?ref_type=heads).
 
 {{< figure src="/images/newsletter/2026-02-05/kaidan.png" caption="Kaidan 0.15.0: Experimental Audio/Video support on Linux." >}}
 
 - [Monal](https://monal-im.org/) has released versions [6.4.17](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1072) for iOS and macOS.
-- [Monocles](https://monocles.eu/more) has released version [2.1](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1) of its chat client for Android. This a **huge update** with three fundamental new features: [Stories](/extensions/xep-0501.html), [Feeds](/extensions/xep-0472.html), and Phone log. In addition to many other improvements and features such as account sorting and improved [message deletion](/extensions/xep-0424.html), this update also brings new support for multiple XEPs. Thanks to the standardization of XMPP, it is now possible to have social interaction across different XMPP platforms and messengers. The new features bring more functions that are fully compatible with the XMPP web platform [Movim](https://movim.eu/).
+- [Monocles](https://monocles.eu/more) has released version [2.1](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1) of its chat app for Android. This a **huge update** with three fundamental new features: [Stories](/extensions/xep-0501.html), [Feeds](/extensions/xep-0472.html), and Phone log. In addition to many other improvements and features such as account sorting and improved [message deletion](/extensions/xep-0424.html), this update also brings new support for multiple XEPs. Thanks to the standardization of XMPP, it is now possible to have social interaction across different XMPP platforms and messengers. These new features bring more functions that are fully compatible with the XMPP web platform [Movim](https://movim.eu/).
 
 {{< figure src="/images/newsletter/2026-02-05/monocles-stories.png" caption="Create your stories today and make a post for your contacts in [Monocles Chat](https://monocles.eu/more) or [Movim](https://movim.eu/)!" >}}
 
