@@ -49,7 +49,7 @@ In addition to the activities that took place on the XMPP booth, [Daniel Gultsch
 
 And, of course .. we had plenty of leaflets, informational material, and as always: the coolest stickers! ;)
 
-{{< figure src="/images/newsletter/2026-02-05/PICTURE.JPG" caption="XMPP stand at FOSDEM 2026!" >}}
+{{< figure src="/images/newsletter/2026-02-05/xmpp-booth.jpg" caption="We found Wally. Now, can you find the XMPP booth in the picture?" >}}
 
 ## Videos
 
