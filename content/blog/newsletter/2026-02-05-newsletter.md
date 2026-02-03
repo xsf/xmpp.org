@@ -45,7 +45,7 @@ During January 31st and February 1st, the XSF was present at [FOSDEM 26](https:/
 
 We are pleased to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say “Hi!”, meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
 
-In addition to the activities that took place on the XMPP booth, [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/), [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/), and [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hosted three different presentations about XMPP in the Decentralised Communication Developer Room.
+In addition to the activities that took place on the XMPP booth, [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) and [S1m](https://fosdem.org/2026/schedule/speaker/s1m/), [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/), [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/), and [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hosted four different XMPP related presentations the Decentralised Communication Developer Room and the [FOSS on Mobile](https://fosdem.org/2026/schedule/track/foss-on-mobile/) track.
 
 And, of course .. we had plenty of leaflets, informational material, and as always: the coolest stickers! ;)
 
@@ -53,10 +53,10 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
 
 ## Videos
 
-- [FOSDEM 2026: Decentralised Communication](https://fosdem.org/2026/schedule/track/decentralised-communication/)
-  - [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) at FOSDEM 2026
-  - [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview) by [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
-  - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview) by [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) at FOSDEM 2026
+- [UnifiedPush - Push notifications. Decentralized and Open Source](https://video.fosdem.org/2026/ub4132/7HJJS7-unifiedpush_-_push_notifications_decentralized_and_open_source.mp4) by [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) and [S1m](https://fosdem.org/2026/schedule/speaker/s1m/) at FOSDEM 2026
+- [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) at FOSDEM 2026
+- [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview) by [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
+- [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview) by [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) at FOSDEM 2026
 
 ## XMPP Articles
 
