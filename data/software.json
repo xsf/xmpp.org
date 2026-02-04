@@ -521,6 +521,15 @@
         "url": "https://developer.pidgin.im/wiki/Using%20Finch"
     },
     {
+        "name": "Fluux Messenger",
+        "doap": "https://raw.githubusercontent.com/processone/fluux-messenger/main/fluux-messenger.doap",
+        "platforms": [],
+        "url": null,
+        "categories": [
+            "client"
+        ]
+    },
+    {
         "categories": [
             "library"
         ],
