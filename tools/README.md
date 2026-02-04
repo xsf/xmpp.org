@@ -4,6 +4,25 @@ To help software authors maintain their software entries, scripts are provided w
 
 All software entries are contained in `data/software.json`. You can either edit this file [directly via GitHub](https://github.com/xsf/xmpp.org/edit/master/data/software.json) or use the tool provided.
 
+- [Modifying your existing entry](#modifying-your-existing-entry)
+- [Add a new entry](#add-a-new-entry)
+- [Remove an existing entry](#remove-an-existing-entry)
+- [Validating Entries](#validating-entries)
+
+Please note that if you provide a DOAP file url, both "platforms" and "url" keys must be empty, as they are sourced from the DOAP file. Example:
+
+```json
+{
+  "categories": [
+    "client"
+  ],
+  "doap": "https://example.org/file.doap",
+  "name": "App Name",
+  "platforms": [],
+  "url": null
+}
+```
+
 A note on the `platforms` key: For clients and servers, this is the list of platforms a project runs on. For libraries, this is the list of languages they support.
 
 ## Modifying your existing entry
@@ -25,10 +44,8 @@ The tool will ask for confirmation:
   -    "doap": null,
   +    "doap"; "https://raw.githubusercontent.com/iNPUTmice/Conversations/master/conversations.doap",
        "name": "Conversations",
-       "platforms": [
-           "Android"
-       ],
-       "url": "https://github.com/siacs/Conversations",
+       "platforms": [],
+       "url": null,
        "categories": [
            "client"
        ]
@@ -114,5 +131,5 @@ Simply drop the corresponding JSON Object from the array and make a PR. Use the 
 To validate that the list contents are okay, use the `./lint_software_list.py` tool:
 
 ```shell
-./lint_software_list.py
+./lint_software_list.py software.json
 ```
