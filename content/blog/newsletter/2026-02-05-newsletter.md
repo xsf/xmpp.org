@@ -47,16 +47,16 @@ We are pleased to say that there was a lot of interaction at the XMPP booth! A r
 
 In addition to the activities that took place on the XMPP booth, [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) and [S1m](https://fosdem.org/2026/schedule/speaker/s1m/), [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/), [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/), and [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hosted four different XMPP related presentations from the Decentralised Communication Developer Room and the [FOSS on Mobile](https://fosdem.org/2026/schedule/track/foss-on-mobile/) track.
 
-And, of course .. we had plenty of leaflets, informational material, and as always: the coolest stickers! ;)
-
-{{< figure src="/images/newsletter/2026-02-05/xmpp-booth.jpg" caption="We found Wally. Now, can you find the XMPP booth in the picture?" >}}
-
-## Videos
+You can watch the presentations from the following list of links:
 
 - [UnifiedPush - Push notifications. Decentralized and Open Source](https://video.fosdem.org/2026/ub4132/7HJJS7-unifiedpush_-_push_notifications_decentralized_and_open_source.mp4) by [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) and [S1m](https://fosdem.org/2026/schedule/speaker/s1m/) at FOSDEM 2026
 - [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) and [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
 - [Movim: Building a Decentralized Social Network on XMPP](https://review.video.fosdem.org/overview) by [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
 - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://review.video.fosdem.org/overview) by [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) at FOSDEM 2026
+
+And, of course .. we had plenty of leaflets, informational material, and as always: the coolest stickers! ;)
+
+{{< figure src="/images/newsletter/2026-02-05/xmpp-booth.jpg" caption="We found Wally. Now, can you find the XMPP booth in the picture?" >}}
 
 ## XMPP Articles
 
