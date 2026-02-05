@@ -41,7 +41,7 @@ You can find a summary of the main topics discussed over the course of Summit in
 
 ### XMPP at FOSDEM 2026
 
-During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part in the Realtime Lounge, a room located in Level 1, AW building, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
+During January 31st and February 1st, the XSF was present at [FOSDEM 26](https://fosdem.org/2026/) in Brussels, Belgium. The XMPP community took part in the Realtime Lounge, a room located in Level 1, AW building, together with the [Prosody IM](https://blog.prosody.im/prosody-at-fosdem-2026/) and the [Snikket](https://snikket.org/blog/fosdem-2026/) projects, where several open source projects around the [Decentralised Communication Devroom](https://fosdem.org/2026/schedule/track/decentralised-communication/) can present themselves.
 
 We are pleased to say that there was a lot of interaction at the XMPP booth! A rather large number of FOSDEM visitors had the opportunity to come say “Hi!”, meet, interact, talk and have interesting conversations with many of the developers of the most popular clients, servers, tools and libraries that power the whole XMPP ecosystem and bring it to life.
 
@@ -72,8 +72,6 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
 - [IgniteRealtime Heads to Brussels: XSF Summit & FOSDEM 2026](https://discourse.igniterealtime.org/t/igniterealtime-heads-to-brussels-xsf-summit-fosdem-2026/96325) by [guus](https://discourse.igniterealtime.org/u/guus/summary) for the [Ignite Realtime Community](https://discourse.igniterealtime.org/).
 - [A new look for Snikket Android](https://snikket.org/blog/snikket-android-material/) by The Snikket Team for the [Snikket Blog](https://snikket.org/blog/).
 - [Your European Union XMPP Chat Provider!](https://providers.xmpp.net/blog/2026-01-18-eu-providers/) by the [XMPP Providers Team](https://providers.xmpp.net/about/) for the [XMPP Providers blog](https://providers.xmpp.net/blog/).
-- [Snikket at FOSDEM 2026](https://snikket.org/blog/fosdem-2026/) by The Snikket Team for the [Snikket Blog](https://snikket.org/blog/).
-- [Prosody at FOSDEM 2026](https://blog.prosody.im/prosody-at-fosdem-2026/) by the by The Prosody Team for [Prosodical Thoughts](https://blog.prosody.im/).
 - [Introducing Fluux Messenger: A Modern XMPP Client Born from a Holiday Coding Session](https://www.process-one.net/blog/introducing-fluux-messenger-a-modern-xmpp-client-born-from-a-holiday-coding-session/) by [Mickaël Rémond](https://www.process-one.net/author/mremond/) for the [ProcessOne Blog](https://www.process-one.net/blog/).
 - [Notificaciones XMPP con un minimo esfuerzo](https://cyberdelia.com.ar/notificaciones-xmpp-con-un-minimo-esfuerzo.html) by [TheCoffeMaker](https://rebel.ar/@thecoffemaker) for [Cyberdelia](https://cyberdelia.com.ar/). [ES]
 
