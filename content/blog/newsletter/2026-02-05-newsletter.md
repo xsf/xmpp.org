@@ -2,7 +2,7 @@
 title: The XMPP Newsletter January 2025
 date: 2026-02-05
 categories: ['Newsletter']
-summary: "In this issue: INCOMPLETE Read about the XMPP Summit 28 and watch the Fosdem 26 presentation videos! Learn about XMPP and Metadata, XMPP integration with n8n, Independent Messaging Day: A recipe for digital freedom and sovereignty, Fluux Messenger and more. Update your clients with Conversations, Gajim, Kaidan, Monal, Monocles and Prose. Update your servers: Prosody, MongooseIM 6.5, ejabberd. Specifications update: a proposed XEP and an updated one!"
+summary: "In this issue: Read about the XMPP Summit 28 and watch the Fosdem 26 presentation videos! Learn about XMPP and Metadata, XMPP integration with n8n, Independent Messaging Day: A recipe for digital freedom and sovereignty, Fluux Messenger and more. Update your clients with Conversations, Gajim, Kaidan, Monal, Monocles and Prose. Update your servers: Prosody, MongooseIM 6.5, ejabberd. Specifications update: a proposed XEP and an updated one!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
