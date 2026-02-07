@@ -174,7 +174,7 @@ Condividi la notizia su altri social network:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
 - [Movim](https://mov.im/community/news.xmpp.org/News)
-- [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
+- [Bluesky](https://bsky.app/profile/xmpp.org)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Istanza Lemmy (non ufficiale)](https://slrpnk.net/c/xmpp)
