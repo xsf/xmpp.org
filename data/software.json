@@ -1471,14 +1471,21 @@
     },
     {
         "categories": [
-            "server"
+            "integrated-platform"
         ],
-        "doap": null,
+        "doap": "/hosted-doap/snikket-app.doap",
+        "name": "Snikket App",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "integrated-platform"
+        ],
+        "doap": "/hosted-doap/snikket-server.doap",
         "name": "Snikket Server",
-        "platforms": [
-            "Linux"
-        ],
-        "url": "https://snikket.org/service/"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
