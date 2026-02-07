@@ -18,26 +18,28 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 ## XSF Announcements
 
-### XSF Membership
+### Call for XSF Membership
 
 If you are interested in joining the XMPP Standards Foundation as a member, [please apply before February 15th, 2026, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q1_2026).
+Being a member signals a commitment to open standards and professional engagement in / with the XMPP community.
+Here, your membership helps position the XSF as a healthy organization, which in itself is valuable.
+It also grants voting rights on technical and administrative matters within the XSF.
+The application is a light-weight and free of cost process and you can use membership to get more involved more easily, too.
 
 ### XMPP Summit 28
 
 The XSF held its [28th XMPP Summit](https://wiki.xmpp.org/web/Conferences/Summit_28) during January 29th and 30th 2026 in Brussels (Belgium, Europe). During this two-day gathering, we discussed XMPP protocol development topics and kept making progress on current issues within the protocol and ecosystem. We would like to thank everyone that took part in the Summit for their continuous commitment and contribution to the XSF and all the XMPP related projects!
 
-The XSF would like to extend a special thank you to those who made this Summit possible:
+The XSF would like to extend a special thank you to those who made this XMPP Summit possible:
 
-- [Edward Maurer](LINK) for his time, resources, strong commitment, thorough contribution and attention to detail in the organization of the event.
-- [NAME](LINK) for sponsoring the XSF Dinner.
-- [NAME](LINK) for his time and dedicated work on streaming/swag/booking dinnner.
-- [NAME](LINK) for the dinner form.
-- [NAME](LINK) for leading the Summit and moderating the speakers.
-- [NAME](LINK) for sponsoring the XMPP Summit again.
+- Edward Maurer from the [XSF Communication Team](https://xmpp.org/about/xsf/comm-team/) as well as [Daniel Gultsch](https://gultsch.de/) and [Guus der Kinderen](https://toot.igniterealtime.org/@guusdk) from the [XSF Summits, Conferences, and Meetups Team](https://xmpp.org/about/xsf/scam-team/) for their time, resources, strong commitment, thorough contribution and attention to detail in the organization and moderation of the event.
+- [Ralph Meijer](https://ralphm.net/), Dan Caseley and Edwin Mons for their time and dedicated work on streaming the Summit.
+- [Ralph Meijer](https://ralphm.net/) for organising the XSF dinner and Alexander Gnauck's noted sponsor contribution.
+- Additional thanks to mathieui, Rémi and other unknown people helping to keep track of the notes during the event.
 
 {{< figure src="/images/newsletter/2026-02-05/summit.jpg" caption="Welcome to the 28th XMPP Summit!" >}}
 
-You can find a summary of the main topics discussed over the course of Summit in the following [link](ADD LINK)
+A summary of the main topics discussed is planned to be published soon at [xmpp.org](https://xmpp.org/).
 
 ### XMPP at FOSDEM 2026
 
