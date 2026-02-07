@@ -58,6 +58,17 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
 
 {{< figure src="/images/newsletter/2026-02-05/xmpp-booth.jpg" caption="We found Wally. Now, can you find the XMPP booth in the picture?" >}}
 
+## Events
+
+### XMPP listed as Alternative Chat at DI.DAY Initiative
+
+The German initiative ‘Digital Independence Day’ ([DI.DAY](https://di.day/)) has been kicked off this year to enable users to migrate to open-source software alternatives in various contexts.
+Besides other services, XMPP is listed as an alternative chat option and XMPP Community members have created so-called switch recipes: Digital Independence Day. Find the related blogpost at [xmpp.org](https://xmpp.org/2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/)
+
+There are more related activities and resources available from the XMPP Community:
+- [Wechselrezept zu Quicksy (XMPP)](https://eversten.net/blog/wechselrezept/) and [Wechselrezept zu XMPP](https://eversten.net/blog/wechselrezept2/) by [Axel Reimer](https://social.anoxinon.de/@eversten) for the [eversten.net blog](https://eversten.net/). [DE]
+- [Independent Messaging Day: A recipe for digital freedom and sovereignty](https://xmpp24.de/en/), a complete and easy guide to digital freedom and sovereignty recipe inspired by the DI.DAY, by [Axel Reimer](https://social.anoxinon.de/@eversten). [[DE](https://xmpp24.de/)]
+
 ## XMPP Articles
 
 - [XMPP and Metadata](https://blog.mathieui.net/en/xmpp-and-metadata.html) by [mathieui](https://blog.mathieui.net/en/pages/about.html) for the [mathieui blog](https://blog.mathieui.net/).
@@ -66,8 +77,6 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
   - [Converse XMPP Chat on Mobile](https://nlnet.nl/project/Converse-Mobile/)
   - [Support for Microblogging and Social Feeds to Converse](https://nlnet.nl/project/Converse-Microblogging/)
   - [Macaw Instant Messenger Web/Desktop](https://nlnet.nl/project/Macaw/): The intention for this grant is to port the current [Macaw](https://macaw.chat/) web client to [Tauri](https://tauri.app/), which enables the client logic to run natively within a desktop application, as well as to implement new features such as group chats and sticker/emoji packs to improve usability. Further, to lay the groundwork for later development of features such as group video calls and end-to-end message encryption, as well as ports to other platforms.
-- [Wechselrezept zu Quicksy (XMPP)](https://eversten.net/blog/wechselrezept/) and [Wechselrezept zu XMPP](https://eversten.net/blog/wechselrezept2/) by [Axel Reimer](https://social.anoxinon.de/@eversten) for the [eversten.net blog](https://eversten.net/). [DE]
-- [Independent Messaging Day: A recipe for digital freedom and sovereignty](https://xmpp24.de/en/), a complete and easy guide to digital freedom and sovereignty recipe inspired by the [DI.DAY](https://di.day/), by [Axel Reimer](https://social.anoxinon.de/@eversten). [[DE](https://xmpp24.de/)]
 - [Vou sempre lutar pelo xmpp](https://blog.isacloud.im/vou-sempre-lutar-pelo-xmpp/) by [Isadora](https://blog.isacloud.im/sobre/) for the [isacloud.im blog](https://blog.isacloud.im/). [PT_BR]
 - [IgniteRealtime Heads to Brussels: XSF Summit & FOSDEM 2026](https://discourse.igniterealtime.org/t/igniterealtime-heads-to-brussels-xsf-summit-fosdem-2026/96325) by [guus](https://discourse.igniterealtime.org/u/guus/summary) for the [Ignite Realtime Community](https://discourse.igniterealtime.org/).
 - [A new look for Snikket Android](https://snikket.org/blog/snikket-android-material/) by The Snikket Team for the [Snikket Blog](https://snikket.org/blog/).
