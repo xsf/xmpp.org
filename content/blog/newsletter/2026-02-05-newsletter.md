@@ -60,6 +60,13 @@ And, of course .. we had plenty of leaflets, informational material, and as alwa
 
 {{< figure src="/images/newsletter/2026-02-05/xmpp-booth.jpg" caption="We found Wally. Now, can you find the XMPP booth in the picture?" >}}
 
+### XSF Bluesky account is verified now (New handle!)
+
+The XSF Bluesky account is verified now.
+This means that the profile handle is different now (@xmpp.org)
+You can find the profile with its new handle via [https://bsky.app/profile/xmpp.org](https://bsky.app/profile/xmpp.org).
+Many thanks to cal0pteryx from the [XSF Communication Team](https://xmpp.org/about/xsf/comm-team/) as well as [singpolyma](https://singpolyma.net/) and Zash from [Infrastructure Team](https://xmpp.org/about/xsf/infrastructure-team/).
+
 ## Events
 
 ### XMPP listed as Alternative Chat at DI.DAY Initiative
@@ -166,7 +173,7 @@ Please share the news on other networks:
 
 - [Mastodon](https://fosstodon.org/@xmpp/)
 - [Movim](https://mov.im/community/news.xmpp.org/News)
-- [Bluesky](https://bsky.app/profile/xmpp-official.bsky.social)
+- [Bluesky](https://bsky.app/profile/xmpp.org)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Lemmy instance (unofficial)](https://slrpnk.net/c/xmpp)
