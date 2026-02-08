@@ -197,7 +197,7 @@ Ein Call for Experience (ein Aufruf für Erfahrungen) ist, wie ein Last Call, ei
 
 Dieser XMPP-Newsletter wurde kollaborativ von der Community erarbeitet.
 
-Danke an Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, MattJ, mdosch, NicFab, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 ihre Hilfe, ihn zu erstellen!
+Danke an Adrien Bourmault (neox), Anoxinon e.V., arne, emus, Goffi, IM, Licaon_Kter, Ludovic Bocquet, MattJ, mdosch, NicFab, Sam Whited, TheCoffeMaker, vanitasvitae, wurstsalat3000 ihre Hilfe, ihn zu erstellen!
 
 Vielen Dank an alle Ünterstützenden und ihre Hilfe!
 
