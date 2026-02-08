@@ -8,7 +8,7 @@ summary: "In this issue: Read about the XMPP Summit 28 and watch the Fosdem 26 p
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
 
 Welcome to the XMPP Newsletter, great to have you here again!
-This issue covers the month of January 2025.
+This issue covers the month of January 2026.
 
 The [XMPP Newsletter](/categories/newsletter/) is brought to you by the [XSF Communication Team](/about/xsf/comm-team/).
 
