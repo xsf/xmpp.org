@@ -1059,6 +1059,7 @@
     },
     {
         "categories": [
+            "integrated-platform",
             "client"
         ],
         "doap": "https://raw.githubusercontent.com/movim/movim/master/doap.xml",
@@ -1232,6 +1233,7 @@
     },
     {
         "categories": [
+            "integrated-platform",
             "client"
         ],
         "doap": "https://raw.githubusercontent.com/prose-im/prose-core-client/master/prose.doap",
