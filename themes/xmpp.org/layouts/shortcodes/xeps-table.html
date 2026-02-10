@@ -1,7 +1,7 @@
 <div class="alert alert-secondary" role="alert">
     <div class="d-flex flex-row">
         <div>
-            <i class="fas fa-info-circle pe-2"></i>
+            <i class="fa-solid fa-info-circle pe-2"></i>
         </div>
         <div>
             <span>
@@ -139,7 +139,7 @@
                                                     {{- end -}}
                                                 {{- end -}}
                                             {{- else if hasPrefix (. | lower) "rfc" -}}
-                                                <a href="https://datatracker.ietf.org/doc/{{- replaceRE "(\\s)" "" . | lower -}}/" target="_blank">{{ print "RFC " (index (findRE `\d{4}` . 1) 0) }}&nbsp;<i class="fas fa-external-link-alt"></i></a>
+                                                <a href="https://datatracker.ietf.org/doc/{{- replaceRE "(\\s)" "" . | lower -}}/" target="_blank">{{ print "RFC " (index (findRE `\d{4}` . 1) 0) }}&nbsp;<i class="fa-solid fa-external-link-alt"></i></a>
                                             {{- else -}}
                                                 <span>{{- . -}}</span>
                                             {{- end -}}

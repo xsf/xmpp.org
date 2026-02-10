@@ -96,7 +96,7 @@ Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a 
 xmpp.org's theme makes use of:
 
 * [Bootstrap 5.3](https://getbootstrap.com/docs/5.3)
-* [FontAwesome 6](https://fontawesome.com/v6/docs)
+* [FontAwesome 7](https://fontawesome.com/v7/docs)
 
 The theme (layout and styling) can be customized in the [/themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
 

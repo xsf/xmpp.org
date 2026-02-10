@@ -188,7 +188,7 @@
                                 {{- if $props.logo -}}
                                     <img src="{{- $props.logo -}}" class="software-logo-small">
                                 {{- else -}}
-                                    <i class="fas fa-3x fa-cube software-logo-default"></i>
+                                    <i class="fa-solid fa-3x fa-cube software-logo-default"></i>
                                 {{- end -}}
                             </div>
                             <div class="col-md-6 col-sm-12 text-start">
@@ -213,19 +213,19 @@
                                     <div class="col">
                                         {{- range $props.platforms -}}
                                             {{- if eq (lower .) "android" -}}
-                                                <i class="fab fa-lg fa-android pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-brands fa-lg fa-android pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "ios" -}}
-                                                <i class="fab fa-lg fa-app-store-ios pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-brands fa-lg fa-app-store-ios pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "windows" -}}
-                                                <i class="fab fa-lg fa-windows pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-brands fa-lg fa-windows pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "macos" -}}
-                                                <i class="fab fa-lg fa-apple pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-brands fa-lg fa-apple pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "linux" -}}
-                                                <i class="fab fa-lg fa-linux pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-brands fa-lg fa-linux pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "freebsd" -}}
                                                 <i class="fa-brands fa-lg fa-freebsd pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else if eq (lower .) "other" -}}
-                                                <i class="fas fa-lg fa-box pb-3" title="{{- . -}}"></i>&nbsp;
+                                                <i class="fa-solid fa-lg fa-box pb-3" title="{{- . -}}"></i>&nbsp;
                                             {{- else -}}
                                                 <span class="small">{{- . -}}&nbsp;</span>
                                             {{- end -}}

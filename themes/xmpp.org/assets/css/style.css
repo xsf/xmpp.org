@@ -230,7 +230,7 @@ ul.share {
    ul.share li:last-of-type {
     margin-right: 0;
 }
-   ul.share li .fab {
+   ul.share li .fa-brands {
     display: block;
     width: 30px;
     height: 30px;
@@ -247,7 +247,7 @@ ul.share {
     text-decoration: none !important;
     margin: 0;
 }
-   ul.share li:hover .fab {
+   ul.share li:hover .fa-brands {
     transform: scale(1.2)
 }
 .mermaid {

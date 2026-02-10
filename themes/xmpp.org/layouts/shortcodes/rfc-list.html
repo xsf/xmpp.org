@@ -46,7 +46,7 @@
             {{- end -}}
             {{- if .selfhosted -}}
                 <div>
-                    <a class="btn btn-outline-secondary btn-sm mb-1" role="button" href="https://datatracker.ietf.org/doc/rfc{{- .number -}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank" data-bs-toggle="tooltip"><i class="fas fa-external-link-alt"></i> RFC {{ .number }}</a>
+                    <a class="btn btn-outline-secondary btn-sm mb-1" role="button" href="https://datatracker.ietf.org/doc/rfc{{- .number -}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank" data-bs-toggle="tooltip"><i class="fa-solid fa-external-link-alt"></i> RFC {{ .number }}</a>
                     <p class="mb-1"><small>The XSF hosts this document:</small></p>
                     <a class="btn btn-outline-secondary btn-sm" role="button" href="/rfcs/rfc{{- .number -}}.html" title="RFC {{ .number }} - HTML" target="_blank" data-bs-toggle="tooltip"><i class="far fa-file-alt"></i> HTML</a>
                     <a class="btn btn-outline-secondary btn-sm" role="button" href="/rfcs/rfc{{- .number -}}.txt" title="RFC {{ .number }} - TXT file" target="_blank" data-bs-toggle="tooltip"><i class="far fa-file"></i> TXT File</a>
@@ -54,7 +54,7 @@
                 </div>
             {{- else -}}
                 <div>
-                    <a class="btn btn-outline-secondary btn-sm" role="button" href="https://datatracker.ietf.org/doc/rfc{{- .number}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank" data-bs-toggle="tooltip"><i class="fas fa-external-link-alt"></i> RFC {{ .number }}</a>
+                    <a class="btn btn-outline-secondary btn-sm" role="button" href="https://datatracker.ietf.org/doc/rfc{{- .number}}" title="RFC {{ .number }} at datatracker.ietf.org" target="_blank" data-bs-toggle="tooltip"><i class="fa-solid fa-external-link-alt"></i> RFC {{ .number }}</a>
                 </div>
             {{- end -}}
         </div>

@@ -9,7 +9,7 @@
                     {{- $url := urls.Parse .URL -}}
                     {{- if eq .Parent $currentSection -}}
                         {{- if ne $url.Host $baseurl.Host -}}
-                        <li><a href="{{- .URL -}}" target="_blank">{{- .Name -}}</a>&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i></li>
+                        <li><a href="{{- .URL -}}" target="_blank">{{- .Name -}}</a>&nbsp;&nbsp;<i class="fa-solid fa-xs fa-external-link-alt"></i></li>
                         {{- else -}}
                         <li><a href="{{- .URL -}}">{{- .Name -}}</a></li>
                         {{- end -}}
