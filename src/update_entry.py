@@ -146,7 +146,7 @@ def main() -> None:
             while chosen not in "yn":
                 print("please choose y or n!")
                 chosen = input(prompt)
-        except (EOFError, KeyboardInterrupt):
+        except EOFError, KeyboardInterrupt:
             chosen = "n"
 
         if chosen != "y":

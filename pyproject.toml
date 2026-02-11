@@ -1,3 +1,29 @@
+[project]
+name = "xmpp-org-website"
+version = "1.0.0"
+
+dependencies = [
+  "beautifulsoup4",
+  "colorama",
+  "defusedxml",
+  "lxml",
+  "packaging",
+  "Pillow",
+  "python-slugify",
+  "requests",
+  "scour",
+]
+
+[project.optional-dependencies]
+
+[dependency-groups]
+dev = [
+  "isort==7.0.0",
+  "pre-commit==4.5.1",
+  "pyright==1.1.408",
+  "ruff==0.15.0",
+]
+
 [tool.isort]
 force_alphabetical_sort_within_sections = true
 force_single_line = true
@@ -14,14 +40,15 @@ sections = [
 skip_gitignore = true
 
 [tool.ruff]
+target-version = "py314"
 
-lint.select = [
-  "ALL"
-]
+[tool.ruff.lint]
+select = ["ALL"]
 
-lint.ignore = [
+ignore = [
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `xx`
   "C901",     # `xx` is too complex
+  "COM812",   # missing-trailing-comma
   "D",        # docstyle
   "EXE002",   # no shebang
   "FBT001",   # Boolean-typed positional argument in function definition
@@ -36,8 +63,6 @@ lint.ignore = [
   "S607",     # Starting a process with a partial executable path
   "T201",     # `print` found
 ]
-
-target-version = "py313"
 
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = "double"

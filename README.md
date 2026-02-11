@@ -42,7 +42,7 @@ To run a development server on your local machine, follow these basic steps.
 You need to have the following dependencies installed:
 
 * Hugo
-* Python >=3.13
+* Python >=3.14 and uv
 
 The development server will automatically rebuild the page whenever a file is changed:
 
@@ -79,10 +79,12 @@ View at `http://localhost:80`
 
 ```
 <repo>
-  public
-    <generated files>
   content
     <website page files>
+  public
+    <generated files>
+  src
+    <content processing tools>
   themes
     <website theme>
 ```
@@ -101,3 +103,7 @@ xmpp.org's theme makes use of:
 The theme (layout and styling) can be customized in the [/themes/xmpp.org directory](https://github.com/xsf/xmpp.org/tree/master/themes/xmpp.org).
 
 You can directly modify styles in [themes/xmpp.org/assets/css/style.css](https://github.com/xsf/xmpp.org/blob/master/themes/xmpp.org/assets/css/style.css).
+
+### Content processing
+
+To process underlying data to present e.g. `/extensions` or `/software`, a set of scripts located in [/src](https://github.com/xsf/xmpp.org/tree/master/src/README.md) is used.

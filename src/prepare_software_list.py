@@ -23,6 +23,7 @@ from PIL import Image
 from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
+
 from util import download_file
 from util import initialize_directory
 

@@ -23,29 +23,32 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
 
       - name: Install Python packages
-        run: pip install -r tools/requirements.txt
+        run: uv pip install --system -r pyproject.toml
 
       - name: Software list linting
         run: |
-          python tools/lint_software_list.py software.json
-          python tools/lint_software_list.py software_archive.json
+          python src/lint_software_list.py software.json
+          python src/lint_software_list.py software_archive.json
 
       - name: Prepare XEP list
-        run: python tools/prepare_xep_list.py
+        run: python src/prepare_xep_list.py
 
       - name: Prepare RFC list
-        run: python tools/prepare_rfc_list.py
+        run: python src/prepare_rfc_list.py
 
       - name: Prepare software list
-        run: python tools/prepare_software_list.py
+        run: python src/prepare_software_list.py
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
