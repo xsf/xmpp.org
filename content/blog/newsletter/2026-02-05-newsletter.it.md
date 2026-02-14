@@ -8,7 +8,7 @@ summary: "In questo numero: Leggi l'articolo sull'XMPP Summit 28 e guarda i vide
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
 
 Benvenuti alla newsletter XMPP, è un piacere avervi di nuovo qui!
-Questo numero copre il mese di gennaio 2026.
+Questo è il numero di gennaio 2026.
 
 La [Newsletter XMPP](/categories/newsletter/) è offerta dal [Team di comunicazione XSF](/about/xsf/comm-team/).
 
@@ -32,9 +32,7 @@ L'XSF ha tenuto il suo [28° XMPP Summit](https://wiki.xmpp.org/web/Conferences/
 
 La XSF desidera rivolgere un ringraziamento speciale a coloro che hanno reso possibile questo XMPP Summit:
 
-- Edward Maurer del [Team di comunicazione XSF](https://xmpp.org/about/xsf/comm-team/), nonché [Daniel Gultsch](https://gultsch.de/) e [Guus der Kinderen](https://toot.igniterealtime.
- 
-org/@guusdk) del [Team XSF Summits, Conferences, and Meetups](https://xmpp.org/about/xsf/scam-team/) per il tempo, le risorse, il forte impegno, il contributo approfondito e l'attenzione ai dettagli nell'organizzazione e nella moderazione dell'evento.
+- Edward Maurer del [Team di comunicazione XSF](https://xmpp.org/about/xsf/comm-team/), nonché [Daniel Gultsch](https://gultsch.de/) e [Guus der Kinderen](https://toot.igniterealtime.org/@guusdk) del [Team XSF Summits, Conferences, and Meetups](https://xmpp.org/about/xsf/scam-team/) per il tempo, le risorse, il forte impegno, il contributo approfondito e l'attenzione ai dettagli nell'organizzazione e nella moderazione dell'evento.
 - [Ralph Meijer](https://ralphm.net/) , Dan Caseley ed Edwin Mons per il tempo dedicato e il lavoro svolto per lo streaming del Summit.
 - [Ralph Meijer](https://ralphm.net/) per aver organizzato la cena XSF e Alexander Gnauck per il suo importante contributo come sponsor.
 - Un ringraziamento speciale a mathieui, Rémi e altre persone sconosciute che hanno aiutato a tenere traccia degli appunti durante l'evento.
@@ -49,14 +47,14 @@ Il 31 gennaio e il 1° febbraio, l'XSF era presente al [FOSDEM 26](https://fosde
 
 Siamo lieti di poter dire che allo stand XMPP c'è stata molta interazione! Un numero piuttosto elevato di visitatori del FOSDEM ha avuto l'opportunità di venire a salutare, incontrare, interagire, parlare e avere conversazioni interessanti con molti degli sviluppatori dei client, server, strumenti e librerie più popolari che alimentano l'intero ecosistema XMPP e lo rendono vivo.
 
-Oltre alle attività che si sono svolte allo stand XMPP, [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) e [S1m](https://fosdem.org/2026/schedule/speaker/s1m/), [Jérôme Sautret] (https://fosdem.org/2026/schedule/speaker/jerome_sautret/), [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) e [Özcan Oğuz] (https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hanno tenuto quattro diverse presentazioni relative a XMPP dalla Decentralised Communication Developer Room e dalla traccia [FOSS on Mobile](https://fosdem.org/2026/schedule/track/foss-on-mobile/).
+Oltre alle attività che si sono svolte allo stand XMPP, [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) e [S1m](https://fosdem.org/2026/schedule/speaker/s1m/), [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) e [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) hanno tenuto quattro diverse presentazioni relative a XMPP dalla Decentralised Communication Developer Room e dalla traccia [FOSS on Mobile](https://fosdem.org/2026/schedule/track/foss-on-mobile/).
 
 È possibile guardare le presentazioni dai seguenti link:
 
 - [UnifiedPush - Notifiche push. Decentralizzate e open source](https://video.fosdem.org/2026/ub4132/7HJJS7-unifiedpush_-_push_notifications_decentralized_and_open_source.mp4) di [Daniel Gultsch] (https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) e [S1m](https://fosdem.org/2026/schedule/speaker/s1m/) al FOSDEM 2026
-- [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https:// review.video.fosdem.org/overview) di [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) e [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) al FOSDEM 2026
+- [Ingegneria della federazione XMPP: Costruire funzioni di messagistica, vocali e social tra progetti indipendenti](https://fosdem.org/2026/schedule/event/7XJL9E-engineering_xmpp_federation_building_messaging_voice_social_features_across_inde/) di [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) e [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) al FOSDEM 2026
 - [Movim: Creazione di un social network decentralizzato su XMPP](https://review.video.fosdem.org/overview) di [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) al FOSDEM 2026
-- [Cosa stai ascoltando adesso?: Implementazione della funzione “Now Playing” nel moderno XMPP](https://ftp2.osuosl.org/pub/fosdem/2026/aw1126/8EDWJT-now-playing-revisited.mp4) di [Özcan Oğuz] (https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) al FOSDEM 2026
+- [Cosa stai ascoltando adesso?: Implementazione della funzione “Now Playing” nel moderno XMPP](https://ftp2.osuosl.org/pub/fosdem/2026/aw1126/8EDWJT-now-playing-revisited.mp4) di [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) al FOSDEM 2026
 
 E, naturalmente... avevamo un sacco di volantini, materiale informativo e, come sempre, gli adesivi più belli! ;)
 
@@ -74,7 +72,7 @@ Mille grazie a cal0pteryx del [team di comunicazione XSF](https://xmpp.org/about
 ### XMPP inserito come chat alternativa nell'iniziativa DI.DAY
 
 L'iniziativa tedesca “Digital Independence Day” ([DI.DAY](https://di.day/)) è stata lanciata quest'anno per consentire agli utenti di migrare verso alternative software open source in vari contesti.
-Oltre ad altri servizi, XMPP è elencato come opzione di chat alternativa e i membri della comunità XMPP hanno creato le cosiddette ricette di passaggio: Digital Independence Day. Trovate il relativo post sul blog su [xmpp.org](https://xmpp.org/ 2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/)
+Oltre ad altri servizi, XMPP è elencato come opzione di chat alternativa e i membri della comunità XMPP hanno creato le cosiddette ricette di passaggio: Digital Independence Day. Trovate il relativo post sul blog su [xmpp.org](https://xmpp.org/2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/)
 
 Sono disponibili altre attività e risorse correlate dalla comunità XMPP:
 - [Wechselrezept zu Quicksy (XMPP)](https://eversten.net/blog/wechselrezept/) e [Wechselrezept zu XMPP](https://eversten.net/blog/wechselrezept2/) di [Axel Reimer](https://social.anoxinon.de/@eversten) per il [blog eversten.net](https://eversten.net/). [DE]
@@ -87,14 +85,14 @@ Sono disponibili altre attività e risorse correlate dalla comunità XMPP:
 - [NLnet](https://nlnet.nl/): [Sovvenzioni per 45 progetti che lavorano su infrastrutture digitali condivise](https://nlnet.nl/news/2025/20251127-45-NGI0-CommonsFund.html)
 - [Chat XMPP Converse su dispositivi mobili](https://nlnet.nl/project/Converse-Mobile/)
 - [Supporto per microblogging e feed social su Converse](https://nlnet.nl/project/Converse-Microblogging/)
-- [Macaw Instant Messenger Web/Desktop](https://nlnet.nl/project/Macaw/): lo scopo di questa sovvenzione è quello di trasferire l'attuale client web [Macaw](https://macaw.chat/) su [Tauri](https:// tauri.app/), che consente alla logica del client di funzionare in modo nativo all'interno di un'applicazione desktop, nonché di implementare nuove funzionalità come chat di gruppo e pacchetti di adesivi/emoji per migliorare l'usabilità. Inoltre, gettare le basi per lo sviluppo successivo di funzionalità come le videochiamate di gruppo e la crittografia end-to-end dei messaggi, nonché il porting su altre piattaforme.
-- [Vou sempre lutar pelo xmpp] (https://blog.isacloud.im/vou-sempre-lutar-pelo-xmpp/) di [Isadora](https://blog.isacloud.im/sobre/) per il [blog isacloud.im](https://blog.isacloud.im/).
+- [Macaw Instant Messenger Web/Desktop](https://nlnet.nl/project/Macaw/): lo scopo di questa sovvenzione è quello di trasferire l'attuale client web [Macaw](https://macaw.chat/) su [Tauri](https://tauri.app/), che consente alla logica del client di funzionare in modo nativo all'interno di un'applicazione desktop, nonché di implementare nuove funzionalità come chat di gruppo e pacchetti di adesivi/emoji per migliorare l'usabilità. Inoltre, si getteranno le basi per lo sviluppo successivo di funzionalità come le videochiamate di gruppo e la crittografia end-to-end dei messaggi, nonché il porting su altre piattaforme.
+- [Vou sempre lutar pelo xmpp](https://blog.isacloud.im/vou-sempre-lutar-pelo-xmpp/) di [Isadora](https://blog.isacloud.im/sobre/) per il [blog isacloud.im](https://blog.isacloud.im/).
  
 [PT_BR]
-- [IgniteRealtime Heads to Brussels: XSF Summit & FOSDEM 2026](https://discourse. igniterealtime.org/t/igniterealtime-heads-to-brussels-xsf-summit-fosdem-2026/96325) di [guus](https://discourse.igniterealtime.org/u/guus/summary) per la [Ignite Realtime Community](https://discourse.igniterealtime.org/).
+- [IgniteRealtime verso Bruxelles: XSF Summit & FOSDEM 2026](https://discourse.igniterealtime.org/t/igniterealtime-heads-to-brussels-xsf-summit-fosdem-2026/96325) di [guus](https://discourse.igniterealtime.org/u/guus/summary) per la [Ignite Realtime Community](https://discourse.igniterealtime.org/).
 - [Un nuovo look per Snikket Android](https://snikket.org/blog/snikket-android-material/) di The Snikket Team per il [Snikket Blog](https://snikket.org/blog/).
 - [Il tuo provider di chat XMPP dell'Unione Europea!](https://providers.xmpp.net/blog/ 2026-01-18-eu-providers/) dal [team XMPP Providers](https://providers.xmpp.net/about/) per il [blog XMPP Providers](https://providers.xmpp.net/blog/).
-- [Presentazione di Fluux Messenger: un moderno client XMPP nato da una sessione di programmazione durante le vacanze](https://www.process-one.net/blog/introducing-fluux-messenger-a-modern-xmpp-client-born-from-a-holiday-coding-session/) di [Mickaël Rémond] (https://www.process-one.net/author/mremond/) per il [blog ProcessOne](https://www.process-one.net/blog/).
+- [Presentazione di Fluux Messenger: un moderno client XMPP nato da una sessione di programmazione durante le vacanze](https://www.process-one.net/blog/introducing-fluux-messenger-a-modern-xmpp-client-born-from-a-holiday-coding-session/) di [Mickaël Rémond](https://www.process-one.net/author/mremond/) per il [blog ProcessOne](https://www.process-one.net/blog/).
 - [Notificaciones XMPP con un minimo esfuerzo](https://cyberdelia.com.ar/notificaciones-xmpp-con-un-minimo-esfuerzo.html) di [TheCoffeMaker](https://rebel.ar/@thecoffemaker) per [Cyberdelia](https://cyberdelia.com.ar/). [ES]
 
 ## Notizie sul software XMPP
@@ -104,7 +102,7 @@ Sono disponibili altre attività e risorse correlate dalla comunità XMPP:
 - [Conversations](https://conversations.im/) ha rilasciato le versioni [2.19.8](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.8) e [2.19.9] (https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.9) per Android. Queste versioni introducono una correzione per le chiamate che rimangono bloccate durante la connessione quando l'opzione “Usa relay” è abilitata ma il server non ne ha. Inoltre, includono ottimizzazioni della larghezza di banda e combinano le azioni relative ai codici QR (mostra, scansione, invito) in un unico menu centrale. È possibile consultare il [changelog](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) per tutti i dettagli.
 - [Gajim](https://gajim.org/) ha rilasciato le versioni [2.4.2](https://gajim.org/posts/
  2026-01-15-gajim-2.4.2-released/) e [2.4.3](https://gajim.org/posts/2026-01-21-gajim-2.4.3-released/) della sua app di chat gratuita e completa per XMPP. L'installazione di Gajim su macOS ora richiede un solo clic. La versione 2.4.2 di Gajim offre una configurazione semplificata per macOS, una condivisione più facile dei file e il supporto per l'anteprima dei link, oltre a molti altri miglioramenti, modifiche e alcune importanti correzioni di bug. È possibile consultare il [changelog](https://dev.gajim.org/gajim/gajim/-/blob/master/ChangeLog) per tutti i dettagli.
-- [Kaidan](https://www.kaidan.im/) ha rilasciato le versioni [0.14.0](https://www.kaidan.im/2026/01/01/kaidan-0.14.0/) e [0.15.0] (https://www.kaidan.im/2026/01/30/kaidan-0.15.0/) della sua app di chat moderna e intuitiva per XMPP. La prima versione offre il supporto per la condivisione avanzata di file multimediali e il filtraggio dei provider di registrazione, mentre la seconda implementa un campo di ricerca integrato e il supporto sperimentale per le chiamate audio/video (la maggior parte del lavoro è stata finanziata da [NLnet](https://nlnet.nl/ foundation/) tramite [NGI Zero Entrust](https://nlnet.nl/entrust/) e [NGI Zero Commons Fund](https://nlnet.nl/commonsfund/) con [fondi pubblici](https://publiccode.eu/en/) forniti dalla Commissione Europea), oltre ad alcuni miglioramenti molto utili e numerose correzioni! È possibile trovare un elenco dettagliato delle nuove funzionalità, delle correzioni di bug e delle note nei rispettivi annunci di rilascio o nel [changelog](https://invent.kde.org/network/kaidan/-/blob/Kaidan/0.15/NEWS.md?ref_type=heads).
+- [Kaidan](https://www.kaidan.im/) ha rilasciato le versioni [0.14.0](https://www.kaidan.im/2026/01/01/kaidan-0.14.0/) e [0.15.0](https://www.kaidan.im/2026/01/30/kaidan-0.15.0/) della sua app di chat moderna e intuitiva per XMPP. La prima versione offre il supporto per la condivisione avanzata di file multimediali e il filtraggio dei provider di registrazione, mentre la seconda implementa un campo di ricerca integrato e il supporto sperimentale per le chiamate audio/video (la maggior parte del lavoro è stata finanziata da [NLnet](https://nlnet.nl/ foundation/) tramite [NGI Zero Entrust](https://nlnet.nl/entrust/) e [NGI Zero Commons Fund](https://nlnet.nl/commonsfund/) con [fondi pubblici](https://publiccode.eu/en/) forniti dalla Commissione Europea), oltre ad alcuni miglioramenti molto utili e numerose correzioni! È possibile trovare un elenco dettagliato delle nuove funzionalità, delle correzioni di bug e delle note nei rispettivi annunci di rilascio o nel [changelog](https://invent.kde.org/network/kaidan/-/blob/Kaidan/0.15/NEWS.md?ref_type=heads).
 
 { {< figure src="/images/newsletter/2026-02-05/kaidan-audio-video-calls.png" caption="Kaidan 0.15.0: Supporto audio/video sperimentale su Linux." >}}
 
@@ -126,8 +124,8 @@ Sono disponibili altre attività e risorse correlate dalla comunità XMPP:
 ### Librerie e strumenti XMPP
 
 - [QXmpp](https://invent.kde.org/libraries/qxmpp/-/blob/master/README.md?ref_type=heads), la libreria client e server XMPP multipiattaforma in C++, versione [1.14.0] (https://invent.kde.org/libraries/qxmpp/-/tags/v1.14.0) è stata rilasciata. Tutti i dettagli sono disponibili nel [changelog](https://invent.kde.org/libraries/qxmpp/-/blob/master/CHANGELOG.md?ref_type=heads).
-- È stata rilasciata la versione [0.3.6](https://codeberg.org/slidge/slidge/releases/tag/v0.3.6) di [Slidge](https://slidge.im/). È possibile consultare il changelog intermedio dalla versione [0.3.5 alla 0.3.6] (https://codeberg.org/slidge/slidge/compare/v0.3.5...v0.3.6) per tutti i dettagli.
-- [slidge-whatsapp](https://codeberg.org/slidge/slidge-whatsapp#readme), il gateway da [WhatsApp](https://www.whatsapp.com/) a XMPP basato su [Slidge] (https://slidge.im/) e [whatsmeow](https://github.com/tulir/whatsmeow), è stata rilasciata la versione [0.3.10](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.10).
+- È stata rilasciata la versione [0.3.6](https://codeberg.org/slidge/slidge/releases/tag/v0.3.6) di [Slidge](https://slidge.im/). È possibile consultare il changelog intermedio dalla versione [0.3.5 alla 0.3.6](https://codeberg.org/slidge/slidge/compare/v0.3.5...v0.3.6) per tutti i dettagli.
+- [slidge-whatsapp](https://codeberg.org/slidge/slidge-whatsapp#readme), il gateway da [WhatsApp](https://www.whatsapp.com/) a XMPP basato su [Slidge](https://slidge.im/) e [whatsmeow](https://github.com/tulir/whatsmeow), è stata rilasciata la versione [0.3.10](https://codeberg.org/slidge/slidge-whatsapp/releases/tag/v0.3.10).
 - [xmpp-dns](https://salsa.debian.org/ mdosch/xmpp-dns/-/blob/master/README.md?ref_type=heads), uno strumento CLI per controllare i record SRV XMPP, versione [0.5.6](https://salsa.debian.org/mdosch/xmpp-dns/-/releases/v0.5.6), [0.6.0](https://salsa. debian.org/mdosch/xmpp-dns/-/releases/v0.6.0), [0.6.1](https://salsa.debian.org/mdosch/xmpp-dns/-/releases/v0.6.1) e [0.6.2](https://salsa.debian.org/mdosch/xmpp-dns/ -/releases/v0.6.2). Tutti i dettagli sono disponibili nel [changelog](https://salsa.debian.org/mdosch/xmpp-dns/-/blob/master/CHANGELOG.md?ref_type=heads).
 
 ## Estensioni e specifiche
