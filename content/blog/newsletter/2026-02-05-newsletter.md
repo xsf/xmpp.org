@@ -52,7 +52,7 @@ In addition to the activities that took place on the XMPP booth, [Daniel Gultsch
 You can watch the presentations from the following list of links:
 
 - [UnifiedPush - Push notifications. Decentralized and Open Source](https://fosdem.org/2026/schedule/event/7HJJS7-unifiedpush_-_push_notifications_decentralized_and_open_source/) by [Daniel Gultsch](https://fosdem.org/2026/schedule/speaker/daniel_gultsch/) and [S1m](https://fosdem.org/2026/schedule/speaker/s1m/) at FOSDEM 2026
-- [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://review.video.fosdem.org/overview) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) and [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
+- [Engineering XMPP Federation: Building Messaging, Voice & Social Features Across Independent Projects](https://fosdem.org/2026/schedule/event/7XJL9E-engineering_xmpp_federation_building_messaging_voice_social_features_across_inde/) by [Jérôme Sautret](https://fosdem.org/2026/schedule/speaker/jerome_sautret/) and [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
 - [Movim: Building a Decentralized Social Network on XMPP](https://fosdem.org/2026/schedule/event/EVSXLA-movim-building-decentralized-social-network-xmpp/) by [Timothée Jaussoin](https://fosdem.org/2026/schedule/speaker/timothee_jaussoin/) at FOSDEM 2026
 - [What are you listening to now?: Implementing "Now Playing" feature in modern XMPP](https://fosdem.org/2026/schedule/event/8EDWJT-now-playing-revisited/) by [Özcan Oğuz](https://fosdem.org/2026/schedule/speaker/ozcan_oguz/) at FOSDEM 2026
 
