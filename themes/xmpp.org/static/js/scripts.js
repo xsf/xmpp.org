@@ -446,7 +446,7 @@ function software_filter_list() {
     if (hidden_cards === 0) {
       info_text.innerHTML = "All software entries are shown.";
     } else {
-      info_text.innerHTML = "Your filter settings omit " + hidden_cards + " entries.";
+      info_text.innerHTML = `Your filter settings omit ${hidden_cards} of ${document.getElementsByClassName("package-card").length} entries.`;
     }
   }
 }

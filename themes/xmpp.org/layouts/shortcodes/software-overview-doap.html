@@ -170,11 +170,11 @@
             {{- range $category, $level := $props.compliance_badges -}}
                 {{- $categories = $categories | append  $category -}}
             {{- end -}}
-            {{- if in $categories "core" -}}data-cscore="{{- $props.compliance_badges.core -}}"{{- else -}}data-cscore="-"{{- end -}}
-            {{- if in $categories "im" -}}data-csim="{{- $props.compliance_badges.im -}}"{{- else -}}data-csim="-"{{- end -}}
-            {{- if in $categories "mobile" -}}data-csmobile="{{- $props.compliance_badges.mobile -}}"{{- else -}}data-csmobile="-"{{- end -}}
-            {{- if in $categories "web" -}}data-csweb="{{- $props.compliance_badges.web -}}"{{- else -}}data-csweb="-"{{- end -}}
-            {{- if in $categories "av" -}}data-csav="{{- $props.compliance_badges.av -}}"{{- else -}}data-csav="-"{{- end -}}
+            {{- if $props.compliance_badges.core -}}data-cscore="{{- $props.compliance_badges.core  -}}"{{- else -}}data-cscore="-"{{- end -}}
+            {{- if $props.compliance_badges.im -}}data-csim="{{- $props.compliance_badges.im -}}"{{- else -}}data-csim="-"{{- end -}}
+            {{- if $props.compliance_badges.mobile -}}data-csmobile="{{- $props.compliance_badges.mobile -}}"{{- else -}}data-csmobile="-"{{- end -}}
+            {{- if $props.compliance_badges.web -}}data-csweb="{{- $props.compliance_badges.web -}}"{{- else -}}data-csweb="-"{{- end -}}
+            {{- if $props.compliance_badges.av -}}data-csav="{{- $props.compliance_badges.av -}}"{{- else -}}data-csav="-"{{- end -}}
         {{- else -}}
             data-cscore="-" data-csim="-" data-csmobile="-" data-csweb="-" data-csav="-"
         {{- end -}}
