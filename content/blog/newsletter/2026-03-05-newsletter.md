@@ -24,7 +24,7 @@ Just as we announced back in our [Newsletter December 2025](/2026/01/the-xmpp-ne
 
 ## XMPP Events
 
-- [XMPP material for DI.DAY](https://di-day.xmpp.link/): Four [recipes](https://imday.de/en/) to use an open chat protocol at the 'Digital Independence Day' ([DI.DAY](https://di.day/de)) from the XMPP community to enable people to start with independent messaging!
+- [XMPP material for DI.DAY](https://di-day.xmpp.link/): Four [recipes](https://imday.de/en/) to use an open chat protocol at the 'Digital Independence Day' ([DI.DAY](https://di.day/de)) from the [XMPP community](/2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/) to enable people to start with independent messaging!
 
 {{< figure src="/images/newsletter/2026-03-05/di-day.png" caption="Four recipes for an open chat protocol at the Digital Independence Day!" >}}
 
