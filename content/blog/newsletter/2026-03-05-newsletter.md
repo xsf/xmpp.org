@@ -32,7 +32,7 @@ Just as we announced back in our [Newsletter December 2025](/2026/01/the-xmpp-ne
 
 ## Videos and Talks
 
-- [Discord Was Never the End Game](https://youtu.be/XwMWUZYUTvM): a quick and painless tutorial on how to install XMPP, and self host an XMPP server on NixOS by [tony-btw](https://www.youtube.com/@tony-btw).
+- [Discord Was Never the End Game](https://youtu.be/XwMWUZYUTvM) by [tony-btw](https://www.youtube.com/@tony-btw).
 - [[PT-BR] XMPP #engineeringsessions #S06E16](https://youtu.be/dNmUZvM5CUA). [PT-BR]
 
 ## XMPP Articles
