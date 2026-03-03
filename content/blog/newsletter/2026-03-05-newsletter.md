@@ -169,7 +169,6 @@ This is a community effort, and we would like to thank translators for their con
 
 - Translations:
   - [French](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
-  - [German](/categories/newsletter/): *Millesimus*
   - [Italian](/categories/newsletter/): *Mario Sabatino, Roberto Resoli*
   - [Portuguese](/categories/newsletter/): *Paulo*
   
