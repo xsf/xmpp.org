@@ -2,7 +2,7 @@
 title: The XMPP Newsletter February 2026
 date: 2026-03-05
 categories: ['Newsletter']
-summary: "In this issue: XMPP material for DI.DAY!. XMPP Sprint in Berlin. Read about Snikket and Prosody IM relationship & goals. Learn about Upcoming changes to Let’s Encrypt and how they affect operators, Running Your Own XMPP Server, and Great Invitations. Update your clients with Conversations, Fluux Messenger, Gajim, Monal, Monocles, Profanity and xmpp-web. Update your servers: ejabberd. Specifications update: a proposed XEP, two new XEP's and three updates!"
+summary: "In this issue: XMPP material for the German DI.DAY initiative!. XMPP Sprint in Berlin. Read about Snikket and Prosody IM relationship & goals. Learn about upcoming changes to Let’s Encrypt and how they affect operators, Running Your Own XMPP Server, and Great Invitations. Update your clients with Conversations, Fluux Messenger, Gajim, Monal, Monocles, Profanity and xmpp-web. Update your servers: ejabberd. Specifications update: a proposed XEP, two new XEP's and three updates!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
