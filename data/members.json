@@ -8,6 +8,10 @@
             "list_name": "infrastructure",
             "page": "/about/xsf/infrastructure-team/"
         },
+        "moderator": {
+            "list_name": "moderator",
+            "page": "/about/xsf/moderator-team/"
+        },
         "council": {
             "list_name": "XMPP Council",
             "page": "/about/xmpp-standards-foundation#council"
@@ -152,6 +156,7 @@
             ],
             "roles": [
                 "council",
+                "moderator",
                 "infrastructure"
             ]
         },
@@ -233,6 +238,9 @@
             "name": "Georg Lukas",
             "jids": [
                 "georg@yax.im"
+            ],
+            "roles": [
+                "moderator"
             ]
         },
         {
@@ -358,6 +366,7 @@
                 "jonas@wielicki.name"
             ],
             "roles": [
+                "moderator",
                 "infrastructure"
             ]
         },
@@ -453,6 +462,7 @@
             ],
             "roles": [
                 "ed",
+                "moderator",
                 "infrastructure"
             ]
         },
