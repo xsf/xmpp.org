@@ -84,6 +84,23 @@
                                 <small class="text-body-secondary"><a href="/about/xsf/editor-team">Read more…</a></small>
                             </div>
                         </div>
+                        <div class="card border-secondary">
+                            <div class="card-header">
+                                Moderator team
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                {{ range sort $members ".name" }}
+                                {{ if in .roles "moderator" }}
+                                <li class="list-group-item small">
+                                    {{ .name }}
+                                </li>
+                                {{ end }}
+                                {{ end }}
+                            </ul>
+                            <div class="card-footer">
+                                <small class="text-body-secondary"><a href="/about/xsf/moderator-team">Read more…</a></small>
+                            </div>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="card border-secondary">
