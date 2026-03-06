@@ -14,7 +14,7 @@ La [Newsletter XMPP](/categories/newsletter/) è offerta dal [Team di comunicazi
 
 Proprio come qualsiasi altro prodotto o progetto dell'XSF, la Newsletter è il risultato del lavoro volontario dei suoi membri e collaboratori. Se siete soddisfatti dei servizi e dei software che utilizzate, vi invitiamo a ringraziare o aiutare questi progetti!
 
-Ti interessa contribuire al [Team di comunicazione XSF](/about/xsf/comm-team/)? Per saperne di più, leggi [in fondo alla pagina](#help-us-to-build-the-newsletter).
+Ti interessa contribuire al [Team di comunicazione XSF](/about/xsf/comm-team/)? Per saperne di più, leggi [in fondo alla pagina](#aiutaci-a-realizzare-la-newsletter).
 
 ## Annunci XSF
 
@@ -71,7 +71,7 @@ Come annunciato nella nostra [Newsletter di dicembre 2025](/2026/01/the-xmpp-new
 
 {{< figure src="/images/newsletter/2026-03-05/xmpp-web-main.png" caption="Finestra principale di XMPP-Web" >}}
 
-## # Server XMPP
+### Server XMPP
 
 - [ProcessOne](https://www.process-one.net/) è lieta di annunciare il rilascio della versione bugfix di [ejabberd 26.02](https://www.process-one.net/blog/ejabberd-26-02/).
  Assicuratevi di leggere il [changelog](https://www.process-one.net/blog/ejabberd-26-02/#changelog) per tutti i dettagli e un elenco completo delle correzioni e dei miglioramenti apportati in questa versione.
