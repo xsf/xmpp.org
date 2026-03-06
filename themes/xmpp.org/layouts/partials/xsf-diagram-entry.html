@@ -22,7 +22,7 @@
         {{ end }}
         {{ if .jids }}
             <a href="xmpp:{{ index .jids 0 | safeURL }}" aria-label="Chat with {{ .name }}" title="Chat with {{ .name }}">
-                <i class="fa-regular fa-comment-dots"></i>
+                <i class="fa-brands fa-xmpp"></i>
             </a>
         {{ end }}
     </div>
