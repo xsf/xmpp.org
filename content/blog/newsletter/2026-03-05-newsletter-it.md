@@ -1,8 +1,8 @@
 ---
-title: Newsletter XMPP gennaio 2026
-date: 2026-02-08
+title: Newsletter febbraio 2026
+date: 2026-03-05
 categories: ['Newsletter']
-summary: "In questo numero: Leggi l'articolo sull'XMPP Summit 28 e guarda i video delle presentazioni al Fosdem 26! Scopri XMPP e i metadati, l'integrazione di XMPP con n8n, l'Independent Messaging Day: una ricetta per la libertà e la sovranità digitale, Fluux Messenger e altro ancora. Aggiorna i tuoi client con Conversations, Gajim, Kaidan, Monal, Monocles e Prose. Aggiorna i tuoi server: Prosody, MongooseIM 6.5, ejabberd. Aggiornamento delle specifiche: una proposta XEP e una versione aggiornata!"
+summary: "In questo numero: materiale XMPP per l'iniziativa tedesca DI.DAY! XMPP Sprint a Berlino. Leggi la relazione e gli obiettivi di Snikket e Prosody IM. Scopri le prossime modifiche a Let's Encrypt e come influenzano gli operatori, come gestire il tuo server XMPP e i Great Invitations. Aggiorna i tuoi client con Conversations, Fluux Messenger, Gajim, Monal, Monocles, Profanity e xmpp-web. Aggiorna i tuoi server: ejabberd. Aggiornamento delle specifiche: una proposta XEP, due nuovi XEP e tre aggiornamenti!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
