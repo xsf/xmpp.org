@@ -7,7 +7,7 @@ summary: "In questo numero: materiale XMPP per l'iniziativa tedesca DI.DAY! XMPP
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="Banner della newsletter XMPP" >}}
 
-Benvenuti alla newsletter XMPP, è un piacere avervi di nuovo qui!
+Benvenuti nella newsletter XMPP, è un piacere avervi di nuovo qui!
 Questo numero copre il mese di febbraio 2026.
 
 La [Newsletter XMPP](/categories/newsletter/) è offerta dal [Team di comunicazione XSF](/about/xsf/comm-team/).
