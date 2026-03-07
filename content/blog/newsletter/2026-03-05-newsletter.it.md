@@ -1,5 +1,5 @@
 ---
-title: Newsletter febbraio 2026
+title: XMPP Newsletter febbraio 2026
 date: 2026-03-05
 categories: ['Newsletter']
 summary: "In questo numero: materiale XMPP per l'iniziativa tedesca DI.DAY! XMPP Sprint a Berlino. Leggi la relazione e gli obiettivi di Snikket e Prosody IM. Scopri le prossime modifiche a Let's Encrypt e come influenzano gli operatori, come gestire il tuo server XMPP e i Great Invitations. Aggiorna i tuoi client con Conversations, Fluux Messenger, Gajim, Monal, Monocles, Profanity e xmpp-web. Aggiorna i tuoi server: ejabberd. Aggiornamento delle specifiche: una proposta XEP, due nuovi XEP e tre aggiornamenti!"
