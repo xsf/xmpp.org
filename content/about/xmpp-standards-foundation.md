@@ -13,6 +13,8 @@ The XSF also provides information and infrastructure to the worldwide community 
 
 At the core of the XSF is its elected Membership who, in turn, elect a [Council](#council) (the technical leadership) and Board (the business leadership). The [Board](#board) also appoints various work teams and roles.
 
+{{< member-count >}} If you have an interest in XMPP standards, it is straightforward to [become a member of the XSF](/community/membership).
+
 {{< xsf-diagram >}}
 
 ## The Board{#board}
