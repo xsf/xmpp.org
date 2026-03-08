@@ -1,5 +1,5 @@
 ---
-title: Newsletter febbraio 2026
+title: Newsletter XMPP febbraio 2026
 date: 2026-03-05
 categories: ['Newsletter']
 summary: "In questo numero: materiale XMPP per l'iniziativa tedesca DI.DAY! XMPP Sprint a Berlino. Leggi la relazione e gli obiettivi di Snikket e Prosody IM. Scopri le prossime modifiche a Let's Encrypt e come influenzano gli operatori, come gestire il tuo server XMPP e i Great Invitations. Aggiorna i tuoi client con Conversations, Fluux Messenger, Gajim, Monal, Monocles, Profanity e xmpp-web. Aggiorna i tuoi server: ejabberd. Aggiornamento delle specifiche: una proposta XEP, due nuovi XEP e tre aggiornamenti!"
@@ -24,7 +24,7 @@ Come annunciato nella nostra [Newsletter di dicembre 2025](/2026/01/the-xmpp-new
 
 ## Eventi XMPP
 
-- [Materiale XMPP per DI.DAY](https://di-day.xmpp.link/): quattro [ricette](https://imday.de/en/) per utilizzare un protocollo di chat aperto al “Digital Independence Day”, l'iniziativa tedesca ([DI.DAY](https://di.day/de)) della [comunità XMPP](/2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/) per consentire alle persone di iniziare a utilizzare la messaggistica indipendente!
+- [Materiale XMPP per il DI.DAY](https://di-day.xmpp.link/): quattro [ricette](https://imday.de/en/) per utilizzare un protocollo di chat aperto al “Digital Independence Day”, l'iniziativa tedesca ([DI.DAY](https://di.day/de)) della [comunità XMPP](/2026/02/xmpp-listed-as-alternative-chat-at-di.day-initiative/) per consentire alle persone di iniziare a utilizzare la messaggistica indipendente!
 
 {{< figure src="/images/newsletter/2026-03-05/di-day.png" caption="Quattro ricette per un protocollo di chat aperto al Digital Independence Day!" >}}
 
@@ -55,7 +55,7 @@ Come annunciato nella nostra [Newsletter di dicembre 2025](/2026/01/the-xmpp-new
 ### Client e applicazioni XMPP
 
 - [Conversations](https://conversations.im/) ha rilasciato le versioni [2.19.10](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.10)
- , [2.19.11](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.11) e [2.19.12](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.12) per Android. Questa versione introduce una scansione dei codici QR e una gestione degli URI rifattorizzate, una correzione per i problemi di rotazione in modalità tablet e offre anche la possibilità di eliminare i messaggi quando si banna qualcuno in un canale pubblico, tra le altre cose. È possibile consultare il [changelog](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) per tutti i dettagli.
+ , [2.19.11](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.11) e [2.19.12](https://codeberg.org/iNPUTmice/Conversations/releases/tag/2.19.12) per Android. Questa versione introduce una scansione dei codici QR e una gestione degli URI migliorate, una correzione per i problemi di rotazione in modalità tablet e offre anche la possibilità di eliminare i messaggi quando si banna qualcuno in un canale pubblico, tra le altre cose. È possibile consultare il [changelog](https://codeberg.org/iNPUTmice/Conversations/src/branch/master/CHANGELOG.md) per tutti i dettagli.
 - [Fluux Messenger](https://github.com/processone/fluux-messenger/blob/main/README.md), un client XMPP moderno e multipiattaforma per comunità e organizzazioni, versioni [0.11.3](https://github.com/processone/fluux-messenger/releases/tag/v0.11.3), [0.12.0](https://github.com/processone/fluux-messenger/releases/tag/v0.12.0), [0.12.1](https://github.com/processone/fluux-messenger/releases/tag/v0.12.1) , [0.13.0](https://www.process-one.net/blog/fluux-messenger-0-13/), [0.13.1](https://github.com/processone/fluux-messenger/releases/tag/v0.13.1) e [0.13.2](https://github.com/processone/fluux-messenger/releases/tag/v0.13.2) sono state rilasciate con una lista di aggiunte, nuove funzionalità, miglioramenti e correzioni di bug che è molto più lunga di quanto potremmo mai menzionare qui! Vai direttamente al [changelog](https://github.com/processone/fluux-messenger/blob/main/CHANGELOG.md) per tutti i dettagli!
 
 {{< figure src="/images/newsletter/2026-03-05/fluux-main-console.png" caption="Finestra principale di Fluux Messenger e console XMPP" >}}
@@ -65,7 +65,7 @@ Come annunciato nella nostra [Newsletter di dicembre 2025](/2026/01/the-xmpp-new
 {{< figure src="/images/newsletter/2026-03-05/gajim-link-previews.png" caption="Anteprime dei link in Gajim 2.4.4" >}}
 
 - [Monal](https://monal-im.org/) ha rilasciato le versioni [6.4.18](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1077) per iOS e macOS.
-- [Monocles](https://monocles.eu/more) ha rilasciato le versioni [2.1.2](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1.2) e [2.1.3](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1.3) del suo client di chat per Android. La prima versione apporta correzioni per la revoca dei messaggi, le immagini inviate come link e la ricorsione infinita in `TagEditorView`, aggiunge il supporto per i link nei post, disabilita il pulsante di pubblicazione dopo il clic per impedire la doppia pubblicazione, rifattorizza l'interfaccia utente per la correzione dei messaggi e modifica il modello di accesso _pubsub_ al feed social. L'ultima versione aggiunge la possibilità di mettere in pausa e riprendere la storia nella finestra di dialogo di eliminazione, corregge la gestione della barra di avanzamento e la ricerca dei contatti per le storie e apporta correzioni da [Conversations](https://conversations.im/), oltre a traduzioni aggiornate.
+- [Monocles](https://monocles.eu/more) ha rilasciato le versioni [2.1.2](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1.2) e [2.1.3](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.1.3) del suo client di chat per Android. La prima versione apporta correzioni per la revoca dei messaggi, le immagini inviate come link e la ricorsione infinita in `TagEditorView`, aggiunge il supporto per i link nei post, disabilita il pulsante di pubblicazione dopo il clic per impedire la doppia pubblicazione, rivede l'interfaccia utente per la correzione dei messaggi e modifica il modello di accesso _pubsub_ al feed social. L'ultima versione aggiunge la possibilità di mettere in pausa e riprendere la storia nella finestra di dialogo di eliminazione, corregge la gestione della barra di avanzamento e la ricerca dei contatti per le storie e apporta correzioni da [Conversations](https://conversations.im/), oltre a traduzioni aggiornate.
 - [Profanity](https://profanity-im.github.io/) ha rilasciato la versione [0.16.0](https://github.com/profanity-im/profanity/releases/tag/0.16.0) del suo client XMPP basato su console scritto in C. Questa versione apporta correzioni per il rilevamento OTR, l'avvio di OMEMO, la sovrascrittura di nuovi account durante l'esecuzione di più istanze, la riconnessione quando non è stato ancora configurato alcun account, aggiunge un nuovo comando `/changes` che consente all'utente di confrontare le modifiche della configurazione di runtime e della configurazione salvata, oltre a molte altre correzioni e miglioramenti. Assicuratevi di leggere il [changelog](https://github.com/profanity-im/profanity/blob/master/CHANGELOG) per tutti i dettagli!
 - [xmpp-web](https://github.com/nioc/xmpp-web/blob/master/README.md) ha rilasciato la versione [0.11.0](https://github.com/nioc/xmpp-web/releases/tag/0.11.0) del suo client di chat web leggero per server XMPP.
 
@@ -89,44 +89,43 @@ Come annunciato nella nostra [Newsletter di dicembre 2025](/2026/01/the-xmpp-new
 
 La XMPP Standards Foundation sviluppa estensioni a XMPP nella sua [serie XEP](/extensions/) oltre alle [XMPP RFC](/rfcs/). Sviluppatori ed altri esperti di standard provenienti da tutto il mondo collaborano a queste estensioni, sviluppando nuove specifiche per pratiche emergenti e perfezionando i metodi esistenti. Proposte da chiunque, quelle di particolare successo finiscono per diventare definitive o attive, a seconda del loro tipo, mentre altre vengono accuratamente archiviate come differite. Questo ciclo di vita è descritto in [XEP-0001](/extensions/xep-0001.html), che contiene le definizioni formali e canoniche dei tipi, degli stati e dei processi. [Maggiori informazioni sul processo di standardizzazione](/about/standards-process.html). La comunicazione relativa agli standard e alle estensioni avviene nella [mailing list degli standard](https://mail.jabber.org/postorius/lists/standards.xmpp.org/) ([archivio online](https://mail.jabber.org/hyperkitty/list/standards@xmpp.org/)).
 
-### Proposta
+### Proposte
 
 Il processo di sviluppo XEP inizia con la stesura di un'idea e la sua presentazione all'[XMPP Editor](/about/xsf/editor-team/). Entro due settimane, il [Consiglio](/about/xmpp-standards-foundation/#council) decide se accettare questa proposta come XEP sperimentale.
 
 - [Metadati dei link](/extensions/inbox/link-metadata.html)
-- Questa specifica descrive come allegare metadati ai link in un messaggio.
+  - Questa specifica descrive come allegare metadati ai link in un messaggio.
 
 ### Novità
 
 - Versione 0.1.0 di [XEP-0510](/extensions/xep-0510.html) (Metadati dei contatti crittografati end-to-end)
-- Accettato come sperimentale con voto del consiglio (dg)
+  - Accettata come sperimentale con voto del consiglio (dg)
 - Versione 0.1.0 di [XEP-0511](/extensions/xep-0511.html) (Metadati dei link)
-- Accettata come sperimentale con voto del consiglio (dg)
+  - Accettata come sperimentale con voto del consiglio (dg)
 
-### Rinviata
+### Rinviate
 
 Se una XEP sperimentale non viene aggiornata per più di dodici mesi, verrà spostata da Sperimentale a Rinviata. Se ci sarà un altro aggiornamento, la XEP tornerà a essere Sperimentale.
 
 - Nessuna XEP rinviata questo mese.
 
-### Aggiornato
+### Aggiornate
 
 - Versione 1.26.0 di [XEP-0001](/extensions/xep-0001.html) (Protocolli di estensione XMPP)
-- Mostrare (e correggere) le informazioni sul controllo del codice sorgente.
-- Mostrare l'URL di pubblicazione (anche se presumo che chiunque legga questo documento lo abbia già capito).
-- Mostrare il lato dei contributori.
-- Aggiungere un riferimento agli autori XEP che fanno PR se non esistono - questa è una “novità” piuttosto che una documentazione di una pratica esistente.
-- Aggiungere un riferimento alle PR che ottengono l'approvazione dell'autore XEP (pratica esistente finora non documentata).
-- Aggiungere un riferimento al Consiglio (ecc.) che aggiunge autori se questi abbandonano (pratica esistente finora non documentata).
-- Aggiungere una nota per chiarire che la ritrattazione non significa cancellazione (pratica esistente, documentata, ma che in passato è stata fraintesa). (dwd)
+  - Mostrare (e correggere) le informazioni sul controllo del codice sorgente.
+  - Mostrare l'URL di pubblicazione (anche se presumo che chiunque legga questo documento lo abbia già capito).
+  - Mostrare il punto di vista dei contributori.
+  - Aggiungere un riferimento agli autori XEP che fanno PR se non presente - questa è una “novità” piuttosto che una documentazione di una pratica esistente.
+  - Aggiungere un riferimento alle PR che ottengono l'approvazione dell'autore XEP (pratica esistente finora non documentata).
+  - Aggiungere un riferimento al Consiglio (ecc.) che aggiunge autori se questi abbandonano (pratica esistente finora non documentata).
+  - Aggiungere una nota per chiarire che la ritrattazione non significa cancellazione (pratica esistente, documentata, ma che in passato è stata fraintesa). (dwd)
 - Versione 1.1.0 di [XEP-0143](/extensions/xep-0143.html) (Linee guida per gli autori dei protocolli di estensione XMPP)
- 
-- Riflettere la preferenza per le richieste pull GitHub per l'invio iniziale,
-- Le PR devono contenere solo un XEP modificato. (dwd)
+  - Riflettere la preferenza per le richieste pull GitHub per l'invio iniziale,
+  - Le PR devono contenere solo un XEP modificato. (dwd)
 - Versione 0.8.0 di [XEP-0353](/extensions/xep-0353.html) (Avvio di messaggi Jingle)
-- Adattare l'uso dei tipi JID all'uso nel mondo reale:
-- Inviare le risposte JMI al JID completo dell'iniziatore invece che al JID nudo
-- Inviare l'elemento JMI `<finish/>` al JID completo di entrambe le parti (melvo)
+  - Adattare l'uso dei tipi JID all'uso nel mondo reale:
+    - Inviare le risposte JMI al JID completo dell'iniziatore invece che al JID nudo
+    - Inviare l'elemento JMI `<finish/>` al JID completo di entrambe le parti (melvo)
 
 ### Ultima chiamata
 
