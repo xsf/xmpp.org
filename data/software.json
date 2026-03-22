@@ -585,6 +585,17 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": null,
+        "name": "go-sendxmpp",
+        "platforms": [
+            "Go"
+        ],
+        "url": "https://salsa.debian.org/mdosch/go-sendxmpp"
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
@@ -1347,6 +1358,15 @@
         ],
         "doap": "/hosted-doap/search-jabber-network.doap",
         "name": "search.jabber.network",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "doap": "https://raw.githubusercontent.com/lhost/sendxmpp/blob/master/data/sendxmpp.doap",
+        "name": "sendxmpp",
         "platforms": [],
         "url": null
     },
