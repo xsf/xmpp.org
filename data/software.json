@@ -585,13 +585,11 @@
     },
     {
         "categories": [
-            "tool"
+            "library"
         ],
         "doap": null,
         "name": "go-sendxmpp",
-        "platforms": [
-            "Go"
-        ],
+        "platforms": [],
         "url": "https://salsa.debian.org/mdosch/go-sendxmpp"
     },
     {
@@ -1363,9 +1361,9 @@
     },
     {
         "categories": [
-            "tool"
+            "library"
         ],
-        "doap": "https://raw.githubusercontent.com/lhost/sendxmpp/blob/master/data/sendxmpp.doap",
+        "doap": "https://raw.githubusercontent.com/lhost/sendxmpp/master/data/sendxmpp.doap",
         "name": "sendxmpp",
         "platforms": [],
         "url": null
