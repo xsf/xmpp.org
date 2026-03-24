@@ -383,14 +383,10 @@
         "categories": [
             "client"
         ],
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/coyim/coyim/refs/heads/main/doap.xml",
         "name": "CoyIM",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows"
-        ],
-        "url": "https://coy.im"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
