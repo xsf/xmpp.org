@@ -88,14 +88,12 @@ __Clients__
 - [Movim](https://movim.eu)
 - [Pidgin](https://pidgin.im/)
 - [Psi](https://psi-im.org/)
-- [Telepathy](https://telepathy.freedesktop.org/)
 - [YateClient](https://yate.ro/opensource.php?page=yateclient)
 
 __Libraries__
 
 - [libjingle](http://code.google.com/apis/talk/) (C/C++)
 - [Smack](http://www.igniterealtime.org/projects/smack/) (Java)
-- [Telepathy Gabble](https://telepathy.freedesktop.org/components/telepathy-gabble/) (C)
 - [yjingle](https://yate.ro/) (C++)
 
 __Call Managers / VoIP Servers__
@@ -129,11 +127,6 @@ __Servers__ - the following XMPP servers include built-in support for MUC:
 - [Prosody](https://prosody.im/)
 - [Tigase](https://tigase.org/)
 
-__External Components__ - the following standalone components can be used with a wide variety of XMPP servers:
-
-- [mu-conference](https://gna.org/projects/mu-conference/)
-- [palaver](https://github.com/twonds/palaver)
-
 __Clients__
 
 - [Adium](https://adium.im/)
@@ -142,6 +135,7 @@ __Clients__
 - [Movim](https://movim.eu)
 - [Pidgin](https://pidgin.im/)
 - [Psi](https://psi-im.org/)
+- [Spark](https://www.igniterealtime.org/projects/spark/)
 
 __Libraries__
 
@@ -234,6 +228,7 @@ The following standalone XMPP connection managers can be used with a wide variet
 #### Clients
 
 - [Adium](https://adium.im/)
+- [Converse.js](https://conversejs.org/)
 - [Gajim](https://gajim.org/)
 - [Pidgin](https://pidgin.im/)
 - [Swift](https://swift.im/swift.html)
