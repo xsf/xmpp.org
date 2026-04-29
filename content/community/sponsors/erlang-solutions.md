@@ -1,32 +1,19 @@
 ---
-Title: Sponsor - Erlang Solutions
+Title: Former Sponsor - Erlang Solutions
 Url: sponsors/erlang-solutions
 ---
 
 {{< figure src="/images/logos/erlang-solutions.png" class="p-2 sponsor-logo" >}}
 
-[Erlang Solutions Ltd](https://www.erlang-solutions.com/) is the world-leading expert at building massively scalable, distributed
-systems using resilient, fault-tolerant and scalable technologies.
+> **Note:** Erlang Solutions is no longer an active sponsor of the XMPP Standards Foundation.
+> This page is preserved for historical reference.
 
-We’re the creators of MongooseIM, a scalable, extensible and efficient real-time messaging
-server that allows organisations to build cost-effective communication solutions. Built on the
-XMPP server, MongooseIM is specifically designed for businesses facing the challenge of
-large deployments, where real-time communication and user experience are critical.
-Find out [more about MongooseIM here](https://www.erlang-solutions.com/technologies/mongooseim/), or try out our [demo system here](https://trymongoose.im/).
+The XSF gratefully acknowledges the past support of **[Erlang Solutions Ltd](https://www.erlang-solutions.com/)**, who sponsored the Foundation for a number of years.
 
-MongooseIM offers:
+Erlang Solutions are experts in building massively scalable, distributed systems using resilient, fault-tolerant technologies. They are the creators of [MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/), an open-source, scalable XMPP-based messaging server designed for large deployments where real-time communication and user experience are critical.
 
-- High-speed & secure messaging: the best messaging server on the market for businesses to confidently deliver the optimum user experience
-- Massively scalable: to manage huge volumes of concurrent users (& future proofed to grow with your business)
-- Resilient & fault tolerant: unparalleled availability, perfect for applications requiring guaranteed uptime
-- Speed and ease of deployment: guaranteeing rapid time to market
-- On-premise deployment: removing the security risk and legal concern of the cloud
-- Reduced costs: vastly reduces your physical infrastructure and hosting requirements, enabling you to [deliver billions of messages at low cost](https://www.erlang-solutions.com/blog/mongooseim-6-1-handle-more-traffic-consume-less-resources/)
-- Proven, reliable, no-risk technology: built on the tried and tested XMPP open standard and being used by multiple thousands of business across the world
+The XSF thanks Erlang Solutions for their contributions to the XMPP community and wishes them continued success.
 
-As the creators of MongooseIM, our team is a global centre of messaging excellence,
-dedicated to delivering the best messaging solution for the market. Our expertise extends to
-other messaging technologies too - including Ejabberd & many more
+---
 
-As a trusted technology partner, we build and maintain transformative messaging solutions
-for all types of businesses - from small start- ups right through to large enterprises.
+*Interested in supporting the XMPP Standards Foundation? Visit our [sponsorship page](/sponsor/) to learn how.*

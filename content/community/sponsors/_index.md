@@ -10,21 +10,6 @@ The XSF is generously supported by the sponsors below, please visit their xmpp.o
 
 If your organization would like to become an XSF sponsor, then [please read about the benefits you’ll enjoy](/community/sponsorship).
 
-### Erlang Solutions
-
-{{< figure src="/images/logos/erlang-solutions.png" link="/sponsors/erlang-solutions" class="p-2 sponsor-logo" >}}
-
-[Erlang Solutions Ltd](https://www.erlang-solutions.com/) is the world-leading expert at building massively scalable, distributed
-systems using resilient, fault-tolerant and scalable technologies.
-
-We’re the creators of MongooseIM, a scalable, extensible and efficient real-time messaging
-server that allows organisations to build cost-effective communication solutions. Built on the
-XMPP server, MongooseIM is specifically designed for businesses facing the challenge of
-large deployments, where real-time communication and user experience are critical.
-Find out [more about MongooseIM here](https://www.erlang-solutions.com/technologies/mongooseim/), or try out our [demo system here](https://trymongoose.im/).
-
-[More about Erlang Solutions](/sponsors/erlang-solutions)
-
 ### ProcessOne
 
 {{< figure src="/images/logos/process-one.png" link="/sponsors/processone" class="p-2 sponsor-logo" >}}
