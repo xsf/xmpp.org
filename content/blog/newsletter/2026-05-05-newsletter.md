@@ -107,7 +107,7 @@ The XEP development process starts by writing up an idea and submitting it to th
 - [New MUC](/extensions/inbox/new-muc.html)
   - This document specifies an enhanced Multi-User Chat protocol that is broadly backwards compatible with that of [XEP-0045](/extensions/xep-0045.html)(Multi-User Chat), but adds a number of key improvements.
 - [Payment Required](/extensions/inbox/payment-required.html)
-  - This specification defines an XMPP protocol extension that enables services to require payment before granting access to a resource. It provides a payment-system neutral invoice format supporting multiple concurrent payment options, including bank transfers (SEPA, IBAN, UPI) and instant-settlement networks (Lightning Network), and integrates with the existing CAPTCHA challenge mechanism defined in [XEP-0158](/extensions/xep-0158.html)(CAPTCHA Forms).
+  - This specification defines an XMPP protocol extension that enables services to require payment before granting access to a resource. It provides a payment-system neutral invoice format supporting multiple concurrent payment options, including bank transfers (SEPA, IBAN, UPI) and instant-settlement networks (Lightning Network), and integrates with the existing CAPTCHA challenge mechanism defined in [XEP-0158](/extensions/xep-0158.html) (CAPTCHA Forms).
 - [Emoji Markup](/extensions/inbox/emoji-markup.html)
   - This specification leverages Message Markup and Stateless file sharing or Stateless Inline Media Sharing (SIMS) to send custom emojis.
 
