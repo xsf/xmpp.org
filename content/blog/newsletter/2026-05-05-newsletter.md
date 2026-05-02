@@ -31,6 +31,8 @@ Being an elected member of the XMPP Standards Foundation signals a commitment to
 
 - [Mensajería instantánea: por qué recomiendo XMPP](https://creators.spotify.com/pod/profile/dmurana/episodes/Mensajera-instantnea-por-qu-recomiendo-XMPP-e3iat5d), a podcast by [Damián Muraña](https://damian.murana.uy/acerca-de/) for [Cosas de Damián](https://damian.murana.uy/podcast/). [ES]
 - [Conversations (XMPP): Feature-Preview](https://makertube.net/w/pnjU56zj83eE2Ys2Av22Wm), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] [[EN](https://makertube.net/w/g41J1Bcvf3Mjk6h9H1kt2N)]
+- [Monal (XMPP): Feature-Preview für Version 7](https://makertube.net/w/jXZBPSLX27mUC1TBf8ZoKJ), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
+- [Deutschlandfunk Nova: Interview über EU-Regulierung von Instant-Messengern](https://gultsch.video/w/udKxXWvtngzaQtHod6ZVGr), a radio interview with [Daniel Gultsch](https://gultsch.de/). [DE]
 - [XMPP: Instant Messaging that works like email](https://pt.gogreenit.net/w/7YzvYkDJVM1e5FcmnCpqkj) by Polarian and [Chewie](https://mammut.gogreenit.net/@chewie) at [oggcamp 2026](https://www.oggcamp.org/).
 
 ## XMPP Articles
