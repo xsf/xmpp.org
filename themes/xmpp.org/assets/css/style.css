@@ -447,6 +447,45 @@ button[name="show-xep-implementations"] {
 }
 
 
+/* Sponsors */
+.sponsors-titanium,
+.sponsors-platinum,
+.sponsors-gold {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sponsor {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.sponsor-logo img {
+    max-width: 160px;
+    height: auto;
+}
+
+.sponsor-content {
+    flex: 1;
+}
+
+.sponsors-silver {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.sponsors-silver img {
+    max-width: 120px;
+    height: auto;
+    opacity: 0.9;
+}
+
+
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
 	label {
