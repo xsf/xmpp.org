@@ -1,4 +1,4 @@
----
+ashok049796-jpg---
 Title: An Overview of XMPP
 Url: about/technology-overview
 aliases:
