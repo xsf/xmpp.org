@@ -10,4 +10,7 @@ The XSF is generously supported by the sponsors below. Please visit their pages 
 
 If your organization would like to become an XSF sponsor, then [please read about the benefits you'll enjoy](/community/sponsorship).
 
-{{< sponsors >}}
+{{< sponsors tier="titanium" >}}
+{{< sponsors tier="platinum" >}}
+{{< sponsors tier="gold" >}}
+{{< sponsors tier="silver" >}}
