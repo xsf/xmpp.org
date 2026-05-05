@@ -1,5 +1,5 @@
 {{ $tier := .Get "tier" }}
-{{ $tier_sponsors := index site.Data.sponsors $tier }}
+{{ $tier_sponsors := index hugo.Data.sponsors $tier }}
 
 {{ if $tier_sponsors }}
     <div class="d-flex flex-column gap-3">

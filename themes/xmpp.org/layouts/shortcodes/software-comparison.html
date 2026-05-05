@@ -1,5 +1,5 @@
 {{ $packages := slice }}
-{{- range $name, $props := .Site.Data.software_list_doap -}}
+{{- range $name, $props := hugo.Data.software_list_doap -}}
     {{ $name_lower := lower $name }}
     {{ $packages = $packages | append (dict "name" $name "name_lower" $name_lower "data" .) }}
 {{ end }}
@@ -37,7 +37,7 @@
         </tr>
     </thead>
     <tbody>
-        {{- range $xep := .Site.Data.xeplist -}}
+        {{- range $xep := hugo.Data.xeplist -}}
             {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
                 {{- if and (ne .status "Deprecated") (ne .status "Obsolete") (ne .status "Rejected") (ne .status "Retracted") -}}
                     <tr>

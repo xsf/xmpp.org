@@ -4,7 +4,7 @@
 <ul>
 {{- end -}}
 {{- $events_counter := 0 -}}
-{{- range .Site.Data.events -}}
+{{- range hugo.Data.events -}}
     {{- $start_date := .date_start | time -}}
     {{- if eq $type "upcoming" -}}
         {{- if gt $start_date now -}}

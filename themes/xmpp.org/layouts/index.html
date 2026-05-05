@@ -1,8 +1,8 @@
 {{- define "main" -}}
-{{- if .Site.Data.announcement.enabled -}}
+{{- if hugo.Data.announcement.enabled -}}
 <div class="alert alert-info mb-0 text-center" role="alert">
-  <a href="{{- .Site.Data.announcement.url -}}" target="blank_" class="alert-link">
-    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- .Site.Data.announcement.text -}}
+  <a href="{{- hugo.Data.announcement.url -}}" target="blank_" class="alert-link">
+    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- hugo.Data.announcement.text -}}
   </a>
 </div>
 {{- end -}}
@@ -62,7 +62,7 @@
   <div class="col-12 col-md-8 col-lg-6">
     <h3 class="text-center pb-2"><a href="/community/events/">Upcoming Events</a></h3>
     {{- $events_counter := 0 -}}
-    {{- range .Site.Data.events -}}
+    {{- range hugo.Data.events -}}
       {{- $start_date := .date_start | time -}}
       {{- if gt $start_date now -}}
         {{- $events_counter = add $events_counter 1 -}}

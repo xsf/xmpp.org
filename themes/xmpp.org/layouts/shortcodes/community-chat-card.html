@@ -1,6 +1,6 @@
 {{- $chat_name := .Get "chat" -}}
 
-{{ $all_chats := index .Site.Data.community_chats }}
+{{ $all_chats := index hugo.Data.community_chats }}
 {{ $chats := where $all_chats "name" $chat_name }}
 {{ $chat := index $chats 0 }}
 

@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="select-options-wrapper me-2">
                                         <div class="select-options-list" id="select-options-list">
-                                            {{- range .Site.Data.xeplist -}}
+                                            {{- range hugo.Data.xeplist -}}
                                                 {{ if or (eq .type "Humorous") (eq .type "Procedural") }}
                                                     {{ continue }}
                                                 {{ end }}
@@ -148,7 +148,7 @@
 </ul>
 
 {{ $packages := slice }}
-{{- range $name, $props := .Site.Data.software_list_doap -}}
+{{- range $name, $props := hugo.Data.software_list_doap -}}
     {{ $name_lower := lower $name }}
     {{ $packages = $packages | append (dict "name" $name "name_lower" $name_lower "data" .) }}
 {{ end }}

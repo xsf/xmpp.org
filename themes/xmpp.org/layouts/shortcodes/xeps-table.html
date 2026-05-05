@@ -105,9 +105,9 @@
                 </tr>
             </thead>
             <tbody>
-                {{- if .Site.Data.xeplist -}}
-                    {{- $xeplist := .Site.Data.xeplist -}}
-                    {{- range sort .Site.Data.xeplist ".number" -}}
+                {{- if hugo.Data.xeplist -}}
+                    {{- $xeplist := hugo.Data.xeplist -}}
+                    {{- range sort hugo.Data.xeplist ".number" -}}
                         {{- $number_str := printf "%04g" .number -}}
                         {{ $last_revision_date := .last_revision_date | time }}
                         {{ $last_revision_date_diff := now.Sub $last_revision_date }}

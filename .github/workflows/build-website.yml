@@ -53,7 +53,7 @@ jobs:
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.157.0"
+          hugo-version: "0.161.0"
 
       - name: Build website
         run: hugo

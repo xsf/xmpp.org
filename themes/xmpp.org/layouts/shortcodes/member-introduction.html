@@ -1,6 +1,6 @@
 {{- $member := .Get "member" -}}
 
-{{- $members := .Site.Data.members.members -}}
+{{- $members := hugo.Data.members.members -}}
 {{- $member_data := index (where $members "name" $member) 0 -}}
 
 <p>

@@ -1,6 +1,6 @@
 {{- $team_name := .Get "team_name" -}}
 <ul>
-    {{- range sort .Site.Data.members.members ".name" -}}
+    {{- range sort hugo.Data.members.members ".name" -}}
         {{- if .roles -}}
             {{- $name := .name -}}
             {{- range .roles -}}

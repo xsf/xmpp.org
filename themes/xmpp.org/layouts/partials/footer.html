@@ -1,7 +1,7 @@
 <div class="footer-sponsors text-center p-5">
     <h4>The <a href="/about/xmpp-standards-foundation/">XSF</a> is generously sponsored by:</h4>
 
-    {{ $sponsors := site.Data.sponsors }}
+    {{ $sponsors := hugo.Data.sponsors }}
 
     <ul>
         {{ range $sponsors.titanium }}
@@ -101,7 +101,7 @@
             </div>
             <div class="col d-flex">
                 <ul>
-                {{- range .Site.Data.communication -}}
+                {{- range hugo.Data.communication -}}
                     <li>
                         <a href="{{- .url -}}" target="_blank">{{- .name -}}</a>
                     </li>

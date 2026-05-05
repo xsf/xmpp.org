@@ -1,7 +1,7 @@
 <h3>Basic XMPP RFCs</h3>
 <ul>
-{{- if .Site.Data.rfc_list -}}
-    {{- range sort .Site.Data.rfc_list ".number" -}}
+{{- if hugo.Data.rfc_list -}}
+    {{- range sort hugo.Data.rfc_list ".number" -}}
         {{- if .basic -}}
             <li><a href="#{{- .number -}}">RFC&nbsp;{{- .number -}}:</a>&nbsp;{{- .title -}}</li>
         {{- end -}}
@@ -10,8 +10,8 @@
 </ul>
 <h3>Further XMPP RFCs</h3>
 <ul>
-{{- if .Site.Data.rfc_list -}}
-    {{- range sort .Site.Data.rfc_list ".number" -}}
+{{- if hugo.Data.rfc_list -}}
+    {{- range sort hugo.Data.rfc_list ".number" -}}
         {{- if and (not .basic) (not .obsoleted_by) -}}
             <li><a href="#{{- .number -}}">RFC&nbsp;{{- .number -}}:</a>&nbsp;{{- .title -}}</li>
         {{- end -}}
@@ -20,8 +20,8 @@
 </ul>
 <h3>Obsoleted</h3>
 <ul>
-{{- if .Site.Data.rfc_list -}}
-    {{- range sort .Site.Data.rfc_list ".number" -}}
+{{- if hugo.Data.rfc_list -}}
+    {{- range sort hugo.Data.rfc_list ".number" -}}
         {{- if .obsoleted_by -}}
             <li><a href="#{{- .number -}}">RFC&nbsp;{{- .number -}}:</a>&nbsp;{{- .title -}}</li>
         {{- end -}}
@@ -29,8 +29,8 @@
 {{- end -}}
 </ul>
 <h3>All XMPP RFCs</h3>
-{{- if .Site.Data.rfc_list -}}
-    {{- range sort .Site.Data.rfc_list ".number" -}}
+{{- if hugo.Data.rfc_list -}}
+    {{- range sort hugo.Data.rfc_list ".number" -}}
     <div class="card">
         <div class="card-header">
             <a id="{{- .number -}}"><h5 class="card-title">RFC&nbsp;{{- .number -}}:&nbsp;{{- .title -}}</h5></a>
