@@ -5,9 +5,9 @@
     <div class="d-flex flex-column gap-3">
     {{ if eq $tier "silver" }}
         <h2 class="mt-3">{{ title $tier }} Sponsors</h2>
-        <div class="d-flex gap-3">
+        <div class="d-flex flex-wrap gap-3">
             {{ range $tier_sponsors }}
-            <div class="sponsor-logo">
+            <div class="sponsor-logo" style="max-width: 16rem;">
                 {{ if .website }}
                     <a href="{{ .website }}" target="_blank">
                         <img src="{{ .logo }}" alt="{{ .name }}">
@@ -22,12 +22,12 @@
         <h2 class="mt-3">{{ title $tier }} Sponsors</h2>
         {{ range $tier_sponsors }}
         <div class="row align-items-start mb-4">
-            <div class="col-4">
+            <div class="col-12 col-md-4 mb-4">
                 <a href="/sponsors/{{ .slug }}">
                     <img class="sponsor-logo" src="{{ .logo }}" alt="{{ .name }}">
                 </a>
             </div>
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <h3>{{ .name }}</h3>
                 {{ with .description }}
                     <p class="mb-1">{{ . }}</p>

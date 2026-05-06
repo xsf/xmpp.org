@@ -299,13 +299,18 @@ ul.share {
 }
 .footer-sponsors img {
     height: 4.5rem;
+    object-fit: contain;
 }
 .sponsor-logo {
     display: flex;
+    justify-content: center;
     align-items: center;
     background: white;
     border-radius: 0.375rem;
     padding: 0.75rem;
+}
+.sponsor-logo > img {
+    margin-bottom: 0;
 }
 .footer-github {
     padding: 12px;
