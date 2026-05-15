@@ -485,6 +485,20 @@
     },
     {
         "categories": [
+            "integrated-platform",
+            "library"
+        ],
+        "doap": null,
+        "name": "Ethora",
+        "platforms": [
+            "JavaScript",
+            "Android",
+            "iOS"
+        ],
+        "url": "https://ethora.com"
+    },
+    {
+        "categories": [
             "tool"
         ],
         "doap": "/hosted-doap/explore-xep-0392-consistent-color-generation.doap",
