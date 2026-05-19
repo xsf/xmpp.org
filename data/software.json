@@ -491,9 +491,9 @@
         "doap": null,
         "name": "Ethora",
         "platforms": [
-            "JavaScript",
             "Android",
-            "iOS"
+            "iOS",
+            "JavaScript"
         ],
         "url": "https://ethora.com"
     },
