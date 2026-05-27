@@ -488,7 +488,7 @@
             "integrated-platform",
             "library"
         ],
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/dappros/ethora/main/doap.xml",
         "name": "Ethora",
         "platforms": [
             "Android",
