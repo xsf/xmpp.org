@@ -1621,6 +1621,19 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": null,
+        "name": "Teletyptel 2.0",
+        "platforms": [
+            "Android",
+            "iOS",
+            "Web"
+        ],
+        "url": "https://github.com/edwtie/Tiedragon.XmppMessenger"
+    },
+    {
+        "categories": [
             "server"
         ],
         "doap": "https://raw.githubusercontent.com/tigase/tigase-server/master/tigase-server.doap",
