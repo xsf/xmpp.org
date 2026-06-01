@@ -62,7 +62,7 @@ The XMPP Standards Foundation (XSF) is excited to announce the [29th XMPP Summit
 
 - [MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/) has released [MongooseIM 6.7.0](https://github.com/esl/MongooseIM/releases/tag/6.7.0) with more additions, changes and fixes than what we can reasonably list in here! Make sure to read the [changelog](https://github.com/esl/MongooseIM/blob/master/CHANGELOG.md) for all the details!
 - The [Ignite Realtime community](https://www.igniterealtime.org/) is happy to announce the release of [Openfire 5.0.5](https://discourse.igniterealtime.org/t/openfire-5-0-5-release/96468). The [full changelog](https://download.igniterealtime.org/openfire/docs/latest/changelog.html) has more details with the highlights being bug fixes and bundled library updates whilst they continue to work on an upcoming 5.1.0 feature release.
-- [Prosody IM](https://prosody.im/) is pleased to announce version [13.0.6](https://blog.prosody.im/prosody-13.0.6-released/), a new minor release from our stable branch. This release fixes a handful of bugs which were discovered and fixed since the 13.0.5 release. Most of these are minor, but a few of them are important fixes. Make sure to read the [changelog](https://prosody.im/doc/release/13.0.6) for all the details! 
+- [Prosody IM](https://prosody.im/) is pleased to announce version [13.0.6](https://blog.prosody.im/prosody-13.0.6-released/), a new minor release from the stable branch. This release fixes a handful of bugs which were discovered and fixed since the 13.0.5 release. Most of these are minor, but a few of them are important fixes. Make sure to read the [changelog](https://prosody.im/doc/release/13.0.6) for all the details! 
 
 ### XMPP Libraries & Tools
 
