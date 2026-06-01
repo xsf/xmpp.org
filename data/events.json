@@ -1,5 +1,14 @@
 [
     {
+        "type": "Summit",
+        "title": "XMPP Summit 29",
+        "location": "online",
+        "date_start": "2026-09-04",
+        "date_end": "2026-09-05",
+        "url": "https://xmpp.org/2026/05/xmpp-summit-29/",
+        "desc": "The first online XMPP Summit"
+    },
+    {
         "type": "FOSDEM",
         "title": "XMPP at FOSDEM 2026",
         "location": "Brussels (BE)",
