@@ -37,7 +37,7 @@ The XMPP Standards Foundation (XSF) is excited to announce the [29th XMPP Summit
 
 ## XMPP Articles
 
-- [EnvsBot XMPP Helper Bot for the envs pubnix - BETA](https://dan.envs.net/blog/2026/2026-05-01-envsbot-xmpp-helper-bot-for-the-envs-pubnix---beta), by [~dan](https://dan.envs.net/about) for [~dan's website on envs.net blog](https://dan.envs.net/blog/).
+- [EnvsBot XMPP Helper Bot for the envs pubnix - BETA](https://dan.envs.net/blog/2026/2026-05-01-envsbot-xmpp-helper-bot-for-the-envs-pubnix---beta),a modular XMPP bot built with Python 3 and slixmpp developed with the envs pubnix environment in mind but not limited to it, by [~dan](https://dan.envs.net/about) for [~dan's website on envs.net blog](https://dan.envs.net/blog/).
 - [Pra esse passaporte vai ter fila](https://blog.isacloud.im/pra-esse-passaporte-vai-ter-fila/), by [isadora](https://blog.isacloud.im/author/isadora/) for the [isaCloud diario-de-bordo](https://blog.isacloud.im/category/diario-de-bordo/). [PT_BR]
 - [First 2026 Goal Reached! What's Next? ](https://mov.im/community/pubsub.movim.eu/Movim/first-2026-goal-reached-what-s-next-7cgeGX), by Timothée Jaussoin for the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim).
 - [What’s your oldest Openfire deployment?](https://discourse.igniterealtime.org/t/what-s-your-oldest-openfire-deployment/96473), by [guus](https://discourse.igniterealtime.org/u/guus/summary) for the [Ignite Realtime community](https://discourse.igniterealtime.org/).
