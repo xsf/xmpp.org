@@ -18,9 +18,9 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 ## XSF Announcements
 
-### XSF Membership
+### XMPP Summit 29
 
-The XMPP Standards Foundation (XSF) is excited to announce the [29th XMPP Summit](/2026/05/xmpp-summit-29/), the first XMPP Summit to take place [fully online](/2026/05/xmpp-summit-29/#the-online-xmpp-summit)! The XMPP Summit will be held from Friday 4th September to Saturday 5th September 2026, both days between 13:00 - 16:00 UTC. The XSF invites everyone interested in development of XMPP technologies to attend, and discuss all things XMPP remotely!
+The XMPP Standards Foundation (XSF) is excited to announce the [29th XMPP Summit](/2026/05/xmpp-summit-29/), the first XMPP Summit to take place [**fully online**](/2026/05/xmpp-summit-29/#the-online-xmpp-summit)! The XMPP Summit will be held from Friday 4th September to Saturday 5th September 2026, both days between 13:00 - 16:00 UTC. The XSF invites everyone interested in development of XMPP technologies to attend, and discuss all things XMPP remotely!
 
 ## XMPP Events
 
