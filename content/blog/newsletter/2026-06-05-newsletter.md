@@ -30,9 +30,9 @@ The XMPP Standards Foundation (XSF) is excited to announce the [29th XMPP Summit
 
 ## Videos and Talks
 
-- [Independent Messaging (XMPP) unter iOS (Monal)](https://makertube.net/w/bgLLsnJXg1vuHouM3xfqmE), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN] subtitles available).
-- [Independent Messaging (XMPP) unter Android (Snikket)](https://makertube.net/w/6UMPCbNANq7VQSvCGq4DEd), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN] subtitles available).
-- [Independent Messaging (XMPP) unter Android (Conversations)](https://makertube.net/w/uaVGgjiE18WTR49eDYtJGt), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN] subtitles available).
+- [Independent Messaging (XMPP) unter iOS (Monal)](https://makertube.net/w/bgLLsnJXg1vuHouM3xfqmE), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN],[ES] subtitles available).
+- [Independent Messaging (XMPP) unter Android (Snikket)](https://makertube.net/w/6UMPCbNANq7VQSvCGq4DEd), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN],[ES] subtitles available).
+- [Independent Messaging (XMPP) unter Android (Conversations)](https://makertube.net/w/uaVGgjiE18WTR49eDYtJGt), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] ([EN],[ES] subtitles available).
 - [Conversations (XMPP): Feature-Preview für Version 2.20.0](https://makertube.net/w/c62E2MbfE5WSpB9uVC6p5p), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
 
 ## XMPP Articles
