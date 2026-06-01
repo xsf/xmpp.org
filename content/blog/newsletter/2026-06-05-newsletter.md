@@ -2,7 +2,7 @@
 title: The XMPP Newsletter May 2026
 date: 2026-06-05
 categories: ['Newsletter']
-summary: "In this issue: Fully online 29th XMPP Summit announcement! XMPP at FOSSY 2026. XMPP Sprint in Berlin. EnvsBot XMPP Helper Bot for the envs pubnix - BETA, Movim's first 2026 Goal Reached! What's Next?, What’s your oldest Openfire deployment?, and more! Update your clients with aTalk, Conversations, Converse.js, Monal, Monocles, Poezio and Profanity. Update your servers: Prosody IM 13.0.6, Openfire 5.0.5, MongooseIM 6.7.0, and Specifications update: one proposed XEP and three updated ones!"
+summary: "In this issue: Fully online 29th XMPP Summit announcement! XMPP at FOSSY 2026. XMPP Sprint in Berlin. EnvsBot XMPP Helper Bot for the envs pubnix - BETA, Movim's first 2026 Goal Reached, What’s your oldest Openfire deployment?, and more! Update your clients with aTalk, Conversations, Converse.js, Monal, Monocles, Poezio and Profanity. Update your servers: Prosody IM 13.0.6, Openfire 5.0.5, MongooseIM 6.7.0, and Specifications update: one proposed XEP and three updated ones!"
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
