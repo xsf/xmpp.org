@@ -121,3 +121,6 @@ aliases:
 
 ## 2025
 - __February:__ The XSF holds the [twenty seventh XMPP Summit](/2024/11/xmpp-summit-27/) in Brussels, Belgium.
+
+## 2026
+- __January:__ The XSF holds the [twenty eighth XMPP Summit](/2025/11/xmpp-summit-28/) in Brussels, Belgium.
