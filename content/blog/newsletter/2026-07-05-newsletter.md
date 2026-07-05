@@ -55,7 +55,7 @@ Being an elected member of the XMPP Standards Foundation signals a commitment to
 - [Movim 0.34 "Meier" is here](https://mov.im/community/pubsub.movim.eu/Movim/30cf568b-49f9-4a59-8168-6f8f1f12164c), by Timothée Jaussoin for the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim).
 - [Movim 0.31.4 is out, stay safe and upgrade](https://mov.im/community/pubsub.movim.eu/Movim/movim-0-31-4-is-out-stay-safe-and-upgrade-cwblXR), by Timothée Jaussoin for the [Movim Blog](https://mov.im/community/pubsub.movim.eu/Movim).
 - [Introducing Tacky](https://github.com/pounceandmiss/tacky/blob/main/README.md), a desktop XMPP chat client built with Tcl/Tk for Linux and Windows with support for modern A/V calls and OMEMO e2ee. Still in pre-alpha state.
-- [Introducing ffetcher](https://code.woodpeckersnest.space/roughnecks/ffetcher#readme), an XMPP bot that monitors RSS and Atom feeds and posts new articles to one or more MUC rooms. It specializes on fediverse feeds. The code was AI generated and reviewed/tested by the author.
+- [Introducing ffetcher](https://code.woodpeckersnest.space/roughnecks/ffetcher#readme), an XMPP bot that monitors RSS and Atom feeds and posts new articles to one or more MUC rooms. It specializes on Fediverse feeds. The code was AI generated and reviewed/tested by the author.
 
 ## XMPP Software News
 
@@ -176,10 +176,10 @@ Please share the news on other networks:
 - [Mastodon](https://fosstodon.org/@xmpp/)
 - [Movim](https://mov.im/community/news.xmpp.org/News)
 - [Bluesky](https://bsky.app/profile/xmpp.org)
+- [Reddit](https://www.reddit.com/r/xmpp/)
 - [LinkedIn](https://www.linkedin.com/company/xmpp-standards-foundation/)
 - [YouTube](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA)
 - [Lemmy instance (unofficial)](https://slrpnk.net/c/xmpp)
-- [Reddit (unofficial)](https://www.reddit.com/r/xmpp/)
 - [XMPP Facebook page (unofficial)](https://www.facebook.com/jabber)
 
 {{< newsletter-subscribe >}}
