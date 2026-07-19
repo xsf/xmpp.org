@@ -978,6 +978,15 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": "https://git.agnos.is/projectmoon/livewire/raw/branch/master/doap.xml",
+        "name": "Livewire",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
