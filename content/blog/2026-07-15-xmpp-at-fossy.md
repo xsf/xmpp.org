@@ -25,4 +25,4 @@ Followed by another four presentations during Sunday, August 9th at MCLD 3038:
 | [Adventures in Onboarding: Episode V - The Server Goes Down](https://2026.fossy.ca/schedule/presentation/375/) | [Gideon Mayhak](https://2026.fossy.ca/speaker/profile/610/) | 2:00 PM to 2:45 PM PDT. |
 | [Snikket: Behind the scenes of our on-demand XMPP server hosting](https://2026.fossy.ca/schedule/presentation/373/) | [Matthew Wild](https://2026.fossy.ca/speaker/profile/579/) | 3:00 PM to 3:45 PM PDT. |
 
-The [FOSSY](https://2026.fossy.ca/) organizers kindly invite you to join the event and will be please to see you there. Don't miss it out!
+The [FOSSY](https://2026.fossy.ca/) organizers kindly invite you to join the event and will be pleased to see you there. Don't miss it out!
