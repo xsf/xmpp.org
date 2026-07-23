@@ -1,6 +1,6 @@
 ---
 title: XMPP at FOSSY 2026
-date: 2026-07-15
+date: 2026-07-23
 categories: ["Events"]
 ---
 
