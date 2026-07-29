@@ -139,7 +139,7 @@ __Clients__
 
 __Libraries__
 
-- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET)
+- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET 10)
 - [gloox](https://camaya.net/gloox) (C++)
 - [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
 - [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
@@ -238,7 +238,7 @@ The following standalone XMPP connection managers can be used with a wide variet
 
 #### Libraries
 
-- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET)
+- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET 10)
 - [gloox](https://camaya.net/gloox) (C++)
 - [strophe](https://strophe.im/) (C or JavaScript)
 - [Swiften](https://swift.im/swiften.html) (C++)
