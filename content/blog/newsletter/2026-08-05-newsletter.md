@@ -70,6 +70,8 @@ Being an elected member of the XMPP Standards Foundation signals a commitment to
 
 {{< figure src="/images/newsletter/2026-08-05/kaidan-message-recording.gif" caption="Kaidan 0.16.0: Message recording." >}}
 
+- [Psi+](https://sourceforge.net/projects/psiplus/) has released version [1.5.2142.0 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) of its development branch of the [Psi](https://sourceforge.net/projects/psi/) XMPP client.
+
 ### XMPP Servers
 
 - The [Ignite Realtime community](https://www.igniterealtime.org/) is pleased to announce the release of [Openfire 5.1.1](https://discourse.igniterealtime.org/t/openfire-5-1-1-release/96521), a maintenance update to the open-source XMPP real-time communication server. This release comes with a focus on PubSub correctness and connection handling. Highlights: fixed [excessive memory use](https://discourse.igniterealtime.org/t/java-memory-use-causes-crash/96502) from a bloated pubsub subscription table, resolved an IQBind thread-starvation bug, corrected IP encoding in certificate SANs, and resolved 24 issues in total. Make sure to read the [full changelog](https://download.igniterealtime.org/openfire/docs/latest/changelog.html) for all the details!
