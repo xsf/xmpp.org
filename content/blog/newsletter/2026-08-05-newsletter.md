@@ -166,7 +166,7 @@ This is a community effort, and we would like to thank translators for their con
   - To [this issue](/categories/newsletter/): *cal0pteryx, emus, Gonzalo Raúl Nemmi, Ludovic Bocquet, poVoq, XSF iTeam*
 
 - Translations:
-  - [French](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, Ysabeau*
+  - [French](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, seveso, Ysabeau*
   - [Italian](/categories/newsletter/): *Mario Sabatino, Roberto Resoli*
   
 ## Help us to build the newsletter
