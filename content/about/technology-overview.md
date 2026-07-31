@@ -144,6 +144,7 @@ __Libraries__
 - [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
 - [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
 - [XMPP4R](https://xmpp4r.github.io/) (Ruby)
+- [cr-xmpp](https://github.com/naqvis/cr-xmpp) (Crystal)
 
 ## PubSub{#pubsub}
 
@@ -244,3 +245,4 @@ The following standalone XMPP connection managers can be used with a wide variet
 - [Swiften](https://swift.im/swiften.html) (C++)
 - [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
 - [XMPP4R](https://xmpp4r.github.io/) (Ruby)
+- [cr-xmpp](https://github.com/naqvis/cr-xmpp) (Crystal)

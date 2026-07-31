@@ -2049,5 +2049,16 @@
             "JavaScript"
         ],
         "url": "https://ivan.vucica.net/zxmpp"
+    },
+    {
+        "categories": [
+            "library"
+        ],
+        "doap": "https://raw.githubusercontent.com/naqvis/cr-xmpp/refs/heads/master/doap.rdf",
+        "name": "cr-xmpp",
+        "platforms": [
+            "Crystal"
+        ],
+        "url": "https://github.com/naqvis/cr-xmpp"
     }
 ]
