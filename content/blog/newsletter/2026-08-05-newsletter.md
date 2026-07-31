@@ -47,6 +47,7 @@ Being an elected member of the XMPP Standards Foundation signals a commitment to
 - [ejabberd 26.07 released](https://www.process-one.net/blog/ejabberd-26-07/), by [Jérôme Sautret](https://www.process-one.net/author/jerome/) for the [ProcessOne Blog](https://www.process-one.net/blog/).
 - [Introducing DokuWiki xmppsupport plugin: xmppchat](https://www.dokuwiki.org/plugin:xmppsupport) an implementation of a chat widget, typically for providing customer service, that appears on the bottom-left of the screen and allows users to interact with staff logged-in to XMPP.
 - [Introducing Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp/blob/master/README.md), a .NET 10 XMPP client library for connecting to XMPP servers, sending and receiving messages, managing presence and rosters, and using common XMPP extension protocols.
+- [Introducing Koishi Bridge](https://github.com/jjj333-p/koishi/blob/main/README.md): a [Matrix](https://matrix.org/) <-> XMPP bridge, picking up the [Parsee Bridge](https://foundry.fsky.io/kappachat/Parsee) left off, more ambitious in terms of features, less [NIH syndrome](https://www.joelonsoftware.com/2001/10/14/in-defense-of-not-invented-here-syndrome/).
 
 ## XMPP Software News
 
