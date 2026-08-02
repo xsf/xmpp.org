@@ -28,6 +28,7 @@ Being an elected member of the XMPP Standards Foundation signals a commitment to
 ## XMPP Events
 
 - XMPP at FrOSCon 2026: This year's edition of [FrOSCon](https://froscon.org/en/) will take place during August 15th & 16th, at the Hochschule Bonn-Rhein-Sieg in Sankt Augustin, Germany, and the XMPP community will be part of it. Make sure to come by the [XMPP booth](https://froscon.org/en/program/exhibitors/) and say hi!. We promise there will be stickers. ;)
+- The [di.day](https://di.day/en) takes place every [first Sunday of the month](https://fosstodon.org/@xmpp/116867255827209479) where the XMPP community also [promotes their solutions](https://di-day.xmpp.link/)! di.day is a mainly German initiative to help people switch to open-source and privacy-friendly solutions. 
 
 ## Videos and Talks
 
