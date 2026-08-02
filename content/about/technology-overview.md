@@ -71,37 +71,18 @@ In essence, Jingle provides a way for Jabber clients to set up, manage, and tear
 
 Jingle is defined in a number of specifications:
 
-- [XEP-0166: Jingle](/extensions/xep-0166.html)
-- [XEP-0167: Jingle RTP Sessions](/extensions/xep-0167.html)
-- [XEP-0176: Jingle ICE-UDP Transport Method](/extensions/xep-0176.html)
-- [XEP-0177: Jingle Raw UDP Transport Method](/extensions/xep-0177.html)
-- [XEP-0181: Jingle DTMF](/extensions/xep-0181.html)
-- [XEP-0234: Jingle File Transfer](/extensions/xep-0234.html)
-
-#### Implementations
-_Note: Many of the following implementations support the older Google Talk protocol and are being upgraded to support Jingle as it is defined in the specifications; contact the project developers for details._
-
-__Clients__
-
-- [Gajim](https://gajim.org/)
-- [Jitsi](https://jitsi.org/)
-- [Movim](https://movim.eu)
-- [Pidgin](https://pidgin.im/)
-- [Psi](https://psi-im.org/)
-- [YateClient](https://yate.ro/opensource.php?page=yateclient)
-
-__Libraries__
-
-- [libjingle](http://code.google.com/apis/talk/) (C/C++)
-- [Smack](http://www.igniterealtime.org/projects/smack/) (Java)
-- [yjingle](https://yate.ro/) (C++)
+- [XEP-0166: Jingle](/extensions/xep-0166.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0166)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0166))
+- [XEP-0167: Jingle RTP Sessions](/extensions/xep-0167.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0167)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0167))
+- [XEP-0176: Jingle ICE-UDP Transport Method](/extensions/xep-0176.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0176)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0176))
+- [XEP-0177: Jingle Raw UDP Transport Method](/extensions/xep-0177.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0167)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0167))
+- [XEP-0181: Jingle DTMF](/extensions/xep-0181.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0181)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0181))
+- [XEP-0234: Jingle File Transfer](/extensions/xep-0234.html) - implementations ([clients](https://xmpp.org/software/?category=clients&xeps=0234)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0234))
 
 __Call Managers / VoIP Servers__
 
 - [Asterisk](https://www.asterisk.org/)
 - [FreeSWITCH](https://signalwire.com/freeswitch)
 - [Yate](https://yate.ro/)
-
 
 ## Multi-User-Chat (MUC){#muc}
 
@@ -111,39 +92,9 @@ MUC is an XMPP extension for multi-party information exchange similar to Interne
 
 MUC is defined in one primary specification (XEP-0045) and several ancillary specifications:
 
-- [XEP-0045: Multi-User Chat](https://xmpp.org/extensions/xep-0045.html)
-- [XEP-0249: Direct MUC Invitations](https://xmpp.org/extensions/xep-0249.html)
-- [XEP-0272: Multiparty Jingle](https://xmpp.org/extensions/xep-0272.html)
-
-#### Implementations
-
-__Servers__ - the following XMPP servers include built-in support for MUC:
-
-- [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](https://www.cisco.com/)
-- [M-Link](https://www.isode.com/product/xmpp-server/)
-- [MongooseIM](https://github.com/esl/MongooseIM)
-- [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Prosody](https://prosody.im/)
-- [Tigase](https://tigase.org/)
-
-__Clients__
-
-- [Adium](https://adium.im/)
-- [Gajim](https://gajim.org/)
-- [mcabber](https://mcabber.com/)
-- [Movim](https://movim.eu)
-- [Pidgin](https://pidgin.im/)
-- [Psi](https://psi-im.org/)
-- [Spark](https://www.igniterealtime.org/projects/spark/)
-
-__Libraries__
-
-- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET 10)
-- [gloox](https://camaya.net/gloox) (C++)
-- [libpurple](https://developer.pidgin.im/wiki/WhatIsLibpurple) (C)
-- [Smack](http://www.igniterealtime.org/projects/smack/index.jsp) (Java)
-- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
+- [XEP-0045: Multi-User Chat](https://xmpp.org/extensions/xep-0045.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0045)/[clients](https://xmpp.org/software/?category=clients&xeps=0045)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0045))
+- [XEP-0249: Direct MUC Invitations](https://xmpp.org/extensions/xep-0249.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0249)/[clients](https://xmpp.org/software/?category=clients&xeps=0249)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0249))
+- [XEP-0272: Multiparty Jingle](https://xmpp.org/extensions/xep-0272.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0272)/[clients](https://xmpp.org/software/?category=clients&xeps=0272)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0272))
 
 ## PubSub{#pubsub}
 
@@ -153,9 +104,9 @@ PubSub is a protocol extension for generic publish-subscribe functionality, spec
 
 PubSub is defined in several specifications:
 
-- [XEP-0060: Publish-Subscribe](https://xmpp.org/extensions/xep-0060.html)
-- [XEP-0163: Personal Eventing Protocol](https://xmpp.org/extensions/xep-0163.html)
-- [XEP-0248: PubSub Collection Nodes](https://xmpp.org/extensions/xep-0248.html)
+- [XEP-0060: Publish-Subscribe](https://xmpp.org/extensions/xep-0060.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0060)/[clients](https://xmpp.org/software/?category=clients&xeps=0060)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0060))
+- [XEP-0163: Personal Eventing Protocol](https://xmpp.org/extensions/xep-0163.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0163)/[clients](https://xmpp.org/software/?category=clients&xeps=0163)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0163))
+- [XEP-0248: PubSub Collection Nodes](https://xmpp.org/extensions/xep-0248.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0248)/[clients](https://xmpp.org/software/?category=clients&xeps=0248)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0248))
 
 #### Payloads
 PubSub and PEP are “payload-agnostic” — you can use them as neutral transports for a wide variety of data formats. Some of the more popular payloads are listed below, especially for rich presence related to IM users:
@@ -171,53 +122,18 @@ PubSub and PEP are “payload-agnostic” — you can use them as neutral transp
 - [TV/Video Activities](/extensions/xep-0197.html)
 - [Website Visits](/extensions/xep-0195.html)
 
-#### Implementations
-
-__Servers__ - the following XMPP servers include built-in support for PubSub or PEP:
-
-- [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](https://www.cisco.com/)
-- [M-Link](https://www.isode.com/product/xmpp-server/)
-- [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Tigase](https://tigase.org/)
-
-__Server Components__
-
-- [Idavoll](https://github.com/ralphm/idavoll)
-
-__Clients__
-
-- [Gajim](https://gajim.org/)
-- [Movim](https://movim.eu)
-- [Psi](https://psi-im.org/)
-
-__3.4 Libraries__
-
-- [strophe](https://strophe.im/) (C or JavaScript)
-- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
-
 ## BOSH{#bosh}
 
 BOSH is “Bidirectional-streams Over Synchronous HTTP”, a technology for two-way communication over the Hypertext Transfer Protocol (HTTP). BOSH emulates many of the transport primitives that are familiar from the Transmission Control Protocol (TCP). For applications that require both “push” and “pull” communications, BOSH is significantly more bandwidth-efficient and responsive than most other bidirectional HTTP-based transport protocols and the techniques known as AJAX. BOSH achieves this efficiency and low latency by utilizing HTTP long polling, yet it does so without resorting to chunked HTTP responses as is done in the technique known as Comet. To date, BOSH has been used mainly as a transport for traffic exchanged between Jabber/XMPP clients and servers (e.g., to facilitate connections from web clients and from mobile clients on intermittent networks). However, BOSH is not tied solely to XMPP and can be used for other kinds of traffic, as well.
 
-#### Specifications BOSH is defined in two specifications:
+#### Specifications
 
-- [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html)
-- [XEP-0206: XMPP Over BOSH](https://xmpp.org/extensions/xep-0206.html)
+BOSH is defined in two specifications:
 
-#### Implementations
+- [XEP-0124: Bidirectional-streams Over Synchronous HTTP](https://xmpp.org/extensions/xep-0124.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0124)/[clients](https://xmpp.org/software/?category=clients&xeps=0124)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0124))
+- [XEP-0206: XMPP Over BOSH](https://xmpp.org/extensions/xep-0206.html) - implementations ([servers](https://xmpp.org/software/?category=servers&xeps=0206)/[clients](https://xmpp.org/software/?category=clients&xeps=0206)/[libraries](https://xmpp.org/software/?category=libraries&xeps=0206))
 
-Servers The following XMPP servers include built-in support for BOSH:
-
-- [ejabberd](https://www.ejabberd.im/)
-- [Jabber XCP](https://www.cisco.com/)
-- [M-Link](https://www.isode.com/product/xmpp-server/)
-- [MongooseIM](https://github.com/esl/MongooseIM)
-- [Openfire](http://www.igniterealtime.org/projects/openfire/index.jsp)
-- [Prosody](https://prosody.im/)
-- [Tigase](https://tigase.org/)
-
-#### Connection Managers
+__Connection Managers__
 
 The following standalone XMPP connection managers can be used with a wide variety of XMPP servers:
 
@@ -225,22 +141,3 @@ The following standalone XMPP connection managers can be used with a wide variet
 - [Punjab](https://github.com/twonds/punjab)
 - [node-xmpp-bosh](https://github.com/xmppo/node-xmpp-bosh)
 - [rhb](http://rubyforge.org/projects/rhb/)
-
-#### Clients
-
-- [Adium](https://adium.im/)
-- [Converse.js](https://conversejs.org/)
-- [Gajim](https://gajim.org/)
-- [Pidgin](https://pidgin.im/)
-- [Swift](https://swift.im/swift.html)
-- [Tigase Messenger](http://www.tigase.org/project/messenger)
-- [Tigase Minichat](http://www.tigase.org/project/minichat)
-
-#### Libraries
-
-- [Artalk.Xmpp](https://github.com/araditc/Artalk.Xmpp) (.NET 10)
-- [gloox](https://camaya.net/gloox) (C++)
-- [strophe](https://strophe.im/) (C or JavaScript)
-- [Swiften](https://swift.im/swiften.html) (C++)
-- [XMPP4GWT](http://www.tigase.org/project/xmpp4gwt) (gwt)
-- [XMPP4R](https://xmpp4r.github.io/) (Ruby)
