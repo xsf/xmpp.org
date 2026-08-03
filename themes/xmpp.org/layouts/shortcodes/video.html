@@ -5,9 +5,11 @@
         {{- with (.Get "title") -}}
         <h4>{{- . -}}</h4>
         {{- end -}}
-        {{- if or (.Get "caption") (.Get "attr") -}}<p>
+        {{- if or (.Get "caption") (.Get "attr") -}}
+        <p>
             {{- .Get "caption" | markdownify -}}
             {{- .Get "attr" | markdownify -}}
+        </p>
         {{- end -}}
     </figcaption>
     {{- end -}}
