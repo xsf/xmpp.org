@@ -1,4 +1,5 @@
 ---
+title: The XMPP Newsletter July 2026
 date: 2026-08-05
 categories: ['Newsletter']
 summary: "In this issue: Fully online 29th XMPP Summit announcement! Q3 call for XSF members admission. XMPP at FrOSCon 2026. Read about Openfire, Fluux Messenger and ejabberd among others! Introducing xmppchat (the DokuWiki xmppsupport plugin) and Artalk.Xmpp. Update your clients with aTalk, Cheogram, Fluux Messenger, Gajim, and Kaidan. Update your servers: Openfire 5.1.0 and ejabberd 26.07. Updated libraries and tools. And our Specifications update with one Last Call."
