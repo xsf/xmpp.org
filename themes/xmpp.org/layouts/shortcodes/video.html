@@ -1,0 +1,16 @@
+<figure {{ with .Get "class" }} class="figure {{ . }}"{{- end -}}>
+    <video controls muted preload="auto" src="{{- .Get "src" -}}" class="figure-img img-fluid rounded"></video>
+    {{- if or (or (.Get "title") (.Get "caption")) (.Get "attr") -}}
+    <figcaption class="figure-caption">
+        {{- with (.Get "title") -}}
+        <h4>{{- . -}}</h4>
+        {{- end -}}
+        {{- if or (.Get "caption") (.Get "attr") -}}
+        <p>
+            {{- .Get "caption" | markdownify -}}
+            {{- .Get "attr" | markdownify -}}
+        </p>
+        {{- end -}}
+    </figcaption>
+    {{- end -}}
+</figure>
