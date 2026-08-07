@@ -13,7 +13,6 @@ OmniOpenCon is an annual FOSS conference held at [Politehnica University of Buch
 Currently a lot of XMPP community presence in Europe has been within Western Europe.
 Branching out to Eastern Europe will hopefully draw new members into the XMPP community and spread secure, open and decentralised messaging to more people!
 
-We are looking for volunteers if anyone is free to attend, please contact Polarian:
+We are looking for volunteers if anyone is free to attend.
 
-[XMPP: polarian@icebound.dev](xmpp:polarian@icebound.dev)  
-[Email: polarian@polarian.dev](mailto:polarian@polarian.dev)
+Please join the OmniOpenCon MUC if you are attending the conference: [omniopencon@muc.mohrie.net](xmpp:omniopencon@muc.mohrie.net?join)
