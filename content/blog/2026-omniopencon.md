@@ -1,6 +1,6 @@
 ---
 title: XMPP stand at OmniOpenCon
-date: 2026-08-10
+date: 2026-08-11
 author: Polarian
 categories: ['Events', 'XMPP Community']
 summary: "The XMPP stand at OmniOpenCon has been confirmed for 16-18th October 2026"
