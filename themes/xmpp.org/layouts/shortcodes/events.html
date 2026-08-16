@@ -5,10 +5,11 @@
 {{- end -}}
 {{- $events_counter := 0 -}}
 {{- range hugo.Data.events -}}
+    {{- $current_date := (time.Format "2006-01-02" now) | time -}}
     {{- $start_date := .date_start | time -}}
     {{- $end_date := .date_end | time -}}
     {{- if eq $type "upcoming" -}}
-        {{- if gt $end_date now -}}
+        {{- if ge $end_date $current_date -}}
             {{- $events_counter = add $events_counter 1 -}}
             <div class="row">
                 <div class="col-12 col-md-10 col-lg-8">
@@ -26,7 +27,9 @@
                                     {{- .title -}}&nbsp;-&nbsp;
                                 {{- end -}}
                                 {{- if .date_end -}}
-                                    {{- if eq (dateFormat "January" $start_date) (dateFormat "January" $end_date) -}}
+                                    {{- if eq (dateFormat "January 2" $start_date) (dateFormat "January 2" $end_date) -}}
+                                        {{- dateFormat "January 2" $start_date -}}
+                                    {{- else if eq (dateFormat "January" $start_date) (dateFormat "January" $end_date) -}}
                                         {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "2, 2006" $end_date -}}
                                     {{- else -}}
                                         {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "January 2, 2006" $end_date -}}
@@ -49,7 +52,7 @@
     {{- end -}}
 
     {{- if eq $type "past" -}}
-        {{- if lt $end_date now -}}
+        {{- if lt $end_date $current_date -}}
         <li>
             {{- .type -}}: <a href="{{- .url -}}">
             {{- .location -}}&nbsp;-&nbsp;
