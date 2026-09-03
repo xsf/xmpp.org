@@ -1071,10 +1071,10 @@
     "name": "MirrorFly",
     "platforms": [
         "Android",
+        "Flutter",
         "iOS",
         "JavaScript",
-        "React Native",
-        "Flutter"
+        "React Native"
     ],
     "url": "https://www.mirrorfly.com"
 },
