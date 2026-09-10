@@ -95,8 +95,9 @@ function filter_xeps() {
     const rows = document.querySelectorAll("[class*=XEP-]")
     for (const row of rows) {
       const xep_number = row.id.slice(3)
-      const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLowerCase();
-      const xep_shortname = row.dataset.shortname
+      const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLocaleLowerCase();
+      const xep_full_title = `xep-${xep_number}: ${xep_name}`;
+      const xep_shortname = row.dataset.shortname.toLocaleLowerCase();
       let tags = ""
       const tag_array = row.querySelector('td:nth-child(6)').querySelectorAll("span")
       if (tag_array.length > 0) {
@@ -105,7 +106,7 @@ function filter_xeps() {
         }
       }
 
-      if (xep_number.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string) || tags.includes(search_string)) {
+      if (xep_number.includes(search_string) || xep_full_title.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string) || tags.includes(search_string)) {
         row.hidden = false
       } else {
         row.hidden = true
