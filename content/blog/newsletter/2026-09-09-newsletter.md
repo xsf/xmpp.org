@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter August 2026
-date: 2026-09-09
+date: 2026-09-12
 categories: ['Newsletter']
 summary: "In this issue: XMPP at LinuxDays and OmniOpenCon. Quicksy App has been removed. Read about 25 years of XMPP and Slidge.im security audit. New XMPP clients and operators are rising. And updates on four specifications."
 ---
