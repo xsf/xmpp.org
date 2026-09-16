@@ -455,7 +455,7 @@ button[name="show-xep-implementations"] {
 }
 
 /* Dark theme */
-@media (prefers-color-scheme: dark) {
+:where(html[data-bs-theme=dark]) {
 	label {
 		color: #acb6bd;
 	}
