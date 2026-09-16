@@ -570,7 +570,7 @@
         "categories": [
             "client"
         ],
-        "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
+        "doap": "https://gitlab.com/gajim/gajim/raw/master/data/gajim.doap",
         "name": "Gajim",
         "platforms": [],
         "url": null
@@ -1309,7 +1309,7 @@
         "categories": [
             "library"
         ],
-        "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
+        "doap": "https://gitlab.com/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
         "name": "python-nbxmpp",
         "platforms": [],
         "url": null
