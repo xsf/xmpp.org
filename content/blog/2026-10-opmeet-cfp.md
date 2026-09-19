@@ -1,9 +1,9 @@
 ---
-title: XMPP OpMeet 2026.10 CfP/CfI
+title: XMPP OpMeet 2026.10 Call for Participation is open!
 date: 2026-09-19
 author: Polarian
 categories: ['Events', 'XMPP Community', 'OpMeet']
-summary: "An Online XMPP Meetup/Conference for Operators: Call for Ideas
+summary: "An Online XMPP Meetup/Conference for Operators: Call for Participation
 open until 1st October 2026, please submit ideas!"
 ---
 
@@ -18,8 +18,7 @@ CfP (Call for Participation) or what we are calling CfI (Call for Ideas) has
 been open for a few months, but was lost to the [mailing list](https://mail.jabber.org/hyperkitty/list/operators@xmpp.org/message/P2R45Y2BQBSVRE5K57KTZQPM24YDSKJW/).
 
 An updated announcement has been posted, CfP/CfI are open until 1st October
-2026, please [email](mailto:polarian@polarian.dev) or message Polarian on
-[XMPP](xmpp:polarian@icebound.dev) for suggestions.
+2026.
 
 The following (non-exhaustive) list of things we are interested in:
 
@@ -36,3 +35,8 @@ The following (non-exhaustive) list of things we are interested in:
 
 Anything else you can think of which could be interesting to XMPP operators,
 feel free to suggest, the worst case is the idea gets refused!
+
+To make suggestions please contact Polarian:
+
+* [XMPP](xmpp:polarian@icebound.dev)
+* [Email](mailto:polarian@polarian.dev)
