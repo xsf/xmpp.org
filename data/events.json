@@ -1,5 +1,14 @@
 [
     {
+        "type": "Sprint",
+        "title": "XMPP Sprint in London",
+        "location": "London (UK)",
+        "date_start": "2026-11-06",
+        "date_end": "2026-11-08",
+        "url": "https://wiki.xmpp.org/web/Sprints/2026-11_London",
+        "desc": null
+    },
+    {
         "type": "LinuxDays",
         "title": "XMPP at LinuxDays",
         "location": "Prague (CZ)",
