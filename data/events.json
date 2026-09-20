@@ -27,6 +27,15 @@
         "desc": "XMPP Stand at OmniOpenCon for the first time!"
     },
     {
+        "type": "OpMeet",
+        "title": "OpMeet 2026.10",
+        "location": "online",
+        "date_start": "2026-10-10",
+        "date_end": "2026-10-10",
+        "url": "https://wiki.xmpp.org/web/OpMeet/2026.10",
+        "desc": "First XMPP Operator online meetup/conference"
+    },
+    {
         "type": "Summit",
         "title": "XMPP Summit 29",
         "location": "online",
