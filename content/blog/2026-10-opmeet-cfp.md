@@ -1,14 +1,13 @@
 ---
-title: XMPP OpMeet 2026.10 Call for Participation is open!
+title: "XMPP OpMeet 2026.10 Call for Participation is open!"
 date: 2026-09-19
-author: Polarian
-categories: ['Events', 'XMPP Community', 'OpMeet']
-summary: "An Online XMPP Meetup/Conference for Operators: Call for Participation
-open until 1st October 2026, please submit ideas!"
+author: "Polarian"
+categories: ['Events', 'XMPP Community']
+summary: "An Online XMPP Meetup/Conference for Operators: Call for Participation open until 1st October 2026, please submit ideas!"
 ---
 
 [OpMeet](https://wiki.xmpp.org/web/OpMeet) are online meetups/conferences
-targetted at XMPP Operators.
+targeted at XMPP Operators.
 
 The first OpMeet will be on the 10th October 2026, more information on the
 [XMPP Wiki](https://wiki.xmpp.org/web/OpMeet/2026.10). This will be the
@@ -29,7 +28,7 @@ The following (non-exhaustive) list of things we are interested in:
   discussing or helping out with during a live coding session? Suggest it!
 
 * Talks, this is the big one. We will aim to record these talks and publish
-  them however we can make no promises here. If you have an interesting
+  them. However we can make no promises here. If you have an interesting
   topic which is operator related, or even the wider XMPP topics, please do
   suggest it.
 
