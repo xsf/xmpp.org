@@ -2058,6 +2058,15 @@
             "JavaScript"
         ],
         "url": "https://ivan.vucica.net/zxmpp"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": "https://git.uuxo.net/UUXO/zerta/raw/branch/main/zerta.doap",
+        "name": "Zerta",
+        "platforms": [],
+        "url": null
     }
 ]
 
