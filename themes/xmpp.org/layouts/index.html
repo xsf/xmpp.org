@@ -62,7 +62,7 @@
   <div class="col-12 col-md-8 col-lg-6">
     <h3 class="text-center pb-2"><a href="/community/events/">Upcoming Events</a></h3>
     {{- $events_counter := 0 -}}
-    {{- range hugo.Data.events -}}
+    {{- range sort hugo.Data.events ".date_start" "desc" -}}
       {{- $current_date := (time.Format "2006-01-02" now) | time -}}
       {{- $start_date := .date_start | time -}}
       {{- $end_date := .date_end | time -}}
