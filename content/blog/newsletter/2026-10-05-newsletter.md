@@ -26,11 +26,14 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 
 See also the [XMPP Events page](https://xmpp.org/community/events/).
 
-## Videos and Talks Videos and Talks
+## Videos and Talks
 
-- [Jabber/XMPP: How Do We Gain Traction?](https://gultsch.de/posts/how-do-we-gain-traction/), by [Daniel Gultsch](https://gultsch.de).
-- [Breaking Up with Google Play: Why Conversations Is Now Free](https://gultsch.de/posts/breaking-up-with-google-play/), by [Daniel Gultsch](https://gultsch.de).
-- [XMPP, le protocole de messagerie sous-coté, à tort](https://sansdependances.fr/posts/xmpp-le-protocole-de-messagerie-sous-cote-a-tort/), by [Baptiste Carpentier](https://blog.baptistebca.com/about) for [Sans dépendances](https://sansdependances.fr/a-propos/). [FR]
+- [Conversations (XMPP): Verlauf von editierten Nachrichten (Feature-Preview)](https://makertube.net/w/nZ33fPZNArghVwyyasDp7i), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
+- [Das Instant Messaging Dilemma](https://makertube.net/w/e1ztaBip8idZxd4guPaZSZ), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE] (EN subtitles available)
+- [Warum sind Messenger-Diskussionen so emotional?](https://makertube.net/w/hE612bRkDpgrsvNUQoyMCm), by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
+- [Messenger-Monopolisten hassen diesen Trick!](https://makertube.net/w/hE612bRkDpgrsvNUQoyMCm) (also available in a [medium](https://makertube.net/w/28yDYbHMRWwvaqrGkN42XE) and [short version](https://makertube.net/w/bNMeRt2kQ4PFTTbTEVFzKf)) by [eversten.net](https://makertube.net/a/eversten.net/video-channels) for [XMPP Tutorials DE](https://makertube.net/c/xmpp_tutorials_de/videos). [DE]
+- [Jabber/XMPP: 25 Jahre Digitale Souveränität](https://media.ccc.de/v/ds26-678-jabber-xmpp-25-jahre-digitale-souveranitat), by [Daniel Gultsch](https://media.ccc.de/search?p=Daniel+Gultsch) at [Datenspuren 2026](https://datenspuren.de/2026/). [DE]
+- [Mensagens instantâneas soberanas com XMPP](https://tvculturaviva.org.br/w/8QqHhTc13AvZEQKeNiuPVU), by [isadora](https://blog.isacloud.im/author/isadora/) for the [Software Freedom Day 2026](https://sfd.org.au/) at the [UniSenac](https://digitalfreedoms.org/en/component/dpcalendar/location/1512?tmpl=component#year=2026&month=9&day=19&view=resday) - Porto Alegre, Brazil. [PT_BR]
 
 ## XMPP Articles
 
