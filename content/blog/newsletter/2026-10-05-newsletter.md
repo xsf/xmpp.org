@@ -88,7 +88,10 @@ The XMPP Standards Foundation develops extensions to XMPP in its [XEP series](/e
 
 The XEP development process starts by writing up an idea and submitting it to the [XMPP Editor](/about/xsf/editor-team/). Within two weeks, the [Council](/about/xmpp-standards-foundation/#council) decides whether to accept this proposal as an Experimental XEP.
 
-- No proposed XEPs this month.
+- [SASL2 Terms of Service Acceptance Task](https://xmpp.org/extensions/inbox/sasl2-tos.html)
+  - This specification defines a SASL2 task, per the extensibility mechanism of XEP-0388, that lets a server require a user to accept the current terms of service before authentication completes.
+- [Multistream XMPP](https://xmpp.org/extensions/inbox/xmpp-quic-redux.html)
+  - Multistream protocols such as QUIC and WebTransport offer significant performance improvements to XMPP, particularly over constrained or degraded networks. This specification defines a binding for the XMLStream onto multistream transports, including both QUIC and WebTransport.
 
 ### New
 
