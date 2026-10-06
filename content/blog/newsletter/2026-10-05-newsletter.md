@@ -21,7 +21,7 @@ Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/
 - The [di.day](https://di.day/en) takes place every [first Sunday of the month](https://fosstodon.org/@xmpp/116867255827209479) where the XMPP community also [promotes their solutions](https://di-day.xmpp.link/)! di.day is a mainly German initiative to help people switch to open-source and privacy-friendly solutions.
 - [Libre en Communs](https://toot.a-lec.org/@a_lec), the non-profit behind [chalec.org](https://www.chalec.org), held a booth on September 11, 12 and 13 in the [Science and Digital Space of the Fête de l'Humanité](https://toot.a-lec.org/@a_lec/117247228715929674). They talked about libre software, freedom-respecting hardware, self-hosting, decentralized messenging with XMPP, and also a bit about their own public XMPP service, along with [XMPP Providers](https://providers.xmpp.net). Many stickers and flyers were also shared.
 - [XMPP at LinuxDays](https://xmpp.org/2026/08/xmpp-at-linuxdays/) on 3rd and 4th October 2026 in Prague including a talk by [Daniel Gultsch](https://gultsch.de).
-- [XMPP Sprint London](https://xmpp.org/2026/09/xmpp-sprint-london/): There will be a XMPP Sprint in London from the 6th to the 8th of November at The Mitre in Greenwich.
+- [XMPP Sprint London](https://xmpp.org/2026/09/xmpp-sprint-london/): There will be an XMPP Sprint in London from the 6th to the 8th of November at The Mitre in Greenwich.
 - [XMPP OpMeet 2026.10](https://xmpp.org/2026/09/xmpp-opmeet-2026.10-call-for-participation-is-open/) - Call for Participation is open! It takes place on the 10th October 2026 and is an online event.
 
 See also the [XMPP Events page](https://xmpp.org/community/events/).
