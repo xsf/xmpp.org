@@ -102,7 +102,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 ### Updated
 
-- No proposed XEPs this month.
+- No XEPs updated this month.
 
 ### Last Call
 
