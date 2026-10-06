@@ -112,7 +112,7 @@ Last calls are issued once everyone seems satisfied with the current XEP status.
 
 ### Stable
 
-- No stable XEPs this month.
+- No XEP moved to stable this month.
 
 ### Deprecated
 
