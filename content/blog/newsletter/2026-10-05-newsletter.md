@@ -108,7 +108,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 
 Last calls are issued once everyone seems satisfied with the current XEP status. After the [Council](/about/xmpp-standards-foundation/#council) decides whether the XEP seems ready, the [XMPP Editor](/about/xsf/editor-team/) issues a Last Call for comments. The feedback gathered during the Last Call can help improve the XEP before returning it to the Council for advancement to Stable.
 
-- No XEPs last calls this month.
+- No last call this month.
 
 ### Stable
 
