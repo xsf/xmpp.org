@@ -1,8 +1,8 @@
 ---
 title: The XMPP Newsletter September 2026
-date: 2026-10-05
+date: 2026-10-06
 categories: ['Newsletter']
-summary: ""
+summary: "Two XMPP events upcoming, multiple clients and server updates as well as XMPP Interop Testing and Gateways polished! Apply for XSF Board and membership now, too."
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
