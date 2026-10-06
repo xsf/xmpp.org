@@ -92,7 +92,7 @@ The XEP development process starts by writing up an idea and submitting it to th
 
 ### New
 
-- No proposed XEPs this month.
+- No new XEPs this month.
 
 ### Deferred
 
