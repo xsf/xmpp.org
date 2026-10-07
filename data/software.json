@@ -165,6 +165,15 @@
     },
     {
         "categories": [
+            "integrated-platform"
+        ],
+        "doap": "https://codeberg.org/FHenry/biboumi/raw/branch/doap/doap.xml",
+        "name": "Biboumi",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
