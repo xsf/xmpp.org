@@ -53,8 +53,9 @@ def process(input_url: str) -> None:
     # Improve rendering of figures
     figures = article.find_all("figure")
     for figure in figures:
-        img = figure.find("img")  # type: ignore  # noqa: PGH003
-        img["style"] = "max-width: 100%;"  # type: ignore  # noqa: PGH003
+        img = figure.find("img")
+        if img is not None:
+            img["style"] = "max-width: 100%;"
 
     with Path("newsletter-mail.html").open("w", encoding="utf-8") as html_file:
         html_file.write(str(article))

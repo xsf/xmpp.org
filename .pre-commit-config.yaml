@@ -3,23 +3,13 @@ default_language_version:
 
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.9
+    rev: v0.16.10
     hooks:
       - id: ruff-check
         args: [--select, I, --fix]
       - id: ruff-format
 
-  - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.408
+  - repo: https://github.com/astral-sh/ty-pre-commit
+    rev: v0.0.85
     hooks:
-    - id: pyright
-      pass_filenames: false
-      additional_dependencies:
-        - "beautifulsoup4"
-        - "colorama"
-        - "defusedxml"
-        - "packaging"
-        - "Pillow"
-        - "python-slugify"
-        - "requests"
-        - "scour"
+      - id: ty

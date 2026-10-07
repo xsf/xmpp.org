@@ -4,6 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 # git config --global core.excludesfile ~/.gitignore_global
 
+*.egg-info
 *.swp
 *.pyc
 *.~
@@ -12,10 +13,12 @@
 .hugo_build.lock
 .project
 .ruff_cache
+uv.lock
 .vagrant/
 .venv/
 .vscode/
 
+build/
 content/software/*
 data/compliance_suite.json
 data/rfc_list.json
