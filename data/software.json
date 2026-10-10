@@ -165,6 +165,15 @@
     },
     {
         "categories": [
+            "component"
+        ],
+        "doap": "https://codeberg.org/poezio/biboumi/raw/branch/master/doap.xml",
+        "name": "Biboumi",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
@@ -2069,5 +2078,6 @@
         "url": null
     }
 ]
+
 
 
