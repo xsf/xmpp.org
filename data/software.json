@@ -355,7 +355,7 @@
             "client"
         ],
         "doap": null,
-        "name": "Communiqu\u00e9",
+        "name": "Communiqué",
         "platforms": [
             "Linux"
         ],
@@ -383,8 +383,8 @@
         "categories": [
             "client"
         ],
-        "doap": "https://git.disroot.org/badrihippo/convo/raw/branch/master/convo.doap",
         "name": "Convo",
+        "doap": "https://git.disroot.org/badrihippo/convo/raw/branch/master/convo.doap",
         "platforms": [],
         "url": null
     },
@@ -545,13 +545,13 @@
         "url": "https://developer.pidgin.im/wiki/Using%20Finch"
     },
     {
+        "name": "Fluux Messenger",
+        "doap": "https://raw.githubusercontent.com/processone/fluux-messenger/main/fluux-messenger.doap",
+        "platforms": [],
+        "url": null,
         "categories": [
             "client"
-        ],
-        "doap": "https://raw.githubusercontent.com/processone/fluux-messenger/main/fluux-messenger.doap",
-        "name": "Fluux Messenger",
-        "platforms": [],
-        "url": null
+        ]
     },
     {
         "categories": [
@@ -2078,3 +2078,6 @@
         "url": null
     }
 ]
+
+
+
