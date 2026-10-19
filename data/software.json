@@ -1403,6 +1403,15 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "name": "sendxmpp (Scala 3)",
+        "doap": "https://raw.githubusercontent.com/Flowdalic/sendxmpp/refs/heads/master/sendxmpp.doap",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
