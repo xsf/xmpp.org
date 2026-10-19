@@ -906,6 +906,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "name": "jxmpp",
+        "doap": "https://raw.githubusercontent.com/igniterealtime/jxmpp/refs/heads/master/jxmpp.doap",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
