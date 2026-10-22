@@ -4,6 +4,10 @@ Url: about/xsf/jabber-trademark
 layout: single_jabber
 ---
 
+{{< info-block type="warning" >}}
+**The Jabber Trademark Licensing Program is currently on hiatus.** The XMPP Standards Foundation is considering changes to its organizational status. While this review is under way, no new trademark license applications are being accepted or processed. Existing licenses are unaffected and remain in effect. This page will be updated when the program resumes. For questions, please contact [trademark@jabber.org](mailto:trademark@jabber.org).
+{{< /info-block >}}
+
 The XMPP Standards Foundation (XSF), formerly the Jabber Software Foundation, is a non-profit organization established on behalf of the Jabber® community for the purpose of managing the growth of the Jabber/XMPP protocols for instant messaging, presence, and other forms of near-real-time communication. In addition, the XSF provides a simple means of licensing or sublicensing the use of the JABBER registered trademark for use in connection with software and computer products, as well as other miscellaneous products related to the promotion of Jabber technologies. In relation to the JABBER trademark, the XSF’s purpose is to protect legitimate uses of the trademark without burdening any one entity with the financial responsibility of protecting the Jabber community’s use of the mark.
 
 The express purpose of these web pages is to provide a simple, self-supporting Trademark Licensing Program by which interested companies, open-source projects, and individuals can obtain a non-exclusive and simple trademark license for the proper use of the mark in relation to Jabber-based products, software projects, paraphernalia, and the like.
