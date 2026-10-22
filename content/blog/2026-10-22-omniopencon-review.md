@@ -15,7 +15,7 @@ surprise it was more successful than I could have ever dreamed of.
 
 We had a large proportion of the conference come over and chat, not just
 take stickers, and leaflets like many other stands at other conferences, but
-full on indepth discussions, which inevitably led to the XMPP stand becoming
+full on in-depth discussions, which inevitably led to the XMPP stand becoming
 a hackerspace of sorts, the organisers suggesting we pull more tables over
 to the end so that people could hack at the end of the stand and not block
 the main stand.
@@ -34,8 +34,8 @@ familiar.
 
 ### Leaflets
 
-[para](https://mohrie.net) designed new leaflets for the conference, these
-were more popular than the stickers for newcomers, because it explained
+[para](https://para.mohrie.net) designed new leaflets for the conference,
+these were more popular than the stickers for newcomers, because it explained
 exactly what XMPP is, and on the back explained how to try XMPP, even the
 organisers of the conference were taking a look at the leaflets, and could
 potentially play with XMPP in the future.
@@ -48,9 +48,9 @@ less.
 
 The device demos we picked were to target the most platforms possible, so
 that anyone who came over to the stand could see the interop between
-different clients and devices. We had an iphone with Monal IM, two androids
-with conversations and cheogram and a linux laptop with gajim (which would
-also run on windows as well).
+different clients and devices. We had an iPhone with Monal IM, two Androids
+with Conversations and Cheogram and a Linux laptop with Gajim (which would
+also run on Windows as well).
 
 As with all conferences, the device demos were popular, and people like
 playing with them. However they are much more of a "woah cool" rather than a
@@ -61,12 +61,12 @@ method of getting people onto XMPP.
 Edward designed two example diagrams showing at a high level how servers
 federate, and users message across different servers. This also was
 invaluable in my talk to describing how the XMPP protocol functioned. These
-diagrams made it far easier to explain to people who were less tech savvy
+diagrams made it far easier to explain to people who were less tech-savvy
 how XMPP is beneficial to them, and why it would suit their use case.
 
 On top of this, para had rendered an A3 image of the XMPP operators graph,
 as this is so big and hard to render on the web that under conference
-conditions its hard to have it on hand. Having it printed on paper allowed
+conditions it's hard to have it on hand. Having it printed on paper allowed
 us to use it as a high level overview of how many servers (which publish
 themselves) are federating within the network, with the protocol diagrams
 being a "slice" of that network.
@@ -100,7 +100,7 @@ This had some success, some people still decided to use random providers as
 is their freedom to, but we also saw a few people sign up via the invite
 links.
 
-The invite links were printed off and then cut up into sticker-size QR codes
+The invite links were printed off and then cut up into sticker-sized QR codes
 which people could take away with them.
 
 Unfortunately, due to a mistake, half way through the day the invite link
@@ -111,7 +111,7 @@ time.
 
 ## Talk
 
-Unfortunately I was given the last talk slot before the closing notes. This
+Unfortunately, I was given the last talk slot before the closing notes. This
 meant a lot of people had already left by the time my talk was up, and I
 don't feel like it properly reached the audience I intended. The talk was
 focused at sparking interest in XMPP, rather than a deep dive into some
@@ -124,7 +124,8 @@ The stand was definitely the highlight fo the conference, it drew many more
 people towards it, and was far better at onboarding and getting new people
 interested in XMPP.
 
-You can see the slides [here](https://polarian.dev/assets/slides/omniopencon2026.pdf).
+You can see the slides
+[here](https://polarian.dev/assets/slides/omniopencon2026.pdf).
 
 ### Talk material
 
@@ -163,10 +164,10 @@ limited scale I had, it was successful.
   Makefile to render the XMPP graph for printing.
 * [Alexandru Nicolae](https://nico.mohrie.net/) - Handled logistics Romania
   side, including shipping and collection of intentional packages. Also
-  donated the laptop for the stand running gajim on [Endeavour
+  donated the laptop for the stand running Gajim on [Endeavour
   OS](https://endeavouros.com/).
-* Rares - Donation of the cheogram phone running
+* [Rareș](https://fzorb.xyz/) - Donation of the Cheogram phone running
   [LineageOS](https://lineageos.org/), along with providing power to the
   stand.
-* Edward - Donation of the conversations phone and the Monal IM phone.
-  Provided the 3D phone stands, designed the protocol diagrams.
+* Edward - Donation of the Conversations phone and the Monal IM phone.
+
