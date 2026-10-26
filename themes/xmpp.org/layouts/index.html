@@ -1,5 +1,8 @@
 {{- define "main" -}}
-{{- if hugo.Data.announcement.enabled -}}
+{{- $current_date := (time.Format "2006-01-02" now) | time -}}
+{{- $announcement_start_date := hugo.Data.announcement.start | time -}}
+{{- $announcement_end_date := hugo.Data.announcement.end | time -}}
+{{- if and (ge $current_date $announcement_start_date) (le $current_date $announcement_end_date) -}}
 <div class="alert alert-info mb-0 text-center" role="alert">
   <a href="{{- hugo.Data.announcement.url -}}" target="blank_" class="alert-link">
     <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- hugo.Data.announcement.text -}}
