@@ -1016,13 +1016,10 @@
         "categories": [
             "server"
         ],
-        "doap": null,
+        "doap": "https://raw.githubusercontent.com/lonewolf-im/lonewolf/main/lonewolf.doap",
         "name": "Lonewolf",
-        "platforms": [
-            "Linux",
-            "macOS"
-        ],
-        "url": "https://github.com/lonewolf-im/lonewolf"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
