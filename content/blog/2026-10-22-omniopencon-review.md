@@ -7,8 +7,6 @@ summary: "Review of the XMPP stand and talk at OmniOpenCon 2026"
 ---
 
 {{< figure src="/images/blog/omniopencon2026-devices-stand.webp" caption="OmniOpenCon 2026 Devices stand" >}}
-{{< figure src="/images/blog/omniopencon2026-devices.webp" caption="OmniOpenCon 2026 Devices Close-up" >}}
-{{< figure src="/images/blog/omniopencon2026-diagram-stand.webp" caption="OmniOpenCon 2026 Diagram Stand" >}}
 
 ## XMPP Stand
 
@@ -60,6 +58,8 @@ As with all conferences, the device demos were popular, and people like
 playing with them. However they are much more of a "woah cool" rather than a
 method of getting people onto XMPP.
 
+{{< figure src="/images/blog/omniopencon2026-devices.webp" caption="OmniOpenCon 2026 Devices Close-up" >}}
+
 ### Protocol diagrams (NEW)
 
 Edward designed two example diagrams showing at a high level how servers
@@ -74,6 +74,8 @@ conditions it's hard to have it on hand. Having it printed on paper allowed
 us to use it as a high level overview of how many servers (which publish
 themselves) are federating within the network, with the protocol diagrams
 being a "slice" of that network.
+
+{{< figure src="/images/blog/omniopencon2026-diagram-stand.webp" caption="OmniOpenCon 2026 Diagram Stand" >}}
 
 ### Public MUC to onboard (NEW)
 
