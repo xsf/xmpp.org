@@ -1014,6 +1014,18 @@
     },
     {
         "categories": [
+            "server"
+        ],
+        "doap": null,
+        "name": "Lonewolf",
+        "platforms": [
+            "Linux",
+            "macOS"
+        ],
+        "url": "https://github.com/lonewolf-im/lonewolf"
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": null,
