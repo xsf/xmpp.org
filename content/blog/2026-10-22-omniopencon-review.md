@@ -6,8 +6,6 @@ categories: ['Events', 'XMPP Community']
 summary: "Review of the XMPP stand and talk at OmniOpenCon 2026"
 ---
 
-{{< figure src="/images/blog/omniopencon2026-devices-stand.webp" caption="OmniOpenCon 2026 Devices stand" >}}
-
 ## XMPP Stand
 
 As a bit of background, I have been to a few XMPP stands organised by
@@ -24,6 +22,8 @@ the main stand.
 
 We also trialled some new ideas, which I haven't seen at any other stands so
 far. I will also cover the ideas which are common at every stand.
+
+{{< figure src="/images/blog/omniopencon2026-devices-stand.webp" caption="OmniOpenCon 2026 Devices stand" >}}
 
 ### Stickers
 
