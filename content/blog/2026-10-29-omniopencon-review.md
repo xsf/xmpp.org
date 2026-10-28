@@ -1,6 +1,6 @@
 ---
 title: XMPP Stand/Talk at OmniOpenCon 2026 Review
-date: 2026-10-22
+date: 2026-10-29
 author: Polarian
 categories: ['Events', 'XMPP Community']
 summary: "Review of the XMPP stand and talk at OmniOpenCon 2026"
@@ -168,9 +168,10 @@ limited scale I had, it was successful.
 
 * [para](https://para.mohrie.net/) - Designed the leaflets and wrote the
   Makefile to render the XMPP graph for printing.
-* Alexandru Nicolae - Handled logistics Romania side, including shipping and
-  collection of intentional packages. Also donated the laptop for the stand
-  running Gajim on [Endeavour OS](https://endeavouros.com/).
+* [Alexandru Nicolae](https://bico.mohrie.net/) - Handled logistics on the Romanian
+  side, including shipping and collection of international packages. Also
+  donated the laptop for the stand running Gajim on [Endeavour
+  OS](https://endeavouros.com/).
 * [Rareș](https://fzorb.xyz/) - Donation of the Cheogram phone running
   [LineageOS](https://lineageos.org/), along with providing power to the
   stand.
