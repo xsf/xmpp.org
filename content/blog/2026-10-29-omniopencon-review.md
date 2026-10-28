@@ -1,6 +1,6 @@
 ---
 title: XMPP Stand/Talk at OmniOpenCon 2026 Review
-date: 2026-10-22
+date: 2026-10-29
 author: Polarian
 categories: ['Events', 'XMPP Community']
 summary: "Review of the XMPP stand and talk at OmniOpenCon 2026"
