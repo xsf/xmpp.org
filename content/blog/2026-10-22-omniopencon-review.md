@@ -168,8 +168,8 @@ limited scale I had, it was successful.
 
 * [para](https://para.mohrie.net/) - Designed the leaflets and wrote the
   Makefile to render the XMPP graph for printing.
-* [Alexandru Nicolae](https://bico.mohrie.net/) - Handled logistics Romania
-  side, including shipping and collection of intentional packages. Also
+* [Alexandru Nicolae](https://bico.mohrie.net/) - Handled logistics on the Romanian
+  side, including shipping and collection of international packages. Also
   donated the laptop for the stand running Gajim on [Endeavour
   OS](https://endeavouros.com/).
 * [Rareș](https://fzorb.xyz/) - Donation of the Cheogram phone running
