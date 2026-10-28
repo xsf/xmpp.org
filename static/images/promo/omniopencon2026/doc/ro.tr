@@ -1,0 +1,189 @@
+.fp 1 R Lato-Regular ttf
+.fp 2 I Lato-Italic ttf
+.fp 3 B Lato-Bold ttf
+.fp 4 BI Lato-BoldItalic ttf
+.fp 5 L Lato-Light ttf
+.fp 6 LI Lato-LightItalic ttf
+.do xflag 3
+.mediasize a5
+.de HR
+.	ps 12p
+.	sp 0.5c
+\l´11.2c´
+.	sp 0.5c
+.	ps
+..
+.de US
+.	ft 2
+\\$1\l´|0\(ul´
+.	ft
+..
+.de CS
+.	br
+.	mk T        \" top of columns
+.	nr cn 0 1   \" column number
+.	nr M \\n(.o \" save left margin
+.	nr L \\n(.l \" save line length
+.	nr B \\nT   \" bottom of columns
+..
+.de CL
+.	nrf l (\\$1*\\nL)
+.	if \\n+(cn>1                 \{\
+.		if \\n(nl>\\nB .mk B      \" save bottom position
+.		br                        \" force end of paragraph
+.		po +\\npu                 \" increase page offset
+.		sp |\\nTu            \}\  \" return to top of columns
+.	ll \\nlu                          \" shorten line length
+.	ll -0.5c
+.	nr p \\nl                         \" previous l value + margin
+.	nr p +0.5c
+..
+.de CE
+.	sp |\\nBu
+.	po \\nMu
+.	ll \\nLu
+..
+.CS
+.CL 0.5
+.BP "doc/logo.eps" 6c
+.CL 0.5
+.nf
+.sp 2.3c
+.ps 22
+.vs 22
+.ce 4
+STANDARDUL
+UNIVERSAL
+DE
+MESAGERIE 
+.CE
+.sp |5.5c
+.HR
+.CS
+.CL 0.50
+.ps 24
+.vs 18
+eXtensible
+Messaging &
+Presence
+Protocol
+.CL 0.50
+.ps 12
+.vs 12
+.fi
+.ft 5
+Mesagerie care evolueazǎ constant. Creatǎ pentru comunicare în timp real: text, audio, video, poze… Un standard oficial IETF. Oricine îl poate citi și crea propriul lui program XMPP.
+.CE
+.HR
+.CS
+.CL 0.50
+Folosit de mai mult de 25 de ani în numeroase situații: discuții între prieteni și familie, comunicare militarǎ prin radio, ca bazǎ a unor dintre cele mai mari companii din lume.
+Construit transparent, de cǎtre XSF și o comunitate largǎ de programatori și utilizatori.
+Criptat integral implicit. Este ușor sǎ recapeți control asupra datelor tale prin self-hosting.
+.CL 0.5
+.ps 20
+.vs 18
+.ft 1 
+.nf
+.ce 3
+consacrat
+independent
+privat
+.sp -1.1c
+.BP "doc/xqr.eps" "4c" "" "" "" "t" ""
+.sp -0.5c
+.ps 12
+.vs 12
+.ce
+.US xmpp.org
+.CE
+.fi
+.ft 4
+.ps 14
+.HR
+.ce
+CUM SǍ TE ALǍTURI LA XMPP PE VERSO
+.bp
+.ft 1
+.sp 1c
+.ps 20
+.vs 20
+.ce
+Cum încep?
+.sp 0.5c
+.ps 12
+.vs 12
+.ft 5
+Rețeaua publicǎ XMPP este federatǎ — este alcǎtuitǎ din multe servere ce comunicǎ între ele.
+Sǎ îți creezi cont XMPP înseamnǎ 2 lucruri: instalarea unui program de mesagerie pentru dispozitivul tǎu și înregistrarea contului la un furnizor XMPP.
+.HR
+.ps 14
+.vs 14
+.ce
+.ad l
+.ft 1
+Alege un program de mesagerie…
+.ps 10
+.vs 10
+
+.ft
+Iatǎ câteva recomandǎri. Lista completǎ poate fi cititǎ pe site-ul XMPP.
+.sp -0.3c
+.CS
+.CL 0.33
+.BP "doc/conversations.eps" 2c
+.ce
+.ft 4
+Conversations
+.ft 6
+.ps 10
+Cel mai popular client XMPP. Disponibil pe Android prin Google Play Store sau F-Droid.
+.BP "doc/cqr.eps" 3c
+.sp -0.7c
+.ce
+.US conversations.im
+.CL 0.33
+.BP "doc/monal.eps" 2c
+.ce
+.ft 4
+.ps
+Monal
+.ft
+.ps
+O aplicație de mesagerie pentru iOS si macOS. Actual, în cursul unui redesign mare. 
+.BP "doc/mqr.eps" 3c
+.sp -0.7c
+.ce
+.US monal-im.org
+.CL 0.33
+.BP "doc/gajim.eps" 2c
+.ce
+.ft 4
+.ps
+Gajim
+.ft
+.ps
+Program cross-platform pentru laptopuri și PC-uri. Pe Linux, Windows, macOS și altele.
+.BP "doc/gqr.eps" 3c
+.sp -0.7c
+.ce
+.US gajim.org
+.CE
+.HR
+.ps 14
+.vs 14
+.ce
+.ft 1
+Alege-ți furnizorul…
+
+.ps 10
+.vs 10
+.ad
+.ft 5
+Cel mai ușor mod de a obține un cont este sǎ primești o invitație.
+Cere-i una cuiva cu un cont de XMPP, și s-a rezolvat.
+Dacǎ nu cunoști pe nimeni cu un cont de XMPP, tot te poți înregistra ușor la un furnizor public.
+Majoritatea programelor îti dau posibilitatea sǎ alegi dintr-o listǎ de furnizori la momentul înregistrǎrii.
+
+Dacǎ vrei mai multe informații despre furnizori și un mod de a-i compara, vezi
+.US https://providers.xmpp.net
