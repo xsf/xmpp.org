@@ -1,6 +1,6 @@
 ---
 title: FOSDEM 2027 Decentralised Messaging devroom
-date: 2026-10-28
+date: 2026-10-29
 author: Daniel & Guus
 categories: ['FOSDEM', 'Events', 'XMPP Community']
 ---
