@@ -1891,6 +1891,15 @@
         "categories": [
             "client"
         ],
+        "doap": "https://raw.githubusercontent.com/ekollof/xepher/master/DOAP.xml",
+        "name": "Xepher",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
         "doap": null,
         "name": "xmpp",
         "platforms": [
