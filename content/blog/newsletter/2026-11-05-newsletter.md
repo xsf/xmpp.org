@@ -18,13 +18,13 @@ If you are happy with the services and software you may be using, please conside
 Interested in contributing to the [XSF Communication Team](/about/xsf/comm-team/)?
 Read more [at the bottom](#help-us-to-build-the-newsletter).
 
-## XMPP Events
+## Events
 
-{{< events type="upcoming" >}}
-
+- [See below the Call for Papers](#FOSDEM-2027-Decentralised-Messaging-devroom) of the Devroom at FOSDEM 2027!
 - [XMPP Sprint London](https://xmpp.org/2026/09/xmpp-sprint-london/): There will be an XMPP Sprint in London from the 6th to the 8th of November at The Mitre in Greenwich.
+- The [di.day](https://di.day/en) takes place every [first Sunday of the month](https://fosstodon.org/@xmpp/116867255827209479) where the XMPP community also [promotes their solutions](https://di-day.xmpp.link/)! di.day is a mainly German initiative to help people switch to open-source and privacy-friendly solutions.
 
-See also the [XMPP Events page](https://xmpp.org/community/events/).
+See also the [XMPP Events page](/community/events/).
 
 ## Videos and Talks
 
@@ -33,7 +33,7 @@ See also the [XMPP Events page](https://xmpp.org/community/events/).
 - [Gibt es gute Messenger? (NET⫽SPLIT #2)](https://gultsch.video/w/pAoKnpBVCY3pRt6YhnV32h) - In dieser Folge von NET⫽SPLIT stellt Ückück Daniel Fragen zu XMPP, Matrix, Message Deletion und Messengern im Allgemeinen. [DE]
 - [XMPP Speedrun unter Android](https://makertube.net/w/vpuePWVjVq9AY8P24do4Lg) - A short video by Axel Reimer (eversten.net) showing how short it takes to create a new XMPP account using Android (Conversations) [DE]
 
-## XMPP Articles
+## Articles
 
 - [NLnet](https://nlnet.nl/): [47 Open Source Projects Receive NLnet Grants to Boost Digital Autonomy](https://nlnet.nl/news/2026/20261015-47-new-projects.html) which also includes [Gajim Audio and Video Calls](https://nlnet.nl/project/Gajim-AV/). This project aims to extend Gajim's text and rich-media messaging by implementing encrypted audio and video calls, ensuring interoperability with other XMPP clients by relying on the same standard protocols based on Jingle and WebRTC ([Jingle RTP Sessions - XEP-0167](/extensions/xep-0167.html), [Jingle ICE-UDP Transport Method - XEP-0176](/extensions/xep-0176.html), [Jingle Raw UDP Transport Method XEP-0177](/extensions/xep-0177.html), [Jingle Message Initiation - XEP-0353](/extensions/xep-0353.html)).
 - [Nspawn - Build A Tor-only XMPP Server In Containers](https://silentarchitect.org/articles/2026/10/tor-only-xmpp-in-containers.html), by [DeadSwitch](https://silentarchitect.org/static/pages/about.html) for [The Silent Architect's Whispers](https://silentarchitect.org/index.html).
@@ -56,14 +56,14 @@ See also the [XMPP Events page](https://xmpp.org/community/events/).
 - [Profanity](https://profanity-im.github.io/) has released version [0.19.0](https://github.com/profanity-im/profanity/releases/tag/0.19.0) of its console based XMPP client. This release brings a list of features, bug fixes, refactorings, and other improvements that's way longer than what we could mention in here. Please make sure to read the [changelog](https://github.com/profanity-im/profanity/blob/master/CHANGELOG) for all the details. Also worth checking out: [Fresh Look For The Website](https://profanity-im.github.io/blog/post/fresh-look-for-the-website.html)!
 - [Psi+ 1.5.2202 through 1.6.1.44 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
-Find more [XMPP Clients](https://xmpp.org/software/?category=clients).
+Find more [XMPP Clients](/software/?category=clients).
 
 ### Servers
 
 - [MongooseIM](https://www.erlang-solutions.com/technologies/mongooseim/) has released versions [6.10.0](https://github.com/esl/MongooseIM/releases/tag/6.10.0) of their enterprise instant messaging solution. You can read all the details in the [changelog](https://github.com/esl/MongooseIM/blob/master/CHANGELOG.md).
 - [Security Advisory: eMudhra Intermediate CA Compromise and ejabberd](https://www.process-one.net/blog/security-advisory-emudhra-intermediate-ca-compromise-and-ejabberd/)
 
-Find more [XMPP Servers]https://xmpp.org/software/?category=servers).
+Find more [XMPP Servers](/software/?category=servers).
 
 ### Libraries & Tools
 
@@ -84,20 +84,24 @@ Find more [XMPP Servers]https://xmpp.org/software/?category=servers).
 - [Smack](https://www.igniterealtime.org/projects/smack/), a modular and portable XMPP client library for Android and Java has been published in [version 4.5.0](https://discourse.igniterealtime.org/t/smack-4-5-0-release/96599).
 - [tackygram](https://dev.another.im/another-im/tackygram) is an experimental Telegram gateway built using libtacky and gotd with A/V calls support and secret chats (supported only in clients built on libtacky)
 
-Find more [XMPP Libraries & Tools](https://xmpp.org/software/?category=libraries).
+Find more [XMPP Libraries & Tools](/software/?category=libraries).
+
+---
 
 ## XSF Announcements
 
 #### FOSDEM 2027 Decentralised Messaging devroom
 The XMPP Standards Foundation (XSF), together with our friends from the Matrix and Delta Chat communities, is organising a [Decentralised Messaging devroom at FOSDEM 2027](https://xmpp.org/2026/10/fosdem-2027-decentralised-messaging-devroom/), and we are looking for speakers. [Submission](https://fosdem.org/submit) deadline for talks is Friday, November 20, 2026!
 
-#### XSF Board and Council Elections 2026
+#### Board and Council Elections 2026
 
 The [XMPP Standards Foundation](/about/xmpp-standards-foundation/) is calling for individuals to compose the [Board of Directors](/about/xmpp-standards-foundation/#board) and members to serve on the [XMPP Council](/about/xmpp-standards-foundation/#council) for the 2026/2027 period. If you are interested in running for the Board of Directors or the XMPP Council, please add a [wiki page](https://wiki.xmpp.org/web/Main_Page) about your candidacy to one or both of the aforementioned sections [before November 8, 2026, 00:00 UTC](https://wiki.xmpp.org/web/Board_and_Council_Elections_2026). Get involved in the XMPP Standards Foundation organization decisions and with the specifications we publish. Note: XMPP Council members must be [elected members](/about/xsf/members/) of the XSF; however, there is no such restriction for the Board of Directors.
 
-#### XSF Membership
+#### Membership
 
 Being an elected member of the XMPP Standards Foundation signals a commitment to open standards and professional engagement in / with the XMPP community. Here, your membership helps position the XSF as a healthy organization, which in itself is valuable. It also grants voting rights on technical and administrative matters within the XSF. The application is a light-weight and free of cost process and you can use your membership to get more involved more easily, too. If you are interested in joining the XMPP Standards Foundation as a member, please apply to our **4th quarterly** call for members admission [before November 29, 2026, 00:00 UTC](https://wiki.xmpp.org/web/Membership_Applications_Q4_2026).
+
+---
 
 ## Extensions and specifications
 
