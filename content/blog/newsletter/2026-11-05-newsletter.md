@@ -202,13 +202,15 @@ Visit our [XMPP job board](https://xmpp.work/).
 ### Newsletter Contributors & Translations
 
 This is a community effort, and we would like to thank translators for their contributions.
-Volunteers and more languages are welcome! Translations of the XMPP Newsletter will be released here (with some delay):
+Volunteers and more languages are welcome!
+Translations of the XMPP Newsletter will be released here (with some delay).
+Consider to donate to the individuals that spend their time creating this edition:
 
 - Contributors:
-  - To [this issue](/categories/newsletter/): *Adrien 'neox' Bourmault, cal0pteryx, emus, Gonzalo Raúl Nemmi, Ludovic Bocquet, XSF iTeam*
+  - To [this issue](/categories/newsletter/): *Adrien 'neox' Bourmault, [cal0pteryx](https://liberapay.com/cal0pteryx/), [emus](https://liberapay.com/Echolon/), Gonzalo Raúl Nemmi, Ludovic Bocquet, [XSF Infrastructure Team](https://xmpp.org/about/xsf/infrastructure-team/)*
 
 - Translations:
-  - [French](https://linuxfr.org/tags/xmpp/public): *Adrien Bourmault (neox), alkino, anubis, Arkem, Benoît Sibaud, mathieui, nyco, Pierre Jarillon, Ppjet6, seveso, Ysabeau*
+  - [French](https://linuxfr.org/tags/xmpp/public): *Adrien 'neox' Bourmault, seveso, anubis, BAud, impromptux, Benoit Sibaud, Ysabeau and Pierre Jarillon.
   
 ## Help us to build the newsletter
 
