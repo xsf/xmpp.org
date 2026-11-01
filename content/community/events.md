@@ -17,7 +17,7 @@ Events come and go at a speed that is sometimes hard to keep track of. Do you kn
 
 ## Regular Meetups
 
-If you are running regular XMPP related event, please list those in this section.
+If you are running a recurring XMPP related meetup, please list it in this section.
 
 ## XMPP Summits
 
