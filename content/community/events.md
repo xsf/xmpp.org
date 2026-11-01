@@ -6,7 +6,8 @@ aliases:
 ---
 
 This page offers a collection of events that relate to XMPP as well as cover its presence, for example at a conference.
-If you are an organiser of an event, please consider to write a blogpost, too.
+If you are an organizer of an event, please consider to write a blogpost, too.
+Find your public media channels at the end of the page to stay informed, too.
 
 ### Upcoming Events
 
