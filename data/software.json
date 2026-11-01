@@ -1201,6 +1201,15 @@
     },
     {
         "categories": [
+            "client"
+        ],
+        "doap": "https://raw.githubusercontent.com/precisioncrab/thunderbird-omemo/main/thunderbird-omemo.doap",
+        "name": "OMEMO for Thunderbird",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": "https://raw.githubusercontent.com/PapaTutuWawa/omemo_dart/master/omemo_dart.doap",
