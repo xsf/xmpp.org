@@ -5,12 +5,8 @@ aliases:
     - "/community/events.html"
 ---
 
-## Regular Meetups
-
-* [Berlin](https://xmpp-meetup.in-berlin.de/)
-* [Dresden](https://wiki.xmpp.org/web/Meetups/Dresden)
-* [XMPP Italian happy hour](https://mobilizon.it/events/207032cc-b7bf-48c2-9394-f5cce684608f)
-* [XMPP Office Hours](https://wiki.xmpp.org/web/XMPP_Office_Hours) are offered in a weekly manner and offer everyone to talk, present and discuss their XMPP topic, project or development. Previous talks can be found in our [YouTube channel](https://www.youtube.com/channel/UCf3Kq2ElJDFQhYDdjn18RuA).
+This page offers a collection of events that relate to XMPP as well as cover its presence, for example at a conference.
+If you are an organiser of an event, please consider to write a blogpost, too.
 
 ### Upcoming Events
 
@@ -18,13 +14,17 @@ Events come and go at a speed that is sometimes hard to keep track of. Do you kn
 
 {{< events type="upcoming" >}}
 
+## Regular Meetups
+
+If you are running regular XMPP related event, please list those in this section.
+
 ## XMPP Summits
 
 The XSF organizes periodic in-person gatherings in order to coordinate high-bandwidth conversations, interop testing, brainstorming and planning, and to conduct other XSF business face-to-face. Attending a summit for the first time or considering to do so? This may be helpful: [XMPP summits for dummies](https://wiki.xmpp.org/web/XMPP_summits_for_dummies). You can get a list of past Summits [on the wiki](https://wiki.xmpp.org/web/Category:Events).
 
 ## XMPP Standards Foundation Meetings
 
-Please reach out to the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) to attend their public meetings.
+Please reach out to the [XMPP Standards Foundation](https://xmpp.org/about/xmpp-standards-foundation/) to attend their public meetings, which are usually the public Board and Council meetings. You can follow these in the public [XSF chats](https://xmpp.org/community/chat/).
 
 ### Past Events
 
