@@ -7,7 +7,7 @@ summary: "Cancellation of the Online XMPP Meetup/Conference for Operators 2026.1
 ---
 
 Due to a family health emergency, the OpMeet that has been moved to the 31st October needs to be cancelled.
-OpMeet will hopefully return hopefully in early 2027.
+OpMeet will hopefully return in early 2027.
 
 Apologies to anyone who was planning on attending, and for those who put their ideas forward, this was unavoidable.
 
