@@ -5,9 +5,9 @@ aliases:
     - "/community/events.html"
 ---
 
-This page offers a collection of events that relate to XMPP as well as cover its presence, for example at a conference.
-If you are an organizer of an event, please consider to write a blogpost, too.
-Find your public media channels at the end of the page to stay informed, too.
+This page lists events that feature XMPP, for example at a conference.
+If you are organizing an event, please consider to write a blogpost about it.
+To stay up to date or to make people aware of your plans, you can find public channels at the end of the page.
 
 ### Upcoming Events
 
