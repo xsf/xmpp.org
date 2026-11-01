@@ -2,7 +2,7 @@
 title: The XMPP Newsletter October 2026
 date: 2026-11-05
 categories: ['Newsletter']
-summary: ""
+summary: "Call for Papers for FOSDEM 2027 devroom as well as upcoming XMPP Sprint in London! NLnet supports XMPP software again, many client and gateway updates. Consider to apply for XSF Board, Council as well as general XSF membership."
 ---
 
 {{< figure src="/images/newsletter/xmpp_newsletter_banner.jpg" caption="XMPP Newsletter Banner" >}}
@@ -53,7 +53,7 @@ See also the [XMPP Events page](/community/events/).
 - [Fluux Messenger](https://www.process-one.net/fluux-messenger/), has released new versions of its modern, cross-platform XMPP client for communities and organizations with smoother history, clearer unread counts, and better sharing ([0.18.0](https://github.com/processone/fluux-messenger/releases/tag/v0.18.0) and [0.18.1](https://github.com/processone/fluux-messenger/releases/tag/v0.18.1), [Full changelog](https://github.com/processone/fluux-messenger/blob/main/CHANGELOG.md)).
 - [Monal](https://monal-im.org/) has released versions [6.4.23](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1098) and [6.4.24](https://github.com/monal-im/Monal/releases/tag/Build_iOS_1101) for iOS and macOS. This version increased sync speed considerably, doesn't show the login view anymore if all configured accounts are disabled and adds other improvements.
 - [Monocles](https://monocles.eu/more) has released versions [2.3.1](https://codeberg.org/monocles/monocles_chat/releases/tag/CodebergRelease-v2.3.1) of its chat client for Android. This versions introduces an improved PQ OMEMO2 rollout, UI redesign of floating bars, separate contacts and groups, updated MiniDNS and add DoT option, allow importing Conversations and Quicksy backups and many fixes and hardenings! This update introduces a needed wire break of the PQ OMEMO2 encryption for further hardening. You may need to reset the OMEMO identities when using PQ OMEMO2. Note: due to some delays with the [Android Play Store](https://play.google.com/store/games) updates, this releases may only be available through [F-droid](https://f-droid.org/en/packages/de.monocles.chat/) at the time of reading.
-- [Profanity](https://profanity-im.github.io/) has released version [0.19.0](https://github.com/profanity-im/profanity/releases/tag/0.19.0) of its console based XMPP client. This release brings a list of features, bug fixes, refactorings, and other improvements that's way longer than what we could mention in here. Please make sure to read the [changelog](https://github.com/profanity-im/profanity/blob/master/CHANGELOG) for all the details. Also worth checking out: [Fresh Look For The Website](https://profanity-im.github.io/blog/post/fresh-look-for-the-website.html)!
+- [Profanity](https://profanity-im.github.io/) has released version [0.19.0](https://github.com/profanity-im/profanity/releases/tag/0.19.0) of its console based XMPP client. This release brings a list of features, bug fixes, refactorings, and other improvements that is way longer than what it could mention in here. Please make sure to read the [changelog](https://github.com/profanity-im/profanity/blob/master/CHANGELOG) for all the details. Also worth checking out: [Fresh Look For The Website](https://profanity-im.github.io/blog/post/fresh-look-for-the-website.html)!
 - [Psi+ 1.5.2202 through 1.6.1.44 installer](https://sourceforge.net/projects/psiplus/files/Windows/Personal-Builds/KukuRuzo/) have been released.
 
 Find more [XMPP Clients](/software/?category=clients).
