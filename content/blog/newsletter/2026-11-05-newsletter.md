@@ -39,7 +39,6 @@ See also the [XMPP Events page](/community/events/).
 - [Nspawn - Build A Tor-only XMPP Server In Containers](https://silentarchitect.org/articles/2026/10/tor-only-xmpp-in-containers.html), by [DeadSwitch](https://silentarchitect.org/static/pages/about.html) for [The Silent Architect's Whispers](https://silentarchitect.org/index.html).
 - [Una presentazione su XMPP al Linux Day 2026](https://www.cuche.cc/una-presentazione-su-xmpp-al-linux-day-2026.html) from [cuche.cc](https://www.cuche.cc/). [IT]
 - On [Channel Binding](https://blog.prosody.im/channel-binding/), by The Prosody Team from [Prosodical Toughts](https://blog.prosody.im/).
-2026-11-05/profanity-update.png‎
 
 - [Review blog post](https://xmpp.org/2026/10/xmpp-stand/talk-at-omniopencon-2026-review/) on the XMPP Stand/Talk at OmniOpenCon 2026 by Polarian.
 - [XMPP Providers Support in Converse.js & More Automation!](https://providers.xmpp.net/blog/2026-10-28-xmpp-providers-support-in-converse-js-more-automation/) Since earlier this year [Converse.js](https://conversejs.org/) suggests an XMPP provider and allows to select one during account registration. XMPP Providers also accelerated its inclusion process.
