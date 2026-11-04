@@ -19,9 +19,9 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-  "pre-commit==4.6.2",
-  "ruff==0.16.10",
-  "ty==0.0.85",
+  "pre-commit==4.7.0",
+  "ruff==0.17.3",
+  "ty==0.0.97",
 ]
 
 [tool.ruff]
@@ -34,6 +34,7 @@ ignore = [
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `xx`
   "C901",     # `xx` is too complex
   "COM812",   # missing-trailing-comma
+  "CPY",      # missing-copyright
   "D",        # docstyle
   "EXE002",   # no shebang
   "FBT001",   # Boolean-typed positional argument in function definition
