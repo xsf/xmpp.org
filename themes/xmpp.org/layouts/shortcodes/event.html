@@ -1,0 +1,37 @@
+{{- $type := .Get "type" -}}
+{{- $location := .Get "location" -}}
+{{- $title := .Get "title" -}}
+{{- $description := .Get "description" -}}
+{{- $start_date := .Get "start_date" | time -}}
+{{- $end_date := .Get "end_date" | time -}}
+{{- $url := .Get "url" -}}
+<div class="card text-bg-tertiary mb-3">
+    <h5 class="card-header">
+        {{- $type -}}
+    </h5>
+    <div class="card-body">
+        <div class="mb-1">
+            <i class="fa-solid fa-location-dot text-body-tertiary"></i>&nbsp;
+            {{- $location -}}
+        </div>
+        <a href="{{- $url -}}">
+            {{- if $title -}}
+                {{- $title -}}&nbsp;-&nbsp;
+            {{- end -}}
+            {{- if $start_date -}}
+                {{- if eq (dateFormat "January 2" $start_date) (dateFormat "January 2" $end_date) -}}
+                    {{- dateFormat "January 2" $start_date -}}
+                {{- else if eq (dateFormat "January" $start_date) (dateFormat "January" $end_date) -}}
+                    {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "2, 2006" $end_date -}}
+                {{- else -}}
+                    {{- dateFormat "January 2" $start_date -}}-{{- dateFormat "January 2, 2006" $end_date -}}
+                {{- end -}}
+            {{- else -}}
+                {{- dateFormat "January 2, 2006" $start_date -}}
+            {{- end -}}
+        </a>
+        {{- if $description -}}
+            &nbsp;({{- $description -}})
+        {{- end -}}
+    </div>
+</div>
