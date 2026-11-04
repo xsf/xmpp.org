@@ -41,7 +41,7 @@ See also the [XMPP Events page](/community/events/).
 - On [Channel Binding](https://blog.prosody.im/channel-binding/), by The Prosody Team from [Prosodical Toughts](https://blog.prosody.im/).
 
 - [Review blog post](https://xmpp.org/2026/10/xmpp-stand/talk-at-omniopencon-2026-review/) on the XMPP Stand/Talk at OmniOpenCon 2026 by Polarian.
-- [XMPP Providers Support in Converse.js & More Automation!](https://providers.xmpp.net/blog/2026-10-28-xmpp-providers-support-in-converse-js-more-automation/) Since earlier this year [Converse.js](https://conversejs.org/) suggests an XMPP provider and allows to select one during account registration. XMPP Providers also accelerated its inclusion process.
+- [XMPP Providers Support in Converse.js & More Automation!](https://providers.xmpp.net/blog/2026-10-28-xmpp-providers-support-in-converse-js-more-automation/) Since earlier this year [Converse.js](https://conversejs.org/) suggests an XMPP provider and allows to select one during account registration. XMPP Providers also accelerated its XMPP provider process to be listed.
 
 {{< figure src="/images/newsletter/2026-11-05/xmpp-providers-converse-integration.png‎" caption="Converse.js suggests an XMPP provider and allows to select one during account registration based on the data from XMPP Providers." >}}
 
