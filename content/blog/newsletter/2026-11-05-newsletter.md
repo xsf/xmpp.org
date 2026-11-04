@@ -154,7 +154,7 @@ If an experimental XEP is not updated for more than twelve months, it will be mo
 - Version 0.12.2 of [XEP-0292](/extensions/xep-0292.html) (vCard4 Over XMPP)
   -  Fix automated entity example for removal of raw-IQ mode (ka)
 - Version 0.3.1 of [XEP-0425](/extensions/xep-0425.html) (Moderated Message Retraction)
-  - Clarify that the tombstone of a retracted XEP-0308 correction keepsits <replace/> element (jcb)
+  - Clarify that the tombstone of a retracted XEP-0308 correction keeps its `<replace/>` element (jcb)
 - Version 0.1.4 of [XEP-0491](/extensions/xep-0491.html) (WebXDC)
   - Support realtime channels (spw)
 
