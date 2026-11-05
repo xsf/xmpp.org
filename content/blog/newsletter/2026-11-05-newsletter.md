@@ -20,8 +20,9 @@ Read more [at the bottom](#help-us-to-build-the-newsletter).
 
 ## Events
 
+{{< event type="Sprint" location="London (at The Mitre in Greenwich)" title="XMPP Sprint London" start_date="2026-11-06" end_date="2026-11-08" url="/2026/09/xmpp-sprint-london/" >}}
+
 - [See below the Call for Papers](#FOSDEM-2027-Decentralised-Messaging-devroom) of the Devroom at FOSDEM 2027!
-- [XMPP Sprint London](https://xmpp.org/2026/09/xmpp-sprint-london/): There will be an XMPP Sprint in London from the 6th to the 8th of November at The Mitre in Greenwich.
 - The [di.day](https://di.day/en) takes place every [first Sunday of the month](https://fosstodon.org/@xmpp/116867255827209479) where the XMPP community also [promotes their solutions](https://di-day.xmpp.link/)! di.day is a mainly German initiative to help people switch to open-source and privacy-friendly solutions.
 
 See also the [XMPP Events page](/community/events/).
