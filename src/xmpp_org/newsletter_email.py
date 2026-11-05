@@ -65,7 +65,7 @@ def process(input_url: str) -> None:
     )
 
 
-if __name__ == "__main__":
+def convert_newsletter_to_email() -> None:
     print(50 * "=")
     print(
         "This tool processes newsletter posts for emails.\n"

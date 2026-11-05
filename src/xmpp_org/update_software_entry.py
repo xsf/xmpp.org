@@ -4,7 +4,6 @@
 
 from typing import Any
 
-import argparse
 import copy
 import difflib
 import json
@@ -19,73 +18,29 @@ def json_as_lines(data: Any) -> list[str]:
     ]
 
 
-def main() -> None:
+def update_software_entry(  # noqa: PLR0913, PLR0917
+    name: str,
+    new_name: str | None = None,
+    new_url: str | None = None,
+    new_doap: str | None = None,
+    new_platforms: str | None = None,
+    ask: bool = True,
+) -> None:
     """Main logic of update_entry tool"""
-    parser = argparse.ArgumentParser(
-        description="Modify a software entry in the software list.",
-    )
-    parser.add_argument(
-        "name",
-        nargs="?",
-        default=None,
-        metavar="NAME",
-        help="Current name of the project",
-    )
-
-    parser.add_argument(
-        "--rename",
-        dest="new_name",
-        metavar="NAME",
-        default=None,
-        help="Rename the project",
-    )
-
-    parser.add_argument(
-        "--set-url",
-        dest="new_url",
-        metavar="URL",
-        default=None,
-        help="Change the URL of the project",
-    )
-
-    parser.add_argument(
-        "--set-doap",
-        dest="new_doap",
-        metavar="URL",
-        default=None,
-        help="Change the URL of the project DOAP file",
-    )
-
-    parser.add_argument(
-        "--set-platforms",
-        dest="new_platforms",
-        metavar="PLATFORM",
-        default=None,
-        nargs="+",
-        help="Change the contents of the last column",
-    )
-
-    parser.add_argument(
-        "--no-ask",
-        dest="ask",
-        default=True,
-        action="store_false",
-        help="Do not ask for confirmation before applying changes. ",
-    )
-
-    args = parser.parse_args()
-
-    with Path("../data/software.json").open(encoding="utf-8") as software_file:
+    base_path = Path.cwd()
+    with Path(base_path / "data" / "software.json").open(
+        encoding="utf-8"
+    ) as software_file:
         filename = software_file.name
         data = json.load(software_file)
 
     name_map = {item["name"]: item for item in data}
 
     try:
-        item = name_map[args.name]
+        item = name_map[name]
     except KeyError:
-        if args.name is not None:
-            print(f"Error: no such project: {args.name!r}", file=sys.stderr)
+        if name is not None:
+            print(f"Error: no such project: {name!r}", file=sys.stderr)
         print("Hint: the following projects exist:")
         print(
             "    ",
@@ -98,14 +53,14 @@ def main() -> None:
 
     orig = copy.deepcopy(item)
 
-    if args.new_name:
+    if new_name:
         try:
-            existing = name_map[args.new_name]
+            existing = name_map[new_name]
         except KeyError:
             pass
         else:
             print(
-                f"Error: new name {args.new_name!r} already in use by a project",
+                f"Error: new name {new_name!r} already in use by a project",
                 file=sys.stderr,
             )
             print("Hint: the existing project looks like this:", file=sys.stderr)
@@ -113,20 +68,20 @@ def main() -> None:
             print(file=sys.stderr)
             sys.exit(2)
 
-        item["name"] = args.new_name
+        item["name"] = new_name
 
-    if args.new_url is not None:
-        item["url"] = args.new_url or None
+    if new_url is not None:
+        item["url"] = new_url or None
 
-    if args.new_doap is not None:
-        item["doap"] = args.new_doap or None
+    if new_doap is not None:
+        item["doap"] = new_doap or None
 
-    if args.new_platforms is not None:
-        item["platforms"] = list({platform.strip() for platform in args.new_platforms})
+    if new_platforms is not None:
+        item["platforms"] = list({platform.strip() for platform in new_platforms})
 
     item["platforms"].sort(key=lambda x: x.casefold())
 
-    if args.ask:
+    if ask:
         old_entry = json_as_lines(orig)
         new_entry = json_as_lines(item)
         print("difference between old and new:")
@@ -158,7 +113,3 @@ def main() -> None:
     with Path(filename).open("w", encoding="utf-8") as software_file:
         json.dump(data, software_file, indent=4, sort_keys=True)
         software_file.write("\n")
-
-
-if __name__ == "__main__":
-    main()

@@ -1,5 +1,10 @@
+[build-system]
+requires = [
+  "setuptools >= 65.0.0",
+]
+
 [project]
-name = "xmpp-org-website"
+name = "xmpp-org"
 version = "1.0.0"
 requires-python = ">= 3.14"
 
@@ -15,14 +20,18 @@ dependencies = [
   "scour",
 ]
 
-[project.optional-dependencies]
-
 [dependency-groups]
 dev = [
   "pre-commit==4.7.0",
   "ruff==0.17.3",
   "ty==0.0.97",
 ]
+
+[project.scripts]
+xmpp_org = "xmpp_org.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.ruff]
 target-version = "py314"

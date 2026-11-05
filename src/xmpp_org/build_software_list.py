@@ -24,8 +24,8 @@ from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
 
-from util import download_file
-from util import initialize_directory
+from xmpp_org.util import download_file
+from xmpp_org.util import initialize_directory
 
 SOFTWARE_PATH = Path("content/software")
 DATA_PATH = Path("data")
@@ -832,7 +832,7 @@ def prepare_doap_files() -> None:
                 doap_file.truncate(0)
 
 
-if __name__ == "__main__":
+def build_software_list() -> None:
     initialize_directory(DOWNLOAD_PATH)
     initialize_directory(LOGOS_PATH)
     Path(DOWNLOAD_PATH / "doap_files").mkdir(parents=True)

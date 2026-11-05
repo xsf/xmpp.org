@@ -1,12 +1,6 @@
-PY=python
-UV=uv
-HUGO=hugo
-
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/public
-
-UV_SYSTEM=""
 
 BASEURL=https://xmpp.org/
 BUILDFUTURE=""
@@ -24,22 +18,21 @@ clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
 serve:
-	$(UV) pip install --upgrade -r pyproject.toml
-	$(UV) pip install --upgrade -r pyproject.toml --group dev
+	uv sync
 	pre-commit install
-	$(PY) src/prepare_xep_list.py
-	$(PY) src/prepare_rfc_list.py
-	$(PY) src/prepare_software_list.py
-	$(HUGO) version
-	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
+	uv run xmpp_org build_xep_list
+	uv run xmpp_org build_rfc_list
+	uv run xmpp_org build_software_list
+	hugo version
+	hugo server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 publish:
-	$(UV) pip install --upgrade -r pyproject.toml
-	$(PY) src/prepare_xep_list.py
-	$(PY) src/prepare_rfc_list.py
-	$(PY) src/lint_software_list.py software.json
-	$(PY) src/prepare_software_list.py
-	$(HUGO) version
-	$(HUGO) --baseURL=$(BASEURL) $(BUILDFUTURE)
+	uv sync
+	uv run xmpp_org build_xep_list
+	uv run xmpp_org build_rfc_list
+	uv run xmpp_org lint_software_list
+	uv run xmpp_org build_software_list
+	hugo version
+	hugo --baseURL=$(BASEURL) $(BUILDFUTURE)
 
 .PHONY: help clean serve publish

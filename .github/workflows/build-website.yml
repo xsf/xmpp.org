@@ -32,23 +32,23 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: true
 
       - name: Install Python packages
-        run: uv pip install --system -r pyproject.toml
+        run: uv sync --locked
 
       - name: Software list linting
-        run: |
-          python src/lint_software_list.py software.json
-          python src/lint_software_list.py software_archive.json
+        run: uv run xmpp_org lint_software_list
 
-      - name: Prepare XEP list
-        run: python src/prepare_xep_list.py
+      - name: Build XEP list
+        run: uv run xmpp_org build_xep_list
 
-      - name: Prepare RFC list
-        run: python src/prepare_rfc_list.py
+      - name: Build RFC list
+        run: uv run xmpp_org build_rfc_list
 
-      - name: Prepare software list
-        run: python src/prepare_software_list.py
+      - name: Build software list
+        run: uv run xmpp_org build_software_list
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
