@@ -159,7 +159,7 @@ Esse é um esforço comunitário e eu gostaria de agradecer os tradutores por su
 
 ## Ajude-nos a Construir o Boletim XMPP
 
-Esse Boletim XMPP é produzido de forma colaborativa pela comunidade XMPP. O boletim de cada mês é rascunhado neste [simples pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). Ao final de cada mês, o conteúdo do pad é adicionado ao [repositório XSF GitHub](https://github.com/xsf/xmpp.org/milestone/3). Ficamos sempre felizes em receber colaboradores! Não hesite em participar da discussão em nosso [chat Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) e assim ajude-nos a sustentar esse esforço coletivo. Você tem um projeto e quer compartilhar as novidades? Por favor considere compartilhar suas notícias ou eventos aqui e alcance um grande público. 
+Esse Boletim XMPP é produzido de forma colaborativa pela comunidade XMPP. O boletim de cada mês é rascunhado neste [simples pad](https://pad.nixnet.services/ohny_zvlt8sofycqic2ung). Ao final de cada mês, o conteúdo do pad é adicionado ao [repositório XSF GitHub](https://github.com/xsf/xmpp.org/milestone/3). Ficamos sempre felizes em receber colaboradores! Não hesite em participar da discussão em nosso [chat Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) e assim ajude-nos a sustentar esse esforço coletivo. Você tem um projeto e quer compartilhar as novidades? Por favor considere compartilhar suas notícias ou eventos aqui e alcance um grande público. 
 
 Tarefas que executamos com frequência:
 

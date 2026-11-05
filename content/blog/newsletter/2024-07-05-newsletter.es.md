@@ -159,7 +159,7 @@ Este es un esfuerzo comunitario, y nos gustaría agradecer a nuestros traductore
 
 ## Contribuya en la creación del XMPP Newsletter
 
-El "XMPP Newsletter" es el resultado del esfuerzo colaborativo de la comunidad XMPP. El Newsletter de cada mes se construye en este [simple pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). Al fin de cada mes, el contenido del pad se fusiona en el [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3).
+El "XMPP Newsletter" es el resultado del esfuerzo colaborativo de la comunidad XMPP. El Newsletter de cada mes se construye en este [simple pad](https://pad.nixnet.services/ohny_zvlt8sofycqic2ung). Al fin de cada mes, el contenido del pad se fusiona en el [XSF Github repository](https://github.com/xsf/xmpp.org/milestone/3).
 
 Siempre estamos felices de darle la bienvenida a nuevos contribuidores. No dude en unirse a la discusión en nuestro [Comm-Team group chat (MUC)](xmpp:commteam@muc.xmpp.org?join) y de esa forma, ayudarnos a sostener este esfuerzo comunitario.
 

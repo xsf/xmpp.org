@@ -121,7 +121,7 @@ Generale: Adrien Bourmault (neox), Alexander “PapaTutuWawa”, Arne, Badri Sun
 
 ## Aiutaci a costruire la newsletter
 
-Collabora nel [pad collaborativo](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung)  
+Collabora nel [pad collaborativo](https://pad.nixnet.services/ohny_zvlt8sofycqic2ung)  
 Contribuisci: raccolta notizie, riassunti, aggiornamenti XEP, revisione, immagini, traduzioni, social
 
 ## Disiscrizione
