@@ -1,7 +1,5 @@
 """Tool for maintaining software list entries"""
 
-from typing import Any
-
 import copy
 import difflib
 import json
@@ -9,7 +7,7 @@ import sys
 from pathlib import Path
 
 
-def json_as_lines(data: Any) -> list[str]:
+def json_as_lines(data: dict[str, str | list[str] | None]) -> list[str]:
     """Returns a json file as newline terminated strings"""
     return [
         line + "\n" for line in json.dumps(data, indent=4, sort_keys=True).split("\n")
