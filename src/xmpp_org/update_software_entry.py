@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """Tool for maintaining software list entries"""
 
 from typing import Any

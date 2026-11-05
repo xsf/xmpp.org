@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Lint software.json"""
 
 from typing import Any

@@ -45,7 +45,6 @@ ignore = [
   "COM812",   # missing-trailing-comma
   "CPY",      # missing-copyright
   "D",        # docstyle
-  "EXE002",   # no shebang
   "FBT001",   # Boolean-typed positional argument in function definition
   "FBT002",   # Boolean default positional argument in function definition
   "INP001",   # File `xx` is part of an implicit namespace package. Add an `__init__.py`.

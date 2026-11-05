@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """In order to have newsletter e-mails formatted properly,
 we need to add inline style attributes to some elements.
 This tool takes a post URL for input, processes its HTML,
