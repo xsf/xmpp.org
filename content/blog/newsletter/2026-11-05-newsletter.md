@@ -1,6 +1,6 @@
 ---
 title: The XMPP Newsletter October 2026
-date: 2026-11-05
+date: 2026-11-05T15:00:00
 categories: ['Newsletter']
 summary: "Call for Papers for FOSDEM 2027 devroom as well as upcoming XMPP Sprint in London! NLnet supports XMPP software again, many client and gateway updates. Consider to apply for XSF Board, Council as well as general XSF membership."
 ---
