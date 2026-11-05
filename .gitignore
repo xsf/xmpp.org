@@ -13,7 +13,6 @@
 .hugo_build.lock
 .project
 .ruff_cache
-uv.lock
 .vagrant/
 .venv/
 .vscode/
