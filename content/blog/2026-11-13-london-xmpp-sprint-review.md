@@ -1,6 +1,6 @@
 ---
 title: London XMPP Sprint Review
-date: 2026-11-13T120:00:00
+date: 2026-11-13T20:00:00
 author: Polarian
 categories: ['Events', 'Sprints', 'Community']
 summary: "London XMPP Sprint in 2026 Review"
