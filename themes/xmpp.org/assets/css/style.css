@@ -450,6 +450,13 @@ button[name="show-xep-implementations"] {
     max-height: 300px;
     overflow-y: auto;
 }
+.comparison-dropdown-search {
+    position: sticky;
+    top: -0.5rem;
+    z-index: 1;
+    padding-top: 0.5rem;
+    background-color: var(--bs-dropdown-bg);
+}
 #comparison-table tr td:not(:first-child) {
     text-align: center;
 }
