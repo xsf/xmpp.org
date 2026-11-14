@@ -33,6 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const button of document.getElementsByName("remove-from-comparison")) {
       button.addEventListener("click", remove_from_comparison);
     }
+    const comparison_search = document.getElementById("comparison-search");
+    comparison_search.addEventListener("input", filter_comparison_apps);
+    // Focus the search field when the dropdown opens and start with a full list
+    comparison_search.closest(".dropdown").addEventListener("shown.bs.dropdown", () => {
+      comparison_search.focus();
+    });
+    comparison_search.closest(".dropdown").addEventListener("hidden.bs.dropdown", () => {
+      comparison_search.value = "";
+      filter_comparison_apps();
+    });
   }
 
   if (window.location.pathname == "/extensions/") {
@@ -541,6 +551,19 @@ function add_to_comparison(event) {
   document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
     element => element.classList.remove("d-none")
   )
+}
+
+function filter_comparison_apps() {
+  const query = document.getElementById("comparison-search").value.trim().toLowerCase();
+  let matches = 0;
+  for (const link of document.querySelectorAll("#comparison-dropdown a.dropdown-item")) {
+    const visible = link.textContent.toLowerCase().includes(query);
+    link.parentElement.classList.toggle("d-none", !visible);
+    if (visible) {
+      matches++;
+    }
+  }
+  document.getElementById("comparison-no-results").classList.toggle("d-none", matches > 0);
 }
 
 function remove_from_comparison(event) {

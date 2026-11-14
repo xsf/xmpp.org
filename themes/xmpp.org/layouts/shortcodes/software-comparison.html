@@ -9,10 +9,14 @@
         <i class="fa-solid fa-plus"></i>&nbsp;Add App
     </button>
     <ul class="dropdown-menu" id="comparison-dropdown">
+        <li class="comparison-dropdown-search px-2 pb-2">
+            <input class="form-control form-control-sm" id="comparison-search" type="search" placeholder="Search apps…" aria-label="Search apps" autocomplete="off">
+        </li>
         {{ range sort $packages ".name_lower" }}
             {{ $props := .data }}
             <li><a class="dropdown-item" role="button">{{- .name -}}</a></li>
         {{- end -}}
+        <li class="d-none" id="comparison-no-results"><span class="dropdown-item-text text-body-secondary">No apps found</span></li>
     </ul>
 </div>
 <table class="table table-hover table-bordered" id="comparison-table">
