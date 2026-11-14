@@ -1958,6 +1958,15 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": "https://raw.githubusercontent.com/brokenstring314/xmpp-bot-gateway/main/xmpp-bot-gateway.doap",
+        "name": "xmpp-bot-gateway",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
