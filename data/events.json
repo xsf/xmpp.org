@@ -7,7 +7,13 @@
         "date_start": "2027-01-30",
         "date_end": "2027-01-31",
         "url": "https://fosdem.org/2027/",
-        "desc": "Join the XMPP Summit 30 in Brussels!"
+        "desc": "Join the XMPP Summit 30 in Brussels!",
+        "announcement": {
+            "text": "Meet us at FOSDEM 2027 - Building AW Level 1",
+            "url": "https://fosdem.org/2027/",
+            "date_start": "2027-01-11",
+            "date_end": "2027-01-31"
+        }
     },
     {
         "type": "Summit",
@@ -16,7 +22,13 @@
         "date_start": "2027-01-28",
         "date_end": "2027-01-29",
         "url": "https://xmpp.org/2026/11/xmpp-summit-30/",
-        "desc": "Join the XMPP Summit 30 in Brussels!"
+        "desc": "Join the XMPP Summit 30 in Brussels!",
+        "announcement": {
+            "text": "XMPP Summit 30 in Brussels on 28 & 29 Jan 2028",
+            "url": "https://xmpp.org/2026/11/xmpp-summit-30/",
+            "date_start": "2026-11-15",
+            "date_end": "2027-01-10"
+        }
     },
     {
         "type": "Sprint",
