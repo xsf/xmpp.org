@@ -34,11 +34,16 @@ def download_file(url: str, path: Path) -> bool:
     with Path(DOWNLOAD_PATH / path).open("wb") as data_file:
         max_size = 1024 * 1024 * 10  # 10 MiB
         size = 0
-        for chunk in file_request.iter_content(chunk_size=8192):
-            data_file.write(chunk)
-            size += len(chunk)
-            if size > max_size:
-                file_request.close()
-                print("File size exceeds 10 MiB:", url, path)
-                return False
+        try:
+            for chunk in file_request.iter_content(chunk_size=8192):
+                data_file.write(chunk)
+                size += len(chunk)
+                if size > max_size:
+                    file_request.close()
+                    print("File size exceeds 10 MiB:", url, path)
+                    return False
+        except requests.exceptions.ConnectionError:
+            print("Error while trying to download from", url)
+            return False
+
     return True
