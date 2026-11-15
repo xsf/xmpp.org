@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
       comparison_search.value = "";
       filter_comparison_apps();
     });
+    document.getElementById("comparison-only-apps-with-xeps").addEventListener("change", filter_comparison_apps);
+    document.getElementById("comparison-only-listed-xeps").addEventListener("change", filter_comparison_xeps);
+    filter_comparison_apps();
   }
 
   if (window.location.pathname == "/extensions/") {
@@ -551,13 +554,16 @@ function add_to_comparison(event) {
   document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
     element => element.classList.remove("d-none")
   )
+  filter_comparison_xeps();
 }
 
 function filter_comparison_apps() {
   const query = document.getElementById("comparison-search").value.trim().toLowerCase();
+  const only_apps_with_xeps = document.getElementById("comparison-only-apps-with-xeps").checked;
   let matches = 0;
   for (const link of document.querySelectorAll("#comparison-dropdown a.dropdown-item")) {
-    const visible = link.textContent.toLowerCase().includes(query);
+    const visible = link.textContent.toLowerCase().includes(query)
+      && (!only_apps_with_xeps || link.parentElement.dataset.hasXeps == "true");
     link.parentElement.classList.toggle("d-none", !visible);
     if (visible) {
       matches++;
@@ -574,6 +580,21 @@ function remove_from_comparison(event) {
   document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
     element => element.classList.add("d-none")
   )
+  filter_comparison_xeps();
+}
+
+function filter_comparison_xeps() {
+  // Hide XEPs which are not listed by any of the selected apps.
+  // All XEPs are shown as long as no app is selected.
+  const only_listed_xeps = document.getElementById("comparison-only-listed-xeps").checked;
+  const selected_columns = Array.from(document.querySelectorAll("#comparison-table thead tr th:not(:first-child)"))
+    .filter(cell => !cell.classList.contains("d-none"))
+    .map(cell => cell.cellIndex);
+  const filter_active = only_listed_xeps && selected_columns.length > 0;
+  for (const row of document.querySelectorAll("#comparison-table tbody tr")) {
+    const listed = selected_columns.some(col_index => row.cells[col_index].childElementCount > 0);
+    row.classList.toggle("d-none", filter_active && !listed);
+  }
 }
 
 // Page: /software/<app>/

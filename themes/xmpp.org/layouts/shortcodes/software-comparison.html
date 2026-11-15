@@ -14,10 +14,20 @@
         </li>
         {{ range sort $packages ".name_lower" }}
             {{ $props := .data }}
-            <li><a class="dropdown-item" role="button">{{- .name -}}</a></li>
+            <li data-has-xeps="{{- if $props.xeps -}}true{{- else -}}false{{- end -}}"><a class="dropdown-item" role="button">{{- .name -}}</a></li>
         {{- end -}}
         <li class="d-none" id="comparison-no-results"><span class="dropdown-item-text text-body-secondary">No apps found</span></li>
     </ul>
+</div>
+<div class="d-flex flex-wrap justify-content-center column-gap-4 pb-3">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="comparison-only-apps-with-xeps" checked>
+        <label class="form-check-label" for="comparison-only-apps-with-xeps">Only list apps with XEP information</label>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="comparison-only-listed-xeps" checked>
+        <label class="form-check-label" for="comparison-only-listed-xeps">Only show XEPs listed by selected apps</label>
+    </div>
 </div>
 <table class="table table-hover table-bordered" id="comparison-table">
     <thead>
