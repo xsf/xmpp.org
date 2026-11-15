@@ -2112,6 +2112,15 @@
         "name": "Zerta",
         "platforms": [],
         "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": "https://git.uuxo.net/UUXO/zync/raw/branch/main/zync.doap",
+        "name": "Zync",
+        "platforms": [],
+        "url": null
     }
 ]
 
