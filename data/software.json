@@ -1966,14 +1966,8 @@
         "categories": ["client"],
         "doap": "https://github.com/dwd/Wimsy/blob/main/doap.xml",
         "name": "Wimsy",
-        "platforms": [
-            "Linux",
-            "macOS",
-            "Windows",
-            "Android",
-            "Browser"
-        ],
-        "url": "https://github.com/dwd/Wimsy"
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
