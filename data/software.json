@@ -165,6 +165,15 @@
     },
     {
         "categories": [
+            "component"
+        ],
+        "doap": "https://codeberg.org/poezio/biboumi/raw/branch/master/doap.xml",
+        "name": "Biboumi",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
@@ -570,7 +579,7 @@
         "categories": [
             "client"
         ],
-        "doap": "https://dev.gajim.org/gajim/gajim/raw/master/data/gajim.doap",
+        "doap": "https://gitlab.com/gajim/gajim/raw/master/data/gajim.doap",
         "name": "Gajim",
         "platforms": [],
         "url": null
@@ -897,6 +906,15 @@
     },
     {
         "categories": [
+            "library"
+        ],
+        "name": "jxmpp",
+        "doap": "https://raw.githubusercontent.com/igniterealtime/jxmpp/refs/heads/master/jxmpp.doap",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "client"
         ],
         "doap": null,
@@ -991,6 +1009,15 @@
         ],
         "doap": "https://git.agnos.is/projectmoon/livewire/raw/branch/master/doap.xml",
         "name": "Livewire",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": "https://raw.githubusercontent.com/lonewolf-im/lonewolf/main/lonewolf.doap",
+        "name": "Lonewolf",
         "platforms": [],
         "url": null
     },
@@ -1324,7 +1351,7 @@
         "categories": [
             "library"
         ],
-        "doap": "https://dev.gajim.org/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
+        "doap": "https://gitlab.com/gajim/python-nbxmpp/-/raw/master/python-nbxmpp.doap",
         "name": "python-nbxmpp",
         "platforms": [],
         "url": null
@@ -1366,7 +1393,7 @@
         "categories": [
             "library"
         ],
-        "doap": "https://raw.githubusercontent.com/qxmpp-project/qxmpp/master/doc/doap.xml",
+        "doap": "https://invent.kde.org/libraries/qxmpp/-/raw/master/docs/doap.xml",
         "name": "QXmpp",
         "platforms": [],
         "url": null
@@ -1404,6 +1431,15 @@
         ],
         "doap": "https://raw.githubusercontent.com/lhost/sendxmpp/master/data/sendxmpp.doap",
         "name": "sendxmpp",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "name": "sendxmpp (Scala 3)",
+        "doap": "https://raw.githubusercontent.com/Flowdalic/sendxmpp/refs/heads/master/sendxmpp.doap",
         "platforms": [],
         "url": null
     },
@@ -1830,6 +1866,13 @@
         "url": null
     },
     {
+        "categories": ["client"],
+        "doap": "https://raw.githubusercontent.com/dwd/Wimsy/main/doap.xml",
+        "name": "Wimsy",
+        "platforms": [],
+        "url": null
+    },
+    {
         "categories": [
             "server"
         ],
@@ -1865,6 +1908,15 @@
             "iOS"
         ],
         "url": "https://www.xabber.com"
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": "https://raw.githubusercontent.com/ekollof/xepher/master/DOAP.xml",
+        "name": "Xepher",
+        "platforms": [],
+        "url": null
     },
     {
         "categories": [
@@ -1923,6 +1975,15 @@
         ],
         "doap": "https://raw.githubusercontent.com/nioc/xmpp-web/master/doap.xml",
         "name": "XMPP Web",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "tool"
+        ],
+        "doap": "https://raw.githubusercontent.com/brokenstring314/xmpp-bot-gateway/main/xmpp-bot-gateway.doap",
+        "name": "xmpp-bot-gateway",
         "platforms": [],
         "url": null
     },
@@ -2073,7 +2134,26 @@
             "JavaScript"
         ],
         "url": "https://ivan.vucica.net/zxmpp"
+    },
+    {
+        "categories": [
+            "server"
+        ],
+        "doap": "https://git.uuxo.net/UUXO/zerta/raw/branch/main/zerta.doap",
+        "name": "Zerta",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
+            "client"
+        ],
+        "doap": "https://git.uuxo.net/UUXO/zync/raw/branch/main/zync.doap",
+        "name": "Zync",
+        "platforms": [],
+        "url": null
     }
 ]
+
 
 

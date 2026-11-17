@@ -187,7 +187,7 @@ Newsletter-Beiträge in diesem Monat von:
 
 ## Hilf dem Newsletter!
 
-Der XMPP-Newsletter wird gemeinsam von der XMPP-Gemeinschaft geschrieben. Die monatlich erscheinende Ausgabe wird in einem [schlichten Pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung) vorbereitet und am Ende des Monats in das [Github-Repositorium der XSF](https://github.com/xsf/xmpp.org/milestone/3) übertragen. Mach gerne mit! Komm in [unseren Chatraum (MUC)](xmpp:commteam@muc.xmpp.org?join) und hilf uns dabei, dieses Projekt fortzuführen. Hast Du ein neues Projekt, von dem Leute wissen sollten? Teile es in unserem Newsletter mit einem großen Publikum!
+Der XMPP-Newsletter wird gemeinsam von der XMPP-Gemeinschaft geschrieben. Die monatlich erscheinende Ausgabe wird in einem [schlichten Pad](https://pad.nixnet.services/ohny_zvlt8sofycqic2ung) vorbereitet und am Ende des Monats in das [Github-Repositorium der XSF](https://github.com/xsf/xmpp.org/milestone/3) übertragen. Mach gerne mit! Komm in [unseren Chatraum (MUC)](xmpp:commteam@muc.xmpp.org?join) und hilf uns dabei, dieses Projekt fortzuführen. Hast Du ein neues Projekt, von dem Leute wissen sollten? Teile es in unserem Newsletter mit einem großen Publikum!
 
 Regelmäßige Aufgaben umfassen:
 

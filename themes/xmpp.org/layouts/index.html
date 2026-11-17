@@ -1,11 +1,6 @@
 {{- define "main" -}}
-{{- if hugo.Data.announcement.enabled -}}
-<div class="alert alert-info mb-0 text-center" role="alert">
-  <a href="{{- hugo.Data.announcement.url -}}" target="blank_" class="alert-link">
-    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- hugo.Data.announcement.text -}}
-  </a>
-</div>
-{{- end -}}
+
+{{- partial "announcement.html" -}}
 <div class="header-home py-5 text-center">
     <div class="hero">
       <h1>{{- .Param "subtitle" -}}</h1>
@@ -62,7 +57,7 @@
   <div class="col-12 col-md-8 col-lg-6">
     <h3 class="text-center pb-2"><a href="/community/events/">Upcoming Events</a></h3>
     {{- $events_counter := 0 -}}
-    {{- range hugo.Data.events -}}
+    {{- range sort hugo.Data.events ".date_start" "desc" -}}
       {{- $current_date := (time.Format "2006-01-02" now) | time -}}
       {{- $start_date := .date_start | time -}}
       {{- $end_date := .date_end | time -}}

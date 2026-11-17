@@ -6,6 +6,10 @@ aliases:
 layout: single_jabber
 ---
 
+{{< info-block type="warning" >}}
+The future of the Jabber Trademark Licensing Program is under discussion. Applications are still being accepted and existing licenses are unaffected, but the program may not continue indefinitely. See the [program overview](/about/xsf/jabber-trademark) for details.
+{{< /info-block >}}
+
 Applications can be initiated by using one of the addresses listed at the [contact page](/contact). Please provide the following information:
 
 1. The name of your project or product using the JABBER mark (e.g., “ejabberd”).

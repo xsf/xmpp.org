@@ -33,6 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const button of document.getElementsByName("remove-from-comparison")) {
       button.addEventListener("click", remove_from_comparison);
     }
+    const comparison_search = document.getElementById("comparison-search");
+    comparison_search.addEventListener("input", filter_comparison_apps);
+    // Focus the search field when the dropdown opens and start with a full list
+    comparison_search.closest(".dropdown").addEventListener("shown.bs.dropdown", () => {
+      comparison_search.focus();
+    });
+    comparison_search.closest(".dropdown").addEventListener("hidden.bs.dropdown", () => {
+      comparison_search.value = "";
+      filter_comparison_apps();
+    });
+    document.getElementById("comparison-only-apps-with-xeps").addEventListener("change", filter_comparison_apps);
+    document.getElementById("comparison-only-listed-xeps").addEventListener("change", filter_comparison_xeps);
+    filter_comparison_apps();
   }
 
   if (window.location.pathname == "/extensions/") {
@@ -95,8 +108,9 @@ function filter_xeps() {
     const rows = document.querySelectorAll("[class*=XEP-]")
     for (const row of rows) {
       const xep_number = row.id.slice(3)
-      const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLowerCase();
-      const xep_shortname = row.dataset.shortname
+      const xep_name = row.querySelector('td:nth-child(2)').innerHTML.toLocaleLowerCase();
+      const xep_full_title = `xep-${xep_number}: ${xep_name}`;
+      const xep_shortname = row.dataset.shortname.toLocaleLowerCase();
       let tags = ""
       const tag_array = row.querySelector('td:nth-child(6)').querySelectorAll("span")
       if (tag_array.length > 0) {
@@ -105,7 +119,7 @@ function filter_xeps() {
         }
       }
 
-      if (xep_number.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string) || tags.includes(search_string)) {
+      if (xep_number.includes(search_string) || xep_full_title.includes(search_string) || xep_name.includes(search_string) || xep_shortname.includes(search_string) || tags.includes(search_string)) {
         row.hidden = false
       } else {
         row.hidden = true
@@ -540,6 +554,22 @@ function add_to_comparison(event) {
   document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
     element => element.classList.remove("d-none")
   )
+  filter_comparison_xeps();
+}
+
+function filter_comparison_apps() {
+  const query = document.getElementById("comparison-search").value.trim().toLowerCase();
+  const only_apps_with_xeps = document.getElementById("comparison-only-apps-with-xeps").checked;
+  let matches = 0;
+  for (const link of document.querySelectorAll("#comparison-dropdown a.dropdown-item")) {
+    const visible = link.textContent.toLowerCase().includes(query)
+      && (!only_apps_with_xeps || link.parentElement.dataset.hasXeps == "true");
+    link.parentElement.classList.toggle("d-none", !visible);
+    if (visible) {
+      matches++;
+    }
+  }
+  document.getElementById("comparison-no-results").classList.toggle("d-none", matches > 0);
 }
 
 function remove_from_comparison(event) {
@@ -550,6 +580,21 @@ function remove_from_comparison(event) {
   document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
     element => element.classList.add("d-none")
   )
+  filter_comparison_xeps();
+}
+
+function filter_comparison_xeps() {
+  // Hide XEPs which are not listed by any of the selected apps.
+  // All XEPs are shown as long as no app is selected.
+  const only_listed_xeps = document.getElementById("comparison-only-listed-xeps").checked;
+  const selected_columns = Array.from(document.querySelectorAll("#comparison-table thead tr th:not(:first-child)"))
+    .filter(cell => !cell.classList.contains("d-none"))
+    .map(cell => cell.cellIndex);
+  const filter_active = only_listed_xeps && selected_columns.length > 0;
+  for (const row of document.querySelectorAll("#comparison-table tbody tr")) {
+    const listed = selected_columns.some(col_index => row.cells[col_index].childElementCount > 0);
+    row.classList.toggle("d-none", filter_active && !listed);
+  }
 }
 
 // Page: /software/<app>/

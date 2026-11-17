@@ -106,4 +106,4 @@ You can directly modify styles in [themes/xmpp.org/assets/css/style.css](https:/
 
 ### Content processing
 
-To process underlying data to present e.g. `/extensions` or `/software`, a set of scripts located in [/src](https://github.com/xsf/xmpp.org/tree/master/src/README.md) is used.
+To process underlying data to present e.g. `/extensions` or `/software`, a set of scripts located in [/src/xmpp_org](https://github.com/xsf/xmpp.org/tree/master/src/xmpp_org/README.md) is used.

@@ -119,15 +119,11 @@ def build_xep_list() -> None:
         )
     xeps_sorted = sorted(xeps, key=lambda xep: xep["number"])
 
-    base_path = Path.resolve(Path(sys.argv[0])).parent
+    base_path = Path.cwd()
 
-    with Path(f"{base_path}/../data/xeplist.json").open(
+    with Path(f"{base_path}/data/xeplist.json").open(
         "w",
         encoding="utf-8",
     ) as json_file:
         json.dump(xeps_sorted, json_file, indent=4)
     print("XEP List prepared successfully")
-
-
-if __name__ == "__main__":
-    build_xep_list()

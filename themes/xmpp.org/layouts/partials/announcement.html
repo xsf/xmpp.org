@@ -1,0 +1,21 @@
+{{- $current_date := (time.Format "2006-01-02" now) | time -}}
+{{- $announcements := slice -}}
+{{- range $event := hugo.Data.events -}}
+  {{- if $event.announcement -}}
+    {{- $announcement_start_date := $event.announcement.date_start | time -}}
+    {{- $announcement_end_date := $event.announcement.date_end | time -}}
+    {{- if and (ge $current_date $announcement_start_date) (le $current_date $announcement_end_date) -}}
+      {{- $announcements = $announcements | append $event -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if ne ($announcements | len) 0 -}}
+<div class="alert alert-info mb-0 d-flex flex-column align-items-center justify-content-center gap-1" role="alert">
+  {{- range $event := $announcements -}}
+  <a href="{{- $event.announcement.url -}}" target="blank_" class="alert-link">
+    <i class="fa-solid fa-xl fa-bullhorn"></i>&nbsp;&nbsp;&nbsp;{{- $event.announcement.text -}}
+  </a>
+  {{- end -}}
+</div>
+{{- end -}}

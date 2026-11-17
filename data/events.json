@@ -1,12 +1,64 @@
 [
+    
     {
-        "type": "OmniOpenCon",
+        "type": "Conference",
+        "title": "FOSDEM 2027",
+        "location": "Brussels (BE)",
+        "date_start": "2027-01-30",
+        "date_end": "2027-01-31",
+        "url": "https://fosdem.org/2027/",
+        "desc": "Join the XMPP Summit 30 in Brussels!"
+    },
+    {
+        "type": "Summit",
+        "title": "XMPP Summit 30",
+        "location": "Brussels (BE)",
+        "date_start": "2027-01-28",
+        "date_end": "2027-01-29",
+        "url": "https://xmpp.org/2026/11/xmpp-summit-30/",
+        "desc": "Join the XMPP Summit 30 in Brussels!"
+    },
+    {
+        "type": "Sprint",
+        "title": "XMPP Sprint in London",
+        "location": "London (UK)",
+        "date_start": "2026-11-06",
+        "date_end": "2026-11-08",
+        "url": "https://wiki.xmpp.org/web/Sprints/2026-11_London",
+        "desc": null
+    },
+    {
+        "type": "Conference",
+        "title": "XMPP at LinuxDays",
+        "location": "Prague (CZ)",
+        "date_start": "2026-10-03",
+        "date_end": "2026-10-04",
+        "url": "https://xmpp.org/2026/08/xmpp-at-linuxdays/",
+        "desc": null,
+        "announcement": {
+            "text": "XMPP at LinuxDays in Prague (CZ) - 3 & 4 October 2026",
+            "url": "https://xmpp.org/2026/08/xmpp-at-linuxdays/",
+            "date_start": "2026-09-15",
+            "date_end": "2026-10-05"
+        }
+    },
+    {
+        "type": "Conference",
         "title": "XMPP at OmniOpenCon",
         "location": "Bucharest (RO)",
         "date_start": "2026-10-16",
         "date_end": "2026-10-17",
         "url": "https://xmpp.org/2026/08/xmpp-stand-at-omniopencon/",
         "desc": "XMPP Stand at OmniOpenCon for the first time!"
+    },
+    {
+        "type": "Online Meet-Up",
+        "title": "OpMeet 2026.10",
+        "location": "online",
+        "date_start": "2026-10-10",
+        "date_end": "2026-10-10",
+        "url": "https://wiki.xmpp.org/web/OpMeet/2026.10",
+        "desc": "First XMPP Operator online meetup/conference"
     },
     {
         "type": "Summit",
@@ -18,7 +70,7 @@
         "desc": "The first online XMPP Summit"
     },
     {
-        "type": "FrOSCon",
+        "type": "Conference",
         "title": "XMPP at FrOSCon 2026",
         "location": "Bonn (DE)",
         "date_start": "2026-08-15",
@@ -27,7 +79,7 @@
         "desc": null
     },
     {
-        "type": "FOSSY",
+        "type": "Conference",
         "title": "XMPP at FOSSY 2026",
         "location": "Vancouver (CA)",
         "date_start": "2026-08-06",
@@ -54,7 +106,7 @@
         "desc": null
     },
     {
-        "type": "FOSDEM",
+        "type": "Conference",
         "title": "XMPP at FOSDEM 2026",
         "location": "Brussels (BE)",
         "date_start": "2026-01-21",
@@ -90,7 +142,7 @@
         "desc": null
     },
     {
-        "type": "FOSSY",
+        "type": "Conference",
         "title": "XMPP at FOSSY 2024",
         "location": "Portland, OR (US)",
         "date_start": "2024-08-01",
@@ -108,7 +160,7 @@
         "desc": null
     },
     {
-        "type": "FOSDEM",
+        "type": "Conference",
         "title": "XMPP at FOSDEM 2024",
         "location": "Brussels (BE)",
         "date_start": "2024-02-03",

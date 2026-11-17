@@ -135,7 +135,7 @@ def get_rfc_data(session: Session, number: int) -> dict[str, Any]:
 def build_rfc_list() -> None:
     """Generates rfc_list.json from downloaded data"""
     print("Generating RFC list...")
-    base_path = Path.resolve(Path(sys.argv[0])).parent
+    base_path = Path.cwd()
     rfcs: list[dict[str, Any]] = []
 
     session = requests.Session()
@@ -148,14 +148,10 @@ def build_rfc_list() -> None:
 
     rfcs = sorted(rfcs, key=lambda d: d["number"])
 
-    with Path(f"{base_path}/../data/rfc_list.json").open(
+    with Path(f"{base_path}/data/rfc_list.json").open(
         "w",
         encoding="utf-8",
     ) as json_file:
         json.dump(rfcs, json_file, indent=4)
 
     print(f"RFC list prepared successfully ({len(RFC_NUMBERS)} RFCs)")
-
-
-if __name__ == "__main__":
-    build_rfc_list()

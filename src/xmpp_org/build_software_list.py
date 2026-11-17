@@ -24,8 +24,8 @@ from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
 
-from util import download_file
-from util import initialize_directory
+from xmpp_org.util import download_file
+from xmpp_org.util import initialize_directory
 
 SOFTWARE_PATH = Path("content/software")
 DATA_PATH = Path("data")
@@ -480,7 +480,7 @@ def get_compliance_data(
                     "xeps": [],
                 },
             }
-            requirements = category_data[package_category][level]
+            requirements = category_data[package_category][level]  # ty: ignore[invalid-argument-type]
 
             missing_rfcs = [
                 rfc for rfc in requirements["rfcs"] if rfc not in supported_rfcs
@@ -643,9 +643,9 @@ def prepare_package_data() -> None:
 
         category_type = "server" if "server" in package["categories"] else "client"
         supported_xeps = [
-            xep["number"]  # pyright: ignore[reportArgumentType]
-            for xep in parsed_package_infos["xeps"]  # pyright: ignore[reportOptionalIterable]
-            if xep["status"] not in ("wontfix", "planned")  # pyright: ignore[reportArgumentType]
+            xep["number"]  # ty: ignore[invalid-argument-type]
+            for xep in parsed_package_infos["xeps"]  # ty: ignore[not-iterable]
+            if xep["status"] not in ("wontfix", "planned")  # ty: ignore[invalid-argument-type]
         ]
         compliance_data, compliance_badges = get_compliance_data(
             category_type,
@@ -832,7 +832,7 @@ def prepare_doap_files() -> None:
                 doap_file.truncate(0)
 
 
-if __name__ == "__main__":
+def build_software_list() -> None:
     initialize_directory(DOWNLOAD_PATH)
     initialize_directory(LOGOS_PATH)
     Path(DOWNLOAD_PATH / "doap_files").mkdir(parents=True)

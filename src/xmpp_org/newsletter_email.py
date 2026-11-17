@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """In order to have newsletter e-mails formatted properly,
 we need to add inline style attributes to some elements.
 This tool takes a post URL for input, processes its HTML,
@@ -53,8 +51,9 @@ def process(input_url: str) -> None:
     # Improve rendering of figures
     figures = article.find_all("figure")
     for figure in figures:
-        img = figure.find("img")  # type: ignore  # noqa: PGH003
-        img["style"] = "max-width: 100%;"  # type: ignore  # noqa: PGH003
+        img = figure.find("img")
+        if img is not None:
+            img["style"] = "max-width: 100%;"
 
     with Path("newsletter-mail.html").open("w", encoding="utf-8") as html_file:
         html_file.write(str(article))
@@ -64,7 +63,7 @@ def process(input_url: str) -> None:
     )
 
 
-if __name__ == "__main__":
+def convert_newsletter_to_email() -> None:
     print(50 * "=")
     print(
         "This tool processes newsletter posts for emails.\n"

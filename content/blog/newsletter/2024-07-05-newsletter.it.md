@@ -209,7 +209,7 @@ Si tratta di uno sforzo comunitario e vorremmo ringraziare i traduttori per il l
 
 
 
-Questa newsletter XMPP è prodotta in collaborazione dalla comunità XMPP. Il numero di ogni mese della newsletter viene redatto in questo [semplice pad](https://pad.nixnet.services/oHnY_ZvLT8SoFyCqIC2ung). Alla fine di ogni mese, il contenuto del blocco viene inserito nel [repository XSF Github](https://github.com/xsf/xmpp.org/milestone/3). Siamo sempre felici di accogliere i collaboratori. Non esitate a partecipare alla discussione nella [chat del gruppo Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) e ad aiutarci così a sostenere questo sforzo della comunità. Avete un progetto e volete diffondere la notizia? Considerate la possibilità di condividere qui le vostre notizie o i vostri eventi e di promuoverli a un vasto pubblico.
+Questa newsletter XMPP è prodotta in collaborazione dalla comunità XMPP. Il numero di ogni mese della newsletter viene redatto in questo [semplice pad](https://pad.nixnet.services/ohny_zvlt8sofycqic2ung). Alla fine di ogni mese, il contenuto del blocco viene inserito nel [repository XSF Github](https://github.com/xsf/xmpp.org/milestone/3). Siamo sempre felici di accogliere i collaboratori. Non esitate a partecipare alla discussione nella [chat del gruppo Comm-Team (MUC)](xmpp:commteam@muc.xmpp.org?join) e ad aiutarci così a sostenere questo sforzo della comunità. Avete un progetto e volete diffondere la notizia? Considerate la possibilità di condividere qui le vostre notizie o i vostri eventi e di promuoverli a un vasto pubblico.
 
 Attività che facciamo regolarmente:
 

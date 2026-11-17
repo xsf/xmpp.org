@@ -1,6 +1,12 @@
+[build-system]
+requires = [
+  "setuptools >= 65.0.0",
+]
+
 [project]
-name = "xmpp-org-website"
+name = "xmpp-org"
 version = "1.0.0"
+requires-python = ">= 3.14"
 
 dependencies = [
   "beautifulsoup4",
@@ -14,14 +20,18 @@ dependencies = [
   "scour",
 ]
 
-[project.optional-dependencies]
-
 [dependency-groups]
 dev = [
-  "pre-commit==4.5.1",
-  "pyright==1.1.408",
-  "ruff==0.15.9",
+  "pre-commit==4.7.0",
+  "ruff==0.17.3",
+  "ty==0.0.97",
 ]
+
+[project.scripts]
+xmpp_org = "xmpp_org.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.ruff]
 target-version = "py314"
@@ -30,20 +40,16 @@ target-version = "py314"
 select = ["ALL"]
 
 ignore = [
-  "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `xx`
   "C901",     # `xx` is too complex
   "COM812",   # missing-trailing-comma
+  "CPY",      # missing-copyright
   "D",        # docstyle
-  "EXE002",   # no shebang
   "FBT001",   # Boolean-typed positional argument in function definition
   "FBT002",   # Boolean default positional argument in function definition
-  "INP001",   # File `xx` is part of an implicit namespace package. Add an `__init__.py`.
   "PLR0912",  # Too many branches
   "PLR0915",  # Too many statements
   "PLR2004",  # Magic value used in comparison, consider replacing `xx` with a constant variable
   "S101",     # Use of `assert` detected
-  "S603",     # `subprocess` call: check for execution of untrusted input
-  "S607",     # Starting a process with a partial executable path
   "T201",     # `print` found
 ]
 
