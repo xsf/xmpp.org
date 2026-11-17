@@ -1090,15 +1090,15 @@
         "platforms": [],
         "url": null
     },
-   {
-    "categories": [
-        "integrated-platform"
-    ],
-    "doap": "https://www.mirrorfly.com/doap/mirrorfly.doap",
-    "name": "MirrorFly",
-    "platforms": [],
-    "url": null
-},
+    {
+        "categories": [
+            "integrated-platform"
+        ],
+        "doap": "https://www.mirrorfly.com/doap/mirrorfly.doap",
+        "name": "MirrorFly",
+        "platforms": [],
+        "url": null
+    },
     {
         "categories": [
             "client"
@@ -1860,7 +1860,9 @@
         "url": null
     },
     {
-        "categories": ["client"],
+        "categories": [
+            "client"
+        ],
         "doap": "https://raw.githubusercontent.com/dwd/Wimsy/main/doap.xml",
         "name": "Wimsy",
         "platforms": [],
@@ -2148,6 +2150,3 @@
         "url": null
     }
 ]
-
-
-
