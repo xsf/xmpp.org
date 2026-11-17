@@ -1065,6 +1065,15 @@
     },
     {
         "categories": [
+            "tool"
+        ],
+        "doap": "https://raw.githubusercontent.com/getmediawall/mediawall-xmpp-bot/main/mediawall-bot.doap",
+        "name": "mediawall-bot",
+        "platforms": [],
+        "url": null
+    },
+    {
+        "categories": [
             "library"
         ],
         "doap": "/hosted-doap/mellium.doap",
