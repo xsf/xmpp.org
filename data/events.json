@@ -1,5 +1,4 @@
 [
-    
     {
         "type": "Conference",
         "title": "FOSDEM 2027",
@@ -17,6 +16,15 @@
         "date_end": "2027-01-29",
         "url": "https://xmpp.org/2026/11/xmpp-summit-30/",
         "desc": "Join the XMPP Summit 30 in Brussels!"
+    },
+    {
+        "type": "Conference",
+        "title": "40th Chaos Communication Congress",
+        "location": "Hamburg (DE)",
+        "date_start": "2026-12-27",
+        "date_end": "2026-12-30",
+        "url": "https://xmpp.org/2026/11/xmpp-assembly-at-40c3/",
+        "desc": "XMPP Community Assembly at 40C3"
     },
     {
         "type": "Sprint",
