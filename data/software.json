@@ -1090,20 +1090,14 @@
         "platforms": [],
         "url": null
     },
-    {
+   {
     "categories": [
         "integrated-platform"
     ],
-    "doap": null,
+    "doap": "https://www.mirrorfly.com/doap/mirrorfly.doap",
     "name": "MirrorFly",
-    "platforms": [
-        "Android",
-        "Flutter",
-        "iOS",
-        "JavaScript",
-        "React Native"
-    ],
-    "url": "https://www.mirrorfly.com"
+    "platforms": [],
+    "url": null
 },
     {
         "categories": [
