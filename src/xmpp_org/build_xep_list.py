@@ -106,6 +106,7 @@ def build_xep_list() -> None:
                 "shortname": shortname,
                 "status": status,
                 "number": number,
+                "number_string": f"{number:04}",
                 "last_revision_date": date,
                 "last_revision_version": version,
                 "last_revision_initials": initials,

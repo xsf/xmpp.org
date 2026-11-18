@@ -1,166 +1,211 @@
 {{- $name_slug := .Get "name_slug" -}}
+{{- $name := .Get "name" -}}
 {{- $package_type := .Get "package_type" -}}
 {{- $doap_url := .Get "doap_url" -}}
 
-{{- range $name, $props := hugo.Data.software_list_doap -}}
-    {{- if eq $props.name_slug $name_slug -}}
-        <div class="pt-2 pb-5 my-2">
-            <div class="col-lg-12 mx-auto text-center">
-            {{- if $props.logo -}}
-                <img src="{{- $props.logo -}}" class="d-block mx-auto mb-4 software-logo">
-            {{- else -}}
-                <i class="fa-solid fa-5x fa-cube py-1 software-logo-default"></i>
-            {{- end -}}
-            <h1 class="display-5 fw-bold">{{- $name -}}</h1>
-            <p class="lead mb-2">{{- $props.shortdesc -}}</p>
-            <div class="mb-4">
-                {{- range $props.platforms -}}
-                    <span class="badge rounded-pill bg-secondary">{{- . -}}</span>&nbsp;
-                {{- end -}}
-            </div>
-            {{- if eq $package_type "libraries" -}}
-                <div class="mb-4">
-                    <span title="Programming Language" data-bs-toggle="tooltip"><i class="fa-solid fa-sm fa-code align-middle"></i>&nbsp;&nbsp;{{- delimit $props.programming_lang ", " -}}</span>
-                </div>
-            {{- end -}}
-        </div>
-        {{- if $props.homepage -}}
-        <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
-            <a class="btn btn-primary px-4" href="{{- $props.homepage -}}" target="_blank">Visit Website</a>
-        </div>
-        {{- end -}}
-        <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
-            {{- if $props.download_page -}}
-                <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $props.download_page -}}" target="_blank"><i class="fa-solid fa-download"></i>&nbsp;Download</a>
-            {{- end -}}
-            {{- if $props.code_repository -}}
-                <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $props.code_repository -}}" target="_blank"><i class="fa-solid fa-code"></i>&nbsp;Code Repository</a>
-            {{- end -}}
-            {{- if $props.support_forum -}}
-                {{- $url := $props.support_forum -}}
-                {{- if or (hasPrefix $url "xmpp:") (hasPrefix $url "https:") -}}
-                    <a class="btn btn-outline-secondary btn-sm"
-                       role="button"
-                       href="{{- safeURL $props.support_forum -}}"
-                       {{- if hasPrefix $url "https:" -}}target="_blank"{{- end -}}>
-                       <i class="fa-regular fa-comments"></i>&nbsp;Support Chat
-                    </a>
-                {{- end -}}
-            {{- end -}}
-        </div>
-        {{- if ne $props.doap_retrieved true -}}
-            <p class="text-muted text-center small mb-5">Could not retrieve <a href="{{- $doap_url -}}" target="_blank">package data</a>. This may be a temporary problem, please come back later.</p>
-        {{- end -}}
-        <div class="col-sm-10 col-lg-8 pb-5 mx-auto">
-            <h3>Features</h3>
-            <span class="text-muted small">Information listed here always refers to the latest <a href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software checked against.</span>
-            {{- if $props.compliance_badges -}}
-            <div class="accordion mt-2" id="compliance-level-accordion">
-                {{- $categories := slice "core" "im" "mobile" "web" "av" -}}
-                {{- range $categories -}}
-                    {{- $level := index $props.compliance_badges . -}}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#compliance-collapse-{{ . }}" aria-controls="compliance-collapse-{{ . }}">
-                                <div class="d-flex justify-content-between align-items-center w-100 me-4">
-                                    <div>
-                                        {{- if eq . "core" -}}
-                                            <i class="fa-solid fa-circle-check"></i>
-                                            <span class="px-2">Core Compliance</span>
-                                        {{- else if eq . "im" -}}
-                                            <i class="fa-solid fa-comments"></i>
-                                            <span class="px-2">Instant Messaging</span>
-                                        {{- else if eq . "mobile" -}}
-                                            <i class="fa-solid fa-mobile-screen"></i>
-                                            <span class="px-2">Mobile</span>
-                                        {{- else if eq . "web" -}}
-                                            <i class="fa-solid fa-up-right-from-square"></i>
-                                            <span class="px-2">Web</span>
-                                        {{- else if eq . "av" -}}
-                                            <i class="fa-solid fa-phone"></i>
-                                            <span class="px-2">Audio/Video Calling</span>
-                                        {{- end -}}
-                                    </div>
-                                    <div>
-                                        {{- if eq $level "core" -}}
-                                            <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check text-primary"></i>
-                                        {{- else if eq $level "advanced" -}}
-                                            <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i class="fa-solid fa-check-double text-primary"></i>
-                                        {{- else -}}
-                                            <span class="small text-body-secondary">-</span>
-                                        {{- end -}}
-                                    </div>
-                                </div>
-                            </button>
-                        </h2>
-                        <div id="compliance-collapse-{{ . }}" class="accordion-collapse collapse" data-bs-parent="#compliance-level-accordion">
-                            <div class="accordion-body small">
-                                {{- $compliance_data := index $props.compliance_data . -}}
+{{- $package := index hugo.Data.software_list_doap $name -}}
+{{- $xeplist := hugo.Data.xeplist -}}
 
-                                {{- $core_level_compliance_data := index $compliance_data "core" -}}
-                                {{- $core_missing_rfcs := index (index $core_level_compliance_data "missing") "rfcs" -}}
-                                {{- $core_missing_xeps := index (index $core_level_compliance_data "missing") "xeps" -}}
-
-                                {{- $advanced_level_compliance_data := index $compliance_data "advanced" -}}
-                                {{- $advanced_missing_rfcs := index (index $advanced_level_compliance_data "missing") "rfcs" -}}
-                                {{- $advanced_missing_xeps := index (index $advanced_level_compliance_data "missing") "xeps" -}}
-
-                                {{- if eq $level "core" -}}
-                                    <span>{{ $name }} claims compliance at <b>core</b> level in this category.</span>
-                                    <br><br>
-                                    <span>Missing specifications to reach advanced level:</span>
-                                    <ul>
-                                    {{ range $advanced_missing_rfcs }}
-                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
-                                    {{ end }}
-                                    {{ range $advanced_missing_xeps }}
-                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
-                                    {{ end }}
-                                    </ul>
-                                {{- else if eq $level "advanced" -}}
-                                    <span>{{ $name }} claims compliance at <b>advanced</b> level in this category.</span>
-                                {{- else -}}
-                                    <span>{{ $name }} does <b>not</b> claim compliance in this category.</span>
-                                    <br><br>
-                                    <span>Missing specifications to reach core level:</span>
-                                    <ul>
-                                    {{ range $core_missing_rfcs }}
-                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
-                                    {{ end }}
-                                    {{ range $core_missing_xeps }}
-                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
-                                    {{ end }}
-                                    </ul>
-                                    <span>Missing specifications to reach advanced level:</span>
-                                    <ul>
-                                    {{ range $advanced_missing_rfcs }}
-                                        <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
-                                    {{ end }}
-                                    {{ range $advanced_missing_xeps }}
-                                        <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
-                                    {{ end }}
-                                    </ul>
-                                {{- end -}}
-                            </div>
-                        </div>
-                    </div>
-                {{- end -}}
-            </div>
-            {{- else -}}
-                <li class="list-group-item d-flex justify-content-center align-items-center">
-                    <span class="text-body-secondary small py-2">No compliance level</span>
-                </li>
-            {{- end -}}
-        </div>
+<div class="pt-2 my-2">
+  <div class="col-lg-12 mx-auto text-center">
+    {{- if $package.logo -}}
+    <img src="{{- $package.logo -}}" class="d-block mx-auto mb-4 software-logo">
+    {{- else -}}
+    <i class="fa-solid fa-5x fa-cube py-1 software-logo-default"></i>
     {{- end -}}
-{{- end -}}
+    <h1 class="display-5 fw-bold">{{- $name -}}</h1>
+    <p class="lead mb-2">{{- $package.shortdesc -}}</p>
+    <div class="mb-4">
+      {{- range $package.platforms -}}
+      <span class="badge rounded-pill bg-secondary">{{- . -}}</span>&nbsp;
+      {{- end -}}
+    </div>
+    {{- if eq $package_type "libraries" -}}
+    <div class="mb-4">
+      <span title="Programming Language" data-bs-toggle="tooltip"><i
+          class="fa-solid fa-sm fa-code align-middle"></i>&nbsp;&nbsp;{{- delimit $package.programming_lang ", "
+        -}}</span>
+    </div>
+    {{- end -}}
+  </div>
+  {{- if $package.homepage -}}
+  <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
+    <a class="btn btn-primary px-4" href="{{- $package.homepage -}}" target="_blank">Visit Website</a>
+  </div>
+  {{- end -}}
+  <div class="d-grid gap-2 d-sm-flex pb-4 justify-content-sm-center">
+    {{- if $package.download_page -}}
+    <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $package.download_page -}}" target="_blank"><i
+        class="fa-solid fa-download"></i>&nbsp;Download</a>
+    {{- end -}}
+    {{- if $package.code_repository -}}
+    <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- $package.code_repository -}}" target="_blank"><i
+        class="fa-solid fa-code"></i>&nbsp;Code Repository</a>
+    {{- end -}}
+    {{- if $package.support_forum -}}
+    {{- $url := $package.support_forum -}}
+    {{- if or (hasPrefix $url "xmpp:") (hasPrefix $url "https:") -}}
+    <a class="btn btn-outline-secondary btn-sm" role="button" href="{{- safeURL $package.support_forum -}}" {{- if
+      hasPrefix $url "https:" -}}target="_blank" {{- end -}}>
+      <i class="fa-regular fa-comments"></i>&nbsp;Support Chat
+    </a>
+    {{- end -}}
+    {{- end -}}
+  </div>
+  {{- if ne $package.doap_retrieved true -}}
+  <p class="text-muted text-center small mb-5">Could not retrieve <a href="{{- $doap_url -}}" target="_blank">package
+      data</a>. This may be a temporary problem, please come back later.</p>
+  {{- end -}}
+  <div class="col-sm-10 col-lg-8 pb-5 mx-auto">
+    <h3>Features</h3>
+    <span class="text-muted small">Information listed here always refers to the latest <a
+        href="/about/compliance-suites/">Compliance Suite</a> and the latest version of the software checked
+      against.</span>
+    {{- if $package.compliance_badges -}}
+    <div class="accordion mt-2" id="compliance-level-accordion">
+      {{- $categories := slice "core" "im" "mobile" "web" "av" -}}
+      {{- range $categories -}}
+      {{- $level := index $package.compliance_badges . -}}
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#compliance-collapse-{{ . }}" aria-controls="compliance-collapse-{{ . }}">
+            <div class="d-flex justify-content-between align-items-center w-100 me-4">
+              <div>
+                {{- if eq . "core" -}}
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="px-2">Core Compliance</span>
+                {{- else if eq . "im" -}}
+                <i class="fa-solid fa-comments"></i>
+                <span class="px-2">Instant Messaging</span>
+                {{- else if eq . "mobile" -}}
+                <i class="fa-solid fa-mobile-screen"></i>
+                <span class="px-2">Mobile</span>
+                {{- else if eq . "web" -}}
+                <i class="fa-solid fa-up-right-from-square"></i>
+                <span class="px-2">Web</span>
+                {{- else if eq . "av" -}}
+                <i class="fa-solid fa-phone"></i>
+                <span class="px-2">Audio/Video Calling</span>
+                {{- end -}}
+              </div>
+              <div>
+                {{- if eq $level "core" -}}
+                <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i
+                  class="fa-solid fa-check text-primary"></i>
+                {{- else if eq $level "advanced" -}}
+                <span class="small text-body-secondary">{{- $level | title -}}</span>&nbsp;&nbsp;<i
+                  class="fa-solid fa-check-double text-primary"></i>
+                {{- else -}}
+                <span class="small text-body-secondary">-</span>
+                {{- end -}}
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="compliance-collapse-{{ . }}" class="accordion-collapse collapse"
+          data-bs-parent="#compliance-level-accordion">
+          <div class="accordion-body small">
+            {{- $compliance_data := index $package.compliance_data . -}}
 
-<div class="text-center pb-2">
-    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#extensions-collapse" aria-expanded="false" aria-controls="extensions-collapse">
-        Show Supported XEPs
-    </button>
-</div>
-<div class="collapse" id="extensions-collapse">
-    <h5 class="text-center py-2">Supported XMPP Extensions (XEPs)</h5>
-    <iframe src="/doap/{{- $name_slug -}}.doap" class="software-details-xeps" id="doap-iframe"></iframe>
-</div>
+            {{- $core_level_compliance_data := index $compliance_data "core" -}}
+            {{- $core_missing_rfcs := index (index $core_level_compliance_data "missing") "rfcs" -}}
+            {{- $core_missing_xeps := index (index $core_level_compliance_data "missing") "xeps" -}}
+
+            {{- $advanced_level_compliance_data := index $compliance_data "advanced" -}}
+            {{- $advanced_missing_rfcs := index (index $advanced_level_compliance_data "missing") "rfcs" -}}
+            {{- $advanced_missing_xeps := index (index $advanced_level_compliance_data "missing") "xeps" -}}
+
+            {{- if eq $level "core" -}}
+            <span>{{ $name }} claims compliance at <b>core</b> level in this category.</span>
+            <br><br>
+            <span>Missing specifications to reach advanced level:</span>
+            <ul>
+              {{ range $advanced_missing_rfcs }}
+              <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+              {{ end }}
+              {{ range $advanced_missing_xeps }}
+              <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+              {{ end }}
+            </ul>
+            {{- else if eq $level "advanced" -}}
+            <span>{{ $name }} claims compliance at <b>advanced</b> level in this category.</span>
+            {{- else -}}
+            <span>{{ $name }} does <b>not</b> claim compliance in this category.</span>
+            <br><br>
+            <span>Missing specifications to reach core level:</span>
+            <ul>
+              {{ range $core_missing_rfcs }}
+              <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+              {{ end }}
+              {{ range $core_missing_xeps }}
+              <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+              {{ end }}
+            </ul>
+            <span>Missing specifications to reach advanced level:</span>
+            <ul>
+              {{ range $advanced_missing_rfcs }}
+              <li><a href="/rfcs/#{{- . -}}" target="_blank">RFC {{ . }}</a></li>
+              {{ end }}
+              {{ range $advanced_missing_xeps }}
+              <li><a href="/extensions/xep-{{- . -}}.html" target="_blank">XEP-{{ . }}</a></li>
+              {{ end }}
+            </ul>
+            {{- end -}}
+          </div>
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+    {{- else -}}
+    <li class="list-group-item d-flex justify-content-center align-items-center">
+      <span class="text-body-secondary small py-2">No compliance level</span>
+    </li>
+    {{- end -}}
+  </div>
+
+  <div>
+    <h3 class="py-2">Supported XMPP Extensions (XEPs)</h3>
+    <div class="border rounded-3 overflow-auto table-responsive">
+      <table class="table table-sm mb-0 align-middle">
+        <thead>
+          <th>XMPP Extension</th>
+          <th>Implemented Version</th>
+          <th>Status</th>
+          <th>Since</th>
+          <th>Notes</th>
+        </thead>
+        <tbody>
+          {{- range sort $package.xeps "number" -}}
+          {{- $xeps := where $xeplist "number_string" .number -}}
+          {{- $xep := index $xeps 0 -}}
+          <tr>
+            <td>
+              <a href="/extensions/xep-{{- .number -}}.html">
+                XEP-{{- .number -}}: {{ $xep.title }}
+              </a>
+            </td>
+            <td class="text-end font-monospace">
+              <small>{{- .version -}}</small>
+              {{- if ne .version $xep.last_revision_version -}}
+              <br><small class="text-secondary">latest: {{ $xep.last_revision_version }}</small>
+              {{- end -}}
+            </td>
+            <td class="text-center">
+              <div class="badge rounded-pill {{ if eq .status "complete" }}text-bg-success{{ else if eq .status "partial"
+                }}text-bg-warning{{ else if eq .status "planned"
+                }}text-bg-info{{ else }}text-bg-secondary{{ end }}">
+                {{- .status -}}
+              </div>
+            </td>
+            <td class="text-end font-monospace"><small>{{- .since -}}</small>
+            </td>
+            <td>
+              <small>{{- .note -}}</small>
+            </td>
+          </tr>
+          {{- end -}}
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -81,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initialize_bootstrap_tooltips()
-
-  software_resize_extensions_collapse();
 });
 
 function initialize_bootstrap_tooltips() {
@@ -594,19 +592,5 @@ function filter_comparison_xeps() {
   for (const row of document.querySelectorAll("#comparison-table tbody tr")) {
     const listed = selected_columns.some(col_index => row.cells[col_index].childElementCount > 0);
     row.classList.toggle("d-none", filter_active && !listed);
-  }
-}
-
-// Page: /software/<app>/
-function software_resize_extensions_collapse() {
-  // Resize DOAP iframe in software details view
-  let extensions_collapse = document.getElementById("extensions-collapse");
-  if (extensions_collapse) {
-    extensions_collapse.addEventListener("shown.bs.collapse", function () {
-      let frame = document.getElementById("doap-iframe");
-      if (frame) {
-        frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 20 + 'px';
-      }
-    });
   }
 }
