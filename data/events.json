@@ -30,6 +30,21 @@
         }
     },
     {
+        "type": "Conference",
+        "title": "40th Chaos Communication Congress",
+        "location": "Hamburg (DE)",
+        "date_start": "2026-12-27",
+        "date_end": "2026-12-30",
+        "url": "https://xmpp.org/2026/11/xmpp-assembly-at-40c3/",
+        "desc": "XMPP Community Assembly at the 40th Choas Communication Congress (40C3)!",
+        "announcement": {
+            "text": "XMPP Community Assembly at the 40th Chaos Communication Congress (40C3)!",
+            "url": "https://xmpp.org/2026/11/xmpp-assembly-at-40c3/",
+            "date_start": "2026-11-18",
+            "date_end": "2026-12-30"
+        }
+    },
+    {
         "type": "Sprint",
         "title": "XMPP Sprint in London",
         "location": "London (UK)",
