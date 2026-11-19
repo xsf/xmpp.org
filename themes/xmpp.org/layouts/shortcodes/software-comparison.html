@@ -32,9 +32,7 @@
 <table class="table table-hover table-bordered" id="comparison-table">
     <thead>
         <tr>
-            <th>
-                <h5 class="mb-0">Extensions</h5>
-            </th>
+            <th></th>
             {{- $names := slice -}}
             {{ range sort $packages ".name_lower" }}
                 {{- $names = append .name $names -}}
@@ -50,7 +48,54 @@
             {{- end -}}
         </tr>
     </thead>
-    <tbody>
+    <tbody id="comparison-compliance">
+        <tr class="comparison-section-heading">
+            <th>
+                <h5 class="mb-0"><a class="text-reset" href="/about/compliance-suites/">Compliance Suites</a></h5>
+            </th>
+            {{- range $names -}}
+                <td class="d-none"></td>
+            {{- end -}}
+        </tr>
+        {{- $categories := slice
+            (dict "id" "core" "label" "Core Compliance" "icon" "fa-circle-check")
+            (dict "id" "im" "label" "Instant Messaging" "icon" "fa-comments")
+            (dict "id" "mobile" "label" "Mobile" "icon" "fa-mobile-screen")
+            (dict "id" "web" "label" "Web" "icon" "fa-up-right-from-square")
+            (dict "id" "av" "label" "Audio/Video Calling" "icon" "fa-phone")
+        -}}
+        {{- range $category := $categories -}}
+            <tr>
+                <td>
+                    <i class="fa-solid {{ $category.icon }}"></i>&nbsp;&nbsp;{{- $category.label -}}
+                </td>
+                {{- range $name := $names -}}
+                    {{- $level := "" -}}
+                    {{- with (index hugo.Data.software_list_doap $name).compliance_badges -}}
+                        {{- $level = index . $category.id -}}
+                    {{- end -}}
+                    <td class="d-none">
+                        {{- if eq $level "core" -}}
+                            <i class="fa-solid fa-check text-primary"></i>&nbsp;<span class="small text-body-secondary">Core</span>
+                        {{- else if eq $level "advanced" -}}
+                            <i class="fa-solid fa-check-double text-primary"></i>&nbsp;<span class="small text-body-secondary">Advanced</span>
+                        {{- else -}}
+                            <span class="small text-body-secondary">-</span>
+                        {{- end -}}
+                    </td>
+                {{- end -}}
+            </tr>
+        {{- end -}}
+    </tbody>
+    <tbody id="comparison-xeps">
+        <tr class="comparison-section-heading">
+            <th>
+                <h5 class="mb-0">Extensions</h5>
+            </th>
+            {{- range $names -}}
+                <td class="d-none"></td>
+            {{- end -}}
+        </tr>
         {{- range $xep := hugo.Data.xeplist -}}
             {{- if or (eq .type "Standards Track") (eq .type "Historical") (eq .type "Informational") -}}
                 {{- if and (ne .status "Deprecated") (ne .status "Obsolete") (ne .status "Rejected") (ne .status "Retracted") -}}
