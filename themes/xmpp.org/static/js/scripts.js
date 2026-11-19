@@ -589,7 +589,7 @@ function filter_comparison_xeps() {
     .filter(cell => !cell.classList.contains("d-none"))
     .map(cell => cell.cellIndex);
   const filter_active = only_listed_xeps && selected_columns.length > 0;
-  for (const row of document.querySelectorAll("#comparison-table tbody tr")) {
+  for (const row of document.querySelectorAll("#comparison-xeps tr:not(.comparison-section-heading)")) {
     const listed = selected_columns.some(col_index => row.cells[col_index].childElementCount > 0);
     row.classList.toggle("d-none", filter_active && !listed);
   }
