@@ -439,6 +439,13 @@
         "url": "https://github.com/dojo/dojox"
     },
     {
+        "categories": ["client"],
+        "doap": "https://raw.githubusercontent.com/ducko-im/ducko/main/ducko.doap",
+        "name": "Ducko",
+        "platforms": [],
+        "url": null
+    },
+    {
         "categories": [
             "library"
         ],
