@@ -51,6 +51,11 @@
     </a>
     {{- end -}}
     {{- end -}}
+    {{- if $package.xeps -}}
+    <a class="btn btn-outline-secondary btn-sm" role="button"
+      href="/software/software-comparison/?app={{- $name -}}"><i
+        class="fa-solid fa-table-columns"></i>&nbsp;Compare</a>
+    {{- end -}}
   </div>
   {{- if ne $package.doap_retrieved true -}}
   <p class="text-muted text-center small mb-5">Could not retrieve <a href="{{- $doap_url -}}" target="_blank">package

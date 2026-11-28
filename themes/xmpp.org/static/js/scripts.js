@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.getElementById("comparison-only-apps-with-xeps").addEventListener("change", filter_comparison_apps);
     document.getElementById("comparison-only-listed-xeps").addEventListener("change", filter_comparison_xeps);
+    window.addEventListener("popstate", set_comparison_apps_from_url);
     filter_comparison_apps();
+    set_comparison_apps_from_url();
   }
 
   if (window.location.pathname == "/extensions/") {
@@ -538,21 +540,53 @@ function software_filter_list() {
 
 // Page: /software/software-comparison/
 function add_to_comparison(event) {
-  let name = event.srcElement.innerHTML;
-  let col_index = 0;
-  let cells = document.querySelectorAll("#comparison-table thead tr th");
-  cells.forEach(function(cell) {
-    if (cell.getAttribute("name") == name) {
-      col_index = cell.cellIndex + 1;
-    }
-  })
-  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
-    element => element.classList.remove("d-none")
-  )
-  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
-    element => element.classList.remove("d-none")
-  )
+  const name = event.target.textContent;
+  const header = Array.from(document.querySelectorAll("#comparison-table thead tr th[name]"))
+    .find(cell => cell.getAttribute("name") == name);
+  if (header) {
+    set_comparison_column_visibility(header, true);
+    update_comparison_url();
+  }
   filter_comparison_xeps();
+}
+
+function set_comparison_column_visibility(header, visible) {
+  const col_index = header.cellIndex + 1;
+  document.querySelectorAll("#comparison-table tr > :nth-child(" + col_index + ")").forEach(
+    element => element.classList.toggle("d-none", !visible)
+  )
+}
+
+function get_comparison_selected_apps() {
+  return Array.from(document.querySelectorAll("#comparison-table thead tr th[name]"))
+    .filter(cell => !cell.classList.contains("d-none"))
+    .map(cell => cell.getAttribute("name"));
+}
+
+function set_comparison_apps_from_url() {
+  // Show exactly the apps given via "app" query parameters (e.g. ?app=Dino&app=Gajim)
+  const apps = new URLSearchParams(window.location.search).getAll("app");
+  for (const cell of document.querySelectorAll("#comparison-table thead tr th[name]")) {
+    const visible = apps.includes(cell.getAttribute("name"));
+    if (visible == cell.classList.contains("d-none")) {
+      set_comparison_column_visibility(cell, visible);
+    }
+  }
+  filter_comparison_xeps();
+}
+
+function update_comparison_url() {
+  // Keep the selected apps in the URL, so that comparisons can be shared
+  const params = new URLSearchParams(window.location.search);
+  params.delete("app");
+  for (const name of get_comparison_selected_apps()) {
+    params.append("app", name);
+  }
+  const query = params.toString();
+  const url = window.location.pathname + (query ? "?" + query : "");
+  if (url != window.location.pathname + window.location.search) {
+    history.pushState(null, "", url);
+  }
 }
 
 function filter_comparison_apps() {
@@ -571,13 +605,8 @@ function filter_comparison_apps() {
 }
 
 function remove_from_comparison(event) {
-  let col_index = event.srcElement.closest("TH").cellIndex + 1;
-  document.querySelectorAll("#comparison-table thead tr th:nth-child(" + col_index + ")").forEach(
-    element => element.classList.add("d-none")
-  )
-  document.querySelectorAll("#comparison-table tbody tr td:nth-child(" + col_index + ")").forEach(
-    element => element.classList.add("d-none")
-  )
+  set_comparison_column_visibility(event.target.closest("th"), false);
+  update_comparison_url();
   filter_comparison_xeps();
 }
 
